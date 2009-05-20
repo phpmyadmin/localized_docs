@@ -35,8 +35,10 @@ for loc in po/*.po ; do
     (
         cd $lang
         rm -f index.html
-        num=`ls | wc -l`
-        files=`ls`
+        num=`ls | grep -v docs.css | grep -v favicon.ico | wc -l`
+        files=`ls | grep -v docs.css | grep -v favicon.ico `
+        cp ../../phpMyAdmin/docs.css .
+        cp ../../phpMyAdmin/favicon.ico .
         cat > index.html <<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
