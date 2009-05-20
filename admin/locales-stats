@@ -1,0 +1,6 @@
+#!/bin/sh
+for x in po/*.po  ; do 
+    lang=`echo $x | sed 's@po/\(.*\)\.po@\1@'`
+    echo -n "$lang: "
+    msgfmt --statistics --check -o - $x > /dev/null
+done

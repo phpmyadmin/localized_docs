@@ -1,0 +1,15 @@
+#!/bin/sh
+# vim: expandtab sw=4 ts=4 sts=4:
+
+set -e
+
+if [ -z "$1" ] ; then
+    echo "Usage: ./admin/new-lang ll"
+    exit 1
+fi
+
+msginit -i docs.pot -o po/$1.po -l $1 --no-translator
+
+sed -i "s/\(.*po4a_langs.*\)/\1 $1/" po4a.conf
+
+svn add po/$1.po

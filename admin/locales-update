@@ -1,0 +1,18 @@
+#!/bin/sh
+# vim: expandtab sw=4 ts=4 sts=4:
+
+po4a \
+    --msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
+    --copyright-holder "phpMyAdmin devel team" \
+    --package-name phpMyAdmin-docs \
+    -L utf-8 \
+    -M utf-8 \
+    po4a.conf
+
+for loc in po/*.po ; do
+    sed -i '
+        s/SOME DESCRIPTIVE TITLE/phpMyAdmin documentation translation/;
+        s/PACKAGE/phpMyAdmin-docs/;
+        s/(C) YEAR/(C) 2001 - '`date +%Y`'/;
+        ' $loc
+done
