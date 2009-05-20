@@ -13,7 +13,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -->
 
-<!-- $Id: Documentation.html 12452 2009-05-19 07:47:59Z nijel $ -->
+<!-- $Id: Documentation.html 12473 2009-05-20 13:08:44Z nijel $ -->
 <!--
     vim: expandtab ts=4 sw=4 sts=4 tw=78
 -->
@@ -21,7 +21,7 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.3.0-dev - Documentation</title>
+    <title>phpMyAdmin 3.2.0-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -29,27 +29,26 @@
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.3.0-dev Documentation
+class="myadmin">MyAdmin</span></a> 3.2.0-dev - Documentation
     </h1>
 </div>
 
 
 <!-- TOP MENU -->
 <ul class="header">
-    <li><a href="Documentation.html#top">Top</a></li>
-    <li><a href="Documentation.html#require">Requirements</a></li>
-    <li><a href="Documentation.html#intro">Introduction</a></li>
-    <li><a href="Documentation.html#setup">Installation</a></li>
-    <li><a href="Documentation.html#setup_script">Setup script</a></li>
-    <li><a href="Documentation.html#config">Configuration</a></li>
-    <li><a href="Documentation.html#transformations">Transformations</a></li>
-    <li><a href="Documentation.html#faq"><abbr title="Frequently Asked Questions">
-FAQ</abbr></a></li>
-    <li><a href="Documentation.html#developers">Developers</a></li>
-    <li><a href="Documentation.html#copyright">Copyright</a></li>
-    <li><a href="Documentation.html#credits">Credits</a></li>
+    <li><a href="#top">Haut de page</a></li>
+    <li><a href="#require">Pr&eacute;requis</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#setup">Installation</a></li>
+    <li><a href="#setup_script">Script d'installation</a></li>
+    <li><a href="#config">Configuration</a></li>
+    <li><a href="#transformations">Transformations</a></li>
+    <li><a href="#faq"><abbr title="Foire Aux Questions">FAQ</abbr></a></li>
+    <li><a href="#developers">D&eacute;veloppeurs</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+    <li><a href="#credits">Cr&eacute;dits</a></li>
     <li><a href="translators.fr.html">Traducteurs</a></li>
-    <li><a href="Documentation.html#glossary">Glossary</a></li>
+    <li><a href="#glossary">Glossaire</a></li>
 </ul>
 
 <div id="body">
@@ -63,7 +62,7 @@ phpMyAdmin sur SourceForge</a></li>
             <li>Licence&nbsp;: <a href="LICENSE">LICENCE</a></li>
         </ul>
     </li>
-    <li>Documentation version: <i>$Id: Documentation.html 12452 2009-05-19 07:47:59Z
+    <li>Documentation version: <i>$Id: Documentation.html 12473 2009-05-20 13:08:44Z
 nijel $</i>
     </li>
 </ul>
@@ -408,13 +407,17 @@ les modes d'authentification</a> ci-dessous).</p>
 
 <h3 id="upgrading">Mise &agrave; jour&nbsp;:</h3>
 
-<p> Simply copy <i>./config.inc.php</i> from your previous installation into the
-newly unpacked one. Configuration files from old versions may require some
-tweaking as some options have been changed or removed; in particular, the
-definition of <tt>$cfg['AttributeTypes']</tt> has changed so you better
-remove it from your file and just use the default one.  For compatibility
-with PHP 6, remove a <tt>set_magic_quotes_runtime(0);</tt> statement that
-you might find near the end of your configuration file.</p>
+<p> Copiez simplement le fichier <i>config.inc.php</i> de votre installation
+pr&eacute;c&eacute;dente dans votre nouvelle installation.  Les fichiers de
+configuration de tr&egrave;s anciennes versions (2.3.0 ou
+pr&eacute;c&eacute;dentes)  peuvent n&eacute;cessiter des ajustements car
+certaines options ont &eacute;t&eacute; modifi&eacute;es ou
+supprim&eacute;es&nbsp; en particulier, la définition de
+<tt>$cfg['AttributeTypes']</tt> a changé, vous feriez donc mieux de les
+retirer de votre fichier et d'utiliser celui par défaut. Pour une
+compatibilit&eacute; avec PHP 6, supprimez une d&eacute;claration
+<tt>set_magic_quotes_runtime(0);</tt> que vous pourriez trouver &agrave; la
+fin de votre fichier de configuration.</p>
 
 <p> Vous ne devez <strong>pas</strong> copier
 <tt>libraries/config.default.php</tt> par dessus <tt>config.inc.php</tt> car
@@ -1478,7 +1481,7 @@ s&ucirc;r&hellip;&nbsp;&raquo;) doit &ecirc;tre affich&eacute; quand vous
     <dd>D&eacute;finit si le compte de connexion pr&eacute;c&eacute;dent doit
 &ecirc;tre rappel&eacute; en mode d'authentification par cookie.<br /><br />
 
-        This is automatically disabled if you do not have configured <tt><a
+        Ceci est automatiquement désactivé si vous n'avez pas configuré <tt><a
 href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
         </dd>
 
@@ -3858,10 +3861,11 @@ de fichiers Zip pour des exportations plus importantes, vous devrez utiliser
 un autre moyen.</p>
 
 <h4 id="faq3_3">
-    <a href="#faq3_3">3.3 With InnoDB tables, I lose foreign key relationships
-when I rename a table or a column.</a></h4>
+    <a href="#faq3_3">3.3 Avec les tables InnoDB, je perds les relations de
+cl&eacute;s &eacute;trang&egrave;res quand je renomme une table ou une
+colonne.</a></h4>
 
-<p> This is an InnoDB bug, see <a
+<p> C'est un bogue de InnoDB, consulter <a
 href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>.</p>
 
 <h4 id="faq3_4">
@@ -5141,20 +5145,26 @@ Copyright (C) 2001-2009 Marc Delisle &lt;Marc.Delisle_at_cegepsherbrooke.qc.ca&g
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
                         [check <a href="#credits">credits</a> for more details]
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2,
-as published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 </pre>
+
+<p>
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License version 2, as published by
+the Free Software Foundation.
+</p>
+
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+more details.
+</p>
+
+<p>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 51
+Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+</p>
 
 
 <!-- CREDITS -->
@@ -5355,10 +5365,9 @@ d'ex&eacute;cution.</li>
 secr&egrave;te&nbsp;&raquo;</i>) par blocs con&ccedil;u par Bruce Schneier
 en 1993. Il tire son nom du poisson-lune japonais (ou <i>fugu</i>), qui en
 est &eacute;galement l'embl&egrave;me.</li>
-    <li><a href="http://en.wikipedia.org/wiki/Web_browser">Browser (Web Browser)</a>
-- a software application that enables a user to display and interact with
-text, images, and other information typically located on a web page at a
-website on the World Wide Web.</li>
+    <li><a href="http://fr.wikipedia.org/wiki/Navigateur_Web">Navigateur Web</a> -
+Un <b>navigateur Web</b> est un logiciel con&ccedil;u pour consulter le
+World Wide Web. Techniquement, c'est un client HTTP.</li>
     <li><a href="http://fr.wikipedia.org/wiki/Bzip2">bzip2</a> - <b>bzip2</b> est un
 logiciel libre de compression de donn&eacute;es sous UNIX qui utilise
 l'algorithme de Burrows-Wheeler avec le codage de Huffman. Le taux de
@@ -5637,8 +5646,8 @@ multiplateforme de Jean-loup Gailly et Mark Adler.</li>
 
   <ul id="footer">
     <li>Copyright &copy; 2003 - 2009 <a
-href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin devel
-team</a></li>
+href="http://www.phpmyadmin.net/home_page/team.php">Équipe de développement
+de phpMyAdmin</a></li>
     <li><a href="LICENSE">Licence</a></li>
     <li><a href="http://www.phpmyadmin.net/home_page/donate.php">Faire un don</a></li>
     <li class="last">Valid <a href="http://validator.w3.org/check/referer">HTML</a> et <a
