@@ -33,12 +33,12 @@ for loc in po/*.po ; do
     lang=${loc%.po}
     lang=${lang#po/}
     (
-        cd $lang
+        cd output/$lang
         rm -f index.html
         num=`ls | grep -v docs.css | grep -v favicon.ico | wc -l`
         files=`ls | grep -v docs.css | grep -v favicon.ico `
-        cp ../../phpMyAdmin/docs.css .
-        cp ../../phpMyAdmin/favicon.ico .
+        cp ../../../phpMyAdmin/docs.css .
+        cp ../../../phpMyAdmin/favicon.ico .
         cat > index.html <<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
