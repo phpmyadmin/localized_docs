@@ -23,6 +23,18 @@ po4a \
     -M utf-8 \
     -k 70 \
     po4a.conf
+cat > output/index.html <<EOT
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>phpMyAdmin Localized Documentation</title>
+</head>
+<body>
+<li>
+EOT
 
 for loc in po/*.po ; do
     sed -i '
@@ -46,7 +58,7 @@ for loc in po/*.po ; do
     version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin Documentation</title>
+    <title>phpMyAdmin Localized Documentation</title>
 </head>
 <body>
 EOT
@@ -55,14 +67,17 @@ EOT
 <p>Unfortunately no document is enough translated to $lang.</p>
 EOT
         else
+            echo "<li><a href="$lang">$lang</a><ul>" >> ../index.html
             cat >> index.html <<EOT
 <p>Documents translated to $lang:</p>
 <ul>
 EOT
             for file in $files ; do
                 echo "<li><a href=\"$file\">`getname $file`</a></li>" >> index.html
+                echo "<li><a href=\"$file\">`getname $file`</a></li>" >> ../index.html
             done
             echo "</ul>" >> index.html
+            echo "</ul></li>" >> ../index.html
         fi
         cat >> index.html <<EOT
 </body>
@@ -70,3 +85,8 @@ EOT
 EOT
     )
 done
+cat >> output/index.html <<EOT
+</ul>
+</body>
+</html>
+EOT
