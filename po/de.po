@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sf.net\n"
 "POT-Creation-Date: 2009-06-08 14:49+0300\n"
-"PO-Revision-Date: 2009-06-10 15:08+0200\n"
+"PO-Revision-Date: 2009-06-16 00:27+0200\n"
 "Last-Translator: Fabian Kneißl <fabian@kneissl-web.net>\n"
 "Language-Team: none\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 1.2.1\n"
 
@@ -846,6 +846,14 @@ msgid ""
 "installation (this database would then be accessed by the controluser, so no "
 "other user should have rights to it)."
 msgstr ""
+"Für eine ganze Menge an neuen Funktionen (Lesezeichen, Kommentare, <abbr "
+"title=\"structured query language\">SQL</abbr>-Historie, <abbr title=\"Portable "
+"Document Format\">PDF</abbr>-Generierung, Transformation von Feldinhalten "
+"etc.) müssen Sie einige spezielle Tabellen erzeugen. Diese Tabellen können "
+"in einer eigenen Datenbank liegen oder in einer zentralen Datenbank für eine "
+"Mehrbenutzerinstallation (Auf diese Datenbank würde dann der Kontroll-"
+"Benutzer zugreifen, also sollte kein anderer Benutzer Rechte dafür "
+"besitzen)."
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:327
@@ -855,6 +863,10 @@ msgid ""
 "pay special attention to <a href=\"#faq1_23\"> <abbr title=\"Frequently "
 "Asked Questions\">FAQ</abbr> 1.23</a>)."
 msgstr ""
+"Bitte schauen Sie in Ihr <tt>./scripts/</tt> Verzeichnis, wo Sie eine Datei "
+"namens <i>create_tables.sql</i> finden sollten. (Wenn Sie einen Windows "
+"Server verwenden, achten Sie bitte besonders auf <a href=\"#faq1_23\"> <abbr "
+"title=\"Häufig gestellte Fragen\">FAQ</abbr> 1.23</a>)."
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:332
@@ -862,6 +874,9 @@ msgid ""
 "If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer, "
 "please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>."
 msgstr ""
+"Wenn Sie diese Infrastruktur bereits besitzen und auf MySQL 4.1.2 oder neuer "
+"aktualisiert haben, bitte nutzen Sie "
+"<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>."
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:335
@@ -871,6 +886,10 @@ msgid ""
 "and tables, and that the script may need some tuning, depending on the "
 "database name."
 msgstr ""
+"Sie können phpMyAdmin dafür verwenden, die Tabellen für Sie zu erstellen. "
+"Bitte beachten Sie, dass sie besondere (Administrator) Berechtigungen "
+"benötigen, um Datenbank und Tabellen zu erstellen, und dass das Skript etwas "
+"Bearbeitung benötigt, abhängig vom Datenbanknamen."
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:340
@@ -882,11 +901,18 @@ msgid ""
 "the proper rights to those tables (see section <a href="
 "\"#authentication_modes\">Using authentication modes</a> below)."
 msgstr ""
+"Nachdem sie die <i>./scripts/create_tables.sql</i> Datei importiert haben, "
+"sollten Sie die Tabellennamen in Ihrer <i>./config.inc.php</i> Datei "
+"festlegen. Die Einstellungen dafür können im <a "
+"href=\"#config\">Konfigurationsabschnitt</a> nachgeschlagen werden. Sie "
+"brauchen außerdem einen Kontrollbenutzer mit entsprechenden Rechten für "
+"diese Tabellen (siehe <a "
+"href=\"#authentication_modes\">Authentifizierungsmethoden</a>)."
 
 #. type: Content of: <html><body><div><h3>
 #: ../phpMyAdmin/Documentation.html:347
 msgid "Upgrading from an older version"
-msgstr ""
+msgstr "Aktualisieren von einer älteren Version"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:349
@@ -899,6 +925,14 @@ msgid ""
 "with PHP 6, remove a <tt>set_magic_quotes_runtime(0);</tt> statement that "
 "you might find near the end of your configuration file."
 msgstr ""
+"Kopieren Sie einfach <i>./config.inc.php</i> von Ihrer vorherigen "
+"Installation in das neu entpackte Verzeichnis. Konfigurationsdateien von "
+"alten Versionen verlangen eventuell Bearbeitungen, wenn Einstellungen "
+"geändert oder entfernt wurden; insbesondere hat sich die Definition von "
+"<tt>$cfg['AttributeTypes']</tt> geändert, deshalb entfernen Sie sie besser "
+"aus der Datei und benutzen Sie die Standardeinstellung.  Für Kompatibilität "
+"zu PHP6, entfernen Sie die <tt>set_magic_quotes_runtime(0);</tt> Anweisung, "
+"die Sie ziemlich am Ende der Konfigurationsdatei finden sollten."
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:357
@@ -907,6 +941,9 @@ msgid ""
 "over <tt>config.inc.php</tt> because the default configuration file is "
 "version-specific."
 msgstr ""
+"Sie sollten <strong>nicht</strong> die <tt>libraries/config.default.php</tt> "
+"Datei auf <tt>config.inc.php</tt> kopieren, weil die Standardkonfiguration "
+"versionsspezifisch ist."
 
 #. type: Content of: <html><body><div><p>
 #: ../phpMyAdmin/Documentation.html:361
@@ -916,11 +953,15 @@ msgid ""
 "you should run the SQL script found in <tt>scripts/upgrade_tables_mysql_4_1_2"
 "+.sql</tt>."
 msgstr ""
+"Wenn Sie Ihren MySQL Server von einer Version früher als 4.1.2 auf Version "
+"4.1.2 oder neuer aktualisiert haben und Sie die pmadb/verknüpfte Tabellen "
+"Infrastruktur nutzten, sollten Sie das SQL Skript "
+"<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> ausführen."
 
 #. type: Content of: <html><body><div><h3>
 #: ../phpMyAdmin/Documentation.html:366
 msgid "Using authentication modes"
-msgstr ""
+msgstr "Benutzung von Authentifizierungsmethoden"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:368
@@ -930,6 +971,10 @@ msgid ""
 "where you want to give users access to their own database and don't want "
 "them to play around with others."
 msgstr ""
+"<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> und Cookie "
+"Authentifizierungsmethoden sind für <b>Mehrbenutzersysteme</b> empfohlen, "
+"wenn Sie Benutzern Zugriff auf ihre eigene Datenbank geben wollen und sie "
+"nicht mit anderen Datenbanken herumspielen können sollen."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:372
@@ -938,6 +983,9 @@ msgid ""
 "about cookies, at least till version 6, and PHP 4.1.1 is also a bit buggy in "
 "this area!"
 msgstr ""
+"Beachten Sie dennoch, dass MS Internet Explorer mit Cookies fehlerhaft "
+"umzugehen scheint, zumindest bis Version 6, und PHP 4.1.1 ist hier auch "
+"etwas fehlerhaft."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:375
@@ -946,6 +994,10 @@ msgid ""
 "title=\"HyperText Transfer Protocol\">HTTP</abbr> or cookie mode so that "
 "your user/password pair are not in clear in the configuration file."
 msgstr ""
+"Auch in einer <b>Einzelbenutzerumgebung</b> könnten Sie bevorzugen, die "
+"<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> oder Cookie Methode zu "
+"verwenden, so dass Ihr Benutzer/Passwort Paar nicht im Klartext in der "
+"Konfigurationsdatei stehen."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:380
@@ -955,6 +1007,10 @@ msgid ""
 "need to be set in the phpMyAdmin configuration file (except possibly for the "
 "<a href=\"#controluser\">controluser</a>)."
 msgstr ""
+"Die <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> und Cookie "
+"Authentifizierungsmethoden sind sicherer: Die MySQL Logindaten müssen nicht "
+"in der phpMyAdmin Konfigurationsdatei gesetzt werden (außer eventuell für "
+"den <a href=\"#controluser\">Kontrollbenutzer</a>)."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:384
@@ -962,6 +1018,8 @@ msgid ""
 "However, keep in mind that the password travels in plain text, unless you "
 "are using the HTTPS protocol."
 msgstr ""
+"Beachten Sie trotzdem, dass das Passwort im Klartext übertragen wird, außer "
+"Sie benutzen das HTTPS Protokoll."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:386
@@ -969,6 +1027,8 @@ msgid ""
 "In cookie mode, the password is stored, encrypted with the blowfish "
 "algorithm, in a temporary cookie."
 msgstr ""
+"Mit der Cookiemethode wird das Passwort, verschlüsselt mit dem Blowfish "
+"Algoritzmus, in einem temporären Cookie gespeichert."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:389
@@ -976,6 +1036,8 @@ msgid ""
 "Note: starting with phpMyAdmin 2.6.1, this section is only applicable if "
 "your MySQL server is running with <tt>--skip-show-database</tt>."
 msgstr ""
+"Anmerkung: Ab phpMyAdmin 2.6.1 ist dieser Abschnitt nur noch relevant, wenn "
+"der MySQL Server mit <tt>--skip-show-database</tt> läuft."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:392
@@ -987,6 +1049,12 @@ msgid ""
 "<i>`mysql`.`tables_priv` (all columns except `Grantor` and `Timestamp`)</i> "
 "tables."
 msgstr ""
+"Für '<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' und 'Cookie' "
+"Methoden braucht phpMyAdmin einen Kontrollbenutzer, der <b>nur</b> die "
+"<tt>SELECT</tt> Berechtigung auf <i>`mysql`.`user` (alle Spalten außer "
+"`Password`)</i>, <i>`mysql`.`db` (alle Spalten)</i>, <i>`mysql`.`host` (alle "
+"Spalten)</i> und <i>`mysql`.`tables_priv` (alle Spalten außer `Grantor` und "
+"`Timestamp`)</i> Tabellen."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:397
@@ -997,6 +1065,12 @@ msgid ""
 "['controluser']</a></tt> and <tt><a href=\"#cfg_Servers_controlpass\" class="
 "\"configrule\"> $cfg['Servers'][$i]['controlpass']</a></tt> settings."
 msgstr ""
+"Sie müssen die Details für den <a href=\"#controluser\">Kontrollbenutzer</a> "
+"in der <tt>config.inc.php</tt> Datei in den <tt><a "
+"href=\"#cfg_Servers_controluser\" class=\"configrule\"> "
+"$cfg['Servers'][$i]['controluser']</a></tt> und <tt><a "
+"href=\"#cfg_Servers_controlpass\" class=\"configrule\"> "
+"$cfg['Servers'][$i]['controlpass']</a></tt> Einstellungen eintragen."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:404
@@ -1006,6 +1080,11 @@ msgid ""
 "example: use something else in your file!</b> Input these statements from "
 "the phpMyAdmin SQL Query window or mysql command&#8211;line client."
 msgstr ""
+"Das folgende Beispiel nimmt an, dass Sie <tt>pma</tt> als Kontrollbenutzer "
+"und <tt>pmapass</tt> als Kontrollpasswort benutzer, aber <b>dies ist nur ein "
+"Beispiel: Benutzen Sie etwas anderes in Ihrer Datei!</b> Geben Sie diese "
+"Anweisungen ins phpMyAdmin SQL Abfragefenster oder in der mysql "
+"Kommandozeile ein."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:409
@@ -1013,6 +1092,8 @@ msgid ""
 "Of course you have to replace <tt>localhost</tt> with the webserver's host "
 "if it's not the same as the MySQL server's one."
 msgstr ""
+"Auf jeden Fall müssen Sie <tt>localhost</tt> mit dem Host des Webservers "
+"ersetzen, wenn es nicht der gleiche wie der des MySQL Servers ist."
 
 #. type: Content of: <html><body><div><ul><li><pre>
 #: ../phpMyAdmin/Documentation.html:413
@@ -1031,17 +1112,32 @@ msgid ""
 "GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)\n"
 "    ON mysql.tables_priv TO 'pma'@'localhost';"
 msgstr ""
+"GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';\n"
+"GRANT SELECT (\n"
+"Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv,\n"
+"Create_priv, Drop_priv, Reload_priv, Shutdown_priv, Process_priv,\n"
+"File_priv, Grant_priv, References_priv, Index_priv, Alter_priv,\n"
+"Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv,\n"
+"Execute_priv, Repl_slave_priv, Repl_client_priv\n"
+") ON mysql.user TO 'pma'@'localhost';\n"
+"GRANT SELECT ON mysql.db TO 'pma'@'localhost';\n"
+"GRANT SELECT ON mysql.host TO 'pma'@'localhost';\n"
+"GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)\n"
+"ON mysql.tables_priv TO 'pma'@'localhost';"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:426
 msgid "If you want to use the many new relation and bookmark features:"
 msgstr ""
+"Wenn Sie die vielen neuen Beziehungs- und Lesezeichenfunktionen benutzen "
+"wollen:"
 
 #. type: Content of: <html><body><div><ul><li><pre>
 #: ../phpMyAdmin/Documentation.html:429
 #, no-wrap
 msgid "GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';\n"
-msgstr ""
+msgstr "GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO "
+"'pma'@'localhost';\n"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:432
@@ -1049,6 +1145,8 @@ msgid ""
 "(this of course requires that your <a href=\"#linked-tables\">linked-tables "
 "infrastructure</a> be set up)."
 msgstr ""
+"(dies setzt natürlich voraus, dass die <a href=\"#linked-tables\">verknüpfte "
+"Tabellen Infrastruktur</a> eingerichtet ist)."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:435
@@ -1058,6 +1156,11 @@ msgid ""
 "to an ordinary user, unless you understand the impact of those privileges "
 "(for example, you are creating a superuser)."
 msgstr ""
+"Dann sollte jedem der <i>true</i> Benutzer eine Menge von Berechtigungen für "
+"eine Menge von bestimmten Datenbanken vergeben werden. Normalerweise "
+"sollten Sie einem normalen Benutzer keine globalen Berechtigungen gewähren, "
+"außer Sie verstehen die Bedeutung dieser Berechtigungen (zum Beispiel wenn "
+"Sie einen Administratorbenutzer erstellen)."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:439
@@ -1065,12 +1168,15 @@ msgid ""
 "For example, to grant the user <i>real_user</i> with all privileges on the "
 "database <i>user_base</i>:"
 msgstr ""
+"Um zum Beispiel dem Benutzer <i>real_user</i> alle Berechtigungen auf der "
+"Datenbank <i>user_base</i> gewähren:"
 
 #. type: Content of: <html><body><div><ul><li><pre>
 #: ../phpMyAdmin/Documentation.html:443
 #, no-wrap
 msgid "GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';\n"
-msgstr ""
+msgstr "GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY "
+"'real_password';\n"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:446
@@ -1078,6 +1184,8 @@ msgid ""
 "What the user may now do is controlled entirely by the MySQL user management "
 "system."
 msgstr ""
+"Was dem Benutzer jetzt erlaubt ist, wird völlig vom MySQL Benutzermanagement "
+"kontrolliert."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:448
@@ -1086,12 +1194,18 @@ msgid ""
 "authentication mode, you don't need to fill the user/password fields inside "
 "the <a href=\"#cfg_Servers\" class=\"configrule\">$cfg['Servers']</a> array."
 msgstr ""
+"Mit der <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> oder Cookie "
+"Authentifizierungsmethode brauchen Sie nicht die Benutzer/Passwort Felder im "
+"<a href=\"#cfg_Servers\" class=\"configrule\">$cfg['Servers']</a> Feld "
+"eintragen."
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpMyAdmin/Documentation.html:454
 msgid ""
 "'<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' authentication mode"
 msgstr ""
+"'<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' "
+"Authentifizierungsmethode"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:456
@@ -1099,6 +1213,9 @@ msgid ""
 "Uses <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> Basic "
 "authentication method and allows you to log in as any valid MySQL user."
 msgstr ""
+"Benutzt die <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> Basic "
+"Authentication Methode und erlaubt Ihnen, sich als jeder gültige MySQL "
+"Benutzer einzuloggen."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:458
@@ -1111,6 +1228,14 @@ msgid ""
 "<abbr title=\"Common Gateway Interface\">CGI</abbr> see <a href=\"#faq1_35"
 "\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 1.35</a>."
 msgstr ""
+"Wird von den meisten PHP Konfigurationen unterstützt. Für <abbr "
+"title=\"Internet Information Services\">IIS</abbr> (<abbr title=\"Internet "
+"Server Application Programming Interface\">ISAPI</abbr>)  Unterstützung unter "
+"Verwendung des <abbr title=\"Common Gateway Interface\">CGI</abbr> PHP "
+"beachten Sie <a href=\"#faq1_32\"><abbr title=\"Häufig gestellte "
+"Fragen\">FAQ</abbr> 1.32</a>, für die Benutzung mit Apache <abbr "
+"title=\"Common Gateway Interface\">CGI</abbr> beachten Sie <a "
+"href=\"#faq1_35\"><abbr title=\"Häufig gestellte Fragen\">FAQ</abbr> 1.35</a>."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpMyAdmin/Documentation.html:467
@@ -1120,6 +1245,10 @@ msgid ""
 "with '<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' "
 "authentication mode."
 msgstr ""
+"Siehe auch <a href=\"#faq4_4\"> <abbr title=\"Häufig gestellte "
+"Fragen\">FAQ</abbr> 4.4</a> darüber, nicht den <i>.htaccess</i> Mechanismus "
+"zusammen mit der '<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' "
+"Authentifizierungsmethode zu verwenden."
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpMyAdmin/Documentation.html:474
