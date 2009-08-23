@@ -61,7 +61,7 @@ phpMyAdmin sur SourceForge</a></li>
             <li>Licence&nbsp;: <a href="LICENSE">LICENCE</a></li>
         </ul>
     </li>
-    <li><div class="l10n">Documentation version:</div>
+    <li><div class="l10n">Version de la documentation&nbsp;:</div>
         <i>$Id: Documentation.html 12854 2009-08-21 09:29:29Z nijel $</i>
     </li>
 </ul>
@@ -125,20 +125,23 @@ structur&eacute;e)">SQL</abbr>, m&ecirc;me les requ&ecirc;tes par lot;</li>
     <li>cr&eacute;er<a href="#footnote_1"><sup>1</sup></a> et lire des fichiers
 d'exportation (dumps) de tables;
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, <abbr title="Microsoft Excel 97-2003 and Excel
-2007">Excel</abbr> and L<sup>A</sup>T<sub><big>E</big></sub>X formats
+    <li>exporter<a href="#footnote_1"><sup>1</sup></a> des donn&eacute;es dans
+divers formats&nbsp;: <abbr title="Comma Separated Values (valeurs
+s&eacute;par&eacute;es par des virgules)">CSV</abbr>, <abbr
+title="Extensible Markup Language (langage de balises
+extensible)">XML</abbr>, <abbr title="Portable Document Format (format de
+document portable)">PDF</abbr>, <abbr title="International Standards
+Organisation">ISO</abbr>/<abbr title="International Electrotechnical
+Commission">IEC</abbr> 26300 - texte et feuille de calcul OpenDocument,
+<abbr title="Microsoft Word 2000">Word</abbr>, <abbr title="Microsoft Excel
+97-2003 et Excel 2007">Excel</abbr> et
+L<sup>A</sup>T<sub><big>E</big></sub>X&nbsp;;
         </li>
-    <li>import data and MySQL structures from <abbr title="Microsoft Excel 97-2003
-and Excel 2007">Microsoft Excel</abbr> and OpenDocument spreadsheets, as
-well as <abbr title="Extensible Markup Language">XML</abbr>, <abbr
-title="Comma Separated Values">CSV</abbr>, and <abbr title="Server Query
-Language">SQL</abbr> files</li>
+    <li>importeer des données et des structures MySQL à partir de <abbr
+title="Microsoft Excel 97-2003 et Excel 2007">Microsoft Excel</abbr> et des
+feuilles de tableur OpenDocument, ou encore des fichiers <abbr
+title="Extensible Markup Language">XML</abbr>, <abbr title="Comma Separated
+Values">CSV</abbr> et <abbr title="Server Query Language">SQL</abbr></li>
     <li>administrer plusieurs serveurs;</li>
     <li>g&eacute;rer les utilisateurs MySQL et les privil&egrave;ges;</li>
     <li>v&eacute;rifier l'int&eacute;grit&eacute; r&eacute;f&eacute;rentielle des
@@ -154,7 +157,7 @@ utilisant un ensemble de fonctions pr&eacute;d&eacute;finies, comme par
 exemple l'affichage de donn&eacute;es stock&eacute;es en format BLOB en tant
 qu'image ou les liens de t&eacute;l&eacute;chargement;
         </li>
-    <li>track changes on databases, tables and views</li>
+    <li>suivre les modifications dans les bases de données, tables et vues&nbsp;;</li>
     <li>g&eacute;rer les tables InnoDB et les cl&eacute;s &eacute;trang&egrave;res
 (voir <a href="#faq3_6"><abbr title="Foire Aux Questions">FAQ</abbr>
 3.6</a>);</li>
@@ -373,13 +376,16 @@ de votre serveur Web. Vous pouvez trouver un exemple de fichier
 
 <h3 id="linked-tables">Infrastructure des tables li&eacute;es</h3>
 
-<p> For a whole set of new features (bookmarks, comments, <abbr
-title="structured query language">SQL</abbr>-history, tracking mechanism,
-<abbr title="Portable Document Format">PDF</abbr>-generation, field contents
-transformation, etc.) you need to create a set of special tables. Those
-tables can be located in your own database, or in a central database for a
-multi-user installation (this database would then be accessed by the
-controluser, so no other user should have rights to it).</p>
+<p> Si vous voulez b&eacute;n&eacute;ficier de toute une s&eacute;rie de
+nouveaut&eacute;s (signets, commentaires, historique <abbr title="structured
+query language">SQL</abbr>, mécanisme de suivi, g&eacute;n&eacute;ration de
+<abbr title="Portable Document Format">PDF</abbr>, transformation des
+contenus de champ, etc.), vous devrez cr&eacute;er un ensemble de tables
+sp&eacute;ciales. Ces tables peuvent se trouver dans votre propre base de
+donn&eacute;es, ou dans une base de donn&eacute;es centrale pour une
+installation multi-utilisateurs (cette base de donn&eacute;es serait alors
+acc&eacute;e par le controluser, aussi, aucun autre utilisateur ne devrait
+avoir de droits sur celle-ci).</p>
 
 <p> Veuillez regarder dans votre r&eacute;pertoire <tt>./scripts/</tt>,
 o&ugrave; vous devriez trouver un fichier du nom de
@@ -1222,67 +1228,72 @@ activ&eacute; dans votre navigateur.<br /><br />
 
     <dt id="tracking">
         <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
-string
+chaîne
     </dt>
     <dd>
-        Since release 3.3.x a tracking mechanism is available.  It helps you to
-track every <abbr title="structured query language">SQL</abbr> command which
-is executed by phpMyAdmin. The mechanism supports logging of data
-manipulation and data definition statements. After enabling it you can
-create versions of tables.
+        Depuis la version 3.3.x, un mécnisme de suivi est disponible. Il vous aide à
+suivretoutes les commandes <abbr title="structured query
+language">SQL</abbr> exécutées par phpMyAdmin. Le mécanisme gère la
+journalisation de la manipulation de données et les déclarations de
+définition de données. Après son activation, vous pouvez créer des versions
+de tables.
         <br/><br/>
-        The creation of a version has two effects:
+        La création d'une version a deux effets&nbsp;:
 
         <ul>
-            <li>phpMyAdmin saves a snapshot of the table, including structure and indexes.</li>
-            <li>phpMyAdmin loggs all commands which change the structure and/or data of the
-table and links these commands with the version number.</li>
+            <li>phpMyAdmin enregistre un cliché de la table, y compris sa structure et ses
+index.</li>
+            <li>phpMyAdmin journalise toutes les commandes qui modifie la structure et/ou
+les données de la table et lie ces commandes au numéro de la version.</li>
         </ul>
 
-        Of course you can view the tracked changes. On the "Tracking" page a
-complete report is available for every version.  For the report you can use
-filters, for example you can get a list of statements within a date range.
-When you want to filter usernames you can enter * for all names or you enter
-a list of names separated by ','.  In addition you can export the (filtered)
-report to a file or to a temporary database.
+        Bien sûr, vous pouvez voir les modifications suivies. Dans la page
+«&nbsp;Tracking&nbsp;», un rapport complet est disponible pour chaque
+version.  Pour le rapport, vous pouvez utiliser des filtres, par exemple,
+vous pouvez obtenir une liste des déclarations dans un intervalle de temps
+donné.  Si vous voulez filtrer les noms d'utilisateurs, vous pouvez saisir
+«&nbsp;*&nbsp;» pour tous les noms ou une liste de nom séparés par des
+virgules («&nbsp;,&nbsp;»).  De plus, vous pouvez exporter le rapport
+(filtré) dans un fichier ou une base de données temporaire.
         <br/><br/>
         
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
         <ul>
             <li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt></li>
+            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['tracking']</tt></li>
         </ul>
     </dd>
 
     <dt id="tracking2">
         <span
 id="cfg_Servers_tracking_auto_create">$cfg['Servers'][$i]['tracking_version_auto_create']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether the tracking mechanism creates versions for tables and views
-automatically. Default value is true.
+        Définit si le mécanisme de suivi crée des versions pour les tables et les
+vues automatiquement. La valeur par défaut est «&nbsp;true&nbsp;».
         <br/><br/>
-        If this is set to true and you create a table or view with
+        Si ceci est défini à «&nbsp;true&nbsp;» et que vous créez une table ou une
+vue avec
 
         <ul>
             <li>CREATE TABLE ...</li>
             <li>CREATE VIEW ...</li>
         </ul>
 
-        and no version exists for it, the mechanism will create a version for you
-automatically.        
+        et qu'il n'existe pas de version pour celle-ci, le mécanisme de suivi créera
+une version pour vous automatiquement.        
     </dd>
 
     <dt id="tracking3">
         <span
 id="cfg_Servers_tracking_default_statements">$cfg['Servers'][$i]['tracking_default_statements']</span>
-string
+chaîne
     </dt>
     <dd>
-        Defines the list of statements the auto-creation uses for new
-versions. Default value is
+        Définit la liste des déclarations que le mécanisme d'auto-création utilise
+pour les nouvelles versions. La valeur par défaut est
         <br/>
 
 <pre>CREATE TABLE,ALTER TABLE,DROP TABLE,RENAME TABLE,
@@ -1295,11 +1306,12 @@ CREATE DATABASE,ALTER DATABASE,DROP DATABASE</pre>
     <dt id="tracking4">
         <span
 id="cfg_Servers_tracking_drop_view">$cfg['Servers'][$i]['tracking_version_drop_view']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether a DROP VIEW IF EXISTS statement will added as first line to the log
-when creating a view. Default value is true.
+        Définit si une déclaration «&nbsp;DROP VIEW IF EXISTS&nbsp;» sera ajoutée en
+première ligne dans le journal lors de la création de la vue. La valeur par
+défaut est «&nbsp;true&nbsp;».
         <br/><br/>       
     </dd>
 
@@ -1307,22 +1319,24 @@ when creating a view. Default value is true.
     <dt id="tracking5">
         <span
 id="cfg_Servers_tracking_drop_table">$cfg['Servers'][$i]['tracking_version_drop_table']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether a DROP TABLE IF EXISTS statement will added as first line to the log
-when creating a table. Default value is true.
+        Définit si une déclaration «&nbsp;DROP TABLE IF EXISTS&nbsp;» sera ajoutée
+en première du journal lors de la création d'une table. La valeur par d"faut
+est «&nbsp;true&nbsp;».
         <br/><br/>
     </dd>
 
     <dt id="tracking6">
         <span
 id="cfg_Servers_tracking_drop_database">$cfg['Servers'][$i]['tracking_version_drop_database']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether a DROP DATABASE IF EXISTS statement will added as first line to the
-log when creating a database. Default value is true.
+        Définit si une déclaration «&nbsp;DROP DATABASE IF EXISTS&nbsp;» sera
+ajoutée en première du journal lors de la création d'une table. La valeur
+par d"faut est «&nbsp;true&nbsp;».
         <br/><br/>
     </dd>
 
@@ -1330,7 +1344,7 @@ log when creating a database. Default value is true.
     <dt id="designer_coords">
         <span
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
-cha&icirc;ne
+chaîne
     </dt>
     <dd>Depuis la version 2.10.0, une interface Designer est disponible&nbsp;; elle
 permet de g&eacute;rer visuellement les relations.
@@ -1347,7 +1361,7 @@ permet de g&eacute;rer visuellement les relations.
 
     <dt><span
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
-bool&eacute;en
+booléen
     </dt>
     <dd>La version 2.5.0 introduisant la nouvelle gestion de la conversion MIME, la
 colonne column_info recense maintenant trois nouveaux champs. Si cette
@@ -1357,7 +1371,7 @@ disponible de la table. Si ce n'est pas le cas, il enverra un avertissement
 au super-utilisateur.<br /><br />
 
         Vous pouvez d&eacute;sactiver cette fonctionalit&eacute; en positionnant la
-variable &agrave; <tt>FALSE</tt>, ce qui am&eacute;liorerait les
+variable &agrave; <tt>FALSE</tt>, ce qui devrait am&eacute;liorer les
 performances.<br /><br />
 
         Il est recommand&eacute; de la positionner &agrave; <tt>FALSE</tt>, quand
@@ -4120,34 +4134,37 @@ sera probablement pas r&eacute;solu &agrave; l'avenir.
 
 <!-- Begin: Excel import limitations -->
 <h4 id="faq3_15">
-    <a href="#faq3_15">3.15 When I import an Excel spreadsheet, some cells with
-calculations do not display correctly.</a></h4>
+    <a href="#faq3_15">3.15 Lors de l'import d'une feuile de tableur Excel,
+certaines cellules avec des calculs ne sont pas affichées correctement.</a></h4>
 <p>
-    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/"
-target=_blank>PHPExcel</a> library to parse Excel XLS and XLSX
-spreadsheets.  Therefore, any limitations that are listed on their page
-regarding Excel calculations will also apply here.
+    phpMyAdmin utilise la bibliothèque <a
+href="http://www.codeplex.com/PHPExcel/" target=_blank>PHPExcel</a> pour
+analyser les feuilles de tableur Excel XLS et XLSX.  Cependant, toutes les
+limitations qui sont listées sur leur page concernant les calculs Excel
+s'appliquent aussi ici.
     <br /><br />
-    PHPExcel will be kept up to date so as to make all improvements available to
-phpMyAdmin users.
+    PHPExcel sera maintenu à jour pour rendre disponible toutes les
+améliorations aux utilisateurs de phpMyAdmin.
 </p>
 
 <h4 id="faq3_16">
-    <a href="#faq3_16">3.16 When I compress (gzip, bzip2, zip) an Excel workbook
-and attempt to import it, nothing happens.</a></h4>
+    <a href="#faq3_16">3.16 Quand je compresse (gzip, bzip2, zip) un classeur
+Excel et que j'essaie de l'importer, rien ne se passe.</a></h4>
 <p>
-    Since Excel XLSX workbooks are already compressed, there is often times only
-a small benefit from compressing them yet again.  Support for compressed
-Excel XLSX and XLS workbooks may be added in the future.
+    Puisque les classeurs Excel XLSX sont déjà compressés, il y a souvent très
+peu de gain à les compresser à nouveau. La gestion pour les classeurs Excel
+XLSX et XLS compressés sera peut-être ajoutée prochainement.
 </p>
 
 <h4 id="faq3_17">
-    <a href="#faq3_17">3.17 When I import an Excel spreadsheet, my custom cell
-types are not represented as they are in Excel.</a></h4>
+    <a href="#faq3_17">3.17 Lorsque j'importe une feuille de tableur Excel, mes
+types personnalisés de cellules ne sont pas représentées telles que dans
+Excel.</a></h4>
 <p>
-    Excel's internal representation of custom cell types is rather muddled
-(especially in Excel 97-2003 binary XLS files). If possible, consider using
-a built-in type. These are almost always guarenteed to import correctly.
+    La représentation interne des types personnalisés de cellules dans Excel est
+plutôt confuse (particulièrement dans les fichiers binaires XLS Excel
+97-2003). Si possible, songez à utiliser un type intégré. Ils garantissent
+presque toujours un import correct.
 </p>
 
 
@@ -4156,11 +4173,12 @@ a built-in type. These are almost always guarenteed to import correctly.
 <!-- End: Excel import limitations -->
 <!-- Begin: CSV import limitations -->
 <h4 id="faq3_18">
-    <a href="#faq3_18">3.18 When I import a CSV file that contains multiple
-tables, they are lumped together into a single table.</a></h4>
+    <a href="#faq3_18">3.18 Lors de l'import d'un fichier CSV qui contient
+plusieurs tables, elles sont fusionnées en une seule.</a></h4>
 <p>
-    There is no reliable way to differetiate tables in CSV format. For the time
-being, you will have to break apart CSV files containing multiple tables.
+    Il n'existe pas de moyen fiable de différencier les tables en format
+CSV. Pour le moment, vous devrez fractionner les fichiers CSV contenant
+plusieurs tables.
 </p>
 
 
@@ -4169,19 +4187,20 @@ being, you will have to break apart CSV files containing multiple tables.
 <!-- End: CSV import limitations -->
 <!-- Begin: Import type-detection limitations -->
 <h4 id="faq3_19">
-    <a href="#faq3_19">3.19 When I import a file and have phpMyAdmin determine
-the appropriate data structure it only uses int, decimal, and varchar
-types.</a></h4>
+    <a href="#faq3_19">3.19 Lors de l'import d'un fichier et quand phpMyAdmin
+détermine la structure de données appropriée, il n'utilise que les types
+int, decimal et varchar types.</a></h4>
 <p>
-    Currently, the import type-detection system can only assign these MySQL
-types to columns. In future, more will likely be added but for the time
-being you will have to edit the structure to your liking post-import.
+    Pour le moment, le système de détection de type ne peut affecter que ces
+types pour les colonnes. Prochainement, d'autres types seront certainement
+ajoutés, mais pour l'instant, vous devrez éditer la structure après
+l'import.
     <br /><br />
-    Also, you should note the fact that phpMyAdmin will use the size of the
-largest item in any given column as the column size for the appropriate
-type. If you know you will be adding larger items to that column then you
-should manually adjust the column sizes accordingly. This is done for the
-sake of efficiency.
+    Vous devez également noter que phpMyAdmin utilisera la taille de l'élément
+le plus gros pour toute colonne donnée comme taille de colonne pour le type
+approprié. Si vous savez que vous importerez des éléments plus gros pour
+cette colonne, vous devez alors ajuster la taille de la colonne. Ceci est
+fait dans un but d'efficacité.
 </p>
 
 
@@ -5562,12 +5581,12 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Derek Schaefer (Google Summer of Code 2009)
 <ul>
-  <li>Improved the import system</li>
+  <li>amélioration du système d'import</li>
 </ul></li>
 
 <li>Alexander Rutkowski (Google Summer of Code 2009)
 <ul>
-  <li>Tracking mechanism</li>
+  <li>Mécanisme de suivi</li>
 </ul></li>
 
 </ul>
