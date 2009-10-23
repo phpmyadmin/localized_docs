@@ -15,7 +15,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -->
 
-<!-- $Id: Documentation.html 13028 2009-10-04 12:34:29Z lem9 $ -->
+<!-- $Id: Documentation.html 13059 2009-10-23 09:15:50Z lem9 $ -->
 <head>
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
@@ -62,7 +62,7 @@ phpMyAdmin sur SourceForge</a></li>
         </ul>
     </li>
     <li><div class="l10n">Version de la documentation&nbsp;:</div>
-        <i>$Id: Documentation.html 13028 2009-10-04 12:34:29Z lem9 $</i>
+        <i>$Id: Documentation.html 13059 2009-10-23 09:15:50Z lem9 $</i>
     </li>
 </ul>
 
@@ -1249,8 +1249,8 @@ de tables.
         <ul>
             <li>phpMyAdmin enregistre un cliché de la table, y compris sa structure et ses
 index.</li>
-            <li>phpMyAdmin journalise toutes les commandes qui modifie la structure et/ou
-les données de la table et lie ces commandes au numéro de la version.</li>
+            <li>phpMyAdmin logs all commands which change the structure and/or data of the
+table and links these commands with the version number.</li>
         </ul>
 
         Bien sûr, vous pouvez voir les modifications suivies. Dans la page
@@ -1570,14 +1570,13 @@ z&eacute;ro, aucune limite de temps n'est impos&eacute;e.<br />
 Synchronize feature but has no effect when PHP is running in safe mode.</dd>
 
     <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] entier ['nombre d'octets']</dt>
-    <dd>D&eacute;finit le nombre d'octets q'un script est autoris&eacute; &agrave;
-allouer. Si ce nombre est d&eacute;fini &agrave; z&eacute;ro, aucune limite
-n'est impos&eacute;e.<br />
-        Ce param&egrave;tre est utilis&eacute; lors de l'importation/exportation de
-fichiers dump mais n'a aucun effet lorsque PHP est ex&eacute;cut&eacute; en
-mode s&eacute;curis&eacute;.<br />
-        Vous pouvez aussi utiliser une cha&icirc;ne comme dans le fichier
-<tt>php.ini</tt>, par ex. '16M'.</dd>
+    <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
+limit is imposed.<br />
+        This setting is used while importing/exporting dump files and at some other
+places in phpMyAdmin so you definitely don't want to put here a too low
+value. It has no effect when PHP is running in safe mode.<br />
+        You can also use any string as in php.ini, eg. '16M'. Ensure you don't omit
+the suffix (16 means 16 bytes!)</dd>
 
     <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] bool&eacute;en</dt>
     <dd>Marque les tables utilis&eacute;es et permet de montrer les bases de
