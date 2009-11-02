@@ -62,7 +62,8 @@ phpMyAdmin sur SourceForge</a></li>
         </ul>
     </li>
     <li><div class="l10n">Version de la documentation&nbsp;:</div>
-        <i>$Id: Documentation.html 13059 2009-10-23 09:15:50Z lem9 $</i>
+        <i>$Id: Documentation.html 13059 2009-10-23 09:15:50Z lem9 $</i><br
+/>Traduction française&nbsp;: Cédric Corazza
     </li>
 </ul>
 
@@ -1249,8 +1250,8 @@ de tables.
         <ul>
             <li>phpMyAdmin enregistre un cliché de la table, y compris sa structure et ses
 index.</li>
-            <li>phpMyAdmin logs all commands which change the structure and/or data of the
-table and links these commands with the version number.</li>
+            <li>phpMyAdmin journalise toutes les commandes qui modifie la structure et/ou
+les données de la table et lie ces commandes au numéro de la version.</li>
         </ul>
 
         Bien sûr, vous pouvez voir les modifications suivies. Dans la page
@@ -1479,23 +1480,26 @@ title="Internet Protocol">IP</abbr>)<br />
         Les adresses IPv6 ne sont pas gérées non plus.
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
-boolean</dt>
-    <dd>Disable using <tt>INFORMATION_SCHEMA</tt> to retrieve information (use
-<tt>SHOW</tt> commands instead), because of speed issues when many databases
-are present. Currently used in some parts of the code, more to come.
+booléen</dt>
+    <dd>Désactiver en utilisant <tt>INFORMATION_SCHEMA</tt> pour retrouver les
+informations (utiliser des commandes <tt>SHOW</tt>à la place), à cause de
+problèmes de performances quand il y a beaucoup de bases de
+données. Actuellement utilisé dans certaines parties du code, more to come.
     </dd>
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
-string</dt>
-    <dd>On a server with a huge number of databases, the default <tt>SHOW
-DATABASES</tt> command used to fetch the name of available databases will
-probably be too slow, so it can be replaced by faster commands (see
-<tt>libraries/config.default.php</tt> for examples).
+chaîne</dt>
+    <dd>Sur un serveur avec un très grand nombre de bases de données, la commande
+par défaut <tt>SHOW DATABASES</tt> utilisée pour récupérer le nom des bases
+de données sera probablement très lente, elle peut donc être remplacée par
+des commandes plus rapides (voir <tt>libraries/config.default.php</tt> pour
+des exemples).
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
-boolean</dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation frame.
+booléen</dt>
+    <dd>Définit s'il faut compter le nombre de tables pour chaque base de données
+lors de la préparation de la liste des bases de données pour la navigation
+dans le cadre.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -1566,17 +1570,21 @@ phpMyAdmin.</dd>
     <dd>D&eacute;finit le nombre de secondes allou&eacute;es &agrave; un script pour
 s'ex&eacute;cuter. Si le nombre de secondes est d&eacute;fini &agrave;
 z&eacute;ro, aucune limite de temps n'est impos&eacute;e.<br />
-        This setting is used while importing/exporting dump files and in the
-Synchronize feature but has no effect when PHP is running in safe mode.</dd>
+        Ce param&egrave;tre est utilis&eacute; lors de l'importation/exportation de
+fichiers dump et dans la fonctionnalité de synchronisation mais n'a aucun
+effet lorsque PHP est ex&eacute;cut&eacute; en mode s&eacute;curis&eacute;.</dd>
 
     <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] entier ['nombre d'octets']</dt>
-    <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
-limit is imposed.<br />
-        This setting is used while importing/exporting dump files and at some other
-places in phpMyAdmin so you definitely don't want to put here a too low
-value. It has no effect when PHP is running in safe mode.<br />
-        You can also use any string as in php.ini, eg. '16M'. Ensure you don't omit
-the suffix (16 means 16 bytes!)</dd>
+    <dd>D&eacute;finit le nombre d'octets qu'un script est autoris&eacute; &agrave;
+allouer. Si ce nombre est d&eacute;fini &agrave; z&eacute;ro, aucune limite
+n'est impos&eacute;e.<br />
+        Ce param&egrave;tre est utilis&eacute; lors de l'importation/exportation de
+fichiers dump et dans d'autres fonctions de phpMyAdmin, vous ne voulez donc
+pas mettre une valeur trop basse ici. Il n'a aucun effet lorsque PHP est
+ex&eacute;cut&eacute; en mode s&eacute;curis&eacute;.<br />
+        Vous pouvez aussi utiliser une chaîne comme dans le fichier
+<tt>php.ini</tt>, par ex. '16M'. Assurez-vous de ne pas oublier le suffixe
+(16 signifie 16 octets&nbsp;!)</dd>
 
     <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] bool&eacute;en</dt>
     <dd>Marque les tables utilis&eacute;es et permet de montrer les bases de
@@ -3348,12 +3356,14 @@ la commande &laquo;&nbsp;source&nbsp;&raquo; dans MySQL&nbsp;: <tt>source
     <a id="faqmysqlversions" href="#faq1_17">1.17 Quelles versions de MySQL sont
 g&eacute;r&eacute;es par phpMyAdmin&nbsp;?</a></h4>
 
-<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
-MySQL versions, you need to use 2.8.x branch. phpMyAdmin can connect to your
-MySQL server using PHP's classic <a href="http://php.net/mysql">MySQL
-extension</a> as well as the <a href="http://php.net/mysqli">improved MySQL
-extension (MySQLi)</a> that is available in php 5.0. The latter one should
-be used unless you have good reason not to do so.<br />
+<p> Depuis phpMyAdmin 3.0.x, seules les versions 5.0.1 et supérieures de MySQL
+5.0.1 sont  gérées. Pour les versions plus anciennes de MySQL, vous devez
+utiliser la branche 2.8.x. phpMyAdmin peut se connecter à votre serveur
+MySQL en utilisant l'extension PHP classique <a
+href="http://php.net/mysql">MySQL</a> ou <a
+href="http://php.net/mysqli">l'extension MySQL améliorée (MySQLi)</a>
+disponible dans php 5.0. Cette dernière doit être utilisée à moins que vous
+n'ayez de bonnes raisons de ne pas le faire.<br />
     En compilant PHP, nous recommandons fortement de lier manuellement
 l'extension MySQL de votre choix &agrave; une biblioth&egrave;que client
 MySQL d'au moins la m&ecirc;me version mineure, puisque celle qui est
