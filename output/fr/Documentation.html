@@ -15,7 +15,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -->
 
-<!-- $Id: Documentation.html 13059 2009-10-23 09:15:50Z lem9 $ -->
+<!-- $Id: Documentation.html 13148 2009-12-06 18:36:38Z lem9 $ -->
 <head>
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
@@ -62,8 +62,7 @@ phpMyAdmin sur SourceForge</a></li>
         </ul>
     </li>
     <li><div class="l10n">Version de la documentation&nbsp;:</div>
-        <i>$Id: Documentation.html 13059 2009-10-23 09:15:50Z lem9 $</i><br
-/>Traduction française&nbsp;: Cédric Corazza
+        <i>$Id: Documentation.html 13148 2009-12-06 18:36:38Z lem9 $</i>
     </li>
 </ul>
 
@@ -92,7 +91,9 @@ recommand&eacute;e pour la plupart des utilisateurs et
 <b>n&eacute;cessaire</b> pour les machines 64&#8211;bit. Ne pas utiliser
 mcrypt provoquera un chargement des pages par phpMyAdmin sensiblement plus
 lent.
-            </li>
+                </li>
+                <li>To support upload progress bars, see <a href="#faq2_9"> <abbr
+title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 ou ult&eacute;rieur (<a
@@ -751,11 +752,10 @@ inter-cadre (cross-frame).</dd>
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] cha&icirc;ne</dt>
     <dd>Le mode d'authentification par &laquo;&nbsp;cookie&nbsp;&raquo; utilise
 l'algorithme blowfish pour chiffrer le mot de passe.<br />
-        Si vous utilisez le mode d'authentification par 'cookie', entrez ici une
-phrase al&eacute;atoire de votre choix.  Elle sera utilis&eacute;e de
-mani&egrave;re interne par l'algorithme blowfish&nbsp;: cette phrase mot de
-passe ne vous sera pas demand&eacute;e. Le nombre maximum de
-caract&egrave;res pour ce param&egrave;tre semble &ecirc;tre 46.<br /><br />
+        If you are using the &quot;cookie&quot; auth_type, enter here a random
+passphrase of your choice. It will be used internally by the blowfish
+algorithm: you won&#8217;t be prompted for this passphrase. There is no
+maximum length for this secret.<br /><br />
         
         Depuis la version 3.1.0, phpMyAdmin peut générer ceci à la volée, mais cela
 affaiblit un peu la sécurité car le mot de passe est stocké en session et de
@@ -3969,6 +3969,16 @@ en lecture seule.
     </li>
 </ul>
 
+<h4 id="faq2_9">
+    <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
+
+<p> To be able to see a progress bar during your uploads, your server must have
+either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
+the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
+one. Moreover, the JSON extension has to be enabled in your PHP.</p>
+    <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
+php.ini.</p>
+
 <h3 id="faqlimitations">Limitations connues</h3>
 
 <h4 id="login_bug">
@@ -4165,11 +4175,10 @@ sera probablement pas r&eacute;solu &agrave; l'avenir.
     <a href="#faq3_15">3.15 Lors de l'import d'une feuile de tableur Excel,
 certaines cellules avec des calculs ne sont pas affichées correctement.</a></h4>
 <p>
-    phpMyAdmin utilise la bibliothèque <a
-href="http://www.codeplex.com/PHPExcel/" target=_blank>PHPExcel</a> pour
-analyser les feuilles de tableur Excel XLS et XLSX.  Cependant, toutes les
-limitations qui sont listées sur leur page concernant les calculs Excel
-s'appliquent aussi ici.
+    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/"
+target="_blank">PHPExcel</a> library to parse Excel XLS and XLSX
+spreadsheets.  Therefore, any limitations that are listed on their page
+regarding Excel calculations will also apply here.
     <br /><br />
     PHPExcel sera maintenu à jour pour rendre disponible toutes les
 améliorations aux utilisateurs de phpMyAdmin.
@@ -5295,8 +5304,8 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 \"%{Referer}i\" \"%{User-Agent}i\" %{userID}n %{userStatus}n"   pma_combined
 </pre>
 <p>
-    Vous pouvez alors utiliser n'importe quel outil d'analyse de logs pour
-détecter des tentatives d'intrusion.
+    You can then use any log analyzing tools to detect possible break-in
+attempts.
 </p>
 
 <h3 id="faqsynchronization">Synchronisation</h3>
@@ -5313,9 +5322,9 @@ synchroniser vos bases de données situées sur le même serveur ou sur un
 serveur distant.
 </p>
 
-<p>Pour plus de détails, consulter <a
-href="./documentation-gsoc/Synchronization_User Manual.htm">Comment
-synchroniser</a>
+<p>For more details see <a
+href="./documentation-gsoc/Synchronization_User%20Manual.htm">How to
+synchronize</a>
 </p>
 
 
