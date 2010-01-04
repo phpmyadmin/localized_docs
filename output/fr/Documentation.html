@@ -15,12 +15,12 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -->
 
-<!-- $Id: Documentation.html 13148 2009-12-06 18:36:38Z lem9 $ -->
+<!-- $Id: Documentation.html 13199 2009-12-31 13:27:55Z lem9 $ -->
 <head>
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.3.0-dev - Documentation</title>
+    <title>phpMyAdmin 3.4.0-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.3.0-dev - Documentation
+class="myadmin">MyAdmin</span></a> 3.4.0-dev Documentation
     </h1>
 </div>
 
@@ -62,7 +62,7 @@ phpMyAdmin sur SourceForge</a></li>
         </ul>
     </li>
     <li><div class="l10n">Version de la documentation&nbsp;:</div>
-        <i>$Id: Documentation.html 13148 2009-12-06 18:36:38Z lem9 $</i>
+        <i>$Id: Documentation.html 13199 2009-12-31 13:27:55Z lem9 $</i>
     </li>
 </ul>
 
@@ -92,8 +92,8 @@ recommand&eacute;e pour la plupart des utilisateurs et
 mcrypt provoquera un chargement des pages par phpMyAdmin sensiblement plus
 lent.
                 </li>
-                <li>To support upload progress bars, see <a href="#faq2_9"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
+                <li>Pour gérer les barres de progression d'upload, consulter <a href="#faq2_9">
+la <abbr title="Foire Aux Questions">FAQ</abbr> 2.9</a>.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 ou ult&eacute;rieur (<a
@@ -752,10 +752,11 @@ inter-cadre (cross-frame).</dd>
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] cha&icirc;ne</dt>
     <dd>Le mode d'authentification par &laquo;&nbsp;cookie&nbsp;&raquo; utilise
 l'algorithme blowfish pour chiffrer le mot de passe.<br />
-        If you are using the &quot;cookie&quot; auth_type, enter here a random
-passphrase of your choice. It will be used internally by the blowfish
-algorithm: you won&#8217;t be prompted for this passphrase. There is no
-maximum length for this secret.<br /><br />
+        Si vous utilisez le mode d'authentification par 'cookie', entrez ici une
+phrase al&eacute;atoire de votre choix.  Elle sera utilis&eacute;e de
+mani&egrave;re interne par l'algorithme blowfish&nbsp;: cette phrase mot de
+passe ne vous sera pas demand&eacute;e. Il n'y a pas de taille maximale pour
+cette phrase.<br /><br />
         
         Depuis la version 3.1.0, phpMyAdmin peut générer ceci à la volée, mais cela
 affaiblit un peu la sécurité car le mot de passe est stocké en session et de
@@ -1278,8 +1279,8 @@ id="cfg_Servers_tracking_auto_create">$cfg['Servers'][$i]['tracking_version_auto
 booléen
     </dt>
     <dd>
-        Définit si le mécanisme de suivi crée des versions pour les tables et les
-vues automatiquement. La valeur par défaut est «&nbsp;true&nbsp;».
+        Whether the tracking mechanism creates versions for tables and views
+automatically. Default value is false.
         <br/><br/>
         Si ceci est défini à «&nbsp;true&nbsp;» et que vous créez une table ou une
 vue avec
@@ -3970,14 +3971,15 @@ en lecture seule.
 </ul>
 
 <h4 id="faq2_9">
-    <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
+    <a href="#faq2_9">2.9 Afficher les barres de progression d'upload</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
-the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-one. Moreover, the JSON extension has to be enabled in your PHP.</p>
-    <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
-php.ini.</p>
+<p> Pour pouvoir voir une barre de progression pendant vos uploads, votre
+serveur doit avoir soit l'extension <a
+href="http://pecl.php.net/package/APC">APC</a> soit l'extension <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>. De
+plus, l'extension JSON doit être activée dans votre installation PHP.</p>
+    <p> Si vous utilisez APC, vous devez définir le paramètre <tt>apc.rfc1867</tt> à
+<tt>on</tt> dans votre fichier php.ini.</p>
 
 <h3 id="faqlimitations">Limitations connues</h3>
 
@@ -4175,10 +4177,11 @@ sera probablement pas r&eacute;solu &agrave; l'avenir.
     <a href="#faq3_15">3.15 Lors de l'import d'une feuile de tableur Excel,
 certaines cellules avec des calculs ne sont pas affichées correctement.</a></h4>
 <p>
-    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/"
-target="_blank">PHPExcel</a> library to parse Excel XLS and XLSX
-spreadsheets.  Therefore, any limitations that are listed on their page
-regarding Excel calculations will also apply here.
+    phpMyAdmin utilise la bibliothèque <a
+href="http://www.codeplex.com/PHPExcel/" target=_blank>PHPExcel</a> pour
+analyser les feuilles de tableur Excel XLS et XLSX.  Par conséquent, toutes
+les limitations qui sont listées sur leur page concernant les calculs Excel
+s'appliquent aussi ici.
     <br /><br />
     PHPExcel sera maintenu à jour pour rendre disponible toutes les
 améliorations aux utilisateurs de phpMyAdmin.
@@ -5304,8 +5307,8 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 \"%{Referer}i\" \"%{User-Agent}i\" %{userID}n %{userStatus}n"   pma_combined
 </pre>
 <p>
-    You can then use any log analyzing tools to detect possible break-in
-attempts.
+    Vous pouvez alors utiliser n'importe quel outil d'analyse de logs pour
+détecter des tentatives d'intrusion.
 </p>
 
 <h3 id="faqsynchronization">Synchronisation</h3>
@@ -5322,9 +5325,9 @@ synchroniser vos bases de données situées sur le même serveur ou sur un
 serveur distant.
 </p>
 
-<p>For more details see <a
-href="./documentation-gsoc/Synchronization_User%20Manual.htm">How to
-synchronize</a>
+<p>Pour plus de détails, consulter l'article <a
+href="./documentation-gsoc/Synchronization_User%20Manual.htm">Comment
+synchroniser</a>.
 </p>
 
 
