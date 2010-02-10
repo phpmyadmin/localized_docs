@@ -3,14 +3,21 @@
 
 set -e
 
-if [ -z "$1" ] ; then
-    echo "Usage: ./admin/new-lang ll"
+if [ -z "$1" -o -z "$2" ] ; then
+    echo "Usage: ./admin/new-lang ll verbose_name"
     exit 1
 fi
 
 msginit -i docs.pot -o po/$1.po -l $1 --no-translator
 
 sed -i "s/\(.*po4a_langs.*\)/\1 $1/" po4a.conf
+
+sed -i "/### MARKER TO ADD NEW LANGUAGE NAMES ###/ i \\
+        $1)
+        /### MARKER TO ADD NEW LANGUAGE NAMES ###/ i \\
+            echo $2
+        /### MARKER TO ADD NEW LANGUAGE NAMES ###/ i \\
+            ;;" admin/locales-update
 
 svn add po/$1.po
 svn mkdir $1
