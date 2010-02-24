@@ -2,11 +2,11 @@ PO4A-HEADER:mode=before;position=<!-- \$Id
 
 <!--
 
-This file is generated using po4a, do not edit!
+Tento soubor je generovaný pomocí po4a, prosím neupravujte ho!
 
-You can edit po files to change the translation.
+Pro opravu překladu prosím upravte po soubory.
 
-Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
+Nebo je také můžete upravit na https://l10n.cihar.com/projects/pmadoc/.
 
 -->
 
