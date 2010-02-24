@@ -24,7 +24,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.4.0-dev - Documentation</title>
+    <title>phpMyAdmin 3.4.0-dev - Dokumentacja</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -66,9 +66,9 @@ href="https://l10n.cihar.com/projects/pmadoc/">translation server</a>.  </p>
     <li><a href="https://sourceforge.net/projects/phpmyadmin/"> SourceForge
 phpMyAdmin project page</a></li>
     <li><a href="http://wiki.phpmyadmin.net"> Official phpMyAdmin wiki</a></li>
-    <li>Local documents:
-        <ul><li>Version history: <a href="changelog.php">ChangeLog</a></li>
-            <li>License: <a href="license.php">LICENSE</a></li>
+    <li>Lokalne dokumenty:
+        <ul><li>Historia wersji: <a href="changelog.php">ChangeLog</a></li>
+            <li>Licencja: <a href="license.php">LICENSE</a></li>
         </ul>
     </li>
     <li><div class="l10n">Documentation version:</div>
@@ -78,7 +78,7 @@ phpMyAdmin project page</a></li>
 
 
 <!-- REQUIREMENTS -->
-<h2 id="require">Requirements</h2>
+<h2 id="require">Wymagania</h2>
 
 <ul><li><b>PHP</b>
         <ul><li>You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a
@@ -86,11 +86,11 @@ href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
 1.31</a>)  and the Standard PHP Library (SPL) extension.
                 </li>
 		<li>To support uploading of ZIP files, you need the PHP <tt>zip</tt> extension.</li>
-        <li>For proper support of multi-byte strings (eg. UTF-8, which is currently
+        <li>For proper support of multibyte strings (eg. UTF-8, which is currently
 default), you should install mbstring and ctype extensions.
         </li>
-            <li>You need GD2 support in PHP to display inline thumbnails of JPEGs
-(&quot;image/jpeg: inline&quot;) with their original aspect ratio</li>
+            <li>Jeśli chcesz wyświetlać miniaturki JPEG-ów w oryginalnych proporcjach,
+wymagana jest w PHP również obsługa GD2.</li>
             <li>When using the &quot;cookie&quot; <a
 href="#authentication_modes">authentication method</a>, the <a
 href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a> extension is strongly
@@ -108,15 +108,16 @@ title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
 
 
 <!-- INTRODUCTION -->
-<h2 id="intro">Introduction</h2>
+<h2 id="intro">Wprowadzenie</h2>
 
-<p> phpMyAdmin can manage a whole MySQL server (needs a super-user) as well as a
-single database. To accomplish the latter you'll need a properly set up
-MySQL user who can read/write only the desired database. It's up to you to
-look up the appropriate part in the MySQL manual.
+<p> phpMyAdmin potrafi zarządzać całym serwerem MySQL (co wymaga konta
+superużytkowika), jak również pojedynczą bazą danych. Do realizacji tego
+ostatniego wymagane jest prawidłowo skonfigurowane konto użytkownika MySQL,
+który będzie mógł odczytywać/modyfikować tylko określoną bazę danych. Do
+Ciebie należy odszukanie odpowiedniego fragmentu podręcznika MySQL.
 </p>
 
-<h3>Currently phpMyAdmin can:</h3>
+<h3>Obecnie phpMyAdmin potrafi:</h3>
 
 <ul><li>browse and drop databases, tables, views, fields and indexes</li>
     <li>create, copy, drop, rename and alter databases, tables, fields and indexes</li>
@@ -124,7 +125,7 @@ look up the appropriate part in the MySQL manual.
 configuration</li>
     <li>execute, edit and bookmark any <abbr title="structured query
 language">SQL</abbr>-statement, even batch-queries</li>
-    <li>load text files into tables</li>
+    <li>wczytywać tekst z plików do tabel</li>
     <li>create<a href="#footnote_1"><sup>1</sup></a> and read dumps of tables
         </li>
     <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
@@ -141,14 +142,13 @@ and Excel 2007">Microsoft Excel</abbr> and OpenDocument spreadsheets, as
 well as <abbr title="Extensible Markup Language">XML</abbr>, <abbr
 title="Comma Separated Values">CSV</abbr>, and <abbr title="Server Query
 Language">SQL</abbr> files</li>
-    <li>administer multiple servers</li>
-    <li>manage MySQL users and privileges</li>
+    <li>administrować wieloma serwerami</li>
+    <li>zarządzać użytkownikami MySQL i ich uprawnieniami</li>
     <li>check referential integrity in MyISAM tables</li>
-    <li>using Query-by-example (QBE), create complex queries automatically
-connecting required tables</li>
+    <li>automatycznie łączyć odpowiednie tabele za pomocą zapytania-przez-przykład</li>
     <li>create <abbr title="Portable Document Format">PDF</abbr> graphics of your
 Database layout</li>
-    <li>search globally in a database or a subset of it</li>
+    <li>przeszukiwać globalnie bazę danych lub jej część</li>
     <li>transform stored data into any format using a set of predefined functions,
 like displaying BLOB-data as image or download-link
         </li>
@@ -159,7 +159,7 @@ title="Frequently Asked Questions">FAQ</abbr> 3.6)</a></li>
 title="Frequently Asked Questions">FAQ</abbr> 1.17)</a></li>
     <li>communicate in <a href="./translators.html">57 different languages</a>
         </li>
-    <li>synchronise two databases residing on the same as well as remote servers <a
+    <li>synchronize two databases residing on the same as well as remote servers <a
 href="#faq9_1">(see <abbr title="Frequently Asked Questions">FAQ</abbr>
 9.1)</a>
     </li>
@@ -182,7 +182,7 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 
 
 <!-- INSTALLATION -->
-<h2 id="setup">Installation</h2>
+<h2 id="setup">Instalacja</h2>
 
 <ol><li><a href="#quick_install">Quick Install</a></li>
     <li><a href="#setup_script">Setup script usage</a></li>
@@ -300,7 +300,7 @@ chmod o-rw config.inc.php          # remove world read and write permissions
 rm -rf config                      # remove not needed directory
 </pre>
                 Now the file is ready to be used. You can choose to review or edit the file
-with your favourite editor, if you prefer to set some advanced options which
+with your favorite editor, if you prefer to set some advanced options which
 the setup script does not provide.</li></ul></li>
     <li>If you are using the <tt>auth_type</tt> &quot;config&quot;, it is suggested
 that you protect the phpMyAdmin installation directory because using config
@@ -314,7 +314,7 @@ especially <a href="#faq4_4"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.4</a>.</li>
     <li>Open the <a href="index.php">main phpMyAdmin directory</a> in your
 browser. phpMyAdmin should now display a welcome screen and your databases,
-or a login dialogue if using <abbr title="HyperText Transfer
+or a login dialog if using <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> or cookie authentication mode.</li>
     <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
 subfolders in your webserver configuration. For Apache you can use supplied
@@ -399,10 +399,10 @@ user/password pair are not in clear in the configuration file.
 authentication modes are more secure: the MySQL login information does not
 need to be set in the phpMyAdmin configuration file (except possibly for the
 <a href="#controluser">controluser</a>).<br />
-        However, keep in mind that the password travels in plain text, unless you
-are using the HTTPS protocol.<br />
-        In cookie mode, the password is stored, encrypted with the blowfish
-algorithm, in a temporary cookie.</li>
+        Z drugiej strony, należy pamiętać, że hasło - jeżeli nie używasz protokołu
+HTTPS - jest przesyłane czystym tekstem.<br />
+        W trybie cookie hasło, zakodowane algorytmem blowfish, jest przechowywane w
+tymczasowym ciasteczku.</li>
 
     <a name="pmausr"></a>
 
@@ -450,19 +450,19 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
         (this of course requires that your <a href="#linked-tables">linked-tables
 infrastructure</a> be set up).<br /></li>
 
-    <li>Then each of the <i>true</i> users should be granted a set of privileges on
-a set of particular databases. Normally you shouldn't give global privileges
-to an ordinary user, unless you understand the impact of those privileges
-(for example, you are creating a superuser).<br />
-        For example, to grant the user <i>real_user</i> with all privileges on the
-database <i>user_base</i>:<br />
+    <li>Każdy z <i>prawdziwych</i> użytkowników powinien uzyskać uprawnienia do
+poszczególnych pojedynczych baz danych. Zwykle nie powinieneś dawać
+uprawnień globalnych zwykłemu użytkownikowi, chyba że zdajesz sobie sprawę
+ze skutków takich uprawnień (np. tworzysz superużytkownika).<br />
+        Na przykład by nadać użytkownikowi <i>prawdziwy_uzytkownik</i> wszystkie
+uprawnienia do bazy danych <i>baza_uzytkownika</i>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
 </pre>
 
-        What the user may now do is controlled entirely by the MySQL user management
-system.<br />
+        To, co może on teraz zrobić jest całkowicie kontrolowane przez system
+zarządzania użytkownikami MySQL.<br />
         With <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
 authentication mode, you don't need to fill the user/password fields inside
 the <a href="#cfg_Servers" class="configrule">$cfg['Servers']</a> array.</li>
@@ -564,7 +564,7 @@ since this link provides funding for phpMyAdmin.
 </p>
 
 <!-- CONFIGURATION -->
-<h2 id="config">Configuration</h2>
+<h2 id="config">Konfiguracja</h2>
 
 <p> <span class="important">Warning for <acronym title="Apple
 Macintosh">Mac</acronym> users:</span> PHP does not seem to like <acronym
@@ -579,7 +579,7 @@ please refer to the <a href="#setup">Quick install</a> section to create
 one. This file only needs to contain the parameters you want to change from
 their corresponding default value in <tt>libraries/config.default.php</tt>.</p>
 
-<p> The parameters which relate to design (like colours) are placed in
+<p> The parameters which relate to design (like colors) are placed in
 <tt>themes/themename/layout.inc.php</tt>. You might also want to create
 <i>config.footer.inc.php</i> and <i>config.header.inc.php</i> files to add
 your site specific code to be included on start and end of each page.</p>
@@ -607,12 +607,11 @@ bug report on our bug tracker so we can improve the code.</dd>
 master / foreign &#8211; tables (see <a href="#pmadb"
 class="configrule">$cfg['Servers'][$i]['pmadb']</a>).
         <br />
-        If you tried to set this up and it does not work for you, have a look on the
-&quot;Structure&quot; page of one database where you would like to use
-it. You will find a link that will analyse why those features have been
-disabled.<br />
-        If you do not want to use those features set this variable to <tt>TRUE</tt>
-to stop this message from appearing.</dd>
+        Jeśli próbowałeś ustawiać ten parametr i nadal nie działa, spójrz na stronę
+"Struktura" bazy danych, gdzie chciałbyś ich użyć. Znajdziesz tam link,
+który przeanalizuje, dlaczego funkcje te są nieaktywne.<br />
+        Jeżeli nie chcesz ich używać, ustaw tę zmienną na <tt>TRUE</tt>, a komunikat
+przestanie się pojawiać.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] boolean</dt>
     <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
@@ -668,7 +667,8 @@ class="configrule">$cfg['Servers'][$i]['host']</a>.
     </dd>
 
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] string</dt>
-    <dd>The path to the socket to use. Leave blank for default.<br />
+    <dd>Ścieżka do gniazda, którego należy użyć. Pozostawione puste oznacza wartość
+domyślną.<br />
         To determine the correct socket, check your MySQL configuration or, using
 the <tt>mysql</tt> command&#8211;line client, issue the <tt>status</tt>
 command.  Among the resulting information displayed will be the socket used.</dd>
@@ -683,8 +683,8 @@ command.  Among the resulting information displayed will be the socket used.</dd
 guaranteed to be available on all MySQL servers, while sockets are not
 supported on some platforms.<br /><br />
 
-        To use the socket mode, your MySQL server must be on the same machine as the
-Web server.</dd>
+        Aby użyć trybu gniazda, Twój serwer MySQL musi być na tej samej maszynie co
+serwer www.</dd>
 
     <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] string</dt>
     <dd>What php MySQL extension to use for the connection. Valid options are:
@@ -698,9 +698,9 @@ available with php 5.0.0 and is the recommended way to connect to a server
 running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
-    <dd>Whether to use a compressed protocol for the MySQL server connection or not
-(experimental).<br />
-        This feature requires PHP&nbsp;&gt;=&nbsp;4.3.0.</dd>
+    <dd>Czy używać protokołu kompresji dla połączeń z serwerem MySQL, czy też nie
+(opcja eksperymentalna).<br />
+        Funkcja ta wymaga PHP&nbsp;&gt;=&nbsp;4.3.0.</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -870,7 +870,7 @@ useful for queries you often run.<br /><br />
 
         To allow the usage of this functionality:
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
-            <li>enter the table name in <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
+            <li>wprowadzić nazwę tabeli do <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
         </ul>
     </dd>
 
@@ -878,22 +878,23 @@ useful for queries you often run.<br /><br />
         <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
 string
     </dt>
-    <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
-field is a key in another table (a foreign key). phpMyAdmin currently uses
-this to
-        <ul><li>make clickable, when you browse the master table, the data values that point
-to the foreign table;</li>
-            <li>display in an optional tool-tip the &quot;display field&quot; when browsing
-the master table, if you move the mouse to a column containing a foreign key
-(use also the 'table_info' table);<br />
+    <dd>Począwszy do wersji 2.2.4 możesz opisać, w specjalnej tabeli 'relation',
+które pole jest kluczem innej tabeli (klucz zewnętrzny). phpMyAdmin
+aktualnie używa tej informacji w celu
+        <ul><li>stworzenia klikalnymi, gdy przeglądasz główną tabelę, wartości danych, które
+wskazują na tabelę zewnętrzną;</li>
+            <li>w czasie przeglądania tabeli głównej - pokazania w opcjonalnej etykietce
+narzędzia "wyświetlanego pola", gdy przeniesiesz mysz na kolumnę zawierającą
+klucz zewnętrzny (używana jest również tabela 'table_info');<br />
                 (see <a href="#faqdisplay"><abbr title="Frequently Asked Questions">
 FAQ</abbr> 6.7</a>)</li>
-            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
-value and &quot;display field&quot; are shown)<br />
+            <li>pokazania rozwijalnej listy możliwych kluczy zewnętrznych w trybie
+edycji/wstawiania (pokazywane są: wartość klucza i "wyświetlane pole")<br />
                 (see <a href="#faq6_21"><abbr title="Frequently Asked Questions"> FAQ</abbr>
 6.21</a>)</li>
-            <li>display links on the table properties page, to check referential integrity
-(display missing foreign keys) for each described key;
+            <li>wyświetlenia linków na stronie z właściwościami tabeli, by sprawdzić
+spójność powiązań (wskazanie brakujących kluczy zewnętrznych) dla każdego
+opisanego klucza;
             </li>
             <li>in query-by-example, create automatic joins (see <a href="#faq6_6"> <abbr
 title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
@@ -901,15 +902,15 @@ title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
 of your database (also uses the table_coords table).</li>
         </ul>
 
-        The keys can be numeric or character.<br /><br />
+        Klucze mogą być liczbowe lub znakowe.<br /><br />
 
         To allow the usage of this functionality:
 
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
-            <li>put the relation table name in <tt>$cfg['Servers'][$i]['relation']</tt></li>
-            <li>now as normal user open phpMyAdmin and for each one of your tables where you
-want to use this feature, click &quot;Structure/Relation view/&quot; and
-choose foreign fields.
+            <li>umieścić nazwę tabeli relacji w <tt>$cfg['Servers'][$i]['relation']</tt></li>
+            <li>teraz jako normalny użytkownik otwórz phpMyAdmina i dla każdej z twoich
+normalnych tabel, dla których chcesz używać tej funkcji, kliknij na
+"Struktura/Widok relacyjny/" i wybierz pola zewnętrzne.
                 </li>
         </ul>
 
@@ -923,18 +924,17 @@ the cross-db relations.
 string
     </dt>
     <dd>
-        Since release 2.3.0 you can describe, in a special 'table_info' table, which
-field is to be displayed as a tool-tip when moving the cursor over the
-corresponding key.<br />
+        Od wersji 2.3.0 możesz w specjalnej tabeli 'table_info' opisać, które pole
+ma być wyświetlane jako etykieta narzędzia podczas przenoszenia kursora nad
+odpowiadającym jej kluczem.<br />
         This configuration variable will hold the name of this special table. To
 allow the usage of this functionality:
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt></li>
-            <li>then for each table where you want to use this feature, click
-&quot;Structure/Relation view/Choose field to display&quot; to choose the
-field.</li>
+            <li>umieścić nazwę tabeli w <tt>$cfg['Servers'][$i]['table_info']</tt></li>
+            <li>następnie dla każdej tabeli, gdzie chcesz użyj tej funkcji, kliknij
+"Struktura/Widok relacyjny/Wybierz wyświetlane pole", aby wybrać pole.</li>
         </ul>
-        Usage tip: <a href="#faqdisplay">Display field</a>.
+        Praktyczne wskazówki: <a href="#faqdisplay">Wyświetlane pole</a>.
     </dd>
     <dt id="table_coords">
         <span
@@ -970,8 +970,8 @@ string
     </dt>
     <dd>
         <!-- This part requires a content update! -->
-Since release 2.3.0 you can store comments to describe each column for each
-table. These will then be shown on the &quot;printview&quot;.
+Od wersji 2.3.0 możesz przechowywać komentarze opisujące każdą kolumnę
+dowolnej tabeli. Będzie to pokazane w "widoku do wydruku".
         <br /><br />
 
         Starting with release 2.5.0, comments are consequently used on the table
@@ -989,7 +989,7 @@ system, your column_info table has to have the three new fields 'mimetype',
 
         To allow the usage of this functionality:
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt></li>
+            <li>umieścić nazwę tabeli w <tt>$cfg['Servers'][$i]['column_info']</tt></li>
             <li>to update your PRE-2.5.0 Column_comments Table use this:
 
                 <pre>
@@ -1026,7 +1026,7 @@ browser.<br /><br />
         To allow the usage of this functionality:
 
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
+            <li>umieścić nazwę tabeli w <tt>$cfg['Servers'][$i]['history']</tt>
                 </li>
         </ul>
     </dd>
@@ -1165,11 +1165,11 @@ is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
 latest table structure available. If not, it will emit a warning to the
 superuser.<br /><br />
 
-        You can disable this checking behaviour by setting the variable to false,
-which should offer a performance increase.<br /><br />
+        Możesz wyłączyć sprawdzanie, ustawiając zmienną na FALSE, co powinno
+zaowocować poprawą wydajności.<br /><br />
 
-        Recommended to set to FALSE, when you are sure, your table structure is up
-to date.</dd>
+        Gdy jest pewne, że struktura tabeli jest aktualna, zalecane jest ustawienie
+na FALSE.</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span>
 boolean</dt>
     <dd>Whether to allow root access. This is just a shortcut for the AllowDeny
@@ -1196,17 +1196,18 @@ all deny rules followed by allow rules. Access is allowed by default. Any
 client which does not match a Deny command or does match an Allow command
 will be allowed access to the server. <br /><br />
 
-        If your rule order is set to <tt>'allow,deny'</tt> then the system applies
-all allow rules followed by deny rules. Access is denied by default.  Any
-client which does not match an Allow directive or does match a Deny
-directive will be denied access to the server.<br /><br />
+        Jeśli jest ustawiony na <tt>'allow,deny'</tt>, system stosuje wszystkie
+reguły pozytywne przed regułami negatywnymi. Dostęp jest domyślnie
+zabroniony. Dowolny klient, które nie pasuje do żadnego polecenia Allow lub
+pasuje do jakiegoś polecenia Deny, nie zyska dostępu do serwera.<br /><br />
 
-        If your rule order is set to 'explicit', the authentication is performed in
-a similar fashion to rule order 'deny,allow', with the added restriction
-that your host/username combination <b>must</b> be listed in the
-<i>allow</i> rules, and not listed in the <i>deny</i> rules. This is the
-<b>most</b> secure means of using Allow/Deny rules, and was available in
-Apache by specifying allow and deny rules without setting any order.<br /><br />
+        Jeżeli jest ustawiony na <tt>'explicit'</tt>, uwierzytelnianie jest
+przeprowadzane w podobny sposób jak przy porządku 'deny,allow', z tym
+ograniczeniem, że jeśli kombinacja host/nazwa-użytkownika <b>musi</b> być i
+wymieniona wśród reguł <i>pozytywnych</i> i nie wymieniona wśród reguł
+<i>negatywnych</i>. Jest to <b>najbezpieczniejszy</b> sposób używania reguł
+Allow/Deny, dostępny w Apache'u poprzez określenie reguł pozytywnych i
+negatywnych bez ustawiania żadnego porządku.<br /><br />
 
         Please also see <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> for
 detecting IP address behind proxies.
@@ -1216,14 +1217,15 @@ detecting IP address behind proxies.
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
 array of strings
     </dt>
-    <dd>The general format for the rules is as such:
+    <dd>Ogólny format reguł jest następujący:
 
         <pre>
 &lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
 </pre>
 
-        If you wish to match all users, it is possible to use a <tt>'%'</tt> as a
-wildcard in the <i>username</i> field.<br />
+        Aby reguła pasowała do wszystkich użytkowników, można w polu
+<i>nazwa-użytkownika</i> jako symbolu wieloznacznego użyć znaku
+<tt>'%'</tt>.<br />
         There are a few shortcuts you can use in the <i>ipmask</i> field as well
 (please note that those containing SERVER_ADDRESS might not be available on
 all webservers):
@@ -1235,10 +1237,10 @@ all webservers):
 'localnetC' -&gt; SERVER_ADDRESS/24
 </pre>
 
-        Having an empty rule list is equivalent to either using <tt>'allow % from
-all'</tt> if your rule order is set to <tt>'deny,allow'</tt> or <tt>'deny %
-from all'</tt> if your rule order is set to <tt>'allow,deny'</tt> or
-<tt>'explicit'</tt>.<br /><br />
+        Pusta lista reguł jest równoważna albo użyciu <tt>'allow % from all'</tt>,
+jeśli Twój porządek reguł jest ustawiony na <tt>'deny,allow'</tt>, albo
+<tt>'deny % from all'</tt>, jeśli Twój porządek reguł ustawiony jest na
+<tt>'allow,deny'</tt> lub <tt>'explicit'</tt>.<br /><br />
 
         For the <abbr title="Internet Protocol">IP</abbr> matching system, the
 following work:<br />
@@ -1248,7 +1250,7 @@ address)<br />
 address range)<br />
         <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing type <abbr
 title="Internet Protocol">IP</abbr> addresses)<br />
-        But the following does not work:<br />
+        To natomiast nie zadziała:<br />
         <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (partial <abbr title="Internet
 Protocol">IP</abbr> address range)<br />
         Also IPv6 addresses are not supported.
@@ -1289,12 +1291,12 @@ authentication method). Should be absolute including protocol.
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] integer</dt>
-    <dd>If you have more than one server configured, you can set
-<tt>$cfg['ServerDefault']</tt> to any one of them to autoconnect to that
-server when phpMyAdmin is started, or set it to 0 to be given a list of
-servers without logging in.<br />
-        If you have only one server configured, <tt>$cfg['ServerDefault']</tt> MUST
-be set to that server.</dd>
+    <dd>Jeżeli masz skonfigurowany więcej niż jeden serwer, możesz ustawić
+<tt>$cfg['ServerDefault']</tt> na jeden z nich, by połączyć się
+automatycznie z tym serwerem przy starcie phpMyAdmina, albo na 0, żeby
+dostać listę serwerów bez logowania się.<br />
+        Jeżeli tylko jeden serwer jest skonfigurowany,
+<tt>$cfg['ServerDefault']</tt> MUSI wskazywać na ten serwer.</dd>
 
     <dt id="cfg_MaxDbList">$cfg['MaxDbList'] integer</dt>
     <dd>The maximum number of database names to be displayed in the navigation frame
@@ -1321,17 +1323,17 @@ it if your browser has some problems with buffering. IE6 with a certain
 patch is known to cause data corruption when having enabled buffering.</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Whether persistent connections should be used or not (mysql_connect or
+    <dd>Czy używać połączeń trwałych, czy też nie (mysql_connect czy
 mysql_pconnect).</dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
     <dd>Whether to force using https while accessing phpMyAdmin.</dd>
 
     <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [number of seconds]</dt>
-    <dd>Set the number of seconds a script is allowed to run. If seconds is set to
-zero, no time limit is imposed.<br />
+    <dd>Liczba sekund, w czasie których może działać skrypt. Jeżeli jest ustawione
+na na zero, żadne ograniczenia nie są nakładane.<br />
         This setting is used while importing/exporting dump files and in the
-Synchronise feature but has no effect when PHP is running in safe mode.</dd>
+Synchronize feature but has no effect when PHP is running in safe mode.</dd>
 
     <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] string</dt>
     <dd>Path for storing session data (<a
@@ -1371,8 +1373,8 @@ accidental dropping rather than strict privilege limitation.</dd>
 when you're about to lose data.</dd>
 
     <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] boolean</dt>
-    <dd>Define whether the previous login should be recalled or not in cookie
-authentication mode.<br /><br />
+    <dd>Określa, czy poprzedni login powinien być ponownie przywołany w trybie
+uwierzytelniania cookie, czy też nie.<br /><br />
 
         This is automatically disabled if you do not have configured <tt><a
 href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
@@ -1397,7 +1399,8 @@ for current one. Setting this to false makes it easy to forget to log out
 from other server, when you are using more of them.</dd>
 
     <dt id="cfg_UseDbSearch">$cfg['UseDbSearch'] boolean</dt>
-    <dd>Define whether the "search string inside database" is enabled or not.</dd>
+    <dd>Określa, czy "szukanie tekstu wewnątrz bazy danych" jest włączone, czy też
+nie.</dd>
 
     <dt id="cfg_IgnoreMultiSubmitErrors">$cfg['IgnoreMultiSubmitErrors'] boolean</dt>
     <dd>Define whether phpMyAdmin will continue executing a multi-query statement if
@@ -1450,7 +1453,8 @@ without any other characters in between.</dd>
 the above separator.</dd>
 
     <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] boolean</dt>
-    <dd>Defines whether to display table comment as tool-tip in left frame or not.</dd>
+    <dd>Określa, czy komentarz tabeli ma być wyświetlany jako etykieta narzędzia w
+lewej ramce, czy też nie.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
     <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
@@ -1503,8 +1507,9 @@ each table name in the navigation panel. Possible values:
     <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
     <dd>Defines whether or not to display space usage and statistics about databases
 and tables.<br />
-        Note that statistics requires at least MySQL 3.23.3 and that, at this date,
-MySQL doesn't return such information for Berkeley DB tables.</dd>
+        Warto zauważyć, że statystyki wymagają MySQL-a w wersji przynajmniej 3.23.3
+oraz że, jak dotąd, MySQL nie podaje takich informacji dla tabel Berkeley
+DB.</dd>
 
     <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>boolean</dt>
     <dd>Defines whether to display detailed server information on main page.  You
@@ -1526,14 +1531,14 @@ this in your <i>php.ini</i>:
 
         <pre>disable_functions = phpinfo()</pre>
 
-        Also note that enabling the &quot;Change password &quot; link has no effect
-with &quot;config&quot; authentication mode: because of the hard coded
-password value in the configuration file, end users can't be allowed to
-change their passwords.</dd>
+        Proszę również zauważyć, że aktywacja linku do "Zmiany hasła" nie ma żadnych
+skutków przy trybie uwierzytelniania "config": z powodu hasła ustalonego w
+pliku konfiguracyjnym, użytkownikowi końcowemu nie można pozwolić na jego
+zmianę.</dd>
 
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] boolean</dt>
-    <dd>Defines whether to suggest a database name on the &quot;Create
-Database&quot; form or to keep the textfield empty.</dd>
+    <dd>Określa, czy sugerować nazwę bazy danych w formularzu "Utworzenie bazy
+danych", czy też pozostawić pole tekstowe puste.</dd>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] string</dt>
     <dd>Defines whether navigation bar buttons and the right panel top menu contain
@@ -1576,14 +1581,14 @@ from the interface.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] string</dt>
-    <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
-fields. Possible values are:
-        <ul><li>input - this allows to limit size of text to size of field in MySQL, but has
-problems with newlines in fields</li>
-            <li>textarea - no problems with newlines in fields, but also no length
-limitations</li>
+    <dd>Określa jaki rodzaj pól edycyjnych powinna zostać użyta dla pól CHAR i
+VARCHAR. Możliwymi wartościami są:
+        <ul><li>input - umożliwia ograniczenie długości tekstu do długości pola MySQL, ale
+powoduje problemy z nowymi liniami w polach</li>
+            <li>textarea - żadnych problemów z nowymi liniami w polach, ale też żadnych
+ograniczeń długości</li>
         </ul>
-        Default is old behaviour so input.</dd>
+        Domyślnym jest stare zachowanie, a więc input.</dd>
 
     <dt id="cfg_InsertRows">$cfg['InsertRows'] integer</dt>
     <dd>Defines the maximum number of concurrent entries for the Insert page.</dd>
@@ -1625,7 +1630,7 @@ properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <
         When set to <tt>FALSE</tt>, will only show text.</dd>
 
     <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] integer</dt>
-    <dd>How many columns will be utilised to display the tables on the database
+    <dd>How many columns will be utilized to display the tables on the database
 property view? Default is 1 column. When setting this to a value larger than
 1, the type of the database will be omitted for more display space.</dd>
 
@@ -1657,17 +1662,18 @@ generated.<br />
 more information about MySQL manuals and their types.</dd>
 
     <dt id="cfg_MySQLManualType">$cfg['MySQLManualType'] string</dt>
-    <dd>Type of MySQL documentation:
+    <dd>Typ dokumentacji MySQL-a:
         <ul><li>viewable - &quot;viewable online&quot;, current one used on MySQL website</li>
-            <li>searchable - &quot;Searchable, with user comments&quot;</li>
-            <li>chapters - &quot;HTML, one page per chapter&quot;</li>
-            <li>big - &quot;HTML, all on one page&quot;</li>
-            <li>none - do not show documentation links</li>
+            <li>searchable - "Przeszukiwalny, z komentarzami użytkowników"</li>
+            <li>chapters - "HTML, jedna strona na rozdział"</li>
+            <li>big - "HTML, wszystko na jednej stronie"</li>
+            <li>none - nie pokazuje żadnych linków do dokumentacji</li>
         </ul>
     </dd>
 
     <dt id="cfg_DefaultLang">$cfg['DefaultLang'] string</dt>
-    <dd>Defines the default language to use, if not browser-defined or user-defined.<br />
+    <dd>Określa domyślny język, jakiego należy użyć, jeżeli nie został określony ani
+przez przeglądarkę, ani użytkownika.<br />
         See the <i>select_lang.lib.php</i> script to know the valid values for this
 setting.</dd>
 
@@ -1696,10 +1702,11 @@ class="configrule">$cfg['AvailableCharsets']</a> array and this is just
 default choice, user can select any of them.</dd>
 
     <dt id="cfg_AllowAnywhereRecoding">$cfg['AllowAnywhereRecoding'] boolean</dt>
-    <dd>Allow character set recoding of MySQL queries. You need recode or iconv
-support (compiled in or module) in PHP to allow MySQL queries recoding and
-used language file must have it enabled (by default only these which are in
-Unicode, just to avoid losing some characters).<br /><br />
+    <dd>Pozwala na zmianę systemu kodowania znaków zapytań MySQL. By umożliwić
+konwersję zapytań MySQL, niezbędna jest obsługa recode lub iconv
+(wkompilowana lub jako moduł) w PHP, a konwersja musi być włączona w pliku
+językowym (domyślnie jedynie te, które są zapisane w Unikodzie, tylko by
+uniknąć utraty niektórych znaków).<br /><br />
 
         Setting this to <tt>TRUE</tt> also activates a pull-down menu in the Export
 and Import pages, to choose the character set when exporting a file. The
@@ -1710,11 +1717,12 @@ default value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] string</dt>
     <dd>You can select here which functions will be used for character set
 conversion. Possible values are:
-        <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
-            <li>iconv - use iconv or libiconv functions</li>
-            <li>recode - use recode_string function</li>
+        <ul><li>auto - automatycznie użyj dostępnej funkcji (najpierw sprawdzana jest iconv,
+później recode)</li>
+            <li>iconv - użyj funkcji iconv lub libiconv</li>
+            <li>recode - użyj funkcji recode_string</li>
         </ul>
-        Default is auto.</dd>
+        Domyślną wartością jest auto.</dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
     <dd>Specify some parameters for iconv used in charset conversion. See <a
@@ -1723,10 +1731,11 @@ documentation</a> for details. By default <code>//TRANSLIT</code> is used,
 so that invalid characters will be transliterated.</dd>
 
     <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] array</dt>
-    <dd>Available character sets for MySQL conversion. You can add your own (any of
-supported by recode/iconv) or remove these which you don't use.  Character
-sets will be shown in same order as here listed, so if you frequently use
-some of these move them to the top.</dd>
+    <dd>Dostępne systemy kodowania znaków dla konwersji MySQL. Możesz dodać tutaj
+swoje własne (dowolne obsługiwane przez recode/iconv) lub usunąć te, których
+nie używasz. Systemy kodowania będą pokazane w tej samej kolejności, w
+jakiej zostały tu umieszczone; jeśli więc często używasz niektórych z nich,
+przenieś je na górę.</dd>
 
     <dt id="cfg_TrustedProxies">$cfg['TrustedProxies'] array</dt>
     <dd>Lists proxies and HTTP headers which are trusted for <a
@@ -1746,16 +1755,16 @@ address as usual.
     </dd>
 
     <dt id="cfg_GD2Available">$cfg['GD2Available'] string</dt>
-    <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
-transformations.<br />
-        Possible values are:
+    <dd>Określa, czy GD &gt;= 2 jest dostępny. Jeśli tak, może zostać użyty do
+transformacji MIME.<br />
+        Możliwymi wartościami są:
         <ul><li>auto - automatically detect, this is a bit expensive operation for php &lt;
 4.3.0 so it is preferred to change this according to your server real
 possibilities</li>
-            <li>yes - GD 2 functions can be used</li>
+            <li>yes - funkcje GD 2 mogą być użyte</li>
             <li>no - GD 2 function cannot be used</li>
         </ul>
-        Default is auto.
+        Domyślną wartością jest auto.
     </dd>
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
@@ -1794,7 +1803,7 @@ css code for background]
 
     <dt id="cfg_NaviDatabaseNameColor">$cfg['NaviDatabaseNameColor'] string [valid css code]<br />
     </dt>
-    <dd>The colour used for the database name in the navi frame.  See
+    <dd>The color used for the database name in the navi frame.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
@@ -1811,12 +1820,12 @@ css code for background]
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] string [HTML color]</dt>
-    <dd>The colour (HTML) #1 for table rows. See
+    <dd>The color (HTML) #1 for table rows. See
 <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
     <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] string [HTML color]</dt>
-    <dd>The colour (HTML) #2 for table rows. See
+    <dd>The color (HTML) #2 for table rows. See
 <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
@@ -1829,9 +1838,10 @@ css code for background]
         <span id="cfg_BrowseMarkerColor">$cfg['BrowseMarkerColor'] </span>string
 [HTML color]
     </dt>
-    <dd>The colours (HTML) uses for the pointer and the marker in browse mode.<br />
-        The former feature highlights the row over which your mouse is passing and
-the latter lets you visually mark/unmark rows by clicking on them.<br />
+    <dd>The colors (HTML) uses for the pointer and the marker in browse mode.<br />
+        Pierwszy z nich podświetla wiersz nad którym porusza się myszka a drugi
+pozwala na wizualne zaznaczenie/odznaczenie wierszy poprzez kliknięcie na
+nich.<br />
         See <tt>themes/themename/layout.inc.php</tt>.</dd>
 
 
@@ -1856,7 +1866,7 @@ sans-serif</tt>.<br />
         <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols'] </span>integer<br />
         <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>integer
     </dt>
-    <dd>Number of columns and rows for the textareas.<br />
+    <dd>Liczba kolumn i wierszy w obszarach tekstowych (textarea).<br />
         This value will be emphasized (*2) for <abbr title="structured query
 language">SQL</abbr> query textareas and (*1.25) for <abbr title="structured
 query language">SQL</abbr> textareas inside the query window.<br />
@@ -1866,11 +1876,12 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
     <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']
 </span>boolean
     </dt>
-    <dd>Defines whether textarea for LONGTEXT fields should have double size.</dd>
+    <dd>Określa, czy obszar tekstowy dla pól LONGTEXT ma mieć podwójną wielkość.</dd>
 
     <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect'] </span>boolean
     </dt>
-    <dd>Defines if the whole textarea of the query box will be selected on click.</dd>
+    <dd>Określa, czy cały obszar tekstowy pola zapytania będzie zaznaczony przy
+kliknięciu.</dd>
     <dt id="CtrlArrowsMoving">
         <span id="cfg_CtrlArrowsMoving">$cfg['CtrlArrowsMoving'] </span>boolean
     </dt>
@@ -1885,10 +1896,10 @@ view.  Can be turned off by a toggle button on the browse page.</dd>
 <span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']
 </span>boolean
     </dt>
-    <dd>Defines the place where modify and delete links would be put when tables
-contents are displayed (you may have them displayed both at the left and at
-the right).  &quot;Left&quot; and &quot;right&quot; are parsed as
-&quot;top&quot; and &quot;bottom&quot; with vertical display mode.</dd>
+    <dd>Określa miejsce, w którym mają być umieszczone linki modyfikacji i
+kasowania, gdy wyświetlana jest zawartość tabeli (mogą być one wyświetlane i
+po lewej, i po prawej stronie).  "Left" i "right" są rozumiane jako "góra" i
+"dół" w pionowym trybie wyświetlania.</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string <span
 id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] </span>string
@@ -1962,8 +1973,14 @@ formats is enabled).<br /><br />
 title="HyperText Transfer Protocol">HTTP</abbr>, or when file uploads are
 disabled in PHP.<br /><br />
 
-        Please note that if PHP is running in safe mode, this directory must be
-owned by the same user as the owner of the phpMyAdmin scripts.
+        #-#-#-#-#  Documentation-pl-2.5.2-pl1-1.html:1308  #-#-#-#-#
+Warto zauważyć, że jeśli PHP działa w trybie bezpiecznym, właścicielem tego
+katalogu musi być ten sam użytkownik, który jest właścicielem skryptów
+phpMyAdmina.
+#-#-#-#-#  Documentation-pl-2.5.2-pl1-1.html:1318  #-#-#-#-#
+Proszę zauważyć, że jeżeli PHP jest uruchomiony w trybie bezpiecznym,
+właścicielem tego katalogu musi być ten sam użytkownik, który jest
+właścicielem skryptów phpMyAdmina.
         <br /><br />
 
         See also <a href="#faq1_16"> <abbr title="Frequently Asked
@@ -1980,8 +1997,14 @@ username.<br /><br />
     Please note that the directory must exist and has to be writable for the
 user running webserver.<br /><br />
 
-        Please note that if PHP is running in safe mode, this directory must be
-owned by the same user as the owner of the phpMyAdmin scripts.
+        #-#-#-#-#  Documentation-pl-2.5.2-pl1-1.html:1308  #-#-#-#-#
+Warto zauważyć, że jeśli PHP działa w trybie bezpiecznym, właścicielem tego
+katalogu musi być ten sam użytkownik, który jest właścicielem skryptów
+phpMyAdmina.
+#-#-#-#-#  Documentation-pl-2.5.2-pl1-1.html:1318  #-#-#-#-#
+Proszę zauważyć, że jeżeli PHP jest uruchomiony w trybie bezpiecznym,
+właścicielem tego katalogu musi być ten sam użytkownik, który jest
+właścicielem skryptów phpMyAdmina.
     </dd>
 
     <dt id="cfg_TempDir">$cfg['TempDir'] string</dt>
@@ -2046,7 +2069,7 @@ mean.
 
     <dt id="cfg_RepeatCells">$cfg['RepeatCells'] integer</dt>
     <dd>
-        Repeat the headers every X cells, or 0 to deactivate.
+        Powtórz nagłówki co X komórek. Wartość 0 powoduje dezaktywację.
     </dd>
 
     <dt id="cfg_EditInWindow">$cfg['EditInWindow'] boolean<br />
@@ -2064,7 +2087,7 @@ click on this opens a distinct query window, which is a direct interface to
 enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
 the right panel changes to display a query box.<br /><br />
 
-        The size of this query window can be customised with
+        The size of this query window can be customized with
 <tt>$cfg['QueryWindowWidth']</tt> and <tt>$cfg['QueryWindowHeight']</tt> -
 both integers for the size in pixels. Note that normally, those parameters
 will be modified in <tt>layout.inc.php</tt> for the theme you are using.<br /><br />
@@ -2075,11 +2098,11 @@ window and puts the current query inside it.  If set to false, clicking on
 the link puts the <abbr title="structured query language">SQL</abbr> query
 in the right panel's query box.
         <br /><br />
-        The usage of the JavaScript query window is recommended if you have a
-JavaScript enabled browser. Basic functions are used to exchange quite a few
-variables, so most 4th generation browsers should be capable to use that
-feature. It currently is only tested with Internet Explorer 6 and Mozilla
-1.x.
+        Jeśli masz przeglądarkę z obsługą JavaScriptu, użycie JavaScriptowego okna
+zapytań jest zalecane. Używane są proste funkcje by wymienić zaledwie kilka
+zmiennych, więc większość przeglądarek czwartej generacji powinna móc
+skorzystać z tej opcji.  Aktualnie jest tylko testowana z Internet
+Explorerem 6 i Mozillą 1.x.
         <br /><br />
         If <tt>$cfg['QueryHistoryDB']</tt> is set to <tt>TRUE</tt>, all your Queries
 are logged to a table, which has to be created by you (see <a
@@ -2108,7 +2131,7 @@ tab to be used when opening the query window. It can be set to either 'sql',
 'files', 'history' or 'full'.</dd>
 
     <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] boolean</dt>
-    <dd>Enable <a href="#transformations">MIME-transformations</a>.</dd>
+    <dd>Włącza <a href="#transformations">transformacje MIME</a>.</dd>
 
     <dt id="cfg_MaxExactCount">$cfg['MaxExactCount'] integer</dt>
     <dd>For InnoDB tables, determines for how large tables phpMyAdmin should get the
@@ -2125,7 +2148,7 @@ COUNT ... LIMIT</code>. The default value of 0 bypasses any row counting.
 
     <dt id="wysiwyg">
         <span id="cfg_WYSIWYG-PDF">$cfg['WYSIWYG-PDF'] </span>boolean</dt>
-    <dd>Utilises a WYSIWYG editing control to easily place elements of a <abbr
+    <dd>Utilizes a WYSIWYG editing control to easily place elements of a <abbr
 title="Portable Document Format">PDF</abbr> page.  By clicking on the button
 'toggle scratchboard' on the page where you edit x/y coordinates of those
 elements you can activate a scratchboard where all your elements are
@@ -2134,18 +2157,20 @@ pre-defined area and the x/y coordinates will get updated
 dynamically. Likewise, when entering a new position directly into the input
 field, the new position in the scratchboard changes after your cursor leaves
 the input field.<br />
-        You have to click on the 'OK'-button below the tables to save the new
-positions.  If you want to place a new element, first add it to the table of
-elements and then you can drag the new element around.<br />
-        By changing the paper size and the orientation you can change the size of
-the scratchboard as well. You can do so by just changing the dropdown field
-below, and the scratchboard will resize automatically, without interfering
-with the current placement of the elements.<br />
-        If ever an element gets out of range you can either enlarge the paper size
-or click on the 'reset' button to place all elements below each other.<br />
-        <b>NOTE:</b> You have to use a recent browser like IE6 or Mozilla to get
-this control to work. The basic Drag&amp;Drop script functionality was
-kindly borrowed from www.youngpup.net and is underlying so specific license.</dd>
+        Aby zapisać nowe położenia, należy kliknąć na przycisk 'OK' pod tabelą.
+Jeżeli chcesz umieścić nowy element, najpierw dodaj go do tabeli elementów,
+a następnie go przeciągnij myszką.<br />
+        Poprzez zmianę wielkości papieru i orientacji, możesz zmienić także wielkość
+scratchboardu. Możesz to zrobić po prostu przez zmianę pozycji na liście
+rozwijanej, która znajduje się niżej, a scratchboard zmieni rozmiar
+automatycznie, nie wpływając na aktualne położenia elementów.<br />
+        Gdyby jakiś element znalazł się poza obszarem, możesz albo zwiększyć
+wielkość papieru, albo kliknąć na przycisk 'reset', aby umieścić wszystkie
+elementy pod sobą.<br />
+        <b>UWAGA:</b> By ten mechanizm zadziałał, wymagana jest nowoczesna
+przeglądarka, taka jak IE6 lub Mozilla.  Podstawowa funkcjonalność
+przeciągnij-i-upuść została uprzejmie pożyczona z www.youngpup.net i
+korzysta ze specjalnej licencji.</dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] boolean</dt>
     <dd>Sorts database and table names according to natural order (for example, t1,
@@ -2230,45 +2255,46 @@ this by setting this variable to <tt>'none'</tt>.
 language">SQL</abbr> queries, under some cases the part of a query inside a
 bracket is indented. By changing <tt>$cfg['SQP']['fmtInd']</tt> you can
 change the amount of this indent.
-        <br />Related in purpose is <tt>$cfg['SQP']['fmtIndUnit']</tt> which specifies the
-units of the indent amount that you specified. This is used via stylesheets.</dd>
+        <br />Podobny cel ma <tt>$cfg['SQP']['fmtIndUnit']</tt>, który określa jednostki
+ilości wcięcia, którą określiłeś. Jest to używane w arkuszach stylów.</dd>
 
     <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] array of string tuples</dt>
     <dd>This array is used to define the colours for each type of element of the
 pretty-printed <abbr title="structured query language">SQL</abbr>
 queries. The tuple format is<br />
-        <i>class</i> =&gt; [<i>HTML colour code</i> | <i>empty string</i>]<br />
-        If you specify an empty string for the colour of a class, it is ignored in
-creating the stylesheet.  You should not alter the class names, only the
-colour strings.<br />
-        <b>Class name key:</b>
-        <ul><li><b>comment</b> Applies to all comment sub-classes</li>
-            <li><b>comment_mysql</b> Comments as <tt>"#...\n"</tt></li>
-            <li><b>comment_ansi</b> Comments as <tt>"-- ...\n"</tt></li>
-            <li><b>comment_c</b> Comments as <tt>"/*...*/"</tt></li>
-            <li><b>digit</b> Applies to all digit sub-classes</li>
-            <li><b>digit_hex</b> Hexadecimal numbers</li>
-            <li><b>digit_integer</b> Integer numbers</li>
-            <li><b>digit_float</b> Floating point numbers</li>
-            <li><b>punct</b> Applies to all punctuation sub-classes</li>
-            <li><b>punct_bracket_open_round</b> Opening brackets<tt>"("</tt></li>
-            <li><b>punct_bracket_close_round</b> Closing brackets <tt>")"</tt></li>
-            <li><b>punct_listsep</b> List item Separator <tt>","</tt></li>
-            <li><b>punct_qualifier</b> Table/Column Qualifier <tt>"."</tt> </li>
-            <li><b>punct_queryend</b> End of query marker <tt>";"</tt></li>
-            <li><b>alpha</b> Applies to all alphabetic classes</li>
-            <li><b>alpha_columnType</b> Identifiers matching a column type</li>
-            <li><b>alpha_columnAttrib</b> Identifiers matching a database/table/column
-attribute</li>
-            <li><b>alpha_functionName</b> Identifiers matching a MySQL function name</li>
-            <li><b>alpha_reservedWord</b> Identifiers matching any other reserved word</li>
+        <i>klasa</i> =&gt; [<i>kod koloru HTML</i> | <i>pusty napis</i>]<br />
+        Jeśli określisz pusty napis jako kolor klasy, jest on ignorowany podczas
+tworzenia arkusza stylów.  Nie powinno się zmieniać nazwy klas, a jedynie
+napisy kolorów.<br />
+        <b>Klucz nazw klas:</b>
+        <ul><li><b>comment</b> stosuje się do wszystkich podklas komentarzy</li>
+            <li><b>comment_mysql</b> komentarze takie jak <tt>"#...\n"</tt></li>
+            <li><b>comment_ansi</b> komentarze takie jak <tt>"-- ...\n"</tt></li>
+            <li><b>comment_c</b> komentarze takie jak <tt>"/*...*/"</tt></li>
+            <li><b>digit</b> stosuje się do wszystkich podklas liczb</li>
+            <li><b>digit_hex</b> liczby szesnastkowe</li>
+            <li><b>digit_integer</b> liczby całkowite</li>
+            <li><b>digit_float</b> liczby zmiennoprzecinkowe</li>
+            <li><b>punct</b> stosuje się do wszystkich podklas znaków przestanowych</li>
+            <li><b>punct_bracket_open_round</b> nawiasy otwierające <tt>"("</tt></li>
+            <li><b>punct_bracket_close_round</b> nawiasy zamykające <tt>")"</tt></li>
+            <li><b>punct_listsep</b> separator elementów listy <tt>","</tt></li>
+            <li><b>punct_qualifier</b> kwantyfikator tabel/kolumn <tt>"."</tt> </li>
+            <li><b>punct_queryend</b> znacznik końca zapytania <tt>";"</tt></li>
+            <li><b>alpha</b> stosuje się do wszystkich klas napisowych</li>
+            <li><b>alpha_columnType</b> identyfikator pasujący do typu kolumny</li>
+            <li><b>alpha_columnAttrib</b> identyfikator pasujący do atrybutu bazy
+danych/tabeli/kolumny</li>
+            <li><b>alpha_functionName</b> identyfikator pasujący do nazwy funkcji MySQL</li>
+            <li><b>alpha_reservedWord</b> identyfikator pasujący do innego słowa
+zarezerwowanego</li>
             <li><b>alpha_variable</b> Identifiers matching a <abbr title="structured query
 language">SQL</abbr> variable <tt>"@foo"</tt></li>
-            <li><b>alpha_identifier</b> All other identifiers</li>
-            <li><b>quote</b> Applies to all quotation mark classes</li>
-            <li><b>quote_double</b> Double quotes <tt>"</tt></li>
-            <li><b>quote_single</b> Single quotes <tt>'</tt></li>
-            <li><b>quote_backtick</b> Backtick quotes <tt>`</tt></li>
+            <li><b>alpha_identifier</b> wszystkie inne identyfikatory</li>
+            <li><b>quote</b> pasuje do wszystkich klas cudzysłowów i apostrofów</li>
+            <li><b>quote_double</b> cudzysłowy <tt>"</tt></li>
+            <li><b>quote_single</b> apostrofy <tt>'</tt></li>
+            <li><b>quote_backtick</b> odwrócone apostrofy <tt>`</tt></li>
         </ul>
     </dd>
 
@@ -2296,47 +2322,46 @@ the anonymous login.</dd>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']</dt>
-    <dd><b>DEVELOPERS ONLY!</b></dd>
+    <dd><b>TYLKO DLA PROGRAMISTÓW!</b></dd>
 
     <dt id="cfg_DBG_enable_sql">$cfg['DBG']['sql'] boolean</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
+    <dd><b>TYLKO DLA PROGRAMISTÓW!</b><br />
         Enable logging queries and execution times to be displayed in the bottom of
 main page (right frame).</dd>
 
     <dt id="cfg_DBG_enable_php">$cfg['DBG']['php'] boolean</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
-        Enable the DBG extension for debugging phpMyAdmin. Required for profiling
-the code.<br />
-        For help in setting up your system to this, see the <a
-href="#developersdbg">Developers</a> section.</dd>
+    <dd><b>TYLKO DLA PROGRAMISTÓW!</b><br />
+        Włącza obsługę modułu DBG do debugowania phpMyAdmina. Wymagane do
+profilowania kodu.<br />
+        Pomoc w konfiguracji systemu do użycia tej funkcji znajduje się w punkcie <a
+href="#developersdbg">Programiści</a>.</dd>
 
     <dt id="cfg_DBG_profile_enable">$cfg['DBG']['profile']['enable'] boolean</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
-        Enable profiling support for phpMyAdmin. This will append a chunk of data to
-the end of every page displayed in the main window with profiling statistics
-for that page.<br />
+    <dd><b>TYLKO DLA PROGRAMISTÓW!</b><br />
+        Włącza profilowanie w phpMyAdminie. Doda to porcję danych na końcu każdej
+strony wyświetlanej w głównym oknie ze statystykami profilowania dla tej
+strony.<br />
         You may need to increase the maximum execution time for this to complete
 successfully.<i>Profiling was removed from the code for version 2.9.0 due to
 licensing issues.</i></dd>
 
     <dt id="cfg_DBG_profile_threshold">$cfg['DBG']['profile']['threshold'] float (units in milliseconds)</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
-        When profiling data is displayed, this variable controls the threshold of
-display for any profiling data, based on the average time each time has
-taken. If it is over the threshold it is displayed, otherwise it is not
-displayed. This takes a value in milliseconds. In most cases you don't need
-to edit this.</dd>
+    <dd><b>TYLKO DLA PROGRAMISTÓW!</b><br />
+        Podczas wyświetlania danych o profilowaniu, zmienna ta kontroluje czasowy
+próg wyświetlania każdych danych.  Jeżeli czas przekroczy wartość progową,
+są one wyświetlane, w przeciwnym wypadku - nie są. Wartość jest wyrażona w
+milisekundach. W większości przypadków nie ma potrzeby zmiany.</dd>
 
     <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] array</dt>
-    <dd>All possible types of a MySQL column. In most cases you don't need to edit
-this.</dd>
+    <dd>Wszystkie możliwe typy kolumn MySQL. W większości przypadków nie ma potrzeby
+zmiany.</dd>
 
     <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] array</dt>
-    <dd>Possible attributes for fields. In most cases you don't need to edit this.</dd>
+    <dd>Możliwe atrybuty pól. W większości przypadków nie ma potrzeby zmiany.</dd>
 
     <dt id="cfg_Functions">$cfg['Functions'] array</dt>
-    <dd>A list of functions MySQL supports. In most cases you don't need to edit
-this.</dd>
+    <dd>Lista funkcji, które obsługuje MySQL. W większości przypadków nie ma
+potrzeby zmiany.</dd>
 
     <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] array</dt>
     <dd>Mapping of column types to meta types used for preferring displayed
@@ -2375,7 +2400,7 @@ null.</dd>
 
 
 <!-- TRANSFORMATIONS -->
-<h2 id="transformations">Transformations</h2>
+<h2 id="transformations">Transformacje</h2>
 
 <ol><li><a href="#transformationsintro">Introduction</a></li>
     <li><a href="#transformationshowto">Usage</a></li>
@@ -2388,17 +2413,16 @@ null.</dd>
 and the proper directives. Please see the <a href="#config">Configuration
 section</a> on how to do so.</p>
 
-<p> You can apply different transformations to the contents of each field. The
-transformation will take the content of each field and transform it with
-certain rules defined in the selected transformation.</p>
+<p> Możesz zastosować różne transformacje do zwartości każdego pola.
+Transformacja weźmie tę zawartość i przekształci ją zgodnie z określonymi
+regułami zdefiniowanymi w wybranej transformacji.</p>
 
-<p> Say you have a field 'filename' which contains a filename. Normally you
-would see in phpMyAdmin only this filename. Using transformations you can
-transform that filename into a HTML link, so you can click inside of the
-phpMyAdmin structure on the field's link and will see the file displayed in
-a new browser window. Using transformation options you can also specify
-strings to append/prepend to a string or the format you want the output
-stored in.</p>
+<p> Powiedzmy, że masz pole 'nazwapliku', które zawiera nazwę pliku. Normalnie
+zobaczyłbyś w phpMyAdminie jedynie tę nazwę. Używając tranformacji możesz
+przekształcić ją na HTML-owy link, na który będziesz mógł kliknąć i zobaczyć
+plik wyświetlony w nowym oknie przeglądarki. Używając opcji transformacji
+możesz również określić napisy, które będą dołączane na początku/końcu
+napisu albo format w jakim chcesz mieć wynik.</p>
 
 <p> For a general overview of all available transformations and their options,
 you can consult your
@@ -2421,143 +2445,143 @@ line. They are called 'MIME-type', 'Browser transformation' and
 corresponds to the column's contents. Please note that transformations are
 inactive as long as no MIME-type is selected.</li>
 
-    <li>The field 'Browser transformation' is a drop-down field. You can choose from
-a hopefully growing amount of pre-defined transformations. See below for
-information on how to build your own transformation.<br />
+    <li>Pole 'Sposób prezentacji danych' jest polem wyboru. Możesz wybierać z -
+miejmy nadzieję - rosnącej liczby predefiniowanych transformacji. Informacje
+o tym, jak zbudować własną transformację, znajdują się poniżej.<br />
 
-        There are global transformations and mimetype-bound transformations. Global
-transformations can be used for any mimetype. They will take the mimetype,
-if necessary, into regard.  Mimetype-bound transformations usually only
-operate on a certain mimetype. There are transformations which operate on
-the main mimetype (like 'image'), which will most likely take the subtype
-into regard, and those who only operate on a specific subtype (like
-'image/jpeg').<br />
+        Mamy transformacje globalne i przywiązane do typu MIME. Transformacje
+globalne mogą zostać użyte dla każdego typu MIME. Jeśli to konieczne, wezmą
+one typ pod rozwagę.  Transformacje związane z typem MIME zwykle operują
+tylko na określonym typie. Istnieją transformacje, które operują na głównym
+typie MIME (jak 'image'), które zwykle biorą pod rozwagę podtyp, oraz takie,
+które operują tylko na określonym podtypie (jak 'image/jpeg').<br />
 
-        You can use transformations on mimetypes for which the function was not
-defined for. There is no security check for you selected the right
-transformation, so take care of what the output will be like.</li>
+        Możesz użyć transformacji dla typów MIME, dla których funkcja nie została
+zdefiniowana. Nie ma żadnego zabezpieczenia przed wybraniem niewłaściwej
+tranformacji, więc sam zadbaj o to, jak wyglądał będzie wynik.</li>
 
-    <li>The field 'Transformation options' is a free-type textfield. You have to
-enter transform-function specific options here. Usually the transforms can
-operate with default options, but it is generally a good idea to look up the
-overview to see which options are necessary.<br />
+    <li>Pole 'Opcje transformacji' jest polem tekstowym. Musisz wprowadzić tu
+właściwe opcje funkcji przekształcającej. Zwykle tranformacje mogą działać z
+domyślnymi opcjami, lecz zwykle dobrym pomysłem jest rzucenie okiem na opis,
+by zobaczyć, które opcje są niezbędne.<br />
 
-        Much like the ENUM/SET-Fields, you have to split up several options using
-the format 'a','b','c',...(NOTE THE MISSING BLANKS). This is because
-internally the options will be parsed as an array, leaving the first value
-the first element in the array, and so forth.<br />
+        Bardzo podobnie jak w kolumnach ENUM/SET, musisz oddzielić poszczególne
+opcje używając formatu 'a','b','c',...(UWAGA NA BRAK ODSTĘPÓW). To dlatego,
+że wewnętrznie opcje będą przetwarzane jako tablica, gdzie pierwsza wartość
+to pierwszy element w tablicy, i tak dalej.<br />
 
-        If you want to specify a MIME character set you can define it in the
-transformation_options.  You have to put that outside of the pre-defined
-options of the specific mime-transform, as the last value of the set. Use
-the format "'; charset=XXX'". If you use a transform, for which you can
-specify 2 options and you want to append a character set, enter "'first
-parameter','second parameter','charset=us-ascii'". You can, however use the
-defaults for the parameters: "'','','charset=us-ascii'".</li>
+        Jeśli chcesz określić zestaw kodowania znaków MIME, możesz zdefiniować go w
+opcjach.  Musisz umieścić tę definicję po opcjach predefiniowanych właściwej
+transformacji MIME, jako ostatnią wartość zestawu. Użyj formatu "';
+charset=XXX'". Jeśli używasz transformacji, dla której możesz określić 2
+opcje i chcesz dodać zestaw kodowania znaków, wprowadź "'pierwszy
+parameter','drugi parameter','charset=iso-8859-2'". Możesz jednakże użyć
+domyślnych wartości parametrów: "'','','charset=iso-8859-2'".</li>
 </ul>
 
 <h3 id="transformationsfiles">3. File structure</h3>
 
-<p> All mimetypes and their transformations are defined through single files in
-the directory 'libraries/transformations/'.</p>
+<p> Wszystkie typy MIME i ich tranformacje są zdefiniowane poprzez pojedyncze
+pliki w katalogu 'libraries/transformations/'.</p>
 
-<p> They are stored in files to ease up customisation and easy adding of new
-transformations.</p>
+<p> Są one składowane w plikach, aby ułatwić ich przystosowanie do własnych
+potrzeb i dodawanie nowych transformacji.</p>
 
-<p> Because the user cannot enter own mimetypes, it is kept sure that
-transformations always work. It makes no sense to apply a transformation to
-a mimetype, the transform-function doesn't know to handle.</p>
+<p> Ponieważ użytkownik nie może wprowadzać własnych typów MIME, jest pewne, że
+transformacje zawsze będą działać. Nie ma sensu przeprowadzanie tranformacji
+dla typu MIME, którego funkcja przekształcająca nie wie jak obsłużyć.</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype they where built for, but pay attention to option usage as well as
-what the transformation does to your field.</p>
+<p> Można jednak użyć pustych typów MIME i globalnych transformacji, które
+powinny działać dla wielu typów. Możesz również użyć transformacji do innego
+typu MIME, niż tego, do którego zostały stworzone, ale zwracaj uwagę na
+użycie opcji, jak również na to, co transformacja robi z polem.</p>
 
 <p> There is a basic file called '<i>global.inc.php</i>'. This function can be
 included by any other transform function and provides some basic functions.</p>
 
-<p> There are 5 possible file names:</p>
+<p> Jest 5 możliwych nazw plików:</p>
 
-<ol><li>A mimetype+subtype transform:<br /><br />
+<ol><li>Transformacja typu+podtypu MIME:<br /><br />
 
         <tt>[mimetype]_[subtype]__[transform].inc.php</tt><br /><br />
 
-        Please not that mimetype and subtype are separated via '_', which shall not
-be contained in their names. The transform function/filename may contain
-only characters which cause no problems in the file system as well as the
-PHP function naming convention.<br /><br />
+        Proszę zauważyć, że typ-mime i podtyp są oddzielone znakiem '_', który nie
+powinien się znajdować w ich nazwach. Nazwa funkcji/pliku transformacji może
+zawierać tylko takie znaki, które nie powodują problemów w systemie plików,
+ani nie łamią konwencji nazewnictwa funkcji PHP.<br /><br />
 
         The transform function will the be called
 '<tt>PMA_transform_[mimetype]_[subtype]__[transform]()</tt>'.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Przykład:</b><br /><br />
 
         <tt>text_html__formatted.inc.php</tt><br />
         <tt>PMA_transform_text_html__formatted()</tt></li>
 
-    <li>A mimetype (w/o subtype) transform:<br /><br />
+    <li>Transformacja typu MIME (bez podtypu):<br /><br />
 
         <tt>[mimetype]__[transform].inc.php</tt><br /><br />
 
-        Please note that there are no single '_' characters.  The transform
-function/filename may contain only characters which cause no problems in the
-file system as well as the PHP function naming convention.<br /><br />
+        Proszę zauważyć, że brak jest pojedynczych znaków '_' w nazwie pliku.  Nazwa
+funkcji/pliku transformacji może zawierać tylko takie znaki, które nie
+powodują problemów w systemie plików, ani nie łamią konwencji nazewnictwa
+funkcji PHP.<br /><br />
 
         The transform function will the be called
 '<tt>PMA_transform_[mimetype]__[transform]()</tt>'.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Przykład:</b><br /><br />
 
         <tt>text__formatted.inc.php</tt><br />
         <tt>PMA_transform_text__formatted()</tt></li>
 
-    <li>A mimetype+subtype without specific transform function<br /><br />
+    <li>Typ+podtyp MIME bez właściwej funkcji przekształcającej<br /><br />
 
         <tt>[mimetype]_[subtype].inc.php</tt><br /><br />
 
-        Please note that there are no '__' characters in the filename. Do not use
-special characters in the filename causing problems with the file system.<br /><br />
+        Proszę zauważyć, że w nazwie pliku nie ma znaków '__'. Nie można używać
+specjalnych znaków powodujących problemy w systemie plików.<br /><br />
 
-        No transformation function is defined in the file itself.<br /><br />
+        Żadna funkcja przekształcająca nie jest zdefiniowana w samym pliku.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Przykład:</b><br /><br />
 
         <tt>text_plain.inc.php</tt><br />
-        (No function)</li>
+        (Brak funkcji)</li>
 
-    <li>A mimetype (w/o subtype) without specific transform function<br /><br />
+    <li>Typ MIME (bez podtypu) bez właściwej funkcji przekształcającej<br /><br />
 
         <tt>[mimetype].inc.php</tt><br /><br />
 
-        Please note that there are no '_' characters in the filename. Do not use
-special characters in the filename causing problems with the file system.
+        Proszę zauważyć, że brak jest pojedynczych znaków '_' w nazwie pliku. Nie
+można używać specjalnych znaków powodujących problemy w systemie plików.
         <br /><br />
 
-        No transformation function is defined in the file itself.<br /><br />
+        Żadna funkcja przekształcająca nie jest zdefiniowana w samym pliku.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Przykład:</b><br /><br />
 
         <tt>text.inc.php</tt><br />
-        (No function)</li>
+        (Brak funkcji)</li>
 
-    <li>A global transform function with no specific mimetype<br /><br />
+    <li>Transformacja globalna bez właściwego typu MIME<br /><br />
 
         <tt>global__[transform].inc.php</tt><br /><br />
 
         The transform function will the be called
 '<tt>PMA_transform_global__[transform]()</tt>'.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Przykład:</b><br /><br />
 
         <tt>global__formatted</tt><br />
         <tt>PMA_transform_global__formatted()</tt></li>
 </ol>
 
-<p> So generally use '_' to split up mimetype and subtype, and '__' to provide a
-transform function.</p>
+<p> Zatem, ogólnie rzecz biorąc, używaj '_' by rozdzielić typ i podtyp MIME, a
+'__' by dostarczyć nazwę funkcji przekształcającej.</p>
 
-<p> All filenames containing no '__' in themselves are not shown as valid
-transform functions in the dropdown.</p>
+<p> Wszystkie pliki nie zawierające w nazwie '__' nie są pokazywane jako
+poprawne funkcje przekształcające w polu wyboru.</p>
 
 <p> Please see the libraries/transformations/TEMPLATE file for adding your own
 transform function. See the libraries/transformations/TEMPLATE_MIMETYPE for
@@ -2565,8 +2589,8 @@ adding a mimetype without a transform function. Also note the introduction
 of a function description in the language files. For each function a
 $strTransformation_[filename without .inc.php] has to exist.</p>
 
-<p> You can use the template generator to generate new functions and entries in
-the language file.</p>
+<p> Aby wygenerować nowe funkcje i wpisy w plikach językowych, możesz użyć
+generatora szablonów.</p>
 
 <p> To create a new transform function please see
 <tt>libraries/transformations/template_generator.sh</tt>.  To create a new,
@@ -2592,7 +2616,7 @@ unsigned/zerofill/not_null/... properties.<br />
 
 
 <!-- FAQ -->
-<h2 id="faq">FAQ - Frequently Asked Questions</h2>
+<h2 id="faq">FAQ - Często zadawane pytania</h2>
 
 <ol><li><a href="#faqserver">Server</a></li>
     <li><a href="#faqconfig">Configuration</a></li>
@@ -2603,7 +2627,7 @@ system">OS</abbr></a></li>
     <li><a href="#faqusing">Using phpMyAdmin</a></li>
     <li><a href="#faqproject">phpMyAdmin project</a></li>
     <li><a href="#faqsecurity">Security</a></li>
-    <li><a href="#faqsynchronization">Synchronisation</a></li>
+    <li><a href="#faqsynchronization">Synchronization</a></li>
 </ol>
 
 <p> Please have a look at our <a
@@ -2618,33 +2642,36 @@ and or interface.</p>
 a specific action is required or phpMyAdmin sends a blank page or a page
 full of cryptic characters to my browser, what can I do?</a></h4>
 
-<p> There are some known PHP bugs with output buffering and compression.<br />
+<p> Jest kilka znanych błędów PHP związanych z buforowaniem wyjścia i kompresją.<br />
     Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
 directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
 <tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php
 configuration file.<br />
-    Furthermore, we know about such problems connected to the release candidates
-of PHP 4.2.0 (tested with PHP 4.2.0 RC1 to RC4) together with MS Internet
-Explorer. Please upgrade to the release version PHP 4.2.0.</p>
+    dyrektywę <tt>zlib.output_compression</tt> na <tt>Off</tt>.  Oprócz tego
+wiemy o problemach związanych z wersjami kandydującymi do wydania jako PHP
+4.2.0 (testowane z PHP 4.2.0 RC1 do RC4) oraz z MS Internet
+Explorerem. Prosimy o aktualizację do wydania PHP w wydaniu 4.2.0.</p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
 
-<p> You should first try the latest versions of Apache (and possibly MySQL).<br />
+<p> Po pierwsze, powinieneś wypróbować najnowszą wersję Apache'a (i, być może,
+MySQL-a).<br />
     See also the <a href="#faq1_1"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
-    If your server keeps crashing, please ask for help in the various Apache
-support groups.</p>
+    Jeżeli serwer nadal pada, poproś o pomoc na różnych grupach pomocy
+technicznej Apache'a.</p>
 
 <h4 id="faq1_3">
     <a href="#faq1_3">1.3 I'm running phpMyAdmin with "cookie" authentication
 mode under PHP 4.2.0 or 4.2.1 loaded as an Apache 2 module but can't enter
 the script: I'm always displayed the login screen.</a></h4>
 
-<p> This is a known PHP bug (see this <a
-href="http://bugs.php.net/bug.php?id=16626">bug report</a>) from the
-official PHP bug database. It means there is and won't be any phpMyAdmin fix
-against it because there is no way to code a fix.</p>
+<p> Jest to znany błąd PHP (zobacz <a
+href="http://bugs.php.net/bug.php?id=16626">raport o błędzie</a>) z
+oficjalnej bazy danych błędów PHP. Oznacza to, że nie ma i nie będzie żadnej
+poprawki phpMyAdmina tego błędu, jako że nie ma możliwości napisania takiej
+poprawki.</p>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information
@@ -2689,26 +2716,28 @@ separated values">CSV</abbr> export? It does not seem to work.</a></h4>
 (Unix/Windows, Safe Mode or not, and so on). So, you must have
 PHP4&nbsp;&gt;=&nbsp;4.0.4 and Zlib/Bzip2 support (<tt>--with-zlib</tt> and
 <tt>--with-bz2</tt>).<br />
-    We faced PHP crashes when trying to download a dump with MS Internet
-Explorer when phpMyAdmin is run with a release candidate of PHP 4.2.0. In
-this case you should switch to the release version of PHP 4.2.0.</p>
+    Spotkaliśmy się z padami PHP podczas prób ściągnięcia zrzutu przez MS
+Internet Explorera, kiedy phpMyAdmin jest uruchomiony na PHP w wersji
+kandydującej do wydania 4.2.0.  W takim przypadku powinieneś przerzucić się
+na wydanie 4.2.0 PHP.</p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
 error about safe mode being in effect.</a></h4>
 
-<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
-in <i>php.ini</i> by the variable <tt>upload_tmp_dir</tt> (usually the
-system default is <i>/tmp</i>).<br />
-    We recommend the following setup for Apache servers running in safe mode, to
-enable uploads of files while being reasonably secure:</p>
+<p> Twój wysyłany plik jest zapisywany przez PHP w "katalogu uploadu",
+zdefiniowanego w <i>php.ini</i> przez zmienną <tt>upload_tmp_dir</tt>
+(zwykle domyślną wartością systemową jest <i>/tmp</i>).<br />
+    Zalecamy poniższą konfigurację dla serwerów Apache uruchomionym w trybie
+bezpiecznym, która włącza wysyłanie plików i jednocześnie jest przyzwoicie
+bezpieczna:</p>
 
-<ul><li>create a separate directory for uploads: <tt>mkdir /tmp/php</tt></li>
-    <li>give ownership to the Apache server's user.group: <tt>chown apache.apache
-/tmp/php</tt></li>
-    <li>give proper permission: <tt>chmod 600 /tmp/php</tt></li>
+<ul><li>utwórz osobny katalog na uploady: <tt>mkdir /tmp/php</tt></li>
+    <li>przekaż własność do użytkownika.grupy serwera Apache: <tt>chown
+apache.apache /tmp/php</tt></li>
+    <li>daj odpowiednie prawa: <tt>chmod 600 /tmp/php</tt></li>
     <li>put <tt>upload_tmp_dir = /tmp/php</tt> in <i>php.ini</i></li>
-    <li>restart Apache</li>
+    <li>zrestartuj Apache'a</li>
 </ul>
 
 <h4 id="faq1_9">
@@ -2716,31 +2745,33 @@ enable uploads of files while being reasonably secure:</p>
 file uploads don't work on my system and uploaded files have a
 <tt>Content-Type:</tt> header in the first line.</a></h4>
 
-<p> It's not really phpMyAdmin related but RedHat 7.0. You have a RedHat 7.0 and
-you updated your PHP RPM to php-4.0.4pl1-3.i386.rpm, didn't you?<br />
-    So the problem is that this package has a serious bug that was corrected
-ages ago in PHP (2001-01-28: see <a
-href="http://www.php.net/bugs.php?id=8966">PHP's bug tracking system</a> for
-more details). The problem is that the bugged package is still available
-though it was corrected (see <a
-href="http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933">RedHat's
-BugZilla</a> for more details).<br />
-    So please download <a
-href="http://www.redhat.com/swr/i386/php-4.0.4pl1-9.i386.html">the fixed
-package (4.0.4pl1-9)</a> and the problem should go away.<br />
-    And that fixes the \r\n problem with file uploads!</p>
+<p> W rzeczywistości nie jest to związane z phpMyAdminem, ale z RedHatem
+7.0. Masz RedHata 7.0 i zaktualizowałeś swój RPM z PHP do
+php-4.0.4pl1-3.i386.rpm, prawda?<br />
+    Tak więc problem polega na tym, że pakiet ten ma poważny błąd, który został
+poprawiony lata temu w PHP (2001-01-28: szczegóły w <a
+href="http://www.php.net/bugs.php?id=8966">systemie śledzenia błędów
+PHP</a>).  Problemem jest to, że błędny pakiet jest ciągle dostępny, mimo że
+został poprawiony (szczegóły w <a
+href="http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933">bugzilli
+RedHata</a>).<br />
+    Proszę więc ściągnąć <a
+href="http://www.redhat.com/swr/i386/php-4.0.4pl1-9.i386.html">poprawiony
+pakiet (4.0.4pl1-9)</a>, a problem powinien zniknąć.<br />
+    Przy okazji poprawia to problem \r\n z wysyłaniem plików!</p>
 
 <h4 id="faq1_10">
     <a href="#faq1_10">1.10 I'm having troubles when uploading files with
 phpMyAdmin running on a secure server. My browser is Internet Explorer and
 I'm using the Apache server.</a></h4>
 
-<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
-your <i>httpd.conf</i>:</p>
+<p> Jak zasugerował "Rob M" na forum phpWizarda, dodaj tę linijkę do swojego
+<i>httpd.conf</i>:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
-<p> It seems to clear up many problems between Internet Explorer and SSL.</p>
+<p> Wygląda na to, że usuwa to wiele problemów pomiędzy Internet Explorerem i
+SSL.</p>
 
 <h4 id="faq1_11">
     <a href="#faq1_11">1.11 I get an 'open_basedir restriction' while uploading
@@ -2756,24 +2787,24 @@ title="structured query language">SQL</abbr> commands, removed.</p>
     <a href="#faq1_12">1.12 I have lost my MySQL root password, what can I
 do?</a></h4>
 
-<p> The MySQL manual explains how to <a
-href="http://www.mysql.com/doc/R/e/Resetting_permissions.html"> reset the
-permissions</a>.</p>
+<p> Podręcznik MySQL-a wyjaśnia jak <a
+href="http://www.mysql.com/doc/R/e/Resetting_permissions.html"> sprowadzić
+uprawnienia do stanu początkowego</a>.</p>
 
 <h4 id="faq1_13">
     <a href="#faq1_13">1.13 I get an error 'No <abbr title="structured query
 language">SQL</abbr> query' when trying to execute a bookmark.</a></h4>
 
-<p> If PHP does not have read/write access to its <tt>upload_tmp_dir</tt>, it
-cannot access the uploaded query.</p>
+<p> Jeśli PHP nie ma praw do czytania/pisania do swojego
+<tt>upload_tmp_dir</tt>, nie ma też dostępu do wysłanego zapytania.</p>
 
 <h4 id="faq1_14">
     <a href="#faq1_14">1.14 I get an error 'No <abbr title="structured query
 language">SQL</abbr> query' when trying to submit a query from the
 convenient text area.</a></h4>
 
-<p> Check the <tt>post_max_size</tt> directive from your PHP configuration file
-and try to increase it.</p>
+<p> Sprawdź dyrektywę <tt>post_max_size</tt> ze swojego pliku konfiguracyjnego
+PHP i spróbuj zwiększyć jej wartość.</p>
 
 <h4 id="faq1_15">
     <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> field
@@ -2805,7 +2836,7 @@ provider is unwilling to change the settings:</p>
 
 <ul><li>Look at the <a href="#cfg_UploadDir"
 class="configrule">$cfg['UploadDir']</a> feature. This allows one to upload
-a file to the server via scp, ftp, or your favourite file transfer
+a file to the server via scp, ftp, or your favorite file transfer
 method. PhpMyAdmin is then able to import the files from the temporary
 directory. More information is available in the <a
 href="#config">Configuration section</a> of this document.</li>
@@ -2866,15 +2897,16 @@ Documentation</a>.
 capital letter in its name it is changed to lowercase as it should. But if I
 try to DROP this table MySQL is unable to find the corresponding file.</a></h4>
 
-<p> This is a bug of MySQL&nbsp;&lt;=&nbsp;4.0.1. Please upgrade to at least
-MySQL&nbsp;4.0.2 or turn off your <tt>lower_case_table_names</tt> directive.</p>
+<p> Jest ot błąd MySQL-a&nbsp;&lt;=&nbsp;4.0.1. Prosimy o aktualizację do
+przynajmniej MySQL&nbsp;4.0.2 lub wyłączenie dyrektywy
+<tt>lower_case_table_names</tt>.</p>
 
 <h4 id="faq1_19">
     <a href="#faq1_19">1.19 I can't run the &quot;display relations&quot;
 feature because the script seems not to know the font face I'm using!</a></h4>
 
-<p> The &quot;FPDF&quot; library we're using for this feature requires some
-special files to use font faces.<br />
+<p> Biblioteka "FPDF", której używamy dla tej funkcji wymaga pewnych specjalnych
+plików dla krojów czcionek.<br />
     Please refers to the <a href="http://www.fpdf.org/">FPDF manual</a> to build
 these files.</p>
 
@@ -2888,37 +2920,37 @@ distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
 name is probably <i>mysql.so</i> or <i>php_mysql.dll</i>. phpMyAdmin tried
 to load the extension but failed.<br /><br />
 
-    Usually, the problem is solved by installing a software package called
-&quot;PHP-MySQL&quot; or something similar.</p>
+    Zwykle problem można rozwiązać instalując pakiet oprogramowania o nazwie
+"PHP-MySQL" lub podobnej.</p>
 
 <h4 id="faq1_21">
     <a href="#faq1_21">1.21 I am running the <abbr title="Common Gateway
 Interface">CGI</abbr> version of PHP under Unix, and I cannot log in using
 cookie auth.</a></h4>
 
-<p> In <i>php.ini</i>, set <tt>mysql.max_links</tt> higher than 1.</p>
+<p> W pliku <i>php.ini</i> ustaw <tt>mysql.max_links</tt> na więcej niż 1.</p>
 
 <h4 id="faq1_22">
     <a href="#faq1_22">1.22 I don't see the &quot;Location of text file&quot;
 field, so I cannot upload.</a></h4>
 
-<p> This is most likely because in <i>php.ini</i>, your <tt>file_uploads</tt>
-parameter is not set to &quot;on&quot;.</p>
+<p> Najczęstszym powodem jest to, że w <i>php.ini</i> parametr
+<tt>file_uploads</tt> nie jest ustawiony na "on".</p>
 
 <h4 id="faq1_23">
     <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
 create a new table the table and field names are changed to lowercase!</a></h4>
 
-<p> This happens because the MySQL directive <tt>lower_case_table_names</tt>
-defaults to 1 (<tt>ON</tt>) in the Win32 version of MySQL. You can change
-this behaviour by simply changing the directive to 0 (<tt>OFF</tt>):<br />
-    Just edit your <tt>my.ini</tt> file that should be located in your Windows
-directory and add the following line to the group [mysqld]:</p>
+<p> Dzieje się to z powodu dyrektywy MySQL <tt>lower_case_table_names</tt>
+domyślnie ustawionej na 1 (<tt>ON</tt>) w wersji MySQL dla Win32. Możesz
+zmienić to zachowanie po prostu poprzez zmianę jej na 0 (<tt>OFF</tt>):<br />
+    Po prostu zmodyfikuj swój plik <tt>my.ini</tt>, który powinien znajdować się
+w katalogu Windows, dodając następująca linię do grupy [mysqld]:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
-<p> Next, save the file and restart the MySQL service. You can always check the
-value of this directive using the query</p>
+<p> Następnie zapis plik i zrestartuj usługę MySQL. Zawsze możesz sprawdzić
+wartość tej dyrektywy używając zapytania</p>
 
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
@@ -2926,7 +2958,7 @@ value of this directive using the query</p>
     <a href="#faq1_24">1.24 Some characters are being truncated in my queries,
 or I get characters randomly added. I am running PHP 4.2.3.</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/bug.php?id=19404">PHP 4.2.3 bug</a>.
+<p> Jest to <a href="http://bugs.php.net/bug.php?id=19404">błąd PHP 4.2.3</a>.
     </p>
 
 <h4 id="faq1_25">
@@ -2934,16 +2966,16 @@ or I get characters randomly added. I am running PHP 4.2.3.</a></h4>
 Windows XP, and I get problems, such as undefined variables when I run a
 <abbr title="structured query language">SQL</abbr> query.</a></h4>
 
-<p> A tip from Jose Fandos: put a comment on the following two lines in
-httpd.conf, like this:</p>
+<p> Wskazówka od Josego Fandosa: zakomentuj następujące dwie linie w httpd.conf,
+w ten sposób:</p>
 
 <pre>
 # mod_gzip_item_include file \.php$
 # mod_gzip_item_include mime "application/x-httpd-php.*"
 </pre>
 
-<p> as this version of mod_gzip on Apache (Windows) has problems handling PHP
-scripts. Of course you have to restart Apache.</p>
+<p> bo ta wersja mod_gzip na Apache'u (Windows) ma problemy z obsługą skryptów
+PHP. Oczywiście Apache'a trzeba zrestartować.</p>
 
 <h4 id="faq1_26">
     <a href="#faq1_26">1.26 I just installed phpMyAdmin in my document root of
@@ -2969,21 +3001,21 @@ PHP&nbsp;5.0.0.</p>
     <a href="#faq1_28">1.28 My MySQL server sometimes refuses queries and
 returns the message 'Errorcode: 13'. What does this mean?</a></h4>
 
-<p> This can happen due to a MySQL bug when having database / table names with
-upper case characters although <tt>lower_case_table_names</tt> is set to 1.
-To fix this, turn off this directive, convert all database and table names
-to lower case and turn it on again. Alternatively, there's a bug-fix
-available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
+<p> Może się to dziać z powodu błędu MySQL-a w sytuacji posiadania nazw baz
+danych / tabel z dużymi literami, pomimo <tt>lower_case_table_names</tt>
+ustawionego na 1.  Aby to naprawić, wyłącz tę dyrektywę, przekształć
+wszystkie nazwy baz danych i tabel na składające się z małych liter i włącz
+ją ponownie. Błąd ten został także poprawiony w MySQL-u począwszy od wersji
+3.23.56 / 4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
     <a href="#faq1_29">1.29 When I create a table or modify a field, I get an
 error and the fields are duplicated.</a></h4>
 
-<p> It is possible to configure Apache in such a way that PHP has problems
-interpreting .php files.</p>
+<p> Istnieje możliwość skonfigurowania Apache'a w taki sposób, że PHP ma
+problemy z interpretacją plików .php.</p>
 
-<p> The problems occur when two different (and conflicting) set of directives
-are used:</p>
+<p> Problemy występują, gdy używane są 2 różne (i niezgodne) zestawy dyrektyw:</p>
 
 <pre>
 SetOutputFilter PHP
@@ -2997,8 +3029,8 @@ SetInputFilter PHP
 <p> In the case we saw, one set of directives was in
 <tt>/etc/httpd/conf/httpd.conf</tt>, while the other set was in
 <tt>/etc/httpd/conf/addon-modules/php.conf</tt>.<br />
-    The recommended way is with <tt>AddType</tt>, so just comment out the first
-set of lines and restart Apache:</p>
+    Polecanym sposobem jest ten z <tt>AddType</tt>, więc po prostu zakomentuj
+pierwszy zestaw linii i zrestartuj Apache'a:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -3032,7 +3064,7 @@ under <abbr title="Internet Information Services">IIS</abbr> 5.1.</p>
 
 <ol><li>In your <tt>php.ini</tt> file, set <tt>cgi.rfc2616_headers = 0</tt></li>
     <li>In <tt>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
-Access</tt> dialogue box, check the <tt>Anonymous access</tt> checkbox and
+Access</tt> dialog box, check the <tt>Anonymous access</tt> checkbox and
 uncheck any other checkboxes (i.e. uncheck <tt>Basic authentication</tt>,
 <tt>Integrated Windows authentication</tt>, and <tt>Digest</tt> if it's
 enabled.) Click <tt>OK</tt>.</li>
@@ -3124,7 +3156,7 @@ parameter names have changed (<tt>suhosin</tt> instead of
 <h4 id="faq1_39">
     <a href="#faq1_39">1.39 When I try to connect via https, I can log in, but
 then my connection is redirected back to http. What can cause this
-behaviour?</a></h4>
+behavior?</a></h4>
 
 <p> Be sure that you have enabled <tt>SSLOptions</tt> and <tt>StdEnvVars</tt> in
 your Apache configuration. See <a
@@ -3146,7 +3178,7 @@ ProxyPassReverseCookiePath / /mirror/foo/
 
 <p>Note: if the backend url looks like http://host/~user/phpmyadmin, the tilde
 (~) must be url encoded as %7E in the ProxyPassReverse* lines.  This is not
-specific to phpmyadmin, it's just the behaviour of Apache.
+specific to phpmyadmin, it's just the behavior of Apache.
 	</p>
 
 <pre>
@@ -3168,7 +3200,7 @@ privileges, I get an error about an unknown column.</a></h4>
 <tt>mysql_upgrade</tt> command on the server.</p>
 
 
-<h3 id="faqconfig">Configuration</h3>
+<h3 id="faqconfig">Konfiguracja</h3>
 
 <h4 id="faq2_1">
     <a href="#faq2_1">2.1 The error message &quot;Warning: Cannot add header
@@ -3186,9 +3218,9 @@ his errors.</p>
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin can't connect to MySQL. What's wrong?</a></h4>
 
-<p> Either there is an error with your PHP setup or your username/password is
-wrong. Try to make a small script which uses mysql_connect and see if it
-works. If it doesn't, it may be you haven't even compiled MySQL support into
+<p> Albo jest to błąd konfiguracji PHP, albo nazwa-użytkownika/hasło są
+błędne. Spróbuj stworzyć mały skrypt, który używa mysql_connect i zobacz,
+czy działa. Jeśli nie, być może nawet nie wkompilowałeś obsługi MySQL-a do
 PHP.</p>
 
 <h4 id="faq2_3">
@@ -3196,35 +3228,35 @@ PHP.</p>
 Failed: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
 (111) ...&quot; is displayed. What can I do?</a></h4>
 
-<p> For RedHat users, Harald Legner suggests this on the mailing list:</p>
+<p> Dla użytkowników RedHata Harald Legner sugeruje na liście dyskusyjnej co
+następuje:</p>
 
 <p> On my RedHat-Box the socket of MySQL is <i>/var/lib/mysql/mysql.sock</i>.
 In your <i>php.ini</i> you will find a line</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
-<p> change it to</p>
+<p> Zmień ją na</p>
 
 <pre>mysql.default_socket = /var/lib/mysql/mysql.sock</pre>
 
-<p> Then restart apache and it will work.</p>
+<p> Potem zrestartuj Apache'a i będzie działało.</p>
 
 <p> Here is a fix suggested by Brad Ummer:</p>
 
-<ul><li>First, you need to determine what socket is being used by MySQL.<br />
-        To do this, telnet to your server and go to the MySQL bin directory. In this
-directory there should be a file named <i>mysqladmin</i>. Type
-<tt>./mysqladmin variables</tt>, and this should give you a bunch of info
-about your MySQL server, including the socket (<i>/tmp/mysql.sock</i>, for
-example).</li>
-    <li>Then, you need to tell PHP to use this socket.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
+<ul><li>Po pierwsze: musisz określić jakiego gniazda używa MySQL.<br />
+        Aby to zrobić, zatelnetuj na swój serwer, wejdź go katalogu bin MySQL-a. W
+tym katalogu powinien być plik o nazwie <i>mysqladmin</i>. Napisz
+<tt>./mysqladmin variables</tt>, co powinno dać sporo informacji o serwerze
+MySQL, w tym gniazdo (<i>/tmp/mysql.sock</i>, na przykład).</li>
+    <li>Następnie musisz powiedzieć PHP, żeby używał tego gniazda.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
 <i>config.inc.php</i>.<br />
         For example: <a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
 
-        Please also make sure that the permissions of this file allow to be readable
-by your webserver (i.e. '0755').</li>
+        Proszę również upewnić się, że prawa tego pliku pozwalają go odczytać przez
+Twój serwer WWW (tj. '0755').</li>
 </ul>
 
 <p> Have also a look at the <a
@@ -3238,9 +3270,9 @@ phpMyAdmin, what can I do?</a></h4>
 <p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
 directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
 sometime.<br />
-    Also have a look at your PHP version number: if it contains
-&quot;4.0b...&quot; it means you're running a beta version of PHP. That's
-not a so good idea, please upgrade to a plain revision.</p>
+    Rzuć również okiem na wersję swojego PHP: jeśli zawiera "4.0b...", oznacza
+to, że używasz wersji beta PHP. Nie jest to szczególnie dobry pomysł,
+zaktualizuj go do zwykłej wersji.</p>
 
 <h4 id="faq2_5">
     <a href="#faq2_5">2.5 Each time I want to insert or change a record or drop
@@ -3257,13 +3289,13 @@ configuration file.</p>
 'root@localhost' (Using password: YES)&quot;-error when trying to access a
 MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
 
-<p> When you are using a port on your localhost, which you redirect via
-port-forwarding to another host, MySQL is not resolving the localhost as
-expected.<br />
-    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
-MySQL (the commandline tool 'mysql' as well) always tries to use the socket
-connection for speeding up things. And that doesn't work in this
-configuration with port forwarding.<br />
+<p> Kiedy używasz portu na swoim hoście lokalnym, którego port jest
+przekierowywany do innego hosta, MySQL nie rozwiązuje nazwy localhost
+zgodnie z oczekiwaniami.<br />
+    Erik Wasser wyjaśnia: Oto rozwiązanie: jeżeli Twoim hostem jest "localhost"
+MySQL (w tym również narzędzie linii poleceń 'mysql') zawsze próbuje użyć
+połączenia z gniazdem, by przyspieszyć sprawy. I nie działa to w takiej
+konfiguracji z przekazywaniem portów.<br />
     If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
 <abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
 
@@ -3282,7 +3314,7 @@ compatibility and for all themes that would not include images or css-files.
     <br /><br />
 
     If <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
-is enabled, you can select your favourite theme on the main page. Your
+is enabled, you can select your favorite theme on the main page. Your
 selected theme will be stored in a cookie.<br /><br /></p>
 
 <p> To create a theme:</p>
@@ -3324,7 +3356,7 @@ class="configrule">$cfg['PmaAbsoluteUri']</a> directive empty. See also <a
 href="#faq4_7"><abbr title="Frequently Asked Questions">FAQ</abbr> 4.7</a>.
     </li>
     <li>Maybe you have a broken PHP installation or you need to upgrade your Zend
-Optimiser. See <a href="http://bugs.php.net/bug.php?id=31134">
+Optimizer. See <a href="http://bugs.php.net/bug.php?id=31134">
 http://bugs.php.net/bug.php?id=31134</a>.
     </li>
     <li>If you are using Hardened PHP with the ini directive
@@ -3406,7 +3438,7 @@ dump you have to turn it into valid MySQL. This means, you have to add a
 whitespace after the first two dashes of the line or add a # before it:
     <br />
     <code> -- -------------------------------------------------------<br />
-    </code> or<br />
+    </code> lub<br />
     <code> #--------------------------------------------------------- </code>
 </p>
 
@@ -3609,15 +3641,15 @@ title="HyperText Transfer Protocol">HTTP</abbr> authentication&quot;.
     <a href="#faq4_2">4.2 What's the preferred way of making phpMyAdmin secure
 against evil access.  </a></h4>
 <p>
-    This depends on your system.<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <i>.htaccess</i> files, for example).<br />
+    Zależy to od Twojego systemu.<br />
+    Jeżeli używasz serwera, do którego nie mają dostępu inni ludzie, wystarczy
+użyć ochrony katalogów, którą dostarcza Twój serwer www (np. z Apachem
+możesz użyć plików <i>.htaccess</i>).<br />
     If other people have telnet access to your server, you should use
 phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
 authentication features.
     <br /><br />
-    Suggestions:
+    Propozycje:
 </p>
 <ul>
     <li>
@@ -3638,10 +3670,10 @@ include your <i>config.inc.php</i> in their scripts.
     <a href="#faq4_3">4.3 I get errors about not being able to include a file in
 <i>/lang</i> or in <i>/libraries</i>.  </a></h4>
 <p>
-    Check <i>php.ini</i>, or ask your sysadmin to check it. The
-<tt>include_path</tt> must contain &quot;.&quot; somewhere in it, and
-<tt>open_basedir</tt>, if used, must contain &quot;.&quot; and
-&quot;./lang&quot; to allow normal operation of phpMyAdmin.
+    Sprawdź <i>php.ini</i>, albo poproś swojego administratora systemu, by to
+sprawdził.  Aby pozwolić na normalną pracę phpMyAdmina,
+<tt>Include_path</tt> musi zawierać "." gdzieś wewnątrz, a
+<tt>open_basedir</tt>, jeśli jest używane, musi zawierać "." i "./lang",
 </p>
 
 <h4 id="faq4_4">
@@ -3649,27 +3681,27 @@ include your <i>config.inc.php</i> in their scripts.
 using <abbr title="HyperText Transfer Protocol">HTTP</abbr> authentication.
 </a></h4>
 
-<p> This could happen for several reasons:</p>
+<p> Może się to dziać z kilku powodów:</p>
 
 <ul><li><a href="#cfg_Servers_controluser"
 class="configrule">$cfg['Servers'][$i]['controluser']</a> and/or <a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
-    <li>The username/password you specify in the login dialogue are invalid.</li>
-    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a .htaccess file. This would interfere with phpMyAdmin's authentication,
-so remove it.</li>
+    <li>The username/password you specify in the login dialog are invalid.</li>
+    <li>Jest już ustawiony jakiś mechanizm bezpieczeństwa dla katalogu phpMyAdmina,
+np. plik .htaccess. Będzie on kolidował z uwierzytelnianiem phpMyAdmina,
+więc usuń go.</li>
 </ul>
 
 <h4 id="faq4_5">
     <a href="#faq4_5">4.5 Is it possible to let users create their own
 databases?</a></h4>
 
-<p> Starting with 2.2.5, in the user management page, you can enter a wildcard
-database name for a user (for example &quot;joe%&quot;), and put the
-privileges you want.  For example, adding <tt>SELECT, INSERT, UPDATE,
-DELETE, CREATE, DROP, INDEX, ALTER</tt> would let a user create/manage
-his/her database(s).</p>
+<p> Począwszy od wersji 2.2.5, na stronie zarządzania użytkownikami, można
+wprowadzić wieloznaczną nazwę bazy danych dla użytkownika (na przykład
+"joe"), i dać uprawnienia, jakie chcesz. Na przykład dodanie <tt>SELECT,
+INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER</tt> pozwoli
+użytkownikowi tworzyć/zarządzać jego bazą (bazami) danych.</p>
 
 <h4 id="faq4_6">
     <a href="#faq4_6">4.6 How can I use the Host-based authentication
@@ -3730,54 +3762,54 @@ the configuration file. Using <tt>pma_username</tt> and
 non-functional, when trying to create a table with more than 14 fields.
 </a></h4>
 <p>
-    We could reproduce this problem only under Win98/98SE. Testing under WinNT4
-or Win2K, we could easily create more than 60 fields.
+    Udało nam się odtworzyć ten problem jedynie pod Win98/98SE. Testując pod
+Windows NT 4 lub Windows 200 mogliśmy łatwo utworzyć ponad 60 pól.
     <br />
-    A workaround is to create a smaller number of fields, then come back to your
-table properties and add the other fields.
+    Obejściem problemu jest stworzenie małej ilości pól i późniejszy powrót do
+właściwości tabeli i dodanie kolejnych pól.
 </p>
 
 <h4 id="faq5_2">
     <a href="#faq5_2">5.2 With Xitami 2.5b4, phpMyAdmin won't process form
 fields.</a></h4>
 <p>
-    This is not a phpMyAdmin problem but a Xitami known bug: you'll face it with
-each script/website that use forms.<br />
-    Upgrade or downgrade your Xitami server.
+    Nie jest to problem phpMyAdmina, ale znany błąd Xitami: spotkasz się z nim
+przy każdym skrypcie i na każdej stronie używającej formularzy.<br />
+    Zaktualizuj (do nowszej lub starszej wersji) swój serwer Xitami.
 </p>
 
 <h4 id="faq5_3">
     <a href="#faq5_3">5.3 I have problems dumping tables with Konqueror
 (phpMyAdmin 2.2.2).</a></h4>
 <p>
-    With Konqueror 2.1.1: plain dumps, zip and GZip dumps work ok, except that
-the proposed file name for the dump is always 'tbl_dump.php'. Bzip2 dumps
-don't seem to work.<br />
+    W Konquerorze 2.1.1: zwykłe zrzuty, zrzuty zip i GZip działają dobrze, z
+wyjątkiem tego, że proponowaną nazwą pliku jest zawsze
+'tbl_dump.php'. Wygląda na to, że zrzuty BZip2 nie działają.<br />
 
-    With Konqueror 2.2.1: plain dumps work; zip dumps are placed into the user's
-temporary directory, so they must be moved before closing Konqueror, or else
-they disappear. GZip dumps give an error message.<br />
+    W Konquerorze 2.2.1: zwykłe zrzuty działają; zrzuty zip są umieszczane w
+katalogu tymczasowym użytkownika, więc muszą być stamtąd przeniesione przed
+zamknięciem Konquerora, albo znikną. Zrzuty GZip dają komunikat o błędzie.<br />
 
-    Testing needs to be done for Konqueror 2.2.2.<br />
+    Dla Konquerora 2.2.2 musimy przeprowadzić testy.<br />
 </p>
 
 <h4 id="faq5_4">
     <a href="#faq5_4">5.4 I can't use the cookie authentication mode because
 Internet Explorer never stores the cookies.  </a></h4>
 <p>
-    MS Internet Explorer seems to be really buggy about cookies, at least till
-version 6. And thanks to Andrew Zivolup we've traced also a PHP 4.1.1 bug in
-this area!
+    MS Internet Explorer wygląda na naprawdę dziurawego, jeśli chodzi o
+ciasteczka (cookies), przynajmniej do wersji 6. I dzięki Andrew Zivolupowi,
+wyśledziliśmy w tej dziedzinie także błąd PHP 4.1.1!
     <br />
-    Then, if you're running PHP 4.1.1, try to upgrade or downgrade... it may
-work!
+    Tak więc, jeśli używasz PHP 4.1.1, spróbuj go zaktualizować do nowszej lub
+starszej wersji... to może zadziałać!
 </p>
 
 <h4 id="faq5_5">
     <a href="#faq5_5">5.5 In Internet Explorer 5.0, I get JavaScript errors when
 browsing my rows.  </a></h4>
 <p>
-    Upgrade to at least Internet Explorer 5.5 SP2.<br />
+    Zaktualizuj Internet Explorera do wersji przynajmniej 5.5 SP2.<br />
 </p>
 
 <h4 id="faq5_6">
@@ -3798,16 +3830,16 @@ browser.
     <a href="#faq5_7">5.7 I refresh (reload) my browser, and come back to the
 welcome page.  </a></h4>
 <p>
-    Some browsers support right-clicking into the frame you want to refresh,
-just do this in the right frame.<br />
+    Niektóre przeglądarki obsługują kliknięcie prawym klawiszem na ramkę, którą
+chcesz odświeżyć, więc po prostu zrób tak w prawej ramce.<br />
 </p>
 
 <h4 id="faq5_8">
     <a href="#faq5_8">5.8 With Mozilla 0.9.7 I have problems sending a query
 modified in the query box.  </a></h4>
 <p>
-    Looks like a Mozilla bug: 0.9.6 was OK. We will keep an eye on future
-Mozilla versions.<br />
+    Wygląda to na błąd Mozilli: 0.9.6 było OK. Będziemy się przyglądać przyszłym
+wersjom Mozilli.<br />
 </p>
 
 <h4 id="faq5_9">
@@ -3824,19 +3856,19 @@ href="http://bugzilla.mozilla.org/">BugZilla</a>).<br />
 of data in a <abbr title="comma separated values">CSV</abbr> exported file.
 </a></h4>
 <p>
-    This is a known Netscape 4.75 bug: it adds some line feeds when exporting
-data in octet-stream mode. Since we can't detect the specific Netscape
-version, we cannot workaround this bug.
+    Jest to znany błąd Netscape'a 4.75: dodaje trochę znaków wysuwu wiersza
+podczas eksportu danych w trybie octet-stream. Ponieważ nie mamy możliwości
+wykrycia konkretnej wersji Netscape'a, nie możemy obejść tego błędu.
 </p>
 
 <h4 id="faq5_11">
     <a href="#faq5_11">5.11 Extended-ASCII characters like German umlauts are
 displayed wrong.</a></h4>
 
-<p> Please ensure that you have set your browser's character set to the one of
-the language file you have selected on phpMyAdmin's start page.
-Alternatively, you can try the auto detection mode that is supported by the
-recent versions of the most browsers.</p>
+<p> Proszę upewnić się, że system kodowania znaków ustawiony w przeglądarce na
+ten z pliku językowego, który został wybrany na stronie startowej
+phpMyAdmina.  Możesz też wypróbować tryb autodetekcji, który obsługują
+najnowsze wersje większości przeglądarek.</p>
 
 <h4 id="faq5_12">
     <a href="#faq5_12">5.12 <acronym title="Apple Macintosh">Mac</acronym> <abbr
@@ -3852,7 +3884,8 @@ title="HyperText Transfer Protocol">HTTP</abbr> authentication type, I
 cannot manage two servers: I log in to the first one, then the other one,
 but if I switch back to the first, I have to log in on each operation.</a></h4>
 
-<p> This is a bug in Internet Explorer, other browsers do not behave this way.</p>
+<p> Jest to błąd Internet Explorera, inne przeglądarki nie zachowują się w ten
+sposób.</p>
 
 <h4 id="faq5_14">
     <a href="#faq5_14">5.14 Using Opera6, I can manage to get to the
@@ -3875,7 +3908,7 @@ Windows.</a></h4>
 <tt>config.inc.php</tt> to an <abbr title="Internet Protocol">IP</abbr>
 address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
 Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
-        <li>Security settings in IE and/or Microsoft Security Centre are too high, thus
+        <li>Security settings in IE and/or Microsoft Security Center are too high, thus
 blocking scripts execution.</li>
         <li>The Windows Firewall is blocking Apache and MySQL. You must allow <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> ports (80 or 443) and MySQL
@@ -3885,7 +3918,7 @@ port (usually 3306)  in the &quot;in&quot; and &quot;out&quot; directions.</li>
 <h4 id="faq5_17">
     <a href="#faq5_17">5.17 With Firefox, I cannot delete rows of data or drop a
 database.</a></h4>
-<p> Many users have confirmed that the Tabbrowser Extensions plug-in they
+<p> Many users have confirmed that the Tabbrowser Extensions plugin they
 installed in their Firefox is causing the problem.</p>
 
 <h4 id="faq5_18">
@@ -3905,15 +3938,15 @@ language">SQL</abbr>-error.  </a></h4>
 <p>
     Examine the <abbr title="structured query language">SQL</abbr> error with
 care. Often the problem is caused by specifying a wrong field-type.<br />
-    Common errors include:
+    Powszechnymi błędami są:
 </p>
 <ul>
-    <li>Using <tt>VARCHAR</tt> without a size argument</li>
-    <li>Using <tt>TEXT</tt> or <tt>BLOB</tt> with a size argument</li>
+    <li>użycie <tt>VARCHAR</tt> bez argumentu rozmiaru</li>
+    <li>użycie <tt>TEXT</tt> lub <tt>BLOB</tt> z argumentem rozmiaru</li>
 </ul>
 <p>
-    Also, look at the syntax chapter in the MySQL manual to confirm that your
-syntax is correct.
+    Zobacz także, by potwierdzić jej prawidłowość, rozdział podręcznika MySQL
+dotyczący składni.
 </p>
 
 <h4 id="faq6_2">
@@ -3950,8 +3983,8 @@ configuration, you will see options to compress the dump. See also the <a
 href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
 configuration variable.<br /><br />
 
-    For additional help on this subject, look for the word &quot;dump&quot; in
-this document.</p>
+    Dodatkową pomoc w tym temacie znajdziesz szukając w tym dokumencie słowa
+"zrzut".</p>
 
 <h4 id="faq6_5">
     <a href="#faq6_5">6.5 How can I restore (upload) my database or table using
@@ -3967,8 +4000,8 @@ path to your dump filename, or use the Browse button. Then click Go.
     With version 2.7.0, the import engine has been re&#8211;written, if possible
 it is suggested that you upgrade to take advantage of the new features.
     <br /><br />
-    For additional help on this subject, look for the word &quot;upload&quot; in
-this document.
+    Dodatkową pomoc w tym temacie znajdziesz szukając w tym dokumencie słowa
+"upload".
 </p>
 
 <h4 id="faq6_6">
@@ -4012,28 +4045,28 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 
 <p> To setup appropriate links and display information:</p>
 
-<ul><li>on table &quot;REL_persons&quot; click Structure, then Relation view</li>
-    <li>in Links, for &quot;town_code&quot; choose &quot;REL_towns-&gt;code&quot;</li>
-    <li>in Links, for &quot;country_code&quot; choose
-&quot;REL_countries-&gt;country_code&quot;</li>
-    <li>on table &quot;REL_towns&quot; click Structure, then Relation view</li>
-    <li>in &quot;Choose field to display&quot;, choose &quot;description&quot;</li>
-    <li>repeat the two previous steps for table &quot;REL_countries&quot;</li>
+<ul><li>przy tabeli "REL_osoby" kliknij Strukturę, następnie Widok relacyjny</li>
+    <li>Łącze: dla "kod_miasta" wybierz "REL_miasta-&gt;kod_miasta"</li>
+    <li>Łącze: dla "kod_kraju" wybierz "REL_kraje-&gt;kod_kraju"</li>
+    <li>przy tabeli "REL_miasta" kliknij Strukturę, następnie Widok relacyjny</li>
+    <li>w "Wybierz wyświetlane pole", wybierz "opis"</li>
+    <li>powtórz dwa ostatnie kroki dla tabeli "REL_kraje"</li>
 </ul>
 
-<p> Then test like this:</p>
+<p> Następnie wypróbuj coś takiego:</p>
 
-<ul><li>Click on your db name in the left frame</li>
-    <li>Choose &quot;Query&quot;</li>
-    <li>Use tables: persons, towns, countries</li>
-    <li>Click &quot;Update query&quot;</li>
-    <li>In the fields row, choose persons.person_name and click the &quot;Show&quot;
-tickbox </li>
-    <li>Do the same for towns.description and countries.descriptions in the other 2
-columns</li>
-    <li>Click &quot;Update query&quot; and you will see in the query box that the
-correct joins have been generated</li>
-    <li>Click &quot;Submit query&quot;</li>
+<ul><li>#-#-#-#-#  Documentation-pl-2.5.2-pl1-1.html:2693  #-#-#-#-#
+Klinkij na nazwie bazy danych w lewej ramce
+#-#-#-#-#  Documentation-pl-2.5.2-pl1-1.html:2731  #-#-#-#-#
+Kliknij na nazwie bazy danych w lewej ramce</li>
+    <li>Wybierz "Zapytanie"</li>
+    <li>Użyj tabel: osoby, miasta, kraje</li>
+    <li>Kliknij na "Zmianę zapytania"</li>
+    <li>W wierszu pól wybierz osoby.imie_osoby i kliknij na kratkę "Pokazanie" </li>
+    <li>Zrób to samo dla miasta.opis i kraje.opis w innych 2 kolumnach</li>
+    <li>Kliknij na "Zmianę zapytania", a zobaczysz w polu zapytania, że zostały
+wygenerowane odpowiednie połączenia</li>
+    <li>Kliknij na "Wykonanie zapytania"</li>
 </ul>
 
 <h4 id="faqdisplay">
@@ -4091,9 +4124,9 @@ browsers on Windows, do not have this problem.</li>
     <a href="#faq6_9">6.9 phpMyAdmin is changing the type of one of my
 columns!</a></h4>
 
-<p> No, it's MySQL that is doing <a
-href="http://www.mysql.com/doc/S/i/Silent_column_changes.html">silent column
-type changing</a>.</p>
+<p> Nie, to MySQL robi <a
+href="http://www.mysql.com/doc/S/i/Silent_column_changes.html">ciche zmiany
+typów kolumn</a>.</p>
 
 <h4 id="underscore">
     <a href="#underscore">6.10 When creating a privilege, what happens with
@@ -4104,14 +4137,14 @@ grant, and the underscore means &quot;any character&quot;. So, if the
 database name is &quot;john_db&quot;, the user would get rights to john1db,
 john2db ...<br /><br />
 
-    If you put a backslash before the underscore, it means that the database
-name will have a real underscore.</p>
+    Jeśli umieścisz odwrotny ukośnik przed podkreśleniem, oznacza to że nazwa
+bazy danych będzie miała prawdziwe podkreślenie.</p>
 
 <h4 id="faq6_11">
     <a href="#faq6_11">6.11 What is the curious symbol &oslash; in the
 statistics pages?</a></h4>
 
-<p> It means &quot;average&quot;.</p>
+<p> Oznacza on "średnią".</p>
 
 <h4 id="faqexport">
     <a href="#faqexport">6.12 I want to understand some Export options.</a></h4>
@@ -4127,8 +4160,8 @@ Otherwise, you may get an error if the table name exists but has a different
 structure.</li>
     <li>&quot;Add AUTO_INCREMENT value&quot; ensures that AUTO_INCREMENT value (if
 any) will be included in backup.</li>
-    <li>&quot;Enclose table and field names with backquotes&quot; ensures that field
-and table names formed with special characters are protected.</li>
+    <li>"Użycie cudzysłowów z nazwami tabel i pól" zapewnia ochronę nazwom pól i
+tabel zawierającymi znaki specjalne.</li>
     <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
 types set in the pmadb in the dump as <abbr title="structured query
 language">SQL</abbr> comments (<i>/* xxx */</i>).
@@ -4137,10 +4170,10 @@ language">SQL</abbr> comments (<i>/* xxx */</i>).
 
 <p><b>Data:</b></p>
 
-<ul><li>&quot;Complete inserts&quot; adds the column names on every INSERT command,
-for better documentation (but resulting file is bigger).</li>
-    <li>&quot;Extended inserts&quot; provides a shorter dump file by using only once
-the INSERT verb and the table name.</li>
+<ul><li>"Pełne dodania" dodają nazwy kolumn przy każdym poleceniu INSERT, w celu
+lepszej dokumentacji (ale skutkuje to większym plik).</li>
+    <li>"Rozszerzone dodania" zapewnia krótszy plik zrzutu poprzez użycie jeden razy
+czasownika INSERT i nazwy tabeli.</li>
     <li>&quot;Delayed inserts&quot; are best explained in the <a
 href="http://dev.mysql.com/doc/mysql/en/insert-delayed.html">MySQL
 manual</a>.
@@ -4156,10 +4189,10 @@ rather than causing the entire statement to fail.</li>
     <a href="#faq6_13">6.13 I would like to create a database with a dot in its
 name.</a></h4>
 
-<p> This is a bad idea, because in MySQL the syntax &quot;database.table&quot;
-is the normal way to reference a database and table name. Worse, MySQL will
-usually let you create a database with a dot, but then you cannot work with
-it, nor delete it.</p>
+<p> Jest to zły pomysł, gdyż składnia MySQL-a "baza-danych.tabela" jest zwykłym
+sposobem odwoływania się do bazy danych i nazwy tabeli. Co gorsza, MySQL
+zwykle pozwala na utworzenie bazy danych z kropką, ale nie da się ani z nią
+pracować, ani jej skasować.</p>
 
 <h4 id="faqsqlvalidator">
     <a href="#faqsqlvalidator">6.14 How do I set up the <abbr title="structured
@@ -4180,18 +4213,17 @@ title="structured query language">SQL</abbr> statement you submit will be
 stored anonymously (database/table/column names, strings, numbers replaced
 with generic values). The Mimer <abbr title="structured query
 language">SQL</abbr> Validator itself, is &copy; 2001 Upright Database
-Technology.  We utilise it as free SOAP service.</p>
+Technology.  We utilize it as free SOAP service.</p>
 
 <h4 id="faq6_15">
     <a href="#faq6_15">6.15 I want to add a BLOB field and put an index on it,
 but MySQL says &quot;BLOB column '...' used in key specification without a
 key length&quot;.</a></h4>
 
-<p> The right way to do this, is to create the field without any indexes, then
-display the table structure and use the &quot;Create an index&quot;
-dialogue. On this page, you will be able to choose your BLOB field, and set
-a size to the index, which is the condition to create an index on a BLOB
-field.</p>
+<p> Prawidłowym sposobem jest stworzenie pola bez żadnych indeksów, następnie
+wyświetlenie struktury tabeli i użycie dialogu "Utworzenia indeksu". Na tej
+stronie będziesz mógł wybrać swoje pole BLOB i ustalić wielkość indeksu,
+który jest warunkiem utworzenia indeksu dla pola BLOB.</p>
 
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 How can I simply move in page with plenty editing
@@ -4213,10 +4245,10 @@ is this feature then useful for?</a></h4>
 transformations on them. Otherwise you could just put a comment on the
 field. Because entering your own mimetype will cause serious syntax checking
 issues and validation, this introduces a high-risk false-user-input
-situation. Instead you have to initialise mimetypes using functions or empty
+situation. Instead you have to initialize mimetypes using functions or empty
 mimetype definitions.<br />
-    Plus, you have a whole overview of available mimetypes. Who knows all those
-mimetypes by heart so he/she can enter it at will?</p>
+    Poza tym, masz cały przegląd dostępnych typów MIME. Kto zna te wszystkie
+typy MIME na pamięć, tak że może je wprowadzać do woli?</p>
 
 <h4 id="faqbookmark">
     <a href="#faqbookmark">6.18 Bookmarks: Where can I store bookmarks? Why
@@ -4224,11 +4256,11 @@ can't I see any bookmarks below the query box? What is this variable for?
 </a></h4>
 
 <p> Any query you have executed can be stored as a bookmark on the page where
-the results are displayed. You will find a button labelled 'Bookmark this
+the results are displayed. You will find a button labeled 'Bookmark this
 query' just at the end of the page.<br />
-    As soon as you have stored a bookmark, it is related to the database you run
-the query on. You can now access a bookmark dropdown on each page, the query
-box appears on for that database.<br /><br />
+    Od momentu zapamiętania zapytania jest ono związane z bazą danych, na której
+je wykonujesz. Masz teraz dostęp do rozwijalnej listy zapytań na każdej
+stronie, na której pojawia się pole zapytania dla tej bazy danych.<br /><br />
 
     Since phpMyAdmin 2.5.0 you are also able to store variables for the
 bookmarks.  Just use the string <b>/*[VARIABLE]*/</b> anywhere in your
@@ -4236,39 +4268,40 @@ query. Everything which is put into the <i>value</i> input box on the query
 box page will replace the string &quot;/*[VARIABLE]*/&quot; in your stored
 query. Just be aware of that you HAVE to create a valid query, otherwise
 your query won't be even able to be stored in the database.<br />
-    Also remember, that everything else inside the <b>/*[VARIABLE]*/</b> string
-for your query will remain the way it is, but will be stripped of the /**/
-chars. So you can use:<br /><br />
+    Pamiętaj także, że wszystko inne wewnątrz napisu <b>/*[VARIABLE]*/</b>
+zostanie w zapytaniu bez zmian, tyle że pozbawione znaków /**/. Możesz więc
+użyć:<br /><br />
 
-    <code>/*, [VARIABLE] AS myname */</code><br /><br />
+    <code>/*, [VARIABLE] AS mojanazwa */</code><br /><br />
 
-    which will be expanded to<br /><br />
+    co zostanie rozwinięte w zapytaniu do<br /><br />
 
-    <code>, VARIABLE as myname</code><br /><br />
+    <code>, ZMIENNA as mojanazwa</code><br /><br />
 
-    in your query, where VARIABLE is the string you entered in the input box. If
-an empty string is provided, no replacements are made.<br /><br />
+    gdzie ZMIENNA jest wprowadzonym w polu tekstowym napisem. Jeśli będzie to
+pusty napis, żadne zmiany nie zostaną dokonane.<br /><br />
 
-    A more complex example. Say you have stored this query:<br /><br />
-    <code>SELECT Name, Address FROM addresses WHERE 1 /* AND Name LIKE
+    Bardziej rozbudowany przykład. Powiedzmy, że zapisałeś następujące
+zapytanie:<br /><br />
+    <code>SELECT Nazwa, Adres FROM adresy WHERE 1 /* AND Nazwa LIKE
 '%[VARIABLE]%' */</code>
     <br /><br />
 
-    Say, you now enter &quot;phpMyAdmin&quot; as the variable for the stored
-query, the full query will be:<br /><br />
+    Powiedzmy, że wpisujesz teraz "phpMyAdmin" jako zmienną dla tego zapytania;
+pełnym zapytaniem będzie:<br /><br />
 
-    <code>SELECT Name, Address FROM addresses WHERE 1 AND Name LIKE
+    <code>SELECT Nazwa, Adres FROM adresy WHERE 1 AND Nazwa LIKE
 '%phpMyAdmin%'</code>
     <br /><br />
 
     You can use multiple occurrences of <b>/*[VARIABLE]*/</b> in a single query.<br />
-    <b>NOTE THE ABSENCE OF SPACES</b> inside the &quot;/**/&quot; construct. Any
-spaces inserted there will be later also inserted as spaces in your query
-and may lead to unexpected results especially when using the variable
-expansion inside of a &quot;LIKE ''&quot; expression.<br />
-    Your initial query which is going to be stored as a bookmark has to yield at
-least one result row so you can store the bookmark. You may have that to
-work around using well positioned &quot;/**/&quot; comments.</p>
+    <b>UWAGA NA BRAK SPACJI</b> wewnątrz konstrukcji "/**/". Każda spacja tam
+wstawiona będzie później również występować w zapytaniu i może powodować
+nieoczekiwane wyniki, zwłaszcza przy rozwijaniu zmiennej wewnątrz wyrażenia
+"LIKE ''".<br />
+    Początkowe zapytanie musi dać w wyniku przynajmniej jeden rekord, by móc być
+zapamiętanym. Można to obejść używając dobrze umiejscowionych komentarzy
+"/**/".</p>
 
 <h4 id="faq6_19">
     <a href="#faq6_19">6.19 How can I create simple
@@ -4411,7 +4444,8 @@ by clicking on the displayed MIME-type.</li>
 href="http://sf.net/projects/phpmyadmin/">http://sf.net/projects/phpmyadmin/</a>
 under the Bugs section.<br /><br />
 
-    But please first discuss your bug with other users:<br />
+    Ale proszę najpierw przedyskutować (po angielsku - przyp. tłum.) błąd z
+innymi użytkownikami:<br />
     <a href="http://sf.net/projects/phpmyadmin/">
 http://sf.net/projects/phpmyadmin/</a> (and choose Forums)</p>
 
@@ -4423,27 +4457,30 @@ upgrade an existing language, where do I start?</a></h4>
 language, start from <i>english-utf-8.inc.php</i>. If you don't know how to
 get the SVN version, please ask one of the developers.
     <br />
-    Please note that we try not to use HTML entities like &amp;eacute; in the
-translations, since we define the right character set in the file.  With
-HTML entities, the text on JavaScript messages would not display correctly.
-However there are some entities that need to be there, for quotes
-,non-breakable spaces, ampersands, less than, greater than.<br />
-    You can then put your translations, as a zip file to avoid losing special
-characters, on the sourceforge.net translation tracker.<br />
-    It would be a good idea to subscribe to the phpmyadmin-translators mailing
-list, because this is where we ask for translations of new messages.</p>
+    Warto zauważyć, że staramy się nie używać encji html, takich jak
+&amp;eacute;, w tłumaczeniach, gdyż prawidłowy system kodowania znaków jest
+zdefiniowany w pliku językowym.  Encje HTML powodują błędne wyświetlanie
+tekstu w komunikatach JavaScriptu.  Z drugiej strony, niektóre encje są tam
+niezbędne, by uzyskać cudzysłowy, niełamalne spacje, znaki &amp;, znaki
+mniejszości i większości.<br />
+    Możesz umieścić swoje tłumaczenia jako plik zip, aby uniknąć utraty
+specjalnych znaków, w tropicielu tłumaczeń (translation tracker) na
+sourceforge.net.<br />
+    Byłoby dobrym pomysłem zasubskrybować listę dyskusyjną
+phpmyadmin-translators, gdyż jest to miejsce, gdzie prosimy o tłumaczenie
+nowych komuniktatów.</p>
 
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 I would like to help out with the development of
 phpMyAdmin. How should I proceed?</a></h4>
 
-<p> The following method is preferred for new developers:</p>
+<p> W przypadku nowych programistów preferowana jest następująca metoda:</p>
 
 <ol><li>fetch the current SVN tree over anonymous SVN:<br />
     <tt>svn co
 https://phpmyadmin.svn.sourceforge.net/svnroot/phpmyadmin/trunk/phpMyAdmin</tt><br />
     </li>
-    <li>add your stuff</li>
+    <li>dodaj swoje rzeczy</li>
     <li>generate patch with your changes: <tt>svn diff</tt><br />
     </li>
     <li>put the patch inside the <a
@@ -4454,7 +4491,7 @@ tracker of the phpMyAdmin project</a>.
 
 <p> Write access to the SVN tree is granted only to experienced developers who
 have already contributed something useful to phpMyAdmin.<br />
-    Also, have a look at the <a href="#developers">Developers section</a>.</p>
+    Rzuć także okiem na punkt <a href="#developers">Programiści</a>.</p>
 
 <h3 id="faqsecurity">Security</h3>
 
@@ -4492,37 +4529,37 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 \"%{Referer}i\" \"%{User-Agent}i\" %{userID}n %{userStatus}n"   pma_combined
 </pre>
 <p>
-    You can then use any log analysing tools to detect possible break-in
+    You can then use any log analyzing tools to detect possible break-in
 attempts.
 </p>
 
-<h3 id="faqsynchronization">Synchronisation</h3>
+<h3 id="faqsynchronization">Synchronization</h3>
 <h4 id="faq9_1">
-    <a href="#faq9_1">9.1 How can I synchronise two databases/tables in
+    <a href="#faq9_1">9.1 How can I synchronize two databases/tables in
 phpMyAdmin?</a></h4>
 
-<p> You can now synchronise databases/tables in phpMyAdmin using the Synchronise
+<p> You can now synchronize databases/tables in phpMyAdmin using the Synchronize
 feature.  It allows you to connect to local as well as remote servers.This
 requires you to enter server host name, username, password, port and the
-name of the database. Therefore you can now synchronise your databases
+name of the database. Therefore you can now synchronize your databases
 placed on the same server or some remote server.
 </p>
 
 <p>For more details see <a
 href="./documentation-gsoc/Synchronization_User%20Manual.htm">How to
-synchronise</a>
+synchronize</a>
 </p>
 
 
 <!-- DEVELOPERS -->
-<h2 id="developers">Developers Information</h2>
+<h2 id="developers">Informacje dla programistów</h2>
 
-<p> phpMyAdmin is Open Source, so you're invited to contribute to it. Many great
-features have been written by other people and you too can help to make
-phpMyAdmin a useful tool.</p>
+<p> phpMyAdmin jest projektem Open Source, a więc jesteś zaproszony, by go
+rozwijać. Wiele wspaniałych funkcji zostało napisanych przez innych ludzi,
+więc także ty możesz pomóc by phpMyAdmin stał się użytecznym narzędziem.</p>
 
-<p> If you're planning to contribute source, please read the following
-information:</p>
+<p> Jeśli planujesz rozwijać źródła, prosimy o przeczytanie poniższych
+informacji:</p>
 
 <ul><li>All files include <i>libraries/header.inc.php</i> (layout),.
 <i>libraries/common.lib.php</i> (common functions) and
@@ -4532,9 +4569,9 @@ free from other code.<br />
         Commonly used functions should be added to <i>libraries/common.lib.php</i>
 and more specific ones may be added within a library stored into the
 <i>libraries</i> sub-directory.</li>
-    <li>Obviously, you're free to use whatever coding style you want. But please try
-to keep your code as simple as possible: beginners are using phpMyAdmin as
-an example application.<br />
+    <li>Oczywiście możesz użyć takiego stylu kodowania, jakiego tylko chcesz. Ale
+pamiętaj, by utrzymać swój kod tak prostym jak to możliwe: osoby
+początkujące używają phpMyAdmina jako przykładowej aplikacji.<br />
         As far as possible, we want the scripts to be XHTML1.0 and CSS2 compliant on
 one hand, they fit the <a href="http://pear.php.net/"> <abbr title="PHP
 Extension and Application Repository">PEAR</abbr> coding standards</a> on
@@ -4544,16 +4581,16 @@ to <i>tbl_*.php</i>, db-related code to <i>db_*.php</i>, server-related
 tools to <i>server_*.php</i> and so on.</li>
     <li>Please don't put message strings in your code, instead add the string (at
 least) to <i>english-utf-8.inc.php</i> and print() it out.</li>
-    <li>If you want to be really helpful, write an entry for the ChangeLog.</li>
+    <li>Jeśli chcesz być naprawdę pomocny, wpisz się do ChangeLogu.</li>
     <li id="developersdbg">
         The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
 now supported by phpMyAdmin for developers to better debug and profile their
 code.<br />
         Please see the <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a>
 configuration options for more information.<br />
-        This is in memoriam of the Space Shuttle Columbia (STS-107) which was lost
-during its re-entry into Earth's atmosphere and in memory of the brave men
-and women who gave their lives for the people of Earth.</li>
+        Ku pamięci Promu Kosmicznego Columbia (STS-107), który został utracony w
+czasie wejścia w atomsferę Ziemi i ku pamięci dzielnych mężczyzn i kobiet,
+którzy poświęcili życie dla mieszkańców Ziemi.</li>
 </ul>
 
 <h2 id="copyright">Copyright</h2>
@@ -4592,7 +4629,7 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 
 <!-- CREDITS -->
-<h2 id="credits">Credits</h2>
+<h2 id="credits">Wyrazy uznania</h2>
 
 <h3>Credits, in chronological order</h3>
 
@@ -4623,7 +4660,7 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <li>Lo&iuml;c Chapeaux &lt;lolo_at_phpheaven.net&gt;
 <ul>
-  <li>rewrote and optimised javascript, DHTML and DOM stuff</li>
+  <li>rewrote and optimized javascript, DHTML and DOM stuff</li>
   <li>rewrote the scripts so they fit the <abbr title="PHP Extension and
 Application Repository">PEAR</abbr> coding standards and generate XHTML1.0
 and CSS2 compliant codes</li>
@@ -4818,7 +4855,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Zahra Naeem (Google Summer of Code 2009)
 <ul>
-  <li>Synchronisation feature</li>
+  <li>Synchronization feature</li>
 </ul></li>
 
 <li>Tom&#225;&#353; Srnka (Google Summer of Code 2009)
@@ -4900,7 +4937,7 @@ Kettler, Joe Pruett, Renato Lins, Mark Kronsbein, Jannis Hermanns,
 G. Wieggers.
 </p>
 <p>
-    And thanks to everyone else who sent me e-mail with suggestions, bug-reports
+    And thanks to everyone else who sent me email with suggestions, bug-reports
 and or just some feedback.
 </p>
 
@@ -4939,7 +4976,7 @@ by the browser each time it accesses that server.</li>
 Comma-separated values</li>
     <li>DB - look at <a href="#database">Database</a>.</li>
     <li><a id="database" href="http://www.wikipedia.org/wiki/Database">database</a>
-- an organised collection of data.</li>
+- an organized collection of data.</li>
     <li>Engine - look at <a href="#glossar_storage_engine">Storage Engines</a>.</li>
     <li><a href="http://www.wikipedia.org/wiki/extension">extension</a> - a PHP
 module that extends PHP with additional functionality.</li>
@@ -4980,12 +5017,12 @@ Protocol)</a> - a data-oriented protocol used by source and destination
 hosts for communicating data across a packet-switched internetwork.</li>
     <li><a href="http://www.wikipedia.org/wiki/IP_Address">IP Address</a> - a unique
 number that devices use in order to identify and communicate with each other
-on a network utilising the Internet Protocol standard.</li>
+on a network utilizing the Internet Protocol standard.</li>
     <li><a href="http://www.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
 Application Programming Interface)</a> - the API of Internet Information
 Services (IIS).</li>
     <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (Internet service
-provider)</a> - a business or organisation that offers users access to the
+provider)</a> - a business or organization that offers users access to the
 Internet and related services.</li>
     <li><a id="jpeg" href="http://www.wikipedia.org/wiki/JPEG">JPEG</a> - a most
 commonly used standard method of lossy compression for photographic images.</li>
@@ -5058,7 +5095,7 @@ communication on the Internet.</li>
     <li><a href="http://www.wikipedia.org/wiki/SQL">SQL</a> - Structured Query
 Language</li>
     <li><a href="http://www.wikipedia.org/wiki/Table_%28database%29">table</a> - a
-set of data elements (cells) that is organised, defined and stored as
+set of data elements (cells) that is organized, defined and stored as
 horizontal rows and vertical columns where each item can be uniquely
 identified by a label or key or by it?s position in relation to other items.</li>
     <li>Table type</li>
@@ -5069,7 +5106,7 @@ Protocol)</a> - one of the core protocols of the Internet protocol suite.</li>
     <li><a href="http://www.acko.net/node/56">UFPDF</a> - Unicode/UTF-8 extension
 for FPDF</li>
     <li><a href="http://www.wikipedia.org/wiki/URL">URL (Uniform Resource
-Locator)</a> - a sequence of characters, conforming to a standardised
+Locator)</a> - a sequence of characters, conforming to a standardized
 format, that is used for referring to resources, such as documents and
 images on the Internet, by their location.</li>
     <li><a href="http://www.wikipedia.org/wiki/Webserver">Webserver</a> - A computer
