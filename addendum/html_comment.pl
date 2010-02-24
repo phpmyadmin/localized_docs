@@ -1,4 +1,4 @@
-PO4A-HEADER:mode=before;position=<!-- \$Id
+PO4A-HEADER:mode=before;position=<head>
 <!--
 
 This file is generated using po4a, do not edit!

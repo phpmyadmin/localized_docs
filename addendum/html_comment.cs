@@ -1,4 +1,4 @@
-PO4A-HEADER:mode=before;position=<!-- \$Id
+PO4A-HEADER:mode=before;position=<head>
 <!--
 
 Tento soubor je generovaný pomocí po4a, prosím neupravujte ho!
