@@ -48,7 +48,7 @@ Questions)"> FAQ</abbr></a></li>
     <li><a href="Documentation.html#developers">开发</a></li>
     <li><a href="Documentation.html#copyright">版权</a></li>
     <li><a href="Documentation.html#credits">鸣谢</a></li>
-    <li><a href="translators.html">译者 (英语)</a></li>
+    <li><a href="translators.html">翻译</a></li>
     <li><a href="Documentation.html#glossary">词汇表</a></li>
 </ul>
 
@@ -603,17 +603,16 @@ class="configrule">登录 URL</a> 。</li>
     <dt id="servers_auth_http_realm">
     <span
 id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
-string<br />
+复制<br />
     </dt>
     <dd>
-    When using auth_type = '<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>', this field allows to define a custom <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> Basic Auth Realm which will
-be displayed to the user. If not explicitly specified in your configuration,
-a string combined of "phpMyAdmin " and either <a href="#cfg_Servers_verbose"
-class="configrule">$cfg['Servers'][$i]['verbose']</a> or <a
+    当使用 '<abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>'
+时，可通过本设置自定义在要求 <abbr title="超文本转移协议 (HyperText Transfer
+Protocol)">HTTP</abbr> 基本认证时用户所收到的提示信息。若未设置，将使用 "phpMyAdmin " 与 <a
+href="#cfg_Servers_verbose"
+class="configrule">$cfg['Servers'][$i]['verbose']</a> 或 <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-will be used.
+作为提示信息。
     </dd>
     <dt id="servers_auth_swekey_config">
     <span
@@ -930,118 +929,94 @@ id="cfg_Servers_tracking_drop_database">$cfg['Servers'][$i]['tracking_version_dr
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 字符串
     </dt>
-    <dd>Since release 2.10.0 a Designer interface is available; it permits to
-visually manage the relations.
+    <dd>自 2.10.0 起可以通过设计器可视化地管理关系。
         <br /><br />
 
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
+            <li>在 <tt>$cfg['Servers'][$i]['designer_coords']</tt> 中设置要使用的数据表名
                 </li>
         </ul>
     </dd>
 
     <dt><span
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
-boolean
+布尔
     </dt>
-    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new fields. If the above variable
-is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
-latest table structure available. If not, it will emit a warning to the
-superuser.<br /><br />
+    <dd>因自 2.5.0 起采用了新的 MIME 类型转换功能，使 column_info 表增加了三个字段。若上述变量设为 <tt>TRUE</tt>
+(默认值)，phpMyAdmin 将会检查你的表结构是否符合要求。若不符合，则会给超级用户显示警告。<br /><br />
 
-        You can disable this checking behavior by setting the variable to false,
-which should offer a performance increase.<br /><br />
+        你可以通过将其设为 false 来禁止此检查，从而得到性能的提升。<br /><br />
 
-        Recommended to set to FALSE, when you are sure, your table structure is up
-to date.</dd>
-    <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span>
-boolean</dt>
-    <dd>Whether to allow root access. This is just a shortcut for the AllowDeny
-rules below.
+        当你确定你的表结构是最新的时，我们建议将其设为 FALSE 。</dd>
+    <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span> 布尔</dt>
+    <dd>设置是否允许 root 用户访问。此为以下 AllowDeny rules 的快速设置。
     </dd>
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
-boolean</dt>
-	<dd>Whether to allow logins without a password. The default value of
-<tt>false</tt> for this parameter prevents unintended access to a MySQL
-server with was left with an empty password for root or on which an
-anonymous (blank) user is defined.
+布尔</dt>
+	<dd>设置是否允许使用空密码登录。为了防止可能存在空密码的 root 或者其他匿名 (空) 用户访问到 MySQL 服务器，此项默认为
+<tt>false</tt> 。
     </dd>
     <dt id="servers_allowdeny_order">
         <span
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
-string
+字符串
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authentication is disabled.<br /><br />
+    <dd>若不指定规则顺序，<abbr title="互联网协议 (Internet Protocol)">IP</abbr> 认证将不可用。<br /><br />
 
-        If your rule order is set to <tt>'deny,allow'</tt> then the system applies
-all deny rules followed by allow rules. Access is allowed by default. Any
-client which does not match a Deny command or does match an Allow command
-will be allowed access to the server. <br /><br />
+        若将规则顺序设为 <tt>'deny,allow'</tt>，系统将首先应用所有的允许 (allow) 规则，然后再应用禁止规则 (deny)
+。默认允许访问。任何没有被 Deny (禁止) 命令匹配的客户端或者被 Allow (允许) 命令匹配的客户端将被允许访问服务器。 <br /><br />
 
-        If your rule order is set to <tt>'allow,deny'</tt> then the system applies
-all allow rules followed by deny rules. Access is denied by default.  Any
-client which does not match an Allow directive or does match a Deny
-directive will be denied access to the server.<br /><br />
+        若将规则顺序设为 <tt>'allow,deny'</tt>，系统将首先应用所有的禁止 (deny) 规则，然后再应用允许 (allow)
+规则。默认禁止访问。任何没有被 Allow (允许) 命令匹配的客户端或者被 Deny (禁止) 命令匹配的客户端将被禁止访问服务器。<br /><br />
 
-        If your rule order is set to 'explicit', the authentication is performed in
-a similar fashion to rule order 'deny,allow', with the added restriction
-that your host/username combination <b>must</b> be listed in the
-<i>allow</i> rules, and not listed in the <i>deny</i> rules. This is the
-<b>most</b> secure means of using Allow/Deny rules, and was available in
-Apache by specifying allow and deny rules without setting any order.<br /><br />
+        若将规则顺序设为 'explicit'，认证行为与设为 'deny,allow' 类似，但主机/用户名<b>必须</b>在<i>允许
+(allow)</i> 规则中列出且不能在<i>禁止 (deny)</i> 规则中出现。这是<b>最</b>安全的方式，并且相当于在 Apache
+中使用允许 (allow)、禁止 (deny) 规则但不指定顺序时的效果。<br /><br />
 
-        Please also see <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> for
-detecting IP address behind proxies.
+        同时请参见 <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> 探测使用代理的真实 IP
+。
     </dd>
     <dt id="servers_allowdeny_rules">
         <span
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
-array of strings
+数组 或 字符串
     </dt>
-    <dd>The general format for the rules is as such:
+    <dd>规则的格式通常为:
 
         <pre>
-&lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
+&lt;'allow' | 'deny'&gt; &lt;用户名&gt; [from] &lt;IP 地址掩码&gt;
 </pre>
 
-        If you wish to match all users, it is possible to use a <tt>'%'</tt> as a
-wildcard in the <i>username</i> field.<br />
-        There are a few shortcuts you can use in the <i>ipmask</i> field as well
-(please note that those containing SERVER_ADDRESS might not be available on
-all webservers):
+        如果要匹配所有用户，请在<i>用户名</i>一栏中使用通配符 <tt>'%'</tt> 。<br />
+        有几个 <i>IP 地址掩码</i> 一栏的缩写可以使用 (请注意包含 SERVER_ADDRESS 的条目可能对某些网站服务器无效):
         <pre>
-'all' -&gt; 0.0.0.0/0
-'localhost' -&gt; 127.0.0.1/8
-'localnetA' -&gt; SERVER_ADDRESS/8
-'localnetB' -&gt; SERVER_ADDRESS/16
-'localnetC' -&gt; SERVER_ADDRESS/24
+'all' 等价于 0.0.0.0/0
+'localhost' 等价于 127.0.0.1/8
+'localnetA' 等价于 SERVER_ADDRESS/8
+'localnetB' 等价于 SERVER_ADDRESS/16
+'localnetC' 等价于 SERVER_ADDRESS/24
 </pre>
 
-        Having an empty rule list is equivalent to either using <tt>'allow % from
-all'</tt> if your rule order is set to <tt>'deny,allow'</tt> or <tt>'deny %
-from all'</tt> if your rule order is set to <tt>'allow,deny'</tt> or
-<tt>'explicit'</tt>.<br /><br />
+        在规则顺序为 <tt>'deny,allow'</tt> 时，空的规则列表等价于 <tt>'allow % from all'</tt> ；规则顺序为
+<tt>'allow,deny'</tt> 或 <tt>'explicit'</tt> 时等价于 <tt>'deny % from all'</tt>
+。<br /><br />
 
-        For the <abbr title="Internet Protocol">IP</abbr> matching system, the
-following work:<br />
-        <tt>xxx.xxx.xxx.xxx</tt> (an exact <abbr title="Internet Protocol">IP</abbr>
-address)<br />
-        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (an <abbr title="Internet Protocol">IP</abbr>
-address range)<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing type <abbr
-title="Internet Protocol">IP</abbr> addresses)<br />
-        But the following does not work:<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (partial <abbr title="Internet
-Protocol">IP</abbr> address range)<br />
-        Also IPv6 addresses are not supported.
+        对于 <abbr title="互联网协议 (Internet Protocol)">IP</abbr> 匹配系统来说，下列形式是有效的:<br />
+        <tt>xxx.xxx.xxx.xxx</tt> (一个具体的 <abbr title="互联网协议 (Internet
+Protocol)">IP</abbr> 地址)<br />
+        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (一段 <abbr title="互联网协议 (Internet
+Protocol)">IP</abbr> 地址范围)<br />
+        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR，无类别域间路由类型的 <abbr title="互联网协议 (Internet
+Protocol)">IP</abbr> 地址范围)<br />
+        而下列形式是无效的:<br />
+        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (部分 <abbr title="互联网协议 (Internet
+Protocol)">IP</abbr> 地址范围)<br />
+        也不支持互联网协议第六版 (IPv6) 的地址。
     </dd>
-    <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
-boolean</dt>
+    <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span> 布尔</dt>
     <dd>Disable using <tt>INFORMATION_SCHEMA</tt> to retrieve information (use
 <tt>SHOW</tt> commands instead), because of speed issues when many databases
 are present. Currently used in some parts of the code, more to come.
@@ -4343,11 +4318,11 @@ during its re-entry into Earth's atmosphere and in memory of the brave men
 and women who gave their lives for the people of Earth.</li>
 </ul>
 
-<h2 id="copyright">Copyright</h2>
+<h2 id="copyright">版权</h2>
 
 <pre>
-Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright (C) 2001-2009 Marc Delisle &lt;marc_at_infomarc.info&gt;
+版权所有 (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
+版权所有 (C) 2001-2009 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
@@ -4355,39 +4330,33 @@ Copyright (C) 2001-2009 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [check <a href="#credits">credits</a> for more details]
+                        [更多信息请参见<a href="#credits">鸣谢</a>]
 </pre>
 
 <p>
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License version 2, as published by
-the Free Software Foundation.
+本软件是自由软件，你可以在自由软件基金会发布的 GNU 通用公共许可协议第 2 版的许可下重新修改并/或发布。
 </p>
 
 <p>
-This program is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-more details.
+本软件因希望能对大家有用而发布，但没有任何担保，也没有任何适销性或针对特定用途的隐含的担保。参见 GNU 通用公共许可协议获得详细信息。
 </p>
 
 <p>
-You should have received a copy of the GNU General Public License along with
-this program; if not, write to the Free Software Foundation, Inc., 51
+你应该在获得此软件的同时收到一份 GNU 通用公共许可协议的副本如果没有，请致函 Free Software Foundation, Inc., 51
 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 </p>
 
 
 <!-- CREDITS -->
-<h2 id="credits">Credits</h2>
+<h2 id="credits">鸣谢</h2>
 
-<h3>Credits, in chronological order</h3>
+<h3>按时间先后顺序</h3>
 
 <ul>
 
 <li>Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
 <ul>
-  <li>creator of the phpmyadmin project</li>
+  <li>phpmyadmin 项目创始人</li>
   <li>maintainer from 1998 to summer 2000</li>
 </ul></li>
 
@@ -4691,195 +4660,151 @@ G. Wieggers.
 and or just some feedback.
 </p>
 
-<h2 id="glossary">Glossary</h2>
+<h2 id="glossary">词汇表</h2>
 
-<p> From Wikipedia, the free encyclopedia</p>
+<p> 源自维基百科，自由的百科全书</p>
 
 <ul>
-    <li><a href="http://www.wikipedia.org/wiki/.htaccess">.htaccess</a> - the
-default name of Apache's directory-level configuration file.</li>
+    <li><a href="http://www.wikipedia.org/wiki/.htaccess">.htaccess</a> - Apache
+的目录级配置文件默认文件名。</li>
     <li><a href="http://www.wikipedia.org/wiki/Blowfish_%28cipher%29">Blowfish</a> -
-a keyed, symmetric block cipher, designed in 1993 by Bruce Schneier.</li>
-    <li><a href="http://en.wikipedia.org/wiki/Web_browser">Browser (Web Browser)</a>
-- a software application that enables a user to display and interact with
-text, images, and other information typically located on a web page at a
-website on the World Wide Web.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Bzip2">bzip2</a> - a free
-software/open source data compression algorithm and program developed by
-Julian Seward.</li>
-    <li><a href="http://www.wikipedia.org/wiki/CGI">CGI (Common Gateway
-Interface)</a> - an important World Wide Web technology that enables a
-client web browser to request data from a program executed on the Web
-server.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Changelog">Changelog</a> - a log or
-record of changes made to a project.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Client_%28computing%29">Client</a> -
-a computer system that accesses a (remote) service on another computer by
-some kind of network.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Column_%28database%29">column</a> - a
-set of data values of a particular simple type, one for each row of the
-table.</li>
-    <li><a href="http://www.wikipedia.org/wiki/HTTP_cookie">Cookie</a> - a packet of
-information sent by a server to a World Wide Web browser and then sent back
-by the browser each time it accesses that server.</li>
+1993 年由 Bruce Schneier 所设计的一种分组加密算法。</li>
+    <li><a href="http://en.wikipedia.org/wiki/Web_browser">浏览器</a> -
+一个可以让用户通过万维网上网站的网页中的文字、图片或其他信息交互的软件。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Bzip2">bzip2</a> - 一个由 Julian Seward
+开发的自由软件、开源数据压缩算法。</li>
+    <li><a href="http://www.wikipedia.org/wiki/CGI">CGI (通用网关接口)</a> -
+一种可以让客户端浏览器向网站服务器上运行的程序请求数据的重要技术。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Changelog">更新记录 (Changelog)</a> -
+一个项目的修改记录。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Client_%28computing%29">客户端</a> -
+通过某种网络访问另一台计算机上的 (远程) 服务的计算机系统。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Column_%28database%29">字段</a> -
+具有一个特定的简单类型，数据表中的每一条数据都有一个该类型的值。</li>
+    <li><a href="http://www.wikipedia.org/wiki/HTTP_cookie">Cookie</a> -
+服务器向浏览器发送的一些信息，浏览器在每次访问对应的服务器时会将这些信息返回。</li>
     <li><a href="http://www.wikipedia.org/wiki/Comma-separated_values">CSV</a> -
-Comma-separated values</li>
-    <li>DB - look at <a href="#database">Database</a>.</li>
-    <li><a id="database" href="http://www.wikipedia.org/wiki/Database">database</a>
-- an organized collection of data.</li>
-    <li>Engine - look at <a href="#glossar_storage_engine">Storage Engines</a>.</li>
-    <li><a href="http://www.wikipedia.org/wiki/extension">extension</a> - a PHP
-module that extends PHP with additional functionality.</li>
-    <li><a href="http://www.wikipedia.org/wiki/FAQ">FAQ (Frequently Asked
-Questions)</a> - a list of commonly asked question and there answers.</li>
-    <li><a
-href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">Field</a>
-- one part of divided data/columns.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Foreign_key">foreign key</a> - a
-field or group of fields in a database record that point to a key field or
-group of fields forming a key of another database record in some (usually
-different) table.</li>
-    <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - the free PDF library</li>
+逗号分隔型取值</li>
+    <li>DB - 参见<a href="#database">数据库</a>。</li>
+    <li><a id="database" href="http://www.wikipedia.org/wiki/Database">数据库</a> -
+有组织的数据集。</li>
+    <li>引擎 - 参见<a href="#glossar_storage_engine">存储引擎</a>。</li>
+    <li><a href="http://www.wikipedia.org/wiki/extension">扩展</a> - 给 PHP 提供附加功能的 PHP
+模块。</li>
+    <li><a href="http://www.wikipedia.org/wiki/FAQ">FAQ (常见问题 (Frequently Asked
+Questions))</a> - 一些经常被问到的问题及回答。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">字段</a>
+- 数据的一部分。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Foreign_key">foreign key</a> -
+数据库记录中指向一张表 (通常不是同一张表) 中一个或一组索引字段的一个或一组字段。</li>
+    <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - 自由的 PDF 库</li>
     <li><a id="gd" href="http://www.wikipedia.org/wiki/GD_Graphics_Library"> GD
-Graphics Library</a> - a library by Thomas Boutell and others for
-dynamically manipulating images.</li>
-    <li>GD2 - look at <a href="#gd">GD Graphics Library</a>.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Gzip">gzip</a> - gzip is short for
-GNU zip, a GNU free software file compression program.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Host">host</a> - any machine
-connected to a computer network, a node that has a hostname.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Hostname">hostname</a> - the unique
-name by which a network attached device is known on a network.</li>
+图形库</a> - 由 Thomas Boutell 等人为动态处理图像所开发的库。</li>
+    <li>GD2 - 参见 <a href="#gd">GD 图形库</a>。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Gzip">gzip</a> - GNU zip 的缩写，一个 GNU
+自由软件，文件压缩程序。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Host">主机</a> -
+任何连接到计算机网络中的机器，每个节点都有一个主机名。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Hostname">主机名</a> -
+用于其他设备识别，网络中设备的唯一名称。</li>
     <li><a href="http://www.wikipedia.org/wiki/HyperText_Transfer_Protocol">HTTP
-(HyperText Transfer Protocol)</a> - the primary method used to transfer or
-convey information on the World Wide Web.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Https:_URI_scheme">https</a> - a
-<abbr title="HyperText Transfer Protocol">HTTP</abbr>-connection with
-additional security measures.</li>
+(超文本转移协议 (HyperText Transfer Protocol))</a> - 主要用于传递万维网上的信息。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Https:_URI_scheme">https</a> -
+附加了安全措施的 <abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 连接。</li>
     <li><a href="http://www.wikipedia.org/wiki/Internet_Information_Services">IIS
-(Internet Information Services)</a> - a set of Internet-based services for
-servers using Microsoft Windows.</li>
+(Internet 信息服务)</a> - 微软 Windows 服务器所使用的互联网服务。</li>
     <li><a id="glossar_index"
-href="http://www.wikipedia.org/wiki/Index_%28database%29">Index</a> - a
-feature that allows quick access to the rows in a table.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Internet_Protocol">IP (Internet
-Protocol)</a> - a data-oriented protocol used by source and destination
-hosts for communicating data across a packet-switched internetwork.</li>
-    <li><a href="http://www.wikipedia.org/wiki/IP_Address">IP Address</a> - a unique
-number that devices use in order to identify and communicate with each other
-on a network utilizing the Internet Protocol standard.</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
-Application Programming Interface)</a> - the API of Internet Information
-Services (IIS).</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (Internet service
-provider)</a> - a business or organization that offers users access to the
-Internet and related services.</li>
-    <li><a id="jpeg" href="http://www.wikipedia.org/wiki/JPEG">JPEG</a> - a most
-commonly used standard method of lossy compression for photographic images.</li>
-    <li>JPG - look at <a href="#jpeg">JPEG</a>.</li>
-    <li>Key - look at <a href="#glossar_index">index</a>.</li>
+href="http://www.wikipedia.org/wiki/Index_%28database%29">索引</a> -
+使可以快速访问数据表中数据的功能。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Internet_Protocol">IP (互联网协议
+(Internet Protocol))</a> - 一种通过数据包交换在来源与目标主机之间通信的面向数据的协议。</li>
+    <li><a href="http://www.wikipedia.org/wiki/IP_Address">IP 地址</a> -
+利用互联网协议标准用来标识设备及与其他设备通信的唯一号码。</li>
+    <li><a href="http://www.wikipedia.org/wiki/ISAPI">ISAPI (互联网服务器应用程序接口 (Internet
+Server Application Programming Interface))</a> - Internet 信息服务 (IIS)
+的应用程序接口。</li>
+    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (互联网服务提供商 (Internet service
+provider))</a> - 为用户提供访问互联网及相关服务的公司或组织。</li>
+    <li><a id="jpeg" href="http://www.wikipedia.org/wiki/JPEG">JPEG</a> -
+一种最常用的有损压缩图像的标准方法。</li>
+    <li>JPG - 参见 <a href="#jpeg">JPEG</a> 。</li>
+    <li>键 - 参见<a href="#glossar_index">索引</a>。</li>
     <li><a
 href="http://www.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><big>E</big></sub>X</a>
-- a document preparation system for the T<sub>E</sub>X typesetting program.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Mac">Mac (Apple Macintosh)</a> - line
-of personal computers is designed, developed, manufactured, and marketed by
-Apple Computer.</li>
+- 一种为 T<sub>E</sub>X 排版程序所用的文档准备系统。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Mac">Mac (苹果麦金塔 (Apple
+Macintosh))</a> - 苹果计算机公司所设计、开发、制造及销售的个人计算机。</li>
     <li><a id="glossar_mac_os_x"
-href="http://www.wikipedia.org/wiki/Mac_OS_X"><acronym title="Apple
-Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> X</a> -
-the operating system which is included with all currently shipping Apple
-Macintosh computers in the consumer and professional markets.</li>
-    <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - a cryptographic
-library.</li>
-    <li><a href="http://php.net/mcrypt">mcrypt</a> - the MCrypt PHP extension.</li>
-    <li><a href="http://www.wikipedia.org/wiki/MIME">MIME (Multipurpose Internet
-Mail Extensions)</a> - an Internet Standard for the format of e-mail.</li>
-    <li><a href="http://www.wikipedia.org/wiki/module">module</a> - some sort of
-extension for the Apache Webserver.</li>
-    <li><a href="http://www.wikipedia.org/wiki/MySQL">MySQL</a> - a multithreaded,
-multi-user, SQL (Structured Query Language) Database Management System
-(DBMS).</li>
-    <li><a href="http://php.net/mysqli">mysqli</a> - the improved MySQL client PHP
-extension.</li>
-    <li><a href="http://php.net/mysql">mysql</a> - the MySQL client PHP extension.</li>
-    <li><a href="http://www.wikipedia.org/wiki/OpenDocument">OpenDocument</a> - open
-standard for office documents.</li>
-    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating
-system">OS</abbr> X</a> - look at <a href="#glossar_mac_os_x"><acronym
-title="Apple Macintosh">Mac</acronym> <abbr title="operating
-system">OS</abbr> X</a>.</li>
+href="http://www.wikipedia.org/wiki/Mac_OS_X"><acronym title="苹果麦金塔 (Apple
+Macintosh)">Mac</acronym> <abbr title="操作系统 (operating system)">OS</abbr>
+X</a> - 苹果公司为 Mac 所开发的操作系统。</li>
+    <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - 一个加密库。</li>
+    <li><a href="http://php.net/mcrypt">mcrypt</a> - MCrypt PHP 扩展。</li>
+    <li><a href="http://www.wikipedia.org/wiki/MIME">MIME (多用途互联网邮件扩展 (Multipurpose
+Internet Mail Extensions))</a> - 一种定义电子邮件格式的互联网标准。</li>
+    <li><a href="http://www.wikipedia.org/wiki/module">模块</a> - Apache 网站服务器的一些扩展类型。</li>
+    <li><a href="http://www.wikipedia.org/wiki/MySQL">MySQL</a> - 一个多线程、多用户的 SQL
+(结构化查询语言 (Structured Query Language)) 数据库管理系统 (DBMS) 。</li>
+    <li><a href="http://php.net/mysqli">mysqli</a> - 改进的 MySQL 客户端，PHP 扩展。</li>
+    <li><a href="http://php.net/mysql">mysql</a> - MySQL 客户端，PHP 扩展。</li>
+    <li><a href="http://www.wikipedia.org/wiki/OpenDocument">开放文档</a> - 办公文档的开放标准。</li>
+    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="操作系统 (operating
+system)">OS</abbr> X</a> - 参见 <a href="#glossar_mac_os_x"><acronym
+title="苹果麦金塔 (Apple Macintosh)">Mac</acronym> <abbr title="操作系统 (operating
+system)">OS</abbr> X</a> 。</li>
     <li><a href="http://www.wikipedia.org/wiki/Portable_Document_Format">PDF
-(Portable Document Format)</a> - a file format developed by Adobe Systems
-for representing two dimensional documents in a device independent and
-resolution independent format.</li>
-    <li><a href="http://pear.php.net/">PEAR</a> - the PHP Extension and Application
-Repository.</li>
-    <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions)</a>
-- the perl-compatible regular expression functions for PHP</li>
-    <li><a href="http://www.wikipedia.org/wiki/PHP">PHP</a> - short for "PHP:
-Hypertext Preprocessor", is an open-source, reflective programming language
-used mainly for developing server-side applications and dynamic web content,
-and more recently, a broader range of software applications.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Port_%28computing%29">port</a> - a
-connection through which data is sent and received.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Request_for_Comments">RFC</a> -
-Request for Comments (RFC) documents are a series of memoranda encompassing
-new research, innovations, and methodologies applicable to Internet
-technologies.</li>
-    <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP file
-format specification version 4.3</li>
-    <li><a href="http://www.wikipedia.org/wiki/Row_%28database%29">Row (record,
-tulpel)</a> - represents a single, implicitly structured data item in a
-table.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Server_%28computing%29">Server</a> -
-a computer system that provides services to other computing systems over a
-network.</li>
+(便携式文档格式 (Portable Document Format))</a> - 一种由 Adobe 公司为独立设备和解析二维文档所开发的文件格式。</li>
+    <li><a href="http://pear.php.net/">PEAR</a> - PHP 扩展和应用程序库。</li>
+    <li><a href="http://php.net/pcre">PCRE (Perl 兼容的正则表达式)</a> - PHP 所用的 Perl
+兼容正则表达式的函数</li>
+    <li><a href="http://www.wikipedia.org/wiki/PHP">PHP</a> - "PHP: 超文本预处理器 (PHP:
+Hypertext Preprocessor)" 的缩写，近来被广泛用来开发服务器端应用程序以及动态网站的开源编程语言。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Port_%28computing%29">端口</a> -
+发送和接收数据所通过的连接。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Request_for_Comments">RFC</a> - 请求注释
+(Request for Comments) (RFC) 是一系列围绕互联网技术关于新研究、方法及方法可行性的文档。</li>
+    <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP 文件格式规范版本
+4.3</li>
+    <li><a href="http://www.wikipedia.org/wiki/Row_%28database%29">行 (记录，元组)</a> -
+代表数据表中一个单一的、隐式结构化的数据项。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Server_%28computing%29">服务器</a> -
+一个向网络中其他计算机系统提供服务的计算机系统。</li>
     <li><a id="glossar_storage_engine"
-href="http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html">Storage
-Engines</a> - handlers for different table types</li>
-    <li><a href="http://www.wikipedia.org/wiki/Socket#Computer_sockets">socket</a> -
-a form of inter-process communication.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Secure_Sockets_Layer">SSL (Secure
-Sockets Layer)</a> - a cryptographic protocol which provides secure
-communication on the Internet.</li>
-    <li><a href="http://www.wikipedia.org/wiki/SQL">SQL</a> - Structured Query
-Language</li>
-    <li><a href="http://www.wikipedia.org/wiki/Table_%28database%29">table</a> - a
-set of data elements (cells) that is organized, defined and stored as
-horizontal rows and vertical columns where each item can be uniquely
-identified by a label or key or by it?s position in relation to other items.</li>
-    <li>Table type</li>
-    <li><a href="http://www.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> - a
-type of archive file format: the Tape ARchive format.</li>
-    <li><a href="http://www.wikipedia.org/wiki/TCP">TCP (Transmission Control
-Protocol)</a> - one of the core protocols of the Internet protocol suite.</li>
-    <li><a href="http://www.acko.net/node/56">UFPDF</a> - Unicode/UTF-8 extension
-for FPDF</li>
-    <li><a href="http://www.wikipedia.org/wiki/URL">URL (Uniform Resource
-Locator)</a> - a sequence of characters, conforming to a standardized
-format, that is used for referring to resources, such as documents and
-images on the Internet, by their location.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Webserver">Webserver</a> - A computer
-(program) that is responsible for accepting HTTP requests from clients and
-serving them Web pages.</li>
-    <li><a href="http://www.wikipedia.org/wiki/XML">XML (Extensible Markup
-Language)</a> - a W3C-recommended general-purpose markup language for
-creating special-purpose markup languages, capable of describing many
-different kinds of data.</li>
-    <li><a href="http://www.wikipedia.org/wiki/ZIP_%28file_format%29">ZIP</a> - a
-popular data compression and archival format.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - an open-source,
-cross-platform data compression library by Jean-loup Gailly and Mark Adler.</li>
+href="http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html">存储引擎</a>
+- 不同类型数据表的处理程序</li>
+    <li><a href="http://www.wikipedia.org/wiki/Socket#Computer_sockets">套接字</a> -
+一种进程间通信的方式。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Secure_Sockets_Layer">SSL (安全套接层
+(Secure Sockets Layer))</a> - 一种为互联网通信提供安全的加密协议。</li>
+    <li><a href="http://www.wikipedia.org/wiki/SQL">SQL</a> - 结构化查询语言 (Structured
+Query Language)</li>
+    <li><a href="http://www.wikipedia.org/wiki/Table_%28database%29">表，数据表</a> -
+每项都可通过标签、索引或它相对于其他项的位置来标识的有组织、有定义并存储为横向的行及纵向的列的数据元素集。</li>
+    <li>表类型</li>
+    <li><a href="http://www.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> -
+一种档案文件格式: 磁带 (Tape) 档案 (ARchive) 格式。</li>
+    <li><a href="http://www.wikipedia.org/wiki/TCP">TCP (传输控制协议 (Transmission
+Control Protocol))</a> - 互联网协议套件的核心协议之一。</li>
+    <li><a href="http://www.acko.net/node/56">UFPDF</a> - FPDF 的 Unicode/UTF-8 扩展</li>
+    <li><a href="http://www.wikipedia.org/wiki/URL">URL (统一资源定位符 (Uniform Resource
+Locator))</a> - 一个用来指明互联网上如文档、图像资源位置，符合标准格式的字符串。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Webserver">网站服务器</a> - 可以接受并响应客户端发起的
+HTTP 请求，提供网页服务的计算机 (程序)。</li>
+    <li><a href="http://www.wikipedia.org/wiki/XML">XML (可扩展标记语言 (Extensible Markup
+Language))</a> - 一个 W3C 推荐用来创建可以描述不同类型数据的特殊标记语言的通用标记语言。</li>
+    <li><a href="http://www.wikipedia.org/wiki/ZIP_%28file_format%29">ZIP</a> -
+一种流行的数据压缩和档案格式。</li>
+    <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - 一种由 Jean-loup Gailly
+和 Mark Adler 开发的开源、跨平台的数据压缩库。</li>
 </ul>
 </div>
 
   <ul id="footer">
-    <li>Copyright &copy; 2003 - 2009 <a
-href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin devel
-team</a></li>
-    <li><a href="LICENSE">License</a></li>
-    <li><a href="http://www.phpmyadmin.net/home_page/donate.php">Donate</a></li>
-    <li class="last">Valid <a href="http://validator.w3.org/check/referer">HTML</a> and <a
+    <li>版权所有 &copy; 2003 - 2009 <a
+href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin 开发组 (英语)</a></li>
+    <li><a href="LICENSE">授权</a></li>
+    <li><a href="http://www.phpmyadmin.net/home_page/donate.php">捐助 (英语)</a></li>
+    <li class="last">验证 <a href="http://validator.w3.org/check/referer">HTML</a> 和 <a
 href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
   </ul>
 
