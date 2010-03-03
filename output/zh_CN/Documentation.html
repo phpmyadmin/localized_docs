@@ -457,12 +457,11 @@ href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key
 <!-- CONFIGURATION -->
 <h2 id="config">设置</h2>
 
-<p> <span class="important">Warning for <acronym title="Apple
-Macintosh">Mac</acronym> users:</span> PHP does not seem to like <acronym
-title="Apple Macintosh">Mac</acronym> end of lines character
-(&quot;<tt>\r</tt>&quot;). So ensure you choose the option that allows to
-use the *nix end of line character (&quot;<tt>\n</tt>&quot;) in your text
-editor before saving a script you have modified.</p>
+<p> <span class="important"><acronym title="苹果麦金塔 (Apple
+Macintosh)">Mac</acronym> 用户注意:</span> PHP 似乎不支持 <acronym title="苹果麦金塔
+(Apple Macintosh)">Mac</acronym> 式的换行符
+(&quot;<tt>\r</tt>&quot;)。所以在保存你所修改的文件之前，请确保你的文本编辑器使用 *nix 式的换行符 (&quot;<tt>
+</tt>&quot;)。</p>
 
 <p> <span class="important">注意:</span> 几乎所有设置都在 <tt>config.inc.php</tt>
 文件中定义。如果此文件不存在，请参考<a href="#setup">快速安装</a>一节创建该文件。你只需要设置不同于
@@ -1015,99 +1014,73 @@ Protocol)">IP</abbr> 地址范围)<br />
         也不支持互联网协议第六版 (IPv6) 的地址。
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span> 布尔</dt>
-    <dd>Disable using <tt>INFORMATION_SCHEMA</tt> to retrieve information (use
-<tt>SHOW</tt> commands instead), because of speed issues when many databases
-are present. Currently used in some parts of the code, more to come.
+    <dd>设置是否禁止通过 <tt>INFORMATION_SCHEMA</tt> 来获取信息 (用 <tt>SHOW</tt>
+命令代替)，若不禁止且数据库很多时可能会造成性能下降。目前仅部分代码实现此功能，持续增加中。
     </dd>
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
-string</dt>
-    <dd>On a server with a huge number of databases, the default <tt>SHOW
-DATABASES</tt> command used to fetch the name of available databases will
-probably be too slow, so it can be replaced by faster commands (see
-<tt>libraries/config.default.php</tt> for examples).
+字符串</dt>
+    <dd>在有相当数量数据库的服务器上，通过默认的 <tt>SHOW DATABASES</tt>
+命令来查询可用数据库的名字可能会很慢，你可以用更快的命令来代替它 (参见 <tt>libraries/config.default.php</tt>
+文件中的例子)。
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
-boolean</dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation frame.
+布尔</dt>
+    <dd>设置是否在导航框架的数据库列表中显示每个数据库中数据表的总数。
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
-string</dt>
-    <dd>Name of session which will be used for signon authentication method.
+字符串</dt>
+    <dd>signon 认证所用的会话名。
     </dd>
-    <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
-string</dt>
-    <dd>URL where user will be redirected to log in for signon authentication
-method. Should be absolute including protocol.
+    <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span> 字符串</dt>
+    <dd>使用 signon 认证时用户将转到登录的 URL 。应为包含协议的绝对地址。
     </dd>
-    <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span>
-string</dt>
-    <dd>URL where user will be redirected after logout (doesn't affect config
-authentication method). Should be absolute including protocol.
+    <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span> 字符串</dt>
+    <dd>使用 signon 认证时用户退出后将转到的 URL (config 认证无效)。应为包含协议的绝对地址。
     </dd>
 
-    <dt id="cfg_ServerDefault">$cfg['ServerDefault'] integer</dt>
-    <dd>If you have more than one server configured, you can set
-<tt>$cfg['ServerDefault']</tt> to any one of them to autoconnect to that
-server when phpMyAdmin is started, or set it to 0 to be given a list of
-servers without logging in.<br />
-        If you have only one server configured, <tt>$cfg['ServerDefault']</tt> MUST
-be set to that server.</dd>
+    <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
+    <dd>如果有多个服务器设置，你可以设置 <tt>$cfg['ServerDefault']</tt> 为其中之一，phpMyAdmin 将会自动连接，若设为
+0 则将在登录页面显示服务器列表。<br />
+        如果只有一个服务器设置，<tt>$cfg['ServerDefault']</tt> 必须设为那台服务器。</dd>
 
-    <dt id="cfg_MaxDbList">$cfg['MaxDbList'] integer</dt>
-    <dd>The maximum number of database names to be displayed in the navigation frame
-and the database list.</dd>
+    <dt id="cfg_MaxDbList">$cfg['MaxDbList'] 整数</dt>
+    <dd>导航框架和数据库列表中所显示数据库的最大数量。</dd>
 
-    <dt id="cfg_MaxTableList">$cfg['MaxTableList'] integer</dt>
-    <dd>The maximum number of table names to be displayed in the main panel's list
-(except on the Export page). This limit is also enforced in the navigation
-panel when in Light mode.</dd>
+    <dt id="cfg_MaxTableList">$cfg['MaxTableList'] 整数</dt>
+    <dd>轻量级模式导航框架和主框架列表 (除导出页) 中所显示数据表的最大数量。</dd>
 
-    <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] integer</dt>
-    <dd>The maximum number of characters when a SQL query is displayed. The default
-limit of 1000 should be correct to avoid the display of tons of hexadecimal
-codes that represent BLOBs, but some users have real SQL queries that are
-longer than 1000 characters. Also, if a query's length exceeds this limit,
-this query is not saved in the history.</dd>
+    <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
+    <dd>显示 SQL 查询的最大字数。默认值 1000 通常可以避免 BLOB 字段中十六进制内容的显示，但有些用户确实有超过 1000 字的 SQL
+查询。另外，如果一个查询超过了这个限制，也将不会保存在查询历史中。</dd>
 
-    <dt id="cfg_OBGzip">$cfg['OBGzip'] string/boolean</dt>
-    <dd>Defines whether to use GZip output buffering for increased speed in <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> transfers.<br />
-        Set to true/false for enabling/disabling. When set to 'auto' (string),
-phpMyAdmin tries to enable output buffering and will automatically disable
-it if your browser has some problems with buffering. IE6 with a certain
-patch is known to cause data corruption when having enabled buffering.</dd>
+    <dt id="cfg_OBGzip">$cfg['OBGzip'] 字符串/布尔</dt>
+    <dd>设置是否使用 GZip 压缩输出缓冲来加速 <abbr title="超文本转移协议 (HyperText Transfer
+Protocol)">HTTP</abbr> 传输。<br />
+        设为 true/false 以启/禁用。当设为 'auto' (字符串) 时，phpMyAdmin
+将尝试启用输出缓冲并在浏览器对缓冲支持有问题时自动禁用。已知具有特定补丁的 IE6 会在启用缓冲时导致数据损坏。</dd>
 
-    <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Whether persistent connections should be used or not (mysql_connect or
-mysql_pconnect).</dd>
+    <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] 布尔</dt>
+    <dd>设置是否使用持久连接 (mysql_connect 还是 mysql_pconnect) 。</dd>
 
-    <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
-    <dd>Whether to force using https while accessing phpMyAdmin.</dd>
+    <dt id="cfg_ForceSSL">$cfg['ForceSSL'] 布尔</dt>
+    <dd>设置在访问 phpMyAdmin 时是否强制使用 https 安全连接。</dd>
 
-    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [number of seconds]</dt>
-    <dd>Set the number of seconds a script is allowed to run. If seconds is set to
-zero, no time limit is imposed.<br />
-        This setting is used while importing/exporting dump files and in the
-Synchronize feature but has no effect when PHP is running in safe mode.</dd>
+    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] 整数 [单位: 秒]</dt>
+    <dd>设置脚本可以运行的时间。若设为 0 则无限制。<br />
+        本设置用于导入/导出转储文件以及同步功能中，若 PHP 运行于安全模式则无效。</dd>
 
-    <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] string</dt>
-    <dd>Path for storing session data (<a
-href="http://php.net/session_save_path">session_save_path PHP
-parameter</a>).</dd>
+    <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] 字符串</dt>
+    <dd>保存会话数据的路径 (<a href="http://php.net/session_save_path">PHP 参数
+session_save_path (外链，英语)</a>)。</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] integer [number of bytes]</dt>
-    <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
-limit is imposed.<br />
-        This setting is used while importing/exporting dump files and at some other
-places in phpMyAdmin so you definitely don't want to put here a too low
-value. It has no effect when PHP is running in safe mode.<br />
-        You can also use any string as in php.ini, eg. '16M'. Ensure you don't omit
-the suffix (16 means 16 bytes!)</dd>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] 整数 [单位: 字节]</dt>
+    <dd>设置脚本运行的可使用的内存。若设为 0 则无限制。<br />
+        本设置用于导入/导出转储文件以及 phpMyAdmin 的其他功能，所以显然不要设置一个很小的值。若 PHP 运行于安全模式则无效。<br />
+        同样可以设置为 php.ini 中可以识别的字符串，如 '16M' 。请确保没有丢掉后缀 (16 表示 16 字节！)</dd>
 
-    <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] boolean</dt>
+    <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] 布尔</dt>
     <dd>Mark used tables and make it possible to show databases with locked tables
 (since MySQL 3.23.30).</dd>
 
@@ -4275,45 +4248,30 @@ synchronize</a>
 
 
 <!-- DEVELOPERS -->
-<h2 id="developers">Developers Information</h2>
+<h2 id="developers">开发信息</h2>
 
-<p> phpMyAdmin is Open Source, so you're invited to contribute to it. Many great
-features have been written by other people and you too can help to make
-phpMyAdmin a useful tool.</p>
+<p> phpMyAdmin 是开源的，我们欢迎您的参与。很多优秀的功能都不是我们写的，你同样可以帮助 phpMyAdmin 变成更加实用的工具。</p>
 
-<p> If you're planning to contribute source, please read the following
-information:</p>
+<p> 如果您正打算贡献源代码，请阅读以下信息:</p>
 
-<ul><li>All files include <i>libraries/header.inc.php</i> (layout),.
-<i>libraries/common.lib.php</i> (common functions) and
-<i>config.inc.php</i>.<br />
-        Only configuration data should go in <i>config.inc.php</i>. Please keep it
-free from other code.<br />
-        Commonly used functions should be added to <i>libraries/common.lib.php</i>
-and more specific ones may be added within a library stored into the
-<i>libraries</i> sub-directory.</li>
-    <li>Obviously, you're free to use whatever coding style you want. But please try
-to keep your code as simple as possible: beginners are using phpMyAdmin as
-an example application.<br />
-        As far as possible, we want the scripts to be XHTML1.0 and CSS2 compliant on
-one hand, they fit the <a href="http://pear.php.net/"> <abbr title="PHP
-Extension and Application Repository">PEAR</abbr> coding standards</a> on
-the other hand. Please pay attention to this.</li>
-    <li>Please try to keep up the file-naming conventions. Table-related stuff goes
-to <i>tbl_*.php</i>, db-related code to <i>db_*.php</i>, server-related
-tools to <i>server_*.php</i> and so on.</li>
-    <li>Please don't put message strings in your code, instead add the string (at
-least) to <i>english-utf-8.inc.php</i> and print() it out.</li>
-    <li>If you want to be really helpful, write an entry for the ChangeLog.</li>
+<ul><li>所有文件包括 <i>libraries/header.inc.php</i> (布局)、<i>libraries/common.lib.php</i>
+(公共函数) 以及 <i>config.inc.php</i> 。<br />
+        <i>config.inc.php</i> 中应只存放设置。请勿在其中加入其他代码。<br />
+        公共函数应添加在 <i>libraries/common.lib.php</i> 中，特定功能的函数可以单独的函数库文件形式放在
+<i>libraries</i> 子目录中。</li>
+    <li>您可以使用任何喜欢的格式书写代码。但请尽量保持代码简洁: 初学者经常使用 phpMyAdmin 作为范例来学习。<br />
+        此外，我们希望能兼容 XHTML1.0 和 CSS2 并且符合 <a href="http://pear.php.net/"> <abbr
+title="PHP 扩展和应用程序库 (PHP Extension and Application Repository)">PEAR</abbr>
+代码标准</a>。请尽量注意。</li>
+    <li>请尽量保持文件命名约定。数据表相关的用 <i>tbl_*.php</i>，数据库相关的用 <i>db_*.php</i>，服务器相关的用
+<i>server_*.php</i> 等。</li>
+    <li>请将消息字符串 (至少) 放在<i>english-utf-8.inc.php</i> 中然后用 print() 函数输出，而不是直接写在代码中。</li>
+    <li>如果您写一份更新记录，这将会更加有帮助。</li>
     <li id="developersdbg">
-        The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
-now supported by phpMyAdmin for developers to better debug and profile their
-code.<br />
-        Please see the <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a>
-configuration options for more information.<br />
-        This is in memoriam of the Space Shuttle Columbia (STS-107) which was lost
-during its re-entry into Earth's atmosphere and in memory of the brave men
-and women who gave their lives for the people of Earth.</li>
+        phpMyAdmin 现在已经支持 DBG 扩展 (<a href="http://dd.cron.ru/dbg/">PHP 调试器 DBG
+(外链，英语)</a>) 以便开发者能更好地调试以及测试他们的代码。<br />
+        更多信息请参见 <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a> 设置选项。<br />
+        纪念哥伦比亚号航天飞机 (STS-107) 在重新进入地球大气层时爆炸以及纪念为了地球人民牺牲的勇敢的人们。</li>
 </ul>
 
 <h2 id="copyright">版权</h2>
@@ -4355,34 +4313,33 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <li>Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
 <ul>
   <li>phpmyadmin 项目创始人</li>
-  <li>maintainer from 1998 to summer 2000</li>
+  <li>1998 至 2000 年夏季的主要维护人</li>
 </ul></li>
 
 <li>Marc Delisle &lt;marc_at_infomarc.info&gt;
 <ul>
-  <li>multi-language version</li>
-  <li>various fixes and improvements</li>
-  <li><abbr title="structured query language">SQL</abbr> analyser (most of it)</li>
-  <li>current project maintainer</li>
+  <li>多语言版本</li>
+  <li>许多修正和改进</li>
+  <li><abbr title="结构化查询语言 (structured query language)">SQL</abbr> 分析器 (大部分)</li>
+  <li>目前的主要维护人</li>
 </ul></li>
 
 <li>Olivier M&uuml;ller &lt;om_at_omnis.ch&gt;
 <ul>
-  <li>started SourceForge phpMyAdmin project in March 2001</li>
-  <li>sync'ed different existing CVS trees with new features and bugfixes</li>
-  <li>multi-language improvements, dynamic language selection</li>
-  <li>current project maintainer</li>
-  <li>many bugfixes and improvements</li>
+  <li>于 2001 年 3 月在 SourceForge 启动 phpMyAdmin 项目</li>
+  <li>同步新功能和缺陷修正到不同的 CVS</li>
+  <li>改进多语言，动态语言选择</li>
+  <li>目前的主要维护人</li>
+  <li>许多缺陷修正和改进</li>
 </ul></li>
 
 <li>Lo&iuml;c Chapeaux &lt;lolo_at_phpheaven.net&gt;
 <ul>
-  <li>rewrote and optimized javascript, DHTML and DOM stuff</li>
-  <li>rewrote the scripts so they fit the <abbr title="PHP Extension and
-Application Repository">PEAR</abbr> coding standards and generate XHTML1.0
-and CSS2 compliant codes</li>
-  <li>improved the language detection system</li>
-  <li>many bugfixes and improvements</li>
+  <li>重写并优化 javascript、DHTML 和 DOM</li>
+  <li>重写脚本使其符合 <abbr title="PHP 扩展和应用程序库 (PHP Extension and Application
+Repository)">PEAR</abbr> 代码标准以及 XHTML1.0 和 CSS2 规范</li>
+  <li>改进语言识别系统</li>
+  <li>许多缺陷修正和改进</li>
 </ul></li>
 
 <li>Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
@@ -4393,7 +4350,7 @@ and CSS2 compliant codes</li>
   <li>DB-based configuration (Not completed)</li>
   <li><abbr title="structured query language">SQL</abbr> parser and pretty-printer</li>
   <li><abbr title="structured query language">SQL</abbr> validator</li>
-  <li>many bugfixes and improvements</li>
+  <li>许多缺陷修正和改进</li>
 </ul></li>
 
 <li>Armel Fauveau &lt;armel.fauveau_at_globalis-ms.com&gt;
@@ -4525,7 +4482,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 <li>Marcel Tschopp &lt;ne0x_at_users.sourceforge.net&gt;
 <ul>
   <li>mysqli support</li>
-  <li>many bugfixes and improvements</li>
+  <li>许多缺陷修正和改进</li>
 </ul></li>
 
 <li>Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
