@@ -2325,103 +2325,85 @@ unsigned/zerofill/not_null/... properties.<br />
 
 
 <!-- FAQ -->
-<h2 id="faq">FAQ - Frequently Asked Questions</h2>
+<h2 id="faq">常见问题</h2>
 
 <ol><li><a href="#faqserver">Server</a></li>
-    <li><a href="#faqconfig">Configuration</a></li>
-    <li><a href="#faqlimitations">Known limitations</a></li>
+    <li><a href="#faqconfig">设置</a></li>
+    <li><a href="#faqlimitations">已知问题</a></li>
     <li><a href="#faqmultiuser">ISPs, multi-user installations</a></li>
-    <li><a href="#faqbrowsers">Browsers or client <abbr title="operating
-system">OS</abbr></a></li>
-    <li><a href="#faqusing">Using phpMyAdmin</a></li>
-    <li><a href="#faqproject">phpMyAdmin project</a></li>
-    <li><a href="#faqsecurity">Security</a></li>
-    <li><a href="#faqsynchronization">Synchronization</a></li>
+    <li><a href="#faqbrowsers">浏览器和客户端<abbr title="operating system">操作系统</abbr></a></li>
+    <li><a href="#faqusing">使用 phpMyAdmin</a></li>
+    <li><a href="#faqproject">phpMyAdmin 项目</a></li>
+    <li><a href="#faqsecurity">安全</a></li>
+    <li><a href="#faqsynchronization">同步</a></li>
 </ol>
 
-<p> Please have a look at our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin homepage for in-depth coverage of phpMyAdmin's features
-and or interface.</p>
+<p> 请到我们的<a href="http://www.phpmyadmin.net/home_page/docs.php">官方网站</a>上查看更多有关
+phpMyAdmin 的特性和接口方面的信息。</p>
 
-<h3 id="faqserver">Server</h3>
+<h3 id="faqserver">服务器</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 I'm running PHP 4+ and my server is crashing each time
-a specific action is required or phpMyAdmin sends a blank page or a page
-full of cryptic characters to my browser, what can I do?</a></h4>
+    <a href="#faq1_1">1.1 我正在使用 PHP 4+ 版本，在我执行某些特性操作的时候服务器总是会发生一些错误，如 phpMyAdmin
+返回空页面，或者显示乱码，我该怎么办？</a></h4>
 
-<p> There are some known PHP bugs with output buffering and compression.<br />
-    Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
-directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
-<tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php
-configuration file.<br />
-    Furthermore, we know about such problems connected to the release candidates
-of PHP 4.2.0 (tested with PHP 4.2.0 RC1 to RC4) together with MS Internet
-Explorer. Please upgrade to the release version PHP 4.2.0.</p>
+<p> PHP 在输出缓冲和压缩上有一些 Bug。<br />
+    在 <i>config.inc.php</i> 文件中将 <a href="#cfg_OBGzip"
+class="configurule">$cfg['OBGzip']</a> 显式地设为 <tt>FALSE</tt>，同时将 PHP 配置文件中的
+<tt>zlib.output_compression</tt> 显式地设置为 <tt>Off</tt>。<br />
+    我们发现这样的问题与 PHP 4.2.0 发布候选版本（PHP 4.2.0 RC1 到 RC4）及 Internet Explorer 有关，请升级你的
+PHP 到 4.2.0 版本。</p>
 
 <h4 id="faq1_2">
-    <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
+    <a href="#faq1_2">1.2 使用 phpMyAdmin 时，我的 Apache 服务器崩溃了。</a></h4>
 
-<p> You should first try the latest versions of Apache (and possibly MySQL).<br />
-    See also the <a href="#faq1_1"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
-    If your server keeps crashing, please ask for help in the various Apache
-support groups.</p>
+<p> 请将 Apache 更新到最新版本（如果可能的话，请将 MySQL 也更新到最新版本）。<br />
+    参考 <a href="#faq1_1"><abbr title="常见问题">常见问题</abbr> 1.1</a> 中有关 PHP 输出缓冲的问题。<br />
+    如果你的服务器依旧崩溃，请向 Apache 技术支持小组寻求帮助。</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 I'm running phpMyAdmin with "cookie" authentication
-mode under PHP 4.2.0 or 4.2.1 loaded as an Apache 2 module but can't enter
-the script: I'm always displayed the login screen.</a></h4>
+    <a href="#faq1_3">1.3 我无法登录 phpMyAdmin，phpMyAdmin 总是显示登录页面。 phpMyAdmin
+的认证方式设置为 cookie 认证，PHP 版本是 4.2.0（或 4.2.1），以 Apache 模块方式运行。</a></h4>
 
-<p> This is a known PHP bug (see this <a
-href="http://bugs.php.net/bug.php?id=16626">bug report</a>) from the
-official PHP bug database. It means there is and won't be any phpMyAdmin fix
-against it because there is no way to code a fix.</p>
+<p> 这是一个 PHP 的 Bug（参考 PHP 官方错误数据库上的<a
+href="http://bugs.php.net/bug.php?id=16626">错误反馈</a>），因此，phpMyAdmin
+不会也无法对此错误进行修复。</p>
 
 <h4 id="faq1_4">
-    <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm displayed the error message: &quot;The specified
-<abbr title="Common Gateway Interface">CGI</abbr> application misbehaved by
-not returning a complete set of <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> headers ...&quot;.</a>
+    <a href="#faq1_4">1.4 我在 <abbr title="Internet Information
+Services">IIS</abbr> 上使用 phpMyAdmin，网页显示了这样一段错误信息：&quot;<abbr title="Common
+Gateway Interface">CGI</abbr> 应用程序错误，返回了不完整的<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 头 ...&quot;。</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the php
-distribution.  Have a look at the last message in this <a
-href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
-PHP bug database.</p>
+<p> 您是不是忘记阅读 PHP 发行版中的 <i>install.txt</i> 了？请参考 PHP 官方错误数据库中的<a
+href="http://bugs.php.net/bug.php?id=12061">这个错误反馈</a>。</p>
 
 <h4 id="faq1_5">
-    <a href="#faq1_5">1.5 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm facing crashes and/or many error messages with the
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or advanced
-authentication mode.</a></h4>
+    <a href="#faq1_5">1.5 phpMyAdmin 运行在 <abbr title="Internet Information
+Services">IIS</abbr> 上，使用<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 认证。我的服务器总是崩溃（有时还伴随着大量的错误信息）。</a></h4>
 
-<p> This is a known problem with the PHP <abbr title="Internet Server
-Application Programming Interface">ISAPI</abbr> filter: it's not so
-stable. Please use instead the cookie authentication mode.
+<p> 这是一个已知的 PHP <abbr title="Internet Server Application Programming
+Interface">ISAPI</abbr> 过滤器错误：PHP 的 ISAPI 过滤器不是很稳定，建议使用 cookie 认证方式。
 </p>
 
 <h4 id="faq1_6">
-    <a href="#faq1_6">1.6 I can't use phpMyAdmin on PWS: nothing is
-displayed!</a></h4>
+    <a href="#faq1_6">1.6 我无法在 PWS 上使用 phpMyAdmin，网页显示一片空白。</a></h4>
 
-<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
-time there is no better fix): remove or comment the <tt>DOCTYPE</tt>
-declarations (2 lines) from the scripts <i>libraries/header.inc.php</i>,
-<i>libraries/header_printview.inc.php</i>, <i>index.php</i>,
-<i>navigation.php</i> and <i>libraries/common.lib.php</i>.</p>
+<p> 这看上去像是 PWS 的 Bug。Filippo Simoncini 找到了一个解决方法，这是目前最好的解决方法：从
+<i>libraries/header.inc.php</i>, <i>libraries/header_printview.inc.php</i>,
+<i>index.php</i>, <i>navigation.php</i> 和 <i>libraries/common.lib.php</i>
+这几个文件中删除 <tt>DOCTYPE</tt>（共2行）。</p>
 
 <h4 id="faq1_7">
-    <a href="#faq1_7">1.7 How can I GZip or Bzip a dump or a <abbr title="comma
-separated values">CSV</abbr> export? It does not seem to work.</a></h4>
+    <a href="#faq1_7">1.7 如何使用 Gzip 或 Bzip 压缩 <abbr title="comma separated
+values">CSV</abbr> 和其他类型的导出文件？ 我设置了相关选项但是似乎不起作用。</a></h4>
 
-<p> These features are based on the <tt>gzencode()</tt> and
-<tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have
-PHP4&nbsp;&gt;=&nbsp;4.0.4 and Zlib/Bzip2 support (<tt>--with-zlib</tt> and
-<tt>--with-bz2</tt>).<br />
+<p> 为了获得更高的平台兼容性（如运行于 Unix 和 Windows，使用安全模式和不使用安全模式），该功能需要使用 PHP
+的<tt>gzencode()</tt> 和 <tt>bzcompress()</tt> 函数。因此，你需要将 PHP4 升级到
+&gt;=&nbsp;4.0.4 版本，并打开 Zlib/Bzip2 支持（编译选项：<tt>--with-zlib</tt> and
+<tt>--with-bz2</tt>）。<br />
     We faced PHP crashes when trying to download a dump with MS Internet
 Explorer when phpMyAdmin is run with a release candidate of PHP 4.2.0. In
 this case you should switch to the release version of PHP 4.2.0.</p>
