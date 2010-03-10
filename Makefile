@@ -28,8 +28,8 @@ output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_co
 	po4a-translate -f xhtml -m ../phpmyadmin/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
 	touch $@
 
-output/%/translators.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/translators.html
-	po4a-translate -f xhtml -m ../phpmyadmin/translators.html -p $< -l output/$*/translators.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
+output/%/translators.html.stamp: po/%.po addendum/html_head-translations.% addendum/html_comment.% ../phpmyadmin/translators.html
+	po4a-translate -f xhtml -m ../phpmyadmin/translators.html -p $< -l output/$*/translators.html ${PO4AOPTS} --addendum addendum/html_head-translations.$* --addendum addendum/html_comment.$*
 	touch $@
 
 output/%/README.stamp: po/%.po ../phpmyadmin/README
@@ -44,9 +44,15 @@ output/%/INSTALL.stamp: po/%.po ../phpmyadmin/INSTALL
 	po4a-translate -f text -m ../phpmyadmin/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
 	touch $@
 
+.PRECIOUS: addendum/html_head.%
 addendum/html_head.%: po/%.po addendum/head.html addendum/add-html_head
 	po4a-translate -f xhtml -m addendum/head.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_head
 
+.PRECIOUS: addendum/html_head-translations.%
+addendum/html_head-translations.%: po/%.po addendum/head.html addendum/add-html_head-translations
+	po4a-translate -f xhtml -m addendum/head.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_head-translations
+
+.PRECIOUS: addendum/html_comment.%
 addendum/html_comment.%: po/%.po addendum/comment.html addendum/add-html_comment
 	po4a-translate -f text -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
 
