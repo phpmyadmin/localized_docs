@@ -8,32 +8,37 @@ PO4A_PO_OPTS=--msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
 		--package-name "phpMyAdmin documentation" \
 		-M utf-8 \
 
-all: $(addsuffix /Documentation.html, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /translators.html, $(addprefix output/, ${LANGUAGES})) \
+all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /translators.html.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /index.html, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /README, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /INSTALL, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /TODO, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /README.stamp, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /INSTALL.stamp, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /TODO.stamp, $(addprefix output/, ${LANGUAGES})) \
 	output/index.html
 
 
 output/%/index.html: po/%.po output/%/index-template.html
 	po4a-translate -f xhtml -m output/$*/index-template.html -p $< -l $@ ${PO4AOPTS} -k 0
 
-output/%/Documentation.html: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/Documentation.html
-	po4a-translate -f xhtml -m ../phpmyadmin/Documentation.html -p $< -l $@ ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
+output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/Documentation.html
+	po4a-translate -f xhtml -m ../phpmyadmin/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
+	touch $@
 
-output/%/translators.html: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/translators.html
-	po4a-translate -f xhtml -m ../phpmyadmin/translators.html -p $< -l $@ ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
+output/%/translators.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/translators.html
+	po4a-translate -f xhtml -m ../phpmyadmin/translators.html -p $< -l output/$*/translators.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
+	touch $@
 
-output/%/README: po/%.po ../phpmyadmin/README
-	po4a-translate -f text -m ../phpmyadmin/README -p $< -l $@ ${PO4AOPTS}
+output/%/README.stamp: po/%.po ../phpmyadmin/README
+	po4a-translate -f text -m ../phpmyadmin/README -p $< -l output/$*/README ${PO4AOPTS}
+	touch $@
 
-output/%/TODO: po/%.po ../phpmyadmin/TODO
-	po4a-translate -f text -m ../phpmyadmin/TODO -p $< -l $@ ${PO4AOPTS}
+output/%/TODO.stamp: po/%.po ../phpmyadmin/TODO
+	po4a-translate -f text -m ../phpmyadmin/TODO -p $< -l output/$*/TODO ${PO4AOPTS}
+	touch $@
 
-output/%/INSTALL: po/%.po ../phpmyadmin/INSTALL
-	po4a-translate -f text -m ../phpmyadmin/INSTALL -p $< -l $@ ${PO4AOPTS}
+output/%/INSTALL.stamp: po/%.po ../phpmyadmin/INSTALL
+	po4a-translate -f text -m ../phpmyadmin/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
+	touch $@
 
 addendum/html_head.%: po/%.po addendum/head.html addendum/add-html_head
 	po4a-translate -f xhtml -m addendum/head.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_head
