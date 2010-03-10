@@ -2404,26 +2404,20 @@ values">CSV</abbr> 和其他类型的导出文件？ 我设置了相关选项但
 的<tt>gzencode()</tt> 和 <tt>bzcompress()</tt> 函数。因此，你需要将 PHP4 升级到
 &gt;=&nbsp;4.0.4 版本，并打开 Zlib/Bzip2 支持（编译选项：<tt>--with-zlib</tt> and
 <tt>--with-bz2</tt>）。<br />
-    We faced PHP crashes when trying to download a dump with MS Internet
-Explorer when phpMyAdmin is run with a release candidate of PHP 4.2.0. In
-this case you should switch to the release version of PHP 4.2.0.</p>
+    使用 Internet Explorer 下载转储时 PHP 崩溃，如果您正在使用 PHP 4.2.0 候选发行版本，请将其升级到 4.2.0 稳定版。</p>
 
 <h4 id="faq1_8">
-    <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
-error about safe mode being in effect.</a></h4>
+    <a href="#faq1_8">1.8 我无法向表中插入文本文件，并且有错误提示说这是因为在安全模式无法进行这样的操作。</a></h4>
 
-<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
-in <i>php.ini</i> by the variable <tt>upload_tmp_dir</tt> (usually the
-system default is <i>/tmp</i>).<br />
-    We recommend the following setup for Apache servers running in safe mode, to
-enable uploads of files while being reasonably secure:</p>
+<p> 您上传的文件被保存在 &quot;上传目录&quot，这个目录可以在 <i>php.ini</i> 中设置（默认设置是 <i>/tmp</i>）。<br />
+    我们推荐您按照下面的步骤将 Apache 服务器配置在安全模式下运行，这可以保证安全的前提下允许上传文件（本操作仅适用于类 Unix 操作系统）：</p>
 
-<ul><li>create a separate directory for uploads: <tt>mkdir /tmp/php</tt></li>
-    <li>give ownership to the Apache server's user.group: <tt>chown apache.apache
-/tmp/php</tt></li>
-    <li>give proper permission: <tt>chmod 600 /tmp/php</tt></li>
-    <li>put <tt>upload_tmp_dir = /tmp/php</tt> in <i>php.ini</i></li>
-    <li>restart Apache</li>
+<ul><li>创建一个用于临时保存上传文件的目录：<tt>mkdir /tmp/php</tt></li>
+    <li>将这个目录的所有权更改为 Apache 用户组：<tt>chown apache.apache /tmp/php</tt></li>
+    <li>设置权限：<tt>chmod 600 /tmp/php</tt></li>
+    <li>修改 <i>php.ini</i> 文件，将 <tt>upload_tmp_dir</tt> 设置为
+<tt>/tmp/php</tt>（如果没有这一行，请自行添加）</li>
+    <li>重新启动 Apache</li>
 </ul>
 
 <h4 id="faq1_9">
@@ -2431,117 +2425,95 @@ enable uploads of files while being reasonably secure:</p>
 file uploads don't work on my system and uploaded files have a
 <tt>Content-Type:</tt> header in the first line.</a></h4>
 
-<p> It's not really phpMyAdmin related but RedHat 7.0. You have a RedHat 7.0 and
-you updated your PHP RPM to php-4.0.4pl1-3.i386.rpm, didn't you?<br />
-    So the problem is that this package has a serious bug that was corrected
-ages ago in PHP (2001-01-28: see <a
-href="http://www.php.net/bugs.php?id=8966">PHP's bug tracking system</a> for
-more details). The problem is that the bugged package is still available
-though it was corrected (see <a
-href="http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933">RedHat's
-BugZilla</a> for more details).<br />
-    So please download <a
-href="http://www.redhat.com/swr/i386/php-4.0.4pl1-9.i386.html">the fixed
-package (4.0.4pl1-9)</a> and the problem should go away.<br />
-    And that fixes the \r\n problem with file uploads!</p>
+<p> 这不是 phpMyAdmin 的问题，而是 RedHat 7.0 的问题。您是不是在使用 RedHat 7.0 并使用
+php-4.0.4pl1-3.i386.rpm 更新了你的 PHP？<br />
+    这个问题是由一个很古老的 PHP 严重错误引起的（于 2001年1月28日，见：<a
+href="http://www.php.net/bugs.php?id=8966">PHP 错误追踪系统</a>）。虽然这个 PHP
+错误早已修复了，但是软件源中仍保留着有这个错误的软件包（见 <a
+href="http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933">RedHat
+错误追踪系统</a>，于是就引发了您遇到的问题。<br />
+    要解决此问题，请下载<a
+href="http://www.redhat.com/swr/i386/php-4.0.4pl1-9.i386.html">修复软件包(4.0.4pl1-9)</a>进行安装。<br />
+    安装之后，就能解决您遇到的问题。</p>
 
 <h4 id="faq1_10">
-    <a href="#faq1_10">1.10 I'm having troubles when uploading files with
-phpMyAdmin running on a secure server. My browser is Internet Explorer and
-I'm using the Apache server.</a></h4>
+    <a href="#faq1_10">1.10 我在上传文件的时候遇到了问题，phpMyAdmin 运行在安全服务器上，服务器软件是
+Apache，我使用的浏览器是 Internet Explorer。</a></h4>
 
-<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
-your <i>httpd.conf</i>:</p>
+<p> &quot;Rob M&quot; 在 PHP 帮助论坛给出了解决方法：将下面一行加入到您的 <i>httpd.conf</i> 文件中</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
-<p> It seems to clear up many problems between Internet Explorer and SSL.</p>
+<p> 该方法似乎可以解决许多使用 Internet Explorer 或 SSL 时遇到的问题。</p>
 
 <h4 id="faq1_11">
-    <a href="#faq1_11">1.11 I get an 'open_basedir restriction' while uploading
-a file from the query box.</a></h4>
+    <a href="#faq1_11">1.11 我试图从查询窗口上传文件时发生了错误，错误信息是 '开放目录限制'(open_basedir
+restriction) </a></h4>
 
-<p> Since version 2.2.4, phpMyAdmin supports servers with open_basedir
-restrictions. However you need to create temporary directory and configure
-it as <a href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a>.  The
-uploaded files will be moved there, and after execution of your <abbr
-title="structured query language">SQL</abbr> commands, removed.</p>
+<p> 从 2.2.4 版本开始，phpMyAdmin 支持服务器上的开放目录限制(open_basedir
+restrictions)。但是，你需要进行设置才能使用此功能。请创建一个临时目录，并将 <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> 设置为临时目录的路径。您上传的文件将会被临时存放在此目录下，SQL
+语句执行完毕以后，临时文件就会被删除。</p>
 
 <h4 id="faq1_12">
-    <a href="#faq1_12">1.12 I have lost my MySQL root password, what can I
-do?</a></h4>
+    <a href="#faq1_12">1.12 我忘了 MySQL 的 root 密码，怎么办？</a></h4>
 
-<p> The MySQL manual explains how to <a
-href="http://www.mysql.com/doc/R/e/Resetting_permissions.html"> reset the
-permissions</a>.</p>
+<p> 请参考 MySQL 手册：<a
+href="http://www.mysql.com/doc/R/e/Resetting_permissions.html">重设权限</a>.</p>
 
 <h4 id="faq1_13">
-    <a href="#faq1_13">1.13 I get an error 'No <abbr title="structured query
-language">SQL</abbr> query' when trying to execute a bookmark.</a></h4>
+    <a href="#faq1_13">1.13 在我试图运行一条书签的时候，得到了如下错误信息：'没有 <abbr title="structured
+query language">SQL</abbr> 查询'</a></h4>
 
-<p> If PHP does not have read/write access to its <tt>upload_tmp_dir</tt>, it
-cannot access the uploaded query.</p>
+<p> 如果 PHP 对 <tt>upload_tmp_dir</tt> 目录没有读写权限，phpMyAdmin 将无法读取您上传的查询。</p>
 
 <h4 id="faq1_14">
     <a href="#faq1_14">1.14 I get an error 'No <abbr title="structured query
 language">SQL</abbr> query' when trying to submit a query from the
 convenient text area.</a></h4>
 
-<p> Check the <tt>post_max_size</tt> directive from your PHP configuration file
-and try to increase it.</p>
+<p> 检查 <tt>post_max_size</tt> 有没有在 PHP 的配置文件中显式指定，如果有，试着增加其大小。</p>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> field
-names.</a>
+    <a href="#faq1_15">1.15 我在 <i>mysql.user</i> field names 上遇到了问题。</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt> fields
-were named <tt>user</tt> and <tt>password</tt>. Please modify your field
-names to align with current standards.</p>
+<p> 在较老的 MySQL 版本中，<tt>User</tt> 和 <tt>Password</tt> 字段分别被命名为 <tt>user</tt> 和
+<tt>password</tt>。请修改您的字段名中的大小写使其符合标准。</p>
 
 <h4 id="faq1_16">
-    <a href="#faq1_16">1.16 I cannot upload big dump files (memory, <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> or timeout problems).</a>
+    <a href="#faq1_16">1.16 我无法上传转储文件，上传时遇到了内存、 <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 、超时等方面的错误).</a>
 </h4>
 
-<p> Starting with version 2.7.0, the import engine has been re&#8211;written and
-these problems should not occur. If possible, upgrade your phpMyAdmin to the
-latest version to take advantage of the new import features.</p>
+<p> phpMyAdmin 在 2.7.0 重写了导入引擎，并修复了以上问题。如果可能，请升级 phpMyAdmin 到最新版本，并体验 phpMyAdmin
+新版给您带来的新特性。</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that post_max_size and memory_limit
-need to be larger than upload_max_filesize.<br /> <br />
+<p> 请检查 <i>php.ini</i> 文件中的 <tt>upload_max_filesize</tt>、 <tt>memory_limit</tt>
+以及 <tt>post_max_size</tt> 的设置值。这三个选项都会影响您可以上传的文件大小和 PHP
+能够处理的文件大小。如果您没有服务器管理权，请联系服务器管理员（或服务器提供商）检查这几项设置。另外，有用户反应 post_max_size 和
+memory_limit 的设置值必须比 upload_max_filesize 的设置值大。<br /> <br />
 
-    There exist several workarounds if your upload is too big or your hosting
-provider is unwilling to change the settings:</p>
+    如果您上传的文件很大，或者服务器管理员或提供商不愿意修改以上几个设置，请参考下面的解决方法：</p>
 
-<ul><li>Look at the <a href="#cfg_UploadDir"
-class="configrule">$cfg['UploadDir']</a> feature. This allows one to upload
-a file to the server via scp, ftp, or your favorite file transfer
-method. PhpMyAdmin is then able to import the files from the temporary
-directory. More information is available in the <a
-href="#config">Configuration section</a> of this document.</li>
-    <li>Using a utility (such as <a href="http://www.ozerov.de/bigdump.php">
-BigDump</a>) to split the files before uploading. We cannot support this or
-any third party applications, but are aware of users having success with it.</li>
-    <li>If you have shell (command line) access, use MySQL to import the files
-directly. You can do this by issuing the &quot;source&quot; command from
-within MySQL: <tt>source <i>filename.sql</i></tt>.</li>
+<ul><li>设置 <a href="#cfg_UploadDir"
+class="configrule">$cfg['UploadDir']</a>。设置该值后，您可以使用 SCP、FTP
+或其他您喜欢的上传方式，将文件上传到临时目录，之后让 phpMyAdmin 从临时目录中读取文件。详细说明请参考本手册的<a
+href="#config">设置</a> 一节。</li>
+    <li>使用第三方工具（如 <a href="http://www.ozerov.de/bigdump.php">
+BigDump</a>）来将上传文件分割成小文件。phpMyAdmin 能够处理分割文件。但是，我们担心用户是否知道应该如何进行文件分割操作。</li>
+    <li>如果您能够使用 MySQL 的命令行，您可以直接在命令行中导入文件。您可以使用 MySQL 的 source 命令来导入文件，例如：<tt>source
+<i>filename.sql</i></tt>。</li>
 </ul>
 
 <h4 id="faq1_17">
-    <a id="faqmysqlversions" href="#faq1_17">1.17 Which MySQL versions does
-phpMyAdmin support?</a></h4>
+    <a id="faqmysqlversions" href="#faq1_17">1.17 phpMyAdmin 支持什么版本的 MySQL？</a></h4>
 
-<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
-MySQL versions, you need to use 2.8.x branch. phpMyAdmin can connect to your
-MySQL server using PHP's classic <a href="http://php.net/mysql">MySQL
-extension</a> as well as the <a href="http://php.net/mysqli">improved MySQL
-extension (MySQLi)</a> that is available in php 5.0. The latter one should
-be used unless you have good reason not to do so.<br />
+<p> 从 phpMyAdmin 3.0.x 开始，我们只支持 MySQL 5.0.1 或更新的 MySQL 版本。对于过去的 MySQL 版本，您必须使用
+phpMyAdmin 2.8.x 分支版本。这是因为，由于 PHP 的 <a href="http://php.net/mysql">MySQL
+扩展</a>升级到 MySQLi（<a href="http://php.net/mysqli">improved MySQL extension
+</a>），新版的 phpMyAdmin 使用 MySQLi 而无法连接到旧版的 MySQL。MySQLi 比传统的 MySQL
+扩展更好，如果没有特殊的原因，我们没理由使用以前的 MySQL 扩展。<br />
     When compiling php, we strongly recommend that you manually link the MySQL
 extension of your choice to a MySQL client library of at least the same
 minor version since the one that is bundled with some PHP distributions is
@@ -2553,9 +2525,8 @@ instead of the MySQL / MySQLi extensions that are bundled with the official
 php Win32 builds.</p>
 
 <h5 id="faq1_17a">
-    <a href="#faq1_17a">1.17a I cannot connect to the MySQL server. It always
-returns the error message, &quot;Client does not support authentication
-protocol requested by server; consider upgrading MySQL client&quot;</a></h5>
+    <a href="#faq1_17a">1.17a 我无法连接到 MySQL
+服务器，它总是提示这个错误：&quot;客户端不支持服务器要求的认证方式，请升级 MySQL 客户端&quot;</a></h5>
 
 <p> You tried to access MySQL with an old MySQL client library. The version of
 your MySQL client library can be checked in your phpinfo() output.  In
@@ -2563,157 +2534,130 @@ general, it should have at least the same minor version as your server - as
 mentioned in <a href="#faq1_17"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.17</a>.<br /><br />
 
-    This problem is generally caused by using MySQL version 4.1 or newer. MySQL
-changed the authentication hash and your PHP is trying to use the old
-method.  The proper solution is to use the <a
-href="http://www.php.net/mysqli">mysqli extension</a> with the proper client
-library to match your MySQL installation. Your chosen extension is specified
-in <a href="#cfg_Servers_extension"
-class="configrule">$cfg['Servers'][$i]['extension']</a>.  More information
-(and several workarounds) are located in the <a
-href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL
-Documentation</a>.
+    通常在使用 MySQL 4.1 版本时会遇到此问题。MySQL 改变了认证过程中的哈希值，但 PHP 仍使用旧的方法计算此值。要解决此问题，请使用 <a
+href="http://www.php.net/mysqli">mysqli 扩展</a>和与 MySQL 服务器相容的客户端库。您可以在 <a
+href="#cfg_Servers_extension"
+class="configrule">$cfg['Servers'][$i]['extension']</a> 设置中设置使用
+MySQLi。有关更多内容请阅读<a
+href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL 手册</a>。
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 I'm running MySQL&nbsp;&lt;=&nbsp;4.0.1 having
-<tt>lower_case_table_names</tt> set to 1. If I create a new table with a
-capital letter in its name it is changed to lowercase as it should. But if I
-try to DROP this table MySQL is unable to find the corresponding file.</a></h4>
+    <a href="#faq1_18">1.18 我正在使用  MySQL&nbsp;&lt;=&nbsp;4.0.1 并将
+<tt>lower_case_table_names</tt> 设置到了1。在我使用大写字符创建一个表时，MySQL
+创建了一个表名为全小写的表。但当我删除这个表时， MySQL 却无法找到对应的表文件。</a></h4>
 
-<p> This is a bug of MySQL&nbsp;&lt;=&nbsp;4.0.1. Please upgrade to at least
-MySQL&nbsp;4.0.2 or turn off your <tt>lower_case_table_names</tt> directive.</p>
+<p> 这是 MySQL&nbsp;&lt;=&nbsp;4.0.1 的一个错误。请将您的 MySQL 升级到 MySQL&nbsp;4.0.2
+版本，或者显式关闭  <tt>lower_case_table_names</tt> 选项。</p>
 
 <h4 id="faq1_19">
-    <a href="#faq1_19">1.19 I can't run the &quot;display relations&quot;
-feature because the script seems not to know the font face I'm using!</a></h4>
+    <a href="#faq1_19">1.19 我无法使用&quot;显示关系&quot;功能。似乎脚本不认识我正在使用的字体。</a></h4>
 
-<p> The &quot;FPDF&quot; library we're using for this feature requires some
-special files to use font faces.<br />
-    Please refers to the <a href="http://www.fpdf.org/">FPDF manual</a> to build
-these files.</p>
+<p> 在此功能中我们使用了 &quot;FPDF&quot; 库，该库还需要其他的一些文件才能使用自定义字体（font faces）。<br />
+    请参考 <a href="http://www.fpdf.org/">FPDF 手册</a> 来生成这些必要的文件。</p>
 
 <h4 id="faqmysql">
-    <a href="#faqmysql">1.20 I receive the error &quot;cannot load MySQL
-extension, please check PHP Configuration&quot;.</a></h4>
+    <a href="#faqmysql">1.20 我得到了这样的错误信息： &quot;无法载入 MySQL 扩展，请检查 PHP
+配置&quot;。</a></h4>
 
-<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
-&quot;MySQL extension&quot;. This extension may be part of the PHP
-distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
-name is probably <i>mysql.so</i> or <i>php_mysql.dll</i>. phpMyAdmin tried
-to load the extension but failed.<br /><br />
+<p> 要连接到 MySQL 服务器，PHP 需要使用 MySQL 扩展中相关的 MySQL 函数。这个扩展应该需要编译到 PHP
+中，或者以动态方式加载。如果是以动态方式加载，动态库的文件有可能是 <i>mysql.so</i> 或
+<i>php_mysql.dll</i>。phpMyAdmin 试图加载动态库文件，但加载失败了。<br /><br />
 
-    Usually, the problem is solved by installing a software package called
-&quot;PHP-MySQL&quot; or something similar.</p>
+    通常情况下，安装 &quot;PHP-MySQL&quot; 或者其他类似的软件包即可解决此问题。</p>
 
 <h4 id="faq1_21">
-    <a href="#faq1_21">1.21 I am running the <abbr title="Common Gateway
-Interface">CGI</abbr> version of PHP under Unix, and I cannot log in using
-cookie auth.</a></h4>
+    <a href="#faq1_21">1.21 我在 Unix 下以 <abbr title="Common Gateway
+Interface">CGI</abbr> 方式运行 PHP，但却无法使用 cookie 认证方式来登录。</a></h4>
 
-<p> In <i>php.ini</i>, set <tt>mysql.max_links</tt> higher than 1.</p>
+<p> 在 <i>php.ini</i> 文件中将 <tt>mysql.max_links</tt> 设为比1大的值。</p>
 
 <h4 id="faq1_22">
-    <a href="#faq1_22">1.22 I don't see the &quot;Location of text file&quot;
-field, so I cannot upload.</a></h4>
+    <a href="#faq1_22">1.22 我找不到 &quot;选择文件&quot; 的按钮，那该怎么上传文件？</a></h4>
 
-<p> This is most likely because in <i>php.ini</i>, your <tt>file_uploads</tt>
-parameter is not set to &quot;on&quot;.</p>
+<p> 通常这是因为您没有在 <i>php.ini</i> 中将 <tt>file_uploads</tt> 选项设置为 &quot;on&quot;。</p>
 
 <h4 id="faq1_23">
-    <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
-create a new table the table and field names are changed to lowercase!</a></h4>
+    <a href="#faq1_23">1.23 我在 Win32 系统上使用
+MySQL，每次我创建表的时候表名都会被自动设为全小写，这是怎么回事？</a></h4>
 
-<p> This happens because the MySQL directive <tt>lower_case_table_names</tt>
-defaults to 1 (<tt>ON</tt>) in the Win32 version of MySQL. You can change
-this behavior by simply changing the directive to 0 (<tt>OFF</tt>):<br />
-    Just edit your <tt>my.ini</tt> file that should be located in your Windows
-directory and add the following line to the group [mysqld]:</p>
+<p> 这是因为 Win32 版本的 MySQL 默认将 <tt>lower_case_table_names</tt>
+设置为1（<tt>ON</tt>）。您可以将此设置显式地设为0（也就是<tt>OFF</tt>）来解决这个问题：<br />
+    打开 <tt>my.ini</tt> 文件，这个文件应该在您的 Windows 目录下，在“[mysqld]”后一行增加：</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
-<p> Next, save the file and restart the MySQL service. You can always check the
-value of this directive using the query</p>
+<p> 然后，重新启动 MySQL。您也可以使用如下的查询语句来查询此设置值：</p>
 
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 Some characters are being truncated in my queries,
-or I get characters randomly added. I am running PHP 4.2.3.</a></h4>
+    <a href="#faq1_24">1.24 我的查询语句中被加入了奇怪的字符，有时语句还会变得缺胳膊少腿的。我使用的 PHP 版本是
+4.2.3。</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/bug.php?id=19404">PHP 4.2.3 bug</a>.
+<p> 这是一个 <a href="http://bugs.php.net/bug.php?id=19404">PHP 4.2.3 的错误 </a>.
     </p>
 
 <h4 id="faq1_25">
-    <a href="#faq1_25">1.25 I am running Apache with mod_gzip-1.3.26.1a on
-Windows XP, and I get problems, such as undefined variables when I run a
-<abbr title="structured query language">SQL</abbr> query.</a></h4>
+    <a href="#faq1_25">1.25 我在 Windows XP 上使用 Apache，并加载了mod_gzip-1.3.26.1a。在运行
+<abbr title="structured query language">SQL</abbr> 查询时出现了类似变量未定义的错误。</a></h4>
 
-<p> A tip from Jose Fandos: put a comment on the following two lines in
-httpd.conf, like this:</p>
+<p> Jose Fandos 给出的解决方法：在 httpd.conf 中增加下面两行：</p>
 
 <pre>
 # mod_gzip_item_include file \.php$
 # mod_gzip_item_include mime "application/x-httpd-php.*"
 </pre>
 
-<p> as this version of mod_gzip on Apache (Windows) has problems handling PHP
-scripts. Of course you have to restart Apache.</p>
+<p> 该 Windows 版本的 Apache mod_gzip 模块在处理 PHP 脚本时有些小问题。修改 httpd.conf 后，请重新启动
+Apache。</p>
 
 <h4 id="faq1_26">
-    <a href="#faq1_26">1.26 I just installed phpMyAdmin in my document root of
-<abbr title="Internet Information Services">IIS</abbr> but I get the error
-&quot;No input file specified&quot; when trying to run phpMyAdmin.</a></h4>
+    <a href="#faq1_26">1.26 我将 phpMyAdmin 安装在了 <abbr title="Internet Information
+Services">IIS</abbr> 根目录下，在我打开 phpMyAdmin 页面时，却出现了这样的错误：&quot;No input file
+specified&quot;</a> <!--“No input file specified”这个提示是 IIS
+给出的，即使是中文版的IIS，也会给出英文提示，所以这里不翻译IIS的提示。——译者greensea注 --></h4>
 
-<p> This is a permission problem. Right-click on the phpmyadmin folder and
-choose properties. Under the tab Security, click on &quot;Add&quot; and
-select the user &quot;IUSR_machine&quot; from the list. Now set his
-permissions and it should work.</p>
+<p> 这是一个权限问题。右键单击 phpMyAdmin 目录，选择 属性--&gt;--&gt;安全--&gt;增加，然后选择在用户列表中选择
+IUSR_machine 用户，赋予其权限，即可解决此问题。</p>
 
 <h4 id="faq1_27">
-    <a href="#faq1_27">1.27 I get empty page when I want to view huge page (eg.
-db_structure.php with plenty of tables).</a></h4>
+    <a href="#faq1_27">1.27 当我打开一个很大的页面时，页面显示空白（如 db_structure.php
+页面中显示了很多表的时候）</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
-GZIP output buffering is enabled. If you turn off it (by <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
-<i>config.inc.php</i>), it should work. This bug will be fixed in
-PHP&nbsp;5.0.0.</p>
+<p> 这是一个 <a href="http://bugs.php.net/21079">PHP 错误</a>，该错误会在打开 GZIP
+输出的时候发生。如果您在 <i>config.inc.php</i> 中修改 <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip'] = false</a> 选项来关闭这个功能，就能解决此问题。这个错误将会在
+PHP&nbsp;5.0.0 版本中修复。</p>
 
 <h4 id="faq1_28">
-    <a href="#faq1_28">1.28 My MySQL server sometimes refuses queries and
-returns the message 'Errorcode: 13'. What does this mean?</a></h4>
+    <a href="#faq1_28">1.28 我的 MySQL 服务器偶尔会返回 'Errorcode: 13'
+这样的错误信息，这是神么意思？</a></h4>
 
-<p> This can happen due to a MySQL bug when having database / table names with
-upper case characters although <tt>lower_case_table_names</tt> is set to 1.
-To fix this, turn off this directive, convert all database and table names
-to lower case and turn it on again. Alternatively, there's a bug-fix
-available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
+<p> 这个错误可能是因为 <tt>lower_case_table_names</tt> 被设为了1，而数据库中存在表名为大写的表，这是 MySQL
+的一个错误。要解决此问题，请先显示地将 <tt>lower_case_table_names</tt> 设为
+false，然后将所有表名改为小写，最后再重新将 <tt>lower_case_table_names</tt> 设为 true。MySQL
+3.23.56 / 4.0.11-gamma 版本已经修复了这个问题。</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 When I create a table or modify a field, I get an
-error and the fields are duplicated.</a></h4>
+    <a href="#faq1_29">1.29 当我创建一个表或修改一个字段的时候，会发生错误，同时，字段名也会被损坏。</a></h4>
 
-<p> It is possible to configure Apache in such a way that PHP has problems
-interpreting .php files.</p>
+<p> 这可能是因为没有正确配置 Apache 而导致 PHP 无法正确解释 .php 文件。</p>
 
-<p> The problems occur when two different (and conflicting) set of directives
-are used:</p>
+<p> 该问题的产生，可能是因为在 Apache 的配置文件中显式地指定了两组互相冲突的设置：</p>
 
 <pre>
 SetOutputFilter PHP
 SetInputFilter PHP
 </pre>
 
-<p> and</p>
+<p> 和</p>
 
 <pre>AddType application/x-httpd-php .php</pre>
 
-<p> In the case we saw, one set of directives was in
-<tt>/etc/httpd/conf/httpd.conf</tt>, while the other set was in
-<tt>/etc/httpd/conf/addon-modules/php.conf</tt>.<br />
-    The recommended way is with <tt>AddType</tt>, so just comment out the first
-set of lines and restart Apache:</p>
+<p> 上面两组设置，有一组位于 <tt>/etc/httpd/conf/httpd.conf</tt> 中，另一组位于
+<tt>/etc/httpd/conf/addon-modules/php.conf</tt> 中。<br />
+    推荐的设置是使用 AddType，所以，我们可以注释掉另外一组设置，就象这样：</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -2724,63 +2668,49 @@ set of lines and restart Apache:</p>
     <a href="#faq1_30">1.30 I get the error &quot;navigation.php: Missing
 hash&quot;.</a></h4>
 
-<p> This problem is known to happen when the server is running Turck MMCache but
-upgrading MMCache to version 2.3.21 solves the problem.</p>
+<p> 产正这个问题的原因是您的服务器上运行着 Turck MMCache，升级 MMCache 到 2.3.21 版本就可解决此问题。</p>
 
 <h4 id="faq1_31">
-    <a href="#faq1_31">1.31 Does phpMyAdmin support php5?</a></h4>
+    <a href="#faq1_31">1.31 phpMyAdmin 支持 PHP5 吗？</a></h4>
 
-<p>Yes.</p>
+<p>当然支持。</p>
 <p>
-    Since release 3.0 only PHP 5.2 and newer. For older PHP versions 2.9 branch
-is still maintained.
+    phpMyAdmin 3.0 及之后的版本只能在 PHP 5.2 或更新的版本上运行。对于旧版本的 PHP，请使用 phpMyAdmin 2.9
+版本分支，这个分支版本目前还在维护中。
 </p>
 
 <h4 id="faq1_32">
-    <a href="#faq1_32">1.32 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with <abbr title="Internet Information
-Services">IIS</abbr>?</a></h4>
+    <a href="#faq1_32">1.32 我能在 <abbr title="Internet Information
+Services">IIS</abbr> 服务器上使用 <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 认证吗？</a></h4>
 
-<p> Yes. This procedure was tested with phpMyAdmin 2.6.1, PHP 4.3.9 in <abbr
-title="Internet Server Application Programming Interface">ISAPI</abbr> mode
-under <abbr title="Internet Information Services">IIS</abbr> 5.1.</p>
+<p> 可以。我们在 IIS 5.1 上以 ISAPI 方式加载 PHP 4.3.9，使用 phpMyAdmin 2.6.1 版本进行测试，结果可以正常使用
+phpMyAdmin。</p>
 
-<ol><li>In your <tt>php.ini</tt> file, set <tt>cgi.rfc2616_headers = 0</tt></li>
-    <li>In <tt>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
-Access</tt> dialog box, check the <tt>Anonymous access</tt> checkbox and
-uncheck any other checkboxes (i.e. uncheck <tt>Basic authentication</tt>,
-<tt>Integrated Windows authentication</tt>, and <tt>Digest</tt> if it's
-enabled.) Click <tt>OK</tt>.</li>
-    <li>In <tt>Custom Errors</tt>, select the range of <tt>401;1</tt> through
-<tt>401;5</tt> and click the <tt>Set to Default</tt> button.</li>
+<ol><li>请在 <tt>php.ini</tt> 文件中将 <tt>cgi.rfc2616_headers</tt> 设为0。</li>
+    <li>打开<tt>站点属性——&gt;目录安全性——&gt;匿名访问</tt>对话框，选中“启用匿名访问“，并去掉“基本身份验证“”集成 Windows
+身份验证“和“Windows 域服务器的摘要试身份验证“以及其他的复选框。</li>
+    <li>在<tt>自定义错误</tt>选项卡中，选中<tt>401;1</tt>到<tt>401;5</tt>条目，然后点击<tt>设为默认</tt>按钮。</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Is there a problem with the mysqli extension when
-running PHP 5.0.4 on 64-bit systems?</a></h4>
+    <a href="#faq1_33">1.33 在 64 位系统上能正常使用 MySQLi 扩展吗？我的 PHP 版本是 5.0.4。</a></h4>
 
-<p> Yes. This problem affects phpMyAdmin (&quot;Call to undefined function
-pma_reloadnavigation&quot;), so upgrade your PHP to the next version.</p>
+<p> 不能。在这种情况下 phpMyAdmin 会出错（&quot; 调用了未定义的函数：pma_reloadnavigation&quot;）。请升级您的
+PHP。</p>
 
 <h4 id="faq1_34">
-    <a href="#faq1_34">1.34 Can I access directly to database or table
-pages?</a></h4>
+    <a href="#faq1_34">1.34 我能直接输入网址来显示数据库和表吗？</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <code>.htaccess</code>
-file in root folder of phpMyAdmin installation (don't forget to change
-directory name inside of it):</p>
+<p> 当然可以。您可以直接输入类似
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
+的 <abbr title="Uniform Resource Locator">URL</abbr>。其中，server 域指定了您在
+<tt>config.inc.php</tt> 中设置的服务器编号。table 和 script 域是可选的。如果您想使用类似
+http://server/phpMyAdmin/database[/table][/script] 这样的 <abbr title="Uniform
+Resource Locator">URL</abbr>，还需要进行一些额外的设置。下面给出在 Apache 上进行设置的方法：
+首先请确定您已经在全局范围内启用了 <code>Options FollowSymLinks</code> 和 <code>AllowOverride
+FileInfo</code> 功能，然后，在 phpMyAdmin 的目录配置下启用这两个功能。接着，在 phpMyAdmin 根目录下创建
+.htaccess 文件，并将如下内容写入文件中：</p>
 
 <pre>
 RewriteEngine On
@@ -2792,12 +2722,12 @@ RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]
 </pre>
 
 <h4 id="faq1_35">
-    <a href="#faq1_35">1.35 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with Apache <abbr title="Common Gateway
-Interface">CGI</abbr>?</a></h4>
+    <a href="#faq1_35">1.35 我将 PHP 配置为在 Apache 上以 <abbr title="Common Gateway
+Interface">CGI</abbr> 方式运行。在这种情况下我能否使用 <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 认证？</a></h4>
 
-<p> Yes. However you need to pass authentication variable to <abbr title="Common
-Gateway Interface">CGI</abbr> using following rewrite rule:</p>
+<p> 可以，但您需要设置以下重写规则，以便将登录参数传送给 <abbr title="Common Gateway
+Interface">CGI</abbr>：</p>
 
 <pre>
 RewriteEngine On
@@ -2805,53 +2735,40 @@ RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
 </pre>
 
 <h4 id="faq1_36">
-    <a href="#faq1_36">1.36 I get an error &quot;500 Internal Server
-Error&quot;.</a>
+    <a href="#faq1_36">1.36 网页显示 &quot;500 Internal Server Error&quot;，怎么办？</a>
 </h4>
 <p>
-    There can be many explanations to this and a look at your server's error log
-file might give a clue.
+    导致这种情况的原因有很多种，请查看您的服务器错误日志，其中可能包含了有关的错误信息。
 </p>
 
 <h4 id="faq1_37">
-    <a href="#faq1_37">1.37 I run phpMyAdmin on cluster of different machines
-and password encryption in cookie auth doesn't work.</a></h4>
+    <a href="#faq1_37">1.37 加密密码功能不起作用。我使用 cookie 认证方式，phpMyAdmin 运行在服务器集群上。</a></h4>
 
-<p> If your cluster consist of different architectures, PHP code used for
-encryption/decryption won't work correct. This is caused by use of
-pack/unpack functions in code. Only solution is to use mcrypt extension
-which works fine in this case.</p>
+<p> 如果您的集群中存在不同体系结构的系统，就会导致 PHP 无法使用 pack/unpack 函数进行正确的加解密操作。解决此问题的方法是使用 mcrypt
+扩展。</p>
 
 <h4 id="faq1_38">
-    <a href="#faq1_38">1.38 Can I use phpMyAdmin on a server on which Suhosin is
-enabled?</a></h4>
+    <a href="#faq1_38">1.38 我能在启用了 Suhosin 的服务器上使用 phpMyAdmin 吗？</a></h4>
 
-<p> Yes but the default configuration values of Suhosin are known to cause
-problems with some operations, for example editing a table with many columns
-and no primary key. Tuning information is available at <a
+<p> 可以，但是如果使用 Suhosin 的默认配置参数，在进行某些操作，如编辑一张有很多字段而没有主键的表时，就会出现问题。请参考 <a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">
-http://www.hardened-php.net/hphp/troubleshooting.html</a>, although the
-parameter names have changed (<tt>suhosin</tt> instead of
-<tt>hphp</tt>). See also the <a href="#cfg_SuhosinDisableWarning">
-<tt>SuhosinDisableWarning</tt> directive</a>.
+http://www.hardened-php.net/hphp/troubleshooting.html</a> 来修改 Suhosin 的配置，注意
+<tt>hphp</tt> 已经改为 <tt>suhosin</tt>。建议参看<a
+href="#cfg_SuhosinDisableWarning">强制<tt>Suhosin 禁用警告</tt></a>
     </p>
 
 <h4 id="faq1_39">
-    <a href="#faq1_39">1.39 When I try to connect via https, I can log in, but
-then my connection is redirected back to http. What can cause this
-behavior?</a></h4>
+    <a href="#faq1_39">1.39 在使用 http 时我能正常登录，但是在切换到 https 方式后却不能登录了，这是怎么回事？</a></h4>
 
-<p> Be sure that you have enabled <tt>SSLOptions</tt> and <tt>StdEnvVars</tt> in
-your Apache configuration. See <a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
+<p> 请确认您在 Apache 的配置文件中启用了 <tt>SSLOptions</tt> 和 </tt>StdEnvVars</tt>。具体请参考 <a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>。</p>
 
 <h4 id="faq1_40">
-    <a href="#faq1_40">1.40 When accessing phpMyAdmin via an Apache reverse
-proxy, cookie login does not work,</a></h4>
+    <a href="#faq1_40">1.40 当使用 Apache 反向代理来访问 phpMyAdmin 时，无法使用 cookie
+认证方式登录。</a></h4>
 
-<p>To be able to use cookie auth Apache must know that it has to rewrite the
-set-cookie headers.<br />
-	Example from the Apache 2.2 documentation:</p>
+<p>要在此方式下使用 cookie 认证，请确保将 Apache 设置为重写 set-cookie 头。<br />
+	Apache 2.2 中给出了一个例子：</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
@@ -2859,9 +2776,7 @@ ProxyPassReverseCookieDomain backend.example.com public.example.com
 ProxyPassReverseCookiePath / /mirror/foo/ 
 </pre>
 
-<p>Note: if the backend url looks like http://host/~user/phpmyadmin, the tilde
-(~) must be url encoded as %7E in the ProxyPassReverse* lines.  This is not
-specific to phpmyadmin, it's just the behavior of Apache.
+<p>注意：如果您的 URL 中带有 ~ 字符，请在 ProxyPassReverse 设置中将其转义为 %7E，就像下面那样：
 	</p>
 
 <pre>
@@ -2871,241 +2786,195 @@ http://backend.example.com/%7Euser/phpmyadmin
 ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
 </pre>
 
-	<p>See <a
-href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>
-for more details.</p>
+	<p>更多信息请参考 <a
+href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>。</p>
 
 <h4 id="faq1_41">
 	<a href="#faq1_41">1.41 When I view a database and ask to see its
 privileges, I get an error about an unknown column.</a></h4>
 
-<p> The MySQL server's privilege tables are not up to date, you need to run the
-<tt>mysql_upgrade</tt> command on the server.</p>
+<p> MySQL 服务器的权限表没有更新，请运行 <tt>mysql_upgrade</tt> 命令来进行更新。</p>
 
 
 <h3 id="faqconfig">设置</h3>
 
 <h4 id="faq2_1">
-    <a href="#faq2_1">2.1 The error message &quot;Warning: Cannot add header
-information - headers already sent by ...&quot; is displayed, what's the
-problem?</a></h4>
+    <a href="#faq2_1">2.1 页面显示 &quot;Warning: Cannot add header information -
+headers already sent by ...&quot;，怎么办？</a> <!--
+这似乎是一个PHP的错误提示，鉴于PHP的错误提示还没有中文化，这里就保留错误原文——greensea译注--></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under IIS, that used a zipped
-distribution kit: the file <tt>libraries/Config.class.php</tt> contained an
-end-of-line character (hex 0A) at the end; removing this character cleared
-his errors.</p>
+<p> 请检查 <i>config.inc.php</i> 文件，确保在 <tt>&lt;?php</tt> 之前和 <tt>?&gt;</tt>
+标签之后没有任何字符（包括空格、制表符以及空行等）。在 IIS 上使用 zipped 功能的用户同样向我们反馈了类似问题，在
+<tt>libraries/Config.class.php</tt> 文件末尾有一个行尾符（ASCII 码为 0A），删除此字符即可解决问题。</p>
 
 <h4 id="faq2_2">
-    <a href="#faq2_2">2.2 phpMyAdmin can't connect to MySQL. What's wrong?</a></h4>
+    <a href="#faq2_2">2.2 phpMyAdmiin 无法连接到 MySQL 服务器，这是怎么回事？</a></h4>
 
-<p> Either there is an error with your PHP setup or your username/password is
-wrong. Try to make a small script which uses mysql_connect and see if it
-works. If it doesn't, it may be you haven't even compiled MySQL support into
-PHP.</p>
+<p> 这可能是因为您的 PHP 配置有误，或者您使用的登录名和密码错误。请写一个脚本，使用 mysql_connect 来尝试是否能连接到 MySQL
+服务器，如果不能，就说明您可能没有将 MySQL 编译到 PHP 中，或者没有加载 MySQL 库。</p>
 
 <h4 id="faq2_3">
-    <a href="#faq2_3">2.3 The error message &quot;Warning: MySQL Connection
-Failed: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
-(111) ...&quot; is displayed. What can I do?</a></h4>
+    <a href="#faq2_3">2.3 网页显示 &quot;Warning: MySQL Connection Failed: Can't
+connect to local MySQL server through socket '/tmp/mysql.sock' (111)
+...&quot; 这样的错误，怎么办？</a></h4>
 
-<p> For RedHat users, Harald Legner suggests this on the mailing list:</p>
+<p> Harald Legner 在邮件列表中为 RedHat 用户给出了一个解决方法：</p>
 
-<p> On my RedHat-Box the socket of MySQL is <i>/var/lib/mysql/mysql.sock</i>.
-In your <i>php.ini</i> you will find a line</p>
+<p> 在我的 RadHat 服务器上，MySQL 的 socket 是 <i>/var/lib/mysql/mysql.sock</i>，你应该能在
+<i>php.ini</i> 文件中找到这样一行：</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
-<p> change it to</p>
+<p> 将其修改为</p>
 
 <pre>mysql.default_socket = /var/lib/mysql/mysql.sock</pre>
 
-<p> Then restart apache and it will work.</p>
+<p> 之后重新启动 Apache，即可解决问题。</p>
 
-<p> Here is a fix suggested by Brad Ummer:</p>
+<p> Brad Ummer 给出了另一种解决方案：</p>
 
-<ul><li>First, you need to determine what socket is being used by MySQL.<br />
-        To do this, telnet to your server and go to the MySQL bin directory. In this
-directory there should be a file named <i>mysqladmin</i>. Type
-<tt>./mysqladmin variables</tt>, and this should give you a bunch of info
-about your MySQL server, including the socket (<i>/tmp/mysql.sock</i>, for
-example).</li>
-    <li>Then, you need to tell PHP to use this socket.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
-<i>config.inc.php</i>.<br />
-        For example: <a href="#cfg_Servers_socket" class="configrule">
-$cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
+<ul><li>首先你需要确定 MySQL 使用了何种类型的 socket，请按照下面的步骤进行操作：<br />
+        用终端连接到你的 MySQL 服务器并切换到 MySQL 的 bin 目录，在这个目录下你应该能找到一个名为 <i>mysqladmin</i>
+的文件。执行 <tt>./mysqladmin variables</tt> 命令，你就能得到 MySQL 服务器的信息，其中包括了 socket
+信息（类似 <i>/tmp/mysql.sock</i>）。</li>
+    <li>接下来，设置 PHP 让它使用这个 socket。<br /> 打开 phpMyAdmin 的 <i>config.inc.php</i> 文件。<br />
+        将 <a href="#cfg_Servers_socket" class="configrule">
+$cfg['Servers'][$i]['socket']</a> 修改为刚才得到的 socket。
         <br /><br />
 
-        Please also make sure that the permissions of this file allow to be readable
-by your webserver (i.e. '0755').</li>
+        同时请确此文件能被网站服务器进程读取（如将其掩码设为 0755）。</li>
 </ul>
 
-<p> Have also a look at the <a
-href="http://www.mysql.com/doc/C/a/Can_not_connect_to_server.html">
-corresponding section of the MySQL documentation</a>.</p>
+<p> 更多信息请参考 <a
+href="http://www.mysql.com/doc/C/a/Can_not_connect_to_server.html">MySQL
+文档</a>.</p>
 
 <h4 id="faq2_4">
-    <a href="#faq2_4">2.4 Nothing is displayed by my browser when I try to run
-phpMyAdmin, what can I do?</a></h4>
+    <a href="#faq2_4">2.4 我运行 phpMyAdmin 的时候，浏览器什么都没有显示，怎么办？</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
-directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
-sometime.<br />
-    Also have a look at your PHP version number: if it contains
-&quot;4.0b...&quot; it means you're running a beta version of PHP. That's
-not a so good idea, please upgrade to a plain revision.</p>
+<p> 请在 phpMyAdmin 的配置文件中将 <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGZip']</a> 显式地设为 <tt>FALSE</tt>，也许能解决此问题。<br />
+    另外，请查看您的 PHP 版本号，如果版本号是类似 &quot;4.0b...&quot; 这样的系列，这说明您使用的 PHP
+是一个测试版，使用测试版可能会产生一些奇怪的问题，请将 PHP 升级到稳定版。</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5 Each time I want to insert or change a record or drop
-a database or a table, an error 404 (page not found) is displayed or, with
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication, I'm asked to log in again. What's wrong?</a></h4>
+    <a href="#faq2_5">2.5 当我删除记录、表或数据库时，浏览器总是显示 404 （找不到网页）。另外，如果使用 <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> 或 cookie 认证方式，phpMyAdmin
+会要求重新登录，这是怎么回事？</a></h4>
 
-<p> Check the value you set for the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive in the phpMyAdmin
-configuration file.</p>
+<p> 请在 phpMyAdmin 的配置文件中检查您是否显式地设定了 <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a>。</p>
 
 <h4 id="faq2_6">
-    <a href="#faq2_6">2.6 I get an &quot;Access denied for user:
-'root@localhost' (Using password: YES)&quot;-error when trying to access a
-MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
+    <a href="#faq2_6">2.6 我试图连接到 MySQL 服务器时得到这样的错误：&quot;Access denied for user:
+'root@localhost' (Using password: YES)&quot;。我对 MySQL
+服务器端口进行了端口映射，将localhost 的端口转发到 MySQL 服务器端口上。</a></h4>
 
-<p> When you are using a port on your localhost, which you redirect via
-port-forwarding to another host, MySQL is not resolving the localhost as
-expected.<br />
+<p> 当您在自己的机器上（localhost）使用端口映射访问另一台机器上的 MySQL 时，MySQL 解析 localhost 主机名时将得到错误的结果。<br />
     Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
 MySQL (the commandline tool 'mysql' as well) always tries to use the socket
 connection for speeding up things. And that doesn't work in this
 configuration with port forwarding.<br />
-    If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
-<abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
+    如果你使用 127.0.0.1 作为主机名，并使用将 MySQL 设置为使用 <abbr title="Transmission Control
+Protocol">TCP</abbr> 链接，就可以正常登录了。</p>
 
-<h4 id="faqthemes"><a href="#faqthemes">2.7 Using and creating themes</a></h4>
+<h4 id="faqthemes"><a href="#faqthemes">2.7 如何创建和使用主题？</a></h4>
 
-<p> Themes are configured with <a href="#cfg_ThemePath"
-class="configrule">$cfg['ThemePath']</a>, <a href="#cfg_ThemeManager"
-class="configrule">$cfg['ThemeManager']</a> and <a href="#cfg_ThemeDefault"
-class="configrule">$cfg['ThemeDefault']</a>.<br />
+<p> 有关主题的设置项是：<a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>,
+<a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a> 以及
+<a href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a>。<br />
     <br />
-    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
-should not delete the directory &quot;original&quot; or its underlying
-structure, because this is the system theme used by phpMyAdmin.
-&quot;original&quot; contains all images and styles, for backwards
-compatibility and for all themes that would not include images or css-files.
+    请不要修改 <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
+选项设置的目录下的文件结构，更不要删除这个目录。这个目录是 phpMyAdmin 的系统主题，如果一些主题缺少某些文件，phpMyAdmin
+就会使用系统主题的文件替代之。
     <br /><br />
 
-    If <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
-is enabled, you can select your favorite theme on the main page. Your
-selected theme will be stored in a cookie.<br /><br /></p>
+    如果设置了 <a href="#cfg_ThemeManager"
+class="configrule">$cfg['ThemeManager']</a>，您就可以在 phpMyAdmin
+主页面中选择喜欢的主题。您使用的主题名字将会保存在 cookie 中。<br /><br /></p>
 
-<p> To create a theme:</p>
+<p> 要创建一个主题，请按照下面的方法进行操作：</p>
 
-<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
-href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
-<tt>themes</tt>)</li>
-    <li>copy the files and directories from &quot;original&quot; to
-&quot;your_theme_name&quot;</li>
-    <li>edit the css-files in &quot;your_theme_name/css&quot;</li>
-    <li>put your new images in &quot;your_theme_name/img&quot;</li>
-    <li>edit <tt>layout.inc.php</tt> in &quot;your_theme_name&quot;</li>
-    <li>edit <tt>info.inc.php</tt> in &quot;your_theme_name&quot; to contain your
-chosen theme name, that will be visible in user interface</li>
-    <li>make a new screenshot of your theme and save it under
-&quot;your_theme_name/screen.png&quot;</li>
+<ul><li>在 <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
+(默认值是<tt>themes</tt>) 设置的目录下创建一个新目录。</li>
+    <li>复制 &quot;original&quot; 目录下所有的文件到您朝见的目录中。</li>
+    <li>在您创建的目录下，打开 css 子目录，修改其中的层叠样式表文件。</li>
+    <li>将您的图片复制到您创建的主题目录下的 img 子目录中。</li>
+    <li>在您创建的目录下有一个 <tt>layout.inc.php</tt> 文件，按您的需要编辑此文件。</li>
+    <li>在您的主题目录下还有一个 <tt>info.inc.php</tt> 文件，您可以在这个文件中设置您的主题名字。</li>
+    <li>为您的主题截图，并将截图保存到主题目录下，将其命名为 screen.png。</li>
 </ul>
 
-<p> In theme directory there is file <tt>info.inc.php</tt> which contains theme
-verbose name, theme generation and theme version. These versions and
-generations are enumerated from 1 and do not have any direct dependence on
-phpMyAdmin version. Themes within same generation should be backwards
-compatible - theme with version 2 should work in phpMyAdmin requiring
-version 1. Themes with different generation are incompatible.</p>
+<p> 在主题目录下有一个 <tt>info.inc.php</tt> 文件，其中包含了主题全名和主题版本号。主题版本号由您自行设定，不需要符合
+phpMyAdmin 的版本号，只需要保证版本号是纯数字就行。拥有相同主版本号（generation
+number）的主题应该向下兼容。子版本号为2的主题应该能在使用子版本1主题的 phpMyAdmin 上正常显示。主版本号不相同的主题无须相互兼容。</p>
 
-<p> If you do not want to use your own symbols and buttons, remove the directory
-&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the
-default icons and buttons (from the system-theme &quot;original&quot;).
+<p> 如果您没有自己主题的图标和按钮，请删除您的主题目录下的 img 目录。phpMyAdmin 将使用默认的图标和按钮（位于 original
+目录下的系统主题）。
 </p>
 
 <h4 id="faqmissingparameters">
-    <a href="#faqmissingparameters">2.8 I get &quot;Missing parameters&quot;
-errors, what can I do?</a></h4>
+    <a href="#faqmissingparameters">2.8 我遇到了一个错误，错误提示 &quot;缺少参数&quot; 怎么办？</a></h4>
 
-<p> Here are a few points to check:</p>
+<p> 请先检查以下几点：</p>
 
-<ul><li>In <tt>config.inc.php</tt>, try to leave the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive empty. See also <a
-href="#faq4_7"><abbr title="Frequently Asked Questions">FAQ</abbr> 4.7</a>.
+<ul><li>在 <tt>config.inc.php</tt> 文件中，显式地将 <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> 设置为空。请参考<a
+href="#faq4_7"><abbr title="Frequently Asked Questions">常见问题</abbr> 4.7</a>.
     </li>
-    <li>Maybe you have a broken PHP installation or you need to upgrade your Zend
-Optimizer. See <a href="http://bugs.php.net/bug.php?id=31134">
-http://bugs.php.net/bug.php?id=31134</a>.
+    <li>可能您安装的 PHP 版本有问题，试试升级 Zend Optimizer。请参考 <a
+href="http://bugs.php.net/bug.php?id=31134">
+http://bugs.php.net/bug.php?id=31134</a>。
     </li>
-    <li>If you are using Hardened PHP with the ini directive
-<tt>varfilter.max_request_variables</tt> set to the default (200) or another
-low value, you could get this error if your table has a high number of
-columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for the
-hint).
+    <li>如果您使用 Hardened PHP 并在 php.ini 中将 <tt>varfilter.max_request_variables</tt>
+显式地设为了小于等于默认值（200）的值，就可能会导致此问题。如果您的表中有很多字段，请增加此设置的值（感谢 Klaus Dorninger
+提供的信息）。
     </li>
-    <li>In the <tt>php.ini</tt> directive <tt>arg_separator.input</tt>, a value of
-&quot;;&quot; will cause this error. Replace it with &quot;&amp;;&quot;.
+    <li>如果在 <tt>php.ini</tt> 中的选项 <tt>arg_separator.input</tt>
+被设置为&quot;;&quot;就有可能导致此问题。请将其设置为 &quot;&amp;;&quot;。
     </li>
-    <li>If you are using <a href="http://www.hardened-php.net/">Hardened-PHP</a>,
-you might want to increase <a
+    <li>如果您正在使用 <a href="http://www.hardened-php.net/">Hardened-PHP</a>，请增大 <a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">request
-limits</a>.
+limits</a> 的设置值。
     </li>
-    <li>The directory specified in the <tt>php.ini</tt> directive
-<tt>session.save_path</tt> does not exist or is read-only.
+    <li>如果 <tt>php.ini</tt> 中的选项 <tt>session.save_path</tt>
+设定的目录不存在或者目录权限为只读，也有可能导致此问题。
     </li>
 </ul>
 
 <h4 id="faq2_9">
-    <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
+    <a href="#faq2_9">2.9 怎样设置才能显示上传进度条</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
-the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-one. Moreover, the JSON extension has to be enabled in your PHP.</p>
-    <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
-php.ini.</p>
+<p> 要使用此功能，请在服务器上安装 <a href="http://pecl.php.net/package/APC">APC</a>  扩展或 <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>，并启用
+JSON 扩展。</p>
+    <p> 如果使用 APC，请在 php.ini 中将 <tt>apc.rfc1867</tt> 设为 <tt>on</tt>。</p>
 
 <h3 id="faqlimitations">Known limitations</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 When using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication, an user who logged out can not log in
-again in with the same nick.</a></h4>
+    <a href="#login_bug">3.1 使用 <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 认证时，一个用户退出之后就无法再使用相同的用户名重新登录。</a></h4>
 
-<p> This is related to the authentication mechanism (protocol) used by
-phpMyAdmin. To bypass this problem: just close all the opened browser
-windows and then go back to phpMyAdmin. You should be able to log in again.</p>
+<p> 这是 phpMyAdmin 的认证机制引起的问题。要解决此问题，请关闭所有已打开的 Windows 文件夹，然后重新登录 phpMyAdmin。</p>
 
 <h4 id="faq3_2">
-    <a href="#faq3_2">3.2 When dumping a large table in compressed mode, I get a
-memory limit error or a time limit error.</a></h4>
+    <a href="#faq3_2">3.2 转储一个很大的表时，遇到了“超出内存限制“或“运行超时“错误。</a></h4>
 
-<p> Compressed dumps are built in memory and because of this are limited to
-php's memory limit. For GZip/BZip2 exports this can be overcome since 2.5.4
-using <a href="#cfg_CompressOnFly"
-class="configrule">$cfg['CompressOnFly']</a> (enabled by default). Zip
-exports can not be handled this way, so if you need Zip files for larger
-dump, you have to use another way.</p>
+<p> 压缩转储在内存中进行，而 PHP 对内存的使用有限制。从 2.5.4 版本开始，可以使用 Gzip/BZip2 导出来解决此问题。启用 <a
+href="#cfg_CompressOnFly" class="configrule">$cfg['CompressOnFly']</a>
+选项（默认已启用）。此方法不支持 Zip 导出，要进行 Zip 导出，需要使用其他的方法。</p>
 
 <h4 id="faq3_3">
-    <a href="#faq3_3">3.3 With InnoDB tables, I lose foreign key relationships
-when I rename a table or a column.</a></h4>
+    <a href="#faq3_3">3.3 重命名 InnoDB 表名或其中的字段名时，外间关系会丢失。</a></h4>
 
-<p> This is an InnoDB bug, see <a
-href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>.</p>
+<p> 这是一个 InnoDB 引擎的错误，请参考：<a
+href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>。</p>
 
 <h4 id="faq3_4">
-    <a href="#faq3_4">3.4 I am unable to import dumps I created with the
-mysqldump tool bundled with the MySQL server distribution.</a></h4>
+    <a href="#faq3_4">3.4 我无法导入用 MySQL 服务器工具 mysqldump 生成的转储文件。</a></h4>
 
-<p> The problem is that older versions of mysqldump created invalid comments
-like this:</p>
+<p> 这是因为旧版本的 mysqldump 生成了错误的注释行，就像下面这样：</p>
 
 <pre>
 -- MySQL dump 8.22
@@ -3115,13 +2984,10 @@ like this:</p>
 -- Server version 3.23.54
 </pre>
 
-<p> The invalid part of the code is the horizontal line made of dashes that
-appears once in every dump created with mysqldump. If you want to run your
-dump you have to turn it into valid MySQL. This means, you have to add a
-whitespace after the first two dashes of the line or add a # before it:
+<p> 错误的注释是那行由短横线组成的水平线，正确的注释应该是两个短横线后面跟一个空格。所以，要解决此问题，请在水平线的前两个短横线后加上一个空格，或直接在水平线的前面加上一个#符号，就像下面这样：
     <br />
     <code> -- -------------------------------------------------------<br />
-    </code> or<br />
+    </code> 或者<br />
     <code> #--------------------------------------------------------- </code>
 </p>
 
@@ -4224,7 +4090,7 @@ placed on the same server or some remote server.
 </p>
 
 <p>For more details see <a
-href="./documentation-gsoc/Synchronization_User%20Manual.htm">How to
+href="./documentation-gsoc/Synchronization_User_Manual.htm">How to
 synchronize</a>
 </p>
 
