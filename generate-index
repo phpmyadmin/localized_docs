@@ -19,7 +19,7 @@ for loc in po/*.po ; do
     langname=`./get-lang-name $lang`
     (
         cd output/$lang
-        num=`ls | grep -v docs.css | grep -v favicon.ico | wc -l`
+        num=`ls | grep -v docs.css | grep -v favicon.ico | grep -v index.html | grep -v index-template.html | grep -v index-full-template.html | grep -v themes | wc -l`
         if [ $num -gt 0 ] ; then
             echo "<li><a href="$lang">$langname</a></li>"
         fi
