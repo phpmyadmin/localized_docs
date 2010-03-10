@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # Makefile to build translations
 
-LANGUAGES=it pl jp fr cs gl sv nl ka tr fi ca hu no es de lt ro mn pt_BR zh_CN zh_TW hy en_GB
+LANGUAGES=it pl jp fr cs gl sv nl ka tr fi ca hu no es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk
 PO4AOPTS=-M utf-8 -k 15
 PO4A_PO_OPTS=--msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
 		--copyright-holder "the phpMyAdmin project" \
@@ -106,6 +106,7 @@ pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
 	msgcat -o $@ $^
 
 po/%.po:  pot/%-full.pot
+	if [ ! -f $@ ] ; then msginit -i $< -l $* --no-translator -o $@ ; fi
 	msgmerge -U $@ $<
 	# This should be used once phpMyAdmin itself switches to gettext
 	#msgmerge -U $@ -C ../phpmyadmin/po/$*.po $<
