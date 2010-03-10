@@ -104,23 +104,3 @@ po/%.po:  pot/%-full.pot
 	# This should be used once phpMyAdmin itself switches to gettext
 	#msgmerge -U $@ -C ../phpmyadmin/po/$*.po $<
 	touch $@
-
-aadasdas: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/comment.html addendum/head.html
-	po4a-updatepo \
-		--msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
-		--copyright-holder "the phpMyAdmin project" \
-		--package-name "phpMyAdmin documentation" \
-		-M utf-8 \
-		-f xhtml \
-		-m ../phpmyadmin/Documentation.html \
-		-m../phpmyadmin/translators.html \
-		-m  output/$*/index-full-template.html \
-		-m addendum/head.html \
-		-f text \
-		-m addendum/comment.html \
-		-m  ../phpmyadmin/INSTALL \
-		-m ../phpmyadmin/TODO \
-		-m../phpmyadmin/README \
-		-p $@
-
-#		-f text \
