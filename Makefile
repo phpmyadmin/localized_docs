@@ -14,6 +14,10 @@ all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) 
 	$(addsuffix /README.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /INSTALL.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /TODO.stamp, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /themes/original/img/docs_menu_bg.png, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /themes/original/img/logo_right.png, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /favicon.ico, $(addprefix output/, ${LANGUAGES})) \
+	$(addsuffix /docs.css, $(addprefix output/, ${LANGUAGES})) \
 	output/index.html
 
 
@@ -53,6 +57,18 @@ output/%/index-template.html: generate-lang-index get-lang-name \
 	$(addsuffix /INSTALL, output/%) \
 	$(addsuffix /TODO, output/%))
 	./generate-lang-index $* > $@
+
+output/%/docs.css: ../phpmyadmin/docs.css
+	cp $< $@
+
+output/%/favicon.ico: ../phpmyadmin/favicon.ico
+	cp $< $@
+
+output/%/themes/original/img/docs_menu_bg.png: ../phpmyadmin/themes/original/img/docs_menu_bg.png
+	cp $< $@
+
+output/%/themes/original/img/logo_right.png: ../phpmyadmin/themes/original/img/logo_right.png
+	cp $< $@
 
 .PRECIOUS: output/%/index-full-template.html
 output/%/index-full-template.html: generate-lang-index get-lang-name
