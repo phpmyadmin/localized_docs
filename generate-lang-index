@@ -1,0 +1,104 @@
+#!/bin/sh
+# vim: expandtab sw=4 ts=4 sts=4:
+
+getname() {
+    case $1 in
+        Documentation.html)
+            echo Main documentation
+            ;;
+        translators.html)
+            echo List of translators
+            ;;
+        *)
+            echo $1
+            ;;
+    esac
+}
+
+langname() {
+    case $1 in
+        fr)
+            echo "French"
+            ;;
+        cs)
+            echo "Czech"
+            ;;
+        pt_BR)
+            echo "Brazilian Portuguese"
+            ;;
+        jp)
+            echo "Japanese"
+            ;;
+        pl)
+            echo "Polish"
+            ;;
+        it)
+            echo "Italian"
+            ;;
+        zh_TW)
+            echo "Traditional Chinese"
+            ;;
+        zh_CN)
+            echo "Simplified Chinese"
+            ;;
+        hy)
+            echo "Armenian"
+            ;;
+        en_GB)
+            echo "English (United Kingdom)"
+            ;;
+        en_GB)
+            echo "English (United Kingdom)"
+            ;;
+### MARKER TO ADD NEW LANGUAGE NAMES ###
+        *)
+            echo $1
+            ;;
+    esac
+}
+
+lang=$1
+langname=`./get-lang-name $1`
+cd output/$lang
+if [ "$2" = full ] ; then
+    num=1
+    files="INSTALL TODO README Documentation.html translations.htm"
+else
+    num=`ls | grep -v docs.css | grep -v favicon.ico | grep -v index.html | grep -v index-template.html | grep -v themes | wc -l`
+    files=`ls | grep -v docs.css | grep -v favicon.ico | grep -v index.html | grep -v index-template.html | grep -v themes `
+fi
+cp ../../../phpmyadmin/docs.css .
+cp ../../../phpmyadmin/favicon.ico .
+mkdir -p themes/original/img
+cp ../../../phpmyadmin/themes/original/img/logo_right.png themes/original/img
+cp ../../../phpmyadmin/themes/original/img/docs_menu_bg.png themes/original/img
+cat <<EOT
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="$lang"
+    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>phpMyAdmin $langname Documentation</title>
+</head>
+<body>
+<h1>phpMyAdmin $langname Documentation</h1>
+EOT
+    if [ $num -eq 0 ] ; then
+        cat <<EOT
+<p>Unfortunately no document is enough translated to $langname.</p>
+EOT
+        else
+            cat <<EOT
+<p>Documents translated to `langname $lang`:</p>
+<ul>
+EOT
+            for file in $files ; do
+                echo "<li><a href=\"$file\">`getname $file`</a></li>"
+            done
+            echo "</ul>"
+        fi
+        cat <<EOT
+</body>
+</html>
+EOT

@@ -1,0 +1,33 @@
+#!/bin/sh
+cat <<EOT
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>phpMyAdmin Localized Documentation</title>
+</head>
+<body>
+<h1>phpMyAdmin Localized Documentation</h1>
+<ul>
+EOT
+
+for loc in po/*.po ; do
+    lang=${loc%.po}
+    lang=${lang#po/}
+    langname=`./get-lang-name $lang`
+    (
+        cd output/$lang
+        num=`ls | grep -v docs.css | grep -v favicon.ico | wc -l`
+        if [ $num -gt 0 ] ; then
+            echo "<li><a href="$lang">$langname</a></li>"
+        fi
+    )
+done
+cat <<EOT
+</ul>
+</body>
+</html>
+EOT
+
