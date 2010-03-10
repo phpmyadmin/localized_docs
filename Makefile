@@ -54,12 +54,14 @@ output/%/index-template.html: generate-lang-index get-lang-name \
 	$(addsuffix /TODO, output/%))
 	./generate-lang-index $* > $@
 
+.PRECIOUS: output/%/index-full-template.html
 output/%/index-full-template.html: generate-lang-index get-lang-name
 	./generate-lang-index $* full > $@
 
 output/index.html: $(wildcard output/*/index.html) generate-index get-lang-name
 	./generate-index > $@
 
+.PRECIOUS: pot/%-html.pot
 pot/%-html.pot: ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/head.html
 	po4a-gettextize -f xhtml ${PO4A_PO_OPTS} \
 		-m ../phpmyadmin/Documentation.html \
@@ -68,6 +70,7 @@ pot/%-html.pot: ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html 
 		-m addendum/head.html \
 		-p $@
 
+.PRECIOUS: pot/%-txt.pot
 pot/%-txt.pot: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README addendum/comment.html
 	po4a-gettextize -f text ${PO4A_PO_OPTS} \
 		-m addendum/comment.html \
@@ -76,11 +79,13 @@ pot/%-txt.pot: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README add
 		-m../phpmyadmin/README \
 		-p $@
 
+.PRECIOUS: pot/%-full.pot
 pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
 	msgcat -o $@ $^
 
 po/%.po:  pot/%-full.pot
 	msgmerge -U $@ $<
+	touch $@
 
 aadasdas: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/comment.html addendum/head.html
 	po4a-updatepo \
