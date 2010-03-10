@@ -85,6 +85,8 @@ pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
 
 po/%.po:  pot/%-full.pot
 	msgmerge -U $@ $<
+	# This should be used once phpMyAdmin itself switches to gettext
+	#msgmerge -U $@ -C ../phpmyadmin/po/$*.po $<
 	touch $@
 
 aadasdas: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/comment.html addendum/head.html
