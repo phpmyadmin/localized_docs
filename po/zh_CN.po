@@ -6625,13 +6625,14 @@ msgid ""
 "Explorer when phpMyAdmin is run with a release candidate of PHP 4.2.0. In "
 "this case you should switch to the release version of PHP 4.2.0."
 msgstr ""
+"使用 Internet Explorer 下载转储时 PHP 崩溃，如果您正在使用 PHP 4.2.0 候选发行版本，请将其升级到 4.2.0 稳定版。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2664
 msgid ""
 "<a href=\"#faq1_8\">1.8 I cannot insert a text file in a table, and I get an "
 "error about safe mode being in effect.</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_8\">1.8 我无法向表中插入文本文件，并且有错误提示说这是因为在安全模式无法进行这样的操作。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2667
@@ -6640,6 +6641,7 @@ msgid ""
 "in <i>php.ini</i> by the variable <tt>upload_tmp_dir</tt> (usually the "
 "system default is <i>/tmp</i>)."
 msgstr ""
+"您上传的文件被保存在 &quot;上传目录&quot，这个目录可以在 <i>php.ini</i> 中设置（默认设置是 <i>/tmp</i>）。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2670
@@ -6647,33 +6649,36 @@ msgid ""
 "We recommend the following setup for Apache servers running in safe mode, to "
 "enable uploads of files while being reasonably secure:"
 msgstr ""
+"我们推荐您按照下面的步骤将 Apache 服务器配置在安全模式下运行，这可以保证安全的前提下允许上传文件（本操作仅适用于类 Unix 操作系统）："
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2673
 msgid "create a separate directory for uploads: <tt>mkdir /tmp/php</tt>"
-msgstr ""
+msgstr "创建一个用于临时保存上传文件的目录：<tt>mkdir /tmp/php</tt>"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2674
 msgid ""
 "give ownership to the Apache server's user.group: <tt>chown apache.apache /"
 "tmp/php</tt>"
-msgstr ""
+msgstr "将这个目录的所有权更改为 Apache 用户组：<tt>chown apache.apache /tmp/php</tt>"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2676
 msgid "give proper permission: <tt>chmod 600 /tmp/php</tt>"
-msgstr ""
+msgstr "设置权限：<tt>chmod 600 /tmp/php</tt>"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2677
 msgid "put <tt>upload_tmp_dir = /tmp/php</tt> in <i>php.ini</i>"
 msgstr ""
+"修改 <i>php.ini</i> 文件，将 <tt>upload_tmp_dir</tt> 设置为 "
+"<tt>/tmp/php</tt>（如果没有这一行，请自行添加）"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2678
 msgid "restart Apache"
-msgstr ""
+msgstr "重新启动 Apache"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2682
@@ -6689,6 +6694,8 @@ msgid ""
 "It's not really phpMyAdmin related but RedHat 7.0. You have a RedHat 7.0 and "
 "you updated your PHP RPM to php-4.0.4pl1-3.i386.rpm, didn't you?"
 msgstr ""
+"这不是 phpMyAdmin 的问题，而是 RedHat 7.0 的问题。您是不是在使用 RedHat 7.0 并使用 "
+"php-4.0.4pl1-3.i386.rpm 更新了你的 PHP？"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2688
@@ -6700,6 +6707,11 @@ msgid ""
 "href=\"http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933\">RedHat's "
 "BugZilla</a> for more details)."
 msgstr ""
+"这个问题是由一个很古老的 PHP 严重错误引起的（于 2001年1月28日，见：<a "
+"href=\"http://www.php.net/bugs.php?id=8966\">PHP 错误追踪系统</a>）。虽然这个 PHP "
+"错误早已修复了，但是软件源中仍保留着有这个错误的软件包（见 <a "
+"href=\"http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933\">RedHat "
+"错误追踪系统</a>，于是就引发了您遇到的问题。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2695
@@ -6708,11 +6720,13 @@ msgid ""
 "i386.html\">the fixed package (4.0.4pl1-9)</a> and the problem should go "
 "away."
 msgstr ""
+"要解决此问题，请下载<a href=\"http://www.redhat.com/swr/i386/php-4.0.4pl1-9.i386.html\">"
+"修复软件包(4.0.4pl1-9)</a>进行安装。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2698
 msgid "And that fixes the \\r\\n problem with file uploads!"
-msgstr ""
+msgstr "安装之后，就能解决您遇到的问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2701
@@ -6721,24 +6735,26 @@ msgid ""
 "phpMyAdmin running on a secure server. My browser is Internet Explorer and "
 "I'm using the Apache server.</a>"
 msgstr ""
+"<a href=\"#faq1_10\">1.10 我在上传文件的时候遇到了问题，phpMyAdmin 运行在安全服务器上，服务器软件是 "
+"Apache，我使用的浏览器是 Internet Explorer。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2705
 msgid ""
 "As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to "
 "your <i>httpd.conf</i>:"
-msgstr ""
+msgstr "&quot;Rob M&quot; 在 PHP 帮助论坛给出了解决方法：将下面一行加入到您的 <i>httpd.conf</i> 文件中"
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2708
 #, no-wrap
 msgid "SetEnvIf User-Agent \".*MSIE.*\" nokeepalive ssl-unclean-shutdown"
-msgstr ""
+msgstr "SetEnvIf User-Agent \".*MSIE.*\" nokeepalive ssl-unclean-shutdown"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2710
 msgid "It seems to clear up many problems between Internet Explorer and SSL."
-msgstr ""
+msgstr "该方法似乎可以解决许多使用 Internet Explorer 或 SSL 时遇到的问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2713
@@ -6746,6 +6762,8 @@ msgid ""
 "<a href=\"#faq1_11\">1.11 I get an 'open_basedir restriction' while "
 "uploading a file from the query box.</a>"
 msgstr ""
+"<a href=\"#faq1_11\">1.11 我试图从查询窗口上传文件时发生了错误，错误信息是 '开放目录限制'(open_basedir "
+"restriction) </a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2716
@@ -6756,13 +6774,17 @@ msgid ""
 "The uploaded files will be moved there, and after execution of your <abbr "
 "title=\"structured query language\">SQL</abbr> commands, removed."
 msgstr ""
+"从 2.2.4 版本开始，phpMyAdmin 支持服务器上的开放目录限制(open_basedir "
+"restrictions)。但是，你需要进行设置才能使用此功能。请创建一个临时目录，并将 <a href=\"#cfg_TempDir\" "
+"class=\"configrule\">$cfg['TempDir']</a> 设置为临时目录的路径。您上传的文件将会被临时存放在此目录下，SQL "
+"语句执行完毕以后，临时文件就会被删除。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2723
 msgid ""
 "<a href=\"#faq1_12\">1.12 I have lost my MySQL root password, what can I do?"
 "</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_12\">1.12 我忘了 MySQL 的 root 密码，怎么办？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2725
@@ -6770,6 +6792,8 @@ msgid ""
 "The MySQL manual explains how to <a href=\"http://www.mysql.com/doc/R/e/"
 "Resetting_permissions.html\"> reset the permissions</a>."
 msgstr ""
+"请参考 MySQL 手册：<a "
+"href=\"http://www.mysql.com/doc/R/e/Resetting_permissions.html\">重设权限</a>."
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2730
@@ -6777,13 +6801,15 @@ msgid ""
 "<a href=\"#faq1_13\">1.13 I get an error 'No <abbr title=\"structured query "
 "language\">SQL</abbr> query' when trying to execute a bookmark.</a>"
 msgstr ""
+"<a href=\"#faq1_13\">1.13 在我试图运行一条书签的时候，得到了如下错误信息：'没有 <abbr title=\"structured "
+"query language\">SQL</abbr> 查询'</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2734
 msgid ""
 "If PHP does not have read/write access to its <tt>upload_tmp_dir</tt>, it "
 "cannot access the uploaded query."
-msgstr ""
+msgstr "如果 PHP 对 <tt>upload_tmp_dir</tt> 目录没有读写权限，phpMyAdmin 将无法读取您上传的查询。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2738
@@ -6798,14 +6824,14 @@ msgstr ""
 msgid ""
 "Check the <tt>post_max_size</tt> directive from your PHP configuration file "
 "and try to increase it."
-msgstr ""
+msgstr "检查 <tt>post_max_size</tt> 有没有在 PHP 的配置文件中显式指定，如果有，试着增加其大小。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2746
 msgid ""
 "<a href=\"#faq1_15\">1.15 I have problems with <i>mysql.user</i> field names."
 "</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_15\">1.15 我在 <i>mysql.user</i> field names 上遇到了问题。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2749
@@ -6814,6 +6840,8 @@ msgid ""
 "were named <tt>user</tt> and <tt>password</tt>. Please modify your field "
 "names to align with current standards."
 msgstr ""
+"在较老的 MySQL 版本中，<tt>User</tt> 和 <tt>Password</tt> 字段分别被命名为 <tt>user</tt> 和 "
+"<tt>password</tt>。请修改您的字段名中的大小写使其符合标准。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2754
@@ -6821,6 +6849,8 @@ msgid ""
 "<a href=\"#faq1_16\">1.16 I cannot upload big dump files (memory, <abbr "
 "title=\"HyperText Transfer Protocol\">HTTP</abbr> or timeout problems).</a>"
 msgstr ""
+"<a href=\"#faq1_16\">1.16 我无法上传转储文件，上传时遇到了内存、 <abbr title=\"HyperText Transfer "
+"Protocol\">HTTP</abbr> 、超时等方面的错误).</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2758
@@ -6829,6 +6859,8 @@ msgid ""
 "these problems should not occur. If possible, upgrade your phpMyAdmin to the "
 "latest version to take advantage of the new import features."
 msgstr ""
+"phpMyAdmin 在 2.7.0 重写了导入引擎，并修复了以上问题。如果可能，请升级 phpMyAdmin 到最新版本，并体验 phpMyAdmin "
+"新版给您带来的新特性。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2762
@@ -6840,13 +6872,17 @@ msgid ""
 "and handled by PHP. One user also said that post_max_size and memory_limit "
 "need to be larger than upload_max_filesize."
 msgstr ""
+"请检查 <i>php.ini</i> 文件中的 <tt>upload_max_filesize</tt>、 <tt>memory_limit</tt> "
+"以及 <tt>post_max_size</tt> 的设置值。这三个选项都会影响您可以上传的文件大小和 PHP "
+"能够处理的文件大小。如果您没有服务器管理权，请联系服务器管理员（或服务器提供商）检查这几项设置。另外，有用户反应 post_max_size 和 "
+"memory_limit 的设置值必须比 upload_max_filesize 的设置值大。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2769
 msgid ""
 "There exist several workarounds if your upload is too big or your hosting "
 "provider is unwilling to change the settings:"
-msgstr ""
+msgstr "如果您上传的文件很大，或者服务器管理员或提供商不愿意修改以上几个设置，请参考下面的解决方法："
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2772
@@ -6857,6 +6893,10 @@ msgid ""
 "files from the temporary directory. More information is available in the <a "
 "href=\"#config\">Configuration section</a> of this document."
 msgstr ""
+"设置 <a href=\"#cfg_UploadDir\" "
+"class=\"configrule\">$cfg['UploadDir']</a>。设置该值后，您可以使用 SCP、FTP "
+"或其他您喜欢的上传方式，将文件上传到临时目录，之后让 phpMyAdmin 从临时目录中读取文件。详细说明请参考本手册的<a "
+"href=\"#config\">设置</a> 一节。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2778
@@ -6865,6 +6905,8 @@ msgid ""
 "BigDump</a>) to split the files before uploading. We cannot support this or "
 "any third party applications, but are aware of users having success with it."
 msgstr ""
+"使用第三方工具（如 <a href=\"http://www.ozerov.de/bigdump.php\"> "
+"BigDump</a>）来将上传文件分割成小文件。phpMyAdmin 能够处理分割文件。但是，我们担心用户是否知道应该如何进行文件分割操作。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:2782
@@ -6873,6 +6915,8 @@ msgid ""
 "directly. You can do this by issuing the &quot;source&quot; command from "
 "within MySQL: <tt>source <i>filename.sql</i></tt>."
 msgstr ""
+"如果您能够使用 MySQL 的命令行，您可以直接在命令行中导入文件。您可以使用 MySQL 的 source 命令来导入文件，例如：<tt>source "
+"<i>filename.sql</i></tt>。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2788
@@ -6880,6 +6924,7 @@ msgid ""
 "<a id=\"faqmysqlversions\" href=\"#faq1_17\">1.17 Which MySQL versions does "
 "phpMyAdmin support?</a>"
 msgstr ""
+"<a id=\"faqmysqlversions\" href=\"#faq1_17\">1.17 phpMyAdmin 支持什么版本的 MySQL？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2791
@@ -6891,6 +6936,11 @@ msgid ""
 "MySQL extension (MySQLi)</a> that is available in php 5.0. The latter one "
 "should be used unless you have good reason not to do so."
 msgstr ""
+"从 phpMyAdmin 3.0.x 开始，我们只支持 MySQL 5.0.1 或更新的 MySQL 版本。对于过去的 MySQL 版本，您必须使用 "
+"phpMyAdmin 2.8.x 分支版本。这是因为，由于 PHP 的 <a href=\"http://php.net/mysql\">MySQL "
+"扩展</a>升级到 MySQLi（<a href=\"http://php.net/mysqli\">improved MySQL extension "
+"</a>），新版的 phpMyAdmin 使用 MySQLi 而无法连接到旧版的 MySQL。MySQLi 比传统的 MySQL "
+"扩展更好，如果没有特殊的原因，我们没理由使用以前的 MySQL 扩展。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2798
@@ -6913,6 +6963,8 @@ msgid ""
 "returns the error message, &quot;Client does not support authentication "
 "protocol requested by server; consider upgrading MySQL client&quot;</a>"
 msgstr ""
+"<a href=\"#faq1_17a\">1.17a 我无法连接到 MySQL "
+"服务器，它总是提示这个错误：&quot;客户端不支持服务器要求的认证方式，请升级 MySQL 客户端&quot;</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2814
@@ -6937,6 +6989,12 @@ msgid ""
 "in the <a href=\"http://dev.mysql.com/doc/mysql/en/old-client.html\">MySQL "
 "Documentation</a>."
 msgstr ""
+"通常在使用 MySQL 4.1 版本时会遇到此问题。MySQL 改变了认证过程中的哈希值，但 PHP 仍使用旧的方法计算此值。要解决此问题，请使用 <a "
+"href=\"http://www.php.net/mysqli\">mysqli 扩展</a>和与 MySQL 服务器相容的客户端库。您可以在 <a "
+"href=\"#cfg_Servers_extension\" "
+"class=\"configrule\">$cfg['Servers'][$i]['extension']</a> 设置中设置使用 "
+"MySQLi。有关更多内容请阅读<a href=\"http://dev.mysql.com/doc/mysql/en/old-"
+"client.html\">MySQL 手册</a>。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2830
@@ -6946,6 +7004,9 @@ msgid ""
 "capital letter in its name it is changed to lowercase as it should. But if I "
 "try to DROP this table MySQL is unable to find the corresponding file.</a>"
 msgstr ""
+"<a href=\"#faq1_18\">1.18 我正在使用  MySQL&nbsp;&lt;=&nbsp;4.0.1 并将  "
+"<tt>lower_case_table_names</tt> 设置到了1。在我使用大写字符创建一个表时，MySQL "
+"创建了一个表名为全小写的表。但当我删除这个表时， MySQL 却无法找到对应的表文件。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2836
@@ -6953,27 +7014,29 @@ msgid ""
 "This is a bug of MySQL&nbsp;&lt;=&nbsp;4.0.1. Please upgrade to at least "
 "MySQL&nbsp;4.0.2 or turn off your <tt>lower_case_table_names</tt> directive."
 msgstr ""
+"这是 MySQL&nbsp;&lt;=&nbsp;4.0.1 的一个错误。请将您的 MySQL 升级到 MySQL&nbsp;4.0.2 "
+"版本，或者显式关闭  <tt>lower_case_table_names</tt> 选项。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2841
 msgid ""
 "<a href=\"#faq1_19\">1.19 I can't run the &quot;display relations&quot; "
 "feature because the script seems not to know the font face I'm using!</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_19\">1.19 我无法使用&quot;显示关系&quot;功能。似乎脚本不认识我正在使用的字体。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2844
 msgid ""
 "The &quot;FPDF&quot; library we're using for this feature requires some "
 "special files to use font faces."
-msgstr ""
+msgstr "在此功能中我们使用了 &quot;FPDF&quot; 库，该库还需要其他的一些文件才能使用自定义字体（font faces）。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2846
 msgid ""
 "Please refers to the <a href=\"http://www.fpdf.org/\">FPDF manual</a> to "
 "build these files."
-msgstr ""
+msgstr "请参考 <a href=\"http://www.fpdf.org/\">FPDF 手册</a> 来生成这些必要的文件。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2850
@@ -6981,6 +7044,8 @@ msgid ""
 "<a href=\"#faqmysql\">1.20 I receive the error &quot;cannot load MySQL "
 "extension, please check PHP Configuration&quot;.</a>"
 msgstr ""
+"<a href=\"#faqmysql\">1.20 我得到了这样的错误信息： &quot;无法载入 MySQL 扩展，请检查 PHP "
+"配置&quot;。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2853
@@ -6991,13 +7056,16 @@ msgid ""
 "name is probably <i>mysql.so</i> or <i>php_mysql.dll</i>. phpMyAdmin tried "
 "to load the extension but failed."
 msgstr ""
+"要连接到 MySQL 服务器，PHP 需要使用 MySQL 扩展中相关的 MySQL 函数。这个扩展应该需要编译到 PHP "
+"中，或者以动态方式加载。如果是以动态方式加载，动态库的文件有可能是 <i>mysql.so</i> 或 "
+"<i>php_mysql.dll</i>。phpMyAdmin 试图加载动态库文件，但加载失败了。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2859
 msgid ""
 "Usually, the problem is solved by installing a software package called &quot;"
 "PHP-MySQL&quot; or something similar."
-msgstr ""
+msgstr "通常情况下，安装 &quot;PHP-MySQL&quot; 或者其他类似的软件包即可解决此问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2863
@@ -7006,18 +7074,20 @@ msgid ""
 "Interface\">CGI</abbr> version of PHP under Unix, and I cannot log in using "
 "cookie auth.</a>"
 msgstr ""
+"<a href=\"#faq1_21\">1.21 我在 Unix 下以 <abbr title=\"Common Gateway "
+"Interface\">CGI</abbr> 方式运行 PHP，但却无法使用 cookie 认证方式来登录。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2867
 msgid "In <i>php.ini</i>, set <tt>mysql.max_links</tt> higher than 1."
-msgstr ""
+msgstr "在 <i>php.ini</i> 文件中将 <tt>mysql.max_links</tt> 设为比1大的值。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2870
 msgid ""
 "<a href=\"#faq1_22\">1.22 I don't see the &quot;Location of text file&quot; "
 "field, so I cannot upload.</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_22\">1.22 我找不到 &quot;选择文件&quot; 的按钮，那该怎么上传文件？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2873
@@ -7025,6 +7095,7 @@ msgid ""
 "This is most likely because in <i>php.ini</i>, your <tt>file_uploads</tt> "
 "parameter is not set to &quot;on&quot;."
 msgstr ""
+"通常这是因为您没有在 <i>php.ini</i> 中将 <tt>file_uploads</tt> 选项设置为 &quot;on&quot;。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2877
@@ -7032,6 +7103,8 @@ msgid ""
 "<a href=\"#faq1_23\">1.23 I'm running MySQL on a Win32 machine. Each time I "
 "create a new table the table and field names are changed to lowercase!</a>"
 msgstr ""
+"<a href=\"#faq1_23\">1.23 我在 Win32 系统上使用 "
+"MySQL，每次我创建表的时候表名都会被自动设为全小写，这是怎么回事？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2880
@@ -7040,32 +7113,34 @@ msgid ""
 "defaults to 1 (<tt>ON</tt>) in the Win32 version of MySQL. You can change "
 "this behavior by simply changing the directive to 0 (<tt>OFF</tt>):"
 msgstr ""
+"这是因为 Win32 版本的 MySQL 默认将 <tt>lower_case_table_names</tt> "
+"设置为1（<tt>ON</tt>）。您可以将此设置显式地设为0（也就是<tt>OFF</tt>）来解决这个问题："
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2883
 msgid ""
 "Just edit your <tt>my.ini</tt> file that should be located in your Windows "
 "directory and add the following line to the group [mysqld]:"
-msgstr ""
+msgstr "打开 <tt>my.ini</tt> 文件，这个文件应该在您的 Windows 目录下，在“[mysqld]”后一行增加："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2886
 #, no-wrap
 msgid "set-variable = lower_case_table_names=0"
-msgstr ""
+msgstr "set-variable = lower_case_table_names=0"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2888
 msgid ""
 "Next, save the file and restart the MySQL service. You can always check the "
 "value of this directive using the query"
-msgstr ""
+msgstr "然后，重新启动 MySQL。您也可以使用如下的查询语句来查询此设置值："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2891
 #, no-wrap
 msgid "SHOW VARIABLES LIKE 'lower_case_table_names';"
-msgstr ""
+msgstr "SHOW VARIABLES LIKE 'lower_case_table_names';"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2894
@@ -7073,12 +7148,14 @@ msgid ""
 "<a href=\"#faq1_24\">1.24 Some characters are being truncated in my queries, "
 "or I get characters randomly added. I am running PHP 4.2.3.</a>"
 msgstr ""
+"<a href=\"#faq1_24\">1.24 我的查询语句中被加入了奇怪的字符，有时语句还会变得缺胳膊少腿的。我使用的 PHP 版本是 "
+"4.2.3。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2897
 msgid ""
 "This is a <a href=\"http://bugs.php.net/bug.php?id=19404\">PHP 4.2.3 bug</a>."
-msgstr ""
+msgstr "这是一个 <a href=\"http://bugs.php.net/bug.php?id=19404\">PHP 4.2.3 的错误 </a>."
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2901
@@ -7087,13 +7164,15 @@ msgid ""
 "Windows XP, and I get problems, such as undefined variables when I run a "
 "<abbr title=\"structured query language\">SQL</abbr> query.</a>"
 msgstr ""
+"<a href=\"#faq1_25\">1.25 我在 Windows XP 上使用 Apache，并加载了mod_gzip-1.3.26.1a。在运行 "
+"<abbr title=\"structured query language\">SQL</abbr> 查询时出现了类似变量未定义的错误。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2905
 msgid ""
 "A tip from Jose Fandos: put a comment on the following two lines in httpd."
 "conf, like this:"
-msgstr ""
+msgstr "Jose Fandos 给出的解决方法：在 httpd.conf 中增加下面两行："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2909
@@ -7102,6 +7181,8 @@ msgid ""
 "# mod_gzip_item_include file \\.php$\n"
 "# mod_gzip_item_include mime \"application/x-httpd-php.*\"\n"
 msgstr ""
+"# mod_gzip_item_include file \\.php$\n"
+"# mod_gzip_item_include mime \"application/x-httpd-php.*\"\n"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2913
@@ -7109,6 +7190,8 @@ msgid ""
 "as this version of mod_gzip on Apache (Windows) has problems handling PHP "
 "scripts. Of course you have to restart Apache."
 msgstr ""
+"该 Windows 版本的 Apache mod_gzip 模块在处理 PHP 脚本时有些小问题。修改 httpd.conf 后，请重新启动 "
+"Apache。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2917
@@ -7117,6 +7200,10 @@ msgid ""
 "<abbr title=\"Internet Information Services\">IIS</abbr> but I get the error "
 "&quot;No input file specified&quot; when trying to run phpMyAdmin.</a>"
 msgstr ""
+"<a href=\"#faq1_26\">1.26 我将 phpMyAdmin 安装在了 <abbr title=\"Internet Information "
+"Services\">IIS</abbr> 根目录下，在我打开 phpMyAdmin 页面时，却出现了这样的错误：&quot;No input file "
+"specified&quot;</a> <!--“No input file specified”这个提示是 IIS "
+"给出的，即使是中文版的IIS，也会给出英文提示，所以这里不翻译IIS的提示。——译者greensea注 -->"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2922
@@ -7126,6 +7213,8 @@ msgid ""
 "select the user &quot;IUSR_machine&quot; from the list. Now set his "
 "permissions and it should work."
 msgstr ""
+"这是一个权限问题。右键单击 phpMyAdmin 目录，选择 属性--&gt;--&gt;安全--&gt;增加，然后选择在用户列表中选择 "
+"IUSR_machine 用户，赋予其权限，即可解决此问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2928
@@ -7133,6 +7222,8 @@ msgid ""
 "<a href=\"#faq1_27\">1.27 I get empty page when I want to view huge page "
 "(eg.  db_structure.php with plenty of tables).</a>"
 msgstr ""
+"<a href=\"#faq1_27\">1.27 当我打开一个很大的页面时，页面显示空白（如 db_structure.php "
+"页面中显示了很多表的时候）</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2931
@@ -7142,6 +7233,10 @@ msgid ""
 "\"#cfg_OBGzip\" class=\"configrule\">$cfg['OBGzip'] = false</a> in <i>config."
 "inc.php</i>), it should work. This bug will be fixed in PHP&nbsp;5.0.0."
 msgstr ""
+"这是一个 <a href=\"http://bugs.php.net/21079\">PHP 错误</a>，该错误会在打开 GZIP "
+"输出的时候发生。如果您在 <i>config.inc.php</i> 中修改 <a href=\"#cfg_OBGzip\" "
+"class=\"configrule\">$cfg['OBGzip'] = false</a> 选项来关闭这个功能，就能解决此问题。这个错误将会在 "
+"PHP&nbsp;5.0.0 版本中修复。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2938
@@ -7149,6 +7244,8 @@ msgid ""
 "<a href=\"#faq1_28\">1.28 My MySQL server sometimes refuses queries and "
 "returns the message 'Errorcode: 13'. What does this mean?</a>"
 msgstr ""
+"<a href=\"#faq1_28\">1.28 我的 MySQL 服务器偶尔会返回 'Errorcode: 13' "
+"这样的错误信息，这是神么意思？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2941
@@ -7159,27 +7256,31 @@ msgid ""
 "to lower case and turn it on again. Alternatively, there's a bug-fix "
 "available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma."
 msgstr ""
+"这个错误可能是因为 <tt>lower_case_table_names</tt> 被设为了1，而数据库中存在表名为大写的表，这是 MySQL "
+"的一个错误。要解决此问题，请先显示地将 <tt>lower_case_table_names</tt> 设为 "
+"false，然后将所有表名改为小写，最后再重新将 <tt>lower_case_table_names</tt> 设为 true。MySQL "
+"3.23.56 / 4.0.11-gamma 版本已经修复了这个问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2948
 msgid ""
 "<a href=\"#faq1_29\">1.29 When I create a table or modify a field, I get an "
 "error and the fields are duplicated.</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_29\">1.29 当我创建一个表或修改一个字段的时候，会发生错误，同时，字段名也会被损坏。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2951
 msgid ""
 "It is possible to configure Apache in such a way that PHP has problems "
 "interpreting .php files."
-msgstr ""
+msgstr "这可能是因为没有正确配置 Apache 而导致 PHP 无法正确解释 .php 文件。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2954
 msgid ""
 "The problems occur when two different (and conflicting) set of directives "
 "are used:"
-msgstr ""
+msgstr "该问题的产生，可能是因为在 Apache 的配置文件中显式地指定了两组互相冲突的设置："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2958
@@ -7188,17 +7289,19 @@ msgid ""
 "SetOutputFilter PHP\n"
 "SetInputFilter PHP\n"
 msgstr ""
+"SetOutputFilter PHP\n"
+"SetInputFilter PHP\n"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2962
 msgid "and"
-msgstr ""
+msgstr "和"
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2964
 #, no-wrap
 msgid "AddType application/x-httpd-php .php"
-msgstr ""
+msgstr "AddType application/x-httpd-php .php"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2966
@@ -7207,13 +7310,15 @@ msgid ""
 "conf</tt>, while the other set was in <tt>/etc/httpd/conf/addon-modules/php."
 "conf</tt>."
 msgstr ""
+"上面两组设置，有一组位于 <tt>/etc/httpd/conf/httpd.conf</tt> 中，另一组位于 <tt>/etc/httpd/conf"
+"/addon-modules/php.conf</tt> 中。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2969
 msgid ""
 "The recommended way is with <tt>AddType</tt>, so just comment out the first "
 "set of lines and restart Apache:"
-msgstr ""
+msgstr "推荐的设置是使用 AddType，所以，我们可以注释掉另外一组设置，就象这样："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:2973
@@ -7222,6 +7327,8 @@ msgid ""
 "#SetOutputFilter PHP\n"
 "#SetInputFilter PHP\n"
 msgstr ""
+"#SetOutputFilter PHP\n"
+"#SetInputFilter PHP\n"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2978
@@ -7235,17 +7342,17 @@ msgstr ""
 msgid ""
 "This problem is known to happen when the server is running Turck MMCache but "
 "upgrading MMCache to version 2.3.21 solves the problem."
-msgstr ""
+msgstr "产正这个问题的原因是您的服务器上运行着 Turck MMCache，升级 MMCache 到 2.3.21 版本就可解决此问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2984
 msgid "<a href=\"#faq1_31\">1.31 Does phpMyAdmin support php5?</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_31\">1.31 phpMyAdmin 支持 PHP5 吗？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2986
 msgid "Yes."
-msgstr ""
+msgstr "当然支持。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2988
@@ -7253,6 +7360,8 @@ msgid ""
 "Since release 3.0 only PHP 5.2 and newer. For older PHP versions 2.9 branch "
 "is still maintained."
 msgstr ""
+"phpMyAdmin 3.0 及之后的版本只能在 PHP 5.2 或更新的版本上运行。对于旧版本的 PHP，请使用 phpMyAdmin 2.9 "
+"版本分支，这个分支版本目前还在维护中。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:2993
@@ -7261,6 +7370,9 @@ msgid ""
 "\">HTTP</abbr> authentication with <abbr title=\"Internet Information "
 "Services\">IIS</abbr>?</a>"
 msgstr ""
+"<a href=\"#faq1_32\">1.32 我能在 <abbr title=\"Internet Information "
+"Services\">IIS</abbr> 服务器上使用 <abbr title=\"HyperText Transfer "
+"Protocol\">HTTP</abbr> 认证吗？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:2995
@@ -7269,11 +7381,13 @@ msgid ""
 "title=\"Internet Server Application Programming Interface\">ISAPI</abbr> "
 "mode under <abbr title=\"Internet Information Services\">IIS</abbr> 5.1."
 msgstr ""
+"可以。我们在 IIS 5.1 上以 ISAPI 方式加载 PHP 4.3.9，使用 phpMyAdmin 2.6.1 版本进行测试，结果可以正常使用 "
+"phpMyAdmin。"
 
 #. type: Content of: <html><body><div><ol><li>
 #: ../phpmyadmin/Documentation.html:2998
 msgid "In your <tt>php.ini</tt> file, set <tt>cgi.rfc2616_headers = 0</tt>"
-msgstr ""
+msgstr "请在 <tt>php.ini</tt> 文件中将 <tt>cgi.rfc2616_headers</tt> 设为0。"
 
 #. type: Content of: <html><body><div><ol><li>
 #: ../phpmyadmin/Documentation.html:2999
@@ -7284,6 +7398,8 @@ msgid ""
 "<tt>Integrated Windows authentication</tt>, and <tt>Digest</tt> if it's "
 "enabled.) Click <tt>OK</tt>."
 msgstr ""
+"打开<tt>站点属性——&gt;目录安全性——&gt;匿名访问</tt>对话框，选中“启用匿名访问“，并去掉“基本身份验证“”集成 Windows "
+"身份验证“和“Windows 域服务器的摘要试身份验证“以及其他的复选框。"
 
 #. type: Content of: <html><body><div><ol><li>
 #: ../phpmyadmin/Documentation.html:3004
@@ -7291,13 +7407,14 @@ msgid ""
 "In <tt>Custom Errors</tt>, select the range of <tt>401;1</tt> through "
 "<tt>401;5</tt> and click the <tt>Set to Default</tt> button."
 msgstr ""
+"在<tt>自定义错误</tt>选项卡中，选中<tt>401;1</tt>到<tt>401;5</tt>条目，然后点击<tt>设为默认</tt>按钮。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3009
 msgid ""
 "<a href=\"#faq1_33\">1.33 Is there a problem with the mysqli extension when "
 "running PHP 5.0.4 on 64-bit systems?</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_33\">1.33 在 64 位系统上能正常使用 MySQLi 扩展吗？我的 PHP 版本是 5.0.4。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3012
@@ -7305,13 +7422,15 @@ msgid ""
 "Yes. This problem affects phpMyAdmin (&quot;Call to undefined function "
 "pma_reloadnavigation&quot;), so upgrade your PHP to the next version."
 msgstr ""
+"不能。在这种情况下 phpMyAdmin 会出错（&quot; 调用了未定义的函数：pma_reloadnavigation&quot;）。请升级您的 "
+"PHP。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3016
 msgid ""
 "<a href=\"#faq1_34\">1.34 Can I access directly to database or table pages?</"
 "a>"
-msgstr ""
+msgstr "<a href=\"#faq1_34\">1.34 我能直接输入网址来显示数据库和表吗？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3018
@@ -7331,6 +7450,15 @@ msgid ""
 "create following <code>.htaccess</code> file in root folder of phpMyAdmin "
 "installation (don't forget to change directory name inside of it):"
 msgstr ""
+"当然可以。您可以直接输入类似 http://server/phpMyAdmin/index.php?server=X&amp;db=database&a"
+"mp;table=table&amp;target=script 的 <abbr title=\"Uniform Resource "
+"Locator\">URL</abbr>。其中，server 域指定了您在 <tt>config.inc.php</tt> 中设置的服务器编号。table "
+"和 script 域是可选的。如果您想使用类似 http://server/phpMyAdmin/database[/table][/script] "
+"这样的 <abbr title=\"Uniform Resource Locator\">URL</abbr>，还需要进行一些额外的设置。下面给出在 "
+"Apache 上进行设置的方法：\n"
+"首先请确定您已经在全局范围内启用了 <code>Options FollowSymLinks</code> 和 <code>AllowOverride "
+"FileInfo</code> 功能，然后，在 phpMyAdmin 的目录配置下启用这两个功能。接着，在 phpMyAdmin 根目录下创建 "
+".htaccess 文件，并将如下内容写入文件中："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3033
@@ -7343,6 +7471,15 @@ msgid ""
 "RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)$ index.php?db=$1&amp;table=$2 [R]\n"
 "RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]\n"
 msgstr ""
+"RewriteEngine On\n"
+"RewriteBase /path_to_phpMyAdmin\n"
+"RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)/([a-z_]+\\.php)$ "
+"index.php?db=$1&amp;table=$2&amp;target=$3 [R]\n"
+"RewriteRule ^([a-zA-Z0-9_]+)/([a-z_]+\\.php)$ index.php?db=$1&amp;target=$2 "
+"[R]\n"
+"RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9_]+)$ index.php?db=$1&amp;table=$2 "
+"[R]\n"
+"RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]\n"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3042
@@ -7351,6 +7488,9 @@ msgid ""
 "\">HTTP</abbr> authentication with Apache <abbr title=\"Common Gateway "
 "Interface\">CGI</abbr>?</a>"
 msgstr ""
+"<a href=\"#faq1_35\">1.35 我将 PHP 配置为在 Apache 上以 <abbr title=\"Common Gateway "
+"Interface\">CGI</abbr> 方式运行。在这种情况下我能否使用 <abbr title=\"HyperText Transfer "
+"Protocol\">HTTP</abbr> 认证？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3044
@@ -7358,6 +7498,8 @@ msgid ""
 "Yes. However you need to pass authentication variable to <abbr title="
 "\"Common Gateway Interface\">CGI</abbr> using following rewrite rule:"
 msgstr ""
+"可以，但您需要设置以下重写规则，以便将登录参数传送给 <abbr title=\"Common Gateway "
+"Interface\">CGI</abbr>："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3048
@@ -7366,6 +7508,8 @@ msgid ""
 "RewriteEngine On\n"
 "RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]\n"
 msgstr ""
+"RewriteEngine On\n"
+"RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]\n"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3053
@@ -7373,13 +7517,14 @@ msgid ""
 "<a href=\"#faq1_36\">1.36 I get an error &quot;500 Internal Server "
 "Error&quot;.</a>"
 msgstr ""
+"<a href=\"#faq1_36\">1.36 网页显示 &quot;500 Internal Server Error&quot;，怎么办？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3056
 msgid ""
 "There can be many explanations to this and a look at your server's error log "
 "file might give a clue."
-msgstr ""
+msgstr "导致这种情况的原因有很多种，请查看您的服务器错误日志，其中可能包含了有关的错误信息。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3061
@@ -7387,6 +7532,7 @@ msgid ""
 "<a href=\"#faq1_37\">1.37 I run phpMyAdmin on cluster of different machines "
 "and password encryption in cookie auth doesn't work.</a>"
 msgstr ""
+"<a href=\"#faq1_37\">1.37 加密密码功能不起作用。我使用 cookie 认证方式，phpMyAdmin 运行在服务器集群上。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3064
@@ -7396,13 +7542,15 @@ msgid ""
 "unpack functions in code. Only solution is to use mcrypt extension which "
 "works fine in this case."
 msgstr ""
+"如果您的集群中存在不同体系结构的系统，就会导致 PHP 无法使用 pack/unpack 函数进行正确的加解密操作。解决此问题的方法是使用 mcrypt "
+"扩展。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3070
 msgid ""
 "<a href=\"#faq1_38\">1.38 Can I use phpMyAdmin on a server on which Suhosin "
 "is enabled?</a>"
-msgstr ""
+msgstr "<a href=\"#faq1_38\">1.38 我能在启用了 Suhosin 的服务器上使用 phpMyAdmin 吗？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3072
@@ -7415,6 +7563,11 @@ msgid ""
 "(<tt>suhosin</tt> instead of <tt>hphp</tt>). See also the <a href="
 "\"#cfg_SuhosinDisableWarning\"> <tt>SuhosinDisableWarning</tt> directive</a>."
 msgstr ""
+"可以，但是如果使用 Suhosin 的默认配置参数，在进行某些操作，如编辑一张有很多字段而没有主键的表时，就会出现问题。请参考 <a "
+"href=\"http://www.hardened-php.net/hphp/troubleshooting.html\"> http://www"
+".hardened-php.net/hphp/troubleshooting.html</a> 来修改 Suhosin 的配置，注意 "
+"<tt>hphp</tt> 已经改为 <tt>suhosin</tt>。建议参看<a "
+"href=\"#cfg_SuhosinDisableWarning\">强制<tt>Suhosin 禁用警告</tt></a>"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3083
@@ -7423,6 +7576,7 @@ msgid ""
 "then my connection is redirected back to http. What can cause this behavior?"
 "</a>"
 msgstr ""
+"<a href=\"#faq1_39\">1.39 在使用 http 时我能正常登录，但是在切换到 https 方式后却不能登录了，这是怎么回事？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3087
@@ -7432,6 +7586,9 @@ msgid ""
 "mod/mod_ssl.html#ssloptions\">http://httpd.apache.org/docs/2.0/mod/mod_ssl."
 "html#ssloptions</a>."
 msgstr ""
+"请确认您在 Apache 的配置文件中启用了 <tt>SSLOptions</tt> 和 </tt>StdEnvVars</tt>。具体请参考 <a h"
+"ref=\"http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions\">http://ht"
+"tpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3091
@@ -7439,18 +7596,20 @@ msgid ""
 "<a href=\"#faq1_40\">1.40 When accessing phpMyAdmin via an Apache reverse "
 "proxy, cookie login does not work,</a>"
 msgstr ""
+"<a href=\"#faq1_40\">1.40 当使用 Apache 反向代理来访问 phpMyAdmin 时，无法使用 cookie "
+"认证方式登录。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3093
 msgid ""
 "To be able to use cookie auth Apache must know that it has to rewrite the "
 "set-cookie headers."
-msgstr ""
+msgstr "要在此方式下使用 cookie 认证，请确保将 Apache 设置为重写 set-cookie 头。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3094
 msgid "Example from the Apache 2.2 documentation:"
-msgstr ""
+msgstr "Apache 2.2 中给出了一个例子："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3096
@@ -7461,6 +7620,10 @@ msgid ""
 "ProxyPassReverseCookieDomain backend.example.com public.example.com \n"
 "ProxyPassReverseCookiePath / /mirror/foo/ \n"
 msgstr ""
+"ProxyPass /mirror/foo/ http://backend.example.com/\n"
+"ProxyPassReverse /mirror/foo/ http://backend.example.com/\n"
+"ProxyPassReverseCookieDomain backend.example.com public.example.com \n"
+"ProxyPassReverseCookiePath / /mirror/foo/ \n"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3102
@@ -7468,7 +7631,7 @@ msgid ""
 "Note: if the backend url looks like http://host/~user/phpmyadmin, the tilde "
 "(~) must be url encoded as %7E in the ProxyPassReverse* lines.  This is not "
 "specific to phpmyadmin, it's just the behavior of Apache."
-msgstr ""
+msgstr "注意：如果您的 URL 中带有 ~ 字符，请在 ProxyPassReverse 设置中将其转义为 %7E，就像下面那样："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3108
@@ -7479,6 +7642,10 @@ msgid ""
 "http://backend.example.com/%7Euser/phpmyadmin\n"
 "ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo\n"
 msgstr ""
+"ProxyPass /mirror/foo/ http://backend.example.com/~user/phpmyadmin\n"
+"ProxyPassReverse /mirror/foo/\n"
+"http://backend.example.com/%7Euser/phpmyadmin\n"
+"ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo\n"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3114
@@ -7486,6 +7653,8 @@ msgid ""
 "See <a href=\"http://httpd.apache.org/docs/2.2/mod/mod_proxy.html\">http://"
 "httpd.apache.org/docs/2.2/mod/mod_proxy.html</a> for more details."
 msgstr ""
+"更多信息请参考 <a href=\"http://httpd.apache.org/docs/2.2/mod/mod_proxy.html\">http:/"
+"/httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3118
@@ -7499,7 +7668,7 @@ msgstr ""
 msgid ""
 "The MySQL server's privilege tables are not up to date, you need to run the "
 "<tt>mysql_upgrade</tt> command on the server."
-msgstr ""
+msgstr "MySQL 服务器的权限表没有更新，请运行 <tt>mysql_upgrade</tt> 命令来进行更新。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3128
@@ -7508,6 +7677,9 @@ msgid ""
 "information - headers already sent by ...&quot; is displayed, what's the "
 "problem?</a>"
 msgstr ""
+"<a href=\"#faq2_1\">2.1 页面显示 &quot;Warning: Cannot add header information - "
+"headers already sent by ...&quot;，怎么办？</a> <!-- "
+"这似乎是一个PHP的错误提示，鉴于PHP的错误提示还没有中文化，这里就保留错误原文——greensea译注-->"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3131
@@ -7519,12 +7691,15 @@ msgid ""
 "kit: the file <tt>libraries/Config.class.php</tt> contained an end-of-line "
 "character (hex 0A) at the end; removing this character cleared his errors."
 msgstr ""
+"请检查 <i>config.inc.php</i> 文件，确保在 <tt>&lt;?php</tt> 之前和 <tt>?&gt;</tt> "
+"标签之后没有任何字符（包括空格、制表符以及空行等）。在 IIS 上使用 zipped 功能的用户同样向我们反馈了类似问题，在 "
+"<tt>libraries/Config.class.php</tt> 文件末尾有一个行尾符（ASCII 码为 0A），删除此字符即可解决问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3140
 msgid ""
 "<a href=\"#faq2_2\">2.2 phpMyAdmin can't connect to MySQL. What's wrong?</a>"
-msgstr ""
+msgstr "<a href=\"#faq2_2\">2.2 phpMyAdmiin 无法连接到 MySQL 服务器，这是怎么回事？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3142
@@ -7534,6 +7709,8 @@ msgid ""
 "works. If it doesn't, it may be you haven't even compiled MySQL support into "
 "PHP."
 msgstr ""
+"这可能是因为您的 PHP 配置有误，或者您使用的登录名和密码错误。请写一个脚本，使用 mysql_connect 来尝试是否能连接到 MySQL "
+"服务器，如果不能，就说明您可能没有将 MySQL 编译到 PHP 中，或者没有加载 MySQL 库。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3148
@@ -7542,11 +7719,14 @@ msgid ""
 "Failed: Can't connect to local MySQL server through socket '/tmp/mysql."
 "sock' (111) ...&quot; is displayed. What can I do?</a>"
 msgstr ""
+"<a href=\"#faq2_3\">2.3 网页显示 &quot;Warning: MySQL Connection Failed: Can't "
+"connect to local MySQL server through socket '/tmp/mysql.sock' (111) "
+"...&quot; 这样的错误，怎么办？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3152
 msgid "For RedHat users, Harald Legner suggests this on the mailing list:"
-msgstr ""
+msgstr "Harald Legner 在邮件列表中为 RedHat 用户给出了一个解决方法："
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3154
@@ -7554,38 +7734,40 @@ msgid ""
 "On my RedHat-Box the socket of MySQL is <i>/var/lib/mysql/mysql.sock</i>.  "
 "In your <i>php.ini</i> you will find a line"
 msgstr ""
+"在我的 RadHat 服务器上，MySQL 的 socket 是 <i>/var/lib/mysql/mysql.sock</i>，你应该能在 "
+"<i>php.ini</i> 文件中找到这样一行："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3157
 #, no-wrap
 msgid "mysql.default_socket = /tmp/mysql.sock"
-msgstr ""
+msgstr "mysql.default_socket = /tmp/mysql.sock"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3159
 msgid "change it to"
-msgstr ""
+msgstr "将其修改为"
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3161
 #, no-wrap
 msgid "mysql.default_socket = /var/lib/mysql/mysql.sock"
-msgstr ""
+msgstr "mysql.default_socket = /var/lib/mysql/mysql.sock"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3163
 msgid "Then restart apache and it will work."
-msgstr ""
+msgstr "之后重新启动 Apache，即可解决问题。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3165
 msgid "Here is a fix suggested by Brad Ummer:"
-msgstr ""
+msgstr "Brad Ummer 给出了另一种解决方案："
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3167
 msgid "First, you need to determine what socket is being used by MySQL."
-msgstr ""
+msgstr "首先你需要确定 MySQL 使用了何种类型的 socket，请按照下面的步骤进行操作："
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3168
@@ -7596,18 +7778,21 @@ msgid ""
 "your MySQL server, including the socket (<i>/tmp/mysql.sock</i>, for "
 "example)."
 msgstr ""
+"用终端连接到你的 MySQL 服务器并切换到 MySQL 的 bin 目录，在这个目录下你应该能找到一个名为 <i>mysqladmin</i> "
+"的文件。执行 <tt>./mysqladmin variables</tt> 命令，你就能得到 MySQL 服务器的信息，其中包括了 socket "
+"信息（类似 <i>/tmp/mysql.sock</i>）。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3173
 msgid "Then, you need to tell PHP to use this socket."
-msgstr ""
+msgstr "接下来，设置 PHP 让它使用这个 socket。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3173
 msgid ""
 "To do this in phpMyAdmin, you need to complete the socket information in the "
 "<i>config.inc.php</i>."
-msgstr ""
+msgstr "打开 phpMyAdmin 的 <i>config.inc.php</i> 文件。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3176
@@ -7615,13 +7800,15 @@ msgid ""
 "For example: <a href=\"#cfg_Servers_socket\" class=\"configrule\"> $cfg"
 "['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>"
 msgstr ""
+"将 <a href=\"#cfg_Servers_socket\" class=\"configrule\"> "
+"$cfg['Servers'][$i]['socket']</a> 修改为刚才得到的 socket。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3181
 msgid ""
 "Please also make sure that the permissions of this file allow to be readable "
 "by your webserver (i.e. '0755')."
-msgstr ""
+msgstr "同时请确此文件能被网站服务器进程读取（如将其掩码设为 0755）。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3185
@@ -7630,13 +7817,16 @@ msgid ""
 "Can_not_connect_to_server.html\"> corresponding section of the MySQL "
 "documentation</a>."
 msgstr ""
+"更多信息请参考 <a "
+"href=\"http://www.mysql.com/doc/C/a/Can_not_connect_to_server.html\">MySQL "
+"文档</a>."
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3190
 msgid ""
 "<a href=\"#faq2_4\">2.4 Nothing is displayed by my browser when I try to run "
 "phpMyAdmin, what can I do?</a>"
-msgstr ""
+msgstr "<a href=\"#faq2_4\">2.4 我运行 phpMyAdmin 的时候，浏览器什么都没有显示，怎么办？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3193
@@ -7645,6 +7835,8 @@ msgid ""
 "a> directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It "
 "helps sometime."
 msgstr ""
+"请在 phpMyAdmin 的配置文件中将 <a href=\"#cfg_OBGzip\" "
+"class=\"configrule\">$cfg['OBGZip']</a> 显式地设为 <tt>FALSE</tt>，也许能解决此问题。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3196
@@ -7653,6 +7845,8 @@ msgid ""
 "&quot; it means you're running a beta version of PHP. That's not a so good "
 "idea, please upgrade to a plain revision."
 msgstr ""
+"另外，请查看您的 PHP 版本号，如果版本号是类似 &quot;4.0b...&quot; 这样的系列，这说明您使用的 PHP "
+"是一个测试版，使用测试版可能会产生一些奇怪的问题，请将 PHP 升级到稳定版。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3201
@@ -7662,6 +7856,9 @@ msgid ""
 "with <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> or cookie "
 "authentication, I'm asked to log in again. What's wrong?</a>"
 msgstr ""
+"<a href=\"#faq2_5\">2.5 当我删除记录、表或数据库时，浏览器总是显示 404 （找不到网页）。另外，如果使用 <abbr "
+"title=\"HyperText Transfer Protocol\">HTTP</abbr> 或 cookie 认证方式，phpMyAdmin "
+"会要求重新登录，这是怎么回事？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3205
@@ -7670,6 +7867,8 @@ msgid ""
 "\"configrule\">$cfg['PmaAbsoluteUri']</a> directive in the phpMyAdmin "
 "configuration file."
 msgstr ""
+"请在 phpMyAdmin 的配置文件中检查您是否显式地设定了 <a href=\"#cfg_PmaAbsoluteUri\" "
+"class=\"configrule\">$cfg['PmaAbsoluteUri']</a>。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3210
@@ -7678,6 +7877,9 @@ msgid ""
 "'root@localhost' (Using password: YES)&quot;-error when trying to access a "
 "MySQL-Server on a host which is port-forwarded for my localhost.</a>"
 msgstr ""
+"<a href=\"#faq2_6\">2.6 我试图连接到 MySQL 服务器时得到这样的错误：&quot;Access denied for user: "
+"'root@localhost' (Using password: YES)&quot;。我对 MySQL "
+"服务器端口进行了端口映射，将localhost 的端口转发到 MySQL 服务器端口上。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3214
@@ -7685,6 +7887,7 @@ msgid ""
 "When you are using a port on your localhost, which you redirect via port-"
 "forwarding to another host, MySQL is not resolving the localhost as expected."
 msgstr ""
+"当您在自己的机器上（localhost）使用端口映射访问另一台机器上的 MySQL 时，MySQL 解析 localhost 主机名时将得到错误的结果。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3217
@@ -7701,11 +7904,13 @@ msgid ""
 "If you enter \"127.0.0.1\" as hostname, everything is right and MySQL uses "
 "the <abbr title=\"Transmission Control Protocol\">TCP</abbr> connection."
 msgstr ""
+"如果你使用 127.0.0.1 作为主机名，并使用将 MySQL 设置为使用 <abbr title=\"Transmission Control "
+"Protocol\">TCP</abbr> 链接，就可以正常登录了。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3224
 msgid "<a href=\"#faqthemes\">2.7 Using and creating themes</a>"
-msgstr ""
+msgstr "<a href=\"#faqthemes\">2.7 如何创建和使用主题？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3226
@@ -7715,6 +7920,9 @@ msgid ""
 "$cfg['ThemeManager']</a> and <a href=\"#cfg_ThemeDefault\" class=\"configrule"
 "\">$cfg['ThemeDefault']</a>."
 msgstr ""
+"有关主题的设置项是：<a href=\"#cfg_ThemePath\" class=\"configrule\">$cfg['ThemePath']</a>, "
+"<a href=\"#cfg_ThemeManager\" class=\"configrule\">$cfg['ThemeManager']</a> 以及 "
+"<a href=\"#cfg_ThemeDefault\" class=\"configrule\">$cfg['ThemeDefault']</a>。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3231
@@ -7725,6 +7933,9 @@ msgid ""
 "original&quot; contains all images and styles, for backwards compatibility "
 "and for all themes that would not include images or css-files."
 msgstr ""
+"请不要修改 <a href=\"#cfg_ThemePath\" class=\"configrule\">$cfg['ThemePath']</a> "
+"选项设置的目录下的文件结构，更不要删除这个目录。这个目录是 phpMyAdmin 的系统主题，如果一些主题缺少某些文件，phpMyAdmin "
+"就会使用系统主题的文件替代之。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3238
@@ -7733,11 +7944,14 @@ msgid ""
 "a> is enabled, you can select your favorite theme on the main page. Your "
 "selected theme will be stored in a cookie."
 msgstr ""
+"如果设置了 <a href=\"#cfg_ThemeManager\" "
+"class=\"configrule\">$cfg['ThemeManager']</a>，您就可以在 phpMyAdmin "
+"主页面中选择喜欢的主题。您使用的主题名字将会保存在 cookie 中。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3242
 msgid "To create a theme:"
-msgstr ""
+msgstr "要创建一个主题，请按照下面的方法进行操作："
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3244
@@ -7746,42 +7960,44 @@ msgid ""
 "href=\"#cfg_ThemePath\" class=\"configrule\">$cfg['ThemePath']</a> (by "
 "default <tt>themes</tt>)"
 msgstr ""
+"在 <a href=\"#cfg_ThemePath\" class=\"configrule\">$cfg['ThemePath']</a> "
+"(默认值是<tt>themes</tt>) 设置的目录下创建一个新目录。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3247
 msgid ""
 "copy the files and directories from &quot;original&quot; to &quot;"
 "your_theme_name&quot;"
-msgstr ""
+msgstr "复制 &quot;original&quot; 目录下所有的文件到您朝见的目录中。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3249
 msgid "edit the css-files in &quot;your_theme_name/css&quot;"
-msgstr ""
+msgstr "在您创建的目录下，打开 css 子目录，修改其中的层叠样式表文件。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3250
 msgid "put your new images in &quot;your_theme_name/img&quot;"
-msgstr ""
+msgstr "将您的图片复制到您创建的主题目录下的 img 子目录中。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3251
 msgid "edit <tt>layout.inc.php</tt> in &quot;your_theme_name&quot;"
-msgstr ""
+msgstr "在您创建的目录下有一个 <tt>layout.inc.php</tt> 文件，按您的需要编辑此文件。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3252
 msgid ""
 "edit <tt>info.inc.php</tt> in &quot;your_theme_name&quot; to contain your "
 "chosen theme name, that will be visible in user interface"
-msgstr ""
+msgstr "在您的主题目录下还有一个 <tt>info.inc.php</tt> 文件，您可以在这个文件中设置您的主题名字。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3254
 msgid ""
 "make a new screenshot of your theme and save it under &quot;your_theme_name/"
 "screen.png&quot;"
-msgstr ""
+msgstr "为您的主题截图，并将截图保存到主题目录下，将其命名为 screen.png。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3258
@@ -7793,6 +8009,9 @@ msgid ""
 "compatible - theme with version 2 should work in phpMyAdmin requiring "
 "version 1. Themes with different generation are incompatible."
 msgstr ""
+"在主题目录下有一个 <tt>info.inc.php</tt> 文件，其中包含了主题全名和主题版本号。主题版本号由您自行设定，不需要符合 "
+"phpMyAdmin 的版本号，只需要保证版本号是纯数字就行。拥有相同主版本号（generation "
+"number）的主题应该向下兼容。子版本号为2的主题应该能在使用子版本1主题的 phpMyAdmin 上正常显示。主版本号不相同的主题无须相互兼容。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3265
@@ -7801,6 +8020,8 @@ msgid ""
 "&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the "
 "default icons and buttons (from the system-theme &quot;original&quot;)."
 msgstr ""
+"如果您没有自己主题的图标和按钮，请删除您的主题目录下的 img 目录。phpMyAdmin 将使用默认的图标和按钮（位于 original "
+"目录下的系统主题）。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3271
@@ -7808,11 +8029,12 @@ msgid ""
 "<a href=\"#faqmissingparameters\">2.8 I get &quot;Missing parameters&quot; "
 "errors, what can I do?</a>"
 msgstr ""
+"<a href=\"#faqmissingparameters\">2.8 我遇到了一个错误，错误提示 &quot;缺少参数&quot; 怎么办？</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3274
 msgid "Here are a few points to check:"
-msgstr ""
+msgstr "请先检查以下几点："
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3276
@@ -7822,6 +8044,9 @@ msgid ""
 "href=\"#faq4_7\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 4.7</"
 "a>."
 msgstr ""
+"在 <tt>config.inc.php</tt> 文件中，显式地将 <a href=\"#cfg_PmaAbsoluteUri\" "
+"class=\"configrule\">$cfg['PmaAbsoluteUri']</a> 设置为空。请参考<a "
+"href=\"#faq4_7\"><abbr title=\"Frequently Asked Questions\">常见问题</abbr> 4.7</a>."
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3281
@@ -7830,6 +8055,9 @@ msgid ""
 "Optimizer. See <a href=\"http://bugs.php.net/bug.php?id=31134\"> http://bugs."
 "php.net/bug.php?id=31134</a>."
 msgstr ""
+"可能您安装的 PHP 版本有问题，试试升级 Zend Optimizer。请参考 <a "
+"href=\"http://bugs.php.net/bug.php?id=31134\"> "
+"http://bugs.php.net/bug.php?id=31134</a>。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3286
@@ -7839,6 +8067,9 @@ msgid ""
 "you could get this error if your table has a high number of columns. Adjust "
 "this setting accordingly. (Thanks to Klaus Dorninger for the hint)."
 msgstr ""
+"如果您使用 Hardened PHP 并在 php.ini 中将 <tt>varfilter.max_request_variables</tt> "
+"显式地设为了小于等于默认值（200）的值，就可能会导致此问题。如果您的表中有很多字段，请增加此设置的值（感谢 Klaus Dorninger "
+"提供的信息）。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3291
@@ -7846,6 +8077,8 @@ msgid ""
 "In the <tt>php.ini</tt> directive <tt>arg_separator.input</tt>, a value of "
 "&quot;;&quot; will cause this error. Replace it with &quot;&amp;;&quot;."
 msgstr ""
+"如果在 <tt>php.ini</tt> 中的选项 <tt>arg_separator.input</tt> "
+"被设置为&quot;;&quot;就有可能导致此问题。请将其设置为 &quot;&amp;;&quot;。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3294
@@ -7854,6 +8087,9 @@ msgid ""
 "you might want to increase <a href=\"http://www.hardened-php.net/hphp/"
 "troubleshooting.html\">request limits</a>."
 msgstr ""
+"如果您正在使用 <a href=\"http://www.hardened-php.net/\">Hardened-PHP</a>，请增大 <a "
+"href=\"http://www.hardened-php.net/hphp/troubleshooting.html\">request "
+"limits</a> 的设置值。"
 
 #. type: Content of: <html><body><div><ul><li>
 #: ../phpmyadmin/Documentation.html:3298
@@ -7861,11 +8097,13 @@ msgid ""
 "The directory specified in the <tt>php.ini</tt> directive <tt>session."
 "save_path</tt> does not exist or is read-only."
 msgstr ""
+"如果 <tt>php.ini</tt> 中的选项 <tt>session.save_path</tt> "
+"设定的目录不存在或者目录权限为只读，也有可能导致此问题。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3303
 msgid "<a href=\"#faq2_9\">2.9 Seeing an upload progress bar</a>"
-msgstr ""
+msgstr "<a href=\"#faq2_9\">2.9 怎样设置才能显示上传进度条</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3305
@@ -7875,13 +8113,16 @@ msgid ""
 "the <a href=\"http://pecl.php.net/package/uploadprogress\">uploadprogress</"
 "a> one. Moreover, the JSON extension has to be enabled in your PHP."
 msgstr ""
+"要使用此功能，请在服务器上安装 <a href=\"http://pecl.php.net/package/APC\">APC</a>  扩展或 <a "
+"href=\"http://pecl.php.net/package/uploadprogress\">uploadprogress</a>，并启用 "
+"JSON 扩展。"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3309
 msgid ""
 "If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your php."
 "ini."
-msgstr ""
+msgstr "如果使用 APC，请在 php.ini 中将 <tt>apc.rfc1867</tt> 设为 <tt>on</tt>。"
 
 #. type: Content of: <html><body><div><h3>
 #: ../phpmyadmin/Documentation.html:3311
@@ -7895,6 +8136,8 @@ msgid ""
 "Protocol\">HTTP</abbr> authentication, an user who logged out can not log in "
 "again in with the same nick.</a>"
 msgstr ""
+"<a href=\"#login_bug\">3.1 使用 <abbr title=\"HyperText Transfer "
+"Protocol\">HTTP</abbr> 认证时，一个用户退出之后就无法再使用相同的用户名重新登录。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3318
@@ -7903,13 +8146,14 @@ msgid ""
 "phpMyAdmin. To bypass this problem: just close all the opened browser "
 "windows and then go back to phpMyAdmin. You should be able to log in again."
 msgstr ""
+"这是 phpMyAdmin 的认证机制引起的问题。要解决此问题，请关闭所有已打开的 Windows 文件夹，然后重新登录 phpMyAdmin。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3324
 msgid ""
 "<a href=\"#faq3_2\">3.2 When dumping a large table in compressed mode, I get "
 "a memory limit error or a time limit error.</a>"
-msgstr ""
+msgstr "<a href=\"#faq3_2\">3.2 转储一个很大的表时，遇到了“超出内存限制“或“运行超时“错误。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3327
@@ -7921,13 +8165,16 @@ msgid ""
 "this way, so if you need Zip files for larger dump, you have to use another "
 "way."
 msgstr ""
+"压缩转储在内存中进行，而 PHP 对内存的使用有限制。从 2.5.4 版本开始，可以使用 Gzip/BZip2 导出来解决此问题。启用 <a "
+"href=\"#cfg_CompressOnFly\" class=\"configrule\">$cfg['CompressOnFly']</a> "
+"选项（默认已启用）。此方法不支持 Zip 导出，要进行 Zip 导出，需要使用其他的方法。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3335
 msgid ""
 "<a href=\"#faq3_3\">3.3 With InnoDB tables, I lose foreign key relationships "
 "when I rename a table or a column.</a>"
-msgstr ""
+msgstr "<a href=\"#faq3_3\">3.3 重命名 InnoDB 表名或其中的字段名时，外间关系会丢失。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3338
@@ -7935,20 +8182,22 @@ msgid ""
 "This is an InnoDB bug, see <a href=\"http://bugs.mysql.com/bug.php?id=21704"
 "\">http://bugs.mysql.com/bug.php?id=21704</a>."
 msgstr ""
+"这是一个 InnoDB 引擎的错误，请参考：<a href=\"http://bugs.mysql.com/bug.php?id=21704\">http:"
+"//bugs.mysql.com/bug.php?id=21704</a>。"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3341
 msgid ""
 "<a href=\"#faq3_4\">3.4 I am unable to import dumps I created with the "
 "mysqldump tool bundled with the MySQL server distribution.</a>"
-msgstr ""
+msgstr "<a href=\"#faq3_4\">3.4 我无法导入用 MySQL 服务器工具 mysqldump 生成的转储文件。</a>"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3344
 msgid ""
 "The problem is that older versions of mysqldump created invalid comments "
 "like this:"
-msgstr ""
+msgstr "这是因为旧版本的 mysqldump 生成了错误的注释行，就像下面这样："
 
 #. type: Content of: <html><body><div><pre>
 #: ../phpmyadmin/Documentation.html:3347
@@ -7960,6 +8209,11 @@ msgid ""
 "---------------------------------------------------------\n"
 "-- Server version 3.23.54\n"
 msgstr ""
+"-- MySQL dump 8.22\n"
+"--\n"
+"-- Host: localhost Database: database\n"
+"---------------------------------------------------------\n"
+"-- Server version 3.23.54\n"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3354
@@ -7969,22 +8223,25 @@ msgid ""
 "dump you have to turn it into valid MySQL. This means, you have to add a "
 "whitespace after the first two dashes of the line or add a # before it:"
 msgstr ""
+"错误的注释是那行由短横线组成的水平线，正确的注释应该是两个短横线后面跟一个空格。所以，要解决此问题，请在水平线的前两个短横线后加上一个空格，或直接在水平"
+"线的前面加上一个#符号，就像下面这样："
 
 #. type: Content of: <html><body><div><p><code>
 #: ../phpmyadmin/Documentation.html:3359
 msgid "<code> -- -------------------------------------------------------"
-msgstr ""
+msgstr "<code> -- -------------------------------------------------------"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3361
 msgid "</code> or"
-msgstr ""
+msgstr "</code> 或者"
 
 #. type: Content of: <html><body><div><p>
 #: ../phpmyadmin/Documentation.html:3363
 msgid ""
 "<code> #--------------------------------------------------------- </code>"
 msgstr ""
+"<code> #--------------------------------------------------------- </code>"
 
 #. type: Content of: <html><body><div><h4>
 #: ../phpmyadmin/Documentation.html:3369
