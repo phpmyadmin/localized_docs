@@ -47,11 +47,11 @@ addendum/html_comment.%: po/%.po addendum/comment.html addendum/add-html_comment
 	po4a-translate -f text -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
 
 output/%/index-template.html: generate-lang-index get-lang-name \
-	$(addsuffix /Documentation.html, output/%) \
+	$(wildcard $(addsuffix /Documentation.html, output/%) \
 	$(addsuffix /translators.html, output/%) \
 	$(addsuffix /README, output/%) \
 	$(addsuffix /INSTALL, output/%) \
-	$(addsuffix /TODO, output/%)
+	$(addsuffix /TODO, output/%))
 	./generate-lang-index $* > $@
 
 output/%/index-full-template.html: generate-lang-index get-lang-name
