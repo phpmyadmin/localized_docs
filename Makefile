@@ -105,9 +105,13 @@ pot/%-txt.pot: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README add
 pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
 	msgcat -o $@ $^
 
-po/%.po:  pot/%-full.pot
+po/%.po:  pot/%-full.pot $(wildcard ../phpmyadmin/po/*.po)
+	set -x; \
 	if [ ! -f $@ ] ; then msginit -i $< -l $* --no-translator -o $@ ; fi
-	msgmerge -U $@ $<
-	# This should be used once phpMyAdmin itself switches to gettext
-	#msgmerge -U $@ -C ../phpmyadmin/po/$*.po $<
+	set -x; \
+	if [ -f ../phpmyadmin/po/$*.po ] ; then \
+		msgmerge -U $@ -C ../phpmyadmin/po/$*.po $< ; \
+	else \
+		msgmerge -U $@ $< ; \
+	fi
 	touch $@
