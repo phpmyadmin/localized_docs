@@ -105,7 +105,7 @@ pot/%-txt.pot: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README add
 pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
 	msgcat -o $@ $^
 
-po/%.po:  pot/%-full.pot $(wildcard ../phpmyadmin/po/*.po)
+po/%.po:  pot/%-full.pot
 	set -x; \
 	if [ ! -f $@ ] ; then msginit -i $< -l $* --no-translator -o $@ ; fi
 	set -x; \
