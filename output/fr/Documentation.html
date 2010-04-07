@@ -3735,15 +3735,49 @@ cas.</p>
     <a href="#faq1_38">1.38 Puis-je utiliser phpMyAdmin sur un serveur sur
 lequel Suhosin est activé&nbsp;?</a></h4>
 
-<p> Oui, mais les valeurs de configuration par défaut de Suhosin sont connues
-pour provoquer des problèmes avec certaines opérations, par exemple la
-modification d'une table avec beaucoup de colonnes et sans clé primaire. Des
-informations d'ajustement sont disponibles sur <a
-href="http://www.hardened-php.net/hphp/troubleshooting.html">
-http://www.hardened-php.net/hphp/troubleshooting.html</a>, bien que le nom
-du paramètre ait changé (<tt>suhosin</tt> au lieu de <tt>hphp</tt>). Voir
-aussi la <a href="#cfg_SuhosinDisableWarning">directive
-<tt>SuhosinDisableWarning</tt></a>.
+<p> Yes but the default configuration values of Suhosin are known to cause
+problems with some operations, for example editing a table with many columns
+and no primary key or with textual primary key.
+</p>
+<p>
+    Suhosin configuration might lead to malfunction in some cases and it can not
+be fully obeyed as phpMyAdmin is kind of application which needs to transfer
+big amounts of fields in single HTTP request, what is something what Suhosin
+tries to prevent. If you have problems, please adjust at least following
+parameters:
+</p>
+
+<ul>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_vars">suhosin.request.max_vars</a>
+should be increased (eg. 2048)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_vars">suhosin.post.max_vars</a>
+should be increased (eg. 2048)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_array_index_length">suhosin.request.max_array_index_length</a>
+should be increased (eg. 256)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_array_index_length">suhosin.post.max_array_index_length</a>
+should be increased (eg. 256)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_totalname_length">suhosin.request.max_totalname_length</a>
+should be increased (eg. 8192)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a>
+should be increased (eg. 8192)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
+needs to be disabled (the default)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
+should not include SQL, otherwise you get big slowdown</li>
+</ul>
+
+    <p>
+        You can also disable the warning using the <a
+href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt>
+directive</a>.
     </p>
 
 <h4 id="faq1_39">

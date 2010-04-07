@@ -2757,11 +2757,49 @@ RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
 <h4 id="faq1_38">
     <a href="#faq1_38">1.38 我能在启用了 Suhosin 的服务器上使用 phpMyAdmin 吗？</a></h4>
 
-<p> 可以，但是如果使用 Suhosin 的默认配置参数，在进行某些操作，如编辑一张有很多字段而没有主键的表时，就会出现问题。请参考 <a
-href="http://www.hardened-php.net/hphp/troubleshooting.html">
-http://www.hardened-php.net/hphp/troubleshooting.html</a> 来修改 Suhosin 的配置，注意
-<tt>hphp</tt> 已经改为 <tt>suhosin</tt>。建议参看<a
-href="#cfg_SuhosinDisableWarning">强制<tt>Suhosin 禁用警告</tt></a>
+<p> Yes but the default configuration values of Suhosin are known to cause
+problems with some operations, for example editing a table with many columns
+and no primary key or with textual primary key.
+</p>
+<p>
+    Suhosin configuration might lead to malfunction in some cases and it can not
+be fully obeyed as phpMyAdmin is kind of application which needs to transfer
+big amounts of fields in single HTTP request, what is something what Suhosin
+tries to prevent. If you have problems, please adjust at least following
+parameters:
+</p>
+
+<ul>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_vars">suhosin.request.max_vars</a>
+should be increased (eg. 2048)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_vars">suhosin.post.max_vars</a>
+should be increased (eg. 2048)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_array_index_length">suhosin.request.max_array_index_length</a>
+should be increased (eg. 256)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_array_index_length">suhosin.post.max_array_index_length</a>
+should be increased (eg. 256)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_totalname_length">suhosin.request.max_totalname_length</a>
+should be increased (eg. 8192)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a>
+should be increased (eg. 8192)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
+needs to be disabled (the default)</li>
+    <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
+should not include SQL, otherwise you get big slowdown</li>
+</ul>
+
+    <p>
+        You can also disable the warning using the <a
+href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt>
+directive</a>.
     </p>
 
 <h4 id="faq1_39">
