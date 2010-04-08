@@ -1703,6 +1703,12 @@ votre serveur <abbr title="HyperText Transfer Protocol">HTTP</abbr> est
 situ&eacute;.
     </dd>
 
+    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
+    <dd>Whether to display errors from PHP or not.</dd>
+
+    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
+    <dd>Whether to gather errors from PHP or not.</dd>
+
     <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] bool&eacute;en</dt>
     <dd>D&eacute;finit si on utilise un menu construit par s&eacute;lection et si on
 affiche seulement les tables en cours dans le cadre de gauche (page plus
@@ -2329,24 +2335,24 @@ un grand nombre de champs tout en ayant une vue compl&egrave;te sur
 plusieurs d'entre-eux.
     </dd>
 
-    <dt id ="cfb_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] bool&eacute;en</dt>
+    <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] bool&eacute;en</dt>
     <dd>D&eacute;finit l'affichage d'un lien pour modifier une requ&ecirc;te dans
 toute bo&icirc;te SQL Query.</dd>
 
-    <dt id ="cfb_SQLQuery_Explain">$cfg['SQLQuery']['Explain'] bool&eacute;en</dt>
+    <dt id ="cfg_SQLQuery_Explain">$cfg['SQLQuery']['Explain'] bool&eacute;en</dt>
     <dd>D&eacute;finit l'affichage d'un lien pour expliquer une requ&ecirc;te SELECT
 dans toute bo&icirc;te SQL Query.</dd>
 
-    <dt id ="cfb_SQLQuery_ShowAsPHP">$cfg['SQLQuery']['ShowAsPHP'] bool&eacute;en</dt>
+    <dt id ="cfg_SQLQuery_ShowAsPHP">$cfg['SQLQuery']['ShowAsPHP'] bool&eacute;en</dt>
     <dd>D&eacute;finit l'affichage d'un lien pour incorporer une requ&ecirc;te dans
 du code PHP dans toute bo&icirc;te SQL Query.</dd>
 
-    <dt id ="cfb_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] bool&eacute;en</dt>
+    <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] bool&eacute;en</dt>
     <dd>D&eacute;finit l'affichage d'un lien pour valider une requ&ecirc;te dans
 toute bo&icirc;te SQL Query.  Voir &eacute;galement <tt><a
 href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt>.</dd>
 
-    <dt id ="cfb_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] bool&eacute;en</dt>
+    <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] bool&eacute;en</dt>
     <dd>D&eacute;finit l'affichage d'un lien pour actualiser une requ&ecirc;te dans
 toute bo&icirc;te SQL Query.</dd>
 
@@ -5298,11 +5304,16 @@ http://sourceforge.net/projects/phpmyadmin/</a> (puis choisir Forums).</p>
 ou mettre &agrave; jour une langue existante, o&ugrave; dois-je
 commencer&nbsp;?</a></h4>
 
-<p> Commencez toujours par utiliser la version en cours sur le SVN pour votre
-langue. Pour une nouvelle langue, commencer &agrave; partir de
-<i>english-utf-8.inc.php</i>.  Si vous ne savez pas comment obtenir la
-version SVN, veuillez demander &agrave; un des d&eacute;veloppeurs.
-    <br />
+<p> Always use latest Git versoin of po file to translate. You can optionally
+translate online at our <a href="http://l10n.cihar.com/">translation
+server</a> where you can also get latest po files and merge them with your
+translations. For creating new translation simply use
+<code>po/phpmyadmin.pot</code> and generate <code>po/LANG_CODE.po</code> for
+your language (you can use <code>msginit -i po/phpmyadmin.pot -l LANG_CODE
+--no-translator -o po/LANG_CODE.po</code> to do this) or ask on mailing list
+to add the translation to the web interface.
+</p>
+<p>
     Veuillez noter que nous essayons de ne pas utiliser d'entit&eacute;s HTML
 comme &amp;eacute; dans les traductions, puisque nous utilisons le bon jeu
 de caract&egrave;res dans le fichier.  Avec les entit&eacute;s HTML, le
@@ -5312,13 +5323,18 @@ figurer, pour les guillemets anglais &laquo;&nbsp;"&nbsp;&raquo; , les
 espaces non s&eacute;cables, le &laquo;&nbsp;et&nbsp;&raquo; commercial
 &laquo;&nbsp;&amp;&nbsp;&raquo; , inf&eacute;rieur &agrave;
 &laquo;&nbsp;&lt;&nbsp;&raquo; , sup&eacute;rieur &agrave;
-&laquo;&nbsp;&gt;&nbsp;&raquo;.<br />
+&laquo;&nbsp;&gt;&nbsp;&raquo;.
+</p>
+<p>
     Vous pouvez donc joindre votre traduction, en tant que fichier zip pour
 &eacute;viter de perdre les caract&egrave;res sp&eacute;ciaux, sur le
-traqueur de traduction sur sourceforge.net.<br />
+traqueur de traduction sur sourceforge.net.
+</p>
+<p>
     Ce serait une bonne id&eacute;e de vous abonner &agrave; la liste de
 diffusion phpmyadmin-translators, parce que c'est l&agrave; que nous
-demandons la traduction de nouveaux messages.</p>
+demandons la traduction de nouveaux messages.
+</p>
 
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 Je voudrais aider au d&eacute;veloppement de
@@ -5440,13 +5456,18 @@ r&egrave;gles XHTML1.0 et CSS2 d'une part, et aux <a
 href="http://pear.php.net/">normes de codage <abbr title="PHP Extension and
 Application Repository">PEAR</abbr></a> d'autre part. Veuillez y
 pr&ecirc;ter attention.</li>
+    <li>Please enable showing PHP errors and warnings by the <code><a
+href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
+configuration directive.</li>
     <li>Veuillez respecter les conventions de nommage de fichiers. Ce qui est
 relatif aux tables s'&eacute;crit <i>tbl_*.php</i>, le code relatif aux
 bases de donn&eacute;es s'&eacute;crit <i>db_*.php</i>, les outils relatifs
 aux serveurs s'&eacute;crivent <i>server_*.php</i> et ainsi de suite.</li>
-    <li>Veuillez ne pas utiliser de cha&icirc;nes de message dans votre code,
-plut&ocirc;t, ajoutez la cha&icirc;ne (au moins) dans le fichier
-<i>english-utf-8.inc.php</i> et faites un print().</li>
+    <li>Please use gettext wrappers around all messages (<code>__('Some
+text')</code> or <code>_ngettext()</code> function).  To translate them, you
+need to call <code>scripts/update-po</code> script. To use translated
+messages, call <code>scripts/generate-mo</code>, which generates binary
+files read by Gettext.</li>
     <li>Si vous voulez &ecirc;tre vraiment utile, ajoutez une entr&eacute;e dans le
 fichier ChangeLog.</li>
     <li id="developersdbg">

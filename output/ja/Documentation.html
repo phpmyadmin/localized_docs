@@ -1451,6 +1451,12 @@ MySQL servers behind the firewall where your <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> server is placed.
     </dd>
 
+    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
+    <dd>Whether to display errors from PHP or not.</dd>
+
+    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
+    <dd>Whether to gather errors from PHP or not.</dd>
+
     <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
     <dd>Defines whether to use a select-based menu and display only the current
 tables in the left frame (smaller page). Only in Non-Lightmode you can use
@@ -1937,20 +1943,20 @@ displayed using a CSS-formatted dashed-line below the name of the field. The
 comment is shown as a tool-tip for that field.
     </dd>
 
-    <dt id ="cfb_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
+    <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
     <dd>Whether to display an edit link to change a query in any SQL Query box.</dd>
 
-    <dt id ="cfb_SQLQuery_Explain">$cfg['SQLQuery']['Explain'] boolean</dt>
+    <dt id ="cfg_SQLQuery_Explain">$cfg['SQLQuery']['Explain'] boolean</dt>
     <dd>Whether to display a link to explain a SELECT query in any SQL Query box.</dd>
 
-    <dt id ="cfb_SQLQuery_ShowAsPHP">$cfg['SQLQuery']['ShowAsPHP'] boolean</dt>
+    <dt id ="cfg_SQLQuery_ShowAsPHP">$cfg['SQLQuery']['ShowAsPHP'] boolean</dt>
     <dd>Whether to display a link to wrap a query in PHP code in any SQL Query box.</dd>
 
-    <dt id ="cfb_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] boolean</dt>
+    <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] boolean</dt>
     <dd>Whether to display a link to validate a query in any SQL Query box.  See
 also <tt><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt>.</dd>
 
-    <dt id ="cfb_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] boolean</dt>
+    <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] boolean</dt>
     <dd>Whether to display a link to refresh a query in any SQL Query box.</dd>
 
     <dt id="cfg_UploadDir">$cfg['UploadDir'] string</dt>
@@ -4300,16 +4306,27 @@ http://sf.net/projects/phpmyadmin/</a> (and choose Forums)</p>
     <a href="#faq7_2">7.2 I want to translate the messages to a new language or
 upgrade an existing language, where do I start?</a></h4>
 
-<p> Always use the current SVN version of your language file.  For a new
-language, start from <i>english-utf-8.inc.php</i>. If you don't know how to
-get the SVN version, please ask one of the developers.
-    <br />
+<p> Always use latest Git versoin of po file to translate. You can optionally
+translate online at our <a href="http://l10n.cihar.com/">translation
+server</a> where you can also get latest po files and merge them with your
+translations. For creating new translation simply use
+<code>po/phpmyadmin.pot</code> and generate <code>po/LANG_CODE.po</code> for
+your language (you can use <code>msginit -i po/phpmyadmin.pot -l LANG_CODE
+--no-translator -o po/LANG_CODE.po</code> to do this) or ask on mailing list
+to add the translation to the web interface.
+</p>
+<p>
     ご注意ください。phpMyAdmin の翻訳では &amp;eacute; のような HTML
 エンティティは利用せず、ファイルに適切な文字セットを定義するようにしています。HTML エンティティを使うと JavaScript
-のメッセージテキストが正しく表示できないためです。ただし、いくつかのエンティティは使う必要があります。クオート（&amp;quot;）、分離されては困るスペース（&amp;nbsp;）、＆（&amp;amp;）、＜（&amp;lt;）、＞（&amp;gt;）です。<br />
-    翻訳は sourceforge.net の翻訳トラッカーに掲載できます。zip ファイルにして特殊文字が消えないようにしてください。<br />
+のメッセージテキストが正しく表示できないためです。ただし、いくつかのエンティティは使う必要があります。クオート（&amp;quot;）、分離されては困るスペース（&amp;nbsp;）、＆（&amp;amp;）、＜（&amp;lt;）、＞（&amp;gt;）です。
+</p>
+<p>
+    翻訳は sourceforge.net の翻訳トラッカーに掲載できます。zip ファイルにして特殊文字が消えないようにしてください。
+</p>
+<p>
     phpmyadmin-translators
-メーリングリストに参加するのも良い考えです。ここは私たちが新しいメッセージの翻訳を求める場所にもなっています。</p>
+メーリングリストに参加するのも良い考えです。ここは私たちが新しいメッセージの翻訳を求める場所にもなっています。
+</p>
 
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 I would like to help out with the development of
@@ -4416,10 +4433,16 @@ phpMyAdmin をアプリケーションのサンプルとして使っています
 one hand, they fit the <a href="http://pear.php.net/"> <abbr title="PHP
 Extension and Application Repository">PEAR</abbr> coding standards</a> on
 the other hand. Please pay attention to this.</li>
+    <li>Please enable showing PHP errors and warnings by the <code><a
+href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
+configuration directive.</li>
     <li>ファイルの命名規則にあわせるようにしてください。テーブル関連のものは <i>tbl_*.php</i>、データベース関連のコードは
 <i>db_*.php</i>、サーバ関連のツールは <i>server_*.php</i> などとなっています。</li>
-    <li>Please don't put message strings in your code, instead add the string (at
-least) to <i>english-utf-8.inc.php</i> and print() it out.</li>
+    <li>Please use gettext wrappers around all messages (<code>__('Some
+text')</code> or <code>_ngettext()</code> function).  To translate them, you
+need to call <code>scripts/update-po</code> script. To use translated
+messages, call <code>scripts/generate-mo</code>, which generates binary
+files read by Gettext.</li>
     <li>さらにお願いしてもよければ、ChangeLog にエントリを書いてください。</li>
     <li id="developersdbg">
         The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
