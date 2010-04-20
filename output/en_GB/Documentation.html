@@ -1915,19 +1915,23 @@ contents are displayed (you may have them displayed both at the left and at
 the right).  &quot;Left&quot; and &quot;right&quot; are parsed as
 &quot;top&quot; and &quot;bottom&quot; with vertical display mode.</dd>
 
-    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string <span
-id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] </span>string
-    </dt>
+    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string</dt>
     <dd>There are 3 display modes: horizontal, horizontalflipped and vertical.
 Define which one is displayed by default. The first mode displays each row
 on a horizontal line, the second rotates the headers by 90 degrees, so you
 can use descriptive headers even though fields only contain small values and
-still print them out. The vertical mode sorts each row on a vertical lineup.<br /><br />
+still print them out. The vertical mode sorts each row on a vertical lineup.
+    </dd>
 
-        The HeaderFlipType can be set to 'css' or 'fake'. When using 'css' the
-rotation of the header for horizontalflipped is done via CSS. If set to
-'fake' PHP does the transformation for you, but of course this does not look
-as good as CSS.</dd>
+    <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
+    <dd>
+        The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css'
+the rotation of the header for horizontalflipped is done via CSS. The CSS
+transformation currently works only in Internet Explorer.If set to 'fake'
+PHP does the transformation for you, but of course this does not look as
+good as CSS. The 'auto' option enables CSS transformation when browser
+supports it and use PHP based one otherwise.
+    </dd>
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span> string
@@ -3328,8 +3332,8 @@ MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
 port-forwarding to another host, MySQL is not resolving the localhost as
 expected.<br />
     Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
-MySQL (the commandline tool 'mysql' as well) always tries to use the socket
-connection for speeding up things. And that doesn't work in this
+MySQL (the command line tool <code>mysql</code> as well) always tries to use
+the socket connection for speeding up things. And that doesn't work in this
 configuration with port forwarding.<br />
     If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
 <abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
@@ -3456,8 +3460,8 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
     <a href="#faq3_4">3.4 I am unable to import dumps I created with the
 mysqldump tool bundled with the MySQL server distribution.</a></h4>
 
-<p> The problem is that older versions of mysqldump created invalid comments
-like this:</p>
+<p> The problem is that older versions of <code>mysqldump</code> created invalid
+comments like this:</p>
 
 <pre>
 -- MySQL dump 8.22
@@ -4647,7 +4651,7 @@ and women who gave their lives for the people of Earth.</li>
 
 <pre>
 Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright (C) 2001-2009 Marc Delisle &lt;marc_at_infomarc.info&gt;
+Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;

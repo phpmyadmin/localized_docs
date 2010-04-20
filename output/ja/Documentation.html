@@ -1908,17 +1908,21 @@ view.  Can be turned off by a toggle button on the browse page.</dd>
     <dd>テーブルの内容を表示しているとき、修正や削除のリンクをどこに表示するかを定義します（左右両方に表示することもできます）。
 「左（left）」と「右（right）」は、縦表示モードでは「上（top）」と「下（bottom）」と解釈されます。</dd>
 
-    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string <span
-id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] </span>string
-    </dt>
+    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string</dt>
     <dd>表示モードには横並び（horizontal）、横並び縦ヘッダ（horizontalflipped）、縦並び（vertical）の 3
 つがありますが、どれをデフォルトの表示にするかを定義します。横並びモードでは各行の内容を横一列に並べます。横並び縦ヘッダモードでは、ヘッダを 90
-度回転させることで、フィールドに小さな値しか入っていない場合でも詳細なヘッダを表示できるようにします。縦並びモードでは各行の内容を縦一列に並べます。<br /><br />
+度回転させることで、フィールドに小さな値しか入っていない場合でも詳細なヘッダを表示できるようにします。縦並びモードでは各行の内容を縦一列に並べます。
+    </dd>
 
-        The HeaderFlipType can be set to 'css' or 'fake'. When using 'css' the
-rotation of the header for horizontalflipped is done via CSS. If set to
-'fake' PHP does the transformation for you, but of course this does not look
-as good as CSS.</dd>
+    <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
+    <dd>
+        The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css'
+the rotation of the header for horizontalflipped is done via CSS. The CSS
+transformation currently works only in Internet Explorer.If set to 'fake'
+PHP does the transformation for you, but of course this does not look as
+good as CSS. The 'auto' option enables CSS transformation when browser
+supports it and use PHP based one otherwise.
+    </dd>
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span> string
@@ -3217,8 +3221,10 @@ configuration file.</p>
 MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
 
 <p> localhost のポートを利用して、ポート転送で別のホストにリダイレクトすると、MySQL は期待通りに localhost を解決してくれません。<br />
-    Erik Wasser
-は次のように説明しています：解決法は次の通りです：ホストが「localhost」の場合、MySQLは（コマンドラインツールの「mysql」もそうですが）高速化のためにかならずソケットを利用して接続しようとします。これは、このようにポート転送する設定では動作しません。<br />
+    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
+MySQL (the command line tool <code>mysql</code> as well) always tries to use
+the socket connection for speeding up things. And that doesn't work in this
+configuration with port forwarding.<br />
     If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
 <abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
 
@@ -3337,8 +3343,8 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
     <a href="#faq3_4">3.4 I am unable to import dumps I created with the
 mysqldump tool bundled with the MySQL server distribution.</a></h4>
 
-<p> The problem is that older versions of mysqldump created invalid comments
-like this:</p>
+<p> The problem is that older versions of <code>mysqldump</code> created invalid
+comments like this:</p>
 
 <pre>
 -- MySQL dump 8.22
@@ -4457,7 +4463,7 @@ configuration options for more information.<br />
 
 <pre>
 Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright (C) 2001-2009 Marc Delisle &lt;marc_at_infomarc.info&gt;
+Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;

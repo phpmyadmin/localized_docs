@@ -2290,22 +2290,25 @@ droite). &laquo;&nbsp;Gauche&nbsp;&raquo; et
 &laquo;&nbsp;haut&nbsp;&raquo; et &laquo;&nbsp;bas&nbsp;&raquo; en mode
 d'affichage vertical.</dd>
 
-    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] cha&icirc;ne <span
-id="cfg_HeaderFlipType">$cfg['HeaderFlipType']</span> cha&icirc;ne
-    </dt>
+    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string</dt>
     <dd>Il existe trois modes d'affichage&nbsp;: 'horizontal', 'horizontalflipped'
 et 'vertical'. D&eacute;finit lequel est affich&eacute; par d&eacute;faut.
 Le premier mode affiche chaque enregistrement sur une ligne horizontale, le
 second fait pivoter les en-t&ecirc;tes de&nbsp; 90 degr&eacute;s, de la
 sorte vous pouvez utiliser des en-t&ecirc;tes descriptifs m&ecirc;me si les
 champs contiennent de petites valeurs et les imprimer. Le mode vertical trie
-chaque enregistrement verticalement.<br /><br />
+chaque enregistrement verticalement.
+    </dd>
 
-        Le param&egrave;tre HeaderFlipType peut &ecirc;tre d&eacute;fini &agrave;
-'css' ou 'faked'. En utilisant 'css' la rotation de l'en-t&ecirc;te dans le
-mode 'horizontalflipped' est faite par la feuille de style (CSS). S'il est
-d&eacute;fini &agrave; 'faked ', PHP fait la transformation pour vous, mais
-bien s&ucirc;r, ce ne sera pas aussi beau qu'avec la feuille de style.</dd>
+    <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
+    <dd>
+        The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css'
+the rotation of the header for horizontalflipped is done via CSS. The CSS
+transformation currently works only in Internet Explorer.If set to 'fake'
+PHP does the transformation for you, but of course this does not look as
+good as CSS. The 'auto' option enables CSS transformation when browser
+supports it and use PHP based one otherwise.
+    </dd>
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span>
@@ -3947,11 +3950,10 @@ redirig&eacute; sur mon ordinateur h&ocirc;te local.</a></h4>
 <p> Quand vous utilisez un port sur votre ordinateur local, que vous redirigez
 &agrave; l'aide d'une redirection de port vers un autre h&ocirc;te, MySQL ne
 r&eacute;soud pas le nom d'h&ocirc;te local comme il le devrait.<br />
-    Erik Wasser explique&nbsp;: La solution est&nbsp;: si votre h&ocirc;te est
-&laquo;&nbsp;localhost&nbsp;&raquo;, MySQL (l'outil de commande en ligne
-'mysql' aussi) essaie toujours d'utiliser la connexion socket pour
-acc&eacute;l&eacute;rer les choses. Et cela ne fonctionne pas dans cette
-configuration avec redirection de port.<br />
+    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
+MySQL (the command line tool <code>mysql</code> as well) always tries to use
+the socket connection for speeding up things. And that doesn't work in this
+configuration with port forwarding.<br />
     Si vous mettez &laquo;&nbsp;127.0.0.1&nbsp;&raquo; comme nom d'h&ocirc;te,
 tout est correct et MySQL utilise la connexion <abbr title="Transmission
 Control Protocol">TCP</abbr>.</p>
@@ -4105,8 +4107,8 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
 d'exportation que j'ai cr&eacute;&eacute;s avec l'outil mysqldump fourni
 dans la distribution de MySQL serveur.</a></h4>
 
-<p> Le probl&egrave;me vient du fait que les anciennes versions de mysqldump
-cr&eacute;aient des commentaires invalides comme ceci&nbsp;:</p>
+<p> The problem is that older versions of <code>mysqldump</code> created invalid
+comments like this:</p>
 
 <pre>
 -- MySQL dump 8.22
@@ -5486,8 +5488,8 @@ vie pour les habitants de la Terre.</li>
 <h2 id="copyright">Copyright</h2>
 
 <pre>
-Copyright © 1998-2000   Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright © 2001-2009   Marc Delisle &lt;marc_at_infomarc.info&gt;
+Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
+Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
@@ -5495,7 +5497,7 @@ Copyright © 2001-2009   Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [consulter les <a href="#credits">crédits</a> pour plus de détails]
+                        [check <a href="#credits">credits</a> for more details]
 </pre>
 
 <p>
