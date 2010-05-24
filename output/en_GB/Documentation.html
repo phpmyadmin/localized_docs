@@ -2619,6 +2619,17 @@ unsigned/zerofill/not_null/... properties.<br />
 (i.e. 'text/plain', 'image/jpeg' etc.)</li>
 </ol>
 
+<p> Additionally you should also provide additional function to provide
+information about the transformation to the user. This function should have
+same name as transformation function just with appended <code>_info</code>
+suffix. This function accepts no parameters and returns array with
+information about the transformation. Currently following keys can be used:
+</p>
+<dl>
+    <dt><code>info</code></dt>
+    <dd>Long description of the transformation.</dd>
+</dl>
+
 
 <!-- FAQ -->
 <h2 id="faq">FAQ - Frequently Asked Questions</h2>
@@ -4399,36 +4410,11 @@ automatically when entering Browse mode for a table?</a></h4>
     <a href="#faq6_23">6.23 Export: I heard phpMyAdmin can export Microsoft
 Excel files, how can I enable that?</a></h4>
 
-<p> Current version does support direct export to Microsoft Excel and Word
-versions 2000 and newer. If you need export older versions, you can use
-<abbr title="comma separated values">CSV</abbr> suitable for Microsoft
-Excel, which works out of the box or you can try native <b>experimental</b>
-MS Excel exporter. <b>This export has several problems, most important are
-limitation of cell content to 255 chars and no support for charsets, so
-think carefully whether you want to enable this.</b>.  For enabling this you
-need to set <a href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> to
-place where web server user can write (for example <tt>'./tmp'</tt>) and
-install <abbr title="PHP Extension and Application Repository">PEAR</abbr>
-module Spreadsheet_Excel_Writer into php include path. The installation can
-be done by following command:</p>
-
-<pre>
-pear -d preferred_state=beta install -a Spreadsheet_Excel_Writer
-</pre>
-
-<p> First part of switches set we want to install beta version of that module
-(no stable version available yet) and then we tell pear we want to satisfy
-dependencies.</p>
-
-<p> If you are running in PHP safe mode, you will have to set in
-<tt>php.ini</tt> the <tt>safe_mode_include_dir</tt> to the directory where
-your <abbr title="PHP Extension and Application Repository">PEAR</abbr>
-modules are located, for example:</p>
-
-<pre>
-safe_mode_include_dir = /usr/local/lib/php
-</pre>
-
+<p> You can use <abbr title="comma separated values">CSV</abbr> for Microsoft
+Excel, which works out of the box, but phpMyAdmin supports direct export to
+Microsoft Excel version 97 and newer.  For this to work, you need to set <a
+href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> to a place where
+the web server user can write (for example <tt>'./tmp'</tt>).</p>
 <p> To create the temporary directory on a UNIX-based system, you can do:</p>
 
 <pre>
@@ -4490,14 +4476,16 @@ http://sf.net/projects/phpmyadmin/</a> (and choose Forums)</p>
     <a href="#faq7_2">7.2 I want to translate the messages to a new language or
 upgrade an existing language, where do I start?</a></h4>
 
-<p> Always use latest Git versoin of po file to translate. You can optionally
+<p> Always use latest Git version of po file to translate. You can optionally
 translate online at our <a href="http://l10n.cihar.com/">translation
 server</a> where you can also get latest po files and merge them with your
 translations. For creating new translation simply use
 <code>po/phpmyadmin.pot</code> and generate <code>po/LANG_CODE.po</code> for
 your language (you can use <code>msginit -i po/phpmyadmin.pot -l LANG_CODE
 --no-translator -o po/LANG_CODE.po</code> to do this) or ask on mailing list
-to add the translation to the web interface.
+to add the translation to the web interface. More details are available on
+<a href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">our
+wiki</a>.
 </p>
 <p>
     Please note that we try not to use HTML entities like &amp;eacute; in the

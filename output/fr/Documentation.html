@@ -3124,6 +3124,17 @@ unsigned/zerofill/not_null/&hellip;<br />
 (c'est-&agrave;-dire 'text/plain', 'image/jpeg', etc.)</li>
 </ol>
 
+<p> Additionally you should also provide additional function to provide
+information about the transformation to the user. This function should have
+same name as transformation function just with appended <code>_info</code>
+suffix. This function accepts no parameters and returns array with
+information about the transformation. Currently following keys can be used:
+</p>
+<dl>
+    <dt><code>info</code></dt>
+    <dd>Long description of the transformation.</dd>
+</dl>
+
 
 <!-- FAQ -->
 <h2 id="faq"><abbr title="Foire Aux Questions">FAQ</abbr> - Foire Aux Questions</h2>
@@ -5200,42 +5211,11 @@ ex&eacute;cut&eacute;.
 exporter des fichiers au format Microsoft Excel, comment puis-je activer
 cette option&nbsp;?</a></h4>
 
-<p> La version actuelle g&egrave;re directement l'exportation aux formats
-Microsoft Excel et Word de version 2000 et ult&eacute;rieures. Si vous avez
-besoin d'exporter d'anciennes versions, vous pouvez utiliser le format <abbr
-title="comma separated values">CSV</abbr> appropri&eacute; pour MS Excel,
-qui fonctionne tel quel, soit essayer l'exportation
-<b>exp&eacute;rimentale</b> au format natif MS Excel.  <b>Cette exportation
-a plusieurs probl&egrave;mes, les plus importants &eacute;tant la limitation
-du contenu d'une cellule &agrave; 255 caract&egrave;res et l'absence de
-support pour les jeux de caract&egrave;res, aussi r&eacute;fl&eacute;chissez
-bien avant d'utiliser cette option</b>. Pour activer cette option, vous
-devez param&eacute;trer <a href="#cfg_TempDir"
-class="configrule">$cfg['TempDir']</a> dans un r&eacute;pertoire o&ugrave;
-un utilisateur du serveur Web a les droits d'&eacute;criture (par exemple,
-<tt>./tmp</tt>) et vous devez installer le module PEAR
-Spreadsheet_Excel_Writer dans le chemin d'acc&egrave;s
-&laquo;&nbsp;include&nbsp;&raquo; de php.  L'installation peut &ecirc;tre
-faite &agrave; l'aide de la commande suivante&nbsp;:</p>
-
-<pre>
-    pear -d preferred_state=beta install -a Spreadsheet_Excel_Writer
-</pre>
-
-<p> Dans la premi&egrave;re partie des options, nous indiquons que nous voulons
-installer une version beta de ce module (pas de version stable disponible
-pour le moment) et nous indiquons ensuite &agrave; pear que nous voulons
-satisfaire aux d&eacute;pendances.</p>
-
-<p> Si vous ex&eacute;cutez PHP en mode s&eacute;curis&eacute;, vous devrez
-d&eacute;finir dans le fichier <tt>php.ini</tt>, la variable
-<tt>safe_mode_include_dir</tt> avec le nom du r&eacute;pertoire dans lequel
-vos modules PEAR sont situ&eacute;s, par exemple&nbsp;:</p>
-
-<pre>
-    safe_mode_include_dir = /usr/local/lib/php
-</pre>
-
+<p> You can use <abbr title="comma separated values">CSV</abbr> for Microsoft
+Excel, which works out of the box, but phpMyAdmin supports direct export to
+Microsoft Excel version 97 and newer.  For this to work, you need to set <a
+href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> to a place where
+the web server user can write (for example <tt>'./tmp'</tt>).</p>
 <p> Pour cr&eacute;er un r&eacute;pertoire temporaire sur un syst&egrave;me
 bas&eacute; sur UNIX, vous pouvez faire ceci&nbsp;:</p>
 
@@ -5306,14 +5286,16 @@ http://sourceforge.net/projects/phpmyadmin/</a> (puis choisir Forums).</p>
 ou mettre &agrave; jour une langue existante, o&ugrave; dois-je
 commencer&nbsp;?</a></h4>
 
-<p> Always use latest Git versoin of po file to translate. You can optionally
+<p> Always use latest Git version of po file to translate. You can optionally
 translate online at our <a href="http://l10n.cihar.com/">translation
 server</a> where you can also get latest po files and merge them with your
 translations. For creating new translation simply use
 <code>po/phpmyadmin.pot</code> and generate <code>po/LANG_CODE.po</code> for
 your language (you can use <code>msginit -i po/phpmyadmin.pot -l LANG_CODE
 --no-translator -o po/LANG_CODE.po</code> to do this) or ask on mailing list
-to add the translation to the web interface.
+to add the translation to the web interface. More details are available on
+<a href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">our
+wiki</a>.
 </p>
 <p>
     Veuillez noter que nous essayons de ne pas utiliser d'entit&eacute;s HTML
