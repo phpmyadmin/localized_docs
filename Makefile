@@ -106,9 +106,9 @@ pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
 	msgcat -o $@ $^
 
 po/%.po:  pot/%-full.pot
-	set -x; \
+	set -e; \
 	if [ ! -f $@ ] ; then msginit -i $< -l $* --no-translator -o $@ ; fi
-	set -x; \
+	set -e; \
 	if [ -f ../phpmyadmin/po/$*.po ] ; then \
 		msgmerge -U $@ -C ../phpmyadmin/po/$*.po $< ; \
 	else \
