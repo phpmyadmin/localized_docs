@@ -117,8 +117,8 @@ Ciebie należy odszukanie odpowiedniego fragmentu podręcznika MySQL.
 
 <h3>Obecnie phpMyAdmin potrafi:</h3>
 
-<ul><li>browse and drop databases, tables, views, fields and indexes</li>
-    <li>create, copy, drop, rename and alter databases, tables, fields and indexes</li>
+<ul><li>browse and drop databases, tables, views, columns and indexes</li>
+    <li>create, copy, drop, rename and alter databases, tables, columns and indexes</li>
     <li>maintenance server, databases and tables, with proposals on server
 configuration</li>
     <li>execute, edit and bookmark any <abbr title="structured query
@@ -334,11 +334,11 @@ access by web server configuration. You can find example
 
 <p> For a whole set of new features (bookmarks, comments, <abbr
 title="structured query language">SQL</abbr>-history, tracking mechanism,
-<abbr title="Portable Document Format">PDF</abbr>-generation, field contents
-transformation, etc.) you need to create a set of special tables. Those
-tables can be located in your own database, or in a central database for a
-multi-user installation (this database would then be accessed by the
-controluser, so no other user should have rights to it).</p>
+<abbr title="Portable Document Format">PDF</abbr>-generation, column
+contents transformation, etc.) you need to create a set of special
+tables. Those tables can be located in your own database, or in a central
+database for a multi-user installation (this database would then be accessed
+by the controluser, so no other user should have rights to it).</p>
 
 <p> Please look at your <tt>./scripts/</tt> directory, where you should find a
 file called <i>create_tables.sql</i>. (If you are using a Windows server,
@@ -889,18 +889,18 @@ useful for queries you often run.<br /><br />
         <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
 string
     </dt>
-    <dd>Począwszy do wersji 2.2.4 możesz opisać, w specjalnej tabeli 'relation',
-które pole jest kluczem innej tabeli (klucz zewnętrzny). phpMyAdmin
-aktualnie używa tej informacji w celu
+    <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
+column is a key in another table (a foreign key). phpMyAdmin currently uses
+this to
         <ul><li>stworzenia klikalnymi, gdy przeglądasz główną tabelę, wartości danych, które
 wskazują na tabelę zewnętrzną;</li>
-            <li>w czasie przeglądania tabeli głównej - pokazania w opcjonalnej etykietce
-narzędzia "wyświetlanego pola", gdy przeniesiesz mysz na kolumnę zawierającą
-klucz zewnętrzny (używana jest również tabela 'table_info');<br />
+            <li>display in an optional tool-tip the &quot;display column&quot; when browsing
+the master table, if you move the mouse to a column containing a foreign key
+(use also the 'table_info' table);<br />
                 (see <a href="#faqdisplay"><abbr title="Frequently Asked Questions">
 FAQ</abbr> 6.7</a>)</li>
-            <li>pokazania rozwijalnej listy możliwych kluczy zewnętrznych w trybie
-edycji/wstawiania (pokazywane są: wartość klucza i "wyświetlane pole")<br />
+            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
+value and &quot;display column&quot; are shown)<br />
                 (see <a href="#faq6_21"><abbr title="Frequently Asked Questions"> FAQ</abbr>
 6.21</a>)</li>
             <li>wyświetlenia linków na stronie z właściwościami tabeli, by sprawdzić
@@ -919,14 +919,14 @@ of your database (also uses the table_coords table).</li>
 
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
             <li>umieścić nazwę tabeli relacji w <tt>$cfg['Servers'][$i]['relation']</tt></li>
-            <li>teraz jako normalny użytkownik otwórz phpMyAdmina i dla każdej z twoich
-normalnych tabel, dla których chcesz używać tej funkcji, kliknij na
-"Struktura/Widok relacyjny/" i wybierz pola zewnętrzne.
+            <li>now as normal user open phpMyAdmin and for each one of your tables where you
+want to use this feature, click &quot;Structure/Relation view/&quot; and
+choose foreign columns.
                 </li>
         </ul>
 
         Please note that in the current version, <tt>master_db</tt> must be the same
-as <tt>foreign_db</tt>. Those fields have been put in future development of
+as <tt>foreign_db</tt>. Those columns have been put in future development of
 the cross-db relations.
     </dd>
 
@@ -935,17 +935,18 @@ the cross-db relations.
 string
     </dt>
     <dd>
-        Od wersji 2.3.0 możesz w specjalnej tabeli 'table_info' opisać, które pole
-ma być wyświetlane jako etykieta narzędzia podczas przenoszenia kursora nad
-odpowiadającym jej kluczem.<br />
+        Since release 2.3.0 you can describe, in a special 'table_info' table, which
+column is to be displayed as a tool-tip when moving the cursor over the
+corresponding key.<br />
         This configuration variable will hold the name of this special table. To
 allow the usage of this functionality:
         <ul><li>set up <a href="#pmadb">pmadb</a> and the linked-tables infrastructure</li>
             <li>umieścić nazwę tabeli w <tt>$cfg['Servers'][$i]['table_info']</tt></li>
-            <li>następnie dla każdej tabeli, gdzie chcesz użyj tej funkcji, kliknij
-"Struktura/Widok relacyjny/Wybierz wyświetlane pole", aby wybrać pole.</li>
+            <li>then for each table where you want to use this feature, click
+&quot;Structure/Relation view/Choose column to display&quot; to choose the
+column.</li>
         </ul>
-        Praktyczne wskazówki: <a href="#faqdisplay">Wyświetlane pole</a>.
+        Usage tip: <a href="#faqdisplay">Display column</a>.
     </dd>
     <dt id="table_coords">
         <span
@@ -994,7 +995,7 @@ configuration directives later on.<br /><br />
         Also new in release 2.5.0 is a MIME-transformation system which is also
 based on the following table structure. See <a href="#transformations">
 Transformations</a> for further information. To use the MIME-transformation
-system, your column_info table has to have the three new fields 'mimetype',
+system, your column_info table has to have the three new columns 'mimetype',
 'transformation', 'transformation_options'.
         <br /><br />
 
@@ -1171,7 +1172,7 @@ id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 boolean
     </dt>
     <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new fields. If the above variable
+column_info table got enhanced with three new columns. If the above variable
 is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
 latest table structure available. If not, it will emit a warning to the
 superuser.<br /><br />
@@ -1572,9 +1573,9 @@ contains more rows, &quot;Previous&quot; and &quot;Next&quot; links will be
 shown.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] string [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
-    <dd>Defines whether fields are displayed in ascending (<tt>ASC</tt>) order, in
+    <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in
 descending (<tt>DESC</tt>) order or in a &quot;smart&quot; (<tt>SMART</tt>)
-order - I.E. descending order for fields of type TIME, DATE, DATETIME and
+order - I.E. descending order for columns of type TIME, DATE, DATETIME and
 TIMESTAMP, ascending order else- by default.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] boolean </dt>
@@ -1582,12 +1583,12 @@ TIMESTAMP, ascending order else- by default.</dd>
 ticked by default.</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean or string</dt>
-    <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> fields are protected from
+    <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
 editing when browsing a table's content. Valid values are:
-        <ul><li><tt>FALSE</tt> to allow editing of all fields;</li>
-            <li><tt>'blob'</tt> to allow editing of all fields except <tt>BLOBS</tt>;</li>
+        <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
+            <li><tt>'blob'</tt> to allow editing of all columns except <tt>BLOBS</tt>;</li>
             <li><tt>'all'</tt> to disallow editing of all <tt>BINARY</tt> or <tt>BLOB</tt>
-fields.</li>
+columns.</li>
         </ul>
     </dd>
 
@@ -1603,12 +1604,12 @@ edit/insert mode. The user can toggle this setting from the interface.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] string</dt>
-    <dd>Określa jaki rodzaj pól edycyjnych powinna zostać użyta dla pól CHAR i
-VARCHAR. Możliwymi wartościami są:
-        <ul><li>input - umożliwia ograniczenie długości tekstu do długości pola MySQL, ale
-powoduje problemy z nowymi liniami w polach</li>
-            <li>textarea - żadnych problemów z nowymi liniami w polach, ale też żadnych
-ograniczeń długości</li>
+    <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
+columns. Possible values are:
+        <ul><li>input - this allows to limit size of text to size of columns in MySQL, but
+has problems with newlines in columns</li>
+            <li>textarea - no problems with newlines in columns, but also no length
+limitations</li>
         </ul>
         Domyślnym jest stare zachowanie, a więc input.</dd>
 
@@ -1901,7 +1902,7 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
     <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']
 </span>boolean
     </dt>
-    <dd>Określa, czy obszar tekstowy dla pól LONGTEXT ma mieć podwójną wielkość.</dd>
+    <dd>Defines whether textarea for LONGTEXT columns should have double size.</dd>
 
     <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect'] </span>boolean
     </dt>
@@ -1914,7 +1915,7 @@ kliknięciu.</dd>
 editing.</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] integer</dt>
-    <dd>Maximum number of characters showen in any non-numeric field on browse
+    <dd>Maximum number of characters showen in any non-numeric column on browse
 view.  Can be turned off by a toggle button on the browse page.</dd>
 
     <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft'] </span>boolean
@@ -1930,8 +1931,9 @@ po lewej, i po prawej stronie).  "Left" i "right" są rozumiane jako "góra" i
     <dd>There are 3 display modes: horizontal, horizontalflipped and vertical.
 Define which one is displayed by default. The first mode displays each row
 on a horizontal line, the second rotates the headers by 90 degrees, so you
-can use descriptive headers even though fields only contain small values and
-still print them out. The vertical mode sorts each row on a vertical lineup.
+can use descriptive headers even though columns only contain small values
+and still print them out. The vertical mode sorts each row on a vertical
+lineup.
     </dd>
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
@@ -1952,8 +1954,8 @@ up one field a line. (default: 'horizontal'). If you set this to 'vertical'
 you can have each field lined up vertically beneath each other. You can save
 up a lot of place on the horizontal direction and no longer have to
 scroll. If you set this to integer, editing of fewer columns will appear in
-'vertical' mode, while editing of more fields still in 'horizontal'
-mode. This way you can still effectively edit large number of fields, while
+'vertical' mode, while editing of more columns still in 'horizontal'
+mode. This way you can still effectively edit large number of columns, while
 having full view on few of them.</dd>
 
     <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] boolean<br />
@@ -1963,8 +1965,8 @@ having full view on few of them.</dd>
     <dd>By setting the corresponding variable to <tt>TRUE</tt> you can enable the
 display of column comments in Browse or Property display. In browse mode,
 the comments are shown inside the header. In property mode, comments are
-displayed using a CSS-formatted dashed-line below the name of the field. The
-comment is shown as a tool-tip for that field.
+displayed using a CSS-formatted dashed-line below the name of the
+column. The comment is shown as a tool-tip for that column.
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
@@ -2266,7 +2268,7 @@ string
     </dt>
     <dd>Default queries that will be displayed in query boxes when user didn't
 specify any. Use %d for database name, %t for table name and %f for a comma
-separated list of field names. Note that %t and %f are only applicable to
+separated list of column names. Note that %t and %f are only applicable to
 <tt>$cfg['DefaultQueryTable']</tt>.</dd>
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<tt>html</tt>|<tt>none</tt>]</dt>
@@ -2386,7 +2388,7 @@ milisekundach. W większości przypadków nie ma potrzeby zmiany.</dd>
 zmiany.</dd>
 
     <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] array</dt>
-    <dd>Możliwe atrybuty pól. W większości przypadków nie ma potrzeby zmiany.</dd>
+    <dd>Possible attributes for columns. In most cases you don't need to edit this.</dd>
 
     <dt id="cfg_Functions">$cfg['Functions'] array</dt>
     <dd>Lista funkcji, które obsługuje MySQL. W większości przypadków nie ma
@@ -2410,19 +2412,19 @@ class="configrule">$cfg['RestrictColumnTypes']</a> and for
 table.</dd>
 
     <dt id="cfg_NumOperators">$cfg['NumOperators'] array</dt>
-    <dd>Operators available for search operations on numeric and date fields.
+    <dd>Operators available for search operations on numeric and date columns.
     </dd>
 
     <dt id="cfg_TextOperators">$cfg['TextOperators'] array</dt>
-    <dd>Operators available for search operations on character fields.  Note that we
-put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
+    <dd>Operators available for search operations on character columns.  Note that
+we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
 avoid unintended performance problems in case of huge tables.</dd>
 
     <dt id="cfg_EnumOperators">$cfg['EnumOperators'] array</dt>
-    <dd>Operators available for search operations on enum fields.</dd>
+    <dd>Operators available for search operations on ENUM columns.</dd>
 
     <dt id="cfg_NullOperators">$cfg['NullOperators'] array</dt>
-    <dd>Additional operators available for search operations when the field can be
+    <dd>Additional operators available for search operations when the column can be
 null.</dd>
 
 </dl>
@@ -2442,16 +2444,17 @@ null.</dd>
 and the proper directives. Please see the <a href="#config">Configuration
 section</a> on how to do so.</p>
 
-<p> Możesz zastosować różne transformacje do zwartości każdego pola.
-Transformacja weźmie tę zawartość i przekształci ją zgodnie z określonymi
-regułami zdefiniowanymi w wybranej transformacji.</p>
+<p> You can apply different transformations to the contents of each column. The
+transformation will take the content of each column and transform it with
+certain rules defined in the selected transformation.</p>
 
-<p> Powiedzmy, że masz pole 'nazwapliku', które zawiera nazwę pliku. Normalnie
-zobaczyłbyś w phpMyAdminie jedynie tę nazwę. Używając tranformacji możesz
-przekształcić ją na HTML-owy link, na który będziesz mógł kliknąć i zobaczyć
-plik wyświetlony w nowym oknie przeglądarki. Używając opcji transformacji
-możesz również określić napisy, które będą dołączane na początku/końcu
-napisu albo format w jakim chcesz mieć wynik.</p>
+<p> Say you have a column 'filename' which contains a filename. Normally you
+would see in phpMyAdmin only this filename. Using transformations you can
+transform that filename into a HTML link, so you can click inside of the
+phpMyAdmin structure on the column's link and will see the file displayed in
+a new browser window. Using transformation options you can also specify
+strings to append/prepend to a string or the format you want the output
+stored in.</p>
 
 <p> For a general overview of all available transformations and their options,
 you can consult your
@@ -2520,10 +2523,10 @@ potrzeb i dodawanie nowych transformacji.</p>
 transformacje zawsze będą działać. Nie ma sensu przeprowadzanie tranformacji
 dla typu MIME, którego funkcja przekształcająca nie wie jak obsłużyć.</p>
 
-<p> Można jednak użyć pustych typów MIME i globalnych transformacji, które
-powinny działać dla wielu typów. Możesz również użyć transformacji do innego
-typu MIME, niż tego, do którego zostały stworzone, ale zwracaj uwagę na
-użycie opcji, jak również na to, co transformacja robi z polem.</p>
+<p> One can, however, use empty mime-types and global transformations which
+should work for many mimetypes. You can also use transforms on a different
+mimetype they where built for, but pay attention to option usage as well as
+what the transformation does to your column.</p>
 
 <p> There is a basic file called '<i>global.inc.php</i>'. This function can be
 included by any other transform function and provides some basic functions.</p>
@@ -2627,15 +2630,15 @@ empty mimetype please see
 you want to transform.</li>
     <li><b>$options</b> - Contains any user-passed options to a transform function
 as an array.</li>
-    <li><b>$meta</b> - Contains an object with field information to your column.
-The data is drawn from the output of the <a
+    <li><b>$meta</b> - Contains an object with information about your column.  The
+data is drawn from the output of the <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
 function. This means, all object properties described on the <a
 href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
-this variable and can be used to transform a field accordingly to
+this variable and can be used to transform a column accordingly to
 unsigned/zerofill/not_null/... properties.<br />
-        The $meta-&gt;mimetype variable contains the original MIME-type of the field
-(i.e. 'text/plain', 'image/jpeg' etc.)</li>
+        The $meta-&gt;mimetype variable contains the original MIME-type of the
+column (i.e. 'text/plain', 'image/jpeg' etc.)</li>
 </ol>
 
 <p> Additionally you should also provide additional function to provide
@@ -2842,12 +2845,12 @@ convenient text area.</a></h4>
 PHP i spróbuj zwiększyć jej wartość.</p>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> field
+    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
 names.</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt> fields
-were named <tt>user</tt> and <tt>password</tt>. Please modify your field
+<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
+were named <tt>user</tt> and <tt>password</tt>. Please modify your column
 names to align with current standards.</p>
 
 <h4 id="faq1_16">
@@ -2974,7 +2977,7 @@ field, so I cannot upload.</a></h4>
 
 <h4 id="faq1_23">
     <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
-create a new table the table and field names are changed to lowercase!</a></h4>
+create a new table the table and column names are changed to lowercase!</a></h4>
 
 <p> Dzieje się to z powodu dyrektywy MySQL <tt>lower_case_table_names</tt>
 domyślnie ustawionej na 1 (<tt>ON</tt>) w wersji MySQL dla Win32. Możesz
@@ -3044,8 +3047,8 @@ ją ponownie. Błąd ten został także poprawiony w MySQL-u począwszy od wersj
 3.23.56 / 4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 When I create a table or modify a field, I get an
-error and the fields are duplicated.</a></h4>
+    <a href="#faq1_29">1.29 When I create a table or modify a column, I get an
+error and the columns are duplicated.</a></h4>
 
 <p> Istnieje możliwość skonfigurowania Apache'a w taki sposób, że PHP ma
 problemy z interpretacją plików .php.</p>
@@ -3185,7 +3188,7 @@ and no primary key or with textual primary key.
 <p>
     Suhosin configuration might lead to malfunction in some cases and it can not
 be fully avoided as phpMyAdmin is kind of application which needs to
-transfer big amounts of fields in single HTTP request, what is something
+transfer big amounts of columns in single HTTP request, what is something
 what Suhosin tries to prevent. Generally all <code>suhosin.request.*</code>,
 <code>suhosin.post.*</code> and <code>suhosin.get.*</code> directives can
 have negative effect on phpMyAdmin usability. You can always find in your
@@ -3535,14 +3538,14 @@ that feature</p>
 InnoDB?</a></h4>
 
 <p> In Relation view, being able to choose a table in another database, or
-having more than one index field in the foreign key.<br /><br/>
+having more than one index column in the foreign key.<br /><br/>
     In Query-by-example (Query), automatic generation of the query LEFT JOIN
 from the foreign table.<br /><br/>
 </p>
 
 <h4 id="faq3_7">
-    <a href="#faq3_7">3.7 I have table with many (100+) fields and when I try to
-browse table I get series of errors like &quot;Warning: unable to parse
+    <a href="#faq3_7">3.7 I have table with many (100+) columns and when I try
+to browse table I get series of errors like &quot;Warning: unable to parse
 url&quot;. How can this be fixed?</a></h4>
 <p>
     Your table neither have a primary key nor an unique one, so we must use a
@@ -3552,7 +3555,7 @@ function. The workaround is to create a primary or unique key.
 </p>
 
 <h4 id="faq3_8">
-    <a href="#faq3_8">3.8 I cannot use (clickable) HTML-forms in fields where I
+    <a href="#faq3_8">3.8 I cannot use (clickable) HTML-forms in columns where I
 put a MIME-Transformation onto!</a></h4>
 
 <p> Due to a surrounding form-container (for multi-row delete checkboxes), no
@@ -3836,14 +3839,14 @@ the configuration file. Using <tt>pma_username</tt> and
 
 <h4 id="faq5_1">
     <a href="#faq5_1">5.1 I get an out of memory error, and my controls are
-non-functional, when trying to create a table with more than 14 fields.
+non-functional, when trying to create a table with more than 14 columns.
 </a></h4>
 <p>
-    Udało nam się odtworzyć ten problem jedynie pod Win98/98SE. Testując pod
-Windows NT 4 lub Windows 200 mogliśmy łatwo utworzyć ponad 60 pól.
+    We could reproduce this problem only under Win98/98SE. Testing under WinNT4
+or Win2K, we could easily create more than 60 columns.
     <br />
-    Obejściem problemu jest stworzenie małej ilości pól i późniejszy powrót do
-właściwości tabeli i dodanie kolejnych pól.
+    A workaround is to create a smaller number of columns, then come back to
+your table properties and add the other columns.
 </p>
 
 <h4 id="faq5_2">
@@ -3892,7 +3895,7 @@ browsing my rows.  </a></h4>
 <h4 id="faq5_6">
     <a href="#faq5_6">5.6 In Internet Explorer 5.0, 5.5 or 6.0, I get an error
 (like "Page not found")  when trying to modify a row in a table with many
-fields, or with a text field </a></h4>
+columns, or with a text column </a></h4>
 <p>
     Your table neither have a primary key nor an unique one, so we must use a
 long <abbr title="Uniform Resource Locator">URL</abbr> to identify this
@@ -4014,7 +4017,7 @@ a table - MySQL brings up a <abbr title="structured query
 language">SQL</abbr>-error.  </a></h4>
 <p>
     Examine the <abbr title="structured query language">SQL</abbr> error with
-care. Often the problem is caused by specifying a wrong field-type.<br />
+care. Often the problem is caused by specifying a wrong column-type.<br />
     Powszechnymi błędami są:
 </p>
 <ul>
@@ -4027,10 +4030,10 @@ dotyczący składni.
 </p>
 
 <h4 id="faq6_2">
-    <a href="#faq6_2">6.2 When I create a table, I set an index for two fields
-and phpMyAdmin generates only one index with those two fields.  </a></h4>
+    <a href="#faq6_2">6.2 When I create a table, I set an index for two columns
+and phpMyAdmin generates only one index with those two columns.  </a></h4>
 <p>
-    This is the way to create a multi-fields index. If you want two indexes,
+    This is the way to create a multi-columns index. If you want two indexes,
 create the first one when creating the table, save, then display the table
 properties and click the Index link to create the other index.
 </p>
@@ -4038,11 +4041,11 @@ properties and click the Index link to create the other index.
 <h4 id="faq6_3">
     <a href="#faq6_3">6.3 How can I insert a null value into my table?</a></h4>
 <p>
-    Since version 2.2.3, you have a checkbox for each field that can be null.
+    Since version 2.2.3, you have a checkbox for each column that can be null.
 Before 2.2.3, you had to enter &quot;null&quot;, without the quotes, as the
-field's value. Since version 2.5.5, you have to use the checkbox to get a
+column's value. Since version 2.5.5, you have to use the checkbox to get a
 real NULL value, so if you enter &quot;NULL&quot; this means you want a
-literal NULL in the field, and not a NULL value (this works in PHP4).
+literal NULL in the column, and not a NULL value (this works in PHP4).
 </p>
 
 <h4 id="faq6_4">
@@ -4126,7 +4129,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
     <li>Łącze: dla "kod_miasta" wybierz "REL_miasta-&gt;kod_miasta"</li>
     <li>Łącze: dla "kod_kraju" wybierz "REL_kraje-&gt;kod_kraju"</li>
     <li>przy tabeli "REL_miasta" kliknij Strukturę, następnie Widok relacyjny</li>
-    <li>w "Wybierz wyświetlane pole", wybierz "opis"</li>
+    <li>in &quot;Choose column to display&quot;, choose &quot;description&quot;</li>
     <li>powtórz dwa ostatnie kroki dla tabeli "REL_kraje"</li>
 </ul>
 
@@ -4139,7 +4142,8 @@ Kliknij na nazwie bazy danych w lewej ramce</li>
     <li>Wybierz "Zapytanie"</li>
     <li>Użyj tabel: osoby, miasta, kraje</li>
     <li>Kliknij na "Zmianę zapytania"</li>
-    <li>W wierszu pól wybierz osoby.imie_osoby i kliknij na kratkę "Pokazanie" </li>
+    <li>In the columns row, choose persons.person_name and click the
+&quot;Show&quot; tickbox </li>
     <li>Zrób to samo dla miasta.opis i kraje.opis w innych 2 kolumnach</li>
     <li>Kliknij na "Zmianę zapytania", a zobaczysz w polu zapytania, że zostały
 wygenerowane odpowiednie połączenia</li>
@@ -4147,7 +4151,7 @@ wygenerowane odpowiednie połączenia</li>
 </ul>
 
 <h4 id="faqdisplay">
-    <a href="#faqdisplay">6.7 How can I use the &quot;display field&quot;
+    <a href="#faqdisplay">6.7 How can I use the &quot;display column&quot;
 feature?</a></h4>
 <p>
     Starting from the previous example, create the pma_table_info as explained
@@ -4156,7 +4160,7 @@ mouse over a town code or country code.
     <br /><br />
     See also <a href="#faq6_21"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 6.21</a> for an additional feature that &quot;display
-field&quot; enables: drop-down list of possible values.
+column&quot; enables: drop-down list of possible values.
 </p>
 
 <h4 id="faqpdf">
@@ -4237,8 +4241,8 @@ Otherwise, you may get an error if the table name exists but has a different
 structure.</li>
     <li>&quot;Add AUTO_INCREMENT value&quot; ensures that AUTO_INCREMENT value (if
 any) will be included in backup.</li>
-    <li>"Użycie cudzysłowów z nazwami tabel i pól" zapewnia ochronę nazwom pól i
-tabel zawierającymi znaki specjalne.</li>
+    <li>&quot;Enclose table and column names with backquotes&quot; ensures that
+column and table names formed with special characters are protected.</li>
     <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
 types set in the pmadb in the dump as <abbr title="structured query
 language">SQL</abbr> comments (<i>/* xxx */</i>).
@@ -4293,14 +4297,15 @@ language">SQL</abbr> Validator itself, is &copy; 2001 Upright Database
 Technology.  We utilize it as free SOAP service.</p>
 
 <h4 id="faq6_15">
-    <a href="#faq6_15">6.15 I want to add a BLOB field and put an index on it,
+    <a href="#faq6_15">6.15 I want to add a BLOB column and put an index on it,
 but MySQL says &quot;BLOB column '...' used in key specification without a
 key length&quot;.</a></h4>
 
-<p> Prawidłowym sposobem jest stworzenie pola bez żadnych indeksów, następnie
-wyświetlenie struktury tabeli i użycie dialogu "Utworzenia indeksu". Na tej
-stronie będziesz mógł wybrać swoje pole BLOB i ustalić wielkość indeksu,
-który jest warunkiem utworzenia indeksu dla pola BLOB.</p>
+<p> The right way to do this, is to create the column without any indexes, then
+display the table structure and use the &quot;Create an index&quot;
+dialog. On this page, you will be able to choose your BLOB column, and set a
+size to the index, which is the condition to create an index on a BLOB
+column.</p>
 
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 How can I simply move in page with plenty editing
@@ -4320,8 +4325,8 @@ is this feature then useful for?</a></h4>
 
 <p> Slow down :). Defining mimetypes is of no use, if you can't put
 transformations on them. Otherwise you could just put a comment on the
-field. Because entering your own mimetype will cause serious syntax checking
-issues and validation, this introduces a high-risk false-user-input
+column. Because entering your own mimetype will cause serious syntax
+checking issues and validation, this introduces a high-risk false-user-input
 situation. Instead you have to initialize mimetypes using functions or empty
 mimetype definitions.<br />
     Poza tym, masz cały przegląd dostępnych typów MIME. Kto zna te wszystkie
@@ -4411,16 +4416,16 @@ databases list will shorten.</p>
 
 <h4 id="faq6_21">
     <a href="#faq6_21">6.21 In edit/insert mode, how can I see a list of
-possible values for a field, based on some foreign table?</a></h4>
+possible values for a column, based on some foreign table?</a></h4>
 
 <p> You have to setup appropriate links between the tables, and also setup the
-&quot;display field&quot; in the foreign table. See <a href="#faq6_6"><abbr
+&quot;display column&quot; in the foreign table. See <a href="#faq6_6"><abbr
 title="Frequently Asked Questions">FAQ</abbr> 6.6</a> for an example. Then,
 if there are 100 values or less in the foreign table, a drop-down list of
 values will be available.  You will see two lists of values, the first list
-containing the key and the display field, the second list containing the
-display field and the key. The reason for this is to be able to type the
-first letter of either the key or the display field.<br /><br />
+containing the key and the display column, the second list containing the
+display column and the key. The reason for this is to be able to type the
+first letter of either the key or the display column.<br /><br />
 
     For 100 values or more, a distinct window will appear, to browse foreign key
 values and choose one. To change the default limit of 100, see <tt><a
@@ -5030,7 +5035,7 @@ language-independent by outsourcing the strings to a separate file. He also
 contributed the French translation.
   </li>
   <li>Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt; who contributed
-tbl_select.php3, a feature to display only some fields from a table.
+tbl_select.php3, a feature to display only some columns from a table.
   </li>
   <li>Chris Jackson &lt;chrisj_at_ctel.net&gt; added support for MySQL functions
 in tbl_change.php3. He also added the &quot;Query by Example&quot; feature
