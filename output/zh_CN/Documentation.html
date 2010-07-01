@@ -750,7 +750,8 @@ column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         这张表的名字将被保存在此变量中。要启用此功能:
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['table_info']</tt> 中设置要使用的数据表名</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
+'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
 &quot;Structure/Relation view/Choose column to display&quot; to choose the
 column.</li>
@@ -805,7 +806,8 @@ system, your column_info table has to have the three new columns 'mimetype',
 
         要启用此功能:
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['column_info']</tt> 中设置要使用的数据表名</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
+'pma_column_info')</li>
             <li>要从 2.5.0 之前的 Column_comments 表升级可执行:
 
                 <pre>
@@ -837,7 +839,8 @@ class="configrule">$cfg['QueryHistoryMax']</a>
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['history']</tt> 中设置要使用的数据表名
+            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
+(e.g. 'pma_history')
                 </li>
         </ul>
     </dd>
@@ -864,7 +867,8 @@ class="configrule">$cfg['QueryHistoryMax']</a>
 
         <ul>
             <li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['tracking']</tt> 中设置要使用的数据表名</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
+(e.g. 'pma_tracking')</li>
         </ul>
     </dd>
 
@@ -948,7 +952,8 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['designer_coords']</tt> 中设置要使用的数据表名
+            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
+(e.g. 'pma_designer_coords')
                 </li>
         </ul>
     </dd>
@@ -3043,8 +3048,9 @@ JSON 扩展。</p>
 <h3 id="faqlimitations">Known limitations</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 使用 <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 认证时，一个用户退出之后就无法再使用相同的用户名重新登录。</a></h4>
+    <a href="#login_bug">3.1 When using <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> authentication, a user who logged out can not log in
+again in with the same nick.</a></h4>
 
 <p> 这是 phpMyAdmin 的认证机制引起的问题。要解决此问题，请关闭所有已打开的 Windows 文件夹，然后重新登录 phpMyAdmin。</p>
 
@@ -4049,6 +4055,14 @@ stored at upload time but in case it's incorrect, it's possible to edit it
 by clicking on the displayed MIME-type.</li> 
 </ol>	
 
+<h4 id="faq6_26">
+    <a href="#faq6_26">6.26 How can I select a range of rows?</a></h4>
+
+<p> Click the first row of the range, hold the shift key and click the last row
+of the range. This works everywhere you see rows, for example in Browse mode
+or on the Structure page.</p>
+
+
 <h3 id="faqproject">phpMyAdmin project</h3>
 
 <h4 id="faq7_1">
@@ -4089,7 +4103,7 @@ spaces, ampersands, less than, greater than.
 <p>
     You can then put your translations, as a zip file to avoid losing special
 characters, on the sourceforge.net <a
-href="https://sourceforge.net/tracker/?group_id=23067&atid=387645">translation
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
 tracker.</a>
 </p>
 <p>
