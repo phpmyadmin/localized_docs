@@ -482,9 +482,8 @@ clair, &agrave; moins d'utiliser le protocole HTTPS.<br />
         En mode cookie, le mot de passe est stock&eacute; et chiffr&eacute; avec
 l'algorithme blowfish, dans un cookie temporaire.</li>
 
-    <li id="pmausr"><b>Note&nbsp;</b>: &Agrave; partir de la version 2.6.1 de phpMyAdmin, cette
-section ne s'applique qu'aux serveurs MySQL ex&eacute;cut&eacute;s avec
-l'option <tt>--skip-show-database</tt>.<br /><br />
+    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+<tt>--skip-show-database</tt>.<br /><br />
 
         Pour les modes <abbr title="HyperText Transfer Protocol">HTTP</abbr> et
 cookie, phpMyAdmin a besoin d'un utilisateur de contr&ocirc;le -
@@ -849,14 +848,12 @@ cha&icirc;ne<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 cha&icirc;ne
     </dt>
-    <dd>Ce compte sp&eacute;cial est utilis&eacute; pour deux propos
-distincts&nbsp;: rendre possible toutes les fonctionnalit&eacute;s
-relationnelles (voir <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>) et, pour un serveur
-MySQL de version inf&eacute;rieure &agrave; 4.1.2 ou ex&eacute;cut&eacute;
-avec l'option <tt>--skip-show-database</tt>, permettre une installation
-multi-utilisateurs (mode d'authentification <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> ou par cookie).<br /><br />
+    <dd>This special account is used for 2 distinct purposes: to make possible all
+relational features (see <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
+server running with <tt>--skip-show-database</tt>, to enable a multi-user
+installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
+cookie authentication mode).<br /><br />
 
         Si vous utilisez les modes d'authentification <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> ou par cookie (ou le mode d'authentification
@@ -1598,7 +1595,7 @@ effet lorsque PHP est ex&eacute;cut&eacute; en mode s&eacute;curis&eacute;.</dd>
 href="http://php.net/session_save_path">paramètre PHP
 session_save_path</a>).</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] entier ['nombre d'octets']</dt>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
     <dd>D&eacute;finit le nombre d'octets qu'un script est autoris&eacute; &agrave;
 allouer. Si ce nombre est d&eacute;fini &agrave; z&eacute;ro, aucune limite
 n'est impos&eacute;e.<br />
@@ -1650,13 +1647,12 @@ href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] entier ['nombre de secondes']</dt>
-    <dd>D&eacute;finit la dur&eacute;e de validit&eacute; d'un cookie de
-connexion. Veuillez notez que l'option de configuration php <a
+    <dd>Define how long is login cookie valid. Please note that php configuration
+option <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
-pourrait limiter la validité de session, et si la session est perdue, le
-cookie de connexion est aussi invalidé. Il est donc conseillé de définir
-<code>session.gc_maxlifetime</code> au moins aussi haut que la valeur de
-$cfg['LoginCookieValidity'].</dd>
+might limit session validity and if session is lost, login cookie is also
+invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
+not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
     <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] entier ['nombre de secondes']</dt>
     <dd>D&eacute;finit la dur&eacute;e de stockage d'un cookie de connexion dans

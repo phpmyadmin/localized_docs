@@ -326,8 +326,8 @@ Protocol)">HTTP</abbr> 或 cookie 认证，用户名和密码也不会被保存�
         不论如何，如果你不使用 HTTPS 协议，密码将总是以明文传输。<br />
         当使用 cookie 认证时，密码将经过 blowfish 算法加密并保存在一个临时 cookie 中。</li>
 
-    <li id="pmausr">注意: 自 phpMyAdmin 2.6.1 起，本节仅适用于运行在 <tt>--skip-show-database</tt> 模式下的 MySQL
-服务器。<br /><br />
+    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+<tt>--skip-show-database</tt>.<br /><br />
 
         当使用 '<abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>' 和
 'cookie' 认证时，phpMyAdmin 需要一个在 <i>`mysql`.`user` (除 `Password`
@@ -559,10 +559,12 @@ class="configrule">$cfg['Servers'][$i]['host']</a> 设为 &quot;127.0.0.1&quot;
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 字符串
     </dt>
-    <dd>这个特殊的帐号有两种不同的用途: 1、为链接表的附加功能提供支持 (参见 <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>)。2、在 4.1.2 及更低版本或运行于
-<tt>--skip-show-database</tt> 模式的 MySQL 服务器上使用多用户安装提供支持 (<abbr
-title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 或 cookie 认证)。<br /><br />
+    <dd>This special account is used for 2 distinct purposes: to make possible all
+relational features (see <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
+server running with <tt>--skip-show-database</tt>, to enable a multi-user
+installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
+cookie authentication mode).<br /><br />
 
         当使用 <abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 或 cookie
 认证时 (自 2.2.1 起也包括 'config' 认证)，你需要提供一个在 <i>mysql.user (除了
@@ -1099,7 +1101,7 @@ Protocol)">HTTP</abbr> 传输。<br />
     <dd>保存会话数据的路径 (<a href="http://php.net/session_save_path">PHP 参数
 session_save_path (外链，英语)</a>)。</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] 整数 [单位: 字节]</dt>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
     <dd>设置脚本运行的可使用的内存。若设为 0 则无限制。<br />
         本设置用于导入/导出转储文件以及 phpMyAdmin 的其他功能，所以显然不要设置一个很小的值。若 PHP 运行于安全模式则无效。<br />
         同样可以设置为 php.ini 中可以识别的字符串，如 '16M' 。请确保没有丢掉后缀 (16 表示 16 字节！)</dd>
@@ -1140,8 +1142,8 @@ href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
 option <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
 might limit session validity and if session is lost, login cookie is also
-invalidated. So it is good idea to set <code>session.gc_maxlifetime</code>
-at least as high is $cfg['LoginCookieValidity'] is set.</dd>
+invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
+not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
     <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [number of seconds]</dt>
     <dd>Define how long is login cookie should be stored in browser. Default 0 means

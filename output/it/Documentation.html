@@ -431,9 +431,8 @@ chiaro, a meno che tu non stia utilizzando un protocollo HTTPS.<br />
         Con i cookie, invece, la password è salvata in formato criptato, utilizzando
 l'algoritmo blowfish, all'interno della cartella dei cookie.</li>
 
-    <li id="pmausr">Nota: a partire da phpMyAdmin 2.6.1, questa sezione è valida solo se il
-server MySQL è in esecuzione con l'opzione <tt>-skip-show-database</tt>
-attivata.<br /><br />
+    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+<tt>--skip-show-database</tt>.<br /><br />
 
         Per le modalità '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' e
 'cookie', phpMyAdmin necessita di un controluser che abbia
@@ -744,9 +743,9 @@ string
     <dd>This special account is used for 2 distinct purposes: to make possible all
 relational features (see <a href="#pmadb"
 class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
-server previous to 4.1.2 or running with <tt>--skip-show-database</tt>, to
-enable a multi-user installation (<abbr title="HyperText Transfer
-Protocol">HTTP</abbr> or cookie authentication mode).<br /><br />
+server running with <tt>--skip-show-database</tt>, to enable a multi-user
+installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
+cookie authentication mode).<br /><br />
 
         When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
 authentication modes (or 'config' authentication mode since phpMyAdmin
@@ -1392,7 +1391,7 @@ Synchronize feature but has no effect when PHP is running in safe mode.</dd>
 href="http://php.net/session_save_path">session_save_path PHP
 parameter</a>).</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] integer [number of bytes]</dt>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
     <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
 limit is imposed.<br />
         This setting is used while importing/exporting dump files and at some other
@@ -1437,8 +1436,8 @@ href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
 option <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
 might limit session validity and if session is lost, login cookie is also
-invalidated. So it is good idea to set <code>session.gc_maxlifetime</code>
-at least as high is $cfg['LoginCookieValidity'] is set.</dd>
+invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
+not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
     <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [number of seconds]</dt>
     <dd>Define how long is login cookie should be stored in browser. Default 0 means
