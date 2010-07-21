@@ -2581,27 +2581,8 @@ visuel, utiliser <tt>'disabled'</tt>.</dd>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] cha&icirc;ne</dt>
     <dt id="cfg_TitleServer">$cfg['TitleServer'] cha&icirc;ne</dt>
     <dt id="cfg_TitleDefault">$cfg['TitleDefault'] cha&icirc;ne</dt>
-    <dd>Vous permet d'indiquer le titre de la fen&ecirc;tre. Les cha&icirc;nes
-suivantes peuvent &ecirc;tre utilis&eacute;es pour obtenir des valeurs
-sp&eacute;ciales&nbsp;:
-        <dl>
-            <dt><code>@HTTP_HOST@</code></dt>
-                <dd>H&ocirc;te <abbr title="HyperText Transfer Protocol">HTTP</abbr>
-ex&eacute;cutant phpMyAdmin</dd>
-            <dt><code>@SERVER@</code></dt>
-                <dd>Nom du serveur MySQL</dd>
-            <dt><code>@VERBOSE@</code></dt>
-                <dd>Nom complet du serveur MySQL tel qu'indiqu&eacute; dans la <a
-href="#cfg_Servers_verbose">configuration serveur</a></dd>
-            <dt><code>@VSERVER@</code></dt>
-                <dd>Nom complet du serveur MySQL si d&eacute;fini, sinon normal</dd>
-            <dt><code>@DATABASE@</code></dt>
-                <dd>Base de donn&eacute;es actuellement ouverte</dd>
-            <dt><code>@TABLE@</code></dt>
-                <dd>Table actuellement ouverte</dd>
-            <dt><code>@PHPMYADMIN@</code></dt>
-                <dd>Version de phpMyAdmin</dd>
-        </dl>
+    <dd>Allows you to specify window's title bar. You can use <a
+href="#faq6_27">format string expansion</a>.
     </dd>
 
     <dt id="cfg_ErrorIconic">$cfg['ErrorIconic'] bool&eacute;en</dt>
@@ -4930,27 +4911,33 @@ avec, ni la supprimer.</p>
     <a href="#faqsqlvalidator">6.14 Comment configurer le valideur de code <abbr
 title="Structured Query Language">SQL</abbr>&nbsp;?</a></h4>
 
-<p> Pour l'utiliser, vous avez besoin d'une version tr&egrave;s r&eacute;cente
-de PHP, la version 4.3.0 est recommand&eacute;e, avec la gestion de <abbr
-title="Extensible Markup Language">XML</abbr>, <abbr title="Perl Compatible
-Regular Expressions">PCRE</abbr> et <abbr title="PHP Extension and
-Application Repository">PEAR</abbr>.  Sur votre syst&egrave;me, en mode
-ligne de commande, ex&eacute;cuter <tt>&laquo;&nbsp;pear install Net_Socket
-Net_URL HTTP_Request Mail_Mime Net_DIME SOAP&nbsp;&raquo;</tt> pour obtenir
-les modules <abbr title="PHP Extension and Application
-Repository">PEAR</abbr> n&eacute;cessaires &agrave; son utilisation.<br />
-    Sur une version pear plus r&eacute;cente, j'ai eu des probl&egrave;mes car
-Net_DIME &eacute;tait en version beta, aussi, cette simple commande
-<tt>&laquo;&nbsp;pear -d preferred_state=beta install -a
-SOAP&nbsp;&raquo;</tt> a install&eacute; tous les modules
-n&eacute;cessaires.<br />
+<p> 
+    To use SQL Validator, you need PHP with <abbr title="Extensible Markup
+Language">XML</abbr>, <abbr title="Perl Compatible Regular
+Expressions">PCRE</abbr> and <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> support.  In addition you need a <abbr title="Simple
+Object Access Protocol">SOAP</abbr> support, either as a PHP extension or as
+a PEAR SOAP module.
+</p>
+
+<p>
+    To install <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> <abbr title="Simple Object Access
+Protocol">SOAP</abbr> module, run <tt>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</tt> to get the necessary <abbr
+title="PHP Extension and Application Repository">PEAR</abbr> modules for
+usage.
+</p>
+
+<p>
     Si vous utilisez le Validateur, soyez conscient que toute requ&ecirc;te
 <abbr title="Structured Query Language">SQL</abbr> que vous ex&eacute;cutez
 sera stock&eacute;e de mani&egrave;re anonyme (noms de base de
 donn&eacute;es/table/colonne, cha&icirc;nes, nombres sont remplac&eacute;s
 avec des valeurs g&eacute;n&eacute;riques). Le Mimer <abbr title="Structured
 Query Language">SQL</abbr> Validator, est sous copyright &copy; 2001 Upright
-Database Technology. Nous l'utilisons en tant que service SOAP gratuit.</p>
+Database Technology. Nous l'utilisons en tant que service SOAP gratuit.
+</p>
 
 <h4 id="faq6_15">
     <a href="#faq6_15">6.15 I want to add a BLOB column and put an index on it,
@@ -5188,6 +5175,35 @@ type MIME affiché.</li>
 of the range. This works everywhere you see rows, for example in Browse mode
 or on the Structure page.</p>
 
+
+<h4 id="faq6_27">
+    <a href="#faq6_27">6.27 What format strings can I use?</a></h4>
+
+<p>
+    In all places where phpMyAdmin accepts format strings, you can use
+<code>@VARIABLE@</code> expansion and <a
+href="http://php.net/strftime">strftime</a> format strings. The expanded
+variables depend on a context (eg. if you don't have chosen table, you can
+not get table name), but following variables can be used:
+</p>
+<dl>
+    <dt><code>@HTTP_HOST@</code></dt>
+        <dd>H&ocirc;te <abbr title="HyperText Transfer Protocol">HTTP</abbr>
+ex&eacute;cutant phpMyAdmin</dd>
+    <dt><code>@SERVER@</code></dt>
+        <dd>Nom du serveur MySQL</dd>
+    <dt><code>@VERBOSE@</code></dt>
+        <dd>Nom complet du serveur MySQL tel qu'indiqu&eacute; dans la <a
+href="#cfg_Servers_verbose">configuration serveur</a></dd>
+    <dt><code>@VSERVER@</code></dt>
+        <dd>Nom complet du serveur MySQL si d&eacute;fini, sinon normal</dd>
+    <dt><code>@DATABASE@</code></dt>
+        <dd>Base de donn&eacute;es actuellement ouverte</dd>
+    <dt><code>@TABLE@</code></dt>
+        <dd>Table actuellement ouverte</dd>
+    <dt><code>@PHPMYADMIN@</code></dt>
+        <dd>Version de phpMyAdmin</dd>
+</dl>
 
 <h3 id="faqproject">Projet phpMyAdmin</h3>
 

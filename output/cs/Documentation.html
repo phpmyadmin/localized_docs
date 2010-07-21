@@ -2182,25 +2182,8 @@ all visual sliders, use <tt>'disabled'</tt>.</dd>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] text</dt>
     <dt id="cfg_TitleServer">$cfg['TitleServer'] text</dt>
     <dt id="cfg_TitleDefault">$cfg['TitleDefault'] text</dt>
-    <dd>Allows you to specify window's title bar. Following magic string can be used
-to get special values:
-        <dl>
-            <dt><code>@HTTP_HOST@</code></dt>
-                <dd>HTTP host that runs phpMyAdmin</dd>
-            <dt><code>@SERVER@</code></dt>
-                <dd>MySQL server name</dd>
-            <dt><code>@VERBOSE@</code></dt>
-                <dd>Verbose MySQL server name as defined in <a
-href="#cfg_Servers_verbose">server configuration</a></dd>
-            <dt><code>@VSERVER@</code></dt>
-                <dd>Verbose MySQL server name if set, otherwise normal</dd>
-            <dt><code>@DATABASE@</code></dt>
-                <dd>Currently opened database</dd>
-            <dt><code>@TABLE@</code></dt>
-                <dd>Currently opened table</dd>
-            <dt><code>@PHPMYADMIN@</code></dt>
-                <dd>phpMyAdmin with version</dd>
-        </dl>
+    <dd>Allows you to specify window's title bar. You can use <a
+href="#faq6_27">format string expansion</a>.
     </dd>
 
     <dt id="cfg_ErrorIconic">$cfg['ErrorIconic'] boolean</dt>
@@ -4233,22 +4216,32 @@ it, nor delete it.</p>
     <a href="#faqsqlvalidator">6.14 How do I set up the <abbr title="structured
 query language">SQL</abbr> Validator?</a></h4>
 
-<p> To use it, you need a very recent version of PHP, 4.3.0 recommended, with
-<abbr title="Extensible Markup Language">XML</abbr>, <abbr title="Perl
-Compatible Regular Expressions">PCRE</abbr> and <abbr title="PHP Extension
-and Application Repository">PEAR</abbr> support.  On your system command
-line, run <tt>"pear install Net_Socket Net_URL HTTP_Request Mail_Mime
-Net_DIME SOAP"</tt> to get the necessary <abbr title="PHP Extension and
-Application Repository">PEAR</abbr> modules for usage.<br />
-    On a more recent pear version, I had problems with the state of Net_DIME
-being beta, so this single command <tt>"pear -d preferred_state=beta install
--a SOAP"</tt> installed all the needed modules.<br />
+<p> 
+    To use SQL Validator, you need PHP with <abbr title="Extensible Markup
+Language">XML</abbr>, <abbr title="Perl Compatible Regular
+Expressions">PCRE</abbr> and <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> support.  In addition you need a <abbr title="Simple
+Object Access Protocol">SOAP</abbr> support, either as a PHP extension or as
+a PEAR SOAP module.
+</p>
+
+<p>
+    To install <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> <abbr title="Simple Object Access
+Protocol">SOAP</abbr> module, run <tt>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</tt> to get the necessary <abbr
+title="PHP Extension and Application Repository">PEAR</abbr> modules for
+usage.
+</p>
+
+<p>
     If you use the Validator, you should be aware that any <abbr
 title="structured query language">SQL</abbr> statement you submit will be
 stored anonymously (database/table/column names, strings, numbers replaced
 with generic values). The Mimer <abbr title="structured query
 language">SQL</abbr> Validator itself, is &copy; 2001 Upright Database
-Technology.  We utilize it as free SOAP service.</p>
+Technology.  We utilize it as free SOAP service.
+</p>
 
 <h4 id="faq6_15">
     <a href="#faq6_15">6.15 I want to add a BLOB column and put an index on it,
@@ -4452,6 +4445,34 @@ by clicking on the displayed MIME-type.</li>
 of the range. This works everywhere you see rows, for example in Browse mode
 or on the Structure page.</p>
 
+
+<h4 id="faq6_27">
+    <a href="#faq6_27">6.27 What format strings can I use?</a></h4>
+
+<p>
+    In all places where phpMyAdmin accepts format strings, you can use
+<code>@VARIABLE@</code> expansion and <a
+href="http://php.net/strftime">strftime</a> format strings. The expanded
+variables depend on a context (eg. if you don't have chosen table, you can
+not get table name), but following variables can be used:
+</p>
+<dl>
+    <dt><code>@HTTP_HOST@</code></dt>
+        <dd>HTTP host that runs phpMyAdmin</dd>
+    <dt><code>@SERVER@</code></dt>
+        <dd>MySQL server name</dd>
+    <dt><code>@VERBOSE@</code></dt>
+        <dd>Verbose MySQL server name as defined in <a
+href="#cfg_Servers_verbose">server configuration</a></dd>
+    <dt><code>@VSERVER@</code></dt>
+        <dd>Verbose MySQL server name if set, otherwise normal</dd>
+    <dt><code>@DATABASE@</code></dt>
+        <dd>Currently opened database</dd>
+    <dt><code>@TABLE@</code></dt>
+        <dd>Currently opened table</dd>
+    <dt><code>@PHPMYADMIN@</code></dt>
+        <dd>phpMyAdmin with version</dd>
+</dl>
 
 <h3 id="faqproject">Projekt phpMyAdmin</h3>
 
