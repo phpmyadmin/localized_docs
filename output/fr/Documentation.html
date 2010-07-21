@@ -409,9 +409,9 @@ o&ugrave; vous devriez trouver un fichier du nom de
 attention particuli&egrave;re &agrave; la partie <a href="#faq1_23"> <abbr
 title="Foire Aux Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> Si vous avez d&eacute;j&agrave; cette infrastructure et mis &agrave; jour
-vers MySQL 4.1.2 ou ult&eacute;rieur, veuillez utiliser le fichier
-<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>.</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./scripts/create_tables.sql</i>.</p>
 
 <p> Vous pouvez d'ores et d&eacute;j&agrave; utiliser phpMyAdmin qui
 cr&eacute;era les tables pour vous.  S'il vous pla&icirc;t, sachez que vous
@@ -2036,33 +2036,6 @@ une expression r&eacute;guli&egrave;re donn&eacute;e.  Par exemple, si vous
 ne voulez que le tch&egrave;que et l'anglais, vous devrez d&eacute;finir le
 filtre suivant&nbsp;: <code>'^(cs|en)'</code>.</dd>
 
-    <dt id="cfg_DefaultCharset">$cfg['DefaultCharset'] cha&icirc;ne</dt>
-    <dd>Page de code utilis&eacute;e pour le recodage des requ&ecirc;tes MySQL. Ceci
-doit &ecirc;tre activ&eacute; et est d&eacute;crit par l'option <a
-href="#cfg_AllowAnywhereRecoding"
-class="configrule">$cfg['AllowAnywhereRecoding']</a>.<br />
-        Vous pouvez donner ici n'importe quelle page de code se trouvant dans le
-tableau <a href="#cfg_AvailableCharsets"
-class="configrule">$cfg['AvailableCharsets']</a> et il s'agit seulement du
-choix par d&eacute;faut, l'utilisateur peut choisir n'importe laquelle
-d'entre elles.</dd>
-
-    <dt id="cfg_AllowAnywhereRecoding">$cfg['AllowAnywhereRecoding'] bool&eacute;en</dt>
-    <dd>Permet le recodage de la page de code des requ&ecirc;tes MySQL.  Vous avez
-besoin de la prise en charge de recode ou iconv (compil&eacute;s ou en tant
-que modules) dans PHP pour permettre le recodage des requ&ecirc;tes MySQL et
-le fichier de langue utilis&eacute;e doit avoir cette option activ&eacute;e
-(par d&eacute;faut, seulement celles qui sont en Unicode, pour &eacute;viter
-de perdre des caract&egrave;res).<br /><br />
-
-        En d&eacute;finissant cette valeur &agrave; <tt>TRUE</tt>, cela active
-&eacute;galement un menu d&eacute;roulant dans la page
-&laquo;&nbsp;Export&nbsp;&raquo;, pour choisir le jeu de caract&egrave;res
-utilis&eacute; pour l'export d'un fichier. La valeur par défaut dans ce menu
-provient de <tt>$cfg['Export']['charset']</tt> et
-<tt>$cfg['Import']['charset']</tt>.
-    </dd>
-
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] cha&icirc;ne</dt>
     <dd>Pour pouvez choisir ici quelles fonctions seront utilis&eacute;es pour la
 conversion de page de code. Les valeurs autoris&eacute;es sont&nbsp;:
@@ -2070,8 +2043,15 @@ conversion de page de code. Les valeurs autoris&eacute;es sont&nbsp;:
 test&eacute;e est iconv, puis recode),</li>
             <li>iconv - utilise les fonctions iconv ou libiconv,</li>
             <li>recode - utilise la fonction recode_string.</li>
+            <li>none - disable encoding conversion</li>
         </ul>
         Par d&eacute;faut &agrave; auto.</dd>
+    <dd>
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
+<tt>$cfg['Import']['charset']</tt>.
+        </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] cha&icirc;ne</dt>
     <dd>Sp&eacute;cifie des param&egrave;tres pour iconv utilis&eacute;s dans la
@@ -2260,8 +2240,8 @@ fl&egrave;ches de direction (Option + fl&egrave;ches de direction dans
 Safari) lors de l'&eacute;dition.</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] entier</dt>
-    <dd>Maximum number of characters showen in any non-numeric column on browse
-view.  Can be turned off by a toggle button on the browse page.</dd>
+    <dd>Maximum number of characters shown in any non-numeric field on browse view.
+Can be turned off by a toggle button on the browse page.</dd>
 
     <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft']</span>
 bool&eacute;en <span

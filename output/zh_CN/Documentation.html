@@ -287,8 +287,9 @@ by the controluser, so no other user should have rights to it).</p>
 服务器，请特别注意在 <a href="#faq1_23"> <abbr title="常见问题 (Frequently Asked
 Questions)">FAQ</abbr> 1.23</a> 中所提到的问题)。</p>
 
-<p> 如果以前就使用过该功能并升级过 MySQL 到 4.1.2 或更高版本，请使用
-<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> 。</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./scripts/create_tables.sql</i>.</p>
 
 <p> 你可以使用 phpMyAdmin 来创建这些数据表。但请注意，你可能需要特殊 (管理员)
 权限来创建数据库和数据表，而且可能还需要根据实际所使用的数据修改这个脚本中数据库的名字。</p>
@@ -1457,35 +1458,21 @@ locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
 expression. For example if you want only Czech and English, you should set
 filter to <code>'^(cs|en)'</code>.</dd>
 
-    <dt id="cfg_DefaultCharset">$cfg['DefaultCharset'] string</dt>
-    <dd>Default character set to use for recoding of MySQL queries. This must be
-enabled and it's described by <a href="#cfg_AllowAnywhereRecoding"
-class="configrule">$cfg['AllowAnywhereRecoding']</a> option.<br />
-        You can give here any character set which is in <a
-href="#cfg_AvailableCharsets"
-class="configrule">$cfg['AvailableCharsets']</a> array and this is just
-default choice, user can select any of them.</dd>
-
-    <dt id="cfg_AllowAnywhereRecoding">$cfg['AllowAnywhereRecoding'] boolean</dt>
-    <dd>Allow character set recoding of MySQL queries. You need recode or iconv
-support (compiled in or module) in PHP to allow MySQL queries recoding and
-used language file must have it enabled (by default only these which are in
-Unicode, just to avoid losing some characters).<br /><br />
-
-        Setting this to <tt>TRUE</tt> also activates a pull-down menu in the Export
-and Import pages, to choose the character set when exporting a file. The
-default value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
-    </dd>
-
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] string</dt>
     <dd>You can select here which functions will be used for character set
 conversion. Possible values are:
         <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
             <li>iconv - use iconv or libiconv functions</li>
             <li>recode - use recode_string function</li>
+            <li>none - disable encoding conversion</li>
         </ul>
         Default is auto.</dd>
+    <dd>
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
+<tt>$cfg['Import']['charset']</tt>.
+        </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
     <dd>Specify some parameters for iconv used in charset conversion. See <a
@@ -1649,8 +1636,8 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
 editing.</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] integer</dt>
-    <dd>Maximum number of characters showen in any non-numeric column on browse
-view.  Can be turned off by a toggle button on the browse page.</dd>
+    <dd>Maximum number of characters shown in any non-numeric field on browse view.
+Can be turned off by a toggle button on the browse page.</dd>
 
     <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft'] </span>boolean
 <span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']

@@ -346,7 +346,8 @@ pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.23</a>).</p>
 
 <p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>.</p>
+please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./scripts/create_tables.sql</i>.</p>
 
 <p> You can use your phpMyAdmin to create the tables for you. Please be aware
 that you may need special (administrator) privileges to create the database
@@ -1716,35 +1717,21 @@ locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
 expression. For example if you want only Czech and English, you should set
 filter to <code>'^(cs|en)'</code>.</dd>
 
-    <dt id="cfg_DefaultCharset">$cfg['DefaultCharset'] string</dt>
-    <dd>Default character set to use for recoding of MySQL queries. This must be
-enabled and it's described by <a href="#cfg_AllowAnywhereRecoding"
-class="configrule">$cfg['AllowAnywhereRecoding']</a> option.<br />
-        You can give here any character set which is in <a
-href="#cfg_AvailableCharsets"
-class="configrule">$cfg['AvailableCharsets']</a> array and this is just
-default choice, user can select any of them.</dd>
-
-    <dt id="cfg_AllowAnywhereRecoding">$cfg['AllowAnywhereRecoding'] boolean</dt>
-    <dd>Allow character set recoding of MySQL queries. You need recode or iconv
-support (compiled in or module) in PHP to allow MySQL queries recoding and
-used language file must have it enabled (by default only these which are in
-Unicode, just to avoid losing some characters).<br /><br />
-
-        Setting this to <tt>TRUE</tt> also activates a pull-down menu in the Export
-and Import pages, to choose the character set when exporting a file. The
-default value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
-    </dd>
-
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] string</dt>
     <dd>You can select here which functions will be used for character set
 conversion. Possible values are:
         <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
             <li>iconv - use iconv or libiconv functions</li>
             <li>recode - use recode_string function</li>
+            <li>none - disable encoding conversion</li>
         </ul>
         Default is auto.</dd>
+    <dd>
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
+<tt>$cfg['Import']['charset']</tt>.
+        </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
     <dd>Specify some parameters for iconv used in charset conversion. See <a
@@ -1908,8 +1895,8 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
 editing.</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] integer</dt>
-    <dd>Maximum number of characters showen in any non-numeric column on browse
-view.  Can be turned off by a toggle button on the browse page.</dd>
+    <dd>Maximum number of characters shown in any non-numeric field on browse view.
+Can be turned off by a toggle button on the browse page.</dd>
 
     <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft'] </span>boolean
 <span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']
@@ -4272,8 +4259,8 @@ key length&quot;.</a></h4>
 
 <p> The right way to do this, is to create the column without any indexes, then
 display the table structure and use the &quot;Create an index&quot;
-dialog. On this page, you will be able to choose your BLOB column, and set a
-size to the index, which is the condition to create an index on a BLOB
+dialogue. On this page, you will be able to choose your BLOB column, and set
+a size to the index, which is the condition to create an index on a BLOB
 column.</p>
 
 <h4 id="faq6_16">
@@ -4296,7 +4283,7 @@ is this feature then useful for?</a></h4>
 transformations on them. Otherwise you could just put a comment on the
 column. Because entering your own mimetype will cause serious syntax
 checking issues and validation, this introduces a high-risk false-user-input
-situation. Instead you have to initialize mimetypes using functions or empty
+situation. Instead you have to initialise mimetypes using functions or empty
 mimetype definitions.<br />
     Plus, you have a whole overview of available mimetypes. Who knows all those
 mimetypes by heart so he/she can enter it at will?</p>
@@ -4603,10 +4590,10 @@ attempts.
     <a href="#faq9_1">9.1 How can I synchronise two databases/tables in
 phpMyAdmin?</a></h4>
 
-<p> You can now synchronize databases/tables in phpMyAdmin using the Synchronize
+<p> You can now synchronise databases/tables in phpMyAdmin using the Synchronise
 feature.  It allows you to connect to local as well as remote servers. This
 requires you to enter server host name, username, password, port and the
-name of the database. Therefore you can now synchronize your databases
+name of the database. Therefore you can now synchronise your databases
 placed on the same server or some remote server.
 </p>
 
@@ -4615,7 +4602,7 @@ This feature is helpful for developers who need to replicate their
 database&#8217;s structure as well as data. Moreover, this feature not only
 helps replication but also facilitates the user to keep his/her database in
 sync with another database. Other than the full database, certain tables of
-the databases can also be synchronized.
+the databases can also be synchronised.
 </p>
 
 <p>
@@ -4636,7 +4623,7 @@ representation.
 On the left, are listed the source database table names. Some of the names
 have a <code>+</code> plus sign preceding them. This shows that these tables
 are only present in source database and they need to be added to the target
-database in order to synchronize the target database. The tables whose names
+database in order to synchronise the target database. The tables whose names
 are not preceded by a <code>+</code> sign are already present in the target
 database. 
 </p>
@@ -4645,7 +4632,7 @@ database.
 On the right, are listed the target database table names. There are few
 table names that have <code>(not present)</code> appended after their
 names. This means that these tables are to be created in target database in
-order to synchronize target database with source database. Some table names
+order to synchronise target database with source database. Some table names
 have a <code>-</code> minus sign preceding them. This shows that these
 tables are only present in target database and they will remain unchanged in
 the target database. The column in the middle shows the difference between
@@ -4656,7 +4643,7 @@ the source and target corresponding tables.
 The difference is depicted by the red and green buttons with <tt>S</tt> and
 <tt>D</tt> letters, indicating that either Structure or Data are not up to
 date. By clicking on them, they will turn grey, what means that they will be
-synchronized.
+synchronised.
 </p>
 
 

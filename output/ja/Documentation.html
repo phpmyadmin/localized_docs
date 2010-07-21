@@ -344,7 +344,8 @@ pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.23</a>).</p>
 
 <p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>.</p>
+please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./scripts/create_tables.sql</i>.</p>
 
 <p> phpMyAdmin
 を使ってテーブル群を作成することもできますが、ご注意ください。データベースやテーブルを作成する際には特別な（管理者の）権限が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
@@ -1730,35 +1731,21 @@ locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
     <dd>利用可能な言語の一覧を与えられた正規表現にマッチするものに限定します。たとえば、チェコ語と英語のみに限定したければ、フィルターを
 <code>'^(cs|en)'</code> のように設定します。</dd>
 
-    <dt id="cfg_DefaultCharset">$cfg['DefaultCharset'] string</dt>
-    <dd>Default character set to use for recoding of MySQL queries. This must be
-enabled and it's described by <a href="#cfg_AllowAnywhereRecoding"
-class="configrule">$cfg['AllowAnywhereRecoding']</a> option.<br />
-        You can give here any character set which is in <a
-href="#cfg_AvailableCharsets"
-class="configrule">$cfg['AvailableCharsets']</a> array and this is just
-default choice, user can select any of them.</dd>
-
-    <dt id="cfg_AllowAnywhereRecoding">$cfg['AllowAnywhereRecoding'] boolean</dt>
-    <dd>MySQL クエリの文字セットの変換を許可します。MySQL のクエリの文字コードを変換するには、PHP
-が（コンパイルの際に組み込まれているか、モジュールを利用することで）recode や iconv
-をサポートしている必要があります。また、利用する言語ファイルの方でも変換が有効になっている必要があります（デフォルトでは Unicode
-で記述されている言語ファイルのみ有効です。これは文字の脱落を防ぐためです）。<br /><br />
-
-        Setting this to <tt>TRUE</tt> also activates a pull-down menu in the Export
-and Import pages, to choose the character set when exporting a file. The
-default value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
-    </dd>
-
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] string</dt>
     <dd>You can select here which functions will be used for character set
 conversion. Possible values are:
         <ul><li>auto - 自動的に利用可能なものを利用します（まずは iconv を、次に recode を試します）</li>
             <li>iconv - iconv ないし libiconv 関数を利用します</li>
             <li>recode - recode_string 関数を利用します</li>
+            <li>none - disable encoding conversion</li>
         </ul>
         デフォルトは auto です。</dd>
+    <dd>
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
+<tt>$cfg['Import']['charset']</tt>.
+        </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
     <dd>Specify some parameters for iconv used in charset conversion. See <a
@@ -1914,8 +1901,8 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
     <dd>修正時に Ctrl＋カーソルキー（Safariの場合は Option＋カーソルキー）でフィールド間を移動できるようにするかどうか。</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] integer</dt>
-    <dd>Maximum number of characters showen in any non-numeric column on browse
-view.  Can be turned off by a toggle button on the browse page.</dd>
+    <dd>Maximum number of characters shown in any non-numeric field on browse view.
+Can be turned off by a toggle button on the browse page.</dd>
 
     <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft'] </span>boolean
 <span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']
