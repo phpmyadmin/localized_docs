@@ -83,7 +83,8 @@ SourceForge.net 的项目页 (英语)</a></li>
 5.2.0 或更高版本。
                 </li>
 		<li>要支持上传 zip 文件，需要 <tt>zip</tt> 扩展。</li>
-        <li>要更好的支持多字节字符串 (如 UTF-8 编码的文字, 当前默认编码)，需要 mbstring 和 ctype 扩展。
+        <li>For proper support of multibyte strings (eg. UTF-8, which is currently the
+default), you should install the mbstring and ctype extensions.
         </li>
             <li>要支持内联 JPEG 图像的等比缩略图 (&quot;image/jpeg: inline&quot;)，需要 GD2 扩展</li>
             <li>当使用 &quot;cookie&quot; <a href="#authentication_modes">认证</a>时，我们强烈建议大部分用户使用
@@ -92,6 +93,9 @@ SourceForge.net 的项目页 (英语)</a></li>
                 </li>
                 <li>要支持上传进度条，参见 <a href="#faq2_9"> <abbr title="常见问题 (Frequently Asked
 Questions)">FAQ</abbr> 2.9</a>。</li>
+                <li>To support BLOB streaming, see PHP and MySQL requirements in <a
+href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
+6.25</a>.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 或更高版本 (<a href="#faq1_17">查看详细说明</a>);</li>
@@ -167,7 +171,7 @@ title="逗号分隔型取值 (comma separated values)">CSV</abbr> 时可压缩�
 
 <ol><li><a href="#quick_install">快速安装</a></li>
     <li><a href="#setup_script">使用安装脚本</a></li>
-    <li><a href="#linked-tables">链接表的附加功能</a></li>
+    <li><a href="#linked-tables">phpMyAdmin configuration storage</a></li>
     <li><a href="#upgrading">从旧版本升级</a></li>
     <li><a href="#authentication_modes">使用认证</a></li>
 </ol>
@@ -273,7 +277,7 @@ Apache 中你可以通过 .htaccess 文件设置，其他网站服务器请自�
     </li>
 </ol>
 
-<h3 id="linked-tables">链接表的附加功能</h3>
+<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
 
 <p> For a whole set of new features (bookmarks, comments, <abbr
 title="structured query language">SQL</abbr>-history, tracking mechanism,
@@ -308,15 +312,17 @@ href="#authentication_modes">使用认证</a> 一节)。</p>
 <p> <strong>请勿</strong>复制 <tt>libraries/config.default.php</tt> 为
 <tt>config.inc.php</tt> 因为默认配置是仅对当前版本有效的。</p>
 
-<p> 如果你把 MySQL 服务器从 4.1.2 之前的版本升级到了 4.1.2 或更高版本，并且使用了链接表的附加功能，你还要运行 SQL 脚本
-<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> 。</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the SQL script found in
+<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">使用认证</h3>
 
 <ul><li>在<b>多用户环境</b>中，我们推荐使用 <abbr title="超文本转移协议 (HyperText Transfer
 Protocol)">HTTP</abbr> 和 cookie 认证，这样用户仅可以看到并管理自己的数据库。<br />
-        目前已知微软的 IE6 (Internet Explorer，或更低版本) 在处理 cookies 上存在很严重的问题，而 PHP 4.1.1
-在该方面也存在一些严重问题！<br />
+        Nevertheless be aware that MS Internet Explorer seems to be really buggy
+about cookies, at least till version 6.<br />
         即使在<b>单用户环境</b>中使用 <abbr title="超文本转移协议 (HyperText Transfer
 Protocol)">HTTP</abbr> 或 cookie 认证，用户名和密码也不会被保存在配置文件中。
         </li>
@@ -364,7 +370,9 @@ GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (需要设置好<a href="#linked-tables">链接表的附加功能</a>)。<br /></li>
+        (this of course requires that your <a href="#linked-tables">phpMyAdmin
+configuration storage</a> be set up).  
+    <br /></li>
 
     <li>每一个<i>真实的</i>用户应在特定的数据库上具有一定的权限。除非你很明白这些权限的作用
 (例如，需要创建一个超级用户)，否则不应轻易授予普通用户任何全局权限。<br />
@@ -678,15 +686,19 @@ href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">Perl
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> 字符串
     </dt>
-    <dd>包含链接表的附加功能数据的数据库名。
+    <dd>The name of the database containing the phpMyAdmin configuration storage.
         <br /><br />
 
-        参见本文档中<a href="#linked-tables">链接表的附加功能</a>一节了解其好处以及如何快速创建该数据库和需要的数据表。
+        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
+section in this document to see the benefits of this feature, and for a
+quick way of creating this database and the needed tables.
         <br /><br />
 
-        如果此 phpMyAdmin 只有你自己使用，你可以用你当前的数据库来保存这些特殊的数据表，这种情况下，你可以在
-<tt>$cfg['Servers'][$i]['pmadb']</tt> 中填写当前数据库的名字。若此 phpMyAdmin
-作为多用户使用，请设为包含链接表的附加功能数据表的专用数据库。</dd>
+        If you are the only user of this phpMyAdmin installation, you can use your
+current database to store those special tables; in this case, just put your
+current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
+multi-user installation, set this parameter to the name of your central
+database containing the phpMyAdmin configuration storage.</dd>
 
     <dt id="bookmark">
         <span
@@ -696,7 +708,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
     <dd>自 2.2.0 起 phpMyAdmin 允许用户将查询加入书签。你可以将经常要执行的语句加入书签。<br /><br />
 
         要启用此功能:
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>在 <tt>$cfg['Servers'][$i]['bookmarktable']</tt> 中设置要使用的数据表名</li>
         </ul>
     </dd>
@@ -730,7 +742,7 @@ Questions)">FAQ</abbr> 6.6</a>)</li>
 
         要启用此功能:
 
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>在 <tt>$cfg['Servers'][$i]['relation']</tt> 中设置要使用的数据表名</li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
 want to use this feature, click &quot;Structure/Relation view/&quot; and
@@ -752,7 +764,7 @@ the cross-db relations.
 column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         这张表的名字将被保存在此变量中。要启用此功能:
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
 'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
@@ -776,7 +788,7 @@ Format)">PDF</abbr> 大纲输出中的坐标)。<br /><br />
 
         要启用此功能:
 
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>在 <tt>$cfg['Servers'][$i]['table_coords']</tt> 和
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt> 中设置要使用的数据表名</li>
         </ul>
@@ -808,7 +820,7 @@ system, your column_info table has to have the three new columns 'mimetype',
         <br /><br />
 
         要启用此功能:
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
 'pma_column_info')</li>
             <li>要从 2.5.0 之前的 Column_comments 表升级可执行:
@@ -841,7 +853,7 @@ class="configrule">$cfg['QueryHistoryMax']</a>
 
         要启用此功能:
 
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
 (e.g. 'pma_history')
                 </li>
@@ -869,7 +881,7 @@ class="configrule">$cfg['QueryHistoryMax']</a>
         要启用此功能:
 
         <ul>
-            <li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
 (e.g. 'pma_tracking')</li>
         </ul>
@@ -954,7 +966,7 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 
         要启用此功能:
 
-        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和链接表的附加功能</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
 (e.g. 'pma_designer_coords')
                 </li>
@@ -1800,6 +1812,15 @@ similar to texts seen on export page, so you can easily identify what they
 mean.
     </dd>
 
+    <dt id="cfg_Export">$cfg['Export']['method'] string</dt>
+    <dd>
+        Defines how the export form is displayed when it loads. Valid values are:
+        <li><tt>quick</tt> to display the minimum number of options to configure</li>
+        <li><tt>custom</tt> to display every available option to configure</li>
+        <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
+option of using quick export</li>
+    </dd>
+
     <dt id="cfg_Import">$cfg['Import'] array</dt>
     <dd>
         In this array are defined default parameters for import, names of items are
@@ -1957,9 +1978,9 @@ title="Frequently Asked Questions">FAQ</abbr> 2.7</a>.</dd>
 string
     </dt>
     <dd>Default queries that will be displayed in query boxes when user didn't
-specify any. Use %d for database name, %t for table name and %f for a comma
-separated list of column names. Note that %t and %f are only applicable to
-<tt>$cfg['DefaultQueryTable']</tt>.</dd>
+specify any. You can use standard <a href="#faq6_27">format string
+expansion</a>.
+        </dd>
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<tt>html</tt>|<tt>none</tt>]</dt>
     <dd>
@@ -2212,12 +2233,12 @@ transformations.</p>
 
 <p> Because the user cannot enter own mimetypes, it is kept sure that
 transformations always work. It makes no sense to apply a transformation to
-a mimetype, the transform-function doesn't know to handle.</p>
+a mimetype the transform-function doesn't know to handle.</p>
 
 <p> One can, however, use empty mime-types and global transformations which
 should work for many mimetypes. You can also use transforms on a different
-mimetype they where built for, but pay attention to option usage as well as
-what the transformation does to your column.</p>
+mimetype than what they where built for, but pay attention to option usage
+as well as what the transformation does to your column.</p>
 
 <p> There is a basic file called '<i>global.inc.php</i>'. This function can be
 included by any other transform function and provides some basic functions.</p>
@@ -2363,15 +2384,13 @@ phpMyAdmin 的特性和接口方面的信息。</p>
 <h3 id="faqserver">服务器</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 我正在使用 PHP 4+ 版本，在我执行某些特性操作的时候服务器总是会发生一些错误，如 phpMyAdmin
-返回空页面，或者显示乱码，我该怎么办？</a></h4>
+    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
+required or phpMyAdmin sends a blank page or a page full of cryptic
+characters to my browser, what can I do?</a></h4>
 
-<p> PHP 在输出缓冲和压缩上有一些 Bug。<br />
-    在 <i>config.inc.php</i> 文件中将 <a href="#cfg_OBGzip"
+<p> 在 <i>config.inc.php</i> 文件中将 <a href="#cfg_OBGzip"
 class="configurule">$cfg['OBGzip']</a> 显式地设为 <tt>FALSE</tt>，同时将 PHP 配置文件中的
-<tt>zlib.output_compression</tt> 显式地设置为 <tt>Off</tt>。<br />
-    我们发现这样的问题与 PHP 4.2.0 发布候选版本（PHP 4.2.0 RC1 到 RC4）及 Internet Explorer 有关，请升级你的
-PHP 到 4.2.0 版本。</p>
+<tt>zlib.output_compression</tt> 显式地设置为 <tt>Off</tt>。<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 使用 phpMyAdmin 时，我的 Apache 服务器崩溃了。</a></h4>
@@ -2381,12 +2400,7 @@ PHP 到 4.2.0 版本。</p>
     如果你的服务器依旧崩溃，请向 Apache 技术支持小组寻求帮助。</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 我无法登录 phpMyAdmin，phpMyAdmin 总是显示登录页面。 phpMyAdmin
-的认证方式设置为 cookie 认证，PHP 版本是 4.2.0（或 4.2.1），以 Apache 模块方式运行。</a></h4>
-
-<p> 这是一个 PHP 的 Bug（参考 PHP 官方错误数据库上的<a
-href="http://bugs.php.net/bug.php?id=16626">错误反馈</a>），因此，phpMyAdmin
-不会也无法对此错误进行修复。</p>
+    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 我在 <abbr title="Internet Information
@@ -2419,11 +2433,10 @@ Interface">ISAPI</abbr> 过滤器错误：PHP 的 ISAPI 过滤器不是很稳定
     <a href="#faq1_7">1.7 如何使用 Gzip 或 Bzip 压缩 <abbr title="comma separated
 values">CSV</abbr> 和其他类型的导出文件？ 我设置了相关选项但是似乎不起作用。</a></h4>
 
-<p> 为了获得更高的平台兼容性（如运行于 Unix 和 Windows，使用安全模式和不使用安全模式），该功能需要使用 PHP
-的<tt>gzencode()</tt> 和 <tt>bzcompress()</tt> 函数。因此，你需要将 PHP4 升级到
-&gt;=&nbsp;4.0.4 版本，并打开 Zlib/Bzip2 支持（编译选项：<tt>--with-zlib</tt> and
-<tt>--with-bz2</tt>）。<br />
-    使用 Internet Explorer 下载转储时 PHP 崩溃，如果您正在使用 PHP 4.2.0 候选发行版本，请将其升级到 4.2.0 稳定版。</p>
+<p> These features are based on the <tt>gzencode()</tt> and
+<tt>bzcompress()</tt> PHP functions to be more independent of the platform
+(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
+support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 我无法向表中插入文本文件，并且有错误提示说这是因为在安全模式无法进行这样的操作。</a></h4>
@@ -2564,12 +2577,7 @@ href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL 手册</a>。
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 我正在使用  MySQL&nbsp;&lt;=&nbsp;4.0.1 并将
-<tt>lower_case_table_names</tt> 设置到了1。在我使用大写字符创建一个表时，MySQL
-创建了一个表名为全小写的表。但当我删除这个表时， MySQL 却无法找到对应的表文件。</a></h4>
-
-<p> 这是 MySQL&nbsp;&lt;=&nbsp;4.0.1 的一个错误。请将您的 MySQL 升级到 MySQL&nbsp;4.0.2
-版本，或者显式关闭  <tt>lower_case_table_names</tt> 选项。</p>
+    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
 
 <h4 id="faq1_19">
     <a href="#faq1_19">1.19 我无法使用&quot;显示关系&quot;功能。似乎脚本不认识我正在使用的字体。</a></h4>
@@ -2613,11 +2621,7 @@ create a new table the table and column names are changed to lowercase!</a></h4>
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 我的查询语句中被加入了奇怪的字符，有时语句还会变得缺胳膊少腿的。我使用的 PHP 版本是
-4.2.3。</a></h4>
-
-<p> 这是一个 <a href="http://bugs.php.net/bug.php?id=19404">PHP 4.2.3 的错误 </a>.
-    </p>
+    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
 
 <h4 id="faq1_25">
     <a href="#faq1_25">1.25 我在 Windows XP 上使用 Apache，并加载了mod_gzip-1.3.26.1a。在运行
@@ -3416,11 +3420,7 @@ they disappear. GZip dumps give an error message.<br />
 Internet Explorer never stores the cookies.  </a></h4>
 <p>
     MS Internet Explorer seems to be really buggy about cookies, at least till
-version 6. And thanks to Andrew Zivolup we've traced also a PHP 4.1.1 bug in
-this area!
-    <br />
-    Then, if you're running PHP 4.1.1, try to upgrade or downgrade... it may
-work!
+version 6.
 </p>
 
 <h4 id="faq5_5">
@@ -3948,13 +3948,13 @@ you have table exported in file <code>table.tex</code>):</p>
 </pre>
 
 <h4 id="faq6_20">
-    <a href="#faq6_20">6.20 In MySQL 4, I see a lot of databases which are not
-mine, and cannot access them.  </a></h4>
+    <a href="#faq6_20">6.20 I see a lot of databases which are not mine, and
+cannot access them.  </a></h4>
 
-<p> Upgrading to MySQL 4 usually gives users those global privileges: CREATE
-TEMPORARY TABLES, SHOW DATABASES, LOCK TABLES. Those privileges also enable
-users to see all the database names.  See this <a
-href="http://bugs.mysql.com/179">bug report</a>.<br /><br />
+<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
+DATABASES, LOCK TABLES. Those privileges also enable users to see all the
+database names.  See this <a href="http://bugs.mysql.com/179">bug
+report</a>.<br /><br />
 
     So if your users do not need those privileges, you can remove them and their
 databases list will shorten.</p>
@@ -4011,30 +4011,31 @@ ones is done whenever you enter Structure page for this table.</p>
 <h4 id="faq6_25">
 	<a href="#faq6_25">6.25 How does BLOB streaming work in phpMyAdmin?</a></h4>
 
-<p> First, for general information about BLOB streaming on MySQL, visit <a
-href="http://blobstreaming.org">blobstreaming.org</a>. We currently support
-streaming if you are running MySQL 5.1 with the PBXT and PBMS storage
-engines. Moreover, only PBMS 0.5.04 is supported.</p>
+<p> For general information about BLOB streaming on MySQL, visit <a
+href="http://blobstreaming.org">blobstreaming.org</a>. You need the
+following components:</p>
+<ul>
+    <li>PBMS BLOB Streaming Daemon for MySQL (0.5.15 or later)</li>
+    <li>Streaming enabled PBXT Storage engine for MySQL (1.0.11-6 or later)</li>
+    <li>PBMS Client Library for MySQL (0.5.15 or later)</li>
+    <li>PBMS PHP Extension for MySQL (0.1.1 or later)</li>
+</ul>
+
+<p>Here are details about configuration and operation:</p>
 
 <ol>
 	<li>In <tt>config.inc.php</tt> your host should be defined with a FQDN (fully
-qualified domain name) instead of something like &quot;localhost&quot;.</li>
-	<li>A current limitation is that your first login via phpMyAdmin to a
-freshly-started server must be done with an account that has the SUPER
-privilege.</li>
-	<li>On your target database, go to Operations and in the &quot;BLOB
-Repository&quot; section, click &quot;Enable&quot;. This creates the PBMS
-system tables inside your database.</li>
-	<li>Ensure that your target table is under the PBXT storage engine and has a
-LONGBLOB column.</li>
+qualified domain name) instead of &quot;localhost&quot;.</li>
+    <li>Ensure that your target table is under the <tt>PBXT</tt> storage engine and
+has a <tt>LONGBLOB</tt> column (which must be nullable if you want to remove
+the BLOB reference from it).</li>
 	<li>When you insert or update a row in this table, put a checkmark on the
 &quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
-will be done directly in your column instead of the repository.</li>
+will be done directly in your LONGBLOB column instead of the repository.</li>
 	<li>Finally when you browse your table, you'll see in your column a link to
 stream your data, for example &quot;View image&quot;. A header containing
 the correct MIME-type will be sent to your browser; this MIME-type was
-stored at upload time but in case it's incorrect, it's possible to edit it
-by clicking on the displayed MIME-type.</li> 
+stored at upload time.</li> 
 </ol>	
 
 <h4 id="faq6_26">
@@ -4052,8 +4053,8 @@ or on the Structure page.</p>
     In all places where phpMyAdmin accepts format strings, you can use
 <code>@VARIABLE@</code> expansion and <a
 href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (eg. if you don't have chosen table, you can
-not get table name), but following variables can be used:
+variables depend on a context (for example, if you haven't chosen a table,
+you can not get the table name), but the following variables can be used:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
@@ -4069,6 +4070,8 @@ href="#cfg_Servers_verbose">server configuration</a></dd>
         <dd>Currently opened database</dd>
     <dt><code>@TABLE@</code></dt>
         <dd>Currently opened table</dd>
+    <dt><code>@FIELDS@</code></dt>
+        <dd>Fields of currently opened table</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
         <dd>phpMyAdmin with version</dd>
 </dl>
@@ -4130,9 +4133,9 @@ href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localize
 from Git, or just go to the <a
 href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
 translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal Čihař</a>; he will add it. If you
-prefer to directly translate the po files, please put updated ones into our
-<a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
 href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
 tracker</a>. 
 </p>
@@ -4307,7 +4310,7 @@ Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
-                        Michal Čihař &lt;michal_at_cihar.com&gt;
+                        Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
@@ -4560,6 +4563,11 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 <li>Tom&#225;&#353; Srnka (Google Summer of Code 2009)
 <ul>
   <li>Replication support</li>
+</ul></li>
+
+<li>Barrie Leslie
+<ul>
+  <li>BLOBstreaming support with PBMS PHP extension</li>
 </ul></li>
 
 </ul>

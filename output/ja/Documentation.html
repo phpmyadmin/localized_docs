@@ -84,8 +84,8 @@ href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
 1.31</a>)  and the Standard PHP Library (SPL) extension.
                 </li>
 		<li>To support uploading of ZIP files, you need the PHP <tt>zip</tt> extension.</li>
-        <li>For proper support of multibyte strings (eg. UTF-8, which is currently
-default), you should install mbstring and ctype extensions.
+        <li>For proper support of multibyte strings (eg. UTF-8, which is currently the
+default), you should install the mbstring and ctype extensions.
         </li>
             <li>You need GD2 support in PHP to display inline thumbnails of JPEGs
 (&quot;image/jpeg: inline&quot;) with their original aspect ratio</li>
@@ -98,6 +98,9 @@ slower.
                 </li>
                 <li>To support upload progress bars, see <a href="#faq2_9"> <abbr
 title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
+                <li>To support BLOB streaming, see PHP and MySQL requirements in <a
+href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
+6.25</a>.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
@@ -182,7 +185,7 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 
 <ol><li><a href="#quick_install">Quick Install</a></li>
     <li><a href="#setup_script">Setup script usage</a></li>
-    <li><a href="#linked-tables">Linked-tables infrastructure</a></li>
+    <li><a href="#linked-tables">phpMyAdmin configuration storage</a></li>
     <li><a href="#upgrading">Upgrading from an older version</a></li>
     <li><a href="#authentication_modes">Using authentication modes</a></li>
 </ol>
@@ -328,7 +331,7 @@ access by web server configuration. You can find example
     </li>
 </ol>
 
-<h3 id="linked-tables">リンクテーブル構造</h3>
+<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
 
 <p> For a whole set of new features (bookmarks, comments, <abbr
 title="structured query language">SQL</abbr>-history, tracking mechanism,
@@ -372,7 +375,7 @@ over <tt>config.inc.php</tt> because the default configuration file is
 version-specific.</p>
 
 <p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 4.1.2 or newer and if you use the pmadb/linked table infrastructure,
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
 you should run the SQL script found in
 <tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
@@ -383,8 +386,7 @@ authentication modes are recommended in a <b>multi-user environment</b>
 where you want to give users access to their own database and don't want
 them to play around with others.<br />
         Nevertheless be aware that MS Internet Explorer seems to be really buggy
-about cookies, at least till version 6, and PHP 4.1.1 is also a bit buggy in
-this area!<br />
+about cookies, at least till version 6.<br />
         Even in a <b>single-user environment</b>, you might prefer to use <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that your
 user/password pair are not in clear in the configuration file.
@@ -438,7 +440,9 @@ GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        （もちろん<a href="#linked-tables">リンクテーブル構造</a>を設定しておく必要があります）<br /></li>
+        (this of course requires that your <a href="#linked-tables">phpMyAdmin
+configuration storage</a> be set up).  
+    <br /></li>
 
     <li>上記が済んだら、<i>本当の</i>ユーザそれぞれについて、特定のデータベースにおける特権を付与していってください。ふつう、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが（たとえばスーパーユーザを作るときなど）。<br />
         一例として、<i>real_user</i> というユーザに <i>user_base</i>
@@ -826,16 +830,19 @@ be stripped.</dd>
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> string
     </dt>
-    <dd>リンクテーブル構造を格納するデータベース名が入ります。
+    <dd>The name of the database containing the phpMyAdmin configuration storage.
         <br /><br />
 
-        この文書の<a
-href="#linked-tables">リンクテーブル構造</a>のセクションをご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
+        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
+section in this document to see the benefits of this feature, and for a
+quick way of creating this database and the needed tables.
         <br /><br />
 
-        インストールした phpMyAdmin のユーザがひとりの場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
-<tt>$cfg['Servers'][$i]['pmadb']</tt>
-にはお使いのデータベース名を入れていただければ結構です。マルチユーザの場合はリンクテーブル構造を格納するセントラルデータベース名を設定します。</dd>
+        If you are the only user of this phpMyAdmin installation, you can use your
+current database to store those special tables; in this case, just put your
+current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
+multi-user installation, set this parameter to the name of your central
+database containing the phpMyAdmin configuration storage.</dd>
 
     <dt id="bookmark">
         <span
@@ -858,7 +865,7 @@ Documentation_ja.html:570  #-#-#-#-#
 #-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li><tt>$cfg['Servers'][$i]['bookmarktable']</tt> にテーブル名を入力します。</li>
         </ul>
     </dd>
@@ -904,7 +911,7 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li><tt>$cfg['Servers'][$i]['relation']</tt> にリレーションテーブル名を入れます。</li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
 want to use this feature, click &quot;Structure/Relation view/&quot; and
@@ -927,7 +934,7 @@ column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         This configuration variable will hold the name of this special table. To
 allow the usage of this functionality:
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
 'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
@@ -967,7 +974,7 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li><tt>$cfg['Servers'][$i]['table_coords']</tt> と
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt> に正しいテーブル名を入れます。</li>
         </ul>
@@ -1011,7 +1018,7 @@ Documentation_ja.html:570  #-#-#-#-#
 #-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
 'pma_column_info')</li>
             <li>2.5.0 より前の Column_comments テーブルを更新するには次のようにします。
@@ -1060,7 +1067,7 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
 (e.g. 'pma_history')
                 </li>
@@ -1109,7 +1116,7 @@ Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
         <ul>
-            <li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
 (e.g. 'pma_tracking')</li>
         </ul>
@@ -1210,7 +1217,7 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
 (e.g. 'pma_designer_coords')
                 </li>
@@ -2065,6 +2072,15 @@ reading and writing data in this directory.
         この配列はエクスポートの際のデフォルトパラメータを定義します。項目名はエクスポートページに表示されるテキストとほとんど同じですので、意味は簡単にわかるでしょう。
     </dd>
 
+    <dt id="cfg_Export">$cfg['Export']['method'] string</dt>
+    <dd>
+        Defines how the export form is displayed when it loads. Valid values are:
+        <li><tt>quick</tt> to display the minimum number of options to configure</li>
+        <li><tt>custom</tt> to display every available option to configure</li>
+        <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
+option of using quick export</li>
+    </dd>
+
     <dt id="cfg_Import">$cfg['Import'] array</dt>
     <dd>
         この配列はインポートの際のデフォルトパラメータを定義します。項目名はインポートページに表示されるテキストとほとんど同じですので、意味は簡単にわかるでしょう。
@@ -2209,9 +2225,9 @@ title="Frequently Asked Questions">FAQ</abbr> 2.7</a>.</dd>
 string
     </dt>
     <dd>Default queries that will be displayed in query boxes when user didn't
-specify any. Use %d for database name, %t for table name and %f for a comma
-separated list of column names. Note that %t and %f are only applicable to
-<tt>$cfg['DefaultQueryTable']</tt>.</dd>
+specify any. You can use standard <a href="#faq6_27">format string
+expansion</a>.
+        </dd>
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<tt>html</tt>|<tt>none</tt>]</dt>
     <dd>
@@ -2431,13 +2447,14 @@ options）」フィールドは自由に入力できるテキストフィール�
 
 <p> 変換機能がファイルに保管されているのは、カスタマイズや新しい変換機能の追加を容易にするためです。</p>
 
-<p> ユーザが独自の MIME タイプを入力することはできません。変換機能がいつでも確実に動作するのはそのおかげです。ある変換機能を未知の MIME
-タイプに適用しようとしても無駄です。変換関数は処理の方法を知らないためです。</p>
+<p> Because the user cannot enter own mimetypes, it is kept sure that
+transformations always work. It makes no sense to apply a transformation to
+a mimetype the transform-function doesn't know to handle.</p>
 
 <p> One can, however, use empty mime-types and global transformations which
 should work for many mimetypes. You can also use transforms on a different
-mimetype they where built for, but pay attention to option usage as well as
-what the transformation does to your column.</p>
+mimetype than what they where built for, but pay attention to option usage
+as well as what the transformation does to your column.</p>
 
 <p> 「<i>global.inc.php</i>」という基本ファイルは、どんな変換機能からでもインクルードできます。これはいくつかの基本的な関数を提供してくれます。</p>
 
@@ -2577,17 +2594,14 @@ and or interface.</p>
 <h3 id="faqserver">Server</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 I'm running PHP 4+ and my server is crashing each time
-a specific action is required or phpMyAdmin sends a blank page or a page
-full of cryptic characters to my browser, what can I do?</a></h4>
+    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
+required or phpMyAdmin sends a blank page or a page full of cryptic
+characters to my browser, what can I do?</a></h4>
 
-<p> PHP の出力バッファリングや圧縮にはいくつか既知のバグがあります。<br />
-    Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
 directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
 <tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php
-configuration file.<br />
-    また、私たちが把握している限り、そういった問題は PHP 4.2.0 のプレリリース版（PHP 4.2.0 RC1 〜 RC4 でテストしました）と
-MS Internet Explorer を組み合わせたときに起こります。PHP 4.2.0 のリリースバージョンにアップグレードしてください。</p>
+configuration file.<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
@@ -2598,13 +2612,7 @@ Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
     それでもサーバがクラッシュするようなら、Apache の各種サポートグループに援助を求めてください。</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 I'm running phpMyAdmin with "cookie" authentication
-mode under PHP 4.2.0 or 4.2.1 loaded as an Apache 2 module but can't enter
-the script: I'm always displayed the login screen.</a></h4>
-
-<p> これは PHP 側の既知のバグです（→ <a
-href="http://bugs.php.net/bug.php?id=16626">バグレポート</a>）。出典は PHP
-のオフィシャルバグデータベースです。これは phpMyAdmin 側では修正しようがありませんので、放ってあります。この先も修正しません。</p>
+    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information
@@ -2646,11 +2654,8 @@ separated values">CSV</abbr> export? It does not seem to work.</a></h4>
 
 <p> These features are based on the <tt>gzencode()</tt> and
 <tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have
-PHP4&nbsp;&gt;=&nbsp;4.0.4 and Zlib/Bzip2 support (<tt>--with-zlib</tt> and
-<tt>--with-bz2</tt>).<br />
-    また、phpMyAdmin を PHP 4.2.0 のプレリリース版上で走らせているときにダンプを MS Internet Explorer
-でダウンロードしようとすると PHP がクラッシュするという問題がありました。この場合は PHP 4.2.0 をリリース版に切り替えてください。</p>
+(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
+support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
@@ -2808,13 +2813,7 @@ Documentation</a>.
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 I'm running MySQL&nbsp;&lt;=&nbsp;4.0.1 having
-<tt>lower_case_table_names</tt> set to 1. If I create a new table with a
-capital letter in its name it is changed to lowercase as it should. But if I
-try to DROP this table MySQL is unable to find the corresponding file.</a></h4>
-
-<p> これは MySQL&nbsp;≦&nbsp;4.0.1 のバグです。最低でも MySQL&nbsp;4.0.2
-にまでアップグレードするか、<tt>lower_case_table_names</tt> ディレクティブをオフにしてください。</p>
+    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
 
 <h4 id="faq1_19">
     <a href="#faq1_19">1.19 I can't run the &quot;display relations&quot;
@@ -2864,11 +2863,7 @@ create a new table the table and column names are changed to lowercase!</a></h4>
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 Some characters are being truncated in my queries,
-or I get characters randomly added. I am running PHP 4.2.3.</a></h4>
-
-<p> これは <a href="http://bugs.php.net/bug.php?id=19404">PHP 4.2.3 のバグ</a> です。
-    </p>
+    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
 
 <h4 id="faq1_25">
     <a href="#faq1_25">1.25 I am running Apache with mod_gzip-1.3.26.1a on
@@ -3711,10 +3706,8 @@ fields.</a></h4>
     <a href="#faq5_4">5.4 I can't use the cookie authentication mode because
 Internet Explorer never stores the cookies.  </a></h4>
 <p>
-    MS Internet Explorer は、クッキーについては本当にバグが多いようです。少なくともバージョン 6 まではそうですし、Andrew
-Zivolup のおかげで PHP 4.1.1 にクッキー関連のバグがあることも突き止めました！
-    <br />
-    というわけで、PHP 4.1.1 を使っている場合はアップグレード／ダウングレードしてみてください……それで動くかもしれません！
+    MS Internet Explorer seems to be really buggy about cookies, at least till
+version 6.
 </p>
 
 <h4 id="faq5_5">
@@ -4207,12 +4200,13 @@ you have table exported in file <code>table.tex</code>):</p>
 </pre>
 
 <h4 id="faq6_20">
-    <a href="#faq6_20">6.20 In MySQL 4, I see a lot of databases which are not
-mine, and cannot access them.  </a></h4>
+    <a href="#faq6_20">6.20 I see a lot of databases which are not mine, and
+cannot access them.  </a></h4>
 
-<p> MySQL 4 にアップグレードするとふつうユーザには CREATE TEMPORARY TABLES、SHOW DATABASES、LOCK
-TABLES といったグローバル特権が与えられるのですが、これらの特権があるとすべてのデータベース名が見えてしまいます。こちらの<a
-href="http://bugs.mysql.com/179">バグレポート</a>もご覧ください。<br /><br />
+<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
+DATABASES, LOCK TABLES. Those privileges also enable users to see all the
+database names.  See this <a href="http://bugs.mysql.com/179">bug
+report</a>.<br /><br />
 
     というわけで、ユーザにこれらの特権を与える必要がなければ、特権を削除してもかまいません。そうすると、データベースの一覧が短くなります。</p>
 
@@ -4268,30 +4262,31 @@ column comments, what happens to my column comments stored in pmadb?</a></h4>
 <h4 id="faq6_25">
 	<a href="#faq6_25">6.25 How does BLOB streaming work in phpMyAdmin?</a></h4>
 
-<p> First, for general information about BLOB streaming on MySQL, visit <a
-href="http://blobstreaming.org">blobstreaming.org</a>. We currently support
-streaming if you are running MySQL 5.1 with the PBXT and PBMS storage
-engines. Moreover, only PBMS 0.5.04 is supported.</p>
+<p> For general information about BLOB streaming on MySQL, visit <a
+href="http://blobstreaming.org">blobstreaming.org</a>. You need the
+following components:</p>
+<ul>
+    <li>PBMS BLOB Streaming Daemon for MySQL (0.5.15 or later)</li>
+    <li>Streaming enabled PBXT Storage engine for MySQL (1.0.11-6 or later)</li>
+    <li>PBMS Client Library for MySQL (0.5.15 or later)</li>
+    <li>PBMS PHP Extension for MySQL (0.1.1 or later)</li>
+</ul>
+
+<p>Here are details about configuration and operation:</p>
 
 <ol>
 	<li>In <tt>config.inc.php</tt> your host should be defined with a FQDN (fully
-qualified domain name) instead of something like &quot;localhost&quot;.</li>
-	<li>A current limitation is that your first login via phpMyAdmin to a
-freshly-started server must be done with an account that has the SUPER
-privilege.</li>
-	<li>On your target database, go to Operations and in the &quot;BLOB
-Repository&quot; section, click &quot;Enable&quot;. This creates the PBMS
-system tables inside your database.</li>
-	<li>Ensure that your target table is under the PBXT storage engine and has a
-LONGBLOB column.</li>
+qualified domain name) instead of &quot;localhost&quot;.</li>
+    <li>Ensure that your target table is under the <tt>PBXT</tt> storage engine and
+has a <tt>LONGBLOB</tt> column (which must be nullable if you want to remove
+the BLOB reference from it).</li>
 	<li>When you insert or update a row in this table, put a checkmark on the
 &quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
-will be done directly in your column instead of the repository.</li>
+will be done directly in your LONGBLOB column instead of the repository.</li>
 	<li>Finally when you browse your table, you'll see in your column a link to
 stream your data, for example &quot;View image&quot;. A header containing
 the correct MIME-type will be sent to your browser; this MIME-type was
-stored at upload time but in case it's incorrect, it's possible to edit it
-by clicking on the displayed MIME-type.</li> 
+stored at upload time.</li> 
 </ol>	
 
 <h4 id="faq6_26">
@@ -4309,8 +4304,8 @@ or on the Structure page.</p>
     In all places where phpMyAdmin accepts format strings, you can use
 <code>@VARIABLE@</code> expansion and <a
 href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (eg. if you don't have chosen table, you can
-not get table name), but following variables can be used:
+variables depend on a context (for example, if you haven't chosen a table,
+you can not get the table name), but the following variables can be used:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
@@ -4326,6 +4321,8 @@ href="#cfg_Servers_verbose">server configuration</a></dd>
         <dd>Currently opened database</dd>
     <dt><code>@TABLE@</code></dt>
         <dd>Currently opened table</dd>
+    <dt><code>@FIELDS@</code></dt>
+        <dd>Fields of currently opened table</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
         <dd>phpMyAdmin with version</dd>
 </dl>
@@ -4387,9 +4384,9 @@ href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localize
 from Git, or just go to the <a
 href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
 translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal Čihař</a>; he will add it. If you
-prefer to directly translate the po files, please put updated ones into our
-<a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
 href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
 tracker</a>. 
 </p>
@@ -4571,7 +4568,7 @@ Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
-                        Michal Čihař &lt;michal_at_cihar.com&gt;
+                        Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
@@ -4831,6 +4828,11 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 <li>Tom&#225;&#353; Srnka (Google Summer of Code 2009)
 <ul>
   <li>Replication support</li>
+</ul></li>
+
+<li>Barrie Leslie
+<ul>
+  <li>BLOBstreaming support with PBMS PHP extension</li>
 </ul></li>
 
 </ul>
