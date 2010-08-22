@@ -673,7 +673,7 @@ array('要置顶的数据库1', '要置顶的数据库2', '*');</tt> 即可，ph
         例如，要隐藏所有以字母 &#34;a&#34; 开头的数据库，用<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
         要隐藏数据库 &#34;数据库1&#34; 和 &#34;数据库2&#34; ，用 <br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '(数据库1|数据库2)';// 译者注: 上例中也可使用中文，需注意配置文件编码应为 UTF-8</pre>
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
         可以在 PHP 手册的 <a
 href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">Perl
 兼容正则表达式的语法 (外链，英语)</a> 一节中找到更多关于正则表达式的信息。
@@ -955,6 +955,27 @@ the log when creating a database. Default value is true.
         <br/><br/>
     </dd>
 
+    <dt id="userconfig">
+        <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
+string
+    </dt>
+    <dd>
+        Since release 3.4.x phpMyAdmin allows users to set most preferences by
+themselves and store them in the database.
+        <br /><br />
+
+        If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
+users can still personalize phpMyAdmin, but settings will be saved in
+browser's local storage, or, it is is unavailable, until the end of session.
+        <br /><br />
+
+        要启用此功能:
+
+        <ul>
+            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+        </ul>
+    </dd>
 
     <dt id="designer_coords">
         <span
@@ -1000,7 +1021,8 @@ id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
 字符串
     </dt>
-    <dd>若不指定规则顺序，<abbr title="互联网协议 (Internet Protocol)">IP</abbr> 认证将不可用。<br /><br />
+    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
+authorization is disabled.<br /><br />
 
         若将规则顺序设为 <tt>'deny,allow'</tt>，系统将首先应用所有的允许 (allow) 规则，然后再应用禁止规则 (deny)
 。默认允许访问。任何没有被 Deny (禁止) 命令匹配的客户端或者被 Allow (允许) 命令匹配的客户端将被允许访问服务器。 <br /><br />
@@ -1008,9 +1030,12 @@ id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span
         若将规则顺序设为 <tt>'allow,deny'</tt>，系统将首先应用所有的禁止 (deny) 规则，然后再应用允许 (allow)
 规则。默认禁止访问。任何没有被 Allow (允许) 命令匹配的客户端或者被 Deny (禁止) 命令匹配的客户端将被禁止访问服务器。<br /><br />
 
-        若将规则顺序设为 'explicit'，认证行为与设为 'deny,allow' 类似，但主机/用户名<b>必须</b>在<i>允许
-(allow)</i> 规则中列出且不能在<i>禁止 (deny)</i> 规则中出现。这是<b>最</b>安全的方式，并且相当于在 Apache
-中使用允许 (allow)、禁止 (deny) 规则但不指定顺序时的效果。<br /><br />
+        If your rule order is set to 'explicit', authorization is performed in a
+similar fashion to rule order 'deny,allow', with the added restriction that
+your host/username combination <b>must</b> be listed in the <i>allow</i>
+rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
+secure means of using Allow/Deny rules, and was available in Apache by
+specifying allow and deny rules without setting any order.<br /><br />
 
         同时请参见 <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> 探测使用代理的真实 IP
 。
@@ -1940,6 +1965,11 @@ Database view, for the table list.</dd>
     <dd>If set to <tt>'closed'</tt>, the visual sliders are initially in a closed
 state. A value of <tt>'open'</tt> does the reverse. To completely disable
 all visual sliders, use <tt>'disabled'</tt>.</dd>
+
+    <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] array</dt>
+    <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
+users can't set through user preferences. For possible values, refer to
+<tt>libraries/config/user_preferences.forms.php</tt>.</dd>
 
     <dt id="cfg_TitleTable">$cfg['TitleTable'] string</dt>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] string</dt>
@@ -3179,10 +3209,10 @@ not likely to be solved in the future.
     <a href="#faq3_15">3.15 When I import an Excel spreadsheet, some cells with
 calculations do not display correctly.</a></h4>
 <p>
-    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/"
-target="_blank">PHPExcel</a> library to parse Excel XLS and XLSX
-spreadsheets.  Therefore, any limitations that are listed on their page
-regarding Excel calculations will also apply here.
+    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/">PHPExcel</a>
+library to parse Excel XLS and XLSX spreadsheets.  Therefore, any
+limitations that are listed on their page regarding Excel calculations will
+also apply here.
     <br /><br />
     PHPExcel will be kept up to date so as to make all improvements available to
 phpMyAdmin users.
@@ -4540,9 +4570,10 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
   <li>BLOBstreaming support</li>
 </ul></li>
 
-<li>Piotr Przybylski (Google Summer of Code 2008)
+<li>Piotr Przybylski (Google Summer of Code 2008 and 2010)
 <ul>
   <li>improved setup script</li>
+  <li>user preferences</li>
 </ul></li>
 
 <li>Derek Schaefer (Google Summer of Code 2009)

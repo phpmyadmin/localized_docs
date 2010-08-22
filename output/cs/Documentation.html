@@ -844,7 +844,7 @@ SQL query area). To limit access, use the MySQL privilege system.
         For example, to hide all databases starting with the letter &#34;a&#34;, use<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
         and to hide both &#34;db1&#34; and &#34;db2&#34; use <br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '(db1|db2)';</pre>
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
         More information on regular expressions can be found in the <a
 href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
 pattern syntax</a> portion of the PHP reference manual.
@@ -1155,6 +1155,27 @@ the log when creating a database. Default value is true.
         <br/><br/>
     </dd>
 
+    <dt id="userconfig">
+        <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
+string
+    </dt>
+    <dd>
+        Since release 3.4.x phpMyAdmin allows users to set most preferences by
+themselves and store them in the database.
+        <br /><br />
+
+        If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
+users can still personalize phpMyAdmin, but settings will be saved in
+browser's local storage, or, it is is unavailable, until the end of session.
+        <br /><br />
+
+        To allow the usage of this functionality:
+
+        <ul>
+            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+        </ul>
+    </dd>
 
     <dt id="designer_coords">
         <span
@@ -1208,7 +1229,7 @@ id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span
 string
     </dt>
     <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authentication is disabled.<br /><br />
+authorization is disabled.<br /><br />
 
         If your rule order is set to <tt>'deny,allow'</tt> then the system applies
 all deny rules followed by allow rules. Access is allowed by default. Any
@@ -1220,12 +1241,12 @@ all allow rules followed by deny rules. Access is denied by default.  Any
 client which does not match an Allow directive or does match a Deny
 directive will be denied access to the server.<br /><br />
 
-        If your rule order is set to 'explicit', the authentication is performed in
-a similar fashion to rule order 'deny,allow', with the added restriction
-that your host/username combination <b>must</b> be listed in the
-<i>allow</i> rules, and not listed in the <i>deny</i> rules. This is the
-<b>most</b> secure means of using Allow/Deny rules, and was available in
-Apache by specifying allow and deny rules without setting any order.<br /><br />
+        If your rule order is set to 'explicit', authorization is performed in a
+similar fashion to rule order 'deny,allow', with the added restriction that
+your host/username combination <b>must</b> be listed in the <i>allow</i>
+rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
+secure means of using Allow/Deny rules, and was available in Apache by
+specifying allow and deny rules without setting any order.<br /><br />
 
         Please also see <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> for
 detecting IP address behind proxies.
@@ -2189,6 +2210,11 @@ Database view, for the table list.</dd>
     <dd>If set to <tt>'closed'</tt>, the visual sliders are initially in a closed
 state. A value of <tt>'open'</tt> does the reverse. To completely disable
 all visual sliders, use <tt>'disabled'</tt>.</dd>
+
+    <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] array</dt>
+    <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
+users can't set through user preferences. For possible values, refer to
+<tt>libraries/config/user_preferences.forms.php</tt>.</dd>
 
     <dt id="cfg_TitleTable">$cfg['TitleTable'] text</dt>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] text</dt>
@@ -3563,10 +3589,10 @@ not likely to be solved in the future.
     <a href="#faq3_15">3.15 When I import an Excel spreadsheet, some cells with
 calculations do not display correctly.</a></h4>
 <p>
-    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/"
-target="_blank">PHPExcel</a> library to parse Excel XLS and XLSX
-spreadsheets.  Therefore, any limitations that are listed on their page
-regarding Excel calculations will also apply here.
+    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/">PHPExcel</a>
+library to parse Excel XLS and XLSX spreadsheets.  Therefore, any
+limitations that are listed on their page regarding Excel calculations will
+also apply here.
     <br /><br />
     PHPExcel will be kept up to date so as to make all improvements available to
 phpMyAdmin users.
@@ -4945,9 +4971,10 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
   <li>podpora pro BLOBstreaming</li>
 </ul></li>
 
-<li>Piotr Przybylski (Google Summer of Code 2008)
+<li>Piotr Przybylski (Google Summer of Code 2008 and 2010)
 <ul>
   <li>vylepšení skript pro nastavení phpMyAdmina</li>
+  <li>user preferences</li>
 </ul></li>
 
 <li>Derek Schaefer (Google Summer of Code 2009)

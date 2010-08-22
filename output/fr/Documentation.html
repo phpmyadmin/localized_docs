@@ -1022,7 +1022,7 @@ commen&ccedil;ant par la lettre &laquo;&nbsp;a&nbsp;&raquo;, utilisez<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
         et pour masquer les bases de donn&eacute;es &laquo;&nbsp;db1&nbsp;&raquo; et
 &laquo;&nbsp;db2&nbsp;&raquo;, utilisez <br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '(db1|db2)';</pre>
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
         Vous pourrez trouver plus d'informations sur les expressions
 r&eacute;guli&egrave;res dans la section <a
 href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> syntaxe
@@ -1361,6 +1361,27 @@ the log when creating a database. Default value is true.
         <br/><br/>
     </dd>
 
+    <dt id="userconfig">
+        <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
+string
+    </dt>
+    <dd>
+        Since release 3.4.x phpMyAdmin allows users to set most preferences by
+themselves and store them in the database.
+        <br /><br />
+
+        If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
+users can still personalize phpMyAdmin, but settings will be saved in
+browser's local storage, or, it is is unavailable, until the end of session.
+        <br /><br />
+
+        Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
+
+        <ul>
+            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+        </ul>
+    </dd>
 
     <dt id="designer_coords">
         <span
@@ -1414,9 +1435,8 @@ utilisateur anonyme (vide) a été défini.
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
 cha&icirc;ne
     </dt>
-    <dd>Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est vide, alors
-l'authentification <abbr title="Internet Protocol">IP</abbr> est
-d&eacute;sactiv&eacute;e.<br /><br />
+    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
+authorization is disabled.<br /><br />
 
         Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
 &agrave; <tt>'deny,allow'</tt> alors le syst&egrave;me applique toutes les
@@ -1434,16 +1454,12 @@ d&eacute;faut. Tout client qui ne r&eacute;pondrait pas &agrave; une
 directive &laquo;&nbsp;allow&nbsp;&raquo; ou &laquo;&nbsp;deny&nbsp;&raquo;
 se verra refuser l'acc&egrave;s au serveur.<br /><br />
 
-        Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
-&agrave; 'explicit', l'authentification est r&eacute;alis&eacute;e de
-mani&egrave;re similaire &agrave; la r&egrave;gle 'deny,allow', avec en plus
-la restriction que la combinaison de votre h&ocirc;te/nom d'utilisateur
-<b>doit</b> &ecirc;tre pr&eacute;sente dans les r&egrave;gles
-&laquo;&nbsp;allow&nbsp;&raquo;, et pas dans les r&egrave;gles
-&laquo;&nbsp;deny&nbsp;&raquo;.  C'est le moyen le <b>plus</b> s&ucirc;r
-d'utiliser les r&egrave;gles allow/deny, et qui est employ&eacute; pour
-Apache pour sp&eacute;cifier les r&egrave;gles allow et deny sans
-d&eacute;finir d'ordre.<br /><br />
+        If your rule order is set to 'explicit', authorization is performed in a
+similar fashion to rule order 'deny,allow', with the added restriction that
+your host/username combination <b>must</b> be listed in the <i>allow</i>
+rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
+secure means of using Allow/Deny rules, and was available in Apache by
+specifying allow and deny rules without setting any order.<br /><br />
 
         Veuillez &eacute;galement consulter <a
 href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> pout la
@@ -2582,6 +2598,11 @@ des tables.</dd>
 initialement dans un état fermé. Une valeur <tt>'open'</tt> fait le
 contraire. Pour désactiver complètement toutes les cases de défilement
 visuel, utiliser <tt>'disabled'</tt>.</dd>
+
+    <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] array</dt>
+    <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
+users can't set through user preferences. For possible values, refer to
+<tt>libraries/config/user_preferences.forms.php</tt>.</dd>
 
     <dt id="cfg_TitleTable">$cfg['TitleTable'] cha&icirc;ne</dt>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] cha&icirc;ne</dt>
@@ -4156,11 +4177,10 @@ sera probablement pas r&eacute;solu &agrave; l'avenir.
     <a href="#faq3_15">3.15 Lors de l'import d'une feuile de tableur Excel,
 certaines cellules avec des calculs ne sont pas affichées correctement.</a></h4>
 <p>
-    phpMyAdmin utilise la bibliothèque <a
-href="http://www.codeplex.com/PHPExcel/" target=_blank>PHPExcel</a> pour
-analyser les feuilles de tableur Excel XLS et XLSX.  Par conséquent, toutes
-les limitations qui sont listées sur leur page concernant les calculs Excel
-s'appliquent aussi ici.
+    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/">PHPExcel</a>
+library to parse Excel XLS and XLSX spreadsheets.  Therefore, any
+limitations that are listed on their page regarding Excel calculations will
+also apply here.
     <br /><br />
     PHPExcel sera maintenu à jour pour rendre disponible toutes les
 améliorations aux utilisateurs de phpMyAdmin.
@@ -5672,9 +5692,10 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
   <li>support BLOBstreaming</li>
 </ul></li>
 
-<li>Piotr Przybylski (Google Summer of Code 2008)
+<li>Piotr Przybylski (Google Summer of Code 2008 and 2010)
 <ul>
   <li>amélioration du script d'installation</li>
+  <li>user preferences</li>
 </ul></li>
 
 <li>Derek Schaefer (Google Summer of Code 2009)
