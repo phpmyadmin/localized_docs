@@ -85,8 +85,8 @@ Questions">FAQ</abbr> 1.31</a>) et l'extension Standard PHP Library (SPL).
                 </li>
 		<li>Pour pouvoir télécharger des fichiers ZIP vers le serveur, vous avez besoin
 de l'extension PHP <tt>zip</tt>.</li>
-        <li>Pour la gestion correcte des chaînes multioctets (par ex. UTF-8, qui est le
-défaut actuellement), vous devez installer les extensions mbstring et ctype.
+        <li>For proper support of multibyte strings (eg. UTF-8, which is currently the
+default), you should install the mbstring and ctype extensions.
         </li>
             <li>Vous avez besoin du module GD2 dans PHP pour afficher des vignettes
 int&eacute;gr&eacute;es de fichiers JPEG
@@ -102,6 +102,9 @@ lent.
                 </li>
                 <li>Pour gérer les barres de progression d'upload, consulter <a href="#faq2_9">
 la <abbr title="Foire Aux Questions">FAQ</abbr> 2.9</a>.</li>
+                <li>To support BLOB streaming, see PHP and MySQL requirements in <a
+href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
+6.25</a>.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 ou ult&eacute;rieur (<a
@@ -207,7 +210,7 @@ n&eacute;cessiter des changements dans le fichier <tt>php.ini</tt>.</p>
 
 <ol><li><a href="#quick_install">Installation rapide</a></li>
     <li><a href="#setup_script">Script d'installation usage</a></li>
-    <li><a href="#linked-tables">Infrastructure de tables li&eacute;es</a></li>
+    <li><a href="#linked-tables">phpMyAdmin configuration storage</a></li>
     <li><a href="#upgrading">Mise &agrave; jour</a></li>
     <li><a href="#authentication_modes">Modes d'authentification</a></li>
 </ol>
@@ -390,7 +393,7 @@ de votre serveur Web. Vous pouvez trouver un exemple de fichier
     </li>
 </ol>
 
-<h3 id="linked-tables">Infrastructure des tables li&eacute;es</h3>
+<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
 
 <p> Si vous voulez b&eacute;n&eacute;ficier de toute une s&eacute;rie de
 nouveaut&eacute;s (signets, commentaires, historique <abbr title="structured
@@ -447,10 +450,9 @@ fin de votre fichier de configuration.</p>
 le fichier de configuration par d&eacute;faut est sp&eacute;cifique &agrave;
 chaque version.</p>
 
-<p> Si vous avez mis &agrave; jour votre serveur MySQL d'une version plus
-ancienne que la 4.1.2 vers une version 4.1.2 ou ult&eacute;rieure et si vous
-utilisez la partie pmadb/infrastructure des tables li&eacute;es, vous devez
-ex&eacute;cuter le script suivant&nbsp;:
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the SQL script found in
 <tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">Utiliser les modes d'authentification&nbsp;:</h3>
@@ -461,10 +463,8 @@ Protocol">HTTP</abbr> et par cookie sont conseill&eacute;s dans un
 l'acc&egrave;s aux utilisateurs qu'&agrave; leur propre base de
 donn&eacute;es et o&ugrave; vous ne voulez pas qu'ils jouent avec les autres
 bases.<br />
-        N&eacute;anmoins, sachez que MS Internet Explorer para&icirc;t &ecirc;tre
-vraiment bogu&eacute; en ce qui concerne les cookies, au moins
-jusqu'&agrave; la version 6, et PHP 4.1.1 est &eacute;galement un peu
-bogu&eacute; dans ce domaine&nbsp;!<br />
+        Nevertheless be aware that MS Internet Explorer seems to be really buggy
+about cookies, at least till version 6.<br />
         M&ecirc;me dans un <b>environnement mono-utilisateur</b>, vous pourriez
 opter pour les modes <abbr title="HyperText Transfer Protocol">HTTP</abbr>
 ou par cookie de sorte que votre paire utilisateur/mot de passe ne soit pas
@@ -536,8 +536,9 @@ relation et de signets&nbsp;:
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (ceci n&eacute;cessite bien s&ucirc;r que votre infrastructure de <a
-href="#linked-tables">tables li&eacute;es</a> soit d&eacute;finie).<br /></li>
+        (this of course requires that your <a href="#linked-tables">phpMyAdmin
+configuration storage</a> be set up).  
+    <br /></li>
 
     <li>Ensuite, un ensemble de privil&egrave;ges doit &ecirc;tre accord&eacute;
 &agrave; chaque utilisateur <i>r&eacute;el</i> sur un ensemble de bases
@@ -1041,23 +1042,19 @@ caract&egrave;res non-US-ASCII seront enlev&eacute;s.</dd>
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span>
 cha&icirc;ne
     </dt>
-    <dd>D&eacute;finit le nom de la base de donn&eacute;es contenant
-l'infrastructure des tables li&eacute;es.
+    <dd>The name of the database containing the phpMyAdmin configuration storage.
         <br /><br />
 
-        Voir la section <a href="#linked-tables">Infrastructure des tables
-li&eacute;es</a> dans ce document pour voir les avantages de cette
-infrastructure, ainsi qu'une mani&egrave;re rapide de cr&eacute;er cette
-base de donn&eacute;es et les tables n&eacute;cessaires.
+        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
+section in this document to see the benefits of this feature, and for a
+quick way of creating this database and the needed tables.
         <br /><br />
 
-        Si vous &ecirc;tes le seul utilisateur de cette installation phpMyAdmin,
-vous pouvez utiliser votre base de donn&eacute;es courante pour stocker ces
-tables sp&eacute;ciales; dans ce cas, mettez juste le nom de votre base de
-donn&eacute;es dans <tt>$cfg['Servers'][$i]['pmadb']</tt>.  Pour une
-installation multi-utilisateurs, renseigner ce param&egrave;tre avec le nom
-de votre base de donn&eacute;es centrale contenant l'infrastructure des
-tables li&eacute;es.</dd>
+        If you are the only user of this phpMyAdmin installation, you can use your
+current database to store those special tables; in this case, just put your
+current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
+multi-user installation, set this parameter to the name of your central
+database containing the phpMyAdmin configuration storage.</dd>
 
     <dt id="bookmark">
         <span
@@ -1069,7 +1066,7 @@ signets (favoris) des requ&ecirc;tes. Cela peut &ecirc;tre utile pour les
 requ&ecirc;tes que vous utilisez souvent.<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>saisir le nom de la table dans <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
         </ul>
     </dd>
@@ -1112,7 +1109,7 @@ alphanum&eacute;riques.<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>mettre le nom de la table de relation dans
 <tt>$cfg['Servers'][$i]['relation']</tt></li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
@@ -1136,7 +1133,7 @@ column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         Cette variable de configuration d&eacute;tient le nom de cette table
 sp&eacute;ciale.  Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
 'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
@@ -1165,7 +1162,7 @@ r&eacute;alis&eacute;).<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>mettre les noms corrects de tables dans
 <tt>$cfg['Servers'][$i]['table_coords']</tt> et
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
@@ -1203,7 +1200,7 @@ system, your column_info table has to have the three new columns 'mimetype',
         <br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
 'pma_column_info')</li>
             <li>Pour mettre &agrave; jour votre table PRE-2.5.0 Column_comments, utilisez
@@ -1245,7 +1242,7 @@ activ&eacute; dans votre navigateur.<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
 (e.g. 'pma_history')
                 </li>
@@ -1286,7 +1283,7 @@ virgules («&nbsp;,&nbsp;»).  De plus, vous pouvez exporter le rapport
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
         <ul>
-            <li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
 (e.g. 'pma_tracking')</li>
         </ul>
@@ -1376,7 +1373,7 @@ permet de g&eacute;rer visuellement les relations.
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li><a href="#pmadb">pmadb</a> et l'infrastructure des tables li&eacute;es</li>
+        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
 (e.g. 'pma_designer_coords')
                 </li>
@@ -2424,6 +2421,15 @@ textes vus dans la page d'exportation, de la sorte vous pouvez facilement
 identifier ce qu'ils signifient.
     </dd>
 
+    <dt id="cfg_Export">$cfg['Export']['method'] string</dt>
+    <dd>
+        Defines how the export form is displayed when it loads. Valid values are:
+        <li><tt>quick</tt> to display the minimum number of options to configure</li>
+        <li><tt>custom</tt> to display every available option to configure</li>
+        <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
+option of using quick export</li>
+    </dd>
+
     <dt id="cfg_Import">$cfg['Import'] tableau</dt>
     <dd>
         Dans ce tableau sont d&eacute;finis les param&egrave;tres par d&eacute;faut
@@ -2618,9 +2624,9 @@ href="#faqthemes"> <abbr title="Foire Aux Questions">FAQ</abbr> 2.7</a>.</dd>
 cha&icirc;ne
     </dt>
     <dd>Default queries that will be displayed in query boxes when user didn't
-specify any. Use %d for database name, %t for table name and %f for a comma
-separated list of column names. Note that %t and %f are only applicable to
-<tt>$cfg['DefaultQueryTable']</tt>.</dd>
+specify any. You can use standard <a href="#faq6_27">format string
+expansion</a>.
+        </dd>
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] cha&icirc;ne ['<tt>html</tt>|<tt>none</tt>']</dt>
     <dd>
@@ -2912,15 +2918,14 @@ fichiers dans le r&eacute;pertoire 'libraries/transformations/'.</p>
 <p> Ils sont emmagasin&eacute;s dans des fichiers pour faciliter la
 personnalisation et l'ajout ais&eacute; de nouvelles transformations.</p>
 
-<p> Parce que l'utilisateur ne peut pas mettre ses propres types mime, on garde
-l'assurance que les transformations fonctionnent toujours.  Cela n'a pas de
-sens d'appliquer une transformation &agrave; un type mime, que la fonction
-de transformation ne sait pas manipuler.</p>
+<p> Because the user cannot enter own mimetypes, it is kept sure that
+transformations always work. It makes no sense to apply a transformation to
+a mimetype the transform-function doesn't know to handle.</p>
 
 <p> One can, however, use empty mime-types and global transformations which
 should work for many mimetypes. You can also use transforms on a different
-mimetype they where built for, but pay attention to option usage as well as
-what the transformation does to your column.</p>
+mimetype than what they where built for, but pay attention to option usage
+as well as what the transformation does to your column.</p>
 
 <p> Il y a un fichier de base appel&eacute; '<i>global.inc.php</i>'. Cette
 fonction peut &ecirc;tre incluse dans n'importe quelle autre transformation
@@ -3078,22 +3083,15 @@ son interface.</p>
 <h3 id="faqserver">1. Serveur</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 J'utilise PHP 4+ et mon serveur plante chaque fois
-qu'une action sp&eacute;cifique est requise ou renvoie une page blanche ou
-pleine de signes cabalistiques &agrave; mon navigateur, que puis-je
-faire&nbsp;?</a></h4>
+    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
+required or phpMyAdmin sends a blank page or a page full of cryptic
+characters to my browser, what can I do?</a></h4>
 
-<p> Il y a quelques bogues PHP recens&eacute;s pour le cache des
-r&eacute;sultats (ouput buffering) et la compression.<br />
-    Essayez de param&eacute;trer la directive <a href="#cfg_OBGzip"
+<p> Essayez de param&eacute;trer la directive <a href="#cfg_OBGzip"
 class="configrule">$cfg['OBGzip']</a> &agrave; <tt>FALSE</tt> dans votre
 fichier <i>config.inc.php</i> et la directive
 <tt>zlib.output_compression</tt> &agrave; <tt>OFF</tt> dans votre fichier de
-configuration php.<br />
-    De plus, nous connaissons de tels probl&egrave;mes en relation avec les
-&laquo;&nbsp;release candidates&nbsp;&raquo; (RC) de PHP 4.2.0 (test&eacute;
-avec PHP 4.2.0 RC1 &agrave; RC4) avec MS Internet Explorer. Veuillez mettre
-&agrave; jour votre version de PHP &agrave; 4.2.0.</p>
+configuration php.<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 Mon serveur Apache plante en utilisant phpMyAdmin.</a></h4>
@@ -3107,17 +3105,7 @@ cache de r&eacute;sultats (output buffering).<br />
 les divers groupes d'entraide de Apache.</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 J'utilise phpMyAdmin avec le mode d'authentification
-par cookie avec PHP 4.2.0 ou 4.2.1 charg&eacute; en tant que module de
-Apache 2+, mais je ne peux pas entrer dans le script&nbsp;: j'ai toujours
-l'&eacute;cran de connexion qui s'affiche.</a></h4>
-
-<p> C'est un bogue connu de PHP (voir ce <a
-href="http://bugs.php.net/bug.php?id=16626">rapport de bogue</a>)
-recens&eacute; dans la base de donn&eacute;es officielle de bogues de
-PHP. Cela signifie qu'il n'y a pas et qu'il n'y aura pas de correctif
-phpMyAdmin pour corriger cela parce qu'il n'y a pas de moyen pour coder ce
-correctif.</p>
+    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 J'utilise phpMyAdmin avec <abbr title="Internet
@@ -3162,16 +3150,10 @@ moyen)&nbsp;: supprimez ou mettez en commentaire les d&eacute;clarations
 fichier d'exportation ou un export <abbr title="comma seperated
 values">CSV</abbr>&nbsp;? Il semble que cela ne fonctionne pas.</a></h4>
 
-<p> Ces fonctionnalit&eacute;s sont bas&eacute;es sur les fonctions PHP
-<tt>gzencode()</tt> et <tt>bzcompress()</tt> pour &ecirc;tre plus
-ind&eacute;pendantes de la plateforme (Unix/Windows, Mode
-s&eacute;curis&eacute; ou non, et ainsi de suite). Aussi, vous devez avoir
-PHP4&nbsp;&gt;=&nbsp;4.0.4 et la gestion Zlib/Bzip2 (<tt>--with-zlib</tt>
-and <tt>--with-bz2</tt>).<br />
-    Nous avons &eacute;t&eacute; confront&eacute;s &agrave; des plantages de PHP
-en essayant de t&eacute;l&eacute;charger un fichier d'exportation avec MS
-Internet Explorer en utilisant phpMyAdmin avec une release candidate de PHP
-4.2.0. Dans ce cas, vous devrez changer pour la version PHP 4.2.0 finale.</p>
+<p> These features are based on the <tt>gzencode()</tt> and
+<tt>bzcompress()</tt> PHP functions to be more independent of the platform
+(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
+support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 Je ne peux pas ins&eacute;rer un fichier texte dans
@@ -3382,15 +3364,7 @@ MySQL</a>.
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 J'utilise MySQL&nbsp;&lt;=&nbsp;4.0.1 en ayant
-<tt>lower_case_table_names</tt> d&eacute;fini &agrave; 1. Si je cr&eacute;e
-une table avec une lettre en majuscule dans son nom, elle est chang&eacute;e
-en minuscule. Mais si j'essaie de SUPPRIMER cette table, MySQL n'est pas
-capable de trouver le fichier correspondant.</a></h4>
-
-<p> C'est un bogue de MySQL&nbsp;&lt;=&nbsp;4.0.1. Veuillez mettre &agrave; jour
-au moins &agrave; la version MySQL&nbsp;4.0.2 ou d&eacute;sactivez votre
-directive <tt>lower_case_table_names</tt>.</p>
+    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
 
 <h4 id="faq1_19">
     <a href="#faq1_19">1.19 Je ne peux pas utiliser la fonctionnalit&eacute;
@@ -3457,13 +3431,7 @@ requ&ecirc;te suivante</p>
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 Des caract&egrave;res sont tronqu&eacute;s dans mes
-requ&ecirc;tes, ou j'obtiens des caract&egrave;res ajout&eacute;s
-al&eacute;atoirement. J'utilise PHP 4.2.3.</a></h4>
-
-<p> C'est un <a href="http://bugs.php.net/bug.php?id=19404">bogue de PHP
-4.2.3</a>.
-    </p>
+    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
 
 <h4 id="faq1_25">
     <a href="#faq1_25">1.25 J'utilise Apache avec mod_gzip-1.3.26.1a sur Windows
@@ -4453,13 +4421,8 @@ disparaissent. Les fichiers d'exportation GZip donnent un message d'erreur.<br /
     <a href="#faq5_4">5.4 Je ne peux pas utiliser le mode d'authentification par
 cookie car Internet Explorer ne stocke jamais les cookies.</a></h4>
 <p>
-    MS Internet Explorer semble &ecirc;tre tr&egrave;s bogu&eacute; &agrave;
-propos des cookies, au moins jusqu'&agrave; la version 6. Et gr&acirc;ce
-&agrave; Andrew Zivolup, nous avons &eacute;galement rep&eacute;r&eacute; un
-bogue PHP 4.1.1 dans ce domaine!
-    <br />
-    Donc, si vous ex&eacute;cutez PHP 4.1.1, essayez de mettre &agrave; jour ou
-de descendre de version&hellip; &ccedil;a peut marcher&nbsp;!
+    MS Internet Explorer seems to be really buggy about cookies, at least till
+version 6.
 </p>
 
 <h4 id="faq5_5">
@@ -5066,16 +5029,13 @@ table export&eacute;e dans le fichier <code>table.tex</code>)&nbsp;:</p>
 </pre>
 
 <h4 id="faq6_20">
-    <a href="#faq6_20">6.20 Dans MySQL 4, je vois beaucoup de bases de
-donn&eacute;es qui ne sont pas &agrave; moi et que je ne peux
-acc&eacute;der.</a></h4>
+    <a href="#faq6_20">6.20 I see a lot of databases which are not mine, and
+cannot access them.  </a></h4>
 
-<p> Faire la mise &agrave; jour vers MySQL 4 donne habituellement aux
-utilisateurs les privil&egrave;ges globaux suivants&nbsp;: CREATE TEMPORARY
-TABLES, SHOW DATABASES, LOCK TABLES. Ces privil&egrave;ges permettent
-&eacute;galement aux utilisateurs de voir tous les noms de bases de
-donn&eacute;es.  Voir ce <a href="http://bugs.mysql.com/179">rapport de
-bogue</a>.<br /><br />
+<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
+DATABASES, LOCK TABLES. Those privileges also enable users to see all the
+database names.  See this <a href="http://bugs.mysql.com/179">bug
+report</a>.<br /><br />
 
     Donc si vos utilisateurs n'ont pas besoin de ces privil&egrave;ges, vous
 pouvez les supprimer et la liste de leurs bases de donn&eacute;es sera
@@ -5140,32 +5100,31 @@ dans la page Structure pour cette table.</p>
 	<a href="#faq6_25">6.25 Comment le streaming de BLOB fonctionne dans
 phpMyAdmin&nbsp;?</a></h4>
 
-<p> First, for general information about BLOB streaming on MySQL, visit <a
-href="http://blobstreaming.org">blobstreaming.org</a>. We currently support
-streaming if you are running MySQL 5.1 with the PBXT and PBMS storage
-engines. Moreover, only PBMS 0.5.04 is supported.</p>
+<p> For general information about BLOB streaming on MySQL, visit <a
+href="http://blobstreaming.org">blobstreaming.org</a>. You need the
+following components:</p>
+<ul>
+    <li>PBMS BLOB Streaming Daemon for MySQL (0.5.15 or later)</li>
+    <li>Streaming enabled PBXT Storage engine for MySQL (1.0.11-6 or later)</li>
+    <li>PBMS Client Library for MySQL (0.5.15 or later)</li>
+    <li>PBMS PHP Extension for MySQL (0.1.1 or later)</li>
+</ul>
+
+<p>Here are details about configuration and operation:</p>
 
 <ol>
-	<li>Dans le fichier <tt>config.inc.php</tt>, votre nom d'hête doit être défini
-avec un nom de domaine totalement qualifié (FQDN) plutôt que quelquee chose
-comme «&nbsp;localhost&nbsp;».</li>
-	<li>Une limitation actuelle est que pour votre première connexion via phpMyAdmin
-sur un serveur tout juste démarré doit être faite avec un compte ayant le
-privilège SUPER.</li>
-	<li>Sur votre base de données cible, allez dans Opérations et dans la section
-«&nbsp;Répertoire BLOB&nbsp;», cliquez sur «&nbsp;Activer&nbsp;». Ceci crée
-les tables système PBMSdans votre base de données.</li>
-	<li>Assurez-vous que votre table cible est sous le moteur de stockage PBXT et a
-une colonne LONGBLOB.</li>
-	<li>Quand vous insérez ou mettez à jour une ligne dans cette table, cochez
-l'option «&nbsp;Télécharger vers le dépôt BLOB&nbsp;»&nbsp;; sinon, le
-téléchargement se fera directement dans votre colonne au lieu du répertoire.</li>
-	<li>Enfin, quand vous parcourrez votre table, vous verrez un lien dans votre
-colonne poru voir les données, par exemple «&nbsp;Afficher
-l'image&nbsp;». Un en-tête contenant le type MIME correct sera envoyé à
-votre navigateur&nbsp;; ce type MIME a été stocké lors du téléchargement,
-mais s'il est incorrect, il est possible de le modifier en cliquant sur le
-type MIME affiché.</li> 
+	<li>In <tt>config.inc.php</tt> your host should be defined with a FQDN (fully
+qualified domain name) instead of &quot;localhost&quot;.</li>
+    <li>Ensure that your target table is under the <tt>PBXT</tt> storage engine and
+has a <tt>LONGBLOB</tt> column (which must be nullable if you want to remove
+the BLOB reference from it).</li>
+	<li>When you insert or update a row in this table, put a checkmark on the
+&quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
+will be done directly in your LONGBLOB column instead of the repository.</li>
+	<li>Finally when you browse your table, you'll see in your column a link to
+stream your data, for example &quot;View image&quot;. A header containing
+the correct MIME-type will be sent to your browser; this MIME-type was
+stored at upload time.</li> 
 </ol>	
 
 <h4 id="faq6_26">
@@ -5183,8 +5142,8 @@ or on the Structure page.</p>
     In all places where phpMyAdmin accepts format strings, you can use
 <code>@VARIABLE@</code> expansion and <a
 href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (eg. if you don't have chosen table, you can
-not get table name), but following variables can be used:
+variables depend on a context (for example, if you haven't chosen a table,
+you can not get the table name), but the following variables can be used:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
@@ -5201,6 +5160,8 @@ href="#cfg_Servers_verbose">configuration serveur</a></dd>
         <dd>Base de donn&eacute;es actuellement ouverte</dd>
     <dt><code>@TABLE@</code></dt>
         <dd>Table actuellement ouverte</dd>
+    <dt><code>@FIELDS@</code></dt>
+        <dd>Fields of currently opened table</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
         <dd>Version de phpMyAdmin</dd>
 </dl>
@@ -5265,9 +5226,9 @@ href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localize
 from Git, or just go to the <a
 href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
 translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal Čihař</a>; he will add it. If you
-prefer to directly translate the po files, please put updated ones into our
-<a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
 href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
 tracker</a>. 
 </p>
@@ -5469,7 +5430,7 @@ Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
-                        Michal Čihař &lt;michal_at_cihar.com&gt;
+                        Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
@@ -5734,6 +5695,11 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 <li>Tom&#225;&#353; Srnka (Google Summer of Code 2009)
 <ul>
   <li>Gestion de la réplication</li>
+</ul></li>
+
+<li>Barrie Leslie
+<ul>
+  <li>BLOBstreaming support with PBMS PHP extension</li>
 </ul></li>
 
 </ul>
