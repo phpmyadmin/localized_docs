@@ -2437,13 +2437,15 @@ textes vus dans la page d'exportation, de la sorte vous pouvez facilement
 identifier ce qu'ils signifient.
     </dd>
 
-    <dt id="cfg_Export">$cfg['Export']['method'] string</dt>
+    <dt id="cfg_Export_method">$cfg['Export']['method'] string</dt>
     <dd>
         Defines how the export form is displayed when it loads. Valid values are:
+        <ul>
         <li><tt>quick</tt> to display the minimum number of options to configure</li>
         <li><tt>custom</tt> to display every available option to configure</li>
         <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
 option of using quick export</li>
+        </ul>
     </dd>
 
     <dt id="cfg_Import">$cfg['Import'] tableau</dt>
@@ -2552,40 +2554,6 @@ performances, cette valeur est la valeur maximum &agrave; afficher, en
 utilisant un <code>SELECT COUNT ... LIMIT</code>. La valeur par
 d&eacute;faut de 0 passe outre tout comptage de lignes.
     </dd>
-
-    <dt id="wysiwyg">
-        <span id="cfg_WYSIWYG-PDF">$cfg['WYSIWYG-PDF'] </span>bool&eacute;en</dt>
-    <dd>Utilise un contr&ocirc;le d'&eacute;dition WYSIWYG pour placer facilement
-les &eacute;l&eacute;ments d'une page <abbr title="Portable Document
-Format">PDF</abbr>. En cliquant sur le bouton '&Eacute;diteur visuel' dans
-la page sur laquelle vous &eacute;ditez les coordonn&eacute;es x/y de ces
-&eacute;l&eacute;ments, vous pouvez activer un &eacute;diteur visuel
-o&ugrave; tous vos &eacute;l&eacute;ments sont plac&eacute;s. En cliquant
-sur un &eacute;l&eacute;ment, vous pouvez le d&eacute;placer dans la zone
-pr&eacute;d&eacute;finie et les coordonn&eacute;es x/y seront mises &agrave;
-jour dynamiquement. De m&ecirc;me, si vous entrez directement une nouvelle
-position dans le champ de saisie, la nouvelle position dans l'&eacute;diteur
-visuel change apr&egrave;s que vos curseurs aient quitt&eacute; le champ de
-saisie.<br />
-        Vous devez cliquer sur le bouton 'OK' en-dessous des tables pour sauvegarder
-les nouvelles positions. Si vous voulez placer un nouvel
-&eacute;l&eacute;ment, ajoutez-le d'abord &agrave; la table des
-&eacute;l&eacute;ments et alors vous pourrez d&eacute;placer ce nouvel
-&eacute;l&eacute;ment.<br />
-        En changeant la taille du papier et l'orientation, vous changez
-&eacute;galement la taille de l'&eacute;diteur visuel. Vous pouvez le faire
-en changeant seulement le champ d&eacute;roulant au-dessous, et
-l'&eacute;diteur visuel se r&eacute;ajustera automatiquement, sans
-interf&eacute;rer avec les positions des &eacute;l&eacute;ments en cours.<br />
-        Si un &eacute;l&eacute;ment sortait du champ, vous pouvez soit agrandir la
-taille du papier, soit cliquer sur le bouton 'R&eacute;initialiser les
-valeurs' pour placer tous les &eacute;l&eacute;ments les uns en-dessous des
-autres.<br />
-        <b>REMARQUE&nbsp;:</b> Vous devez utiliser un navigateur r&eacute;cent comme
-IE6 ou Mozilla pour que ce contr&ocirc;le puisse fonctionner. La
-fonctionnalit&eacute; de script Drag&amp;Drop&nbsp; a &eacute;t&eacute;
-emprunt&eacute;e &agrave; www.youngpup.net et sa licence sous-jacente si
-sp&eacute;cifique.</dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] bool&eacute;en</dt>
     <dd>Trie les noms des bases de donn&eacute;es en ordre naturel (par exemple, t1,
@@ -3143,11 +3111,9 @@ href="http://bugs.php.net/bug.php?id=12061">rapport de bogue</a> de la base
 de donn&eacute;es officielle de bogues de PHP.</p>
 
 <h4 id="faq1_5">
-    <a href="#faq1_5">1.5 J'utilise phpMyAdmin avec <abbr title="Internet
-Information Services">IIS</abbr>, et je suis confront&eacute; &agrave; des
-plantages et/ou beaucoup de messages d'erreur avec l'authentification <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> ou le mode
-d'authentification avanc&eacute;.</a></h4>
+    <a href="#faq1_5">1.5 Using phpMyAdmin on <abbr title="Internet Information
+Services">IIS</abbr>, I'm facing crashes and/or many error messages with the
+<abbr title="HyperText Transfer Protocol">HTTP</abbr>.</a></h4>
 
 <p> Ceci est un probl&egrave;me connu du filtre <abbr title="Internet Server
 Application Programming Interface">ISAPI</abbr> de PHP&nbsp;: il n'est pas
@@ -3201,30 +3167,7 @@ du serveur Apache&nbsp;: <tt>chown apache:apache /tmp/php</tt></li>
 </ul>
 
 <h4 id="faq1_9">
-    <a href="#faq1_9">1.9 J'ai des probl&egrave;mes quand je transf&egrave;re
-des fichiers. En g&eacute;n&eacute;ral, le transfert de fichiers ne
-fonctionne pas sur mon syst&egrave;me et les fichiers
-transf&eacute;r&eacute;s comportent l'en-t&ecirc;te <tt>Content-Type:</tt>
-sur la premi&egrave;re ligne.</a></h4>
-
-<p> Ce n'est pas vraiment phpMyAdmin qui est en cause mais plut&ocirc;t RedHat
-7.0. Vous utilisez RedHat 7.0 et vous avez mis &agrave; jour votre paquetage
-RPM PHP vers php-4.0.4pl1-3.i386.rpm, n'est-ce pas&nbsp;?<br />
-    Donc le probl&egrave;me est que ce paquetage a un s&eacute;rieux bogue qui a
-&eacute;t&eacute; corrig&eacute; il y a pas mal de temps dans PHP
-(28-01-2001&nbsp;: voir le <a
-href="http://www.php.net/bugs.php?id=8966">syst&egrave;me Bug Tracker de
-PHP</a> pour plus de d&eacute;tails). Le probl&egrave;me est que ce
-paquetage bogu&eacute; est toujours disponible bien qu'il soit
-corrig&eacute; (voir <a
-href="http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=24933">RedHat's
-BugZilla</a> pour plus de d&eacute;tails).<br />
-    Aussi, veuillez t&eacute;l&eacute;charger <a
-href="http://www.redhat.com/swr/i386/php-4.0.4pl1-9.i386.html">le paquetage
-corrig&eacute; (4.0.4pl1-9)</a> et le probl&egrave;me devrait
-dispara&icirc;tre.<br />
-    Et cela corrige le probl&egrave;me \r\n avec les transferts de
-fichiers&nbsp;!</p>
+    <a href="#faq1_9">1.9 (withdrawn).</a></h4>
 
 <h4 id="faq1_10">
     <a href="#faq1_10">1.10 J'ai des probl&egrave;mes en transf&eacute;rant des
@@ -3262,22 +3205,10 @@ href="http://www.mysql.com/doc/R/e/Resetting_permissions.html">r&eacute;initiali
 les permissions</a>.</p>
 
 <h4 id="faq1_13">
-    <a href="#faq1_13">1.13 J'obtiens une erreur 'Aucune requ&ecirc;te <abbr
-title="Structured Query Language">SQL</abbr>&nbsp;!' en ex&eacute;cutant un
-signet.</a></h4>
-
-<p> Si PHP n'a pas d'acc&egrave;s en lecture/&eacute;criture &agrave; son
-r&eacute;pertoire <tt>upload_tmp_dir</tt>, il ne peut pas acc&eacute;der
-&agrave; la requ&ecirc;te transf&eacute;r&eacute;e.</p>
+    <a href="#faq1_13">1.13 (withdrawn).</a></h4>
 
 <h4 id="faq1_14">
-    <a href="#faq1_14">1.14 J'obtiens une erreur 'Aucune requ&ecirc;te <abbr
-title="Structured Query Language">SQL</abbr>&nbsp;!' en essayant
-d'ex&eacute;cuter une requ&ecirc;te depuis la zone de texte
-ad&eacute;quate.</a></h4>
-
-<p> V&eacute;rifiez la directive <tt>post_max_size</tt> dans votre fichier de
-configuration PHP et essayez de l'augmenter.</p>
+    <a href="#faq1_14">1.14 (withdrawn).</a></h4>
 
 <h4 id="faq1_15">
     <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
@@ -5186,6 +5117,40 @@ href="#cfg_Servers_verbose">configuration serveur</a></dd>
         <dd>Version de phpMyAdmin</dd>
 </dl>
 
+<h4 id="wysiwyg">
+    <a href="#wysiwyg">6.28 How can I easily edit relational schema for
+export?</a></h4>
+
+    <p> 
+        By clicking on the button 'toggle scratchboard' on the page where you edit
+x/y coordinates of those elements you can activate a scratchboard where all
+your elements are placed. By clicking on an element, you can move them
+around in the pre-defined area and the x/y coordinates will get updated
+dynamically. Likewise, when entering a new position directly into the input
+field, the new position in the scratchboard changes after your cursor leaves
+the input field.
+    </p>
+    <p>
+        Vous devez cliquer sur le bouton 'OK' en-dessous des tables pour sauvegarder
+les nouvelles positions. Si vous voulez placer un nouvel
+&eacute;l&eacute;ment, ajoutez-le d'abord &agrave; la table des
+&eacute;l&eacute;ments et alors vous pourrez d&eacute;placer ce nouvel
+&eacute;l&eacute;ment.
+    </p>
+    <p>
+        En changeant la taille du papier et l'orientation, vous changez
+&eacute;galement la taille de l'&eacute;diteur visuel. Vous pouvez le faire
+en changeant seulement le champ d&eacute;roulant au-dessous, et
+l'&eacute;diteur visuel se r&eacute;ajustera automatiquement, sans
+interf&eacute;rer avec les positions des &eacute;l&eacute;ments en cours.
+    </p>
+    <p>
+        Si un &eacute;l&eacute;ment sortait du champ, vous pouvez soit agrandir la
+taille du papier, soit cliquer sur le bouton 'R&eacute;initialiser les
+valeurs' pour placer tous les &eacute;l&eacute;ments les uns en-dessous des
+autres.
+    </p>
+
 <h3 id="faqproject">Projet phpMyAdmin</h3>
 
 <h4 id="faq7_1">
@@ -5716,6 +5681,18 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 <li>Tom&#225;&#353; Srnka (Google Summer of Code 2009)
 <ul>
   <li>Gestion de la réplication</li>
+</ul></li>
+
+<li>Muhammad Adnan (Google Summer of Code 2010)
+<ul>
+  <li>Relation schema export to multiple formats</li>
+</ul></li>
+
+<li>Lori Lee (Google Summer of Code 2010)
+<ul>
+  <li>User interface improvements</li>
+  <li>ENUM/SET editor</li>
+  <li>Simplified interface for export/import</li>
 </ul></li>
 
 <li>Barrie Leslie
