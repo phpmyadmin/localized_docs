@@ -85,8 +85,8 @@ Questions">FAQ</abbr> 1.31</a>) et l'extension Standard PHP Library (SPL).
                 </li>
 		<li>Pour pouvoir télécharger des fichiers ZIP vers le serveur, vous avez besoin
 de l'extension PHP <tt>zip</tt>.</li>
-        <li>For proper support of multibyte strings (eg. UTF-8, which is currently the
-default), you should install the mbstring and ctype extensions.
+        <li>Pour la gestion correcte des chaînes multioctets (par ex. UTF-8, qui est le
+défaut actuellement), vous devez installer les extensions mbstring et ctype.
         </li>
             <li>Vous avez besoin du module GD2 dans PHP pour afficher des vignettes
 int&eacute;gr&eacute;es de fichiers JPEG
@@ -102,9 +102,9 @@ lent.
                 </li>
                 <li>Pour gérer les barres de progression d'upload, consulter <a href="#faq2_9">
 la <abbr title="Foire Aux Questions">FAQ</abbr> 2.9</a>.</li>
-                <li>To support BLOB streaming, see PHP and MySQL requirements in <a
-href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
-6.25</a>.</li>
+                <li>Pour gérer le streaming de BLOB, consulter les prérequis de PHP et MySQL
+dans <a href="#faq6_25"><abbr title="Foire Aux Questions">FAQ</abbr>
+6.25</a>).</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 ou ult&eacute;rieur (<a
@@ -210,7 +210,7 @@ n&eacute;cessiter des changements dans le fichier <tt>php.ini</tt>.</p>
 
 <ol><li><a href="#quick_install">Installation rapide</a></li>
     <li><a href="#setup_script">Script d'installation usage</a></li>
-    <li><a href="#linked-tables">phpMyAdmin configuration storage</a></li>
+    <li><a href="#linked-tables">Configuration de stockage de phpMyAdmin</a></li>
     <li><a href="#upgrading">Mise &agrave; jour</a></li>
     <li><a href="#authentication_modes">Modes d'authentification</a></li>
 </ol>
@@ -393,7 +393,7 @@ de votre serveur Web. Vous pouvez trouver un exemple de fichier
     </li>
 </ol>
 
-<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
+<h3 id="linked-tables">Configuration de stockage de phpMyAdmin</h3>
 
 <p> Si vous voulez b&eacute;n&eacute;ficier de toute une s&eacute;rie de
 nouveaut&eacute;s (signets, commentaires, historique <abbr title="structured
@@ -412,9 +412,10 @@ o&ugrave; vous devriez trouver un fichier du nom de
 attention particuli&egrave;re &agrave; la partie <a href="#faq1_23"> <abbr
 title="Foire Aux Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./scripts/create_tables.sql</i>.</p>
+<p> Si vous avez d&eacute;j&agrave; cette infrastructure et mis &agrave; jour
+vers MySQL 4.1.2 ou ult&eacute;rieur, veuillez utiliser le fichier
+<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> puis créer de nouvelles
+tables en important <i>./scripts/create_tables.sql</i>.</p>
 
 <p> Vous pouvez d'ores et d&eacute;j&agrave; utiliser phpMyAdmin qui
 cr&eacute;era les tables pour vous.  S'il vous pla&icirc;t, sachez que vous
@@ -450,9 +451,10 @@ fin de votre fichier de configuration.</p>
 le fichier de configuration par d&eacute;faut est sp&eacute;cifique &agrave;
 chaque version.</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the SQL script found in
+<p> Si vous avez mis &agrave; jour votre serveur MySQL d'une version plus
+ancienne que la 4.1.2 vers une version 5.x ou ult&eacute;rieure et si vous
+utilisez la configuration de stockage de phpMyAdmin, vous devez
+ex&eacute;cuter le script SQL suivant&nbsp;:
 <tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">Utiliser les modes d'authentification&nbsp;:</h3>
@@ -463,8 +465,9 @@ Protocol">HTTP</abbr> et par cookie sont conseill&eacute;s dans un
 l'acc&egrave;s aux utilisateurs qu'&agrave; leur propre base de
 donn&eacute;es et o&ugrave; vous ne voulez pas qu'ils jouent avec les autres
 bases.<br />
-        Nevertheless be aware that MS Internet Explorer seems to be really buggy
-about cookies, at least till version 6.<br />
+        N&eacute;anmoins, sachez que MS Internet Explorer para&icirc;t &ecirc;tre
+vraiment bogu&eacute; en ce qui concerne les cookies, au moins
+jusqu'&agrave; la version 6.<br />
         M&ecirc;me dans un <b>environnement mono-utilisateur</b>, vous pourriez
 opter pour les modes <abbr title="HyperText Transfer Protocol">HTTP</abbr>
 ou par cookie de sorte que votre paire utilisateur/mot de passe ne soit pas
@@ -482,8 +485,8 @@ clair, &agrave; moins d'utiliser le protocole HTTPS.<br />
         En mode cookie, le mot de passe est stock&eacute; et chiffr&eacute; avec
 l'algorithme blowfish, dans un cookie temporaire.</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<tt>--skip-show-database</tt>.<br /><br />
+    <li id="pmausr"><b>Note&nbsp;</b>: Cette section ne s'applique qu'aux serveurs MySQL
+ex&eacute;cut&eacute;s avec l'option <tt>--skip-show-database</tt>.<br /><br />
 
         Pour les modes <abbr title="HyperText Transfer Protocol">HTTP</abbr> et
 cookie, phpMyAdmin a besoin d'un utilisateur de contr&ocirc;le -
@@ -536,8 +539,9 @@ relation et de signets&nbsp;:
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (this of course requires that your <a href="#linked-tables">phpMyAdmin
-configuration storage</a> be set up).  
+        (ceci n&eacute;cessite bien s&ucirc;r que <a
+href="#linked-tables">configuration de stockage phpMyAdmin</a> soit
+paramétrée).  
     <br /></li>
 
     <li>Ensuite, un ensemble de privil&egrave;ges doit &ecirc;tre accord&eacute;
@@ -849,12 +853,12 @@ cha&icirc;ne<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 cha&icirc;ne
     </dt>
-    <dd>This special account is used for 2 distinct purposes: to make possible all
-relational features (see <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
-server running with <tt>--skip-show-database</tt>, to enable a multi-user
-installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
-cookie authentication mode).<br /><br />
+    <dd>Ce compte spécial est utilisé pour deux propos distincts&nbsp;: rendre
+possible toutes les fonctionnalités relationnelles (voir <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>) et, pour un serveur
+MySQL exécuté avec l'option <tt>--skip-show-database</tt>, de permettre une
+installation multi-utilisateurs (mode d'authentification <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> ou par cookie).<br /><br />
 
         Si vous utilisez les modes d'authentification <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> ou par cookie (ou le mode d'authentification
@@ -1042,19 +1046,23 @@ caract&egrave;res non-US-ASCII seront enlev&eacute;s.</dd>
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span>
 cha&icirc;ne
     </dt>
-    <dd>The name of the database containing the phpMyAdmin configuration storage.
+    <dd>Le nom de la base de données contenant la configuration de stockage de
+phpMyAdmin
         <br /><br />
 
-        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
-section in this document to see the benefits of this feature, and for a
-quick way of creating this database and the needed tables.
+        Voir la section <a href="#linked-tables">configuration de stockage de
+phpMyAdmin</a> dans ce document pour voir les avantages de cette
+fonctionnalité, ainsi qu'une mani&egrave;re rapide de cr&eacute;er cette
+base de donn&eacute;es et les tables n&eacute;cessaires.
         <br /><br />
 
-        If you are the only user of this phpMyAdmin installation, you can use your
-current database to store those special tables; in this case, just put your
-current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
-multi-user installation, set this parameter to the name of your central
-database containing the phpMyAdmin configuration storage.</dd>
+        Si vous êtes le seul utilisateur de cette installation phpMyAdmin, vous
+pouvez utiliser votre base de données courante pour stocker ces tables
+spéciales; dans ce cas, mettez juste le nom de votre base de données dans
+<tt>$cfg['Servers'][$i]['pmadb']</tt>.  Pour une installation
+multi-utilisateurs, renseigner ce paramètre avec le nom de votre base de
+donn&eacute;es centrale contenant la configuration de stockage de
+phpMyAdmin.</dd>
 
     <dt id="bookmark">
         <span
@@ -1066,7 +1074,8 @@ signets (favoris) des requ&ecirc;tes. Cela peut &ecirc;tre utile pour les
 requ&ecirc;tes que vous utilisez souvent.<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
             <li>saisir le nom de la table dans <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
         </ul>
     </dd>
@@ -1109,18 +1118,21 @@ alphanum&eacute;riques.<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
             <li>mettre le nom de la table de relation dans
 <tt>$cfg['Servers'][$i]['relation']</tt></li>
-            <li>now as normal user open phpMyAdmin and for each one of your tables where you
-want to use this feature, click &quot;Structure/Relation view/&quot; and
-choose foreign columns.
+            <li>puis, en tant qu'utilisateur normal, ouvrir phpMyAdmin et pour chacune de
+vos tables o&ugrave; vous voulez utiliser cette fonctionnalit&eacute;,
+cliquer sur &laquo;&nbsp;Structure/Gestion des relations/&nbsp;&raquo; et
+choisir les colonnes &eacute;trangers.
                 </li>
         </ul>
 
-        Please note that in the current version, <tt>master_db</tt> must be the same
-as <tt>foreign_db</tt>. Those columns have been put in future development of
-the cross-db relations.
+        Veuillez noter que dans la version actuelle, <tt>master_db</tt> doit
+&ecirc;tre identique &agrave; <tt>foreign_db</tt>. Ces champs ont
+&eacute;t&eacute; pr&eacute;vus pour le d&eacute;veloppement futur de
+relations inter-bases.
     </dd>
 
     <dt id="table_info">
@@ -1128,19 +1140,22 @@ the cross-db relations.
 cha&icirc;ne
     </dt>
     <dd>
-        Since release 2.3.0 you can describe, in a special 'table_info' table, which
-column is to be displayed as a tool-tip when moving the cursor over the
-corresponding key.<br />
+        Depuis la version 2.3.0, vous pouvez d&eacute;crire dans une table
+sp&eacute;ciale &laquo;&nbsp;table_info&nbsp;&raquo;, quel colonne doit
+&ecirc;tre affich&eacute;e comme info-bulle en déplaçant le curseur sur la
+cl&eacute; correspondante.<br />
         Cette variable de configuration d&eacute;tient le nom de cette table
 sp&eacute;ciale.  Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
-'pma_table_info')</li>
-            <li>then for each table where you want to use this feature, click
-&quot;Structure/Relation view/Choose column to display&quot; to choose the
-column.</li>
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
+            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['table_info']</tt>
+(par ex. 'pma_table_info').</li>
+            <li>ensuite, pour chaque table pour laquelle vous voulez utiliser cette
+fonctionnalit&eacute;, cliquer sur &laquo;&nbsp;Structure/Gestion des
+relations/Champ &agrave; afficher&nbsp;&raquo; pour choisir la colonne.</li>
         </ul>
-        Usage tip: <a href="#faqdisplay">Display column</a>.
+        Astuce d'utilisation&nbsp;: <a href="#faqdisplay">Colonne &agrave;
+afficher</a>.
     </dd>
     <dt id="table_coords">
         <span
@@ -1162,7 +1177,8 @@ r&eacute;alis&eacute;).<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
             <li>mettre les noms corrects de tables dans
 <tt>$cfg['Servers'][$i]['table_coords']</tt> et
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
@@ -1192,17 +1208,20 @@ peuvent aussi &ecirc;tre vus dans un fichier d'exportation de
 table. Veuillez consulter les directives de configuration ad&eacute;quates
 plus loin.<br /><br />
 
-        Also new in release 2.5.0 is a MIME-transformation system which is also
-based on the following table structure. See <a href="#transformations">
-Transformations</a> for further information. To use the MIME-transformation
-system, your column_info table has to have the three new columns 'mimetype',
+        Une autre nouveaut&eacute; de la version 2.5.0 est le syst&egrave;me de
+conversion MIME qui est &eacute;galement fond&eacute; sur la structure de
+table suivante. Voir la section <a
+href="#transformations">Transformations</a> pour plus de
+renseignements. Pour utiliser le syst&egrave;me de conversion MIME, votre
+table column_info doit contenir les trois nouveaux champs 'mimetype',
 'transformation', 'transformation_options'.
         <br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
-'pma_column_info')</li>
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
+            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['column_info']</tt>
+(par ex. 'pma_column_info').</li>
             <li>Pour mettre &agrave; jour votre table PRE-2.5.0 Column_comments, utilisez
 cette requ&ecirc;te&nbsp;:
 
@@ -1242,9 +1261,10 @@ activ&eacute; dans votre navigateur.<br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
-(e.g. 'pma_history')
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
+            <li>mettre le nom de la table<tt> dans $cfg['Servers'][$i]['history']</tt> (par
+ex. 'pma_history').
                 </li>
         </ul>
     </dd>
@@ -1283,16 +1303,17 @@ virgules («&nbsp;,&nbsp;»).  De plus, vous pouvez exporter le rapport
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
-(e.g. 'pma_tracking')</li>
+            <li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
+            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['tracking']</tt> (par
+ex. 'pma_tracking').</li>
         </ul>
     </dd>
 
     <dt id="tracking2">
         <span
 id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_version_auto_create']</span>
-boolean
+booléen
     </dt>
     <dd>
         Définit si le mécanisme de suivi crée des versions pour les tables et les
@@ -1330,11 +1351,12 @@ CREATE DATABASE,ALTER DATABASE,DROP DATABASE</pre>
     <dt id="tracking4">
         <span
 id="cfg_Servers_tracking_add_drop_view">$cfg['Servers'][$i]['tracking_add_drop_view']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether a DROP VIEW IF EXISTS statement will be added as first line to the
-log when creating a view. Default value is true.
+        Définit si une déclaration «&nbsp;DROP VIEW IF EXISTS&nbsp;» sera ajoutée en
+première ligne dans le journal lors de la création de la vue. La valeur par
+défaut est «&nbsp;true&nbsp;».
         <br/><br/>       
     </dd>
 
@@ -1342,44 +1364,48 @@ log when creating a view. Default value is true.
     <dt id="tracking5">
         <span
 id="cfg_Servers_tracking_add_drop_table">$cfg['Servers'][$i]['tracking_add_drop_table']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether a DROP TABLE IF EXISTS statement will be added as first line to the
-log when creating a table. Default value is true.
+        Définit si une déclaration «&nbsp;DROP TABLE IF EXISTS&nbsp;» sera ajoutée
+en première ligne du journal lors de la création d'une table. La valeur par
+défaut est «&nbsp;true&nbsp;».
         <br/><br/>
     </dd>
 
     <dt id="tracking6">
         <span
 id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_drop_database']</span>
-boolean
+booléen
     </dt>
     <dd>
-        Whether a DROP DATABASE IF EXISTS statement will be added as first line to
-the log when creating a database. Default value is true.
+        Définit si une déclaration «&nbsp;DROP DATABASE IF EXISTS&nbsp;» sera
+ajoutée en première ligne du journal lors de la création d'une base de
+données. La valeur par défaut est «&nbsp;true&nbsp;».
         <br/><br/>
     </dd>
 
     <dt id="userconfig">
         <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
-string
+cha&icirc;ne
     </dt>
     <dd>
-        Since release 3.4.x phpMyAdmin allows users to set most preferences by
-themselves and store them in the database.
+        Depuis la version 3.4.x, phpMyAdmin permet aux utilisateurs de définir
+eux-mêmes la plupart des préférences et de les stocker en base de données.
         <br /><br />
 
-        If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
-users can still personalize phpMyAdmin, but settings will be saved in
-browser's local storage, or, it is is unavailable, until the end of session.
+        Si vous n'autorisez pas le stockage des préférences dans <a
+href="#pmadb">pmadb</a>, les utilisateurs pourront quand même personnaliser
+phpMyAdmin, mais les paramètres seront enregistrés dans le stockage local du
+navigateur, ou, si indisponible, jusqu'à la fin de la session.
         <br /><br />
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+            <li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
+            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
         </ul>
     </dd>
 
@@ -1394,9 +1420,11 @@ permet de g&eacute;rer visuellement les relations.
 
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
-(e.g. 'pma_designer_coords')
+        <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
+phpMyAdmin.</li>
+            <li>ajoutez le nom de la table dans
+<tt>$cfg['Servers'][$i]['designer_coords']</tt> (par
+ex. 'pma_designer_coords').
                 </li>
         </ul>
     </dd>
@@ -1405,11 +1433,12 @@ permet de g&eacute;rer visuellement les relations.
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 booléen
     </dt>
-    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new columns. If the above variable
-is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
-latest table structure available. If not, it will emit a warning to the
-superuser.<br /><br />
+    <dd>La version 2.5.0 introduisant la nouvelle gestion de la conversion MIME, la
+colonne column_info recense maintenant trois nouveaux champs. Si cette
+variable est d&eacute;finie &agrave; <tt>TRUE</tt> (par d&eacute;faut)
+phpMyAdmin v&eacute;rifiera si vous disposez de la derni&egrave;re structure
+disponible de la table. Si ce n'est pas le cas, il enverra un avertissement
+au super-utilisateur.<br /><br />
 
         Vous pouvez d&eacute;sactiver cette fonctionalit&eacute; en positionnant la
 variable &agrave; <tt>FALSE</tt>, ce qui devrait am&eacute;liorer les
@@ -1435,8 +1464,9 @@ utilisateur anonyme (vide) a été défini.
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
 cha&icirc;ne
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authorization is disabled.<br /><br />
+    <dd>Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est vide, alors
+l'autorisation <abbr title="Internet Protocol">IP</abbr> est
+d&eacute;sactiv&eacute;e.<br /><br />
 
         Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
 &agrave; <tt>'deny,allow'</tt> alors le syst&egrave;me applique toutes les
@@ -1454,12 +1484,16 @@ d&eacute;faut. Tout client qui ne r&eacute;pondrait pas &agrave; une
 directive &laquo;&nbsp;allow&nbsp;&raquo; ou &laquo;&nbsp;deny&nbsp;&raquo;
 se verra refuser l'acc&egrave;s au serveur.<br /><br />
 
-        If your rule order is set to 'explicit', authorization is performed in a
-similar fashion to rule order 'deny,allow', with the added restriction that
-your host/username combination <b>must</b> be listed in the <i>allow</i>
-rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
-secure means of using Allow/Deny rules, and was available in Apache by
-specifying allow and deny rules without setting any order.<br /><br />
+        Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
+&agrave; 'explicit', l'authentification est r&eacute;alis&eacute;e de
+mani&egrave;re similaire &agrave; la r&egrave;gle 'deny,allow', avec en plus
+la restriction que la combinaison de votre h&ocirc;te/nom d'utilisateur
+<b>doit</b> &ecirc;tre pr&eacute;sente dans les r&egrave;gles
+&laquo;&nbsp;allow&nbsp;&raquo;, et pas dans les r&egrave;gles
+&laquo;&nbsp;deny&nbsp;&raquo;.  C'est le moyen le <b>plus</b> s&ucirc;r
+d'utiliser les r&egrave;gles allow/deny, et qui est employ&eacute; pour
+Apache pour sp&eacute;cifier les r&egrave;gles allow et deny sans
+d&eacute;finir d'ordre.<br /><br />
 
         Veuillez &eacute;galement consulter <a
 href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> pout la
@@ -1608,7 +1642,7 @@ effet lorsque PHP est ex&eacute;cut&eacute; en mode s&eacute;curis&eacute;.</dd>
 href="http://php.net/session_save_path">paramètre PHP
 session_save_path</a>).</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] chaîne [nombre d'octets]</dt>
     <dd>D&eacute;finit le nombre d'octets qu'un script est autoris&eacute; &agrave;
 allouer. Si ce nombre est d&eacute;fini &agrave; z&eacute;ro, aucune limite
 n'est impos&eacute;e.<br />
@@ -1660,12 +1694,13 @@ href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] entier ['nombre de secondes']</dt>
-    <dd>Define how long is login cookie valid. Please note that php configuration
-option <a
+    <dd>D&eacute;finit la dur&eacute;e de validit&eacute; d'un cookie de
+connexion. Veuillez notez que l'option de configuration php <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
-might limit session validity and if session is lost, login cookie is also
-invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
-not lower than the value of $cfg['LoginCookieValidity'].</dd>
+pourrait limiter la validité de session, et si la session est perdue, le
+cookie de connexion est aussi invalidé. Il est donc conseillé de définir
+<code>session.gc_maxlifetime</code> au moins aussi haut que la valeur de
+$cfg['LoginCookieValidity'].</dd>
 
     <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] entier ['nombre de secondes']</dt>
     <dd>D&eacute;finit la dur&eacute;e de stockage d'un cookie de connexion dans
@@ -1710,13 +1745,13 @@ votre serveur <abbr title="HyperText Transfer Protocol">HTTP</abbr> est
 situ&eacute;.
     </dd>
 
-    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
-    <dd>Whether to display errors from PHP or not.</dd>
+    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler'] ['display'] bool&eacute;en</dt>
+    <dd>Pour afficher les erreurs de PHP ou pas.</dd>
 
-    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
-    <dd>Whether to gather errors from PHP or not.</dd>
+    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] booléen</dt>
+    <dd>Pour regrouper les erreurs de PHP ou pas.</dd>
 
-    <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] bool&eacute;en</dt>
+    <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] booléen</dt>
     <dd>D&eacute;finit si on utilise un menu construit par s&eacute;lection et si on
 affiche seulement les tables en cours dans le cadre de gauche (page plus
 r&eacute;duite). Vous ne pouvez utiliser la fonctionnalit&eacute;
@@ -1793,6 +1828,10 @@ cela est <tt>main.php</tt>.</dd>
 principale (<tt>main</tt>)  ou dans une nouvelle fen&ecirc;tre
 (<tt>new</tt>). Note&nbsp;: utilisez <tt>new</tt> si vous &ecirc;tes
 li&eacute; &agrave; <tt>phpmyadmin.net</tt>.</dd>
+
+    <dt id="cfg_LeftDisplayTableFilter">$cfg['LeftDisplayTableFilter'] boolean</dt>
+    <dd>Defines whether or not to display a JavaScript filter box above the list of
+tables in the left frame.  Defaults to <tt>TRUE</tt>.</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] bool&eacute;en</dt>
     <dd>D&eacute;finit si un choix de serveur est propos&eacute; en haut, dans le
@@ -1878,22 +1917,25 @@ r&eacute;sultats. Si le nombre des colonnes est sup&eacute;rieur, des liens
 &laquo;&nbsp;Pr&eacute;c&eacute;dent&nbsp;&raquo; seront affich&eacute;s.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] cha&icirc;ne ['<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>']</dt>
-    <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in
-descending (<tt>DESC</tt>) order or in a &quot;smart&quot; (<tt>SMART</tt>)
-order - I.E. descending order for columns of type TIME, DATE, DATETIME and
-TIMESTAMP, ascending order else- by default.</dd>
+    <dd>D&eacute;finit si les colonnes sont affichées en ordre croissant
+(<tt>ASC</tt>), d&eacute;croissant (<tt>DESC</tt>) ou en ordre
+&laquo;&nbsp;intelligent&nbsp;&raquo; (<tt>SMART</tt>) - c'est-&agrave;-dire
+en ordre d&eacute;croissant pour les colonnes de type TIME, DATE, DATETIME
+&amp; TIMESTAMP et croissant pour les autres - par d&eacute;faut.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] bool&eacute;en </dt>
     <dd>Définit si l'option de navigation «&nbsp;Montrer le contenu binaire en
 hexadécimal&nbsp;» est coché par défaut.</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] bool&eacute;en ou cha&icirc;ne</dt>
-    <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
-editing when browsing a table's content. Valid values are:
-        <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
-            <li><tt>'blob'</tt> to allow editing of all columns except <tt>BLOBS</tt>;</li>
-            <li><tt>'all'</tt> to disallow editing of all <tt>BINARY</tt> or <tt>BLOB</tt>
-columns.</li>
+    <dd>D&eacute;finit si les colonnes <tt>BLOB</tt> ou <tt>BINARY</tt> sont
+prot&eacute;g&eacute;s lors de l'affichage du contenu d'une table. Les
+valeurs permises sont&nbsp;:
+        <ul><li><tt>FALSE</tt> pour permettre la modification de toutes les colonnes ;</li>
+            <li><tt>blob</tt> pour permettre la modification de toutes les colonnes sauf les
+colonnes <tt>BLOBS</tt>;</li>
+            <li><tt>'all'</tt> pour interdire la modification des colonnes <tt>BINARY</tt>
+ou <tt>BLOB</tt>.</li>
         </ul>
     </dd>
 
@@ -1904,18 +1946,22 @@ l'utilisateur peut changer ce param&egrave;tre &agrave; partir de
 l'interface.
     </dd>
     
-    <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] boolean</dt>
-    <dd>Defines whether or not type fields should be initially displayed in
-edit/insert mode. The user can toggle this setting from the interface.
+    <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] booléen</dt>
+    <dd>D&eacute;finit si les colonnes type doivent &ecirc;tre affichées en mode
+modification/insertion. L'utilisateur peut changer ce paramètre à partir de
+l'interface.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] cha&icirc;ne</dt>
-    <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
-columns. Possible values are:
-        <ul><li>input - this allows to limit size of text to size of columns in MySQL, but
-has problems with newlines in columns</li>
-            <li>textarea - no problems with newlines in columns, but also no length
-limitations</li>
+    <dd>D&eacute;finit quels types de contr&ocirc;les d'&eacute;dition doivent
+&ecirc;tre utilis&eacute;s pour les colonnes CHAR et VARCHAR. Les valeurs
+permises sont&nbsp;:
+        <ul><li>input - ceci permet de limiter la taille du texte en fonction de la taille
+des colonnes dans MySQL, mais il y a des probl&egrave;mes avec les
+caract&egrave;res &laquo;&nbsp;newline&nbsp;&raquo; dans les colonnes</li>
+            <li>textarea - aucun probl&egrave;me avec les caract&egrave;res
+&laquo;&nbsp;newline&nbsp;&raquo; dans les colonnes, mais ne permet pas de
+limitation de taille</li>
         </ul>
         Par d&eacute;faut, l'ancien comportement est utilis&eacute;,
 c'est-&agrave;-dire input.</dd>
@@ -2026,7 +2072,7 @@ utilisateurs&nbsp;&raquo;</li>
     <dd>D&eacute;finit la langue par d&eacute;faut &agrave; utiliser, si ce n'est
 pas le cas, la configuration du navigateur ou celle de l'utilisateur sera
 utilis&eacute;e.<br />
-        The corresponding language file needs to be in
+        Le fichier de langue correspondant doit être dans
 locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
@@ -2038,8 +2084,8 @@ href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">documentation
 MySQL</a> pour obtenir une liste des valeurs possibles.</dd>
 
     <dt id="cfg_Lang">$cfg['Lang'] cha&icirc;ne</dt>
-    <dd>Force language to use.<br />
-        The corresponding language file needs to be in
+    <dd>Force la langue à utiliser.<br />
+        Le fichier de langue correspondant doit être dans
 locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
@@ -2056,14 +2102,14 @@ conversion de page de code. Les valeurs autoris&eacute;es sont&nbsp;:
 test&eacute;e est iconv, puis recode),</li>
             <li>iconv - utilise les fonctions iconv ou libiconv,</li>
             <li>recode - utilise la fonction recode_string.</li>
-            <li>none - disable encoding conversion</li>
+            <li>none - désactive la conversion de l'encodage</li>
         </ul>
         Par d&eacute;faut &agrave; auto.</dd>
     <dd>
-        Enabled charset conversion activates a pull-down menu in the Export and
-Import pages, to choose the character set when exporting a file. The default
-value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
+        quand la conversion de caractères est activée, cela active un menu déroulant
+dans les pages d'export et d'import, pour choisir le jeu de carctères lors
+de l'exportation d'un fichier. La valeur par défaut dans ce menu provient de
+<tt>$cfg['Export']['charset']</tt> and <tt>$cfg['Import']['charset']</tt>.
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] cha&icirc;ne</dt>
@@ -2237,7 +2283,8 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
     <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']</span>
 bool&eacute;en
     </dt>
-    <dd>Defines whether textarea for LONGTEXT columns should have double size.</dd>
+    <dd>D&eacute;finit si la zone de texte pour les colonnes LONGTEXT doit avoir une
+taille double.</dd>
 
     <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect']</span>
 bool&eacute;en
@@ -2253,8 +2300,9 @@ fl&egrave;ches de direction (Option + fl&egrave;ches de direction dans
 Safari) lors de l'&eacute;dition.</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] entier</dt>
-    <dd>Maximum number of characters shown in any non-numeric field on browse view.
-Can be turned off by a toggle button on the browse page.</dd>
+    <dd>Nombre maximum affich&eacute; de caract&egrave;res dans tout champ non
+num&eacute;rique en mode Afficher. Peut &ecirc;tre d&eacute;sactiv&eacute;
+par un bouton radio dans la page de navigation.</dd>
 
     <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft']</span>
 bool&eacute;en <span
@@ -2269,46 +2317,55 @@ droite). &laquo;&nbsp;Gauche&nbsp;&raquo; et
 &laquo;&nbsp;haut&nbsp;&raquo; et &laquo;&nbsp;bas&nbsp;&raquo; en mode
 d'affichage vertical.</dd>
 
-    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string</dt>
-    <dd>There are 3 display modes: horizontal, horizontalflipped and vertical.
-Define which one is displayed by default. The first mode displays each row
-on a horizontal line, the second rotates the headers by 90 degrees, so you
-can use descriptive headers even though columns only contain small values
-and still print them out. The vertical mode sorts each row on a vertical
-lineup.
+    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] chaîne</dt>
+    <dd>Il existe trois modes d'affichage&nbsp;: 'horizontal', 'horizontalflipped'
+et 'vertical'. D&eacute;finit lequel est affich&eacute; par d&eacute;faut.
+Le premier mode affiche chaque enregistrement sur une ligne horizontale, le
+second fait pivoter les en-t&ecirc;tes de&nbsp; 90 degr&eacute;s, de la
+sorte vous pouvez utiliser des en-t&ecirc;tes descriptifs m&ecirc;me si les
+colonnes contiennent de petites valeurs et les imprimer. Le mode vertical
+trie chaque enregistrement verticalement.
     </dd>
 
-    <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
+    <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] chaîne</dt>
     <dd>
-        The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css'
-the rotation of the header for horizontalflipped is done via CSS. The CSS
-transformation currently works only in Internet Explorer.If set to 'fake'
-PHP does the transformation for you, but of course this does not look as
-good as CSS. The 'auto' option enables CSS transformation when browser
-supports it and use PHP based one otherwise.
+        Le param&egrave;tre HeaderFlipType peut &ecirc;tre d&eacute;fini &agrave;
+'auto', 'css' ou 'fake'. En utilisant 'css' la rotation de l'en-t&ecirc;te
+dans le mode 'horizontalflipped' est faite par la feuille de style (CSS). La
+transformation CSS ne fonctionne actuellement que dans Internet
+Explorer. S'il est d&eacute;fini &agrave; 'fake ', PHP fait la
+transformation pour vous, mais bien s&ucirc;r, ce ne sera pas aussi beau
+qu'avec la feuille de style. L'option 'auto' active la transformation CSS
+quand le navigateur sait le gérer et utilise la transformation par PHP
+sinon.
     </dd>
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span>
 cha&icirc;ne ou entier</dt>
-    <dd>When editing/creating new columns in a table all fields normally get lined
-up one field a line. (default: 'horizontal'). If you set this to 'vertical'
-you can have each field lined up vertically beneath each other. You can save
-up a lot of place on the horizontal direction and no longer have to
-scroll. If you set this to integer, editing of fewer columns will appear in
-'vertical' mode, while editing of more columns still in 'horizontal'
-mode. This way you can still effectively edit large number of columns, while
-having full view on few of them.</dd>
+    <dd>En modifiant/cr&eacute;ant de nouvelles colonnes dans une table, tous les
+champs sont normalement align&eacute;s sur une ligne. (par
+d&eacute;faut&nbsp;: 'horizontal'). Si vous le d&eacute;finissez &agrave;
+'vertical', vous aurez chaque champ align&eacute; verticalement. Vous pouvez
+&eacute;conomiser beaucoup de place dans le sens horizontal, sans avoir
+&agrave; scroller. Si vous définissez ceci avec un entier, la modification
+d'un faible nombre de colonnes apparaîtra en mode 'vertical', alors que
+l'édition d'un plus grand nombre de colonnes sera encore en mode
+'horizontal'. De cette manière, vous pouvez quand même modifier un grand
+nombre de colonnes tout en ayant une vue complète sur une partie d'entre
+elles.</dd>
 
     <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] bool&eacute;en<br />
         <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']</span>
 bool&eacute;en
     </dt>
-    <dd>By setting the corresponding variable to <tt>TRUE</tt> you can enable the
-display of column comments in Browse or Property display. In browse mode,
-the comments are shown inside the header. In property mode, comments are
-displayed using a CSS-formatted dashed-line below the name of the
-column. The comment is shown as a tool-tip for that column.
+    <dd>En d&eacute;finissant la variable correspondante &agrave; <tt>TRUE</tt>,
+vous pouvez afficher les commentaires de colonnes en mode Navigation ou
+Propri&eacute;t&eacute;s. En mode navigation, les commentaires sont
+affich&eacute;s &agrave; l'int&eacute;rieur de l'en-t&ecirc;te. En mode
+propri&eacute;t&eacute;s, les commentaires sont affich&eacute;s en utilisant
+une feuille de style qui met une ligne de tirets sous le nom du champ. Le
+commentaire est affiché en tant qu'info-bulle pour ce champ.
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] bool&eacute;en</dt>
@@ -2437,14 +2494,16 @@ textes vus dans la page d'exportation, de la sorte vous pouvez facilement
 identifier ce qu'ils signifient.
     </dd>
 
-    <dt id="cfg_Export_method">$cfg['Export']['method'] string</dt>
+    <dt id="cfg_Export_method">$cfg['Export']['method'] chaîne</dt>
     <dd>
-        Defines how the export form is displayed when it loads. Valid values are:
+        Définit le mode d'affichage du formulaire d'export lors de son
+chargement. Les valeurs permises sont&nbsp;:
         <ul>
-        <li><tt>quick</tt> to display the minimum number of options to configure</li>
-        <li><tt>custom</tt> to display every available option to configure</li>
-        <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
-option of using quick export</li>
+        <li><tt>quick</tt> pour afficher le nombre minimum d'options à configurer</li>
+        <li><tt>custom</tt> pour afficher toutes les options de configuration
+disponibles</li>
+        <li><tt>custom-no-form</tt> est identique à <tt>custom</tt> mais n'affiche pas
+l'option d'utiliser l'export rapide</li>
         </ul>
     </dd>
 
@@ -2567,17 +2626,18 @@ initialement dans un état fermé. Une valeur <tt>'open'</tt> fait le
 contraire. Pour désactiver complètement toutes les cases de défilement
 visuel, utiliser <tt>'disabled'</tt>.</dd>
 
-    <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] array</dt>
-    <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
-users can't set through user preferences. For possible values, refer to
+    <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] tableau</dt>
+    <dd>contient les noms des options de configuration (clés d'un tableau
+<tt>$cfg</tt>) que les utilisateurs ne peuvent définir via les préférences
+utilisateurs. Pour les valeurs permises, consulter
 <tt>libraries/config/user_preferences.forms.php</tt>.</dd>
 
     <dt id="cfg_TitleTable">$cfg['TitleTable'] cha&icirc;ne</dt>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] cha&icirc;ne</dt>
     <dt id="cfg_TitleServer">$cfg['TitleServer'] cha&icirc;ne</dt>
     <dt id="cfg_TitleDefault">$cfg['TitleDefault'] cha&icirc;ne</dt>
-    <dd>Allows you to specify window's title bar. You can use <a
-href="#faq6_27">format string expansion</a>.
+    <dd>Vous permet d'indiquer le titre de la fen&ecirc;tre. Vous pouvez utiliser <a
+href="#faq6_27">l'expansion de format de chaîne</a>
     </dd>
 
     <dt id="cfg_ErrorIconic">$cfg['ErrorIconic'] bool&eacute;en</dt>
@@ -2612,9 +2672,9 @@ href="#faqthemes"> <abbr title="Foire Aux Questions">FAQ</abbr> 2.7</a>.</dd>
         <span id="cfg_DefaultQueryDatabase">$cfg['DefaultQueryDatabase']</span>
 cha&icirc;ne
     </dt>
-    <dd>Default queries that will be displayed in query boxes when user didn't
-specify any. You can use standard <a href="#faq6_27">format string
-expansion</a>.
+    <dd>Requêtes par défaut qui seront affichées dans les boîtes de requête quand
+l'utilisateur ne spécifie rien. Vous pouvez utiliser <a
+href="#faq6_27">l'expansion de format de chaîne</a> standard.
         </dd>
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] cha&icirc;ne ['<tt>html</tt>|<tt>none</tt>']</dt>
@@ -2725,40 +2785,13 @@ de la connexion anonyme.</dd>
         Active la journalisation des requêtes et des temps d'exécution qui sont
 alors affichés au bas de la page principale (panneau de droite).</dd>
 
-    <dt id="cfg_DBG_enable_php">$cfg['DBG']['php'] boolean</dt>
-    <dd><b>D&Eacute;VELOPPEURS SEULEMENT&nbsp;!</b><br />
-        Active l'extension DBG pour le d&eacute;bogage phpMyAdmin.
-N&eacute;cessaire pour analyser le code.<br />
-        Pour l'aide dans le param&eacute;trage de votre syst&egrave;me avec cette
-fonctionnalit&eacute;, voir la section <a
-href="#developersdbg">D&eacute;veloppeurs</a>.</dd>
-
-    <dt id="cfg_DBG_profile_enable">$cfg['DBG']['profile']['enable'] bool&eacute;en</dt>
-    <dd><b>D&Eacute;VELOPPEURS SEULEMENT&nbsp;!</b><br />
-        Active la gestion de l'analyse pour phpMyAdmin. Ceci ajoutera un gros paquet
-de donn&eacute;es &agrave; la fin de chaque page affich&eacute;e dans la
-fen&ecirc;tre principale avec les statistiques d'analyse pour cette page.<br />
-        Vous aurez peut-&ecirc;tre besoin d'augmenter le temps maximum
-d'ex&eacute;cution pour que cela fonctionne correctement.<i>Le profilage a
-&eacute;t&eacute; supprim&eacute; du code de la version 2.9.0 pour des
-probl&egrave;mes de licence.</i></dd>
-
-    <dt id="cfg_DBG_profile_threshold">$cfg['DBG']['profile']['threshold'] flottant (unit&eacute;s en
-millisecondes)</dt>
-    <dd><b>D&Eacute;VELOPPEURS SEULEMENT&nbsp;!</b><br />
-        Quand un audit de donn&eacute;es est affich&eacute;, cette variable
-contr&ocirc;le le seuil d'affichage pour chaque audit de donn&eacute;es,
-fond&eacute; sur le temps moyen que chacun a pris. S'il est sup&eacute;rieur
-au seuil, il est affich&eacute;, sinon il n'est pas affich&eacute;. Ceci
-prend une valeur en millisecondes. Dans la plupart des cas, vous n'avez pas
-besoin de modifier ce param&egrave;tre.</dd>
-
     <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] tableau</dt>
     <dd>Tous les types possibles de colonnes MySQL. Dans la plupart des cas, vous
 n'avez pas besoin de modifier ce param&egrave;tre.</dd>
 
     <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] tableau</dt>
-    <dd>Possible attributes for columns. In most cases you don't need to edit this.</dd>
+    <dd>Attributs possibles pour les colonnes. Dans la plupart des cas, vous n'avez
+pas besoin de modifier ceci.</dd>
 
     <dt id="cfg_Functions">$cfg['Functions'] tableau</dt>
     <dd>Une liste de fonctions que g&egrave;re MySQL. Dans la plupart des cas, vous
@@ -2785,20 +2818,24 @@ class="configrule">$cfg['RestrictColumnTypes']</a> et pour
 colonne d'horodatage dans une table.</dd>
 
     <dt id="cfg_NumOperators">$cfg['NumOperators'] tableau</dt>
-    <dd>Operators available for search operations on numeric and date columns.
+    <dd>Opérateurs disponibles pour les opérations de recherche sur les colonnes
+numériques et les colonnes date.
     </dd>
 
     <dt id="cfg_TextOperators">$cfg['TextOperators'] tableau</dt>
-    <dd>Operators available for search operations on character columns.  Note that
-we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
-avoid unintended performance problems in case of huge tables.</dd>
+    <dd>Opérateurs disponibles pour les opérations de recherche sur les colonnes
+caractères.  Veuillez noter que nous avons mis <code>LIKE</code> par défaut
+plutôt que <code>LIKE %&hellip;%</code>, pour éviter des problèmes imprévus
+dans le cas de très grandes tables.</dd>
 
     <dt id="cfg_EnumOperators">$cfg['EnumOperators'] tableau</dt>
-    <dd>Operators available for search operations on ENUM columns.</dd>
+    <dd>Opérateurs disponibles pour les opérations de recherche sur les colonnes
+&laquo;&nbsp;enum&nbsp;&raquo;.</dd>
 
     <dt id="cfg_NullOperators">$cfg['NullOperators'] tableau</dt>
-    <dd>Additional operators available for search operations when the column can be
-null.</dd>
+    <dd>Op&eacute;rateurs suppl&eacute;mentaires disponibles pour les
+op&eacute;rations de recherche quand le colonne peut avoir la valeur
+&laquo;&nbsp;null&nbsp;&raquo;.</dd>
 
 </dl>
 
@@ -2818,17 +2855,20 @@ null.</dd>
 consulter la section <a href="#config">Configuration</a> sur la
 mani&egrave;re de faire.</p>
 
-<p> You can apply different transformations to the contents of each column. The
-transformation will take the content of each column and transform it with
-certain rules defined in the selected transformation.</p>
+<p> Vous pouvez appliquer diff&eacute;rentes transformations au contenu de
+chaque colonne. La transformation prendra le contenu de chaque colonne et le
+transformera en fonction des r&egrave;gles d&eacute;finies dans la
+transformation s&eacute;lectionn&eacute;e.</p>
 
-<p> Say you have a column 'filename' which contains a filename. Normally you
-would see in phpMyAdmin only this filename. Using transformations you can
-transform that filename into a HTML link, so you can click inside of the
-phpMyAdmin structure on the column's link and will see the file displayed in
-a new browser window. Using transformation options you can also specify
-strings to append/prepend to a string or the format you want the output
-stored in.</p>
+<p> Imaginons que vous ayez une colonne 'nom_de_fichier' qui contient un nom de
+fichier. Normalement, vous ne verriez dans phpMyAdmin que ce nom de
+fichier. En utilisant les transformations, vous pouvez transformer ce nom de
+fichier en lien HTML, et ainsi cliquer sur la structure de phpMyAdmin sur le
+lien du champ et voir le fichier affich&eacute; dans une nouvelle
+fen&ecirc;tre de navigateur. En utilisant les options de transformation,
+vous pouvez &eacute;galement sp&eacute;cifier des cha&icirc;nes pour
+pr&eacute;fixer ou suffixer des cha&icirc;nes ou d'autres formats pour
+lesquels vous voulez voir le r&eacute;sultat avec ces transformations.</p>
 
 <p> Pour un aper&ccedil;u g&eacute;n&eacute;ral sur les transformations et leurs
 options, vous pouvez consulter la page
@@ -2907,14 +2947,17 @@ fichiers dans le r&eacute;pertoire 'libraries/transformations/'.</p>
 <p> Ils sont emmagasin&eacute;s dans des fichiers pour faciliter la
 personnalisation et l'ajout ais&eacute; de nouvelles transformations.</p>
 
-<p> Because the user cannot enter own mimetypes, it is kept sure that
-transformations always work. It makes no sense to apply a transformation to
-a mimetype the transform-function doesn't know to handle.</p>
+<p> Parce que l'utilisateur ne peut pas mettre ses propres types mime, on garde
+l'assurance que les transformations fonctionnent toujours.  Cela n'a pas de
+sens d'appliquer une transformation à un type mime, que la fonction de
+transformation ne sait pas manipuler.</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype than what they where built for, but pay attention to option usage
-as well as what the transformation does to your column.</p>
+<p> On peut, cependant, utiliser des types mime vides et des transformations
+globales qui fonctionnent pour beaucoup de types mime. Vous pouvez aussi
+utiliser des transformations sur des types mime différents de ceux pour
+lesquels elles ont été construites, mais faites attention aux options
+d'utilisation tout comme à l'action qu'aura la transformation sur votre
+colonne.</p>
 
 <p> Il y a un fichier de base appel&eacute; '<i>global.inc.php</i>'. Cette
 fonction peut &ecirc;tre incluse dans n'importe quelle autre transformation
@@ -3011,9 +3054,10 @@ type mime du sous-type, et '__' pour annoncer la fonction de transformation.</p>
 <p> Tous les fichiers ne contenant pas '__' ne sont pas affich&eacute;s en tant
 que fonctions de transformation valides dans la liste d&eacute;roulante.</p>
 
-<p> Please see the libraries/transformations/TEMPLATE file for adding your own
-transform function. See the libraries/transformations/TEMPLATE_MIMETYPE for
-adding a mimetype without a transform function.</p>
+<p> Veuillez consulter le fichier <i>libraries/transformations/TEMPLATE</i> pour
+ajouter votre propre fonction de transformation. Veuillez consulter le
+fichier <i>libraries/transformations/TEMPLATE_MIMETYPE</i> pour ajouter un
+type mime sans fonction de transformation.</p>
 
 <p> Pour cr&eacute;er une nouvelle fonction de transformation, veuillez
 consulter <tt>libraries/transformations/template_generator.sh</tt>.  Pour
@@ -3026,26 +3070,28 @@ cr&eacute;er un nouveau type mime vide, veuillez consulter
 voulez transformer.</li>
     <li><b>$options</b> - contient toutes les options pass&eacute;es par
 l'utilisateur &agrave; la fonction de transformation sous forme de tableau.</li>
-    <li><b>$meta</b> - Contains an object with information about your column.  The
-data is drawn from the output of the <a
-href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
-function. This means, all object properties described on the <a
-href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
-this variable and can be used to transform a column accordingly to
-unsigned/zerofill/not_null/... properties.<br />
-        The $meta-&gt;mimetype variable contains the original MIME-type of the
-column (i.e. 'text/plain', 'image/jpeg' etc.)</li>
+    <li><b>$meta</b> - contient un objet avec une information sur votre
+colonne. L'information est tir&eacute;e du r&eacute;sultat de la fonction <a
+href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>.  Cela
+signifie, que toutes les propri&eacute;t&eacute;s d&eacute;crites sur la <a
+href="http://www.php.net/mysql_fetch_field">page manuel</a> sont disponibles
+dans cette variable et peuvent &ecirc;tre utilis&eacute;es pour transformer
+une colonne en accord avec les propri&eacute;t&eacute;s
+unsigned/zerofill/not_null/&hellip;<br />
+        La variable $meta-&gt;mimetype contient le type MIME original de la colonne
+(c'est-&agrave;-dire 'text/plain', 'image/jpeg', etc.)</li>
 </ol>
 
-<p> Additionally you should also provide additional function to provide
-information about the transformation to the user. This function should have
-same name as transformation function just with appended <code>_info</code>
-suffix. This function accepts no parameters and returns array with
-information about the transformation. Currently following keys can be used:
+<p> Vous pouvez aussi fournir une fonction additionnelle pour fournir des
+informations sur la transformation à l'utilisateur. Cette fonction doit
+avoir le même nom que la fonction de transformation suffixé par
+<code>_info</code>. Cette fonction n'accepte pas de paramètre et renvoie un
+tableau avec des informations sur la transformation. Actuellement, les clés
+suivantes peuvent être utilisée&nbsp;:
 </p>
 <dl>
     <dt><code>info</code></dt>
-    <dd>Long description of the transformation.</dd>
+    <dd>Description longue de la transformation.</dd>
 </dl>
 
 
@@ -3072,9 +3118,9 @@ son interface.</p>
 <h3 id="faqserver">1. Serveur</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
-required or phpMyAdmin sends a blank page or a page full of cryptic
-characters to my browser, what can I do?</a></h4>
+    <a href="#faq1_1">1.1 Mon serveur plante chaque fois qu'une action
+spécifique est requise ou phpMyAdmin renvoie une page vide ou remplie de
+caractères cryptiques, que puis-je faire&nbsp;?</a></h4>
 
 <p> Essayez de param&eacute;trer la directive <a href="#cfg_OBGzip"
 class="configrule">$cfg['OBGzip']</a> &agrave; <tt>FALSE</tt> dans votre
@@ -3094,7 +3140,7 @@ cache de r&eacute;sultats (output buffering).<br />
 les divers groupes d'entraide de Apache.</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
+    <a href="#faq1_3">1.3 (retiré).</a></h4>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 J'utilise phpMyAdmin avec <abbr title="Internet
@@ -3111,9 +3157,10 @@ href="http://bugs.php.net/bug.php?id=12061">rapport de bogue</a> de la base
 de donn&eacute;es officielle de bogues de PHP.</p>
 
 <h4 id="faq1_5">
-    <a href="#faq1_5">1.5 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm facing crashes and/or many error messages with the
-<abbr title="HyperText Transfer Protocol">HTTP</abbr>.</a></h4>
+    <a href="#faq1_5">1.5 J'utilise phpMyAdmin avec <abbr title="Internet
+Information Services">IIS</abbr>, et je suis confront&eacute; &agrave; des
+plantages et/ou beaucoup de messages d'erreur avec l'authentification <abbr
+title="HyperText Transfer Protocol">HTTP</abbr>.</a></h4>
 
 <p> Ceci est un probl&egrave;me connu du filtre <abbr title="Internet Server
 Application Programming Interface">ISAPI</abbr> de PHP&nbsp;: il n'est pas
@@ -3137,10 +3184,11 @@ moyen)&nbsp;: supprimez ou mettez en commentaire les d&eacute;clarations
 fichier d'exportation ou un export <abbr title="comma seperated
 values">CSV</abbr>&nbsp;? Il semble que cela ne fonctionne pas.</a></h4>
 
-<p> These features are based on the <tt>gzencode()</tt> and
-<tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
-support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
+<p> Ces fonctionnalit&eacute;s sont bas&eacute;es sur les fonctions PHP
+<tt>gzencode()</tt> et <tt>bzcompress()</tt> pour &ecirc;tre plus
+ind&eacute;pendantes de la plateforme (Unix/Windows, Mode
+s&eacute;curis&eacute; ou non, et ainsi de suite). Aussi, vous devez avoir
+le support de Zlib/Bzip2 (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 Je ne peux pas ins&eacute;rer un fichier texte dans
@@ -3167,7 +3215,7 @@ du serveur Apache&nbsp;: <tt>chown apache:apache /tmp/php</tt></li>
 </ul>
 
 <h4 id="faq1_9">
-    <a href="#faq1_9">1.9 (withdrawn).</a></h4>
+    <a href="#faq1_9">1.9 (retiré).</a></h4>
 
 <h4 id="faq1_10">
     <a href="#faq1_10">1.10 J'ai des probl&egrave;mes en transf&eacute;rant des
@@ -3205,19 +3253,20 @@ href="http://www.mysql.com/doc/R/e/Resetting_permissions.html">r&eacute;initiali
 les permissions</a>.</p>
 
 <h4 id="faq1_13">
-    <a href="#faq1_13">1.13 (withdrawn).</a></h4>
+    <a href="#faq1_13">1.13 (retiré).</a></h4>
 
 <h4 id="faq1_14">
-    <a href="#faq1_14">1.14 (withdrawn).</a></h4>
+    <a href="#faq1_14">1.14 (retiré).</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
-names.</a>
+    <a href="#faq1_15">1.15 J'ai des probl&egrave;mes avec les noms de colonnes
+<i>mysql.user</i>.</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
-were named <tt>user</tt> and <tt>password</tt>. Please modify your column
-names to align with current standards.</p>
+<p> Dans les pr&eacute;c&eacute;dentes versions de MySQL, les colonnes
+<tt>User</tt> et <tt>Password</tt> &eacute;taient nomm&eacute;s
+<tt>user</tt> et <tt>password</tt>.  Veuillez modifier vos noms de colonnes
+pour qu'ils s'adaptent aux standards en vigueur.</p>
 
 <h4 id="faq1_16">
     <a href="#faq1_16">1.16 Je ne peux pas transf&eacute;rer de gros fichiers
@@ -3316,7 +3365,7 @@ MySQL</a>.
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
+    <a href="#faq1_18">1.18 (retiré).</a></h4>
 
 <h4 id="faq1_19">
     <a href="#faq1_19">1.19 Je ne peux pas utiliser la fonctionnalit&eacute;
@@ -3363,8 +3412,9 @@ fichier texte&nbsp;&raquo;, aussi je ne peux pas transf&eacute;rer.</a></h4>
 d&eacute;fini &agrave; &laquo;&nbsp;on&nbsp;&raquo;.</p>
 
 <h4 id="faq1_23">
-    <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
-create a new table the table and column names are changed to lowercase!</a></h4>
+    <a href="#faq1_23">1.23 J'ex&eacute;cute MySQL sur une machine Win32. Chaque
+fois que je cr&eacute;e une nouvelle table, les noms de la table et des
+colonnes sont convertis en lettres minuscules&nbsp;!</a></h4>
 
 <p> Ceci arrive parce que la directive MySQL <tt>lower_case_table_names</tt> est
 d&eacute;finie par d&eacute;faut &agrave; 1 (<tt>ON</tt>) dans la version
@@ -3383,7 +3433,7 @@ requ&ecirc;te suivante</p>
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
+    <a href="#faq1_24">1.24 (retiré).</a></h4>
 
 <h4 id="faq1_25">
     <a href="#faq1_25">1.25 J'utilise Apache avec mod_gzip-1.3.26.1a sur Windows
@@ -3442,8 +3492,8 @@ minuscules et r&eacute;activez-la. Il y a &eacute;galement un correctif
 disponible &agrave; partir de MySQL&nbsp;3.23.56&nbsp;/&nbsp;4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 When I create a table or modify a column, I get an
-error and the columns are duplicated.</a></h4>
+    <a href="#faq1_29">1.29 Quand je cr&eacute;e une table ou que je modifie une
+colonne, j'obtiens une erreur et les colonnes sont dupliqu&eacute;es.</a></h4>
 
 <p> Il est possible de configurer Apache de telle fa&ccedil;on que PHP a des
 probl&egrave;mes en interpr&eacute;tant les fichiers .php.</p>
@@ -3592,56 +3642,59 @@ cas.</p>
     <a href="#faq1_38">1.38 Puis-je utiliser phpMyAdmin sur un serveur sur
 lequel Suhosin est activé&nbsp;?</a></h4>
 
-<p> Yes but the default configuration values of Suhosin are known to cause
-problems with some operations, for example editing a table with many columns
-and no primary key or with textual primary key.
+<p> Oui, mais les valeurs de configuration par défaut de Suhosin sont connues
+pour provoquer des problèmes avec certaines opérations, comme par exemple,
+l'édition d'une table avec beaucoup de colonnes sans clé primaire ou sans
+clé primaire textuelles.
 </p>
 <p>
-    Suhosin configuration might lead to malfunction in some cases and it can not
-be fully avoided as phpMyAdmin is kind of application which needs to
-transfer big amounts of columns in single HTTP request, what is something
-what Suhosin tries to prevent. Generally all <code>suhosin.request.*</code>,
-<code>suhosin.post.*</code> and <code>suhosin.get.*</code> directives can
-have negative effect on phpMyAdmin usability. You can always find in your
-error logs which limit did cause dropping of variable, so you can diagnose
-the problem and adjust matching configuration variable.
+    La configuration de Suhosin pourrait mener à un dysfonctionnement dans
+certains cas et ne peut être totalement évité car phpMyAdmin est une
+application qui a besoin de transférer de gros volumes de colonnes dans une
+unique requête HHTP, ce qu'essaie parfois Suhosin d'empêcher. Généralement,
+toutes les directives <code>suhosin.request.*</code>,
+<code>suhosin.post.*</code> et <code>suhosin.get.*</code> peuvent avoir un
+effet négatif sur l'utilisabilité de phpMyAdmin. Vous pouvez toujours
+trouver dans le fichier journal des erreurs la limite qui a causé la
+suppression de la variable, et vous pouvez ainsi diagnostiquer le problème
+et ajuster la variable de configuration.
 </p>
 <p>
-    The default values for most Suhosin configuration options will work in most
-scenarios, however you might want to adjust at least following parameters:
+    Les valeurs par défaut pour la plupart des options de configuration de
+Suhosin fonctionneront pour la plupart des scénarios, cependant, vous
+pourriez vouloir ajuster au moins les paramètres suivants&nbsp;:
 </p>
 
 <ul>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_vars">suhosin.request.max_vars</a>
-should be increased (eg. 2048)</li>
+devrait être augmentée (par ex.. 2048)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_vars">suhosin.post.max_vars</a>
-should be increased (eg. 2048)</li>
+devrait être augmentée (par ex. 2048)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_array_index_length">suhosin.request.max_array_index_length</a>
-should be increased (eg. 256)</li>
+devrait être augmentée (par ex. 256)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_array_index_length">suhosin.post.max_array_index_length</a>
-should be increased (eg. 256)</li>
+devrait être augmentée (par ex. 256)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_totalname_length">suhosin.request.max_totalname_length</a>
-should be increased (eg. 8192)</li>
+devrait être augmentée (par ex. 8192)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a>
-should be increased (eg. 8192)</li>
+devrait être augmentée (par ex. 8192)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
-needs to be disabled (the default)</li>
+doit être désactivée (par défaut)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
-should not include SQL, otherwise you get big slowdown</li>
+ne doit pas inclure SQL, sans quoi, vous aurez un grand ralentissement</li>
 </ul>
 
     <p>
-        You can also disable the warning using the <a
-href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt>
-directive</a>.
+        Vous pouvez aussi désactiver les avertissements en utilisant la directive <a
+href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt></a>.
     </p>
 
 <h4 id="faq1_39">
@@ -3654,8 +3707,8 @@ votre configuration Apache. Consulter <a
 href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
 
 <h4 id="faq1_40">
-    <a href="#faq1_40">1.40 When accessing phpMyAdmin via an Apache reverse
-proxy, cookie login does not work.</a></h4>
+    <a href="#faq1_40">1.40 Quand j'accède à phpMyAdmin via un reverse proxy
+Apache, le cookie de connexion ne fonctionne pas.</a></h4>
 
 <p>Pour pouvoir utiliser l'authetification par cookie, Apache doit savoir qu'il
 doit ré-écrire les en-têtes set-cookie.<br />
@@ -3798,10 +3851,11 @@ redirig&eacute; sur mon ordinateur h&ocirc;te local.</a></h4>
 <p> Quand vous utilisez un port sur votre ordinateur local, que vous redirigez
 &agrave; l'aide d'une redirection de port vers un autre h&ocirc;te, MySQL ne
 r&eacute;soud pas le nom d'h&ocirc;te local comme il le devrait.<br />
-    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
-MySQL (the command line tool <code>mysql</code> as well) always tries to use
-the socket connection for speeding up things. And that doesn't work in this
-configuration with port forwarding.<br />
+    Erik Wasser explique&nbsp;: La solution est&nbsp;: si votre h&ocirc;te est
+&laquo;&nbsp;localhost&nbsp;&raquo;, MySQL (l'outil de commande en ligne
+'mysql' aussi) essaie toujours d'utiliser la connexion socket pour
+acc&eacute;l&eacute;rer les choses. Et cela ne fonctionne pas dans cette
+configuration avec redirection de port.<br />
     Si vous mettez &laquo;&nbsp;127.0.0.1&nbsp;&raquo; comme nom d'h&ocirc;te,
 tout est correct et MySQL utilise la connexion <abbr title="Transmission
 Control Protocol">TCP</abbr>.</p>
@@ -3918,9 +3972,9 @@ plus, l'extension JSON doit être activée dans votre installation PHP.</p>
 <h3 id="faqlimitations">Limitations connues</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 When using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication, a user who logged out can not log in
-again in with the same nick.</a></h4>
+    <a href="#login_bug">3.1 En utilisant l'authentification <abbr
+title="HyperText Transfer Protocol">HTTP</abbr>, un utilisateur qui se
+d&eacute;connecte ne peut pas se reconnecter avec le m&ecirc;me compte.</a></h4>
 
 <p> Cela est d&ucirc; au m&eacute;canisme du protocole d'authentification
 utilis&eacute; par phpMyAdmin. Pour contourner ce probl&egrave;me&nbsp;:
@@ -3955,8 +4009,8 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
 d'exportation que j'ai cr&eacute;&eacute;s avec l'outil mysqldump fourni
 dans la distribution de MySQL serveur.</a></h4>
 
-<p> The problem is that older versions of <code>mysqldump</code> created invalid
-comments like this:</p>
+<p> Le probl&egrave;me vient du fait que les anciennes versions de mysqldump
+cr&eacute;aient des commentaires invalides comme ceci&nbsp;:</p>
 
 <pre>
 -- MySQL dump 8.22
@@ -3994,16 +4048,18 @@ d&eacute;sactivez la fonctionnalit&eacute;.</p>
     <a href="#faq3_6">3.6 Qu'est-ce qui n'est actuellement pas
 g&eacute;r&eacute; par phpMyAdmin avec InnoDB&nbsp;?</a></h4>
 
-<p> In Relation view, being able to choose a table in another database, or
-having more than one index column in the foreign key.<br /><br/>
+<p> Dans la vue Gestion des relations, &ecirc;tre en mesure de choisir une table
+dans une autre base de donn&eacute;es, ou avoir plus d'un champ dans la
+cl&eacute; &eacute;trang&egrave;re.<br /><br/>
     Dans Query-by-example (Query), la g&eacute;n&eacute;ration automatique de la
 requ&ecirc;te LEFT JOIN &agrave; partir d'une table &eacute;trang&egrave;re.<br /><br/>
 </p>
 
 <h4 id="faq3_7">
-    <a href="#faq3_7">3.7 I have table with many (100+) columns and when I try
-to browse table I get series of errors like &quot;Warning: unable to parse
-url&quot;. How can this be fixed?</a></h4>
+    <a href="#faq3_7">3.7 J'ai une table avec beaucoup de colonnes (100+) et
+quand j'essaie d'afficher la table, j'obtiens une s&eacute;rie d'erreurs du
+genre &laquo;&nbsp;Warning: unable to parse url&nbsp;&raquo;. Comment
+corriger cela&nbsp;?</a></h4>
 <p>
     Votre table n'a pas de cl&eacute; primaire ou de cl&eacute; unique, ce qui
 oblige &agrave; utiliser une expression longue pour identifier cette
@@ -4014,8 +4070,9 @@ cl&eacute; unique.
 </p>
 
 <h4 id="faq3_8">
-    <a href="#faq3_8">3.8 I cannot use (clickable) HTML-forms in columns where I
-put a MIME-Transformation onto!</a></h4>
+    <a href="#faq3_8">3.8 Je ne peux pas utiIiser de formulaires HTML
+(cliquables)  dans des colonnes o&ugrave; j'ai mis une transformation
+MIME&nbsp;!</a></h4>
 
 <p> &Agrave; cause d'un container de formulaires (utilis&eacute; pour les cases
 &agrave; cocher de suppression de plusieurs lignes), les formulaires
@@ -4108,10 +4165,11 @@ sera probablement pas r&eacute;solu &agrave; l'avenir.
     <a href="#faq3_15">3.15 Lors de l'import d'une feuile de tableur Excel,
 certaines cellules avec des calculs ne sont pas affichées correctement.</a></h4>
 <p>
-    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/">PHPExcel</a>
-library to parse Excel XLS and XLSX spreadsheets.  Therefore, any
-limitations that are listed on their page regarding Excel calculations will
-also apply here.
+    phpMyAdmin utilise la bibliothèque <a
+href="http://www.codeplex.com/PHPExcel/">PHPExcel</a> pour analyser les
+feuilles de tableur Excel XLS et XLSX.  Par conséquent, toutes les
+limitations qui sont listées sur leur page concernant les calculs Excel
+s'appliquent aussi ici.
     <br /><br />
     PHPExcel sera maintenu à jour pour rendre disponible toutes les
 améliorations aux utilisateurs de phpMyAdmin.
@@ -4328,15 +4386,17 @@ l'authentification 'cookie' <tt>auth_type</tt>.</p>
 <h3 id="faqbrowsers">Navigateurs et syst&egrave;me d'exploitation client</h3>
 
 <h4 id="faq5_1">
-    <a href="#faq5_1">5.1 I get an out of memory error, and my controls are
-non-functional, when trying to create a table with more than 14 columns.
-</a></h4>
+    <a href="#faq5_1">5.1 J'obtiens une erreur &laquo;&nbsp;out of
+memory&nbsp;&raquo;, ou mes contr&ocirc;les ne sont plus fonctionnels, en
+essayant de cr&eacute;er une table avec plus de 14 colonnes.</a></h4>
 <p>
-    We could reproduce this problem only under Win98/98SE. Testing under WinNT4
-or Win2K, we could easily create more than 60 columns.
+    Nous n'avons pu reproduire ce probl&egrave;me que sous Win98/98SE.  En
+testant avec WinNT4 ou Win2K, nous avons pu facilement cr&eacute;er plus de
+60 colonnes.
     <br />
-    A workaround is to create a smaller number of columns, then come back to
-your table properties and add the other columns.
+    Une solution de rechange est de cr&eacute;er un plus petit nombre de
+colonnes, puis de revenir dans les propri&eacute;t&eacute;s de votre table
+et d'ajouter les autres colonnes.
 </p>
 
 <h4 id="faq5_2">
@@ -4372,8 +4432,9 @@ disparaissent. Les fichiers d'exportation GZip donnent un message d'erreur.<br /
     <a href="#faq5_4">5.4 Je ne peux pas utiliser le mode d'authentification par
 cookie car Internet Explorer ne stocke jamais les cookies.</a></h4>
 <p>
-    MS Internet Explorer seems to be really buggy about cookies, at least till
-version 6.
+    N&eacute;anmoins, sachez que MS Internet Explorer para&icirc;t &ecirc;tre
+vraiment bogu&eacute; en ce qui concerne les cookies, au moins
+jusqu'&agrave; la version 6.
 </p>
 
 <h4 id="faq5_5">
@@ -4384,9 +4445,10 @@ d'erreur JavaScript quand je navigue dans mes enregistrements.</a></h4>
 </p>
 
 <h4 id="faq5_6">
-    <a href="#faq5_6">5.6 In Internet Explorer 5.0, 5.5 or 6.0, I get an error
-(like "Page not found")  when trying to modify a row in a table with many
-columns, or with a text column </a></h4>
+    <a href="#faq5_6">5.6 Dans Internet Explorer 5.0, 5.5 ou 6.0, j'obtiens une
+erreur (comme &laquo;&nbsp;Page introuvable&nbsp;&raquo;) en essayant de
+modifier un enregistrement dans une table avec beaucoup de colonne, ou avec
+une colonne texte.</a></h4>
 <p>
     Votre table n'a pas de cl&eacute; primaire ni de cl&eacute; unique, aussi
 nous devons utiliser une <abbr title="Uniform Resource Locator">URL</abbr>
@@ -4518,8 +4580,9 @@ en attendant, utilisez le mode d'authentification par <tt>cookie</tt>.</p>
     <a href="#faq6_1">6.1 Je ne peux pas ins&eacute;rer de lignes dans une table
 / je ne peux pas cr&eacute;er une table - MySQL renvoie une erreur SQL.</a></h4>
 <p>
-    Examine the <abbr title="structured query language">SQL</abbr> error with
-care. Often the problem is caused by specifying a wrong column-type.<br />
+    Examinez l'erreur <abbr title="Structured Query Language">SQL</abbr> avec
+attention. Le probl&egrave;me est souvent provoqu&eacute; par la
+sp&eacute;cification d'un mauvais type de colonne.<br />
     Les erreurs usuelles sont&nbsp;:
 </p>
 <ul>
@@ -4532,23 +4595,28 @@ confirmer que votre syntaxe est correcte.
 </p>
 
 <h4 id="faq6_2">
-    <a href="#faq6_2">6.2 When I create a table, I set an index for two columns
-and phpMyAdmin generates only one index with those two columns.  </a></h4>
+    <a href="#faq6_2">6.2 Quand je cr&eacute;e une table, je définis un index
+pour deux colonnes et phpMyAdmin ne g&eacute;n&egrave;re qu'un seul index
+avec ces deux colonnes.</a></h4>
 <p>
-    This is the way to create a multi-columns index. If you want two indexes,
-create the first one when creating the table, save, then display the table
-properties and click the Index link to create the other index.
+    C'est la fa&ccedil;on de cr&eacute;er un index multi-colonnes. Si vous
+voulez deux index, cr&eacute;er le premier en cr&eacute;ant la table,
+sauvegardez, puis affichez les propri&eacute;t&eacute;s de la table et
+cliquez sur le lien Index pour cr&eacute;er l'autre index.
 </p>
 
 <h4 id="faq6_3">
     <a href="#faq6_3">6.3 Comment puis-je ins&eacute;rer une valeur nulle dans
 ma table&nbsp;?</a></h4>
 <p>
-    Since version 2.2.3, you have a checkbox for each column that can be null.
-Before 2.2.3, you had to enter &quot;null&quot;, without the quotes, as the
-column's value. Since version 2.5.5, you have to use the checkbox to get a
-real NULL value, so if you enter &quot;NULL&quot; this means you want a
-literal NULL in the column, and not a NULL value (this works in PHP4).
+    Depuis la version 2.2.3, il y a une case &agrave; cocher pour chaque colonne
+qui peut &ecirc;tre nulle. Avant la version 2.2.3, vous deviez saisir
+&laquo;&nbsp;null&nbsp;&raquo;, sans les guillemets, comme valeur de
+colonne.  Depuis la version 2.5.5, vous devez utiliser la case &agrave;
+cocher pour obtenir une r&eacute;elle valeur NULL, aussi, si vous saisissez
+&laquo;&nbsp;NULL&nbsp;&raquo; cela signifie que vous voulez un NULL
+litt&eacute;ral dans la colonne et non une valeur NULL (cela fonctionne dans
+PHP4).
 </p>
 
 <h4 id="faq6_4">
@@ -4647,7 +4715,8 @@ choisir &laquo;&nbsp;REL_villes-&gt;code_ville&nbsp;&raquo;</li>
 &laquo;&nbsp;REL_pays-&gt;code_pays&nbsp;&raquo;</li>
     <li>sur la table &laquo;&nbsp;REL_villes&nbsp;&raquo; cliquer sur Structure,
 puis Gestion des relations</li>
-    <li>in &quot;Choose column to display&quot;, choose &quot;description&quot;</li>
+    <li>dans &laquo;&nbsp;Colonne &agrave; afficher&nbsp;&raquo;, choisir
+&laquo;&nbsp;Description&nbsp;&raquo;</li>
     <li>r&eacute;p&eacute;tez les deux pr&eacute;cedentes &eacute;tapes pour la
 table &laquo;&nbsp;REL_pays&nbsp;&raquo;</li>
 </ul>
@@ -4658,8 +4727,8 @@ table &laquo;&nbsp;REL_pays&nbsp;&raquo;</li>
     <li>choisir &laquo;&nbsp;Requ&ecirc;te&nbsp;&raquo;</li>
     <li>utilisez les tables&nbsp;: personnes, villes, pays</li>
     <li>cliquer sur &laquo;&nbsp;Mise-&agrave;-jour de la requ&ecirc;te&nbsp;&raquo;</li>
-    <li>In the columns row, choose persons.person_name and click the
-&quot;Show&quot; tickbox </li>
+    <li>dans la ligne des colonnes, choisissez personnes.nom_personne et cliquez sur
+la case &agrave; cocher &laquo;&nbsp;Afficher&nbsp;&raquo; </li>
     <li>faites la m&ecirc;me chose pour villes.description et pays.description dans
 les deux autres colonnes</li>
     <li>cliquer sur &laquo;&nbsp;Mise-&agrave;-jour de la requ&ecirc;te&nbsp;&raquo;
@@ -4669,17 +4738,18 @@ a &eacute;t&eacute; g&eacute;n&eacute;r&eacute;e</li>
 </ul>
 
 <h4 id="faqdisplay">
-    <a href="#faqdisplay">6.7 How can I use the &quot;display column&quot;
-feature?</a></h4>
+    <a href="#faqdisplay">6.7 Comment puis-je utiliser la fonctionnalit&eacute;
+&laquo;&nbsp;Colonnes &agrave; afficher&nbsp;&raquo;?</a></h4>
 <p>
     &Agrave; partir de l'exemple pr&eacute;c&eacute;dent, cr&eacute;ez la table
 pma_table_info comme expliqu&eacute; dans la section <a
 href="#config">Configuration</a>, puis parcourez votre table personnes, et
 d&eacute;placez votre souris au-dessus du code ville ou du code pays.
     <br /><br />
-    See also <a href="#faq6_21"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 6.21</a> for an additional feature that &quot;display
-column&quot; enables: drop-down list of possible values.
+    Voir &eacute;galement la section <a href="#faq6_21"><abbr title="Foire Aux
+Questions">FAQ</abbr> 6.21</a> pour une fonctionnalit&eacute; additionnelle
+que &laquo;&nbsp;Colonne &agrave; afficher&nbsp;&raquo; permet&nbsp;: une
+liste d&eacute;roulante des valeurs possibles.
 </p>
 
 <h4 id="faqpdf">
@@ -4779,8 +4849,9 @@ de table existe mais qu'elle a une structure diff&eacute;rente.</li>
     <li>&laquo;&nbsp;Inclure la valeur courante de l'AUTO_INCREMENT&nbsp;&raquo;
 assure que la valeur AUTO_INCREMENT (s'il y en a une) sera incluse dans la
 sauvegarde.</li>
-    <li>&quot;Enclose table and column names with backquotes&quot; ensures that
-column and table names formed with special characters are protected.</li>
+    <li>&laquo;&nbsp;Prot&eacute;ger les noms des tables et des colonnes par
+des&nbsp;"`"&nbsp;&raquo; assure que les noms de colonnes et de tables
+contenant des caract&egrave;res sp&eacute;ciaux sont prot&eacute;g&eacute;s.</li>
     <li>&quot;Inclure sous forme de commentaires&quot; inclut les commentaires des
 colonnes, les relations et les types MIME d&eacute;finis dans la base de
 donn&eacute;es PMA-DB dans le fichier d'exportation en tant que commentaires
@@ -4826,21 +4897,22 @@ avec, ni la supprimer.</p>
 title="Structured Query Language">SQL</abbr>&nbsp;?</a></h4>
 
 <p> 
-    To use SQL Validator, you need PHP with <abbr title="Extensible Markup
+    Pour l'utiliser, vous avez besoin d'une version tr&egrave;s r&eacute;cente
+de PHP avec la gestion de <abbr title="Extensible Markup
 Language">XML</abbr>, <abbr title="Perl Compatible Regular
-Expressions">PCRE</abbr> and <abbr title="PHP Extension and Application
-Repository">PEAR</abbr> support.  In addition you need a <abbr title="Simple
-Object Access Protocol">SOAP</abbr> support, either as a PHP extension or as
-a PEAR SOAP module.
+Expressions">PCRE</abbr> et <abbr title="PHP Extension and Application
+Repository">PEAR</abbr>. De plus, vous avez besoin de la gestion de <abbr
+title="Simple Object Access Protocol">SOAP</abbr>, comme extension PHP ou
+comme module PEAR SOAP.
 </p>
 
 <p>
-    To install <abbr title="PHP Extension and Application
+    Pour installer le module <abbr title="PHP Extension and Application
 Repository">PEAR</abbr> <abbr title="Simple Object Access
-Protocol">SOAP</abbr> module, run <tt>"pear install Net_Socket Net_URL
-HTTP_Request Mail_Mime Net_DIME SOAP"</tt> to get the necessary <abbr
-title="PHP Extension and Application Repository">PEAR</abbr> modules for
-usage.
+Protocol">SOAP</abbr>, exécutez <tt>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</tt> pour obtenir les modules <abbr
+title="PHP Extension and Application Repository">PEAR</abbr> nécessaires à
+son utilisation.
 </p>
 
 <p>
@@ -4854,15 +4926,15 @@ Database Technology. Nous l'utilisons en tant que service SOAP gratuit.
 </p>
 
 <h4 id="faq6_15">
-    <a href="#faq6_15">6.15 I want to add a BLOB column and put an index on it,
-but MySQL says &quot;BLOB column '...' used in key specification without a
-key length&quot;.</a></h4>
+    <a href="#faq6_15">6.15 Je veux ajouter une colonne BLOB et ajouter un index
+dessus, mais MySQL dit &laquo;&nbsp;BLOB column '&hellip;' used in key
+specification without a key length&nbsp;&raquo;.</a></h4>
 
-<p> The right way to do this, is to create the column without any indexes, then
-display the table structure and use the &quot;Create an index&quot;
-dialog. On this page, you will be able to choose your BLOB column, and set a
-size to the index, which is the condition to create an index on a BLOB
-column.</p>
+<p> La bonne mani&egrave;re de faire cela, est de cr&eacute;er une colonne sans
+index, puis d'afficher la structure de la table et d'utiliser le dialogue
+&laquo;&nbsp;Cr&eacute;er une clef&nbsp;&raquo;. Sur cette page, vous
+pourrez alors choisir votre colonne BLOB, et d&eacute;finir une taille pour
+l'index sur une colonne BLOB.</p>
 
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 Comment puis-je me d&eacute;placer simplement dans
@@ -4883,12 +4955,14 @@ cela vous aide pour les modifications.</p>
 propre type mime&nbsp;! &Agrave; quoi peut bien servir cette
 f&hellip;. fonctionnalit&eacute; alors&nbsp;?</a></h4>
 
-<p> Slow down :). Defining mimetypes is of no use, if you can't put
-transformations on them. Otherwise you could just put a comment on the
-column. Because entering your own mimetype will cause serious syntax
-checking issues and validation, this introduces a high-risk false-user-input
-situation. Instead you have to initialize mimetypes using functions or empty
-mimetype definitions.<br />
+<p> Du calme&nbsp;:). D&eacute;finir des types mime n'a pas d'utilit&eacute; si
+on ne peut pas mettre de transformations dessus. Sinon vous pouvez seulement
+mettre un commentaire sur la colonne. En saisissant votre propre type mime,
+vous causerez de s&eacute;rieux probl&egrave;mes de v&eacute;rification de
+syntaxe et de validation, et introduirez une situation de grand risque de
+mauvaise interpr&eacute;tation de saisie de l'utilisateur. Au lieu de cela,
+vous pouvez initialiser des types mime en utilisant des fonctions ou des
+d&eacute;finitions de types mime vides.<br />
     De plus, vous avez une vue d'ensemble de tous les types mime
 disponibles. Qui conna&icirc;t tous ces types mime par coeur de sorte qu'il
 puisse les entrer &agrave; volont&eacute;&nbsp;?</p>
@@ -4980,30 +5054,34 @@ table export&eacute;e dans le fichier <code>table.tex</code>)&nbsp;:</p>
 </pre>
 
 <h4 id="faq6_20">
-    <a href="#faq6_20">6.20 I see a lot of databases which are not mine, and
-cannot access them.  </a></h4>
+    <a href="#faq6_20">6.20 Je vois beaucoup de bases de donn&eacute;es qui ne
+sont pas &agrave; moi et que je ne peux acc&eacute;der.</a></h4>
 
-<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
-DATABASES, LOCK TABLES. Those privileges also enable users to see all the
-database names.  See this <a href="http://bugs.mysql.com/179">bug
-report</a>.<br /><br />
+<p> Vous avez un de ces privilèges globaux&nbsp;: CREATE TEMPORARY TABLES, SHOW
+DATABASES, LOCK TABLES. Ces privil&egrave;ges permettent &eacute;galement
+aux utilisateurs de voir tous les noms de bases de donn&eacute;es.  Voir ce
+<a href="http://bugs.mysql.com/179">rapport de bogue</a>.<br /><br />
 
     Donc si vos utilisateurs n'ont pas besoin de ces privil&egrave;ges, vous
 pouvez les supprimer et la liste de leurs bases de donn&eacute;es sera
 raccourcie.</p>
 
 <h4 id="faq6_21">
-    <a href="#faq6_21">6.21 In edit/insert mode, how can I see a list of
-possible values for a column, based on some foreign table?</a></h4>
+    <a href="#faq6_21">6.21 En mode modifier/ins&eacute;rer, comment puis-je
+voir une liste des valeurs possibles pour une colonne, bas&eacute;e sur une
+table &eacute;trang&egrave;re&nbsp;?</a></h4>
 
-<p> You have to setup appropriate links between the tables, and also setup the
-&quot;display column&quot; in the foreign table. See <a href="#faq6_6"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a> for an example. Then,
-if there are 100 values or less in the foreign table, a drop-down list of
-values will be available.  You will see two lists of values, the first list
-containing the key and the display column, the second list containing the
-display column and the key. The reason for this is to be able to type the
-first letter of either the key or the display column.<br /><br />
+<p> Vous devez configurer les liens appropri&eacute;s entre les tables, ainsi
+que la &laquo;&nbsp;Colonne &agrave; afficher&nbsp;&raquo; (display column)
+dans la table &eacute;trang&egrave;re. Voir la section<a href="#faq6_6">
+<abbr title="Foire Aux Questions">FAQ</abbr> 6.6</a> pour un exemple.
+Ensuite, s'il y a 100 valeurs ou moins dans la table
+&eacute;trang&egrave;re, une liste d&eacute;roulante des valeurs sera
+disponible. Vous verrez deux listes de valeurs, la premi&egrave;re liste
+contenant la cl&eacute; et la colonne &agrave; afficher, la seconde liste
+contenant la colonne &agrave; afficher et la cl&eacute;. La raison de cela
+est de permettre de saisir la premi&egrave;re lettre soit de la cl&eacute;,
+soit de la colonne &agrave; afficher.<br /><br />
 
     Pour 100 valeurs et plus, une fen&ecirc;tre distincte appara&icirc;tra, pour
 naviguer dans les valeurs des cl&eacute;s &eacute;trang&egrave;res et en
@@ -5024,11 +5102,12 @@ ex&eacute;cut&eacute;.
 exporter des fichiers au format Microsoft Excel, comment puis-je activer
 cette option&nbsp;?</a></h4>
 
-<p> You can use <abbr title="comma separated values">CSV</abbr> for Microsoft
-Excel, which works out of the box, but phpMyAdmin supports direct export to
-Microsoft Excel version 97 and newer.  For this to work, you need to set <a
-href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> to a place where
-the web server user can write (for example <tt>'./tmp'</tt>).</p>
+<p> Vous pouvez utiliser <abbr title="comma separated values">CSV</abbr> pour
+Microsoft Excel, qui fonctionne tel quel, mais phpMyAdmin gère l'export
+direct vers Microsoft Excel version 97 et supérieures. Pour que cela
+fonctionne, vous devez définir <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> dans un répertoire où l'utilisateur
+du serveur Web à des droits d'écriture (par exemple <tt>'./tmp'</tt>).</p>
 <p> Pour cr&eacute;er un r&eacute;pertoire temporaire sur un syst&egrave;me
 bas&eacute; sur UNIX, vous pouvez faire ceci&nbsp;:</p>
 
@@ -5051,50 +5130,54 @@ dans la page Structure pour cette table.</p>
 	<a href="#faq6_25">6.25 Comment le streaming de BLOB fonctionne dans
 phpMyAdmin&nbsp;?</a></h4>
 
-<p> For general information about BLOB streaming on MySQL, visit <a
-href="http://blobstreaming.org">blobstreaming.org</a>. You need the
-following components:</p>
+<p> D'abord, pour des informations sur le streaming de BLOB, visiter la page <a
+href="http://blobstreaming.org">blobstreaming.org</a>. Vous aurez besoin des
+composants suivants&nbsp;:</p>
 <ul>
-    <li>PBMS BLOB Streaming Daemon for MySQL (0.5.15 or later)</li>
-    <li>Streaming enabled PBXT Storage engine for MySQL (1.0.11-6 or later)</li>
-    <li>PBMS Client Library for MySQL (0.5.15 or later)</li>
-    <li>PBMS PHP Extension for MySQL (0.1.1 or later)</li>
+    <li>PBMS BLOB Streaming Daemon pour MySQL (0.5.15 ou supérieur)</li>
+    <li>Le moteur Streaming enabled PBXT Storage pour MySQL (1.0.11-6 ou supérieur)</li>
+    <li>PBMS Client Library pour MySQL (0.5.15 ou supérieur)</li>
+    <li>PBMS PHP Extension pour MySQL (0.1.1 ou supérieur)</li>
 </ul>
 
-<p>Here are details about configuration and operation:</p>
+<p>Ci-après, les détails sur la configuration et l'opération&nbsp;:</p>
 
 <ol>
-	<li>In <tt>config.inc.php</tt> your host should be defined with a FQDN (fully
-qualified domain name) instead of &quot;localhost&quot;.</li>
-    <li>Ensure that your target table is under the <tt>PBXT</tt> storage engine and
-has a <tt>LONGBLOB</tt> column (which must be nullable if you want to remove
-the BLOB reference from it).</li>
-	<li>When you insert or update a row in this table, put a checkmark on the
-&quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
-will be done directly in your LONGBLOB column instead of the repository.</li>
-	<li>Finally when you browse your table, you'll see in your column a link to
-stream your data, for example &quot;View image&quot;. A header containing
-the correct MIME-type will be sent to your browser; this MIME-type was
-stored at upload time.</li> 
+	<li>Dans le fichier <tt>config.inc.php</tt>, votre nom d'hôte doit être défini
+avec un nom de domaine totalement qualifié (FQDN) plutôt que quelque chose
+comme «&nbsp;localhost&nbsp;».</li>
+    <li>Assurez-vous que votre table cible est sous le moteur de stockage PBXT et a
+une colonne LONGBLOB (qui doit pouvoir être définie à NULL si vous voulez
+supprimer la référence BLOB à celle-ci).</li>
+	<li>Quand vous insérez ou mettez à jour une ligne dans cette table, cochez
+l'option «&nbsp;Télécharger vers le dépôt BLOB&nbsp;»&nbsp;; sinon, le
+téléchargement se fera directement dans votre colonne LONGBLOB au lieu du
+répertoire.</li>
+	<li>Enfin, quand vous parcourrez votre table, vous verrez un lien dans votre
+colonne pour voir les données, par exemple «&nbsp;Afficher
+l'image&nbsp;». Un en-tête contenant le type MIME correct sera envoyé à
+votre navigateur&nbsp;; ce type MIME a été stocké lors du téléchargement.</li> 
 </ol>	
 
 <h4 id="faq6_26">
-    <a href="#faq6_26">6.26 How can I select a range of rows?</a></h4>
+    <a href="#faq6_26">6.26 Comment puis-je sélectionner un ensemble de
+lignes&nbsp;?</a></h4>
 
-<p> Click the first row of the range, hold the shift key and click the last row
-of the range. This works everywhere you see rows, for example in Browse mode
-or on the Structure page.</p>
+<p> Cliquez sur la première ligne, puis maintenez appuyée la touche MAJ et
+cliquez sur la dernière ligne. Ceci fonctionne partout où vous pouvez voir
+des lignes, par exemple dans le mode Navigation ou sur la page Structure.</p>
 
 
 <h4 id="faq6_27">
-    <a href="#faq6_27">6.27 What format strings can I use?</a></h4>
+    <a href="#faq6_27">6.27 Quels format de chaînes puis-je utiliser&nbsp;?</a></h4>
 
 <p>
-    In all places where phpMyAdmin accepts format strings, you can use
-<code>@VARIABLE@</code> expansion and <a
-href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (for example, if you haven't chosen a table,
-you can not get the table name), but the following variables can be used:
+    Dans tous les endroits où phpMyAdmin accepte le formatage de chaînes, vous
+pouvez utiliser l'expansion de format de chaînes <code>@VARIABLE@</code> et
+<a href="http://php.net/strftime">strftime</a>. Les variable étendues
+dépendent du contexte (par exemple, si vous avez choisi une table, vous ne
+pouvez pas obtenir le nom de la table), mais les variables suivantes peuvent
+être utilisées&nbsp;:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
@@ -5112,23 +5195,23 @@ href="#cfg_Servers_verbose">configuration serveur</a></dd>
     <dt><code>@TABLE@</code></dt>
         <dd>Table actuellement ouverte</dd>
     <dt><code>@FIELDS@</code></dt>
-        <dd>Fields of currently opened table</dd>
+        <dd>Champs de la table actuellement ouverte</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
         <dd>Version de phpMyAdmin</dd>
 </dl>
 
 <h4 id="wysiwyg">
-    <a href="#wysiwyg">6.28 How can I easily edit relational schema for
-export?</a></h4>
+    <a href="#wysiwyg">6.28 Comment puis-je facilement modifier le schéma
+relationnel pour l'export&nbsp;?</a></h4>
 
     <p> 
-        By clicking on the button 'toggle scratchboard' on the page where you edit
-x/y coordinates of those elements you can activate a scratchboard where all
-your elements are placed. By clicking on an element, you can move them
-around in the pre-defined area and the x/y coordinates will get updated
-dynamically. Likewise, when entering a new position directly into the input
-field, the new position in the scratchboard changes after your cursor leaves
-the input field.
+        En cliquant sur le bouton «&nbsp;Éditeur visuel&nbsp;» sur la page où vous
+modifiez les coordonnées x/y de ces éléments, vous pouvez activer un éditeur
+visuel où tous vos éléments sont placés. En cliquant sur un élément, vous
+pouvez le déplacer dans la zone prédéfinie et les coordonnées x/y seront
+mises à jour dynamiquement. Vous pouvez aussi saisir directement dans le
+champ de saisie, la nouvelle position dans l'éditeur visuel change après que
+le curseur a quitté le champ de saisie.
     </p>
     <p>
         Vous devez cliquer sur le bouton 'OK' en-dessous des tables pour sauvegarder
@@ -5152,13 +5235,14 @@ autres.
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.28 Why can't I get a chart from my query result
-table?</a></h4>
+    <a href="#faq6_29">6.28 Pourquoi ne puis-je obtenir un graphique à partir de
+ma table des résultats de requêtes&nbsp;?</a></h4>
 
-<p> Not every table can be put to the chart. Only tables with one, two or three
-columns can be visualised as a chart. Moreover the table must be in a
-special format for chart script to understand it. Currently supported
-formats can be found in the <a
+<p> Toutes les tables ne peuvent pas permettre la création d'un
+graphique. Seules les tables ayant une, deux ou trois colonnes peuvent être
+visualisées sous forme de graphique. De plus, la table doit être dans un
+format spécial pour que le script de création de graphique la comprenne. Les
+formats actuellement supportés sont disponibles sur le <a
 href="http://wiki.phpmyadmin.net/pma/Devel:Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
 
 <h3 id="faqproject">Projet phpMyAdmin</h3>
@@ -5182,50 +5266,55 @@ https://sourceforge.net/projects/phpmyadmin/forums</a>.
 ou mettre &agrave; jour une langue existante, o&ugrave; dois-je
 commencer&nbsp;?</a></h4>
 
-<p> Always use latest Git version of the po file to translate. You can
-optionally translate online at our <a
-href="http://l10n.cihar.com/">translation server</a> where you can also get
-the latest po files and merge them with your translations. For creating a
-new translation simply use <code>po/phpmyadmin.pot</code> and generate
-<code>po/LANG_CODE.po</code> for your language (you can use <code>msginit -i
-po/phpmyadmin.pot -l LANG_CODE --no-translator -o po/LANG_CODE.po</code> to
-do this) or ask on the mailing list to add the translation to the web
-interface. More details are available on <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">our
+<p> Toujours utiliser la dernière version Git du fichier po à traduire. Vous
+pouvez aussi traduire en ligne sur notre <a
+href="http://l10n.cihar.com/">serveur de traduction</a> où vous pouvez aussi
+obtenir les derniers fichiers po et les fusionner avec vos traductions. Pour
+créer une nouvelle traduction, utiliser le fichier
+<code>po/phpmyadmin.pot</code> et générer le fichier
+<code>po/LANG_CODE.po</code> pour votre langue (vous pouvez utiliser la
+commande <code>msginit -i po/phpmyadmin.pot -l LANG_CODE --no-translator -o
+po/LANG_CODE.po</code> pour le faire) ou demander sur la liste de diffusion
+d'ajouter votre langue à l'interface Web. Plus d'informations sont
+disponibles sur <a
+href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">notre
 wiki</a>.
 </p>
 <p>
-    Please note that we try not to use HTML entities like &amp;eacute; in the
-translations, since we define the right character set in the file.  With
-HTML entities, the text on JavaScript messages would not display correctly.
-However there are some entities that need to be there: quotes, non-breakable
-spaces, ampersands, less than, greater than.
+    Veuillez noter que nous essayons de ne pas utiliser d'entités HTML telles
+que &amp;eacute; dans les traductions puisque nous définissons le bon jeu de
+caractères dans le fichier. Avec les entités HTML, le texte des messages
+JavaScript ne s'afficheraient pas correctement. Cependant, certaines entités
+sont nécessaires, comme les guillemets, les espaces insécables, les
+perluètes, les symboles supérieur à et inférieur à.
 </p>
 <p>
-    You can then put your translations, as a zip file to avoid losing special
-characters, on the sourceforge.net <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker.</a>
+    Vous pouvez alors mettre vos traductions, sous forme de fichier .zip pour
+éviter de perdre les caractères spéciaux, sur le <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">tracker
+de traduction</a> de sourceforge.net.
 </p>
 <p>
-    It would be a good idea to subscribe to the <a
-href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmyadmin-translators</a>
-mailing list, because this is where we ask for translations of new messages.
+    Ce serait une bonne id&eacute;e de vous abonner &agrave; la liste de
+diffusion <a
+href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmyadmin-translators</a>,
+parce que c'est l&agrave; que nous demandons la traduction de nouveaux
+messages.
 </p>
 
 <p>
-    Documentation is being translated using po4a and gettext (see <a
-href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
-existing translations). To start, checkout <a
+    La documentation est traduite en utiilsant po4a et gettext (voir la <a
+href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> pour
+les traductions existantes). Pour débuter, faites un checkout <a
 href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>
-from Git, or just go to the <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
-translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
-it. If you prefer to directly translate the po files, please put updated
-ones into our <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker</a>. 
+à partir de Git, ou rendez-vous sur le <a
+href="https://l10n.cihar.com/projects/pmadoc/">serveur de traduction</a> et
+traduisez en ligne. Si votre langue n'est pas présente, contactez <a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; il l'ajoutera. Si
+vous préférez traduire directement les fichiers .po, merci de joindre vos
+fichiers traduits sur notre <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">traqueur
+de traduction</a>. 
 </p>
 
 <h4 id="faq7_3">
@@ -5235,24 +5324,26 @@ phpMyAdmin. Comment dois-je proc&eacute;der&nbsp;?</a></h4>
 <p> La m&eacute;thode suivante est pr&eacute;f&eacute;rable pour les nouveaux
 d&eacute;veloppeurs&nbsp;:</p>
 
-<ol><li>fetch the current git repository over anonymous git:<br />
+<ol><li>récupérer le dépôt Git en cours en mode anonyme&nbsp;:<br />
     <tt>git clone
 git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
     </li>
     <li>ajouter votre travail</li>
-    <li>generate patch with your changes: <tt>git diff &gt; xxx.diff</tt><br />
+    <li>g&eacute;n&eacute;rer le patch avec vos changements&nbsp;: <tt>git diff &gt;
+xxx.diff</tt><br />
     </li>
-    <li>submit your patch via the <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">patch
-tracker of the phpMyAdmin project</a>.
+    <li>joignez votre patch au <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">traqueur
+de patches du projet phpMyAdmin</a>.
     </li>
 </ol>
 
-<p>More details on git are available on <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Git">our wiki</a>.</p>
+<p>Plus d'informations sur Git sont disponibles sur <a
+href="http://wiki.phpmyadmin.net/pma/Devel:Git">notre wiki</a>.</p>
 
-<p> Write access to the repository is granted only to experienced developers who
-have already contributed something useful to phpMyAdmin.<br />
+<p> L'acc&egrave;s en &eacute;criture est autoris&eacute; seulement aux
+d&eacute;veloppeurs exp&eacute;riment&eacute;s qui ont d&eacute;j&agrave;
+contribu&eacute; de mani&egrave;re utile &agrave; phpMyAdmin.<br />
     Veuillez &eacute;galement consulter la <a href="#developers">section
 D&eacute;veloppeurs</a>.</p>
 
@@ -5270,9 +5361,9 @@ href="http://www.phpmyadmin.net/home_page/security.php">http://www.phpmyadmin.ne
     <a href="#faq8_2">8.2 Comment protéger phpMyAdmin contre les attaques par
 force brute&nbsp;?</a></h4>
 
-<p> If you use Apache web server, phpMyAdmin exports information about
-authentication to the Apache environment and it can be used in Apache logs.
-Currently there are two variables available:
+<p> Si vous utilisez un serveur Web Apache, phpMyAdmin exporte les informations
+sur l'authentification vers l'environnement Apache et peut être utilisé dans
+les logs d'Apache. Il y a actuellement deux variables disponibles&nbsp;:
 </p>
 <dl>
     <dt><code>userID</code></dt>
@@ -5303,60 +5394,63 @@ détecter des tentatives d'intrusion.
     <a href="#faq9_1">9.1 Comment synchroniser deux bases de données/tables dans
 phpMyAdmin&nbsp;?</a></h4>
 
-<p> You can now synchronize databases/tables in phpMyAdmin using the Synchronize
-feature.  It allows you to connect to local as well as remote servers. This
-requires you to enter server host name, username, password, port and the
-name of the database. Therefore you can now synchronize your databases
-placed on the same server or some remote server.
+<p> Vous pouvez maintenant synchroniser des bases de données ou des tables dans
+phpMyAdmin en utilisant la fonctionnalité «&nbsp;Synchroniser&nbsp;». Elle
+vous permet de vous connecter en local ou sur des serveurs distants. Ceci
+nécessite de saisir le nom du serveur, l'utilisateur, le mot de passe, le
+port et le nom de la base de données. Par conséquent, vous pouvez maintenant
+synchroniser vos bases de données situées sur le même serveur ou sur un
+serveur distant.
 </p>
 
 <p>
-This feature is helpful for developers who need to replicate their
-database&#8217;s structure as well as data. Moreover, this feature not only
-helps replication but also facilitates the user to keep his/her database in
-sync with another database. Other than the full database, certain tables of
-the databases can also be synchronized.
+Cette fonctionnalité est utile pour les développeurs qui ont besoin de
+répliquer la structure de leurs bases de données tout comme les données. De
+plus, cette fonctionnalité n'est pas seulement utile pour la réplication,
+elle permet également aux utilisateurs de garder sa base de données
+synchrone avec une autre base de données. Il est également possible de ne
+synchroniser que quelques tables de la base de données.
 </p>
 
 <p>
-You need to fill in the host name of the server, the username and password
-of an user account already there in MySQL. Port is by default populated with
-3306 (MySQL default port). Then the name of the database should be mentioned
-at the end. All the information other than the port needs to be filled
-explicitly for the source as well as target servers.
+Vous avez besoin de saisir le nom d'hôte du serveur, le compte utilisateur
+et le mot de passe  du compte MySQL. Le port par défaut utilisé est 3306
+(qui est le port par défaut de MySQL). Puis, le nom de la base de données
+doit être mentionné à la fin. Toutes les informations autres que le port
+doivent être explicitement définies pour le serveur source et le serveur de
+destination.
 </p>
 
 <p>
-After successfully passing through the authentication phase, the source and
-target database table names will be displayed. It will be a tabular
-representation. 
+Après l'authentification, les noms des tables des bases de données source et
+destination seront affichées. La représentation est sous forme tabulaire. 
 </p>
 
 <p>
-On the left, are listed the source database table names. Some of the names
-have a <code>+</code> plus sign preceding them. This shows that these tables
-are only present in source database and they need to be added to the target
-database in order to synchronize the target database. The tables whose names
-are not preceded by a <code>+</code> sign are already present in the target
-database. 
+Sur la gauche sont listés les noms de table de la base de données
+source. Certains noms sont précédés par un signe plus <code>+</code>. Ceci
+indique que ces tables ne sont présentes que dans la base de données source
+et doivent être ajoutées à la base de données de destination pour la
+synchroniser. Les tables non précédées par un signe <code>+</code> sont déjà
+présentes dans la base de données de destination. 
 </p>
 
 <p>
-On the right, are listed the target database table names. There are few
-table names that have <code>(not present)</code> appended after their
-names. This means that these tables are to be created in target database in
-order to synchronize target database with source database. Some table names
-have a <code>-</code> minus sign preceding them. This shows that these
-tables are only present in target database and they will remain unchanged in
-the target database. The column in the middle shows the difference between
-the source and target corresponding tables.
+À droite, sont listées les noms des tables de la base de données de
+destination. Il y a quelques tables ayant <code>(non présent)</code> ajouté
+à leur nom. Cela signifie que ces tables doivent être créées sur la base de
+destination pour qu'elle soit synchrone avec la base source. Certaines
+tables sont précédées d'un signe moins <code>-</code>. Ceci indique les
+tables seulement présentes dans la base de données de destination et
+demeureront inchangées. La colonne du milieu indique les différences entre
+les tables de la base de données source et destination.
 </p>
 
 <p>
-The difference is depicted by the red and green buttons with <tt>S</tt> and
-<tt>D</tt> letters, indicating that either Structure or Data are not up to
-date. By clicking on them, they will turn grey, what means that they will be
-synchronized.
+Les différences sont indiquées par des boutons rouges et verts avec les
+lettres <tt>S</tt> et <tt>D</tt>, désignant respectivement que la Structure
+ou les Données ne sont pas à jour. En cliquant dessus, ils deviennent
+grisés, ce qui signifie qu'ils vont être synchronisés.
 </p>
 
 
@@ -5390,18 +5484,19 @@ r&egrave;gles XHTML1.0 et CSS2 d'une part, et aux <a
 href="http://pear.php.net/">normes de codage <abbr title="PHP Extension and
 Application Repository">PEAR</abbr></a> d'autre part. Veuillez y
 pr&ecirc;ter attention.</li>
-    <li>Please enable showing PHP errors and warnings by the <code><a
-href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
-configuration directive.</li>
+    <li>Veuillez activer l'affichage des erreurs et des avertissements PHP avec la
+directive de configuration <code><a
+href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>.</li>
     <li>Veuillez respecter les conventions de nommage de fichiers. Ce qui est
 relatif aux tables s'&eacute;crit <i>tbl_*.php</i>, le code relatif aux
 bases de donn&eacute;es s'&eacute;crit <i>db_*.php</i>, les outils relatifs
 aux serveurs s'&eacute;crivent <i>server_*.php</i> et ainsi de suite.</li>
-    <li>Please use gettext wrappers around all messages (<code>__('Some
-text')</code> or <code>_ngettext()</code> function).  To translate them, you
-need to call <code>scripts/update-po</code> script. To use translated
-messages, call <code>scripts/generate-mo</code>, which generates binary
-files read by Gettext.</li>
+    <li>Veuillez utiliser les enveloppeurs gettext pour délimiter les messages
+(<code>__('Some text')</code> ou <code>_ngettext()</code> function).  Pour
+les traduire, vous devez appeler le script
+<code>scripts/update-po</code>. Pour utiliser les messages traduits, appelez
+<code>scripts/generate-mo</code>, qui génère les fichiers binaires lus par
+Gettext.</li>
     <li>Si vous voulez &ecirc;tre vraiment utile, ajoutez une entr&eacute;e dans le
 fichier ChangeLog.</li>
     <li id="developersdbg">
@@ -5420,16 +5515,16 @@ vie pour les habitants de la Terre.</li>
 <h2 id="copyright">Copyright</h2>
 
 <pre>
-Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
+Copyright © 1998-2000   Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
+Copyright © 2001-2010   Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
-                        Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
+                        Michal Čihař &lt;michal_at_cihar.com&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [check <a href="#credits">credits</a> for more details]
+                        [consulter les <a href="#credits">crédits</a> pour plus de détails]
 </pre>
 
 <p>
@@ -5667,10 +5762,10 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
   <li>support BLOBstreaming</li>
 </ul></li>
 
-<li>Piotr Przybylski (Google Summer of Code 2008 and 2010)
+<li>Piotr Przybylski (Google Summer of Code 2008 et 2010)
 <ul>
   <li>amélioration du script d'installation</li>
-  <li>user preferences</li>
+  <li>préférences utilisateur</li>
 </ul></li>
 
 <li>Derek Schaefer (Google Summer of Code 2009)
@@ -5695,24 +5790,24 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Muhammad Adnan (Google Summer of Code 2010)
 <ul>
-  <li>Relation schema export to multiple formats</li>
+  <li>Export de schémas relationnels sous plusieurs formats</li>
 </ul></li>
 
 <li>Lori Lee (Google Summer of Code 2010)
 <ul>
-  <li>User interface improvements</li>
-  <li>ENUM/SET editor</li>
-  <li>Simplified interface for export/import</li>
+  <li>améliorations de l'interface utilisateur</li>
+  <li>Éditeur ENUM/SET</li>
+  <li>Interface simplifiée pour l'export/import</li>
 </ul></li>
 
 <li>Ninad Pundalik (Google Summer of Code 2010)
 <ul>
-  <li>AJAXifying the interface</li>
+  <li>AJAXification de l'interface</li>
 </ul></li>
 
 <li>Barrie Leslie
 <ul>
-  <li>BLOBstreaming support with PBMS PHP extension</li>
+  <li>support BLOBstreaming avec l'extension PBMS PHP</li>
 </ul></li>
 
 </ul>
@@ -5766,8 +5861,9 @@ d'export de table. Plus des corrections de bogues et l'aide.
 localisation de phpMyAdmin en extrayant les chaînes dans un fichier
 séparé. Il a aussi contribué à la traduction française.
   </li>
-  <li>Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt; who contributed
-tbl_select.php3, a feature to display only some columns from a table.
+  <li>Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt; qui a contribué à
+tbl_select.php3, une fonctionnalité pour afficher seulement certaines
+colonnes d'une table.
   </li>
   <li>Chris Jackson &lt;chrisj_at_ctel.net&gt; a jouté le support de fonctions
 MySQL dans tbl_change.php3. Il a aussi ajouté la fonctionnalité « Query by
@@ -6095,8 +6191,8 @@ multiplateforme de Jean-loup Gailly et Mark Adler.</li>
 
   <ul id="footer">
     <li>Copyright &copy; 2003 - 2010 <a
-href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin devel
-team</a></li>
+href="http://www.phpmyadmin.net/home_page/team.php">Équipe de développement
+de phpMyAdmin</a></li>
     <li><a href="LICENSE">Licence</a></li>
     <li><a href="http://www.phpmyadmin.net/home_page/donate.php">Faire un don</a></li>
     <li class="last">Valid <a href="http://validator.w3.org/check/referer">HTML</a> et <a
