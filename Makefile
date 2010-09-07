@@ -24,8 +24,8 @@ all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) 
 output/%/index.html: po/%.po output/%/index-template.html
 	po4a-translate -f xhtml -m output/$*/index-template.html -p $< -l $@ ${PO4AOPTS} -k 0
 
-output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/Documentation.html
-	po4a-translate -f xhtml -m ../phpmyadmin/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$*
+output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/Documentation.html addendum/html_credits.%
+	po4a-translate -f xhtml -m ../phpmyadmin/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$* --addendum addendum/html_credits.$*
 	touch $@
 
 output/%/translators.html.stamp: po/%.po addendum/html_head-translations.% addendum/html_comment.% ../phpmyadmin/translators.html
@@ -56,6 +56,10 @@ addendum/html_head-translations.%: po/%.po addendum/head.html addendum/add-html_
 addendum/html_comment.%: po/%.po addendum/comment.html addendum/add-html_comment
 	po4a-translate -f text -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
 
+.PRECIOUS: addendum/html_credits.%
+addendum/html_credits.%: po/%.po addendum/credits.html addendum/add-html_credits
+	po4a-translate -f xhtml -m addendum/credits.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_credits
+
 output/%/index-template.html: generate-lang-index get-lang-name \
 	$(wildcard $(addsuffix /Documentation.html, output/%) \
 	$(addsuffix /translators.html, output/%) \
@@ -84,12 +88,13 @@ output/index.html: $(wildcard output/*/index.html) generate-index get-lang-name
 	./generate-index > $@
 
 .PRECIOUS: pot/%-html.pot
-pot/%-html.pot: ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/head.html
+pot/%-html.pot: ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/head.html addendum/credits.html
 	po4a-gettextize -f xhtml ${PO4A_PO_OPTS} \
 		-m ../phpmyadmin/Documentation.html \
 		-m../phpmyadmin/translators.html \
 		-m  output/$*/index-full-template.html \
 		-m addendum/head.html \
+		-m addendum/credits.html \
 		-p $@
 
 .PRECIOUS: pot/%-txt.pot
