@@ -33,15 +33,15 @@ output/%/translators.html.stamp: po/%.po addendum/html_head-translations.% adden
 	touch $@
 
 output/%/README.stamp: po/%.po ../phpmyadmin/README
-	po4a-translate -f text -m ../phpmyadmin/README -p $< -l output/$*/README ${PO4AOPTS}
+	po4a-translate -f text -o asciidoc -m ../phpmyadmin/README -p $< -l output/$*/README ${PO4AOPTS}
 	touch $@
 
 output/%/TODO.stamp: po/%.po ../phpmyadmin/TODO
-	po4a-translate -f text -m ../phpmyadmin/TODO -p $< -l output/$*/TODO ${PO4AOPTS}
+	po4a-translate -f text -o asciidoc -m ../phpmyadmin/TODO -p $< -l output/$*/TODO ${PO4AOPTS}
 	touch $@
 
 output/%/INSTALL.stamp: po/%.po ../phpmyadmin/INSTALL
-	po4a-translate -f text -m ../phpmyadmin/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
+	po4a-translate -f text -o asciidoc -m ../phpmyadmin/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
 	touch $@
 
 .PRECIOUS: addendum/html_head.%
@@ -54,7 +54,7 @@ addendum/html_head-translations.%: po/%.po addendum/head.html addendum/add-html_
 
 .PRECIOUS: addendum/html_comment.%
 addendum/html_comment.%: po/%.po addendum/comment.html addendum/add-html_comment
-	po4a-translate -f text -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
+	po4a-translate -f text -o asciidoc -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
 
 .PRECIOUS: addendum/html_credits.%
 addendum/html_credits.%: po/%.po addendum/credits.html addendum/add-html_credits
@@ -99,7 +99,7 @@ pot/%-html.pot: ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html 
 
 .PRECIOUS: pot/%-txt.pot
 pot/%-txt.pot: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README addendum/comment.html
-	po4a-gettextize -f text ${PO4A_PO_OPTS} \
+	po4a-gettextize -f text -o asciidoc ${PO4A_PO_OPTS} \
 		-m addendum/comment.html \
 		-m  ../phpmyadmin/INSTALL \
 		-m ../phpmyadmin/TODO \
