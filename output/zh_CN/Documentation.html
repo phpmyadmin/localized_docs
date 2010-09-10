@@ -78,8 +78,7 @@ SourceForge.net 的项目页 (英语)</a></li>
 5.2.0 或更高版本。
                 </li>
 		<li>要支持上传 zip 文件，需要 <tt>zip</tt> 扩展。</li>
-        <li>For proper support of multibyte strings (eg. UTF-8, which is currently the
-default), you should install the mbstring and ctype extensions.
+        <li>为了更好的支持多字节字符串 (如 UTF-8 编码的文字, 当前默认编码)，你应该安装 mbstring 和 ctype 扩展。
         </li>
             <li>要支持内联 JPEG 图像的等比缩略图 (&quot;image/jpeg: inline&quot;)，需要 GD2 扩展</li>
             <li>当使用 &quot;cookie&quot; <a href="#authentication_modes">认证</a>时，我们强烈建议大部分用户使用
@@ -88,9 +87,8 @@ default), you should install the mbstring and ctype extensions.
                 </li>
                 <li>要支持上传进度条，参见 <a href="#faq2_9"> <abbr title="常见问题 (Frequently Asked
 Questions)">FAQ</abbr> 2.9</a>。</li>
-                <li>To support BLOB streaming, see PHP and MySQL requirements in <a
-href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
-6.25</a>.</li>
+                <li>要支持 BLOB 流，参见 <a href="#faq6_25"> <abbr title="常见问题 (Frequently Asked
+Questions)">FAQ</abbr> 6.25</a> 中所述的 PHP 和 MySQL 需求。</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 或更高版本 (<a href="#faq1_17">查看详细说明</a>);</li>
@@ -107,8 +105,8 @@ href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
 
 <h3>目前 phpMyAdmin 具有的功能有:</h3>
 
-<ul><li>browse and drop databases, tables, views, columns and indexes</li>
-    <li>create, copy, drop, rename and alter databases, tables, columns and indexes</li>
+<ul><li>浏览、删除数据库、数据表、视图、字段和索引</li>
+    <li>创建、复制、删除、改名以及修改数据库、数据表、字段和索引</li>
     <li>用服务器中设置好的计划维护服务器、数据库、数据表</li>
     <li>运行、编辑一条或多条任意 <abbr title="结构化查询语言 (structured query language)">SQL</abbr>
 语句，并加入书签</li>
@@ -141,7 +139,7 @@ Language)">SQL</abbr> 文件中导入数据和 MySQL 结构</li>
 Questions)">FAQ</abbr> 3.6)</a></li>
     <li>支持改进的 MySQL 扩展 mysqli <a href="#faq1_17"> (参见 <abbr title="常见问题 (Frequently
 Asked Questions)">FAQ</abbr> 1.17)</a></li>
-    <li>communicate in <a href="./translators.html">58 different languages</a>
+    <li>支持 <a href="./translators.html">58 种不同的语言</a>
         </li>
     <li>同步当前或远程服务器上的任意两个数据库 <a href="#faq9_1">(参见 <abbr title="常见问题 (Frequently
 Asked Questions)">FAQ</abbr> 9.1)</a>
@@ -166,7 +164,7 @@ title="逗号分隔型取值 (comma separated values)">CSV</abbr> 时可压缩�
 
 <ol><li><a href="#quick_install">快速安装</a></li>
     <li><a href="#setup_script">使用安装脚本</a></li>
-    <li><a href="#linked-tables">phpMyAdmin configuration storage</a></li>
+    <li><a href="#linked-tables">phpMyAdmin 高级功能</a></li>
     <li><a href="#upgrading">从旧版本升级</a></li>
     <li><a href="#authentication_modes">使用认证</a></li>
 </ol>
@@ -272,23 +270,21 @@ Apache 中你可以通过 .htaccess 文件设置，其他网站服务器请自�
     </li>
 </ol>
 
-<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
+<h3 id="linked-tables">phpMyAdmin 高级功能</h3>
 
-<p> For a whole set of new features (bookmarks, comments, <abbr
-title="structured query language">SQL</abbr>-history, tracking mechanism,
-<abbr title="Portable Document Format">PDF</abbr>-generation, column
-contents transformation, etc.) you need to create a set of special
-tables. Those tables can be located in your own database, or in a central
-database for a multi-user installation (this database would then be accessed
-by the controluser, so no other user should have rights to it).</p>
+<p> 若要使用一些高级功能 (如: 书签、注释、<abbr title="结构化查询语言 (structured query
+language)">SQL</abbr> 查询历史、结构追踪、生成 <abbr title="便携式文档格式 (Portable Document
+Format)">PDF</abbr>
+、内容转换等)，你需要创建一些特殊的数据表。这些表可以放在你自己的数据库里，也可以在一个多用户的服务器上创建一个独立的数据库
+(这个数据库将通过其对应的帐号访问，所以不应该给其他用户访问这个数据库的权限)。</p>
 
 <p> 你可以在 <tt>./scripts/</tt> 目录下找到 <i>create_tables.sql</i> 文件 (如果你使用的是 Windows
 服务器，请特别注意在 <a href="#faq1_23"> <abbr title="常见问题 (Frequently Asked
 Questions)">FAQ</abbr> 1.23</a> 中所提到的问题)。</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./scripts/create_tables.sql</i>.</p>
+<p> 如果你以前就使用过该功能并升级过 MySQL 到 4.1.2 或更高版本，请使用
+<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> 然后通过导入
+<i>./scripts/create_tables.sql</i> 来创建新的数据表。</p>
 
 <p> 你可以使用 phpMyAdmin 来创建这些数据表。但请注意，你可能需要特殊 (管理员)
 权限来创建数据库和数据表，而且可能还需要根据实际所使用的数据修改这个脚本中数据库的名字。</p>
@@ -307,10 +303,8 @@ href="#authentication_modes">使用认证</a> 一节)。</p>
 <p> <strong>请勿</strong>复制 <tt>libraries/config.default.php</tt> 为
 <tt>config.inc.php</tt> 因为默认配置是仅对当前版本有效的。</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the SQL script found in
-<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> 如果你把 MySQL 服务器从 4.1.2 之前的版本升级到了 5.x 或更高版本，并且使用 phpMyAdmin 高级功能，你还要运行 SQL 脚本
+<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> 。</p>
 
 <h3 id="authentication_modes">使用认证</h3>
 
@@ -328,8 +322,7 @@ Protocol)">HTTP</abbr> 或 cookie 认证，用户名和密码也不会被保存�
         不论如何，如果你不使用 HTTPS 协议，密码将总是以明文传输。<br />
         当使用 cookie 认证时，密码将经过 blowfish 算法加密并保存在一个临时 cookie 中。</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<tt>--skip-show-database</tt>.<br /><br />
+    <li id="pmausr">注意: 本节仅适用于运行在 <tt>--skip-show-database</tt> 模式下的 MySQL 服务器。<br /><br />
 
         当使用 '<abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>' 和
 'cookie' 认证时，phpMyAdmin 需要一个在 <i>`mysql`.`user` (除 `Password`
@@ -365,8 +358,7 @@ GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (this of course requires that your <a href="#linked-tables">phpMyAdmin
-configuration storage</a> be set up).  
+        (需要设置好 <a href="#linked-tables">phpMyAdmin 高级功能</a>)。  
     <br /></li>
 
     <li>每一个<i>真实的</i>用户应在特定的数据库上具有一定的权限。除非你很明白这些权限的作用
@@ -563,12 +555,10 @@ class="configrule">$cfg['Servers'][$i]['host']</a> 设为 &quot;127.0.0.1&quot;
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 字符串
     </dt>
-    <dd>This special account is used for 2 distinct purposes: to make possible all
-relational features (see <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
-server running with <tt>--skip-show-database</tt>, to enable a multi-user
-installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
-cookie authentication mode).<br /><br />
+    <dd>这个特殊的帐号有两种不同的用途: 1、为 phpMyAdmin 高级功能提供支持 (参见 <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>)。2、在运行于
+<tt>--skip-show-database</tt> 模式的 MySQL 服务器上使用多用户安装提供支持 (<abbr
+title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 或 cookie 认证)。<br /><br />
 
         当使用 <abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 或 cookie
 认证时 (自 2.2.1 起也包括 'config' 认证)，你需要提供一个在 <i>mysql.user (除了
@@ -668,7 +658,7 @@ array('要置顶的数据库1', '要置顶的数据库2', '*');</tt> 即可，ph
         例如，要隐藏所有以字母 &#34;a&#34; 开头的数据库，用<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
         要隐藏数据库 &#34;数据库1&#34; 和 &#34;数据库2&#34; ，用 <br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^(数据库1|数据库2)$';// 译者注: 上例中也可使用中文，需注意配置文件编码应为 UTF-8</pre>
         可以在 PHP 手册的 <a
 href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">Perl
 兼容正则表达式的语法 (外链，英语)</a> 一节中找到更多关于正则表达式的信息。
@@ -681,19 +671,15 @@ href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">Perl
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> 字符串
     </dt>
-    <dd>The name of the database containing the phpMyAdmin configuration storage.
+    <dd>包含 phpMyAdmin 高级功能数据的数据库名。
         <br /><br />
 
-        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
-section in this document to see the benefits of this feature, and for a
-quick way of creating this database and the needed tables.
+        参见 <a href="#linked-tables">phpMyAdmin 高级功能</a>一节了解其好处以及如何快速创建该数据库和需要的数据表。
         <br /><br />
 
-        If you are the only user of this phpMyAdmin installation, you can use your
-current database to store those special tables; in this case, just put your
-current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
-multi-user installation, set this parameter to the name of your central
-database containing the phpMyAdmin configuration storage.</dd>
+        如果此 phpMyAdmin 只有你自己使用，你可以用你当前的数据库来保存这些特殊的数据表，这种情况下，你可以在
+<tt>$cfg['Servers'][$i]['pmadb']</tt> 中填写当前数据库的名字。若此 phpMyAdmin
+作为多用户使用，请设为包含 phpMyAdmin 高级功能数据表的专用数据库。</dd>
 
     <dt id="bookmark">
         <span
@@ -703,7 +689,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
     <dd>自 2.2.0 起 phpMyAdmin 允许用户将查询加入书签。你可以将经常要执行的语句加入书签。<br /><br />
 
         要启用此功能:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
             <li>在 <tt>$cfg['Servers'][$i]['bookmarktable']</tt> 中设置要使用的数据表名</li>
         </ul>
     </dd>
@@ -711,9 +697,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
     <dt id="relation">
         <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span> 字符串
     </dt>
-    <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
-column is a key in another table (a foreign key). phpMyAdmin currently uses
-this to
+    <dd>自 2.2.4 起你可以在 'relation' 表的支持下定义一张表中的一个字段与另一张表的关系 (外键)。目前 phpMyAdmin 用它来
         <ul><li>使外键数据可点击，浏览主表时可通过点击数据值转到外表;</li>
             <li>display in an optional tool-tip the &quot;display column&quot; when browsing
 the master table, if you move the mouse to a column containing a foreign key
@@ -737,7 +721,7 @@ Questions)">FAQ</abbr> 6.6</a>)</li>
 
         要启用此功能:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
             <li>在 <tt>$cfg['Servers'][$i]['relation']</tt> 中设置要使用的数据表名</li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
 want to use this feature, click &quot;Structure/Relation view/&quot; and
@@ -745,9 +729,8 @@ choose foreign columns.
                 </li>
         </ul>
 
-        Please note that in the current version, <tt>master_db</tt> must be the same
-as <tt>foreign_db</tt>. Those columns have been put in future development of
-the cross-db relations.
+        请注意在当前版本中 <tt>master_db</tt> 必须和 <tt>foreign_db</tt>
+一致。这两个字段是为后期跨数据库关系开发预留的。
     </dd>
 
     <dt id="table_info">
@@ -759,14 +742,12 @@ the cross-db relations.
 column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         这张表的名字将被保存在此变量中。要启用此功能:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
-'pma_table_info')</li>
-            <li>then for each table where you want to use this feature, click
-&quot;Structure/Relation view/Choose column to display&quot; to choose the
-column.</li>
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
+            <li>在 <tt>$cfg['Servers'][$i]['table_info']</tt> 中设置要使用的数据表名
+(如：'pma_table_info')</li>
+            <li>对每一张你要使用此功能的数据表，点击&quot;结构/关系查看/选择要显示的字段&quot;设置好显示的字段。</li>
         </ul>
-        Usage tip: <a href="#faqdisplay">Display column</a>.
+        使用技巧: <a href="#faqdisplay">显示字段</a>。
     </dd>
     <dt id="table_coords">
         <span
@@ -783,7 +764,7 @@ Format)">PDF</abbr> 大纲输出中的坐标)。<br /><br />
 
         要启用此功能:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
             <li>在 <tt>$cfg['Servers'][$i]['table_coords']</tt> 和
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt> 中设置要使用的数据表名</li>
         </ul>
@@ -815,9 +796,9 @@ system, your column_info table has to have the three new columns 'mimetype',
         <br /><br />
 
         要启用此功能:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
-'pma_column_info')</li>
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
+            <li>在 <tt>$cfg['Servers'][$i]['column_info']</tt> 中设置要使用的数据表名
+(如：'pma_column_info')</li>
             <li>要从 2.5.0 之前的 Column_comments 表升级可执行:
 
                 <pre>
@@ -848,9 +829,8 @@ class="configrule">$cfg['QueryHistoryMax']</a>
 
         要启用此功能:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
-(e.g. 'pma_history')
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
+            <li>在 <tt>$cfg['Servers'][$i]['history']</tt> 中设置要使用的数据表名 (如：'pma_history')
                 </li>
         </ul>
     </dd>
@@ -876,16 +856,15 @@ class="configrule">$cfg['QueryHistoryMax']</a>
         要启用此功能:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
-(e.g. 'pma_tracking')</li>
+            <li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
+            <li>在 <tt>$cfg['Servers'][$i]['tracking']</tt> 中设置要使用的数据表名 (如：'pma_tracking')</li>
         </ul>
     </dd>
 
     <dt id="tracking2">
         <span
 id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_version_auto_create']</span>
-boolean
+布尔
     </dt>
     <dd>
         设置追踪系统是否自动为数据表和视图创建版本。默认为 false 。
@@ -919,11 +898,10 @@ CREATE DATABASE,ALTER DATABASE,DROP DATABASE</pre>
     <dt id="tracking4">
         <span
 id="cfg_Servers_tracking_add_drop_view">$cfg['Servers'][$i]['tracking_add_drop_view']</span>
-boolean
+布尔
     </dt>
     <dd>
-        Whether a DROP VIEW IF EXISTS statement will be added as first line to the
-log when creating a view. Default value is true.
+        设置当记录视图创建时，是否在日志首行加上 DROP VIEW IF EXISTS 语句。默认为 true 。
         <br/><br/>       
     </dd>
 
@@ -931,28 +909,26 @@ log when creating a view. Default value is true.
     <dt id="tracking5">
         <span
 id="cfg_Servers_tracking_add_drop_table">$cfg['Servers'][$i]['tracking_add_drop_table']</span>
-boolean
+布尔
     </dt>
     <dd>
-        Whether a DROP TABLE IF EXISTS statement will be added as first line to the
-log when creating a table. Default value is true.
+        设置当记录数据表创建时，是否在日志首行加上 DROP TABLE IF EXISTS 语句。默认为 true 。
         <br/><br/>
     </dd>
 
     <dt id="tracking6">
         <span
 id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_drop_database']</span>
-boolean
+布尔
     </dt>
     <dd>
-        Whether a DROP DATABASE IF EXISTS statement will be added as first line to
-the log when creating a database. Default value is true.
+        设置当记录数据库创建时，是否在日志首行加上 DROP DATABASE IF EXISTS 语句。默认为 true 。
         <br/><br/>
     </dd>
 
     <dt id="userconfig">
         <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
-string
+字符串
     </dt>
     <dd>
         Since release 3.4.x phpMyAdmin allows users to set most preferences by
@@ -967,8 +943,8 @@ browser's local storage, or, it is is unavailable, until the end of session.
         要启用此功能:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+            <li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
+            <li>在 <tt>$cfg['Servers'][$i]['userconfig']</tt> 中设置要使用的数据表名</li>
         </ul>
     </dd>
 
@@ -982,9 +958,9 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 
         要启用此功能:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
-(e.g. 'pma_designer_coords')
+        <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
+            <li>在 <tt>$cfg['Servers'][$i]['designer_coords']</tt> 中设置要使用的数据表名
+(如：'pma_designer_coords')
                 </li>
         </ul>
     </dd>
@@ -1016,8 +992,7 @@ id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
 字符串
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authorization is disabled.<br /><br />
+    <dd>若不指定规则顺序，<abbr title="互联网协议 (Internet Protocol)">IP</abbr> 认证将不可用。<br /><br />
 
         若将规则顺序设为 <tt>'deny,allow'</tt>，系统将首先应用所有的允许 (allow) 规则，然后再应用禁止规则 (deny)
 。默认允许访问。任何没有被 Deny (禁止) 命令匹配的客户端或者被 Allow (允许) 命令匹配的客户端将被允许访问服务器。 <br /><br />
@@ -1134,7 +1109,7 @@ Protocol)">HTTP</abbr> 传输。<br />
     <dd>保存会话数据的路径 (<a href="http://php.net/session_save_path">PHP 参数
 session_save_path (外链，英语)</a>)。</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] 字符串 [单位: 字节]</dt>
     <dd>设置脚本运行的可使用的内存。若设为 0 则无限制。<br />
         本设置用于导入/导出转储文件以及 phpMyAdmin 的其他功能，所以显然不要设置一个很小的值。若 PHP 运行于安全模式则无效。<br />
         同样可以设置为 php.ini 中可以识别的字符串，如 '16M' 。请确保没有丢掉后缀 (16 表示 16 字节！)</dd>
@@ -3509,89 +3484,68 @@ clause is generated when I browse a table.</a></h4>
 <tt>On</tt> on the server. It seems to be a browser-specific problem;
 meanwhile use the <tt>cookie</tt> authentication mode.</p>
 
-<h3 id="faqusing">Using phpMyAdmin</h3>
+<h3 id="faqusing">使用 phpMyAdmin</h3>
 
 <h4 id="faq6_1">
-    <a href="#faq6_1">6.1 I can't insert new rows into a table / I can't create
-a table - MySQL brings up a <abbr title="structured query
-language">SQL</abbr>-error.  </a></h4>
+    <a href="#faq6_1">6.1 我插入不了数据到表中 / 我创建不了数据表 - MySQL 提示 <abbr title="结构化查询语言
+(structured query language)">SQL</abbr> 错误。  </a></h4>
 <p>
-    Examine the <abbr title="structured query language">SQL</abbr> error with
-care. Often the problem is caused by specifying a wrong column-type.<br />
-    Common errors include:
+    仔细检查 <abbr title="结构化查询语言 (structured query language)">SQL</abbr>
+错误。这个问题通常是因为指定了错误的字段类型。<br />
+    常见错误有:
 </p>
 <ul>
-    <li>Using <tt>VARCHAR</tt> without a size argument</li>
-    <li>Using <tt>TEXT</tt> or <tt>BLOB</tt> with a size argument</li>
+    <li>不给 <tt>VARCHAR</tt> 设置大小参数</li>
+    <li>给 <tt>TEXT</tt> 或 <tt>BLOB</tt> 设置大小参数</li>
 </ul>
 <p>
-    Also, look at the syntax chapter in the MySQL manual to confirm that your
-syntax is correct.
+    同时，请参考 MySQL 手册中语法一章确定你的语法都正确。
 </p>
 
 <h4 id="faq6_2">
-    <a href="#faq6_2">6.2 When I create a table, I set an index for two columns
-and phpMyAdmin generates only one index with those two columns.  </a></h4>
+    <a href="#faq6_2">6.2 建表时，我给两个字段设置了索引，但 phpMyAdmin 却创建了一个包含这两个字段的索引。  </a></h4>
 <p>
-    This is the way to create a multi-columns index. If you want two indexes,
-create the first one when creating the table, save, then display the table
-properties and click the Index link to create the other index.
+    这是一种创建多字段索引的方法。如果你需要两个索引，在建表时先设置一个，保存，然后显示数据表属性并点击索引链接来创建另一个索引。
 </p>
 
 <h4 id="faq6_3">
-    <a href="#faq6_3">6.3 How can I insert a null value into my table?</a></h4>
+    <a href="#faq6_3">6.3 怎样向我的表中插入一个空 (null) 值？</a></h4>
 <p>
-    Since version 2.2.3, you have a checkbox for each column that can be null.
-Before 2.2.3, you had to enter &quot;null&quot;, without the quotes, as the
-column's value. Since version 2.5.5, you have to use the checkbox to get a
-real NULL value, so if you enter &quot;NULL&quot; this means you want a
-literal NULL in the column, and not a NULL value (this works in PHP4).
+    自 2.2.3 版起，每个字段都有一个复选框来设置字段是否为空。  2.2.3 之前，你只能输入
+&quot;null&quot;，不包括引号来作为字段的值。自 2.5.5 版起，你可以使用复选框来获得一个真正的空 (NULL) 值，如果你输入
+&quot;NULL&quot; 将表示文字 NULL，而不是空 (NULL) 值 (对 PHP4 同样有效)。
 </p>
 
 <h4 id="faq6_4">
-    <a href="#faq6_4">6.4 How can I backup my database or table?</a></h4>
+    <a href="#faq6_4">6.4 怎样备份我的数据库或数据表？</a></h4>
 
-<p> Click on a database or table name in the left frame, the properties will be
-displayed.  Then on the menu, click &quot;Export&quot;, you can dump the
-structure, the data, or both. This will generate standard <abbr
-title="structured query language">SQL</abbr> statements that can be used to
-recreate your database/table.
+<p> 在左侧框架中点击数据库或表名，将会显示它们的属性。  然后在菜单上点击 &quot;导出&quot;，你可以转储结构和/或数据。该功能将生成标准
+<abbr title="结构化查询语言 (structured query language)">SQL</abbr>
+语句以便重新创建你的数据库/表。
     <br /><br />
-    You will need to choose &quot;Save as file&quot;, so that phpMyAdmin can
-transmit the resulting dump to your station. Depending on your PHP
-configuration, you will see options to compress the dump. See also the <a
-href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
-configuration variable.<br /><br />
+    若选择 &quot;保存为文件&quot;，phpMyAdmin 即可将转储结果直接提供下载。取决于 PHP 的配置，你还能看见压缩选项。同时请参见
+<a href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
+配置变量。<br /><br />
 
-    For additional help on this subject, look for the word &quot;dump&quot; in
-this document.</p>
+    要获得更多关于该主题的帮助，请在本文档中查找 &quot;转储&quot; 。</p>
 
 <h4 id="faq6_5">
-    <a href="#faq6_5">6.5 How can I restore (upload) my database or table using
-a dump? How can I run a &quot;.sql&quot; file? </a></h4>
+    <a href="#faq6_5">6.5 怎样通过转储恢复 (上传) 我的数据库或表？怎样运行一个 &quot;.sql&quot; 文件？</a></h4>
 
-<p> Click on a database name in the left frame, the properties will be
-displayed. Select &quot;Import&quot; from the list of tabs in the
-right&#8211;hand frame (or &quot;<abbr title="structured query
-language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
-2.7.0). In the &quot;Location of the text file&quot; section, type in the
-path to your dump filename, or use the Browse button. Then click Go.
+<p> 在左侧框架中点击数据库或表名，将会显示它们的属性。在右手边框架中的标签列表中选择 &quot;导入&quot; (或 &quot;<abbr
+title="结构化查询语言 (structured query language)">SQL</abbr>&quot; 如果你的 phpMyAdmin
+版本低于 2.7.0)。在 &quot;文本文件的位置&quot; 中输入你的转储文件名，或使用浏览按钮。然后点击执行。
     <br /><br />
-    With version 2.7.0, the import engine has been re&#8211;written, if possible
-it is suggested that you upgrade to take advantage of the new features.
+    2.7.0 版的导入功能已经重写了，建议尽可能升级以使用新功能。
     <br /><br />
-    For additional help on this subject, look for the word &quot;upload&quot; in
-this document.
+    要获得更多关于该主题的帮助，请在本文档中查找 &quot;上传&quot; 。
 </p>
 
 <h4 id="faq6_6">
-    <a href="#faq6_6">6.6 How can I use the relation table in
-Query-by-example?</a></h4>
+    <a href="#faq6_6">6.6 怎样在依例查询 (Query-by-example) 中使用关系表？</a></h4>
 
-<p> Here is an example with the tables persons, towns and countries, all located
-in the database mydb. If you don't have a <tt>pma_relation</tt> table,
-create it as explained in the configuration section. Then create the example
-tables:</p>
+<p> 下面用数据库 mydb 中的数据表 persons、towns 和 countries 来举例。如果你没有 <tt>pma_relation</tt>
+表，请先根据设置一节中的说明创建。然后创建示范表:</p>
 
 <pre>
 CREATE TABLE REL_countries (
@@ -3623,30 +3577,26 @@ INSERT INTO REL_towns VALUES ('S', 'Sherbrooke');
 INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 </pre>
 
-<p> To setup appropriate links and display information:</p>
+<p> 设置对应连接并显示信息:</p>
 
-<ul><li>on table &quot;REL_persons&quot; click Structure, then Relation view</li>
-    <li>in Links, for &quot;town_code&quot; choose &quot;REL_towns-&gt;code&quot;</li>
-    <li>in Links, for &quot;country_code&quot; choose
-&quot;REL_countries-&gt;country_code&quot;</li>
-    <li>on table &quot;REL_towns&quot; click Structure, then Relation view</li>
-    <li>in &quot;Choose column to display&quot;, choose &quot;description&quot;</li>
-    <li>repeat the two previous steps for table &quot;REL_countries&quot;</li>
+<ul><li>在表 &quot;REL_persons&quot; 上点击结构、关系查看</li>
+    <li>在关系中，&quot;town_code&quot; 选择 &quot;REL_towns-&gt;code&quot;</li>
+    <li>在关系中，&quot;country_code&quot; 选择 &quot;REL_countries-&gt;country_code&quot;</li>
+    <li>在表 &quot;REL_towns&quot; 上点击结构、关系查看</li>
+    <li>在 &quot;选择要显示的字段&quot; 上选择 &quot;description&quot;</li>
+    <li>在表 &quot;REL_countries&quot; 中重复以上两步</li>
 </ul>
 
-<p> Then test like this:</p>
+<p> 测试步骤如下:</p>
 
-<ul><li>Click on your db name in the left frame</li>
-    <li>Choose &quot;Query&quot;</li>
-    <li>Use tables: persons, towns, countries</li>
-    <li>Click &quot;Update query&quot;</li>
-    <li>In the columns row, choose persons.person_name and click the
-&quot;Show&quot; tickbox </li>
-    <li>Do the same for towns.description and countries.descriptions in the other 2
-columns</li>
-    <li>Click &quot;Update query&quot; and you will see in the query box that the
-correct joins have been generated</li>
-    <li>Click &quot;Submit query&quot;</li>
+<ul><li>在左侧框架中点击你的数据库名</li>
+    <li>选择 &quot;查询&quot;</li>
+    <li>使用表: persons、towns、countries</li>
+    <li>点击 &quot;更新查询&quot;</li>
+    <li>在字段行中，选择 persons.person_name 并选中 &quot;显示&quot; 复选框 </li>
+    <li>为 towns.description 和 countries.descriptions 在另两列中重复上一步</li>
+    <li>点击 &quot;更新查询&quot; 你就能在查询框中看到已生成的 join 语句</li>
+    <li>点击 &quot;提交查询&quot;</li>
 </ul>
 
 <h4 id="faqdisplay">
@@ -4078,195 +4028,147 @@ special format for chart script to understand it. Currently supported
 formats can be found in the <a
 href="http://wiki.phpmyadmin.net/pma/Devel:Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
 
-<h3 id="faqproject">phpMyAdmin project</h3>
+<h3 id="faqproject">phpMyAdmin 项目</h3>
 
 <h4 id="faq7_1">
-    <a href="#faq7_1">7.1 I have found a bug. How do I inform developers?</a></h4>
+    <a href="#faq7_1">7.1 我发现了一个缺陷。怎样向开发者报告？</a></h4>
 
-<p> Our Bug Tracker is located at <a
+<p> 我们的缺陷追踪器位于 <a
 href="http://sf.net/projects/phpmyadmin/">http://sf.net/projects/phpmyadmin/</a>
-under the Bugs section.<br /><br />
+的 Bugs 功能块。<br /><br />
 
-    But please first discuss your bug with other users:<br />
+    但请先和其他用户讨论你发现的问题:<br />
     <a href="https://sourceforge.net/projects/phpmyadmin/forums">
-https://sourceforge.net/projects/phpmyadmin/forums</a>.
+https://sourceforge.net/projects/phpmyadmin/forums</a>。
 </p>
 
 <h4 id="faq7_2">
-    <a href="#faq7_2">7.2 I want to translate the messages to a new language or
-upgrade an existing language, where do I start?</a></h4>
+    <a href="#faq7_2">7.2 怎样开始翻译一个新的语言或更新现有的语言？</a></h4>
 
-<p> Always use latest Git version of the po file to translate. You can
-optionally translate online at our <a
-href="http://l10n.cihar.com/">translation server</a> where you can also get
-the latest po files and merge them with your translations. For creating a
-new translation simply use <code>po/phpmyadmin.pot</code> and generate
-<code>po/LANG_CODE.po</code> for your language (you can use <code>msginit -i
-po/phpmyadmin.pot -l LANG_CODE --no-translator -o po/LANG_CODE.po</code> to
-do this) or ask on the mailing list to add the translation to the web
-interface. More details are available on <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">our
-wiki</a>.
+<p> 永远使用最新的 Git 版本的 po 文件来翻译。你也可以选择在我们的<a
+href="http://l10n.cihar.com/">翻译服务器</a>在线翻译，也可在此获得最新的 po 文件并与你的翻译合并。使用
+<code>po/phpmyadmin.pot</code> 生成 <code>po/语言代码.po</code> 即可为你的语言创建新的翻译
+(可以使用 <code>msginit -i po/phpmyadmin.pot -l 语言代码 --no-translator -o
+po/语言代码.po</code>) 或通过邮件列表寻求在 web 界面上添加翻译。更多详细信息请见<a
+href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">我们的维基</a>。
 </p>
 <p>
-    Please note that we try not to use HTML entities like &amp;eacute; in the
-translations, since we define the right character set in the file.  With
-HTML entities, the text on JavaScript messages would not display correctly.
-However there are some entities that need to be there: quotes, non-breakable
-spaces, ampersands, less than, greater than.
+    请注意自从我们对文件定义了正确的编码后，我们尝试不在翻译中使用诸如 &amp;eacute; 的 HTML 实体。  若使用 HTML
+实体，JavaScript 消息中的文本将可能不能正确显示。  不论怎样有些实体还是必需的: 引号、不可分空格、&amp; 符号、小于号、大于号。
 </p>
 <p>
-    You can then put your translations, as a zip file to avoid losing special
-characters, on the sourceforge.net <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker.</a>
+    然后你可以将你的翻译，或者打包压缩成 zip 文件来避免丢失特殊字符，放在 sourceforge.net 的<a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻译追踪器</a>上。
 </p>
 <p>
-    It would be a good idea to subscribe to the <a
-href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmyadmin-translators</a>
-mailing list, because this is where we ask for translations of new messages.
+    你还可以订阅 <a
+href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpMyAdmin
+翻译</a> 邮件列表，当我们有新文本需要翻译时就会在那发出通知。
 </p>
 
 <p>
-    Documentation is being translated using po4a and gettext (see <a
-href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
-existing translations). To start, checkout <a
-href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>
-from Git, or just go to the <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
-translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
-it. If you prefer to directly translate the po files, please put updated
-ones into our <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker</a>. 
+    文档是通过 po4a 和 gettext 翻译的 (参见<a
+href="http://www.phpmyadmin.net/home_page/docs.php">文档</a>查看现有的翻译) 。要开始翻译，先从
+Git 检出 <a
+href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>，或者直接到<a
+href="https://l10n.cihar.com/projects/pmadoc/">翻译服务器</a>在线翻译。如果没有找到你的语言，请联系
+<a href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>;
+他会加上。如果你更喜欢直接翻译 po 文件，请将翻译好的文件放在我们的<a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻译追踪器</a>上。 
 </p>
 
 <h4 id="faq7_3">
-    <a href="#faq7_3">7.3 I would like to help out with the development of
-phpMyAdmin. How should I proceed?</a></h4>
+    <a href="#faq7_3">7.3 怎样帮助开发 phpMyAdmin ？</a></h4>
 
-<p> The following method is preferred for new developers:</p>
+<p> 对新开发者推荐以下方式:</p>
 
-<ol><li>fetch the current git repository over anonymous git:<br />
+<ol><li>通过匿名方式获取当前 git 库:<br />
     <tt>git clone
 git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
     </li>
-    <li>add your stuff</li>
-    <li>generate patch with your changes: <tt>git diff &gt; xxx.diff</tt><br />
+    <li>添加你的内容</li>
+    <li>生成你的补丁: <tt>git diff &gt; xxx.diff</tt><br />
     </li>
-    <li>submit your patch via the <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">patch
-tracker of the phpMyAdmin project</a>.
+    <li>通过 <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">phpMyAdmin
+项目的补丁追踪器</a>提交你的补丁。
     </li>
 </ol>
 
-<p>More details on git are available on <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Git">our wiki</a>.</p>
+<p>更多关于 git 的详细信息请见<a
+href="http://wiki.phpmyadmin.net/pma/Devel:Git">我们的维基</a>。</p>
 
-<p> Write access to the repository is granted only to experienced developers who
-have already contributed something useful to phpMyAdmin.<br />
-    Also, have a look at the <a href="#developers">Developers section</a>.</p>
+<p> 库的写入权限仅授予给那些对 phpMyAdmin 作出大量贡献且富有经验的开发者。<br />
+    同时，请看一下<a href="#developers">开发</a>一节。</p>
 
 <h3 id="faqsecurity">安全</h3>
 
 <h4 id="faq8_1">
-    <a href="#faq8_1">8.1 Where can I get information about the security alerts
-issued for phpMyAdmin?</a></h4>
+    <a href="#faq8_1">8.1 哪里可以了获取 phpMyAdmin 的安全公告信息？</a></h4>
 
-<p> Please refer to <a
+<p> 请参见 <a
 href="http://www.phpmyadmin.net/home_page/security.php">http://www.phpmyadmin.net/home_page/security.php</a>
 </p>
 
 <h4 id="faq8_2">
-    <a href="#faq8_2">8.2 How can I protect phpMyAdmin against brute force
-attacks?</a></h4>
+    <a href="#faq8_2">8.2 怎样保护 phpMyAdmin 防止暴力破解？</a></h4>
 
-<p> If you use Apache web server, phpMyAdmin exports information about
-authentication to the Apache environment and it can be used in Apache logs.
-Currently there are two variables available:
+<p> 如果你使用 Apache 服务器，phpMyAdmin 会导出认证信息到 Apache 环境并可被 Apache 日志使用。  目前有两个变量可用:
 </p>
 <dl>
     <dt><code>userID</code></dt>
-    <dd>User name of currently active user (he does not have to be logged in).</dd>
+    <dd>当前活动用户的用户名 (他不一定需要登录)。</dd>
     <dt><code>userStatus</code></dt>
-    <dd>Status of currently active user, one of <code>ok</code> (user is logged in),
-<code>mysql-denied</code> (MySQL denied user login),
-<code>allow-denied</code> (user denied by allow/deny rules),
-<code>root-denied</code> (root is denied in configuration),
-<code>empty-denied</code> (empty password is denied).</dd>
+    <dd>当前活动用户的状态，有 <code>ok</code> (用户已登录)、<code>mysql-denied</code> (MySQL
+拒绝用户登录)、<code>allow-denied</code> (用户被允许/禁止规则禁止)、<code>root-denied</code>
+(root 用户登录在配置文件中被禁止)、<code>empty-denied</code> (禁止空密码登录) 这几种状态。</dd>
 </dl>
 <p>
-    <code>LogFormat</code> directive for Apache can look like following:
+    可以像这样设置 Apache 的 <code>LogFormat</code> 指令:
 </p>
 <pre>
 LogFormat "%h %l %u %t \"%r\" %>s %b \
 \"%{Referer}i\" \"%{User-Agent}i\" %{userID}n %{userStatus}n"   pma_combined
 </pre>
 <p>
-    You can then use any log analyzing tools to detect possible break-in
-attempts.
+    然后你可以使用任何日志分析工具来检测潜在的攻击。
 </p>
 
-<h3 id="faqsynchronization">Synchronization</h3>
+<h3 id="faqsynchronization">同步</h3>
 <h4 id="faq9_1">
-    <a href="#faq9_1">9.1 How can I synchronize two databases/tables in
-phpMyAdmin?</a></h4>
+    <a href="#faq9_1">9.1 怎样在 phpMyAdmin 中同步两个数据库/表？</a></h4>
 
-<p> You can now synchronize databases/tables in phpMyAdmin using the Synchronize
-feature.  It allows you to connect to local as well as remote servers. This
-requires you to enter server host name, username, password, port and the
-name of the database. Therefore you can now synchronize your databases
-placed on the same server or some remote server.
+<p> 你可以使用 phpMyAdmin
+的同步功能同步数据库/表。该功能可以连接到本地或者远程服务器。但需要你输入服务器主机名、用户名、密码、端口和数据库名。然后你就可以在相同或不同的服务器间同步数据库了。
 </p>
 
 <p>
-This feature is helpful for developers who need to replicate their
-database&#8217;s structure as well as data. Moreover, this feature not only
-helps replication but also facilitates the user to keep his/her database in
-sync with another database. Other than the full database, certain tables of
-the databases can also be synchronized.
+该功能对需要复制数据库结构和数据的开发者们是很有帮助的。此外，该功能并不仅限于复制，还能帮助用户保持他们的数据库和另一个数据库同步。除了可以同步整个数据库外，也可以只同步数据库的部分数据表。
 </p>
 
 <p>
-You need to fill in the host name of the server, the username and password
-of an user account already there in MySQL. Port is by default populated with
-3306 (MySQL default port). Then the name of the database should be mentioned
-at the end. All the information other than the port needs to be filled
-explicitly for the source as well as target servers.
+你需要填写服务器的主机名、MySQL 中已存在的用户名和密码。端口默认是 3306 (MySQL
+默认端口)。最后是数据库名。源数据库和目标数据库除了端口外的信息都要填写准确。
 </p>
 
 <p>
-After successfully passing through the authentication phase, the source and
-target database table names will be displayed. It will be a tabular
-representation. 
+在成功通过认证阶段后，将会以表格形式显示出源和目标数据库中的数据表名。 
 </p>
 
 <p>
-On the left, are listed the source database table names. Some of the names
-have a <code>+</code> plus sign preceding them. This shows that these tables
-are only present in source database and they need to be added to the target
-database in order to synchronize the target database. The tables whose names
-are not preceded by a <code>+</code> sign are already present in the target
-database. 
+在左侧会列出源数据库中的表。部分表的名字前会有一个 <code>+</code>
+加号。表示这些表仅在源数据库中存在并且需要在同步到目标数据库时添加到目标数据库。名字前没有 <code>+</code> 加号的表已存在于目标数据库中。 
 </p>
 
 <p>
-On the right, are listed the target database table names. There are few
-table names that have <code>(not present)</code> appended after their
-names. This means that these tables are to be created in target database in
-order to synchronize target database with source database. Some table names
-have a <code>-</code> minus sign preceding them. This shows that these
-tables are only present in target database and they will remain unchanged in
-the target database. The column in the middle shows the difference between
-the source and target corresponding tables.
+在左侧会列出目标数据库中的表。部分表的名字后会有 <code>(未找到)</code>
+字样。表示这些表将在与源数据库同步时添加到目标数据库。部分表的名字前会有一个 <code>-</code>
+减号。表示这些表仅在目标数据库中存在并且不会被修改。位于中间的一列表示源/目标对应表之间的区别。
 </p>
 
 <p>
-The difference is depicted by the red and green buttons with <tt>S</tt> and
-<tt>D</tt> letters, indicating that either Structure or Data are not up to
-date. By clicking on them, they will turn grey, what means that they will be
-synchronized.
+红色 <tt>S</tt> 和绿色 <tt>D</tt> 按钮表示结构 (S) 或数据 (D)
+是否需要更新。当点击按钮时，它们将变成灰色，表示相应表将会被同步。
 </p>
 
 
@@ -4286,29 +4188,27 @@ synchronized.
         此外，我们希望能兼容 XHTML1.0 和 CSS2 并且符合 <a href="http://pear.php.net/"> <abbr
 title="PHP 扩展和应用程序库 (PHP Extension and Application Repository)">PEAR</abbr>
 代码标准</a>。请尽量注意。</li>
-    <li>Please enable showing PHP errors and warnings by the <code><a
+    <li>请通过 <code><a
 href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
-configuration directive.</li>
+指令开启显示 PHP 错误和警告。</li>
     <li>请尽量保持文件命名约定。数据表相关的用 <i>tbl_*.php</i>，数据库相关的用 <i>db_*.php</i>，服务器相关的用
 <i>server_*.php</i> 等。</li>
-    <li>Please use gettext wrappers around all messages (<code>__('Some
-text')</code> or <code>_ngettext()</code> function).  To translate them, you
-need to call <code>scripts/update-po</code> script. To use translated
-messages, call <code>scripts/generate-mo</code>, which generates binary
-files read by Gettext.</li>
+    <li>请使用 gettext 调用所有文本 (<code>__('文本')</code> 或 <code>_ngettext()</code> 函数)。
+若需要翻译，运行 <code>scripts/update-po</code> 脚本。要使用已翻译的文本，运行
+<code>scripts/generate-mo</code>，即可生成 Gettext 所需的二进制文件。</li>
     <li>如果您写一份更新记录，这将会更加有帮助。</li>
     <li id="developersdbg">
         phpMyAdmin 现在已经支持 DBG 扩展 (<a href="http://dd.cron.ru/dbg/">PHP 调试器 DBG
 (外链，英语)</a>) 以便开发者能更好地调试以及测试他们的代码。<br />
         更多信息请参见 <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a> 设置选项。<br />
-        纪念哥伦比亚号航天飞机 (STS-107) 在重新进入地球大气层时爆炸以及纪念为了地球人民牺牲的勇敢的人们。</li>
+        纪念哥伦比亚号航天飞机 (STS-107) 在重新进入地球大气层时爆炸以及为了地球人民牺牲的勇敢的人们。</li>
 </ul>
 
 <h2 id="copyright">版权</h2>
 
 <pre>
-Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
+版权所有 (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
+版权所有 (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
@@ -4316,7 +4216,7 @@ Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [check <a href="#credits">credits</a> for more details]
+                        [更多信息请参见<a href="#credits">鸣谢</a>]
 </pre>
 
 <p>
@@ -4374,115 +4274,115 @@ Repository)">PEAR</abbr> 代码标准以及 XHTML1.0 和 CSS2 规范</li>
 
 <li>Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
 <ul>
-  <li>database maintenance controls</li>
-  <li>table type code</li>
-  <li>Host authentication <abbr title="Internet Protocol">IP</abbr> Allow/Deny</li>
-  <li>DB-based configuration (Not completed)</li>
-  <li><abbr title="structured query language">SQL</abbr> parser and pretty-printer</li>
-  <li><abbr title="structured query language">SQL</abbr> validator</li>
+  <li>数据库维护功能</li>
+  <li>数据表类型代码</li>
+  <li>主机认证 <abbr title="互联网协议 (Internet Protocol)">IP</abbr> 允许/禁止</li>
+  <li>基于数据库的配置 (未完成)</li>
+  <li><abbr title="结构化查询语言 (structured query language)">SQL</abbr> 解析器和语法高亮</li>
+  <li><abbr title="结构化查询语言 (structured query language)">SQL</abbr> 校验器</li>
   <li>许多缺陷修正和改进</li>
 </ul></li>
 
 <li>Armel Fauveau &lt;armel.fauveau_at_globalis-ms.com&gt;
 <ul>
-  <li>bookmarks feature</li>
-  <li>multiple dump feature</li>
-  <li>gzip dump feature</li>
-  <li>zip dump feature</li>
+  <li>书签功能</li>
+  <li>多转储功能</li>
+  <li>gzip 转储功能</li>
+  <li>zip 转储功能</li>
 </ul></li>
 
 <li>Geert Lund &lt;glund_at_silversoft.dk&gt;
 <ul>
-  <li>various fixes</li>
-  <li>moderator of the phpMyAdmin former users forum at phpwizard.net</li>
+  <li>缺陷修正</li>
+  <li>phpMyAdmin 早期在 phpwizard.net 的用户论坛版主</li>
 </ul></li>
 
 <li>Korakot Chaovavanich &lt;korakot_at_iname.com&gt;
 <ul>
-  <li>&quot;insert as new row&quot; feature</li>
+  <li>&quot;以新行插入&quot; 功能</li>
 </ul></li>
 
 <li>Pete Kelly &lt;webmaster_at_trafficg.com&gt;
 <ul>
-  <li>rewrote and fix dump code</li>
-  <li>bugfixes</li>
+  <li>重写并修复转储代码</li>
+  <li>缺陷修正</li>
 </ul></li>
 
 <li>Steve Alberty &lt;alberty_at_neptunlabs.de&gt;
 <ul>
-  <li>rewrote dump code for PHP4</li>
-  <li>mySQL table statistics</li>
-  <li>bugfixes</li>
+  <li>重写 PHP4 的转储代码</li>
+  <li>MySQL 数据表统计</li>
+  <li>缺陷修正</li>
 </ul></li>
 
 <li>Benjamin Gandon &lt;gandon_at_isia.cma.fr&gt;
 <ul>
-  <li>main author of the version 2.1.0.1</li>
-  <li>bugfixes</li>
+  <li>2.1.0.1 版的主要作者</li>
+  <li>缺陷修正</li>
 </ul></li>
 
 <li>Alexander M. Turek &lt;me_at_derrabus.de&gt;
 <ul>
-  <li>MySQL 4.0 / 4.1 / 5.0 compatibility</li>
-  <li>abstract database interface (PMA_DBI) with MySQLi support</li>
-  <li>privileges administration</li>
-  <li><abbr title="Extensible Markup Language">XML</abbr> exports</li>
-  <li>various features and fixes</li>
-  <li>German language file updates</li>
+  <li>MySQL 4.0 / 4.1 / 5.0 兼容</li>
+  <li>抽象数据库接口 (PMA_DBI) 并支持 MySQLi</li>
+  <li>权限管理</li>
+  <li>导出为 <abbr title="可扩展标记语言 (Extensible Markup Language)">XML</abbr></li>
+  <li>许多缺陷修正和改进</li>
+  <li>德语语言文件更新</li>
 </ul></li>
 
 <li>Mike Beck &lt;mike.beck_at_web.de&gt;
 <ul>
-  <li>automatic joins in QBE</li>
+  <li>自动加入依例查询 (QBE)</li>
   <li>links column in printview</li>
   <li>关系查看</li>
 </ul></li>
 
 <li>Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
 <ul>
-  <li>enhanced index creation/display feature</li>
-  <li>feature to use a different charset for HTML than for MySQL</li>
-  <li>improvements of export feature</li>
-  <li>various features and fixes</li>
-  <li>Czech language file updates</li>
+  <li>增强索引创建/显示功能</li>
+  <li>让 HTML 与 MySQL 使用不同的字符集</li>
+  <li>改进导出功能</li>
+  <li>许多缺陷修正和改进</li>
+  <li>捷克语语言文件更新</li>
 </ul></li>
 
 <li>Christophe Gesch&eacute; from the &quot;MySQL Form Generator for
 PHPMyAdmin&quot; (http://sf.net/projects/phpmysqlformgen/)
 <ul>
-  <li>suggested the patch for multiple table printviews</li>
+  <li>多表打印预览补丁</li>
 </ul></li>
 
 <li>Garvin Hicking &lt;me_at_supergarv.de&gt;
 <ul>
-  <li>built the patch for vertical display of table rows</li>
-  <li>built the Javascript based Query window + <abbr title="structured query
-language">SQL</abbr> history</li>
-  <li>Improvement of column/db comments</li>
-  <li>(MIME)-Transformations for columns</li>
-  <li>Use custom alias names for Databases in left frame</li>
-  <li>hierarchical/nested table display</li>
+  <li>垂直显示记录补丁</li>
+  <li>基于 Javascript 的查询窗口 + <abbr title="结构化查询语言 (structured query
+language)">SQL</abbr> 历史功能</li>
+  <li>改进字段/数据库注释</li>
+  <li>类型转换</li>
+  <li>在左侧框架中使用自定义的数据库别名</li>
+  <li>数据表分层/分组显示</li>
   <li><abbr title="Portable Document Format">PDF</abbr>-scratchboard for
 WYSIWYG-distribution of <abbr title="Portable Document Format">PDF</abbr>
 relations</li>
-  <li>new icon sets</li>
-  <li>vertical display of column properties page</li>
-  <li>some bugfixes, features, support, German language additions</li>
+  <li>新图标集</li>
+  <li>字段属性页的垂直显示模式</li>
+  <li>一些缺陷修正、功能、支持、德语语言增加</li>
 </ul></li>
 
 <li>Yukihiro Kawada &lt;kawada_at_den.fujifilm.co.jp&gt;
 <ul>
-  <li>japanese kanji encoding conversion feature</li>
+  <li>日本汉字编码转换功能</li>
 </ul></li>
 
-<li>Piotr Roszatycki &lt;d3xter_at_users.sourceforge.net&gt; and Dan Wilson
+<li>Piotr Roszatycki &lt;d3xter_at_users.sourceforge.net&gt; 和 Dan Wilson
 <ul>
-  <li>the Cookie authentication mode</li>
+  <li>Cookie 认证功能</li>
 </ul></li>
 
 <li>Axel Sander &lt;n8falke_at_users.sourceforge.net&gt;
 <ul>
-  <li>table relation-links feature</li>
+  <li>数据表关系连接功能</li>
 </ul></li>
 
 <li>Maxime Delorme &lt;delorme.maxime_at_free.fr&gt;
@@ -4496,29 +4396,29 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Olof Edlund &lt;olof.edlund_at_upright.se&gt;
 <ul>
-  <li><abbr title="structured query language">SQL</abbr> validator server</li>
+  <li><abbr title="结构化查询语言 (structured query language)">SQL</abbr> 校验服务器</li>
 </ul></li>
 
 <li>Ivan R. Lanin &lt;ivanlanin_at_users.sourceforge.net&gt;
 <ul>
-  <li>phpMyAdmin logo (until June 2004)</li>
+  <li>phpMyAdmin logo (2004 年 6 月前)</li>
 </ul></li>
 
 <li>Mike Cochrane &lt;mike_at_graftonhall.co.nz&gt;
 <ul>
-  <li>blowfish library from the Horde project</li>
+  <li>Horde 项目的 blowfish 库</li>
 </ul></li>
 
 <li>Marcel Tschopp &lt;ne0x_at_users.sourceforge.net&gt;
 <ul>
-  <li>mysqli support</li>
+  <li>mysqli 支持</li>
   <li>许多缺陷修正和改进</li>
 </ul></li>
 
 <li>Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
 <ul>
-  <li>redesign for 2.6.0</li>
-  <li>phpMyAdmin sailboat logo (June 2004)</li>
+  <li>重新设计 2.6.0</li>
+  <li>phpMyAdmin 帆船 logo (2004 年 6 月)</li>
 </ul></li>
 
 <li>Mathias Landh&auml;u&szlig;er
@@ -4528,61 +4428,61 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
 <ul>
-  <li>interface improvements</li>
-  <li>various bugfixes</li>
+  <li>界面改进</li>
+  <li>许多缺陷修正</li>
 </ul></li>
 
 <li>Ivan A Kirillov
 <ul>
-  <li>new relations Designer</li>
+  <li>新的关系设计器</li>
 </ul></li>
 
-<li>Raj Kissu Rajandran (Google Summer of Code 2008)
+<li>Raj Kissu Rajandran (Google 代码之夏 2008)
 <ul>
-  <li>BLOBstreaming support</li>
+  <li>BLOB 流支持</li>
 </ul></li>
 
-<li>Piotr Przybylski (Google Summer of Code 2008 and 2010)
+<li>Piotr Przybylski (Google 代码之夏 2008 和 2010)
 <ul>
-  <li>improved setup script</li>
-  <li>user preferences</li>
+  <li>改进安装脚本</li>
+  <li>用户偏好</li>
 </ul></li>
 
-<li>Derek Schaefer (Google Summer of Code 2009)
+<li>Derek Schaefer (Google 代码之夏 2009)
 <ul>
-  <li>Improved the import system</li>
+  <li>改进导入功能</li>
 </ul></li>
 
-<li>Alexander Rutkowski (Google Summer of Code 2009)
+<li>Alexander Rutkowski (Google 代码之夏 2009)
 <ul>
-  <li>Tracking mechanism</li>
+  <li>结构追踪</li>
 </ul></li>
 
-<li>Zahra Naeem (Google Summer of Code 2009)
+<li>Zahra Naeem (Google 代码之夏 2009)
 <ul>
-  <li>Synchronization feature</li>
+  <li>同步功能</li>
 </ul></li>
 
-<li>Tom&#225;&#353; Srnka (Google Summer of Code 2009)
+<li>Tom&#225;&#353; Srnka (Google 代码之夏 2009)
 <ul>
-  <li>Replication support</li>
+  <li>复制支持</li>
 </ul></li>
 
-<li>Muhammad Adnan (Google Summer of Code 2010)
+<li>Muhammad Adnan (Google 代码之夏 2010)
 <ul>
-  <li>Relation schema export to multiple formats</li>
+  <li>导出关系大纲为多种格式</li>
 </ul></li>
 
-<li>Lori Lee (Google Summer of Code 2010)
+<li>Lori Lee (Google 代码之夏 2010)
 <ul>
-  <li>User interface improvements</li>
-  <li>ENUM/SET editor</li>
-  <li>Simplified interface for export/import</li>
+  <li>用户界面改进</li>
+  <li>ENUM/SET 编辑器</li>
+  <li>简化导入/导出界面</li>
 </ul></li>
 
-<li>Ninad Pundalik (Google Summer of Code 2010)
+<li>Ninad Pundalik (Google 代码之夏 2010)
 <ul>
-  <li>AJAXifying the interface</li>
+  <li>界面 AJAX 化</li>
 </ul></li>
 
 <li>Barrie Leslie
@@ -4593,8 +4493,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 </ul>
 
 <p>
-And also to the following people who have contributed minor changes,
-enhancements, bugfixes or support for a new language since version 2.1.0:
+以及自 2.1.0 版以来对功能修改、增强、缺陷修正和新语言支持作出贡献的人们:
 </p>
 
 <p>
@@ -4813,9 +4712,8 @@ Language))</a> - 一个 W3C 推荐用来创建可以描述不同类型数据的�
 </div>
 
   <ul id="footer">
-    <li>Copyright &copy; 2003 - 2010 <a
-href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin devel
-team</a></li>
+    <li>版权所有 &copy; 2003 - 2010 <a
+href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin 开发组</a></li>
     <li><a href="LICENSE">授权</a></li>
     <li><a href="http://www.phpmyadmin.net/home_page/donate.php">捐助 (英语)</a></li>
     <li class="last">验证 <a href="http://validator.w3.org/check/referer">HTML</a> 和 <a
