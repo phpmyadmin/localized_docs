@@ -19,7 +19,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.5.0-dev - Τεκμηρίωση</title>
+    <title>phpMyAdmin 3.4.0-alpha3-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.5.0-dev Τεκμηρίωση
+class="myadmin">MyAdmin</span></a> 3.4.0-alpha3-dev Documentation
     </h1>
 </div>
 
@@ -80,8 +80,8 @@ href="#faq1_31">δείτε <abbr title="Συχνά Απαντημένες Ερω
                 </li>
 		<li>Για υποστήριξη αποστολής αρχείων ZIP, χρειάζεστε την επέκταση <tt>zip</tt>
 της  PHP.</li>
-        <li>For proper support of multibyte strings (eg. UTF-8, which is currently the
-default), you should install the mbstring and ctype extensions.
+        <li>Για τη σωστή υποστήριξη κειμενων multibyte (π.χ. UTF-8, που είναι η
+προεπιλογή), πρέπει να εγκαταστήσετε τις επεκτάσεις mbstring και ctype.
         </li>
             <li>Χρειάζεστε υποστήριξη GD2 στην PHP για εμφάνιση των μικρογραφιών των JPEGs
 εσωτερικά («image/jpeg: εσωτερικά») με την αρχική τους αναλογία</li>
@@ -171,18 +171,19 @@ href="#faq3_6">(δείτε τη <abbr title="Συχνά Απαντημένες
 </ul>
 
 <h4>Μια κουβέντα για τους χρήστες:</h4>
-<p> Many people have difficulty understanding the concept of user management
-with regards to phpMyAdmin. When a user logs in to phpMyAdmin, that username
-and password are passed directly to MySQL. phpMyAdmin does no account
-management on its own (other than allowing one to manipulate the MySQL user
-account information); all users must be valid MySQL users.</p>
+<p> Πολλοί΄άνθρωποι έχουν δυσκολία να κατανοήσουν το σκεπτικό της διαχείρισης
+χρηστών αναφορικά με το phpMyAdmin. Όταν ένας χρήστης συνδέεται στο
+phpMyAdmin, αυτό το όνομα χρήστη και ο κωδικός πρόσβασης περνούν άμεσα στον
+MySQL. Το phpMyAdmin δεν διαχειρίζεται λογαριασμούς από μόνο του (εκτός από
+να επιτρέπει τη διαχείριση των πληροφοριών των λογαριασμών των χρηστών
+MySQL). Όλοι οι χρήστες πρέπει να είναι έγκυροι χρήστες MySQL.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
-formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
-if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
-(<tt>--with-bz2</tt>). Proper support may also need changes in
-<tt>php.ini</tt>.</p>
+    <sup>1)</sup> Το phpMyAdmin μπορεί να συμπιέσει (μορφές Zip, GZip -RFC 1952-
+ή Bzip2)  απορρίμματα και εξαγόμενα <abbr title="comma separated
+values">CSV</abbr> αν χρησιμοποιείτε PHP με υποστήριξη Zlib
+(<tt>--with-zlib</tt>) και/ή υποστήριξη Bzip2 (<tt>--with-bz2</tt>). Η
+κατάλληλη υποστήριξη ίσως απαιτεί αλλαγές στο <tt>php.ini</tt>.</p>
 
 
 <!-- INSTALLATION -->
@@ -196,10 +197,10 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 </ol>
 
 <p class="important">
-    phpMyAdmin does not apply any special security methods to the MySQL database
-server. It is still the system administrator's job to grant permissions on
-the MySQL databases properly. phpMyAdmin's &quot;Privileges&quot; page can
-be used for this.
+    Το phpMyAdmin δεν εφαρμόζει κάποιες ιδιαίτερες μεθόδους ασφαλείας στο
+διακομιστή βάσεων δεδομένων MySQL. Παραμένει δουλειά του διαχειριστή
+συστήματος να δώσει δικαιώματα στις βάσεις δεδομένων MySQL. Η σελίδα
+«Δικαιωμάτων» του phpMyAdmin μπορεί να χρησιμοποιηθεί για αυτό.
 </p>
 
 <p class="important">
@@ -299,9 +300,9 @@ locally and upload (via FTP or some similar means) to the proper location.<br />
                 Once the file has been saved, it must be moved out of the <tt> config/</tt>
 directory and the permissions must be reset, again as a security measure:
 <pre>
-mv config/config.inc.php .         # move file to current directory
-chmod o-rw config.inc.php          # remove world read and write permissions
-rm -rf config                      # remove not needed directory
+mv config/config.inc.php . # μετακινεί το αρχείο στον τρέχοντα φάκελο
+chmod o-rw config.inc.php # απομακρύνει τα δικαιώματα ανάγνωσης και εγγραφής
+rm -rf config # απομακρύνει το φάκελο που δεν χρειάζεται πλέον
 </pre>
                 Now the file is ready to be used. You can choose to review or edit the file
 with your favorite editor, if you prefer to set some advanced options which
@@ -511,8 +512,10 @@ required.</li>
 
 <ul><li>This mode is a convenient way of using credentials from another application
 to authenticate to phpMyAdmin.</li>
-    <li>The other application has to store login information into session data.</li>
-    <li>More details in the <a href="#cfg_Servers_auth_type">auth_type</a> section.</li>
+    <li>Η άλλη εφαρμογή πρέπει να αποθηκεύσει τις πληροφορίες σύνδεσης στα δεδομένα
+συνεδρίας.</li>
+    <li>Περισσότερες πληροφορίες στον τομέα <a
+href="#cfg_Servers_auth_type">auth_type</a>.</li>
 </ul>
 <h4>Μέθοδος πιστοποίησης «config»</h4>
 
@@ -678,7 +681,7 @@ the <tt>mysql</tt> command&#8211;line client, issue the <tt>status</tt>
 command.  Among the resulting information displayed will be the socket used.</dd>
 
     <dt id="cfg_Servers_ssl">Αληθές/Ψευδές $cfg['Servers'][$i]['ssl']</dt>
-    <dd>Whether to enable SSL for connection to MySQL server.
+    <dd>Ενεργοποιεί/Απενεργοποιεί το SSL για σύνδεση στο διακομιστή MySQL.
     </dd>
 
     <dt id="cfg_Servers_connect_type">κείμενο $cfg['Servers'][$i]['connect_type']</dt>
@@ -844,9 +847,10 @@ in alphabetic order.</dd>
 listing, but a user is still able to access them (using, for example, the
 SQL query area). To limit access, use the MySQL privilege system.
         <br /><br />
-        For example, to hide all databases starting with the letter &#34;a&#34;, use<br />
+        Για παράδειγμα, για να αποκρύψετε όλες τις βάσεις δεδομένων που ξεκινούν με
+το γράμμα «a», χρησιμοποιήστε:<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
-        and to hide both &#34;db1&#34; and &#34;db2&#34; use <br />
+        και για να αποκρύψετε τις «db1» και «db2» χρησιμοποιήστε: <br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
         More information on regular expressions can be found in the <a
 href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
@@ -886,7 +890,7 @@ useful for queries you often run.<br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
         <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>enter the table name in <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
+            <li>εισάγετε το όνομα πίνακα στο <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
         </ul>
     </dd>
 
@@ -1017,15 +1021,15 @@ ADD `transformation` VARCHAR( 255 ) NOT NULL,
 ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                and remember that the Variable in <i>config.inc.php</i> has been renamed
-from<br />
-                <tt>$cfg['Servers'][$i]['column_comments']</tt> to
+                και θυμηθείτε ότι η Μεταβλητή στο <i>config.inc.php</i> έχει μετονομαστεί
+από<br />
+                <tt>$cfg['Servers'][$i]['column_comments']</tt> σε
 <tt>$cfg['Servers'][$i]['column_info']</tt></li>
         </ul>
     </dd>
 
     <dt id="history">
-        <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> string
+        κείμενο <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span>
     </dt>
     <dd>Since release 2.5.0 you can store your <abbr title="structured query
 language">SQL</abbr> history, which means all queries you entered manually
@@ -1051,8 +1055,8 @@ browser.<br /><br />
     </dd>
 
     <dt id="tracking">
-        <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
-string
+        κείμενο <span
+id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
     </dt>
     <dd>
         Since release 3.3.x a tracking mechanism is available.  It helps you to
@@ -1061,7 +1065,7 @@ is executed by phpMyAdmin. The mechanism supports logging of data
 manipulation and data definition statements. After enabling it you can
 create versions of tables.
         <br/><br/>
-        The creation of a version has two effects:
+        Η δημιουργία μιας έκδοσης έχει δύο επιπτώσεις:
 
         <ul>
             <li>phpMyAdmin saves a snapshot of the table, including structure and indexes.</li>
@@ -1094,7 +1098,7 @@ id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_vers
         Whether the tracking mechanism creates versions for tables and views
 automatically. Default value is false.
         <br/><br/>
-        If this is set to true and you create a table or view with
+        Αν αυτό οριστεί ως true και δημιουργήσετε έναν πίνακα ή μια προβολή με
 
         <ul>
             <li>ΔΗΜΙΟΥΡΓΙΑ ΠΙΝΑΚΑ (CREATE TABLE) ...</li>
@@ -1153,8 +1157,8 @@ the log when creating a database. Default value is true.
     </dd>
 
     <dt id="userconfig">
-        <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
-string
+        κείμενο <span
+id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
     </dt>
     <dd>
         Since release 3.4.x phpMyAdmin allows users to set most preferences by
@@ -1175,9 +1179,8 @@ browser's local storage, or, it is is unavailable, until the end of session.
     </dd>
 
     <dt id="designer_coords">
-        <span
+        κείμενο <span
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
-string
     </dt>
     <dd>Since release 2.10.0 a Designer interface is available; it permits to
 visually manage the relations.
@@ -1219,9 +1222,8 @@ server with was left with an empty password for root or on which an
 anonymous (blank) user is defined.
     </dd>
     <dt id="servers_allowdeny_order">
-        <span
+        κείμενο <span
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
-string
     </dt>
     <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
 authorization is disabled.<br /><br />
@@ -1247,11 +1249,10 @@ specifying allow and deny rules without setting any order.<br /><br />
 detecting IP address behind proxies.
     </dd>
     <dt id="servers_allowdeny_rules">
-        <span
+        σειρά ή κείμενα <span
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
-array of strings
     </dt>
-    <dd>The general format for the rules is as such:
+    <dd>Η γενική μορφή των κανόνων είναι ως εξής:
 
         <pre>
 &lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
@@ -1294,9 +1295,8 @@ id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span></dt>
 <tt>SHOW</tt> commands instead), because of speed issues when many databases
 are present. Currently used in some parts of the code, more to come.
     </dd>
-    <dt><span
-id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
-string</dt>
+    <dt>κείμενο <span
+id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span></dt>
     <dd>On a server with a huge number of databases, the default <tt>SHOW
 DATABASES</tt> command used to fetch the name of available databases will
 probably be too slow, so it can be replaced by faster commands (see
@@ -1307,23 +1307,22 @@ id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
     <dd>Whether to count the number of tables for each database when preparing the
 list of databases for the navigation frame.
     </dd>
-    <dt><span
-id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
-string</dt>
+    <dt>κείμενο <span
+id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span></dt>
     <dd>Name of session which will be used for signon authentication method.
     </dd>
-    <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
-string</dt>
+    <dt>κείμενο <span
+id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span></dt>
     <dd>URL where user will be redirected to log in for signon authentication
 method. Should be absolute including protocol.
     </dd>
-    <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span>
-string</dt>
+    <dt>κείμενο <span
+id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span></dt>
     <dd>URL where user will be redirected after logout (doesn't affect config
 authentication method). Should be absolute including protocol.
     </dd>
 
-    <dt id="cfg_ServerDefault">$cfg['ServerDefault'] integer</dt>
+    <dt id="cfg_ServerDefault">ακέραιος $cfg['ServerDefault']</dt>
     <dd>If you have more than one server configured, you can set
 <tt>$cfg['ServerDefault']</tt> to any one of them to autoconnect to that
 server when phpMyAdmin is started, or set it to 0 to be given a list of
@@ -1331,23 +1330,23 @@ servers without logging in.<br />
         If you have only one server configured, <tt>$cfg['ServerDefault']</tt> MUST
 be set to that server.</dd>
 
-    <dt id="cfg_MaxDbList">$cfg['MaxDbList'] integer</dt>
+    <dt id="cfg_MaxDbList">ακέραιος $cfg['MaxDbList']</dt>
     <dd>The maximum number of database names to be displayed in the navigation frame
 and the database list.</dd>
 
-    <dt id="cfg_MaxTableList">$cfg['MaxTableList'] integer</dt>
+    <dt id="cfg_MaxTableList">ακέραιος $cfg['MaxTableList']</dt>
     <dd>The maximum number of table names to be displayed in the main panel's list
 (except on the Export page). This limit is also enforced in the navigation
 panel when in Light mode.</dd>
 
-    <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] integer</dt>
+    <dt id="cfg_MaxCharactersInDisplayedSQL">ακέραιος $cfg['MaxCharactersInDisplayedSQL']</dt>
     <dd>The maximum number of characters when a SQL query is displayed. The default
 limit of 1000 should be correct to avoid the display of tons of hexadecimal
 codes that represent BLOBs, but some users have real SQL queries that are
 longer than 1000 characters. Also, if a query's length exceeds this limit,
 this query is not saved in the history.</dd>
 
-    <dt id="cfg_OBGzip">$cfg['OBGzip'] string/boolean</dt>
+    <dt id="cfg_OBGzip">κείμενο-Αληθές/Ψευδές $cfg['OBGzip']</dt>
     <dd>Defines whether to use GZip output buffering for increased speed in <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> transfers.<br />
         Set to true/false for enabling/disabling. When set to 'auto' (string),
@@ -1355,25 +1354,25 @@ phpMyAdmin tries to enable output buffering and will automatically disable
 it if your browser has some problems with buffering. IE6 with a certain
 patch is known to cause data corruption when having enabled buffering.</dd>
 
-    <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
+    <dt id="cfg_PersistentConnections">Αληθές/Ψευδές $cfg['PersistentConnections']</dt>
     <dd>Whether persistent connections should be used or not (mysql_connect or
 mysql_pconnect).</dd>
 
-    <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
+    <dt id="cfg_ForceSSL">Αληθές/Ψευδές $cfg['ForceSSL']</dt>
     <dd>Whether to force using https while accessing phpMyAdmin.</dd>
 
-    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [number of seconds]</dt>
+    <dt id="cfg_ExecTimeLimit">ακέραιος $cfg['ExecTimeLimit'] [αριθμός δευτερολέπτων]</dt>
     <dd>Set the number of seconds a script is allowed to run. If seconds is set to
 zero, no time limit is imposed.<br />
         This setting is used while importing/exporting dump files and in the
 Synchronize feature but has no effect when PHP is running in safe mode.</dd>
 
-    <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] string</dt>
+    <dt id="cfg_SessionSavePath">κείμενο $cfg['SessionSavePath']</dt>
     <dd>Path for storing session data (<a
 href="http://php.net/session_save_path">session_save_path PHP
 parameter</a>).</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
+    <dt id="cfg_MemoryLimit">κείμενο $cfg['MemoryLimit'] [αριθμός των bytes]</dt>
     <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
 limit is imposed.<br />
         This setting is used while importing/exporting dump files and at some other
@@ -1382,15 +1381,15 @@ value. It has no effect when PHP is running in safe mode.<br />
         You can also use any string as in php.ini, eg. '16M'. Ensure you don't omit
 the suffix (16 means 16 bytes!)</dd>
 
-    <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] boolean</dt>
+    <dt id="cfg_SkipLockedTables">Αληθές/Ψευδές $cfg['SkipLockedTables']</dt>
     <dd>Mark used tables and make it possible to show databases with locked tables
 (since MySQL 3.23.30).</dd>
 
-    <dt id="cfg_ShowSQL">$cfg['ShowSQL'] boolean</dt>
+    <dt id="cfg_ShowSQL">Αληθές/Ψευδές $cfg['ShowSQL']</dt>
     <dd>Defines whether <abbr title="structured query language">SQL</abbr> queries
 generated by phpMyAdmin should be displayed or not.</dd>
 
-    <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] boolean</dt>
+    <dt id="cfg_AllowUserDropDatabase">Αληθές/Ψευδές $cfg['AllowUserDropDatabase']</dt>
     <dd>Defines whether normal users (non-administrator) are allowed to delete their
 own database or not. If set as FALSE, the link &quot;Drop Database&quot;
 will not be shown, and even a &quot;DROP DATABASE mydatabase&quot; will be
@@ -1401,11 +1400,11 @@ using MySQL privileges. This is due to nature of SQL queries which might be
 quite complicated. So this choice should be viewed as help to avoid
 accidental dropping rather than strict privilege limitation.</dd>
 
-    <dt id="cfg_Confirm">$cfg['Confirm'] boolean</dt>
+    <dt id="cfg_Confirm">Αληθές/Ψευδές $cfg['Confirm']</dt>
     <dd>Whether a warning (&quot;Are your really sure...&quot;) should be displayed
 when you're about to lose data.</dd>
 
-    <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] boolean</dt>
+    <dt id="cfg_LoginCookieRecall">Αληθές/Ψευδές $cfg['LoginCookieRecall']</dt>
     <dd>Define whether the previous login should be recalled or not in cookie
 authentication mode.<br /><br />
 
@@ -1413,7 +1412,7 @@ authentication mode.<br /><br />
 href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
         </dd>
 
-    <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] integer [number of seconds]</dt>
+    <dt id="cfg_LoginCookieValidity">ακέραιος $cfg['LoginCookieValidity'] [αριθμός δευτερολέπτων]</dt>
     <dd>Define how long is login cookie valid. Please note that php configuration
 option <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
@@ -1421,30 +1420,30 @@ might limit session validity and if session is lost, login cookie is also
 invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
 not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
-    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [number of seconds]</dt>
+    <dt id="cfg_LoginCookieStore">ακέραιος $cfg['LoginCookieStore'] [αριθμός δευτερολέπτων]</dt>
     <dd>Define how long login cookie should be stored in browser. Default 0 means
 that it will be kept for existing session. This is recommended for not
 trusted environments.</dd>
 
-    <dt id="cfg_LoginCookieDeleteAll">$cfg['LoginCookieDeleteAll'] boolean</dt>
+    <dt id="cfg_LoginCookieDeleteAll">Αληθές/Ψευδές $cfg['LoginCookieDeleteAll']</dt>
     <dd>If enabled (default), logout deletes cookies for all servers, otherwise only
 for current one. Setting this to false makes it easy to forget to log out
 from other server, when you are using more of them.</dd>
 
-    <dt id="cfg_UseDbSearch">$cfg['UseDbSearch'] boolean</dt>
+    <dt id="cfg_UseDbSearch">Αληθές/Ψευδές $cfg['UseDbSearch']</dt>
     <dd>Define whether the "search string inside database" is enabled or not.</dd>
 
-    <dt id="cfg_IgnoreMultiSubmitErrors">$cfg['IgnoreMultiSubmitErrors'] boolean</dt>
+    <dt id="cfg_IgnoreMultiSubmitErrors">Αληθές/Ψευδές $cfg['IgnoreMultiSubmitErrors']</dt>
     <dd>Define whether phpMyAdmin will continue executing a multi-query statement if
 one of the queries fails. Default is to abort execution.</dd>
 
-    <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] boolean</dt>
+    <dt id="cfg_VerboseMultiSubmit">Αληθές/Ψευδές $cfg['VerboseMultiSubmit']</dt>
     <dd>Define whether phpMyAdmin will output the results of each query of a
 multi-query statement embedded into the <abbr title="structured query
 language">SQL</abbr> output as inline comments. Defaults to <tt>TRUE</tt>.</dd>
     <dt id="AllowArbitraryServer">
-        <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
-boolean</dt>
+        Αληθές/Ψευδές <span
+id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span></dt>
     <dd>If enabled allows you to log in to arbitrary servers using cookie auth.
         <br /><br />
 
@@ -1453,13 +1452,13 @@ MySQL servers behind the firewall where your <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> server is placed.
     </dd>
 
-    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
+    <dt id ="cfg_Error_Handler_display">Αληθές/Ψευδές $cfg['Error_Handler']['display']</dt>
     <dd>Whether to display errors from PHP or not.</dd>
 
-    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
+    <dt id ="cfg_Error_Handler_gather">Αληθές/Ψευδές $cfg['Error_Handler']['gather']</dt>
     <dd>Whether to gather errors from PHP or not.</dd>
 
-    <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
+    <dt id="cfg_LeftFrameLight">Αληθές/Ψευδές $cfg['LeftFrameLight']</dt>
     <dd>Defines whether to use a select-based menu and display only the current
 tables in the left frame (smaller page). Only in Non-Lightmode you can use
 the feature to display nested folders using <a
@@ -1467,18 +1466,18 @@ href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a>
     </dd>
 
-    <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] boolean</dt>
+    <dt id="cfg_LeftFrameDBTree">Αληθές/Ψευδές $cfg['LeftFrameDBTree']</dt>
     <dd>In light mode, defines whether to display the names of databases (in the
 selector) using a tree, see also <a href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a>.
     </dd>
 
-    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] string or array</dt>
+    <dt id="cfg_LeftFrameDBSeparator">κείμενο ή σειρά $cfg['LeftFrameDBSeparator']</dt>
     <dd>The string used to separate the parts of the database name when showing them
 in a tree. Alternatively you can specify more strings in an array and all of
 them will be used as a separator.</dd>
 
-    <dt id="cfg_LeftFrameTableSeparator">$cfg['LeftFrameTableSeparator'] string</dt>
+    <dt id="cfg_LeftFrameTableSeparator">κείμενο $cfg['LeftFrameTableSeparator']</dt>
     <dd>Defines a string to be used to nest table spaces. Defaults to '__'.  This
 means if you have tables like 'first__second__third' this will be shown as a
 three-level hierarchy like: first &gt; second &gt; third.  If set to FALSE
@@ -1486,21 +1485,21 @@ or empty, the feature is disabled.  NOTE: You should not use this separator
 at the beginning or end of a table name or multiple times after another
 without any other characters in between.</dd>
 
-    <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] string</dt>
+    <dt id="cfg_LeftFrameTableLevel">κείμενο $cfg['LeftFrameTableLevel']</dt>
     <dd>Defines how many sublevels should be displayed when splitting up tables by
 the above separator.</dd>
 
-    <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] boolean</dt>
+    <dt id="cfg_ShowTooltip">Αληθές/Ψευδές $cfg['ShowTooltip']</dt>
     <dd>Defines whether to display table comment as tool-tip in left frame or not.</dd>
 
-    <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
+    <dt id="cfg_ShowTooltipAliasDB">Αληθές/Ψευδές $cfg['ShowTooltipAliasDB']</dt>
     <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
 and the real name. That means that if you have a table called 'user0001' and
 add the comment 'MyName' on it, you will see the name 'MyName' used
 consequently in the left frame and the tool-tip shows the real name of the
 DB.</dd>
 
-    <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] boolean/string</dt>
+    <dt id="cfg_ShowTooltipAliasTB">Αληθές/Ψευδές-κείμενο $cfg['ShowTooltipAliasTB']</dt>
     <dd>Same as <a href="#cfg_ShowTooltipAliasDB"
 class="configrule">$cfg['ShowTooltipAliasDB']</a>, except this works for
 table names.  When setting this to 'nested', the Alias of the Tablename is
@@ -1510,56 +1509,57 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a> directive. So only
 the folder is called like the Alias, the tablename itself stays the real
 tablename.</dd>
 
-    <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] boolean</dt>
+    <dt id="cfg_LeftDisplayLogo">Αληθές/Ψευδές $cfg['LeftDisplayLogo']</dt>
     <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
 frame.  Defaults to <tt>TRUE</tt>.</dd>
-    <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] string</dt>
+    <dt id="cfg_LeftLogoLink">κείμενο $cfg['LeftLogoLink']</dt>
     <dd>Enter URL where logo in the navigation frame will point to.  For use
 especially with self made theme which changes this.  The default value for
 this is <tt>main.php</tt>.</dd>
 
-    <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] string</dt>
+    <dt id="cfg_LeftLogoLinkWindow">κείμενο $cfg['LeftLogoLinkWindow']</dt>
     <dd>Whether to open the linked page in the main window (<tt>main</tt>)  or in a
 new one (<tt>new</tt>). Note: use <tt>new</tt> if you are linking to
 <tt>phpmyadmin.net</tt>.</dd>
 
-    <dt id="cfg_LeftDisplayTableFilter">$cfg['LeftDisplayTableFilter'] boolean</dt>
-    <dd>Defines whether or not to display a JavaScript filter box above the list of
-tables in the left frame.  Defaults to <tt>TRUE</tt>.</dd>
+    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <tt>30</tt>. To
+disable the filter completely some high number can he used (e.g. 9999)</dd>
 
-    <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
+    <dt id="cfg_LeftDisplayServers">Αληθές/Ψευδές $cfg['LeftDisplayServers']</dt>
     <dd>Defines whether or not to display a server choice at the top of the left
 frame.  Defaults to FALSE.</dd>
-    <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
+    <dt id="cfg_DisplayServersList">Αληθές/Ψευδές $cfg['DisplayServersList']</dt>
     <dd>Defines whether to display this server choice as links instead of in a
 drop-down.  Defaults to FALSE (drop-down).</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean or text</dt>
+    <dt id="cfg_DisplayDatabasesList">Αληθές/Ψευδές ή κείμενο $cfg['DisplayDatabasesList']</dt>
     <dd>Defines whether to display database choice in light navigation frame as
 links instead of in a drop-down. Defaults to 'auto' - on main page list is
 shown, when database is selected, only drop down is displayed.</dd>
 
-    <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] string</dt>
+    <dt id="cfg_LeftDefaultTabTable">κείμενο $cfg['LeftDefaultTabTable']</dt>
     <dd>Defines the tab displayed by default when clicking the small icon next to
 each table name in the navigation panel. Possible values:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
 &quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
 &quot;sql.php&quot;.</dd>
 
-    <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
+    <dt id="cfg_ShowStats">Αληθές/Ψευδές $cfg['ShowStats']</dt>
     <dd>Defines whether or not to display space usage and statistics about databases
 and tables.<br />
         Note that statistics requires at least MySQL 3.23.3 and that, at this date,
 MySQL doesn't return such information for Berkeley DB tables.</dd>
 
-    <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>boolean</dt>
+    <dt>Αληθές/Ψευδές <span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span></dt>
     <dd>Defines whether to display detailed server information on main page.  You
 can additionally hide more information by using <tt><a
 href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
         </dd>
 
-    <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span>boolean<br />
-        <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword'] </span>boolean<br />
-        <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb'] </span>boolean
+    <dt>Αληθές/Ψευδές <span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span><br />
+        Αληθές/Ψευδές <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword'] </span><br />
+        Αληθές/Ψευδές <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb'] </span>
     </dt>
     <dd>Defines whether to display the &quot;PHP information&quot; and &quot;Change
 password &quot; links and form for creating database or not at the starting
@@ -1576,35 +1576,35 @@ with &quot;config&quot; authentication mode: because of the hard coded
 password value in the configuration file, end users can't be allowed to
 change their passwords.</dd>
 
-    <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] boolean</dt>
+    <dt id="cfg_SuggestDBName">Αληθές/Ψευδές $cfg['SuggestDBName']</dt>
     <dd>Defines whether to suggest a database name on the &quot;Create
 Database&quot; form or to keep the textfield empty.</dd>
 
-    <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] string</dt>
+    <dt id="cfg_NavigationBarIconic">κείμενο $cfg['NavigationBarIconic']</dt>
     <dd>Defines whether navigation bar buttons and the right panel top menu contain
 text or symbols only. A value of TRUE displays icons, FALSE displays text
 and 'both' displays both icons and text.</dd>
 
-    <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
+    <dt id="cfg_ShowAll">Αληθές/Ψευδές $cfg['ShowAll']</dt>
     <dd>Defines whether a user should be displayed a &quot;show all (records)&quot;
 button in browse mode or not.</dd>
 
-    <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
+    <dt id="cfg_MaxRows">ακέραιος $cfg['MaxRows']</dt>
     <dd>Αριθμός γραμμών που θα προβάλονται όταν γίνεται περιήγηση σε κάποιο
 αποτέλεσμα. Αν το αποτέλεσμα περιέχει περισσότερες γραμμές, θα εμφανίζονται
 σύνδεσμοι «Προηγούμενο» και «Επόμενο».</dd>
 
-    <dt id="cfg_Order">$cfg['Order'] string [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
+    <dt id="cfg_Order">κείμενο $cfg['Order'] [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in
 descending (<tt>DESC</tt>) order or in a &quot;smart&quot; (<tt>SMART</tt>)
 order - I.E. descending order for columns of type TIME, DATE, DATETIME and
 TIMESTAMP, ascending order else- by default.</dd>
 
-    <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] boolean </dt>
+    <dt id="cfg_DisplayBinaryAsHex">Αληθές/Ψευδές $cfg['DisplayBinaryAsHex'] </dt>
     <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
 ticked by default.</dd>
 
-    <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean or string</dt>
+    <dt id="cfg_ProtectBinary">Αληθές/Ψευδές ή κείμενο $cfg['ProtectBinary']</dt>
     <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
 editing when browsing a table's content. Valid values are:
         <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
@@ -1614,18 +1614,18 @@ columns.</li>
         </ul>
     </dd>
 
-    <dt id="cfg_ShowFunctionFields">$cfg['ShowFunctionFields'] boolean</dt>
+    <dt id="cfg_ShowFunctionFields">Αληθές/Ψευδές $cfg['ShowFunctionFields']</dt>
     <dd>Defines whether or not MySQL functions fields should be initially displayed
 in edit/insert mode. Since version 2.10, the user can toggle this setting
 from the interface.
     </dd>
     
-    <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] boolean</dt>
+    <dt id="cfg_ShowFieldTypesInDataEditView">Αληθές/Ψευδές $cfg['ShowFieldTypesInDataEditView']</dt>
     <dd>Defines whether or not type fields should be initially displayed in
 edit/insert mode. The user can toggle this setting from the interface.
     </dd>
 
-    <dt id="cfg_CharEditing">$cfg['CharEditing'] string</dt>
+    <dt id="cfg_CharEditing">κείμενο $cfg['CharEditing']</dt>
     <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
 columns. Possible values are:
         <ul><li>input - this allows to limit size of text to size of columns in MySQL, but
@@ -1633,31 +1633,31 @@ has problems with newlines in columns</li>
             <li>textarea - no problems with newlines in columns, but also no length
 limitations</li>
         </ul>
-        Default is old behavior so input.</dd>
+        Ως προεπιλογή είναι η παλαιά συμπεριφορά δηλαδή το input.</dd>
 
-    <dt id="cfg_InsertRows">$cfg['InsertRows'] integer</dt>
+    <dt id="cfg_InsertRows">ακέραιος $cfg['InsertRows']</dt>
     <dd>Defines the maximum number of concurrent entries for the Insert page.</dd>
 
-    <dt id="cfg_ForeignKeyMaxLimit">$cfg['ForeignKeyMaxLimit'] integer</dt>
+    <dt id="cfg_ForeignKeyMaxLimit">ακέραιος $cfg['ForeignKeyMaxLimit']</dt>
     <dd>If there are fewer items than this in the set of foreign keys, then a
 drop-down box of foreign keys is presented, in the style described by the <a
 href="#cfg_ForeignKeyDropdownOrder"
 class="configrule">$cfg['ForeignKeyDropdownOrder']</a> setting.</dd>
 
-    <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] array</dt>
+    <dt id="cfg_ForeignKeyDropdownOrder">σειρά $cfg['ForeignKeyDropdownOrder']</dt>
     <dd>For the foreign key drop-down fields, there are several methods of display,
 offering both the key and value data. The contents of the array should be
 one or both of the following strings: <i>'content-id'</i>,
 <i>'id-content'</i>.</dd>
 
-    <dt><span id="cfg_ZipDump">$cfg['ZipDump'] </span>boolean<br />
-        <span id="cfg_GZipDump">$cfg['GZipDump'] </span>boolean<br />
-        <span id="cfg_BZipDump">$cfg['BZipDump'] </span>boolean
+    <dt>Αληθές/Ψευδές <span id="cfg_ZipDump">$cfg['ZipDump'] </span><br />
+        Αληθές/Ψευδές <span id="cfg_GZipDump">$cfg['GZipDump'] </span><br />
+        Αληθές/Ψευδές <span id="cfg_BZipDump">$cfg['BZipDump'] </span>
     </dt>
     <dd>Defines whether to allow the use of zip/GZip/BZip2 compression when creating
 a dump file</dd>
 
-    <dt><span id="cfg_CompressOnFly">$cfg['CompressOnFly'] </span>boolean<br />
+    <dt>Αληθές/Ψευδές <span id="cfg_CompressOnFly">$cfg['CompressOnFly'] </span><br />
     </dt>
     <dd>Defines whether to allow on the fly compression for GZip/BZip2 compressed
 exports. This doesn't affect smaller dumps and allows users to create larger
@@ -1665,40 +1665,40 @@ dumps that won't otherwise fit in memory due to php memory limit. Produced
 files contain more GZip/BZip2 headers, but all normal programs handle this
 correctly.</dd>
 
-    <dt id="cfg_LightTabs">$cfg['LightTabs'] boolean</dt>
+    <dt id="cfg_LightTabs">Αληθές/Ψευδές $cfg['LightTabs']</dt>
     <dd>If set to <tt>TRUE</tt>, use less graphically intense tabs on the top of the
 mainframe.</dd>
 
-    <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] string</dt>
+    <dt id="cfg_PropertiesIconic">κείμενο $cfg['PropertiesIconic']</dt>
     <dd>If set to <tt>TRUE</tt>, will display icons instead of text for db and table
 properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <tt>'both'</tt> if you want icons AND text.<br />
         When set to <tt>FALSE</tt>, will only show text.</dd>
 
-    <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] integer</dt>
+    <dt id="cfg_PropertiesNumColumns">ακέραιος $cfg['PropertiesNumColumns']</dt>
     <dd>How many columns will be utilized to display the tables on the database
 property view? Default is 1 column. When setting this to a value larger than
 1, the type of the database will be omitted for more display space.</dd>
 
 
-    <dt id="cfg_DefaultTabServer">$cfg['DefaultTabServer'] string</dt>
+    <dt id="cfg_DefaultTabServer">κείμενο $cfg['DefaultTabServer']</dt>
     <dd>Defines the tab displayed by default on server view. Possible values:
 &quot;main.php&quot; (recommended for multi-user setups),
 &quot;server_databases.php&quot;, &quot;server_status.php&quot;,
 &quot;server_variables.php&quot;, &quot;server_privileges.php&quot; or
 &quot;server_processlist.php&quot;.</dd>
 
-    <dt id="cfg_DefaultTabDatabase">$cfg['DefaultTabDatabase'] string</dt>
+    <dt id="cfg_DefaultTabDatabase">κείμενο $cfg['DefaultTabDatabase']</dt>
     <dd>Defines the tab displayed by default on database view. Possible values:
 &quot;db_structure.php&quot;, &quot;db_sql.php&quot; or
 &quot;db_search.php&quot;.</dd>
 
-    <dt id="cfg_DefaultTabTable">$cfg['DefaultTabTable'] string</dt>
+    <dt id="cfg_DefaultTabTable">κείμενο $cfg['DefaultTabTable']</dt>
     <dd>Defines the tab displayed by default on table view. Possible values:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
 &quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
 &quot;sql.php&quot;.</dd>
 
-    <dt id="cfg_MySQLManualBase">$cfg['MySQLManualBase'] string</dt>
+    <dt id="cfg_MySQLManualBase">κείμενο $cfg['MySQLManualBase']</dt>
     <dd>If set to an <abbr title="Uniform Resource Locator">URL</abbr> which points
 to the MySQL documentation (type depends on <a href="#cfg_MySQLManualType"
 class="configrule">$cfg['MySQLManualType']</a>), appropriate help links are
@@ -1706,8 +1706,8 @@ generated.<br />
         See <a href="http://dev.mysql.com/doc/">MySQL Documentation page</a> for
 more information about MySQL manuals and their types.</dd>
 
-    <dt id="cfg_MySQLManualType">$cfg['MySQLManualType'] string</dt>
-    <dd>Type of MySQL documentation:
+    <dt id="cfg_MySQLManualType">κείμενο $cfg['MySQLManualType']</dt>
+    <dd>Τύπος της τεκμηρίωσης MySQL:
         <ul><li>viewable - &quot;viewable online&quot;, current one used on MySQL website</li>
             <li>searchable - &quot;Searchable, with user comments&quot;</li>
             <li>chapters - &quot;HTML, one page per chapter&quot;</li>
@@ -1716,30 +1716,30 @@ more information about MySQL manuals and their types.</dd>
         </ul>
     </dd>
 
-    <dt id="cfg_DefaultLang">$cfg['DefaultLang'] string</dt>
+    <dt id="cfg_DefaultLang">κείμενο $cfg['DefaultLang']</dt>
     <dd>Defines the default language to use, if not browser-defined or user-defined.<br />
         The corresponding language file needs to be in
 locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
-    <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] string</dt>
+    <dt id="cfg_DefaultConnectionCollation">κείμενο $cfg['DefaultConnectionCollation']</dt>
     <dd>Defines the default connection collation to use, if not user-defined.<br />
-        See the <a
-href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">MySQL
-documentation</a> for list of possible values.</dd>
+        Δείτε την <a
+href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">τεκμηρίωση
+MySQL</a> για τη λίστα των πιθανών τιμών.</dd>
 
-    <dt id="cfg_Lang">$cfg['Lang'] string</dt>
+    <dt id="cfg_Lang">κείμενο $cfg['Lang']</dt>
     <dd>Force language to use.<br />
         The corresponding language file needs to be in
 locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
-    <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] string</dt>
+    <dt id="cfg_FilterLanguages">κείμενο $cfg['FilterLanguages']</dt>
     <dd>Limit list of available languages to those matching the given regular
 expression. For example if you want only Czech and English, you should set
 filter to <code>'^(cs|en)'</code>.</dd>
 
-    <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] string</dt>
+    <dt id="cfg_RecodingEngine">κείμενο $cfg['RecodingEngine']</dt>
     <dd>You can select here which functions will be used for character set
 conversion. Possible values are:
         <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
@@ -1755,19 +1755,19 @@ value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
 <tt>$cfg['Import']['charset']</tt>.
         </dd>
 
-    <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
+    <dt id="cfg_IconvExtraParams">κείμενο $cfg['IconvExtraParams']</dt>
     <dd>Specify some parameters for iconv used in charset conversion. See <a
 href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">iconv
 documentation</a> for details. By default <code>//TRANSLIT</code> is used,
 so that invalid characters will be transliterated.</dd>
 
-    <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] array</dt>
+    <dt id="cfg_AvailableCharsets">σειρά $cfg['AvailableCharsets']</dt>
     <dd>Available character sets for MySQL conversion. You can add your own (any of
 supported by recode/iconv) or remove these which you don't use.  Character
 sets will be shown in same order as here listed, so if you frequently use
 some of these move them to the top.</dd>
 
-    <dt id="cfg_TrustedProxies">$cfg['TrustedProxies'] array</dt>
+    <dt id="cfg_TrustedProxies">σειρά $cfg['TrustedProxies']</dt>
     <dd>Lists proxies and HTTP headers which are trusted for <a
 href="#servers_allowdeny_order">IP Allow/Deny</a>. This list is by default
 empty, you need to fill in some trusted proxy servers if you want to use
@@ -1784,7 +1784,7 @@ $cfg['TrustedProxies'] =
 address as usual.
     </dd>
 
-    <dt id="cfg_GD2Available">$cfg['GD2Available'] string</dt>
+    <dt id="cfg_GD2Available">κείμενο $cfg['GD2Available']</dt>
     <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
 transformations.<br />
         Πιθανές τιμές είναι:
@@ -1797,7 +1797,7 @@ possibilities</li>
         Η προεπιλογή είναι το αυτόματο.
     </dd>
 
-    <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
+    <dt id="cfg_CheckConfigurationPermissions">Αληθές/Ψευδές $cfg['CheckConfigurationPermissions']</dt>
     <dd>
     We normally check the permissions on the configuration file to ensure it's
 not world writable. However, phpMyAdmin could be installed on a NTFS
@@ -1806,63 +1806,64 @@ seems wrong but in fact cannot be detected. In this case a sysadmin would
 set this parameter to <tt>FALSE</tt>. Default is <tt>TRUE</tt>.
     </dd>
 
-    <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] integer</dt>
+    <dt id="cfg_LinkLengthLimit">ακέραιος $cfg['LinkLengthLimit']</dt>
     <dd>
     Limit for length of URL in links. When length would be above this limit, it
 is replaced by form with button.  This is required as some web servers (IIS)
 have problems with long URLs.  Default is <code>1000</code>.
     </dd>
 
-    <dt id="cfg_NaviWidth">$cfg['NaviWidth'] integer</dt>
+    <dt id="cfg_NaviWidth">ακέραιος $cfg['NaviWidth']</dt>
     <dd>Navi frame width in pixels. See <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
-    <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> string [valid
-css code for background]<br />
-        <span id="cfg_MainBackground">$cfg['MainBackground']</span> string [valid
-css code for background]
+    <dt>κείμενο <span id="cfg_NaviBackground">$cfg['NaviBackground']</span> [έγκυρος
+κώδικας css για το υπόβαθρο]<br />
+        κείμενο <span id="cfg_MainBackground">$cfg['MainBackground']</span> [έγκυρος
+κώδικας css για το υπόβαθρο]
     </dt>
     <dd>The background styles used for both the frames.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] string [valid css code for background]<br />
-        <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> string
-[valid css color]</dt>
+    <dt id="cfg_NaviPointerBackground">κείμενο $cfg['NaviPointerBackground'] [έγκυρος κώδικας css για το υπόβαθρο]<br />
+        κείμενο <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span>
+[έγκυρο χρώμα css]</dt>
     <dd>The style used for the pointer in the navi frame.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_NaviDatabaseNameColor">$cfg['NaviDatabaseNameColor'] string [valid css code]<br />
+    <dt id="cfg_NaviDatabaseNameColor">κείμενο $cfg['NaviDatabaseNameColor'] [έγκυρο χρώμα css]<br />
     </dt>
     <dd>The color used for the database name in the navi frame.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
+    <dt id="cfg_LeftPointerEnable">Αληθές/Ψευδές $cfg['LeftPointerEnable']</dt>
     <dd>A value of <tt>TRUE</tt> activates the navi pointer (when LeftFrameLight is
 <tt>FALSE</tt>).</dd>
 
-    <dt id="cfg_Border">$cfg['Border'] integer</dt>
+    <dt id="cfg_Border">ακέραιος $cfg['Border']</dt>
     <dd>The size of a table's border. See <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
-    <dt id="cfg_ThBackground">$cfg['ThBackground'] string [valid css code for background]<br />
-        <span id="cfg_ThColor">$cfg['ThColor']</span> string [valid css color]</dt>
+    <dt id="cfg_ThBackground">κείμενο $cfg['ThBackground'] [έγκυρος κώδικας css για το υπόβαθρο]<br />
+        κείμενο <span id="cfg_ThColor">$cfg['ThColor']</span> [έγκυρο χρώμα css]</dt>
     <dd>The style used for table headers. See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_BgcolorOne">$cfg['BgOne'] string [HTML color]</dt>
+    <dt id="cfg_BgcolorOne">κείμενο $cfg['BgOne'] [χρώμα HTML]</dt>
     <dd>The color (HTML) #1 for table rows. See
 <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
-    <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] string [HTML color]</dt>
+    <dt id="cfg_BgcolorTwo">κείμενο $cfg['BgTwo'] [χρώμα HTML]</dt>
     <dd>The color (HTML) #2 for table rows. See
 <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
-    <dt><span id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']
-</span>string [HTML color]<br />
-        <span id="cfg_BrowsePointerColor">$cfg['BrowsePointerColor'] </span>string
-[HTML color]<br />
+    <dt>κείμενο <span
+id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground'] </span>
+[χρώμα HTML]<br />
+        κείμενο <span id="cfg_BrowsePointerColor">$cfg['BrowsePointerColor'] </span>
+[χρώμα HTML]<br />
         <span id="cfg_BrowseMarkerBackground">$cfg['BrowseMarkerBackground']
 </span>string [HTML color]<br />
         <span id="cfg_BrowseMarkerColor">$cfg['BrowseMarkerColor'] </span>string
