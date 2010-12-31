@@ -1,15 +1,20 @@
 #!/usr/bin/make -f
 # Makefile to build translations
 
+# Languages which we translate
 LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk sl el
+
+# directory where phpMyAdmin sources are placed
+PMA_DIR=../phpmyadmin
+
+# Option to po4a programs
 PO4AOPTS=-M utf-8 -k 15
+
+# Options for generating po files using po4a
 PO4A_PO_OPTS=--msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
 		--copyright-holder "the phpMyAdmin project" \
 		--package-name "phpMyAdmin documentation" \
 		-M utf-8 \
-
-# directory where phpMyAdmin sources are placed
-PMA_DIR=../phpmyadmin
 
 # phpMyAdmin version
 PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" $(PMA_DIR)/libraries/Config.class.php)
