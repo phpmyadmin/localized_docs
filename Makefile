@@ -70,7 +70,7 @@ addendum/html_head-translations.%: po/%.po addendum/head.html addendum/add-html_
 .PRECIOUS: addendum/html_comment.%
 addendum/html_comment.%: po/%.po addendum/comment.html addendum/add-html_comment
 	@echo 'TRANSLATE $@'
-	po4a-translate -f text -o asciidoc -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
+	@po4a-translate -f text -o asciidoc -m addendum/comment.html -p $< -l $@ ${PO4AOPTS} -k 0 --addendum addendum/add-html_comment
 
 .PRECIOUS: addendum/html_credits.%
 addendum/html_credits.%: po/%.po addendum/credits.html addendum/add-html_credits
@@ -132,7 +132,8 @@ pot/%-txt.pot: orig-docs/INSTALL orig-docs/TODO orig-docs/README addendum/commen
 
 .PRECIOUS: pot/%-full.pot
 pot/%-full.pot: pot/%-html.pot pot/%-txt.pot
-	msgcat -o $@ $^
+	@echo 'JOIN $@'
+	@msgcat -o $@ $^
 
 po/%.po:  pot/%-full.pot
 	@set -e; \
