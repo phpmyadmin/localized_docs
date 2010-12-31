@@ -8,11 +8,13 @@ import sys
 TYPES = {
     'integer': u'číslo',
     'string': 'text',
+    'string [<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]': 'text [<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]',
     'string or integer': u'text nebo číslo',
     'boolean': 'boolean',
     'array': 'pole',
     'string [CSS color for background]': u'text [CSS barva pro pozadí]',
     'string [CSS color]': u'text [CSS barva]',
+    'array of strings': u'pole textů',
 }
 
 po = polib.pofile('po/cs.po')
