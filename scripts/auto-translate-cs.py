@@ -20,6 +20,13 @@ TYPES = {
 po = polib.pofile('po/cs.po')
 
 for entry in po:
+    if entry.msgid[:13] == '<a href="#faq' and entry.msgid[-16:] == '(withdrawn).</a>':
+        entry.msgstr = u'%s(staženo).</a>' % (entry.msgid[:-16])
+        try:
+            entry.flags.remove('fuzzy')
+        except ValueError:
+            pass
+        continue
     for t in TYPES:
         l = len(t)
         if entry.msgid[:6] == "$cfg['":
