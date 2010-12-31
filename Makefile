@@ -26,7 +26,6 @@ PO4A_HTML_OPTS=-f xhtml
 PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" $(PMA_DIR)/libraries/Config.class.php)
 
 all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /translators.html.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /index.html, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /README.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /INSTALL.stamp, $(addprefix output/, ${LANGUAGES})) \
@@ -46,12 +45,6 @@ output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_co
 	@echo 'TRANSLATE $@'
 	@po4a-translate $(PO4A_HTML_OPTS) -m orig-docs/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$* --addendum addendum/html_credits.$*
 	@if [ -f output/$*/Documentation.html ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/Documentation.html ; fi
-	@touch $@
-
-output/%/translators.html.stamp: po/%.po addendum/html_head-translations.% addendum/html_comment.% orig-docs/translators.html
-	@echo 'TRANSLATE $@'
-	@po4a-translate $(PO4A_HTML_OPTS) -m orig-docs/translators.html -p $< -l output/$*/translators.html ${PO4AOPTS} --addendum addendum/html_head-translations.$* --addendum addendum/html_comment.$*
-	@if [ -f output/$*/translators.html ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/translators.html ; fi
 	@touch $@
 
 output/%/README.stamp: po/%.po orig-docs/README
@@ -94,7 +87,6 @@ addendum/html_credits.%: po/%.po addendum/credits.html addendum/add-html_credits
 
 output/%/index-template.html: generate-lang-index get-lang-name \
 	$(wildcard $(addsuffix /Documentation.html, output/%) \
-	$(addsuffix /translators.html, output/%) \
 	$(addsuffix /README, output/%) \
 	$(addsuffix /INSTALL, output/%) \
 	$(addsuffix /TODO, output/%))
@@ -125,11 +117,10 @@ orig-docs/%: $(PMA_DIR)/%
 	@sed 's/$(PMA_VERSION)/@@VER@@/' < $< > $@
 
 .PRECIOUS: pot/%-html.pot
-pot/%-html.pot: orig-docs/Documentation.html orig-docs/translators.html output/%/index-full-template.html addendum/head.html addendum/credits.html
+pot/%-html.pot: orig-docs/Documentation.html output/%/index-full-template.html addendum/head.html addendum/credits.html
 	@echo 'GEN $@'
 	@po4a-gettextize $(PO4A_HTML_OPTS) ${PO4A_PO_OPTS} \
 		-m orig-docs/Documentation.html \
-		-m orig-docs/translators.html \
 		-m output/$*/index-full-template.html \
 		-m addendum/head.html \
 		-m addendum/credits.html \
