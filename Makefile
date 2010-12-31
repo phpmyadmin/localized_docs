@@ -8,6 +8,8 @@ PO4A_PO_OPTS=--msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
 		--package-name "phpMyAdmin documentation" \
 		-M utf-8 \
 
+PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" ../phpmyadmin/libraries/Config.class.php)
+
 all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /translators.html.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /index.html, $(addprefix output/, ${LANGUAGES})) \
@@ -24,25 +26,30 @@ all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) 
 output/%/index.html: po/%.po output/%/index-template.html
 	po4a-translate -f xhtml -m output/$*/index-template.html -p $< -l $@ ${PO4AOPTS} -k 0
 
-output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% ../phpmyadmin/Documentation.html addendum/html_credits.%
-	po4a-translate -f xhtml -m ../phpmyadmin/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$* --addendum addendum/html_credits.$*
-	touch $@
+output/%/Documentation.html.stamp: po/%.po addendum/html_head.% addendum/html_comment.% orig-docs/Documentation.html addendum/html_credits.%
+	po4a-translate -f xhtml -m orig-docs/Documentation.html -p $< -l output/$*/Documentation.html ${PO4AOPTS} --addendum addendum/html_head.$* --addendum addendum/html_comment.$* --addendum addendum/html_credits.$*
+	@if [ -f output/$*/Documentation.html ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/Documentation.html ; fi
+	@touch $@
 
-output/%/translators.html.stamp: po/%.po addendum/html_head-translations.% addendum/html_comment.% ../phpmyadmin/translators.html
-	po4a-translate -f xhtml -m ../phpmyadmin/translators.html -p $< -l output/$*/translators.html ${PO4AOPTS} --addendum addendum/html_head-translations.$* --addendum addendum/html_comment.$*
-	touch $@
+output/%/translators.html.stamp: po/%.po addendum/html_head-translations.% addendum/html_comment.% orig-docs/translators.html
+	po4a-translate -f xhtml -m orig-docs/translators.html -p $< -l output/$*/translators.html ${PO4AOPTS} --addendum addendum/html_head-translations.$* --addendum addendum/html_comment.$*
+	@if [ -f output/$*/translators.html ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/translators.html ; fi
+	@touch $@
 
-output/%/README.stamp: po/%.po ../phpmyadmin/README
-	po4a-translate -f text -o asciidoc -m ../phpmyadmin/README -p $< -l output/$*/README ${PO4AOPTS}
-	touch $@
+output/%/README.stamp: po/%.po orig-docs/README
+	po4a-translate -f text -o asciidoc -m orig-docs/README -p $< -l output/$*/README ${PO4AOPTS}
+	@if [ -f output/$*/README ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/README ; fi
+	@touch $@
 
-output/%/TODO.stamp: po/%.po ../phpmyadmin/TODO
-	po4a-translate -f text -o asciidoc -m ../phpmyadmin/TODO -p $< -l output/$*/TODO ${PO4AOPTS}
-	touch $@
+output/%/TODO.stamp: po/%.po orig-docs/TODO
+	po4a-translate -f text -o asciidoc -m orig-docs/TODO -p $< -l output/$*/TODO ${PO4AOPTS}
+	@if [ -f output/$*/TODO ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/TODO ; fi
+	@touch $@
 
-output/%/INSTALL.stamp: po/%.po ../phpmyadmin/INSTALL
-	po4a-translate -f text -o asciidoc -m ../phpmyadmin/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
-	touch $@
+output/%/INSTALL.stamp: po/%.po orig-docs/INSTALL
+	po4a-translate -f text -o asciidoc -m orig-docs/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
+	@if [ -f output/$*/INSTALL ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/INSTALL ; fi
+	@touch $@
 
 .PRECIOUS: addendum/html_head.%
 addendum/html_head.%: po/%.po addendum/head.html addendum/add-html_head
@@ -87,23 +94,27 @@ output/%/index-full-template.html: generate-lang-index get-lang-name
 output/index.html: $(wildcard output/*/index.html) generate-index get-lang-name
 	./generate-index > $@
 
+.PRECIOUS: orig-docs/%
+orig-docs/%: ../phpmyadmin/%
+	sed 's/$(PMA_VERSION)/@@VER@@/' < $< > $@
+
 .PRECIOUS: pot/%-html.pot
-pot/%-html.pot: ../phpmyadmin/Documentation.html ../phpmyadmin/translators.html output/%/index-full-template.html addendum/head.html addendum/credits.html
+pot/%-html.pot: orig-docs/Documentation.html orig-docs/translators.html output/%/index-full-template.html addendum/head.html addendum/credits.html
 	po4a-gettextize -f xhtml ${PO4A_PO_OPTS} \
-		-m ../phpmyadmin/Documentation.html \
-		-m../phpmyadmin/translators.html \
-		-m  output/$*/index-full-template.html \
+		-m orig-docs/Documentation.html \
+		-m orig-docs/translators.html \
+		-m output/$*/index-full-template.html \
 		-m addendum/head.html \
 		-m addendum/credits.html \
 		-p $@
 
 .PRECIOUS: pot/%-txt.pot
-pot/%-txt.pot: ../phpmyadmin/INSTALL ../phpmyadmin/TODO ../phpmyadmin/README addendum/comment.html
+pot/%-txt.pot: orig-docs/INSTALL orig-docs/TODO orig-docs/README addendum/comment.html
 	po4a-gettextize -f text -o asciidoc ${PO4A_PO_OPTS} \
 		-m addendum/comment.html \
-		-m  ../phpmyadmin/INSTALL \
-		-m ../phpmyadmin/TODO \
-		-m../phpmyadmin/README \
+		-m orig-docs/INSTALL \
+		-m orig-docs/TODO \
+		-m orig-docs/README \
 		-p $@
 
 .PRECIOUS: pot/%-full.pot
