@@ -14,6 +14,7 @@ TYPES = {
     'array': 'pole',
     'string [CSS color for background]': u'text [CSS barva pro pozadí]',
     'string [CSS color]': u'text [CSS barva]',
+    'string [number of bytes]': u'text [počet bajtů]',
     'array of strings': u'pole textů',
 }
 
