@@ -8,7 +8,11 @@ PO4A_PO_OPTS=--msgid-bugs-address phpmyadmin-devel@lists.sourceforge.net \
 		--package-name "phpMyAdmin documentation" \
 		-M utf-8 \
 
-PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" ../phpmyadmin/libraries/Config.class.php)
+# directory where phpMyAdmin sources are placed
+PMA_DIR=../phpmyadmin
+
+# phpMyAdmin version
+PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" $(PMA_DIR)/libraries/Config.class.php)
 
 all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /translators.html.stamp, $(addprefix output/, ${LANGUAGES})) \
@@ -85,16 +89,16 @@ output/%/index-template.html: generate-lang-index get-lang-name \
 	$(addsuffix /TODO, output/%))
 	@./generate-lang-index $* > $@
 
-output/%/docs.css: ../phpmyadmin/docs.css
+output/%/docs.css: $(PMA_DIR)/docs.css
 	@cp $< $@
 
-output/%/favicon.ico: ../phpmyadmin/favicon.ico
+output/%/favicon.ico: $(PMA_DIR)/favicon.ico
 	@cp $< $@
 
-output/%/themes/original/img/docs_menu_bg.png: ../phpmyadmin/themes/original/img/docs_menu_bg.png
+output/%/themes/original/img/docs_menu_bg.png: $(PMA_DIR)/themes/original/img/docs_menu_bg.png
 	@cp $< $@
 
-output/%/themes/original/img/logo_right.png: ../phpmyadmin/themes/original/img/logo_right.png
+output/%/themes/original/img/logo_right.png: $(PMA_DIR)/themes/original/img/logo_right.png
 	@cp $< $@
 
 .PRECIOUS: output/%/index-full-template.html
@@ -105,7 +109,7 @@ output/index.html: $(wildcard output/*/index.html) generate-index get-lang-name
 	@./generate-index > $@
 
 .PRECIOUS: orig-docs/%
-orig-docs/%: ../phpmyadmin/%
+orig-docs/%: $(PMA_DIR)/%
 	@echo 'SED $@'
 	@sed 's/$(PMA_VERSION)/@@VER@@/' < $< > $@
 
@@ -140,8 +144,8 @@ po/%.po:  pot/%-full.pot
 	if [ ! -f $@ ] ; then msginit -i $< -l $* --no-translator -o $@ ; fi
 	@set -e; \
 	echo 'MERGE $@'; \
-	if [ -f ../phpmyadmin/po/$*.po ] ; then \
-		msgmerge -U $@ -C ../phpmyadmin/po/$*.po $< ; \
+	if [ -f $(PMA_DIR)/po/$*.po ] ; then \
+		msgmerge -U $@ -C $(PMA_DIR)/po/$*.po $< ; \
 	else \
 		msgmerge -U $@ $< ; \
 	fi
