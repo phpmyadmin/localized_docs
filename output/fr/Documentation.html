@@ -1595,6 +1595,9 @@ le cadre de navigation et dans la liste des bases de donn&eacute;es.</dd>
 techniques. Applies only where a non-Ajax behavior is possible; for example,
 the Designer feature is Ajax-only so this directive does not apply to it.</dd>
 
+    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] boolean</dt>
+    <dd>Enables check for latest versions using javascript on main phpMyAdmin page.</dd>
+
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] entier</dt>
     <dd>Le nombre maximum de noms de tables &agrave; afficher dans la liste du
 panneau principal. Cette limite est aussi appliqu&eacute;e dans le panneau
@@ -2199,11 +2202,6 @@ CSS pour l'arrière-plan]
 [couleur CSS]</dt>
     <dd>Le style utilis&eacute; pour le pointeur dans le cadre de navigation.  Voir
 <tt>themes/themename/layout.inc.php</tt>.</dd>
-
-    <dt id="cfg_NaviDatabaseNameColor">$cfg['NaviDatabaseNameColor'] chaîne [couleur CSS]<br />
-    </dt>
-    <dd>La couleur utilis&eacute;e pour le nom de la base de donn&eacute;es dans le
-cadre de navigation.  Voir <tt>themes/themename/layout.inc.php</tt>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] bool&eacute;en</dt>
     <dd>Une valeur &agrave; <tt>TRUE</tt> active le pointeur de navigation (quand
@@ -3308,20 +3306,20 @@ la commande &laquo;&nbsp;source&nbsp;&raquo; dans MySQL&nbsp;: <tt>source
     <a id="faqmysqlversions" href="#faq1_17">1.17 Quelles versions de MySQL sont
 g&eacute;r&eacute;es par phpMyAdmin&nbsp;?</a></h4>
 
-<p> Depuis phpMyAdmin 3.0.x, seules les versions 5.0.1 et supérieures de MySQL
-5.0.1 sont  gérées. Pour les versions plus anciennes de MySQL, vous devez
-utiliser la branche 2.x. phpMyAdmin peut se connecter à votre serveur MySQL
-en utilisant l'extension PHP classique <a
-href="http://php.net/mysql">MySQL</a> ou <a
-href="http://php.net/mysqli">l'extension MySQL améliorée (MySQLi)</a>
-disponible dans php 5.0. Cette dernière doit être utilisée à moins que vous
-n'ayez de bonnes raisons de ne pas le faire.<br />
-    En compilant PHP, nous recommandons fortement de lier manuellement
-l'extension MySQL de votre choix à une bibliothèque client MySQL d'au moins
-la même version mineure, puisque celle qui est fournie avec les
-distributions de PHP actuelles est plutôt ancienne et pourrait causer des
-problèmes (voir également <a href="#faq1_17a"><abbr title="Foire Aux
-Questions">FAQ</abbr> 1.17a</a>).</p>
+<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
+MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
+connect to your MySQL server using PHP's classic <a
+href="http://php.net/mysql">MySQL extension</a> as well as the <a
+href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
+available in php 5.0. The latter one should be used unless you have a good
+reason not to do so.<br />
+    When compiling PHP, we strongly recommend that you manually link the MySQL
+extension of your choice to a MySQL client library of at least the same
+minor version since the one that is bundled with some PHP distributions is
+rather old and might cause problems <a href="#faq1_17a"> (see <abbr
+title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
+    MariaDB is also supported (versions 5.1 and 5.2 were tested).
+    </p>
 
 <h5 id="faq1_17a">
     <a href="#faq1_17a">1.17a Je ne peux pas me connecter au serveur MySQL. Il
@@ -5208,8 +5206,8 @@ autres.
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.28 Pourquoi ne puis-je obtenir un graphique à partir de
-ma table des résultats de requêtes&nbsp;?</a></h4>
+    <a href="#faq6_29">6.29 Why can't I get a chart from my query result
+table?</a></h4>
 
 <p> Toutes les tables ne peuvent pas permettre la création d'un
 graphique. Seules les tables ayant une, deux ou trois colonnes peuvent être

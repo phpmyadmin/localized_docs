@@ -1301,6 +1301,10 @@ CREATE DATABASE,ALTER DATABASE,DROP DATABASE</pre>
     for example, the Designer feature is Ajax-only so this directive
     does not apply to it.</dd>
 
+    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] boolean</dt>
+    <dd>Enables check for latest versions using javascript on main phpMyAdmin
+    page.</dd>
+
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] integer</dt>
     <dd>The maximum number of table names to be displayed in the
     main panel's list (except on the Export page). This limit is also enforced in the navigation panel
@@ -1802,11 +1806,6 @@ $cfg['TrustedProxies'] =
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> string [CSS color]</dt>
     <dd>The style used for the pointer in the navi frame.
         See <tt>themes/themename/layout.inc.php</tt>.</dd>
-
-    <dt id="cfg_NaviDatabaseNameColor">$cfg['NaviDatabaseNameColor'] string [CSS color]<br />
-    </dt>
-    <dd>The color used for the database name in the navi frame.
-    See <tt>themes/themename/layout.inc.php</tt>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
     <dd>A value of <tt>TRUE</tt> activates the navi pointer (when LeftFrameLight
@@ -2743,13 +2742,15 @@ setfacl -d -m "g:www-data:rwx" tmp
     connect to your MySQL server using PHP's classic
     <a href="http://php.net/mysql">MySQL extension</a> as well as the
     <a href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that
-    is available in php 5.0. The latter one should be used unless you have 
+    is available in php 5.0. The latter one should be used unless you have a
     good reason not to do so.<br />
-    When compiling php, we strongly recommend that you manually link the MySQL
+    When compiling PHP, we strongly recommend that you manually link the MySQL
     extension of your choice to a MySQL client library of at least the same
     minor version since the one that is bundled with some PHP distributions is
     rather old and might cause problems <a href="#faq1_17a">
-       (see <abbr title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.</p>
+        (see <abbr title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
+    MariaDB is also supported (versions 5.1 and 5.2 were tested).
+    </p>
 
 <h5 id="faq1_17a">
     <a href="#faq1_17a">1.17a I cannot connect to the MySQL server. It always returns the error
@@ -4309,7 +4310,7 @@ chmod o+rwx tmp
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.28 Why can't I get a chart from my query result table?</a></h4>
+    <a href="#faq6_29">6.29 Why can't I get a chart from my query result table?</a></h4>
 
 <p> Not every table can be put to the chart. Only tables with one, two or three columns can be visualised as a chart. Moreover the table must be in a special format for chart script to understand it. Currently supported formats can be found in the <a href="http://wiki.phpmyadmin.net/pma/Devel:Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
 

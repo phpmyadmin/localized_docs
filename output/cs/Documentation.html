@@ -1340,6 +1340,9 @@ and the database list.</dd>
 techniques. Applies only where a non-Ajax behavior is possible; for example,
 the Designer feature is Ajax-only so this directive does not apply to it.</dd>
 
+    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] boolean</dt>
+    <dd>Enables check for latest versions using javascript on main phpMyAdmin page.</dd>
+
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] číslo</dt>
     <dd>The maximum number of table names to be displayed in the main panel's list
 (except on the Export page). This limit is also enforced in the navigation
@@ -1835,11 +1838,6 @@ pro pozadí]
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> text [CSS
 barva]</dt>
     <dd>The style used for the pointer in the navi frame.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
-
-    <dt id="cfg_NaviDatabaseNameColor">$cfg['NaviDatabaseNameColor'] text [CSS barva]<br />
-    </dt>
-    <dd>The color used for the database name in the navi frame.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
@@ -2787,13 +2785,15 @@ MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
 connect to your MySQL server using PHP's classic <a
 href="http://php.net/mysql">MySQL extension</a> as well as the <a
 href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have good
+available in php 5.0. The latter one should be used unless you have a good
 reason not to do so.<br />
-    When compiling php, we strongly recommend that you manually link the MySQL
+    When compiling PHP, we strongly recommend that you manually link the MySQL
 extension of your choice to a MySQL client library of at least the same
 minor version since the one that is bundled with some PHP distributions is
 rather old and might cause problems <a href="#faq1_17a"> (see <abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.</p>
+title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
+    MariaDB is also supported (versions 5.1 and 5.2 were tested).
+    </p>
 
 <h5 id="faq1_17a">
     <a href="#faq1_17a">1.17a I cannot connect to the MySQL server. It always
@@ -4434,7 +4434,7 @@ or click on the 'reset' button to place all elements below each other.
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.28 Why can't I get a chart from my query result
+    <a href="#faq6_29">6.29 Why can't I get a chart from my query result
 table?</a></h4>
 
 <p> Not every table can be put to the chart. Only tables with one, two or three
