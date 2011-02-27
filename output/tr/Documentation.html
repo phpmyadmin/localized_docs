@@ -759,26 +759,29 @@ doğrulaması kullanılması.
         <ul><li>'yapılandırma' kimlik doğrulaması (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)
 sade eski usüldür: kullanıcı adı ve parola <i>config.inc.php</i> içinde
 depolanır.</li>
-            <li>'cookie' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) as
-introduced in 2.2.3 allows you to log in as any valid MySQL user with the
-help of cookies. Username and password are stored in cookies during the
-session and password is deleted when it ends. This can also allow you to log
-in in arbitrary server if <tt><a href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a></tt> enabled.
+            <li>2.2.3'te sunulan 'tanımlama bilgisi' kimlik doğrulaması kipi
+(<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) tanımlama bilgilerinin yardımıyla
+herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin
+verir. Oturum sırasında kullanıcı adı ve parola tanımlama bilgilerinde
+depolanır ve sonlandığında parola silinir. Eğer <tt><a
+href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a></tt> etkinse, bu aynı
+zamanda keyfi sunucuya oturum açmanıza izin verir.
             </li>
-            <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
-called 'advanced' in previous versions and can be written also as 'http')
-(<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'</tt>) as introduced in 1.3.0 allows you to log in as
-any valid MySQL user via HTTP-Auth.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session
-data. This is useful for implementing single signon from another
-application. Sample way how to seed session is in signon example:
-<code>scripts/signon.php</code>. You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
-href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
-authentication method.</li>
+            <li>1.3.0'da sunulan '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
+kimlik doğrulaması (önceki sürümlerde 'gelişmiş' olarak adlandırılırdı ve
+aynı zamanda 'http' olarak yazılabilir) (<tt>$auth_type&nbsp;=&nbsp;'<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>'</tt>) HTTP-Auth yoluyla
+herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin verir.</li>
+            <li>2.10.0'da sunulan 'oturumu açma' kimlik doğrulaması kipi
+(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) hazırlanmış PHP oturumu
+verisinden oturum açmanıza izin verir. Bu başka uygulamadan, tek oturum
+açmayı uygulamak için faydalıdır. Oturumu açma örneğindeki örnek yol oturumu
+açmanın kökeninin nasıl olduğudur: <code>scripts/signon.php</code>. Bu
+kimlik doğrulama yöntemini kullanmak için <a
+href="#cfg_Servers_SignonSession" class="configrule">oturum adını</a> ve <a
+href="#cfg_Servers_SignonURL" class="configrule">oturumu açma URL'sini</a>
+yapılandırmanız gerekir.</li>
         </ul>
 
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
@@ -787,31 +790,33 @@ kullanımı&quot;'nda <a href="#setup">kur bölümü</a>'ne bakın.
     <dt id="servers_auth_http_realm">
     <span
 id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
-string<br />
+dizgisi<br />
     </dt>
     <dd>
-    When using auth_type = '<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>', this field allows to define a custom <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> Basic Auth Realm which will
-be displayed to the user. If not explicitly specified in your configuration,
-a string combined of "phpMyAdmin " and either <a href="#cfg_Servers_verbose"
-class="configrule">$cfg['Servers'][$i]['verbose']</a> or <a
+    auth_type = '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
+kullanıldığı zaman, bu alan kullanıcıya gösterilecek özel <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> Temel Kimlik Doğrulama Alanı
+tanımlamak için izin verir. Eğer yapılandırma dosyanızda açıkça
+belirtilmemişse, "phpMyAdmin"in birleşik dizgisi ve ya <a
+href="#cfg_Servers_verbose"
+class="configrule">$cfg['Servers'][$i]['verbose']</a> ya da <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-will be used.
+kullanılacaktır.
     </dd>
     <dt id="servers_auth_swekey_config">
     <span
 id="cfg_Servers_auth_swekey_config">$cfg['Servers'][$i]['auth_swekey_config']</span>
-string<br />
+dizgisi<br />
     </dt>
     <dd>
-    The name of the file containing <a href="#swekey">Swekey</a> ids and login
-names for hardware authentication. Leave empty to deactivate this feature.
+    Dosyanın adı <a href="#swekey">Swekey</a> id'leri ve donanım kimlik
+doğrulaması için oturum açma adları içerir. Bu özelliğin devre dışı kalması
+için boş bırakın.
     </dd>
     <dt id="servers_user">
-        <span id="cfg_Servers_user">$cfg['Servers'][$i]['user']</span> string<br />
+        <span id="cfg_Servers_user">$cfg['Servers'][$i]['user']</span> dizgisi<br />
         <span id="cfg_Servers_password">$cfg['Servers'][$i]['password']</span>
-string
+dizgisi
     </dt>
     <dd>
         When using auth_type = 'config', this is the user/password-pair which
