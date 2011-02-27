@@ -653,111 +653,112 @@ betik saldırılarına izin veren olası güvenlik açığıdır.</dd>
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] dizgisi</dt>
     <dd>&quot;Tanımlama bilgisi&quot; auth_type, parolayı şifrelemek için blowfish
 algoritması kullanır.<br />
-        If you are using the &quot;cookie&quot; auth_type, enter here a random
-passphrase of your choice. It will be used internally by the blowfish
-algorithm: you won&#8217;t be prompted for this passphrase. There is no
-maximum length for this secret.<br /><br />
+        Eğer &quot;tanımlama bilgisi&quot; auth_type kullanıyorsanız, rasgele
+seçtiğiniz şifreyi buraya girin. Blowfish algoritması ile içten
+kullanılacaktır: bu şifre sizden istenmeyecektir. Bu gizli şeyin en fazla
+uzunluğu yoktur.<br /><br />
         
-        Since version 3.1.0 phpMyAdmin can generate this on the fly, but it makes a
-bit weaker security as this generated secret is stored in session and
-furthermore it makes impossible to recall user name from cookie.</dd>
+        Sürüm 3.1.0'dan bu yana phpMyAdmin bunu anında oluşturur ama oturumda
+depolanan bu oluşturulmuş gizli şeyi biraz zayıf güvenlikli yapar ve üstelik
+tanımlama bilgisinden kullanıcı adını geri çağırmayı imkansız hale getirir.</dd>
 
-    <dt id="cfg_Servers">$cfg['Servers'] array</dt>
-    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
-MySQL servers. Therefore, a <a href="#cfg_Servers"
-class="configrule">$cfg['Servers']</a>-array has been added which contains
-the login information for the different servers.  The first <a
-href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-contains the hostname of the first server, the second <a
-href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-the hostname of the second server, etc. In
-<tt>./libraries/config.default.php</tt>, there is only one section for
-server definition, however you can put as many as you need in
-<tt>./config.inc.php</tt>, copy that block or needed parts (you don't have
-to define all settings, just those you need to change).</dd>
+    <dt id="cfg_Servers">$cfg['Servers'] dizisi</dt>
+    <dd>Sürüm 1.4.2'den bu yana phpMyAdmin çoklu MySQL sunucuları yönetimini
+destekler. Bu nedenle, farklı sunucular için oturum açma bilgisi içeren  <a
+href="#cfg_Servers" class="configrule">$cfg['Servers']</a> dizisi
+eklenmiştir. İlk <a href="#cfg_Servers_host"
+class="configrule">$cfg['Servers'][$i]['host']</a>, ilk sunucunun anamakine
+adını içerir, ikinci <a href="#cfg_Servers_host"
+class="configrule">$cfg['Servers'][$i]['host']</a>, ikinci sunucunun
+anamakine adını içerir, v.s. <tt>./libraries/config.default.php</tt> içinde
+sunucu tanımı için sadece bir bölüm vardır, ancak <tt>./config.inc.php</tt>
+içine ihtiyacınız olduğu kadar koyabilirsiniz, bu bloğu veya gerekli
+kısımları kopyalayın (tüm ayarları tanımlamak zorunda değilsiniz, sadece
+ihtiyacınız olanı değiştirin).</dd>
 
-    <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] string</dt>
-    <dd>The hostname or <abbr title="Internet Protocol">IP</abbr> address of your
-$i-th MySQL-server. E.g. localhost.</dd>
+    <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] dizgisi</dt>
+    <dd>$i-th MySQL-sunucunuzun anamakine adı ya da <abbr title="Internet
+Protocol">IP</abbr> adresi. Örn. localhost.</dd>
 
-    <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] string</dt>
-    <dd>The port-number of your $i-th MySQL-server. Default is 3306 (leave
-blank). If you use &quot;localhost&quot; as the hostname, MySQL ignores this
-port number and connects with the socket, so if you want to connect to a
-port different from the default port, use &quot;127.0.0.1&quot; or the real
-hostname in <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a>.
+    <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] dizgisi</dt>
+    <dd>$i-th MySQL-sunucunuzun bağlantı noktası numarasıdır. Varsayılanı 3306'dır
+(boş bırakın). Eğer anamakine adı olarak &quot;localhost&quot;
+kullanıyorsanız, MySQL bu bağlantı noktası numarasını yok sayar ve soket ile
+bağlanır, bu yüzden eğer varsayılan bağlantı noktasından farklı bir bağlantı
+noktasıyla bağlanmak isterseniz, <a href="#cfg_Servers_host"
+class="configrule">$cfg['Servers'][$i]['host']</a> içinde
+&quot;127.0.0.1&quot; ya da gerçek anamakine adını kullanın.
     </dd>
 
-    <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] string</dt>
-    <dd>The path to the socket to use. Leave blank for default.<br />
-        To determine the correct socket, check your MySQL configuration or, using
-the <tt>mysql</tt> command&#8211;line client, issue the <tt>status</tt>
-command.  Among the resulting information displayed will be the socket used.</dd>
+    <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] dizgisi</dt>
+    <dd>Kullanmak için soket yolu. Varsayılan için boş bırakın.<br />
+        Doğru soketi belirlemek için MySQL yapılandırma dosyanızı kontrol edin veya
+<tt>mysql</tt> komut satırı istemcisini kullanarak <tt>status</tt> komutunu
+deneyin. Sonuçlanan bilgi arasında görüntülenen, kullanılan soket olacaktır.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] boolean</dt>
-    <dd>Whether to enable SSL for connection to MySQL server.
+    <dd>MySQL sunucusuna bağlanmak için SSL etkinleştirmek
     </dd>
 
-    <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] string</dt>
-    <dd>What type connection to use with the MySQL server. Your options are
-<tt>'socket'</tt> and <tt>'tcp'</tt>. It defaults to 'tcp' as that is nearly
-guaranteed to be available on all MySQL servers, while sockets are not
-supported on some platforms.<br /><br />
+    <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] dizgisi</dt>
+    <dd>MySQL sunucusu ile ne tür bağlantı kullandığınız. Seçenekleriniz
+<tt>'soket'</tt> ve <tt>'tcp'</tt>dir. Soketler bazı platformlarda
+desteklenmediğinde, tüm MySQL sunucularında kullanılabilir olması nerdeyse
+garanti olan, varsayılan 'tcp'dir.<br /><br />
 
-        To use the socket mode, your MySQL server must be on the same machine as the
-Web server.</dd>
+        Soket kipini kullanmak için MySQL sunucunuz, Web sunucusuyla aynı makinede
+olmak zorundadır.</dd>
 
-    <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] string</dt>
-    <dd>What php MySQL extension to use for the connection. Valid options are:
+    <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] dizgisi</dt>
+    <dd>Bağlantı için ne php MySQL uzantısı kullanılır. Geçerli seçenekler:
         <br /><br />
 
-        <tt><i>mysql</i></tt> : The classic MySQL extension. This is the recommended
-and default method at this time.<br /><br />
+        <tt><i>mysql</i></tt> : Klasik MySQL uzantısı. Bu önerilir ve şimdilik
+varsayılan yöntemdir.<br /><br />
 
-        <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
-available with php 5.0.0 and is the recommended way to connect to a server
-running MySQL 4.1.x or newer.</dd>
+        <tt><i>mysqli</i></tt> : Gelişmiş MySQL uzantısı. Bu uzantı php 5.0.0 ile
+kullanılabilir olmuştur ve MySQL 4.1.x ya da daha yenisini çalıştıran
+sunuculara bağlanmak için önerilen yoldur.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
-    <dd>Whether to use a compressed protocol for the MySQL server connection or not
-(experimental).<br />
-        This feature requires PHP&nbsp;&gt;=&nbsp;4.3.0.</dd>
+    <dd>MySQL sunucusu bağlantısı için sıkıştırılmış protokol kullanmak ya da
+kullanmamak (deneysel).<br />
+        Bu özellik PHP&nbsp;&gt;=&nbsp;4.3.0 gerektirir.</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
-string<br />
+dizgisi<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
-string
+dizgisi
     </dt>
-    <dd>This special account is used for 2 distinct purposes: to make possible all
-relational features (see <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
-server running with <tt>--skip-show-database</tt>, to enable a multi-user
-installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
-cookie authentication mode).<br /><br />
+    <dd>Bu özel hesap 2 ayrı amaç için kullanılır: tüm bağlantılı özellikleri mümkün
+kılmak için (<a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a> bakın) ve
+<tt>--skip-show-database</tt> ile çalışan MySQL sunucusu için, çoklu
+kullanıcı kurulumunu (<abbr title="HyperText Transfer Protocol">HTTP</abbr>
+veya tanımlama bilgisi kimlik doğrulaması kipi) etkinleştirmek için.<br /><br />
 
-        When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication modes (or 'config' authentication mode since phpMyAdmin
-2.2.1), you need to supply the details of a MySQL account that has
-<tt>SELECT</tt> privilege on the <i>mysql.user (all columns except
-&quot;Password&quot;)</i>, <i>mysql.db (all columns)</i> and
-<i>mysql.tables_priv (all columns except &quot;Grantor&quot; and
-&quot;Timestamp&quot;) </i>tables.  This account is used to check what
-databases the user will see at login.<br />
-        Please see the <a href="#setup">install section</a> on &quot;Using
-authentication modes&quot; for more information.<br /><br />
+        <abbr title="HyperText Transfer Protocol">HTTP</abbr> veya tanımlama bilgisi
+kimlik doğrulaması kipleri (veya phpMyAdmin 2.2.1'den bu yana 'yapılandırma'
+kimlik doğrulaması kipi) kullanıldığı zaman, <i>mysql.user
+(&quot;Password&quot; hariç tüm sütunlar)</i>, <i>mysql.db (tüm
+sütunlar)</i> ve <i>mysql.tables_priv (&quot;Grantor&quot; ve
+&quot;Timestamp&quot; hariç tüm sütunlar)</i> tablolarında <tt>SELECT</tt>
+yetkisinin olduğu ayrıntılı MySQL hesabı sağlamanız gerekir.<br />
+        Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
+kullanımı&quot;'nda <a href="#setup">kur bölümü</a>'ne bakın.<br /><br />
 
-        In phpMyAdmin versions before 2.2.5, those were called
-&quot;stduser/stdpass&quot;.</dd>
+        phpMyAdmin'in 2.2.5 sürümünden önce bunlar &quot;stduser/stdpass&quot;
+olarak adlandırılırdı.</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <tt>['<abbr title="HyperText
+    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] dizgisi <tt>['<abbr title="HyperText
 Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
-    <dd>Whether config or cookie or <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> or signon authentication should be used for this
-server.
-        <ul><li>'config' authentication (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)  is the
-plain old way: username and password are stored in <i>config.inc.php</i>.</li>
+    <dd>Bu sunucu için yapılandırma veya tanımlama bilgisi veya <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> veya oturumu açma kimlik
+doğrulaması kullanılması.
+        <ul><li>'yapılandırma' kimlik doğrulaması (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)
+sade eski usüldür: kullanıcı adı ve parola <i>config.inc.php</i> içinde
+depolanır.</li>
             <li>'cookie' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) as
 introduced in 2.2.3 allows you to log in as any valid MySQL user with the
 help of cookies. Username and password are stored in cookies during the
@@ -780,8 +781,8 @@ href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
 authentication method.</li>
         </ul>
 
-        Please see the <a href="#setup">install section</a> on &quot;Using
-authentication modes&quot; for more information.
+        Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
+kullanımı&quot;'nda <a href="#setup">kur bölümü</a>'ne bakın.
 	</dd>
     <dt id="servers_auth_http_realm">
     <span
