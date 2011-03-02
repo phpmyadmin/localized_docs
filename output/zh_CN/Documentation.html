@@ -582,11 +582,15 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt> 则可登录到任意�
 (旧版本中曾被称为 'advanced' 认证，也可写作 'http')  (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>'</tt>) 自 1.3.0
 起允许通过任意有效的 MySQL 用户登录。</li>
-            <li>'signon' 认证 (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) 自 2.10.0 起允许通过预定义的
-PHP 会话数据登录。这在通过单点登录整合第三方应用程序时很有用。这个文件演示了如何记录 signon 的会话:
-<code>scripts/signon.php</code>，你还需要设置<a href="#cfg_Servers_SignonSession"
-class="configrule">会话名</a>和<a href="#cfg_Servers_SignonURL"
-class="configrule">登录 URL</a> 。</li>
+            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
+introduced in 2.10.0 allows you to log in from prepared PHP session
+data. This is useful for implementing single signon from another
+application. Sample way how to seed session is in signon example:
+<code>scripts/signon.php</code>. There is also alternative example using
+OpenID - <code>scripts/openid.php</code>.  You need to configure <a
+href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
+href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
+authentication method.</li>
         </ul>
 
         详细信息请参见<a href="#setup">安装</a>一节中的&quot;使用认证&quot;。

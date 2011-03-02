@@ -773,15 +773,15 @@ kimlik doğrulaması (önceki sürümlerde 'gelişmiş' olarak adlandırılırd�
 aynı zamanda 'http' olarak yazılabilir) (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>'</tt>) HTTP-Auth yoluyla
 herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin verir.</li>
-            <li>2.10.0'da sunulan 'oturumu açma' kimlik doğrulaması kipi
-(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) hazırlanmış PHP oturumu
-verisinden oturum açmanıza izin verir. Bu başka uygulamadan, tek oturum
-açmayı uygulamak için faydalıdır. Oturumu açma örneğindeki örnek yol oturumu
-açmanın kökeninin nasıl olduğudur: <code>scripts/signon.php</code>. Bu
-kimlik doğrulama yöntemini kullanmak için <a
-href="#cfg_Servers_SignonSession" class="configrule">oturum adını</a> ve <a
-href="#cfg_Servers_SignonURL" class="configrule">oturumu açma URL'sini</a>
-yapılandırmanız gerekir.</li>
+            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
+introduced in 2.10.0 allows you to log in from prepared PHP session
+data. This is useful for implementing single signon from another
+application. Sample way how to seed session is in signon example:
+<code>scripts/signon.php</code>. There is also alternative example using
+OpenID - <code>scripts/openid.php</code>.  You need to configure <a
+href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
+href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
+authentication method.</li>
         </ul>
 
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
