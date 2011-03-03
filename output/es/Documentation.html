@@ -781,15 +781,16 @@ configuración 'avanzada' en versiones anteriores y que puede ser escrita
 como 'http')  (<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>'</tt>) introducida en la versión 1.3.0 permite acceder
 como cualquier usuario MySQL válido mediante HTTP-Auth.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session
-data. This is useful for implementing single signon from another
-application. Sample way how to seed session is in signon example:
-<code>scripts/signon.php</code>. There is also alternative example using
-OpenID - <code>scripts/openid.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
-href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
-authentication method.</li>
+            <li>Autenticación 'signon' (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)
+introducida en la versión 2.10.0 permite iniciar sesión desde datos
+preparados en la sesión PHP. Esto es útil para implementar un inicio de
+sesión único desde otra aplicación. Un modelo de cómo sembrar los datos en
+la sesión se puede encontrar en el ejemplo:
+<code>scripts/signon.php</code>. También existe un ejemplo alternativo
+utilizando OpenID: <code>scripts/openid.php</code>.  Necesita configurar el
+<a href="#cfg_Servers_SignonSession" class="configrule">nombre de la
+sesión</a> y el <a href="#cfg_Servers_SignonURL" class="configrule">URL de
+inicio de sesión</a> para utilizar este método de autenticación.</li>
         </ul>
 
         Para más información vea la <a href="#setup">sección de instalación</a>,
@@ -852,28 +853,28 @@ de bases de datos puden contener caracteres comodín (&quot;_&quot; and
 &quot;%&quot;): si se desea utilizar instancias literales de estos
 caracteres, deberá anteponerles el caracter de escape '\' (por ejemplo,
 utilice <tt>'mi\_bdd'</tt> y no <tt>'mi_bdd'</tt>).<br />
-        This setting is an efficient way to lower the server load since the latter
-does not need to send MySQL requests to build the available database
-list. But <span class="important">it does not replace the privileges rules
-of the MySQL database server</span>. If set, it just means only these
-databases will be displayed but <span class="important">not that all other
-databases can't be used.</span>
+        Esta configuración es una forma eficiente de disminuir la carga del servidor
+ya que éste no necesita enviar pedidos a MySQL para crear la lista de bases
+de datos disponibles. Pero <span class="important">no reemplaza las reglas
+de privilegios del servidor de base de datos MySQL</span>. Si está
+configurado, sólo estas bases de datos van a ser mostradas pero <span
+class="important">otras bases de datos aún pueden ser utilizadas</span>.
         <br /><br />
 
-        An example of using more that one database:
-<tt>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</tt>
+        En ejemplo que utiliza más de uan base de datos:
+<tt>$cfg['Servers'][$i]['only_db'] = array('base1', 'base2');</tt>
         <br /><br />
 
-        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
-databases in the left frame, so that you can individually arrange your
-databases.<br />
-        If you want to have certain databases at the top, but don't care about the
-others, you do not need to specify all other databases. Use:
-<tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt> instead
-to tell phpMyAdmin that it should display db3 and db4 on top, and the rest
-in alphabetic order.</dd>
+        Desde phpMyAdmin 2.5.5 el orden del array es el utilizado para ordenar las
+bases de datos en el panel izquierdo para poder darle un orden personalizado
+a las mismas.<br />
+        Si se desea tener ciertas bases de datos al principio pero quieres ver todas
+las otras no es necesario especificarlas una por una. Usa algo como
+<tt>$cfg['Servers'][$i]['only_db'] = array('base3', 'base4', '*');</tt> en
+su ligar para indicarle a phpMyAdmin que debe mostrar base3 y base4 primero
+y luego todas las demás en orden alfabético.</dd>
 
-    <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> string
+    <dt>cadena <span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span>
     </dt>
     <dd>Expresiones regulares para ocultar algunas bases de datos de usuarios sin
 privilegios. Sólo evita que sean listadas, pero el usuario podrá aún acceder
@@ -883,19 +884,20 @@ acceso, usa el sistema de privilegios de MySQL.
         Por ejemplo, para ocultar todas las bases de datos que empiecen con la letra
 &#34;a&#34;, usa<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
-        and to hide both &#34;db1&#34; and &#34;db2&#34; use <br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
-        More information on regular expressions can be found in the <a
-href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
-pattern syntax</a> portion of the PHP reference manual.
+        y para ocultar tanto &#34;db1&#34; como &#34;db2&#34; usa <br />
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)';</pre>
+        Puedes encontrar más información sobre expresiones regulares en el manual de
+referencia de PHP, en la sección sobre <a
+href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">sintáxis
+de patrones PCRE</a>.
         </dd>
 
-    <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] string</dt>
-    <dd>Only useful when using phpMyAdmin with multiple server entries. If set, this
-string will be displayed instead of the hostname in the pull-down menu on
-the main page. This can be useful if you want to show only certain databases
-on your system, for example. For HTTP auth, all non-US-ASCII characters will
-be stripped.</dd>
+    <dt id="cfg_Servers_verbose">cadena $cfg['Servers'][$i]['verbose']</dt>
+    <dd>Sólo es útil al utilizar phpMyAdmin con múltiples servidores MySQL. Si está
+configurado, esta cadena será mostrada en lugar del nombre del sistema en el
+menú desplegable de la página principal. Puede ser útil si quieres mostrar
+ciertas bases de datos en tu sistema. Para autenticación HTTP, todos los
+caracteres fuera del conjunto US-ASCII serán eliminados.</dd>
 
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> string
@@ -904,16 +906,18 @@ be stripped.</dd>
 phpMyAdmin.
         <br /><br />
 
-        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
-section in this document to see the benefits of this feature, and for a
-quick way of creating this database and the needed tables.
+        Ver la sección sobre <a href="#linked-tables">almacenamiento de
+configuración phpMyAdmin</a> en este documento para saber sobre las ventajas
+de esta funcionalidad y para una forma fácil de crear esta base de datos y
+las tablas necesarias.
         <br /><br />
 
-        If you are the only user of this phpMyAdmin installation, you can use your
-current database to store those special tables; in this case, just put your
-current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
-multi-user installation, set this parameter to the name of your central
-database containing the phpMyAdmin configuration storage.</dd>
+        Si se es el único usuario de esta instalación de phpMyAdmin, se puede
+utilizar la base actual para almacenar estas tablas especiales; en este
+caso, sólo agrega el nombre de la base de datos actual en
+<tt>$cfg['Servers'][$i]['pmadb']</tt>. Para una instalación multi-usuario,
+este parámetro debe ser la base de datos central que contiene el
+almacenamiento de configuración phpMyAdmin.</dd>
 
     <dt id="bookmark">
         <span
