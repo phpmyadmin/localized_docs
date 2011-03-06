@@ -900,15 +900,16 @@ versions et peut aussi &ecirc;tre &eacute;crit 'http')
 Protocol">HTTP</abbr>'</tt>)  tel qu'introduit dans la version 1.3.0 vous
 permet de vous connecter comme n'importe utilisateur MySQL valide via
 HTTP-Auth.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session
-data. This is useful for implementing single signon from another
-application. Sample way how to seed session is in signon example:
-<code>scripts/signon.php</code>. There is also alternative example using
-OpenID - <code>scripts/openid.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
-href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
-authentication method.</li>
+            <li>Le mode d'authentification 'signon'
+(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  qui a été introduit dans la
+version 2.10.0 vous permet de vous connecter à partir de données de session
+préparée PHP. Ceci est utile pour la mise en &oelig;uvre d'une connexion
+unique (single signon)  &agrave; partir d'une autre application. Un exemple
+pour alimenter une session se trouve dans&nbsp;:
+<code>scripts/signon.php</code>. Vous aurez besoin de configurer <a
+href="#cfg_Servers_SignonSession" class="configrule">session name</a> et <a
+href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> pour
+utiliser ce mode d'authentification.</li>
         </ul>
 
         Veuillez consulter la section <a href="#setup">Installation</a> sur
@@ -1585,13 +1586,15 @@ serveurs auxquels se connecter.<br />
         Si vous n'avez qu'un seul serveur, <tt>$cfg['ServerDefault']</tt> DOIT
 &ecirc;tre d&eacute;fini sur ce serveur.</dd>
 
-    <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] boolean</dt>
-    <dd>Defines whether to refresh only parts of certain pages using Ajax
-techniques. Applies only where a non-Ajax behavior is possible; for example,
-the Designer feature is Ajax-only so this directive does not apply to it.</dd>
+    <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] booléen</dt>
+    <dd>Définit le rafraîchissement de parties de certaines pages en utilisant les
+techniques Ajax. S'applique seulement où le comportement non Ajax est
+possible. Par exemple la fonctionnalité Designer ne fonctionne qu'en Ajax,
+donc cette directive ne s'applique à celle-ci.</dd>
 
-    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] boolean</dt>
-    <dd>Enables check for latest versions using javascript on main phpMyAdmin page.</dd>
+    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] booléen</dt>
+    <dd>Active la vérification des dernières versions en utilisant JavaScript sur la
+page principale de phpMyAdmin.</dd>
 
     <dt id="cfg_MaxDbList">$cfg['MaxDbList'] entier</dt>
     <dd>Le nombre maximum de noms de bases de donn&eacute;es &agrave; afficher dans
@@ -2299,11 +2302,13 @@ bool&eacute;en <span
 id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']</span>
 bool&eacute;en
     </dt>
-    <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
-would be put when tables contents are displayed (you may have them displayed
-both at the left and at the right).  &quot;Left&quot; and &quot;right&quot;
-are parsed as &quot;top&quot; and &quot;bottom&quot; with vertical display
-mode.</dd>
+    <dd>D&eacute;finit l'endroit o&ugrave; les liens modifier, modifier inline,
+copier et supprimer seront affich&eacute;s quand le contenu des tables est
+affich&eacute;e (vous pouvez les voir affich&eacute;s &agrave; la fois
+&agrave; gauche et &agrave; droite). &laquo;&nbsp;Gauche&nbsp;&raquo; et
+&laquo;&nbsp;droite&nbsp;&raquo; sont traduits par
+&laquo;&nbsp;haut&nbsp;&raquo; et &laquo;&nbsp;bas&nbsp;&raquo; en mode
+d'affichage vertical.</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] chaîne</dt>
     <dd>Il existe trois modes d'affichage&nbsp;: 'horizontal', 'horizontalflipped'
@@ -3303,19 +3308,19 @@ la commande &laquo;&nbsp;source&nbsp;&raquo; dans MySQL&nbsp;: <tt>source
     <a id="faqmysqlversions" href="#faq1_17">1.17 Quelles versions de MySQL sont
 g&eacute;r&eacute;es par phpMyAdmin&nbsp;?</a></h4>
 
-<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
-MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
-connect to your MySQL server using PHP's classic <a
-href="http://php.net/mysql">MySQL extension</a> as well as the <a
-href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have a good
-reason not to do so.<br />
-    When compiling PHP, we strongly recommend that you manually link the MySQL
-extension of your choice to a MySQL client library of at least the same
-minor version since the one that is bundled with some PHP distributions is
-rather old and might cause problems <a href="#faq1_17a"> (see <abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
-    MariaDB is also supported (versions 5.1 and 5.2 were tested).
+<p> Depuis phpMyAdmin 3.0.x, seules les versions 5.0.1 et supérieures de MySQL
+5.0.1 sont  gérées. Pour les versions plus anciennes de MySQL, vous devez
+utiliser la branche 2.x. phpMyAdmin peut se connecter à votre serveur MySQL
+en utilisant <a href="http://php.net/mysqli">l'extension MySQL améliorée
+(MySQLi)</a> disponible dans php 5.0. Cette dernière doit être utilisée à
+moins que vous n'ayez de bonnes raisons de ne pas le faire.<br />
+    En compilant PHP, nous recommandons fortement de lier manuellement
+l'extension MySQL de votre choix à une bibliothèque client MySQL d'au moins
+la même version mineure, puisque celle qui est fournie avec les
+distributions de PHP actuelles est plutôt ancienne et pourrait causer des
+problèmes (voir également <a href="#faq1_17a"><abbr title="Foire Aux
+Questions">FAQ</abbr> 1.17a</a>).<br /><br />
+    MariaDB est également géré (les versions 5.1 et 5.2 ont été testées).
     </p>
 
 <h5 id="faq1_17a">
@@ -4111,14 +4116,14 @@ r&eacute;sultats, mais cela peut avoir un s&eacute;rieux impact sur les
 performances.</p>
 
 <h4 id="faq3_12">
-    <a href="#faq3_12">3.12 (withdrawn).</a></h4>
+    <a href="#faq1_12">1.12 (retiré).</a></h4>
 
 <h4 id="faq3_13">
     <a href="#faq3_13">3.13 J'obtiens une erreur en saisissant <tt>USE</tt>
 suivi du nom d'une base de donn&eacute;es contenant un trait d'union.</a></h4>
 <p>
-    The tests I have made with MySQL 5.1.49 shows that the API does not accept
-this syntax for the USE command.
+    Les tests que j'ai effectu&eacute;s avec l'API actuelle de MySQL 5.1.49,
+montre que cette API n'accepte pas cette syntaxe pour la commande USE.
 </p>
 
 <h4 id="faq3_14">
@@ -4989,8 +4994,9 @@ compl&egrave;te sera&nbsp;:<br /><br />
 '%phpMyAdmin%'</code>
     <br /><br />
 
-    You can use multiple occurrences of <b>/*[VARIABLE]*/</b> in a single query
-(that is, multiple occurrences of the <i>same</i> variable).<br />
+    Vous pouvez utiliser de multiples occurrences de <b>/*['VARIABLE']*/</b>
+dans une seule requ&ecirc;te (c'est-à-dire de multiples occurrences de la
+<i>même</i> variable).<br />
     <b>REMARQUEZ L'ABSENCE D'ESPACES</b> &agrave; l'int&eacute;rieur de la
 construction &laquo;&nbsp;/**/&nbsp;&raquo;. Tout espace
 ins&eacute;r&eacute; sera plus tard &eacute;galement ins&eacute;r&eacute; en
@@ -5203,8 +5209,8 @@ autres.
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.29 Why can't I get a chart from my query result
-table?</a></h4>
+    <a href="#faq6_29">6.29 Pourquoi ne puis-je obtenir un graphique à partir de
+ma table des résultats de requêtes&nbsp;?</a></h4>
 
 <p> Toutes les tables ne peuvent pas permettre la création d'un
 graphique. Seules les tables ayant une, deux ou trois colonnes peuvent être
@@ -5705,7 +5711,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Nicola Asuni (Tecnick.com)
 <ul>
-    <li>TCPDF library (<a href="http://www.tcpdf.org">http://www.tcpdf.org</a>)</li>
+    <li>Bibliothèque TCPDF (<a href="http://www.tcpdf.org">http://www.tcpdf.org</a>)</li>
 </ul></li>
 
 <li>Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
