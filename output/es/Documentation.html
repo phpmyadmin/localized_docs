@@ -929,117 +929,127 @@ consultas como favoritas. Esto es útil para consultas que se realizan a
 menudo. <br /><br />
 
         Para permitir el uso de esta funcionalidad.
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>enter the table name in <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
+            <li>ingrese el nombre de la tabla en
+<tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
         </ul>
     </dd>
 
     <dt id="relation">
-        <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
-string
+        cadena <span
+id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
     </dt>
-    <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
-column is a key in another table (a foreign key). phpMyAdmin currently uses
-this to
-        <ul><li>make clickable, when you browse the master table, the data values that point
-to the foreign table;</li>
-            <li>display in an optional tool-tip the &quot;display column&quot; when browsing
-the master table, if you move the mouse to a column containing a foreign key
-(use also the 'table_info' table);<br />
-                (see <a href="#faqdisplay"><abbr title="Frequently Asked Questions">
-FAQ</abbr> 6.7</a>)</li>
-            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
-value and &quot;display column&quot; are shown)<br />
-                (see <a href="#faq6_21"><abbr title="Frequently Asked Questions"> FAQ</abbr>
-6.21</a>)</li>
-            <li>display links on the table properties page, to check referential integrity
-(display missing foreign keys) for each described key;
+    <dd>Desde la versión 2.2.4 puedes describir, en una tabla especial 'relation',
+qué columna es una clave en otra tabla (una clave foránea). phpMyAdmin
+normalmente usa esto para
+        <ul><li>poder pulsar sobre los valores que apuntan a esta tabla externa al
+visualizar la tabla original;</li>
+            <li>mostrar un texto opcional con la &quot;columna a mostrar&quot; al visualizar
+la tabla original si se mueve el mouse sobre una columna con una clave
+foránea (también utiliza la tabla 'table_info');<br />
+                (revisa <a href="#faqdisplay"><abbr title="Frequently Asked
+Questions">FAQ</abbr> 6.7</a>)</li>
+            <li>en el modo de edición/inserción, mostrar una lista desplegable con las
+posibles claves foráneas (se verá el valor de la clave y la &quot;columna a
+mostrar&quot;)<br />
+                (revisa <a href="#faq6_21"><abbr title="Frequently Asked
+Questions">FAQ</abbr> 6.21</a>)</li>
+            <li>muestra enlaces en la página de propiedades de la tabla para verificar
+integridad referencia (muestra las cláves foráneas ausentes) para cada clave
+descripta;
             </li>
-            <li>in query-by-example, create automatic joins (see <a href="#faq6_6"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
-            <li>enable you to get a <abbr title="Portable Document Format">PDF</abbr> schema
-of your database (also uses the table_coords table).</li>
+            <li>en las consultas por ejemplo, crea joins automáticamente (ver <a
+href="#faq6_6"><abbr title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
+            <li>permite obtener un esquema de la base de datos en <abbr title="Portable
+Document Format">PDF</abbr> (también utiliza la tabla 'table_coords').</li>
         </ul>
 
-        The keys can be numeric or character.<br /><br />
+        Las claves pueden sen numéricas o alfabéticas.<br /><br />
 
         Para permitir el uso de esta funcionalidad.
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the relation table name in <tt>$cfg['Servers'][$i]['relation']</tt></li>
-            <li>now as normal user open phpMyAdmin and for each one of your tables where you
-want to use this feature, click &quot;Structure/Relation view/&quot; and
-choose foreign columns.
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
+            <li>agrega el nombre de la tabla de relación en
+<tt>$cfg['Servers'][$i]['relation']</tt></li>
+            <li>ahora, como un usuario normal, abre phpMyAdmin, pulsa en
+&quot;Estructura/Vista de relación/&quot; y elige las claves foráneas para
+cada una de las tablas en las que quieres utilizar esta funcionalidad.
                 </li>
         </ul>
 
-        Please note that in the current version, <tt>master_db</tt> must be the same
-as <tt>foreign_db</tt>. Those columns have been put in future development of
-the cross-db relations.
+        Porfavor, nota que en la versión actual <tt>master_db</tt> debe de ser igual
+a <tt>foreign_db</tt>. Estas columnas fueron agregadas para futuro
+desarrollo de relaciones entre bases de datos.
     </dd>
 
     <dt id="table_info">
-        <span id="cfg_Servers_table_info">$cfg['Servers'][$i]['table_info']</span>
-string
+        cadena <span
+id="cfg_Servers_table_info">$cfg['Servers'][$i]['table_info']</span>
     </dt>
     <dd>
-        Since release 2.3.0 you can describe, in a special 'table_info' table, which
-column is to be displayed as a tool-tip when moving the cursor over the
-corresponding key.<br />
-        This configuration variable will hold the name of this special table. To
-allow the usage of this functionality:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
-'pma_table_info')</li>
-            <li>then for each table where you want to use this feature, click
-&quot;Structure/Relation view/Choose column to display&quot; to choose the
-column.</li>
+        Desde la versión 2.3.0 se puede describir en una tabla especial
+'table_info', qué columna a mostrar como texto de ayuda al mover el cursor
+sobre la clave correspondiente.<br />
+        Esta variable de configuración contiene el nombre de esta tabla
+especial. Para permitir el uso de esta funcionalidad:
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
+            <li>agrega el nombre de la tabla en <tt>$cfg['Servers'][$i]['table_info']</tt>
+(por ejemplo: 'pma_table_info')</li>
+            <li>luego, para cada tabla en la que quieras utilizar esta funcionalidad, pulsa
+en &quot;Estructura/Vista de relación/Elegir columna a mostrar&quot; para
+elegir la columna.</li>
         </ul>
-        Usage tip: <a href="#faqdisplay">Display column</a>.
+        Consejo de uso: <a href="#faqdisplay">Columna a mostrar</a>.
     </dd>
     <dt id="table_coords">
-        <span
-id="cfg_Servers_table_coords">$cfg['Servers'][$i]['table_coords']</span>
-string<br />
-        <span id="cfg_Servers_pdf_pages">$cfg['Servers'][$i]['pdf_pages']</span>
-string
+        cadena <span
+id="cfg_Servers_table_coords">$cfg['Servers'][$i]['table_coords']</span><br />
+        cadena <span
+id="cfg_Servers_pdf_pages">$cfg['Servers'][$i]['pdf_pages']</span>
     </dt>
-    <dd>Since release 2.3.0 you can have phpMyAdmin create <abbr title="Portable
-Document Format">PDF</abbr> pages showing the relations between your
-tables. To do this it needs two tables &quot;pdf_pages&quot; (storing
-information about the available <abbr title="Portable Document
-Format">PDF</abbr> pages) and &quot;table_coords&quot; (storing coordinates
-where each table will be placed on a <abbr title="Portable Document
-Format">PDF</abbr> schema output).<br /><br />
+    <dd>Desde la versión 2.3.0 phpMyAdmin puede crear páginas <abbr title="Portable
+Document Format">PDF</abbr> mostrando las relaciones entre tus tablas. Para
+lograrlo, necesitas dos tablas: &quot;pdf_pages&quot; (con la información
+sobre las páginas <abbr title="Portable Document Format">PDF</abbr>
+disponibles) y &quot;table_coords&quot; (que contiene las coordenadas en las
+que se ubicará cada tabla en la salidad del esquema en <abbr title="Portable
+Document Format">PDF</abbr>).<br /><br />
 
-        You must be using the &quot;relation&quot; feature.<br /><br />
+        Debes de estar usando la funcionalidad &quot;relation&quot;.<br /><br />
 
         Para permitir el uso de esta funcionalidad.
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the correct table names in <tt>$cfg['Servers'][$i]['table_coords']</tt>
-and <tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
+            <li>configura los nombres de tabla apropiados en
+<tt>$cfg['Servers'][$i]['table_coords']</tt> y
+<tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
         </ul>
 
-        Usage tips: <a href="#faqpdf"><abbr title="Portable Document
-Format">PDF</abbr> output</a>.
+        Consejos de uso: <a href="#faqpdf">salida <abbr title="Portable Document
+Format">PDF</abbr></a>.
     </dd>
 
     <dt id="col_com">
-        <span id="cfg_Servers_column_info">$cfg['Servers'][$i]['column_info']</span>
-string
+        cadena <span
+id="cfg_Servers_column_info">$cfg['Servers'][$i]['column_info']</span>
     </dt>
     <dd>
         <!-- This part requires a content update! -->
-Since release 2.3.0 you can store comments to describe each column for each
-table. These will then be shown on the &quot;printview&quot;.
+Desde la versión 2.3.0 puedes almacenar comentarios que describan cada
+columna de una tabla. Estos serán mostrados en la &quot;vista de
+impresión&quot;.
         <br /><br />
 
-        Starting with release 2.5.0, comments are consequently used on the table
-property pages and table browse view, showing up as tool-tips above the
-column name (properties page) or embedded within the header of table in
-browse view. They can also be shown in a table dump. Please see the relevant
-configuration directives later on.<br /><br />
+        Desde la versión 2.5.0, los comentarios son también utilizados en la páginas
+de propiedades de la tabla y la vista de navegación de tablas, mostrándose
+como textos de ayuda sobre los nombres de las columnas (en la página de
+propiedades) o embebidos en las cabeceras de la tabla en la vista de
+navegación. También pueden ser mostrados al volcar la tabla. Revisa las
+directivas de configuración más adelante.<br /><br />
 
         Also new in release 2.5.0 is a MIME-transformation system which is also
 based on the following table structure. See <a href="#transformations">
@@ -1049,7 +1059,8 @@ system, your column_info table has to have the three new columns 'mimetype',
         <br /><br />
 
         Para permitir el uso de esta funcionalidad.
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
 'pma_column_info')</li>
             <li>to update your PRE-2.5.0 Column_comments Table use this:
@@ -1087,7 +1098,8 @@ browser.<br /><br />
 
         Para permitir el uso de esta funcionalidad.
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
 (e.g. 'pma_history')
                 </li>
@@ -1124,7 +1136,8 @@ report to a file or to a temporary database.
         Para permitir el uso de esta funcionalidad.
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
 (e.g. 'pma_tracking')</li>
         </ul>
@@ -1218,7 +1231,8 @@ browser's local storage, or, it is is unavailable, until the end of session.
         Para permitir el uso de esta funcionalidad.
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
         </ul>
     </dd>
@@ -1234,7 +1248,8 @@ visually manage the relations.
 
         Para permitir el uso de esta funcionalidad.
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
+phpMyAdmin</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
 (e.g. 'pma_designer_coords')
                 </li>
