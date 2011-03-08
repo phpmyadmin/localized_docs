@@ -1051,86 +1051,87 @@ propiedades) o embebidos en las cabeceras de la tabla en la vista de
 navegación. También pueden ser mostrados al volcar la tabla. Revisa las
 directivas de configuración más adelante.<br /><br />
 
-        Also new in release 2.5.0 is a MIME-transformation system which is also
-based on the following table structure. See <a href="#transformations">
-Transformations</a> for further information. To use the MIME-transformation
-system, your column_info table has to have the three new columns 'mimetype',
-'transformation', 'transformation_options'.
+        También en la versión 2.5.0 hay un sistema de transformación MIME basado en
+la estructura de las tablas descriptas. Revisa <a href="#transformations">
+Transformaciones</a> para más información. Para utilizar el sistema de
+transformación MIME, la tabla 'column_info' tiene que tener 3 nuevas
+columnas: 'mimetype', 'transformation' y 'transformation_options'.
         <br /><br />
 
         Para permitir el uso de esta funcionalidad.
         <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
-'pma_column_info')</li>
-            <li>to update your PRE-2.5.0 Column_comments Table use this:
+            <li>defina el nombre de la tabla en <tt>$cfg['Servers'][$i]['column_info']</tt>
+(por ejemplo: 'pma_column_info')</li>
+            <li>para actualizar la tabla 'column_comments' anterior a la versión 2.5.0,
+utiliza la siguiente consulta:
 
                 <pre>
 ALTER TABLE `pma_column_comments`
-    ADD `mimetype` VARCHAR( 255 ) NOT NULL,
-    ADD `transformation` VARCHAR( 255 ) NOT NULL,
-    ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
+ADD `mimetype` VARCHAR( 255 ) NOT NULL,
+ADD `transformation` VARCHAR( 255 ) NOT NULL,
+ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                and remember that the Variable in <i>config.inc.php</i> has been renamed
-from<br />
-                <tt>$cfg['Servers'][$i]['column_comments']</tt> to
+                y recuerda que la variable en <i>config.inc.php</i> fue renombrada de<br />
+                <tt>$cfg['Servers'][$i]['column_comments']</tt> a
 <tt>$cfg['Servers'][$i]['column_info']</tt></li>
         </ul>
     </dd>
 
     <dt id="history">
-        <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> string
+        cadena <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span>
     </dt>
-    <dd>Since release 2.5.0 you can store your <abbr title="structured query
-language">SQL</abbr> history, which means all queries you entered manually
-into the phpMyAdmin interface. If you don't want to use a table-based
-history, you can use the JavaScript-based history. Using that, all your
-history items are deleted when closing the window.<br /><br />
+    <dd>Desde la versión 2.5.0, puedes almacenar el histórico <abbr
+title="structured query language">SQL</abbr>, todas las consultas ingresadas
+manualmente en la interfaz phpMyAdmin. Si no deseas utilizar un histórico
+basado en tablas puedes utilizar un histórico basado en JavaScript. Al
+utilizarlo, los elementos del histórico son eliminados al cerrar la ventana.<br /><br />
 
-        Using <a href="#cfg_QueryHistoryMax"
-class="configrule">$cfg['QueryHistoryMax']</a> you can specify an amount of
-history items you want to have on hold. On every login, this list gets cut
-to the maximum amount.<br /><br />
+        Utilizando <a href="#cfg_QueryHistoryMax"
+class="configrule">$cfg['QueryHistoryMax']</a> puedes especificar la máxima
+cantidad de elementos en el histórico. En cada inicio de sesión esta lista
+es recortada a este máximo.<br /><br />
 
-        The query history is only available if JavaScript is enabled in your
-browser.<br /><br />
+        El histórico de consultas sólo estará disponible si JavaScript está
+habilitado en el navegador.<br /><br />
 
         Para permitir el uso de esta funcionalidad.
 
         <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
-(e.g. 'pma_history')
+            <li>configura el nombre de la tabla en <tt>$cfg['Servers'][$i]['history']</tt>
+(por ejemplo: 'pma_history')
                 </li>
         </ul>
     </dd>
 
     <dt id="tracking">
-        <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
-string
+        cadena <span
+id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
     </dt>
     <dd>
-        Since release 3.3.x a tracking mechanism is available.  It helps you to
-track every <abbr title="structured query language">SQL</abbr> command which
-is executed by phpMyAdmin. The mechanism supports logging of data
-manipulation and data definition statements. After enabling it you can
-create versions of tables.
+        Desde la versión 3.3.x, hay un sistema de seguimiento disponible. Permite
+seguir toda consulta <abbr title="structured query language">SQL</abbr>
+ejecutada por phpMyAdmin. El mecanismo tiene soporte de registros para
+sententencias de definición y sentencias de manipulación de datos. Luego de
+activarlo puedes crear versiones de tablas.
         <br/><br/>
-        The creation of a version has two effects:
+        La creación de una versión tiene dos efectos:
 
         <ul>
-            <li>phpMyAdmin saves a snapshot of the table, including structure and indexes.</li>
-            <li>phpMyAdmin logs all commands which change the structure and/or data of the
-table and links these commands with the version number.</li>
+            <li>phpMyAdmin guarda una captura de la tabla incluyendo estructura e índices.</li>
+            <li>phpMyAdmin registrará todas las órdenes que cambien la estructura o los
+datos de la tabla y asociará dichas órdenes con el número de versión.</li>
         </ul>
 
-        Of course you can view the tracked changes. On the "Tracking" page a
-complete report is available for every version.  For the report you can use
-filters, for example you can get a list of statements within a date range.
-When you want to filter usernames you can enter * for all names or you enter
-a list of names separated by ','.  In addition you can export the (filtered)
-report to a file or to a temporary database.
+        Por supuesto que puedes visualizar el seguimiento de cambios. En la página
+de "Seguimiento" hay disponible un reporte para toda versión.  Para el
+reporte puedes utilizar filtros; por ejemplo, puedes obtener una lista de
+sentencias dentro de un rango de datos.  Cuando queiras filtrar nombres de
+usuarios puedes utilizar * para todos los nombres de usuarios o una lista de
+nombres separados por ','.  Además, puedes exportar el reporte (filtrado) a
+un archivo o base de datos temporal.
         <br/><br/>
         
         Para permitir el uso de esta funcionalidad.
@@ -1138,39 +1139,37 @@ report to a file or to a temporary database.
         <ul>
             <li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
-(e.g. 'pma_tracking')</li>
+            <li>defina el nombre de la tabla en <tt>$cfg['Servers'][$i]['tracking']</tt>
+(por ejemplo: 'pma_tracking')</li>
         </ul>
     </dd>
 
     <dt id="tracking2">
-        <span
+        booleano <span
 id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_version_auto_create']</span>
-boolean
     </dt>
     <dd>
-        Whether the tracking mechanism creates versions for tables and views
-automatically. Default value is false.
+        Si el mecanismo de seguimiento crea versiones para tablas y vistas
+automáticamente. El valor predeterminado es que no lo haga.
         <br/><br/>
-        If this is set to true and you create a table or view with
+        En caso de estar activado y creas una tabla o vista con
 
         <ul>
             <li>CREATE TABLE ...</li>
             <li>CREATE VIEW ...</li>
         </ul>
 
-        and no version exists for it, the mechanism will create a version for you
-automatically.        
+        y no existe una versión para la misma, el mecanismo creará una versión
+automáticamente.        
     </dd>
 
     <dt id="tracking3">
-        <span
+        cadena <span
 id="cfg_Servers_tracking_default_statements">$cfg['Servers'][$i]['tracking_default_statements']</span>
-string
     </dt>
     <dd>
-        Defines the list of statements the auto-creation uses for new
-versions. Default value is
+        Define la lista de sentencias utilizadas por la auto-creación para nuevas
+versiones. El valor predeterminado es
         <br/>
 
 <pre>CREATE TABLE,ALTER TABLE,DROP TABLE,RENAME TABLE,
@@ -1181,51 +1180,52 @@ CREATE DATABASE,ALTER DATABASE,DROP DATABASE</pre>
     </dd>
 
     <dt id="tracking4">
-        <span
+        booleano <span
 id="cfg_Servers_tracking_add_drop_view">$cfg['Servers'][$i]['tracking_add_drop_view']</span>
-boolean
     </dt>
     <dd>
-        Whether a DROP VIEW IF EXISTS statement will be added as first line to the
-log when creating a view. Default value is true.
+        Si se agregará la sentencia DROP VIEW IF EXISTS como primer línea al
+registro cuando se cree una vista. El valor predeterminado es que sí lo
+haga.
         <br/><br/>       
     </dd>
 
 
     <dt id="tracking5">
-        <span
+        booleano <span
 id="cfg_Servers_tracking_add_drop_table">$cfg['Servers'][$i]['tracking_add_drop_table']</span>
-boolean
     </dt>
     <dd>
-        Whether a DROP TABLE IF EXISTS statement will be added as first line to the
-log when creating a table. Default value is true.
+        Si se agregará la sentencia DROP TABLE IF EXISTS como primer línea al
+registro cuando se cree una tabla. El valor predeterminado es que sí lo
+haga.
         <br/><br/>
     </dd>
 
     <dt id="tracking6">
-        <span
+        booleano <span
 id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_drop_database']</span>
-boolean
     </dt>
     <dd>
-        Whether a DROP DATABASE IF EXISTS statement will be added as first line to
-the log when creating a database. Default value is true.
+        Si se agregará la sentencia DROP DATABASE IF EXISTS como primer línea al
+registro cuando se cree una base de datos. El valor predeterminado es que sí
+lo haga.
         <br/><br/>
     </dd>
 
     <dt id="userconfig">
-        <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
-string
+        cadena <span
+id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
     </dt>
     <dd>
-        Since release 3.4.x phpMyAdmin allows users to set most preferences by
-themselves and store them in the database.
+        Desde la versión 3.4.x phpMyAdmin permite que los usuarios configuren sus
+preferencias por sí mismos y las almacena en la base de datos.
         <br /><br />
 
-        If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
-users can still personalize phpMyAdmin, but settings will be saved in
-browser's local storage, or, it is is unavailable, until the end of session.
+        Si no se permite alamacenar preferencias en <a href="#pmadb">pmadb</a>, los
+usuarios aún pueden personalizar phpMyAdmin; pero sus configuraciones serán
+almacenadas en el almacenamiento local del navegador o, en caso que no esté
+disponible, hasta el final de la sesión.
         <br /><br />
 
         Para permitir el uso de esta funcionalidad.
@@ -1233,101 +1233,100 @@ browser's local storage, or, it is is unavailable, until the end of session.
         <ul>
             <li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+            <li>defina el nombre de la tabla en <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
         </ul>
     </dd>
 
     <dt id="designer_coords">
-        <span
+        cadena <span
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
-string
     </dt>
-    <dd>Since release 2.10.0 a Designer interface is available; it permits to
-visually manage the relations.
+    <dd>Desde la versión 2.10.0, una interfaz de diseño está disponible que permite
+manegar relaciones visualmente.
         <br /><br />
 
         Para permitir el uso de esta funcionalidad.
 
         <ul><li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
-(e.g. 'pma_designer_coords')
+            <li>defina el nombre de la tabla en
+<tt>$cfg['Servers'][$i]['designer_coords']</tt> (por ejemplo:
+'pma_designer_coords')
                 </li>
         </ul>
     </dd>
 
-    <dt><span
+    <dt>booleano <span
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
-boolean
     </dt>
-    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new columns. If the above variable
-is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
-latest table structure available. If not, it will emit a warning to the
-superuser.<br /><br />
+    <dd>Como la versión 2.5.0 introdujo soporte para tranformación MIME, la tabla
+'column_info' fue expandida con tres nuevas columnas. Si la variable
+anterior está configurada como <tt>TRUE</tt> (el valor predeterminado),
+phpMyAdmin verificará que la tabla tenga la última estructura disponible. Si
+no, generará una advertencia al super-usuario.<br /><br />
 
-        You can disable this checking behavior by setting the variable to false,
-which should offer a performance increase.<br /><br />
+        Puedes desactivar este comportamiento de chequeo configurando la variable a
+'false', lo que debería resultar en una mejora de performance.<br /><br />
 
-        Recommended to set to FALSE, when you are sure, your table structure is up
-to date.</dd>
-    <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span>
-boolean</dt>
-    <dd>Whether to allow root access. This is just a shortcut for the AllowDeny
-rules below.
+        Es recomendable definirlo como 'FALSE' una vez que se esté seguro que la
+estructura de la tabla está actualizada.</dd>
+    <dt>booleano <span
+id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span></dt>
+    <dd>Si permitir acceso como root. Esto es un atajo para las reglas AllowDeny a
+continuación.
     </dd>
-    <dt><span
-id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
-boolean</dt>
-	<dd>Whether to allow logins without a password. The default value of
-<tt>false</tt> for this parameter prevents unintended access to a MySQL
-server with was left with an empty password for root or on which an
-anonymous (blank) user is defined.
+    <dt>booleano <span
+id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span></dt>
+	<dd>Si se permiten inicios de sesión sin contraseña. El valor predeterminado es
+<tt>false</tt> para prevenir accessos involuntarios a un servidor MySQL al
+que le dejaron una contraseña vacía para root o en el que existe un usuario
+anónimo (en blanco).
     </dd>
     <dt id="servers_allowdeny_order">
-        <span
+        cadena <span
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
-string
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authorization is disabled.<br /><br />
+    <dd>Si el orden de las reglas está vacío, entonces la autorización <abbr
+title="Internet Protocol">IP</abbr> estará desactivada.<br /><br />
 
-        If your rule order is set to <tt>'deny,allow'</tt> then the system applies
-all deny rules followed by allow rules. Access is allowed by default. Any
-client which does not match a Deny command or does match an Allow command
-will be allowed access to the server. <br /><br />
+        Si el orden de las reglas es <tt>'deny,allow'</tt> entonces el sistema
+aplica todas las reglas de negación y luego las de autorización. El valor
+predeterminado es permitir el acceso. Se le permitirá acceso al servidor a
+cualquier cliente que no coincida con una orden de denegación o que coincida
+con una orden de autorización. <br /><br />
 
-        If your rule order is set to <tt>'allow,deny'</tt> then the system applies
-all allow rules followed by deny rules. Access is denied by default.  Any
-client which does not match an Allow directive or does match a Deny
-directive will be denied access to the server.<br /><br />
+        Si el orden de las reglas es <tt>'allow,deny'</tt> entonces el sistema
+aplica todas las reglas de autorización y luego las reglas de negación. El
+valor predeterminado es denegar el acceso.  No se le permitirá el acceso a
+cualquier cliente que no coincida con una regla de autorización o que
+coincida con una regla de negación.<br /><br />
 
-        If your rule order is set to 'explicit', authorization is performed in a
-similar fashion to rule order 'deny,allow', with the added restriction that
-your host/username combination <b>must</b> be listed in the <i>allow</i>
-rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
-secure means of using Allow/Deny rules, and was available in Apache by
-specifying allow and deny rules without setting any order.<br /><br />
+        Si el orden de las reglas es 'explicit' la autorización es similar a cuando
+es 'deny,allow', con la restricción adicional que la combinación
+anfitrión/nombre de usuario <b>tiene</b> que estar incluído en las reglas
+<i>allow</i> y no tiene que aparecer en las reglas <i>deny</i>. Este es el
+método más seguro de utilizar las reglas de Allow/Deny y está disponible en
+Apache esepecificando reglas de autorización y negación sin definir un
+orden.<br /><br />
 
-        Please also see <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> for
-detecting IP address behind proxies.
+        Porfavor revisa <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a>
+para detectar direcciones IPs detrás de proxies.
     </dd>
     <dt id="servers_allowdeny_rules">
-        <span
+        array de cadenas <span
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
-array of strings
     </dt>
-    <dd>The general format for the rules is as such:
+    <dd>El formato general de las reglas es como sigue:
 
         <pre>
 &lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
 </pre>
 
-        If you wish to match all users, it is possible to use a <tt>'%'</tt> as a
-wildcard in the <i>username</i> field.<br />
-        There are a few shortcuts you can use in the <i>ipmask</i> field as well
-(please note that those containing SERVER_ADDRESS might not be available on
-all webservers):
+        Si deseas incluir todos los usuarios, es posible utilizar <tt>'%'</tt> como
+comodín en el campo de <i>username</i>.<br />
+        Hay una serie de atajos que pueden utilizarse en el campo <i>ipmask</i>
+también (porfavor note que aquellos que contengan SERVER_ADDRESS pueden no
+estar disponibles en todos los servidores web):
         <pre>
 'all' -&gt; 0.0.0.0/0
 'localhost' -&gt; 127.0.0.1/8
@@ -1336,40 +1335,41 @@ all webservers):
 'localnetC' -&gt; SERVER_ADDRESS/24
 </pre>
 
-        Having an empty rule list is equivalent to either using <tt>'allow % from
-all'</tt> if your rule order is set to <tt>'deny,allow'</tt> or <tt>'deny %
-from all'</tt> if your rule order is set to <tt>'allow,deny'</tt> or
-<tt>'explicit'</tt>.<br /><br />
+        Tener una lista de reglas vacías es equivalente a utilizar <tt>'allow % from
+all'</tt> si el orden de las reglas está configurado a <tt>'deny,allow'</tt>
+ó equivale a <tt>'deny % from all'</tt> si el orden de las reglas es
+<tt>'allow,deny'</tt> o <tt>'explicit'</tt>.<br /><br />
 
-        For the <abbr title="Internet Protocol">IP</abbr> matching system, the
-following work:<br />
-        <tt>xxx.xxx.xxx.xxx</tt> (an exact <abbr title="Internet Protocol">IP</abbr>
-address)<br />
-        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (an <abbr title="Internet Protocol">IP</abbr>
-address range)<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing type <abbr
-title="Internet Protocol">IP</abbr> addresses)<br />
-        But the following does not work:<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (partial <abbr title="Internet
-Protocol">IP</abbr> address range)<br />
-        Also IPv6 addresses are not supported.
+        Para el sistema de coincidencias <abbr title="Internet Protocol">IP</abbr>,
+las siguientes funcionan:<br />
+        <tt>xxx.xxx.xxx.xxx</tt> (una dirección <abbr title="Internet
+Protocol">IP</abbr> exacta)<br />
+        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (un rango de direcciones <abbr
+title="Internet Protocol">IP</abbr>)<br />
+        <tt>xxx.xxx.xxx.xxx/nn</tt> (direcciones <abbr title="Internet
+Protocol">IP</abbr> de tipo CIDR - Classless Inter-Domain Routing)<br />
+        Pero las siguientes no funcionan:<br />
+        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (rango parcial de direcciones <abbr
+title="Internet Protocol">IP</abbr>)<br />
+        Tampoco están soportadas direcciones IPv6.
     </dd>
-    <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
-boolean</dt>
-    <dd>Disable using <tt>INFORMATION_SCHEMA</tt> to retrieve information (use
-<tt>SHOW</tt> commands instead), because of speed issues when many databases
-are present. Currently used in some parts of the code, more to come.
+    <dt>booleano <span
+id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span></dt>
+    <dd>Desactiva el uso de <tt>INFORMATION_SCHEMA</tt> para obtener información
+(usa órdenes <tt>SHOW</tt> en su lugar), debido a inconvenientes de
+velocidad con demasiadas bases de datos. Actualmente es utilizada en algunas
+partes del código, se agregarán más en el futuro.
     </dd>
-    <dt><span
-id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
-string</dt>
-    <dd>On a server with a huge number of databases, the default <tt>SHOW
-DATABASES</tt> command used to fetch the name of available databases will
-probably be too slow, so it can be replaced by faster commands (see
-<tt>libraries/config.default.php</tt> for examples).
+    <dt>cadena <span
+id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span></dt>
+    <dd>En un servidor con una gran cantidad de bases de datos, el comportamiento
+predeterminado de usar la orden <tt>SHOW DATABASES</tt> para obtener el
+nombre de las bases de datos disponibles será muy lento; por lo que puede
+ser reemplazado por comandos más rápidos (revisa los ejemplos en
+<tt>libraries/config.default.php</tt>).
     </dd>
-    <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
-boolean</dt>
+    <dt>booleano <span
+id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
     <dd>Whether to count the number of tables for each database when preparing the
 list of databases for the navigation frame.
     </dd>
