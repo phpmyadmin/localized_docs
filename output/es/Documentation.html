@@ -1370,79 +1370,83 @@ ser reemplazado por comandos más rápidos (revisa los ejemplos en
     </dd>
     <dt>booleano <span
 id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation frame.
+    <dd>Si contar el número de tablas en cada base de datos al preparar la lista de
+bases de datos para el marco de navegación.
     </dd>
-    <dt><span
-id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
-string</dt>
-    <dd>Name of session which will be used for signon authentication method.
+    <dt>cadena <span
+id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span></dt>
+    <dd>El nombre de la sesión a utilizar para el método de autenticación 'signon'.
     </dd>
-    <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
-string</dt>
-    <dd>URL where user will be redirected to log in for signon authentication
-method. Should be absolute including protocol.
+    <dt>cadena <span
+id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span></dt>
+    <dd>URL donde redirigir al usuario para iniciar sesión en el método de
+autenticación 'signon'. Debe ser una URL absoluta incluyendo el protocolo.
     </dd>
-    <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span>
-string</dt>
-    <dd>URL where user will be redirected after logout (doesn't affect config
-authentication method). Should be absolute including protocol.
+    <dt>cadena <span
+id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span></dt>
+    <dd>URL donde el usuario será redirigido luego de finalizar sesión (no afecta el
+método de autenticación 'config'). Debe ser una URL absoluta incluyendo el
+protocolo.
     </dd>
 
-    <dt id="cfg_ServerDefault">$cfg['ServerDefault'] integer</dt>
-    <dd>If you have more than one server configured, you can set
-<tt>$cfg['ServerDefault']</tt> to any one of them to autoconnect to that
-server when phpMyAdmin is started, or set it to 0 to be given a list of
-servers without logging in.<br />
-        If you have only one server configured, <tt>$cfg['ServerDefault']</tt> MUST
-be set to that server.</dd>
+    <dt id="cfg_ServerDefault">Entero $cfg['ServerDefault']</dt>
+    <dd>Si se tiene más de un servidor configurado, puedes definir
+<tt>$cfg['ServerDefault']</tt> a cualquiera de ellos para conectarse
+automáticamente a ese servidor al iniciar phpMyAdmin, o definirlo como 0
+para proveer una lista de servidores sin iniciar sesión.<br />
+        Si sólo tienes un servidor configurado, <tt>$cfg['ServerDefault']</tt> TIENE
+que estar definido a ese servidor.</dd>
 
-    <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] boolean</dt>
-    <dd>Defines whether to refresh only parts of certain pages using Ajax
-techniques. Applies only where a non-Ajax behavior is possible; for example,
-the Designer feature is Ajax-only so this directive does not apply to it.</dd>
+    <dt id="cfg_AjaxEnable">booleano $cfg['AjaxEnable']</dt>
+    <dd>Define si sólo se actualizan algunas partes de ciertas páginas utilizando
+técnicas Ajax. Aplica sólo cuando un comportamiento sin Ajax es posible; por
+ejemplo, la funcionalidad de Diseñador sólo funciona con Ajax por lo que
+esta directiva no le aplica.</dd>
 
-    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] boolean</dt>
-    <dd>Enables check for latest versions using javascript on main phpMyAdmin page.</dd>
+    <dt id="cfg_VersionCheck">booleano $cfg['VersionCheck']</dt>
+    <dd>Activa el chequeo para las últimas versiones utilizando javascript en la
+página principal de phpMyAdmin.</dd>
 
-    <dt id="cfg_MaxDbList">$cfg['MaxDbList'] integer</dt>
-    <dd>The maximum number of database names to be displayed in the navigation frame
-and the database list.</dd>
+    <dt id="cfg_MaxDbList">entero $cfg['MaxDbList']</dt>
+    <dd>La cantidad máxima de nombres de bases de datos a mostrar en el marco de
+navegación y la lista de bases de datos.</dd>
 
-    <dt id="cfg_MaxTableList">$cfg['MaxTableList'] integer</dt>
-    <dd>The maximum number of table names to be displayed in the main panel's list
-(except on the Export page). This limit is also enforced in the navigation
-panel when in Light mode.</dd>
+    <dt id="cfg_MaxTableList">entero $cfg['MaxTableList']</dt>
+    <dd>La cantidad máxima de nombres de tablas a mostrar en la lista del panel
+principal (excepto en la página de exportación). Este límite también es
+forzado en el panel de navegación en el modo ligero.</dd>
 
-    <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] integer</dt>
-    <dd>The maximum number of characters when a SQL query is displayed. The default
-limit of 1000 should be correct to avoid the display of tons of hexadecimal
-codes that represent BLOBs, but some users have real SQL queries that are
-longer than 1000 characters. Also, if a query's length exceeds this limit,
-this query is not saved in the history.</dd>
+    <dt id="cfg_MaxCharactersInDisplayedSQL">entero $cfg['MaxCharactersInDisplayedSQL']</dt>
+    <dd>El número máximo de caracteres a mostrar en una consulta SQL. El valor
+predeterminado de 1000 debería de ser suficiente para evitar mostrar muchos
+códigos hexadecimales que representan los BLOBs, pero algunos usuarios
+tienen consultas SQLs reales de más de 1000 caracteres. También, si una
+consulta excede este límite, no será guardada en el histórico.</dd>
 
-    <dt id="cfg_OBGzip">$cfg['OBGzip'] string/boolean</dt>
-    <dd>Defines whether to use GZip output buffering for increased speed in <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> transfers.<br />
-        Set to true/false for enabling/disabling. When set to 'auto' (string),
-phpMyAdmin tries to enable output buffering and will automatically disable
-it if your browser has some problems with buffering. IE6 with a certain
-patch is known to cause data corruption when having enabled buffering.</dd>
+    <dt id="cfg_OBGzip">cadena/booleano $cfg['OBGzip']</dt>
+    <dd>Si se utiliza un búfer de salida GZip para mayor velocidad en transferencias
+<abbr title="HyperText Transfer Protocol">HTTP</abbr>.<br />
+        Defina como 'true' o 'false' para habilitar o deshabilitarlo
+respectivamente. Al definirlo como 'auto', phpMyAdmin intentará activarlo y
+lo desactivará automáticamente si el navegador tiene problemas con él. Es
+sabido que IE6 con ciertos parches causa corrupción de datos al habilitar
+los búfers.</dd>
 
-    <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Whether persistent connections should be used or not (mysql_connect or
+    <dt id="cfg_PersistentConnections">booleano $cfg['PersistentConnections']</dt>
+    <dd>Si se deben utilizar conexiones persistentes o no (mysql_connect o
 mysql_pconnect).</dd>
 
-    <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
-    <dd>Whether to force using https while accessing phpMyAdmin.</dd>
+    <dt id="cfg_ForceSSL">booleano $cfg['ForceSSL']</dt>
+    <dd>Si se debe forzar https al acceder a phpMyAdmin.</dd>
 
-    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [number of seconds]</dt>
-    <dd>Set the number of seconds a script is allowed to run. If seconds is set to
-zero, no time limit is imposed.<br />
-        This setting is used while importing/exporting dump files and in the
-Synchronize feature but has no effect when PHP is running in safe mode.</dd>
+    <dt id="cfg_ExecTimeLimit">entero $cfg['ExecTimeLimit'] (número de segundos)</dt>
+    <dd>Configura la cantidad de segundos que se le permitirá ejecutar a un
+script. Si es cero, no se impondrá ningún límite de tiempo.<br />
+        Esta configuración es utilizada al importar/exportar archivos de volcado y
+cuando en la funcionalidad de sincronización pero no tiene efecto cuando PHP
+está ejecutando en modo seguro.</dd>
 
-    <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] string</dt>
+    <dt id="cfg_SessionSavePath">cadena $cfg['SessionSavePath']</dt>
     <dd>Path for storing session data (<a
 href="http://php.net/session_save_path">session_save_path PHP
 parameter</a>).</dd>
