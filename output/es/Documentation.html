@@ -19,7 +19,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Documentación de phpMyAdmin 3.4.0-beta4-dev</title>
+    <title>Documentación de phpMyAdmin 3.4.0-rc1-dev</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.4.0-beta4-dev Documentación
+class="myadmin">MyAdmin</span></a> 3.4.0-rc1-dev Documentación
     </h1>
 </div>
 
@@ -1539,67 +1539,70 @@ los usuarios acceso a servidores MySQL detrás del firewall del servidor
 <abbr title="HyperText Transfer Protocol">HTTP</abbr>.
     </dd>
 
-    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
-    <dd>Whether to display errors from PHP or not.</dd>
+    <dt id ="cfg_Error_Handler_display">booleano $cfg['Error_Handler']['display']</dt>
+    <dd>Si mostrar errores de PHP o no.</dd>
 
-    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
-    <dd>Whether to gather errors from PHP or not.</dd>
+    <dt id ="cfg_Error_Handler_gather">booleano $cfg['Error_Handler']['gather']</dt>
+    <dd>Si recolectar los errores de PHP o no.</dd>
 
-    <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
-    <dd>Defines whether to use a select-based menu and display only the current
-tables in the left frame (smaller page). Only in Non-Lightmode you can use
-the feature to display nested folders using <a
+    <dt id="cfg_LeftFrameLight">booleano $cfg['LeftFrameLight']</dt>
+    <dd>Define si se utiliza un menú de selección y sólo mostrar las tablas actuales
+en el marco izquierdo (una página más pequeña). Sólo en el modo no-ligero se
+puede utlizar la funcionalidad para mostrar carpetas anidadas utilizando <a
 href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a>
     </dd>
 
-    <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] boolean</dt>
-    <dd>In light mode, defines whether to display the names of databases (in the
-selector) using a tree, see also <a href="#cfg_LeftFrameDBSeparator"
+    <dt id="cfg_LeftFrameDBTree">booleano $cfg['LeftFrameDBTree']</dt>
+    <dd>En el modo ligero, define si mostrar los nombres de las bases de datos (en
+el selector) utilizando un árbol. Ver también <a
+href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a>.
     </dd>
 
-    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] string or array</dt>
-    <dd>The string used to separate the parts of the database name when showing them
-in a tree. Alternatively you can specify more strings in an array and all of
-them will be used as a separator.</dd>
+    <dt id="cfg_LeftFrameDBSeparator">cadena o array $cfg['LeftFrameDBSeparator']</dt>
+    <dd>La cadena a utilizar para separar las partes del nombre de la base de datos
+al mostrarlas en un árbol. Alternativamente se pueden especificar más
+cadenas en un array y todas ellas van a ser utilizadas como separadores.</dd>
 
-    <dt id="cfg_LeftFrameTableSeparator">$cfg['LeftFrameTableSeparator'] string</dt>
-    <dd>Defines a string to be used to nest table spaces. Defaults to '__'.  This
-means if you have tables like 'first__second__third' this will be shown as a
-three-level hierarchy like: first &gt; second &gt; third.  If set to FALSE
-or empty, the feature is disabled.  NOTE: You should not use this separator
-at the beginning or end of a table name or multiple times after another
-without any other characters in between.</dd>
+    <dt id="cfg_LeftFrameTableSeparator">cadena $cfg['LeftFrameTableSeparator']</dt>
+    <dd>Define la cadena a utilizar para anidar espacios de tablas. El valor
+predeterminado es '__'. Esto significa que si tienes tablas como
+'primero__segundo__tercer' van a ser mostrados como una jerarquía de tres
+niveles como: primero &gt; segundo &gt; tercero. Si es FALSE o una cadena
+vacía, la funcionalidad estará desactivada. NOTA: no se debe utilizar este
+separador al principio o al final del nombre de una tabla o más de una vez
+seguida sin caracteres intermedios.</dd>
 
-    <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] string</dt>
-    <dd>Defines how many sublevels should be displayed when splitting up tables by
-the above separator.</dd>
+    <dt id="cfg_LeftFrameTableLevel">cadena $cfg['LeftFrameTableLevel']</dt>
+    <dd>Define la cantidad de sub-niveles a mostrar cuando se separen nombres de
+tabla con el separador anterior.</dd>
 
-    <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] boolean</dt>
-    <dd>Defines whether to display table comment as tool-tip in left frame or not.</dd>
+    <dt id="cfg_ShowTooltip">booleano $cfg['ShowTooltip']</dt>
+    <dd>Define si mostrar el comentario de la tabla como texto suplementario o no.</dd>
 
-    <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
-    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a table called 'user0001' and
-add the comment 'MyName' on it, you will see the name 'MyName' used
-consequently in the left frame and the tool-tip shows the real name of the
-DB.</dd>
+    <dt id="cfg_ShowTooltipAliasDB">booleano $cfg['ShowTooltipAliasDB']</dt>
+    <dd>Si los textos suplementarions están habilitados y hay un comentario definido
+en la base de datos, esta configuración intercambiará el comentario y el
+nombre real. Esto significa que si se tiene una tabla llamada 'usuario0001'
+con el comentario 'MiNombre' en ella, se verá la base de datos con el nombre
+'MiNombre' en el marco izquierdo y el texto suplementario mostrará el nombre
+real de la base de datos.</dd>
 
-    <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] boolean/string</dt>
-    <dd>Same as <a href="#cfg_ShowTooltipAliasDB"
-class="configrule">$cfg['ShowTooltipAliasDB']</a>, except this works for
-table names.  When setting this to 'nested', the Alias of the Tablename is
-only used to split/nest the tables according to the <a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a> directive. So only
-the folder is called like the Alias, the tablename itself stays the real
-tablename.</dd>
+    <dt id="cfg_ShowTooltipAliasTB">booleano o cadena $cfg['ShowTooltipAliasTB']</dt>
+    <dd>Igual que <a href="#cfg_ShowTooltipAliasDB"
+class="configrule">$cfg['ShowTooltipAliasDB']</a>, sólo que este lo hace
+para los nombres de tablas. Cuando está configurado como 'nested', el alias
+de la base de datos sólo será utilizado para dividir/anidar las tablas según
+la configuración de <a href="#cfg_LeftFrameTableSeparator"
+class="configrule">$cfg['LeftFrameTableSeparator']</a>. De esa forma, sólo
+la carpeta se llamará como el Alias y el nombre real de la tabla en sí será
+mostrado.</dd>
 
-    <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] boolean</dt>
-    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
-frame.  Defaults to <tt>TRUE</tt>.</dd>
-    <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] string</dt>
+    <dt id="cfg_LeftDisplayLogo">booleano $cfg['LeftDisplayLogo']</dt>
+    <dd>Define si mostrar o no el logo de phpMyAdmin en la porció superior del marco
+izquierdo. El valor predeterminado es <tt>TRUE</tt>.</dd>
+    <dt id="cfg_LeftLogoLink">cadena $cfg['LeftLogoLink']</dt>
     <dd>Enter URL where logo in the navigation frame will point to.  For use
 especially with self made theme which changes this.  The default value for
 this is <tt>main.php</tt>.</dd>
