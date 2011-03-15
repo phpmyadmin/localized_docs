@@ -929,71 +929,74 @@ olabilir.<br /><br />
         <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
 dizgisi
     </dt>
-    <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
-column is a key in another table (a foreign key). phpMyAdmin currently uses
-this to
-        <ul><li>make clickable, when you browse the master table, the data values that point
-to the foreign table;</li>
-            <li>display in an optional tool-tip the &quot;display column&quot; when browsing
-the master table, if you move the mouse to a column containing a foreign key
-(use also the 'table_info' table);<br />
-                (see <a href="#faqdisplay"><abbr title="Frequently Asked Questions">
-FAQ</abbr> 6.7</a>)</li>
-            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
-value and &quot;display column&quot; are shown)<br />
-                (see <a href="#faq6_21"><abbr title="Frequently Asked Questions"> FAQ</abbr>
-6.21</a>)</li>
-            <li>display links on the table properties page, to check referential integrity
-(display missing foreign keys) for each described key;
+    <dd>2.2.4 yayımından bu yana başka bir tabloda (dış anahtar) anahtar olan sütunu
+özel 'bağlantı' tablosunda tanımlayabilirsiniz. phpMyAdmin halen
+        <ul><li>master tabloya gözattığınızda, dış tabloyu işaret eden veri değerlerini
+tıklanabilir yapmak için bunu kullanır;</li>
+            <li>eğer fareyi dış anahtarı içeren sütunun üzerine götürürseniz, master tabloya
+gözattığınızda isteğe bağlı araç ipucu &quot;görüntüleme sütunu&quot; içinde
+görüntülemek için bunu kullanır (aynı zamanda 'table_info' tablosunu
+kullanmak için bunu kullanır);<br />
+                (<a href="#faqdisplay"><abbr title="Sıkça Sorulan Sorular"> SSS</abbr>
+6.7</a>'ye bakın)</li>
+            <li>düzenle/ekle kipinde, olası dış anahtarların aşağı açılır menü listesi
+görüntülemek için bunu kullanır (anahtar değeri ve &quot;görüntüleme
+sütunu&quot; gösterilir)<br />
+                (<a href="#faq6_21"><abbr title="Sıkça Sorulan Sorular"> SSS</abbr>
+6.21</a>'e bakın)</li>
+            <li>tablo özellikleri sayfasında bağlantıları görüntülemek için bunu kullanır,
+her tanımlanan anahtar için veri tutarlılığını (eksik dış anahtarları
+görüntüleme) kontrol etmek için;
             </li>
-            <li>in query-by-example, create automatic joins (see <a href="#faq6_6"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
-            <li>enable you to get a <abbr title="Portable Document Format">PDF</abbr> schema
-of your database (also uses the table_coords table).</li>
+            <li>örnekli sorguda, otomatik katılımlar oluşturmak için bunu kullanır (<a
+href="#faq6_6"> <abbr title="Sıkça Sorulan Sorular">SSS</abbr> 6.6</a>'ya
+bakın)</li>
+            <li>veritabanınızın <abbr title="Portable Document Format">PDF</abbr> şemasını
+almanızı etkinleştirmek için bunu kullanır (aynı zamanda table_coords
+tablosunu kullanır).</li>
         </ul>
 
-        The keys can be numeric or character.<br /><br />
+        Anahtarlar sayısal veya harf olabilir.<br /><br />
 
         Bu işlevselliğin kullanımına izin vermek için:
 
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the relation table name in <tt>$cfg['Servers'][$i]['relation']</tt></li>
-            <li>now as normal user open phpMyAdmin and for each one of your tables where you
-want to use this feature, click &quot;Structure/Relation view/&quot; and
-choose foreign columns.
+            <li><tt>$cfg['Servers'][$i]['relation']</tt> içinde bağlantı tablosu adını koyun</li>
+            <li>şimdi normal kullanıcı gibi phpMyAdmin'i açın ve bu özelliği kullanmak
+istediğiniz her bir tablonuz için &quot;Yapı/Bağlantı görünümü/&quot;ne
+tıklayın ve dış sütunları seçin.
                 </li>
         </ul>
 
-        Please note that in the current version, <tt>master_db</tt> must be the same
-as <tt>foreign_db</tt>. Those columns have been put in future development of
-the cross-db relations.
+        Lütfen unutmayın şu anki bu sürümde, <tt>master_db</tt>, <tt>foreign_db</tt>
+ile aynı olmalıdır. Bu sütunlar cross-db bağlantılarının gelecekteki
+geliştirmesi için koyulmuştur.
     </dd>
 
     <dt id="table_info">
         <span id="cfg_Servers_table_info">$cfg['Servers'][$i]['table_info']</span>
-string
+dizgisi
     </dt>
     <dd>
-        Since release 2.3.0 you can describe, in a special 'table_info' table, which
-column is to be displayed as a tool-tip when moving the cursor over the
-corresponding key.<br />
-        This configuration variable will hold the name of this special table. To
-allow the usage of this functionality:
+        2.3.0 yayımından bu yana uygun anahtar üzerine imleç götürüldüğünde araç
+ipucu olarak görüntülenen sütunu özel 'table_info' tablosunda
+tanımlayabilirsiniz.<br />
+        Bu yapılandırma değişkeni bu özel tablonun adını elinde tutacaktır. Bu
+işlevselliğin kullanımına izin vermek için:
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
-'pma_table_info')</li>
-            <li>then for each table where you want to use this feature, click
-&quot;Structure/Relation view/Choose column to display&quot; to choose the
-column.</li>
+            <li><tt>$cfg['Servers'][$i]['table_info']</tt> içine tablo adını koyun
+(ö.r. 'pma_table_info')</li>
+            <li>sonra bu özelliği kullanmak istediğiniz her tablo için, sütun seçmek için
+&quot;Yapı/Bağlantı görünümü/Görüntülemek için sütun seçin&quot;e tıklayın.</li>
         </ul>
-        Usage tip: <a href="#faqdisplay">Display column</a>.
+        Kullanım ipucu: <a href="#faqdisplay">Sütunu görüntüle</a>.
     </dd>
     <dt id="table_coords">
         <span
 id="cfg_Servers_table_coords">$cfg['Servers'][$i]['table_coords']</span>
-string<br />
+dizgisi<br />
         <span id="cfg_Servers_pdf_pages">$cfg['Servers'][$i]['pdf_pages']</span>
-string
+dizgisi
     </dt>
     <dd>Since release 2.3.0 you can have phpMyAdmin create <abbr title="Portable
 Document Format">PDF</abbr> pages showing the relations between your
