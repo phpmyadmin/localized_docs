@@ -1603,228 +1603,239 @@ mostrado.</dd>
     <dd>Define si mostrar o no el logo de phpMyAdmin en la porció superior del marco
 izquierdo. El valor predeterminado es <tt>TRUE</tt>.</dd>
     <dt id="cfg_LeftLogoLink">cadena $cfg['LeftLogoLink']</dt>
-    <dd>Enter URL where logo in the navigation frame will point to.  For use
-especially with self made theme which changes this.  The default value for
-this is <tt>main.php</tt>.</dd>
+    <dd>Define la URL a la que apuntará el logo del marco de navegación. Para usar
+especialmente en temas personalizados que cambian esto.  El valor
+predeterminado es <tt>main.php</tt>.</dd>
 
-    <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] string</dt>
-    <dd>Whether to open the linked page in the main window (<tt>main</tt>)  or in a
-new one (<tt>new</tt>). Note: use <tt>new</tt> if you are linking to
-<tt>phpmyadmin.net</tt>.</dd>
+    <dt id="cfg_LeftLogoLinkWindow">cadena $cfg['LeftLogoLinkWindow']</dt>
+    <dd>Si se abre la página enlazada en la ventana principal (<tt>main</tt>) o en
+una neva ventana (<tt>new</tt>). Nota: usar <tt>new</tt> si se está
+enlazando a <tt>phpmyadmin.net</tt>.</dd>
 
-    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] integer</dt>
-    <dd>Defines the minimum number of tables to display a JavaScript filter box
-above the list of tables in the left frame.  Defaults to <tt>30</tt>. To
-disable the filter completely some high number can he used (e.g. 9999)</dd>
+    <dt id="cfg_LeftDisplayTableFilterMinimum">entero $cfg['LeftDisplayTableFilterMinimum']</dt>
+    <dd>Define el mínimo nombre de tablas a mostrar en la caja de filtro JavaScript
+sobre la lista de tablas en el marco izquierdo. El valor predeterminador es
+<tt>30</tt>. Para desactivar este filtro completamente se puede utilizar un
+número alto (por ejemplo: 9999).</dd>
 
-    <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
-    <dd>Defines whether or not to display a server choice at the top of the left
-frame.  Defaults to FALSE.</dd>
-    <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
-    <dd>Defines whether to display this server choice as links instead of in a
-drop-down.  Defaults to FALSE (drop-down).</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean or text</dt>
-    <dd>Defines whether to display database choice in light navigation frame as
-links instead of in a drop-down. Defaults to 'auto' - on main page list is
-shown, when database is selected, only drop down is displayed.</dd>
+    <dt id="cfg_LeftDisplayServers">booleano $cfg['LeftDisplayServers']</dt>
+    <dd>Define si se muestra una elección de servidor en la parte superior del marco
+izquierdo. El valor predeterminado es FALSE.</dd>
+    <dt id="cfg_DisplayServersList">booleano $cfg['DisplayServersList']</dt>
+    <dd>Define si se muestra la elección de servidores como enlaces en lugar de una
+lista deplegable. El valor predeterminado es FALSE (muestra una lista
+desplegable).</dd>
+    <dt id="cfg_DisplayDatabasesList">booleano o texto $cfg['DisplayDatabasesList']</dt>
+    <dd>Define si se muestra la elección de la base de datos en el marco de
+navegación como enlaces en lugar de una lista desplegable. El valor
+predeterminado es 'auto', se muestra el enlace en la página principal pero
+sólo la lista desplegable es mostrada cuando una base de datos está
+seleccionada.</dd>
 
-    <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] string</dt>
-    <dd>Defines the tab displayed by default when clicking the small icon next to
-each table name in the navigation panel. Possible values:
+    <dt id="cfg_LeftDefaultTabTable">cadena $cfg['LeftDefaultTabTable']</dt>
+    <dd>Define la pestaña mostrada al pulsar sobre el pequeño icono junto a cada
+nombre de tabla en el panel de navegación. Valores posibles:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
 &quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
 &quot;sql.php&quot;.</dd>
 
-    <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
-    <dd>Defines whether or not to display space usage and statistics about databases
-and tables.<br />
-        Note that statistics requires at least MySQL 3.23.3 and that, at this date,
-MySQL doesn't return such information for Berkeley DB tables.</dd>
+    <dt id="cfg_ShowStats">booleano $cfg['ShowStats']</dt>
+    <dd>Define si se muestra el espacio utilizado y estadística sobre tablas y bases
+de datos o no.<br />
+        Notar que las estadísticas requieren al menos MySQL 3.23.3 y que, a esta
+fecha, MySQL no devuelve dicha información para tablas de bases de datos
+Berkeley.</dd>
 
-    <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>boolean</dt>
-    <dd>Defines whether to display detailed server information on main page.  You
-can additionally hide more information by using <tt><a
+    <dt>booleano <span id="cfg_ShowServerInfo">$cfg['ShowServerInfo']</span></dt>
+    <dd>Define si mostrar información detallada del servidor en la página
+principal. Se puede esconder más información todavía utilizando <tt><a
 href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
         </dd>
 
-    <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span>boolean<br />
-        <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword'] </span>boolean<br />
-        <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb'] </span>boolean
+    <dt>booleano <span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo']</span><br />
+        booleano <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword']</span><br />
+        booleano <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb']</span>
     </dt>
-    <dd>Defines whether to display the &quot;PHP information&quot; and &quot;Change
-password &quot; links and form for creating database or not at the starting
-main (right) frame. This setting does not check MySQL commands entered
-directly.<br /><br />
+    <dd>Define si mostrar o no el formulario para crear bases de datos y los enlaces
+&quot;información PHP&quot; y &quot;Cambiar contraseña&quot; en el marco
+inicial principal (derecho). Esta configuración no verifica las órdenes
+MySQL ingresadas directamente.<br /><br />
 
-        Please note that to block the usage of phpinfo() in scripts, you have to put
-this in your <i>php.ini</i>:
+        Porfavor note que para bloquear el uso de phpinfo() en los scripts se debe
+agregar lo siguiente en <i>php.ini</i>:
 
         <pre>disable_functions = phpinfo()</pre>
 
-        Also note that enabling the &quot;Change password &quot; link has no effect
-with &quot;config&quot; authentication mode: because of the hard coded
-password value in the configuration file, end users can't be allowed to
-change their passwords.</dd>
+        También note que activar el enlace &quot;Cambiar contraseña&quot; no tiene
+efecto en el modo de autenticación &quot;config&quot; debido al valor de la
+contraseña embebido en el archivo de configuración los usuarios no pueden
+cambiar sus contraseñas.</dd>
 
-    <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] boolean</dt>
-    <dd>Defines whether to suggest a database name on the &quot;Create
-Database&quot; form or to keep the textfield empty.</dd>
+    <dt id="cfg_SuggestDBName">booleano $cfg['SuggestDBName']</dt>
+    <dd>Define si se debe sugerir un nombre de base de datos en el formulario para
+crear base de datos o se mantiene en campo de texto vacío.</dd>
 
-    <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] string</dt>
-    <dd>Defines whether navigation bar buttons and the right panel top menu contain
-text or symbols only. A value of TRUE displays icons, FALSE displays text
-and 'both' displays both icons and text.</dd>
+    <dt id="cfg_NavigationBarIconic">cadena $cfg['NavigationBarIconic']</dt>
+    <dd>Si los botones de la barra de navegación y el menú superior del panel
+derecho contienen texto o sólo símbolos. Un valor de TRUE muestra los
+iconos, FALSE muestra texto y 'both' muestra tanto iconos como texto.</dd>
 
-    <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Defines whether a user should be displayed a &quot;show all (records)&quot;
-button in browse mode or not.</dd>
+    <dt id="cfg_ShowAll">booleano $cfg['ShowAll']</dt>
+    <dd>Define se debe mostrar un botón &quot;mostrar todos (los registros)&quot; en
+el modo de examinación a los usuarios o no.</dd>
 
-    <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
+    <dt id="cfg_MaxRows">entero $cfg['MaxRows']</dt>
     <dd>Número de filas mostradas cuando se visualiza un juego de resultados. Si el
 juego de resultados contiene más filas, aparecerán enlaces
 &quot;Anterior&quot; y &quot;Siguiente&quot;.</dd>
 
-    <dt id="cfg_Order">$cfg['Order'] string [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
-    <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in
-descending (<tt>DESC</tt>) order or in a &quot;smart&quot; (<tt>SMART</tt>)
-order - I.E. descending order for columns of type TIME, DATE, DATETIME and
-TIMESTAMP, ascending order else- by default.</dd>
+    <dt id="cfg_Order">cadena $cfg['Order'] (<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>)</dt>
+    <dd>Define si las columnas son mostradas en orden ascendente (<tt>ASC</tt>),
+descendente (<tt>DESC</tt>) o en un orden &quot;inteligente&quot;
+(<tt>SMART</tt>); esto es, orden descendente para las columnas de tipo TIME,
+DATE, DATETIME y TIMESTAMP y ascendente para los demás.</dd>
 
-    <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] boolean </dt>
-    <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
-ticked by default.</dd>
+    <dt id="cfg_DisplayBinaryAsHex">booleano $cfg['DisplayBinaryAsHex'] </dt>
+    <dd>Define si la opción &quot;Mostrar contenidos binarios como hexadecimal&quot;
+está activada predeterminadamente.</dd>
 
-    <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean or string</dt>
-    <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
-editing when browsing a table's content. Valid values are:
-        <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
-            <li><tt>'blob'</tt> to allow editing of all columns except <tt>BLOBS</tt>;</li>
-            <li><tt>'all'</tt> to disallow editing of all <tt>BINARY</tt> or <tt>BLOB</tt>
-columns.</li>
+    <dt id="cfg_ProtectBinary">booleano o cadena $cfg['ProtectBinary']</dt>
+    <dd>Define si las columnas <tt>BLOB</tt> o <tt>BINARY</tt> son protegidas contra
+edición al examinar el contenido de una tabla. Los valores válidos son:
+        <ul><li><tt>FALSE</tt> para permitir la edición de todas las columnas;</li>
+            <li><tt>'blob'</tt> para permitir la edicicón de todas las columnas excepto las
+de tipo <tt>BLOB</tt>;</li>
+            <li><tt>'all'</tt> para no permitir la edición de las columnas de tipo
+<tt>BINARY</tt> o <tt>BLOB</tt>.</li>
         </ul>
     </dd>
 
-    <dt id="cfg_ShowFunctionFields">$cfg['ShowFunctionFields'] boolean</dt>
-    <dd>Defines whether or not MySQL functions fields should be initially displayed
-in edit/insert mode. Since version 2.10, the user can toggle this setting
-from the interface.
+    <dt id="cfg_ShowFunctionFields">booleano $cfg['ShowFunctionFields']</dt>
+    <dd>Define si los campos funcionales de MySQL deben de ser mostrados
+inicialmente en el modo de edición/inserción. Desde la versión 2.10 los
+usuarios pueden cambiar esta configuración desde la interfaz.
     </dd>
     
-    <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] boolean</dt>
-    <dd>Defines whether or not type fields should be initially displayed in
-edit/insert mode. The user can toggle this setting from the interface.
+    <dt id="cfg_ShowFieldTypesInDataEditView">booleano $cfg['ShowFieldTypesInDataEditView']</dt>
+    <dd>Define si los tipos de campo deben de ser mostrados inicialmente en el modo
+de edición/inserción. Los usuarios pueden cambiar esta configuración desde
+la interfaz.
     </dd>
 
-    <dt id="cfg_CharEditing">$cfg['CharEditing'] string</dt>
-    <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
-columns. Possible values are:
-        <ul><li>input - this allows to limit size of text to size of columns in MySQL, but
-has problems with newlines in columns</li>
-            <li>textarea - no problems with newlines in columns, but also no length
-limitations</li>
+    <dt id="cfg_CharEditing">cadena $cfg['CharEditing']</dt>
+    <dd>Define el tipo de controles de edición a usar para los campos CHAR y
+VARCHAR. Los valores posibles son:
+        <ul><li>input - permite limitar la longitud del texto al tamaño de las columnas
+MySQL pero tiene problemas con los saltos de línea en las columnas</li>
+            <li>textarea - no tiene problema con saltos de línea en las columnas, pero no
+tiene limitaciones de longitud</li>
         </ul>
-        Default is old behavior so input.</dd>
+        El valor predeterminado es históricamente input.</dd>
 
-    <dt id="cfg_InsertRows">$cfg['InsertRows'] integer</dt>
-    <dd>Defines the maximum number of concurrent entries for the Insert page.</dd>
+    <dt id="cfg_InsertRows">entero $cfg['InsertRows']</dt>
+    <dd>Define la mayor cantidad de entradas simultáneas de la página de inserción.</dd>
 
-    <dt id="cfg_ForeignKeyMaxLimit">$cfg['ForeignKeyMaxLimit'] integer</dt>
-    <dd>If there are fewer items than this in the set of foreign keys, then a
-drop-down box of foreign keys is presented, in the style described by the <a
-href="#cfg_ForeignKeyDropdownOrder"
-class="configrule">$cfg['ForeignKeyDropdownOrder']</a> setting.</dd>
+    <dt id="cfg_ForeignKeyMaxLimit">entero $cfg['ForeignKeyMaxLimit']</dt>
+    <dd>Si hay menos items que esta cantidad en el conjunto de claves foráneas,
+entonces se presenta una lista desplegable de las claves foráneas en el
+mismo estilo de la configuración <a href="#cfg_ForeignKeyDropdownOrder"
+class="configrule">$cfg['ForeignKeyDropdownOrder']</a>.</dd>
 
-    <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] array</dt>
-    <dd>For the foreign key drop-down fields, there are several methods of display,
-offering both the key and value data. The contents of the array should be
-one or both of the following strings: <i>'content-id'</i>,
-<i>'id-content'</i>.</dd>
+    <dt id="cfg_ForeignKeyDropdownOrder">array $cfg['ForeignKeyDropdownOrder']</dt>
+    <dd>Para los campos con listas desplegables de claves foráneas hay varios
+métodos para mostrarlos, ofreciendo tanto la clave como el valor del
+dato. El contenido del array tienen que ser una o ambas de:
+<i>'content-id'</i> y <i>'id-content'</i>.</dd>
 
-    <dt><span id="cfg_ZipDump">$cfg['ZipDump'] </span>boolean<br />
-        <span id="cfg_GZipDump">$cfg['GZipDump'] </span>boolean<br />
-        <span id="cfg_BZipDump">$cfg['BZipDump'] </span>boolean
+    <dt>booleano <span id="cfg_ZipDump">$cfg['ZipDump']</span><br />
+        booleano <span id="cfg_GZipDump">$cfg['GZipDump']</span><br />
+        booleano <span id="cfg_BZipDump">$cfg['BZipDump']</span>
     </dt>
-    <dd>Defines whether to allow the use of zip/GZip/BZip2 compression when creating
-a dump file</dd>
+    <dd>Define si utilizar compresión zip/GZip/BZip2 al crear un archivo de volcado</dd>
 
-    <dt><span id="cfg_CompressOnFly">$cfg['CompressOnFly'] </span>boolean<br />
+    <dt>booleano <span id="cfg_CompressOnFly">$cfg['CompressOnFly']</span><br />
     </dt>
-    <dd>Defines whether to allow on the fly compression for GZip/BZip2 compressed
-exports. This doesn't affect smaller dumps and allows users to create larger
-dumps that won't otherwise fit in memory due to php memory limit. Produced
-files contain more GZip/BZip2 headers, but all normal programs handle this
-correctly.</dd>
+    <dd>Define si se permite compresión al vuelo para exportaciones comprimidas con
+GZip/BZip2. Esto no afecta volcados más pequeños y permite a los usuarios
+crear volcados más grandes que no entrarían en memoria debido al límite de
+memoria de PHP. Los archivos producidos contienen más cabeceras GZip/BZip2,
+pero todos los programas normales lo manejan correctamente.</dd>
 
-    <dt id="cfg_LightTabs">$cfg['LightTabs'] boolean</dt>
-    <dd>If set to <tt>TRUE</tt>, use less graphically intense tabs on the top of the
-mainframe.</dd>
+    <dt id="cfg_LightTabs">booleano $cfg['LightTabs']</dt>
+    <dd>Si está definido como <tt>TRUE</tt>, utiliza pestañas menos intensivas
+gráficamente en la parte superior del marco principal.</dd>
 
-    <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] string</dt>
-    <dd>If set to <tt>TRUE</tt>, will display icons instead of text for db and table
-properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <tt>'both'</tt> if you want icons AND text.<br />
-        When set to <tt>FALSE</tt>, will only show text.</dd>
+    <dt id="cfg_PropertiesIconic">cadena $cfg['PropertiesIconic']</dt>
+    <dd>Si está definido como <tt>TRUE</tt> se mostrarán iconos en lugar de texto
+para los enlaces de propiedades de tablas y bases de datos (como 'Examinar',
+'Seleccionar', 'Insertar', ...).<br /> Puede ser configurado como <tt>'both'</tt> si se desean iconos Y texto.<br />
+        Si está definido como <tt>FALSE</tt>, sólo se mostrará texto.</dd>
 
-    <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] integer</dt>
-    <dd>How many columns will be utilized to display the tables on the database
-property view? Default is 1 column. When setting this to a value larger than
-1, the type of the database will be omitted for more display space.</dd>
+    <dt id="cfg_PropertiesNumColumns">entero $cfg['PropertiesNumColumns']</dt>
+    <dd>¿Cuántas columnas se pueden utilizar para mostrar las tablas en la vista de
+propiedades de la base de datos? El valor predeterminado es 1 columna. Al
+definir este parámetro a un valor mayor a 1, el tipo de la base de datos
+será omitido para mayor espacio de visualización.</dd>
 
 
-    <dt id="cfg_DefaultTabServer">$cfg['DefaultTabServer'] string</dt>
-    <dd>Defines the tab displayed by default on server view. Possible values:
-&quot;main.php&quot; (recommended for multi-user setups),
-&quot;server_databases.php&quot;, &quot;server_status.php&quot;,
-&quot;server_variables.php&quot;, &quot;server_privileges.php&quot; or
-&quot;server_processlist.php&quot;.</dd>
+    <dt id="cfg_DefaultTabServer">cadena $cfg['DefaultTabServer']</dt>
+    <dd>Define la pestaña mostrada predeterminadamente en la vista de
+servidores. Valores posibles: &quot;main.php&quot; (recomendado para
+configuraciones multi-usuario), &quot;server_databases.php&quot;,
+&quot;server_status.php&quot;, &quot;server_variables.php&quot;,
+&quot;server_privileges.php&quot; o &quot;server_processlist.php&quot;.</dd>
 
-    <dt id="cfg_DefaultTabDatabase">$cfg['DefaultTabDatabase'] string</dt>
-    <dd>Defines the tab displayed by default on database view. Possible values:
-&quot;db_structure.php&quot;, &quot;db_sql.php&quot; or
-&quot;db_search.php&quot;.</dd>
+    <dt id="cfg_DefaultTabDatabase">cadena $cfg['DefaultTabDatabase']</dt>
+    <dd>Define la pestaña mostrada predeterminadamente en la vista de bases de
+datos. Los valores posibles son: &quot;db_structure.php&quot;,
+&quot;db_sql.php&quot; o &quot;db_search.php&quot;.</dd>
 
-    <dt id="cfg_DefaultTabTable">$cfg['DefaultTabTable'] string</dt>
-    <dd>Defines the tab displayed by default on table view. Possible values:
-&quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
-&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
-&quot;sql.php&quot;.</dd>
+    <dt id="cfg_DefaultTabTable">cadena $cfg['DefaultTabTable']</dt>
+    <dd>Define la pestaña mostrada predeterminadamente en la vista de
+tablas. Valores posibles: &quot;tbl_structure.php&quot;,
+&quot;tbl_sql.php&quot;, &quot;tbl_select.php&quot;,
+&quot;tbl_change.php&quot; o &quot;sql.php&quot;.</dd>
 
-    <dt id="cfg_MySQLManualBase">$cfg['MySQLManualBase'] string</dt>
-    <dd>If set to an <abbr title="Uniform Resource Locator">URL</abbr> which points
-to the MySQL documentation (type depends on <a href="#cfg_MySQLManualType"
-class="configrule">$cfg['MySQLManualType']</a>), appropriate help links are
-generated.<br />
-        See <a href="http://dev.mysql.com/doc/">MySQL Documentation page</a> for
-more information about MySQL manuals and their types.</dd>
+    <dt id="cfg_MySQLManualBase">cadena $cfg['MySQLManualBase']</dt>
+    <dd>Si se define como una <abbr title="Uniform Resource Locator">URL</abbr> que
+apunte a la documentación MySQL (el tipo depende de <a
+href="#cfg_MySQLManualType" class="configrule">$cfg['MySQLManualType']</a>),
+se generarán enlaces de ayuda apropiados.<br />
+        Visite <a href="http://dev.mysql.com/doc/">la página de documentación
+MySQL</a> para más información sobre los manuales MySQL y sus tipos.</dd>
 
-    <dt id="cfg_MySQLManualType">$cfg['MySQLManualType'] string</dt>
-    <dd>Type of MySQL documentation:
-        <ul><li>viewable - &quot;viewable online&quot;, current one used on MySQL website</li>
-            <li>searchable - &quot;Searchable, with user comments&quot;</li>
-            <li>chapters - &quot;HTML, one page per chapter&quot;</li>
-            <li>big - &quot;HTML, all on one page&quot;</li>
-            <li>none - do not show documentation links</li>
+    <dt id="cfg_MySQLManualType">cadena $cfg['MySQLManualType']</dt>
+    <dd>Tipo de documentación MySQL:
+        <ul><li>viewable - &quot;visible en línea&quot;, el actual utilizado en el sitio web
+de MySQL</li>
+            <li>searchable - &quot;búsqueda, con comentarios de usuario&quot;</li>
+            <li>chapters - &quot;HTML, una página por capítulo&quot;</li>
+            <li>big - &quot;HTML, todo en una página&quot;</li>
+            <li>none - no mostrar enlaces a la documentación</li>
         </ul>
     </dd>
 
-    <dt id="cfg_DefaultLang">$cfg['DefaultLang'] string</dt>
-    <dd>Defines the default language to use, if not browser-defined or user-defined.<br />
-        The corresponding language file needs to be in
+    <dt id="cfg_DefaultLang">cadena $cfg['DefaultLang']</dt>
+    <dd>Define el idioma predeterminado a utilizar si no hay uno definido por el
+navegador o el usuario.<br />
+        Los archivos de idioma correspondientes tiene que estar en
 locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
-    <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] string</dt>
-    <dd>Defines the default connection collation to use, if not user-defined.<br />
-        See the <a
-href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">MySQL
-documentation</a> for list of possible values.</dd>
+    <dt id="cfg_DefaultConnectionCollation">cadena $cfg['DefaultConnectionCollation']</dt>
+    <dd>Define la colación predeterminada para la conexión si no hay una definida
+por el usuario.<br />
+        Visite la <a
+href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">documentación
+MySQL</a> para la lista de valores posibles.</dd>
 
-    <dt id="cfg_Lang">$cfg['Lang'] string</dt>
-    <dd>Force language to use.<br />
-        The corresponding language file needs to be in
+    <dt id="cfg_Lang">cadena $cfg['Lang']</dt>
+    <dd>Forzar el idioma a utilizar.<br />
+        Los archivos de idioma correspondientes tiene que estar en
 locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
-    <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] string</dt>
+    <dt id="cfg_FilterLanguages">cadena $cfg['FilterLanguages']</dt>
     <dd>Limit list of available languages to those matching the given regular
 expression. For example if you want only Czech and English, you should set
 filter to <code>'^(cs|en)'</code>.</dd>

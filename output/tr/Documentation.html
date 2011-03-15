@@ -212,7 +212,7 @@ sürümündeyseniz, StuffIt <acronym title="Apple Macintosh">Mac</acronym>
 biçimleriyle doldurulmaz.<br />
     Bu yüzden sunucunuza bunları göndermeden önce TÜM phpMyAdmin betiklerini
 Unix stilene BBEdit olarak yeniden kaydetmelisiniz, PHP'de olduğu gibi satır
-sonu karakteri (&quot;<tt>\ r</tt>&quot;) <acronym title="Apple
+sonu karakteri (&quot;<tt>\r</tt>&quot;) <acronym title="Apple
 Macintosh">Mac</acronym>-stili gibi görünmez.</p>
 
 <h3 id="quick_install">Hızlı Kur</h3>
@@ -847,84 +847,87 @@ bu veritabanı(ları) adı(ları) MySQL joker karakterleri (&quot;_&quot; ve
 &quot;%&quot;) içerebiliyor: eğer bu karakterlerin aslına uygun örneklerini
 kullanmak isterseniz, bunlardan kaçının (I.E. <tt>'my\_db'</tt> kullanın ve
 <tt>'my_db'</tt> kullanmayın).<br />
-        This setting is an efficient way to lower the server load since the latter
-does not need to send MySQL requests to build the available database
-list. But <span class="important">it does not replace the privileges rules
-of the MySQL database server</span>. If set, it just means only these
-databases will be displayed but <span class="important">not that all other
-databases can't be used.</span>
+        Kullanılabilir veritabanı listesi oluşturmak için sonradan MySQL isteği
+göndermeye gerek olmadığından bu yana bu ayar sunucu yükünü hafifletmek için
+etkin bir yoldur. Ama <span class="important">bu, MySQL veritabanı
+sunucusunun yetki kurallarını değiştirmez</span>. Eğer ayarlanırsa, sadece
+bu veritabanlarının görüntüleneceği anlamına gelir ama <span
+class="important">tüm diğer veritabanlarında kullanılamaz anlamına
+gelmez.</span>
         <br /><br />
 
-        An example of using more that one database:
-<tt>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</tt>
+        Birden fazla veritabanı kullanımı örneği: <tt>$cfg['Servers'][$i]['only_db']
+= array('db1', 'db2');</tt>
         <br /><br />
 
-        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
-databases in the left frame, so that you can individually arrange your
-databases.<br />
-        If you want to have certain databases at the top, but don't care about the
-others, you do not need to specify all other databases. Use:
-<tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt> instead
-to tell phpMyAdmin that it should display db3 and db4 on top, and the rest
-in alphabetic order.</dd>
+        phpMyAdmin 2.5.5'ten itibaren sol çerçevede sıralı düzen veritabanlarının
+sıralanması için kullanılıyor bu yüzden veritabanlarınızı ayrı ayrı
+düzenleyebilirsiniz.<br />
+        Belirli veritabanlarını en üstte istiyorsanız ama diğerlerini
+umursamıyorsanız, tüm diğer veritabanlarını belirlemeniz
+gerekmez. phpMyAdmin'e, en üstte db3 ve db4'ü ve kalanını alfabetik sırada
+görüntüle diye söylemek yerine, kullanmanız gereken:
+<tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt></dd>
 
-    <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> string
+    <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> dizgisi
     </dt>
-    <dd>Regular expression for hiding some databases from unprivileged users.  This
-only hides them from listing, but a user is still able to access them
-(using, for example, the SQL query area). To limit access, use the MySQL
-privilege system.
+    <dd>Bazı veritabanlarını yetkisiz kullanıcılardan gizlemek için düzenli
+ifadedir. Bu sadece onları listelemeden gizler ama kullanıcı hala onlara
+erişebilir (örneğin SQL sorgu alanını kullanarak). Erişimi sınırlandırmak
+için MySQL yetki sistemini kullanın.
         <br /><br />
-        For example, to hide all databases starting with the letter &#34;a&#34;, use<br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
-        and to hide both &#34;db1&#34; and &#34;db2&#34; use <br />
-        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
-        More information on regular expressions can be found in the <a
-href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
-pattern syntax</a> portion of the PHP reference manual.
+        Örneğin, &#34;a&#34; harfinden başlayarak tüm veritabanlarını gizlemek için<br />
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^a'; kullanın</pre>
+        ve her iki &#34;db1&#34; ve &#34;db2&#34;yi gizlemek için <br />
+        <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$'; kullanın</pre>
+        Düzenli ifadeler üzerine daha fazla bilgi PHP referans kitapçığının parçası
+olan <a href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">
+PCRE pattern syntax</a> içinde bulunabilir.
         </dd>
 
-    <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] string</dt>
-    <dd>Only useful when using phpMyAdmin with multiple server entries. If set, this
-string will be displayed instead of the hostname in the pull-down menu on
-the main page. This can be useful if you want to show only certain databases
-on your system, for example. For HTTP auth, all non-US-ASCII characters will
-be stripped.</dd>
+    <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] dizgisi</dt>
+    <dd>Sadece phpMyAdmin'i çoklu sunucu girişleriyle kullandığınızda
+faydalıdır. Eğer ayarlanırsa ana sayfada aşağı açılan menüde anamakine adı
+yerine bu dizgi görüntülenecektir. Eğer sisteminizde sadece belirli
+veritabanlarını göstermek isterseniz, bu kullanışlı olabilir örneğin. HTTP
+kimlik doğrulaması için tüm US-ASCII olmayan karakterler çıkartılacaktır.</dd>
 
     <dt id="pmadb">
-        <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> string
+        <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> dizgisi
     </dt>
-    <dd>The name of the database containing the phpMyAdmin configuration storage.
+    <dd>phpMyAdmin yapılandırma depolamasını içeren veritabanının adıdır.
         <br /><br />
 
-        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
-section in this document to see the benefits of this feature, and for a
-quick way of creating this database and the needed tables.
+        Bu özelliğin yararlarını görmek için ve bu veritabanının hızlı yoldan
+oluşturulması ve gerekli tablolar için bu belgede <a
+href="#linked-tables">phpMyAdmin yapılandırma depolaması</a> bölümüne bakın.
         <br /><br />
 
-        If you are the only user of this phpMyAdmin installation, you can use your
-current database to store those special tables; in this case, just put your
-current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
-multi-user installation, set this parameter to the name of your central
-database containing the phpMyAdmin configuration storage.</dd>
+        Eğer bu phpMyAdmin kurulumunun sadece kullanıcısı sizseniz, bu özel
+tabloları depolamak için şu anki veritabanınızı kullanabilirsiniz; bu
+durumda şu anki veritabanı adınızı sadece
+<tt>$cfg['Servers'][$i]['pmadb']</tt> içine koyun. Çoklu kullanıcı kurulumu
+için bu parametreyi phpMyAdmin yapılandırma depolamasını içeren merkezi
+veritabanınızın adına ayarlayın.</dd>
 
     <dt id="bookmark">
         <span
 id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
-string
+dizgisi
     </dt>
-    <dd>Since release 2.2.0 phpMyAdmin allows users to bookmark queries. This can be
-useful for queries you often run.<br /><br />
+    <dd>2.2.0 yayımından bu yana phpMyAdmin kullanıcılara sorguları saklamak için
+işaretlemesine izin verir. Bu sık sık çalıştırdığınız sorgular için faydalı
+olabilir.<br /><br />
 
-        To allow the usage of this functionality:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>enter the table name in <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
+        Bu işlevselliğin kullanımına izin vermek için:
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
+            <li><tt>$cfg['Servers'][$i]['bookmarktable']</tt> içine tablo adını girin</li>
         </ul>
     </dd>
 
     <dt id="relation">
         <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
-string
+dizgisi
     </dt>
     <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
 column is a key in another table (a foreign key). phpMyAdmin currently uses
@@ -951,9 +954,9 @@ of your database (also uses the table_coords table).</li>
 
         The keys can be numeric or character.<br /><br />
 
-        To allow the usage of this functionality:
+        Bu işlevselliğin kullanımına izin vermek için:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the relation table name in <tt>$cfg['Servers'][$i]['relation']</tt></li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
 want to use this feature, click &quot;Structure/Relation view/&quot; and
@@ -976,7 +979,7 @@ column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         This configuration variable will hold the name of this special table. To
 allow the usage of this functionality:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
 'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
@@ -1002,9 +1005,9 @@ Format">PDF</abbr> schema output).<br /><br />
 
         You must be using the &quot;relation&quot; feature.<br /><br />
 
-        To allow the usage of this functionality:
+        Bu işlevselliğin kullanımına izin vermek için:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the correct table names in <tt>$cfg['Servers'][$i]['table_coords']</tt>
 and <tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
         </ul>
@@ -1036,8 +1039,8 @@ system, your column_info table has to have the three new columns 'mimetype',
 'transformation', 'transformation_options'.
         <br /><br />
 
-        To allow the usage of this functionality:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        Bu işlevselliğin kullanımına izin vermek için:
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
 'pma_column_info')</li>
             <li>to update your PRE-2.5.0 Column_comments Table use this:
@@ -1073,9 +1076,9 @@ to the maximum amount.<br /><br />
         The query history is only available if JavaScript is enabled in your
 browser.<br /><br />
 
-        To allow the usage of this functionality:
+        Bu işlevselliğin kullanımına izin vermek için:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
 (e.g. 'pma_history')
                 </li>
@@ -1109,10 +1112,10 @@ a list of names separated by ','.  In addition you can export the (filtered)
 report to a file or to a temporary database.
         <br/><br/>
         
-        To allow the usage of this functionality:
+        Bu işlevselliğin kullanımına izin vermek için:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
 (e.g. 'pma_tracking')</li>
         </ul>
@@ -1203,10 +1206,10 @@ users can still personalize phpMyAdmin, but settings will be saved in
 browser's local storage, or, it is is unavailable, until the end of session.
         <br /><br />
 
-        To allow the usage of this functionality:
+        Bu işlevselliğin kullanımına izin vermek için:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
         </ul>
     </dd>
@@ -1220,9 +1223,9 @@ string
 visually manage the relations.
         <br /><br />
 
-        To allow the usage of this functionality:
+        Bu işlevselliğin kullanımına izin vermek için:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
 (e.g. 'pma_designer_coords')
                 </li>
