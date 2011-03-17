@@ -1836,82 +1836,89 @@ locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_FilterLanguages">cadena $cfg['FilterLanguages']</dt>
-    <dd>Limit list of available languages to those matching the given regular
-expression. For example if you want only Czech and English, you should set
-filter to <code>'^(cs|en)'</code>.</dd>
+    <dd>Limitar la lista de lenguajes disponibles a aquellos que coincidan con la
+expresión regular provista. Por ejemplo, si sólo se desean Español e Inglés,
+el filtro debería de ser <code>'^(es|en)'</code>.</dd>
 
-    <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] string</dt>
-    <dd>You can select here which functions will be used for character set
-conversion. Possible values are:
-        <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
-            <li>iconv - use iconv or libiconv functions</li>
-            <li>recode - use recode_string function</li>
-            <li>none - disable encoding conversion</li>
+    <dt id="cfg_RecodingEngine">cadena $cfg['RecodingEngine']</dt>
+    <dd>Se puede definir aquí qué funciones utilizar para la conversión entre
+conjuntos de caracteres. Los valores posibles son:
+        <ul><li>auto - utilizar automáticamente los disponibles (primero se intenta con
+iconv, luego recode)</li>
+            <li>iconv - utilizar funciones iconv o libiconv</li>
+            <li>recode - utilizar la función recode_string</li>
+            <li>none - desactivar la conversión de codificación</li>
         </ul>
-        Default is auto.</dd>
+        El valor predeterminado es auto.</dd>
     <dd>
-        Enabled charset conversion activates a pull-down menu in the Export and
-Import pages, to choose the character set when exporting a file. The default
-value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
+        Las funciones de conversión de conjuntos de caracteres habilitadas activarán
+una lista desplegable en las páginas de importación y exportación para
+elegir el conjunto de caracteres a utilizar en el archivo. El valor
+predeterminado de esa lista proviene de <tt>$cfg['Import']['charset']</tt> y
+<tt>$cfg['Export']['charset']</tt> respectivamente.
         </dd>
 
-    <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
-    <dd>Specify some parameters for iconv used in charset conversion. See <a
-href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">iconv
-documentation</a> for details. By default <code>//TRANSLIT</code> is used,
-so that invalid characters will be transliterated.</dd>
+    <dt id="cfg_IconvExtraParams">cadena $cfg['IconvExtraParams']</dt>
+    <dd>Especificar algunos parámetros para la conversión de conjuntos de caracteres
+con funciones iconv. Visite <a
+href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">la
+documentación iconv</a> para más detalles. El valor predeterminado es
+<code>//TRANSLIT</code> para transliterar caracteres inválidos.</dd>
 
-    <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] array</dt>
-    <dd>Available character sets for MySQL conversion. You can add your own (any of
-supported by recode/iconv) or remove these which you don't use.  Character
-sets will be shown in same order as here listed, so if you frequently use
-some of these move them to the top.</dd>
+    <dt id="cfg_AvailableCharsets">array $cfg['AvailableCharsets']</dt>
+    <dd>Los conjuntos de caracteres disponibles para conversión MySQL. Puedes
+agregar otros propios (cualquiera soportado por recode/iconv) o eliminar
+aquellos que no utilices. Los conjuntos de caracteres serán mostrados en el
+mismo orden en el que estén listados aquí, por lo que es recomendable mover
+al principio aquellos que utilices frecuentemente.</dd>
 
-    <dt id="cfg_TrustedProxies">$cfg['TrustedProxies'] array</dt>
-    <dd>Lists proxies and HTTP headers which are trusted for <a
-href="#servers_allowdeny_order">IP Allow/Deny</a>. This list is by default
-empty, you need to fill in some trusted proxy servers if you want to use
-rules for IP addresses behind proxy.<br /><br />
+    <dt id="cfg_TrustedProxies">array $cfg['TrustedProxies']</dt>
+    <dd>Lista de proxies y cabeceras HTTP confiables para <a
+href="#servers_allowdeny_order">IP Allow/Deny</a>. El valor predeterminado
+es que la lista esté vacía, necesitarás completarla con servidores proxy si
+se desea utilizar esas reglas para direcciones IPs detrás de un proxy.<br /><br />
 
-        The following example specifies that phpMyAdmin should trust a
-HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>) header coming from the proxy
-1.2.3.4:
+        En el siguiente ejemplo, phpMyAdmin debería de confiar en la cabecera
+HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>) cuando provenga del proxy
+con dirección IP 1.2.3.4:
 <pre>
 $cfg['TrustedProxies'] =
-     array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
+array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
 </pre>
-        The $cfg['Servers'][$i]['AllowDeny']['rules'] directive uses the client's IP
-address as usual.
+        La directiva $cfg['Servers'][$i]['AllowDeny']['rules'] utilizará las
+direcciones IP de los clientes como siempre.
     </dd>
 
-    <dt id="cfg_GD2Available">$cfg['GD2Available'] string</dt>
-    <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
-transformations.<br />
-        Possible values are:
-        <ul><li>auto - automatically detect, this is a bit expensive operation for php &lt;
-4.3.0 so it is preferred to change this according to your server real
-possibilities</li>
-            <li>yes - GD 2 functions can be used</li>
-            <li>no - GD 2 function cannot be used</li>
+    <dt id="cfg_GD2Available">cadena $cfg['GD2Available']</dt>
+    <dd>Especifica si está disponible GD &gt;= 2. Si está disponible, puede ser
+utilizada para transformaciones MIME.<br />
+        Los valores posibles son:
+        <ul><li>auto - detectar automáticamente, esta es una operación costosa para PHP &lt;
+4.3.0 por lo que es preferible modificarla según las capacidades reales del
+servidor.</li>
+            <li>yes - las funciones GD 2 pueden ser utilizadas</li>
+            <li>no - las funciones GD2 no pueden ser utilizadas</li>
         </ul>
-        Default is auto.
+        El valor predeterminado es auto.
     </dd>
 
-    <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
+    <dt id="cfg_CheckConfigurationPermissions">booleano $cfg['CheckConfigurationPermissions']</dt>
     <dd>
-    We normally check the permissions on the configuration file to ensure it's
-not world writable. However, phpMyAdmin could be installed on a NTFS
-filesystem mounted on a non-Windows server, in which case the permissions
-seems wrong but in fact cannot be detected. In this case a sysadmin would
-set this parameter to <tt>FALSE</tt>. Default is <tt>TRUE</tt>.
+    Normalmente se revisan los permisos en el archivo de configuración para
+asegurarse que todo el mundo no pueda escribir en él. Sin embargo,
+phpMyAdmin podría estar instalado en un sistema de archivos NTFS montado en
+un servidor no-Windows, en cuyo caso los permisos parecerán incorrectos
+debido a problemas de detección. En dichos casos, el administrador deberá
+configurar este parámetro a <tt>FALSE</tt>. El valor predeterminado es
+<tt>TRUE</tt>.
     </dd>
 
-    <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] integer</dt>
+    <dt id="cfg_LinkLengthLimit">entero $cfg['LinkLengthLimit']</dt>
     <dd>
-    Limit for length of URL in links. When length would be above this limit, it
-is replaced by form with button.  This is required as some web servers (IIS)
-have problems with long URLs.  Default is <code>1000</code>.
+    Limitar la longitud de las URLs en los enlaces. Cuando la longitud esté por
+encima de este límite, es reemplazado con un botón. Esto es necesario ya que
+algunos servidores web (IIS) tienen problemas con URLs extensas. El valor
+predeterminado es <code>1000</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] integer</dt>
