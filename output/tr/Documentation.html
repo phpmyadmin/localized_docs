@@ -721,8 +721,7 @@ kullanılabilir olmuştur ve MySQL 4.1.x ya da daha yenisini çalıştıran
 sunuculara bağlanmak için önerilen yoldur.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
-    <dd>MySQL sunucusu bağlantısı için sıkıştırılmış protokol kullanmak ya da
-kullanmamak (deneysel).<br />
+    <dd>MySQL sunucusu bağlantısı için sıkıştırılmış protokol kullanmak (deneysel).<br />
         Bu özellik PHP&nbsp;&gt;=&nbsp;4.3.0 gerektirir.</dd>
 
     <dt id="controluser">
@@ -985,7 +984,7 @@ tanımlayabilirsiniz.<br />
 işlevselliğin kullanımına izin vermek için:
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
             <li><tt>$cfg['Servers'][$i]['table_info']</tt> içine tablo adını koyun
-(ö.r. 'pma_table_info')</li>
+(örn. 'pma_table_info')</li>
             <li>sonra bu özelliği kullanmak istediğiniz her tablo için, sütun seçmek için
 &quot;Yapı/Bağlantı görünümü/Görüntülemek için sütun seçin&quot;e tıklayın.</li>
         </ul>
@@ -998,55 +997,56 @@ dizgisi<br />
         <span id="cfg_Servers_pdf_pages">$cfg['Servers'][$i]['pdf_pages']</span>
 dizgisi
     </dt>
-    <dd>Since release 2.3.0 you can have phpMyAdmin create <abbr title="Portable
-Document Format">PDF</abbr> pages showing the relations between your
-tables. To do this it needs two tables &quot;pdf_pages&quot; (storing
-information about the available <abbr title="Portable Document
-Format">PDF</abbr> pages) and &quot;table_coords&quot; (storing coordinates
-where each table will be placed on a <abbr title="Portable Document
-Format">PDF</abbr> schema output).<br /><br />
+    <dd>2.3.0 yayımından bu yana tablolarınızın arasındaki bağlantıları gösteren
+<abbr title="Portable Document Format">PDF</abbr> sayfaları oluşturan
+phpMyAdmin'e sahip olabiliyorsunuz. Bunu yapmak için iki tabloya ihtiyaç
+duyar, &quot;pdf_pages&quot; (mevcut <abbr title="Portable Document
+Format">PDF</abbr> sayfalar ile ilgili bilgiyi depolayan) ve
+&quot;table_coords&quot; (<abbr title="Portable Document Format">PDF</abbr>
+şema çıktısında yer alacak her bir tablonun koordinatlarını depolayan).<br /><br />
 
-        You must be using the &quot;relation&quot; feature.<br /><br />
+        &quot;Bağlantı&quot; özelliğini kullanmak zorundasınız.<br /><br />
 
         Bu işlevselliğin kullanımına izin vermek için:
 
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the correct table names in <tt>$cfg['Servers'][$i]['table_coords']</tt>
-and <tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
+            <li>doğru tablo adlarını <tt>$cfg['Servers'][$i]['table_coords']</tt> ve
+<tt>$cfg['Servers'][$i]['pdf_pages']</tt> içine koyun</li>
         </ul>
 
-        Usage tips: <a href="#faqpdf"><abbr title="Portable Document
-Format">PDF</abbr> output</a>.
+        Kullanım ipuçları: <a href="#faqpdf"><abbr title="Portable Document
+Format">PDF</abbr> çıktısı</a>.
     </dd>
 
     <dt id="col_com">
         <span id="cfg_Servers_column_info">$cfg['Servers'][$i]['column_info']</span>
-string
+dizgisi
     </dt>
     <dd>
         <!-- This part requires a content update! -->
-Since release 2.3.0 you can store comments to describe each column for each
-table. These will then be shown on the &quot;printview&quot;.
+2.3.0 yayımından bu yana her tablo için her sütunu tanımlayan yorumları
+depolayabiliyorsunuz. Bunlar sonradan &quot;baskı görünümünde&quot;
+gösterilecektir.
         <br /><br />
 
-        Starting with release 2.5.0, comments are consequently used on the table
-property pages and table browse view, showing up as tool-tips above the
-column name (properties page) or embedded within the header of table in
-browse view. They can also be shown in a table dump. Please see the relevant
-configuration directives later on.<br /><br />
+        2.5.0'dan başlayarak yorumlar bu nedenle tablo tercih sayfasında ve tablo
+gözatma görünümünde kullanılmaktadır, sütun adının (tercihler sayfası)
+üzerinde araç ipucu veya gözatma görünümünde tablonun başlığına gömülü
+olarak gösterilmektedir. Ayrıca tablo yığınında gösterilebilirler. Lütfen
+daha sonra konu ile ilgili yapılandırma yönergelerine bakın.<br /><br />
 
-        Also new in release 2.5.0 is a MIME-transformation system which is also
-based on the following table structure. See <a href="#transformations">
-Transformations</a> for further information. To use the MIME-transformation
-system, your column_info table has to have the three new columns 'mimetype',
-'transformation', 'transformation_options'.
+        Ayrıca 2.5.0 yayımında yeni olan, aynı zamanda aşağıdaki tablo yapısına
+dayanan MIME-dönüşüm sistemidir. Daha fazla bilgi için <a
+href="#transformations">Dönüşüm</a>'e bakın. MIME-dönüşüm sistemini
+kullanmak için column_info tablonuz üç yeni sütuna sahip olmalıdır,
+'mimetype', 'transformation', 'transformation_options'.
         <br /><br />
 
         Bu işlevselliğin kullanımına izin vermek için:
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
-'pma_column_info')</li>
-            <li>to update your PRE-2.5.0 Column_comments Table use this:
+            <li>tablo adını <tt>$cfg['Servers'][$i]['column_info']</tt> içine koyun
+(örn. 'pma_column_info')</li>
+            <li>PRE-2.5.0 Column_comments Tablonuzu güncellemek için bunu kullanın:
 
                 <pre>
 ALTER TABLE `pma_column_comments`
@@ -1055,72 +1055,71 @@ ALTER TABLE `pma_column_comments`
     ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                and remember that the Variable in <i>config.inc.php</i> has been renamed
-from<br />
-                <tt>$cfg['Servers'][$i]['column_comments']</tt> to
-<tt>$cfg['Servers'][$i]['column_info']</tt></li>
+                ve unutmayın <i>config.inc.php</i> içindeki Değişken<br />
+                <tt>$cfg['Servers'][$i]['column_comments']</tt>'dan
+<tt>$cfg['Servers'][$i]['column_info']</tt>'a yeniden adlandırılır</li>
         </ul>
     </dd>
 
     <dt id="history">
-        <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> string
+        <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> dizgisi
     </dt>
-    <dd>Since release 2.5.0 you can store your <abbr title="structured query
-language">SQL</abbr> history, which means all queries you entered manually
-into the phpMyAdmin interface. If you don't want to use a table-based
-history, you can use the JavaScript-based history. Using that, all your
-history items are deleted when closing the window.<br /><br />
+    <dd>2.5.0 yayımından bu yana phpMyAdmin arabirimi içinden elle girdiğiniz tüm
+sorguları <abbr title="structured query language">SQL</abbr> geçmişinde
+depolayabilirsiniz. Eğer tablo tabanlı geçmiş kulanmak istemiyorsanız,
+JavaScript tabanlı geçmiş kulanabilirsiniz. Bunun kullanımıyla, pencereyi
+kapattığınızda tüm geçmiş öğeleriniz silinir.<br /><br />
 
-        Using <a href="#cfg_QueryHistoryMax"
-class="configrule">$cfg['QueryHistoryMax']</a> you can specify an amount of
-history items you want to have on hold. On every login, this list gets cut
-to the maximum amount.<br /><br />
+        <a href="#cfg_QueryHistoryMax"
+class="configrule">$cfg['QueryHistoryMax']</a> kullanarak tutulmasını
+istediğiniz geçmiş öğelerinin miktarını belirleyebilirsiniz. Her oturum
+açmada, bu liste kesilerek en fazla miktar getirilir.<br /><br />
 
-        The query history is only available if JavaScript is enabled in your
-browser.<br /><br />
+        Sorgu geçmişi sadece, eğer tarayıcınızda JavaScript etkinse
+kullanılabilirdir.<br /><br />
 
         Bu işlevselliğin kullanımına izin vermek için:
 
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
-(e.g. 'pma_history')
+            <li>tablo adını <tt>$cfg['Servers'][$i]['history']</tt> içine koyun
+(örn. 'pma_history')
                 </li>
         </ul>
     </dd>
 
     <dt id="tracking">
         <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
-string
+dizgisi
     </dt>
     <dd>
-        Since release 3.3.x a tracking mechanism is available.  It helps you to
-track every <abbr title="structured query language">SQL</abbr> command which
-is executed by phpMyAdmin. The mechanism supports logging of data
-manipulation and data definition statements. After enabling it you can
-create versions of tables.
+        3.3.x yayımından bu yana izleme mekanizması kullanılabilirdir. phpMyAdmin
+tarafından çalıştırılan her <abbr title="structured query
+language">SQL</abbr> komutunu izlemenize yardım eder. Mekanizma, veri işleme
+günlüklemesini ve veri tanımlama ifadelerini destekler. Etkinleştirdikten
+sonra tabloların sürümlerini oluşturabilirsiniz.
         <br/><br/>
-        The creation of a version has two effects:
+        Sürümün oluşturulmasının iki etkisi vardır:
 
         <ul>
-            <li>phpMyAdmin saves a snapshot of the table, including structure and indexes.</li>
-            <li>phpMyAdmin logs all commands which change the structure and/or data of the
-table and links these commands with the version number.</li>
+            <li>phpMyAdmin tablonun anlık görüntüsünü kaydeder, yapı ve indeksler dahil.</li>
+            <li>phpMyAdmin tabloların yapı ve/veya verisini değiştiren ve sürüm numarası ile
+bu komutları bağlayan tüm komutları günlükler.</li>
         </ul>
 
-        Of course you can view the tracked changes. On the "Tracking" page a
-complete report is available for every version.  For the report you can use
-filters, for example you can get a list of statements within a date range.
-When you want to filter usernames you can enter * for all names or you enter
-a list of names separated by ','.  In addition you can export the (filtered)
-report to a file or to a temporary database.
+        Elbette izleme değişikliklerini görüntüleyebilirsiniz. Her sürüm için tam
+rapor "İzleme" sayfasında mevcuttur. Rapor için süzgeçleri
+kullanabilirsiniz, örneğin bir tarih aralığındaki ifadelerin listesini
+alabilirsiniz. Kullanıcı adlarını süzmek istediğinizde tüm adlar için *
+girebilirsiniz veya ad listesini ',' ile ayırarak girin. İlave olarak
+(süzülmüş) raporu bir geçici veritabanına veya bir dosyaya aktarabilirsiniz.
         <br/><br/>
         
         Bu işlevselliğin kullanımına izin vermek için:
 
         <ul>
             <li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
-(e.g. 'pma_tracking')</li>
+            <li>tablo adını <tt>$cfg['Servers'][$i]['tracking']</tt> içine koyun
+(örn. 'pma_tracking')</li>
         </ul>
     </dd>
 
@@ -1130,28 +1129,28 @@ id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_vers
 boolean
     </dt>
     <dd>
-        Whether the tracking mechanism creates versions for tables and views
-automatically. Default value is false.
+        İzleme mekanizmasının tablolar için sürümler ve otomatik olarak görünümler
+oluşturması. Varsayılan değer göstermeliktir.
         <br/><br/>
-        If this is set to true and you create a table or view with
+        Eğer bu true olarak ayarlanırsa ve bir tabloyu
 
         <ul>
             <li>CREATE TABLE ...</li>
             <li>CREATE VIEW ...</li>
         </ul>
 
-        and no version exists for it, the mechanism will create a version for you
-automatically.        
+        ile oluşturur ya da gösterirseniz ve bunun için sürüm mevcut değilse,
+mekanizma sizin için otomatik olarak bir sürüm oluşturacaktır.        
     </dd>
 
     <dt id="tracking3">
         <span
 id="cfg_Servers_tracking_default_statements">$cfg['Servers'][$i]['tracking_default_statements']</span>
-string
+dizgisi
     </dt>
     <dd>
-        Defines the list of statements the auto-creation uses for new
-versions. Default value is
+        Yeni sürümler için kullanılan otomatik oluşturma ifadeleri listesini
+tanımlar. Varsayılan değer
         <br/>
 
 <pre>CREATE TABLE,ALTER TABLE,DROP TABLE,RENAME TABLE,
