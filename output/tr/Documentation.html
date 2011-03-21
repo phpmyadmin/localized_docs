@@ -1130,7 +1130,7 @@ boolean
     </dt>
     <dd>
         İzleme mekanizmasının tablolar için sürümler ve otomatik olarak görünümler
-oluşturması. Varsayılan değer göstermeliktir.
+oluşturması. Varsayılan değer false.
         <br/><br/>
         Eğer bu true olarak ayarlanırsa ve bir tabloyu
 
@@ -1166,8 +1166,8 @@ id="cfg_Servers_tracking_add_drop_view">$cfg['Servers'][$i]['tracking_add_drop_v
 boolean
     </dt>
     <dd>
-        Whether a DROP VIEW IF EXISTS statement will be added as first line to the
-log when creating a view. Default value is true.
+        Görünüm oluştururken günlüğün ilk satırına DROP VIEW IF EXISTS ifadesinin
+eklenecek olması. Varsayılan değer true.
         <br/><br/>       
     </dd>
 
@@ -1178,8 +1178,8 @@ id="cfg_Servers_tracking_add_drop_table">$cfg['Servers'][$i]['tracking_add_drop_
 boolean
     </dt>
     <dd>
-        Whether a DROP TABLE IF EXISTS statement will be added as first line to the
-log when creating a table. Default value is true.
+        Tablo oluştururken günlüğün ilk satırına DROP TABLE IF EXISTS ifadesinin
+eklenecek olması. Varsayılan değer true.
         <br/><br/>
     </dd>
 
@@ -1189,47 +1189,48 @@ id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_dr
 boolean
     </dt>
     <dd>
-        Whether a DROP DATABASE IF EXISTS statement will be added as first line to
-the log when creating a database. Default value is true.
+        Veritabanı oluştururken günlüğün ilk satırına DROP DATABASE IF EXISTS
+ifadesinin eklenecek olması. Varsayılan değer true.
         <br/><br/>
     </dd>
 
     <dt id="userconfig">
         <span id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
-string
+dizgisi
     </dt>
     <dd>
-        Since release 3.4.x phpMyAdmin allows users to set most preferences by
-themselves and store them in the database.
+        3.4.x yayımından bu yana phpMyAdmin kullancılara kendi kendilerine çoğu
+tercihi ayarlamalarına ve onları veritabanında depolamalarına izin verir.
         <br /><br />
 
-        If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
-users can still personalize phpMyAdmin, but settings will be saved in
-browser's local storage, or, it is is unavailable, until the end of session.
+        Eğer tercihleri <a href="#pmadb">pmadb</a> içinde depolamak için izin
+vermezseniz, kullanıcılar hala phpMyAdmin'i özelleştirebilirler ama ayarlar
+tarayıcının yerel depolamasına kaydedilecektir ya da oturumun sonuna kadar
+kullanılamaz olacaktır.
         <br /><br />
 
         Bu işlevselliğin kullanımına izin vermek için:
 
         <ul>
             <li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+            <li>tablo adını <tt>$cfg['Servers'][$i]['userconfig']</tt> içine koyun</li>
         </ul>
     </dd>
 
     <dt id="designer_coords">
         <span
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
-string
+dizgisi
     </dt>
-    <dd>Since release 2.10.0 a Designer interface is available; it permits to
-visually manage the relations.
+    <dd>2.10.0 yayımından bu yana Tasarımcı arabirimi mevcuttur; bağlantıları görsel
+yönetmeye izin verir.
         <br /><br />
 
         Bu işlevselliğin kullanımına izin vermek için:
 
         <ul><li><a href="#pmadb">pmadb</a> ve phpMyAdmin yapılandırma depolamasını kurun</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
-(e.g. 'pma_designer_coords')
+            <li>tablo adını <tt>$cfg['Servers'][$i]['designer_coords']</tt> içine koyun
+(örn. 'pma_designer_coords')
                 </li>
         </ul>
     </dd>
@@ -1238,47 +1239,48 @@ visually manage the relations.
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 boolean
     </dt>
-    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new columns. If the above variable
-is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
-latest table structure available. If not, it will emit a warning to the
-superuser.<br /><br />
+    <dd>Çünkü 2.5.0 yayımı yeni MIME-dönüşüm desteğini sundu, column_info tablosu üç
+yeni sütunla geliştirildi. Eğer yukarıdaki değişken <tt>TRUE</tt>
+(varsayılan) olarak ayarlanırsa phpMyAdmin mevcut en son tablo yapısına
+sahip olup olmadığınızı kontrol edecektir. Eğer değilseniz, süper
+kullanıcıya bir uyarı yayınlayacaktır.<br /><br />
 
-        You can disable this checking behavior by setting the variable to false,
-which should offer a performance increase.<br /><br />
+        Değişken false olarak ayarlanarak performans artışı sunan bu kontrol
+davranışını etkizileştirebilirsiniz.<br /><br />
 
-        Recommended to set to FALSE, when you are sure, your table structure is up
-to date.</dd>
+        FALSE olarak ayarlanması önerilir, emin olduğunuzda tablo yapınız
+güncellenir.</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span>
 boolean</dt>
-    <dd>Whether to allow root access. This is just a shortcut for the AllowDeny
-rules below.
+    <dd>Root erişimine izin verilmesi. Aşağıdaki AllowDeny kuralları için bu bir
+kısayoldur.
     </dd>
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 boolean</dt>
-	<dd>Whether to allow logins without a password. The default value of
-<tt>false</tt> for this parameter prevents unintended access to a MySQL
-server with was left with an empty password for root or on which an
-anonymous (blank) user is defined.
+	<dd>Parolasız oturum açmalara izin verilmesi. Bu parametre için varsayılan değer
+<tt>false</tt>, MySQL sunucusuna boş root parolası veya isimsiz (boş)
+kullanıcı tanımıyla istenmeden yapılan erişimi önler.
     </dd>
     <dt id="servers_allowdeny_order">
         <span
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
-string
+dizgisi
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authorization is disabled.<br /><br />
+    <dd>Eğer kural sıranız boşsa, sonrasında <abbr title="Internet
+Protocol">IP</abbr> yetki etkisizleştirilir.<br /><br />
 
-        If your rule order is set to <tt>'deny,allow'</tt> then the system applies
-all deny rules followed by allow rules. Access is allowed by default. Any
-client which does not match a Deny command or does match an Allow command
-will be allowed access to the server. <br /><br />
+        Eğer kural sıranız <tt>'reddet,izin ver'</tt> olarak ayarlanırsa sonrasında
+sistem tüm reddet kurallarının peşinden izleyen izin ver kuralını
+uygular. Varsayılan olarak erişime izin verilir. Reddet komutuna uymayan ya
+da İzin ver komutuna uyan herhangi bir istemciye, sunucuya erişim izni
+verilecektir. <br /><br />
 
-        If your rule order is set to <tt>'allow,deny'</tt> then the system applies
-all allow rules followed by deny rules. Access is denied by default.  Any
-client which does not match an Allow directive or does match a Deny
-directive will be denied access to the server.<br /><br />
+        Eğer kural sıranız <tt>'izin ver,reddet'</tt> olarak ayarlanırsa sonrasında
+sistem tüm izin ver kurallarının peşinden izleyen reddet kuralını
+uygular. Varsayılan olarak erişim reddedilir. İzin ver komutuna uymayan ya
+da Reddet komutuna uyan herhangi bir istemcinin, sunucuya erişimi
+reddedilecektir.<br /><br />
 
         If your rule order is set to 'explicit', authorization is performed in a
 similar fashion to rule order 'deny,allow', with the added restriction that

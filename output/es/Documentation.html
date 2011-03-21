@@ -2454,296 +2454,315 @@ Questions">FAQ</abbr> 6.14</a>.
             <dt id="cfg_SQLValidator_username">cadena $cfg['SQLValidator']['username']<br />
                 cadena <span
 id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span></dt>
-            <dd>The SOAP service allows you to log in with <tt>anonymous</tt> and any
-password, so we use those by default. Instead, if you have an account with
-them, you can put your login details here, and it will be used in place of
-the anonymous login.</dd>
+            <dd>El servicio SOAP permite iniciar sesión con <tt>anonymous</tt> y cualquier
+contraseña, por lo que se utilizan esos valores predeterminados. Si se posee
+una cuenta con ellso, aquí se pueden especificar las credenciales para
+iniciar sesión y serán utilizados en lugar de la sesión anónima.</dd>
         </dl>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']</dt>
-    <dd><b>DEVELOPERS ONLY!</b></dd>
+    <dd><b>¡SÓLO PARA DESARROLLADORES!</b></dd>
 
-    <dt id="cfg_DBG_enable_sql">$cfg['DBG']['sql'] boolean</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
-        Enable logging queries and execution times to be displayed in the bottom of
-main page (right frame).</dd>
+    <dt id="cfg_DBG_enable_sql">booleano $cfg['DBG']['sql']</dt>
+    <dd><b>¡SÓLO PARA DESARROLLADORES!</b><br />
+        Activar el registro de consultas y tiempos de ejecución a mostrarse al pie
+de la página principal (marco derecho).</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] array</dt>
-    <dd>All possible types of a MySQL column. In most cases you don't need to edit
-this.</dd>
+    <dt id="cfg_ColumnTypes">array $cfg['ColumnTypes']</dt>
+    <dd>Todos los posibles tipos de una columna MySQL. En la mayoría de los casos no
+es necesario modificar esto.</dd>
 
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] array</dt>
-    <dd>Possible attributes for columns. In most cases you don't need to edit this.</dd>
+    <dt id="cfg_AttributeTypes">array $cfg['AttributeTypes']</dt>
+    <dd>Posibles atributos para las columnas. En la mayoría de los casos no es
+necesario modificar esto.</dd>
 
-    <dt id="cfg_Functions">$cfg['Functions'] array</dt>
-    <dd>A list of functions MySQL supports. In most cases you don't need to edit
-this.</dd>
+    <dt id="cfg_Functions">array $cfg['Functions']</dt>
+    <dd>Una lista de las funciones soportadas por MySQL. En la mayoría de los casos
+no es necesario modificar esto.</dd>
 
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] array</dt>
-    <dd>Mapping of column types to meta types used for preferring displayed
-functions. In most cases you don't need to edit this.</dd>
+    <dt id="cfg_RestrictColumnTypes">array $cfg['RestrictColumnTypes']</dt>
+    <dd>El mapeo de los tipos de columnas a los meta-tipos utilizados para las
+funciones de visualización preferidas. En la mayoría de los casos no es
+necesario modificar esto.</dd>
 
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] array</dt>
-    <dd>Functions preferred for column meta types as defined in <a
+    <dt id="cfg_RestrictFunctions">array $cfg['RestrictFunctions']</dt>
+    <dd>Funciones preferidas para los meta-tipos de columnas según están definidos
+en <a href="#cfg_RestrictColumnTypes"
+class="configrule">$cfg['RestrictColumnTypes']</a>. En la mayoría de los
+casos no es necesario modificar esto.</dd>
+
+    <dt id="cfg_DefaultFunctions">array $cfg['DefaultFunctions']</dt>
+    <dd>Las funciones seleccionadas predeterminadamente al insertar/editar una
+fila. Las funciones están definidas para los meta-tipos en <a
 href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>. In most cases you don't
-need to edit this.</dd>
+class="configrule">$cfg['RestrictColumnTypes']</a> y para
+<code>first_timestamp</code>, utilizada para la primer columna de una tabla
+conteniendo marcas temporales.</dd>
 
-    <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] array</dt>
-    <dd>Functions selected by default when inserting/changing row, Functions are
-defined for meta types from <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> and for
-<code>first_timestamp</code>, which is used for first timestamp column in
-table.</dd>
-
-    <dt id="cfg_NumOperators">$cfg['NumOperators'] array</dt>
-    <dd>Operators available for search operations on numeric and date columns.
+    <dt id="cfg_NumOperators">array $cfg['NumOperators']</dt>
+    <dd>Los operadores disponibles para operaciones de búsqueda en columnas
+numéricas y de fechas.
     </dd>
 
-    <dt id="cfg_TextOperators">$cfg['TextOperators'] array</dt>
-    <dd>Operators available for search operations on character columns.  Note that
-we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
-avoid unintended performance problems in case of huge tables.</dd>
+    <dt id="cfg_TextOperators">array $cfg['TextOperators']</dt>
+    <dd>Los operadores disponibles para operaciones de búsqueda en columnas de
+caracteres. Notas que de forma predeterminada, utilizamos <code>LIKE</code>
+en lugar de <code>LIKE %...%</code> para evitar problemas de performace
+accidentales en los casos de tablas gigantescas.</dd>
 
-    <dt id="cfg_EnumOperators">$cfg['EnumOperators'] array</dt>
-    <dd>Operators available for search operations on ENUM columns.</dd>
+    <dt id="cfg_EnumOperators">array $cfg['EnumOperators']</dt>
+    <dd>Los operadores disponibles para operaciones de búsqueda en columnas ENUM.</dd>
 
-    <dt id="cfg_NullOperators">$cfg['NullOperators'] array</dt>
-    <dd>Additional operators available for search operations when the column can be
-null.</dd>
+    <dt id="cfg_NullOperators">array $cfg['NullOperators']</dt>
+    <dd>Operadores adicionales disponibles para operaciones de búsqueda cuando la
+columna puede ser NULL.</dd>
 
 </dl>
 
 
 <!-- TRANSFORMATIONS -->
-<h2 id="transformations">Transformations</h2>
+<h2 id="transformations">Transformaciones</h2>
 
-<ol><li><a href="#transformationsintro">Introduction</a></li>
-    <li><a href="#transformationshowto">Usage</a></li>
-    <li><a href="#transformationsfiles">File structure</a></li>
+<ol><li><a href="#transformationsintro">Introducción</a></li>
+    <li><a href="#transformationshowto">Utilización</a></li>
+    <li><a href="#transformationsfiles">Estructura de archivos</a></li>
 </ol>
 
-<h3 id="transformationsintro">1. Introduction</h3>
+<h3 id="transformationsintro">1. Introducción</h3>
 
-<p> To enable transformations, you have to setup the <tt>column_info</tt> table
-and the proper directives. Please see the <a href="#config">Configuration
-section</a> on how to do so.</p>
+<p> Para activar las transformaciones es necesario configurar la tabla
+<tt>column_info</tt> y las directivas apropiadas. Podrá encontrar las
+instrucciones para hacerlo en la <a href="#config">sección de
+configuración</a>.</p>
 
-<p> You can apply different transformations to the contents of each column. The
-transformation will take the content of each column and transform it with
-certain rules defined in the selected transformation.</p>
+<p> Se pueden aplicar diferentes transformaciones a los contenidos de cada
+columna. La transformación obtendrá el contenido de cada columna y lo
+transformará según ciertas reglas definidas en la transformación
+seleccionada.</p>
 
-<p> Say you have a column 'filename' which contains a filename. Normally you
-would see in phpMyAdmin only this filename. Using transformations you can
-transform that filename into a HTML link, so you can click inside of the
-phpMyAdmin structure on the column's link and will see the file displayed in
-a new browser window. Using transformation options you can also specify
-strings to append/prepend to a string or the format you want the output
-stored in.</p>
+<p> Supongamos, por ejemplo, si se tiene una columna 'filename' que contiene un
+nombre de archivo. Normalmente se vería ese nombre de archivo en
+phpMyAdmin. Utilizando transformaciones se puede transformar ese nombre de
+archivo a un enlace HTML en el que se puede pulsar para acceder al archivo
+en una nueva ventana. Utilizando las opciones de transformaciones se pueden
+definir cadenas a agrear al principio o al final de otra o el formato en el
+que almacenar la salida.</p>
 
-<p> For a general overview of all available transformations and their options,
-you can consult your
-<i>&lt;www.your-host.com&gt;/&lt;your-install-dir&gt;/transformation_overview.php</i>
-installation.</p>
+<p> Para una visión general de todas las transformaciones disponibles y sus
+opciones, se puede consultar la página <i>transformation_overview.php</i> de
+su instalación de phpMyAdmin.</p>
 
-<p> For a tutorial on how to effectively use transformations, see our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin homepage.</p>
+<p> Para un tutorial sobre el uso efectivo de transformaciones, visite la <a
+href="http://www.phpmyadmin.net/home_page/docs.php">sección de enlaces</a>
+de la página principal del sitio oficial de phpMyAdmin.</p>
 
-<h3 id="transformationshowto">2. Usage</h3>
+<h3 id="transformationshowto">2. Utilización</h3>
 
-<p> Go to your <i>tbl_structure.php</i> page (i.e. reached through clicking on
-the 'Structure' link for a table). There click on &quot;Change&quot; (or
-change icon) and there you will see three new fields at the end of the
-line. They are called 'MIME-type', 'Browser transformation' and
-'Transformation options'.</p>
+<p> Revise la página <i>tbl_structure.php</i> de su instalación (por ejemplo,
+pulsando en el enlace 'Estructura' de una tabla). Luego pulse en
+&quot;Modificar&quot; (o el icono respectivo) y luego se podrán ver tres
+nuevos campos al final de la línea llamados 'Tipo MIME', 'Transformaciones
+de exploración' y 'Opciones de transformaciones'.</p>
 
-    <ul><li>The field 'MIME-type' is a drop-down field. Select the MIME-type that
-corresponds to the column's contents. Please note that transformations are
-inactive as long as no MIME-type is selected.</li>
+    <ul><li>El campo 'Tipo MIME' es una lista desplegable en la que se debe seleccionar
+el tipo MIME que corresponde a los contenidos de la columna. Porfavor note
+que las transformaciones no estarán disponibles hasta que se seleccione un
+tipo MIME.</li>
 
-    <li>The field 'Browser transformation' is a drop-down field. You can choose from
-a hopefully growing amount of pre-defined transformations. See below for
-information on how to build your own transformation.<br />
+    <li>El campo 'Transformaciones de exploración' es una lista desplegable donde se
+puede elegir una transformación pre-existente de una lista, esperamos, en
+constante expansión. Más adelante encontrará información para crear una
+transformación personalizada.<br />
 
-        There are global transformations and mimetype-bound transformations. Global
-transformations can be used for any mimetype. They will take the mimetype,
-if necessary, into regard.  Mimetype-bound transformations usually only
-operate on a certain mimetype. There are transformations which operate on
-the main mimetype (like 'image'), which will most likely take the subtype
-into regard, and those who only operate on a specific subtype (like
-'image/jpeg').<br />
+        Hay transformaciones globales y transformaciones que dependen del tipo
+MIME. Las transformaciones globales pueden ser utilizadas para cualquier
+tipo MIME pero lo tendrán en cuenta si es necesario. Las transformaciones
+que dependen del tipo MIME normalmente sólo operarán en tipos MIME
+determinados. Hay transformaciones que operaran sobre el tipo MIME principal
+(como 'image'), que seguramente tienen en cuenta el sub-tipo, y otras
+operaciones que sólo operan en un sub-tipo específico (como 'image/jpeg').<br />
 
-        You can use transformations on mimetypes for which the function was not
-defined for. There is no security check for you selected the right
-transformation, so take care of what the output will be like.</li>
+        Se pueden utilizar transformaciones en tipos MIME para los que no fue
+definida. No hay control de seguridad alguno sobre la transformación elegida
+así que tendrás que revisar cómo será la salida.</li>
 
-    <li>The field 'Transformation options' is a free-type textfield. You have to
-enter transform-function specific options here. Usually the transforms can
-operate with default options, but it is generally a good idea to look up the
-overview to see which options are necessary.<br />
+    <li>El campo 'Opciones de transofmración' es un campo de texto libre donde se
+deben ingresar las opciones específicas a la función de
+transformación. Normalmente las transformaciones pueden operar con opciones
+predeterminadas, pero muchas veces es buena idea buscar la ayuda de la misma
+para saber qué opciones son necesarias.<br />
 
-        Much like the ENUM/SET-Fields, you have to split up several options using
-the format 'a','b','c',...(NOTE THE MISSING BLANKS). This is because
-internally the options will be parsed as an array, leaving the first value
-the first element in the array, and so forth.<br />
+        De forma similar a los campos ENUM/SET, se deben separar las opciones entre
+ellas con el formato 'a','b',c',... (NOTAR LA FALTA DE ESPACIOS EN
+BLANCO). Esto es porque, internamente, las opciones serán interpretadas como
+un array respetando las posiciones de las opciones.<br />
 
-        If you want to specify a MIME character set you can define it in the
-transformation_options.  You have to put that outside of the pre-defined
-options of the specific mime-transform, as the last value of the set. Use
-the format "'; charset=XXX'". If you use a transform, for which you can
-specify 2 options and you want to append a character set, enter "'first
-parameter','second parameter','charset=us-ascii'". You can, however use the
-defaults for the parameters: "'','','charset=us-ascii'".</li>
+        Se puede especificar un conjunto de caracteres MIME en las opciones de
+transformación. Se debe de hacerlo fuera de las opciones predefinidas en la
+transformación MIME como último valor del conjunto. Utilice el formato "';
+charset=XXX'". Si se utiliza una transformación para la que se pueden
+especificar 2 opciones y se desea agregar un conjunto de caracteres, se debe
+utilizar: "'primer parámetro','segundo parámetro','charset=XXX'". También se
+pueden utilizar los valores predeterminados para los parámetros utilizando:
+"'','','charset=XXX'".</li>
 </ul>
 
-<h3 id="transformationsfiles">3. File structure</h3>
+<h3 id="transformationsfiles">3. Estructura de archivos</h3>
 
-<p> All mimetypes and their transformations are defined through single files in
-the directory 'libraries/transformations/'.</p>
+<p> Todos los tipos MIME y sus transformaciones están definidos en archivos
+individuales en el directorio 'libraries/trasnformations/'.</p>
 
-<p> They are stored in files to ease up customization and easy adding of new
-transformations.</p>
+<p> Están almacenados en archivos para facilitar la personalización y hacer
+sencillo el agregar nuevas transformaciones.</p>
 
-<p> Because the user cannot enter own mimetypes, it is kept sure that
-transformations always work. It makes no sense to apply a transformation to
-a mimetype the transform-function doesn't know to handle.</p>
+<p> Debido a que los usuarios no pueden ingresar sus propios tipos MIME, es
+seguro que las transformaciones siempre funcionarán. No tiene sentido
+aplicar transformaciones a un tipo MIME que la función de transformación no
+sabe manejar.</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype than what they where built for, but pay attention to option usage
-as well as what the transformation does to your column.</p>
+<p> Uno puede, sin embargo, utilizar tipos MIME vacíos y transformaciones
+globales que deberían funcionar para varios tipos MIME. También se pueden
+utilizar transformaciones en tipos MIME diferentes a aquellos para los que
+fueron creadas, pero hay que prestar atención a las opciones de uso así como
+también a lo que la transformación hace a la columna.</p>
 
-<p> There is a basic file called '<i>global.inc.php</i>'. This function can be
-included by any other transform function and provides some basic functions.</p>
+<p> Hay un archivo básico llamado '<i>global.inc.php</i>'. Esta función puede
+ser incluída por cualquier otra función de transformación y provee cierta
+funcionalidad básica.</p>
 
-<p> There are 5 possible file names:</p>
+<p> Hay 5 nombres de archivo posibles:</p>
 
-<ol><li>A mimetype+subtype transform:<br /><br />
+<ol><li>Una tranformación de tipo MIME + sub-tipo:<br /><br />
 
-        <tt>[mimetype]_[subtype]__[transform].inc.php</tt><br /><br />
+        <tt>[tipo MIME]_[sub-tipo]__[transformación].inc.php</tt><br /><br />
 
-        Please not that mimetype and subtype are separated via '_', which shall not
-be contained in their names. The transform function/filename may contain
-only characters which cause no problems in the file system as well as the
-PHP function naming convention.<br /><br />
+        Porfavor note que el tipo MIME y el sub-tipo están separados por '_', que no
+puede estar contenido en sus nombres. La función de transformación y el
+nombre del archivo sólo pueden contener caracteres que no causarán problemas
+con el sistema de archivos ni con la convención de nombres de funciones de
+PHP.<br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_[mimetype]_[subtype]__[transform]()</tt>'.<br /><br />
+        La función de transformación será llamada '<tt>PMA_transform_[tipo
+MIME]_[sub-tipo]__[transformación]()</tt>'.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Ejemplo:</b><br /><br />
 
         <tt>text_html__formatted.inc.php</tt><br />
         <tt>PMA_transform_text_html__formatted()</tt></li>
 
-    <li>A mimetype (w/o subtype) transform:<br /><br />
+    <li>Una transformación de tipo MIME sin sub-tipo:<br /><br />
 
-        <tt>[mimetype]__[transform].inc.php</tt><br /><br />
+        <tt>[tipo MIME]__[transformación].inc.php</tt><br /><br />
 
-        Please note that there are no single '_' characters.  The transform
-function/filename may contain only characters which cause no problems in the
-file system as well as the PHP function naming convention.<br /><br />
+        Porfavor note que no hay caracteres '_' simples. La función de
+transformación y el nombre del archivo sólo pueden contener caracteres que
+no causarán problemas con el sistema de archivos ni con la convención de
+nombres de funciones de PHP.<br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_[mimetype]__[transform]()</tt>'.<br /><br />
+        La función de transformación será llamada '<tt>PMA_transform_[tipo
+MIME]__[transformación]()</tt>'.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Ejemplo:</b><br /><br />
 
         <tt>text__formatted.inc.php</tt><br />
         <tt>PMA_transform_text__formatted()</tt></li>
 
-    <li>A mimetype+subtype without specific transform function<br /><br />
+    <li>Un tipo MIME + sub-tipo sin una función de transformación específica<br /><br />
 
-        <tt>[mimetype]_[subtype].inc.php</tt><br /><br />
+        <tt>[tipo MIME]_[sub-tipo].inc.php</tt><br /><br />
 
-        Please note that there are no '__' characters in the filename. Do not use
-special characters in the filename causing problems with the file system.<br /><br />
+        Porfavor note que no hay caracteres '__' en el nombre de archivo. No utilice
+caracteres especiales en el nombre del archivo que puedan causar problemas
+con el sistema de archivos.<br /><br />
 
-        No transformation function is defined in the file itself.<br /><br />
+        No se define una función de transformación en el archivo en sí.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Ejemplo:</b><br /><br />
 
         <tt>text_plain.inc.php</tt><br />
-        (No function)</li>
+        (Sin función)</li>
 
-    <li>A mimetype (w/o subtype) without specific transform function<br /><br />
+    <li>Un tipo MIME sin sub-tipo ni función de transformación específica<br /><br />
 
-        <tt>[mimetype].inc.php</tt><br /><br />
+        <tt>[tipo MIME].inc.php</tt><br /><br />
 
-        Please note that there are no '_' characters in the filename. Do not use
-special characters in the filename causing problems with the file system.
+        Porfavor note que no hay caracteres '_' simples. No utilice caracteres
+especiales en el nombre del archivo que puedan causar problemas con el
+sistema de archivos.
         <br /><br />
 
-        No transformation function is defined in the file itself.<br /><br />
+        No se define una función de transformación en el archivo en sí.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Ejemplo:</b><br /><br />
 
         <tt>text.inc.php</tt><br />
-        (No function)</li>
+        (Sin función)</li>
 
-    <li>A global transform function with no specific mimetype<br /><br />
+    <li>Una función de transformación global sin tipo MIME específico<br /><br />
 
-        <tt>global__[transform].inc.php</tt><br /><br />
+        <tt>global__[transformación].inc.php</tt><br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_global__[transform]()</tt>'.<br /><br />
+        La función de transformación será llamada
+'<tt>PMA_transform_global__[transformación]()</tt>'.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Ejemplo:</b><br /><br />
 
         <tt>global__formatted</tt><br />
         <tt>PMA_transform_global__formatted()</tt></li>
 </ol>
 
-<p> So generally use '_' to split up mimetype and subtype, and '__' to provide a
-transform function.</p>
+<p> El caso general es, entonces, utilizar '_' para separar el tipo MIME del
+sub-tipo y '__' para proveer una función de transformación.</p>
 
-<p> All filenames containing no '__' in themselves are not shown as valid
-transform functions in the dropdown.</p>
+<p> Todos los archivos que no contengan '__' en ellos no serán mostrados como
+funciones de transformación válidas en la lista desplegable.</p>
 
-<p> Please see the libraries/transformations/TEMPLATE file for adding your own
-transform function. See the libraries/transformations/TEMPLATE_MIMETYPE for
-adding a mimetype without a transform function.</p>
+<p> Porfavor revise el archivo libraries/transformations/TEMPLATE para agregar
+una función de transformación propia. Revise el archivo
+libraries/transformations/TEMPLATE_MIMETYPE para agregar un tipo MIME sin
+una función de transformación.</p>
 
-<p> To create a new transform function please see
-<tt>libraries/transformations/template_generator.sh</tt>.  To create a new,
-empty mimetype please see
+<p> Para crear una nueva función de transformación revise el archivo
+<tt>libraries/transformations/template_generator.sh</tt>. Para crear un
+nuevo tipo MIME vacío, revise el archivo
 <tt>libraries/transformations/template_generator_mimetype.sh</tt>.</p>
 
-<p> A transform function always gets passed three variables:</p>
+<p> Una función de transformación recibe tres variables:</p>
 
-<ol><li><b>$buffer</b> - Contains the text inside of the column. This is the text,
-you want to transform.</li>
-    <li><b>$options</b> - Contains any user-passed options to a transform function
-as an array.</li>
-    <li><b>$meta</b> - Contains an object with information about your column.  The
-data is drawn from the output of the <a
-href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
-function. This means, all object properties described on the <a
-href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
-this variable and can be used to transform a column accordingly to
-unsigned/zerofill/not_null/... properties.<br />
-        The $meta-&gt;mimetype variable contains the original MIME-type of the
-column (i.e. 'text/plain', 'image/jpeg' etc.)</li>
+<ol><li><b>$buffer</b> - Contiene el texto de la columna. Este es el texto que se
+desea transformar.</li>
+    <li><b>$options</b> - Contiene un array con todas las opciones de la función de
+transformación provistas por el usuario.</li>
+    <li><b>$meta</b> - Contiene un objeto con información sobre la columna. Los
+datos son obtenidos de la salida de la función <a
+href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>. Esto
+significa que todas las propiedades de objeto descriptas en la <a
+href="http://www.php.net/mysql_fetch_field">página del manual</a> están
+disponibles en esta variable y pueden ser utilizadas para transformar una
+columna según sus propiedades unsigned/zerofill/not_null/...<br />
+        La variable $meta-&gt;mimetype contiene el tipo MIME original de la columna
+(por ejemplo: 'text/plain', 'image/jpeg', etc.)</li>
 </ol>
 
-<p> Additionally you should also provide additional function to provide
-information about the transformation to the user. This function should have
-same name as transformation function just with appended <code>_info</code>
-suffix. This function accepts no parameters and returns array with
-information about the transformation. Currently following keys can be used:
+<p> Además, se deben de brindar funciones adicionales para proveer información
+al usuario sobre la transformación. Esta función debe tener el mismo nombre
+de la función de transformación con el agregado del sufijo
+<code>_info</code>. Esta función no toma parámetros y devuelve un array con
+información sobre la transformación. Las siguientes claves son utilizadas
+actualmente:
 </p>
 <dl>
     <dt><code>info</code></dt>
-    <dd>Long description of the transformation.</dd>
+    <dd>Descripción exhaustiva de la transformación.</dd>
 </dl>
 
 
 <!-- FAQ -->
-<h2 id="faq">FAQ - Frequently Asked Questions</h2>
+<h2 id="faq">FAQ - Preguntas Frecuentes</h2>
 
-<ol><li><a href="#faqserver">Server</a></li>
-    <li><a href="#faqconfig">Configuration</a></li>
+<ol><li><a href="#faqserver">Servidor</a></li>
+    <li><a href="#faqconfig">Configuración</a></li>
     <li><a href="#faqlimitations">Known limitations</a></li>
     <li><a href="#faqmultiuser">ISPs, multi-user installations</a></li>
     <li><a href="#faqbrowsers">Browsers or client <abbr title="operating
