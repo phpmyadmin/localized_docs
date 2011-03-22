@@ -2763,168 +2763,177 @@ actualmente:
 
 <ol><li><a href="#faqserver">Servidor</a></li>
     <li><a href="#faqconfig">Configuración</a></li>
-    <li><a href="#faqlimitations">Known limitations</a></li>
-    <li><a href="#faqmultiuser">ISPs, multi-user installations</a></li>
-    <li><a href="#faqbrowsers">Browsers or client <abbr title="operating
-system">OS</abbr></a></li>
-    <li><a href="#faqusing">Using phpMyAdmin</a></li>
-    <li><a href="#faqproject">phpMyAdmin project</a></li>
-    <li><a href="#faqsecurity">Security</a></li>
+    <li><a href="#faqlimitations">Limitaciones conocidas</a></li>
+    <li><a href="#faqmultiuser">ISPs, instalaciones multi-usuario</a></li>
+    <li><a href="#faqbrowsers">Navegadores o sistemas operativos cliente</a></li>
+    <li><a href="#faqusing">Utilizando phpMyAdmin</a></li>
+    <li><a href="#faqproject">Proyecto phpMyAdmin</a></li>
+    <li><a href="#faqsecurity">Seguridad</a></li>
     <li><a href="#faqsynchronization">Sincronización</a></li>
 </ol>
 
-<p> Please have a look at our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin homepage for in-depth coverage of phpMyAdmin's features
-and or interface.</p>
+<p> Porvafor revise la <a
+href="http://www.phpmyadmin.net/home_page/docs.php">sección de enlaces</a>
+en la página principal de phpMyAdmin para una cobertura en profundidad de
+todas las funcionalidades de phpMyAdmin y/o su interfaz.</p>
 
 <h3 id="faqserver">Servidor</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
-required or phpMyAdmin sends a blank page or a page full of cryptic
-characters to my browser, what can I do?</a></h4>
+    <a href="#faq1_1">1.1 Cada vez que se necesita una acción especifica mi
+servidor termina inesperadamente o phpMyAdmin envía una página en blanco o
+una página llena de caracteres crípticos a mi navegador, ¿qué puedo
+hacer?</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
-directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
-<tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php
-configuration file.<br /></p>
+<p> Intenta configurando la directiva <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip']</a> a <tt>FALSE</tt> en tu archivo
+<i>config.inc.php</i> y la directiva <tt>zlib.output_compression</tt> a
+<tt>Off</tt> en tu archivo de configuración PHP.<br /></p>
 
 <h4 id="faq1_2">
-    <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
+    <a href="#faq1_2">1.2 Mi servidor Apache termina inesperadamente al utilizar
+phpMyAdmin.</a></h4>
 
-<p> You should first try the latest versions of Apache (and possibly MySQL).<br />
-    See also the <a href="#faq1_1"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
-    If your server keeps crashing, please ask for help in the various Apache
-support groups.</p>
+<p> Primero deberías probar las últimas versiones de Apache (y posiblemente
+MySQL).<br />
+    Revisa también la <a href="#faq1_1"><abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.1</a> sobre errores de PHP con búfers de salida.<br />
+    Si tu servidor sigue terminando inesperadamente, porfavor busca ayuda en los
+varios grupos de soporte de Apache.</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
+    <a href="#faq1_3">1.3 (eliminada).</a></h4>
 
 <h4 id="faq1_4">
-    <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm displayed the error message: &quot;The specified
-<abbr title="Common Gateway Interface">CGI</abbr> application misbehaved by
-not returning a complete set of <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> headers ...&quot;.</a>
+    <a href="#faq1_4">1.4 Utilizando phpMyAdmin en <abbr title="Internet
+Information Services">IIS</abbr> me muestra el siguiente mensaje de error:
+&quot;The specified <abbr title="Common Gateway Interface">CGI</abbr>
+application misbehaved by not returning a complete set of <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> headers ...&quot;.</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the php
-distribution.  Have a look at the last message in this <a
-href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
-PHP bug database.</p>
+<p> Simplemente te olvidaste de leer el archivo <i>install.txt</i> de la
+distribución de php. Revisa el último mensaje en este <a
+href="http://bugs.php.net/bug.php?id=12061">reporte de error</a> de la base
+de datos de errores oficial de PHP.</p>
 
 <h4 id="faq1_5">
-    <a href="#faq1_5">1.5 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm facing crashes and/or many error messages with the
-<abbr title="HyperText Transfer Protocol">HTTP</abbr>.</a></h4>
+    <a href="#faq1_5">1.5 Utilizando phpMyAdmin en <abbr title="Internet
+Information Services">IIS</abbr>, termina inesperadamente y/o genera muchos
+mensajes de error con <abbr title="HyperText Transfer
+Protocol">HTTP</abbr>.</a></h4>
 
-<p> This is a known problem with the PHP <abbr title="Internet Server
-Application Programming Interface">ISAPI</abbr> filter: it's not so
-stable. Please use instead the cookie authentication mode.
+<p> Este es un problema conocido con los filtros <abbr title="Internet Server
+Application Programming Interface">ISAPI</abbr> de PHP: no son muy
+estables. Porfavor utiliza el modo de autenticación por cookie.
 </p>
 
 <h4 id="faq1_6">
-    <a href="#faq1_6">1.6 I can't use phpMyAdmin on PWS: nothing is
-displayed!</a></h4>
+    <a href="#faq1_6">1.6 No puedo utilizar phpMyAdmin en PWS: ¡no muestra
+nada!</a></h4>
 
-<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
-time there is no better fix): remove or comment the <tt>DOCTYPE</tt>
-declarations (2 lines) from the scripts <i>libraries/header.inc.php</i>,
+<p> Esto parece ser un error de PWS. Filippo Simoncini encontró un atajo (en
+este momento no existe solución): elimina o comenta las declaraciones
+<tt>DOCTYPE</tt> (2 líneas) de los scripts <i>libraries/header.inc.php</i>,
 <i>libraries/header_printview.inc.php</i>, <i>index.php</i>,
-<i>navigation.php</i> and <i>libraries/common.lib.php</i>.</p>
+<i>navigation.php</i> y <i>libraries/common.lib.php</i>.</p>
 
 <h4 id="faq1_7">
-    <a href="#faq1_7">1.7 How can I GZip or Bzip a dump or a <abbr title="comma
-separated values">CSV</abbr> export? It does not seem to work.</a></h4>
+    <a href="#faq1_7">1.7 ¿Cómo puedo comprimir con GZip o BZip un volcado o
+exportación <abbr title="comma separated values">CSV</abbr>? No parece estar
+funcionando.</a></h4>
 
-<p> These features are based on the <tt>gzencode()</tt> and
-<tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
-support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
+<p> Estas funcionalidades están basadas en las funciones PHP <tt>gzencode()</tt>
+y <tt>bzcompress()</tt> para ser más independientes de la plataforma
+(Unix/Windows, modo seguro o no, etc.). Por lo que PHP debe tener soporte
+para Zlib/Bzip2 (haber sido compilado con <tt>--with-zlib</tt> y
+<tt>--with-bz2</tt>).<br /></p>
 
 <h4 id="faq1_8">
-    <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
-error about safe mode being in effect.</a></h4>
+    <a href="#faq1_8">1.8 No puedo insertar un archivo de texto en una tabla y
+obtengo un error que dice que está en efecto el modo seguro.</a></h4>
 
-<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
-in <i>php.ini</i> by the variable <tt>upload_tmp_dir</tt> (usually the
-system default is <i>/tmp</i>).<br />
-    We recommend the following setup for Apache servers running in safe mode, to
-enable uploads of files while being reasonably secure:</p>
+<p> El archivo subido es guardado por PHP en el &quot;directorio de
+subidas&quot; como está definido en la variable <tt>upload_tmp_dir</tt> del
+archivo <i>php.ini</i> (el valor predeterminado normalmente es <i>/tmp</i>).<br />
+    Recomendamos la siguiente configuración para los servidores Apache
+ejecutando en modo seguro para permitir subir archivos y aún ser
+razonablemente seguros:</p>
 
-<ul><li>create a separate directory for uploads: <tt>mkdir /tmp/php</tt></li>
-    <li>give ownership to the Apache server's user.group: <tt>chown apache.apache
-/tmp/php</tt></li>
-    <li>give proper permission: <tt>chmod 600 /tmp/php</tt></li>
-    <li>put <tt>upload_tmp_dir = /tmp/php</tt> in <i>php.ini</i></li>
-    <li>restart Apache</li>
+<ul><li>crear un directorio separado para las subidas: <tt>mkdir /tmp/php</tt></li>
+    <li>hacer al usuario y grupo de apache dueños del directorio: <tt>chown
+apache.apache /tmp/php</tt></li>
+    <li>darle los permisos adecuados: <tt>chmod 600 /tmp/php</tt></li>
+    <li>agrega <tt>upload_tmp_dir = /tmp/php</tt> a <i>php.ini</i></li>
+    <li>reinicia Apache</li>
 </ul>
 
 <h4 id="faq1_9">
-    <a href="#faq1_9">1.9 (withdrawn).</a></h4>
+    <a href="#faq1_9">1.9 (eliminada).</a></h4>
 
 <h4 id="faq1_10">
-    <a href="#faq1_10">1.10 I'm having troubles when uploading files with
-phpMyAdmin running on a secure server. My browser is Internet Explorer and
-I'm using the Apache server.</a></h4>
+    <a href="#faq1_10">1.10 Tengo problemas para subir archivos cuando
+phpMyAdmin ejecuta en un servidor seguro. Mi navegador es Internet Explorer
+y estoy usando un servidor Apache.</a></h4>
 
-<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
-your <i>httpd.conf</i>:</p>
+<p> Como sugirió &quot;Rob M&quot; en el foro phpWizard, agrega la siguiente
+línea a <i>httpd.conf</i>:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
-<p> It seems to clear up many problems between Internet Explorer and SSL.</p>
+<p> Esto parece eliminar varios problemas entre Internet Explorer y SSL.</p>
 
 <h4 id="faq1_11">
-    <a href="#faq1_11">1.11 I get an 'open_basedir restriction' while uploading
-a file from the query box.</a></h4>
+    <a href="#faq1_11">1.11 Obtengo una 'restricción open_basedir' cuando subo
+un archivo desde la caja de texto de consultas.</a></h4>
 
-<p> Since version 2.2.4, phpMyAdmin supports servers with open_basedir
-restrictions. However you need to create temporary directory and configure
-it as <a href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a>.  The
-uploaded files will be moved there, and after execution of your <abbr
-title="structured query language">SQL</abbr> commands, removed.</p>
+<p> Desde la versión 2.2.4 phpMyAdmin soporta los servidores con restricciones
+open_basedir. Sin embargo, se necesita crear un directorio temporal y
+configurarlo como <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a>. Los archivos subidos serán movidos
+allí y borrados luego de la ejecución de las consultas <abbr
+title="structured query language">SQL</abbr>.</p>
 
 <h4 id="faq1_12">
-    <a href="#faq1_12">1.12 I have lost my MySQL root password, what can I
-do?</a></h4>
+    <a href="#faq1_12">1.12 Perdí la contraseña de root de MySQL ¿qué puedo
+hacer?</a></h4>
 
-<p> The MySQL manual explains how to <a
-href="http://dev.mysql.com/doc/mysql/en/resetting-permissions.html"> reset
-the permissions</a>.</p>
+<p> El manual de MySQL explica cómo <a
+href="http://dev.mysql.com/doc/mysql/en/resetting-permissions.html">reiniciar
+permisos</a>.</p>
 
 <h4 id="faq1_13">
-    <a href="#faq1_13">1.13 (withdrawn).</a></h4>
+    <a href="#faq1_13">1.13 (eliminada).</a></h4>
 
 <h4 id="faq1_14">
-    <a href="#faq1_14">1.14 (withdrawn).</a></h4>
+    <a href="#faq1_14">1.14 (eliminada).</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
-names.</a>
+    <a href="#faq1_15">1.15 Tengo problemas con los nombres de columnas de
+<i>mysql.user</i>.</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
-were named <tt>user</tt> and <tt>password</tt>. Please modify your column
-names to align with current standards.</p>
+<p> En versiones MySQL anteriores, las columnas <tt>User</tt> y
+<tt>Password</tt> se llamaban <tt>user</tt> y <tt>password</tt>. Porfavor
+modifica los nombres de las columnas para adaptarse a los estándares
+actuales.</p>
 
 <h4 id="faq1_16">
-    <a href="#faq1_16">1.16 I cannot upload big dump files (memory, <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> or timeout problems).</a>
+    <a href="#faq1_16">1.16 No puedo subir largos archivos de volcado (problemas
+de memoria, <abbr title="HyperText Transfer Protocol">HTTP</abbr> o tiempos
+de espera).</a>
 </h4>
 
-<p> Starting with version 2.7.0, the import engine has been re&#8211;written and
-these problems should not occur. If possible, upgrade your phpMyAdmin to the
-latest version to take advantage of the new import features.</p>
+<p> Comenzando con la versión 2.7.0 el motor de importación fue reescrito y
+estos problemas no deberían ocurrir. Si es posible, actualiza phpMyAdmin a
+la última versión para aprovechar las nuevas funcionalidades de importación.</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that post_max_size and memory_limit
-need to be larger than upload_max_filesize.<br /> <br />
+<p> Lo primoer que hay que revisar (o pedirle al proveedor que revise) son los
+valores de <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> y
+<tt>post_max_size</tt> en el archivo de configuración <i>php.ini</i>. Todas
+estas configuraciones limitan el tamaño máximo de los datos que pueden
+enviarse y PHP puede manejar. Un usuario también dijo que post_max_size y
+memory_limit necesitan ser mayores a upload_max_filesize.<br /> <br />
 
     There exist several workarounds if your upload is too big or your hosting
 provider is unwilling to change the settings:</p>
