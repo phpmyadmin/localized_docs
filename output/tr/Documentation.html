@@ -477,9 +477,9 @@ GRANT ALL PRIVILEGES ON kullanıcı_tabanı.* TO 'asıl_kullanıcı'@localhost I
 
         Kullanıcının şu an yapabildiklerini MySQL kullanıcı yönetim sisteminden
 tamamen denetler.<br />
-        With <abbr title="HyperText Transfer Protocol">HTTP</abbr> veya tanımlama
-bilgisi kimlik doğrulaması kipi ile <a href="#cfg_Servers"
-class="configrule">$cfg['Servers']</a> sırası içindeki kullanıcı/parola
+        <abbr title="HyperText Transfer Protocol">HTTP</abbr> veya tanımlama bilgisi
+kimlik doğrulaması kipi ile <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a> dizisi içindeki kullanıcı/parola
 alanlarını doldurmanıza gerek yok.</li>
 </ul>
 
@@ -1282,20 +1282,21 @@ uygular. Varsayılan olarak erişim reddedilir. İzin ver komutuna uymayan ya
 da Reddet komutuna uyan herhangi bir istemcinin, sunucuya erişimi
 reddedilecektir.<br /><br />
 
-        If your rule order is set to 'explicit', authorization is performed in a
-similar fashion to rule order 'deny,allow', with the added restriction that
-your host/username combination <b>must</b> be listed in the <i>allow</i>
-rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
-secure means of using Allow/Deny rules, and was available in Apache by
-specifying allow and deny rules without setting any order.<br /><br />
+        Eğer kural sıranız 'açık' olarak ayarlıysa, yetki aynı tarzda 'reddet,izin
+ver' kural sırasında yapılır, eklenen kısıtlama ile, anamakineniz/kullanıcı
+adınız birleşimi, <i>izin ver</i> kuralları içinde listelenmek
+<b>zorundadır</b> ve <i>reddet</i> kuralları içinde listelenmemelidir. Bu,
+İzin Ver/Reddet kuralları kullanımının <b>en</b> güvenli anlamıdır ve
+herhangi bir sıra ayarlamaksızın izin ver ve reddet kurallarını belirleyerek
+Apache'de kullanılabilir.<br /><br />
 
-        Please also see <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> for
-detecting IP address behind proxies.
+        Lütfen aynı zamanda IP adresi proksiler arkasından algılamak için <a
+href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a>'e bakın.
     </dd>
     <dt id="servers_allowdeny_rules">
-        <span
+        Dizgilerin <span
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
-array of strings
+dizisi
     </dt>
     <dd>The general format for the rules is as such:
 
