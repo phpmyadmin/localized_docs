@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-03-02 13:51+0100\n"
+"POT-Creation-Date: 2011-03-23 19:25+0100\n"
 "PO-Revision-Date: 2011-03-23 16:09+0200\n"
 "Last-Translator: Matías Bellone <matiasbellone@gmail.com>\n"
 "Language-Team: none\n"
@@ -75,8 +75,8 @@ msgid ""
 "<a href=\"Documentation.html#faq\"><abbr title=\"Frequently Asked Questions"
 "\"> FAQ</abbr></a>"
 msgstr ""
-"<a href=\"Documentation.html#faq\"><abbr title=\"Frequently Asked Questions\"> "
-"FAQ</abbr></a>"
+"<a href=\"Documentation.html#faq\"><abbr title=\"Frequently Asked Questions"
+"\"> FAQ</abbr></a>"
 
 #. type: Content of: <html><body><ul><li>
 #: orig-docs/Documentation.html:35
@@ -150,10 +150,11 @@ msgstr "<b>PHP</b>"
 
 #. type: Content of: <html><body><div><ul><li><ul><li>
 #: orig-docs/Documentation.html:60
+#, fuzzy
 msgid ""
 "You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a href="
 "\"#faq1_31\">see <abbr title=\"Frequently Asked Questions\">FAQ</abbr> 1.31</"
-"a>)  and the Standard PHP Library (SPL) extension."
+"a>)  , the Standard PHP Library (SPL) extension and JSON support."
 msgstr ""
 "Ud. necesita la versión de PHP 5.2.0 o posterior, con soporte de <tt>sesión</"
 "tt> (<a href=\"#faq1_31\">vea <abbr title=\"Frequently Asked Questions"
@@ -2058,11 +2059,11 @@ msgstr ""
 "preparados en la sesión PHP. Esto es útil para implementar un inicio de "
 "sesión único desde otra aplicación. Un modelo de cómo sembrar los datos en "
 "la sesión se puede encontrar en el ejemplo: <code>scripts/signon.php</code>. "
-"También existe un ejemplo alternativo utilizando OpenID: "
-"<code>scripts/openid.php</code>.  Necesita configurar el  <a "
-"href=\"#cfg_Servers_SignonSession\" class=\"configrule\">nombre de la sesión</a> "
-"y el <a href=\"#cfg_Servers_SignonURL\" class=\"configrule\">URL de inicio de "
-"sesión</a> para utilizar este método de autenticación."
+"También existe un ejemplo alternativo utilizando OpenID: <code>scripts/"
+"openid.php</code>.  Necesita configurar el  <a href="
+"\"#cfg_Servers_SignonSession\" class=\"configrule\">nombre de la sesión</a> "
+"y el <a href=\"#cfg_Servers_SignonURL\" class=\"configrule\">URL de inicio "
+"de sesión</a> para utilizar este método de autenticación."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:774
@@ -2207,8 +2208,8 @@ msgstr ""
 "ya que éste no necesita enviar pedidos a MySQL para crear la lista de bases "
 "de datos disponibles. Pero <span class=\"important\">no reemplaza las reglas "
 "de privilegios del servidor de base de datos MySQL</span>. Si está "
-"configurado, sólo estas bases de datos van a ser mostradas pero <span "
-"class=\"important\">otras bases de datos aún pueden ser utilizadas</span>."
+"configurado, sólo estas bases de datos van a ser mostradas pero <span class="
+"\"important\">otras bases de datos aún pueden ser utilizadas</span>."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:828
@@ -2216,8 +2217,8 @@ msgid ""
 "An example of using more that one database: <tt>$cfg['Servers'][$i]"
 "['only_db'] = array('db1', 'db2');</tt>"
 msgstr ""
-"En ejemplo que utiliza más de uan base de datos: "
-"<tt>$cfg['Servers'][$i]['only_db'] = array('base1', 'base2');</tt>"
+"En ejemplo que utiliza más de uan base de datos: <tt>$cfg['Servers'][$i]"
+"['only_db'] = array('base1', 'base2');</tt>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:832
@@ -2240,10 +2241,10 @@ msgid ""
 "alphabetic order."
 msgstr ""
 "Si se desea tener ciertas bases de datos al principio pero quieres ver todas "
-"las otras no es necesario especificarlas una por una. Usa algo como "
-"<tt>$cfg['Servers'][$i]['only_db'] = array('base3', 'base4', '*');</tt> en "
-"su ligar para indicarle a phpMyAdmin que debe mostrar base3 y base4 primero "
-"y luego todas las demás en orden alfabético."
+"las otras no es necesario especificarlas una por una. Usa algo como <tt>$cfg"
+"['Servers'][$i]['only_db'] = array('base3', 'base4', '*');</tt> en su ligar "
+"para indicarle a phpMyAdmin que debe mostrar base3 y base4 primero y luego "
+"todas las demás en orden alfabético."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:840
@@ -2298,9 +2299,8 @@ msgid ""
 "a> portion of the PHP reference manual."
 msgstr ""
 "Puedes encontrar más información sobre expresiones regulares en el manual de "
-"referencia de PHP, en la sección sobre <a "
-"href=\"http://php.net/manual/en/reference.pcre.pattern.syntax.php\">sintáxis "
-"de patrones PCRE</a>."
+"referencia de PHP, en la sección sobre <a href=\"http://php.net/manual/en/"
+"reference.pcre.pattern.syntax.php\">sintáxis de patrones PCRE</a>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:856
@@ -2360,10 +2360,10 @@ msgid ""
 msgstr ""
 "Si se es el único usuario de esta instalación de phpMyAdmin, se puede "
 "utilizar la base actual para almacenar estas tablas especiales; en este "
-"caso, sólo agrega el nombre de la base de datos actual en "
-"<tt>$cfg['Servers'][$i]['pmadb']</tt>. Para una instalación multi-usuario, "
-"este parámetro debe ser la base de datos central que contiene el "
-"almacenamiento de configuración phpMyAdmin."
+"caso, sólo agrega el nombre de la base de datos actual en <tt>$cfg['Servers']"
+"[$i]['pmadb']</tt>. Para una instalación multi-usuario, este parámetro debe "
+"ser la base de datos central que contiene el almacenamiento de configuración "
+"phpMyAdmin."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:882
@@ -2408,8 +2408,8 @@ msgstr ""
 #: orig-docs/Documentation.html:889
 msgid "enter the table name in <tt>$cfg['Servers'][$i]['bookmarktable']</tt>"
 msgstr ""
-"ingrese el nombre de la tabla en "
-"<tt>$cfg['Servers'][$i]['bookmarktable']</tt>"
+"ingrese el nombre de la tabla en <tt>$cfg['Servers'][$i]['bookmarktable']</"
+"tt>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:895
@@ -2417,8 +2417,8 @@ msgid ""
 "<span id=\"cfg_Servers_relation\">$cfg['Servers'][$i]['relation']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_relation\">$cfg['Servers'][$i]['relation']</span>"
+"cadena <span id=\"cfg_Servers_relation\">$cfg['Servers'][$i]['relation']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:897
@@ -2457,8 +2457,8 @@ msgid ""
 "(see <a href=\"#faqdisplay\"><abbr title=\"Frequently Asked Questions\"> "
 "FAQ</abbr> 6.7</a>)"
 msgstr ""
-"(revisa <a href=\"#faqdisplay\"><abbr title=\"Frequently Asked "
-"Questions\">FAQ</abbr> 6.7</a>)"
+"(revisa <a href=\"#faqdisplay\"><abbr title=\"Frequently Asked Questions"
+"\">FAQ</abbr> 6.7</a>)"
 
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:907
@@ -2476,8 +2476,8 @@ msgid ""
 "(see <a href=\"#faq6_21\"><abbr title=\"Frequently Asked Questions\"> FAQ</"
 "abbr> 6.21</a>)"
 msgstr ""
-"(revisa <a href=\"#faq6_21\"><abbr title=\"Frequently Asked "
-"Questions\">FAQ</abbr> 6.21</a>)"
+"(revisa <a href=\"#faq6_21\"><abbr title=\"Frequently Asked Questions\">FAQ</"
+"abbr> 6.21</a>)"
 
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:911
@@ -2495,8 +2495,8 @@ msgid ""
 "in query-by-example, create automatic joins (see <a href=\"#faq6_6\"> <abbr "
 "title=\"Frequently Asked Questions\">FAQ</abbr> 6.6</a>)"
 msgstr ""
-"en las consultas por ejemplo, crea joins automáticamente (ver <a "
-"href=\"#faq6_6\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 6.6</a>)"
+"en las consultas por ejemplo, crea joins automáticamente (ver <a href="
+"\"#faq6_6\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 6.6</a>)"
 
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:916
@@ -2516,8 +2516,8 @@ msgstr "Las claves pueden sen numéricas o alfabéticas."
 #: orig-docs/Documentation.html:926
 msgid "put the relation table name in <tt>$cfg['Servers'][$i]['relation']</tt>"
 msgstr ""
-"agrega el nombre de la tabla de relación en "
-"<tt>$cfg['Servers'][$i]['relation']</tt>"
+"agrega el nombre de la tabla de relación en <tt>$cfg['Servers'][$i]"
+"['relation']</tt>"
 
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:928
@@ -2526,9 +2526,9 @@ msgid ""
 "want to use this feature, click &quot;Structure/Relation view/&quot; and "
 "choose foreign columns."
 msgstr ""
-"ahora, como un usuario normal, abre phpMyAdmin, pulsa en "
-"&quot;Estructura/Vista de relación/&quot; y elige las claves foráneas para "
-"cada una de las tablas en las que quieres utilizar esta funcionalidad."
+"ahora, como un usuario normal, abre phpMyAdmin, pulsa en &quot;Estructura/"
+"Vista de relación/&quot; y elige las claves foráneas para cada una de las "
+"tablas en las que quieres utilizar esta funcionalidad."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:935
@@ -2547,8 +2547,8 @@ msgid ""
 "<span id=\"cfg_Servers_table_info\">$cfg['Servers'][$i]['table_info']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_table_info\">$cfg['Servers'][$i]['table_info']</span>"
+"cadena <span id=\"cfg_Servers_table_info\">$cfg['Servers'][$i]['table_info']"
+"</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:944
@@ -2600,8 +2600,8 @@ msgid ""
 "<span id=\"cfg_Servers_table_coords\">$cfg['Servers'][$i]['table_coords']</"
 "span> string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_table_coords\">$cfg['Servers'][$i]['table_coords']</span>"
+"cadena <span id=\"cfg_Servers_table_coords\">$cfg['Servers'][$i]"
+"['table_coords']</span>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:961
@@ -2609,8 +2609,8 @@ msgid ""
 "<span id=\"cfg_Servers_pdf_pages\">$cfg['Servers'][$i]['pdf_pages']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_pdf_pages\">$cfg['Servers'][$i]['pdf_pages']</span>"
+"cadena <span id=\"cfg_Servers_pdf_pages\">$cfg['Servers'][$i]['pdf_pages']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:963
@@ -2628,8 +2628,8 @@ msgstr ""
 "lograrlo, necesitas dos tablas: &quot;pdf_pages&quot; (con la información "
 "sobre las páginas <abbr title=\"Portable Document Format\">PDF</abbr> "
 "disponibles) y &quot;table_coords&quot; (que contiene las coordenadas en las "
-"que se ubicará cada tabla en la salidad del esquema en <abbr "
-"title=\"Portable Document Format\">PDF</abbr>)."
+"que se ubicará cada tabla en la salidad del esquema en <abbr title="
+"\"Portable Document Format\">PDF</abbr>)."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:972
@@ -2642,9 +2642,8 @@ msgid ""
 "put the correct table names in <tt>$cfg['Servers'][$i]['table_coords']</tt> "
 "and <tt>$cfg['Servers'][$i]['pdf_pages']</tt>"
 msgstr ""
-"configura los nombres de tabla apropiados en "
-"<tt>$cfg['Servers'][$i]['table_coords']</tt> y "
-"<tt>$cfg['Servers'][$i]['pdf_pages']</tt>"
+"configura los nombres de tabla apropiados en <tt>$cfg['Servers'][$i]"
+"['table_coords']</tt> y <tt>$cfg['Servers'][$i]['pdf_pages']</tt>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:982
@@ -2661,8 +2660,8 @@ msgid ""
 "<span id=\"cfg_Servers_column_info\">$cfg['Servers'][$i]['column_info']</"
 "span> string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_column_info\">$cfg['Servers'][$i]['column_info']</span>"
+"cadena <span id=\"cfg_Servers_column_info\">$cfg['Servers'][$i]"
+"['column_info']</span>"
 
 #.  This part requires a content update! 
 #. type: Content of: <html><body><div><dl><dd>
@@ -2748,8 +2747,8 @@ msgid ""
 "<tt>$cfg['Servers'][$i]['column_comments']</tt> to <tt>$cfg['Servers'][$i]"
 "['column_info']</tt>"
 msgstr ""
-"<tt>$cfg['Servers'][$i]['column_comments']</tt> a "
-"<tt>$cfg['Servers'][$i]['column_info']</tt>"
+"<tt>$cfg['Servers'][$i]['column_comments']</tt> a <tt>$cfg['Servers'][$i]"
+"['column_info']</tt>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1028
@@ -2767,8 +2766,8 @@ msgid ""
 "history, you can use the JavaScript-based history. Using that, all your "
 "history items are deleted when closing the window."
 msgstr ""
-"Desde la versión 2.5.0, puedes almacenar el histórico <abbr "
-"title=\"structured query language\">SQL</abbr>, todas las consultas ingresadas "
+"Desde la versión 2.5.0, puedes almacenar el histórico <abbr title="
+"\"structured query language\">SQL</abbr>, todas las consultas ingresadas "
 "manualmente en la interfaz phpMyAdmin. Si no deseas utilizar un histórico "
 "basado en tablas puedes utilizar un histórico basado en JavaScript. Al "
 "utilizarlo, los elementos del histórico son eliminados al cerrar la ventana."
@@ -2780,10 +2779,10 @@ msgid ""
 "['QueryHistoryMax']</a> you can specify an amount of history items you want "
 "to have on hold. On every login, this list gets cut to the maximum amount."
 msgstr ""
-"Utilizando <a href=\"#cfg_QueryHistoryMax\" "
-"class=\"configrule\">$cfg['QueryHistoryMax']</a> puedes especificar la máxima "
-"cantidad de elementos en el histórico. En cada inicio de sesión esta lista "
-"es recortada a este máximo."
+"Utilizando <a href=\"#cfg_QueryHistoryMax\" class=\"configrule\">$cfg"
+"['QueryHistoryMax']</a> puedes especificar la máxima cantidad de elementos "
+"en el histórico. En cada inicio de sesión esta lista es recortada a este "
+"máximo."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1042
@@ -2808,8 +2807,8 @@ msgid ""
 "<span id=\"cfg_Servers_tracking\">$cfg['Servers'][$i]['tracking']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_tracking\">$cfg['Servers'][$i]['tracking']</span>"
+"cadena <span id=\"cfg_Servers_tracking\">$cfg['Servers'][$i]['tracking']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1058
@@ -2880,8 +2879,8 @@ msgid ""
 "<span id=\"cfg_Servers_tracking_version_auto_create\">$cfg['Servers'][$i]"
 "['tracking_version_auto_create']</span> boolean"
 msgstr ""
-"booleano <span id=\"cfg_Servers_tracking_version_auto_create\">$cfg['Servers']"
-"[$i]['tracking_version_auto_create']</span>"
+"booleano <span id=\"cfg_Servers_tracking_version_auto_create\">$cfg"
+"['Servers'][$i]['tracking_version_auto_create']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1088
@@ -2922,8 +2921,8 @@ msgid ""
 "<span id=\"cfg_Servers_tracking_default_statements\">$cfg['Servers'][$i]"
 "['tracking_default_statements']</span> string"
 msgstr ""
-"cadena <span id=\"cfg_Servers_tracking_default_statements\">$cfg['Servers'][$i"
-"]['tracking_default_statements']</span>"
+"cadena <span id=\"cfg_Servers_tracking_default_statements\">$cfg['Servers']"
+"[$i]['tracking_default_statements']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1105
@@ -2956,8 +2955,8 @@ msgid ""
 "<span id=\"cfg_Servers_tracking_add_drop_view\">$cfg['Servers'][$i]"
 "['tracking_add_drop_view']</span> boolean"
 msgstr ""
-"booleano <span id=\"cfg_Servers_tracking_add_drop_view\">$cfg['Servers'][$i]['"
-"tracking_add_drop_view']</span>"
+"booleano <span id=\"cfg_Servers_tracking_add_drop_view\">$cfg['Servers'][$i]"
+"['tracking_add_drop_view']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1119
@@ -2966,8 +2965,7 @@ msgid ""
 "log when creating a view. Default value is true."
 msgstr ""
 "Si se agregará la sentencia DROP VIEW IF EXISTS como primer línea al "
-"registro cuando se cree una vista. El valor predeterminado es que sí lo "
-"haga."
+"registro cuando se cree una vista. El valor predeterminado es que sí lo haga."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1125
@@ -2975,8 +2973,8 @@ msgid ""
 "<span id=\"cfg_Servers_tracking_add_drop_table\">$cfg['Servers'][$i]"
 "['tracking_add_drop_table']</span> boolean"
 msgstr ""
-"booleano <span id=\"cfg_Servers_tracking_add_drop_table\">$cfg['Servers'][$i]["
-"'tracking_add_drop_table']</span>"
+"booleano <span id=\"cfg_Servers_tracking_add_drop_table\">$cfg['Servers'][$i]"
+"['tracking_add_drop_table']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1128
@@ -2985,8 +2983,7 @@ msgid ""
 "log when creating a table. Default value is true."
 msgstr ""
 "Si se agregará la sentencia DROP TABLE IF EXISTS como primer línea al "
-"registro cuando se cree una tabla. El valor predeterminado es que sí lo "
-"haga."
+"registro cuando se cree una tabla. El valor predeterminado es que sí lo haga."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1133
@@ -2994,8 +2991,8 @@ msgid ""
 "<span id=\"cfg_Servers_tracking_add_drop_database\">$cfg['Servers'][$i]"
 "['tracking_add_drop_database']</span> boolean"
 msgstr ""
-"booleano <span id=\"cfg_Servers_tracking_add_drop_database\">$cfg['Servers'][$"
-"i]['tracking_add_drop_database']</span>"
+"booleano <span id=\"cfg_Servers_tracking_add_drop_database\">$cfg['Servers']"
+"[$i]['tracking_add_drop_database']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1136
@@ -3013,8 +3010,8 @@ msgid ""
 "<span id=\"cfg_Servers_userconfig\">$cfg['Servers'][$i]['userconfig']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_userconfig\">$cfg['Servers'][$i]['userconfig']</span>"
+"cadena <span id=\"cfg_Servers_userconfig\">$cfg['Servers'][$i]['userconfig']"
+"</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1144
@@ -3032,10 +3029,10 @@ msgid ""
 "users can still personalize phpMyAdmin, but settings will be saved in "
 "browser's local storage, or, it is is unavailable, until the end of session."
 msgstr ""
-"Si no se permite alamacenar preferencias en <a href=\"#pmadb\">pmadb</a>, los "
-"usuarios aún pueden personalizar phpMyAdmin; pero sus configuraciones serán "
-"almacenadas en el almacenamiento local del navegador o, en caso que no esté "
-"disponible, hasta el final de la sesión."
+"Si no se permite alamacenar preferencias en <a href=\"#pmadb\">pmadb</a>, "
+"los usuarios aún pueden personalizar phpMyAdmin; pero sus configuraciones "
+"serán almacenadas en el almacenamiento local del navegador o, en caso que no "
+"esté disponible, hasta el final de la sesión."
 
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:1158
@@ -3049,8 +3046,8 @@ msgid ""
 "<span id=\"cfg_Servers_designer_coords\">$cfg['Servers'][$i]"
 "['designer_coords']</span> string"
 msgstr ""
-"cadena <span id=\"cfg_Servers_designer_coords\">$cfg['Servers'][$i]['designer_"
-"coords']</span>"
+"cadena <span id=\"cfg_Servers_designer_coords\">$cfg['Servers'][$i]"
+"['designer_coords']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1165
@@ -3067,9 +3064,8 @@ msgid ""
 "put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt> (e.g. "
 "'pma_designer_coords')"
 msgstr ""
-"defina el nombre de la tabla en "
-"<tt>$cfg['Servers'][$i]['designer_coords']</tt> (por ejemplo: "
-"'pma_designer_coords')"
+"defina el nombre de la tabla en <tt>$cfg['Servers'][$i]['designer_coords']</"
+"tt> (por ejemplo: 'pma_designer_coords')"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1177
@@ -3077,8 +3073,8 @@ msgid ""
 "<span id=\"cfg_Servers_verbose_check\">$cfg['Servers'][$i]['verbose_check']</"
 "span> boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_Servers_verbose_check\">$cfg['Servers'][$i]['verbose_check']</span>"
+"booleano <span id=\"cfg_Servers_verbose_check\">$cfg['Servers'][$i]"
+"['verbose_check']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1179
@@ -3119,8 +3115,8 @@ msgid ""
 "<span id=\"cfg_Servers_AllowRoot\">$cfg['Servers'][$i]['AllowRoot']</span> "
 "boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_Servers_AllowRoot\">$cfg['Servers'][$i]['AllowRoot']</span>"
+"booleano <span id=\"cfg_Servers_AllowRoot\">$cfg['Servers'][$i]['AllowRoot']"
+"</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1192
@@ -3137,8 +3133,8 @@ msgid ""
 "<span id=\"cfg_Servers_AllowNoPassword\">$cfg['Servers'][$i]"
 "['AllowNoPassword']</span> boolean"
 msgstr ""
-"booleano <span id=\"cfg_Servers_AllowNoPassword\">$cfg['Servers'][$i]['AllowNo"
-"Password']</span>"
+"booleano <span id=\"cfg_Servers_AllowNoPassword\">$cfg['Servers'][$i]"
+"['AllowNoPassword']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1196
@@ -3159,8 +3155,8 @@ msgid ""
 "<span id=\"cfg_Servers_AllowDeny_order\">$cfg['Servers'][$i]['AllowDeny']"
 "['order']</span> string"
 msgstr ""
-"cadena <span id=\"cfg_Servers_AllowDeny_order\">$cfg['Servers'][$i]['AllowDeny"
-"']['order']</span>"
+"cadena <span id=\"cfg_Servers_AllowDeny_order\">$cfg['Servers'][$i]"
+"['AllowDeny']['order']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1204
@@ -3168,8 +3164,8 @@ msgid ""
 "If your rule order is empty, then <abbr title=\"Internet Protocol\">IP</"
 "abbr> authorization is disabled."
 msgstr ""
-"Si el orden de las reglas está vacío, entonces la autorización <abbr "
-"title=\"Internet Protocol\">IP</abbr> estará desactivada."
+"Si el orden de las reglas está vacío, entonces la autorización <abbr title="
+"\"Internet Protocol\">IP</abbr> estará desactivada."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1207
@@ -3210,12 +3206,11 @@ msgid ""
 "specifying allow and deny rules without setting any order."
 msgstr ""
 "Si el orden de las reglas es 'explicit' la autorización es similar a cuando "
-"es 'deny,allow', con la restricción adicional que la combinación "
-"anfitrión/nombre de usuario <b>tiene</b> que estar incluído en las reglas "
-"<i>allow</i> y no tiene que aparecer en las reglas <i>deny</i>. Este es el "
-"método más seguro de utilizar las reglas de Allow/Deny y está disponible en "
-"Apache esepecificando reglas de autorización y negación sin definir un "
-"orden."
+"es 'deny,allow', con la restricción adicional que la combinación anfitrión/"
+"nombre de usuario <b>tiene</b> que estar incluído en las reglas <i>allow</i> "
+"y no tiene que aparecer en las reglas <i>deny</i>. Este es el método más "
+"seguro de utilizar las reglas de Allow/Deny y está disponible en Apache "
+"esepecificando reglas de autorización y negación sin definir un orden."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1225
@@ -3232,8 +3227,8 @@ msgid ""
 "<span id=\"cfg_Servers_AllowDeny_rules\">$cfg['Servers'][$i]['AllowDeny']"
 "['rules']</span> array of strings"
 msgstr ""
-"array de cadenas <span id=\"cfg_Servers_AllowDeny_rules\">$cfg['Servers'][$i]["
-"'AllowDeny']['rules']</span>"
+"array de cadenas <span id=\"cfg_Servers_AllowDeny_rules\">$cfg['Servers'][$i]"
+"['AllowDeny']['rules']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1232
@@ -3291,9 +3286,9 @@ msgid ""
 "<tt>'explicit'</tt>."
 msgstr ""
 "Tener una lista de reglas vacías es equivalente a utilizar <tt>'allow % from "
-"all'</tt> si el orden de las reglas está configurado a "
-"<tt>'deny,allow'</tt> ó equivale a <tt>'deny % from all'</tt> si el orden de "
-"las reglas es <tt>'allow,deny'</tt> o <tt>'explicit'</tt>."
+"all'</tt> si el orden de las reglas está configurado a <tt>'deny,allow'</tt> "
+"ó equivale a <tt>'deny % from all'</tt> si el orden de las reglas es "
+"<tt>'allow,deny'</tt> o <tt>'explicit'</tt>."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1256
@@ -3301,8 +3296,8 @@ msgid ""
 "For the <abbr title=\"Internet Protocol\">IP</abbr> matching system, the "
 "following work:"
 msgstr ""
-"Para el sistema de coincidencias <abbr title=\"Internet Protocol\">IP</abbr>, "
-"las siguientes funcionan:"
+"Para el sistema de coincidencias <abbr title=\"Internet Protocol\">IP</"
+"abbr>, las siguientes funcionan:"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1258
@@ -3310,8 +3305,8 @@ msgid ""
 "<tt>xxx.xxx.xxx.xxx</tt> (an exact <abbr title=\"Internet Protocol\">IP</"
 "abbr> address)"
 msgstr ""
-"<tt>xxx.xxx.xxx.xxx</tt> (una dirección <abbr title=\"Internet "
-"Protocol\">IP</abbr> exacta)"
+"<tt>xxx.xxx.xxx.xxx</tt> (una dirección <abbr title=\"Internet Protocol"
+"\">IP</abbr> exacta)"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1259
@@ -3319,8 +3314,8 @@ msgid ""
 "<tt>xxx.xxx.xxx.[yyy-zzz]</tt> (an <abbr title=\"Internet Protocol\">IP</"
 "abbr> address range)"
 msgstr ""
-"<tt>xxx.xxx.xxx.[yyy-zzz]</tt> (un rango de direcciones <abbr "
-"title=\"Internet Protocol\">IP</abbr>)"
+"<tt>xxx.xxx.xxx.[yyy-zzz]</tt> (un rango de direcciones <abbr title="
+"\"Internet Protocol\">IP</abbr>)"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1260
@@ -3328,8 +3323,8 @@ msgid ""
 "<tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing type <abbr "
 "title=\"Internet Protocol\">IP</abbr> addresses)"
 msgstr ""
-"<tt>xxx.xxx.xxx.xxx/nn</tt> (direcciones <abbr title=\"Internet "
-"Protocol\">IP</abbr> de tipo CIDR - Classless Inter-Domain Routing)"
+"<tt>xxx.xxx.xxx.xxx/nn</tt> (direcciones <abbr title=\"Internet Protocol"
+"\">IP</abbr> de tipo CIDR - Classless Inter-Domain Routing)"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1261
@@ -3342,8 +3337,8 @@ msgid ""
 "<tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (partial <abbr title=\"Internet Protocol"
 "\">IP</abbr> address range)"
 msgstr ""
-"<tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (rango parcial de direcciones <abbr "
-"title=\"Internet Protocol\">IP</abbr>)"
+"<tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (rango parcial de direcciones <abbr title="
+"\"Internet Protocol\">IP</abbr>)"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1264
@@ -3356,8 +3351,8 @@ msgid ""
 "<span id=\"cfg_Servers_DisableIS\">$cfg['Servers'][$i]['DisableIS']</span> "
 "boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_Servers_DisableIS\">$cfg['Servers'][$i]['DisableIS']</span>"
+"booleano <span id=\"cfg_Servers_DisableIS\">$cfg['Servers'][$i]['DisableIS']"
+"</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1267
@@ -3377,8 +3372,8 @@ msgid ""
 "<span id=\"cfg_Servers_ShowDatabasesCommand\">$cfg['Servers'][$i]"
 "['ShowDatabasesCommand']</span> string"
 msgstr ""
-"cadena <span id=\"cfg_Servers_ShowDatabasesCommand\">$cfg['Servers'][$i]['Show"
-"DatabasesCommand']</span>"
+"cadena <span id=\"cfg_Servers_ShowDatabasesCommand\">$cfg['Servers'][$i]"
+"['ShowDatabasesCommand']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1270
@@ -3400,8 +3395,8 @@ msgid ""
 "<span id=\"cfg_Servers_CountTables\">$cfg['Servers'][$i]['CountTables']</"
 "span> boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_Servers_CountTables\">$cfg['Servers'][$i]['CountTables']</span>"
+"booleano <span id=\"cfg_Servers_CountTables\">$cfg['Servers'][$i]"
+"['CountTables']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1276
@@ -3418,8 +3413,8 @@ msgid ""
 "<span id=\"cfg_Servers_SignonSession\">$cfg['Servers'][$i]['SignonSession']</"
 "span> string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_SignonSession\">$cfg['Servers'][$i]['SignonSession']</span>"
+"cadena <span id=\"cfg_Servers_SignonSession\">$cfg['Servers'][$i]"
+"['SignonSession']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1279
@@ -3433,8 +3428,8 @@ msgid ""
 "<span id=\"cfg_Servers_SignonURL\">$cfg['Servers'][$i]['SignonURL']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_SignonURL\">$cfg['Servers'][$i]['SignonURL']</span>"
+"cadena <span id=\"cfg_Servers_SignonURL\">$cfg['Servers'][$i]['SignonURL']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1282
@@ -3451,8 +3446,8 @@ msgid ""
 "<span id=\"cfg_Servers_LogoutURL\">$cfg['Servers'][$i]['LogoutURL']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_Servers_LogoutURL\">$cfg['Servers'][$i]['LogoutURL']</span>"
+"cadena <span id=\"cfg_Servers_LogoutURL\">$cfg['Servers'][$i]['LogoutURL']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1285
@@ -3477,10 +3472,10 @@ msgid ""
 "phpMyAdmin is started, or set it to 0 to be given a list of servers without "
 "logging in."
 msgstr ""
-"Si se tiene más de un servidor configurado, puedes definir "
-"<tt>$cfg['ServerDefault']</tt> a cualquiera de ellos para conectarse "
-"automáticamente a ese servidor al iniciar phpMyAdmin, o definirlo como 0 "
-"para proveer una lista de servidores sin iniciar sesión."
+"Si se tiene más de un servidor configurado, puedes definir <tt>$cfg"
+"['ServerDefault']</tt> a cualquiera de ellos para conectarse automáticamente "
+"a ese servidor al iniciar phpMyAdmin, o definirlo como 0 para proveer una "
+"lista de servidores sin iniciar sesión."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1293
@@ -3658,9 +3653,8 @@ msgid ""
 "Path for storing session data (<a href=\"http://php.net/session_save_path"
 "\">session_save_path PHP parameter</a>)."
 msgstr ""
-"Ruta para almacenar los datos de la sesión (<a "
-"href=\"http://php.net/session_save_path\">parámetro PHP "
-"session_save_path</a>),"
+"Ruta para almacenar los datos de la sesión (<a href=\"http://php.net/"
+"session_save_path\">parámetro PHP session_save_path</a>),"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1347
@@ -3741,9 +3735,9 @@ msgid ""
 msgstr ""
 "Define si se permite a los usuarios normales (no administradores) borrar sus "
 "propias bases de datos o no. Si es FALSE, el enlace &quot;Borrar base de "
-"datos&quot; no será mostrado e inclusive se rechazarán consultas como "
-"&quot;DROP DATABASE mibasededatos&quot;. Muy práctico para <abbr "
-"title=\"Internet service provider\">ISP</abbr>s con muchos clientes."
+"datos&quot; no será mostrado e inclusive se rechazarán consultas como &quot;"
+"DROP DATABASE mibasededatos&quot;. Muy práctico para <abbr title=\"Internet "
+"service provider\">ISP</abbr>s con muchos clientes."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1371
@@ -3793,8 +3787,8 @@ msgid ""
 "This is automatically disabled if you do not have configured <tt><a href="
 "\"#cfg_blowfish_secret\">$cfg['blowfish_secret']</a></tt>."
 msgstr ""
-"Esto está desactivado automáticamente si no está configurado <tt><a "
-"href=\"#cfg_blowfish_secret\">$cfg['blowfish_secret']</a></tt>."
+"Esto está desactivado automáticamente si no está configurado <tt><a href="
+"\"#cfg_blowfish_secret\">$cfg['blowfish_secret']</a></tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1389
@@ -3812,12 +3806,12 @@ msgid ""
 "value of $cfg['LoginCookieValidity']."
 msgstr ""
 "Define por cuánto tiempo son válidas las cookies de sesión. Porfavor note "
-"que la opción de configuración PHP <a "
-"href=\"http://php.net/manual/en/session.configuration.php#ini.session.gc-"
-"maxlifetime\">session.gc_maxlifetime</a> puede limitar la validez de la "
-"sesión y cuando se pierda la sesión la cookie de sesión es también "
-"invalidada. Es buena idea configurar<code>session.gc_maxlifetime</code> a un "
-"valor igual o mayor que $cfg['LoginCookieValidity']."
+"que la opción de configuración PHP <a href=\"http://php.net/manual/en/"
+"session.configuration.php#ini.session.gc-maxlifetime\">session."
+"gc_maxlifetime</a> puede limitar la validez de la sesión y cuando se pierda "
+"la sesión la cookie de sesión es también invalidada. Es buena idea "
+"configurar<code>session.gc_maxlifetime</code> a un valor igual o mayor que "
+"$cfg['LoginCookieValidity']."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1396
@@ -3848,9 +3842,9 @@ msgid ""
 "from other server, when you are using more of them."
 msgstr ""
 "Si está activado (el valor predeterminado), el fin de sesión borra todas las "
-"cookies para todos los servidores; de lo contrario sólo aquella del "
-"servidor actual. Configurarlo como 'false' hace maś sencillo olvidar "
-"finalizar sesión de otros servidores cuando se utiliza más de uno."
+"cookies para todos los servidores; de lo contrario sólo aquella del servidor "
+"actual. Configurarlo como 'false' hace maś sencillo olvidar finalizar sesión "
+"de otros servidores cuando se utiliza más de uno."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1407
@@ -3892,9 +3886,9 @@ msgid ""
 "\">SQL</abbr> output as inline comments. Defaults to <tt>TRUE</tt>."
 msgstr ""
 "Define si phpMyAdmin mostrará los resultados de cada consulta en una "
-"sentencia con múltiples consultas embebido en la salida <abbr "
-"title=\"structured query language\">SQL</abbr> como comentarios entre líneas. "
-"El valor predeterminado es <tt>TRUE</tt>."
+"sentencia con múltiples consultas embebido en la salida <abbr title="
+"\"structured query language\">SQL</abbr> como comentarios entre líneas. El "
+"valor predeterminado es <tt>TRUE</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1420
@@ -3902,8 +3896,8 @@ msgid ""
 "<span id=\"cfg_AllowArbitraryServer\">$cfg['AllowArbitraryServer']</span> "
 "boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_AllowArbitraryServer\">$cfg['AllowArbitraryServer']</span>"
+"booleano <span id=\"cfg_AllowArbitraryServer\">$cfg['AllowArbitraryServer']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1421
@@ -3958,10 +3952,10 @@ msgid ""
 "['LeftFrameTableSeparator']</a>"
 msgstr ""
 "Define si se utiliza un menú de selección y sólo mostrar las tablas actuales "
-"en el marco izquierdo (una página más pequeña). Sólo en el modo no-ligero "
-"se puede utlizar la funcionalidad para mostrar carpetas anidadas utilizando "
-"<a href=\"#cfg_LeftFrameTableSeparator\" "
-"class=\"configrule\">$cfg['LeftFrameTableSeparator']</a>"
+"en el marco izquierdo (una página más pequeña). Sólo en el modo no-ligero se "
+"puede utlizar la funcionalidad para mostrar carpetas anidadas utilizando <a "
+"href=\"#cfg_LeftFrameTableSeparator\" class=\"configrule\">$cfg"
+"['LeftFrameTableSeparator']</a>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1442
@@ -3976,9 +3970,9 @@ msgid ""
 "\"configrule\">$cfg['LeftFrameDBSeparator']</a>."
 msgstr ""
 "En el modo ligero, define si mostrar los nombres de las bases de datos (en "
-"el selector) utilizando un árbol. Ver también <a "
-"href=\"#cfg_LeftFrameDBSeparator\" "
-"class=\"configrule\">$cfg['LeftFrameDBSeparator']</a>."
+"el selector) utilizando un árbol. Ver también <a href="
+"\"#cfg_LeftFrameDBSeparator\" class=\"configrule\">$cfg"
+"['LeftFrameDBSeparator']</a>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1448
@@ -4063,8 +4057,8 @@ msgstr ""
 "en la base de datos, esta configuración intercambiará el comentario y el "
 "nombre real. Esto significa que si se tiene una tabla llamada 'usuario0001' "
 "con el comentario 'MiNombre' en ella, se verá la base de datos con el nombre "
-"'MiNombre' en el marco izquierdo y el texto suplementario mostrará el "
-"nombre real de la base de datos."
+"'MiNombre' en el marco izquierdo y el texto suplementario mostrará el nombre "
+"real de la base de datos."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1478
@@ -4082,14 +4076,13 @@ msgid ""
 "folder is called like the Alias, the tablename itself stays the real "
 "tablename."
 msgstr ""
-"Igual que <a href=\"#cfg_ShowTooltipAliasDB\" "
-"class=\"configrule\">$cfg['ShowTooltipAliasDB']</a>, sólo que este lo hace "
-"para los nombres de tablas. Cuando está configurado como 'nested', el alias "
-"de la base de datos sólo será utilizado para dividir/anidar las tablas según "
-"la configuración de <a href=\"#cfg_LeftFrameTableSeparator\" "
-"class=\"configrule\">$cfg['LeftFrameTableSeparator']</a>. De esa forma, sólo "
-"la carpeta se llamará como el Alias y el nombre real de la tabla en sí será "
-"mostrado."
+"Igual que <a href=\"#cfg_ShowTooltipAliasDB\" class=\"configrule\">$cfg"
+"['ShowTooltipAliasDB']</a>, sólo que este lo hace para los nombres de "
+"tablas. Cuando está configurado como 'nested', el alias de la base de datos "
+"sólo será utilizado para dividir/anidar las tablas según la configuración de "
+"<a href=\"#cfg_LeftFrameTableSeparator\" class=\"configrule\">$cfg"
+"['LeftFrameTableSeparator']</a>. De esa forma, sólo la carpeta se llamará "
+"como el Alias y el nombre real de la tabla en sí será mostrado."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1487
@@ -4215,10 +4208,9 @@ msgid ""
 "php&quot;, &quot;tbl_change.php&quot; or &quot;sql.php&quot;."
 msgstr ""
 "Define la pestaña mostrada al pulsar sobre el pequeño icono junto a cada "
-"nombre de tabla en el panel de navegación. Valores posibles: "
-"&quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;, "
-"&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or "
-"&quot;sql.php&quot;."
+"nombre de tabla en el panel de navegación. Valores posibles: &quot;"
+"tbl_structure.php&quot;, &quot;tbl_sql.php&quot;, &quot;tbl_select."
+"php&quot;, &quot;tbl_change.php&quot; or &quot;sql.php&quot;."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1525
@@ -4257,8 +4249,8 @@ msgid ""
 "\"#cfg_Servers_verbose\">$cfg['Servers'][$i]['verbose']</a></tt>."
 msgstr ""
 "Define si mostrar información detallada del servidor en la página principal. "
-"Se puede esconder más información todavía utilizando <tt><a "
-"href=\"#cfg_Servers_verbose\">$cfg['Servers'][$i]['verbose']</a></tt>."
+"Se puede esconder más información todavía utilizando <tt><a href="
+"\"#cfg_Servers_verbose\">$cfg['Servers'][$i]['verbose']</a></tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1537
@@ -4268,7 +4260,8 @@ msgstr "booleano <span id=\"cfg_ShowPhpInfo\">$cfg['ShowPhpInfo']</span>"
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1538
 msgid "<span id=\"cfg_ShowChgPassword\">$cfg['ShowChgPassword'] </span>boolean"
-msgstr "booleano <span id=\"cfg_ShowChgPassword\">$cfg['ShowChgPassword']</span>"
+msgstr ""
+"booleano <span id=\"cfg_ShowChgPassword\">$cfg['ShowChgPassword']</span>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1539
@@ -4633,7 +4626,8 @@ msgstr ""
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1651
 msgid "Can be set to <tt>'both'</tt> if you want icons AND text."
-msgstr "Puede ser configurado como <tt>'both'</tt> si se desean iconos Y texto."
+msgstr ""
+"Puede ser configurado como <tt>'both'</tt> si se desean iconos Y texto."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1653
@@ -4672,9 +4666,9 @@ msgid ""
 msgstr ""
 "Define la pestaña mostrada predeterminadamente en la vista de servidores. "
 "Valores posibles: &quot;main.php&quot; (recomendado para configuraciones "
-"multi-usuario), &quot;server_databases.php&quot;, "
-"&quot;server_status.php&quot;, &quot;server_variables.php&quot;, "
-"&quot;server_privileges.php&quot; o &quot;server_processlist.php&quot;."
+"multi-usuario), &quot;server_databases.php&quot;, &quot;server_status."
+"php&quot;, &quot;server_variables.php&quot;, &quot;server_privileges."
+"php&quot; o &quot;server_processlist.php&quot;."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1669
@@ -4689,8 +4683,8 @@ msgid ""
 "php&quot;."
 msgstr ""
 "Define la pestaña mostrada predeterminadamente en la vista de bases de "
-"datos. Los valores posibles son: &quot;db_structure.php&quot;, "
-"&quot;db_sql.php&quot; o &quot;db_search.php&quot;."
+"datos. Los valores posibles son: &quot;db_structure.php&quot;, &quot;db_sql."
+"php&quot; o &quot;db_search.php&quot;."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1674
@@ -4706,8 +4700,7 @@ msgid ""
 msgstr ""
 "Define la pestaña mostrada predeterminadamente en la vista de tablas. "
 "Valores posibles: &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;, "
-"&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; o "
-"&quot;sql.php&quot;."
+"&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; o &quot;sql.php&quot;."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1680
@@ -4722,9 +4715,9 @@ msgid ""
 "\"#cfg_MySQLManualType\" class=\"configrule\">$cfg['MySQLManualType']</a>), "
 "appropriate help links are generated."
 msgstr ""
-"Si se define como una <abbr title=\"Uniform Resource Locator\">URL</abbr> que "
-"apunte a la documentación MySQL (el tipo depende de <a "
-"href=\"#cfg_MySQLManualType\" class=\"configrule\">$cfg['MySQLManualType']</a>), "
+"Si se define como una <abbr title=\"Uniform Resource Locator\">URL</abbr> "
+"que apunte a la documentación MySQL (el tipo depende de <a href="
+"\"#cfg_MySQLManualType\" class=\"configrule\">$cfg['MySQLManualType']</a>), "
 "se generarán enlaces de ayuda apropiados."
 
 #. type: Content of: <html><body><div><dl><dd>
@@ -4793,8 +4786,8 @@ msgid ""
 "The corresponding language file needs to be in locale/<i>code</i>/"
 "LC_MESSAGES/phpmyadmin.mo."
 msgstr ""
-"Los archivos de idioma correspondientes tiene que estar en "
-"locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo."
+"Los archivos de idioma correspondientes tiene que estar en locale/<i>code</"
+"i>/LC_MESSAGES/phpmyadmin.mo."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1705
@@ -4814,8 +4807,8 @@ msgid ""
 "See the <a href=\"http://dev.mysql.com/doc/mysql/en/charset-charsets.html"
 "\">MySQL documentation</a> for list of possible values."
 msgstr ""
-"Visite la <a href=\"http://dev.mysql.com/doc/mysql/en/charset-"
-"charsets.html\">documentación MySQL</a> para la lista de valores posibles."
+"Visite la <a href=\"http://dev.mysql.com/doc/mysql/en/charset-charsets.html"
+"\">documentación MySQL</a> para la lista de valores posibles."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1711
@@ -4913,9 +4906,9 @@ msgid ""
 "code> is used, so that invalid characters will be transliterated."
 msgstr ""
 "Especificar algunos parámetros para la conversión de conjuntos de caracteres "
-"con funciones iconv. Visite <a href=\"http://www.gnu.org/software/libiconv/d"
-"ocumentation/libiconv/iconv_open.3.html\">la documentación iconv</a> para más "
-"detalles. El valor predeterminado es <code>//TRANSLIT</code> para "
+"con funciones iconv. Visite <a href=\"http://www.gnu.org/software/libiconv/"
+"documentation/libiconv/iconv_open.3.html\">la documentación iconv</a> para "
+"más detalles. El valor predeterminado es <code>//TRANSLIT</code> para "
 "transliterar caracteres inválidos."
 
 #. type: Content of: <html><body><div><dl><dt>
@@ -4950,10 +4943,10 @@ msgid ""
 "empty, you need to fill in some trusted proxy servers if you want to use "
 "rules for IP addresses behind proxy."
 msgstr ""
-"Lista de proxies y cabeceras HTTP confiables para <a "
-"href=\"#servers_allowdeny_order\">IP Allow/Deny</a>. El valor predeterminado "
-"es que la lista esté vacía, necesitarás completarla con servidores proxy si "
-"se desea utilizar esas reglas para direcciones IPs detrás de un proxy."
+"Lista de proxies y cabeceras HTTP confiables para <a href="
+"\"#servers_allowdeny_order\">IP Allow/Deny</a>. El valor predeterminado es "
+"que la lista esté vacía, necesitarás completarla con servidores proxy si se "
+"desea utilizar esas reglas para direcciones IPs detrás de un proxy."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1757
@@ -5074,8 +5067,8 @@ msgstr "entero $cfg['NaviWidth']"
 msgid ""
 "Navi frame width in pixels. See <tt>themes/themename/layout.inc.php</tt>."
 msgstr ""
-"Anchura del marco de navegación en píxeles. Revise "
-"<tt>themes/themename/layout.inc.php</tt>."
+"Anchura del marco de navegación en píxeles. Revise <tt>themes/themename/"
+"layout.inc.php</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1801
@@ -5101,8 +5094,8 @@ msgid ""
 "The background styles used for both the frames.  See <tt>themes/themename/"
 "layout.inc.php</tt>."
 msgstr ""
-"El estilo de findo a utilizar para ambos marcos. Revise "
-"<tt>themes/themename/layout.inc.php</tt>."
+"El estilo de findo a utilizar para ambos marcos. Revise <tt>themes/themename/"
+"layout.inc.php</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1807
@@ -5151,8 +5144,8 @@ msgstr "entero $cfg['Border']"
 msgid ""
 "The size of a table's border. See <tt>themes/themename/layout.inc.php</tt>."
 msgstr ""
-"El tamaño del borde las tablas. Revise "
-"<tt>themes/themename/layout.inc.php</tt>."
+"El tamaño del borde las tablas. Revise <tt>themes/themename/layout.inc.php</"
+"tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1820
@@ -5170,8 +5163,8 @@ msgid ""
 "The style used for table headers. See <tt>themes/themename/layout.inc.php</"
 "tt>."
 msgstr ""
-"El estilo a utilizar para las cabeceras de tablas. Revise "
-"<tt>themes/themename/layout.inc.php</tt>."
+"El estilo a utilizar para las cabeceras de tablas. Revise <tt>themes/"
+"themename/layout.inc.php</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1825
@@ -5184,8 +5177,8 @@ msgid ""
 "The color (HTML) #1 for table rows. See <tt>themes/themename/layout.inc.php</"
 "tt>."
 msgstr ""
-"El 1º color (HTML) para las filas de tabla. Revise "
-"<tt>themes/themename/layout.inc.php</tt>."
+"El 1º color (HTML) para las filas de tabla. Revise <tt>themes/themename/"
+"layout.inc.php</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1829
@@ -5198,8 +5191,8 @@ msgid ""
 "The color (HTML) #2 for table rows. See <tt>themes/themename/layout.inc.php</"
 "tt>."
 msgstr ""
-"El 2º color (HTML) para filas de tabla. Revise "
-"<tt>themes/themename/layout.inc.php</tt>."
+"El 2º color (HTML) para filas de tabla. Revise <tt>themes/themename/layout."
+"inc.php</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1833
@@ -5207,9 +5200,8 @@ msgid ""
 "<span id=\"cfg_BrowsePointerBackground\">$cfg['BrowsePointerBackground'] </"
 "span>string [CSS color]"
 msgstr ""
-"cadena <span "
-"id=\"cfg_BrowsePointerBackground\">$cfg['BrowsePointerBackground']</span> "
-"(Color CSS)"
+"cadena <span id=\"cfg_BrowsePointerBackground\">$cfg"
+"['BrowsePointerBackground']</span> (Color CSS)"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1834
@@ -5226,9 +5218,8 @@ msgid ""
 "<span id=\"cfg_BrowseMarkerBackground\">$cfg['BrowseMarkerBackground'] </"
 "span>string [CSS color]"
 msgstr ""
-"cadena <span "
-"id=\"cfg_BrowseMarkerBackground\">$cfg['BrowseMarkerBackground']</span> (Color "
-"CSS)"
+"cadena <span id=\"cfg_BrowseMarkerBackground\">$cfg['BrowseMarkerBackground']"
+"</span> (Color CSS)"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1836
@@ -5291,8 +5282,7 @@ msgid ""
 "This one is used in textarea."
 msgstr ""
 "Ingrese aquí un valor aceptable para la propiedad CSS font-family; por "
-"ejemplo: <tt>monospace</tt>. Este valor será utilizado en las áreas de "
-"texto."
+"ejemplo: <tt>monospace</tt>. Este valor será utilizado en las áreas de texto."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1856
@@ -5328,13 +5318,15 @@ msgstr "entero <span id=\"cfg_TextareaRows\">$cfg['TextareaRows']</span>"
 #: orig-docs/Documentation.html:1864
 msgid ""
 "<span id=\"cfg_CharTextareaCols\">$cfg['CharTextareaCols'] </span>integer"
-msgstr "entero <span id=\"cfg_CharTextareaCols\">$cfg['CharTextareaCols']</span>"
+msgstr ""
+"entero <span id=\"cfg_CharTextareaCols\">$cfg['CharTextareaCols']</span>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1865
 msgid ""
 "<span id=\"cfg_CharTextareaRows\">$cfg['CharTextareaRows'] </span>integer"
-msgstr "entero <span id=\"cfg_CharTextareaRows\">$cfg['CharTextareaRows']</span>"
+msgstr ""
+"entero <span id=\"cfg_CharTextareaRows\">$cfg['CharTextareaRows']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1867
@@ -5348,10 +5340,10 @@ msgid ""
 "language\">SQL</abbr> query textareas and (*1.25) for <abbr title="
 "\"structured query language\">SQL</abbr> textareas inside the query window."
 msgstr ""
-"El valor será duplicado para áreas de texto para consultas <abbr "
-"title=\"structured query language\">SQL</abbr> y aumentando un 25% para las "
-"áreas de texto <abbr title=\"structured query language\">SQL</abbr> dentro de "
-"la ventana de consultas."
+"El valor será duplicado para áreas de texto para consultas <abbr title="
+"\"structured query language\">SQL</abbr> y aumentando un 25% para las áreas "
+"de texto <abbr title=\"structured query language\">SQL</abbr> dentro de la "
+"ventana de consultas."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1870
@@ -5360,8 +5352,8 @@ msgid ""
 "href=\"#cfg_CharEditing\">$cfg['CharEditing']</a>)."
 msgstr ""
 "Las configuraciones que comienzan con Char son utilizadas para edición de "
-"campos CHAR y VARCHAR (si están configurados mediante <a "
-"href=\"#cfg_CharEditing\">$cfg['CharEditing']</a>)."
+"campos CHAR y VARCHAR (si están configurados mediante <a href="
+"\"#cfg_CharEditing\">$cfg['CharEditing']</a>)."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1873
@@ -5369,8 +5361,8 @@ msgid ""
 "<span id=\"cfg_LongtextDoubleTextarea\">$cfg['LongtextDoubleTextarea'] </"
 "span>boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_LongtextDoubleTextarea\">$cfg['LongtextDoubleTextarea']</span>"
+"booleano <span id=\"cfg_LongtextDoubleTextarea\">$cfg"
+"['LongtextDoubleTextarea']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1875
@@ -5384,7 +5376,8 @@ msgstr ""
 msgid ""
 "<span id=\"cfg_TextareaAutoSelect\">$cfg['TextareaAutoSelect'] </span>boolean"
 msgstr ""
-"booleano <span id=\"cfg_TextareaAutoSelect\">$cfg['TextareaAutoSelect']</span>"
+"booleano <span id=\"cfg_TextareaAutoSelect\">$cfg['TextareaAutoSelect']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1879
@@ -5416,9 +5409,9 @@ msgid ""
 "span>boolean <span id=\"cfg_ModifyDeleteAtRight\">$cfg"
 "['ModifyDeleteAtRight'] </span>boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_ModifyDeleteAtLeft\">$cfg['ModifyDeleteAtLeft']</span>, booleano "
-"<span id=\"cfg_ModifyDeleteAtRight\">$cfg['ModifyDeleteAtRight']</span>"
+"booleano <span id=\"cfg_ModifyDeleteAtLeft\">$cfg['ModifyDeleteAtLeft']</"
+"span>, booleano <span id=\"cfg_ModifyDeleteAtRight\">$cfg"
+"['ModifyDeleteAtRight']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1889
@@ -5430,11 +5423,10 @@ msgid ""
 "mode."
 msgstr ""
 "Define la posición de los enlaces de fila de tabla (Editar, Editar en línea, "
-"Copiar, Borrar) al mostrar los contenidos de una tabla (pueden ser "
-"mostrados tanto a la derecha como a la izquierda). &quot;Left&quot; "
-"(izquierda) y &quot;right&quot; (derecha) son interpretados como "
-"&quot;top&quot; (arriba) y &quot;bottom&quot; (abajo) en el modo de "
-"visualización vertical."
+"Copiar, Borrar) al mostrar los contenidos de una tabla (pueden ser mostrados "
+"tanto a la derecha como a la izquierda). &quot;Left&quot; (izquierda) y "
+"&quot;right&quot; (derecha) son interpretados como &quot;top&quot; (arriba) "
+"y &quot;bottom&quot; (abajo) en el modo de visualización vertical."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1896
@@ -5487,8 +5479,8 @@ msgid ""
 "<span id=\"cfg_DefaultPropDisplay\">$cfg['DefaultPropDisplay']</span> string "
 "or integer"
 msgstr ""
-"cadena o entero <span "
-"id=\"cfg_DefaultPropDisplay\">$cfg['DefaultPropDisplay']</span>"
+"cadena o entero <span id=\"cfg_DefaultPropDisplay\">$cfg"
+"['DefaultPropDisplay']</span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1919
@@ -5524,8 +5516,8 @@ msgid ""
 "<span id=\"cfg_ShowPropertyComments\">$cfg['ShowPropertyComments'] </"
 "span>boolean"
 msgstr ""
-"booleano <span "
-"id=\"cfg_ShowPropertyComments\">$cfg['ShowPropertyComments']</span>"
+"booleano <span id=\"cfg_ShowPropertyComments\">$cfg['ShowPropertyComments']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1931
@@ -5593,8 +5585,8 @@ msgid ""
 "also <tt><a href=\"#cfg_SQLValidator\">$cfg_SQLValidator</a></tt>."
 msgstr ""
 "Si se muestra o no un enlace para validar una consulta en cualquier caja de "
-"texto de consultas SQL. Revise también <tt><a "
-"href=\"#cfg_SQLValidator\">$cfg_SQLValidator</a></tt>."
+"texto de consultas SQL. Revise también <tt><a href=\"#cfg_SQLValidator\">"
+"$cfg_SQLValidator</a></tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:1951
@@ -5621,11 +5613,11 @@ msgid ""
 "example, ftp).  Those files are available under a drop-down box when you "
 "click the database or table name, then the Import tab."
 msgstr ""
-"El nombre del directorio en el que los achivos <abbr title=\"structured query "
-"language\">SQL</abbr> fueron subidos por medios diferentes a phpMyAdmin (por "
-"ejemplo FTP). Estos archivos estarán disponibles en una lista desplegable "
-"al pulsar en el nombre de la base de datos o tabla y en la pestaña de "
-"importación."
+"El nombre del directorio en el que los achivos <abbr title=\"structured "
+"query language\">SQL</abbr> fueron subidos por medios diferentes a "
+"phpMyAdmin (por ejemplo FTP). Estos archivos estarán disponibles en una "
+"lista desplegable al pulsar en el nombre de la base de datos o tabla y en la "
+"pestaña de importación."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1963 orig-docs/Documentation.html:1987
@@ -5655,8 +5647,8 @@ msgid ""
 "disabled in PHP."
 msgstr ""
 "Esta funcionalidad es útil cuando los archivos son demasiado grandes para "
-"ser subidos mediante <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>, "
-"o cuando la subida de archivos está desactivada en PHP."
+"ser subidos mediante <abbr title=\"HyperText Transfer Protocol\">HTTP</"
+"abbr>, o cuando la subida de archivos está desactivada en PHP."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:1974 orig-docs/Documentation.html:1993
@@ -5715,10 +5707,10 @@ msgid ""
 "limitations of <tt>open_basedir</tt> for uploaded files, see <a href="
 "\"#faq1_11\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 1.11</a>."
 msgstr ""
-"Esto es necesario para la exportación nativa MS Excel, revise la <a "
-"href=\"#faq6_23\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> "
-"6.23</a>. Para evitar las limitaciones de <tt>open_basedir</tt> para los "
-"archivos subidos revise la <a href=\"#faq1_11\"><abbr title=\"Frequently Asked "
+"Esto es necesario para la exportación nativa MS Excel, revise la <a href="
+"\"#faq6_23\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 6.23</a>. "
+"Para evitar las limitaciones de <tt>open_basedir</tt> para los archivos "
+"subidos revise la <a href=\"#faq1_11\"><abbr title=\"Frequently Asked "
 "Questions\">FAQ</abbr> 1.11</a>."
 
 #. type: Content of: <html><body><div><dl><dd>
@@ -5737,9 +5729,8 @@ msgstr ""
 "directorio que puede ser accedido por el servidor web. Sin embargo, por "
 "razones de seguridad, este directorio deberá estar fuera del árbol publicado "
 "por el mismo. Si no se puede evitar tener este directorio accesible "
-"públicamente en el servidor web al menos agregue un archivo "
-"<tt>index.html</tt> vacío en él para que no liste sus contenidos al intentar "
-"accederlo."
+"públicamente en el servidor web al menos agregue un archivo <tt>index.html</"
+"tt> vacío en él para que no liste sus contenidos al intentar accederlo."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2020
@@ -5751,8 +5742,8 @@ msgid ""
 msgstr ""
 "Este directorio deberá de tener permisos tan estrictos como sea posible y el "
 "único usuario que necesita acceder a este directorio es aquél ejecutando el "
-"servidor web. Si se tienen permisos de root, simplemente haga a este "
-"usuario dueño del directorio y hágalo sólo accesible por él:"
+"servidor web. Si se tienen permisos de root, simplemente haga a este usuario "
+"dueño del directorio y hágalo sólo accesible por él:"
 
 #. type: Content of: <html><body><div><dl><dd><pre>
 #: orig-docs/Documentation.html:2027
@@ -5771,8 +5762,8 @@ msgid ""
 "using <abbr title=\"Access Control List\">ACL</abbr>:"
 msgstr ""
 "Si no puedes cambiar el dueño de este directorio, se pueden conseguir "
-"resultados similares utilizando <abbr title=\"Access Control "
-"List\">ACL</abbr>:"
+"resultados similares utilizando <abbr title=\"Access Control List\">ACL</"
+"abbr>:"
 
 #. type: Content of: <html><body><div><dl><dd><pre>
 #: orig-docs/Documentation.html:2035
@@ -5882,7 +5873,8 @@ msgstr "booleano $cfg['EditInWindow']"
 #: orig-docs/Documentation.html:2075
 msgid ""
 "<span id=\"cfg_QueryWindowWidth\">$cfg['QueryWindowWidth'] </span>integer"
-msgstr "entero <span id=\"cfg_QueryWindowWidth\">$cfg['QueryWindowWidth']</span>"
+msgstr ""
+"entero <span id=\"cfg_QueryWindowWidth\">$cfg['QueryWindowWidth']</span>"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2076
@@ -5919,12 +5911,12 @@ msgid ""
 "Otherwise, the right panel changes to display a query box."
 msgstr ""
 "Todas estas variables afectan la funcionalidad de la ventana de consultas. "
-"Un enlace o icono <tt><abbr title=\"structured query "
-"language\">SQL</abbr></tt> se muestra siempre en el panel izquierdo. Si "
-"JavaScript está activado en el navegador, pulsarlo abre una ventana de "
-"consulta distinta que es una interfaz directa para ingresar consultas <abbr "
-"title=\"structured query language\">SQL</abbr>. De lo contrario, el panel "
-"derecho cambiará para mostrar una caja de texto para consulta."
+"Un enlace o icono <tt><abbr title=\"structured query language\">SQL</abbr></"
+"tt> se muestra siempre en el panel izquierdo. Si JavaScript está activado en "
+"el navegador, pulsarlo abre una ventana de consulta distinta que es una "
+"interfaz directa para ingresar consultas <abbr title=\"structured query "
+"language\">SQL</abbr>. De lo contrario, el panel derecho cambiará para "
+"mostrar una caja de texto para consulta."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2088
@@ -5934,11 +5926,10 @@ msgid ""
 "integers for the size in pixels. Note that normally, those parameters will "
 "be modified in <tt>layout.inc.php</tt> for the theme you are using."
 msgstr ""
-"El tamaño de esta ventana de consultas puede ser personalizado con "
-"<tt>$cfg['QueryWindowWidth']</tt> y <tt>$cfg['QueryWindowHeight']</tt> - "
-"ambos enteros para el tamaño en píxeles. Notar que normalmente estos "
-"parámetros serán modificados en el archivo <tt>layout.inc.php</tt> del tema "
-"utilizado."
+"El tamaño de esta ventana de consultas puede ser personalizado con <tt>$cfg"
+"['QueryWindowWidth']</tt> y <tt>$cfg['QueryWindowHeight']</tt> - ambos "
+"enteros para el tamaño en píxeles. Notar que normalmente estos parámetros "
+"serán modificados en el archivo <tt>layout.inc.php</tt> del tema utilizado."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2094
@@ -5982,10 +5973,10 @@ msgid ""
 msgstr ""
 "Si <tt>$cfg['QueryHistoryDB']</tt> está configurado a <tt>TRUE</tt>, todas "
 "las consultas son registradas a una tabla que tiene que haber sido creada "
-"previamente (revise <a href=\"#history\" "
-"class=\"configrule\">$cfg['Servers'][$i]['history']</a>). Si está configurado "
-"a <tt>FALSE</tt>, todas las consultas serán agregadas al formulario mientras "
-"que la ventana se mantenga abierta."
+"previamente (revise <a href=\"#history\" class=\"configrule\">$cfg['Servers']"
+"[$i]['history']</a>). Si está configurado a <tt>FALSE</tt>, todas las "
+"consultas serán agregadas al formulario mientras que la ventana se mantenga "
+"abierta."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2112
@@ -6007,13 +5998,14 @@ msgstr ""
 "obtendrá el foco si se pulsa en \"Editar <abbr title=\"structured query "
 "language\">SQL</abbr>\" luego de haber usado una consulta. Se puede evitar "
 "esta actualización activando la caja descripta como \"No sobreescribir esta "
-"consulta desde fuera de la ventana\" debajo del área de texto de la consulta. "
-"De esa forma se puede examinar tablas o bases de datos en segundo plano sin "
-"perder los contenidos del área de texto por lo que es especialmente útil al "
-"crear una consulta con tablas que primero se desea revisar. La opción se "
-"activará automáticamente cuando se modifique el contenido del área de texto. "
-"Porfavor desactivelo cuando definitivamente se desea que se actualice la "
-"ventana de consultas aún cuando se han realizado modificaciones."
+"consulta desde fuera de la ventana\" debajo del área de texto de la "
+"consulta. De esa forma se puede examinar tablas o bases de datos en segundo "
+"plano sin perder los contenidos del área de texto por lo que es "
+"especialmente útil al crear una consulta con tablas que primero se desea "
+"revisar. La opción se activará automáticamente cuando se modifique el "
+"contenido del área de texto. Porfavor desactivelo cuando definitivamente se "
+"desea que se actualice la ventana de consultas aún cuando se han realizado "
+"modificaciones."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2124
@@ -6116,8 +6108,8 @@ msgid ""
 msgstr ""
 "Si está configurado a <tt>'closed'</tt>, los deslizadores visuales estarán "
 "cerrados inicialmente. Un valor de <tt>'open'</tt> tendrá el efecto inverso. "
-"Para desactivar completamente todo deslizador visual utilice "
-"<tt>'disabled'</tt>."
+"Para desactivar completamente todo deslizador visual utilice <tt>'disabled'</"
+"tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2160
@@ -6133,8 +6125,8 @@ msgid ""
 msgstr ""
 "Contiene los nombres de las opciones de configuración (las claves en el "
 "array <tt>$cfg</tt>) que los usuarios no pueden definir en sus preferencias. "
-"Para los valores posibles, revise "
-"<tt>libraries/config/user_preferences.forms.php</tt>."
+"Para los valores posibles, revise <tt>libraries/config/user_preferences."
+"forms.php</tt>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2165
@@ -6162,8 +6154,8 @@ msgid ""
 "Allows you to specify window's title bar. You can use <a href="
 "\"#faq6_27\">format string expansion</a>."
 msgstr ""
-"Permite definir la barra de título de una ventana. Se puede utilizar <a "
-"href=\"#faq6_27\">expansión de formato de cadenas</a>."
+"Permite definir la barra de título de una ventana. Se puede utilizar <a href="
+"\"#faq6_27\">expansión de formato de cadenas</a>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2173
@@ -6221,9 +6213,8 @@ msgid ""
 "Enables user-selectable themes. See <a href=\"#faqthemes\"> <abbr title="
 "\"Frequently Asked Questions\">FAQ</abbr> 2.7</a>."
 msgstr ""
-"Hablita temas disponibles para los usuarios. Revise la <a "
-"href=\"#faqthemes\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> "
-"2.7</a>."
+"Hablita temas disponibles para los usuarios. Revise la <a href=\"#faqthemes"
+"\"><abbr title=\"Frequently Asked Questions\">FAQ</abbr> 2.7</a>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2191
@@ -6233,7 +6224,8 @@ msgstr "cadena $cfg['ThemeDefault']"
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2192
 msgid "The default theme (a subdirectory under <tt>cfg['ThemePath']</tt>)."
-msgstr "El tema predeterminado (un subdirectorio en <tt>cfg['ThemePath']</tt>)."
+msgstr ""
+"El tema predeterminado (un subdirectorio en <tt>cfg['ThemePath']</tt>)."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2194
@@ -6256,8 +6248,8 @@ msgid ""
 "<span id=\"cfg_DefaultQueryDatabase\">$cfg['DefaultQueryDatabase']</span> "
 "string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_DefaultQueryDatabase\">$cfg['DefaultQueryDatabase']</span>"
+"cadena <span id=\"cfg_DefaultQueryDatabase\">$cfg['DefaultQueryDatabase']</"
+"span>"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2200
@@ -6267,8 +6259,8 @@ msgid ""
 "expansion</a>."
 msgstr ""
 "Consultas predeterminadas a mostrarse en las cajas de texto de consultas "
-"cuando el usuario no especificó una. Se puede utilizar <a "
-"href=\"#faq6_27\">expansión de formato de cadenas</a>."
+"cuando el usuario no especificó una. Se puede utilizar <a href="
+"\"#faq6_27\">expansión de formato de cadenas</a>."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2205
@@ -6283,9 +6275,9 @@ msgid ""
 "abbr> queries. By default we use HTML to format the query, but you can "
 "disable this by setting this variable to <tt>'none'</tt>."
 msgstr ""
-"El principal uso del nuevo analizador <abbr title=\"structured query "
-"language\">SQL</abbr> es para imprimir en formato amigable consultas <abbr "
-"title=\"structured query language\">SQL</abbr>. El valor predeterminado es "
+"El principal uso del nuevo analizador <abbr title=\"structured query language"
+"\">SQL</abbr> es para imprimir en formato amigable consultas <abbr title="
+"\"structured query language\">SQL</abbr>. El valor predeterminado es "
 "utilizar HTML para darle formato a la consulta, pero se puede desactivar "
 "esto configurando el valor a <tt>'none'</tt>."
 
@@ -6311,10 +6303,10 @@ msgid ""
 "indented. By changing <tt>$cfg['SQP']['fmtInd']</tt> you can change the "
 "amount of this indent."
 msgstr ""
-"Para el formato amigable de consultas <abbr title=\"structured query "
-"language\">SQL</abbr>, en algunos casos partes de la consulta dentro de "
-"paréntesis son indentados. Cambiando <tt>$cfg['SQP']['fmtInd']</tt> se puede "
-"modificar el tamaño de este indentado."
+"Para el formato amigable de consultas <abbr title=\"structured query language"
+"\">SQL</abbr>, en algunos casos partes de la consulta dentro de paréntesis "
+"son indentados. Cambiando <tt>$cfg['SQP']['fmtInd']</tt> se puede modificar "
+"el tamaño de este indentado."
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2217
@@ -6339,8 +6331,8 @@ msgid ""
 "The tuple format is"
 msgstr ""
 "Este array es utilizado para definir los colores de cada tipo de elemento "
-"del formato amigable de consultas <abbr title=\"structured query "
-"language\">SQL</abbr>. El formato de las tuplas es:"
+"del formato amigable de consultas <abbr title=\"structured query language"
+"\">SQL</abbr>. El formato de las tuplas es:"
 
 #. type: Content of: <html><body><div><dl><dd>
 #: orig-docs/Documentation.html:2224
@@ -6425,7 +6417,8 @@ msgstr "<b>punct_bracket_close_round</b> Paréntesis de cierre <tt>\")\"</tt>"
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:2240
 msgid "<b>punct_listsep</b> List item Separator <tt>\",\"</tt>"
-msgstr "<b>punct_listsep</b> Separador de elementos en una lista <tt>\",\"</tt>"
+msgstr ""
+"<b>punct_listsep</b> Separador de elementos en una lista <tt>\",\"</tt>"
 
 #. type: Content of: <html><body><div><dl><dd><ul><li>
 #: orig-docs/Documentation.html:2241
@@ -6523,11 +6516,11 @@ msgid ""
 "abbr> Validator</a> service, as originally published on <a href=\"http://"
 "developers.slashdot.org/article.pl?sid=02/02/19/1720246\">Slashdot</a>."
 msgstr ""
-"phpMyAdmin ahora soporta el uso del servicio de <a "
-"href=\"http://developer.mimer.com/validator/index.htm\">validación <abbr "
-"title=\"structured query language\">SQL</abbr> Mimer</a> como fue pubilicado "
-"originalmente en <a href=\"http://developers.slashdot.org/article.pl?sid=02/0"
-"2/19/1720246\">Slashdot</a>."
+"phpMyAdmin ahora soporta el uso del servicio de <a href=\"http://developer."
+"mimer.com/validator/index.htm\">validación <abbr title=\"structured query "
+"language\">SQL</abbr> Mimer</a> como fue pubilicado originalmente en <a href="
+"\"http://developers.slashdot.org/article.pl?sid=02/02/19/1720246\">Slashdot</"
+"a>."
 
 #. type: Content of: <html><body><div><dl><dd><dl><dd>
 #: orig-docs/Documentation.html:2263
@@ -6537,8 +6530,8 @@ msgid ""
 "6.14</a>."
 msgstr ""
 "Para obtener ayuda configurando el sistema para utilizar el servicio revise "
-"la <a href=\"#faqsqlvalidator\"><abbr title=\"Frequently Asked "
-"Questions\">FAQ</abbr> 6.14</a>."
+"la <a href=\"#faqsqlvalidator\"><abbr title=\"Frequently Asked Questions"
+"\">FAQ</abbr> 6.14</a>."
 
 #. type: Content of: <html><body><div><dl><dd><dl><dt>
 #: orig-docs/Documentation.html:2267
@@ -6551,8 +6544,8 @@ msgid ""
 "<span id=\"cfg_SQLValidator_password\">$cfg['SQLValidator']['password']</"
 "span> string"
 msgstr ""
-"cadena <span "
-"id=\"cfg_SQLValidator_password\">$cfg['SQLValidator']['password']</span>"
+"cadena <span id=\"cfg_SQLValidator_password\">$cfg['SQLValidator']"
+"['password']</span>"
 
 #. type: Content of: <html><body><div><dl><dd><dl><dd>
 #: orig-docs/Documentation.html:2269
@@ -6660,9 +6653,9 @@ msgid ""
 "</a>. In most cases you don't need to edit this."
 msgstr ""
 "Funciones preferidas para los meta-tipos de columnas según están definidos "
-"en <a href=\"#cfg_RestrictColumnTypes\" "
-"class=\"configrule\">$cfg['RestrictColumnTypes']</a>. En la mayoría de los "
-"casos no es necesario modificar esto."
+"en <a href=\"#cfg_RestrictColumnTypes\" class=\"configrule\">$cfg"
+"['RestrictColumnTypes']</a>. En la mayoría de los casos no es necesario "
+"modificar esto."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2305
@@ -6679,11 +6672,10 @@ msgid ""
 "table."
 msgstr ""
 "Las funciones seleccionadas predeterminadamente al insertar/editar una fila. "
-"Las funciones están definidas para los meta-tipos en <a "
-"href=\"#cfg_RestrictColumnTypes\" "
-"class=\"configrule\">$cfg['RestrictColumnTypes']</a> y para "
-"<code>first_timestamp</code>, utilizada para la primer columna de una tabla "
-"conteniendo marcas temporales."
+"Las funciones están definidas para los meta-tipos en <a href="
+"\"#cfg_RestrictColumnTypes\" class=\"configrule\">$cfg['RestrictColumnTypes']"
+"</a> y para <code>first_timestamp</code>, utilizada para la primer columna "
+"de una tabla conteniendo marcas temporales."
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2312
@@ -6844,10 +6836,10 @@ msgid ""
 "options'."
 msgstr ""
 "Revise la página <i>tbl_structure.php</i> de su instalación (por ejemplo, "
-"pulsando en el enlace 'Estructura' de una tabla). Luego pulse en "
-"&quot;Modificar&quot; (o el icono respectivo) y luego se podrán ver tres "
-"nuevos campos al final de la línea llamados 'Tipo MIME', 'Transformaciones "
-"de exploración' y 'Opciones de transformaciones'."
+"pulsando en el enlace 'Estructura' de una tabla). Luego pulse en &quot;"
+"Modificar&quot; (o el icono respectivo) y luego se podrán ver tres nuevos "
+"campos al final de la línea llamados 'Tipo MIME', 'Transformaciones de "
+"exploración' y 'Opciones de transformaciones'."
 
 #. type: Content of: <html><body><div><ul><li>
 #: orig-docs/Documentation.html:2374
@@ -6885,12 +6877,12 @@ msgid ""
 "jpeg')."
 msgstr ""
 "Hay transformaciones globales y transformaciones que dependen del tipo MIME. "
-"Las transformaciones globales pueden ser utilizadas para cualquier tipo "
-"MIME pero lo tendrán en cuenta si es necesario. Las transformaciones que "
-"dependen del tipo MIME normalmente sólo operarán en tipos MIME determinados. "
-"Hay transformaciones que operaran sobre el tipo MIME principal (como "
-"'image'), que seguramente tienen en cuenta el sub-tipo, y otras operaciones "
-"que sólo operan en un sub-tipo específico (como 'image/jpeg')."
+"Las transformaciones globales pueden ser utilizadas para cualquier tipo MIME "
+"pero lo tendrán en cuenta si es necesario. Las transformaciones que dependen "
+"del tipo MIME normalmente sólo operarán en tipos MIME determinados. Hay "
+"transformaciones que operaran sobre el tipo MIME principal (como 'image'), "
+"que seguramente tienen en cuenta el sub-tipo, y otras operaciones que sólo "
+"operan en un sub-tipo específico (como 'image/jpeg')."
 
 #. type: Content of: <html><body><div><ul><li>
 #: orig-docs/Documentation.html:2389
@@ -7092,8 +7084,8 @@ msgid ""
 "The transform function will the be called '<tt>PMA_transform_[mimetype]__"
 "[transform]()</tt>'."
 msgstr ""
-"La función de transformación será llamada '<tt>PMA_transform_[tipo "
-"MIME]__[transformación]()</tt>'."
+"La función de transformación será llamada '<tt>PMA_transform_[tipo MIME]__"
+"[transformación]()</tt>'."
 
 #. type: Content of: <html><body><div><ol><li>
 #: orig-docs/Documentation.html:2464
@@ -7181,8 +7173,8 @@ msgid ""
 "The transform function will the be called '<tt>PMA_transform_global__"
 "[transform]()</tt>'."
 msgstr ""
-"La función de transformación será llamada "
-"'<tt>PMA_transform_global__[transformación]()</tt>'."
+"La función de transformación será llamada '<tt>PMA_transform_global__"
+"[transformación]()</tt>'."
 
 #. type: Content of: <html><body><div><ol><li>
 #: orig-docs/Documentation.html:2506
@@ -7200,8 +7192,8 @@ msgid ""
 "So generally use '_' to split up mimetype and subtype, and '__' to provide a "
 "transform function."
 msgstr ""
-"El caso general es, entonces, utilizar '_' para separar el tipo MIME del "
-"sub-tipo y '__' para proveer una función de transformación."
+"El caso general es, entonces, utilizar '_' para separar el tipo MIME del sub-"
+"tipo y '__' para proveer una función de transformación."
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2513
@@ -7220,9 +7212,9 @@ msgid ""
 "adding a mimetype without a transform function."
 msgstr ""
 "Porfavor revise el archivo libraries/transformations/TEMPLATE para agregar "
-"una función de transformación propia. Revise el archivo "
-"libraries/transformations/TEMPLATE_MIMETYPE para agregar un tipo MIME sin "
-"una función de transformación."
+"una función de transformación propia. Revise el archivo libraries/"
+"transformations/TEMPLATE_MIMETYPE para agregar un tipo MIME sin una función "
+"de transformación."
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2520
@@ -7233,8 +7225,8 @@ msgid ""
 msgstr ""
 "Para crear una nueva función de transformación revise el archivo "
 "<tt>libraries/transformations/template_generator.sh</tt>. Para crear un "
-"nuevo tipo MIME vacío, revise el archivo "
-"<tt>libraries/transformations/template_generator_mimetype.sh</tt>."
+"nuevo tipo MIME vacío, revise el archivo <tt>libraries/transformations/"
+"template_generator_mimetype.sh</tt>."
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2525
@@ -7270,12 +7262,12 @@ msgid ""
 "transform a column accordingly to unsigned/zerofill/not_null/... properties."
 msgstr ""
 "<b>$meta</b> - Contiene un objeto con información sobre la columna. Los "
-"datos son obtenidos de la salida de la función <a "
-"href=\"http://www.php.net/mysql_fetch_field\">mysql_fetch_field()</a>. Esto "
-"significa que todas las propiedades de objeto descriptas en la <a "
-"href=\"http://www.php.net/mysql_fetch_field\">página del manual</a> están "
-"disponibles en esta variable y pueden ser utilizadas para transformar una "
-"columna según sus propiedades unsigned/zerofill/not_null/..."
+"datos son obtenidos de la salida de la función <a href=\"http://www.php.net/"
+"mysql_fetch_field\">mysql_fetch_field()</a>. Esto significa que todas las "
+"propiedades de objeto descriptas en la <a href=\"http://www.php.net/"
+"mysql_fetch_field\">página del manual</a> están disponibles en esta variable "
+"y pueden ser utilizadas para transformar una columna según sus propiedades "
+"unsigned/zerofill/not_null/..."
 
 #. type: Content of: <html><body><div><ol><li>
 #: orig-docs/Documentation.html:2538
@@ -7297,10 +7289,9 @@ msgid ""
 msgstr ""
 "Además, se deben de brindar funciones adicionales para proveer información "
 "al usuario sobre la transformación. Esta función debe tener el mismo nombre "
-"de la función de transformación con el agregado del sufijo "
-"<code>_info</code>. Esta función no toma parámetros y devuelve un array con "
-"información sobre la transformación. Las siguientes claves son utilizadas "
-"actualmente:"
+"de la función de transformación con el agregado del sufijo <code>_info</"
+"code>. Esta función no toma parámetros y devuelve un array con información "
+"sobre la transformación. Las siguientes claves son utilizadas actualmente:"
 
 #. type: Content of: <html><body><div><dl><dt>
 #: orig-docs/Documentation.html:2550
@@ -7371,10 +7362,10 @@ msgid ""
 "php\">Link section</a> on the official phpMyAdmin homepage for in-depth "
 "coverage of phpMyAdmin's features and or interface."
 msgstr ""
-"Porvafor revise la <a "
-"href=\"http://www.phpmyadmin.net/home_page/docs.php\">sección de enlaces</a> "
-"en la página principal de phpMyAdmin para una cobertura en profundidad de "
-"todas las funcionalidades de phpMyAdmin y/o su interfaz."
+"Porvafor revise la <a href=\"http://www.phpmyadmin.net/home_page/docs.php"
+"\">sección de enlaces</a> en la página principal de phpMyAdmin para una "
+"cobertura en profundidad de todas las funcionalidades de phpMyAdmin y/o su "
+"interfaz."
 
 #. type: Content of: <html><body><div><h3>
 #: orig-docs/Documentation.html:2573
@@ -7390,8 +7381,8 @@ msgid ""
 msgstr ""
 "<a href=\"#faq1_1\">1.1 Cada vez que se necesita una acción especifica mi "
 "servidor termina inesperadamente o phpMyAdmin envía una página en blanco o "
-"una página llena de caracteres crípticos a mi navegador, ¿qué puedo "
-"hacer?</a>"
+"una página llena de caracteres crípticos a mi navegador, ¿qué puedo hacer?</"
+"a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2580
@@ -7401,18 +7392,18 @@ msgid ""
 "<tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php "
 "configuration file."
 msgstr ""
-"Intenta configurando la directiva <a href=\"#cfg_OBGzip\" "
-"class=\"configrule\">$cfg['OBGzip']</a> a <tt>FALSE</tt> en tu archivo "
-"<i>config.inc.php</i> y la directiva <tt>zlib.output_compression</tt> a "
-"<tt>Off</tt> en tu archivo de configuración PHP."
+"Intenta configurando la directiva <a href=\"#cfg_OBGzip\" class=\"configrule"
+"\">$cfg['OBGzip']</a> a <tt>FALSE</tt> en tu archivo <i>config.inc.php</i> y "
+"la directiva <tt>zlib.output_compression</tt> a <tt>Off</tt> en tu archivo "
+"de configuración PHP."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2586
 msgid ""
 "<a href=\"#faq1_2\">1.2 My Apache server crashes when using phpMyAdmin.</a>"
 msgstr ""
-"<a href=\"#faq1_2\">1.2 Mi servidor Apache termina inesperadamente al utilizar "
-"phpMyAdmin.</a>"
+"<a href=\"#faq1_2\">1.2 Mi servidor Apache termina inesperadamente al "
+"utilizar phpMyAdmin.</a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2588
@@ -7458,8 +7449,8 @@ msgstr ""
 "<a href=\"#faq1_4\">1.4 Utilizando phpMyAdmin en <abbr title=\"Internet "
 "Information Services\">IIS</abbr> me muestra el siguiente mensaje de error: "
 "&quot;The specified <abbr title=\"Common Gateway Interface\">CGI</abbr> "
-"application misbehaved by not returning a complete set of <abbr "
-"title=\"HyperText Transfer Protocol\">HTTP</abbr> headers ...&quot;.</a>"
+"application misbehaved by not returning a complete set of <abbr title="
+"\"HyperText Transfer Protocol\">HTTP</abbr> headers ...&quot;.</a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2606
@@ -7469,9 +7460,9 @@ msgid ""
 "php.net/bug.php?id=12061\">bug report</a> from the official PHP bug database."
 msgstr ""
 "Simplemente te olvidaste de leer el archivo <i>install.txt</i> de la "
-"distribución de php. Revisa el último mensaje en este <a "
-"href=\"http://bugs.php.net/bug.php?id=12061\">reporte de error</a> de la base "
-"de datos de errores oficial de PHP."
+"distribución de php. Revisa el último mensaje en este <a href=\"http://bugs."
+"php.net/bug.php?id=12061\">reporte de error</a> de la base de datos de "
+"errores oficial de PHP."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2612
@@ -7483,8 +7474,8 @@ msgid ""
 msgstr ""
 "<a href=\"#faq1_5\">1.5 Utilizando phpMyAdmin en <abbr title=\"Internet "
 "Information Services\">IIS</abbr>, termina inesperadamente y/o genera muchos "
-"mensajes de error con <abbr title=\"HyperText Transfer "
-"Protocol\">HTTP</abbr>.</a>"
+"mensajes de error con <abbr title=\"HyperText Transfer Protocol\">HTTP</"
+"abbr>.</a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2617
@@ -7494,8 +7485,8 @@ msgid ""
 "Please use instead the cookie authentication mode."
 msgstr ""
 "Este es un problema conocido con los filtros <abbr title=\"Internet Server "
-"Application Programming Interface\">ISAPI</abbr> de PHP: no son muy estables. "
-"Porfavor utiliza el modo de autenticación por cookie."
+"Application Programming Interface\">ISAPI</abbr> de PHP: no son muy "
+"estables. Porfavor utiliza el modo de autenticación por cookie."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2623
@@ -7518,8 +7509,8 @@ msgstr ""
 "Esto parece ser un error de PWS. Filippo Simoncini encontró un atajo (en "
 "este momento no existe solución): elimina o comenta las declaraciones "
 "<tt>DOCTYPE</tt> (2 líneas) de los scripts <i>libraries/header.inc.php</i>, "
-"<i>libraries/header_printview.inc.php</i>, <i>index.php</i>, "
-"<i>navigation.php</i> y <i>libraries/common.lib.php</i>."
+"<i>libraries/header_printview.inc.php</i>, <i>index.php</i>, <i>navigation."
+"php</i> y <i>libraries/common.lib.php</i>."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2632
@@ -7528,8 +7519,8 @@ msgid ""
 "\"comma separated values\">CSV</abbr> export? It does not seem to work.</a>"
 msgstr ""
 "<a href=\"#faq1_7\">1.7 ¿Cómo puedo comprimir con GZip o BZip un volcado o "
-"exportación <abbr title=\"comma separated values\">CSV</abbr>? No parece estar "
-"funcionando.</a>"
+"exportación <abbr title=\"comma separated values\">CSV</abbr>? No parece "
+"estar funcionando.</a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2636
@@ -7540,10 +7531,10 @@ msgid ""
 "zlib</tt> and <tt>--with-bz2</tt>)."
 msgstr ""
 "Estas funcionalidades están basadas en las funciones PHP <tt>gzencode()</tt> "
-"y <tt>bzcompress()</tt> para ser más independientes de la plataforma "
-"(Unix/Windows, modo seguro o no, etc.). Por lo que PHP debe tener soporte "
-"para Zlib/Bzip2 (haber sido compilado con <tt>--with-zlib</tt> y <tt>--with-"
-"bz2</tt>)."
+"y <tt>bzcompress()</tt> para ser más independientes de la plataforma (Unix/"
+"Windows, modo seguro o no, etc.). Por lo que PHP debe tener soporte para "
+"Zlib/Bzip2 (haber sido compilado con <tt>--with-zlib</tt> y <tt>--with-bz2</"
+"tt>)."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2642
@@ -7586,8 +7577,8 @@ msgid ""
 "give ownership to the Apache server's user.group: <tt>chown apache.apache /"
 "tmp/php</tt>"
 msgstr ""
-"hacer al usuario y grupo de apache dueños del directorio: <tt>chown "
-"apache.apache /tmp/php</tt>"
+"hacer al usuario y grupo de apache dueños del directorio: <tt>chown apache."
+"apache /tmp/php</tt>"
 
 #. type: Content of: <html><body><div><ul><li>
 #: orig-docs/Documentation.html:2654
@@ -7661,10 +7652,10 @@ msgid ""
 msgstr ""
 "Desde la versión 2.2.4 phpMyAdmin soporta los servidores con restricciones "
 "open_basedir. Sin embargo, se necesita crear un directorio temporal y "
-"configurarlo como <a href=\"#cfg_TempDir\" "
-"class=\"configrule\">$cfg['TempDir']</a>. Los archivos subidos serán movidos "
-"allí y borrados luego de la ejecución de las consultas <abbr "
-"title=\"structured query language\">SQL</abbr>."
+"configurarlo como <a href=\"#cfg_TempDir\" class=\"configrule\">$cfg"
+"['TempDir']</a>. Los archivos subidos serán movidos allí y borrados luego de "
+"la ejecución de las consultas <abbr title=\"structured query language\">SQL</"
+"abbr>."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2685
@@ -7681,8 +7672,8 @@ msgid ""
 "The MySQL manual explains how to <a href=\"http://dev.mysql.com/doc/mysql/en/"
 "resetting-permissions.html\"> reset the permissions</a>."
 msgstr ""
-"El manual de MySQL explica cómo <a href=\"http://dev.mysql.com/doc/mysql/en"
-"/resetting-permissions.html\">reiniciar permisos</a>."
+"El manual de MySQL explica cómo <a href=\"http://dev.mysql.com/doc/mysql/en/"
+"resetting-permissions.html\">reiniciar permisos</a>."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2692
@@ -7710,10 +7701,9 @@ msgid ""
 "were named <tt>user</tt> and <tt>password</tt>. Please modify your column "
 "names to align with current standards."
 msgstr ""
-"En versiones MySQL anteriores, las columnas <tt>User</tt> y "
-"<tt>Password</tt> se llamaban <tt>user</tt> y <tt>password</tt>. Porfavor "
-"modifica los nombres de las columnas para adaptarse a los estándares "
-"actuales."
+"En versiones MySQL anteriores, las columnas <tt>User</tt> y <tt>Password</"
+"tt> se llamaban <tt>user</tt> y <tt>password</tt>. Porfavor modifica los "
+"nombres de las columnas para adaptarse a los estándares actuales."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2706
@@ -7721,9 +7711,9 @@ msgid ""
 "<a href=\"#faq1_16\">1.16 I cannot upload big dump files (memory, <abbr "
 "title=\"HyperText Transfer Protocol\">HTTP</abbr> or timeout problems).</a>"
 msgstr ""
-"<a href=\"#faq1_16\">1.16 No puedo subir largos archivos de volcado (problemas "
-"de memoria, <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> o tiempos "
-"de espera).</a>"
+"<a href=\"#faq1_16\">1.16 No puedo subir largos archivos de volcado "
+"(problemas de memoria, <abbr title=\"HyperText Transfer Protocol\">HTTP</"
+"abbr> o tiempos de espera).</a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2710
@@ -7771,12 +7761,12 @@ msgid ""
 "files from the temporary directory. More information is available in the <a "
 "href=\"#config\">Configuration section</a> of this document."
 msgstr ""
-"Revisa la funcionalidad de <a href=\"#cfg_UploadDir\" "
-"class=\"configrule\">$cfg['UploadDir']</a>. Esta permite subir archivos al "
-"servidor mediante scp, ftp o el método de transferencia de archivos que "
-"prefieras. PhpMyAdmin luego puede importar los archivos desde el directorio "
-"temporal. Hay más información disponible en la <a href=\"#config\">sección de "
-"configuración</a> de este documento."
+"Revisa la funcionalidad de <a href=\"#cfg_UploadDir\" class=\"configrule\">"
+"$cfg['UploadDir']</a>. Esta permite subir archivos al servidor mediante scp, "
+"ftp o el método de transferencia de archivos que prefieras. PhpMyAdmin luego "
+"puede importar los archivos desde el directorio temporal. Hay más "
+"información disponible en la <a href=\"#config\">sección de configuración</"
+"a> de este documento."
 
 #. type: Content of: <html><body><div><ul><li>
 #: orig-docs/Documentation.html:2730
@@ -7785,11 +7775,10 @@ msgid ""
 "BigDump</a>) to split the files before uploading. We cannot support this or "
 "any third party applications, but are aware of users having success with it."
 msgstr ""
-"Utilizando una aplicación (como <a "
-"href=\"http://www.ozerov.de/bigdump.php\">BigDump</a>) para dividir los "
-"archivos antes de subirlos. No podemos soportar ni esta ni ninguna otra "
-"aplicación de terceros, pero sabemos de usuarios que han tenido éxito con "
-"las mismas."
+"Utilizando una aplicación (como <a href=\"http://www.ozerov.de/bigdump.php"
+"\">BigDump</a>) para dividir los archivos antes de subirlos. No podemos "
+"soportar ni esta ni ninguna otra aplicación de terceros, pero sabemos de "
+"usuarios que han tenido éxito con las mismas."
 
 #. type: Content of: <html><body><div><ul><li>
 #: orig-docs/Documentation.html:2734
@@ -7800,8 +7789,7 @@ msgid ""
 msgstr ""
 "Si se tiene acceso a un shell (una línea de comandos), utiliza MySQL para "
 "importar los archivos directamente. Se puede hacer esto utilizando la órden "
-"&quot;source&quot; desde dentro de MySQL: <tt>source "
-"<i>archivo.sql</i></tt>."
+"&quot;source&quot; desde dentro de MySQL: <tt>source <i>archivo.sql</i></tt>."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2740
@@ -7823,9 +7811,9 @@ msgid ""
 "latter one should be used unless you have a good reason not to do so."
 msgstr ""
 "Desde phpMyADmin 3.0.x sólo están soportadors MySQL 5.0.1 y superior. Para "
-"versiones anteriores de MySQL necesitarás utilizar las últimas versiones "
-"2.x. phpMyAdmin pede conectarse al servidor MySQL utilizando la <a "
-"href=\"http://php.net/mysql\">extensión PHP MySQL clásica</a> así como también "
+"versiones anteriores de MySQL necesitarás utilizar las últimas versiones 2."
+"x. phpMyAdmin pede conectarse al servidor MySQL utilizando la <a href="
+"\"http://php.net/mysql\">extensión PHP MySQL clásica</a> así como también "
 "con la <a href=\"http://php.net/mysqli\">extensión PHP MySQL mejorada "
 "(MySQLi)</a> que está disponible en PHP 5.0. Esta última debería de ser "
 "utilizada a menos que tengas una buena razón para no hacerlo."
@@ -7843,8 +7831,8 @@ msgstr ""
 "extensión MySQL de tu elección con la biblioteca cliente de MySQL de al "
 "menos la misma versión menor ya que aquellas incorporadas con algunas "
 "distribuciones de PHP es relativamente anticuada y podría causar problemas "
-"(<a href=\"#faq1_17a\"> revise <abbr title=\"Frequently Asked "
-"Questions\">FAQ</abbr> 1.17a</a>)."
+"(<a href=\"#faq1_17a\"> revise <abbr title=\"Frequently Asked Questions"
+"\">FAQ</abbr> 1.17a</a>)."
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2755
@@ -7859,9 +7847,10 @@ msgid ""
 "returns the error message, &quot;Client does not support authentication "
 "protocol requested by server; consider upgrading MySQL client&quot;</a>"
 msgstr ""
-"<a href=\"#faq1_17a\">1.17a No me puedo conectar a mi servidor MySQL. Siempre "
-"devuelve el mensaje de error &quot;Client does not support authentication "
-"protocol requested by server; consider upgrading MySQL client&quot;</a>"
+"<a href=\"#faq1_17a\">1.17a No me puedo conectar a mi servidor MySQL. "
+"Siempre devuelve el mensaje de error &quot;Client does not support "
+"authentication protocol requested by server; consider upgrading MySQL "
+"client&quot;</a>"
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2763
@@ -7875,8 +7864,8 @@ msgstr ""
 "Intentaste acceder a MySQL con una versión anticuada de la biblioteca "
 "cliente de MySQL. La versión de la misma puede ser revisada en la salida de "
 "phpinfo(). En general, debería de tener la misma versión menor que el "
-"servidor como se menciona en la <a href=\"#faq1_17\"><abbr title=\"Frequently "
-"Asked Questions\">FAQ</abbr> 1.17</a>."
+"servidor como se menciona en la <a href=\"#faq1_17\"><abbr title="
+"\"Frequently Asked Questions\">FAQ</abbr> 1.17</a>."
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2769
@@ -7893,14 +7882,13 @@ msgid ""
 msgstr ""
 "El problema es generalmente causado por utilizar uan versión de MySQL 4.1 o "
 "más nueva. MySQL cambió el sistema de autenticación y PHP está intentando "
-"utilizar el método anterior. La solución apropiada es utilizar la <a "
-"href=\"http://www.php.net/mysqli\">extensión PHP mysqli</a> con la biblioteca "
+"utilizar el método anterior. La solución apropiada es utilizar la <a href="
+"\"http://www.php.net/mysqli\">extensión PHP mysqli</a> con la biblioteca "
 "cliente apropriada que coincida con la instalación MySQL. La extensión "
-"elegida es especificada en <a href=\"#cfg_Servers_extension\" "
-"class=\"configrule\">$cfg['Servers'][$i]['extension']</a>. Para más "
-"información (y varios atajos), revise <a "
-"href=\"http://dev.mysql.com/doc/mysql/en/old-client.html\">la documentación de "
-"MySQL</a>."
+"elegida es especificada en <a href=\"#cfg_Servers_extension\" class="
+"\"configrule\">$cfg['Servers'][$i]['extension']</a>. Para más información (y "
+"varios atajos), revise <a href=\"http://dev.mysql.com/doc/mysql/en/old-"
+"client.html\">la documentación de MySQL</a>."
 
 #. type: Content of: <html><body><div><h4>
 #: orig-docs/Documentation.html:2779
@@ -7942,8 +7930,8 @@ msgid ""
 "<a href=\"#faqmysql\">1.20 I receive the error &quot;cannot load MySQL "
 "extension, please check PHP Configuration&quot;.</a>"
 msgstr ""
-"<a href=\"#faqmysql\">1.20 Recibo el error &quot;cannot load MySQL extension, "
-"please check PHP Configuration&quot;</a>."
+"<a href=\"#faqmysql\">1.20 Recibo el error &quot;cannot load MySQL "
+"extension, please check PHP Configuration&quot;</a>."
 
 #. type: Content of: <html><body><div><p>
 #: orig-docs/Documentation.html:2794

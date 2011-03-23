@@ -73,10 +73,9 @@ phpMyAdmin en SourceForge</a></li>
 <h2 id="require">Requisitos</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li>Ud. necesita la versión de PHP 5.2.0 o posterior, con soporte de
-<tt>sesión</tt> (<a href="#faq1_31">vea <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.31</a>)  y la extensión "Standard PHP Library"
-(SPL).
+        <ul><li>You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a
+href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
+1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
                 </li>
 		<li>Para subir archivos ZIP, necesita la extensión <tt>zip</tt> de PHP.</li>
         <li>Para manejar adecuadamente las cadenas multibyte (por ejemplo UTF-8,
@@ -2949,84 +2948,87 @@ href="http://www.ozerov.de/bigdump.php">BigDump</a>) para dividir los
 archivos antes de subirlos. No podemos soportar ni esta ni ninguna otra
 aplicación de terceros, pero sabemos de usuarios que han tenido éxito con
 las mismas.</li>
-    <li>If you have shell (command line) access, use MySQL to import the files
-directly. You can do this by issuing the &quot;source&quot; command from
-within MySQL: <tt>source <i>filename.sql</i></tt>.</li>
+    <li>Si se tiene acceso a un shell (una línea de comandos), utiliza MySQL para
+importar los archivos directamente. Se puede hacer esto utilizando la órden
+&quot;source&quot; desde dentro de MySQL: <tt>source
+<i>archivo.sql</i></tt>.</li>
 </ul>
 
 <h4 id="faq1_17">
-    <a id="faqmysqlversions" href="#faq1_17">1.17 Which MySQL versions does
-phpMyAdmin support?</a></h4>
+    <a id="faqmysqlversions" href="#faq1_17">1.17 ¿Qué versiones de servidor
+MySQL son soportadas por phpMyAdmin?</a></h4>
 
-<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
-MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
-connect to your MySQL server using PHP's classic <a
-href="http://php.net/mysql">MySQL extension</a> as well as the <a
-href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have a good
-reason not to do so.<br />
-    When compiling PHP, we strongly recommend that you manually link the MySQL
-extension of your choice to a MySQL client library of at least the same
-minor version since the one that is bundled with some PHP distributions is
-rather old and might cause problems <a href="#faq1_17a"> (see <abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
-    MariaDB is also supported (versions 5.1 and 5.2 were tested).
+<p> Desde phpMyADmin 3.0.x sólo están soportadors MySQL 5.0.1 y superior. Para
+versiones anteriores de MySQL necesitarás utilizar las últimas versiones
+2.x. phpMyAdmin pede conectarse al servidor MySQL utilizando la <a
+href="http://php.net/mysql">extensión PHP MySQL clásica</a> así como también
+con la <a href="http://php.net/mysqli">extensión PHP MySQL mejorada
+(MySQLi)</a> que está disponible en PHP 5.0. Esta última debería de ser
+utilizada a menos que tengas una buena razón para no hacerlo.<br />
+    Al compilar PHP, recomendamos fuertemente que enlaces manualmente la
+extensión MySQL de tu elección con la biblioteca cliente de MySQL de al
+menos la misma versión menor ya que aquellas incorporadas con algunas
+distribuciones de PHP es relativamente anticuada y podría causar problemas
+(<a href="#faq1_17a"> revise <abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.17a</a>).<br /><br />
+    MariaDB también está soportado (se probaron las versiones 5.1 y 5.2).
     </p>
 
 <h5 id="faq1_17a">
-    <a href="#faq1_17a">1.17a I cannot connect to the MySQL server. It always
-returns the error message, &quot;Client does not support authentication
+    <a href="#faq1_17a">1.17a No me puedo conectar a mi servidor MySQL. Siempre
+devuelve el mensaje de error &quot;Client does not support authentication
 protocol requested by server; consider upgrading MySQL client&quot;</a></h5>
 
-<p> You tried to access MySQL with an old MySQL client library. The version of
-your MySQL client library can be checked in your phpinfo() output.  In
-general, it should have at least the same minor version as your server - as
-mentioned in <a href="#faq1_17"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.17</a>.<br /><br />
+<p> Intentaste acceder a MySQL con una versión anticuada de la biblioteca
+cliente de MySQL. La versión de la misma puede ser revisada en la salida de
+phpinfo(). En general, debería de tener la misma versión menor que el
+servidor como se menciona en la <a href="#faq1_17"><abbr title="Frequently
+Asked Questions">FAQ</abbr> 1.17</a>.<br /><br />
 
-    This problem is generally caused by using MySQL version 4.1 or newer. MySQL
-changed the authentication hash and your PHP is trying to use the old
-method.  The proper solution is to use the <a
-href="http://www.php.net/mysqli">mysqli extension</a> with the proper client
-library to match your MySQL installation. Your chosen extension is specified
-in <a href="#cfg_Servers_extension"
-class="configrule">$cfg['Servers'][$i]['extension']</a>.  More information
-(and several workarounds) are located in the <a
-href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL
-Documentation</a>.
+    El problema es generalmente causado por utilizar uan versión de MySQL 4.1 o
+más nueva. MySQL cambió el sistema de autenticación y PHP está intentando
+utilizar el método anterior. La solución apropiada es utilizar la <a
+href="http://www.php.net/mysqli">extensión PHP mysqli</a> con la biblioteca
+cliente apropriada que coincida con la instalación MySQL. La extensión
+elegida es especificada en <a href="#cfg_Servers_extension"
+class="configrule">$cfg['Servers'][$i]['extension']</a>. Para más
+información (y varios atajos), revise <a
+href="http://dev.mysql.com/doc/mysql/en/old-client.html">la documentación de
+MySQL</a>.
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
+    <a href="#faq1_18">1.18 (eliminada).</a></h4>
 
 <h4 id="faq1_19">
-    <a href="#faq1_19">1.19 I can't run the &quot;display relations&quot;
-feature because the script seems not to know the font face I'm using!</a></h4>
+    <a href="#faq1_19">1.19 No puedo ejecutar la funcionalidad &quot;Mostrar
+relaciones&quot; porque el script no parece reconocer la fuente que estoy
+utilizando</a></h4>
 
-<p> The &quot;FPDF&quot; library we're using for this feature requires some
-special files to use font faces.<br />
-    Please refers to the <a href="http://www.fpdf.org/">FPDF manual</a> to build
-these files.</p>
+<p> La biblioteca &quot;FPDF&quot; que utilizamos para esta funcionalidad
+necesita unos archivos especiales para utilizar diferentes fuentes.<br />
+    Refiérase al <a href="http://www.fpdf.org/">manual de FPDF</a> para crear
+estos archivos.</p>
 
 <h4 id="faqmysql">
-    <a href="#faqmysql">1.20 I receive the error &quot;cannot load MySQL
-extension, please check PHP Configuration&quot;.</a></h4>
+    <a href="#faqmysql">1.20 Recibo el error &quot;cannot load MySQL extension,
+please check PHP Configuration&quot;</a>.</h4>
 
-<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
-&quot;MySQL extension&quot;. This extension may be part of the PHP
-distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
-name is probably <i>mysql.so</i> or <i>php_mysql.dll</i>. phpMyAdmin tried
-to load the extension but failed.<br /><br />
+<p> Para conectarse a un servidor MySQL, PHP necesita un conjunto de funciones
+MySQL llamados &quot;extensión MySQL&quot;. Esta extensión puede ser parte
+de la distribución de PHP (compilada en ella), de lo contrario necesita ser
+cargada dinámicamente. Su nombre probablemente sea <i>mysql.so</i> o
+<i>php_mysql.dll</i>. phpMyAdmin intentó cargar la extensión pero falló.<br /><br />
 
-    Usually, the problem is solved by installing a software package called
-&quot;PHP-MySQL&quot; or something similar.</p>
+    Normalmente el problema se soluciona instalando un paquete de software
+llamado &quot;PHP-MySQL&quot; o similar.</p>
 
 <h4 id="faq1_21">
-    <a href="#faq1_21">1.21 I am running the <abbr title="Common Gateway
-Interface">CGI</abbr> version of PHP under Unix, and I cannot log in using
-cookie auth.</a></h4>
+    <a href="#faq1_21">1.21 Estoy ejecutando la versión <abbr title="Common
+Gateway Interface">CGI</abbr> de PHP sobre Unix y no puedo iniciar sesión
+utilizando autenticación por cookies.</a></h4>
 
-<p> In <i>php.ini</i>, set <tt>mysql.max_links</tt> higher than 1.</p>
+<p> En <i>php.ini</i>, configure <tt>mysql.max_links</tt> a un valor mayor a 1.</p>
 
 <h4 id="faq1_22">
     <a href="#faq1_22">1.22 I don't see the &quot;Location of text file&quot;

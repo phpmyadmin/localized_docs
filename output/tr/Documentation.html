@@ -74,9 +74,9 @@ phpMyAdmin proje sayfası</a></li>
 <h2 id="require">Gereksinimler</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li><tt>Oturum</tt> desteğiyle, PHP 5.2.0 veya daha yenisine ve Standart PHP
-Kütüphanesi (SPL) uzantısına ihtiyacınız var (<a href="#faq1_31"> <abbr
-title="Sıkça Sorulan Sorular">SSS</abbr> 1.31'e bakın</a>).
+        <ul><li>You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a
+href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
+1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
                 </li>
 		<li>ZIP dosyalarıının gönderiminin desteklenmesi için PHP <tt>zip</tt>
 uzantısına ihtiyacınız var.</li>
@@ -1264,51 +1264,51 @@ kullanıcı tanımıyla istenmeden yapılan erişimi önler.
     </dd>
     <dt id="servers_allowdeny_order">
         <span
-id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
+id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['sıra']</span>
 dizgisi
     </dt>
     <dd>Eğer kural sıranız boşsa, sonrasında <abbr title="Internet
-Protocol">IP</abbr> yetki etkisizleştirilir.<br /><br />
+Protocol">IP</abbr> yetkisi etkisizleştirilir.<br /><br />
 
-        Eğer kural sıranız <tt>'reddet,izin ver'</tt> olarak ayarlanırsa sonrasında
+        Eğer kural sıranız <tt>'deny,allow'</tt> olarak ayarlanırsa sonrasında
 sistem tüm reddet kurallarının peşinden izleyen izin ver kuralını
-uygular. Varsayılan olarak erişime izin verilir. Reddet komutuna uymayan ya
-da İzin ver komutuna uyan herhangi bir istemciye, sunucuya erişim izni
-verilecektir. <br /><br />
+uygular. Varsayılan olarak erişime izin verilir. Deny (Reddet) komutuna
+uymayan ya da Allow (İzin ver) komutuna uyan herhangi bir istemciye,
+sunucuya erişim izni verilecektir. <br /><br />
 
-        Eğer kural sıranız <tt>'izin ver,reddet'</tt> olarak ayarlanırsa sonrasında
+        Eğer kural sıranız <tt>'allow,deny'</tt> olarak ayarlanırsa sonrasında
 sistem tüm izin ver kurallarının peşinden izleyen reddet kuralını
-uygular. Varsayılan olarak erişim reddedilir. İzin ver komutuna uymayan ya
-da Reddet komutuna uyan herhangi bir istemcinin, sunucuya erişimi
-reddedilecektir.<br /><br />
+uygular. Varsayılan olarak erişim reddedilir. Allow (İzin ver) yönergesine
+uymayan ya da Denny (Reddet) yönergesine uyan herhangi bir istemcinin,
+sunucuya erişimi reddedilecektir.<br /><br />
 
-        Eğer kural sıranız 'açık' olarak ayarlıysa, yetki aynı tarzda 'reddet,izin
-ver' kural sırasında yapılır, eklenen kısıtlama ile, anamakineniz/kullanıcı
-adınız birleşimi, <i>izin ver</i> kuralları içinde listelenmek
-<b>zorundadır</b> ve <i>reddet</i> kuralları içinde listelenmemelidir. Bu,
-İzin Ver/Reddet kuralları kullanımının <b>en</b> güvenli anlamıdır ve
-herhangi bir sıra ayarlamaksızın izin ver ve reddet kurallarını belirleyerek
-Apache'de kullanılabilir.<br /><br />
+        Eğer kural sıranız 'explicit' olarak ayarlıysa, yetki aynı tarzda
+'deny,allow' kural sırasında yapılır, eklenen kısıtlama ile,
+anamakineniz/kullanıcı adınız birleşimi, <i>izin ver</i> kuralları içinde
+listelenmek <b>zorundadır</b> ve <i>reddet</i> kuralları içinde
+listelenmemelidir. Bu, Allow/Deny (İzin Ver/Reddet) kuralları kullanımının
+<b>en</b> güvenli anlamıdır ve herhangi bir sıra ayarlamaksızın izin ver ve
+reddet kurallarını belirleyerek Apache'de kullanılabilir.<br /><br />
 
         Lütfen aynı zamanda IP adresi proksiler arkasından algılamak için <a
 href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a>'e bakın.
     </dd>
     <dt id="servers_allowdeny_rules">
         Dizgilerin <span
-id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
+id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['kurallar']</span>
 dizisi
     </dt>
-    <dd>The general format for the rules is as such:
+    <dd>Kurallar için genel biçim şöyledir:
 
         <pre>
-&lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
+&lt;'allow' | 'deny'&gt; &lt;kullanıcı adı&gt; [from] &lt;ipmaskesi&gt;
 </pre>
 
-        If you wish to match all users, it is possible to use a <tt>'%'</tt> as a
-wildcard in the <i>username</i> field.<br />
-        There are a few shortcuts you can use in the <i>ipmask</i> field as well
-(please note that those containing SERVER_ADDRESS might not be available on
-all webservers):
+        Eğer tüm kullanıcılarla uymasını istiyorsanız, <i>kullanıcı adı</i> alanında
+joker olarak <tt>'%'</tt> kullanmanız mümkündür.<br />
+        <i>İpmaskesi</i> alanında dahi kullanabileceğiniz birkaç kısayol vardır
+(lütfen unutmayın içerdiği SERVER_ADDRESS, tüm web sunucularında mevcut
+olmayabilir):
         <pre>
 'all' -&gt; 0.0.0.0/0
 'localhost' -&gt; 127.0.0.1/8
@@ -1317,23 +1317,23 @@ all webservers):
 'localnetC' -&gt; SERVER_ADDRESS/24
 </pre>
 
-        Having an empty rule list is equivalent to either using <tt>'allow % from
-all'</tt> if your rule order is set to <tt>'deny,allow'</tt> or <tt>'deny %
-from all'</tt> if your rule order is set to <tt>'allow,deny'</tt> or
-<tt>'explicit'</tt>.<br /><br />
+        Boş kural listesine sahip olmak ya kural sıranız <tt>'deny,allow'</tt>
+olarak ayarlıysa <tt>'allow % from all'</tt> kullanmaya ya da kural sıranız
+<tt>'allow,deny'</tt> olarak ayarlıysa <tt>'deny % from all'</tt> kullanmaya
+eşittir.<br /><br />
 
-        For the <abbr title="Internet Protocol">IP</abbr> matching system, the
-following work:<br />
-        <tt>xxx.xxx.xxx.xxx</tt> (an exact <abbr title="Internet Protocol">IP</abbr>
-address)<br />
-        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (an <abbr title="Internet Protocol">IP</abbr>
-address range)<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing type <abbr
-title="Internet Protocol">IP</abbr> addresses)<br />
-        But the following does not work:<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (partial <abbr title="Internet
-Protocol">IP</abbr> address range)<br />
-        Also IPv6 addresses are not supported.
+        abbr title="Internet Protocol">IP</abbr> eşleşme sistemi için aşağıdakiler
+çalışır:<br />
+        <tt>xxx.xxx.xxx.xxx</tt> (tam <abbr title="Internet Protocol">IP</abbr>
+adresi)<br />
+        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (<abbr title="Internet Protocol">IP</abbr>
+adresi aralığı)<br />
+        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing türü <abbr
+title="Internet Protocol">IP</abbr> adresleri)<br />
+        Ama aşağıdaki çalışmaz:<br />
+        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (kısmi <abbr title="Internet
+Protocol">IP</abbr> adresi aralığı)<br />
+        Aynı zamanda IPv6 adresleri desteklenmez.
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
 boolean</dt>
