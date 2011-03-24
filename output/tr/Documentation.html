@@ -74,9 +74,10 @@ phpMyAdmin proje sayfası</a></li>
 <h2 id="require">Gereksinimler</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li>You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a
-href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
-1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
+        <ul><li>Standart PHP Kütüphanesi (SPL) uzantısı ve JSON desteği ve <tt>Oturum</tt>
+desteğiyle (<a href="#faq1_31"> <abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 1.31'e bakın</a>) birlikte PHP 5.2.0 veya daha yenisine
+ihtiyacınız var.
                 </li>
 		<li>ZIP dosyalarıının gönderiminin desteklenmesi için PHP <tt>zip</tt>
 uzantısına ihtiyacınız var.</li>
@@ -697,7 +698,7 @@ class="configrule">$cfg['Servers'][$i]['host']</a> içinde
 deneyin. Sonuçlanan bilgi arasında görüntülenen, kullanılan soket olacaktır.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] boolean</dt>
-    <dd>MySQL sunucusuna bağlanmak için SSL etkinleştirmek
+    <dd>MySQL sunucusuna bağlanmak için SSL etkinleştirmek.
     </dd>
 
     <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] dizgisi</dt>
@@ -866,7 +867,7 @@ düzenleyebilirsiniz.<br />
 umursamıyorsanız, tüm diğer veritabanlarını belirlemeniz
 gerekmez. phpMyAdmin'e, en üstte db3 ve db4'ü ve kalanını alfabetik sırada
 görüntüle diye söylemek yerine, kullanmanız gereken:
-<tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt></dd>
+<tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt>.</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> dizgisi
     </dt>
@@ -1322,7 +1323,7 @@ olarak ayarlıysa <tt>'allow % from all'</tt> kullanmaya ya da kural sıranız
 <tt>'allow,deny'</tt> olarak ayarlıysa <tt>'deny % from all'</tt> kullanmaya
 eşittir.<br /><br />
 
-        abbr title="Internet Protocol">IP</abbr> eşleşme sistemi için aşağıdakiler
+        <abbr title="Internet Protocol">IP</abbr> eşleşme sistemi için aşağıdakiler
 çalışır:<br />
         <tt>xxx.xxx.xxx.xxx</tt> (tam <abbr title="Internet Protocol">IP</abbr>
 adresi)<br />
@@ -1337,13 +1338,14 @@ Protocol">IP</abbr> adresi aralığı)<br />
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
 boolean</dt>
-    <dd>Disable using <tt>INFORMATION_SCHEMA</tt> to retrieve information (use
-<tt>SHOW</tt> commands instead), because of speed issues when many databases
-are present. Currently used in some parts of the code, more to come.
+    <dd>Bilgiyi almak için <tt>INFORMATION_SCHEMA</tt> (<tt>SHOW</tt> komutlarının
+yerime kullanın) kullanımı etkisizdir, birçok veritabanı sunulduğundaki hız
+sorunlari nedeniyledir. Şimdilik kodun bazı kısımlarında kullanılır, daha
+fazlası gelecektir.
     </dd>
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
-string</dt>
+dizgisi</dt>
     <dd>On a server with a huge number of databases, the default <tt>SHOW
 DATABASES</tt> command used to fetch the name of available databases will
 probably be too slow, so it can be replaced by faster commands (see
