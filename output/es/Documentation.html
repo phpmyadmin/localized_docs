@@ -73,9 +73,10 @@ phpMyAdmin en SourceForge</a></li>
 <h2 id="require">Requisitos</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li>You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a
-href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
-1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
+        <ul><li>Necesita PHP versión 5.2.0 o posterior, con soporte de <tt>sesión</tt> (<a
+href="#faq1_31">revise la <abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.31</a>), la extensión "Standard PHP Library" (SPL) y
+soporte JSON.
                 </li>
 		<li>Para subir archivos ZIP, necesita la extensión <tt>zip</tt> de PHP.</li>
         <li>Para manejar adecuadamente las cadenas multibyte (por ejemplo UTF-8,
@@ -3031,87 +3032,92 @@ utilizando autenticación por cookies.</a></h4>
 <p> En <i>php.ini</i>, configure <tt>mysql.max_links</tt> a un valor mayor a 1.</p>
 
 <h4 id="faq1_22">
-    <a href="#faq1_22">1.22 I don't see the &quot;Location of text file&quot;
-field, so I cannot upload.</a></h4>
+    <a href="#faq1_22">1.22 No puedo ver el campo &quot;Ubicación del archivo de
+texto&quot; por lo que no puedo subirlo.</a></h4>
 
-<p> This is most likely because in <i>php.ini</i>, your <tt>file_uploads</tt>
-parameter is not set to &quot;on&quot;.</p>
+<p> Esto es probablemente porque en <i>php.ini</i> el parámetro
+<tt>file_uploads</tt> no está configurado a &quot;on&quot;.</p>
 
 <h4 id="faq1_23">
-    <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
-create a new table the table and column names are changed to lowercase!</a></h4>
+    <a href="#faq1_23">1.23 Estoy ejecutando MySQL en una máquina cde 32 bits
+con Windows. ¡Cada vez que creo una nueva tabla, tanto la tabla como sus
+columnas cambian a minúsculas!</a></h4>
 
-<p> This happens because the MySQL directive <tt>lower_case_table_names</tt>
-defaults to 1 (<tt>ON</tt>) in the Win32 version of MySQL. You can change
-this behavior by simply changing the directive to 0 (<tt>OFF</tt>):<br />
-    Just edit your <tt>my.ini</tt> file that should be located in your Windows
-directory and add the following line to the group [mysqld]:</p>
+<p> Esto sucede porque la directiva MySQL <tt>lower_case_table_names</tt> tiene
+un valor predeterminador de 1 (<tt>ON</tt>) en la versión de Windows 32 bits
+de MySQL. Se puede cambiar este comportamiento simplemente cambiando la
+directiva a 0 (<tt>OFF</tt>):<br />
+    Simplemente editá el archivo <tt>my.ini</tt> que debería de estar ubicado en
+el directorio correspondiente de Windows y agrega la siguiente línea al
+grupo [mysqld]:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
-<p> Next, save the file and restart the MySQL service. You can always check the
-value of this directive using the query</p>
+<p> Luego guarda el archivo y reinicia el servicio MySQL. Siempre puedes revisar
+el valor de esta directiva utilizando la consulta</p>
 
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
+    <a href="#faq1_24">1.24 (eliminada).</a></h4>
 
 <h4 id="faq1_25">
-    <a href="#faq1_25">1.25 I am running Apache with mod_gzip-1.3.26.1a on
-Windows XP, and I get problems, such as undefined variables when I run a
-<abbr title="structured query language">SQL</abbr> query.</a></h4>
+    <a href="#faq1_25">1.25 Estoy ejecutando Apache con mod_gzip-1.3.26.1a en
+Windows XP y tengo problemas como variables no definidas cuando ejecuto
+consultas <abbr title="structured query language">SQL</abbr>.</a></h4>
 
-<p> A tip from Jose Fandos: put a comment on the following two lines in
-httpd.conf, like this:</p>
+<p> Un consejo de Jose FAndos: convierte a comentarios las siguientes líneas en
+httpd.conf:</p>
 
 <pre>
 # mod_gzip_item_include file \.php$
 # mod_gzip_item_include mime "application/x-httpd-php.*"
 </pre>
 
-<p> as this version of mod_gzip on Apache (Windows) has problems handling PHP
-scripts. Of course you have to restart Apache.</p>
+<p> ya que esta versión de mod_gzip sobre Apache (en Windows) tiene problemas
+para manejar scripts PHP. Obviamente, necesitas reiniciar Apache.</p>
 
 <h4 id="faq1_26">
-    <a href="#faq1_26">1.26 I just installed phpMyAdmin in my document root of
-<abbr title="Internet Information Services">IIS</abbr> but I get the error
-&quot;No input file specified&quot; when trying to run phpMyAdmin.</a></h4>
+    <a href="#faq1_26">1.26 Acabo de instalar phpMyAdmin en la razí de
+documentos de <abbr title="Internet Information Services">IIS</abbr> pero
+btengo el error &quot;No se especificó archivo de entrada&quot; al tratar de
+ejecutar phpMyAdmin.</a></h4>
 
-<p> This is a permission problem. Right-click on the phpmyadmin folder and
-choose properties. Under the tab Security, click on &quot;Add&quot; and
-select the user &quot;IUSR_machine&quot; from the list. Now set his
-permissions and it should work.</p>
+<p> Este es un problema de permisos. Pulsa con el botón derecho en la carpeta de
+phpmyadmin y luego en propiedades. En la pestaña de Seguridad, pulsa en
+&quot;Agregar&quot; y selecciona el usuario &quot;IUSR_machine&quot; de la
+lista. Ahora asigna estos permisos y debería de funcionar.</p>
 
 <h4 id="faq1_27">
-    <a href="#faq1_27">1.27 I get empty page when I want to view huge page (eg.
-db_structure.php with plenty of tables).</a></h4>
+    <a href="#faq1_27">1.27 Obtengo una página vacía cuando quiero ver una
+página enorme (por ejemplo: db_structure.php con muchas tablas).</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
-GZIP output buffering is enabled. If you turn off it (by <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
-<i>config.inc.php</i>), it should work. This bug will be fixed in
+<p> Esto es un <a href="http://bugs.php.net/21079">error de PHP</a> que ocurre
+cuando los búfers de salida GZIP están activos. Si lo desactivas (con <a
+href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> en
+<i>config.inc.php</i>), debería de funcionar. Este error será corregido en
 PHP&nbsp;5.0.0.</p>
 
 <h4 id="faq1_28">
-    <a href="#faq1_28">1.28 My MySQL server sometimes refuses queries and
-returns the message 'Errorcode: 13'. What does this mean?</a></h4>
+    <a href="#faq1_28">1.28 Mi servidor MySQL a veces rechaza consultas y
+devuelve el mensaje 'Errorcode: 13'. ¿Qué significa?</a></h4>
 
-<p> This can happen due to a MySQL bug when having database / table names with
-upper case characters although <tt>lower_case_table_names</tt> is set to 1.
-To fix this, turn off this directive, convert all database and table names
-to lower case and turn it on again. Alternatively, there's a bug-fix
-available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
+<p> Esto puede pasar por un error de MySQL cuando existen nombres de bases de
+datos o tablas con mayúsculas a pesar de tener la directiva
+<tt>lower_case_table_names</tt> configurada a 1. Para solucionar esto,
+desactiva esta directiva, cambia los nombres de bases de datos y tablas a
+minúsculas y re-activa la directiva. Alternativamente, el error está
+corregido desde MySQL&nbsp;3.23.56/4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 When I create a table or modify a column, I get an
-error and the columns are duplicated.</a></h4>
+    <a href="#faq1_29">1.29 Cuando creo una tabla o modifico una columna obtengo
+un error y se duplican las columnas.</a></h4>
 
-<p> It is possible to configure Apache in such a way that PHP has problems
-interpreting .php files.</p>
+<p> Es posible que Apache esté configurado de forma que PHP tenga problemas
+interpretando archivos .php.</p>
 
-<p> The problems occur when two different (and conflicting) set of directives
-are used:</p>
+<p> El problema ocurre cuando se utilizan dos conjuntos de directivas diferentes
+(y conflictivas):</p>
 
 <pre>
 SetOutputFilter PHP
@@ -3122,11 +3128,11 @@ SetInputFilter PHP
 
 <pre>AddType application/x-httpd-php .php</pre>
 
-<p> In the case we saw, one set of directives was in
-<tt>/etc/httpd/conf/httpd.conf</tt>, while the other set was in
+<p> En el caso que vimos, un conjunto de directivas estaba en
+<tt>/etc/httpd/conf/httpd.conf</tt> mientras que el otro estaba en
 <tt>/etc/httpd/conf/addon-modules/php.conf</tt>.<br />
-    The recommended way is with <tt>AddType</tt>, so just comment out the first
-set of lines and restart Apache:</p>
+    La forma recomendada es con <tt>AddType</tt>, por lo que simplemente comenta
+el primer conjunto de líneas y reinicia Apache:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -3134,66 +3140,67 @@ set of lines and restart Apache:</p>
 </pre>
 
 <h4 id="faq1_30">
-    <a href="#faq1_30">1.30 I get the error &quot;navigation.php: Missing
+    <a href="#faq1_30">1.30 Obtengo el error &quot;navigation.php: Missing
 hash&quot;.</a></h4>
 
-<p> This problem is known to happen when the server is running Turck MMCache but
-upgrading MMCache to version 2.3.21 solves the problem.</p>
+<p> Este problema es conocido cuando el servidor está ejecutando Turck MMCache
+pero se soluciona actualizando MMCache a la versión 2.3.21.</p>
 
 <h4 id="faq1_31">
-    <a href="#faq1_31">1.31 Does phpMyAdmin support php5?</a></h4>
+    <a href="#faq1_31">1.31 ¿phpMyAdmin soporta php5?</a></h4>
 
-<p>Yes.</p>
+<p>Si.</p>
 <p>
-    Since release 3.0 only PHP 5.2 and newer. For older PHP versions 2.9 branch
-is still maintained.
+    Desde la versión 3.0, sólo PHP 5.2 o superior. Para versiones anteriores de
+PHP, la rama 2.9 aún es mantenida.
 </p>
 
 <h4 id="faq1_32">
-    <a href="#faq1_32">1.32 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with <abbr title="Internet Information
+    <a href="#faq1_32">1.32 ¿Puedo utilizar autenticación <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> con <abbr title="Internet Information
 Services">IIS</abbr>?</a></h4>
 
-<p> Yes. This procedure was tested with phpMyAdmin 2.6.1, PHP 4.3.9 in <abbr
-title="Internet Server Application Programming Interface">ISAPI</abbr> mode
-under <abbr title="Internet Information Services">IIS</abbr> 5.1.</p>
+<p> Sí. Este procedimiento fue probado con phpMyAdmin 2.6.1, PHP 4.3.9 en modo
+<abbr title="Internet Server Application Programming Interface">ISAPI</abbr>
+sobre <abbr title="Internet Information Services">IIS</abbr> 5.1.</p>
 
-<ol><li>In your <tt>php.ini</tt> file, set <tt>cgi.rfc2616_headers = 0</tt></li>
-    <li>In <tt>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
-Access</tt> dialog box, check the <tt>Anonymous access</tt> checkbox and
-uncheck any other checkboxes (i.e. uncheck <tt>Basic authentication</tt>,
-<tt>Integrated Windows authentication</tt>, and <tt>Digest</tt> if it's
-enabled.) Click <tt>OK</tt>.</li>
-    <li>In <tt>Custom Errors</tt>, select the range of <tt>401;1</tt> through
-<tt>401;5</tt> and click the <tt>Set to Default</tt> button.</li>
+<ol><li>En el archivo <tt>php.ini</tt>, agrega <tt>cgi.rfc2616_headers = 0</tt></li>
+    <li>En la caja de diálogo <tt>Web Site Properties -&gt; File/Directory Security
+-&gt; Anonymous Access</tt>, activa la opción <tt>Anonymous access</tt> y
+desactiva todas las otras si están activas (<tt>Basic authentication</tt>,
+<tt>Integrated Windows authentication</tt> y <tt>Digest</tt>). Pulsa en
+<tt>OK</tt>.</li>
+    <li>En <tt>Custom Errors</tt>, selecciona el rango desde <tt>401;1</tt> hasta
+<tt>401;5</tt> y pulsa en el botón <tt>Set to Default</tt>.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Is there a problem with the mysqli extension when
-running PHP 5.0.4 on 64-bit systems?</a></h4>
+    <a href="#faq1_33">1.33 ¿Hay algún problema con la extensión mysqli al
+ejecutar PHP 5.0.4 en sistemas de 64 bits?</a></h4>
 
-<p> Yes. This problem affects phpMyAdmin (&quot;Call to undefined function
-pma_reloadnavigation&quot;), so upgrade your PHP to the next version.</p>
+<p> Sí. Este problema afecta a phpMyAdmin (&quot;Call to undefined function
+pma_reloadnavigation&quot;) por lo que deberás actualizar PHP a una versión
+más nueva.</p>
 
 <h4 id="faq1_34">
-    <a href="#faq1_34">1.34 Can I access directly to database or table
-pages?</a></h4>
+    <a href="#faq1_34">1.34 ¿Puedo acceder directamente a las páginas de bases
+de datos o tablas?</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <code>.htaccess</code>
-file in root folder of phpMyAdmin installation (don't forget to change
-directory name inside of it):</p>
+<p> Sí. Predeterminadamente, puedes utilizar <abbr title="Uniform Resource
+Locator">URL</abbr>s como
+http://server/phpMyAdmin/index.php?server=SERVIDOR&amp;db=BASE_DE_DATOS&amp;table=TABLA&amp;target=SCRIPT.
+Para <tt>server</tt> deberás utilizar el número de servidor según está
+definido en la sección correspondiente de <tt>config.inc.php</tt>. La
+sección sobre tabla y script son opcionales. Si se desean URLs del estilo
+http://SERVIDOR/phpMyAdmin/BASE_DE_DATOS[/TABLA][/SCRIPT] se necesitará un
+poco de configuración. Las líneas siguientes sólo aplican al servidor web <a
+href="http://httpd.apache.org">Apache</a>. Primero asegúrate de haber
+activado cierta funcionalidad en la confiugración global. Necesitas definir
+<code>Options FollowSymLinks</code> y <code>AllowOverride FileInfo</code>
+para el directorio en el que está instalado phpMyAdmin y activar
+mod_rewrite. Luego sólo necesitas crear el siguiente archivo
+<code>.htaccess</code> en el directorio raíz de la instalación phpMyAdmin
+(no te olvides cambiar el nombre del directorio en ella):</p>
 
 <pre>
 RewriteEngine On
