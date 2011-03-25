@@ -3212,12 +3212,13 @@ RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]
 </pre>
 
 <h4 id="faq1_35">
-    <a href="#faq1_35">1.35 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with Apache <abbr title="Common Gateway
+    <a href="#faq1_35">1.35 ¿Puedo utilziar autenticación <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> con Apache <abbr title="Common Gateway
 Interface">CGI</abbr>?</a></h4>
 
-<p> Yes. However you need to pass authentication variable to <abbr title="Common
-Gateway Interface">CGI</abbr> using following rewrite rule:</p>
+<p> Sí. Sin embargo, necesitas pasar la variable de autenticación a <abbr
+title="Common Gateway Interface">CGI</abbr> utilizando la siguiente regla de
+mod_rewrite:</p>
 
 <pre>
 RewriteEngine On
@@ -3225,95 +3226,101 @@ RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
 </pre>
 
 <h4 id="faq1_36">
-    <a href="#faq1_36">1.36 I get an error &quot;500 Internal Server
+    <a href="#faq1_36">1.36 Obtengo un error &quot;500 Internal Server
 Error&quot;.</a>
 </h4>
 <p>
-    There can be many explanations to this and a look at your server's error log
-file might give a clue.
+    Puede haber varias explicaciones a esto, puedes obtener pistas si miras los
+archivos de registro de errores de tu servidor.
 </p>
 
 <h4 id="faq1_37">
-    <a href="#faq1_37">1.37 I run phpMyAdmin on cluster of different machines
-and password encryption in cookie auth doesn't work.</a></h4>
+    <a href="#faq1_37">1.37 Estoy ejecutando phpMyAdmin en una cluster de
+diferentes máquinas y la encripción de contraseña en la autenticación por
+cookies no funciona.</a></h4>
 
-<p> If your cluster consist of different architectures, PHP code used for
-encryption/decryption won't work correct. This is caused by use of
-pack/unpack functions in code. Only solution is to use mcrypt extension
-which works fine in this case.</p>
+<p> Si el cluster consiste de varias arquitecturas, el código PHP para
+encripción/desencripción no funcionará correctamente. Esto es causado por el
+uso de las funciones pack/unpack en el código. La única solución es utilizar
+la extensión mcrypt que funciona correctamente en este caso.</p>
 
 <h4 id="faq1_38">
-    <a href="#faq1_38">1.38 Can I use phpMyAdmin on a server on which Suhosin is
-enabled?</a></h4>
+    <a href="#faq1_38">1.38 ¿Puedo utilizar phpMyAdmin en un servidor con
+Suhosin activado?</a></h4>
 
-<p> Yes but the default configuration values of Suhosin are known to cause
-problems with some operations, for example editing a table with many columns
-and no primary key or with textual primary key.
+<p> Si, pero se sabe que la configuración predeterminada de Suhosin causa
+problemas con algunas operaciones. Por ejemplo: editar una tabla con muchas
+columnas y sin una clave primaria o una clave primaria de texto.
 </p>
 <p>
-    Suhosin configuration might lead to malfunction in some cases and it can not
-be fully avoided as phpMyAdmin is kind of application which needs to
-transfer big amounts of columns in single HTTP request, what is something
-what Suhosin tries to prevent. Generally all <code>suhosin.request.*</code>,
-<code>suhosin.post.*</code> and <code>suhosin.get.*</code> directives can
-have negative effect on phpMyAdmin usability. You can always find in your
-error logs which limit did cause dropping of variable, so you can diagnose
-the problem and adjust matching configuration variable.
+    La configuración de Suhosin puede llegar a causar problemas de
+funcionamiento en algunos casos y no pueden ser evitados ya que phpMyAdmin
+es el tipo de aplicación que necesita transferir grandes cantidades de
+columnas en un sólo pedido HTTP, una de las cosa que Suhosin intenta
+prevenir. Generalmente, todas las directivas <code>suhosin.request.*</code>,
+<code>suhosin.post.*</code> y <code>suhosin.get.*</code> pueden tener
+efectos negativos en la usabilidad de phpMyAdmin. Siempre puedes encontrar
+en los registros de errores qué límites causaron la falta de variables para
+poder diagnosticar el problema y ajustar las variables de configuración
+correspondientes.
 </p>
 <p>
-    The default values for most Suhosin configuration options will work in most
-scenarios, however you might want to adjust at least following parameters:
+    Los valores predeterminados de las opciones de configuración de Suhosin
+funcionarán en la mayoría de los casos; sin embargo podrías llegar a querer
+ajustar al menos los siguientes parámetros:
 </p>
 
 <ul>
-    <li><a
+    <li>aumentar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_vars">suhosin.request.max_vars</a>
-should be increased (eg. 2048)</li>
-    <li><a
+(por ejemplo a 2048)</li>
+    <li>aumentar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_vars">suhosin.post.max_vars</a>
-should be increased (eg. 2048)</li>
-    <li><a
+(por ejemplo a 2048)</li>
+    <li>aumentar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_array_index_length">suhosin.request.max_array_index_length</a>
-should be increased (eg. 256)</li>
-    <li><a
+(por ejemplo a 256)</li>
+    <li>aumentar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_array_index_length">suhosin.post.max_array_index_length</a>
-should be increased (eg. 256)</li>
-    <li><a
+(por ejemplo a 256)</li>
+    <li>aumentar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_totalname_length">suhosin.request.max_totalname_length</a>
-should be increased (eg. 8192)</li>
-    <li><a
+(por ejemplo a 8192)</li>
+    <li>aumentar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a>
-should be increased (eg. 8192)</li>
-    <li><a
+(por ejemplo a 8192)</li>
+    <li>desactivar <a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
-needs to be disabled (the default)</li>
+(el valor predeterminado)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
-should not include SQL, otherwise you get big slowdown</li>
+no debería de incluir SQL ya que significaría un funcionamiento mucho más
+lento</li>
 </ul>
 
     <p>
-        You can also disable the warning using the <a
-href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt>
-directive</a>.
+        También puedes desactivar las advertencias utilizando la <a
+href="#cfg_SuhosinDisableWarning">directiva
+<tt>SuhosinDisableWarning</tt></a>.
     </p>
 
 <h4 id="faq1_39">
-    <a href="#faq1_39">1.39 When I try to connect via https, I can log in, but
-then my connection is redirected back to http. What can cause this
-behavior?</a></h4>
+    <a href="#faq1_39">1.39 Cuando intento conectarme mediante https puedo
+iniciar sesión pero luego mi conexión es redirigida nuevamente a http. ¿Qué
+causa este comportamiento?</a></h4>
 
-<p> Be sure that you have enabled <tt>SSLOptions</tt> and <tt>StdEnvVars</tt> in
-your Apache configuration. See <a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
+<p> Asegúrate de haber activado <tt>SSLOptions</tt> y <tt>StdEnvVars</tt> en la
+configuración de Apache. Revisa <a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">la
+documentación de Apache al respecto</a>.</p>
 
 <h4 id="faq1_40">
-    <a href="#faq1_40">1.40 When accessing phpMyAdmin via an Apache reverse
-proxy, cookie login does not work.</a></h4>
+    <a href="#faq1_40">1.40 Al acceder phpMyAdmin mediante un proxy reverso
+Apache, la autenticación por cookie no funciona.</a></h4>
 
-<p>To be able to use cookie auth Apache must know that it has to rewrite the
-set-cookie headers.<br />
-	Example from the Apache 2.2 documentation:</p>
+<p>Para poder utilizar autenticación por cookie Apache necesita saber que tiene
+que re-escribir las cabeceras set-cookie.<br />
+	Un ejemplo de la documentación de Apache 2.2:</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
@@ -3321,21 +3328,21 @@ ProxyPassReverseCookieDomain backend.example.com public.example.com
 ProxyPassReverseCookiePath / /mirror/foo/ 
 </pre>
 
-<p>Note: if the backend url looks like http://host/~user/phpmyadmin, the tilde
-(~) must be url encoded as %7E in the ProxyPassReverse* lines.  This is not
-specific to phpmyadmin, it's just the behavior of Apache.
+<p>Nota: si la URL del sistema es algo como
+http://servidor/~usuario/phpmyadmin, el tilde (~) tiene que ser encodeado
+para URLs como %7E en las líneas  ProxyPassReverse*. Esto no es específico a
+phpMyAdmin sino simplemente el comportamiento de Apache.
 	</p>
 
 <pre>
-ProxyPass /mirror/foo/ http://backend.example.com/~user/phpmyadmin
+ProxyPass /mirror/foo/ http://servidor/~usuario/phpmyadmin
 ProxyPassReverse /mirror/foo/
-http://backend.example.com/%7Euser/phpmyadmin
-ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
+http://servidor/%7Eusuario/phpmyadmin
+ProxyPassReverseCookiePath /%7Eusuario/phpmyadmin /mirror/foo
 </pre>
 
-	<p>See <a
-href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>
-for more details.</p>
+	<p>Revisa <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">la
+documentación de mod_proxy</a> para más información.</p>
 
 <h4 id="faq1_41">
 	<a href="#faq1_41">1.41 When I view a database and ask to see its

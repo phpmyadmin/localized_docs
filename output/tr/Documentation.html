@@ -798,7 +798,7 @@ dizgisi<br />
 kullanıldığı zaman, bu alan kullanıcıya gösterilecek özel <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> Temel Kimlik Doğrulama Alanı
 tanımlamak için izin verir. Eğer yapılandırma dosyanızda açıkça
-belirtilmemişse, "phpMyAdmin"in birleşik dizgisi ve ya <a
+belirtilmemişse, "phpMyAdmin"in dizgi birleşimi ve ya <a
 href="#cfg_Servers_verbose"
 class="configrule">$cfg['Servers'][$i]['verbose']</a> ya da <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
@@ -841,7 +841,7 @@ olarak, parolasız yöntem denenir.</dd>
 veya dizisi
     </dt>
     <dd>
-        Eğer veritabanı adına(larına) (sırası) ayarlanırsa, sadece bu
+        Eğer veritabanı adına(larına) (dizisine) ayarlanırsa, sadece bu
 veritabanı(ları) kullanıcıya gösterilecektir. phpMyAdmin 2.2.1'den bu yana
 bu veritabanı(ları) adı(ları) MySQL joker karakterleri (&quot;_&quot; ve
 &quot;%&quot;) içerebiliyor: eğer bu karakterlerin aslına uygun örneklerini
@@ -860,7 +860,7 @@ gelmez.</span>
 = array('db1', 'db2');</tt>
         <br /><br />
 
-        phpMyAdmin 2.5.5'ten itibaren sol çerçevede sıralı düzen veritabanlarının
+        phpMyAdmin 2.5.5'ten itibaren sol çerçevede sıralı dizi veritabanlarının
 sıralanması için kullanılıyor bu yüzden veritabanlarınızı ayrı ayrı
 düzenleyebilirsiniz.<br />
         Belirli veritabanlarını en üstte istiyorsanız ama diğerlerini
@@ -1346,39 +1346,41 @@ fazlası gelecektir.
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
 dizgisi</dt>
-    <dd>On a server with a huge number of databases, the default <tt>SHOW
-DATABASES</tt> command used to fetch the name of available databases will
-probably be too slow, so it can be replaced by faster commands (see
-<tt>libraries/config.default.php</tt> for examples).
+    <dd>Çok büyük veritabanı sayısı olan bir sunucuda, varsayılan <tt>SHOW
+DATABASES</tt> komutu kullanarak mevcut veritabanlarının adlarını getirmek
+muhtemelen çok yavaş olacaktır, bu yüzden daha hızlı komutlarla
+değiştirilebilir (örnek için <tt>libraries/config.default.php</tt>'ye
+bakın).
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 boolean</dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation frame.
+    <dd>Rehber çerçeve için veritabanları listesi hazırlanırken her veritabanı için
+tablo sayılarını saymak.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
-string</dt>
-    <dd>Name of session which will be used for signon authentication method.
+dizgisi</dt>
+    <dd>Oturum açma kimlik doğrulaması yöntemi için kullanılacak oturumun adı.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
-string</dt>
-    <dd>URL where user will be redirected to log in for signon authentication
-method. Should be absolute including protocol.
+dizgisi</dt>
+    <dd>Oturum açma kimlik doğrulaması yöntemi için kullanıcının oturum açmaya
+yönlendirileceği URL. Protokol tam dahil olmalıdır.
     </dd>
     <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span>
-string</dt>
-    <dd>URL where user will be redirected after logout (doesn't affect config
-authentication method). Should be absolute including protocol.
+dizgisi</dt>
+    <dd>Oturumu kapattıktan sonra kullanıcının yönlendirileceği URL (kimlik
+doğrulaması yöntemi yapılandırması etkilenmez). Protokol tam dahil
+olmalıdır.
     </dd>
 
-    <dt id="cfg_ServerDefault">$cfg['ServerDefault'] integer</dt>
-    <dd>If you have more than one server configured, you can set
-<tt>$cfg['ServerDefault']</tt> to any one of them to autoconnect to that
-server when phpMyAdmin is started, or set it to 0 to be given a list of
-servers without logging in.<br />
-        If you have only one server configured, <tt>$cfg['ServerDefault']</tt> MUST
-be set to that server.</dd>
+    <dt id="cfg_ServerDefault">$cfg['ServerDefault'] tam sayı</dt>
+    <dd>Yapılandırılmış birden fazla sunucunuz varsa, <tt>$cfg['ServerDefault']</tt>
+dizgisini, phpMyAdmin başlatıldığında bu sunucuya otomatik bağlanması için
+bunlardan herhangi birine ayarlayabilirisiniz ya da oturum açmadan
+sunucuların listesinin verilmesi için 0'a ayarlayabilirsiniz.<br />
+        Eğer yapılandırılmış sadece bir sunucu varsa, <tt>$cfg['ServerDefault']</tt>
+dizgisi bu sunucuya ayarlanmak ZORUNDADIR.</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] boolean</dt>
     <dd>Defines whether to refresh only parts of certain pages using Ajax

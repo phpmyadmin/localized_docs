@@ -345,7 +345,7 @@ diretório <code>contrib</code> no phpMyAdmin um arquivo
     </li>
 </ol>
 
-<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
+<h3 id="linked-tables">phpMyAdmin database (pmadb)</h3>
 
 <p> For a whole set of new features (bookmarks, comments, <abbr
 title="structured query language">SQL</abbr>-history, tracking mechanism,
@@ -428,17 +428,18 @@ o privilégio <tt>SELECT</tt> na tabela <i>`mysql`.`user` (todas as colunas
 exceto `Password`)</i>, <i>`mysql`.`db` (todas as colunas)</i>,
 <i>`mysql`.`host` (todas as colunas)</i> e <i>`mysql`.`tables_priv` (todas
 as colunas exceto `Grantor` e `Timestamp`)</i> tables.<br /> Você deve configurar os detalhes para o usuário <a
-href="#controluser">master</a> no arquivo <tt>config.inc.php</tt> sob a
+href="#controluser">controluser</a> no arquivo <tt>config.inc.php</tt> sob a
 sessão <tt><a href="#cfg_Servers_controluser" class="configrule">
 $cfg['Servers'][$i]['controluser']</a></tt> e <tt><a
 href="#cfg_Servers_controlpass" class="configrule">
 $cfg['Servers'][$i]['controlpass']</a></tt>.<br />
-        The following example assumes you want to use <tt>pma</tt> as the
-controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
-example: use something else in your file!</b> Input these statements from
-the phpMyAdmin SQL Query window or mysql command&#8211;line client.<br />
-        Of course you have to replace <tt>localhost</tt> with the webserver's host
-if it's not the same as the MySQL server's one.
+        O seguinte exemplo assume que você quer usar <tt>pma</tt> como usuário
+controluser e <tt>pmapass</tt> como senha para controluser, porém <b>isto é
+apenas um exemplo: configure algo diferente no seu arquivo!</b> Entre com
+estas instruções através da TAB SQL do phpMyAdmin ou então pela linha de
+comando #8211; no mysql client.<br />
+        É claro que você tem que substituir <tt>localhost</tt> pelo host do
+webserver caso não seja o mesmo servidor do MySQL.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -454,32 +455,34 @@ GRANT SELECT ON mysql.host TO 'pma'@'localhost';
 GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
     ON mysql.tables_priv TO 'pma'@'localhost';</pre>
 
-        If you want to use the many new relation and bookmark features:
+        Caso queira usar outros recursos como Relacionamentos e SQLs Favoritos:
 
         <pre>
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (this of course requires that your <a href="#linked-tables">phpMyAdmin
-configuration storage</a> be set up).  
+        (isto requer que o <a href="#linked-tables">phpMyAdmin database (pmadb)</a>
+esteja setado).  
     <br /></li>
 
-    <li>Then each of the <i>true</i> users should be granted a set of privileges on
-a set of particular databases. Normally you shouldn't give global privileges
-to an ordinary user, unless you understand the impact of those privileges
-(for example, you are creating a superuser).<br />
-        For example, to grant the user <i>real_user</i> with all privileges on the
-database <i>user_base</i>:<br />
+    <li>Assim, os demais usuários <i>reais</i> deveriam ser liberados com um
+conjuntos de privilégios num grupo de bancos de dados
+específico. Normalmente você não deveria liberar privilégios globais para um
+usuário comum, a menos que você entenda o impacto/riscos destes privilégios
+(é o mesmo que criar um super usuário).<br />
+        Por exemplo, para liberar todos os privilégios para o usuário
+<i>real_user</i> no banco de dados <i>user_base</i>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
 </pre>
 
-        What the user may now do is controlled entirely by the MySQL user management
-system.<br />
-        With <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication mode, you don't need to fill the user/password fields inside
-the <a href="#cfg_Servers" class="configrule">$cfg['Servers']</a> array.</li>
+        O que o usuário pode fazer agora é controlado inteiramente pelo sistema de
+gerenciamento de usuários do MySQL.<br />
+        Setando o modo de autenticação para <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> ou "cookie", você não precisa informar os campos
+usuário/senha dentro do array <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>.</li>
 </ul>
 
 <h4>Modo de autenticação por '<abbr title="HyperText Transfer
