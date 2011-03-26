@@ -3345,111 +3345,115 @@ ProxyPassReverseCookiePath /%7Eusuario/phpmyadmin /mirror/foo
 documentación de mod_proxy</a> para más información.</p>
 
 <h4 id="faq1_41">
-	<a href="#faq1_41">1.41 When I view a database and ask to see its
-privileges, I get an error about an unknown column.</a></h4>
+	<a href="#faq1_41">1.41 Cuando veo una base de datos y pido por sus
+privilegios, obtengo un error sobre una columna desconocida.</a></h4>
 
-<p> The MySQL server's privilege tables are not up to date, you need to run the
-<tt>mysql_upgrade</tt> command on the server.</p>
+<p> La tablas de privilegios del servidor MySQL no están actualizadas, necesitas
+ejecutar la órden <tt>mysql_upgrade</tt> en el servidor.</p>
 
 
 <h3 id="faqconfig">Configuración</h3>
 
 <h4 id="faq2_1">
-    <a href="#faq2_1">2.1 The error message &quot;Warning: Cannot add header
-information - headers already sent by ...&quot; is displayed, what's the
-problem?</a></h4>
+    <a href="#faq2_1">2.1 Obtengo el mensaje de error  &quot;Warning: Cannot add
+header information - headers already sent by ...&quot;. ¿Cuál es el
+problema?</a></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under IIS, that used a zipped
-distribution kit: the file <tt>libraries/Config.class.php</tt> contained an
-end-of-line character (hex 0A) at the end; removing this character cleared
-his errors.</p>
+<p> Edita tu archivo <i>config.inc.php</i> y asegúrate que no hay nada (ni
+líneas en blanco, ni espacios, ni otros caracteres, etc.) ni antes de la
+etiqueta <tt>&lt;?php</tt> al principio, ni después de la etiqueta
+<tt>?&gt;</tt> al final. También obtuvimos reportes de un usuario ejecutando
+IIS que utilizó un kit de distribución comprimido: el archivo
+<tt>libraries/Config.class.php</tt> contenía un caracter de fin de línea
+(hex 0A) al final; eliminando este caracter solucionó estos errores.</p>
 
 <h4 id="faq2_2">
-    <a href="#faq2_2">2.2 phpMyAdmin can't connect to MySQL. What's wrong?</a></h4>
+    <a href="#faq2_2">2.2 phpMyAdmin no se puede conectar a MySQL. ¿Qué está
+mal?</a></h4>
 
-<p> Either there is an error with your PHP setup or your username/password is
-wrong. Try to make a small script which uses mysql_connect and see if it
-works. If it doesn't, it may be you haven't even compiled MySQL support into
-PHP.</p>
+<p> O bien hay un error en la configuración PHP o está mal el usuario o la
+contraseña. Intenta crear un script pequeño que utilice mysql_connect y
+revisa si funciona. Si no funciona, puede ser que no esté compilado en PHP
+el soporte para MySQL.</p>
 
 <h4 id="faq2_3">
-    <a href="#faq2_3">2.3 The error message &quot;Warning: MySQL Connection
-Failed: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
-(111) ...&quot; is displayed. What can I do?</a></h4>
+    <a href="#faq2_3">2.3 Recibo el mensaje de error  &quot;Warning: MySQL
+Connection Failed: Can't connect to local MySQL server through socket
+'/tmp/mysql.sock' (111) ...&quot;. ¿Qué puedo hacer?</a></h4>
 
-<p> For RedHat users, Harald Legner suggests this on the mailing list:</p>
+<p> Para usuarios de RedHat, Harald Legner sugiere esto en la lista de correo:</p>
 
-<p> On my RedHat-Box the socket of MySQL is <i>/var/lib/mysql/mysql.sock</i>.
-In your <i>php.ini</i> you will find a line</p>
+<p> En una máquina RedHat, el zócalo de MySQL es
+<i>/var/lib/mysql/mysql.sock</i>. En el archivo <i>php.ini</a> encontrarás
+una línea</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
-<p> change it to</p>
+<p> modifícala a</p>
 
 <pre>mysql.default_socket = /var/lib/mysql/mysql.sock</pre>
 
-<p> Then restart apache and it will work.</p>
+<p> Reinicia Apache y funcionará.</p>
 
-<p> Here is a fix suggested by Brad Ummer:</p>
+<p> Este es una corrección sugerida por Brad Ummer:</p>
 
-<ul><li>First, you need to determine what socket is being used by MySQL.<br />
-        To do this, telnet to your server and go to the MySQL bin directory. In this
-directory there should be a file named <i>mysqladmin</i>. Type
-<tt>./mysqladmin variables</tt>, and this should give you a bunch of info
-about your MySQL server, including the socket (<i>/tmp/mysql.sock</i>, for
-example).</li>
-    <li>Then, you need to tell PHP to use this socket.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
-<i>config.inc.php</i>.<br />
-        For example: <a href="#cfg_Servers_socket" class="configrule">
+<ul><li>Primero necesitas determinar qué zócalo está siendo utilizado por MySQL.<br />
+        Para hacer esto, conéctate a tu servidor y ubícate en el directorio bin de
+MySQL. En este directorio tendría que haber un archivo llamado
+<i>mysqladmin</i>. Tipea <tt>./mysqladmin variables</tt> que debería proveer
+un montón de información sobre tu servidor MySQL incluyendo el zócalo (por
+ejemplo: <i>/tmp/mysql.sock</i>).</li>
+    <li>Luego necesitas decirle a PHP que utilice este zócalo.<br /> Para hacerlo en phpMyAdmin, necesitas completar la información del zócalo en
+el archivo <i>config.inc.php</i>.<br />
+        Por ejemplo: <a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
 
-        Please also make sure that the permissions of this file allow to be readable
-by your webserver (i.e. '0755').</li>
+        También habría que asegurarse que los permisos de este archivo permitan que
+sea accesible por el servidor web (por ejemplo '0755').</li>
 </ul>
 
-<p> Have also a look at the <a
-href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">
-corresponding section of the MySQL documentation</a>.</p>
+<p> También revisa la <a
+href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">sección
+correspondiente de la documentación de MySQL</a>.</p>
 
 <h4 id="faq2_4">
-    <a href="#faq2_4">2.4 Nothing is displayed by my browser when I try to run
-phpMyAdmin, what can I do?</a></h4>
+    <a href="#faq2_4">2.4 Nada se muestra en el navegador cuando intento
+ejecutar phpMyAdmin ¿qué puedo hacer?</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
-directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
-sometime.<br />
-    Also have a look at your PHP version number: if it contains
-&quot;4.0b...&quot; it means you're running a beta version of PHP. That's
-not a so good idea, please upgrade to a plain revision.</p>
+<p> Intenta configurar la directiva <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGZip']</a> a <tt>FALSE</tt> en el archivo de
+configuración de phpMyAdmin. A veces ayuda.<br />
+    También revisa la versión de PHP: si contiene &quot;4.0b...&quot; significa
+que estás ejecutando una versión beta de PHP. Eso no es una buena idea,
+porfavor actualiza a una revisión mayor.</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5 Each time I want to insert or change a record or drop
-a database or a table, an error 404 (page not found) is displayed or, with
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication, I'm asked to log in again. What's wrong?</a></h4>
+    <a href="#faq2_5">2.5Cada vez que intento insertar o cambiar un registro o
+borrar una base de datos o tabla obtengo un error 404 (página no encontrada)
+o necesito iniciar sesión nuevamente con autenticación <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> o por cookie. ¿Qué está
+mal?</a></h4>
 
-<p> Check the value you set for the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive in the phpMyAdmin
-configuration file.</p>
+<p> Revisa el valor configurado para la directiva <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> en el archivo de configuración
+de phpMyAdmin.</p>
 
 <h4 id="faq2_6">
-    <a href="#faq2_6">2.6 I get an &quot;Access denied for user:
-'root@localhost' (Using password: YES)&quot;-error when trying to access a
-MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
+    <a href="#faq2_6">2.6 Obtengo un error &quot;Access denied for user:
+'root@localhost' (Using password: YES)&quot; cuando intento acceder al
+servidor MySQL que está en un puerto redirigido por el servidor web.</a></h4>
 
-<p> When you are using a port on your localhost, which you redirect via
-port-forwarding to another host, MySQL is not resolving the localhost as
-expected.<br />
-    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
-MySQL (the command line tool <code>mysql</code> as well) always tries to use
-the socket connection for speeding up things. And that doesn't work in this
-configuration with port forwarding.<br />
-    If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
-<abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
+<p> Cuando estás utilizando un puerto en el servidor web redirigido a otro
+servidor, MySQL no está resolviendo 'localhost' como se espera.<br />
+    Erik Wasser lo explica: la solución si el servidor está configurado como
+&quot;localhost&quot; MySQL (la herramienta de línea de órdenes
+<code>mysql</code> también) siempre intenta utilizar la conexión por zócalo
+por cuestiones de eficiencia. Y eso no funciona cuando se redirige el puerto
+de conexión.<br />
+    Si se utiliza "127.0.0.1" como nombre de servidor todo funcionará
+correctamente y MySQL utilizará la conexión <abbr title="Transmission
+Control Protocol">TCP</abbr>.</p>
 
 <h4 id="faqthemes"><a href="#faqthemes">2.7 Using and creating themes</a></h4>
 

@@ -488,53 +488,55 @@ class="configrule">$cfg['Servers']</a>.</li>
 <h4>Modo de autenticação por '<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>'</h4>
 
-<ul><li>Uses <abbr title="HyperText Transfer Protocol">HTTP</abbr> Basic
-authentication method and allows you to log in as any valid MySQL user.</li>
-    <li>Is supported with most PHP configurations. For <abbr title="Internet
+<ul><li>Utiliza o <abbr title="HyperText Transfer Protocol">HTTP</abbr> como método
+básico de autenticação e permite você se logar com qualquer usuário válido
+do MySQL.</li>
+    <li>É suportado pela maioria das configurações PHP. Para <abbr title="Internet
 Information Services">IIS</abbr> (<abbr title="Internet Server Application
-Programming Interface">ISAPI</abbr>)  support using <abbr title="Common
-Gateway Interface">CGI</abbr> PHP see <a href="#faq1_32"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.32</a>, for using with
-Apache <abbr title="Common Gateway Interface">CGI</abbr> see <a
+Programming Interface">ISAPI</abbr>)  suporte via <abbr title="Common
+Gateway Interface">CGI</abbr> veja PHP <a href="#faq1_32"><abbr
+title="Frequently Asked Questions">FAQ</abbr> 1.32</a>, para uso com Apache
+<abbr title="Common Gateway Interface">CGI</abbr> veja <a
 href="#faq1_35"><abbr title="Frequently Asked Questions">FAQ</abbr>
 1.35</a>.</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <i>.htaccess</i> mechanism
-along with '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
-authentication mode.</li>
+    <li>Veja também <a href="#faq4_4"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.4</a> sobre não usar o mecanismo <i>.htaccess</i> em
+conjunto com o modo de autenticação '<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'.</li>
 </ul>
 
 <h4>Modo de autenticação por 'cookie'</h4>
 
-<ul><li>You can use this method as a replacement for the <abbr title="HyperText
-Transfer Protocol">HTTP</abbr> authentication (for example, if you're
-running <abbr title="Internet Information Services">IIS</abbr>).</li>
-    <li>Obviously, the user must enable cookies in the browser, but this is now a
-requirement for all authentication modes.</li>
-    <li>With this mode, the user can truly log out of phpMyAdmin and log in back
-with the same username.</li>
-    <li>If you want to log in to arbitrary server see <a
+<ul><li>Você pode utilizar este método em substituição a autenticação por <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> (por exemplo, se você
+estiver rodando o <abbr title="Internet Information Services">IIS</abbr>).</li>
+    <li>Obviamente o usuário deve habilitar "cookies" em seu navegador, mas isto não
+é requisito obrigatório para todos os modos de autenticação..</li>
+    <li>Com este modo, o usuário pode realmente deslogar-se do phpMyAdmin e logar
+novamente com o mesmo nome de usuário.</li>
+    <li>Caso queira logar-se em um servidor arbitrário veja a diretiva <a
 href="#AllowArbitraryServer" class="configrule">
-$cfg['AllowArbitraryServer']</a> directive.</li>
-    <li>As mentioned in the <a href="#require">requirements</a> section, having the
-<tt>mcrypt</tt> extension will speed up access considerably, but is not
-required.</li>
+$cfg['AllowArbitraryServer']</a>.</li>
+    <li>Conforme mencionado na seção <a href="#require">requisitos</a>, habilitar a
+extensão <tt>mcrypt</tt> irá acelerar o acesso consideravelmente, mas isto
+não é requerido.</li>
 </ul>
 
 <h4>Modo de autenticação por 'signon'</h4>
 
-<ul><li>This mode is a convenient way of using credentials from another application
-to authenticate to phpMyAdmin.</li>
-    <li>The other application has to store login information into session data.</li>
-    <li>More details in the <a href="#cfg_Servers_auth_type">auth_type</a> section.</li>
+<ul><li>Este modo é uma forma conveniente de usar credenciais de outra aplicação
+para autenticar o phpMyAdmin.</li>
+    <li>A outra aplicação é quem deve armazenar as informações do login na sessão de
+dados.</li>
+    <li>Mais detalhes na seção <a href="#cfg_Servers_auth_type">auth_type</a>.</li>
 </ul>
 <h4>Modo de autenticação por 'config'</h4>
 
-<ul><li>This mode is the less secure one because it requires you to fill the <a
-href="#servers_user" class="configrule"> $cfg['Servers'][$i]['user']</a> and
+<ul><li>Este modo é menos seguro porque obriga você a preencher os campos <a
+href="#servers_user" class="configrule"> $cfg['Servers'][$i]['user']</a> e
 <a href="#servers_user" class="configrule">
-$cfg['Servers'][$i]['password']</a> fields (and as a result, anyone who can
-read your config.inc.php can discover your username and password).
+$cfg['Servers'][$i]['password']</a> (e como resultado, qualquer um pode ler
+o seu arquivo config.inc.php e pode descobrir seu nome de usuário e senha).
         <br />
         But you don't need to setup a &quot;controluser&quot; here: using the <a
 href="#servers_only_db" class="configrule">
