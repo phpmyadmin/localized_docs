@@ -284,28 +284,28 @@ chmod o+rw config                   # herkese yazma izinlerini ver
 </pre>
                 Ve mevcut yapılandırma dosyasını düzenlemek için, önce üzerine kopyalayın:
 <pre>
-cp config.inc.php config/           # düzenlemek için şu anki yapılandırma dosyasını kopyalayın
-chmod o+w config/config.inc.php     # herkese yazma yetkilerini verin
+cp config.inc.php config/           # düzenlemek için şu anki yapılandırma dosyasını kopyala
+chmod o+w config/config.inc.php     # herkese yazma izinlerini ver
 </pre>
                 Diğer platformlarda, basitçe klasör oluşturun ve web sunucunuzun buna okuma
 ve yazmaya erişimi olduğundan emin olun. <a href="#faq1_26">SSS 1.26</a>
 bununla ilgili olarak yardımcı olabilir.<br /><br />
 
-                Sonra, tarayıcınızda <tt><a href="setup/">kur/</a></tt>'u açın. Unutmayın
-ekranın <i>Yapılandırma</i> alanından <strong><tt>Kaydet</tt>'i açıkça
+                Sonra, tarayıcınızda <tt><a href="setup/">kur/'u</a></tt> açın. Unutmayın
+ekranın <i>Yapılandırma</i> alanından <strong><tt>Kaydet'i</tt> açıkça
 seçene kadar değişiklikler diske kaydedilmez</strong>. Normal olarak betik
 <tt>config/</tt> dizinine yeni config.inc.php dosyasını kaydeder ama eğer
-web sunucusu doğru yetkilere sahip değilse "Yapılandırma yüklenemiyor veya
+web sunucusu doğru izinlere sahip değilse "Yapılandırma yüklenemiyor veya
 kaydedilemiyor" hatası görebilirsiniz. <tt>Config/</tt> dizininin var
 olduğundan ve doğru yetkilere sahip olduğundan emin olun ya da yerel olarak
 yapılandırma dosyasını kaydetmek için <tt>İndir</tt> bağlantısını kullanın
 ve (FTP yoluyla ya da buna benzer bir yolla) doğru yere gönderin. <br /><br />
 
                 Dosya bir kez kaydedildimi, <tt>config/</tt> dizini dışına taşınmalı ve
-güvenlik önlemi olarak yetkileri sıfırlanmalıdır:
+güvenlik önlemi olarak izinleri sıfırlanmalıdır:
 <pre>
 mv config/config.inc.php .         # dosyayı şu anki dizine taşı
-chmod o-rw config.inc.php          # herekese okuma ve yazma yetkilerini kaldır
+chmod o-rw config.inc.php          # herekese okuma ve yazma izinlerini kaldır
 rm -rf config                      # gerekli olmayan dizini kaldır
 </pre>
                 Artık dosya kullanıma hazır. Eğer kur betiğinin sağlamadığı bazı gelişmiş
@@ -1397,66 +1397,68 @@ etkinleştirir.</dd>
 veritabanı adı sayısı.</dd>
 
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] tam sayı</dt>
-    <dd>The maximum number of table names to be displayed in the main panel's list
-(except on the Export page). This limit is also enforced in the navigation
-panel when in Light mode.</dd>
+    <dd>Ana panelin listesinde (Dışa Aktar sayfasındaki hariç) görüntülenmesi için
+en fazla tablo adı sayısı. Bu sınır aynı zamanda Light kipinde rehber
+panelde zorunludur.</dd>
 
-    <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] integer</dt>
-    <dd>The maximum number of characters when a SQL query is displayed. The default
-limit of 1000 should be correct to avoid the display of tons of hexadecimal
-codes that represent BLOBs, but some users have real SQL queries that are
-longer than 1000 characters. Also, if a query's length exceeds this limit,
-this query is not saved in the history.</dd>
+    <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] tam sayı</dt>
+    <dd>SQL sorgusu görüntülendiğindeki en fazla karakter sayısı. Varsayılan sınır
+1000, BLOB'ları temsil eden tonlarca onaltılık kodu görüntülemeyi önlemek
+için düzeltilmelidir ama bazı kullanıcılar 1000 karakterden uzun gerçek SQL
+sorgulara sahiptir. Bu yüzden sorgunun uzunluğu bu limiti aşarsa, bu sorgu
+geçmiş içine kaydedilmez.</dd>
 
-    <dt id="cfg_OBGzip">$cfg['OBGzip'] string/boolean</dt>
-    <dd>Defines whether to use GZip output buffering for increased speed in <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> transfers.<br />
-        Set to true/false for enabling/disabling. When set to 'auto' (string),
-phpMyAdmin tries to enable output buffering and will automatically disable
-it if your browser has some problems with buffering. IE6 with a certain
-patch is known to cause data corruption when having enabled buffering.</dd>
+    <dt id="cfg_OBGzip">$cfg['OBGzip'] dizgisi/boolean</dt>
+    <dd><abbr title="HyperText Transfer Protocol">HTTP</abbr> aktarımlarındaki artan
+hız için GZip çıktı arabelleklemesi kullanımını tanımlar.<br />
+        Etkinleştirmek/etkisizleştirmek için true/false olarak ayarlayın. 'auto'
+olarak (dizgi) ayarlandığında, phpMyAdmin çıktı arabelleklemesini
+etkinleştirmeyi dener ve eğer tarayıcınız arabellekleme ile sorun yaşarsa
+otomatik olarak etkisizleştirecektir. Arabellekleme etkinleştirildiğinde,
+belli yama ile IE6'nın veri bozulmasına sebep olduğu bilinmektedir.</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Whether persistent connections should be used or not (mysql_connect or
+    <dd>Sürekli bağlantıların kullanılması veya kullanılmaması (mysql_connect veya
 mysql_pconnect).</dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
-    <dd>Whether to force using https while accessing phpMyAdmin.</dd>
+    <dd>phpMyAdmin'e erişilirken https kullanımına zorlanması.</dd>
 
-    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [number of seconds]</dt>
-    <dd>Set the number of seconds a script is allowed to run. If seconds is set to
-zero, no time limit is imposed.<br />
-        This setting is used while importing/exporting dump files and in the
-Synchronize feature but has no effect when PHP is running in safe mode.</dd>
+    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] tam sayı [saniye sayısı]</dt>
+    <dd>Bir betiğin çalışmasına izin vermek için saniye sayısı ayarı. Eğer saniyeler
+sıfıra ayarlanırsa, zaman sınırı koyulmaz.<br />
+        Bu ayar döküm dosyalarını içe/dışa aktarırken kullanılır ve Eşitleme
+özelliğinde, ama PHP güvenli kipte çalışıyorken etkisi yoktur.</dd>
 
-    <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] string</dt>
-    <dd>Path for storing session data (<a
+    <dt id="cfg_SessionSavePath">$cfg['SessionSavePath'] dizgisi</dt>
+    <dd>Oturum verisini depolamak için yol (<a
 href="http://php.net/session_save_path">session_save_path PHP
-parameter</a>).</dd>
+parametresi</a>).</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
-    <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
-limit is imposed.<br />
-        This setting is used while importing/exporting dump files and at some other
-places in phpMyAdmin so you definitely don't want to put here a too low
-value. It has no effect when PHP is running in safe mode.<br />
-        You can also use any string as in php.ini, eg. '16M'. Ensure you don't omit
-the suffix (16 means 16 bytes!)</dd>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] dizgisi [bayt sayısı]</dt>
+    <dd>Bir betiğe ayrılmasına izin vermek için bayt sayısı ayarı. Eğer sıfıra
+ayarlanırsa, sınır koyulmaz.<br />
+        Bu ayar döküm dosyalarını içe/dışa aktarırken ve phpMyAdmin'de bazı diğer
+alanlarda kullanılır bu yüzden kesinlikle buraya çok düşük bir değer koymayı
+istemezsiniz. PHP güvenli kipte çalışıyorken etkisi yoktur.<br />
+        Php.ini içindeki gibi herhangi bir dizgi kullanabilirsiniz, örn. '16M'. Son
+eki (16'nın anlamı 16 bayt!) unutmadığınızdan emin olun</dd>
 
     <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] boolean</dt>
-    <dd>Mark used tables and make it possible to show databases with locked tables
-(since MySQL 3.23.30).</dd>
+    <dd>Kullanılan tabloları işaretler ve kilitli tablolarla birlikte
+veritabanlarını göstermeyi mümkün kılar (MySQL 3.23.30'dan beri).</dd>
 
     <dt id="cfg_ShowSQL">$cfg['ShowSQL'] boolean</dt>
-    <dd>Defines whether <abbr title="structured query language">SQL</abbr> queries
-generated by phpMyAdmin should be displayed or not.</dd>
+    <dd>phpMyAdmin tarafından üretilmiş <abbr title="structured query
+language">SQL</abbr> sorgularının gösterilip gösterilmemesini tanımlar.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] boolean</dt>
-    <dd>Defines whether normal users (non-administrator) are allowed to delete their
-own database or not. If set as FALSE, the link &quot;Drop Database&quot;
-will not be shown, and even a &quot;DROP DATABASE mydatabase&quot; will be
-rejected. Quite practical for <abbr title="Internet service
-provider">ISP</abbr>'s with many customers.<br />
+    <dd>Normal kullanıcıların (yönetici olmayan) kendi veritabanını silmeye izin
+verip vermeyeceğini tanımlar. Eğer FALSE olarak ayarlanırsa,
+&quot;Veritabanını Kaldır&quot; bağlantısı gösterilmeyecektir ve hatta
+&quot;DROP DATABASE veritabanım&quot; komutu reddedilecektir. Birçok
+müşterisi olan <abbr title="Internet service provider">ISP</abbr>'ler için
+oldukça kullanışlıdır.<br />
         Please note that this limitation of SQL queries is not as strict as when
 using MySQL privileges. This is due to nature of SQL queries which might be
 quite complicated. So this choice should be viewed as help to avoid
