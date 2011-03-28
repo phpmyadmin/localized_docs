@@ -3455,116 +3455,124 @@ de conexión.<br />
 correctamente y MySQL utilizará la conexión <abbr title="Transmission
 Control Protocol">TCP</abbr>.</p>
 
-<h4 id="faqthemes"><a href="#faqthemes">2.7 Using and creating themes</a></h4>
+<h4 id="faqthemes"><a href="#faqthemes">2.7 Creando y utilizando temas</a></h4>
 
-<p> Themes are configured with <a href="#cfg_ThemePath"
+<p> Los temas se configuran con <a href="#cfg_ThemePath"
 class="configrule">$cfg['ThemePath']</a>, <a href="#cfg_ThemeManager"
-class="configrule">$cfg['ThemeManager']</a> and <a href="#cfg_ThemeDefault"
+class="configrule">$cfg['ThemeManager']</a> y <a href="#cfg_ThemeDefault"
 class="configrule">$cfg['ThemeDefault']</a>.<br />
     <br />
-    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
-should not delete the directory &quot;original&quot; or its underlying
-structure, because this is the system theme used by phpMyAdmin.
-&quot;original&quot; contains all images and styles, for backwards
-compatibility and for all themes that would not include images or css-files.
+    Con <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> no se
+debería de borrar el directorio &quot;original&quot; o su estructura interna
+ya que es el tema de sistema utilizado por phpMyAdmin. &quot;original&quot;
+contiene todas las imágenes y estilos para compatibilidad y para aquellos
+temas que no incluyen imágenes o archivos CSS.
     <br /><br />
 
-    If <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
-is enabled, you can select your favorite theme on the main page. Your
-selected theme will be stored in a cookie.<br /><br /></p>
+    Si está activado <a href="#cfg_ThemeManager"
+class="configrule">$cfg['ThemeManager']</a> se puede seleccionar el tema de
+preferencia en la página principal. El tema seleccionado será almacenado en
+una cookie.<br /><br /></p>
 
-<p> To create a theme:</p>
+<p> Para crear un tema:</p>
 
-<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
-href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
-<tt>themes</tt>)</li>
-    <li>copy the files and directories from &quot;original&quot; to
-&quot;your_theme_name&quot;</li>
-    <li>edit the css-files in &quot;your_theme_name/css&quot;</li>
-    <li>put your new images in &quot;your_theme_name/img&quot;</li>
-    <li>edit <tt>layout.inc.php</tt> in &quot;your_theme_name&quot;</li>
-    <li>edit <tt>info.inc.php</tt> in &quot;your_theme_name&quot; to contain your
-chosen theme name, that will be visible in user interface</li>
-    <li>make a new screenshot of your theme and save it under
-&quot;your_theme_name/screen.png&quot;</li>
+<ul><li>crea un nuevo directorio (por ejemplo: &quot;nombre_de_tema&quot;) dentro de
+<a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (cuyo
+valor predeterminado es <tt>Themes</tt>)</li>
+    <li>copia los archivos y directorios de &quot;original&quot; a
+&quot;nombre_de_tema&quot;</li>
+    <li>edita los archivos CSS en &quot;nombre_de_tema/css&quot;</li>
+    <li>ubica las nuevas imágenes en &quot;nombre_de_tema/img&quot;</li>
+    <li>edita <tt>leyout.inc.php</tt> en &quot;nombre_de_tema&quot;</li>
+    <li>edita <tt>info.inc.php</tt> en &quot;nombre_de_tema&quot; para que contenga
+el nombre de tema elegido que será visible en la interfaz de usuario</li>
+    <li>crea una captura de pantalla del tema y guárdalo como
+&quot;nombre_de_tema/screen.png&quot;</li>
 </ul>
 
-<p> In theme directory there is file <tt>info.inc.php</tt> which contains theme
-verbose name, theme generation and theme version. These versions and
-generations are enumerated from 1 and do not have any direct dependence on
-phpMyAdmin version. Themes within same generation should be backwards
-compatible - theme with version 2 should work in phpMyAdmin requiring
-version 1. Themes with different generation are incompatible.</p>
+<p> En el directorio del tema existe un archivo <tt>info.inc.php</tt> que
+contiene el nombre detallado, la generación y versión del tema. Estas
+versiones y generaciones son enumeradas desde 1 y no tienen dependencia
+alguna con la versión de phpMyAdmin. Los temas con la misma generación
+deberían de ser compatibles - un tema con la versión 2 debería funcionar con
+phpMyAdmin que requiera la versión 1. Los temas con diferentes generaciones
+son incompatibles.</p>
 
-<p> If you do not want to use your own symbols and buttons, remove the directory
-&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the
-default icons and buttons (from the system-theme &quot;original&quot;).
+<p> Si no quieres utilizar símbolos y botones propios, elimina el directorio
+&quot;img&quot; de &quot;nombre_de_tema&quot;. phpMyAdmin utilizará los
+iconos y botones predeterminados (del tema de sistema &quot;original&quot;).
 </p>
 
 <h4 id="faqmissingparameters">
-    <a href="#faqmissingparameters">2.8 I get &quot;Missing parameters&quot;
-errors, what can I do?</a></h4>
+    <a href="#faqmissingparameters">2.8 Obtengo errores sobre &quot;Missing
+parameters&quot; ¿qué puedo hacer?</a></h4>
 
-<p> Here are a few points to check:</p>
+<p> Aquí hay algunas cosas que puedes chequear:</p>
 
-<ul><li>In <tt>config.inc.php</tt>, try to leave the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive empty. See also <a
+<ul><li>En el archivo <tt>config.inc.php</tt>, intenta dejando vacía la directiva <a
+href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a>. Revisa también la <a
 href="#faq4_7"><abbr title="Frequently Asked Questions">FAQ</abbr> 4.7</a>.
     </li>
-    <li>Maybe you have a broken PHP installation or you need to upgrade your Zend
-Optimizer. See <a href="http://bugs.php.net/bug.php?id=31134">
-http://bugs.php.net/bug.php?id=31134</a>.
+    <li>A lo mejor la instalación PHP está rota o necesitas actualizar Zend
+Optimizer. Revisa <a
+href="http://bugs.php.net/bug.php?id=31134">http://bugs.php.net/bug.php?id=31134</a>.
     </li>
-    <li>If you are using Hardened PHP with the ini directive
-<tt>varfilter.max_request_variables</tt> set to the default (200) or another
-low value, you could get this error if your table has a high number of
-columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for the
-hint).
+    <li>Si estás utilizando Hardenend PHP con la directiva
+<tt>varfilter.max_request_variables</tt> configurada al valor predeterminado
+(200) u otro valor pequeño, podrías obtener este error con tablas con gran
+cantidad de columnas. Ajusta esta configuración apropiadamente (gracias
+Klaus Dorninger por la idea).
     </li>
-    <li>In the <tt>php.ini</tt> directive <tt>arg_separator.input</tt>, a value of
-&quot;;&quot; will cause this error. Replace it with &quot;&amp;;&quot;.
+    <li>En la directiva <tt>arg_separator.input</tt> del archivo de configuración
+<tt>php.ini</tt>, un valor de &quot;;&quot; va a causar este
+problema. Reemplázalo con &quot;&amp;;&quot;.
     </li>
-    <li>If you are using <a href="http://www.hardened-php.net/">Hardened-PHP</a>,
-you might want to increase <a
-href="http://www.hardened-php.net/hphp/troubleshooting.html">request
-limits</a>.
+    <li>Si estás utilizando <a href="http://www.hardened-php.net/">Hardened-PHP</a>,
+podrías querer aumentar los <a
+href="http://www.hardened-php.net/hphp/troubleshooting.html">límites de
+pedidos</a>.
     </li>
-    <li>The directory specified in the <tt>php.ini</tt> directive
-<tt>session.save_path</tt> does not exist or is read-only.
+    <li>El directorio especificado en la directiva <tt>session.save_path</tt> del
+archivo <tt>php.ini</tt> no existe o está en modo de sólo lectura.
     </li>
 </ul>
 
 <h4 id="faq2_9">
-    <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
+    <a href="#faq2_9">2.9 Viendo una barra de progreso al subir archivos</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
-the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-one. Moreover, the JSON extension has to be enabled in your PHP.</p>
-    <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
-php.ini.</p>
+<p> Para poder ver una barra de progreso durante la subida de archivos, el
+servidor tiene que tener la <a
+href="http://pecl.php.net/package/APC">extensión APC</a> o la <a
+href="http://pecl.php.net/package/uploadprogress">extensión
+uploadprogress</a>. Lo que es más, la extensión HSON tiene que estar
+activada en PHP.</p>
+    <p> Si APC es utilizada, la directiva <tt>apc.rfc1867</tt> tiene que estar
+configurada a <tt>on</tt> en el archivo de configuración php.ini.</p>
 
-<h3 id="faqlimitations">Known limitations</h3>
+<h3 id="faqlimitations">Limitaciones conocidas</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 When using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication, a user who logged out can not log in
-again in with the same nick.</a></h4>
+    <a href="#login_bug">3.1Al utilizar autenticación <abbr title="HyperText
+Transfer Protocol">HTTP</abbr>, un usuario que finalizó sesión no puede
+iniciar sesión nuevamente con el mismo nombre de usuario.</a></h4>
 
-<p> This is related to the authentication mechanism (protocol) used by
-phpMyAdmin. To bypass this problem: just close all the opened browser
-windows and then go back to phpMyAdmin. You should be able to log in again.</p>
+<p> Esto está relacionado con el mecanismo (protocolo) de autenticación
+utilizado por phpMyAdmin. Para evitar este problema simplemente cierra la
+ventana del navegador y vuelve a abrir phpMyAdmin. Deberías de poder
+inisicar sesión nuevamente.</p>
 
 <h4 id="faq3_2">
-    <a href="#faq3_2">3.2 When dumping a large table in compressed mode, I get a
-memory limit error or a time limit error.</a></h4>
+    <a href="#faq3_2">3.2 Al volcar una tabla grande en modo comprimido obtengo
+un error de límite de memoria o un error de límite de tiempo.</a></h4>
 
-<p> Compressed dumps are built in memory and because of this are limited to
-php's memory limit. For GZip/BZip2 exports this can be overcome since 2.5.4
-using <a href="#cfg_CompressOnFly"
-class="configrule">$cfg['CompressOnFly']</a> (enabled by default). Zip
-exports can not be handled this way, so if you need Zip files for larger
-dump, you have to use another way.</p>
+<p> Los volcados comprimidos son creados en memoria y, por lo tanto, están
+limitados a los límites de memoria de php. Para exportaciones GZip/BZip2
+esto puede evitarse desde 2.5.4 utilizando <a href="#cfg_CompressOnFly"
+class="configrule">$cfg['CompressOnFly']</a> (activado
+predeterminadamente). Exportaciones Zip no pueden ser manejadas de esta
+forma por lo que si necesitas archivos Zip para volcados grandes necesitarás
+otra forma de hacerlos.</p>
 
 <h4 id="faq3_3">
     <a href="#faq3_3">3.3 With InnoDB tables, I lose foreign key relationships
