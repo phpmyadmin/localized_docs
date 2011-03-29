@@ -3575,18 +3575,18 @@ forma por lo que si necesitas archivos Zip para volcados grandes necesitarás
 otra forma de hacerlos.</p>
 
 <h4 id="faq3_3">
-    <a href="#faq3_3">3.3 With InnoDB tables, I lose foreign key relationships
-when I rename a table or a column.</a></h4>
+    <a href="#faq3_3">3.3 Con tablas InnoDB, pierdo las relaciones con claves
+foráneas al cambiar el nombre de una tabla o columna.</a></h4>
 
-<p> This is an InnoDB bug, see <a
+<p> Esto es un error de InnoDB, revisa <a
 href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>.</p>
 
 <h4 id="faq3_4">
-    <a href="#faq3_4">3.4 I am unable to import dumps I created with the
-mysqldump tool bundled with the MySQL server distribution.</a></h4>
+    <a href="#faq3_4">3.4 No puedo importar volcados que creé con la herramienta
+mysqldump que viene con la distribución del servidor MySQL.</a></h4>
 
-<p> The problem is that older versions of <code>mysqldump</code> created invalid
-comments like this:</p>
+<p> El problema es que las versiones antiguas de <code>mysqldump</code> creaban
+comentarios inválidos como este:</p>
 
 <pre>
 -- MySQL dump 8.22
@@ -3596,150 +3596,155 @@ comments like this:</p>
 -- Server version 3.23.54
 </pre>
 
-<p> The invalid part of the code is the horizontal line made of dashes that
-appears once in every dump created with mysqldump. If you want to run your
-dump you have to turn it into valid MySQL. This means, you have to add a
-whitespace after the first two dashes of the line or add a # before it:
+<p> La parte inválida del código es la línea compuesta de guiones que aparece
+una vez en cada volado creado por mysqldump. Si deseas ejecutar el volcado
+necesitas convertirlo a MySQL válido. Esto significa agregar un espacio
+después de los primeros dos guiones de dicha línea o agregar un # al
+comienzo:
     <br />
     <code> -- -------------------------------------------------------<br />
-    </code> or<br />
+    </code> o<br />
     <code> #--------------------------------------------------------- </code>
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 When using nested folders there are some multiple
-hierarchies displayed in a wrong manner?!</a> (<a
+    <a href="#faq3_5">3.5 Al utilizar carpetas anidadas algunas jerarquías
+múltiples se muestran incorrectamente</a> (<a
 href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
 
-<p> Please note that you should not use the separating string multiple times
-without any characters between them, or at the beginning/end of your table
-name. If you have to, think about using another TableSeparator or disabling
-that feature</p>
+<p> Porfavor nota que no deberías de utilizar la cadena de separación múltiples
+veces sin otros caracteres intermedios o al principio o al final del nombre
+de la tabla. Si es necesario, considera utilizar otro separador o desactivar
+la funcionalidad</p>
 
 <h4 id="faq3_6">
-    <a href="#faq3_6">3.6 What is currently not supported in phpMyAdmin about
+    <a href="#faq3_6">3.6 ¿Qué no está soportado actualmente en phpMyAdmin sobre
 InnoDB?</a></h4>
 
-<p> In Relation view, being able to choose a table in another database, or
-having more than one index column in the foreign key.<br /><br/>
-    In Query-by-example (Query), automatic generation of the query LEFT JOIN
-from the foreign table.<br /><br/>
+<p> En la vista de relaciones, ser capaz de elegir una tabla en otra base de
+datos o tener más de una columna de índice en una clave foránea.<br /><br/>
+    En consultas por ejemplo (Consultas), la generación automática de la
+consulta LEFT JOIN desde la tabla foránea.<br /><br/>
 </p>
 
 <h4 id="faq3_7">
-    <a href="#faq3_7">3.7 I have table with many (100+) columns and when I try
-to browse table I get series of errors like &quot;Warning: unable to parse
-url&quot;. How can this be fixed?</a></h4>
+    <a href="#faq3_7">3.7 Tengo una tabla con muchas columnas (100+) y cuando
+intento explorar la tabla obtengo una serie de errores como &quot;Warning:
+unable to parse url&quot;. ¿Cómo puedo solucionar esto?</a></h4>
 <p>
-    Your table neither have a primary key nor an unique one, so we must use a
-long expression to identify this row. This causes problems to parse_url
-function. The workaround is to create a primary or unique key.
+    La tabla carece de una clave primaria o clave única por lo que se necesita
+una largar expresión para identificar una file. Esto causa problemas con la
+función parse_url. La forma de evitarlo es crear una clave primaria o única.
     <br />
 </p>
 
 <h4 id="faq3_8">
-    <a href="#faq3_8">3.8 I cannot use (clickable) HTML-forms in columns where I
-put a MIME-Transformation onto!</a></h4>
+    <a href="#faq3_8">3.8 ¡No puedo utilizar formularios HTML sobre los que
+pueda pulsar en las columnas a las que le agregué una transformación
+MIME!</a></h4>
 
-<p> Due to a surrounding form-container (for multi-row delete checkboxes), no
-nested forms can be put inside the table where phpMyAdmin displays the
-results.  You can, however, use any form inside of a table if keep the
-parent form-container with the target to tbl_row_delete.php and just put
-your own input-elements inside. If you use a custom submit input field, the
-form will submit itself to the displaying page again, where you can validate
-the $HTTP_POST_VARS in a transformation.  For a tutorial on how to
-effectively use transformations, see our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin-homepage.</p>
+<p> Debido al formulario contenedo (para las cajas de opción de borrado
+multi-fila) no se pueden anidar formularios en la tabla utilizada por
+phpMyAdmin para mostrar los resultados. Se puede, sin embargo, utilizar un
+formulario en una tabla si el objetivo del mismo es tbl_row_delete.php y
+sólo se agregan los elementos input a la misma. Si se utiliza un elemento
+input de tipo submit personalizado, el formulario se enviará a sí mismo a la
+página nuevamente donde se puede validar $HTTP_POST_VARS en una
+transformación. Para un tutorial sobre cómo utilizar transformaciones
+efectivamente, revisa la <a
+href="http://www.phpmyadmin.net/home_page/docs.php">sección de enlaces</a>
+en la página principal oficial de phpMyAdmin.</p>
 
 <h4 id="faq3_9">
-    <a href="#faq3_9">3.9 I get error messages when using "--sql_mode=ANSI" for
-the MySQL server</a></h4>
+    <a href="#faq3_9">3.9 Obtengo mensajes de error al utilizar
+"--sql_mode=ANSI" en el servidor MySQL</a></h4>
 
-<p> When MySQL is running in ANSI-compatibility mode, there are some major
-differences in how <abbr title="structured query language">SQL</abbr> is
-structured (see <a href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">
-http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a>). Most important of
-all, the quote-character (") is interpreted as an identifier quote character
-and not as a string quote character, which makes many internal phpMyAdmin
-operations into invalid <abbr title="structured query language">SQL</abbr>
-statements. There is no workaround to this behaviour. News to this item will
-be posted in Bug report <a
-href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;group_id=23067&amp;atid=377408">#816858</a>
+<p> Cuando MySQL ejecuta en modo compatible ANSI hay algunas grandes diferencias
+sobre cómo se estructura <abbr title="structured query language">SQL</abbr>
+(revisa <a href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">
+http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a>). La más importante de
+todas es que las comillas dobles (") son interpretadas como un identificador
+y no como comillas para cadenas por lo que muchas operaciones internas de
+phpMyAdmin generan consultas <abbr title="structured query
+language">SQL</abbr> inválido. No hay forma de evitar este
+comportamient. Novedades al respecto serán informadas en el reporte de error
+<a
+href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;group_id=23067&amp;atid=377408">#816858</a>.
 </p>
 
 <h4 id="faq3_10">
-    <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
-SELECT display more that one column with the same value (for example
-<tt>SELECT lastname from employees where firstname like 'A%'</tt> and two
-&quot;Smith&quot; values are displayed), if I click Edit I cannot be sure
-that I am editing the intended row.</a></h4>
+    <a href="#faq3_10">3.10 Homónimos y falta de clave primaria: cuando los
+resultados de un SELECT muestran más de una columna con el mismo valor (por
+ejemplo <tt>SELECT apellido FROM empleados WHERE nombre LIKE 'A%'<tt> y dos
+valores &quot;Smit&quot; son mostrados) si pulso en Editar no puedo estar
+seguro de estar editando la fila deseada.</a></h4>
 
-<p> Please make sure that your table has a primary key, so that phpMyAdmin can
-use it for the Edit and Delete links.</p>
+<p> Porfavor asegúrate que la tabla tiene una clave primaria para que phpMyAdmin
+pueda utilizarla para los enlaces de Editar y Borrar.</p>
 
 <h4 id="faq3_11">
-    <a href="#faq3_11">3.11 The number of records for InnoDB tables is not
-correct.</a></h4>
+    <a href="#faq3_11">3.11 La cantidad de registros para las tablas InnoDB no
+es correcta.</a></h4>
 
-<p> phpMyAdmin uses a quick method to get the row count, and this method only
-returns an approximate count in the case of InnoDB tables. See <a
-href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a> for a
-way to modify those results, but this could have a serious impact on
-performance.</p>
+<p> phpMyAdmin utiliza un método rápido para obtener la cantidad de filas, y
+este método sólo devuelve una cantidad aproximada para las tablas
+InnoDB. Revisa  <a href="#cfg_MaxExactCount"
+class="configrule">$cfg['MaxExactCount']</a> para una forma de modificar
+estos resultados, pero podría tener serias consecuencias en la performance.</p>
 
 <h4 id="faq3_12">
-    <a href="#faq3_12">3.12 (withdrawn).</a></h4>
+    <a href="#faq3_12">3.12 (eliminada).</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 I get an error when entering <tt>USE</tt> followed
-by a db name containing an hyphen.  </a></h4>
+    <a href="#faq3_13">3.13 Obtengo un error al ingresar <tt>USE</tt> seguido
+del nombre de una base de datos que contiene un guión.</a></h4>
 <p>
-    The tests I have made with MySQL 5.1.49 shows that the API does not accept
-this syntax for the USE command.
+    Las pruebas realizadas con MySQL 5.1.49 muestra que la API no acepta esta
+sintáxis para la consulta USE.
 </p>
 
 <h4 id="faq3_14">
-    <a href="#faq3_14">3.14 I am not able to browse a table when I don't have
-the right to SELECT one of the columns.</a></h4>
+    <a href="#faq3_14">3.14 No puedo examinar una tabla cuando no tengo permisos
+para ejecutar SELECT en una de sus columnas.</a></h4>
 <p>
-    This has been a known limitation of phpMyAdmin since the beginning and it's
-not likely to be solved in the future.
+    Esta es una limitación conocida de phpMyAdmin desde el comienzo y no es
+probable que sea solucionada en el futuro.
 </p>
 
 
 
 <!-- Begin: Excel import limitations -->
 <h4 id="faq3_15">
-    <a href="#faq3_15">3.15 When I import an Excel spreadsheet, some cells with
-calculations do not display correctly.</a></h4>
+    <a href="#faq3_15">3.15 Al importar una hoja de cálculo de Excel, algunas
+celdas con fórmulas no se muestran correctamente.</a></h4>
 <p>
-    phpMyAdmin uses the <a href="http://www.codeplex.com/PHPExcel/">PHPExcel</a>
-library to parse Excel XLS and XLSX spreadsheets.  Therefore, any
-limitations that are listed on their page regarding Excel calculations will
-also apply here.
+    phpMyAdmin utuliza la biblioteca <a
+href="http://www.codeplex.com/PHPExcel/">PHPExcel</a> para analizar hojas de
+cálculo de Excel XLS y XLSX. Por lo tanto, toda limitación mostrada en su
+página sobre fórmulas de Excel también aplicará aquí.
     <br /><br />
-    PHPExcel will be kept up to date so as to make all improvements available to
-phpMyAdmin users.
+    PHPExcel será mantenido actualizado para proveer toda mejora a los usuarios
+de phpMyAdmin
 </p>
 
 <h4 id="faq3_16">
-    <a href="#faq3_16">3.16 When I compress (gzip, bzip2, zip) an Excel workbook
-and attempt to import it, nothing happens.</a></h4>
+    <a href="#faq3_16">3.16 Al comprimir (gzip, bzip2, zip) un libro de trabajo
+de Excel e intento importarlo, no sucede nada.</a></h4>
 <p>
-    Since Excel XLSX workbooks are already compressed, there is often times only
-a small benefit from compressing them yet again.  Support for compressed
-Excel XLSX and XLS workbooks may be added in the future.
+    Dado que los libros de trabajo Excel XLSX ya están comprimidos, generalmente
+se obtiene poco beneficio al comprimirlo nuevamente. El soporte para libros
+de trabajo Excel XLS y XLSX comprimidos podría ser agregado en el futuro.
 </p>
 
 <h4 id="faq3_17">
-    <a href="#faq3_17">3.17 When I import an Excel spreadsheet, my custom cell
-types are not represented as they are in Excel.</a></h4>
+    <a href="#faq3_17">3.17 Al importar una hoja de cálculo Excel, los tipos
+personalizados de celdas no están representados como en Excel.</a></h4>
 <p>
-    Excel's internal representation of custom cell types is rather muddled
-(especially in Excel 97-2003 binary XLS files). If possible, consider using
-a built-in type. These are almost always guarenteed to import correctly.
+    La representación interna de Excel para tipos de celda personalizados es
+complicada (especialmente en archivos binarios XLS de Excel 97-2003). Si es
+posible, considera la opción de utilizar tipos de celda nativos de Excel que
+casi siempre importarán correctamente.
 </p>
 
 
@@ -3748,11 +3753,11 @@ a built-in type. These are almost always guarenteed to import correctly.
 <!-- End: Excel import limitations -->
 <!-- Begin: CSV import limitations -->
 <h4 id="faq3_18">
-    <a href="#faq3_18">3.18 When I import a CSV file that contains multiple
-tables, they are lumped together into a single table.</a></h4>
+    <a href="#faq3_18">3.18 Al importar un archivo CSV que contiene múltiples
+tablas, se las junta todas en una sola tabla.</a></h4>
 <p>
-    There is no reliable way to differetiate tables in CSV format. For the time
-being, you will have to break apart CSV files containing multiple tables.
+    No hay una forma confiable de diferenciar tablas en el formato CSV. Por el
+momento necesitarás dividir los archivos CSV que contengan mas de una tabla.
 </p>
 
 
@@ -4648,7 +4653,7 @@ table?</a></h4>
 columns can be visualised as a chart. Moreover the table must be in a
 special format for chart script to understand it. Currently supported
 formats can be found in the <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
+href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
 
 <h3 id="faqproject">phpMyAdmin project</h3>
 
@@ -4677,8 +4682,7 @@ new translation simply use <code>po/phpmyadmin.pot</code> and generate
 po/phpmyadmin.pot -l LANG_CODE --no-translator -o po/LANG_CODE.po</code> to
 do this) or ask on the mailing list to add the translation to the web
 interface. More details are available on <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Gettext_for_translators">our
-wiki</a>.
+href="http://wiki.phpmyadmin.net/pma/Gettext_for_translators">our wiki</a>.
 </p>
 <p>
     Please note that we try not to use HTML entities like &amp;eacute; in the
@@ -4734,7 +4738,7 @@ tracker of the phpMyAdmin project</a>.
 </ol>
 
 <p>More details on git are available on <a
-href="http://wiki.phpmyadmin.net/pma/Devel:Git">our wiki</a>.</p>
+href="http://wiki.phpmyadmin.net/pma/Git">our wiki</a>.</p>
 
 <p> Write access to the repository is granted only to experienced developers who
 have already contributed something useful to phpMyAdmin.<br />
