@@ -85,7 +85,7 @@ uzantısına ihtiyacınız var.</li>
 için mbstring ve ctype uzantılarını kurmalısınız.
         </li>
             <li>PHP içinde JPEG'leri (&quot;image/jpeg: inline&quot;) küçük resimler halinde
-orijinal en boy oranlarıyla dizili göstermek için GD2 desteğine ihtiyacınız
+orijinal en boy oranlarıyla hizada göstermek için GD2 desteğine ihtiyacınız
 var</li>
             <li>&quot;Tanımlama Bilgisi&quot; <a href="#authentication_modes">kimlik
 doğrulama yöntemi</a> kullandığınızda, <a
@@ -101,7 +101,7 @@ Sorular">SSS</abbr> 6.25</a>'teki PHP ve MySQL gereksinimlerine bakın.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 veya daha yenisi (<a href="#faq1_17">ayrıntılar</a>);</li>
-    <li><b>Web tarayıcısı</b> ile tanımlama bilgileri etkinleştirlmiş.</li>
+    <li>Tanımlama bilgileri etkinleştirilmiş <b>Web tarayıcısı</b>.</li>
 </ul>
 
 
@@ -123,11 +123,10 @@ ve bunları kaldırabilir</li>
 oluşturabilir, kopyalayabilir, kaldırabilir ve değiştirebilir</li>
     <li>sunucu yapılandırmasındaki önerilerle sunucu, veritabanları ve tablolara
 bakım yapabilir</li>
-    <li>Herhangi bir <abbr title="structured query language">SQL</abbr>-ifadesini,
-hatta yığın haldeki sorguları çalıştırabilir, düzenleyebilir,
-işaretleyebilir</li>
+    <li>herhangi bir <abbr title="structured query language">SQL</abbr>-ifadesini,
+hatta toplu sorguları çalıştırabilir, düzenleyebilir, işaretleyebilir</li>
     <li>tablolara metin dosyaları yükleyebilir</li>
-    <li>tablo yığınlarını okuyabilir ve oluşturabilir<a
+    <li>tablo dökümlerini okuyabilir ve oluşturabilir<a
 href="#footnote_1"><sup>1</sup></a>
         </li>
     <li>veriyi çeşitli biçimlere aktarabilir<a href="#footnote_1"><sup>1</sup></a>:
@@ -182,7 +181,7 @@ izin verir); tüm kullanıcılar geçerli MySQL kullanıcısı olmak zorundadır
 
 <p class="footnote" id="footnote_1">
     <sup>1)</sup> Eğer Zlib destekli (<tt>--zlib-ile</tt>) ve/veya Bzip2
-(<tt>--bz2-ile</tt>) destekli PHP kullanıyorsanız, phpMyAdmin yığınları ve
+(<tt>--bz2-ile</tt>) destekli PHP kullanıyorsanız, phpMyAdmin dökümleri ve
 <abbr title="Comma Separated Values">CSV</abbr> aktarımlarını (Zip, GZip
 -RFC 1952- veya Bzip2 biçimleri) sıkıştırabilir. Uygun destek aynı zamanda
 <tt>php.ini</tt> içinde değişiklik gerektirebilir.</p>
@@ -1033,7 +1032,7 @@ gösterilecektir.
         2.5.0'dan başlayarak yorumlar bu nedenle tablo tercih sayfasında ve tablo
 gözatma görünümünde kullanılmaktadır, sütun adının (tercihler sayfası)
 üzerinde araç ipucu veya gözatma görünümünde tablonun başlığına gömülü
-olarak gösterilmektedir. Ayrıca tablo yığınında gösterilebilirler. Lütfen
+olarak gösterilmektedir. Ayrıca tablo dökümünde gösterilebilirler. Lütfen
 daha sonra konu ile ilgili yapılandırma yönergelerine bakın.<br /><br />
 
         Ayrıca 2.5.0 yayımında yeni olan, aynı zamanda aşağıdaki tablo yapısına
@@ -1459,47 +1458,52 @@ verip vermeyeceğini tanımlar. Eğer FALSE olarak ayarlanırsa,
 &quot;DROP DATABASE veritabanım&quot; komutu reddedilecektir. Birçok
 müşterisi olan <abbr title="Internet service provider">ISP</abbr>'ler için
 oldukça kullanışlıdır.<br />
-        Please note that this limitation of SQL queries is not as strict as when
-using MySQL privileges. This is due to nature of SQL queries which might be
-quite complicated. So this choice should be viewed as help to avoid
-accidental dropping rather than strict privilege limitation.</dd>
+        Lütfen unutmayın SQL sorgularının bu sınırlaması MySQL yetkileri
+kullanıldığındaki gibi kesin değildir. Bu, oldukça karışık olabilen SQL
+sorgularının doğasından dolayıdır. Bu yüzden kesin yetki sınırlamasından
+ziyade bu seçim yanlışlıkla kaldırmayı önlemeye yardımcı olarak
+gösterilmektedir.</dd>
 
     <dt id="cfg_Confirm">$cfg['Confirm'] boolean</dt>
-    <dd>Whether a warning (&quot;Are your really sure...&quot;) should be displayed
-when you're about to lose data.</dd>
+    <dd>Veri kaybetmek üzere olduğunuzda bir uyarı (&quot;...emin misiniz?&quot;)
+görüntülenmektedir.</dd>
 
     <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] boolean</dt>
-    <dd>Define whether the previous login should be recalled or not in cookie
-authentication mode.<br /><br />
+    <dd>Tanımlama bilgisi kimlik doğrulaması kipinde önceki oturum açmayı
+hatırlamasını ya da hatırlamamasını tanımlar.<br /><br />
 
-        This is automatically disabled if you do not have configured <tt><a
-href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
+        Eğer <tt><a href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>
+yapılandırmadıysanız bu otomatik olarak etkisizleştirilir.
         </dd>
 
-    <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] integer [number of seconds]</dt>
-    <dd>Define how long is login cookie valid. Please note that php configuration
-option <a
+    <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] tam sayı [saniye sayısı]</dt>
+    <dd>Oturum açma tanımlama bilgisinin ne kadar süreyle geçerli olacağını
+tanımlar. Lütfen unutmayın php yapılandırma seçeneği<a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
-might limit session validity and if session is lost, login cookie is also
-invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
-not lower than the value of $cfg['LoginCookieValidity'].</dd>
+oturum geçerliliğini sınırlandırabilir ve eğer oturum kaybolursa, oturum
+açma tanımlama bilgisi dahi geçersiz kılınır. Bu yüzden
+<code>session.gc_maxlifetime</code> için değeri $cfg['LoginCookieValidity']
+değerinden daha düşük tutmamak en iyisidir.</dd>
 
-    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [number of seconds]</dt>
-    <dd>Oturum açma tanımlama bilgisinin ne kadar tarayıcıda depolanacağını
+    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] tam sayı [saniye sayısı]</dt>
+    <dd>Oturum açma tanımlama bilgisinin tarayıcıda ne kadar süreyle depolanacağını
 tanımlar. Varsayılan 0 değeri anlamı sadece var olan oturum için
 tutulacağıdır. Bu güvenli olmayan ortamlar için önerilir.</dd>
 
     <dt id="cfg_LoginCookieDeleteAll">$cfg['LoginCookieDeleteAll'] boolean</dt>
-    <dd>If enabled (default), logout deletes cookies for all servers, otherwise only
-for current one. Setting this to false makes it easy to forget to log out
-from other server, when you are using more of them.</dd>
+    <dd>Eğer etkinleştirilirse (varsayılandır), oturumu kapatmak tüm sunucuların
+tanımlama bilgilerini siler, yoksa sadece şu ankini. Bunu false olarak
+ayarlamak diğer sunucudan oturumu kapatmayı unutmayı kolaylaştırır, tabi
+bunlardan çok fazla kullandığınzda.</dd>
 
     <dt id="cfg_UseDbSearch">$cfg['UseDbSearch'] boolean</dt>
-    <dd>Define whether the "search string inside database" is enabled or not.</dd>
+    <dd>"Veritabanı içinde dizgi arama"yı etkinleştirmeyi ya da etkinleştirmemeyi
+tanımlar.</dd>
 
     <dt id="cfg_IgnoreMultiSubmitErrors">$cfg['IgnoreMultiSubmitErrors'] boolean</dt>
-    <dd>Define whether phpMyAdmin will continue executing a multi-query statement if
-one of the queries fails. Default is to abort execution.</dd>
+    <dd>Eğer sorgulardan biri başarısız olursa, phpMyAdmin'in çoklu sorgu ifadesini
+çalıştırmaya devam edip etmeyeceğini tanımlar. Varsayılan çalıştırmayı
+durdurmadır.</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] boolean</dt>
     <dd>Define whether phpMyAdmin will output the results of each query of a
@@ -2644,24 +2648,24 @@ suffix. This function accepts no parameters and returns array with
 information about the transformation. Currently following keys can be used:
 </p>
 <dl>
-    <dt><code>info</code></dt>
-    <dd>Long description of the transformation.</dd>
+    <dt><code>bilgi</code></dt>
+    <dd>Uzun dönüşüm açıklaması.</dd>
 </dl>
 
 
 <!-- FAQ -->
-<h2 id="faq">FAQ - Frequently Asked Questions</h2>
+<h2 id="faq">SSS - Sıkça Sorulan Sorular</h2>
 
-<ol><li><a href="#faqserver">Server</a></li>
-    <li><a href="#faqconfig">Configuration</a></li>
-    <li><a href="#faqlimitations">Known limitations</a></li>
-    <li><a href="#faqmultiuser">ISPs, multi-user installations</a></li>
-    <li><a href="#faqbrowsers">Browsers or client <abbr title="operating
-system">OS</abbr></a></li>
-    <li><a href="#faqusing">Using phpMyAdmin</a></li>
-    <li><a href="#faqproject">phpMyAdmin project</a></li>
-    <li><a href="#faqsecurity">Security</a></li>
-    <li><a href="#faqsynchronization">Synchronization</a></li>
+<ol><li><a href="#faqserver">Sunucu</a></li>
+    <li><a href="#faqconfig">Yapılandırma</a></li>
+    <li><a href="#faqlimitations">Bilinen sınırlamalar</a></li>
+    <li><a href="#faqmultiuser">ISP'ler, çoklu kullanıcı kurulumları</a></li>
+    <li><a href="#faqbrowsers">Tarayıcılar veya istemci <abbr title="operating
+system">İS</abbr></a></li>
+    <li><a href="#faqusing">phpMyAdmin kullanma</a></li>
+    <li><a href="#faqproject">phpMyAdmin projesi</a></li>
+    <li><a href="#faqsecurity">Güvenlik</a></li>
+    <li><a href="#faqsynchronization">Eşitleme</a></li>
 </ol>
 
 <p> Please have a look at our <a
@@ -4757,9 +4761,9 @@ Telif hakkı (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
 </pre>
 
 <p>
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License version 2, as published by
-the Free Software Foundation.
+Bu program üretsiz bir yazılımdır; Free Software Foundation tarafından
+yayımlandığı gibi, GNU General Public License sürüm 2 şartları altında
+yeniden dağıtabilir ve/veya değiştirebilirsiniz.
 </p>
 
 <p>
@@ -4879,7 +4883,7 @@ and CSS2 compliant codes</li>
 <ul>
   <li>automatic joins in QBE</li>
   <li>links column in printview</li>
-  <li>İlişki görünümü</li>
+  <li>Bağlantı görünümü</li>
 </ul></li>
 
 <li>Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;

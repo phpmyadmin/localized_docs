@@ -3549,8 +3549,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 </ul>
 
 <h4 id="faqdisplay">
-    <a href="#faqdisplay">6.7 How can I use the &quot;display column&quot;
-feature?</a></h4>
+    <a href="#faqdisplay">6.7 怎样使用 &quot;显示字段&quot; 功能？</a></h4>
 <p>
     Starting from the previous example, create the pma_table_info as explained
 in the configuration section, then browse your persons table, and move the
@@ -3623,28 +3622,22 @@ statistics pages?</a></h4>
 <p> It means &quot;average&quot;.</p>
 
 <h4 id="faqexport">
-    <a href="#faqexport">6.12 I want to understand some Export options.</a></h4>
+    <a href="#faqexport">6.12 我想了解一些导出选项。</a></h4>
 
-<p><b>Structure:</b></p>
+<p><b>结构:</b></p>
 
-<ul><li>&quot;Add DROP TABLE&quot; will add a line telling MySQL to <a
-href="http://dev.mysql.com/doc/mysql/en/drop-table.html">drop the table</a>,
-if it already exists during the import. It does NOT drop the table after
-your export, it only affects the import file.</li>
-    <li>&quot;If Not Exists&quot; will only create the table if it doesn't exist.
-Otherwise, you may get an error if the table name exists but has a different
-structure.</li>
-    <li>&quot;Add AUTO_INCREMENT value&quot; ensures that AUTO_INCREMENT value (if
-any) will be included in backup.</li>
-    <li>&quot;Enclose table and column names with backquotes&quot; ensures that
-column and table names formed with special characters are protected.</li>
+<ul><li>&quot;添加 DROP TABLE&quot; 将会添加一行告诉 MySQL，如果在导入时已存在这张表则 <a
+href="http://dev.mysql.com/doc/mysql/en/drop-table.html">删除它</a>。它不会在导出之后删除你的表，而仅作用于导入的目标。</li>
+    <li>&quot;If Not Exists&quot; 将仅创建不存在的数据表。  否则，当有一个同名但结构不同的数据表存在时就会出错。</li>
+    <li>&quot;添加 AUTO_INCREMENT 值&quot; 保证 AUTO_INCREMENT 值 (如果有) 将包含在备份中。</li>
+    <li>&quot;给表名和字段名加上反引号&quot; 保护名称中含有特殊字符或保留字的字段和表。</li>
     <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
 types set in the pmadb in the dump as <abbr title="structured query
 language">SQL</abbr> comments (<i>/* xxx */</i>).
        </li>
 </ul>
 
-<p><b>Data:</b></p>
+<p><b>数据:</b></p>
 
 <ul><li>&quot;Complete inserts&quot; adds the column names on every INSERT command,
 for better documentation (but resulting file is bigger).</li>
@@ -3662,13 +3655,10 @@ rather than causing the entire statement to fail.</li>
 </ul>
 
 <h4 id="faq6_13">
-    <a href="#faq6_13">6.13 I would like to create a database with a dot in its
-name.</a></h4>
+    <a href="#faq6_13">6.13 我想创建一个名字里包含点的数据库。</a></h4>
 
-<p> This is a bad idea, because in MySQL the syntax &quot;database.table&quot;
-is the normal way to reference a database and table name. Worse, MySQL will
-usually let you create a database with a dot, but then you cannot work with
-it, nor delete it.</p>
+<p> 这是个馊主意，因为在 MySQL 的语法中 &quot;数据库.表&quot; 是一个常见的引用指定数据库中表的用法。更糟糕的是，MySQL
+通常会允许你创建这样一个数据库，但是你无法使用它，甚至无法删除它。</p>
 
 <h4 id="faqsqlvalidator">
     <a href="#faqsqlvalidator">6.14 How do I set up the <abbr title="structured
@@ -3702,15 +3692,11 @@ Technology.  We utilize it as free SOAP service.
 </p>
 
 <h4 id="faq6_15">
-    <a href="#faq6_15">6.15 I want to add a BLOB column and put an index on it,
-but MySQL says &quot;BLOB column '...' used in key specification without a
-key length&quot;.</a></h4>
+    <a href="#faq6_15">6.15 我想添加一个 BLOB 字段并索引它，但是 MySQL 说 &quot;BLOB column
+'...' used in key specification without a key length&quot; 。</a></h4>
 
-<p> The right way to do this, is to create the column without any indexes, then
-display the table structure and use the &quot;Create an index&quot;
-dialog. On this page, you will be able to choose your BLOB column, and set a
-size to the index, which is the condition to create an index on a BLOB
-column.</p>
+<p> 正确的方法是，首先添加不带索引的字段，然后显示表结构并使用 &quot;创建索引&quot; 对话框。在这个页面中，你就可以选择 BLOB
+字段，并设置索引的大小，这是在 BLOB 字段上建立索引的条件。</p>
 
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 How can I simply move in page with plenty editing
@@ -3736,13 +3722,9 @@ mimetype definitions.<br />
 mimetypes by heart so he/she can enter it at will?</p>
 
 <h4 id="faqbookmark">
-    <a href="#faqbookmark">6.18 Bookmarks: Where can I store bookmarks? Why
-can't I see any bookmarks below the query box? What is this variable for?
-</a></h4>
+    <a href="#faqbookmark">6.18 书签: 怎么保存书签？为什么我在查询框下找不到书签？变量有什么用？</a></h4>
 
-<p> Any query you have executed can be stored as a bookmark on the page where
-the results are displayed. You will find a button labeled 'Bookmark this
-query' just at the end of the page.<br />
+<p> 你可以在显示查询结果的页面将你执行的任何查询保存为书签。通过按下页面底部写有 '将此查询加为书签' 字样的按钮。<br />
     As soon as you have stored a bookmark, it is related to the database you run
 the query on. You can now access a bookmark dropdown on each page, the query
 box appears on for that database.<br /><br />
@@ -3766,20 +3748,16 @@ chars. So you can use:<br /><br />
     in your query, where VARIABLE is the string you entered in the input box. If
 an empty string is provided, no replacements are made.<br /><br />
 
-    A more complex example. Say you have stored this query:<br /><br />
-    <code>SELECT Name, Address FROM addresses WHERE 1 /* AND Name LIKE
-'%[VARIABLE]%' */</code>
+    现在举一个更复杂的例子。假如你保存了这个查询:<br /><br />
+    <code>SELECT 名字, 地址 FROM 地址表 WHERE 1 /* AND 名字 LIKE '%[变量]%' */</code>
     <br /><br />
 
-    Say, you now enter &quot;phpMyAdmin&quot; as the variable for the stored
-query, the full query will be:<br /><br />
+    假如你输入了 &quot;张三&quot; 作为变量，完整的查询将会是:<br /><br />
 
-    <code>SELECT Name, Address FROM addresses WHERE 1 AND Name LIKE
-'%phpMyAdmin%'</code>
+    <code>SELECT 名字, 地址 FROM 地址表 WHERE 1 AND 名字 LIKE '%张三%'</code>
     <br /><br />
 
-    You can use multiple occurrences of <b>/*[VARIABLE]*/</b> in a single query
-(that is, multiple occurrences of the <i>same</i> variable).<br />
+    你可以在一个查询中多次使用 <b>/*[变量]*/</b> (这表示使用<i>同一个</i>变量) 。<br />
     <b>NOTE THE ABSENCE OF SPACES</b> inside the &quot;/**/&quot; construct. Any
 spaces inserted there will be later also inserted as spaces in your query
 and may lead to unexpected results especially when using the variable
@@ -3806,16 +3784,13 @@ you have table exported in file <code>table.tex</code>):</p>
 </pre>
 
 <h4 id="faq6_20">
-    <a href="#faq6_20">6.20 I see a lot of databases which are not mine, and
-cannot access them.  </a></h4>
+    <a href="#faq6_20">6.20 我看到好多不属于我的数据库，而且我也无法访问它们。  </a></h4>
 
-<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
-DATABASES, LOCK TABLES. Those privileges also enable users to see all the
-database names.  See this <a href="http://bugs.mysql.com/179">bug
-report</a>.<br /><br />
+<p> 这是因为你至少有下列全局权限之一: CREATE TEMPORARY TABLES 、 SHOW DATABASES 和 LOCK
+TABLES。这些权限将允许用户看见所有的数据库名。  参见这个<a
+href="http://bugs.mysql.com/179">缺陷报告</a>。<br /><br />
 
-    So if your users do not need those privileges, you can remove them and their
-databases list will shorten.</p>
+    所以如果你的用户不需要这些权限，你可以撤销这些权限以使他们的数据库列表短些。</p>
 
 <h4 id="faq6_21">
     <a href="#faq6_21">6.21 怎样才能在编辑/插入模式中看见某个字段基于外键表的可能的值的列表？</a></h4>
@@ -3884,22 +3859,18 @@ stored at upload time.</li>
 </ol>	
 
 <h4 id="faq6_26">
-    <a href="#faq6_26">6.26 How can I select a range of rows?</a></h4>
+    <a href="#faq6_26">6.26 我可以选择一段连续的行吗？</a></h4>
 
-<p> Click the first row of the range, hold the shift key and click the last row
-of the range. This works everywhere you see rows, for example in Browse mode
-or on the Structure page.</p>
+<p> 先点击要选择的第一行，按住 Shift 键不放并点击最后一行。这在任何有行的地方都有效，例如浏览模式和结构页面。</p>
 
 
 <h4 id="faq6_27">
     <a href="#faq6_27">6.27 我可以使用哪些格式字符串？</a></h4>
 
 <p>
-    In all places where phpMyAdmin accepts format strings, you can use
-<code>@VARIABLE@</code> expansion and <a
-href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (for example, if you haven't chosen a table,
-you can not get the table name), but the following variables can be used:
+    在所有 phpMyAdmin 接受格式字符串的地方，你都可以使用扩展 <code>@变量@</code> 和 <a
+href="http://php.net/strftime">strftime</a> 格式字符串。扩展变量基于当前环境
+(例如，在你没有选中任何数据表时，你就无法获取表名) ，可以使用下列变量:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>

@@ -3766,354 +3766,366 @@ momento necesitarás dividir los archivos CSV que contengan mas de una tabla.
 <!-- End: CSV import limitations -->
 <!-- Begin: Import type-detection limitations -->
 <h4 id="faq3_19">
-    <a href="#faq3_19">3.19 When I import a file and have phpMyAdmin determine
-the appropriate data structure it only uses int, decimal, and varchar
-types.</a></h4>
+    <a href="#faq3_19">3.19 Al importar un archivo y hacer que phpMyAdmin
+determine la estructura de datos apropiada, sólo utiliza los tipos INT,
+DECIMAL y VARCHAR.</a></h4>
 <p>
-    Currently, the import type-detection system can only assign these MySQL
-types to columns. In future, more will likely be added but for the time
-being you will have to edit the structure to your liking post-import.
+    Actualmente el sistema de detección de tipos sólo puede asignar estos tipos
+MySQL a las columnas. En el futuro, seguramente se agregarán otros pero por
+el momento tendrás que editar la estructura a tu preferencia después de la
+importación.
     <br /><br />
-    Also, you should note the fact that phpMyAdmin will use the size of the
-largest item in any given column as the column size for the appropriate
-type. If you know you will be adding larger items to that column then you
-should manually adjust the column sizes accordingly. This is done for the
-sake of efficiency.
+    También deberías saber que phpMyAdmin utilizará el tamaño del elemento más
+largo en cualquier columna como el tamaño de columna del tipo apropiado. Si
+sabes que estarás agregando elementos más grades entonces deberías de
+ajustar el tamaño de las columnas apropiadamente. Esto es hecho por
+cuestiones de eficiencia.
 </p>
 
 
 
 <!-- End: Import type-detection limitations -->
-<h3 id="faqmultiuser"><abbr title="Internet service provider">ISP</abbr>s, multi-user
-installations</h3>
+<h3 id="faqmultiuser">Instalaciones multi-usuarios, <abbr title="Internet service
+provider">ISP</abbr>s</h3>
 
 <h4 id="faq4_1">
-    <a href="#faq4_1">4.1 I'm an <abbr title="Internet service
-provider">ISP</abbr>. Can I setup one central copy of phpMyAdmin or do I
-need to install it for each customer.  </a></h4>
+    <a href="#faq4_1">4.1 Soy un <abbr title="Internet service
+provider">ISP</abbr>. ¿Puedo configurar una copia centra del phpMyAdmin o
+necesito una instalación por cliente?</a></h4>
 <p>
-    Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your
-users. The development of this feature was kindly sponsored by NetCologne
-GmbH.  This requires a properly setup MySQL user management and phpMyAdmin
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication. See the install section on &quot;Using <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> authentication&quot;.
+    Desde la versión 2.0.3, puedes configurar una copia central de phpMyADmin
+para todos los usuarios. El desarrollo de esta funcionalidad fue amablemente
+esponsoreado por NetCologne GmbH. Requiere una configuración apropiada de
+MySQL para manejo de usuarios y autenticación <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> o cookie en phpMyADmin. Revisa la sección de
+instalación sobre la utilización de autenticación <abbr title="HyperText
+Transfer Protocol">HTTP</abb>.
 </p>
 
 <h4 id="faq4_2">
-    <a href="#faq4_2">4.2 What's the preferred way of making phpMyAdmin secure
-against evil access.  </a></h4>
+    <a href="#faq4_2">4.2 ¿Cuál es la forma preferida para asegurar phpMyAdmin
+contra accesos mailciosos?</a></h4>
 <p>
-    This depends on your system.<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <i>.htaccess</i> files, for example).<br />
-    If other people have telnet access to your server, you should use
-phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication features.
+    Esto depende del sistema.<br />
+    Si estás ejecutando un servidor que no puede ser accedido por otras
+personas, es suficiente utilizar la protección de directorios incorporada en
+tu servidor web (con Apache se pueden utilizar archivos <i>.htaccess</i> por
+ejemplo).<br />
+    Si otras personas tienen acceso remote al servidor, deberías de utilizar las
+funcionalidades de autenticación <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> o cookie de phpMyAdmin.
     <br /><br />
-    Suggestions:
+    Sugerencias:
 </p>
 <ul>
     <li>
-        Your <i>config.inc.php</i> file should be <tt>chmod 660</tt>.
+        El archivo <i>config.inc.php</i> debería estar <tt>chmod 660</tt>.
     </li>
     <li>
-        All your phpMyAdmin files should be chown -R phpmy.apache, where phpmy is a
-user whose password is only known to you, and apache is the group under
-which Apache runs.
+        Todos los archivos de phpMyAdmin deberían de ser <tt>chown -R
+phpmy.apache</tt>, donde phpmy es un usuario al que sólo uno le conoce la
+contraseña y apache es el grupo bajo el que ejecuta Apache.
     </li>
     <li>
-        You should use PHP safe mode, to protect from other users that try to
-include your <i>config.inc.php</i> in their scripts.
+        Deberías de utilizar PHP en modo seguro para proteger de que otros usuarios
+quieran incluir <i>config.inc.php</i> en sus scripts.
     </li>
 </ul>
 
 <h4 id="faq4_3">
-    <a href="#faq4_3">4.3 I get errors about not being able to include a file in
-<i>/lang</i> or in <i>/libraries</i>.  </a></h4>
+    <a href="#faq4_3">4.3 Obtengo errores sobre no poder incluir un archivo en
+<i>/lang</i> o en <i>/libraries</i>.</a></h4>
 <p>
-    Check <i>php.ini</i>, or ask your sysadmin to check it. The
-<tt>include_path</tt> must contain &quot;.&quot; somewhere in it, and
-<tt>open_basedir</tt>, if used, must contain &quot;.&quot; and
-&quot;./lang&quot; to allow normal operation of phpMyAdmin.
+    Revisa <i>php.ini</i> o pídele a tu administrador que lo haga. La directiva
+<tt>include_path</tt> deberá de contener &quot;.&quot; en ella y
+<tt>open_basedir</tt>, de ser utilizado, deberá contener &quot;.&quot; y
+&quot;./lang&quot; para permiter la operación normal del phpMyAdmin.
 </p>
 
 <h4 id="faq4_4">
-    <a href="#faq4_4">4.4 phpMyAdmin always gives &quot;Access denied&quot; when
-using <abbr title="HyperText Transfer Protocol">HTTP</abbr> authentication.
-</a></h4>
+    <a href="#faq4_4">4.4 phpMyAdmin siempre devuelve &quot;Acceso
+denegado&quot; al utilizar autenticación <abbr title="HyperText Transfer
+Protocol">HTTP</abbr>.</a></h4>
 
-<p> This could happen for several reasons:</p>
+<p> Esto puede ocurrir por diversas razones:</p>
 
 <ul><li><a href="#cfg_Servers_controluser"
-class="configrule">$cfg['Servers'][$i]['controluser']</a> and/or <a
+class="configrule">$cfg['Servers'][$i]['controluser']</a> y/o <a
 href="#cfg_Servers_controlpass"
-class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
-    <li>The username/password you specify in the login dialog are invalid.</li>
-    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a .htaccess file. This would interfere with phpMyAdmin's authentication,
-so remove it.</li>
+class="configrule">$cfg['Servers'][$i]['controlpass']</a> no están
+configuradas correctamente.</li>
+    <li>El usuario/contraseña especificado en el formulario de inicio de sesión son
+inválidos.</li>
+    <li>Existe un mecanismo de seguridad en el directori ode phpMyAdmin, como un
+archivo .htaccess. Esto interfiere con la autenticación de phpMyAdmin por lo
+que debe de ser removido.</li>
 </ul>
 
 <h4 id="faq4_5">
-    <a href="#faq4_5">4.5 Is it possible to let users create their own
-databases?</a></h4>
+    <a href="#faq4_5">4.5 ¿Es posible permitir a los usuarios crear sus propias
+bases de datos?</a></h4>
 
-<p> Starting with 2.2.5, in the user management page, you can enter a wildcard
-database name for a user (for example &quot;joe%&quot;), and put the
-privileges you want.  For example, adding <tt>SELECT, INSERT, UPDATE,
-DELETE, CREATE, DROP, INDEX, ALTER</tt> would let a user create/manage
-his/her database(s).</p>
+<p> Desde la versión 2.2.5, en la página de manejo de usuarios, se puede
+ingresar un nombre de base de datos con caracteres comodín para un usuario
+(por ejempo &quot;joe%&quot;, y asignar los privilegios deseados. Por
+ejemplo, agregando <tt>SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX,
+ALTER</tt> permitiría a un usuario crear/administraro sus bases de datos.</p>
 
 <h4 id="faq4_6">
-    <a href="#faq4_6">4.6 How can I use the Host-based authentication
-additions?</a></h4>
+    <a href="#faq4_6">4.6 ¿Cómo puedo utilizar los argregados de la
+autenticación basada en sistema?</a></h4>
 
-<p> If you have existing rules from an old .htaccess file, you can take them and
-add a username between the <tt>'deny'</tt>/<tt>'allow'</tt> and
-<tt>'from'</tt> strings. Using the username wildcard of <tt>'%'</tt> would
-be a major benefit here if your installation is suited to using it. Then you
-can just add those updated lines into the <a
+<p> Si se tienen reglas de un archivo .htaccess antiguo, se pueden utilizarlos y
+agregar un nombre de usuario entre las cadenas
+<tt>'deny'</tt>/<tt>'allow</tt> y <tt>'from'</tt>. Utilizando el caracter
+comodín <tt>'%'</tt> como nombre de usuario sería un gran beneficio si la
+instalación es apropiada para utilizarlo. De esa forma simplemente se pueden
+agregar las líneas actualizadas al array <a
 href="#cfg_Servers_AllowDeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+$cfg['Servers'][$i]['AllowDeny']['rules']</a>.</p>
 
-<p> If you want a pre-made sample, you can try this fragment. It stops the
-'root' user from logging in from any networks other than the private network
-<abbr title="Internet Protocol">IP</abbr> blocks.</p>
+<p> Si se desea un ejemplo armado, se puede probar este fragmento. Previene el
+inicio de sesión como el usuario 'root' desde cualquier red que no sea de
+los bloques de <abbr title="Internet Protocol">IP</abbr> de redes privadas.</p>
 
 <pre>
-//block root from logging in except from the private networks
+//prevenir inicio de sesion como root excepto desde redes privadas
 $cfg['Servers'][$i]['AllowDeny']['order'] = 'deny,allow';
 $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
-    'deny root from all',
-    'allow root from localhost',
-    'allow root from 10.0.0.0/8',
-    'allow root from 192.168.0.0/16',
-    'allow root from 172.16.0.0/12',
-    );
+'deny root from all',
+'allow root from localhost',
+'allow root from 10.0.0.0/8',
+'allow root from 192.168.0.0/16',
+'allow root from 172.16.0.0/12',
+);
 </pre>
 
 <h4 id="faq4_7">
-    <a href="#faq4_7">4.7 Authentication window is displayed more than once,
-why?</a></h4>
+    <a href="#faq4_7">4.7 La ventana de autenticación se muestra más de una vez
+¿por qué?</a></h4>
 
-<p> This happens if you are using a <abbr title="Uniform Resource
-Locator">URL</abbr> to start phpMyAdmin which is different than the one set
-in your <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a>.  For example, a missing
-&quot;www&quot;, or entering with an <abbr title="Internet
-Protocol">IP</abbr> address while a domain name is defined in the config
-file.</p>
+<p> Esto ocurre si se utiliza una <abbr title="Uniform Resource
+Locator">URL</abbr> para iniciar phpMyAdmin que es diferente a la
+configurada en <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a>. Por ejemplo, sin
+&quot;www&quot;, o ingresando con una dirección <abbr title="Internet
+Protocol">IP</abbr> cuando el archivo de configuración tiene un nombre de
+dominio definido.</p>
 
 <h4 id="faq4_8">
-    <a href="#faq4_8">4.8 Which parameters can I use in the URL that starts
+    <a href="#faq4_8">4.8 ¿Qué parámetros puedo utilizar en la URL que inicia
 phpMyAdmin?</a></h4>
 
-<p>When starting phpMyAdmin, you can use the <tt>db</tt>,
-<tt>pma_username</tt>, <tt>pma_password</tt> and <tt>server</tt>
-parameters. This last one can contain either the numeric host index (from
-<tt>$i</tt> of the configuration file) or one of the host names present in
-the configuration file. Using <tt>pma_username</tt> and
-<tt>pma_password</tt> has been tested along with the usage of 'cookie'
-<tt>auth_type</tt>.</p>
+<p>Al iniciar phpMyAdmin se puede utilizar los parámetros <tt>db</tt>,
+<tt>pma_username</tt>, <tt>pma_password</tt> y <tt>server</tt>. Este último
+puede contener tanto el índice numérico del servidor (de <tt>$i</tt> del
+archivo de configuración) o uno de los nombres de servidor presente en el
+archivo de configuración. La utilización de <tt>pma_username</tt> y
+<tt>pma_password</tt> fue probado con autenticación por cookie.</p>
 
-<h3 id="faqbrowsers">Browsers or client <abbr title="operating system">OS</abbr></h3>
+<h3 id="faqbrowsers">Sistemas operativos cliente y navegadores</h3>
 
 <h4 id="faq5_1">
-    <a href="#faq5_1">5.1 I get an out of memory error, and my controls are
-non-functional, when trying to create a table with more than 14 columns.
-</a></h4>
+    <a href="#faq5_1">5.1 Obtengo un error de falta de memoria y los controles
+no son funcionales al intentar crear una tabla con más de 14 columnas.</a></h4>
 <p>
-    We could reproduce this problem only under Win98/98SE. Testing under WinNT4
-or Win2K, we could easily create more than 60 columns.
+    Sólo pudimos reproducir este problema en Windows 98/98SE. Pruebas en Windows
+NT4 o Windows 2000 fueron exitosas con más de 60 columnas.
     <br />
-    A workaround is to create a smaller number of columns, then come back to
-your table properties and add the other columns.
+    Una forma de evitarlo es crear una menor cantidad de columnas y luego editar
+las propiedades de la tabla y agregar las demás columnas.
 </p>
 
 <h4 id="faq5_2">
-    <a href="#faq5_2">5.2 With Xitami 2.5b4, phpMyAdmin won't process form
-fields.</a></h4>
+    <a href="#faq5_2">5.2 Con Xitami 2.5b4, phpMyAdmin no procesa los campos de
+los formularios.</a></h4>
 <p>
-    This is not a phpMyAdmin problem but a Xitami known bug: you'll face it with
-each script/website that use forms.<br />
-    Upgrade or downgrade your Xitami server.
+    Esto no es un problema de phpMyAdmin sino un error conocido de Xitami: lo
+encontrarás con todo script/sitio web que utilice formularios.<br />
+    Actualiza Xitami a una versión superior o inferior.
 </p>
 
 <h4 id="faq5_3">
-    <a href="#faq5_3">5.3 I have problems dumping tables with Konqueror
+    <a href="#faq5_3">5.3 Tengo problemas para volcar tablas con Konqueror
 (phpMyAdmin 2.2.2).</a></h4>
 <p>
-    With Konqueror 2.1.1: plain dumps, zip and GZip dumps work ok, except that
-the proposed file name for the dump is always 'tbl_dump.php'. Bzip2 dumps
-don't seem to work.<br />
+    Con Konqueror 2.1.1: volcados planos, zip y gzip funcionan correctamente
+excepto que el nombre de archivo sugerido siempre será 'tbl_dump.php'. Los
+volcados bzip2 no parecen funcionar.<br />
 
-    With Konqueror 2.2.1: plain dumps work; zip dumps are placed into the user's
-temporary directory, so they must be moved before closing Konqueror, or else
-they disappear. GZip dumps give an error message.<br />
+    Con Konqueror 2.2.1: los  volcados planos funcionan; los volcados zip son
+ubicados en el directorio temporal del usuario por lo que deben de ser
+movidos antes de cerrar Konqueror o desaparecerán. Los volcados gzip
+generarán un mensaje de error.<br />
 
-    Testing needs to be done for Konqueror 2.2.2.<br />
+    Se necesitan pruebas para Konqueror 2.2.2.<br />
 </p>
 
 <h4 id="faq5_4">
-    <a href="#faq5_4">5.4 I can't use the cookie authentication mode because
-Internet Explorer never stores the cookies.  </a></h4>
+    <a href="#faq5_4">5.4 No puedo utilizar el modo de autenticación con cookies
+porque Internet Explorer nunca guarda las cookies.</a></h4>
 <p>
-    MS Internet Explorer seems to be really buggy about cookies, at least till
-version 6.
+    MS Internet Explorer parece ser realmente problemático con las cookies, al
+menos hasta la versión 6.
 </p>
 
 <h4 id="faq5_5">
-    <a href="#faq5_5">5.5 In Internet Explorer 5.0, I get JavaScript errors when
-browsing my rows.  </a></h4>
+    <a href="#faq5_5">5.5 En Internet Explorer 5.0, obtengo errores JavaScript
+al explorar mis filas.</a></h4>
 <p>
-    Upgrade to at least Internet Explorer 5.5 SP2.<br />
+    Actualiza al menos a Internet Explorer 5.5 SP2.<br />
 </p>
 
 <h4 id="faq5_6">
-    <a href="#faq5_6">5.6 In Internet Explorer 5.0, 5.5 or 6.0, I get an error
-(like "Page not found")  when trying to modify a row in a table with many
-columns, or with a text column </a></h4>
+    <a href="#faq5_6">5.6 En Internet Explorer 5.0, 5.5 o 6.0 obtengo un error
+(como "Page not found") al intentar modificar una fila en una tabla con
+muchas columnas o con una columna de texto.</a></h4>
 <p>
-    Your table neither have a primary key nor an unique one, so we must use a
-long <abbr title="Uniform Resource Locator">URL</abbr> to identify this
-row. There is a limit on the length of the <abbr title="Uniform Resource
-Locator">URL</abbr> in those browsers, and this not happen in Netscape, for
-example. The workaround is to create a primary or unique key, or use another
-browser.
+    La tabla no tiene una clave primaria o una clave única por lo que se debe
+utilizar una <abbr title="Uniform Resource Locator">URL</abbr> larga para
+identificar esta fila. Hay un límite en la longitud de una <abbr
+title="Uniform Resource Locator">URL</abbr> en esos navegadores, pero no
+sucede en Netscape por ejemplo. Una forma de evitarlo es crear una clave
+primaria o única o utilizar un navegador diferente.
     <br />
 </p>
 
 <h4 id="faq5_7">
-    <a href="#faq5_7">5.7 I refresh (reload) my browser, and come back to the
-welcome page.  </a></h4>
+    <a href="#faq5_7">5.7 Si refresco (recargo) el navegador, vuelvo a la página
+de bienvenida.</a></h4>
 <p>
-    Some browsers support right-clicking into the frame you want to refresh,
-just do this in the right frame.<br />
+    Algunos navegadores soportan pulsar en el marco a refrescar con el botón
+derecho, hazlo sólo en el marco derecho.<br />
 </p>
 
 <h4 id="faq5_8">
-    <a href="#faq5_8">5.8 With Mozilla 0.9.7 I have problems sending a query
-modified in the query box.  </a></h4>
+    <a href="#faq5_8">5.8 Con Mozilla 0.9.7 tengo problemas enviando una
+consulta modificada en la caja de consultas.</a></h4>
 <p>
-    Looks like a Mozilla bug: 0.9.6 was OK. We will keep an eye on future
-Mozilla versions.<br />
+    Parecería un error de Mozilla: 0.9.6 funciona correctamente. Estaremos
+pendientes de futuras versiones de Mozilla.<br />
 </p>
 
 <h4 id="faq5_9">
-    <a href="#faq5_9">5.9 With Mozilla 0.9.? to 1.0 and Netscape 7.0-PR1 I can't
-type a whitespace in the <abbr title="structured query
-language">SQL</abbr>-Query edit area: the page scrolls down.  </a></h4>
+    <a href="#faq5_9">5.9 Con Mozilla 0.9.? a 1.0 y Netscape 7.0-PR1 no puedo
+tipear un espacio en el área de edición de consultas <abbr title="structured
+query language">SQL</abbr>, la página se desplaza hacia abajo.</a></h4>
 <p>
-    This is a Mozilla bug (see bug #26882 at <a
+    Esto es un error de Mozilla (revisa el report #26882 en <a
 href="http://bugzilla.mozilla.org/">BugZilla</a>).<br />
 </p>
 
 <h4 id="faq5_10">
-    <a href="#faq5_10">5.10 With Netscape 4.75 I get empty rows between each row
-of data in a <abbr title="comma separated values">CSV</abbr> exported file.
-</a></h4>
+    <a href="#faq5_10">5.10 Con Netscape 4.75 obtengo filas vacías entre cada
+otra fila de datos en un archivo de exportación <abbr title="comma separated
+values">CSV</abbr>.</a></h4>
 <p>
-    This is a known Netscape 4.75 bug: it adds some line feeds when exporting
-data in octet-stream mode. Since we can't detect the specific Netscape
-version, we cannot workaround this bug.
+    Esto es un error conocido de Netscape 4.75: agrega retornos de línea al
+exportar datos en modo de flujo de octetos. Dado que no podemos detectar la
+versión específica de Netscap no podemos evitar este error.
 </p>
 
 <h4 id="faq5_11">
-    <a href="#faq5_11">5.11 Extended-ASCII characters like German umlauts are
-displayed wrong.</a></h4>
+    <a href="#faq5_11">5.11 Los caracteres ASCII extendidos como umlauts
+alemanas no se muestran correctamente.</a></h4>
 
-<p> Please ensure that you have set your browser's character set to the one of
-the language file you have selected on phpMyAdmin's start page.
-Alternatively, you can try the auto detection mode that is supported by the
-recent versions of the most browsers.</p>
+<p> Verifica que se tiene configurado el conjunto de caracteres del navefador a
+uno de los archivos de idioma seleccionados en la página de inicio de
+phpMyAdmin. Alternativamente se puede probar el modo de detección automático
+que es soportado en las versiones recientes de la mayoría de los
+navegadores.</p>
 
 <h4 id="faq5_12">
     <a href="#faq5_12">5.12 <acronym title="Apple Macintosh">Mac</acronym> <abbr
-title="operating system">OS</abbr> X: Safari browser changes special
-characters to &quot;?&quot;.</a></h4>
+title="operating system">OS</abbr> X:el navegador Safari cambia los
+caracteres especiales a &quot;?&quot;.</a></h4>
 
-<p> This issue has been reported by a <abbr title="operating system">OS</abbr> X
-user, who adds that Chimera, Netscape and Mozilla do not have this problem.</p>
+<p> Este problema fue reportado por un usuario de <abbr title="operating
+system">OS</abbr> X agregando que Chimera, Netscape y Mozilla no tienen este
+problema.</p>
 
 <h4 id="faq5_13">
-    <a href="#faq5_13">5.13 With Internet Explorer 5.5 or 6, and <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> authentication type, I
-cannot manage two servers: I log in to the first one, then the other one,
-but if I switch back to the first, I have to log in on each operation.</a></h4>
+    <a href="#faq5_13">5.13 Con Internet Explorer 5.5 o 6 y autenticación <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> no puedo administrar dos
+servidores. Inicio sesión en el primer servidor y luego en el otro pero si
+vuelvo al primero tengo que reiniciar sesión nuevamente.</a></h4>
 
-<p> This is a bug in Internet Explorer, other browsers do not behave this way.</p>
+<p> Esto es un error en Internet Explorer, otros navegadores no se comportan de
+esta forma.</p>
 
 <h4 id="faq5_14">
-    <a href="#faq5_14">5.14 Using Opera6, I can manage to get to the
-authentication, but nothing happens after that, only a blank screen.</a></h4>
+    <a href="#faq5_14">5.14 Utilizando Opera6 consigo llegar a la página de
+autenticación, pero no sucede nada luego, sólo una página en blanco.</a></h4>
 
-<p> Please upgrade to Opera7 at least.</p>
+<p> Por favor actualiza a Opera7 al menos.</p>
 
 <h4 id="faq5_15">
-    <a href="#faq5_15">5.15 I have display problems with Safari.</a></h4>
+    <a href="#faq5_15">5.15 Tengo problemas de visualización con Safari.</a></h4>
 
-<p> Please upgrade to at least version 1.2.3.</p>
+<p> Por favor actualiza al menos a la versión 1.2.3.</p>
 
 <h4 id="faq5_16">
-    <a href="#faq5_16">5.16 With Internet Explorer, I get &quot;Access is
-denied&quot; Javascript errors. Or I cannot make phpMyAdmin work under
+    <a href="#faq5_16">5.16 Con Internet Explorer, obtengo errores JavaScript
+&quot;Access is denied&quot; o no puedo hacer funcionar phpMyAdmin en
 Windows.</a></h4>
 
-<p> Please check the following points:</p>
-    <ul><li>Maybe you have defined your <tt>PmaAbsoluteUri</tt> setting in
-<tt>config.inc.php</tt> to an <abbr title="Internet Protocol">IP</abbr>
-address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
-Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
-        <li>Security settings in IE and/or Microsoft Security Center are too high, thus
-blocking scripts execution.</li>
-        <li>The Windows Firewall is blocking Apache and MySQL. You must allow <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> ports (80 or 443) and MySQL
-port (usually 3306)  in the &quot;in&quot; and &quot;out&quot; directions.</li>
+<p> Revisa los siguientes puntos:</p>
+    <ul><li>A lo mejor se definió <tt>PmaAbsoluteUri</tt> en el archivo
+<tt>config.inc.php</tt> a una dirección <abbr title="Internet
+Protocol">IP</abbr> y se está iniciando phpMyAdmin con una <abbr
+title="Uniform Resource Locator">URL</abbr> conteniendo un nombre de
+dominio, o la situación inversa.</li>
+        <li>La configuración de seguridad de IE y/o Microsoft Security Center es
+demasiado elevada, por lo que se bloquea la ejecución de scripts.</li>
+        <li>El Firewall de Windows está bloqueando Apache y MySQL. Debes permitir los
+puertos <abbr title="HyperText Transfer Protocol">HTTP</abbr> (80 y 443) y
+el puerto MySQL (generalmente 3306) tanto para el tráfico entrante como
+saliente (&quot;in&quot; y &quot;out&quot;).</li>
     </ul>
 
 <h4 id="faq5_17">
-    <a href="#faq5_17">5.17 With Firefox, I cannot delete rows of data or drop a
-database.</a></h4>
-<p> Many users have confirmed that the Tabbrowser Extensions plugin they
-installed in their Firefox is causing the problem.</p>
+    <a href="#faq5_17">5.17 Con Firefox, no puedo borrar filas de datos o
+eliminar una base de datos.</a></h4>
+<p> Muchos usuarios confirmaron que el agregado Tabbrowser Extension instalado
+en su navegador era el que causante del problema.</p>
 
 <h4 id="faq5_18">
-<a href="#faq5_18">5.18 With Konqueror 4.2.x an invalid <tt>LIMIT</tt>
-clause is generated when I browse a table.</a></h4>
-<p> This happens only when both of these conditions are met: using the
-<tt>http</tt> authentication mode and <tt>register_globals</tt> being set to
-<tt>On</tt> on the server. It seems to be a browser-specific problem;
-meanwhile use the <tt>cookie</tt> authentication mode.</p>
+<a href="#faq5_18">5.18 Con Konqueror 4.2.x una cláusula <tt>LIMIT</tt>
+inválida es generada al examinar una tabla.</a></h4>
+<p> Esto sólo ocurre cuando se cumplen las siguientes condiciones
+simultáneamente: utilización del método de autenticación <tt>http</tt> y la
+directiva <tt>register_globals</tt> del servidor está configurada a
+<tt>On</tt>. Parece ser algo específico del navegador; mientras tanto
+utiliza el modo de autenticación <tt>cookie</tt>.</p>
 
-<h3 id="faqusing">Using phpMyAdmin</h3>
+<h3 id="faqusing">Utilizando phpMyAdmin</h3>
 
 <h4 id="faq6_1">
-    <a href="#faq6_1">6.1 I can't insert new rows into a table / I can't create
-a table - MySQL brings up a <abbr title="structured query
-language">SQL</abbr>-error.  </a></h4>
+    <a href="#faq6_1">6.1 No puedo utilizar nuevas filas en una tabla/no puedo
+crear una tabla - MySQL devuelve un error de <abbr title="structured query
+language">SQL</abbr>.</a></h4>
 <p>
-    Examine the <abbr title="structured query language">SQL</abbr> error with
-care. Often the problem is caused by specifying a wrong column-type.<br />
-    Common errors include:
+    Examina el error <abbr title="structured query language">SQL</abbr> con
+cuidado. Generalmente el problema esa causado por haber especificado un tipo
+de columna incorrecto.<br />
+    Los errores comunes incluyen:
 </p>
 <ul>
-    <li>Using <tt>VARCHAR</tt> without a size argument</li>
-    <li>Using <tt>TEXT</tt> or <tt>BLOB</tt> with a size argument</li>
+    <li>Utilizando <tt>VARCHAR</tt> sin un parámetro de tamaño</li>
+    <li>Utilizando <tt>TEXT</tt> o <tt>BLOB</tt> con un parámetro de tamaño</li>
 </ul>
 <p>
-    Also, look at the syntax chapter in the MySQL manual to confirm that your
-syntax is correct.
+    Revisa también el capítulo sobre sintáxis en el manual MySQL para confirmar
+que la sintáxis es correcta.
 </p>
 
 <h4 id="faq6_2">
-    <a href="#faq6_2">6.2 When I create a table, I set an index for two columns
-and phpMyAdmin generates only one index with those two columns.  </a></h4>
+    <a href="#faq6_2">6.2 Al crear una tabla, configuro un índice para dos
+columnas y phpMyAdmin sólo genera un índice con las dos columnas.</a></h4>
 <p>
-    This is the way to create a multi-columns index. If you want two indexes,
-create the first one when creating the table, save, then display the table
-properties and click the Index link to create the other index.
+    Esa es la forma de crear índices multi-columna. Si se desean dos índices,
+crea el primero al crear la tabla, guarda, luego revisa las propiedades de
+la tabla y pulsa en el enlace "Índice" para crear un nuevo índice.
 </p>
 
 <h4 id="faq6_3">
