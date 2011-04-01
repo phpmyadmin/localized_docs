@@ -4161,83 +4161,86 @@ documento.</p>
     <a href="#faq6_5">6.5 ¿Cómo puedo restaurar (subir) mi base de datos o tabla
 usando un volcado? ¿Cómo puedo ejecutar un archivo &quot;.sql&quot;?</a></h4>
 
-<p> Click on a database name in the left frame, the properties will be
-displayed. Select &quot;Import&quot; from the list of tabs in the
-right&#8211;hand frame (or &quot;<abbr title="structured query
-language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
-2.7.0). In the &quot;Location of the text file&quot; section, type in the
-path to your dump filename, or use the Browse button. Then click Go.
+<p> Pulsa en el nombre de una base de datos en el marco izquierdo para que se
+muestren las propiedades. Selecciona &quot;Importar&quot; de la lista de
+pestañas en el marco de la derecha (o &quot;<abbr title="structured query
+language">SQL</abbr>&quot; si es una version de phpMyAdmin anterior a
+2.7.0). En la sección de &quot;Ubicación del archivo de texto&quot; tipea la
+ruta al archivo del volcado o utiliza el botón de examinación. Luego pulsa
+en Continuar.
     <br /><br />
-    With version 2.7.0, the import engine has been re&#8211;written, if possible
-it is suggested that you upgrade to take advantage of the new features.
+    Con la versión 2.7.0, el motor de importación fue re-escrito, si es posible
+es sugerido que actualice para aprovechar las nuevas funcionalidades.
     <br /><br />
-    For additional help on this subject, look for the word &quot;upload&quot; in
-this document.
+    Para más ayuda en este tema, busca la palabra &quot;subir&quot; en este
+documento.
 </p>
 
 <h4 id="faq6_6">
-    <a href="#faq6_6">6.6 How can I use the relation table in
-Query-by-example?</a></h4>
+    <a href="#faq6_6">6.6 ¿Cómo puedo usar la tabla de relaciones en
+consultas-por-ejemplo?</a></h4>
 
-<p> Here is an example with the tables persons, towns and countries, all located
-in the database mydb. If you don't have a <tt>pma_relation</tt> table,
-create it as explained in the configuration section. Then create the example
-tables:</p>
+<p> Aquí hay un ejemplo con las tablas persons (personas), towns (ciudades) y
+countries (paises) ubicadas en la base de datos mydb. Si no existe una tabla
+<tt>pma_relation</tt>, sigue las instrucciones apropiadas de la sección de
+configuración y luego crea las tablas de ejemplo:</p>
 
 <pre>
 CREATE TABLE REL_countries (
-    country_code char(1) NOT NULL default '',
-    description varchar(10) NOT NULL default '',
-    PRIMARY KEY (country_code)
+country_code char(1) NOT NULL default '',
+description varchar(10) NOT NULL default '',
+PRIMARY KEY (country_code)
 ) TYPE=MyISAM;
 
 INSERT INTO REL_countries VALUES ('C', 'Canada');
 
 CREATE TABLE REL_persons (
-    id tinyint(4) NOT NULL auto_increment,
-    person_name varchar(32) NOT NULL default '',
-    town_code varchar(5) default '0',
-    country_code char(1) NOT NULL default '',
-    PRIMARY KEY (id)
+id tinyint(4) NOT NULL auto_increment,
+person_name varchar(32) NOT NULL default '',
+town_code varchar(5) default '0',
+country_code char(1) NOT NULL default '',
+PRIMARY KEY (id)
 ) TYPE=MyISAM;
 
 INSERT INTO REL_persons VALUES (11, 'Marc', 'S', '');
 INSERT INTO REL_persons VALUES (15, 'Paul', 'S', 'C');
 
 CREATE TABLE REL_towns (
-    town_code varchar(5) NOT NULL default '0',
-    description varchar(30) NOT NULL default '',
-    PRIMARY KEY (town_code)
+town_code varchar(5) NOT NULL default '0',
+description varchar(30) NOT NULL default '',
+PRIMARY KEY (town_code)
 ) TYPE=MyISAM;
 
 INSERT INTO REL_towns VALUES ('S', 'Sherbrooke');
 INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 </pre>
 
-<p> To setup appropriate links and display information:</p>
+<p> Para configurar los enlaces apropiados y la información a mostrar:</p>
 
-<ul><li>on table &quot;REL_persons&quot; click Structure, then Relation view</li>
-    <li>in Links, for &quot;town_code&quot; choose &quot;REL_towns-&gt;code&quot;</li>
-    <li>in Links, for &quot;country_code&quot; choose
+<ul><li>en la tabla &quot;REL_personas&quot; pulsa en Estructura y luego en vista de
+relaciones</li>
+    <li>en Enlaces, para &quot;town_code&quot;, elige &quot;REL_towns-&gt;code&quot;</li>
+    <li>en Enlaces, para &quot;country_code&quot;, elige
 &quot;REL_countries-&gt;country_code&quot;</li>
-    <li>on table &quot;REL_towns&quot; click Structure, then Relation view</li>
-    <li>in &quot;Choose column to display&quot;, choose &quot;description&quot;</li>
-    <li>repeat the two previous steps for table &quot;REL_countries&quot;</li>
+    <li>en la tabla &quot;REL_towns&quot; pulsa en Estructura, luego en vista de
+relaciones</li>
+    <li>en &quot;Elige la columna a mostrar&quot;, elige &quot;description&quot;</li>
+    <li>repite los dos pasos anteriores para la tabla &quot;REL_countries&quot;</li>
 </ul>
 
-<p> Then test like this:</p>
+<p> Luego prueba de la siguiente forma:</p>
 
-<ul><li>Click on your db name in the left frame</li>
-    <li>Choose &quot;Query&quot;</li>
-    <li>Use tables: persons, towns, countries</li>
-    <li>Click &quot;Update query&quot;</li>
-    <li>In the columns row, choose persons.person_name and click the
-&quot;Show&quot; tickbox </li>
-    <li>Do the same for towns.description and countries.descriptions in the other 2
-columns</li>
-    <li>Click &quot;Update query&quot; and you will see in the query box that the
-correct joins have been generated</li>
-    <li>Click &quot;Submit query&quot;</li>
+<ul><li>Pulsa en el nombre de la base de datos en el marco izquierdo</li>
+    <li>Elige &quot;Consulta&quot;</li>
+    <li>Utiliza las tablas: persons, towns, countries</li>
+    <li>Pulsa en &quot;Actualizar consulta&quot;</li>
+    <li>En la fila de columnas, elige persons.person_name y activa la casilla
+&quot;Mostrar&quot; </li>
+    <li>Haz lo mismo para tows.description y countries.descriptions en las otras 2
+columnas</li>
+    <li>Pulsa en &quot;Actualizar consulta&quot; y verás en la caja de texto de
+consulta tiene que se generaron los joins correctos</li>
+    <li>Pulsa en &quot;Enviar consulta&quot;</li>
 </ul>
 
 <h4 id="faqdisplay">
