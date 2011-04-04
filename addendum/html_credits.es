@@ -1,6 +1,6 @@
 PO4A-HEADER:mode=before;position=<h2 id="glossary">
 <p>
-This translation was brought to you by various translators on <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a>. They
-should have written their names here.
+Esta traducción fue provista por varios traductores en el <a
+href="https://l10n.cihar.com/projects/pmadoc/">servidor de
+traducciones</a>. Entre ellos, Matías Bellone.
 </p>
