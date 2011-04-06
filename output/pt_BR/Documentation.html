@@ -641,63 +641,69 @@ configurações foram desativadas.<br />
 <tt>TRUE</tt> para que a mensagem pare de aparecer.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] booleano</dt>
-    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
-this parameter to <tt>TRUE</tt> to stop this message from appearing.</dd>
+    <dd>Um alerta é exibido na página principal se o pacote Suhosin for
+detectado. Você pode configurar este parâmetro para <tt>TRUE</tt> para que a
+mensagem para de aparecer.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] booleano</dt>
-    <dd>Disable the default warning that is displayed if mcrypt is missing for
-cookie authentication.  You can set this parameter to <tt>TRUE</tt> to stop
-this message from appearing.</dd>
+    <dd>Desativa o alerta padrão que é exibido se o mcrypt não for detectado para
+autenticação por COOKIE. Você pode configurar este parâmetro para
+<tt>TRUE</tt> para que a mensagem para de aparecer.</dd>
+
+    <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] integer</dt>
+    <dd>Show warning about incomplete translations on certain threshold.</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] booleano</dt>
-    <dd>Setting this to <tt>true</tt> allows a page located on a different domain to
-call phpMyAdmin inside a frame, and is a potential security hole allowing
-cross-frame scripting attacks.</dd>
+    <dd>Configurando este parâmetro para <tt>true</tt> permite que uma página
+localizada em um domínio diferente invoque o phpMyAdmin para dentro de um
+iframe, e isto é uma potencial brecha de segurança que permite ataques
+cross-frame via scripts.</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] string</dt>
-    <dd>The &quot;cookie&quot; auth_type uses blowfish algorithm to encrypt the
-password.<br />
-        If you are using the &quot;cookie&quot; auth_type, enter here a random
-passphrase of your choice. It will be used internally by the blowfish
-algorithm: you won&#8217;t be prompted for this passphrase. There is no
-maximum length for this secret.<br /><br />
+    <dd>A autenticação por &quot;cookie&quot; usa o algorítimo &quot;blowfish&quot;
+para criptografar a senha.<br />
+        Se você estiver usando o modo de autenticação por &quot;cookie&quot;,
+informe aqui uma frase secreta qualquer para randomização. Ela será
+utilizada internamente pelo algorítimo blowfish: esta frase secreta não será
+requisitada em nenhum momento. Não existe um tamanho máximo para esta frase.<br /><br />
         
-        Since version 3.1.0 phpMyAdmin can generate this on the fly, but it makes a
-bit weaker security as this generated secret is stored in session and
-furthermore it makes impossible to recall user name from cookie.</dd>
+        A partir da versão 3.1.0 o phpMyAdmin pode gerá-la automaticamente, mas ela
+torna-se um pouco fraca já que esta frase gerada é armazenada em sessão e
+além disto torna-se impossível resgatar o nome de usuário do cookie.</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] matriz</dt>
-    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
-MySQL servers. Therefore, a <a href="#cfg_Servers"
-class="configrule">$cfg['Servers']</a>-array has been added which contains
-the login information for the different servers.  The first <a
+    <dd>A partir da versão 1.4.2, o phpMyAdmin suporta a administração de múltiplos
+servidores MySQL. Então, uma <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>-matriz foi adicionada a qual contém
+as informações do login para os diferentes servidores. O primeiro <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-contains the hostname of the first server, the second <a
+contém o hostname do primeiro servidor, o segundo <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-the hostname of the second server, etc. In
-<tt>./libraries/config.default.php</tt>, there is only one section for
-server definition, however you can put as many as you need in
-<tt>./config.inc.php</tt>, copy that block or needed parts (you don't have
-to define all settings, just those you need to change).</dd>
+o hostname do segundo servidor, e assim por diante. Em
+<tt>./libraries/config.default.php</tt>, existe somente uma seção para as
+definições do servidor, entretanto você pode definir quantas vezes você
+precisar em <tt>./config.inc.php</tt>, apenas copie o bloco ou informações
+que quiser (você não deve definir todas as opções, apenas aquelas que
+precisam ser alteradas).</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] string</dt>
-    <dd>The hostname or <abbr title="Internet Protocol">IP</abbr> address of your
-$i-th MySQL-server. E.g. localhost.</dd>
+    <dd>O hostname ou o endereço <abbr title="Internet Protocol">IP</abbr> do seu
+$i&deg; servidor MySQL. E.g. localhost.</dd>
 
     <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] string</dt>
-    <dd>The port-number of your $i-th MySQL-server. Default is 3306 (leave
-blank). If you use &quot;localhost&quot; as the hostname, MySQL ignores this
-port number and connects with the socket, so if you want to connect to a
-port different from the default port, use &quot;127.0.0.1&quot; or the real
-hostname in <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a>.
+    <dd>O número da porta do seu $i&deg; servidor MySQL. A porta padrão é 3306
+(deixe em branco). Se você usa &quot;localhost&quot; como o hostname, o
+MySQL ignora este número de porta e conecta via socket, então caso queira
+conectar com uma porta diferente da porta padrão, defina o IP
+&quot;127.0.0.1&quot; ou um hostname verdadeiro em <a
+href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>.
     </dd>
 
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] string</dt>
-    <dd>The path to the socket to use. Leave blank for default.<br />
-        To determine the correct socket, check your MySQL configuration or, using
-the <tt>mysql</tt> command&#8211;line client, issue the <tt>status</tt>
-command.  Among the resulting information displayed will be the socket used.</dd>
+    <dd>Caminho para usar o socket. Deixe em branco para usar o padrão.<br />
+        Para determinar o socket correto, verifique a sua configuração MySQL ou, use
+o comando de linha do <tt>mysql</tt> client, passando a opção
+<tt>status</tt>. Dentre os resultados obtidos estará também o socket em uso.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] booleano</dt>
     <dd>Whether to enable SSL for connection to MySQL server.
