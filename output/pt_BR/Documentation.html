@@ -725,7 +725,7 @@ que o servidor Web.</dd>
         <tt><i>mysql</i></tt> : A extensão clássica do MySQL. Este é o método
 recomendado e também é o padrão neste momento.<br /><br />
 
-        <tt><i>mysqli</i></tt> : A extensão modernizada do MySQL. Esta extensão foi
+        <tt><i>mysqli</i></tt> : A extensão mais moderna do MySQL. Esta extensão foi
 disponibilizada com o php 5.0.0 e é método recomendado para se conectar a
 servidores rodando MySQL 4.1.x ou mais recentes.</dd>
 
@@ -742,23 +742,23 @@ string
     </dt>
     <dd>Esta conta especial é usada para 2 finalidades específicas: para habilitar
 todos os recursos de relacionamento (veja <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  e para um servidor
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>) e para um servidor
 MySQL que estiver rodando com <tt>--skip-show-database</tt>, para habilitar
 uma instalação mult-usuário (autenticação por modo <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> ou COOKIE).<br /><br />
 
-        When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication modes (or 'config' authentication mode since phpMyAdmin
-2.2.1), you need to supply the details of a MySQL account that has
-<tt>SELECT</tt> privilege on the <i>mysql.user (all columns except
-&quot;Password&quot;)</i>, <i>mysql.db (all columns)</i> and
-<i>mysql.tables_priv (all columns except &quot;Grantor&quot; and
-&quot;Timestamp&quot;) </i>tables.  This account is used to check what
-databases the user will see at login.<br />
-        Please see the <a href="#setup">install section</a> on &quot;Using
-authentication modes&quot; for more information.<br /><br />
+        Quando for usar a autenticação por <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> ou cookie (ou autenticação modo 'config' desde o
+phpMyAdmin 2.2.1), você deve informar os detalhes da conta MySQL que tenha
+privilégio <tt>SELECT</tt> nas tabelas <i>mysql.user (todas as colunas
+exceto &quot;Password&quot;)</i>, <i>mysql.db (todas as colunas)</i> e
+<i>mysql.tables_priv (todas as colunas exceto &quot;Grantor&quot; e
+&quot;Timestamp&quot;) </i>. Esta conta é usada para verificar qual o banco
+de dados o usuário vai usar para o login.<br />
+        Favor verificar a <a href="#setup">seção instalação</a> em &quot;Usando
+modos de autenticação&quot; para maiores informações.<br /><br />
 
-        In phpMyAdmin versions before 2.2.5, those were called
+        Em versões anteriores ao phpMyAdmin 2.2.5, eles eram chamados de
 &quot;stduser/stdpass&quot;.</dd>
 
     <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <tt>['<abbr title="HyperText
@@ -766,14 +766,16 @@ Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
     <dd>Whether config or cookie or <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> or signon authentication should be used for this
 server.
-        <ul><li>'config' authentication (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)  is the
-plain old way: username and password are stored in <i>config.inc.php</i>.</li>
-            <li>'cookie' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) as
-introduced in 2.2.3 allows you to log in as any valid MySQL user with the
-help of cookies. Username and password are stored in cookies during the
-session and password is deleted when it ends. This can also allow you to log
-in in arbitrary server if <tt><a href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a></tt> enabled.
+        <ul><li>autenticação por modo 'config' (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>) é
+a boa e velha maneira de se fazer: username e password são armazenados em
+<i>config.inc.php</i>.</li>
+            <li>autenticação por modo 'cookie' (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>)
+introduzido na versão 2.2.3 permite você logar com quaisquer usuários
+válidos do MySQL com a ajuda dos cookies. Username and password são
+armazenados em cookies durante a sessão e a password é eliminada ao final da
+sessão. Isto também permite você logar em um servidor arbitrário se o <tt><a
+href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a></tt> estiver ativado.
             </li>
             <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
 called 'advanced' in previous versions and can be written also as 'http')
@@ -791,8 +793,8 @@ href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
 authentication method.</li>
         </ul>
 
-        Please see the <a href="#setup">install section</a> on &quot;Using
-authentication modes&quot; for more information.
+        Favor verificar a <a href="#setup">seção instalação</a> em &quot;Usando
+modos de autenticação&quot; para maiores informações.
 	</dd>
     <dt id="servers_auth_http_realm">
     <span
