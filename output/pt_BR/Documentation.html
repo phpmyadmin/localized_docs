@@ -777,20 +777,21 @@ sessão. Isto também permite você logar em um servidor arbitrário se o <tt><a
 href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a></tt> estiver ativado.
             </li>
-            <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
-called 'advanced' in previous versions and can be written also as 'http')
-(<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'</tt>) as introduced in 1.3.0 allows you to log in as
-any valid MySQL user via HTTP-Auth.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session
-data. This is useful for implementing single signon from another
-application. Sample way how to seed session is in signon example:
-<code>scripts/signon.php</code>. There is also alternative example using
-OpenID - <code>scripts/openid.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
-href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
-authentication method.</li>
+            <li>Autenticação por modo '<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>' (conhecido como 'avançado' em versões anteriores,
+também pode ser escrito como 'http')  (<tt>$auth_type&nbsp;=&nbsp;'<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>'</tt>) introduzido na versão
+1.3.0 permite você logar-se com quaisquer usuários válidos do MySQL via
+HTTP-Auth.</li>
+            <li>Autenticação por modo 'signon' (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)
+introduzido na versão 2.10.0 permite você logar-se com dados armazenados na
+sessão do PHP. Isto é útil para implementar um simples login a partir de
+outra aplicação. Exemplo de como instanciar uma sessão está em signon
+exemplo: <code>scripts/signon.php</code>. Existe também um exemplo
+alternativo usando o OpenID - <code>scripts/openid.php</code>.  Você precisa
+configurar o <a href="#cfg_Servers_SignonSession" class="configrule">session
+name</a> e o <a href="#cfg_Servers_SignonURL" class="configrule">signon
+URL</a> para usar este método de autenticação.</li>
         </ul>
 
         Favor verificar a <a href="#setup">seção instalação</a> em &quot;Usando
@@ -802,14 +803,14 @@ id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
 string<br />
     </dt>
     <dd>
-    When using auth_type = '<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>', this field allows to define a custom <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> Basic Auth Realm which will
-be displayed to the user. If not explicitly specified in your configuration,
-a string combined of "phpMyAdmin " and either <a href="#cfg_Servers_verbose"
-class="configrule">$cfg['Servers'][$i]['verbose']</a> or <a
-href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-will be used.
+    Quando usar o  auth_type = '<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>', este campo permite definir um <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> customizado como Basic Auth Realm o qual será
+exibido para o usuário. Se não for explicitamente especificado na sua
+configuração, será usada uma sentença combinada do "phpMyAdmin " com <a
+href="#cfg_Servers_verbose"
+class="configrule">$cfg['Servers'][$i]['verbose']</a> ou <a
+href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>.
     </dd>
     <dt id="servers_auth_swekey_config">
     <span
@@ -817,8 +818,9 @@ id="cfg_Servers_auth_swekey_config">$cfg['Servers'][$i]['auth_swekey_config']</s
 string<br />
     </dt>
     <dd>
-    The name of the file containing <a href="#swekey">Swekey</a> ids and login
-names for hardware authentication. Leave empty to deactivate this feature.
+    O nome do arquivo que contém os IDs do <a href="#swekey">Swekey</a> e os
+nomes de login para a autenticação via hardware. Deixe vazio para desativar
+este recurso.
     </dd>
     <dt id="servers_user">
         <span id="cfg_Servers_user">$cfg['Servers'][$i]['user']</span> string<br />
@@ -826,57 +828,61 @@ names for hardware authentication. Leave empty to deactivate this feature.
 string
     </dt>
     <dd>
-        When using auth_type = 'config', this is the user/password-pair which
-phpMyAdmin will use to connect to the MySQL server. This user/password pair
-is not needed when <abbr title="HyperText Transfer Protocol">HTTP</abbr> or
-cookie authentication is used and should be empty.</dd>
+        Quando usar auth_type = 'config', esta será a combinação usuário/senha que o
+phpMyAdmin vai utilizar para conectar-se ao servidor MySQL. Estes campos
+usuário/senha não são necessários quando usar os métodos de autenticação por
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> ou cookie, e eles
+deveriam ficar vazios.</dd>
     <dt id="servers_nopassword">
         <span id="cfg_Servers_nopassword">$cfg['Servers'][$i]['nopassword']</span>
 booleano
     </dt>
     <dd>
-        Allow attempt to log in without password when a login with password
-fails. This can be used together with http authentication, when
-authentication is done some other way and phpMyAdmin gets user name from
-auth and uses empty password for connecting to MySQL. Password login is
-still tried first, but as fallback, no password method is tried.</dd>
+        Permite tentar um login sem senha quando um login com senha falhar. isto
+pode ser usado em conjunto com a autenticação por modo http, quando a
+autenticação é feita de alguma outra forma e o phpMyAdmin pega então o nome
+do usuário da autenticação e usa uma senha em branco para conectar-se ao
+MySQL. A primeira tentativa de login ainda é com senha, mas como reserva,
+pois nenhum método com senha é tentado.</dd>
     <dt id="servers_only_db">
         <span id="cfg_Servers_only_db">$cfg['Servers'][$i]['only_db']</span> string
 ou matriz
     </dt>
     <dd>
-        If set to a (an array of) database name(s), only this (these) database(s)
-will be shown to the user. Since phpMyAdmin 2.2.1, this/these database(s)
-name(s) may contain MySQL wildcards characters (&quot;_&quot; and
-&quot;%&quot;): if you want to use literal instances of these characters,
-escape them (I.E. use <tt>'my\_db'</tt> and not <tt>'my_db'</tt>).<br />
-        This setting is an efficient way to lower the server load since the latter
-does not need to send MySQL requests to build the available database
-list. But <span class="important">it does not replace the privileges rules
-of the MySQL database server</span>. If set, it just means only these
-databases will be displayed but <span class="important">not that all other
-databases can't be used.</span>
+        Caso configurado para um (uma matriz de) nome(s) de banco(s) de dados,
+somente este (estes) banco(s) de dados serão mostrados ao usuário. Desde o
+phpMyAdmin 2.2.1, este(s) nome(s) de banco(s) de dados podem conter
+caracteres especiais do MySQL (&quot;_&quot; and &quot;%&quot;): se você
+quiser utilizar instâncias literais destes caracteres, use o caracter de
+escape também (ex: use <tt>'my\_db'</tt> e não<tt>'my_db'</tt>).<br />
+        Esta configuração é uma forma eficiente de reduzir a carga do servidor pois
+neste último não necessita enviar requisições ao MySQL para construir a
+lista de bancos de dados disponíveis. Porém, <span class="important">ela não
+substitui as regras de privilégio do servidor MySQL</span>. Se configurado,
+significa somente que estes bancos de dados serão exibidos mas <span
+class="important">nem todos os bancos de dados poderão ser acessados.</span>
         <br /><br />
 
-        An example of using more that one database:
+        Um exemplo de uso com mais de um banco de dados:
 <tt>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</tt>
         <br /><br />
 
-        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
-databases in the left frame, so that you can individually arrange your
-databases.<br />
-        If you want to have certain databases at the top, but don't care about the
-others, you do not need to specify all other databases. Use:
-<tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt> instead
-to tell phpMyAdmin that it should display db3 and db4 on top, and the rest
-in alphabetic order.</dd>
+        A partir do phpMyAdmin 2.5.5 a ordem interna da matriz é usada para
+organizar os bancos de dados no menu lateral esquerdo, assim você pode
+personalizar a apresentação dos seus bancos de dados.<br />
+        Caso queira ter certos bancos de dados no topo da lista, mas não se importa
+com os demais, você não precisa especificar todos os bancos de dados. Use
+assim: <tt>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</tt>
+para informar ao phpMyAdmin que deve apresentar os bancos de dados db3 e db4
+no topo, e os demais bancos em orderm alfabética.</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> string
     </dt>
-    <dd>Regular expression for hiding some databases from unprivileged users.  This
-only hides them from listing, but a user is still able to access them
-(using, for example, the SQL query area). To limit access, use the MySQL
-privilege system.
+    <dd>Expressões regulares servem para esconder alguns bancos de dados de usuários
+sem privilégios. Isto faz com que eles apenas sejam excluídos da listagem,
+mas um usuário ainda é capaz de acessar estes bancos (usando, por exemplo, o
+SQL query area). Para relamente limitar o acesso, utilize o system de
+privilégios do MySQL.
         <br /><br />
         For example, to hide all databases starting with the letter &#34;a&#34;, use<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
