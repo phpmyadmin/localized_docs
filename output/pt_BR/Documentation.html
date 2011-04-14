@@ -878,44 +878,49 @@ no topo, e os demais bancos em orderm alfabética.</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> string
     </dt>
-    <dd>Expressões regulares servem para esconder alguns bancos de dados de usuários
-sem privilégios. Isto faz com que eles apenas sejam excluídos da listagem,
-mas um usuário ainda é capaz de acessar estes bancos (usando, por exemplo, o
-SQL query area). Para relamente limitar o acesso, utilize o system de
+    <dd>Expressão regular para omitir alguns bancos de dados de usuários sem
+privilégios. Isto faz com que eles apenas sejam excluídos da listagem, mas
+um usuário ainda é capaz de acessar estes bancos (usando, por exemplo, a
+área de SQL). Para relamente limitar o acesso, utilize o system de
 privilégios do MySQL.
         <br /><br />
-        For example, to hide all databases starting with the letter &#34;a&#34;, use<br />
+        Por exemplo, para omitir todos os bancos de dados que começam com a letra
+&#34;a&#34;, use<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
-        and to hide both &#34;db1&#34; and &#34;db2&#34; use <br />
+        e para omitir em ambos &#34;db1&#34; e &#34;db2&#34; use <br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
-        More information on regular expressions can be found in the <a
+        Maiores informações sobre expressões regulares podem ser encontradas em
+parte do manual de referência do PHP em <a
 href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
-pattern syntax</a> portion of the PHP reference manual.
+sintaxe padrão</a>.
         </dd>
 
     <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] string</dt>
-    <dd>Only useful when using phpMyAdmin with multiple server entries. If set, this
-string will be displayed instead of the hostname in the pull-down menu on
-the main page. This can be useful if you want to show only certain databases
-on your system, for example. For HTTP auth, all non-US-ASCII characters will
-be stripped.</dd>
+    <dd>Somente útil quando usado com a opção de múltiplos servidores do
+phpMyAdmin. Caso configurado, esta informação será exibida, ao invés do
+hostname, no menu superior da página principal. Isto pode ser últil caso
+você queira mostrar somente alguns dos bancos de dados no seu sistema, por
+exemplo. Para autenticação por HTTP, todos os caracteres non-US-ASCII serão
+subtraídos.</dd>
 
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> string
     </dt>
-    <dd>The name of the database containing the phpMyAdmin configuration storage.
+    <dd>O nome do banco de dados onde estão armazenadas as configurações do
+phpMyAdmin.
         <br /><br />
 
-        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
-section in this document to see the benefits of this feature, and for a
-quick way of creating this database and the needed tables.
+        Veja a seção <a href="#linked-tables">phpMyAdmin database (pmadb)</a> neste
+documento para ver os benefícios deste recurso, e para uma rápida forma de
+criar este banco de dados e suas tabelas.
         <br /><br />
 
-        If you are the only user of this phpMyAdmin installation, you can use your
-current database to store those special tables; in this case, just put your
-current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
-multi-user installation, set this parameter to the name of your central
-database containing the phpMyAdmin configuration storage.</dd>
+        Se você for o único usuário desta instalação do phpMyAdmin, você pode
+utilizar o seu banco de dados atual para armazenar estas tabelas especiais;
+neste caso, apenas informe o nome do seu banco de dados atual em
+<tt>$cfg['Servers'][$i]['pmadb']</tt>. Para instalações multi-usuário,
+configure este parâmetro para o nome do seu banco de dados central onde
+estão armazenadas as configurações do phpMyAdmin.</dd>
 
     <dt id="bookmark">
         <span
