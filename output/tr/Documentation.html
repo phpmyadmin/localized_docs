@@ -20,7 +20,7 @@ düzenleyebilirisiniz.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.4.0-rc1-dev - Belgeler</title>
+    <title>phpMyAdmin 3.4.0-rc2-dev - Belgeler</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ düzenleyebilirisiniz.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.4.0-rc1-dev Belgesi
+class="myadmin">MyAdmin</span></a> 3.4.0-rc2-dev Belgesi
     </h1>
 </div>
 
@@ -586,7 +586,7 @@ bağlantısını ziyaret edin.
 
 <p> <span class="important"><acronym title="Apple Macintosh">Mac</acronym>
 kullanıcıları için uyarı:</span> PHP <acronym title="Apple
-Macintosh">Mac</acronym> satır sonu karakterinden (&quot;<tt>\r</tt>&quot;)
+Macintosh">Mac</acronym> satır sonu karakterinden (&quot;<tt></tt>&quot;)
 hoşlanmıyor gibi görünür. Bu yüzden değiştirdiğiniz betiğinizi kaydetmeden
 önce metin düzenleyicinizde *nix satır sonu karakterini
 (&quot;<tt>\n</tt>&quot;) kullanmanıza izin veren seçeneği seçtiğinizden
@@ -1402,8 +1402,8 @@ veritabanı adı sayısı.</dd>
 
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] tam sayı</dt>
     <dd>Ana panelin listesinde (Dışa Aktar sayfasındaki hariç) görüntülenmesi için
-en fazla tablo adı sayısı. Bu sınır aynı zamanda Light kipinde rehber
-panelde zorunludur.</dd>
+en fazla tablo adı sayısı. Bu sınır aynı zamanda Sade kipinde rehber panelde
+zorunludur.</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] tam sayı</dt>
     <dd>SQL sorgusu görüntülendiğindeki en fazla karakter sayısı. Varsayılan sınır
@@ -1536,13 +1536,13 @@ verebilir.
     <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
     <dd>Seçim tabanlı menü kullanıp kullanmamayı ve sol çerçevede (daha küçük olan
 sayfa) sadece şu anki tabloları görüntüleyip görüntülememeyi
-tanımlar. Sadece Light Olmayan kipte <a href="#cfg_LeftFrameTableSeparator"
+tanımlar. Sadece Sade Olmayan kipte <a href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a> kullanarak içiçe
 klasörleri görüntülemek için özelliği kullanabilirsiniz.
     </dd>
 
     <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] boolean</dt>
-    <dd>Light kipte ağaç görünümü kullanarak veritabanları adlarının (seçicide)
+    <dd>Sade kipte ağaç görünümü kullanarak veritabanları adlarının (seçicide)
 görüntülenip görüntülenmemesini tanımlar, aynı zamanda <a
 href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a>'e bakın.
@@ -1577,54 +1577,55 @@ görüntülenmeyeceğini tanımlar.</dd>
 'BenimAdım' adını göreceksiniz ve araç ipucu VT'nin gerçek adını gösterecek.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] boolean/dizgisi</dt>
-    <dd>Same as <a href="#cfg_ShowTooltipAliasDB"
-class="configrule">$cfg['ShowTooltipAliasDB']</a>, except this works for
-table names.  When setting this to 'nested', the Alias of the Tablename is
-only used to split/nest the tables according to the <a
+    <dd>Tablo adlarında işe yaraması hariç, <a href="#cfg_ShowTooltipAliasDB"
+class="configrule">$cfg['ShowTooltipAliasDB']</a> ile aynıdır. Bu 'nested'
+olarak ayarlandığında, Tablo Adı Kod Adı sadece <a
 href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a> directive. So only
-the folder is called like the Alias, the tablename itself stays the real
-tablename.</dd>
+class="configrule">$cfg['LeftFrameTableSeparator']</a> yönergesine göre
+tablolaro ayırmak/iç içe koymak için kullanılır. Bu yüzden klasör sadece Kod
+Adı gibi çağırılır, tablo adı kendi gerçek tablo adında kalır.</dd>
 
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] boolean</dt>
-    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
-frame.  Defaults to <tt>TRUE</tt>.</dd>
-    <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] string</dt>
-    <dd>Enter URL where logo in the navigation frame will point to.  For use
-especially with self made theme which changes this.  The default value for
-this is <tt>main.php</tt>.</dd>
+    <dd>Sol çerçevenin en üstünde phpMyAdmin logosunun görüntülenip
+görüntülenmeyeceğini tanımlar. Varsayılanı <tt>TRUE</tt>.</dd>
+    <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] dizgisi</dt>
+    <dd>Rehber çerçevedeki logoyu işaret edecek URL'yi girin. Özellikle bunu
+değiştirecek el yapımı temalarla kullanmak için. Bunun için varsayılan değer
+<tt>main.php</tt>.</dd>
 
-    <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] string</dt>
-    <dd>Whether to open the linked page in the main window (<tt>main</tt>)  or in a
-new one (<tt>new</tt>). Note: use <tt>new</tt> if you are linking to
-<tt>phpmyadmin.net</tt>.</dd>
+    <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] dizgisi</dt>
+    <dd>Bağlantılı sayfayı ana pencerede (<tt>main</tt>) ya da yeni bir pencerede
+(<tt>new</tt>) açıp açmaması. Not: eğer <tt>phpmyadmin.net</tt>'e
+bağlıyorsanız, <tt>new</tt> kullanın.</dd>
 
-    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] integer</dt>
-    <dd>Defines the minimum number of tables to display a JavaScript filter box
-above the list of tables in the left frame.  Defaults to <tt>30</tt>. To
-disable the filter completely some high number can he used (e.g. 9999)</dd>
+    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] tam sayı</dt>
+    <dd>Sol çerçeve içinde tablo listesinin altında JavaScript süzgeç kutusunu
+görüntülemek için en az tablo sayısını tanımlar. Varsayılanı
+<tt>30</tt>. Süzgeçi tamamen görüntülemek için bazı yüksek sayılar
+kullanılabilir (örn. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
-    <dd>Defines whether or not to display a server choice at the top of the left
-frame.  Defaults to FALSE.</dd>
+    <dd>Sol çerçevenin en üstünde sunucu seçiminin görüntülenip görüntülenmeyeceğini
+tanımlar. Varsayılanı FALSE.</dd>
     <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
-    <dd>Defines whether to display this server choice as links instead of in a
-drop-down.  Defaults to FALSE (drop-down).</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean or text</dt>
-    <dd>Defines whether to display database choice in light navigation frame as
-links instead of in a drop-down. Defaults to 'auto' - on main page list is
-shown, when database is selected, only drop down is displayed.</dd>
+    <dd>Bu sunucu seçimini aşağı açılır menü yerine bağlantı olarak görüntülenip
+görüntülenmeyeceğini tanımlar. Varsayılanı FALSE (aşağı açılır menü).</dd>
+    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean veya metin</dt>
+    <dd>Sade rehber çerçevesi içinde veritabanı seçiminin aşağı açılır menü yerine
+bağlantı olarak görüntülenip görüntülenmeyeceğini tanımlar. Varsayılanı
+'auto' - ana sayfa listesinde gösterilir, veritabanı seçildiğinde sadece
+aşağı açılır menü görüntülenir.</dd>
 
-    <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] string</dt>
-    <dd>Defines the tab displayed by default when clicking the small icon next to
-each table name in the navigation panel. Possible values:
+    <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] dizgi</dt>
+    <dd>Rehber panelde her tablo adının yanındaki küçük simgeye tıklandığında
+varsayılan olarak sekme görüntülenmesini tanımlar. Olası değerler:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
-&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
+&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; veya
 &quot;sql.php&quot;.</dd>
 
     <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
-    <dd>Defines whether or not to display space usage and statistics about databases
-and tables.<br />
+    <dd>Veritabanları ve tablolarla ilgili alan kullanımının ve istatistiklerin
+görüntülenip görüntülenmeyeceğini tanımlar.<br />
         Note that statistics requires at least MySQL 3.23.3 and that, at this date,
 MySQL doesn't return such information for Berkeley DB tables.</dd>
 

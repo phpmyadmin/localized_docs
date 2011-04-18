@@ -19,7 +19,7 @@ Ou você pode editá-la online em https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.4.0-rc1-dev - Documentação</title>
+    <title>phpMyAdmin 3.4.0-rc2-dev - Documentação</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ Ou você pode editá-la online em https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         Documentação do <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.4.0-rc1-dev
+class="myadmin">MyAdmin</span></a> 3.4.0-rc2-dev
     </h1>
 </div>
 
@@ -945,42 +945,44 @@ string
     <dd>A partir da versão 2.2.4 você pode anotar, em um tabela especial de
 'relacionamento', quais columnas representam a chave na outra tabela (uma
 chave estrangeira ou foreign key). O phpMyAdmin atualmente utiliza esta para
-        <ul><li>tornar 'clicável', quando você pesquisar a tabela mestre (pai), os valores
+        <ul><li>torna 'clicável', quando você pesquisar a tabela mestre (pai), os valores
 que referenciam a tabela estrangeira (foreign table);</li>
-            <li>display in an optional tool-tip the &quot;display column&quot; when browsing
-the master table, if you move the mouse to a column containing a foreign key
-(use also the 'table_info' table);<br />
+            <li>exibe um tool-tip opcional do &quot;label da coluna&quot; quando procurando
+a tabela mestre(pai), se você mover o mouse para a coluna que contém a chave
+estrangeira(usa também a tabela 'table_info');<br />
                 (veja <a href="#faqdisplay"><abbr title="Perguntas Frequentes"> FAQ</abbr>
 6.7</a>)</li>
-            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
-value and &quot;display column&quot; are shown)<br />
+            <li>no modo editar/inserir, exibe uma lista expandida com as possíveis chaves
+estrangeiras (valor da chave e &quot;label da coluna&quot; são apresentados)<br />
                 (veja <a href="#faq6_21"><abbr title="Perguntas Frequentes"> FAQ</abbr>
 6.21</a>)</li>
-            <li>display links on the table properties page, to check referential integrity
-(display missing foreign keys) for each described key;
+            <li>exibe os links na página de propriedades da tabela, para verificar a
+integridade referencial (exibe chave estrangeiras perdidas) para cada chave
+descrita;
             </li>
-            <li>in query-by-example, create automatic joins (see <a href="#faq6_6"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
-            <li>enable you to get a <abbr title="Portable Document Format">PDF</abbr> schema
-of your database (also uses the table_coords table).</li>
+            <li>em consulta-por-exemplo, cria automaticamente os &quot;joins&quot; (veja <a
+href="#faq6_6"> <abbr title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
+            <li>permite a você gerar um esquema <abbr title="Portable Document
+Format">PDF</abbr> do seu banco de dados (usa também a tabela table_coords).</li>
         </ul>
 
-        The keys can be numeric or character.<br /><br />
+        As chaves podem ser numéricas ou caracteres.<br /><br />
 
         Para permtir o uso desta funcionalidade:
 
         <ul><li>configure o banco de dados <a href="#pmadb">pmadb</a> e as configurações de
 armazenagem do phpMyAdmin.</li>
-            <li>put the relation table name in <tt>$cfg['Servers'][$i]['relation']</tt></li>
-            <li>now as normal user open phpMyAdmin and for each one of your tables where you
-want to use this feature, click &quot;Structure/Relation view/&quot; and
-choose foreign columns.
+            <li>insira o nome da tabela relacionada em
+<tt>$cfg['Servers'][$i]['relation']</tt></li>
+            <li>agora como um usuário comum abra o phpMyAdmin e para cada uma de suas
+tabelas onde você queira utilizar este recurso, clique em &quot;visão
+Estrutura/Relacionamento/&quot; e escolha as colunas estrangeiras.
                 </li>
         </ul>
 
-        Please note that in the current version, <tt>master_db</tt> must be the same
-as <tt>foreign_db</tt>. Those columns have been put in future development of
-the cross-db relations.
+        Por favor opbserve que na versão atual, <tt>master_db</tt> deve ser o mesmo
+que <tt>foreign_db</tt>. Estas colunas foram colocadas para desenvolvimento
+futuro para relacionamento multi-banco.
     </dd>
 
     <dt id="table_info">
@@ -988,18 +990,18 @@ the cross-db relations.
 string
     </dt>
     <dd>
-        Since release 2.3.0 you can describe, in a special 'table_info' table, which
-column is to be displayed as a tool-tip when moving the cursor over the
-corresponding key.<br />
-        This configuration variable will hold the name of this special table. To
-allow the usage of this functionality:
+        A partir da versão 2.3.0 você pode descrever, em uma tabela 'table_info'
+especial, qual a coluna que que é para ser exibida como um
+&quot;tool-tip&quot; quando mover o cursor sobre a chave correspondente.<br />
+        Esta variável de configuração irá conter o nome desta tabela especial. Para
+permitir o uso desta funcionalidade:
         <ul><li>configure o banco de dados <a href="#pmadb">pmadb</a> e as configurações de
 armazenagem do phpMyAdmin.</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
 'pma_table_info')</li>
-            <li>then for each table where you want to use this feature, click
-&quot;Structure/Relation view/Choose column to display&quot; to choose the
-column.</li>
+            <li>então, para cada tabela onde você quiser utilizar este recurso, clique
+&quot;Estutura/Relacionamento informa/seleciona a coluna para exibição
+&quot; para que possa selecionar a coluna.</li>
         </ul>
         Usage tip: <a href="#faqdisplay">Display column</a>.
     </dd>
