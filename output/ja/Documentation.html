@@ -173,53 +173,41 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 
 <ol><li><a href="#quick_install">クイックインストール</a></li>
     <li><a href="#setup_script">Setup script usage</a></li>
-    <li><a href="#linked-tables">phpMyAdmin configuration storage</a></li>
+    <li><a href="#linked-tables">phpMyAdmin の設定保存場所</a></li>
     <li><a href="#upgrading">Upgrading from an older version</a></li>
     <li><a href="#authentication_modes">認証モードの使い方</a></li>
 </ol>
 
 <p class="important">
-    phpMyAdmin does not apply any special security methods to the MySQL database
-server. It is still the system administrator's job to grant permissions on
-the MySQL databases properly. phpMyAdmin's &quot;Privileges&quot; page can
-be used for this.
+    phpMyAdmin は MySQL データベースサーバに特別なセキュリティをほどこすものではありません。phpMyAdmin
+を使ったとしても、MySQL データベースに適切なパーミッションを付与するのはやはりシステム管理者の仕事です。ただし、その目的で phpMyAdmin
+の「特権（Privileges）」ページを使うことはできます。
 </p>
 
 <p class="important">
-    Warning for <acronym title="Apple Macintosh">Mac</acronym> users:<br />
-    if you are on a <acronym title="Apple Macintosh">Mac</acronym> <abbr
-title="operating system">OS</abbr> version before <abbr title="operating
-system">OS</abbr> X, StuffIt unstuffs with <acronym title="Apple
-Macintosh">Mac</acronym> formats.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <acronym
-title="Apple Macintosh">Mac</acronym>-style end of lines character
-(&quot;<tt>\r</tt>&quot;).</p>
+    <acronym title="Apple Macintosh">Mac</acronym> ユーザ向けの注意:<br />
+    <abbr title="operating system">OS</abbr> X より前のバージョンの <acronym title="Apple
+Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> を使うと、解凍の際に
+StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしまいます。<br />
+    そのため、サーバにアップロードする前に BBEdit で全ての phpMyAdmin スクリプトを Unix
+風にセーブし直しておく必要があります。PHP はどうも <acronym title="Apple Macintosh">Mac</acronym>
+風の改行文字（「<tt></tt>」）を好まないようなのです。</p>
 
 <h3 id="quick_install">クイックインストール</h3>
-<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
-page. Some kits contain only the English messages, others contain all
-languages in UTF-8 format (this should be fine in most situations), others
-contain all languages and all character sets. We'll assume you chose a kit
-whose name looks like <tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.
+<ol><li>phpmyadmin.net
+のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、全ての言語と全ての文字セットが含まれているUTF-8形式の全言語版もあります（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
+ような名前のキットを選んだと仮定して説明していきます。
     </li>
-    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
-<tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt> in your webserver's
-document root. If you don't have direct access to your document root, put
-the files in a directory on your local machine, and, after step 4, transfer
-the directory on your web server using, for example, ftp.</li>
-    <li>Ensure that all the scripts have the appropriate owner (if PHP is running in
-safe mode, having some scripts with an owner different from the owner of
-other scripts will be a problem). See <a href="#faq4_2"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 4.2</a> and <a
-href="#faq1_26"><abbr title="Frequently Asked Questions">FAQ</abbr> 1.26</a>
-for suggestions.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<tt>config.inc.php</tt>, but now a wizard-style setup script is provided for
-those who prefer a graphical installation. Creating a
-<tt>config.inc.php</tt> is still a quick way to get started and needed for
-some advanced features.
+    <li>ウェブサーバのドキュメントルートで <tt>tar -xzvf phpMyAdmin_x.x.x.tar.gz</tt>
+を実行して配布ファイルを解凍します（サブディレクトリを展開するように解凍してください）。ドキュメントルートに直接アクセスできない場合は、ローカルマシンのディレクトリにファイルを解凍します。ステップ
+4 まで済んだらそのディレクトリを FTP などでウェブサーバに転送してください。</li>
+    <li>かならずすべてのスクリプトのオーナーを適切に設定してください（PHP
+がセーフモードになっている場合、スクリプトによってオーナーが異なると問題を起こすことになります）。設定例については<a href="#faq4_2">
+<abbr title="よくある質問">FAQ</abbr> 4.2</a> と <a href="#faq1_26"><abbr
+title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
+    <li>まず最初に、インストールを設定する必要があります。やり方は2つあります。1つは、ユーザーが <tt>config.inc.php</tt>
+を手で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
+を作成するのは、先進的な機能を必要に応じて使い始められる簡単な方法です。
         <ul><li>To manually create the file, simply use your text editor to create the file
 <tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
 minimal configuration file) in the main (top-level) phpMyAdmin directory
@@ -319,7 +307,7 @@ access by web server configuration. You can find example
     </li>
 </ol>
 
-<h3 id="linked-tables">phpMyAdmin configuration storage</h3>
+<h3 id="linked-tables">phpMyAdmin の設定保存場所</h3>
 
 <p> For a whole set of new features (bookmarks, comments, <abbr
 title="structured query language">SQL</abbr>-history, tracking mechanism,
@@ -2571,16 +2559,16 @@ information about the transformation. Currently following keys can be used:
 <!-- FAQ -->
 <h2 id="faq">FAQ - よくある質問</h2>
 
-<ol><li><a href="#faqserver">Server</a></li>
-    <li><a href="#faqconfig">Configuration</a></li>
-    <li><a href="#faqlimitations">Known limitations</a></li>
-    <li><a href="#faqmultiuser">ISPs, multi-user installations</a></li>
-    <li><a href="#faqbrowsers">Browsers or client <abbr title="operating
+<ol><li><a href="#faqserver">サーバ</a></li>
+    <li><a href="#faqconfig">設定</a></li>
+    <li><a href="#faqlimitations">既知の制限</a></li>
+    <li><a href="#faqmultiuser">ISP、マルチユーザ用インストール</a></li>
+    <li><a href="#faqbrowsers">ブラウザ、クライアント <abbr title="operating
 system">OS</abbr></a></li>
-    <li><a href="#faqusing">Using phpMyAdmin</a></li>
-    <li><a href="#faqproject">phpMyAdmin project</a></li>
-    <li><a href="#faqsecurity">Security</a></li>
-    <li><a href="#faqsynchronization">Synchronization</a></li>
+    <li><a href="#faqusing">phpMyAdmin の使い方</a></li>
+    <li><a href="#faqproject">phpMyAdmin プロジェクト</a></li>
+    <li><a href="#faqsecurity">セキュリティ</a></li>
+    <li><a href="#faqsynchronization">同期</a></li>
 </ol>
 
 <p> Please have a look at our <a
@@ -2601,15 +2589,15 @@ directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
 configuration file.<br /></p>
 
 <h4 id="faq1_2">
-    <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
+    <a href="#faq1_2">1.2 phpMyAdmin を使うと Apache サーバがクラッシュします。</a></h4>
 
 <p> まず、Apache（と、もしかすると MySQL）の最新版を使うようにしてみてください。<br />
-    See also the <a href="#faq1_1"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
+    また、出力バッファリングに関する PHP のバグについて説明している <a href="#faq1_1"><abbr
+title="よくある質問">FAQ</abbr> 1.1</a> もご覧ください。<br />
     それでもサーバがクラッシュするようなら、Apache の各種サポートグループに援助を求めてください。</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
+    <a href="#faq1_3">1.3 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information
@@ -2625,9 +2613,9 @@ href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
 PHP bug database.</p>
 
 <h4 id="faq1_5">
-    <a href="#faq1_5">1.5 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm facing crashes and/or many error messages with the
-<abbr title="HyperText Transfer Protocol">HTTP</abbr>.</a></h4>
+    <a href="#faq1_5">1.5 phpMyAdmin を <abbr title="Internet Information
+Services">IIS</abbr> 上で使うと、<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> においてクラッシュしたり、エラーメッセージがたくさん表示されます。</a></h4>
 
 <p> This is a known problem with the PHP <abbr title="Internet Server
 Application Programming Interface">ISAPI</abbr> filter: it's not so
@@ -2635,8 +2623,7 @@ stable. Please use instead the cookie authentication mode.
 </p>
 
 <h4 id="faq1_6">
-    <a href="#faq1_6">1.6 I can't use phpMyAdmin on PWS: nothing is
-displayed!</a></h4>
+    <a href="#faq1_6">1.6 PWS 上で phpMyAdmin を使えません。何も表示されません！</a></h4>
 
 <p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
 time there is no better fix): remove or comment the <tt>DOCTYPE</tt>
@@ -2645,8 +2632,8 @@ declarations (2 lines) from the scripts <i>libraries/header.inc.php</i>,
 <i>navigation.php</i> and <i>libraries/common.lib.php</i>.</p>
 
 <h4 id="faq1_7">
-    <a href="#faq1_7">1.7 How can I GZip or Bzip a dump or a <abbr title="comma
-separated values">CSV</abbr> export? It does not seem to work.</a></h4>
+    <a href="#faq1_7">1.7 どうすればダンプや <abbr title="comma separated
+values">CSV</abbr> エクスポートを GZip ないし Bzip 圧縮できるのでしょう。動いていないようなんですが。</a></h4>
 
 <p> These features are based on the <tt>gzencode()</tt> and
 <tt>bzcompress()</tt> PHP functions to be more independent of the platform
@@ -2654,8 +2641,7 @@ separated values">CSV</abbr> export? It does not seem to work.</a></h4>
 support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
 
 <h4 id="faq1_8">
-    <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
-error about safe mode being in effect.</a></h4>
+    <a href="#faq1_8">1.8 テーブルにテキストファイルを挿入できません。セーフモードになっているというエラーが出ます。</a></h4>
 
 <p> アップロードしたファイルは <i>php.ini</i> の <tt>upload_tmp_dir</tt>
 変数に定義されている「アップロードディレクトリ（upload dir）」に保存されます（通常システムデフォルトは <i>/tmp</i>
@@ -2671,7 +2657,7 @@ error about safe mode being in effect.</a></h4>
 </ul>
 
 <h4 id="faq1_9">
-    <a href="#faq1_9">1.9 (withdrawn).</a></h4>
+    <a href="#faq1_9">1.9 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_10">
     <a href="#faq1_10">1.10 I'm having troubles when uploading files with
@@ -2695,22 +2681,20 @@ uploaded files will be moved there, and after execution of your <abbr
 title="structured query language">SQL</abbr> commands, removed.</p>
 
 <h4 id="faq1_12">
-    <a href="#faq1_12">1.12 I have lost my MySQL root password, what can I
-do?</a></h4>
+    <a href="#faq1_12">1.12 MySQL のルートパスワードをなくしてしまいました。どうしたらよいのでしょうか？</a></h4>
 
 <p> The MySQL manual explains how to <a
 href="http://dev.mysql.com/doc/mysql/en/resetting-permissions.html"> reset
 the permissions</a>.</p>
 
 <h4 id="faq1_13">
-    <a href="#faq1_13">1.13 (withdrawn).</a></h4>
+    <a href="#faq1_13">1.13 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_14">
-    <a href="#faq1_14">1.14 (withdrawn).</a></h4>
+    <a href="#faq1_14">1.14 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
-names.</a>
+    <a href="#faq1_15">1.15 <i>mysql.user</i> というカラム名のことで困っています。</a>
 </h4>
 
 <p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
@@ -2718,8 +2702,8 @@ were named <tt>user</tt> and <tt>password</tt>. Please modify your column
 names to align with current standards.</p>
 
 <h4 id="faq1_16">
-    <a href="#faq1_16">1.16 I cannot upload big dump files (memory, <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> or timeout problems).</a>
+    <a href="#faq1_16">1.16 （メモリ、<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>、タイムアウトのせいで）大きなダンプファイルをアップロードできません。</a>
 </h4>
 
 <p> バージョン 2.7.0 以降はインポートエンジンが書き直されたため、この問題は起こらないはずです。可能であればお使いの phpMyAdmin
@@ -2746,8 +2730,8 @@ href="http://www.ozerov.de/bigdump.php">BigDump</a>のような）ユーティ�
 </ul>
 
 <h4 id="faq1_17">
-    <a id="faqmysqlversions" href="#faq1_17">1.17 Which MySQL versions does
-phpMyAdmin support?</a></h4>
+    <a id="faqmysqlversions" href="#faq1_17">1.17 phpMyAdmin をサポートしている MySQL
+のバージョンは？</a></h4>
 
 <p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
 MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
@@ -2765,9 +2749,10 @@ title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
     </p>
 
 <h5 id="faq1_17a">
-    <a href="#faq1_17a">1.17a I cannot connect to the MySQL server. It always
-returns the error message, &quot;Client does not support authentication
-protocol requested by server; consider upgrading MySQL client&quot;</a></h5>
+    <a href="#faq1_17a">1.17a MySQL サーバに接続できません。かならず「Client does not support
+authentication protocol requested by server; consider upgrading MySQL
+client（サーバが要求する認証プロトコルをクライアントがサポートしていません。MySQL
+クライアントのアップグレードをご検討ください）」というというエラーメッセージが返ってきます。</a></h5>
 
 <p> You tried to access MySQL with an old MySQL client library. The version of
 your MySQL client library can be checked in your phpinfo() output.  In
@@ -2788,19 +2773,19 @@ Documentation</a>.
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
+    <a href="#faq1_18">1.18 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_19">
-    <a href="#faq1_19">1.19 I can't run the &quot;display relations&quot;
-feature because the script seems not to know the font face I'm using!</a></h4>
+    <a href="#faq1_19">1.19 「リレーション表示（display
+relations）」機能を実行できません。私が使っているフォントを認識してくれないようです。</a></h4>
 
 <p> 私たちがこの機能を実現するのに利用している「FPDF」ライブラリは、いくつかの特別なファイルがないとフォントを利用できません。<br />
     Please refers to the <a href="http://www.fpdf.org/">FPDF manual</a> to build
 these files.</p>
 
 <h4 id="faqmysql">
-    <a href="#faqmysql">1.20 I receive the error &quot;cannot load MySQL
-extension, please check PHP Configuration&quot;.</a></h4>
+    <a href="#faqmysql">1.20 「cannot load MySQL extension, please check PHP
+Configuration（MySQL エクステンションをロードできません。PHP の設定をチェックしてください）」というエラーが出ます。</a></h4>
 
 <p> To connect to a MySQL server, PHP needs a set of MySQL functions called
 &quot;MySQL extension&quot;. This extension may be part of the PHP
@@ -2811,9 +2796,8 @@ to load the extension but failed.<br /><br />
     ふつう、この問題は「PHP-MySQL」とかなんとかという名前のソフトウェアパッケージをインストールすれば解決します。</p>
 
 <h4 id="faq1_21">
-    <a href="#faq1_21">1.21 I am running the <abbr title="Common Gateway
-Interface">CGI</abbr> version of PHP under Unix, and I cannot log in using
-cookie auth.</a></h4>
+    <a href="#faq1_21">1.21 <abbr title="Common Gateway Interface">CGI</abbr> 版の
+PHP を Unix 環境で走らせているのですが、クッキー認証を使ったログインができません。</a></h4>
 
 <p> <i>php.ini</i> の <tt>mysql.max_links</tt> を 1 より大きな値にしてください。</p>
 
@@ -2824,8 +2808,8 @@ field, so I cannot upload.</a></h4>
 <p> いちばんありがちな理由は、<i>php.ini</i> の <tt>file_uploads</tt> パラメータが「on」になっていないことです。</p>
 
 <h4 id="faq1_23">
-    <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
-create a new table the table and column names are changed to lowercase!</a></h4>
+    <a href="#faq1_23">1.23 MySQL を Win32
+マシンで走らせているのですが、新規テーブルを作成するたびにテーブル名とカラム名が小文字に変わってしまいます！</a></h4>
 
 <p> これは <tt>lower_case_table_names</tt> という MySQL のディレクティブが Win32 版のデフォルトでは
 1（<tt>ON</tt>）になっているためです。この動作はこのディレクティブを 0（<tt>OFF</tt>）にするだけで変えられます：<br />
@@ -2838,12 +2822,12 @@ create a new table the table and column names are changed to lowercase!</a></h4>
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
+    <a href="#faq1_24">1.24 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_25">
-    <a href="#faq1_25">1.25 I am running Apache with mod_gzip-1.3.26.1a on
-Windows XP, and I get problems, such as undefined variables when I run a
-<abbr title="structured query language">SQL</abbr> query.</a></h4>
+    <a href="#faq1_25">1.25 Windows XP で Apache に mod_gzip-1.3.26.1a
+を組み込んで走らせているのですが、<abbr title="structured query language">SQL</abbr>
+クエリを実行したときに変数が定義されていないといった問題が出ます。</a></h4>
 
 <p> Jose Fandos からのヒント：httpd.conf に下記の行があったら、このようにコメントにしてください：</p>
 
@@ -2856,16 +2840,16 @@ Windows XP, and I get problems, such as undefined variables when I run a
 を再起動する必要があります。</p>
 
 <h4 id="faq1_26">
-    <a href="#faq1_26">1.26 I just installed phpMyAdmin in my document root of
-<abbr title="Internet Information Services">IIS</abbr> but I get the error
-&quot;No input file specified&quot; when trying to run phpMyAdmin.</a></h4>
+    <a href="#faq1_26">1.26 phpMyAdmin を <abbr title="Internet Information
+Services">IIS</abbr> のドキュメントルートにインストールしたところなのですが、phpMyAdmin を実行しようとすると「No
+input file specified（入力ファイルが指定されていません）」というエラーが出ます。</a></h4>
 
 <p> これはパーミッションの問題です。phpmyadmin
 フォルダを右クリックして、プロパティを選んでください。セキュリティタブを開き、「追加（Add）」をクリックして、一覧から「IUSR_machine」を選択します。このユーザにパーミッションを設定すれば動くはずです。</p>
 
 <h4 id="faq1_27">
-    <a href="#faq1_27">1.27 I get empty page when I want to view huge page (eg.
-db_structure.php with plenty of tables).</a></h4>
+    <a href="#faq1_27">1.27 巨大なページ（たとえばテーブルがたくさんある db_structure.php
+）を表示したいのに空白ページが表示されます。</a></h4>
 
 <p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
 GZIP output buffering is enabled. If you turn off it (by <a
@@ -2874,16 +2858,15 @@ href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
 PHP&nbsp;5.0.0.</p>
 
 <h4 id="faq1_28">
-    <a href="#faq1_28">1.28 My MySQL server sometimes refuses queries and
-returns the message 'Errorcode: 13'. What does this mean?</a></h4>
+    <a href="#faq1_28">1.28 MySQL サーバがときどきクエリを拒否して「Errorcode:
+13」というメッセージを返してきます。どういうことでしょうか。</a></h4>
 
 <p> これは MySQL のバグです。<tt>lower_case_table_names</tt> が 1
 になっているのにデータベース／テーブル名に大文字が含まれていると起こることがあります。修正するには、このディレクティブをオフにして、すべてのデータベース／テーブル名を小文字に変換してから、再度オンにしてください。また、MySQL&nbsp;3.23.56
 / 4.0.11-gamma からはバグフィックスも用意されています。</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 When I create a table or modify a column, I get an
-error and the columns are duplicated.</a></h4>
+    <a href="#faq1_29">1.29 テーブルを作成したりカラムを修正したりすると、エラーが出てカラムが複製されてしまいます。</a></h4>
 
 <p> Apache の設定によっては PHP が .php ファイルの解釈を間違ってしまうことがあります。</p>
 
@@ -2908,14 +2891,13 @@ SetInputFilter PHP
 </pre>
 
 <h4 id="faq1_30">
-    <a href="#faq1_30">1.30 I get the error &quot;navigation.php: Missing
-hash&quot;.</a></h4>
+    <a href="#faq1_30">1.30 「left.php: Missing hash（ハッシュがありません）」というエラーが出ます。</a></h4>
 
 <p> この問題はサーバが Turck MMCache を走らせていると起こることがわかっていますが、MMCache をバージョン 2.3.21
 にアップグレードすれば解決します。</p>
 
 <h4 id="faq1_31">
-    <a href="#faq1_31">1.31 Does phpMyAdmin support php5?</a></h4>
+    <a href="#faq1_31">1.31 phpMyAdmin は php5 をサポートしているのですか。</a></h4>
 
 <p>はい。</p>
 <p>
@@ -2943,16 +2925,15 @@ enabled.) Click <tt>OK</tt>.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Is there a problem with the mysqli extension when
-running PHP 5.0.4 on 64-bit systems?</a></h4>
+    <a href="#faq1_33">1.33 64 ビットのシステムで PHP 5.0.4 を走らせているときの mysqli
+エクステンションに問題がありませんか？</a></h4>
 
 <p> はい。この問題は phpMyAdmin にも影響を与えますので（「Call to undefined function
 pma_reloadnavigation（未定義の関数 pma_reloadnavigation の呼び出し）」）、PHP
 を新しいバージョンにアップグレードしてください。</p>
 
 <h4 id="faq1_34">
-    <a href="#faq1_34">1.34 Can I access directly to database or table
-pages?</a></h4>
+    <a href="#faq1_34">1.34 データベースやテーブルのページに直接アクセスできますか？</a></h4>
 
 <p> Yes. Out of the box, you can use <abbr title="Uniform Resource
 Locator">URL</abbr>s like
@@ -3116,9 +3097,9 @@ privileges, I get an error about an unknown column.</a></h4>
 <h3 id="faqconfig">設定</h3>
 
 <h4 id="faq2_1">
-    <a href="#faq2_1">2.1 The error message &quot;Warning: Cannot add header
-information - headers already sent by ...&quot; is displayed, what's the
-problem?</a></h4>
+    <a href="#faq2_1">2.1 「Warning: Cannot add header information - headers
+already sent by
+...（警告：ヘッダ情報を追加できません。ヘッダは送信済みです）」というエラーメッセージが表示されます。何がいけないのでしょう。</a></h4>
 
 <p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
 blank lines, no spaces, no characters...) neither before the
@@ -3129,16 +3110,17 @@ end-of-line character (hex 0A) at the end; removing this character cleared
 his errors.</p>
 
 <h4 id="faq2_2">
-    <a href="#faq2_2">2.2 phpMyAdmin can't connect to MySQL. What's wrong?</a></h4>
+    <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
 
 <p> これは PHP のセットアップに問題があるか、ユーザ名／パスワードが間違っているかです。ためしに mysql_connect
 を使う小さなスクリプトを書いて、動くかどうか確かめてみてください。動かないようなら、PHP をコンパイルするときに MySQL
 サポートを組み込んでいなかったのかもしれません。</p>
 
 <h4 id="faq2_3">
-    <a href="#faq2_3">2.3 The error message &quot;Warning: MySQL Connection
-Failed: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
-(111) ...&quot; is displayed. What can I do?</a></h4>
+    <a href="#faq2_3">2.3 「Warning: MySQL Connection Failed: Can't connect to
+local MySQL server through socket '/tmp/mysql.sock' (111)...（警告：MySQL
+の接続に失敗しました。ソケット '/tmp/mysql.sock' (111) ではローカルの MySQL
+サーバに接続できません）」というエラーメッセージが表示されます。どうすればよいのでしょう。</a></h4>
 
 <p> RedHat ユーザの場合、Harald Legner がメーリングリストで次のような提案をしています：</p>
 
@@ -3247,8 +3229,8 @@ phpMyAdmin でもうまくいくようにしてください。世代の異なる
 </p>
 
 <h4 id="faqmissingparameters">
-    <a href="#faqmissingparameters">2.8 I get &quot;Missing parameters&quot;
-errors, what can I do?</a></h4>
+    <a href="#faqmissingparameters">2.8 「Missing
+parameters（パラメータが抜けています）」というエラーが出ます。どうしたらよいのでしょう？</a></h4>
 
 <p> 確認すべき点はいくつかあります：</p>
 
@@ -3287,20 +3269,18 @@ one. Moreover, the JSON extension has to be enabled in your PHP.</p>
     <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
 php.ini.</p>
 
-<h3 id="faqlimitations">Known limitations</h3>
+<h3 id="faqlimitations">既知の制限</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 When using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication, a user who logged out can not log in
-again in with the same nick.</a></h4>
+    <a href="#login_bug">3.1 <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 認証を使っているときにログアウトすると、同じニックネームでは再ログインできません。</a></h4>
 
 <p> これは phpMyAdmin
 が利用している認証のメカニズム（プロトコル）による制限です。この問題を回避するには、開いているブラウザのウインドウを一度すべて閉じてから、phpMyAdmin
 に戻ってください。再ログインできるようになっているはずです。</p>
 
 <h4 id="faq3_2">
-    <a href="#faq3_2">3.2 When dumping a large table in compressed mode, I get a
-memory limit error or a time limit error.</a></h4>
+    <a href="#faq3_2">3.2 大きなテーブルを圧縮モードでダンプするとメモリ制限のエラーや時間制限のエラーが出ます。</a></h4>
 
 <p> Compressed dumps are built in memory and because of this are limited to
 php's memory limit. For GZip/BZip2 exports this can be overcome since 2.5.4
@@ -3310,15 +3290,14 @@ exports can not be handled this way, so if you need Zip files for larger
 dump, you have to use another way.</p>
 
 <h4 id="faq3_3">
-    <a href="#faq3_3">3.3 With InnoDB tables, I lose foreign key relationships
-when I rename a table or a column.</a></h4>
+    <a href="#faq3_3">3.3 InnoDB テーブルでテーブルやカラムをリネームすると外部キーのリレーションが切れます。</a></h4>
 
 <p> This is an InnoDB bug, see <a
 href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>.</p>
 
 <h4 id="faq3_4">
-    <a href="#faq3_4">3.4 I am unable to import dumps I created with the
-mysqldump tool bundled with the MySQL server distribution.</a></h4>
+    <a href="#faq3_4">3.4 MySQL サーバの配布ファイルにバンドルされてきた mysqldump
+ツールで作成したダンプをインポートできません。</a></h4>
 
 <p> The problem is that older versions of <code>mysqldump</code> created invalid
 comments like this:</p>
@@ -3342,16 +3321,13 @@ comments like this:</p>
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 When using nested folders there are some multiple
-hierarchies displayed in a wrong manner?!</a> (<a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
+    <a href="#faq3_5">3.5 ネストフォルダを使うと（<a href="#cfg_LeftFrameTableSeparator"
+class="configrule">$cfg['LeftFrameTableSeparator']</a>）、複数の階層を持つものがおかしな表示になることがあります？！</a></h4>
 
 <p> ご注意ください。間に文字をはさまずに区切り文字を連続して使ったり、テーブル名の前後に区切り文字を使ってはいけないのです。どうしてもそうする必要があるなら、別の区切り文字（TableSeparator）を使うか、この機能を無効にすることを検討してください。</p>
 
 <h4 id="faq3_6">
-    <a href="#faq3_6">3.6 What is currently not supported in phpMyAdmin about
-InnoDB?</a></h4>
+    <a href="#faq3_6">3.6 InnoDB では現在サポートされていない機能はありますか。</a></h4>
 
 <p> In Relation view, being able to choose a table in another database, or
 having more than one index column in the foreign key.<br /><br/>
@@ -3359,9 +3335,8 @@ having more than one index column in the foreign key.<br /><br/>
 </p>
 
 <h4 id="faq3_7">
-    <a href="#faq3_7">3.7 I have table with many (100+) columns and when I try
-to browse table I get series of errors like &quot;Warning: unable to parse
-url&quot;. How can this be fixed?</a></h4>
+    <a href="#faq3_7">3.7 フィールド数の多い（100+）テーブルがあるのですが、このテーブルを表示しようとすると「Warning:
+unable to parse url（警告：urlを解析できません）」というエラーがたくさん出ます。どうすれば直るのでしょうか。</a></h4>
 <p>
     テーブルにプライマリキーやユニークなキーがない場合、行を特定するために長い SQL を使う必要があるのですが、それが parse_url
 関数で問題を起こしているのです。解決策は、プライマリキーやユニークキーを作成することです。
@@ -3369,8 +3344,7 @@ url&quot;. How can this be fixed?</a></h4>
 </p>
 
 <h4 id="faq3_8">
-    <a href="#faq3_8">3.8 I cannot use (clickable) HTML-forms in columns where I
-put a MIME-Transformation onto!</a></h4>
+    <a href="#faq3_8">3.8 カラムに MIME 変換機能を適用したら、（クリッカブルな）HTML フォームが使えなくなります！</a></h4>
 
 <p> Due to a surrounding form-container (for multi-row delete checkboxes), no
 nested forms can be put inside the table where phpMyAdmin displays the
@@ -3384,8 +3358,7 @@ href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
 official phpMyAdmin-homepage.</p>
 
 <h4 id="faq3_9">
-    <a href="#faq3_9">3.9 I get error messages when using "--sql_mode=ANSI" for
-the MySQL server</a></h4>
+    <a href="#faq3_9">3.9 MySQL サーバに「--sql_mode=ANSI」を適用するとエラーメッセージが出ます。</a></h4>
 
 <p> When MySQL is running in ANSI-compatibility mode, there are some major
 differences in how <abbr title="structured query language">SQL</abbr> is
@@ -3400,17 +3373,15 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;g
 </p>
 
 <h4 id="faq3_10">
-    <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
-SELECT display more that one column with the same value (for example
-<tt>SELECT lastname from employees where firstname like 'A%'</tt> and two
-&quot;Smith&quot; values are displayed), if I click Edit I cannot be sure
-that I am editing the intended row.</a></h4>
+    <a href="#faq3_10">3.10 プライマリキーがないのにつづりが同じ語がある場合：SELECT
+の結果、同じ値を持つカラムが複数表示された場合（たとえば <tt>SELECT lastname from employees where
+firstname like 'A%'</tt> の結果「Smith」という値が 2
+つ表示された場合）、修正（Edit）をクリックしても意図した通りの行を修正しているのかわかりません。</a></h4>
 
 <p> テーブルにプライマリキーを設定するようにしてください。そうすると phpMyAdmin は修正／削除のリンクにプライマリキーを利用するようになります。</p>
 
 <h4 id="faq3_11">
-    <a href="#faq3_11">3.11 The number of records for InnoDB tables is not
-correct.</a></h4>
+    <a href="#faq3_11">3.11 InnoDB テーブルのレコード数が正しくありません。</a></h4>
 
 <p> phpMyAdmin uses a quick method to get the row count, and this method only
 returns an approximate count in the case of InnoDB tables. See <a
@@ -3419,11 +3390,10 @@ way to modify those results, but this could have a serious impact on
 performance.</p>
 
 <h4 id="faq3_12">
-    <a href="#faq3_12">3.12 (withdrawn).</a></h4>
+    <a href="#faq3_12">3.12 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 I get an error when entering <tt>USE</tt> followed
-by a db name containing an hyphen.  </a></h4>
+    <a href="#faq3_13">3.13 <tt>USE</tt> の後にハイフンを含むデータベース名を入力するとエラーが出ます。</a></h4>
 <p>
     The tests I have made with MySQL 5.1.49 shows that the API does not accept
 this syntax for the USE command.
@@ -3508,13 +3478,12 @@ sake of efficiency.
 
 
 <!-- End: Import type-detection limitations -->
-<h3 id="faqmultiuser"><abbr title="Internet service provider">ISP</abbr>s, multi-user
-installations</h3>
+<h3 id="faqmultiuser"><abbr title="Internet service provider">ISP</abbr>、マルチユーザ用インストール</h3>
 
 <h4 id="faq4_1">
-    <a href="#faq4_1">4.1 I'm an <abbr title="Internet service
-provider">ISP</abbr>. Can I setup one central copy of phpMyAdmin or do I
-need to install it for each customer.  </a></h4>
+    <a href="#faq4_1">4.1 当方は <abbr title="Internet service provider">ISP</abbr>
+なのですが、phpMyAdmin
+はセントラルコピーをひとつセットアップすればよいのでしょうか。それともお客様ひとりひとりにインストールする必要があるのでしょうか。</a></h4>
 <p>
     Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your
 users. The development of this feature was kindly sponsored by NetCologne
@@ -3525,8 +3494,7 @@ title="HyperText Transfer Protocol">HTTP</abbr> authentication&quot;.
 </p>
 
 <h4 id="faq4_2">
-    <a href="#faq4_2">4.2 What's the preferred way of making phpMyAdmin secure
-against evil access.  </a></h4>
+    <a href="#faq4_2">4.2 phpMyAdmin を不正アクセスから守るにはどうすればよいのでしょう。</a></h4>
 <p>
     お使いのシステムによります。<br />
     外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です（たとえば、Apache
@@ -3552,8 +3520,8 @@ authentication features.
 </ul>
 
 <h4 id="faq4_3">
-    <a href="#faq4_3">4.3 I get errors about not being able to include a file in
-<i>/lang</i> or in <i>/libraries</i>.  </a></h4>
+    <a href="#faq4_3">4.3 <i>/lang</i> や <i>/libraries</i>
+のファイルをインクルードできないというエラーが出ます。</a></h4>
 <p>
     <i>php.ini</i>
 をチェックしてください（あるいは、システム管理者にチェックしてもらってください）。<tt>include_path</tt>
@@ -3562,9 +3530,8 @@ authentication features.
 </p>
 
 <h4 id="faq4_4">
-    <a href="#faq4_4">4.4 phpMyAdmin always gives &quot;Access denied&quot; when
-using <abbr title="HyperText Transfer Protocol">HTTP</abbr> authentication.
-</a></h4>
+    <a href="#faq4_4">4.4 <abbr title="HyperText Transfer Protocol">HTTP</abbr>
+認証を使うとかならず「Access denied（アクセスは拒否されました）」になります。</a></h4>
 
 <p> いくつかの理由が考えられます：</p>
 
@@ -3578,16 +3545,14 @@ class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
 </ul>
 
 <h4 id="faq4_5">
-    <a href="#faq4_5">4.5 Is it possible to let users create their own
-databases?</a></h4>
+    <a href="#faq4_5">4.5 ユーザに独自のデータベースを作成させることは可能でしょうか。</a></h4>
 
 <p> 2.2.5
 以降、ユーザ管理ページでユーザのデータベース名にワイルドカードを入れたり（たとえば「joe%」）、特権を与えることができるようになりました。たとえば、<tt>SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、INDEX、ALTER</tt>
 特権を与えれば、ユーザが自分のデータベースを作成／管理できるようになります。</p>
 
 <h4 id="faq4_6">
-    <a href="#faq4_6">4.6 How can I use the Host-based authentication
-additions?</a></h4>
+    <a href="#faq4_6">4.6 どうすればホストベースの認証の追加指定を利用できますか。</a></h4>
 
 <p> If you have existing rules from an old .htaccess file, you can take them and
 add a username between the <tt>'deny'</tt>/<tt>'allow'</tt> and
@@ -3614,8 +3579,7 @@ $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
 </pre>
 
 <h4 id="faq4_7">
-    <a href="#faq4_7">4.7 Authentication window is displayed more than once,
-why?</a></h4>
+    <a href="#faq4_7">4.7 認証ウインドウが複数回表示されます。なぜでしょう。</a></h4>
 
 <p> This happens if you are using a <abbr title="Uniform Resource
 Locator">URL</abbr> to start phpMyAdmin which is different than the one set
@@ -3637,12 +3601,11 @@ the configuration file. Using <tt>pma_username</tt> and
 <tt>pma_password</tt> has been tested along with the usage of 'cookie'
 <tt>auth_type</tt>.</p>
 
-<h3 id="faqbrowsers">Browsers or client <abbr title="operating system">OS</abbr></h3>
+<h3 id="faqbrowsers">ブラウザ、クライアント <abbr title="operating system">OS</abbr></h3>
 
 <h4 id="faq5_1">
-    <a href="#faq5_1">5.1 I get an out of memory error, and my controls are
-non-functional, when trying to create a table with more than 14 columns.
-</a></h4>
+    <a href="#faq5_1">5.1 カラムの数が 14
+を越えるテーブルを作ろうとするとメモリ不足のエラーが出てコントロールが動作しなくなります。</a></h4>
 <p>
     We could reproduce this problem only under Win98/98SE. Testing under WinNT4
 or Win2K, we could easily create more than 60 columns.
@@ -3652,16 +3615,15 @@ your table properties and add the other columns.
 </p>
 
 <h4 id="faq5_2">
-    <a href="#faq5_2">5.2 With Xitami 2.5b4, phpMyAdmin won't process form
-fields.</a></h4>
+    <a href="#faq5_2">5.2 Xitami 2.5b4 を使うと phpMyAdmin
+がフォームのフィールドを処理してくれなくなります。</a></h4>
 <p>
     これは phpMyAdmin の問題ではなく、Xitami の既知のバグです。フォームを使うスクリプト／ウェブサイトすべてで起こる問題です。<br />
     お使いの Xitami サーバをアップグレード／ダウングレードしてください。
 </p>
 
 <h4 id="faq5_3">
-    <a href="#faq5_3">5.3 I have problems dumping tables with Konqueror
-(phpMyAdmin 2.2.2).</a></h4>
+    <a href="#faq5_3">5.3 Konqueror でうまくテーブルをダンプできません（phpMyAdmin 2.2.2）。</a></h4>
 <p>
     Konqueror 2.1.1 の場合：無圧縮のダンプ、zip や GZip
 で圧縮したダンプはうまくいきますが、ダンプファイル名がかならず「tbl_dump.php」になってしまいます。Bzip2
@@ -3674,24 +3636,23 @@ fields.</a></h4>
 </p>
 
 <h4 id="faq5_4">
-    <a href="#faq5_4">5.4 I can't use the cookie authentication mode because
-Internet Explorer never stores the cookies.  </a></h4>
+    <a href="#faq5_4">5.4 クッキー認証モードを使えません。Internet Explorer
+がクッキーを保管してくれないのです。</a></h4>
 <p>
     MS Internet Explorer seems to be really buggy about cookies, at least till
 version 6.
 </p>
 
 <h4 id="faq5_5">
-    <a href="#faq5_5">5.5 In Internet Explorer 5.0, I get JavaScript errors when
-browsing my rows.  </a></h4>
+    <a href="#faq5_5">5.5 Internet Explorer 5.0 で行を表示すると JavaScript エラーが出ます。</a></h4>
 <p>
     最低でも Internet Explorer 5.5 SP2 までアップグレードしてください。<br />
 </p>
 
 <h4 id="faq5_6">
-    <a href="#faq5_6">5.6 In Internet Explorer 5.0, 5.5 or 6.0, I get an error
-(like "Page not found")  when trying to modify a row in a table with many
-columns, or with a text column </a></h4>
+    <a href="#faq5_6">5.6 Internet Explorer 5.0、5.5、6.0
+でカラム数の多いテーブルや、テキストカラムがあるテーブルの行を修正しようとすると（「Page not
+found（ページが見つかりません）」のような）エラーが出ます。</a></h4>
 <p>
     Your table neither have a primary key nor an unique one, so we must use a
 long <abbr title="Uniform Resource Locator">URL</abbr> to identify this
@@ -3703,32 +3664,29 @@ browser.
 </p>
 
 <h4 id="faq5_7">
-    <a href="#faq5_7">5.7 I refresh (reload) my browser, and come back to the
-welcome page.  </a></h4>
+    <a href="#faq5_7">5.7 ブラウザで再読込（リロード）すると、入り口ページに戻ってしまいます。</a></h4>
 <p>
     ブラウザによっては再読込したいフレームのなかで右クリックできますので、右フレームのなかで右クリックして再読込してください。<br />
 </p>
 
 <h4 id="faq5_8">
-    <a href="#faq5_8">5.8 With Mozilla 0.9.7 I have problems sending a query
-modified in the query box.  </a></h4>
+    <a href="#faq5_8">5.8 Mozilla 0.9.7 だと、クエリボックスで修正したクエリをうまく送信できません。</a></h4>
 <p>
     Mozilla のバグのようです：0.9.6 では OK でした。Mozilla の将来のバージョンでも注意していきます。<br />
 </p>
 
 <h4 id="faq5_9">
-    <a href="#faq5_9">5.9 With Mozilla 0.9.? to 1.0 and Netscape 7.0-PR1 I can't
-type a whitespace in the <abbr title="structured query
-language">SQL</abbr>-Query edit area: the page scrolls down.  </a></h4>
+    <a href="#faq5_9">5.9 Mozilla の 0.9.? 〜 1.0 と、Netscape 7.0-PR1 では <abbr
+title="structured query language">SQL</abbr>
+クエリの編集領域で空白をタイプできません。ページがスクロールダウンしてしまいます。</a></h4>
 <p>
     This is a Mozilla bug (see bug #26882 at <a
 href="http://bugzilla.mozilla.org/">BugZilla</a>).<br />
 </p>
 
 <h4 id="faq5_10">
-    <a href="#faq5_10">5.10 With Netscape 4.75 I get empty rows between each row
-of data in a <abbr title="comma separated values">CSV</abbr> exported file.
-</a></h4>
+    <a href="#faq5_10">5.10 Netscape 4.75 では <abbr title="comma separated
+values">CSV</abbr> エクスポートファイルの各データ行の間に空行が入ってしまいます。</a></h4>
 <p>
     これは Netscape 4.75 の既知のバグです：octet-stream
 モードでデータをエクスポートする際にラインフィードを追加してしまうのです。このバージョンの Netscape
@@ -3736,43 +3694,39 @@ of data in a <abbr title="comma separated values">CSV</abbr> exported file.
 </p>
 
 <h4 id="faq5_11">
-    <a href="#faq5_11">5.11 Extended-ASCII characters like German umlauts are
-displayed wrong.</a></h4>
+    <a href="#faq5_11">5.11 ドイツ語のウムラウトのような拡張 ASCII 文字が正しく表示されません。</a></h4>
 
 <p> ブラウザの文字セットが phpMyAdmin のスタートページで選択した言語ファイルの文字セットとあっているかご確認ください。
 また、最近のブラウザならたいていサポートしている自動検知モードを試してみる手もあります。</p>
 
 <h4 id="faq5_12">
     <a href="#faq5_12">5.12 <acronym title="Apple Macintosh">Mac</acronym> <abbr
-title="operating system">OS</abbr> X: Safari browser changes special
-characters to &quot;?&quot;.</a></h4>
+title="operating system">OS</abbr> X：Safari ブラウザでは特殊文字が「?」になってしまいます。</a></h4>
 
 <p> This issue has been reported by a <abbr title="operating system">OS</abbr> X
 user, who adds that Chimera, Netscape and Mozilla do not have this problem.</p>
 
 <h4 id="faq5_13">
-    <a href="#faq5_13">5.13 With Internet Explorer 5.5 or 6, and <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> authentication type, I
-cannot manage two servers: I log in to the first one, then the other one,
-but if I switch back to the first, I have to log in on each operation.</a></h4>
+    <a href="#faq5_13">5.13 Internet Explorer 5.5 や 6 で <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> 認証タイプを利用すると、2
+つのサーバを管理できなくなります：最初のサーバにログインして、別のサーバにログインするまではよいのですが、最初のサーバに戻ると、操作するたびにログインしなければならなくなるのです。</a></h4>
 
 <p> これは Internet Explorer のバグです。ほかのブラウザではこのようなことは起こりません。</p>
 
 <h4 id="faq5_14">
-    <a href="#faq5_14">5.14 Using Opera6, I can manage to get to the
-authentication, but nothing happens after that, only a blank screen.</a></h4>
+    <a href="#faq5_14">5.14 Opera6
+を使うと、認証までは行き着くのですが、その後は何も起こらず、まっさらな画面のみが表示されます。</a></h4>
 
 <p> Please upgrade to Opera7 at least.</p>
 
 <h4 id="faq5_15">
-    <a href="#faq5_15">5.15 I have display problems with Safari.</a></h4>
+    <a href="#faq5_15">5.15 Safari で表示に問題があります。</a></h4>
 
 <p> 最低でもバージョン 1.2.3 にアップグレードしてください。</p>
 
 <h4 id="faq5_16">
-    <a href="#faq5_16">5.16 With Internet Explorer, I get &quot;Access is
-denied&quot; Javascript errors. Or I cannot make phpMyAdmin work under
-Windows.</a></h4>
+    <a href="#faq5_16">5.16 Internet Explorer で「アクセスが拒否されました（Access is
+denied）」という Javascript のエラーが出ます。あるいは、Windows 環境で phpMyAdmin を実行できません。</a></h4>
 
 <p> 以下の点を確認してください。</p>
     <ul><li>Maybe you have defined your <tt>PmaAbsoluteUri</tt> setting in
@@ -3786,8 +3740,7 @@ port (usually 3306)  in the &quot;in&quot; and &quot;out&quot; directions.</li>
     </ul>
 
 <h4 id="faq5_17">
-    <a href="#faq5_17">5.17 With Firefox, I cannot delete rows of data or drop a
-database.</a></h4>
+    <a href="#faq5_17">5.17 Firefox でデータ行を削除したりデータベースを削除したりできません。</a></h4>
 <p> 多くのユーザが、Firefox にインストールしたタブブラウザエクステンションが問題を起こしていることを確認しています。</p>
 
 <h4 id="faq5_18">
@@ -3798,12 +3751,11 @@ clause is generated when I browse a table.</a></h4>
 <tt>On</tt> on the server. It seems to be a browser-specific problem;
 meanwhile use the <tt>cookie</tt> authentication mode.</p>
 
-<h3 id="faqusing">Using phpMyAdmin</h3>
+<h3 id="faqusing">phpMyAdmin の使い方</h3>
 
 <h4 id="faq6_1">
-    <a href="#faq6_1">6.1 I can't insert new rows into a table / I can't create
-a table - MySQL brings up a <abbr title="structured query
-language">SQL</abbr>-error.  </a></h4>
+    <a href="#faq6_1">6.1 テーブルに新しい行を挿入できません／テーブルを作成できません - MySQL が <abbr
+title="structured query language">SQL</abbr> エラーを返します。</a></h4>
 <p>
     Examine the <abbr title="structured query language">SQL</abbr> error with
 care. Often the problem is caused by specifying a wrong column-type.<br />
@@ -3818,8 +3770,9 @@ care. Often the problem is caused by specifying a wrong column-type.<br />
 </p>
 
 <h4 id="faq6_2">
-    <a href="#faq6_2">6.2 When I create a table, I set an index for two columns
-and phpMyAdmin generates only one index with those two columns.  </a></h4>
+    <a href="#faq6_2">6.2 テーブルを作るときに 2
+つのカラムでインデックスのチェックボックスをクリックしたのですが、phpMyAdmin はその 2
+つのカラムにひとつしかインデックスを生成してくれません。</a></h4>
 <p>
     This is the way to create a multi-columns index. If you want two indexes,
 create the first one when creating the table, save, then display the table
@@ -3827,7 +3780,7 @@ properties and click the Index link to create the other index.
 </p>
 
 <h4 id="faq6_3">
-    <a href="#faq6_3">6.3 How can I insert a null value into my table?</a></h4>
+    <a href="#faq6_3">6.3 テーブルにヌルの値を挿入するにはどうすればよいのでしょう。</a></h4>
 <p>
     Since version 2.2.3, you have a checkbox for each column that can be null.
 Before 2.2.3, you had to enter &quot;null&quot;, without the quotes, as the
@@ -3837,7 +3790,7 @@ literal NULL in the column, and not a NULL value (this works in PHP4).
 </p>
 
 <h4 id="faq6_4">
-    <a href="#faq6_4">6.4 How can I backup my database or table?</a></h4>
+    <a href="#faq6_4">6.4 データベースやテーブルのバックアップはどうすればよいのでしょう。</a></h4>
 
 <p> Click on a database or table name in the left frame, the properties will be
 displayed.  Then on the menu, click &quot;Export&quot;, you can dump the
@@ -3854,8 +3807,8 @@ configuration variable.<br /><br />
     この問題についての詳細は、この文書で「ダンプ」という語を検索してください。</p>
 
 <h4 id="faq6_5">
-    <a href="#faq6_5">6.5 How can I restore (upload) my database or table using
-a dump? How can I run a &quot;.sql&quot; file? </a></h4>
+    <a href="#faq6_5">6.5
+どうすればダンプからデータベースやテーブルを復元（アップロード）できるのでしょう。どうすれば「.sql」ファイルを実行できるのでしょう。</a></h4>
 
 <p> Click on a database name in the left frame, the properties will be
 displayed. Select &quot;Import&quot; from the list of tabs in the
@@ -3871,8 +3824,7 @@ path to your dump filename, or use the Browse button. Then click Go.
 </p>
 
 <h4 id="faq6_6">
-    <a href="#faq6_6">6.6 How can I use the relation table in
-Query-by-example?</a></h4>
+    <a href="#faq6_6">6.6 どうすれば Query-by-example の際にリレーションテーブルを使えるのでしょう。</a></h4>
 
 <p> たとえば、persons、towns、countries というテーブルがすべて mydb
 というデータベースのなかにあるとします。<tt>pma_relation</tt>
@@ -3932,8 +3884,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 </ul>
 
 <h4 id="faqdisplay">
-    <a href="#faqdisplay">6.7 How can I use the &quot;display column&quot;
-feature?</a></h4>
+    <a href="#faqdisplay">6.7 どうすれば「表示するカラム（display column）」機能を使えるのでしょう。</a></h4>
 <p>
     前項の例に続いて、設定セクションで説明した pma_table_info を作ります。persons テーブルを表示して、town code ないし
 country code の上にマウスを移動します。
@@ -3944,8 +3895,8 @@ column&quot; enables: drop-down list of possible values.
 </p>
 
 <h4 id="faqpdf">
-    <a href="#faqpdf">6.8 How can I produce a <abbr title="Portable Document
-Format">PDF</abbr> schema of my database?</a></h4>
+    <a href="#faqpdf">6.8 どうすればデータベースの <abbr title="Portable Document
+Format">PDF</abbr> スキーマを作れるのでしょう。</a></h4>
 <p>
     まず、「relation」、「table_coords」、「pdf_pages」という設定変数に値を入れる必要があります。
     <br /><br />
@@ -3977,16 +3928,14 @@ browsers on Windows, do not have this problem.</li>
 </ul>
 
 <h4 id="faq6_9">
-    <a href="#faq6_9">6.9 phpMyAdmin is changing the type of one of my
-columns!</a></h4>
+    <a href="#faq6_9">6.9 phpMyAdmin がカラムの種別を変えてしまいます！</a></h4>
 
 <p> No, it's MySQL that is doing <a
 href="http://dev.mysql.com/doc/en/silent-column-changes.html">silent column
 type changing</a>.</p>
 
 <h4 id="underscore">
-    <a href="#underscore">6.10 When creating a privilege, what happens with
-underscores in the database name?</a></h4>
+    <a href="#underscore">6.10 特権を作成するとき、データベース名にアンダースコア（下線）を入れるとどうなりますか。</a></h4>
 
 <p> If you do not put a backslash before the underscore, this is a wildcard
 grant, and the underscore means &quot;any character&quot;. So, if the
@@ -3996,13 +3945,12 @@ john2db ...<br /><br />
     アンダースコアの前にバックスラッシュをつけると、そのデータベース名には本当のアンダースコアが含まれているとみなされます。</p>
 
 <h4 id="faq6_11">
-    <a href="#faq6_11">6.11 What is the curious symbol &oslash; in the
-statistics pages?</a></h4>
+    <a href="#faq6_11">6.11 統計ページにある &oslash; という変わったシンボルの意味は？</a></h4>
 
 <p> 「平均」の意味です。</p>
 
 <h4 id="faqexport">
-    <a href="#faqexport">6.12 I want to understand some Export options.</a></h4>
+    <a href="#faqexport">6.12 エクスポートのオプションについて教えてください。</a></h4>
 
 <p><b>構造：</b></p>
 
@@ -4037,15 +3985,14 @@ href="http://dev.mysql.com/doc/mysql/ja/insert.html">MySQL
 </ul>
 
 <h4 id="faq6_13">
-    <a href="#faq6_13">6.13 I would like to create a database with a dot in its
-name.</a></h4>
+    <a href="#faq6_13">6.13 名前にピリオドを含むデータベースを作りたいのですが。</a></h4>
 
 <p> いけません。MySQL の文法では通例データベースとテーブルの名前を参照するのに「database.table」と書きますし、なお悪いことに、MySQL
 の場合、ピリオド付きのデータベースでもふつう作成はできるのですが、それで作業したり、削除したりができないからです。</p>
 
 <h4 id="faqsqlvalidator">
-    <a href="#faqsqlvalidator">6.14 How do I set up the <abbr title="structured
-query language">SQL</abbr> Validator?</a></h4>
+    <a href="#faqsqlvalidator">6.14 どうすれば <abbr title="structured query
+language">SQL</abbr> Validator をセットアップできますか。</a></h4>
 
 <p> 
     To use SQL Validator, you need PHP with <abbr title="Extensible Markup
@@ -4075,9 +4022,9 @@ Technology.  We utilize it as free SOAP service.
 </p>
 
 <h4 id="faq6_15">
-    <a href="#faq6_15">6.15 I want to add a BLOB column and put an index on it,
-but MySQL says &quot;BLOB column '...' used in key specification without a
-key length&quot;.</a></h4>
+    <a href="#faq6_15">6.15 BLOB フィールドを追加して、それにインデックスをつけたいのですが、MySQL に「BLOB
+column '...' used in key specification without a key length（BLOB
+カラム「…」をキーにしようとしましたが、キーの長さが指定されていません）」と言われてしまいます。</a></h4>
 
 <p> The right way to do this, is to create the column without any indexes, then
 display the table structure and use the &quot;Create an index&quot;
@@ -4086,8 +4033,7 @@ size to the index, which is the condition to create an index on a BLOB
 column.</p>
 
 <h4 id="faq6_16">
-    <a href="#faq6_16">6.16 How can I simply move in page with plenty editing
-fields?</a></h4>
+    <a href="#faq6_16">6.16 どうしたらたくさんの編集フィールドがあるページで簡単に移動できますか。</a></h4>
 
 <p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
 with many editing fields (table structure changes, row editing, etc.).  You
@@ -4096,8 +4042,7 @@ class="configrule">$cfg['DefaultPropDisplay']</a> ('vertical') and see if
 this eases up editing for you.</p>
 
 <h4 id="faq6_17">
-    <a href="#faq6_17">6.17 Transformations: I can't enter my own mimetype! WTF
-is this feature then useful for?</a></h4>
+    <a href="#faq6_17">6.17 変換機能：独自の MIME タイプを入力できません！　本当にこの機能は役に立つんですか？</a></h4>
 
 <p> Slow down :). Defining mimetypes is of no use, if you can't put
 transformations on them. Otherwise you could just put a comment on the
@@ -4109,9 +4054,8 @@ mimetype definitions.<br />
 タイプを全部暗記する人なんていませんからね。</p>
 
 <h4 id="faqbookmark">
-    <a href="#faqbookmark">6.18 Bookmarks: Where can I store bookmarks? Why
-can't I see any bookmarks below the query box? What is this variable for?
-</a></h4>
+    <a href="#faqbookmark">6.18
+ブックマーク：ブックマークはどこに保管すればよいのでしょう。どうしてクエリボックスの下にブックマークが見あたらないのでしよう。この変数は何のためにあるのでしょう。</a></h4>
 
 <p> Any query you have executed can be stored as a bookmark on the page where
 the results are displayed. You will find a button labeled 'Bookmark this
@@ -4154,9 +4098,8 @@ your query won't be even able to be stored in the database.<br />
 行は結果が出ないとブックマークできませんが、適切な位置に「/**/」コメントを入れることでこの問題を回避できます。</p>
 
 <h4 id="faq6_19">
-    <a href="#faq6_19">6.19 How can I create simple
-L<sup>A</sup>T<sub><big>E</big></sub>X document to include exported
-table?</a></h4>
+    <a href="#faq6_19">6.19 エクスポートしたテーブルをインクルードする簡単な
+L<sup>A</sup>T<sub><big>E</big></sub>X 文書の作り方は？</a></h4>
 
 <p> You can simply include table in your L<sup>A</sup>T<sub><big>E</big></sub>X
 documents, minimal sample document should look like following one (assuming
