@@ -38,12 +38,12 @@ class="myadmin">MyAdmin</span></a> 3.4.0-rc2-dev ドキュメント
     <li><a href="Documentation.html#require">必要なもの</a></li>
     <li><a href="Document()ation.html#intro">はじめに</a></li>
     <li><a href="Documentation.html#setup">インストール</a></li>
-    <li><a href="Documentation.html#setup_script">Setup script</a></li>
+    <li><a href="Documentation.html#setup_script">セットアップスクリプト</a></li>
     <li><a href="Documentation.html#config">設定</a></li>
     <li><a href="Documentation.html#transformations">Transformations</a></li>
     <li><a href="Documentation.html#faq"><abbr title="よくある質問">FAQ</abbr></a></li>
     <li><a href="Documentation.html#developers">開発者向けの情報</a></li>
-    <li><a href="Documentation.html#copyright">Copyright</a></li>
+    <li><a href="Documentation.html#copyright">コピーライト</a></li>
     <li><a href="Documentation.html#credits">著作権表示</a></li>
     <li><a href="Documentation.html#glossary">Glossary</a></li>
 </ul>
@@ -172,7 +172,7 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 <h2 id="setup">インストール</h2>
 
 <ol><li><a href="#quick_install">クイックインストール</a></li>
-    <li><a href="#setup_script">Setup script usage</a></li>
+    <li><a href="#setup_script">セットアップスクリプトの使用</a></li>
     <li><a href="#linked-tables">phpMyAdmin の設定保存場所</a></li>
     <li><a href="#upgrading">Upgrading from an older version</a></li>
     <li><a href="#authentication_modes">認証モードの使い方</a></li>
@@ -1279,7 +1279,7 @@ detecting IP address behind proxies.
     <dt id="servers_allowdeny_rules">
         <span
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
-array of strings
+strings の array
     </dt>
     <dd>この規則の一般的なフォーマットは次の通りです。
 
@@ -1394,7 +1394,7 @@ patch is known to cause data corruption when having enabled buffering.</dd>
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
     <dd>phpMyAdmin にアクセスするときに https を強制するかどうか。</dd>
 
-    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [number of seconds]</dt>
+    <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] integer [秒数]</dt>
     <dd>スクリプトが実行していられる秒数を指定します。秒数を 0 にすると時間制限はなくなります。<br />
         This setting is used while importing/exporting dump files and in the
 Synchronize feature but has no effect when PHP is running in safe mode.</dd>
@@ -1404,7 +1404,7 @@ Synchronize feature but has no effect when PHP is running in safe mode.</dd>
 href="http://php.net/session_save_path">session_save_path PHP
 parameter</a>).</dd>
 
-    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [number of bytes]</dt>
+    <dt id="cfg_MemoryLimit">$cfg['MemoryLimit'] string [バイト]</dt>
     <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
 limit is imposed.<br />
         This setting is used while importing/exporting dump files and at some other
@@ -1442,7 +1442,7 @@ accidental dropping rather than strict privilege limitation.</dd>
 href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
         </dd>
 
-    <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] integer [number of seconds]</dt>
+    <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] integer [秒数]</dt>
     <dd>Define how long is login cookie valid. Please note that php configuration
 option <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
@@ -1450,7 +1450,7 @@ might limit session validity and if session is lost, login cookie is also
 invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
 not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
-    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [number of seconds]</dt>
+    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [秒数]</dt>
     <dd>Define how long login cookie should be stored in browser. Default 0 means
 that it will be kept for existing session. This is recommended for not
 trusted environments.</dd>
@@ -1501,7 +1501,7 @@ selector) using a tree, see also <a href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a>.
     </dd>
 
-    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] string or array</dt>
+    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] string または array</dt>
     <dd>The string used to separate the parts of the database name when showing them
 in a tree. Alternatively you can specify more strings in an array and all of
 them will be used as a separator.</dd>
@@ -1561,7 +1561,7 @@ disable the filter completely some high number can he used (e.g. 9999)</dd>
 frame.  Defaults to FALSE.</dd>
     <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
     <dd>そのサーバの選択肢をドロップダウンではなくリンクとして表示するかどうかを定義します。デフォルトは FALSE（ドロップダウン）です。</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean or text</dt>
+    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean か text</dt>
     <dd>Defines whether to display database choice in light navigation frame as
 links instead of in a drop-down. Defaults to 'auto' - on main page list is
 shown, when database is selected, only drop down is displayed.</dd>
@@ -1626,7 +1626,7 @@ TIMESTAMP, ascending order else- by default.</dd>
     <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
 ticked by default.</dd>
 
-    <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean or string</dt>
+    <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean または string</dt>
     <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
 editing when browsing a table's content. Valid values are:
         <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
@@ -1827,17 +1827,17 @@ have problems with long URLs.  Default is <code>1000</code>.
     <dd>Navi frame width in pixels. See <tt>themes/themename/layout.inc.php</tt>.
     </dd>
 
-    <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> string [CSS
-color for background]<br />
-        <span id="cfg_MainBackground">$cfg['MainBackground']</span> string [CSS
-color for background]
+    <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> string [背景用の CSS
+色]<br />
+        <span id="cfg_MainBackground">$cfg['MainBackground']</span> string [背景用の CSS
+色]
     </dt>
     <dd>The background styles used for both the frames.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] string [CSS color for background]<br />
+    <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] string [背景用の CSS 色]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> string [CSS
-color]</dt>
+色]</dt>
     <dd>The style used for the pointer in the navi frame.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
@@ -1849,27 +1849,27 @@ color]</dt>
     <dd>テーブルの幅のサイズ。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
     </dd>
 
-    <dt id="cfg_ThBackground">$cfg['ThBackground'] string [CSS color for background]<br />
-        <span id="cfg_ThColor">$cfg['ThColor']</span> string [CSS color]</dt>
+    <dt id="cfg_ThBackground">$cfg['ThBackground'] string [背景用の CSS 色]<br />
+        <span id="cfg_ThColor">$cfg['ThColor']</span> string [CSS 色]</dt>
     <dd>The style used for table headers. See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_BgcolorOne">$cfg['BgOne'] string [CSS color]</dt>
+    <dt id="cfg_BgcolorOne">$cfg['BgOne'] string [CSS 色]</dt>
     <dd>テーブルの奇数行に使われる色（HTML）。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
     </dd>
 
-    <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] string [CSS color]</dt>
+    <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] string [CSS 色]</dt>
     <dd>テーブルの偶数行に使われる色（HTML）。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
     </dd>
 
     <dt><span id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']
-</span>string [CSS color]<br />
+</span>string [CSS 色]<br />
         <span id="cfg_BrowsePointerColor">$cfg['BrowsePointerColor'] </span>string
-[CSS color]<br />
+[CSS 色]<br />
         <span id="cfg_BrowseMarkerBackground">$cfg['BrowseMarkerBackground']
-</span>string [CSS color]<br />
+</span>string [CSS 色]<br />
         <span id="cfg_BrowseMarkerColor">$cfg['BrowseMarkerColor'] </span>string
-[CSS color]
+[CSS 色]
     </dt>
     <dd>The colors (HTML) uses for the pointer and the marker in browse mode.<br />
         The former feature highlights the row over which your mouse is passing and
@@ -1951,7 +1951,7 @@ supports it and use PHP based one otherwise.
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span> string
-or integer</dt>
+または integer</dt>
     <dd>When editing/creating new columns in a table all fields normally get lined
 up one field a line. (default: 'horizontal'). If you set this to 'vertical'
 you can have each field lined up vertically beneath each other. You can save
@@ -2248,7 +2248,7 @@ change the amount of this indent.
         <br />それと似た <tt>$cfg['SQP']['fmtIndUnit']</tt>
 の方は、指定したインデント量の単位を指定します。スタイルシートで利用するものです。</dd>
 
-    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] array of string tuples</dt>
+    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] string 組の array</dt>
     <dd>This array is used to define the colours for each type of element of the
 pretty-printed <abbr title="structured query language">SQL</abbr>
 queries. The tuple format is<br />
@@ -2344,7 +2344,7 @@ table.</dd>
     <dd>Operators available for search operations on numeric and date columns.
     </dd>
 
-    <dt id="cfg_TextOperators">$cfg['TextOperators'] array</dt>
+    <dt id="cfg_TextOperators"><b>$cfg['TextOperators'] </b>array</dt>
     <dd>Operators available for search operations on character columns.  Note that
 we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
 avoid unintended performance problems in case of huge tables.</dd>
@@ -2362,12 +2362,12 @@ null.</dd>
 <!-- TRANSFORMATIONS -->
 <h2 id="transformations">変換機能</h2>
 
-<ol><li><a href="#transformationsintro">Introduction</a></li>
+<ol><li><a href="#transformationsintro">はじめに</a></li>
     <li><a href="#transformationshowto">Usage</a></li>
     <li><a href="#transformationsfiles">File structure</a></li>
 </ol>
 
-<h3 id="transformationsintro">1. Introduction</h3>
+<h3 id="transformationsintro">1. はじめに</h3>
 
 <p> 変換機能を有効にするには、<tt>column_info</tt> テーブルと、適切なディレクティブを設定する必要があります。手順については<a
 href="#config">「設定」セクション</a>をご覧ください。</p>
@@ -4503,7 +4503,7 @@ configuration options for more information.<br />
         このソフトを、地球への再突入時に失われたスペースシャトルコロンビア号（STS-107）と、人類のために命を散らした勇敢な男女に捧げます。</li>
 </ul>
 
-<h2 id="copyright">Copyright</h2>
+<h2 id="copyright">コピーライト</h2>
 
 <pre>
 Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
