@@ -1626,57 +1626,59 @@ varsayılan olarak sekme görüntülenmesini tanımlar. Olası değerler:
     <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
     <dd>Veritabanları ve tablolarla ilgili alan kullanımının ve istatistiklerin
 görüntülenip görüntülenmeyeceğini tanımlar.<br />
-        Note that statistics requires at least MySQL 3.23.3 and that, at this date,
-MySQL doesn't return such information for Berkeley DB tables.</dd>
+        Unutmayın istatistikler en az MySQL 3.23.3 ve bunu gerektirir, bu tarihte
+MySQL Berkeley VT tabloları için böyle bilgi geri döndürmez.</dd>
 
     <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>boolean</dt>
-    <dd>Defines whether to display detailed server information on main page.  You
-can additionally hide more information by using <tt><a
-href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
+    <dd>Ana sayfada ayrıntılı sunucu bilgisinin görüntülenip görüntülenmeyeceğini
+tanımlar. İlave olarak <tt><a
+href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
+kullanarak fazla bilgiyi gizleyebilirsiniz.
         </dd>
 
-    <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span>boolean<br />
-        <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword'] </span>boolean<br />
-        <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb'] </span>boolean
+    <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo']</span> boolean<br />
+        <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword']</span> boolean<br />
+        <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb']</span> boolean
     </dt>
-    <dd>Defines whether to display the &quot;PHP information&quot; and &quot;Change
-password &quot; links and form for creating database or not at the starting
-main (right) frame. This setting does not check MySQL commands entered
-directly.<br /><br />
+    <dd>Ana (sağ) çerçevenin başlatılmasında &quot;PHP bilgisi&quot; ve &quot;Parola
+değiştir &quot; bağlantılarının ve veritabanı oluşturmak için formun
+görüntülenip görüntülenmeyeceğini tanımlar. Bu ayar doğrudan girilen MySQL
+komutlarını kontrol etmez.<br /><br />
 
-        Please note that to block the usage of phpinfo() in scripts, you have to put
-this in your <i>php.ini</i>:
+        Lütfen unutmayın, betiklerde phpinfo() kullanımını engellemek için bunu
+<i>php.ini</i> dosyanız içine koymak zorundasınız:
 
         <pre>disable_functions = phpinfo()</pre>
 
-        Also note that enabling the &quot;Change password &quot; link has no effect
-with &quot;config&quot; authentication mode: because of the hard coded
-password value in the configuration file, end users can't be allowed to
-change their passwords.</dd>
+        Aynı zamanda unutmayın, &quot;Parola değiştir &quot; bağlantısını
+etkinleştirmek &quot;yapılandırma&quot; kimlik doğrulaması ile etkilenmez:
+yapılandırma dosyasındaki sabit kodlu paroladan dolayı, son kullanıcılara
+parolalarını değiştirmesi için izin verilemez.</dd>
 
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] boolean</dt>
-    <dd>Defines whether to suggest a database name on the &quot;Create
-Database&quot; form or to keep the textfield empty.</dd>
+    <dd>&quot;Veritabanı Oluştur&quot; formunda veritabanı adı önerip önermemeyi ya
+da metin alanını boş bırakıp bırakmamayı tanımlar.</dd>
 
-    <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] string</dt>
-    <dd>Defines whether navigation bar buttons and the right panel top menu contain
-text or symbols only. A value of TRUE displays icons, FALSE displays text
-and 'both' displays both icons and text.</dd>
+    <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] dizgi</dt>
+    <dd>Rehber çubuğu düğmelerinin ve sağ panel üst menünün sadece metin veya
+sembolleri içerip içermeyeceğini tanımlar. TRUE değeri simgeleri gösterir,
+FALSE metini gösterir ve 'both' simgeler ve metnin her ikisinide gösterir.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Defines whether a user should be displayed a &quot;show all (records)&quot;
-button in browse mode or not.</dd>
+    <dd>Gözatma kipinde kullanıcının &quot;tümünü göster (kayıtlar)&quot; düğmesini
+görüntüleyip görüntülememesi tanımlar.</dd>
 
-    <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
+    <dt id="cfg_MaxRows">$cfg['MaxRows'] tam sayı</dt>
     <dd>Sonuç grubuna göz atarken görüntülenecek satır sayısıdır. Eğer sonuç grubu
 daha fazla satır içeriyorsa, &quot;Önceki&quot; ve &quot;Sonraki&quot;
 bağlantıları gösterilecektir.</dd>
 
-    <dt id="cfg_Order">$cfg['Order'] string [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
-    <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in
-descending (<tt>DESC</tt>) order or in a &quot;smart&quot; (<tt>SMART</tt>)
-order - I.E. descending order for columns of type TIME, DATE, DATETIME and
-TIMESTAMP, ascending order else- by default.</dd>
+    <dt id="cfg_Order">$cfg['Order'] dizgi [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
+    <dd>Sütunların küçükten büyüğe (<tt>ASC</tt>), büyükten küçüğe (<tt>DESC</tt>)
+ya da &quot;akıllı&quot; (<tt>SMART</tt>) sırada görüntülenip
+görüntülenmemesini tanımlar -  varsayılan olarak TIME, DATE, DATETIME ve
+TIMESTAMP türü sütunlar için I.E. büyükten küçüğe sıralıdır, aksi takdirde
+küçükten büyüğe sıralıdır.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] boolean </dt>
     <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
