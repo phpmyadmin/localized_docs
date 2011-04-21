@@ -207,7 +207,7 @@ StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしま
 title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
     <li>まず最初に、インストールを設定する必要があります。やり方は2つあります。1つは、ユーザーが <tt>config.inc.php</tt>
 を手で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
-を作成するのは、先進的な機能を必要に応じて使い始められる簡単な方法です。
+を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法です。
         <ul><li>To manually create the file, simply use your text editor to create the file
 <tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
 minimal configuration file) in the main (top-level) phpMyAdmin directory
@@ -219,7 +219,7 @@ a particular setting, there is no need to include it in
 simple configuration may look like this:
 <pre>
 &lt;?php
-$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // use here a value of your choice
+$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // この値は適当に決めてください
 
 $i=0;
 $i++;
@@ -233,7 +233,7 @@ $cfg['Servers'][$i]['auth_type']     = 'cookie';
 $i=0;
 $i++;
 $cfg['Servers'][$i]['user']          = 'root';
-$cfg['Servers'][$i]['password']      = 'cbb74bc'; // use here your password
+$cfg['Servers'][$i]['password']      = 'cbb74bc'; // ここにパスワードを指定します
 $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
@@ -393,8 +393,8 @@ $cfg['Servers'][$i]['controlpass']</a></tt> settings.<br />
 controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
 example: use something else in your file!</b> Input these statements from
 the phpMyAdmin SQL Query window or mysql command&#8211;line client.<br />
-        Of course you have to replace <tt>localhost</tt> with the webserver's host
-if it's not the same as the MySQL server's one.
+        もちろん MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
+をウェブサーバのホストで差し替える必要があります。
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -588,30 +588,26 @@ bit weaker security as this generated secret is stored in session and
 furthermore it makes impossible to recall user name from cookie.</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] array</dt>
-    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
-MySQL servers. Therefore, a <a href="#cfg_Servers"
-class="configrule">$cfg['Servers']</a>-array has been added which contains
-the login information for the different servers.  The first <a
+    <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
+href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
+配列です。ここにはさまざまなサーバへのログイン情報が格納されます。たとえば、最初の <a href="#cfg_Servers_host"
+class="configrule">$cfg['Servers'][$i]['host']</a> には最初のサーバのホスト名が、二番目の <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-contains the hostname of the first server, the second <a
-href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-the hostname of the second server, etc. In
-<tt>./libraries/config.default.php</tt>, there is only one section for
-server definition, however you can put as many as you need in
-<tt>./config.inc.php</tt>, copy that block or needed parts (you don't have
-to define all settings, just those you need to change).</dd>
+には二番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt>
+にはひとつしかサーバ定義がありませんが、必要があれば <tt>./config.inc.php</tt>
+にいくつでも定義を追加できます。<tt>./libraries/config.default.php</tt>
+から該当ブロックを丸ごと、あるいは必要な部分のみコピーしてください（すべての設定を定義する必要はありません。必要な部分のみ変更してください）。</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] string</dt>
     <dd>$i 番目の MySQL サーバのホスト名ないし <abbr title="Internet Protocol">IP</abbr>
 アドレスが入ります。（例）localhost</dd>
 
     <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] string</dt>
-    <dd>The port-number of your $i-th MySQL-server. Default is 3306 (leave
-blank). If you use &quot;localhost&quot; as the hostname, MySQL ignores this
-port number and connects with the socket, so if you want to connect to a
-port different from the default port, use &quot;127.0.0.1&quot; or the real
-hostname in <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a>.
+    <dd>$i 番目の MySQL サーバのポート番号が入ります。デフォルトは 3306
+です（空欄にしておいてください）。ホスト名を「localhost」にすると、MySQL
+はポート番号を無視してソケット接続しますので、デフォルトとは別のポートで接続したい場合は <a href="#cfg_Servers_host"
+class="configrule">$cfg['Servers'][$i]['host']</a>
+に「127.0.0.1」か、本当のホスト名を入れてください。
     </dd>
 
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] string</dt>
@@ -731,10 +727,9 @@ names for hardware authentication. Leave empty to deactivate this feature.
 string
     </dt>
     <dd>
-        When using auth_type = 'config', this is the user/password-pair which
-phpMyAdmin will use to connect to the MySQL server. This user/password pair
-is not needed when <abbr title="HyperText Transfer Protocol">HTTP</abbr> or
-cookie authentication is used and should be empty.</dd>
+        auth_type = 'config' の場合は MySQL サーバに接続するときに phpMyAdmin
+が利用するユーザ／パスワードの組が入ります。このユーザ／パスワードの組は、<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>／クッキー認証を利用する場合は必要ありませんので、空欄にしておいてください。</dd>
     <dt id="servers_nopassword">
         <span id="cfg_Servers_nopassword">$cfg['Servers'][$i]['nopassword']</span>
 boolean
@@ -743,7 +738,7 @@ boolean
         パスワードを使用してログインが失敗したときにパスワードなしでログインしようとするとを許可します。これは、HTTP認証と一緒に使用することができます。MySQLに接続する手段の一つとして、ユーザー名と空のパスワードを使用して認証を行います。パスワードログインを行わないというわけではなく、パスワードログインが最初に試され、最後の手段としてパスワード無し方式が試されます。</dd>
     <dt id="servers_only_db">
         <span id="cfg_Servers_only_db">$cfg['Servers'][$i]['only_db']</span> string
-or array
+または array
     </dt>
     <dd>
         データベース名（の配列）を設定すると、ユーザにはそのデータベースしか見えなくなります。phpMyAdmin 2.2.1 以降、このデータベース名には
@@ -1430,8 +1425,8 @@ accidental dropping rather than strict privilege limitation.</dd>
     <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] boolean</dt>
     <dd>クッキー認証モードの場合に、前回ログインしたときの状態に戻すかどうかを定義します。<br /><br />
 
-        This is automatically disabled if you do not have configured <tt><a
-href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
+        <tt><a href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>
+を設定しなかった場合、自動的に無効になります。
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] integer [秒数]</dt>
@@ -1469,9 +1464,8 @@ boolean</dt>
 permits to specify servers of your choice in the Synchronize dialog.
         <br /><br />
 
-        <b>NOTE:</b> Please use this carefully, as this may allow users access to
-MySQL servers behind the firewall where your <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> server is placed.
+        <b>注意：</b> この機能は慎重にご利用ください。<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> サーバが置かれているファイアウォールの外にある MySQL サーバにアクセスできてしまうことがあります。
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
@@ -1489,9 +1483,9 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
     </dd>
 
     <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] boolean</dt>
-    <dd>In light mode, defines whether to display the names of databases (in the
-selector) using a tree, see also <a href="#cfg_LeftFrameDBSeparator"
-class="configrule">$cfg['LeftFrameDBSeparator']</a>.
+    <dd>ライトモードのときに（セレクターの）データベース名をツリー表示するかどうかを定義します。<a
+href="#cfg_LeftFrameDBSeparator"
+class="configrule">$cfg['LeftFrameDBSeparator']</a> もご覧ください。
     </dd>
 
     <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] string または array</dt>
@@ -1508,8 +1502,7 @@ at the beginning or end of a table name or multiple times after another
 without any other characters in between.</dd>
 
     <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] string</dt>
-    <dd>Defines how many sublevels should be displayed when splitting up tables by
-the above separator.</dd>
+    <dd>テーブルを上記の区切り文字で分割表示する際に何層まで表示するかを定義します。</dd>
 
     <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] boolean</dt>
     <dd>テーブルのコメントをツールチップとして左フレームに表示するかどうかを定義します。</dd>
@@ -1532,8 +1525,7 @@ the folder is called like the Alias, the tablename itself stays the real
 tablename.</dd>
 
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] boolean</dt>
-    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
-frame.  Defaults to <tt>TRUE</tt>.</dd>
+    <dd>phpMyAdmin ロゴを左フレームの最上部に表示するかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] string</dt>
     <dd>Enter URL where logo in the navigation frame will point to.  For use
 especially with self made theme which changes this.  The default value for
@@ -1550,11 +1542,10 @@ above the list of tables in the left frame.  Defaults to <tt>30</tt>. To
 disable the filter completely some high number can he used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
-    <dd>Defines whether or not to display a server choice at the top of the left
-frame.  Defaults to FALSE.</dd>
+    <dd>サーバの選択肢を左フレームの最上部に表示するかどうかを定義します。デフォルトは FALSE です。</dd>
     <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
     <dd>そのサーバの選択肢をドロップダウンではなくリンクとして表示するかどうかを定義します。デフォルトは FALSE（ドロップダウン）です。</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean か text</dt>
+    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean または text</dt>
     <dd>Defines whether to display database choice in light navigation frame as
 links instead of in a drop-down. Defaults to 'auto' - on main page list is
 shown, when database is selected, only drop down is displayed.</dd>
@@ -1567,8 +1558,7 @@ each table name in the navigation panel. Possible values:
 &quot;sql.php&quot;.</dd>
 
     <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
-    <dd>Defines whether or not to display space usage and statistics about databases
-and tables.<br />
+    <dd>データベースやテーブルの使用量などの統計情報を表示するかどうかを定義します。<br />
         ただし、統計情報を表示するには少なくとも MySQL 3.23.3 が必要です。また、現時点の MySQL は Berkeley DB
 テーブル向けの情報などは返しません。</dd>
 
@@ -1601,8 +1591,7 @@ directly.<br /><br />
 のときはアイコンを、FALSE のときはテキストを、'both' のときはアイコンとテキストの双方を表示します。</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Defines whether a user should be displayed a &quot;show all (records)&quot;
-button in browse mode or not.</dd>
+    <dd>表示モードで「全て（のレコード）を表示する」ボタンを表示するかどうかを定義します。</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
     <dd>Number of rows displayed when browsing a result set. If the result set
