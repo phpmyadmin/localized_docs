@@ -1,7 +1,7 @@
 PO4A-HEADER:mode=before;position=<head>
 <!--
 
-This file is generated using po4a, do not edit!
+Dit bestand is gemaakt met po4a, wijzig het niet!
 
 You can edit po files to change the translation.
 
