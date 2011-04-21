@@ -527,31 +527,25 @@ since this link provides funding for phpMyAdmin.
 <!-- CONFIGURATION -->
 <h2 id="config">設定</h2>
 
-<p> <span class="important">Warning for <acronym title="Apple
-Macintosh">Mac</acronym> users:</span> PHP does not seem to like <acronym
-title="Apple Macintosh">Mac</acronym> end of lines character
-(&quot;<tt>\r</tt>&quot;). So ensure you choose the option that allows to
-use the *nix end of line character (&quot;<tt>\n</tt>&quot;) in your text
-editor before saving a script you have modified.</p>
+<p> <span class="important"><acronym title="Apple Macintosh">Mac</acronym>
+ユーザ向けの警告：</span> PHP は <acronym title="Apple Macintosh">Mac</acronym>
+の改行文字（「<tt>¥r</tt>」）を好まないようです。かならずテキストエディタで UNIX/Linux
+の改行文字（「<tt>¥n</tt>」）を使えるようにするオプションを選択してから修正したスクリプトを保存してください。</p>
 
-<p> <span class="important">Configuration note:</span> Almost all configurable
-data is placed in <tt>config.inc.php</tt>. If this file does not exist,
-please refer to the <a href="#setup">Quick install</a> section to create
-one. This file only needs to contain the parameters you want to change from
-their corresponding default value in <tt>libraries/config.default.php</tt>.</p>
+<p> <span class="important">設定にあたっての注意：</span> 設定可能なデータはほとんどが
+<tt>config.inc.php</tt> にあります。このファイルが存在しない場合は<a
+href="#setup">クイックインストール</a>の項を参照して作成しておいてください。このファイルには
+<tt>libraries/config.default.php</tt> で定義されているデフォルト値を変更したいパラメータのみ含めておけば結構です。</p>
 
-<p> The parameters which relate to design (like colors) are placed in
-<tt>themes/themename/layout.inc.php</tt>. You might also want to create
-<i>config.footer.inc.php</i> and <i>config.header.inc.php</i> files to add
-your site specific code to be included on start and end of each page.</p>
+<p> （色など）デザイン関係のパラメータは <tt>themes/&lt;テーマ名&gt;/layout.inc.php</tt>
+にあります。また、<i>config.footer.inc.php</i> と <i>config.header.inc.php</i>
+ファイルを修正すれば各ページの先頭と末尾にページ固有のコードを追加できます。</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] string</dt>
-    <dd>Sets here the complete <abbr title="Uniform Resource Locator">URL</abbr>
-(with full path) to your phpMyAdmin installation's directory.
-E.g. <tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>.
-Note also that the <abbr title="Uniform Resource Locator">URL</abbr> on some
-web servers are case&#8211;sensitive.  Don&#8217;t forget the trailing slash
-at the end.<br /><br />
+    <dd>ここには、phpMyAdminがインストールされているディレクトリの<abbr title="Uniform Resource
+Locator">URL</abbr>をフルパスで設定します。（例）<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>
+なお、ウェブサーバによってはこの <abbr title="Uniform Resource Locator">URL</abbr>
+の大文字小文字を区別します。末尾のスラッシュを忘れないようにしてください。<br /><br />
 
         バージョン2.3.0からはここを空欄にすることが推奨されています。たいていの場合、phpMyAdminは自動的に適切な設定を検出します。ポート転送をしているユーザはPmaAbsoluteUriを設定する必要があるでしょう（<a
 href="https://sourceforge.net/tracker/index.php?func=detail&aid=1340187&group_id=23067&atid=377409">解説</a>）。
@@ -559,21 +553,19 @@ href="https://sourceforge.net/tracker/index.php?func=detail&aid=1340187&group_id
 が正しい値を自動検出できていない場合はエラーメッセージが表示されるはずです。この値を設定してくださいというエラーが出る、あるいは自動検出コードがパスの検出に失敗する場合は、開発陣がコードを改善できるよう、バグレポートをバグトラッカーにお送りください。</dd>
 
     <dt id="cfg_PmaNoRelation_DisableWarning">$cfg['PmaNoRelation_DisableWarning'] boolean</dt>
-    <dd>Starting with version 2.3.0 phpMyAdmin offers a lot of features to work with
-master / foreign &#8211; tables (see <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>).
+    <dd>バージョン 2.3.0 以降、マスタ／外部テーブルを操作する機能が多数提供されています（<a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
         <br />
         そのマスタ／外部データベースをセットアップしてみてもうまくいかない場合、その機能を利用したいデータベースの「構造（Structure）」ページを見れば、無効になっている理由を分析するリンクが見つかるはずです。<br />
         そういった機能を使いたくない場合は、この変数を <tt>TRUE</tt> に設定しておけばメッセージが表示されなくなります。</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] boolean</dt>
-    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
-this parameter to <tt>TRUE</tt> to stop this message from appearing.</dd>
+    <dd>Suhosin が検出された場合、警告をメインページに表示します。<tt>TRUE</tt>
+に設定しておくことで、このメッセージは表示されなくなります。</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] boolean</dt>
-    <dd>Disable the default warning that is displayed if mcrypt is missing for
-cookie authentication.  You can set this parameter to <tt>TRUE</tt> to stop
-this message from appearing.</dd>
+    <dd>クッキー認証で mcrypt 拡張がなかった場合、警告を表示します。<tt>TRUE</tt>
+に設定しておくことで、このメッセージは表示されなくなります。</dd>
 
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] integer</dt>
     <dd>Show warning about incomplete translations on certain threshold.</dd>
@@ -1473,7 +1465,8 @@ language">SQL</abbr> output as inline comments. Defaults to <tt>TRUE</tt>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 boolean</dt>
-    <dd>If enabled allows you to log in to arbitrary servers using cookie auth.
+    <dd>If enabled, allows you to log in to arbitrary servers using cookie auth and
+permits to specify servers of your choice in the Synchronize dialog.
         <br /><br />
 
         <b>NOTE:</b> Please use this carefully, as this may allow users access to
@@ -1627,12 +1620,11 @@ TIMESTAMP, ascending order else- by default.</dd>
 ticked by default.</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean または string</dt>
-    <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
-editing when browsing a table's content. Valid values are:
-        <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
-            <li><tt>'blob'</tt> to allow editing of all columns except <tt>BLOBS</tt>;</li>
-            <li><tt>'all'</tt> to disallow editing of all <tt>BINARY</tt> or <tt>BLOB</tt>
-columns.</li>
+    <dd>テーブルの内容を表示しているときに <tt>BLOB</tt> カラムや <tt>BINARY</tt>
+カラムを保護して修正できないようにするかどうかを定義します。 有効な値は次の通りです：
+        <ul><li><tt>FALSE</tt> すべてのカラムの修正を許可します。</li>
+            <li><tt>blob</tt> <tt>BLOB</tt> 以外のすべてのカラムの修正を許可します。</li>
+            <li><tt>all</tt> 全ての <tt>BINARY</tt> カラムと <tt>BLOB</tt> カラムの修正を不許可にします。</li>
         </ul>
     </dd>
 
@@ -1648,12 +1640,9 @@ edit/insert mode. The user can toggle this setting from the interface.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] string</dt>
-    <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
-columns. Possible values are:
-        <ul><li>input - this allows to limit size of text to size of columns in MySQL, but
-has problems with newlines in columns</li>
-            <li>textarea - no problems with newlines in columns, but also no length
-limitations</li>
+    <dd>CHAR カラムと VARCHAR カラムでどちらの編集用コントロールを利用するか定義します。可能な値は次の通りです：
+        <ul><li>input - テキストのサイズを MySQL のカラムのサイズまでに制限できますが、カラムに改行があると問題になります。</li>
+            <li>textarea - カラムに改行があっても問題ありませんが、長さの制限はできません。</li>
         </ul>
         デフォルトは昔ながらの input です。</dd>
 
@@ -1674,8 +1663,7 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a> setting.</dd>
         <span id="cfg_GZipDump">$cfg['GZipDump'] </span>boolean<br />
         <span id="cfg_BZipDump">$cfg['BZipDump'] </span>boolean
     </dt>
-    <dd>Defines whether to allow the use of zip/GZip/BZip2 compression when creating
-a dump file</dd>
+    <dd>ダンプファイルを作成するときに zip/GZip/BZip2 圧縮を利用できるようにするかどうかを定義します。</dd>
 
     <dt><span id="cfg_CompressOnFly">$cfg['CompressOnFly'] </span>boolean<br />
     </dt>
@@ -1686,8 +1674,7 @@ files contain more GZip/BZip2 headers, but all normal programs handle this
 correctly.</dd>
 
     <dt id="cfg_LightTabs">$cfg['LightTabs'] boolean</dt>
-    <dd>If set to <tt>TRUE</tt>, use less graphically intense tabs on the top of the
-mainframe.</dd>
+    <dd><tt>TRUE</tt> にすると、メインフレーム上部のタブをグラフィックの少ないものにします。</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] string</dt>
     <dd><tt>True</tt>
