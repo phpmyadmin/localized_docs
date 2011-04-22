@@ -40,7 +40,7 @@ class="myadmin">MyAdmin</span></a> 3.4.0-rc2-dev ドキュメント
     <li><a href="Documentation.html#setup">インストール</a></li>
     <li><a href="Documentation.html#setup_script">セットアップスクリプト</a></li>
     <li><a href="Documentation.html#config">設定</a></li>
-    <li><a href="Documentation.html#transformations">Transformations</a></li>
+    <li><a href="Documentation.html#transformations">変換機能</a></li>
     <li><a href="Documentation.html#faq"><abbr title="よくある質問">FAQ</abbr></a></li>
     <li><a href="Documentation.html#developers">開発者向けの情報</a></li>
     <li><a href="Documentation.html#copyright">コピーライト</a></li>
@@ -173,8 +173,8 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 
 <ol><li><a href="#quick_install">クイックインストール</a></li>
     <li><a href="#setup_script">セットアップスクリプトの使用</a></li>
-    <li><a href="#linked-tables">phpMyAdmin の設定保存場所</a></li>
-    <li><a href="#upgrading">Upgrading from an older version</a></li>
+    <li><a href="#linked-tables">リンクテーブル構造</a></li>
+    <li><a href="#upgrading">旧版からのアップグレード</a></li>
     <li><a href="#authentication_modes">認証モードの使い方</a></li>
 </ol>
 
@@ -307,7 +307,7 @@ access by web server configuration. You can find example
     </li>
 </ol>
 
-<h3 id="linked-tables">phpMyAdmin の設定保存場所</h3>
+<h3 id="linked-tables">リンクテーブル構造</h3>
 
 <p> For a whole set of new features (bookmarks, comments, <abbr
 title="structured query language">SQL</abbr>-history, tracking mechanism,
@@ -357,21 +357,18 @@ you should run the SQL script found in
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are recommended in a <b>multi-user environment</b>
-where you want to give users access to their own database and don't want
-them to play around with others.<br />
-        Nevertheless be aware that MS Internet Explorer seems to be really buggy
-about cookies, at least till version 6.<br />
+<ul><li><b>マルチユーザ環境</b>では、ユーザが自分のデータベースにアクセスできるよう、また他人のデータベースにいたずらできないよう、<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがおすすめです。<br />
+        ただし、ご注意ください。マイクロソフトの Internet Explorer は、クッキーに関しては本当にバグが多いようです。少なくともバージョン 6
+まではそうです。<br />
         Even in a <b>single-user environment</b>, you might prefer to use <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that your
 user/password pair are not in clear in the configuration file.
         </li>
 
-    <li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are more secure: the MySQL login information does not
-need to be set in the phpMyAdmin configuration file (except possibly for the
-<a href="#controluser">controluser</a>).<br />
+    <li><abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードの方が安全です：MySQL
+のログイン情報を phpMyAdmin の設定ファイルに書く必要がありません（<a
+href="#controluser">「管理ユーザ」</a>は別かもしれませんが）<br />
         ただし、お忘れなく。HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされます。<br />
         また、クッキーモードでは、パスワードは blowfish アルゴリズムで暗号化されますが、クッキー用の一時ファイルに保管されます。</li>
 
@@ -416,8 +413,7 @@ GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (this of course requires that your <a href="#linked-tables">phpMyAdmin
-configuration storage</a> be set up).  
+        （もちろん<a href="#linked-tables">リンクテーブル構造</a>を設定しておく必要があります）  
     <br /></li>
 
     <li>上記が済んだら、<i>本当の</i>ユーザそれぞれについて、特定のデータベースにおける特権を付与していってください。ふつう、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが（たとえばスーパーユーザを作るときなど）。<br />
@@ -436,16 +432,15 @@ class="configrule">$cfg['Servers']</a>配列のユーザ／パスワードフィ
 
 <h4>「<abbr title="HyperText Transfer Protocol">HTTP</abbr>」認証モード</h4>
 
-<ul><li>Uses <abbr title="HyperText Transfer Protocol">HTTP</abbr> Basic
-authentication method and allows you to log in as any valid MySQL user.</li>
-    <li>Is supported with most PHP configurations. For <abbr title="Internet
-Information Services">IIS</abbr> (<abbr title="Internet Server Application
-Programming Interface">ISAPI</abbr>)  support using <abbr title="Common
-Gateway Interface">CGI</abbr> PHP see <a href="#faq1_32"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.32</a>, for using with
-Apache <abbr title="Common Gateway Interface">CGI</abbr> see <a
-href="#faq1_35"><abbr title="Frequently Asked Questions">FAQ</abbr>
-1.35</a>.</li>
+<ul><li>基本 <abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証を利用することで、有効な
+MySQL ユーザのいずれかとしてログインできるようになります。</li>
+    <li>ほとんどのPHPの設定でサポートされています。 <abbr title="Internet Information
+Services">IIS</abbr> (<abbr title="Internet Server Application Programming
+Interface">ISAPI</abbr>) での <abbr title="Common Gateway
+Interface">CGI</abbr> 版 PHPの使用をサポートに関しては <a href="#faq1_32"><abbr
+title="よくある質問">FAQ</abbr> 1.32</a>を参照してください。Apache での <abbr title="Common
+Gateway Interface">CGI</abbr> の使用に関しては、<a href="#faq1_35"><abbr
+title="よくある質問">FAQ</abbr> 1.35</a>を参照してください。</li>
     <li><a href="#faq4_4"> <abbr title="よくある質問">FAQ</abbr> 4.4</a> もご覧ください。「<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htaccess</i>
 機構は併用しないようにします。</li>
@@ -455,8 +450,7 @@ title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htacces
 
 <ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証のかわりに利用できます（たとえば
 <abbr title="Internet Information Services">IIS</abbr> を走らせている場合など）。</li>
-    <li>Obviously, the user must enable cookies in the browser, but this is now a
-requirement for all authentication modes.</li>
+    <li>もちろんユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
     <li>With this mode, the user can truly log out of phpMyAdmin and log in back
 with the same username.</li>
     <li>If you want to log in to arbitrary server see <a
@@ -576,16 +570,13 @@ call phpMyAdmin inside a frame, and is a potential security hole allowing
 cross-frame scripting attacks.</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] string</dt>
-    <dd>The &quot;cookie&quot; auth_type uses blowfish algorithm to encrypt the
-password.<br />
-        If you are using the &quot;cookie&quot; auth_type, enter here a random
-passphrase of your choice. It will be used internally by the blowfish
-algorithm: you won&#8217;t be prompted for this passphrase. There is no
-maximum length for this secret.<br /><br />
+    <dd>「クッキー」認証方式は、パスワードを暗号化するために blowfish アルゴリズムを使用しています。<br />
+        「クッキー」認証方式を利用する場合は、ここにお好みのランダムなパスフレーズを入力してください。このパスフレーズは blowfish
+アルゴリズムが内部的に利用するものです。ユーザがパスフレーズを入力するよう求められることはありません。このパラメータの文字数の上限はありません。<br /><br />
         
-        Since version 3.1.0 phpMyAdmin can generate this on the fly, but it makes a
-bit weaker security as this generated secret is stored in session and
-furthermore it makes impossible to recall user name from cookie.</dd>
+        phpMyAdmin バージョン 3.1.0
+以降、このパスフレーズが（空の場合は）自動で生成されるようになっています。自動作成されたパスフレーズがセキュリティ上弱いということありません。
+この生成されたパスフレーズはセッションに格納され、さらに、クッキーからユーザ名を取り出すといったことは不可能です。</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] array</dt>
     <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
@@ -653,14 +644,11 @@ server running with <tt>--skip-show-database</tt>, to enable a multi-user
 installation (<abbr title="HyperText Transfer Protocol">HTTP</abbr> or
 cookie authentication mode).<br /><br />
 
-        When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication modes (or 'config' authentication mode since phpMyAdmin
-2.2.1), you need to supply the details of a MySQL account that has
-<tt>SELECT</tt> privilege on the <i>mysql.user (all columns except
-&quot;Password&quot;)</i>, <i>mysql.db (all columns)</i> and
-<i>mysql.tables_priv (all columns except &quot;Grantor&quot; and
-&quot;Timestamp&quot;) </i>tables.  This account is used to check what
-databases the user will see at login.<br />
+        <abbr title="HyperText Transfer
+Protocol">HTTP</abbr>／クッキー認証モード（あるいは、phpMyAdmin 2.2.1
+以降の「config」認証モード）を使う場合、<i>mysql.user（「Password」以外の全カラム）</i>、<i>mysql.db（全カラム）</i>、<i>mysql.tables_priv（「Grantor」、「Timestamp」以外の全カラム）</i>
+テーブルに <tt>SELECT</tt> 特権を持つ MySQL
+アカウントの情報を提供する必要があります。このアカウントはログイン時にどのデータベースを表示するかチェックするのに利用されます。<br />
         詳細は<a href="#setup">インストールセクション</a>の「認証モードの使い方」をご覧ください。<br /><br />
 
         2.2.5 より前の phpMyAdmin では「stduser/stdpass」という名前でした。</dd>
@@ -670,20 +658,20 @@ Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
     <dd>Whether config or cookie or <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> or signon authentication should be used for this
 server.
-        <ul><li>'config' authentication (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)  is the
-plain old way: username and password are stored in <i>config.inc.php</i>.</li>
-            <li>'cookie' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) as
-introduced in 2.2.3 allows you to log in as any valid MySQL user with the
-help of cookies. Username and password are stored in cookies during the
-session and password is deleted when it ends. This can also allow you to log
-in in arbitrary server if <tt><a href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a></tt> enabled.
+        <ul><li>「config」認証
+（<tt>$auth_type&nbsp;=&nbsp;'config'</tt>）は昔ながらの簡単な方法です。ユーザ名とパスワードは
+<i>config.inc.php</i> に保存されます。</li>
+            <li>「cookie」認証モード （<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>）は 2.2.3
+で導入されました。クッキーの助けを借りることで、あらゆる有効な MySQL
+ユーザでログインできます。ユーザ名とパスワードは、セッションの間はクッキーに保管されます。セッションが終わるとパスワードは破棄されます。また、<tt><a
+href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a></tt>
+が有効になっている場合は任意のサーバにログインできます。
             </li>
-            <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
-called 'advanced' in previous versions and can be written also as 'http')
-(<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'</tt>) as introduced in 1.3.0 allows you to log in as
-any valid MySQL user via HTTP-Auth.</li>
+            <li>「'<abbr title="HyperText Transfer Protocol">HTTP</abbr>」認証（旧版の「advanced」）
+（<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'</tt>）は 1.3.0 で導入されました。HTTP-Auth を経由することで、あらゆる有効な
+MySQL ユーザでログインできます。</li>
             <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
 introduced in 2.10.0 allows you to log in from prepared PHP session
 data. This is useful for implementing single signon from another
@@ -778,28 +766,21 @@ pattern syntax</a> portion of the PHP reference manual.
         </dd>
 
     <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] string</dt>
-    <dd>Only useful when using phpMyAdmin with multiple server entries. If set, this
-string will be displayed instead of the hostname in the pull-down menu on
-the main page. This can be useful if you want to show only certain databases
-on your system, for example. For HTTP auth, all non-US-ASCII characters will
-be stripped.</dd>
+    <dd>複数のサーバエントリがあるなら便利です。設定しておくと、メインページのプルダウンメニューに、ホスト名ではなく、この文字列が表示されます。たとえば、システム上のいくつかのデータベースのみ表示させる場合には便利でしょう。HTTP認証の場合、非ASCII文字は全て無視されるかもしれません。</dd>
 
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> string
     </dt>
-    <dd>The name of the database containing the phpMyAdmin configuration storage.
+    <dd>リンクテーブル構造を格納するデータベース名が入ります。
         <br /><br />
 
-        See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
-section in this document to see the benefits of this feature, and for a
-quick way of creating this database and the needed tables.
+        この文書の<a
+href="#linked-tables">リンクテーブル構造</a>のセクションをご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
         <br /><br />
 
-        If you are the only user of this phpMyAdmin installation, you can use your
-current database to store those special tables; in this case, just put your
-current database name in <tt>$cfg['Servers'][$i]['pmadb']</tt>. For a
-multi-user installation, set this parameter to the name of your central
-database containing the phpMyAdmin configuration storage.</dd>
+        インストールした phpMyAdmin のユーザがひとりの場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
+<tt>$cfg['Servers'][$i]['pmadb']</tt>
+にはお使いのデータベース名を入れていただければ結構です。マルチユーザの場合はリンクテーブル構造を格納するセントラルデータベース名を設定します。</dd>
 
     <dt id="bookmark">
         <span
@@ -822,7 +803,7 @@ Documentation_ja.html:570  #-#-#-#-#
 #-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['bookmarktable']</tt> にテーブル名を入力します。</li>
         </ul>
     </dd>
@@ -866,7 +847,7 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['relation']</tt> にリレーションテーブル名を入れます。</li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
 want to use this feature, click &quot;Structure/Relation view/&quot; and
@@ -889,14 +870,14 @@ column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
         This configuration variable will hold the name of this special table. To
 allow the usage of this functionality:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
             <li>put the table name in <tt>$cfg['Servers'][$i]['table_info']</tt> (e.g.
 'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
 &quot;Structure/Relation view/Choose column to display&quot; to choose the
 column.</li>
         </ul>
-        Usage tip: <a href="#faqdisplay">Display column</a>.
+        使い方のコツ：<a href="#faqdisplay">表示するカラム</a>
     </dd>
     <dt id="table_coords">
         <span
@@ -929,13 +910,13 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['table_coords']</tt> と
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt> に正しいテーブル名を入れます。</li>
         </ul>
 
-        Usage tips: <a href="#faqpdf"><abbr title="Portable Document
-Format">PDF</abbr> output</a>.
+        使い方のコツ：<a href="#faqpdf"><abbr title="Portable Document Format">PDF</abbr>
+出力</a>
     </dd>
 
     <dt id="col_com">
@@ -953,11 +934,9 @@ column name (properties page) or embedded within the header of table in
 browse view. They can also be shown in a table dump. Please see the relevant
 configuration directives later on.<br /><br />
 
-        Also new in release 2.5.0 is a MIME-transformation system which is also
-based on the following table structure. See <a href="#transformations">
-Transformations</a> for further information. To use the MIME-transformation
-system, your column_info table has to have the three new columns 'mimetype',
-'transformation', 'transformation_options'.
+        また、リリース 2.5.0 の新機能として、MIME 変換システムがありますが、これも以下のテーブル構造をベースにしています。詳しくは<a
+href="#transformations">「変換機能」</a>をご覧ください。MIME 変換システムを利用する際は、column_info
+テーブルに「mimetype」、「transformation」、「transformation_options」というカラムを新たに付け加える必要があります。
         <br /><br />
 
         #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
@@ -973,9 +952,9 @@ Documentation_ja.html:570  #-#-#-#-#
 #-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['column_info']</tt> (e.g.
-'pma_column_info')</li>
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+            <li><tt>$cfg['Servers'][$i]['column_info']</tt>
+にテーブル名を入れます。（例：'pma_column_info'）</li>
             <li>2.5.0 より前の Column_comments テーブルを更新するには次のようにします。
 
                 <pre>
@@ -1022,9 +1001,8 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['history']</tt>
-(e.g. 'pma_history')
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+            <li><tt>$cfg['Servers'][$i]['history']</tt> にテーブル名を入れます。（例：'pma_history'）
                 </li>
         </ul>
     </dd>
@@ -1071,9 +1049,8 @@ Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['tracking']</tt>
-(e.g. 'pma_tracking')</li>
+            <li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+            <li>テーブル名を <tt>$cfg['Servers'][$i]['tracking']</tt> に入れます。（例：'pma_tracking'）</li>
         </ul>
     </dd>
 
@@ -1177,8 +1154,8 @@ Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+            <li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+            <li>テーブル名を <tt>$cfg['Servers'][$i]['userconfig']</tt> に入れます。</li>
         </ul>
     </dd>
 
@@ -1205,9 +1182,9 @@ Documentation_ja.html:570  #-#-#-#-#
 Documentation_ja.html:570  #-#-#-#-#
 この機能を利用できるようにするには、
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['designer_coords']</tt>
-(e.g. 'pma_designer_coords')
+        <ul><li><a href="#pmadb">pmadb</a> とリンクテーブル構造をセットアップします。</li>
+            <li><tt>$cfg['Servers'][$i]['designer_coords']</tt>
+にテーブル名を入れます。（例：'pma_designer_coords'）
                 </li>
         </ul>
     </dd>
@@ -2339,8 +2316,8 @@ null.</dd>
 <h2 id="transformations">変換機能</h2>
 
 <ol><li><a href="#transformationsintro">はじめに</a></li>
-    <li><a href="#transformationshowto">Usage</a></li>
-    <li><a href="#transformationsfiles">File structure</a></li>
+    <li><a href="#transformationshowto">使い方</a></li>
+    <li><a href="#transformationsfiles">ファイル構造</a></li>
 </ol>
 
 <h3 id="transformationsintro">1. はじめに</h3>
@@ -2368,7 +2345,7 @@ installation.</p>
 <p> 変換機能の効果的な使い方のチュートリアルについては、phpMyAdmin のオフィシャルホームページの <a
 href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>をご覧ください。</p>
 
-<h3 id="transformationshowto">2. Usage</h3>
+<h3 id="transformationshowto">2. 使い方</h3>
 
 <p> Go to your <i>tbl_structure.php</i> page (i.e. reached through clicking on
 the 'Structure' link for a table). There click on &quot;Change&quot; (or
@@ -2401,7 +2378,7 @@ options）」フィールドは自由に入力できるテキストフィール�
 つ指定できる変換機能に文字セットを付け加えたいなら、「'最初のパラメータ','二番目のパラメータ','charset=us-ascii'」のように入力します。もっとも、「'','','charset=us-ascii'」のように、パラメータについてはデフォルトの値を利用することもできます。</li>
 </ul>
 
-<h3 id="transformationsfiles">3. File structure</h3>
+<h3 id="transformationsfiles">3. ファイル構造</h3>
 
 <p> 各 MIME
 タイプ用の変換機能の定義はすべて「libraries/transformations/」ディレクトリのそれぞれのファイルにまとめられています。</p>
@@ -2593,9 +2570,10 @@ PHP bug database.</p>
 Services">IIS</abbr> 上で使うと、<abbr title="HyperText Transfer
 Protocol">HTTP</abbr> においてクラッシュしたり、エラーメッセージがたくさん表示されます。</a></h4>
 
-<p> This is a known problem with the PHP <abbr title="Internet Server
-Application Programming Interface">ISAPI</abbr> filter: it's not so
-stable. Please use instead the cookie authentication mode.
+<p> これは PHP の <abbr title="Internet Server Application Programming
+Interface">ISAPI</abbr> フィルタの既知の問題です（<abbr title="Internet Server
+Application Programming Interface">ISAPI</abbr> フィルタはあまり安定していないのです）。<abbr
+title="HyperText Transfer Protocol">HTTP</abbr> 認証モードではなく、クッキー認証モードをお使いください。
 </p>
 
 <h4 id="faq1_6">
@@ -2693,12 +2671,10 @@ upload_max_filesize より大きい必要があるそうです。<br /> <br />
 
     アップロードファイルが大きすぎる、あるいはホスティングしてもらっているプロバイダが設定を変えたがらない場合にはいくつかの対策があります。</p>
 
-<ul><li>Look at the <a href="#cfg_UploadDir"
-class="configrule">$cfg['UploadDir']</a> feature. This allows one to upload
-a file to the server via scp, ftp, or your favorite file transfer
-method. PhpMyAdmin is then able to import the files from the temporary
-directory. More information is available in the <a
-href="#config">Configuration section</a> of this document.</li>
+<ul><li><a href="#cfg_UploadDir" class="configrule">$cfg['UploadDir']</a>
+機能をご覧ください。この機能を使うと、SCPやFTPといったお好みの転送法でファイルをサーバにアップロードできるようになります。ファイルをアップロードしたら、phpMyAdmin
+はその一時ディレクトリからファイルをインポートできるようになります。詳しくはこのドキュメントの<a
+href="#config">設定セクション</a>をご覧ください。</li>
     <li>（<a
 href="http://www.ozerov.de/bigdump.php">BigDump</a>のような）ユーティリティを利用してアップロードの前にファイルを分割する方法もあります。このユーティリティはもとより、サードパーティ製のアプリケーションは一切サポートできませんが、そういったものを利用して成功したユーザがいることは承知しています。</li>
     <li>シェル（コマンドライン）にアクセスできるのであれば、MySQL を利用して直接ファイルをインポートする方法もあります。その場合は MySQL
@@ -2721,7 +2697,7 @@ extension of your choice to a MySQL client library of at least the same
 minor version since the one that is bundled with some PHP distributions is
 rather old and might cause problems <a href="#faq1_17a"> (see <abbr
 title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
-    MariaDB is also supported (versions 5.1 and 5.2 were tested).
+    MariaDB もサポートしています（バージョン 5.1 と 5.2 はテストしました）。
     </p>
 
 <h5 id="faq1_17a">
@@ -2827,11 +2803,10 @@ input file specified（入力ファイルが指定されていません）」と
     <a href="#faq1_27">1.27 巨大なページ（たとえばテーブルがたくさんある db_structure.php
 ）を表示したいのに空白ページが表示されます。</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
-GZIP output buffering is enabled. If you turn off it (by <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
-<i>config.inc.php</i>), it should work. This bug will be fixed in
-PHP&nbsp;5.0.0.</p>
+<p> これは <a href="http://bugs.php.net/21079">PHP のバグ</a> です。GZIP
+出力バッファリングが有効になっていると起こりますので、バッファリングを（<i>config.inc.php</i> で <a
+href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a>
+として）オフにすれば動くはずです。このバグは PHP 5.0.0 で修正されるはずです。</p>
 
 <h4 id="faq1_28">
     <a href="#faq1_28">1.28 MySQL サーバがときどきクエリを拒否して「Errorcode:
@@ -2877,8 +2852,7 @@ SetInputFilter PHP
 
 <p>はい。</p>
 <p>
-    Since release 3.0 only PHP 5.2 and newer. For older PHP versions 2.9 branch
-is still maintained.
+    バージョン 3.0 からは PHP5.2 以降のみです。古いバージョンのPHP用に、バージョン 2.9 ブランチがまだメンテナンスされています。
 </p>
 
 <h4 id="faq1_32">
@@ -2886,9 +2860,9 @@ is still maintained.
 Protocol">HTTP</abbr> authentication with <abbr title="Internet Information
 Services">IIS</abbr>?</a></h4>
 
-<p> Yes. This procedure was tested with phpMyAdmin 2.6.1, PHP 4.3.9 in <abbr
-title="Internet Server Application Programming Interface">ISAPI</abbr> mode
-under <abbr title="Internet Information Services">IIS</abbr> 5.1.</p>
+<p> はい。以下の手順は phpMyAdmin 2.6.1 と、<abbr title="Internet Information
+Services">IIS</abbr> 5.1 の <abbr title="Internet Server Application
+Programming Interface">ISAPI</abbr> モードで動かした PHP 4.3.9 で確認しました。</p>
 
 <ol><li>お使いの <tt>php.ini</tt> ファイルに <tt>cgi.rfc2616_headers = 0</tt> という設定を加えます。</li>
     <li>In <tt>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
@@ -2911,21 +2885,19 @@ pma_reloadnavigation（未定義の関数 pma_reloadnavigation の呼び出し�
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 データベースやテーブルのページに直接アクセスできますか？</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <code>.htaccess</code>
-file in root folder of phpMyAdmin installation (don't forget to change
-directory name inside of it):</p>
+<p> はい。そのままでも
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
+のような <abbr title="Uniform Resource Locator">URL</abbr>
+は利用できます。<tt>server</tt> パラメータには、<tt>config.inc.php</tt>
+内のサーバ項目で使われているインデックスの数字が入ります。table と script
+の部分はオプションです。http://server/phpMyAdmin/database[/table][/script] のような <abbr
+title="Uniform Resource Locator">URL</abbr> を使いたい場合はいくつかの設定をする必要があります。以下の例は
+<a href="http://httpd.apache.org">Apache</a>
+ウェブサーバにしか適用できませんが、まずはグローバルな設定でいくつかの機能を有効にしてあるか確認してください。phpMyAdmin
+をインストールしたディレクトリについては <code>Options FollowSymLinks</code> と
+<code>AllowOverride FileInfo</code> が有効になっている必要がありますし、mod_rewrite
+を有効にしておく必要もあります。あとは、以下のような <code>.htaccess</code> ファイルを phpMyAdmin
+をインストールした場所のルートフォルダに作成するだけです（例示したディレクトリ名の変更を忘れないでくださいね(^^) ）</p>
 
 <pre>
 RewriteEngine On
@@ -2937,12 +2909,11 @@ RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]
 </pre>
 
 <h4 id="faq1_35">
-    <a href="#faq1_35">1.35 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with Apache <abbr title="Common Gateway
-Interface">CGI</abbr>?</a></h4>
+    <a href="#faq1_35">1.35 Apache の <abbr title="Common Gateway
+Interface">CGI</abbr> 版 で <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 認証が使用できますか？</a></h4>
 
-<p> Yes. However you need to pass authentication variable to <abbr title="Common
-Gateway Interface">CGI</abbr> using following rewrite rule:</p>
+<p> はい。しかしながら、CGI 版で認証用変数を通過させるには、以下のように書き直す必要があります。</p>
 
 <pre>
 RewriteEngine On
@@ -2950,12 +2921,11 @@ RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
 </pre>
 
 <h4 id="faq1_36">
-    <a href="#faq1_36">1.36 I get an error &quot;500 Internal Server
-Error&quot;.</a>
+    <a href="#faq1_36">1.36 「サーバー内部エラー(500 Internal Server
+Error)」というエラーが出ます。</a>
 </h4>
 <p>
-    There can be many explanations to this and a look at your server's error log
-file might give a clue.
+    いろんな要因があるのでここには書ききれません。サーバのエラーログファイルを見れば、解決の手掛かりがあるかもしれません。
 </p>
 
 <h4 id="faq1_37">
@@ -3077,13 +3047,11 @@ privileges, I get an error about an unknown column.</a></h4>
 already sent by
 ...（警告：ヘッダ情報を追加できません。ヘッダは送信済みです）」というエラーメッセージが表示されます。何がいけないのでしょう。</a></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under IIS, that used a zipped
-distribution kit: the file <tt>libraries/Config.class.php</tt> contained an
-end-of-line character (hex 0A) at the end; removing this character cleared
-his errors.</p>
+<p> <i>config.inc.php</i> ファイルを修正して、先頭の <tt>&lt;?php</tt> タグの前や末尾の
+<tt>?&gt;</tt>
+の後には何も入れない（改行やスペース、文字などがない）ようにしてください。また、zip形式の配布キットを使用しているIISでユーザーから以下の報告を受けています。「ファイル
+<tt>libraries/Config.class.php</tt> の末尾に改行コード (0x0A)
+が含まれていたので、この文字を削除したらエラーがなくなりました。」と。</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
@@ -3119,7 +3087,7 @@ local MySQL server through socket '/tmp/mysql.sock' (111)...（警告：MySQL
 とタイプすると、MySQL サーバの情報がたくさん表示されるはずです。そのなかに、ソケットの情報も書いてあります（たとえば
 <i>/tmp/mysql.sock</i>）</li>
     <li>次に、PHP にそのソケットを利用するよう伝える必要があります。<br /> phpMyAdmin で指定するなら、<i>config.inc.php</i> にソケットの情報をもれなく記入する必要があります。<br />
-        For example: <a href="#cfg_Servers_socket" class="configrule">
+        例：<a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
 
@@ -3131,61 +3099,55 @@ href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">
 corresponding section of the MySQL documentation</a>.</p>
 
 <h4 id="faq2_4">
-    <a href="#faq2_4">2.4 Nothing is displayed by my browser when I try to run
-phpMyAdmin, what can I do?</a></h4>
+    <a href="#faq2_4">2.4 phpMyAdmin
+を実行しようとしているのですがブラウザに何も表示されません。どうしたらよいのでしょう。</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
-directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
-sometime.<br />
+<p> phpMyAdmin の設定ファイルで <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGZip']</a> ディレクティブを <tt>FALSE</tt>
+にしてみてください。それでうまくいくことがあります。<br />
     また、PHP のバージョンを確かめてください。「4.0b...」という文字が含まれている場合はベータ版の PHP
 が走っているということですが、これはあまりよいことではありませんので、ベータ版でないものにアップグレードしてください。</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5 Each time I want to insert or change a record or drop
-a database or a table, an error 404 (page not found) is displayed or, with
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication, I'm asked to log in again. What's wrong?</a></h4>
+    <a href="#faq2_5">2.5
+レコードを挿入／修正しようとしたり、データベースやテーブルを削除しようとするたびに404（ページが見つかりません）エラーが表示されます。また、<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>
+ないしクッキー認証をしているときはログインしなおすように求められます。何が悪いのでしょうか？</a></h4>
 
-<p> Check the value you set for the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive in the phpMyAdmin
-configuration file.</p>
+<p> phpMyAdmin 設定ファイルの <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブの値をチェックしてください。</p>
 
 <h4 id="faq2_6">
-    <a href="#faq2_6">2.6 I get an &quot;Access denied for user:
-'root@localhost' (Using password: YES)&quot;-error when trying to access a
-MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
+    <a href="#faq2_6">2.6 localhost にポート転送しているホストの MySQL サーバにアクセスしようとすると、「Access
+denied for user: 'root@localhost'（Using password:
+YES）（'root@localhost'ユーザのアクセスは拒否されました。パスワードは利用しています）」というエラーが出ます。</a></h4>
 
 <p> localhost のポートを利用して、ポート転送で別のホストにリダイレクトすると、MySQL は期待通りに localhost を解決してくれません。<br />
-    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
-MySQL (the command line tool <code>mysql</code> as well) always tries to use
-the socket connection for speeding up things. And that doesn't work in this
-configuration with port forwarding.<br />
-    If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
-<abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
+    Erik Wasser は次のように説明しています：解決法は次の通りです：ホストが「localhost」の場合、MySQLは（コマンドラインツールの
+<code>mysql</code>
+もそうですが）高速化のためにかならずソケットを利用して接続しようとします。これは、このようにポート転送する設定では動作しません。<br />
+    ホスト名を「127.0.0.1」にすれば万事解決。MySQL は <abbr title="Transmission Control
+Protocol">TCP</abbr> 接続を利用するようになります。</p>
 
-<h4 id="faqthemes"><a href="#faqthemes">2.7 Using and creating themes</a></h4>
+<h4 id="faqthemes"><a href="#faqthemes">2.7 テーマの使い方と作り方</a></h4>
 
-<p> Themes are configured with <a href="#cfg_ThemePath"
-class="configrule">$cfg['ThemePath']</a>, <a href="#cfg_ThemeManager"
-class="configrule">$cfg['ThemeManager']</a> and <a href="#cfg_ThemeDefault"
-class="configrule">$cfg['ThemeDefault']</a>.<br />
+<p> テーマは <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>、 <a
+href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>、<a
+href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定します。<br />
     <br />
-    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
-should not delete the directory &quot;original&quot; or its underlying
-structure, because this is the system theme used by phpMyAdmin.
-&quot;original&quot; contains all images and styles, for backwards
-compatibility and for all themes that would not include images or css-files.
+    <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
+の下の「original」ディレクトリやその下位構造は削除しないでください。これは phpMyAdmin
+が利用するシステムテーマです。「original」にはすべての画像やスタイルが格納されています。これは後方互換性のためと、画像や css
+ファイルが含まれていないすべてのテーマのためです。
     <br /><br />
 
-    If <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
-is enabled, you can select your favorite theme on the main page. Your
-selected theme will be stored in a cookie.<br /><br /></p>
+    <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
+が有効の場合、メインページで好みのテーマを選択できます。選択したテーマはクッキーに保管されます。<br /><br /></p>
 
 <p> テーマの作り方：</p>
 
-<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
-href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
-<tt>themes</tt>)</li>
+<ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>（デフォルトでは
+<tt>themes</tt>）ディレクトリの下に新しいサブディレクトリ（たとえば「your_theme_name」）を作ります</li>
     <li>「original」から「your_theme_name」にファイルやディレクトリをコピーします</li>
     <li>「your_theme_name/css」の css ファイルを編集します。</li>
     <li>「your_theme_name/img」に新しい画像を入れます。</li>
@@ -3210,9 +3172,9 @@ parameters（パラメータが抜けています）」というエラーが出�
 
 <p> 確認すべき点はいくつかあります：</p>
 
-<ul><li>In <tt>config.inc.php</tt>, try to leave the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive empty. See also <a
-href="#faq4_7"><abbr title="Frequently Asked Questions">FAQ</abbr> 4.7</a>.
+<ul><li><tt>config.inc.php</tt> の <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブを空にしてみてください。また <a
+href="#faq4_7"><abbr title="よくある質問">FAQ</abbr> 4.7</a> もご覧ください。
     </li>
     <li>インストールされている PHP が壊れているか、Zend Optimizer をアップデートする必要があるのかもしれません。<a
 href="http://bugs.php.net/bug.php?id=31134">http://bugs.php.net/bug.php?id=31134</a>
@@ -3305,8 +3267,7 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>）、複数の階層を�
 <h4 id="faq3_6">
     <a href="#faq3_6">3.6 InnoDB では現在サポートされていない機能はありますか。</a></h4>
 
-<p> In Relation view, being able to choose a table in another database, or
-having more than one index column in the foreign key.<br /><br/>
+<p> リレーション表示では、別のデータベースのテーブルを選択することや、複数のインデックスカラムを外部キーにすることがそうです。<br /><br/>
     Query-by-example（Query）では、外部テーブルから LEFT JOIN されたクエリの自動生成がそうです。<br /><br/>
 </p>
 
@@ -3336,16 +3297,14 @@ official phpMyAdmin-homepage.</p>
 <h4 id="faq3_9">
     <a href="#faq3_9">3.9 MySQL サーバに「--sql_mode=ANSI」を適用するとエラーメッセージが出ます。</a></h4>
 
-<p> When MySQL is running in ANSI-compatibility mode, there are some major
-differences in how <abbr title="structured query language">SQL</abbr> is
-structured (see <a href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">
-http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a>). Most important of
-all, the quote-character (") is interpreted as an identifier quote character
-and not as a string quote character, which makes many internal phpMyAdmin
-operations into invalid <abbr title="structured query language">SQL</abbr>
-statements. There is no workaround to this behaviour. News to this item will
-be posted in Bug report <a
+<p> MySQL が ANSI 互換モードで走っているときは <abbr title="structured query
+language">SQL</abbr> の組み立て方に大きく変わる部分があります（<a
+href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a>
+参照）。とりわけ重要なのが、引用符（"）が識別子をクオートする文字として解釈され、文字列をクオートする文字とはみなされなくなることです。そのため、phpMyAdmin
+内部の多くの操作が無効な <abbr title="structured query language">SQL</abbr>
+文になるのです。この動作には回避策がありません。この問題についての最新情報はバグレポートの <a
 href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;group_id=23067&amp;atid=377408">#816858</a>
+に投稿されます。
 </p>
 
 <h4 id="faq3_10">
@@ -3359,11 +3318,9 @@ firstname like 'A%'</tt> の結果「Smith」という値が 2
 <h4 id="faq3_11">
     <a href="#faq3_11">3.11 InnoDB テーブルのレコード数が正しくありません。</a></h4>
 
-<p> phpMyAdmin uses a quick method to get the row count, and this method only
-returns an approximate count in the case of InnoDB tables. See <a
-href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a> for a
-way to modify those results, but this could have a serious impact on
-performance.</p>
+<p> phpMyAdmin は手軽な方法で行数を取得していますが、この方法を使うと InnoDB テーブルの場合は概数しか返ってこないのです。<a
+href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
+の項にはそういった結果を修正する方法が載っていますが、その方法をとると性能に深刻な影響を与えることがあります。</p>
 
 <h4 id="faq3_12">
     <a href="#faq3_12">3.12 (該当しなくなったため取り下げ)。</a></h4>
@@ -3461,12 +3418,12 @@ sake of efficiency.
 なのですが、phpMyAdmin
 はセントラルコピーをひとつセットアップすればよいのでしょうか。それともお客様ひとりひとりにインストールする必要があるのでしょうか。</a></h4>
 <p>
-    Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your
-users. The development of this feature was kindly sponsored by NetCologne
-GmbH.  This requires a properly setup MySQL user management and phpMyAdmin
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication. See the install section on &quot;Using <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> authentication&quot;.
+    バージョン 2.0.3 以降、phpMyAdmin
+はユーザ全員が使えるセントラルコピーをセットアップできるようになりました。この機能の開発にあたってはありがたいことに NetCologne GmbH
+社がスポンサーになってくださいました。この機能を使うには、MySQL ユーザ管理機構が適切にセットアップされていること、phpMyAdmin は
+<abbr title="HyperText Transfer Protocol">HTTP</abbr>
+ないしクッキー認証を使うことが必要です。インストールセクションの「<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 認証の使い方」をご覧ください。
 </p>
 
 <h4 id="faq4_2">
@@ -3475,9 +3432,8 @@ title="HyperText Transfer Protocol">HTTP</abbr> authentication&quot;.
     お使いのシステムによります。<br />
     外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です（たとえば、Apache
 なら <i>.htaccess</i> ファイルを利用できます）。<br />
-    If other people have telnet access to your server, you should use
-phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication features.
+    外部の人が telnet でサーバにアクセスできるのであれば、phpMyAdmin の <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> 認証ないしクッキー認証機能を使った方がよいでしょう。
     <br /><br />
     提案：
 </p>
@@ -3512,10 +3468,10 @@ authentication features.
 <p> いくつかの理由が考えられます：</p>
 
 <ul><li><a href="#cfg_Servers_controluser"
-class="configrule">$cfg['Servers'][$i]['controluser']</a> and/or <a
+class="configrule">$cfg['Servers'][$i]['controluser']</a> や <a
 href="#cfg_Servers_controlpass"
-class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
-    <li>The username/password you specify in the login dialog are invalid.</li>
+class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている。</li>
+    <li>ログインダイアログで指定したユーザ名／パスワードが無効なものだった。</li>
     <li>phpMyAdmin ディレクトリに別のセキュリティ機構がセットアップされている（たとえば .htaccess ファイル）。これは phpMyAdmin
 の認証機構の邪魔になりますので除去してください。</li>
 </ul>
@@ -3557,25 +3513,20 @@ $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
 <h4 id="faq4_7">
     <a href="#faq4_7">4.7 認証ウインドウが複数回表示されます。なぜでしょう。</a></h4>
 
-<p> This happens if you are using a <abbr title="Uniform Resource
-Locator">URL</abbr> to start phpMyAdmin which is different than the one set
-in your <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a>.  For example, a missing
-&quot;www&quot;, or entering with an <abbr title="Internet
-Protocol">IP</abbr> address while a domain name is defined in the config
-file.</p>
+<p> これは phpMyAdmin を起動するのに使っている <abbr title="Uniform Resource
+Locator">URL</abbr> が <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> に設定されている <abbr title="Uniform
+Resource Locator">URL</abbr>
+と異なるためです。たとえば、「www」が抜けているとか、設定ファイルではドメイン名で登録してあるのに <abbr title="Internet
+Protocol">IP</abbr> アドレスを入力した場合がそうです。</p>
 
 <h4 id="faq4_8">
-    <a href="#faq4_8">4.8 Which parameters can I use in the URL that starts
-phpMyAdmin?</a></h4>
+    <a href="#faq4_8">4.8 phpMyAdmin スタートページで使うことができるパラメータはどれですか？</a></h4>
 
-<p>When starting phpMyAdmin, you can use the <tt>db</tt>,
-<tt>pma_username</tt>, <tt>pma_password</tt> and <tt>server</tt>
-parameters. This last one can contain either the numeric host index (from
-<tt>$i</tt> of the configuration file) or one of the host names present in
-the configuration file. Using <tt>pma_username</tt> and
-<tt>pma_password</tt> has been tested along with the usage of 'cookie'
-<tt>auth_type</tt>.</p>
+<p>phpMyAdminの開始には、<tt>db</tt>、<tt>pma_username</tt>、<tt>pma_password</tt>、<tt>server</tt>のパラメータを使うことができます。<tt>server</tt>
+パラメータには、ホストインデックスの数値（設定ファイルの
+<tt>$i</tt>）か、設定ファイル内にあるホスト名のいずれかを、使用することができます。<tt>pma_username</tt> と
+<tt>pma_password</tt> は、「クッキー」認証方式として取り扱われ、常に組んで使われます。</p>
 
 <h3 id="faqbrowsers">ブラウザ、クライアント <abbr title="operating system">OS</abbr></h3>
 
@@ -3583,11 +3534,10 @@ the configuration file. Using <tt>pma_username</tt> and
     <a href="#faq5_1">5.1 カラムの数が 14
 を越えるテーブルを作ろうとするとメモリ不足のエラーが出てコントロールが動作しなくなります。</a></h4>
 <p>
-    We could reproduce this problem only under Win98/98SE. Testing under WinNT4
-or Win2K, we could easily create more than 60 columns.
+    この問題は Win98/98SE 環境下でしか再現できませんでした。WinNT4 や Win2K 環境下でテストすると 60
+以上のカラムでも簡単に作成できました。
     <br />
-    A workaround is to create a smaller number of columns, then come back to
-your table properties and add the other columns.
+    この問題を回避するには、作成するときはカラムの数を少なめにして、それからテーブルのプロパティページに戻って、別のカラムを追加してください。
 </p>
 
 <h4 id="faq5_2">
@@ -3615,8 +3565,7 @@ your table properties and add the other columns.
     <a href="#faq5_4">5.4 クッキー認証モードを使えません。Internet Explorer
 がクッキーを保管してくれないのです。</a></h4>
 <p>
-    MS Internet Explorer seems to be really buggy about cookies, at least till
-version 6.
+    マイクロソフトの Internet Explorer は、クッキーに関しては本当にバグが多いようです。少なくともバージョン 6 まではそうです。
 </p>
 
 <h4 id="faq5_5">
@@ -3630,12 +3579,10 @@ version 6.
 でカラム数の多いテーブルや、テキストカラムがあるテーブルの行を修正しようとすると（「Page not
 found（ページが見つかりません）」のような）エラーが出ます。</a></h4>
 <p>
-    Your table neither have a primary key nor an unique one, so we must use a
-long <abbr title="Uniform Resource Locator">URL</abbr> to identify this
-row. There is a limit on the length of the <abbr title="Uniform Resource
-Locator">URL</abbr> in those browsers, and this not happen in Netscape, for
-example. The workaround is to create a primary or unique key, or use another
-browser.
+    テーブルにプライマリキーやユニークキーがないと、行を識別するために長い <abbr title="Uniform Resource
+Locator">URL</abbr> を使うことになってしまうのですが、これらのブラウザには <abbr title="Uniform
+Resource Locator">URL</abbr> の長さに制限があるため、その問題が起こります。この問題は、たとえば Netscape
+では起こりません。回避するには、プライマリキーやユニークキーを作成するか、別のブラウザを使ってください。
     <br />
 </p>
 
@@ -3656,8 +3603,8 @@ browser.
 title="structured query language">SQL</abbr>
 クエリの編集領域で空白をタイプできません。ページがスクロールダウンしてしまいます。</a></h4>
 <p>
-    This is a Mozilla bug (see bug #26882 at <a
-href="http://bugzilla.mozilla.org/">BugZilla</a>).<br />
+    これは Mozilla のバグです（<a href="http://bugzilla.mozilla.org/">BugZilla</a> のバグ
+#26882 参照）<br />
 </p>
 
 <h4 id="faq5_10">
@@ -3679,8 +3626,8 @@ values">CSV</abbr> エクスポートファイルの各データ行の間に空�
     <a href="#faq5_12">5.12 <acronym title="Apple Macintosh">Mac</acronym> <abbr
 title="operating system">OS</abbr> X：Safari ブラウザでは特殊文字が「?」になってしまいます。</a></h4>
 
-<p> This issue has been reported by a <abbr title="operating system">OS</abbr> X
-user, who adds that Chimera, Netscape and Mozilla do not have this problem.</p>
+<p> この問題を報告してくれた <abbr title="operating system">OS</abbr> X
+ユーザによると、Chimera、Netscape、Mozilla ではこの問題は起こらないそうです。</p>
 
 <h4 id="faq5_13">
     <a href="#faq5_13">5.13 Internet Explorer 5.5 や 6 で <abbr title="HyperText
@@ -3693,7 +3640,7 @@ Transfer Protocol">HTTP</abbr> 認証タイプを利用すると、2
     <a href="#faq5_14">5.14 Opera6
 を使うと、認証までは行き着くのですが、その後は何も起こらず、まっさらな画面のみが表示されます。</a></h4>
 
-<p> Please upgrade to Opera7 at least.</p>
+<p> 最低でも Opera7 にアップグレードしてください。</p>
 
 <h4 id="faq5_15">
     <a href="#faq5_15">5.15 Safari で表示に問題があります。</a></h4>
@@ -3705,14 +3652,14 @@ Transfer Protocol">HTTP</abbr> 認証タイプを利用すると、2
 denied）」という Javascript のエラーが出ます。あるいは、Windows 環境で phpMyAdmin を実行できません。</a></h4>
 
 <p> 以下の点を確認してください。</p>
-    <ul><li>Maybe you have defined your <tt>PmaAbsoluteUri</tt> setting in
-<tt>config.inc.php</tt> to an <abbr title="Internet Protocol">IP</abbr>
-address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
-Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
+    <ul><li>たぶん <tt>config.inc.php</tt> の <tt>PmaAbsoluteUri</tt> の設定を <abbr
+title="Internet Protocol">IP</abbr>  アドレスに設定しているのに ドメイン名を含む <abbr
+title="Uniform Resource Locator">URL</abbr> で phpMyAdmin
+を起動しようとしている、あるいはその逆なのでは？</li>
         <li>IE や Microsoft Security Center のセキュリティ設定が高すぎるためにスクリプトが実行できなくなっているのでは？</li>
-        <li>The Windows Firewall is blocking Apache and MySQL. You must allow <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> ports (80 or 443) and MySQL
-port (usually 3306)  in the &quot;in&quot; and &quot;out&quot; directions.</li>
+        <li>Windows Firewall が Apache と MySQL をブロックしているのでは？　「in」「out」双方で <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> ポート（80ないし443）と MySQL ポート（通常は
+3306）が開いている必要があります。</li>
     </ul>
 
 <h4 id="faq5_17">
