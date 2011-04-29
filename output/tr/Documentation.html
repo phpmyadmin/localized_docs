@@ -20,7 +20,7 @@ düzenleyebilirisiniz.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.4.0-rc2-dev - Belgeler</title>
+    <title>phpMyAdmin 3.4.0-rc3-dev - Belgeler</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ düzenleyebilirisiniz.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.4.0-rc2-dev Belgesi
+class="myadmin">MyAdmin</span></a> 3.4.0-rc3-dev Belgesi
     </h1>
 </div>
 
@@ -1826,28 +1826,31 @@ sadece Tükçe ve İngilizce istiyorsanız, süzgeci <code>'^(tr|en)'</code>
 olarak ayarlamalısınız.</dd>
 
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] dizgi</dt>
-    <dd>You can select here which functions will be used for character set
-conversion. Possible values are:
-        <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
-            <li>iconv - use iconv or libiconv functions</li>
-            <li>recode - use recode_string function</li>
-            <li>none - disable encoding conversion</li>
+    <dd>Karakter grubu dönüşümü için hangi işlevin kullanılacağını burada
+seçebilirsiniz. Olası değerler:
+        <ul><li>auto - otomatik olarak mevcut olanı kullanır (önce sınanmış iconv, sonra
+recode)</li>
+            <li>iconv - iconv veya libiconv işlevlerini kullanır</li>
+            <li>recode - recode_string işlevini kullanır</li>
+            <li>none - kodlama dönüşümünü etkisizleştirir</li>
         </ul>
-        Default is auto.</dd>
+        Varsayılan auto'dur.</dd>
     <dd>
-        Enabled charset conversion activates a pull-down menu in the Export and
-Import pages, to choose the character set when exporting a file. The default
-value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
+        Etkinleştirilmiş karakter grubu dönüşümü, bir dosyayı dışa aktarırken
+karakter grubunu seçmek için Dışa Aktar ve İçe Aktar sayfalarında aşağı
+çekilir menüyü aktif eder. Bu menüdeki varsayılan değer
+<tt>$cfg['Export']['charset']</tt> ve <tt>$cfg['Import']['charset']</tt>'den
+gelir.
         </dd>
 
-    <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
-    <dd>Specify some parameters for iconv used in charset conversion. See <a
+    <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] dizgi</dt>
+    <dd>Karakter grubu dönüşümünde kullanılan iconv için bazı parametreleri
+belirler. Ayrıntılar için <a
 href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">iconv
-documentation</a> for details. By default <code>//TRANSLIT</code> is used,
-so that invalid characters will be transliterated.</dd>
+belgelerine</a> bakın. Varsayılan olarak <code>//TRANSLIT</code> kullanılır,
+onun için geçersiz karakterler dönüştürülecektir.</dd>
 
-    <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] array</dt>
+    <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] dizilim</dt>
     <dd>Available character sets for MySQL conversion. You can add your own (any of
 supported by recode/iconv) or remove these which you don't use.  Character
 sets will be shown in same order as here listed, so if you frequently use
@@ -1880,7 +1883,7 @@ possibilities</li>
             <li>yes - GD 2 functions can be used</li>
             <li>no - GD 2 function cannot be used</li>
         </ul>
-        Default is auto.
+        Varsayılan auto'dur.
     </dd>
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
