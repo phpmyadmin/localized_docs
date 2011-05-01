@@ -1826,17 +1826,17 @@ sadece Tükçe ve İngilizce istiyorsanız, süzgeci <code>'^(tr|en)'</code>
 olarak ayarlamalısınız.</dd>
 
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] dizgi</dt>
-    <dd>Karakter grubu dönüşümü için hangi işlevin kullanılacağını burada
+    <dd>Karakter grubu dönüştürmesi için hangi işlevin kullanılacağını burada
 seçebilirsiniz. Olası değerler:
         <ul><li>auto - otomatik olarak mevcut olanı kullanır (önce sınanmış iconv, sonra
 recode)</li>
             <li>iconv - iconv veya libiconv işlevlerini kullanır</li>
             <li>recode - recode_string işlevini kullanır</li>
-            <li>none - kodlama dönüşümünü etkisizleştirir</li>
+            <li>none - kodlama dönüştürmesini etkisizleştirir</li>
         </ul>
         Varsayılan auto'dur.</dd>
     <dd>
-        Etkinleştirilmiş karakter grubu dönüşümü, bir dosyayı dışa aktarırken
+        Etkinleştirilmiş karakter grubu dönüştürmesi, bir dosyayı dışa aktarırken
 karakter grubunu seçmek için Dışa Aktar ve İçe Aktar sayfalarında aşağı
 çekilir menüyü aktif eder. Bu menüdeki varsayılan değer
 <tt>$cfg['Export']['charset']</tt> ve <tt>$cfg['Import']['charset']</tt>'den
@@ -1844,44 +1844,44 @@ gelir.
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] dizgi</dt>
-    <dd>Karakter grubu dönüşümünde kullanılan iconv için bazı parametreleri
+    <dd>Karakter grubu dönüştürmesinde kullanılan iconv için bazı parametreleri
 belirler. Ayrıntılar için <a
 href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">iconv
 belgelerine</a> bakın. Varsayılan olarak <code>//TRANSLIT</code> kullanılır,
 onun için geçersiz karakterler dönüştürülecektir.</dd>
 
     <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] dizilim</dt>
-    <dd>Available character sets for MySQL conversion. You can add your own (any of
-supported by recode/iconv) or remove these which you don't use.  Character
-sets will be shown in same order as here listed, so if you frequently use
-some of these move them to the top.</dd>
+    <dd>MySQL dönüştürmesi için kullanılabilir karakter grupları. Kendinizinkini
+(recode/iconv tarafından desteklenen herhangi biri) ekleyebilir ya da
+kullanmadığınızı kaldırabilirsiniz. Karakter grupları burada listelenediği
+gibi aynı sırada gösterilecektir, bu yüzden eğer bunlardan birini sıkça
+kullanıyorsanız en üste taşıyın.</dd>
 
-    <dt id="cfg_TrustedProxies">$cfg['TrustedProxies'] array</dt>
-    <dd>Lists proxies and HTTP headers which are trusted for <a
-href="#servers_allowdeny_order">IP Allow/Deny</a>. This list is by default
-empty, you need to fill in some trusted proxy servers if you want to use
-rules for IP addresses behind proxy.<br /><br />
+    <dt id="cfg_TrustedProxies">$cfg['TrustedProxies'] dizilim</dt>
+    <dd><a href="#servers_allowdeny_order">IP Allow/Deny</a> için güvenilir olan
+proksileri ve HTTP başlıklarını listeler. Bu liste varsayılan olarak boştur,
+proksi arkasındaki IP adresleri için kuralları kullanmak isterseniz, bazı
+güvenilir proksi sunucularını doldurmanız gerekir.<br /><br />
 
-        The following example specifies that phpMyAdmin should trust a
-HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>) header coming from the proxy
-1.2.3.4:
+        Aşağıdaki örnek phpMyAdmin'in güveneceği proksi 1.2.3.4'ten gelen
+HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>) başlığını belirler:
 <pre>
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
 </pre>
-        The $cfg['Servers'][$i]['AllowDeny']['rules'] directive uses the client's IP
-address as usual.
+        $cfg['Servers'][$i]['AllowDeny']['kurallar'] yönergesi herzamanki gibi
+istemcinin IP adresini kullanır.
     </dd>
 
-    <dt id="cfg_GD2Available">$cfg['GD2Available'] string</dt>
-    <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
-transformations.<br />
-        Possible values are:
+    <dt id="cfg_GD2Available">$cfg['GD2Available'] dizgi</dt>
+    <dd>GD &gt;= 2 olup olmadığını belirler. Eğer evet ise MIME dönüşümleri için
+kullanılabilir.<br />
+        Olası değerler:
         <ul><li>auto - automatically detect, this is a bit expensive operation for php &lt;
 4.3.0 so it is preferred to change this according to your server real
 possibilities</li>
-            <li>yes - GD 2 functions can be used</li>
-            <li>no - GD 2 function cannot be used</li>
+            <li>yes - GD 2 işlevleri kullanılabilir</li>
+            <li>no - GD 2 işlevi kullanılamaz</li>
         </ul>
         Varsayılan auto'dur.
     </dd>
@@ -4941,7 +4941,7 @@ relations</li>
 
 <li>Yukihiro Kawada &lt;kawada_at_den.fujifilm.co.jp&gt;
 <ul>
-  <li>japonca çin harfi kodlama dönüşümü özelliği</li>
+  <li>japonca çin harfi kodlama dönüştürmesi özelliği</li>
 </ul></li>
 
 <li>Piotr Roszatycki &lt;d3xter_at_users.sourceforge.net&gt; ve Dan Wilson
