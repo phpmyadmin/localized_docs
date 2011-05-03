@@ -72,9 +72,9 @@ SourceForge.net 的项目页 (英语)</a></li>
 <h2 id="require">环境需求</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li>You need PHP 5.2.0 or newer, with <tt>session</tt> support (<a
-href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
-1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
+        <ul><li>开启 <tt>会话 (session)</tt> (<a href="#faq1_31">参见 <abbr title="常见问题
+(Frequently Asked Questions)">FAQ</abbr> 1.31</a>) 、标准 PHP 库 (SPL) 和 JSON
+扩展的 PHP 5.2.0 或更高版本。
                 </li>
 		<li>要支持上传 zip 文件，需要 <tt>zip</tt> 扩展。</li>
         <li>为了更好的支持多字节字符串 (如 UTF-8 编码的文字, 当前默认编码)，你应该安装 mbstring 和 ctype 扩展。
@@ -491,8 +491,8 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a>)。
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] 布尔</dt>
     <dd>设为 <tt>TRUE</tt> 可在使用 cookie 认证但没有 mcrypt 扩展时不显示警告。</dd>
 
-    <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] integer</dt>
-    <dd>Show warning about incomplete translations on certain threshold.</dd>
+    <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
+    <dd>对不到特定完成度的翻译显示警告。</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] 布尔</dt>
     <dd>设为 <tt>true</tt> 将允许 phpMyAdmin 被不同域名的框架所调用，这个潜在的安全漏洞可能导致跨框架脚本攻击。</dd>
@@ -585,15 +585,12 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt> 则可登录到任意�
 (旧版本中曾被称为 'advanced' 认证，也可写作 'http')  (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>'</tt>) 自 1.3.0
 起允许通过任意有效的 MySQL 用户登录。</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session
-data. This is useful for implementing single signon from another
-application. Sample way how to seed session is in signon example:
-<code>scripts/signon.php</code>. There is also alternative example using
-OpenID - <code>scripts/openid.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> and <a
-href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
-authentication method.</li>
+            <li>'signon' 认证 (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) 自 2.10.0 起允许通过预定义的
+PHP 会话数据登录。这在通过单点登录整合第三方应用程序时很有用。这个文件演示了如何记录 signon 的会话:
+<code>scripts/signon.php</code>。另外这个文件演示了通过 OpenID 登录 -
+<code>scripts/openid.php</code>。  你需要设置<a href="#cfg_Servers_SignonSession"
+class="configrule">会话名</a>和<a href="#cfg_Servers_SignonURL"
+class="configrule">登录 URL</a> 以使用该认证。</li>
         </ul>
 
         详细信息请参见<a href="#setup">安装</a>一节中的&quot;使用认证&quot;。
@@ -725,9 +722,7 @@ Questions)">FAQ</abbr> 6.6</a>)</li>
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
             <li>在 <tt>$cfg['Servers'][$i]['relation']</tt> 中设置要使用的数据表名</li>
-            <li>now as normal user open phpMyAdmin and for each one of your tables where you
-want to use this feature, click &quot;Structure/Relation view/&quot; and
-choose foreign columns.
+            <li>现在以普通用户登录到 phpMyAdmin 并打开每一张你想要使用这个功能的数据表，点击&quot;结构/关系查看/&quot;并设置外键字段。
                 </li>
         </ul>
 
@@ -740,9 +735,7 @@ choose foreign columns.
 字符串
     </dt>
     <dd>
-        Since release 2.3.0 you can describe, in a special 'table_info' table, which
-column is to be displayed as a tool-tip when moving the cursor over the
-corresponding key.<br />
+        自 2.3.0 起你可以在 'table_info' 表的支持下设置当鼠标移到对应字段时用气泡提示显示出来的相应内容。<br />
         这张表的名字将被保存在此变量中。要启用此功能:
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
             <li>在 <tt>$cfg['Servers'][$i]['table_info']</tt> 中设置要使用的数据表名
@@ -790,11 +783,9 @@ column name (properties page) or embedded within the header of table in
 browse view. They can also be shown in a table dump. Please see the relevant
 configuration directives later on.<br /><br />
 
-        Also new in release 2.5.0 is a MIME-transformation system which is also
-based on the following table structure. See <a href="#transformations">
-Transformations</a> for further information. To use the MIME-transformation
-system, your column_info table has to have the three new columns 'mimetype',
-'transformation', 'transformation_options'.
+        自 2.5.0 起 MIME 类型转换系统同样基于下列数据表结构。详情请参见<a href="#transformations">转换</a>。要想使用
+MIME 类型转换系统，column_info 表必须有这三个新字段 'mimetype'、'transformation' 和
+'transformation_options' 。
         <br /><br />
 
         要启用此功能:
@@ -933,8 +924,7 @@ id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_dr
 字符串
     </dt>
     <dd>
-        Since release 3.4.x phpMyAdmin allows users to set most preferences by
-themselves and store them in the database.
+        自 3.4.x 起 phpMyAdmin 允许用户自己设置大部分偏好并将设置保存在数据库中。
         <br /><br />
 
         If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
@@ -971,11 +961,8 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 布尔
     </dt>
-    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new columns. If the above variable
-is set to <tt>TRUE</tt> (default) phpMyAdmin will check if you have the
-latest table structure available. If not, it will emit a warning to the
-superuser.<br /><br />
+    <dd>因自 2.5.0 起采用了新的 MIME 类型转换功能，使 column_info 表增加了三个字段。若上述变量设为 <tt>TRUE</tt>
+(默认值)，phpMyAdmin 将会检查你的表结构是否已更新。若没有，则会给超级用户显示警告。<br /><br />
 
         你可以通过将其设为 false 来禁止此检查，从而得到性能的提升。<br /><br />
 
@@ -1002,12 +989,9 @@ id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span
         若将规则顺序设为 <tt>'allow,deny'</tt>，系统将首先应用所有的禁止 (deny) 规则，然后再应用允许 (allow)
 规则。默认禁止访问。任何没有被 Allow (允许) 命令匹配的客户端或者被 Deny (禁止) 命令匹配的客户端将被禁止访问服务器。<br /><br />
 
-        If your rule order is set to 'explicit', authorization is performed in a
-similar fashion to rule order 'deny,allow', with the added restriction that
-your host/username combination <b>must</b> be listed in the <i>allow</i>
-rules, and not listed in the <i>deny</i> rules. This is the <b>most</b>
-secure means of using Allow/Deny rules, and was available in Apache by
-specifying allow and deny rules without setting any order.<br /><br />
+        若将规则顺序设为 'explicit'，认证行为与设为 'deny,allow' 相似，但同时额外要求主机/用户名组合<b>必须</b>在<i>允许
+(allow)</i> 规则中列出且不能在<i>禁止 (deny)</i> 规则中出现。这是<b>最</b>安全的方式，并且相当于在 Apache
+中使用允许 (allow)、禁止 (deny) 规则但不指定顺序时的效果。<br /><br />
 
         同时请参见 <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> 探测使用代理的真实 IP
 。
@@ -1081,13 +1065,11 @@ id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 0 则将在登录页面显示服务器列表。<br />
         如果只有一个服务器设置，<tt>$cfg['ServerDefault']</tt> 必须设为那台服务器。</dd>
 
-    <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] boolean</dt>
-    <dd>Defines whether to refresh only parts of certain pages using Ajax
-techniques. Applies only where a non-Ajax behavior is possible; for example,
-the Designer feature is Ajax-only so this directive does not apply to it.</dd>
+    <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] 布尔</dt>
+    <dd>设置是否使用 Ajax 技术只刷新某些页面的部分内容。仅用于支持非 Ajax 的页面，例如，设计器功能必须使用 Ajax 所以该指令对其无效。</dd>
 
-    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] boolean</dt>
-    <dd>Enables check for latest versions using javascript on main phpMyAdmin page.</dd>
+    <dt id="cfg_VersionCheck">$cfg['VersionCheck'] 布尔</dt>
+    <dd>设置是否允许在 phpMyAdmin 主页面中使用 javascript 检查新版本。</dd>
 
     <dt id="cfg_MaxDbList">$cfg['MaxDbList'] 整数</dt>
     <dd>导航框架和数据库列表中所显示数据库的最大数量。</dd>
@@ -1125,10 +1107,9 @@ session_save_path (外链，英语)</a>)。</dd>
         同样可以设置为 php.ini 中可以识别的字符串，如 '16M' 。请确保没有丢掉后缀 (16 表示 16 字节！)</dd>
 
     <dt id="cfg_SkipLockedTables">$cfg['SkipLockedTables'] 布尔</dt>
-    <dd>Mark used tables and make it possible to show databases with locked tables
-(since MySQL 3.23.30).</dd>
+    <dd>标记正在使用的表以使得可以显示含有已锁定表的数据库 (自 MySQL 3.23.30 起) 。</dd>
 
-    <dt id="cfg_ShowSQL">$cfg['ShowSQL'] boolean</dt>
+    <dt id="cfg_ShowSQL">$cfg['ShowSQL'] 布尔</dt>
     <dd>Defines whether <abbr title="structured query language">SQL</abbr> queries
 generated by phpMyAdmin should be displayed or not.</dd>
 
@@ -1164,9 +1145,7 @@ invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
 not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
     <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [number of seconds]</dt>
-    <dd>Define how long login cookie should be stored in browser. Default 0 means
-that it will be kept for existing session. This is recommended for not
-trusted environments.</dd>
+    <dd>设置登录 cookie 应在浏览器中保存多长时间。默认值 0 表示当前会话。建议在公共环境下使用。</dd>
 
     <dt id="cfg_LoginCookieDeleteAll">$cfg['LoginCookieDeleteAll'] boolean</dt>
     <dd>If enabled (default), logout deletes cookies for all servers, otherwise only
@@ -1196,10 +1175,10 @@ MySQL servers behind the firewall where your <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> server is placed.
     </dd>
 
-    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
+    <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] 布尔</dt>
     <dd>Whether to display errors from PHP or not.</dd>
 
-    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
+    <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] 布尔</dt>
     <dd>Whether to gather errors from PHP or not.</dd>
 
     <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
@@ -1266,7 +1245,7 @@ this is <tt>main.php</tt>.</dd>
 new one (<tt>new</tt>). Note: use <tt>new</tt> if you are linking to
 <tt>phpmyadmin.net</tt>.</dd>
 
-    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] integer</dt>
+    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
     <dd>Defines the minimum number of tables to display a JavaScript filter box
 above the list of tables in the left frame.  Defaults to <tt>30</tt>. To
 disable the filter completely some high number can he used (e.g. 9999)</dd>
