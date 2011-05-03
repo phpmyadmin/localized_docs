@@ -85,12 +85,11 @@ mbstring y ctype.
         </li>
             <li>Necesita el módulo GD2 de PHP para mostrar las miniaturas de JPEGs
 (&quot;image/jpeg: inline&quot;) conservando su relación de aspecto.</li>
-            <li>Cuando se use el <a href="#authentication_modes">método de
-autentificación</a> por &quot;cookies&quot;, se sugiere encarecidamente la
-extensión<a href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a> para la
-mayoría de los usuarios; es <b>obligatoria</b> para máquinas de
-64&#8211;bit. No usar mcrypt hará que phpMyAdmin cargue las páginas
-sensiblemente más lento.
+            <li>Cuando se use el <a href="#authentication_modes">método de autenticación</a>
+por &quot;cookies&quot;, se sugiere encarecidamente la extensión<a
+href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a> para la mayoría de los
+usuarios; es <b>obligatoria</b> para máquinas de 64&#8211;bit. No usar
+mcrypt hará que phpMyAdmin cargue las páginas sensiblemente más lento.
                 </li>
                 <li>Para obtener barras de progreso en las subidas, vea <a href="#faq2_9"> <abbr
 title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
@@ -316,15 +315,15 @@ configuración no provee.</li></ul></li>
 preferible que proteja el directorio de instalación de phpMyAdmin porque el
 uso de config no requiere que el usuario escriba su contraseña para acceder
 a la instalación de phpMyAdmin. Se recomienda el uso de métodos de
-autentificación alternativos, como por ejemplo un HTTP&#8211;AUTH en un
+autenticación alternativos, como por ejemplo un HTTP&#8211;AUTH en un
 fichero <a href="#glossary"><i>.htaccess</i></a> o bien usar una cookie
-<tt>auth_type</tt> o http. Vea la <a href="#faqmultiuser"> subsección
+<tt>auth_type</tt> o http. Vea la <a href="#faqmultiuser">subsección
 multiusuario</a> de este <abbr title="Frequently Asked Questions">FAQ</abbr>
-para obtener información adicional, especialmente <a href="#faq4_4"> <abbr
+para obtener información adicional, especialmente <a href="#faq4_4"><abbr
 title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
     <li>Abra el <a href="index.php">directorio principal de phpMyAdmin</a> em su
 navegador. phpMyAdmin debería mostrar una pantall de bienvenida y sus bases
-de datos o, si está usando un método de autentificación por <abbr
+de datos o, si está usando un método de autenticación por <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> o por cookies, un diálogo de
 registro de usuario.</li>
     <li>Debería rechazar el acceso a los subdirectorios <tt>./libraries</tt> y
@@ -374,7 +373,7 @@ especificar los nombres de las tablas en su fichero
 <a href="#config">Sección de configuración</a>. También necesitará tener un
 usuario controlador con los permisos necesarios para acceder a dichas tablas
 (vea la sección <a href="#authentication_modes">Uso de los modos de
-autentificación</a> más abajo).</p>
+autenticación</a> más abajo).</p>
 
 <h3 id="upgrading">Actualizando desde una versión más antigua</h3>
 
@@ -397,10 +396,10 @@ una versión anterior a la 4.1.2 y está utilizando almacenamiento de
 configuración phpMyAdmin, debería ejecutar el script SQL en
 <tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
-<h3 id="authentication_modes">Uso de los métodos de autentificación</h3>
+<h3 id="authentication_modes">Uso de los métodos de autenticación</h3>
 
 <ul><li>Se recomiendan los métodos <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> y autentificación por cookies en <b>entornos
+Protocol">HTTP</abbr> y autenticación por cookies en <b>entornos
 multiusuario</b>, donde se desea dar a cada usuario acceso a su propia base
 de datos pero no a las de los demás.<br />
         De todas maneras, tenga en cuenta que MS Internet Explorer tiene muchos
@@ -410,7 +409,7 @@ title="HyperText Transfer Protocol">HTTP</abbr> o por cookies, para que su
 usuario y contraseña no estén expuestos en el fichero de configuración.
         </li>
 
-    <li>Los métodos de autentificación <abbr title="HyperText Transfer
+    <li>Los métodos de autenticación <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> y por cookies so n más seguros, dado que la
 información de registro de MySQL no está expuesta en el fichero de
 configuración de phpMyAdmin (a excepción del <a href="#controluser">usuario
@@ -423,7 +422,7 @@ cifrada con el algoritmo blowfish.</li>
     <li id="pmausr">Nota: esta sección sólo aplica si el servidor MySQL está ejecutando con la
 opción <tt>--skip-show-database</tt>.<br /><br />
 
-        Para los modos de autentificación '<abbr title="HyperText Transfer
+        Para los modos de autenticación '<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>' y 'cookie', phpMyAdmin necesita un usuario
 controlador que tenga <b>únicamente</b> el privilegio <tt>SELECT</tt> en las
 tablas <i>`mysql`.`user` (todas las columnas salvo `Password`)</i>,
@@ -481,16 +480,16 @@ GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real
 
         Las acciones permitidas en este momento para el usuario están completamente
 bajo el control del sistema de administración de MySQL.<br />
-        Con los métodos de autentificación <abbr title="HyperText Transfer
+        Con los métodos de autenticación <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> o por cookies, no es necesario rellenar los campos
 usuario/contraseña en el array <a href="#cfg_Servers"
 class="configrule">$cfg['Servers']</a>.</li>
 </ul>
 
-<h4>Método de autentificación '<abbr title="HyperText Transfer
+<h4>Método de autenticación '<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>'</h4>
 
-<ul><li>Emplea el método básico de autentificación <abbr title="HyperText Transfer
+<ul><li>Emplea el método básico de autenticación <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> y le permite ingresar como cualquier usuario válido de
 MySQL.</li>
     <li>Admite la mayoría de las configuraciones PHP. Para el soporte de <abbr
@@ -503,17 +502,17 @@ de Apache, vea <a href="#faq1_35"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.35</a>.</li>
     <li>Vea también <a href="#faq4_4"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.4</a> acerca de cómo no usar el mecanismo
-<i>.htaccess</i> conjuntamente con el modo de autentificación '<abbr
+<i>.htaccess</i> conjuntamente con el modo de autenticación '<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>'.</li>
 </ul>
 
-<h4>método de autentificación por 'cookie'</h4>
+<h4>Método de autenticación por 'cookie'</h4>
 
-<ul><li>Se puede usar este método como reemplazo de la autentificación <abbr
+<ul><li>Se puede usar este método como reemplazo de la autenticación <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> (si por ejemplo, está
 ejecutando <abbr title="Internet Information Services">IIS</abbr>).</li>
     <li>Obviamente, el usuario debe de activar las cookies, aunque ya es un
-requisito para todos los métodos de autentificación.</li>
+requisito para todos los métodos de autenticación.</li>
     <li>Mediante este modo, el usuario puede salir completamente de phpMyAdmin y
 después volver a entrar con el mismo nombre de usuario.</li>
     <li>Si quiere entrar en cualquier servidor, vea la directiva <a
@@ -524,7 +523,7 @@ emplear la extensión <tt>mcrypt</tt> acelerará el acceso considerablemente,
 aunque no es obligatoria.</li>
 </ul>
 
-<h4>método de autentificación 'signon'</h4>
+<h4>Método de autenticación 'signon'</h4>
 
 <ul><li>Este modo es una manera útil de usar las credenciales de otra aplicación
 para entrar en phpMyAdmin.</li>
@@ -532,7 +531,7 @@ para entrar en phpMyAdmin.</li>
 datos de la sesión.</li>
     <li>Más detalles en la sección <a href="#cfg_Servers_auth_type">auth_type</a>.</li>
 </ul>
-<h4>modo de autentificación 'config'</h4>
+<h4>Modo de autenticación 'config'</h4>
 
 <ul><li>Este modo es el más inseguro dado que necesita que se rellenen los campos <a
 href="#servers_user" class="configrule"> $cfg['Servers'][$i]['user']</a> y
@@ -548,13 +547,12 @@ provider">ISP</abbr> <abbr title="Frequently Asked
 Questions">FAQ</abbr></a>, hay una reseña que explica cómo proteger su
 fichero de configuración.</li>
     <li>Para incrementar la seguridad en este modo, debería considerar el uso de las
-directivas de autentificación del servidor <a
-href="#servers_allowdeny_order" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['order']</a> y <a
+directivas de autenticación del servidor <a href="#servers_allowdeny_order"
+class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> y <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a>.</li>
     <li>Al contrario que los modos de cookie o http, no pide al usuario que se
-autentifique al cargar la página phpMyAdmin por primera vez. Es así por
+autentique al cargar la página phpMyAdmin por primera vez. Es así por
 diseño, pero podría permitir a cualquiera entrar en su instalación. Debería
 emplear un método de restricción, como un fichero <a
 href="#glossary">.htaccess</a> con la directiva HTTP-AUTH, o impedir las
@@ -562,14 +560,14 @@ consultas HTTP entrantes a su router o firewall (ambos métodos están más
 allá de la temática de este manual, pero son fácilmente localizables con
 Google).</li>
 </ul>
-<h4 id="swekey">autentificación Swekey</h4>
+<h4 id="swekey">Autenticación Swekey</h4>
 <p>
-Swekey es un sistema de autentificación barato mediante una llave USB que se
+Swekey es un sistema de autenticación barato mediante una llave USB que se
 puede emplear en aplicaciones web.<br /><br />
-Cuando se activa la autentificación Swekey, phpMyAdmin pide insertar la
-Swekey del usuario antes de entrar a la página de registro (actualmente sólo
-habilitada para el modo de autentificación po cookies). La autentificación
-Swekey está desactivada por defecto.<br /><br />
+Cuando se activa la autenticación Swekey, phpMyAdmin pide insertar la Swekey
+del usuario antes de entrar a la página de registro (actualmente sólo
+habilitada para el modo de autenticación por cookies). La autenticación
+Swekey está desactivada de forma predeterminada.<br /><br />
 Para habilitarla, añada la línea siguiente a <i>config.inc.php</i>:
 </p>
 <pre>
@@ -647,7 +645,7 @@ este parámetro a <tt>TRUE</tt> para eliminar este mensaje.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] boolean</dt>
     <dd>Desactica el aviso por defecto que se muestra si no se encuentra mcrypt para
-la autentificación por cookies. Se puede poner este parámetro como
+la autenticación por cookies. Se puede poner este parámetro como
 <tt>TRUE</tt> para desactivar el mensaje.</dd>
 
     <dt id="cfg_TranslationWarningThreshold">entero $cfg['TranslationWarningThreshold']</dt>
@@ -3399,7 +3397,7 @@ una línea</p>
 
 <p> Reinicia Apache y funcionará.</p>
 
-<p> Este es una corrección sugerida por Brad Ummer:</p>
+<p> Esta es una corrección sugerida por Brad Ummer:</p>
 
 <ul><li>Primero necesitas determinar qué zócalo está siendo utilizado por MySQL.<br />
         Para hacer esto, conéctate a tu servidor y ubícate en el directorio bin de
