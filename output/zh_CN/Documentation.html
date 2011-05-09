@@ -1075,7 +1075,7 @@ id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
     <dd>导航框架和数据库列表中所显示数据库的最大数量。</dd>
 
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] 整数</dt>
-    <dd>轻量级模式导航框架和主框架列表 (除导出页) 中所显示数据表的最大数量。</dd>
+    <dd>简洁模式下导航框架和主框架列表 (除导出页) 中所显示数据表的最大数量。</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
     <dd>显示 SQL 查询的最大字数。默认值 1000 通常可以避免 BLOB 字段中十六进制内容的显示，但有些用户确实有超过 1000 字的 SQL
@@ -1150,9 +1150,8 @@ false，当你访问多台服务器时可能会容易忘记退出其它服务器
     <dd>设置 phpMyAdmin 是否在执行多语句查询出错的时候继续执行。默认为中断执行。</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] 布尔</dt>
-    <dd>Define whether phpMyAdmin will output the results of each query of a
-multi-query statement embedded into the <abbr title="structured query
-language">SQL</abbr> output as inline comments. Defaults to <tt>TRUE</tt>.</dd>
+    <dd>设置 phpMyAdmin 是否以注释形式输出多语句查询中每一个查询的结果到 <abbr title="结构化查询语言 (structured
+query language)">SQL</abbr> 输出中。默认值为 <tt>TRUE</tt> 。</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span> 布尔</dt>
     <dd>若启用，将允许通过 cookie 认证登录到任意服务器并允许在同步对话框中指定服务器。
@@ -1249,13 +1248,11 @@ links instead of in a drop-down. Defaults to 'auto' - on main page list is
 shown, when database is selected, only drop down is displayed.</dd>
 
     <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] string</dt>
-    <dd>Defines the tab displayed by default when clicking the small icon next to
-each table name in the navigation panel. Possible values:
-&quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
-&quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
-&quot;sql.php&quot;.</dd>
+    <dd>设置点击导航框架中每个数据表名字旁边的小图标时所显示的页面。可选值有:
+&quot;tbl_structure.php&quot;、&quot;tbl_sql.php&quot;、&quot;tbl_select.php&quot;、&quot;tbl_change.php&quot;
+或 &quot;sql.php&quot; 。</dd>
 
-    <dt id="cfg_ShowStats">$cfg['ShowStats'] boolean</dt>
+    <dt id="cfg_ShowStats">$cfg['ShowStats'] 布尔</dt>
     <dd>Defines whether or not to display space usage and statistics about databases
 and tables.<br />
         Note that statistics requires at least MySQL 3.23.3 and that, at this date,
@@ -1267,17 +1264,14 @@ can additionally hide more information by using <tt><a
 href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
         </dd>
 
-    <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span>boolean<br />
-        <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword'] </span>boolean<br />
-        <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb'] </span>boolean
+    <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span>布尔<br />
+        <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword'] </span>布尔<br />
+        <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb'] </span>布尔
     </dt>
-    <dd>Defines whether to display the &quot;PHP information&quot; and &quot;Change
-password &quot; links and form for creating database or not at the starting
-main (right) frame. This setting does not check MySQL commands entered
-directly.<br /><br />
+    <dd>设置是否在主 (右侧) 框架中显示 &quot;PHP 信息&quot; 、 &quot;修改密码&quot;
+链接和创建数据库表单。此设置不检查直接输入的 MySQL 命令。<br /><br />
 
-        Please note that to block the usage of phpinfo() in scripts, you have to put
-this in your <i>php.ini</i>:
+        请注意若要限制脚本使用 phpinfo() 函数，你必须在 <i>php.ini</i> 中设置:
 
         <pre>disable_functions = phpinfo()</pre>
 
@@ -1334,7 +1328,7 @@ edit/insert mode. The user can toggle this setting from the interface.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] string</dt>
-    <dd>设置编辑 CHAR 和 VARCHAR 类型字段时应使用何种控件。可选值为:
+    <dd>设置编辑 CHAR 和 VARCHAR 类型字段时应使用何种控件。可选值有:
         <ul><li>输入框 (input) - 允许限制输入字数使其不超过 MySQL 字段限制，但无法换行</li>
             <li>文本框 (textarea) - 可以换行，但没有字数限制</li>
         </ul>
@@ -1420,13 +1414,12 @@ more information about MySQL manuals and their types.</dd>
         </ul>
     </dd>
 
-    <dt id="cfg_DefaultLang">$cfg['DefaultLang'] string</dt>
-    <dd>Defines the default language to use, if not browser-defined or user-defined.<br />
-        The corresponding language file needs to be in
-locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
+    <dt id="cfg_DefaultLang">$cfg['DefaultLang'] 字符串</dt>
+    <dd>设置在没有浏览器定义或用户定义的情况下所要使用的默认语言。<br />
+        locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo 中应有相应的语言文件。
         </dd>
 
-    <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] string</dt>
+    <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] 字符串</dt>
     <dd>Defines the default connection collation to use, if not user-defined.<br />
         See the <a
 href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">MySQL
@@ -1434,29 +1427,26 @@ documentation</a> for list of possible values.</dd>
 
     <dt id="cfg_Lang">$cfg['Lang'] 字符串</dt>
     <dd>强制使用的语言。<br />
-        The corresponding language file needs to be in
-locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
+        locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo 中应有相应的语言文件。
         </dd>
 
     <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] 字符串</dt>
     <dd>通过正则表达式限制可用语言列表。例如只允许使用简体中文和英语，可以设置为 <code>'^(zh_CN|en)'</code>。</dd>
 
     <dt id="cfg_RecodingEngine">$cfg['RecodingEngine'] 字符串</dt>
-    <dd>你可以在这里选择使用哪个函数来转换字符集。可选值为:
+    <dd>你可以在这里选择使用哪个函数来转换字符集。可选值有:
         <ul><li>自动 (auto) - 自动选择可用的函数 (首先尝试 iconv，然后 recode)</li>
             <li>iconv - 使用 iconv 或 libiconv 函数</li>
             <li>recode - 使用 recode_string 函数</li>
             <li>无 (none) - 禁止编码转换</li>
         </ul>
-        Default is auto.</dd>
+        默认为自动。</dd>
     <dd>
-        Enabled charset conversion activates a pull-down menu in the Export and
-Import pages, to choose the character set when exporting a file. The default
-value in this menu comes from <tt>$cfg['Export']['charset']</tt> and
-<tt>$cfg['Import']['charset']</tt>.
+        启用编码转换后将会在导出和导入页面显示一个用于选择导出文件字符集的下拉菜单。其默认值来自
+<tt>$cfg['Export']['charset']</tt> 和 <tt>$cfg['Import']['charset']</tt> 。
         </dd>
 
-    <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] string</dt>
+    <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] 字符串</dt>
     <dd>Specify some parameters for iconv used in charset conversion. See <a
 href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">iconv
 documentation</a> for details. By default <code>//TRANSLIT</code> is used,
@@ -1485,37 +1475,32 @@ $cfg['TrustedProxies'] =
 address as usual.
     </dd>
 
-    <dt id="cfg_GD2Available">$cfg['GD2Available'] string</dt>
-    <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
-transformations.<br />
-        Possible values are:
-        <ul><li>auto - automatically detect, this is a bit expensive operation for php &lt;
-4.3.0 so it is preferred to change this according to your server real
-possibilities</li>
-            <li>yes - GD 2 functions can be used</li>
-            <li>no - GD 2 function cannot be used</li>
+    <dt id="cfg_GD2Available">$cfg['GD2Available'] 字符串</dt>
+    <dd>指定 GD &gt;= 2 版本是否可用。它将被用于 MIME 类型转换。<br />
+        可选值有:
+        <ul><li>自动 (auto) - 自动检测，在 PHP &lt; 4.3.0 版本下性能较差，所以我们推荐根据您服务器的实际情况来设置</li>
+            <li>是 (yes) - GD 2 函数库可以使用</li>
+            <li>否 (no) - GD 2 函数库不可用</li>
         </ul>
-        Default is auto.
+        默认为自动。
     </dd>
 
-    <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
+    <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] 布尔</dt>
     <dd>
-    We normally check the permissions on the configuration file to ensure it's
-not world writable. However, phpMyAdmin could be installed on a NTFS
-filesystem mounted on a non-Windows server, in which case the permissions
-seems wrong but in fact cannot be detected. In this case a sysadmin would
-set this parameter to <tt>FALSE</tt>. Default is <tt>TRUE</tt>.
+    通常情况下我们会检查配置文件确保不是所有人都能修改它。然而 phpMyAdmin 可能被安装在非 Windows 服务器的 NTFS
+文件系统中，在这种情况下看起来权限是错误的但实际上我们无法检测。此时系统管理员应将该指令设为 <tt>FALSE</tt> 。默认为
+<tt>TRUE</tt> 。
     </dd>
 
-    <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] integer</dt>
+    <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] 整数</dt>
     <dd>
     Limit for length of URL in links. When length would be above this limit, it
 is replaced by form with button.  This is required as some web servers (IIS)
 have problems with long URLs.  Default is <code>1000</code>.
     </dd>
 
-    <dt id="cfg_NaviWidth">$cfg['NaviWidth'] integer</dt>
-    <dd>Navi frame width in pixels. See <tt>themes/themename/layout.inc.php</tt>.
+    <dt id="cfg_NaviWidth">$cfg['NaviWidth'] 整数</dt>
+    <dd>以像素为单位的导航框架宽度。参见 <tt>themes/themename/layout.inc.php</tt> 。
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> 字符串 [格式: CSS
@@ -1523,8 +1508,7 @@ have problems with long URLs.  Default is <code>1000</code>.
         <span id="cfg_MainBackground">$cfg['MainBackground']</span> 字符串 [格式: CSS
 背景色]
     </dt>
-    <dd>The background styles used for both the frames.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>所有框架的背景样式。  参见 <tt>themes/themename/layout.inc.php</tt> 。</dd>
 
     <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] 字符串 [格式: CSS 背景色]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> 字符串 [格式: CSS
@@ -1532,18 +1516,17 @@ have problems with long URLs.  Default is <code>1000</code>.
     <dd>The style used for the pointer in the navi frame.  See
 <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
+    <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] 布尔</dt>
     <dd>A value of <tt>TRUE</tt> activates the navi pointer (when LeftFrameLight is
 <tt>FALSE</tt>).</dd>
 
-    <dt id="cfg_Border">$cfg['Border'] integer</dt>
-    <dd>The size of a table's border. See <tt>themes/themename/layout.inc.php</tt>.
+    <dt id="cfg_Border">$cfg['Border'] 整数</dt>
+    <dd>表格边框大小。参见 <tt>themes/themename/layout.inc.php</tt> 。
     </dd>
 
     <dt id="cfg_ThBackground">$cfg['ThBackground'] 字符串 [格式: CSS 背景色]<br />
         <span id="cfg_ThColor">$cfg['ThColor']</span> 字符串 [格式: CSS 颜色]</dt>
-    <dd>The style used for table headers. See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>表头样式。参见 <tt>themes/themename/layout.inc.php</tt> 。</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] 字符串 [格式: CSS 颜色]</dt>
     <dd>The color (HTML) #1 for table rows. See
@@ -1572,26 +1555,24 @@ the column's header (outside of the text).<br />
         See <tt>themes/themename/layout.inc.php</tt>.</dd>
 
 
-    <dt id="cfg_FontFamily">$cfg['FontFamily'] string</dt>
-    <dd>You put here a valid CSS font family value, for example <tt>arial,
-sans-serif</tt>.<br />
+    <dt id="cfg_FontFamily">$cfg['FontFamily'] 字符串</dt>
+    <dd>请设置一个有效的 CSS 字体，例如 <tt>宋体, sans-serif</tt> 。<br />
         See <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] string</dt>
-    <dd>You put here a valid CSS font family value, for example
-<tt>monospace</tt>. This one is used in textarea.<br />
+    <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] 字符串</dt>
+    <dd>请设置一个有效的 CSS 字体，例如 <tt>monospace</tt> 。该字体用于文本框 (textarea) 。<br />
         See <tt>themes/themename/layout.inc.php</tt>.</dd>
 
-    <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] boolean</dt>
+    <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] 布尔</dt>
     <dd>Whether to activate the browse pointer or not.</dd>
 
-    <dt id="cfg_BrowseMarkerEnable">$cfg['BrowseMarkerEnable'] boolean</dt>
+    <dt id="cfg_BrowseMarkerEnable">$cfg['BrowseMarkerEnable'] 布尔</dt>
     <dd>Whether to activate the browse marker or not.</dd>
 
-    <dt><span id="cfg_TextareaCols">$cfg['TextareaCols'] </span>integer<br />
-        <span id="cfg_TextareaRows">$cfg['TextareaRows'] </span>integer<br />
-        <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols'] </span>integer<br />
-        <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>integer
+    <dt><span id="cfg_TextareaCols">$cfg['TextareaCols'] </span>整数<br />
+        <span id="cfg_TextareaRows">$cfg['TextareaRows'] </span>整数<br />
+        <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols'] </span>整数<br />
+        <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>整数
     </dt>
     <dd>Number of columns and rows for the textareas.<br />
         This value will be emphasized (*2) for <abbr title="structured query
