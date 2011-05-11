@@ -19,7 +19,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.4.0-rc3-dev - 文档</title>
+    <title>phpMyAdmin 3.5.0-dev - 文档</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.4.0-rc3-dev 文档
+class="myadmin">MyAdmin</span></a> 3.5.0-dev 文档
     </h1>
 </div>
 
@@ -3603,34 +3603,30 @@ rather than causing the entire statement to fail.</li>
 通常会允许你创建这样一个数据库，但是你无法使用它，甚至无法删除它。</p>
 
 <h4 id="faqsqlvalidator">
-    <a href="#faqsqlvalidator">6.14 How do I set up the <abbr title="structured
-query language">SQL</abbr> Validator?</a></h4>
+    <a href="#faqsqlvalidator">6.14 怎样设置 <abbr title="结构化查询语言 (structured query
+language)">SQL</abbr> 校验器？</a></h4>
 
 <p> 
-    To use SQL Validator, you need PHP with <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Perl Compatible Regular
-Expressions">PCRE</abbr> and <abbr title="PHP Extension and Application
-Repository">PEAR</abbr> support.  In addition you need a <abbr title="Simple
-Object Access Protocol">SOAP</abbr> support, either as a PHP extension or as
-a PEAR SOAP module.
+    要想使用 SQL 校验器，你需要 PHP 的 <abbr title="可扩展标记语言 (Extensible Markup
+Language)">XML</abbr>、<abbr title="Perl 兼容的正则表达式 (Perl Compatible Regular
+Expressions)">PCRE</abbr> 和 <abbr title="PHP 扩展和应用程序库 (PHP Extension and
+Application Repository)">PEAR</abbr> 扩展支持。  此外还需要 <abbr title="简单对象访问协议
+(Simple Object Access Protocol)">SOAP</abbr> 支持，PHP 扩展或 PEAR SOAP 模块均可。
 </p>
 
 <p>
-    To install <abbr title="PHP Extension and Application
-Repository">PEAR</abbr> <abbr title="Simple Object Access
-Protocol">SOAP</abbr> module, run <tt>"pear install Net_Socket Net_URL
-HTTP_Request Mail_Mime Net_DIME SOAP"</tt> to get the necessary <abbr
-title="PHP Extension and Application Repository">PEAR</abbr> modules for
-usage.
+    要安装 <abbr title="PHP 扩展和应用程序库 (PHP Extension and Application
+Repository)">PEAR</abbr> <abbr title="简单对象访问协议 (Simple Object Access
+Protocol)">SOAP</abbr> 模块，请运行 <tt>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</tt> 以获取依赖的 <abbr title="PHP 扩展和应用程序库
+(PHP Extension and Application Repository)">PEAR</abbr> 模块。
 </p>
 
 <p>
-    If you use the Validator, you should be aware that any <abbr
-title="structured query language">SQL</abbr> statement you submit will be
-stored anonymously (database/table/column names, strings, numbers replaced
-with generic values). The Mimer <abbr title="structured query
-language">SQL</abbr> Validator itself, is &copy; 2001 Upright Database
-Technology.  We utilize it as free SOAP service.
+    请注意，校验器会匿名记录你所有的 <abbr title="结构化查询语言 (structured query
+language)">SQL</abbr> 查询语句 (数据库/表/字段名、字符串、数字将被替换为通用值) 。Mimer <abbr
+title="结构化查询语言 (structured query language)">SQL</abbr> 校验器，版权所有 &copy; 2001
+Upright Database Technology.  我们使用它的免费 SOAP 服务。
 </p>
 
 <h4 id="faq6_15">
@@ -3709,13 +3705,11 @@ least one result row so you can store the bookmark. You may have that to
 work around using well positioned &quot;/**/&quot; comments.</p>
 
 <h4 id="faq6_19">
-    <a href="#faq6_19">6.19 How can I create simple
-L<sup>A</sup>T<sub><big>E</big></sub>X document to include exported
-table?</a></h4>
+    <a href="#faq6_19">6.19 怎样创建一份包含导出表的简单的
+L<sup>A</sup>T<sub><big>E</big></sub>X 文档？</a></h4>
 
-<p> You can simply include table in your L<sup>A</sup>T<sub><big>E</big></sub>X
-documents, minimal sample document should look like following one (assuming
-you have table exported in file <code>table.tex</code>):</p>
+<p> 建立包含表的 L<sup>A</sup>T<sub><big>E</big></sub>X 文档很简单，最简单的例子如下所示 (假设你已将表导出到文件
+<code>table.tex</code> 中):</p>
 
 <pre>
 \documentclass{article} % or any class you want
@@ -3791,13 +3785,10 @@ href="http://blobstreaming.org">blobstreaming.org</a> 。你需要下列组件:<
 	<li><tt>config.inc.php</tt> 中的主机必须是一个 FQDN (完全合格域名) 而不是 &quot;localhost&quot; 。</li>
     <li>确保你的目标表正在使用 <tt>PBXT</tt> 存储引擎并且有一个 <tt>LONGBLOB</tt> 类型的字段 (如果你想去除 BLOB
 关系则必须可为空) 。</li>
-	<li>When you insert or update a row in this table, put a checkmark on the
-&quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
-will be done directly in your LONGBLOB column instead of the repository.</li>
-	<li>Finally when you browse your table, you'll see in your column a link to
-stream your data, for example &quot;View image&quot;. A header containing
-the correct MIME-type will be sent to your browser; this MIME-type was
-stored at upload time.</li> 
+	<li>当上传或更新一条记录时，勾选 &quot;上传到 BLOB 库&quot; 复选框即可；否则，文件数据将被直接保存在你的 LONGBLOB 字段而不是
+BLOB 库中。</li>
+	<li>最后在浏览数据表时，你会看到一个指向数据的链接，例如 &quot;查看图像&quot; 。若在上传时保存了正确的 MIME
+类型，它将会被发送到你的浏览器。</li> 
 </ol>	
 
 <h4 id="faq6_26">

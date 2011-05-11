@@ -19,7 +19,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.4.0-rc3-dev ドキュメント</title>
+    <title>phpMyAdmin 3.5.0-dev ドキュメント</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.4.0-rc3-dev ドキュメント
+class="myadmin">MyAdmin</span></a> 3.5.0-dev ドキュメント
     </h1>
 </div>
 
@@ -72,24 +72,23 @@ phpMyAdmin プロジェクトページ</a></li>
 
 <ul><li><b>PHP</b>
         <ul><li><tt>セッション</tt>(<a href="#faq1_31"><abbr title="よくある質問">FAQ</abbr> 1.31
-参照</a>)、Standard PHP Library (SPL)、JSONをサポートしているPHP 5.2.0 以降が必要です。
+参照</a>)、Standard PHP Library (SPL)、JSON をサポートしている PHP 5.2.0 以降が必要です。
                 </li>
-		<li>ZIPファイルのアップロードをサポートするには、PHPの<tt>zip</tt>拡張が必要です。</li>
-        <li>マルチバイト文字列を適切にサポートするには（例えば、一般的なデフォルトとして使われるUTF-8）、mbstringとctype拡張をインストールする必要があります。
+		<li>ZIP ファイルのアップロードをサポートするには、PHP の <tt>zip</tt> 拡張が必要です。</li>
+        <li>マルチバイト文字列を適切にサポートするには (例えば、一般的なデフォルトとして使われる UTF-8)、mbstringと ctype
+拡張をインストールする必要があります。
         </li>
             <li>JPEG 画像のインラインサムネイル(&quot;image/jpeg: inline&quot;)を正しいアスペクト比で表示したい場合は PHP が
 GD2 をサポートしている必要があります。</li>
-            <li>When using the &quot;cookie&quot; <a
-href="#authentication_modes">authentication method</a>, the <a
-href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a> extension is strongly
-suggested for most users and is <b>required</b> for 64&#8211;bit
-machines. Not using mcrypt will cause phpMyAdmin to load pages significantly
-slower.
+            <li>「クッキー」<a href="#authentication_modes">認証方法</a>を使用する場合、<a
+href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a>
+拡張は、ほぼ全てユーザに対して強く推奨され、また 64 ビットマシンの場合は<b>必須</b>となります。mcrypt
+を使用していないと、phpMyAdmin のページを読み込みが大幅に遅くなる原因となりえます。
                 </li>
                 <li>アップロード進行状況バーをサポートするには、<a href="#faq2_9"><abbr title="よくある質問">FAQ</abbr>
 2.9</a>を参照してください。</li>
-                <li>BLOBストリームをサポートするには、<a href="#faq6_25"><abbr title="よくある質問">FAQ</abbr>
-6.25</a>にあるPHPとMySQLの必要構成を参照してください。</li>
+                <li>BLOB ストリームをサポートするには、<a href="#faq6_25"><abbr title="よくある質問">FAQ</abbr>
+6.25</a> にある PHP と MySQL の必要構成を参照してください。</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 以降 (<a href="#faq1_17">詳細</a>)</li>
@@ -109,40 +108,39 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
 
 <ul><li>データベース、テーブル、ビュー、カラム、インデックスの閲覧および削除</li>
     <li>データベース、テーブル、カラム、インデックスの作成・コピー・削除・リネーム・定義の変更</li>
-    <li>maintenance server, databases and tables, with proposals on server
-configuration</li>
-    <li>execute, edit and bookmark any <abbr title="structured query
-language">SQL</abbr>-statement, even batch-queries</li>
+    <li>サーバ、データベース、テーブルの保守、そのためのサーバの設定を提案</li>
+    <li>任意の <abbr title="structured query language">SQL</abbr>
+コマンドの実行、編集、ブックマーク。マルチクエリにも対応。</li>
     <li>テキストファイルをテーブルにロード</li>
     <li>テーブルのダンプの作成<a href="#footnote_1"><sup>1</sup></a>と読み込み
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
+    <li>さまざまなフォーマットでデータをエクスポート<a href="#footnote_1"><sup>1</sup></a>：<abbr
+title="Comma Separated Values">CSV</abbr>、<abbr title="Extensible Markup
+Language">XML</abbr>、<abbr title="Portable Document Format">PDF</abbr>、<abbr
+title="International Standards Organisation">ISO</abbr>/<abbr
 title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, <abbr title="Microsoft Excel 97-2003 and Excel
-2007">Excel</abbr> and L<sup>A</sup>T<sub><big>E</big></sub>X formats
+OpenDocument テキストおよびスプレッドシート、<abbr title="Microsoft Word
+2000">Word</abbr>、<abbr title="Microsoft Excel 97-2003 および Excel
+2007">Excel</abbr>、L<sup>A</sup>T<sub><big>E</big></sub>X
         </li>
-    <li>import data and MySQL structures from <abbr title="Microsoft Excel 97-2003
-and Excel 2007">Microsoft Excel</abbr> and OpenDocument spreadsheets, as
-well as <abbr title="Extensible Markup Language">XML</abbr>, <abbr
-title="Comma Separated Values">CSV</abbr>, and <abbr title="Server Query
-Language">SQL</abbr> files</li>
+    <li>さまざまファイルよりデータおよび構造のインポートが行えます。<abbr title="Microsoft Excel 97-2003 および Excel
+2007">Microsoft Excel</abbr>、OpenDocument スプレッドシートにとどまらず、<abbr
+title="Extensible Markup Language">XML</abbr>、<abbr title="Comma Separated
+Values">CSV</abbr>、もちろん <abbr title="Server Query Language">SQL</abbr>
+ファイルも。</li>
     <li>複数サーバの管理</li>
     <li>MySQL ユーザ・特権の管理</li>
     <li>MyISAM テーブルにおける参照完全性のチェック</li>
     <li>Query-by-example（QBE）を利用して必要なテーブルを自動的に結合する複雑なクエリの作成</li>
     <li>データベースレイアウトの <abbr title="Portable Document Format">PDF</abbr> 画像の作成</li>
     <li>データベースないしそのサブセットのグローバル検索</li>
-    <li>transform stored data into any format using a set of predefined functions,
-like displaying BLOB-data as image or download-link
+    <li>あらかじめ定義された関数一式を使用して格納されているデータを任意のフォーマットに変換します。BLOB
+データをイメージもしくはダウンロードリンクとして表示するかのように。
         </li>
-    <li>track changes on databases, tables and views</li>
+    <li>データベース、テーブル、ビューの変更の追跡</li>
     <li>InnoDB テーブルと外部キーのサポート<a href="#faq3_6">(<abbr title="よくある質問">FAQ</abbr> 3.6
 参照)</a></li>
-    <li>mysqli という改良版 MySQL エクステンションのサポート<a href="#faq1_17">(<abbr
+    <li>mysqli という改良版 MySQL 拡張のサポート<a href="#faq1_17">(<abbr
 title="よくある質問">FAQ</abbr> 1.17 参照)</a></li>
     <li><a href="http://www.phpmyadmin.net/home_page/translations.php">62
 もの言語</a>に対応
@@ -153,12 +151,10 @@ title="よくある質問">FAQ</abbr> 9.1 参照)</a>
 
 </ul>
 
-<h4>A word about users:</h4>
-<p> Many people have difficulty understanding the concept of user management
-with regards to phpMyAdmin. When a user logs in to phpMyAdmin, that username
-and password are passed directly to MySQL. phpMyAdmin does no account
-management on its own (other than allowing one to manipulate the MySQL user
-account information); all users must be valid MySQL users.</p>
+<h4>ユーザに対して一言：</h4>
+<p> 多くの人々は、phpMyAdmin に対してのユーザ管理の概念を理解するのが難しいと感じています。ユーザが phpMyAdmin
+にログインすると、その時のユーザ名とパスワードは MySQL に直接渡されます。phpMyAdmin は、独自にアカウント管理を (MySQL
+のユーザアカウント情報を操作するために１つ許可している以外は) 行っていません。全てのユーザは、有効な MySQL ユーザである必要があります。</p>
 
 <p class="footnote" id="footnote_1">
     <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
@@ -191,11 +187,12 @@ Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> を使うと�
 StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしまいます。<br />
     そのため、サーバにアップロードする前に BBEdit で全ての phpMyAdmin スクリプトを Unix
 風にセーブし直しておく必要があります。PHP はどうも <acronym title="Apple Macintosh">Mac</acronym>
-風の改行文字（「<tt></tt>」）を好まないようなのです。</p>
+風の改行文字（「<tt>¥r</tt>」）を好まないようなのです。</p>
 
 <h3 id="quick_install">クイックインストール</h3>
 <ol><li>phpmyadmin.net
-のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、全ての言語と全ての文字セットが含まれているUTF-8形式の全言語版もあります（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
+のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、全ての言語と全ての文字セットが含まれている UTF-8
+形式の全言語版もあります（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
 ような名前のキットを選んだと仮定して説明していきます。
     </li>
     <li>ウェブサーバのドキュメントルートで <tt>tar -xzvf phpMyAdmin_x.x.x.tar.gz</tt>
@@ -207,7 +204,7 @@ StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしま
 title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
     <li>まず最初に、インストールを設定する必要があります。やり方は2つあります。1つは、ユーザーが <tt>config.inc.php</tt>
 を手で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
-を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法です。
+を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法でもあります。
         <ul><li>To manually create the file, simply use your text editor to create the file
 <tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
 minimal configuration file) in the main (top-level) phpMyAdmin directory
@@ -245,13 +242,13 @@ href="setup/">Setup Script</a>. First you must manually create a folder
 a Linux/Unix system you can use the following commands:
 <pre>
 cd phpMyAdmin
-mkdir config                        # create directory for saving
-chmod o+rw config                   # give it world writable permissions
+mkdir config                        # 保存用ディレクトリの作成
+chmod o+rw config                   # 誰でも書き込める権限を与える
 </pre>
-                And to edit an existing configuration, copy it over first:
+                また、既存の構成を編集するには、まず最初にそれをコピーします。
 <pre>
-cp config.inc.php config/           # copy current configuration for editing
-chmod o+w config/config.inc.php     # give it world writable permissions
+cp config.inc.php config/           # 編集するためにカレントにある設定ファイルをコピー
+chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
 </pre>
                 On other platforms, simply create the folder and ensure that your web server
 has read and write access to it. <a href="#faq1_26">FAQ 1.26</a> can help
@@ -270,9 +267,9 @@ locally and upload (via FTP or some similar means) to the proper location.<br />
                 Once the file has been saved, it must be moved out of the <tt> config/</tt>
 directory and the permissions must be reset, again as a security measure:
 <pre>
-mv config/config.inc.php .         # move file to current directory
-chmod o-rw config.inc.php          # remove world read and write permissions
-rm -rf config                      # remove not needed directory
+mv config/config.inc.php .         # カレントディレクトリにファイルを移動
+chmod o-rw config.inc.php          # 誰でも読み書きできる権限を削除
+rm -rf config                      # 必要なくなったディレクトリを削除
 </pre>
                 Now the file is ready to be used. You can choose to review or edit the file
 with your favorite editor, if you prefer to set some advanced options which
@@ -366,26 +363,23 @@ title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that your
 user/password pair are not in clear in the configuration file.
         </li>
 
-    <li><abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードの方が安全です：MySQL
-のログイン情報を phpMyAdmin の設定ファイルに書く必要がありません（<a
-href="#controluser">「管理ユーザ」</a>は別かもしれませんが）<br />
-        ただし、お忘れなく。HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされます。<br />
-        また、クッキーモードでは、パスワードは blowfish アルゴリズムで暗号化されますが、クッキー用の一時ファイルに保管されます。</li>
+    <li><abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードの方が安全です。MySQL
+のログイン情報を phpMyAdmin の設定ファイルに書く必要がありませんから（<a
+href="#controluser">「管理ユーザ」</a>は別かもしれませんが）。<br />
+        ただし、忘れてはなりません。HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされます。<br />
+        また、クッキーモードでは、blowfish アルゴリズムで暗号化されてはいますが、パスワードは一時的にクッキーに保管されます。</li>
 
     <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
 <tt>--skip-show-database</tt>.<br /><br />
 
-        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
-modes, phpMyAdmin needs a controluser that has <b>only</b> the
-<tt>SELECT</tt> privilege on the <i>`mysql`.`user` (all columns except
-`Password`)</i>, <i>`mysql`.`db` (all columns)</i>, <i>`mysql`.`host` (all
-columns)</i> and <i>`mysql`.`tables_priv` (all columns except `Grantor` and
-`Timestamp`)</i> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
-in the <tt>config.inc.php</tt> file under the <tt><a
-href="#cfg_Servers_controluser" class="configrule">
-$cfg['Servers'][$i]['controluser']</a></tt> and <tt><a
-href="#cfg_Servers_controlpass" class="configrule">
-$cfg['Servers'][$i]['controlpass']</a></tt> settings.<br />
+        「HTTP」／「クッキー」モードでは管理ユーザが必要です。このユーザは <i>`mysql`.`user` (`Password`
+以外の全カラム)</i>、<i>`mysql`.`db` (全カラム)</i>、<i>`mysql`.`host`
+(全カラム)</i>、<i>`mysql`.`tables_priv` (`Grantor` と `Timestamp` 以外の全カラム)</i>
+テーブルについて、<tt>SELECT</tt> 特権<b>のみ</b>を持つようにします。<br /> また、<i>config.inc.php</i> ファイルの <tt><a href="#cfg_Servers_controluser"
+class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> と <tt><a
+href="#cfg_Servers_controlpass"
+class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt> 項目には<a
+href="#controluser">管理ユーザ</a>の情報を登録しなければなりません。<br />
         The following example assumes you want to use <tt>pma</tt> as the
 controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
 example: use something else in your file!</b> Input these statements from
@@ -434,13 +428,13 @@ class="configrule">$cfg['Servers']</a>配列のユーザ／パスワードフィ
 
 <ul><li>基本 <abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証を利用することで、有効な
 MySQL ユーザのいずれかとしてログインできるようになります。</li>
-    <li>ほとんどのPHPの設定でサポートされています。 <abbr title="Internet Information
+    <li>ほとんどの PHP の設定でサポートされています。 <abbr title="Internet Information
 Services">IIS</abbr> (<abbr title="Internet Server Application Programming
 Interface">ISAPI</abbr>) での <abbr title="Common Gateway
 Interface">CGI</abbr> 版 PHPの使用をサポートに関しては <a href="#faq1_32"><abbr
-title="よくある質問">FAQ</abbr> 1.32</a>を参照してください。Apache での <abbr title="Common
+title="よくある質問">FAQ</abbr> 1.32</a> を参照してください。Apache での <abbr title="Common
 Gateway Interface">CGI</abbr> の使用に関しては、<a href="#faq1_35"><abbr
-title="よくある質問">FAQ</abbr> 1.35</a>を参照してください。</li>
+title="よくある質問">FAQ</abbr> 1.35</a> を参照してください。</li>
     <li><a href="#faq4_4"> <abbr title="よくある質問">FAQ</abbr> 4.4</a> もご覧ください。「<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htaccess</i>
 機構は併用しないようにします。</li>
@@ -457,15 +451,15 @@ with the same username.</li>
 href="#AllowArbitraryServer" class="configrule">
 $cfg['AllowArbitraryServer']</a> directive.</li>
     <li><a href="#require">「必要なもの」</a>のセクションにも書いてある通り、<tt>mcrypt</tt>
-エクステンションを利用するとアクセス速度がかなり向上します。ただし、これは必須ではありません。</li>
+拡張を利用するとアクセス速度がかなり向上します。ただし、これは必須ではありません。</li>
 </ul>
 
 <h4>「サインオン」認証モード</h4>
 
 <ul><li>This mode is a convenient way of using credentials from another application
 to authenticate to phpMyAdmin.</li>
-    <li>The other application has to store login information into session data.</li>
-    <li>More details in the <a href="#cfg_Servers_auth_type">auth_type</a> section.</li>
+    <li>他のアプリケーションは、ログイン情報をセッションデータへ格納しなければなりません。</li>
+    <li>詳細は <a href="#cfg_Servers_auth_type">auth_type</a> の項目をご覧ください。</li>
 </ul>
 <h4>「config」認証モード</h4>
 
@@ -493,7 +487,7 @@ disallowing incoming HTTP requests at one&#8217;s router or firewall will
 suffice (both of which are beyond the scope of this manual but easily
 searchable with Google).</li>
 </ul>
-<h4 id="swekey">Swekey authentication</h4>
+<h4 id="swekey">Swekey 認証</h4>
 <p>
 The Swekey is a low cost authentication USB key that can be used in web
 applications.<br /><br />
@@ -578,7 +572,7 @@ cross-frame scripting attacks.</dd>
 以降、このパスフレーズが（空の場合は）自動で生成されるようになっています。自動作成されたパスフレーズがセキュリティ上弱いということありません。
 この生成されたパスフレーズはセッションに格納され、さらに、クッキーからユーザ名を取り出すといったことは不可能です。</dd>
 
-    <dt id="cfg_Servers">$cfg['Servers'] array</dt>
+    <dt id="cfg_Servers">$cfg['Servers'] 配列</dt>
     <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
 href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
 配列です。ここにはさまざまなサーバへのログイン情報が格納されます。たとえば、最初の <a href="#cfg_Servers_host"
@@ -589,11 +583,11 @@ href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
 にいくつでも定義を追加できます。<tt>./libraries/config.default.php</tt>
 から該当ブロックを丸ごと、あるいは必要な部分のみコピーしてください（すべての設定を定義する必要はありません。必要な部分のみ変更してください）。</dd>
 
-    <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] string</dt>
+    <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] 文字列</dt>
     <dd>$i 番目の MySQL サーバのホスト名ないし <abbr title="Internet Protocol">IP</abbr>
 アドレスが入ります。（例）localhost</dd>
 
-    <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] string</dt>
+    <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] 文字列</dt>
     <dd>$i 番目の MySQL サーバのポート番号が入ります。デフォルトは 3306
 です（空欄にしておいてください）。ホスト名を「localhost」にすると、MySQL
 はポート番号を無視してソケット接続しますので、デフォルトとは別のポートで接続したい場合は <a href="#cfg_Servers_host"
@@ -601,31 +595,30 @@ class="configrule">$cfg['Servers'][$i]['host']</a>
 に「127.0.0.1」か、本当のホスト名を入れてください。
     </dd>
 
-    <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] string</dt>
+    <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] 文字列</dt>
     <dd>利用するソケットへのパスが入ります。空欄にするとデフォルトのソケットが使われます。<br />
-        To determine the correct socket, check your MySQL configuration or, using
-the <tt>mysql</tt> command&#8211;line client, issue the <tt>status</tt>
-command.  Among the resulting information displayed will be the socket used.</dd>
+        適切にソケットを使用するには、MySQL の設定などを確認してください。<tt>mysql</tt> コマンドラインクライアントを使用して、status
+コマンドの発行します。その結果の中に、ソケットが使われているかが表示されます。</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] boolean</dt>
     <dd>MySQLサーバに接続するのにSSLを有効にするかどうか。
     </dd>
 
-    <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] string</dt>
+    <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] 文字列</dt>
     <dd>MySQL
 サーバで利用する接続タイプが入ります。選択肢は<tt>「socket」</tt>と<tt>「tcp」</tt>です。デフォルトが「tcp」になっているのは、どんな
 MySQL サーバでもほぼ確実に利用できるためです。ソケットの方はプラットフォームによってはサポートされていません。<br /><br />
 
         ソケットモードを利用する場合、MySQL サーバはウェブサーバと同じ機械上になければなりません。</dd>
 
-    <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] string</dt>
-    <dd>接続に利用する php MySQL エクステンション が入ります。有効な選択肢は次の通りです。
+    <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] 文字列</dt>
+    <dd>接続に利用する PHP の MySQL 拡張が入ります。有効な選択肢は次の通りです。
         <br /><br />
 
-        <tt><i>mysql</i></tt> : 古典的な MySQL エクステンションです。現時点ではおすすめできるデフォルトの方法です。<br /><br />
+        <tt><i>mysql</i></tt> : 古典的な MySQL 拡張です。現時点ではおすすめできるデフォルトの方法です。<br /><br />
 
-        <tt><i>mysqli</i></tt> : MySQL エクステンションの改良版です。このエクステンションは php 5.0.0
-で利用できるようになりました。MySQL 4.1.x 以降が走っているサーバに接続する場合はおすすめです。</dd>
+        <tt><i>mysqli</i></tt> : MySQL 拡張の改良版です。この拡張は PHP 5.0.0 で利用できるようになりました。MySQL
+4.1.x 以降が稼動しているサーバに接続する場合はお奨めです。</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
     <dd>MySQL サーバとの接続に圧縮プロトコルを使うかどうかが入ります（実験段階です）。<br />
@@ -633,9 +626,9 @@ MySQL サーバでもほぼ確実に利用できるためです。ソケット�
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
-string<br />
+文字列<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
-string
+文字列
     </dt>
     <dd>This special account is used for 2 distinct purposes: to make possible all
 relational features (see <a href="#pmadb"
@@ -653,8 +646,8 @@ Protocol">HTTP</abbr>／クッキー認証モード（あるいは、phpMyAdmin 
 
         2.2.5 より前の phpMyAdmin では「stduser/stdpass」という名前でした。</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <tt>['<abbr title="HyperText
-Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
+    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] 文字列 <tt>['<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
     <dd>Whether config or cookie or <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> or signon authentication should be used for this
 server.
@@ -688,7 +681,7 @@ authentication method.</li>
     <dt id="servers_auth_http_realm">
     <span
 id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
-string<br />
+文字列<br />
     </dt>
     <dd>
     When using auth_type = '<abbr title="HyperText Transfer
@@ -710,9 +703,8 @@ string<br />
 names for hardware authentication. Leave empty to deactivate this feature.
     </dd>
     <dt id="servers_user">
-        <span id="cfg_Servers_user">$cfg['Servers'][$i]['user']</span> string<br />
-        <span id="cfg_Servers_password">$cfg['Servers'][$i]['password']</span>
-string
+        <span id="cfg_Servers_user">$cfg['Servers'][$i]['user']</span> 文字列<br />
+        <span id="cfg_Servers_password">$cfg['Servers'][$i]['password']</span> 文字列
     </dt>
     <dd>
         auth_type = 'config' の場合は MySQL サーバに接続するときに phpMyAdmin
@@ -725,8 +717,8 @@ boolean
     <dd>
         パスワードを使用してログインが失敗したときにパスワードなしでログインしようとするとを許可します。これは、HTTP認証と一緒に使用することができます。MySQLに接続する手段の一つとして、ユーザー名と空のパスワードを使用して認証を行います。パスワードログインを行わないというわけではなく、パスワードログインが最初に試され、最後の手段としてパスワード無し方式が試されます。</dd>
     <dt id="servers_only_db">
-        <span id="cfg_Servers_only_db">$cfg['Servers'][$i]['only_db']</span> string
-または array
+        <span id="cfg_Servers_only_db">$cfg['Servers'][$i]['only_db']</span>
+文字列または配列
     </dt>
     <dd>
         データベース名（の配列）を設定すると、ユーザにはそのデータベースしか見えなくなります。phpMyAdmin 2.2.1 以降、このデータベース名には
@@ -749,7 +741,7 @@ class="important">ほかのすべてのデータベースが使えなくなる�
 = array('db3', 'db4', '*');</tt> phpMyAdmin は db3 と db4
 をトップに置いて、残りをアルファベット順に並べます。</dd>
 
-    <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> string
+    <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> 文字列
     </dt>
     <dd>Regular expression for hiding some databases from unprivileged users.  This
 only hides them from listing, but a user is still able to access them
@@ -765,11 +757,11 @@ href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
 pattern syntax</a> portion of the PHP reference manual.
         </dd>
 
-    <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] string</dt>
+    <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] 文字列</dt>
     <dd>複数のサーバエントリがあるなら便利です。設定しておくと、メインページのプルダウンメニューに、ホスト名ではなく、この文字列が表示されます。たとえば、システム上のいくつかのデータベースのみ表示させる場合には便利でしょう。HTTP認証の場合、非ASCII文字は全て無視されるかもしれません。</dd>
 
     <dt id="pmadb">
-        <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> string
+        <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> 文字列
     </dt>
     <dd>phpMyAdmin の設定保存場所を格納するデータベース名が入ります。
         <br /><br />
@@ -785,7 +777,7 @@ phpMyAdmin の設定保存場所を格納するセントラルデータベース
     <dt id="bookmark">
         <span
 id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
-string
+文字列
     </dt>
     <dd>Since release 2.2.0 phpMyAdmin allows users to bookmark queries. This can be
 useful for queries you often run.<br /><br />
@@ -809,8 +801,7 @@ Documentation_ja.html:570  #-#-#-#-#
     </dd>
 
     <dt id="relation">
-        <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
-string
+        <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span> 文字列
     </dt>
     <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
 column is a key in another table (a foreign key). phpMyAdmin currently uses
@@ -862,7 +853,7 @@ the cross-db relations.
 
     <dt id="table_info">
         <span id="cfg_Servers_table_info">$cfg['Servers'][$i]['table_info']</span>
-string
+文字列
     </dt>
     <dd>
         Since release 2.3.0 you can describe, in a special 'table_info' table, which
@@ -881,10 +872,8 @@ column.</li>
     </dd>
     <dt id="table_coords">
         <span
-id="cfg_Servers_table_coords">$cfg['Servers'][$i]['table_coords']</span>
-string<br />
-        <span id="cfg_Servers_pdf_pages">$cfg['Servers'][$i]['pdf_pages']</span>
-string
+id="cfg_Servers_table_coords">$cfg['Servers'][$i]['table_coords']</span> 文字列<br />
+        <span id="cfg_Servers_pdf_pages">$cfg['Servers'][$i]['pdf_pages']</span> 文字列
     </dt>
     <dd>Since release 2.3.0 you can have phpMyAdmin create <abbr title="Portable
 Document Format">PDF</abbr> pages showing the relations between your
@@ -921,7 +910,7 @@ Documentation_ja.html:570  #-#-#-#-#
 
     <dt id="col_com">
         <span id="cfg_Servers_column_info">$cfg['Servers'][$i]['column_info']</span>
-string
+文字列
     </dt>
     <dd>
         <!-- This part requires a content update! -->
@@ -972,7 +961,7 @@ from<br />
     </dd>
 
     <dt id="history">
-        <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> string
+        <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> 文字列
     </dt>
     <dd>Since release 2.5.0 you can store your <abbr title="structured query
 language">SQL</abbr> history, which means all queries you entered manually
@@ -1008,8 +997,7 @@ Documentation_ja.html:570  #-#-#-#-#
     </dd>
 
     <dt id="tracking">
-        <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
-string
+        <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span> 文字列
     </dt>
     <dd>
         Since release 3.3.x a tracking mechanism is available.  It helps you to
@@ -2250,9 +2238,9 @@ href="#faqsqlvalidator"><abbr title="Frequently Asked Questions">FAQ</abbr>
 6.14</a>.
             </dd>
 
-            <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] string<br />
+            <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] 文字列<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
-string</dt>
+文字列</dt>
             <dd>The SOAP service allows you to log in with <tt>anonymous</tt> and any
 password, so we use those by default. Instead, if you have an account with
 them, you can put your login details here, and it will be used in place of
@@ -2268,46 +2256,45 @@ the anonymous login.</dd>
         Enable logging queries and execution times to be displayed in the bottom of
 main page (right frame).</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] array</dt>
+    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] 配列</dt>
     <dd>MySQL のカラム種別としてとりうるすべての値が入ります。ほとんどの場合、この値を修正する必要はありません。</dd>
 
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] array</dt>
-    <dd>Possible attributes for columns. In most cases you don't need to edit this.</dd>
+    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] 配列</dt>
+    <dd>カラム属性としてとりうる値が入ります。ほとんどの場合、この値を修正する必要はありません。</dd>
 
-    <dt id="cfg_Functions">$cfg['Functions'] array</dt>
+    <dt id="cfg_Functions">$cfg['Functions'] 配列</dt>
     <dd>MySQL がサポートする関数のリストです。ほとんどの場合、この値を修正する必要はありません。</dd>
 
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] array</dt>
+    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] 配列</dt>
     <dd>カラム種別と、カラムの内容の表示方法を変えるための関数を結びつけるメタ種別との対応表です。ほとんどの場合、この値を修正する必要はありません。</dd>
 
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] array</dt>
+    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] 配列</dt>
     <dd>Functions preferred for column meta types as defined in <a
 href="#cfg_RestrictColumnTypes"
 class="configrule">$cfg['RestrictColumnTypes']</a>. In most cases you don't
 need to edit this.</dd>
 
-    <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] array</dt>
+    <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] 配列</dt>
     <dd>Functions selected by default when inserting/changing row, Functions are
 defined for meta types from <a href="#cfg_RestrictColumnTypes"
 class="configrule">$cfg['RestrictColumnTypes']</a> and for
 <code>first_timestamp</code>, which is used for first timestamp column in
 table.</dd>
 
-    <dt id="cfg_NumOperators">$cfg['NumOperators'] array</dt>
-    <dd>Operators available for search operations on numeric and date columns.
+    <dt id="cfg_NumOperators">$cfg['NumOperators'] 配列</dt>
+    <dd>数値や日付カラムの検索に利用できる演算子です。
     </dd>
 
-    <dt id="cfg_TextOperators"><b>$cfg['TextOperators'] </b>array</dt>
+    <dt id="cfg_TextOperators">$cfg['TextOperators'] 配列</dt>
     <dd>Operators available for search operations on character columns.  Note that
 we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
 avoid unintended performance problems in case of huge tables.</dd>
 
-    <dt id="cfg_EnumOperators">$cfg['EnumOperators'] array</dt>
-    <dd>Operators available for search operations on ENUM columns.</dd>
+    <dt id="cfg_EnumOperators">$cfg['EnumOperators'] 配列</dt>
+    <dd>列挙 (enum) カラムの検索に利用できる演算子です。</dd>
 
-    <dt id="cfg_NullOperators">$cfg['NullOperators'] array</dt>
-    <dd>Additional operators available for search operations when the column can be
-null.</dd>
+    <dt id="cfg_NullOperators">$cfg['NullOperators'] 配列</dt>
+    <dd>カラムがヌル (null) になりうるときに利用できる追加の検索用演算子です。</dd>
 
 </dl>
 
@@ -2325,9 +2312,7 @@ null.</dd>
 <p> 変換機能を有効にするには、<tt>column_info</tt> テーブルと、適切なディレクティブを設定する必要があります。手順については<a
 href="#config">「設定」セクション</a>をご覧ください。</p>
 
-<p> You can apply different transformations to the contents of each column. The
-transformation will take the content of each column and transform it with
-certain rules defined in the selected transformation.</p>
+<p> カラムごとに別々の変換機能を適用できます。変換機能は各カラムの内容を取得してから、選択された機能に定義されている規則に従って変換を行うためです。</p>
 
 <p> Say you have a column 'filename' which contains a filename. Normally you
 would see in phpMyAdmin only this filename. Using transformations you can
@@ -2651,9 +2636,8 @@ the permissions</a>.</p>
     <a href="#faq1_15">1.15 <i>mysql.user</i> というカラム名のことで困っています。</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
-were named <tt>user</tt> and <tt>password</tt>. Please modify your column
-names to align with current standards.</p>
+<p> MySQL の古いバージョンでは <tt>User</tt>／<tt>Password</tt> カラムが
+<tt>user</tt>／<tt>password</tt> という名前だったせいです。カラム名を現在の標準にあわせて修正してください。</p>
 
 <h4 id="faq1_16">
     <a href="#faq1_16">1.16 （メモリ、<abbr title="HyperText Transfer
@@ -2739,11 +2723,10 @@ these files.</p>
     <a href="#faqmysql">1.20 「cannot load MySQL extension, please check PHP
 Configuration（MySQL エクステンションをロードできません。PHP の設定をチェックしてください）」というエラーが出ます。</a></h4>
 
-<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
-&quot;MySQL extension&quot;. This extension may be part of the PHP
-distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
-name is probably <i>mysql.so</i> or <i>php_mysql.dll</i>. phpMyAdmin tried
-to load the extension but failed.<br /><br />
+<p> PHP が MySQL サーバに接続する際には「MySQL 拡張」という MySQL の関数セットを必要とします。この拡張は PHP
+の配布ファイルに含まれている（コンパイルで組み込まれている）こともありますが、そうでない場合、動的に読み込む必要があります。拡張名はたぶん
+<i>mysql.so</i> か <i>php_mysql.dll</i> のはずですが、phpMyAdmin
+はこの拡張を読み込もうとして失敗しているわけです。<br /><br />
 
     ふつう、この問題は「PHP-MySQL」とかなんとかという名前のソフトウェアパッケージをインストールすれば解決します。</p>
 
@@ -2754,8 +2737,8 @@ PHP を Unix 環境で走らせているのですが、クッキー認証を使�
 <p> <i>php.ini</i> の <tt>mysql.max_links</tt> を 1 より大きな値にしてください。</p>
 
 <h4 id="faq1_22">
-    <a href="#faq1_22">1.22 I don't see the &quot;Location of text file&quot;
-field, so I cannot upload.</a></h4>
+    <a href="#faq1_22">1.22 「テキストファイルの場所 (Location of text
+file)」フィールドが見つからないのでアップロードできません。</a></h4>
 
 <p> いちばんありがちな理由は、<i>php.ini</i> の <tt>file_uploads</tt> パラメータが「on」になっていないことです。</p>
 
@@ -2828,7 +2811,7 @@ SetOutputFilter PHP
 SetInputFilter PHP
 </pre>
 
-<p> and</p>
+<p> および</p>
 
 <pre>AddType application/x-httpd-php .php</pre>
 
@@ -3230,8 +3213,9 @@ dump, you have to use another way.</p>
 <h4 id="faq3_3">
     <a href="#faq3_3">3.3 InnoDB テーブルでテーブルやカラムをリネームすると外部キーのリレーションが切れます。</a></h4>
 
-<p> This is an InnoDB bug, see <a
-href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>.</p>
+<p> これは InnoDB のバグです。<a
+href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>
+をご覧ください。</p>
 
 <h4 id="faq3_4">
     <a href="#faq3_4">3.4 MySQL サーバの配布ファイルにバンドルされてきた mysqldump
@@ -3328,8 +3312,7 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 <h4 id="faq3_13">
     <a href="#faq3_13">3.13 <tt>USE</tt> の後にハイフンを含むデータベース名を入力するとエラーが出ます。</a></h4>
 <p>
-    The tests I have made with MySQL 5.1.49 shows that the API does not accept
-this syntax for the USE command.
+    我々が MySQL 5.1.49 で行ったテストでは、API は USE コマンドはこの構文を使用しないことを確認しています。
 </p>
 
 <h4 id="faq3_14">
@@ -3680,8 +3663,8 @@ meanwhile use the <tt>cookie</tt> authentication mode.</p>
     <a href="#faq6_1">6.1 テーブルに新しい行を挿入できません／テーブルを作成できません - MySQL が <abbr
 title="structured query language">SQL</abbr> エラーを返します。</a></h4>
 <p>
-    Examine the <abbr title="structured query language">SQL</abbr> error with
-care. Often the problem is caused by specifying a wrong column-type.<br />
+    <abbr title="structured query language">SQL</abbr>
+エラーを事細か調べてみてください。よく問題になるのが、カラム種別の指定を間違えることです。<br />
     ありがちなエラーの例です：
 </p>
 <ul>
@@ -3705,11 +3688,10 @@ properties and click the Index link to create the other index.
 <h4 id="faq6_3">
     <a href="#faq6_3">6.3 テーブルにヌルの値を挿入するにはどうすればよいのでしょう。</a></h4>
 <p>
-    Since version 2.2.3, you have a checkbox for each column that can be null.
-Before 2.2.3, you had to enter &quot;null&quot;, without the quotes, as the
-column's value. Since version 2.5.5, you have to use the checkbox to get a
-real NULL value, so if you enter &quot;NULL&quot; this means you want a
-literal NULL in the column, and not a NULL value (this works in PHP4).
+    バージョン 2.2.3 以降、null にできるカラムにはそれぞれチェックボックスが用意されています。2.2.3
+より前は、カラムの値としてクォートなしで「null」と入力する必要がありました。バージョン 2.5.5 以降では、本当の null
+値を得るにはチェックボックスを使う必要があります。「NULL」と入力すると、そのカラムには null 値ではなく、文字列の NULL
+が入ります（PHP4 ではそれでうまくいきます）。
 </p>
 
 <h4 id="faq6_4">
@@ -3721,11 +3703,10 @@ structure, the data, or both. This will generate standard <abbr
 title="structured query language">SQL</abbr> statements that can be used to
 recreate your database/table.
     <br /><br />
-    You will need to choose &quot;Save as file&quot;, so that phpMyAdmin can
-transmit the resulting dump to your station. Depending on your PHP
-configuration, you will see options to compress the dump. See also the <a
+    「ファイルに保存（Save as file）」を選択する必要も出てくることでしょう。「ファイルに保存」を選択すると、phpMyAdmin
+は生成されたダンプをパソコンなどの端末へ送信します。PHP の設定によっては、ダンプしたものを圧縮するオプションが表示されます。<a
 href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
-configuration variable.<br /><br />
+設定変数についてもご覧ください。<br /><br />
 
     この問題についての詳細は、この文書で「ダンプ」という語を検索してください。</p>
 
@@ -3783,13 +3764,13 @@ INSERT INTO REL_towns VALUES ('S', 'Sherbrooke');
 INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 </pre>
 
-<p> To setup appropriate links and display information:</p>
+<p> 適切なリンクと表示情報をセットアップするには：</p>
 
 <ul><li>「REL_persons」テーブルで構造（Structure）、リレーション表示の順にクリックします。</li>
     <li>リンク（Links）欄の「town_code」に「REL_towns-&gt;code」を選択します。</li>
     <li>リンク（Links）欄の「country_code」に「REL_countries-&gt;country_code」を選択します。</li>
     <li>「REL_towns」テーブルで、構造（Structure）、リレーション表示の順にクリックします。</li>
-    <li>in &quot;Choose column to display&quot;, choose &quot;description&quot;</li>
+    <li>「表示するカラムを選択 (Choose column to display)」欄に「description」を選択します。</li>
     <li>「REL_countries」テーブルについても上記の手順を繰り返します。</li>
 </ul>
 
@@ -3799,8 +3780,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
     <li>「クエリ（Query）」を選択します。</li>
     <li>persons、towns、countries テーブルを選択します。</li>
     <li>「クエリの更新（Update query）」をクリックします</li>
-    <li>In the columns row, choose persons.person_name and click the
-&quot;Show&quot; tickbox </li>
+    <li>カラム行で persons.person_name を選択して、「表示 (Show)」のチェックボックスをクリックします。 </li>
     <li>残り 2 つのコラムの towns.description と countries.descriptions についても同じことをします。</li>
     <li>「クエリの更新（Update query）」をクリックします。クエリボックスに正しく生成された結合が表示されます。</li>
     <li>「クエリの実行（Submit query）」をクリックします。</li>
@@ -3812,9 +3792,8 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
     前項の例に続いて、設定セクションで説明した pma_table_info を作ります。persons テーブルを表示して、town code ないし
 country code の上にマウスを移動します。
     <br /><br />
-    See also <a href="#faq6_21"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 6.21</a> for an additional feature that &quot;display
-column&quot; enables: drop-down list of possible values.
+    <a href="#faq6_21"><abbr title="よくある質問">FAQ</abbr> 6.21</a> もご覧ください。「表示するカラム
+(display column)」を有効にすると追加される、とりうる値をドロップダウンで一覧する機能について書かれています。
 </p>
 
 <h4 id="faqpdf">
@@ -3828,8 +3807,8 @@ Format">PDF</abbr> スキーマを作れるのでしょう。</a></h4>
 <ul>
     <li>左フレームのデータベース名を選択します。</li>
     <li>上部のナビゲーションバーで「操作（Operations）」を選択します。</li>
-    <li>Choose &quot;Edit <abbr title="Portable Document Format">PDF</abbr>
-Pages&quot; near the bottom of the page.</li>
+    <li>ページの底辺近くに表示される「<abbr title="Portable Document Format">PDF</abbr> のページを編集
+(Edit <abbr title="Portable Document Format">PDF</abbr> Pages)」を選択します。</li>
     <li>Enter a name for the first <abbr title="Portable Document Format">PDF</abbr>
 page and click Go. If you like, you can use the &quot;automatic
 layout,&quot; which will put all your linked tables onto the new page.</li>
@@ -3879,16 +3858,15 @@ john2db ...<br /><br />
 
 <ul><li>「『DROP TABLE』を追加（Add DROP TABLE）」は、インポート中に既存のテーブルが存在していたら<a
 href="http://dev.mysql.com/doc/mysql/ja/drop-table.html">そのテーブルを削除する</a>よう指示する行を追加します。エクスポートしたあとでテーブルを削除するわけでは「ありません」。ファイルをインポートするときのみです。</li>
-    <li>&quot;If Not Exists&quot; will only create the table if it doesn't exist.
-Otherwise, you may get an error if the table name exists but has a different
-structure.</li>
+    <li>「『IF NOT
+EXISTS』を追加」は、そのテーブルが存在しないときにのみテーブルを作成するようになります。そうでなく、そのテーブル名が存在しているのに構造が異なる場合はエラーになることもあります。</li>
     <li>「『AUTO_INCREMENT』値を追加（Add AUTO_INCREMENT value）」は、（あれば）AUTO_INCREMENT
 値もバックアップに含めるようにします。</li>
-    <li>&quot;Enclose table and column names with backquotes&quot; ensures that
-column and table names formed with special characters are protected.</li>
-    <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
-types set in the pmadb in the dump as <abbr title="structured query
-language">SQL</abbr> comments (<i>/* xxx */</i>).
+    <li>「逆クォートでテーブル名やカラム名を囲む (Enclose table and column names with
+backquotes)」は、特殊文字を含むカラム名やテーブル名を保護します。</li>
+    <li>「コメントの追加（Add into comments）」は、pmadb に設定されているカラムのコメント、リレーション、MIME タイプを <abbr
+title="structured query language">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>)
+でダンプに含めます。
        </li>
 </ul>
 
@@ -4013,8 +3991,8 @@ your query won't be even able to be stored in the database.<br />
 '%phpMyAdmin%'</code>
     <br /><br />
 
-    You can use multiple occurrences of <b>/*[VARIABLE]*/</b> in a single query
-(that is, multiple occurrences of the <i>same</i> variable).<br />
+    １つのクエリに複数の <b>/*[VARIABLE]*/</b>
+を含めることもできます（言い換えると、<i>同じ</i>変数を複数含めることができます）。<br />
     「/**/」構文のなかに<b>空白が含まれていないことにご注意ください</b>。ここに挿入された空白はクエリのなかでも後から空白として挿入されますので、予期せぬ結果を生むことがあります。特に「LIKE
 ''」のなかで変数展開する場合はそうです。<br />
     ブックマークとして保管しようとしているおおもとのクエリは最低でも 1
@@ -4145,7 +4123,7 @@ you can not get the table name), but the following variables can be used:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
-        <dd>HTTP host that runs phpMyAdmin</dd>
+        <dd>phpMyAdmin を稼動させている HTTP ホスト</dd>
     <dt><code>@SERVER@</code></dt>
         <dd>MySQL サーバ名</dd>
     <dt><code>@VERBOSE@</code></dt>
