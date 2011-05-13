@@ -42,9 +42,9 @@ class="myadmin">MyAdmin</span></a> 3.5.0-dev ドキュメント
     <li><a href="Documentation.html#config">設定</a></li>
     <li><a href="Documentation.html#transformations">変換機能</a></li>
     <li><a href="Documentation.html#faq"><abbr title="よくある質問">FAQ</abbr></a></li>
-    <li><a href="Documentation.html#developers">開発者向けの情報</a></li>
-    <li><a href="Documentation.html#copyright">コピーライト</a></li>
-    <li><a href="Documentation.html#credits">著作権表示</a></li>
+    <li><a href="Documentation.html#developers">開発者向け情報</a></li>
+    <li><a href="Documentation.html#copyright">著作権</a></li>
+    <li><a href="Documentation.html#credits">貢献者一覧</a></li>
     <li><a href="Documentation.html#glossary">Glossary</a></li>
 </ul>
 
@@ -111,15 +111,15 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
     <li>サーバ、データベース、テーブルの保守、そのためのサーバの設定を提案</li>
     <li>任意の <abbr title="structured query language">SQL</abbr>
 コマンドの実行、編集、ブックマーク。マルチクエリにも対応。</li>
-    <li>テキストファイルをテーブルにロード</li>
-    <li>テーブルのダンプの作成<a href="#footnote_1"><sup>1</sup></a>と読み込み
+    <li>テキストファイルをテーブルに読み込み</li>
+    <li>テーブルダンプの作成<a href="#footnote_1"><sup>1</sup></a>と読み込み
         </li>
     <li>さまざまなフォーマットでデータをエクスポート<a href="#footnote_1"><sup>1</sup></a>：<abbr
 title="Comma Separated Values">CSV</abbr>、<abbr title="Extensible Markup
 Language">XML</abbr>、<abbr title="Portable Document Format">PDF</abbr>、<abbr
 title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument テキストおよびスプレッドシート、<abbr title="Microsoft Word
+title="International Electrotechnical Commission">IEC</abbr> 26300
+(OpenDocument テキストおよびスプレッドシート)、<abbr title="Microsoft Word
 2000">Word</abbr>、<abbr title="Microsoft Excel 97-2003 および Excel
 2007">Excel</abbr>、L<sup>A</sup>T<sub><big>E</big></sub>X
         </li>
@@ -187,12 +187,11 @@ Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> を使うと�
 StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしまいます。<br />
     そのため、サーバにアップロードする前に BBEdit で全ての phpMyAdmin スクリプトを Unix
 風にセーブし直しておく必要があります。PHP はどうも <acronym title="Apple Macintosh">Mac</acronym>
-風の改行文字（「<tt>¥r</tt>」）を好まないようなのです。</p>
+風の改行文字（「<tt>¥r</tt>」）と相性がよくないようです。</p>
 
 <h3 id="quick_install">クイックインストール</h3>
-<ol><li>phpmyadmin.net
-のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、全ての言語と全ての文字セットが含まれている UTF-8
-形式の全言語版もあります（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
+<ol><li>phpmyadmin.net のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、UTF-8
+形式の全言語版もあります。これには、全ての言語と全ての文字セットが含まれています（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
 ような名前のキットを選んだと仮定して説明していきます。
     </li>
     <li>ウェブサーバのドキュメントルートで <tt>tar -xzvf phpMyAdmin_x.x.x.tar.gz</tt>
@@ -205,15 +204,13 @@ title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
     <li>まず最初に、インストールを設定する必要があります。やり方は2つあります。1つは、ユーザーが <tt>config.inc.php</tt>
 を手で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
 を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法でもあります。
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
-minimal configuration file) in the main (top-level) phpMyAdmin directory
-(the one that contains <tt>index.php</tt>).  phpMyAdmin first loads
-<tt>libraries/config.default.php</tt> and then overrides those values with
-anything found in <tt>config.inc.php</tt>. If the default value is okay for
-a particular setting, there is no need to include it in
-<tt>config.inc.php</tt>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+        <ul><li>手動でファイルを作成するには、単純にテキストエディタを使用して <tt>config.inc.php</tt> ファイルを phpMyAdmin
+のメイン（トップレベル）ディレクトリ（ここには <tt>index.php</tt>
+が含まれています）に作成します（その際、<tt>config.sample.inc.php</tt>
+をコピーすることで最小限の設定ファイルを取得することもできます）。最初に phpMyAdminは
+<tt>libraries/config.default.php</tt> を読み込み、それから <tt>config.inc.php</tt>
+内で見つかった値でデフォルト値を上書きします。設定に問題がなければ、デフォルト値は <tt>config.inc.php</tt>
+に含める必要はありません。稼動させるにはディレクティブをいくつか設定する必要がありますが、単純な設定では以下にような感じになります。
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // この値は適当に決めてください
@@ -223,7 +220,7 @@ $i++;
 $cfg['Servers'][$i]['auth_type']     = 'cookie';
 ?&gt;
 </pre>
-                Or, if you prefer to not be prompted every time you log in:
+                あるいは、ログインするたびにプロンプトを表示させたくないのであれば以下のようにします。
 <pre>
 &lt;?php
 
@@ -234,8 +231,7 @@ $cfg['Servers'][$i]['password']      = 'cbb74bc'; // ここにパスワードを
 $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
-                For a full explanation of possible configuration values, see the <a
-href="#config">Configuration Section</a> of this document.</li>
+                設定できる値の詳細な解説については、このドキュメントの<a href="#config">「設定」の章</a>を参照してください。</li>
             <li id="setup_script">Instead of manually editing <tt>config.inc.php</tt>, you can use the <a
 href="setup/">Setup Script</a>. First you must manually create a folder
 <tt>config</tt> in the phpMyAdmin directory. This is a security measure. On
@@ -284,10 +280,10 @@ href="#faqmultiuser"> multi&#8211;user sub&#8211;section</a> of this <abbr
 title="Frequently Asked Questions">FAQ</abbr> for additional information,
 especially <a href="#faq4_4"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.4</a>.</li>
-    <li>Open the <a href="index.php">main phpMyAdmin directory</a> in your
-browser. phpMyAdmin should now display a welcome screen and your databases,
-or a login dialog if using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> or cookie authentication mode.</li>
+    <li>お使いのブラウザで<a href="index.php">phpMyAdmin のメインディレクトリ</a>を開きます。<abbr
+title="HyperText Transfer
+Protocol">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
+は現行版では、ようこそ画面と管理データベース、もしくはログインダイアログが表示されます。</li>
     <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
 subfolders in your webserver configuration. For Apache you can use supplied
 .htaccess file in that folder, for other webservers, you should configure
@@ -295,12 +291,11 @@ this yourself.  Such configuration prevents from possible path exposure and
 cross side scripting vulnerabilities that might happen to be found in that
 code.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration. You can find example
-<code>.htaccess</code> file which can help you achieve this in
-<code>contrib</code> directory in phpMyAdmin.
+        一般的には、インストールしている phpMyAdmin
+を公開されている場合、検索エンジンロボットが十分機能できないようにするために、それらからのアクセスに対してを保護することをお勧めします。そのためには、<code>robots.txt</code>
+ファイルを Web サーバのルートに置くか、もしくは、Web サーバの設定によりアクセス制限を行います。phpMyAdmin の
+<code>contrib</code> ディレクトリ内に、<code>.htaccess</code>
+ファイルのサンプルがあります。これは、その設定を行うためのヒントになるでしょう。
     </li>
 </ol>
 
@@ -326,12 +321,9 @@ new tables by importing <i>./scripts/create_tables.sql</i>.</p>
 <p> phpMyAdmin
 を使ってテーブル群を作成することもできますが、ご注意ください。データベースやテーブルを作成する際には特別な（管理者の）権限が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
 
-<p> After having imported the <i>./scripts/create_tables.sql</i> file, you
-should specify the table names in your <i>./config.inc.php</i> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> <i>./scripts/create_tables.sql</i> ファイルをインポートしたら、<i>./config.inc.php</i>
+ファイルでテーブル名を指定してください。このとき使うディレクティブの説明は<a
+href="#config">「設定」の章</a>にあります。また、これらのテーブル群に対する適切なアクセス権を持った管理ユーザが必要になります（後述の<i>認証モードの使い方</i>の節をご覧ください）。</p>
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
@@ -343,24 +335,21 @@ remove it from your file and just use the default one.  For compatibility
 with PHP 6, remove a <tt>set_magic_quotes_runtime(0);</tt> statement that
 you might find near the end of your configuration file.</p>
 
-<p> You should <strong>not</strong> copy <tt>libraries/config.default.php</tt>
-over <tt>config.inc.php</tt> because the default configuration file is
-version-specific.</p>
+<p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
+<tt>config.inc.php</tt> へコピー<strong>しない</strong>ようにしてださい。</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the SQL script found in
-<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、且つ、phpMyAdmin
+設定保存場所を使用している場合、<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
+スクリプトを実行する必要があります。</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
 <ul><li><b>マルチユーザ環境</b>では、ユーザが自分のデータベースにアクセスできるよう、また他人のデータベースにいたずらできないよう、<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがおすすめです。<br />
+title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがお奨めです。<br />
         ただし、ご注意ください。マイクロソフトの Internet Explorer は、クッキーに関しては本当にバグが多いようです。少なくともバージョン 6
 まではそうです。<br />
-        Even in a <b>single-user environment</b>, you might prefer to use <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that your
-user/password pair are not in clear in the configuration file.
+        また、<b>シングルユーザ環境</b>であっても <abbr title="HyperText Transfer
+Protocol">HTTP</abbr>／クッキーモードの方が好ましく思えるかもしれません。ユーザ／パスワードの組を設定ファイルに明記しなくてすみますから。
         </li>
 
     <li><abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードの方が安全です。MySQL
@@ -401,7 +390,7 @@ GRANT SELECT ON mysql.host TO 'pma'@'localhost';
 GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
     ON mysql.tables_priv TO 'pma'@'localhost';</pre>
 
-        If you want to use the many new relation and bookmark features:
+        また、リレーション／ブックマーク関係の新機能をいろいろ使ってみたい場合は次のようにします。
 
         <pre>
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
@@ -447,10 +436,9 @@ title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htacces
     <li>もちろんユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
     <li>With this mode, the user can truly log out of phpMyAdmin and log in back
 with the same username.</li>
-    <li>If you want to log in to arbitrary server see <a
-href="#AllowArbitraryServer" class="configrule">
-$cfg['AllowArbitraryServer']</a> directive.</li>
-    <li><a href="#require">「必要なもの」</a>のセクションにも書いてある通り、<tt>mcrypt</tt>
+    <li>任意のサーバにログインしたい場合は、<a href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a> ディレクティブをご覧ください。</li>
+    <li><a href="#require">「必要なもの」</a>の章にも書いてある通り、<tt>mcrypt</tt>
 拡張を利用するとアクセス速度がかなり向上します。ただし、これは必須ではありません。</li>
 </ul>
 
@@ -469,11 +457,10 @@ href="#servers_user" class="configrule"> $cfg['Servers'][$i]['user']</a> and
 $cfg['Servers'][$i]['password']</a> fields (and as a result, anyone who can
 read your config.inc.php can discover your username and password).
         <br />
-        But you don't need to setup a &quot;controluser&quot; here: using the <a
-href="#servers_only_db" class="configrule">
-$cfg['Servers'][$i]['only_db']</a> might be enough.</li>
+        ただし、こうすると「管理ユーザ」を設定する必要はなくなります。あとは <a href="#servers_only_db"
+class="configrule">$cfg['Servers'][$i]['only_db']</a> を使えば十分かもしれません。</li>
     <li><a href="#faqmultiuser"><abbr title="Internet service provider">ISP</abbr>
-<abbr title="よくある質問">FAQ</abbr></a> セクションには設定ファイルを保護する方法が説明されています。</li>
+<abbr title="よくある質問">FAQ</abbr></a> の節には設定ファイルを保護する方法が説明されています。</li>
     <li>For additional security in this mode, you may wish to consider the Host
 authentication <a href="#servers_allowdeny_order" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['order']</a> and <a
@@ -517,7 +504,7 @@ since this link provides funding for phpMyAdmin.
 
 <p> <span class="important"><acronym title="Apple Macintosh">Mac</acronym>
 ユーザ向けの警告：</span> PHP は <acronym title="Apple Macintosh">Mac</acronym>
-の改行文字（「<tt>¥r</tt>」）を好まないようです。かならずテキストエディタで UNIX/Linux
+の改行文字（「<tt>¥r</tt>」）と相性がよくないようです。かならずテキストエディタで UNIX/Linux
 の改行文字（「<tt>¥n</tt>」）を使えるようにするオプションを選択してから修正したスクリプトを保存してください。</p>
 
 <p> <span class="important">設定にあたっての注意：</span> 設定可能なデータはほとんどが
@@ -529,7 +516,7 @@ href="#setup">クイックインストール</a>の項を参照して作成し�
 にあります。また、<i>config.footer.inc.php</i> と <i>config.header.inc.php</i>
 ファイルを修正すれば各ページの先頭と末尾にページ固有のコードを追加できます。</p>
 
-<dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] string</dt>
+<dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] 文字列</dt>
     <dd>ここには、phpMyAdminがインストールされているディレクトリの<abbr title="Uniform Resource
 Locator">URL</abbr>をフルパスで設定します。（例）<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>
 なお、ウェブサーバによってはこの <abbr title="Uniform Resource Locator">URL</abbr>
@@ -555,7 +542,7 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
     <dd>クッキー認証で mcrypt 拡張がなかった場合、警告を表示します。<tt>TRUE</tt>
 に設定しておくことで、このメッセージは表示されなくなります。</dd>
 
-    <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] integer</dt>
+    <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
     <dd>Show warning about incomplete translations on certain threshold.</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowArbitraryServer'] boolean</dt>
@@ -563,7 +550,7 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
 call phpMyAdmin inside a frame, and is a potential security hole allowing
 cross-frame scripting attacks.</dd>
 
-    <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] string</dt>
+    <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] 文字列</dt>
     <dd>「クッキー」認証方式は、パスワードを暗号化するために blowfish アルゴリズムを使用しています。<br />
         「クッキー」認証方式を利用する場合は、ここにお好みのランダムなパスフレーズを入力してください。このパスフレーズは blowfish
 アルゴリズムが内部的に利用するものです。ユーザがパスフレーズを入力するよう求められることはありません。このパラメータの文字数の上限はありません。<br /><br />
@@ -642,7 +629,7 @@ Protocol">HTTP</abbr>／クッキー認証モード（あるいは、phpMyAdmin 
 以降の「config」認証モード）を使う場合、<i>mysql.user（「Password」以外の全カラム）</i>、<i>mysql.db（全カラム）</i>、<i>mysql.tables_priv（「Grantor」、「Timestamp」以外の全カラム）</i>
 テーブルに <tt>SELECT</tt> 特権を持つ MySQL
 アカウントの情報を提供する必要があります。このアカウントはログイン時にどのデータベースを表示するかチェックするのに利用されます。<br />
-        詳細は<a href="#setup">インストールセクション</a>の「認証モードの使い方」をご覧ください。<br /><br />
+        詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。<br /><br />
 
         2.2.5 より前の phpMyAdmin では「stduser/stdpass」という名前でした。</dd>
 
@@ -676,7 +663,7 @@ href="#cfg_Servers_SignonURL" class="configrule">signon URL</a> to use this
 authentication method.</li>
         </ul>
 
-        詳細は<a href="#setup">インストールセクション</a>の「認証モードの使い方」をご覧ください。
+        詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
 	</dd>
     <dt id="servers_auth_http_realm">
     <span
@@ -696,7 +683,7 @@ will be used.
     <dt id="servers_auth_swekey_config">
     <span
 id="cfg_Servers_auth_swekey_config">$cfg['Servers'][$i]['auth_swekey_config']</span>
-string<br />
+文字列<br />
     </dt>
     <dd>
     The name of the file containing <a href="#swekey">Swekey</a> ids and login
@@ -767,7 +754,7 @@ pattern syntax</a> portion of the PHP reference manual.
         <br /><br />
 
         この文書の <a href="#linked-tables">phpMyAdmin
-の設定保存場所</a>のセクションをご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
+の設定保存場所</a>の節をご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
         <br /><br />
 
         インストールした phpMyAdmin のユーザがひとりの場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
@@ -2310,7 +2297,7 @@ avoid unintended performance problems in case of huge tables.</dd>
 <h3 id="transformationsintro">1. はじめに</h3>
 
 <p> 変換機能を有効にするには、<tt>column_info</tt> テーブルと、適切なディレクティブを設定する必要があります。手順については<a
-href="#config">「設定」セクション</a>をご覧ください。</p>
+href="#config">「設定」の章</a>をご覧ください。</p>
 
 <p> カラムごとに別々の変換機能を適用できます。変換機能は各カラムの内容を取得してから、選択された機能に定義されている規則に従って変換を行うためです。</p>
 
@@ -2658,7 +2645,7 @@ upload_max_filesize より大きい必要があるそうです。<br /> <br />
 <ul><li><a href="#cfg_UploadDir" class="configrule">$cfg['UploadDir']</a>
 機能をご覧ください。この機能を使うと、SCPやFTPといったお好みの転送法でファイルをサーバにアップロードできるようになります。ファイルをアップロードしたら、phpMyAdmin
 はその一時ディレクトリからファイルをインポートできるようになります。詳しくはこのドキュメントの<a
-href="#config">設定セクション</a>をご覧ください。</li>
+href="#config">「設定」の章</a>をご覧ください。</li>
     <li>（<a
 href="http://www.ozerov.de/bigdump.php">BigDump</a>のような）ユーティリティを利用してアップロードの前にファイルを分割する方法もあります。このユーティリティはもとより、サードパーティ製のアプリケーションは一切サポートできませんが、そういったものを利用して成功したユーザがいることは承知しています。</li>
     <li>シェル（コマンドライン）にアクセスできるのであれば、MySQL を利用して直接ファイルをインポートする方法もあります。その場合は MySQL
@@ -3243,8 +3230,9 @@ comments like this:</p>
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 ネストフォルダを使うと（<a href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>）、複数の階層を持つものがおかしな表示になることがあります？！</a></h4>
+    <a href="#faq3_5">3.5 ネストフォルダを使うと、複数の階層を持つものがおかしな表示になることがあります？！</a>(<a
+href="#cfg_LeftFrameTableSeparator"
+class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
 
 <p> ご注意ください。間に文字をはさまずに区切り文字を連続して使ったり、テーブル名の前後に区切り文字を使ってはいけないのです。どうしてもそうする必要があるなら、別の区切り文字（TableSeparator）を使うか、この機能を無効にすることを検討してください。</p>
 
@@ -3312,15 +3300,13 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 <h4 id="faq3_13">
     <a href="#faq3_13">3.13 <tt>USE</tt> の後にハイフンを含むデータベース名を入力するとエラーが出ます。</a></h4>
 <p>
-    我々が MySQL 5.1.49 で行ったテストでは、API は USE コマンドはこの構文を使用しないことを確認しています。
+    我々が MySQL 5.1.49 で行ったテストでは、API はそのような構文の USE コマンドを認めていないことを確認しています。
 </p>
 
 <h4 id="faq3_14">
-    <a href="#faq3_14">3.14 I am not able to browse a table when I don't have
-the right to SELECT one of the columns.</a></h4>
+    <a href="#faq3_14">3.14 カラムが1つでも正しく SELECT できないと、テーブルを参照することができません。</a></h4>
 <p>
-    This has been a known limitation of phpMyAdmin since the beginning and it's
-not likely to be solved in the future.
+    これは初期の頃から phpMyAdmin の制限として知られており、将来的に解決される見込みはありません。
 </p>
 
 
@@ -3405,7 +3391,7 @@ sake of efficiency.
 はユーザ全員が使えるセントラルコピーをセットアップできるようになりました。この機能の開発にあたってはありがたいことに NetCologne GmbH
 社がスポンサーになってくださいました。この機能を使うには、MySQL ユーザ管理機構が適切にセットアップされていること、phpMyAdmin は
 <abbr title="HyperText Transfer Protocol">HTTP</abbr>
-ないしクッキー認証を使うことが必要です。インストールセクションの「<abbr title="HyperText Transfer
+ないしクッキー認証を使うことが必要です。インストールの章の「<abbr title="HyperText Transfer
 Protocol">HTTP</abbr> 認証の使い方」をご覧ください。
 </p>
 
@@ -3448,7 +3434,7 @@ Protocol">HTTP</abbr> 認証ないしクッキー認証機能を使った方が�
     <a href="#faq4_4">4.4 <abbr title="HyperText Transfer Protocol">HTTP</abbr>
 認証を使うとかならず「Access denied（アクセスは拒否されました）」になります。</a></h4>
 
-<p> いくつかの理由が考えられます：</p>
+<p> いくつかの理由が考えられます。</p>
 
 <ul><li><a href="#cfg_Servers_controluser"
 class="configrule">$cfg['Servers'][$i]['controluser']</a> や <a
@@ -3469,20 +3455,17 @@ class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている�
 <h4 id="faq4_6">
     <a href="#faq4_6">4.6 どうすればホストベースの認証の追加指定を利用できますか。</a></h4>
 
-<p> If you have existing rules from an old .htaccess file, you can take them and
-add a username between the <tt>'deny'</tt>/<tt>'allow'</tt> and
-<tt>'from'</tt> strings. Using the username wildcard of <tt>'%'</tt> would
-be a major benefit here if your installation is suited to using it. Then you
-can just add those updated lines into the <a
+<p> 古い .htaccess ファイルに既存のルールがある場合は、それを取ってきて、<tt>「deny」</tt>／<tt>「allow」</tt> と
+<tt>「from」</tt> の文字列の間にユーザ名を加えてください。利用できるようにインストールしてあるなら、ユーザ名にワイルドカード
+<tt>「%」</tt> が使えるのでとても便利です。それが済んだら、あとは更新した行を <a
 href="#cfg_Servers_AllowDeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> 配列に加えるだけです。</p>
 
-<p> If you want a pre-made sample, you can try this fragment. It stops the
-'root' user from logging in from any networks other than the private network
-<abbr title="Internet Protocol">IP</abbr> blocks.</p>
+<p> できあいのサンプルがほしい場合は、下記をお試しください。これは「root」ユーザがプライベートネットワークの <abbr title="Internet
+Protocol">IP</abbr> ブロックに含まれないネットワークからログインするのを防ぐものです。</p>
 
 <pre>
-//block root from logging in except from the private networks
+//プライベートネットワーク以外からの root によるログインをブロックする
 $cfg['Servers'][$i]['AllowDeny']['order'] = 'deny,allow';
 $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
     'deny root from all',
@@ -3614,8 +3597,8 @@ title="operating system">OS</abbr> X：Safari ブラウザでは特殊文字が�
 
 <h4 id="faq5_13">
     <a href="#faq5_13">5.13 Internet Explorer 5.5 や 6 で <abbr title="HyperText
-Transfer Protocol">HTTP</abbr> 認証タイプを利用すると、2
-つのサーバを管理できなくなります：最初のサーバにログインして、別のサーバにログインするまではよいのですが、最初のサーバに戻ると、操作するたびにログインしなければならなくなるのです。</a></h4>
+Transfer Protocol">HTTP</abbr>
+認証タイプを利用すると、２つのサーバを管理できなくなります。最初のサーバにログインして、別のサーバにログインするまではよいのですが、最初のサーバに戻ると、操作するたびにログインしなければならなくなるのです。</a></h4>
 
 <p> これは Internet Explorer のバグです。ほかのブラウザではこのようなことは起こりません。</p>
 
@@ -3676,17 +3659,14 @@ title="structured query language">SQL</abbr> エラーを返します。</a></h4
 </p>
 
 <h4 id="faq6_2">
-    <a href="#faq6_2">6.2 テーブルを作るときに 2
-つのカラムでインデックスのチェックボックスをクリックしたのですが、phpMyAdmin はその 2
-つのカラムにひとつしかインデックスを生成してくれません。</a></h4>
+    <a href="#faq6_2">6.2 テーブルを作るときに２つのカラムでインデックスのチェックボックスをクリックしたのですが、phpMyAdmin
+はその２つのカラムに１つしかインデックスを生成してくれません。</a></h4>
 <p>
-    This is the way to create a multi-columns index. If you want two indexes,
-create the first one when creating the table, save, then display the table
-properties and click the Index link to create the other index.
+    これは、複数カラムのインデックスの作り方なのです。インデックスを２つ作りたいときは、テーブルを作成するときに最初のインデックスを作り、保存してから、テーブルのプロパティを表示し、インデックスのリンクをクリックして次のインデックスを作るようにします。
 </p>
 
 <h4 id="faq6_3">
-    <a href="#faq6_3">6.3 テーブルにヌルの値を挿入するにはどうすればよいのでしょう。</a></h4>
+    <a href="#faq6_3">6.3 テーブルに null 値を挿入するにはどうすればよいのでしょうか？</a></h4>
 <p>
     バージョン 2.2.3 以降、null にできるカラムにはそれぞれチェックボックスが用意されています。2.2.3
 より前は、カラムの値としてクォートなしで「null」と入力する必要がありました。バージョン 2.5.5 以降では、本当の null
@@ -3697,11 +3677,9 @@ properties and click the Index link to create the other index.
 <h4 id="faq6_4">
     <a href="#faq6_4">6.4 データベースやテーブルのバックアップはどうすればよいのでしょう。</a></h4>
 
-<p> Click on a database or table name in the left frame, the properties will be
-displayed.  Then on the menu, click &quot;Export&quot;, you can dump the
-structure, the data, or both. This will generate standard <abbr
-title="structured query language">SQL</abbr> statements that can be used to
-recreate your database/table.
+<p> 左フレームでデータベースまたはテーブル名をクリックします。プロパティが表示されますので、メニューの「エクスポート
+(Export)」をクリックします。構造、データ、あるいは構造とデータをダンプできるようになります。生成されるのは標準的な <abbr
+title="structured query language">SQL</abbr> 文ですので、データベース／テーブルを作り直すのに使えます。
     <br /><br />
     「ファイルに保存（Save as file）」を選択する必要も出てくることでしょう。「ファイルに保存」を選択すると、phpMyAdmin
 は生成されたダンプをパソコンなどの端末へ送信します。PHP の設定によっては、ダンプしたものを圧縮するオプションが表示されます。<a
@@ -3714,12 +3692,10 @@ href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
     <a href="#faq6_5">6.5
 どうすればダンプからデータベースやテーブルを復元（アップロード）できるのでしょう。どうすれば「.sql」ファイルを実行できるのでしょう。</a></h4>
 
-<p> Click on a database name in the left frame, the properties will be
-displayed. Select &quot;Import&quot; from the list of tabs in the
-right&#8211;hand frame (or &quot;<abbr title="structured query
-language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
-2.7.0). In the &quot;Location of the text file&quot; section, type in the
-path to your dump filename, or use the Browse button. Then click Go.
+<p> 左フレームでデータベース名をクリックします。プロパティが表示されるので、右フレームのタブ一覧から「インポート (Import)」（お使いの
+phpMyAdmin のバージョンが 2.7.0 より前の場合は「<abbr title="structured query
+language">SQL</abbr>」）を選択してください。「テキストファイルの位置 (Location of the text
+file)」セクションにダンプファイル名をタイプするか、選択 (Browse) ボタンでファイルを指定して、実行する (Go) をクリックします。
     <br /><br />
     バージョン 2.7.0 以降はインポートエンジンが書き直されたため、可能であればお使いの phpMyAdmin
 を最新のバージョンにアップグレードして新しいインポート機能をご利用ください。
@@ -3732,7 +3708,7 @@ path to your dump filename, or use the Browse button. Then click Go.
 
 <p> たとえば、persons、towns、countries というテーブルがすべて mydb
 というデータベースのなかにあるとします。<tt>pma_relation</tt>
-テーブルがない場合は設定セクションで説明されている通りに作ります。続いて、この例で使うテーブルを作ります：</p>
+テーブルがない場合は「設定」の章で説明されている通りに作ります。続いて、この例で使うテーブルを作ります。</p>
 
 <pre>
 CREATE TABLE REL_countries (
@@ -3789,7 +3765,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 <h4 id="faqdisplay">
     <a href="#faqdisplay">6.7 どうすれば「表示するカラム（display column）」機能を使えるのでしょう。</a></h4>
 <p>
-    前項の例に続いて、設定セクションで説明した pma_table_info を作ります。persons テーブルを表示して、town code ないし
+    前項の例に続いて、「設定」の章で説明した pma_table_info を作ります。persons テーブルを表示して、town code ないし
 country code の上にマウスを移動します。
     <br /><br />
     <a href="#faq6_21"><abbr title="よくある質問">FAQ</abbr> 6.21</a> もご覧ください。「表示するカラム
@@ -4058,7 +4034,7 @@ Excel, which works out of the box, but phpMyAdmin supports direct export to
 Microsoft Excel version 97 and newer.  For this to work, you need to set <a
 href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> to a place where
 the web server user can write (for example <tt>'./tmp'</tt>).</p>
-<p> UNIX ベースのシステムで一時ディレクトリを作成するにはこうします：</p>
+<p> UNIX ベースのシステムで一時ディレクトリを作成するには、以下のようにします。</p>
 
 <pre>
 cd phpMyAdmin
@@ -4080,10 +4056,10 @@ chmod o+rwx tmp
 href="http://blobstreaming.org">blobstreaming.org</a>. You need the
 following components:</p>
 <ul>
-    <li>PBMS BLOB Streaming Daemon for MySQL (0.5.15 or later)</li>
-    <li>Streaming enabled PBXT Storage engine for MySQL (1.0.11-6 or later)</li>
-    <li>PBMS Client Library for MySQL (0.5.15 or later)</li>
-    <li>PBMS PHP Extension for MySQL (0.1.1 or later)</li>
+    <li>MySQL 用の PBMS BLOB ストリーミングデーモン (0.5.15 以降)</li>
+    <li>ストリーミングが有効な MySQL 用の PBXT ストレージエンジン (1.0.11-6 以降)</li>
+    <li>MySQL 用の PBMS クライアントライブラリ (0.5.15 以降)</li>
+    <li>MySQL 用の PBMS PHP 拡張 (0.1.1 以降)</li>
 </ul>
 
 <p>Here are details about configuration and operation:</p>
@@ -4179,13 +4155,13 @@ href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart
 <h4 id="faq7_1">
     <a href="#faq7_1">7.1 バグを見つけました。どうすれば開発陣に伝えられますか？</a></h4>
 
-<p> Our Bug Tracker is located at <a
+<p> phpMyAdmin のバグトラッカーが <a
 href="http://sf.net/projects/phpmyadmin/">http://sf.net/projects/phpmyadmin/</a>
-under the Bugs section.<br /><br />
+の Bugs セクションにあります。<br /><br />
 
-    ただし、まずは見つけたバグをほかのユーザに話してみてください：<br />
-    <a href="https://sourceforge.net/projects/phpmyadmin/forums">
-https://sourceforge.net/projects/phpmyadmin/forums</a>.
+    ただし、まずは見つけたバグをほかのユーザに話してみてください。<br />
+    <a
+href="https://sourceforge.net/projects/phpmyadmin/forums">https://sourceforge.net/projects/phpmyadmin/forums</a>
 </p>
 
 <h4 id="faq7_2">
@@ -4210,15 +4186,14 @@ However there are some entities that need to be there: quotes, non-breakable
 spaces, ampersands, less than, greater than.
 </p>
 <p>
-    You can then put your translations, as a zip file to avoid losing special
-characters, on the sourceforge.net <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker.</a>
+    翻訳は sourceforge.net の<a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳トラッカー</a>に掲載できます。zip
+ファイルにして特殊文字が消えないようにしてください。
 </p>
 <p>
-    It would be a good idea to subscribe to the <a
+    <a
 href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmyadmin-translators</a>
-mailing list, because this is where we ask for translations of new messages.
+メーリングリストに参加するのも良いと思います。ここは私たちが新しいメッセージの翻訳を求める場所にもなっています。
 </p>
 
 <p>
@@ -4239,27 +4214,26 @@ tracker</a>.
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 phpMyAdmin の開発に協力したいのですが、どのように進めればよいでしょうか？</a></h4>
 
-<p> 新規の開発者はなるべく下記の手順にしたがってください：</p>
+<p> 新規の開発者は、なるべく下記の手順に従ってください。</p>
 
-<ol><li>アノニマス git から現在の git ツリーを取得します：<br />
+<ol><li>アノニマス git から現在の git ツリーを取得します。<br />
     <tt>git clone
 git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
     </li>
     <li>手を加えます。</li>
-    <li>generate patch with your changes: <tt>git diff &gt; xxx.diff</tt><br />
+    <li>「<tt>git diff &gt; xxx.diff</tt>」としてパッチを生成します。<br />
     </li>
-    <li>submit your patch via the <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">patch
-tracker of the phpMyAdmin project</a>.
+    <li><a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">phpMyAdmin
+プロジェクトのパッチトラッカー</a>を通してパッチを提出します。
     </li>
 </ol>
 
-<p>More details on git are available on <a
-href="http://wiki.phpmyadmin.net/pma/Git">our wiki</a>.</p>
+<p>git の詳細は、<a href="http://wiki.phpmyadmin.net/pma/Git">phpMyAdmin
+wiki</a>より入手できます。</p>
 
-<p> Write access to the repository is granted only to experienced developers who
-have already contributed something useful to phpMyAdmin.<br />
-    <a href="#developers">開発者向けのセクション</a>もご覧ください。</p>
+<p> リポジトリへの書き込みアクセス権は、今までに phpMyAdmin へ何らかの役立つ貢献してきて、経験を積んだ開発者にのみ付与されます。<br />
+    <a href="#developers">開発者向け情報の章</a>もご覧ください。</p>
 
 <h3 id="faqsecurity">セキュリティ</h3>
 
@@ -4364,13 +4338,13 @@ synchronized.
 
 
 <!-- DEVELOPERS -->
-<h2 id="developers">開発者向けの情報</h2>
+<h2 id="developers">開発者向け情報</h2>
 
 <p> phpMyAdmin
 はオープンソースですから、貢献してくださる方は歓迎します。これまでにもほかの方々が多くのすばらしい機能を書いてくださいました。みなさんにもできることはあります。phpMyAdmin
 を便利なツールにしていきましょう。</p>
 
-<p> ソースを提供してくださる方は下記の情報をお読みください：</p>
+<p> ソースを提供してくださる方は、下記の情報をお読みください。</p>
 
 <ul><li>All files include <i>libraries/header.inc.php</i> (layout),.
 <i>libraries/common.lib.php</i> (common functions) and
@@ -4380,20 +4354,18 @@ synchronized.
 <i>libraries</i> サブディレクトリに保存するライブラリに含めてもよいでしょう。</li>
     <li>当然ながら、コーディングスタイルはお好きなようになさってください。ただし、コードはできるだけシンプルにするようお願いします。初心者の方々は
 phpMyAdmin をアプリケーションのサンプルとして使っていますので。<br />
-        As far as possible, we want the scripts to be XHTML1.0 and CSS2 compliant on
-one hand, they fit the <a href="http://pear.php.net/"> <abbr title="PHP
-Extension and Application Repository">PEAR</abbr> coding standards</a> on
-the other hand. Please pay attention to this.</li>
-    <li>Please enable showing PHP errors and warnings by the <code><a
+        また、スクリプトはできるだけ XHTML1.0、CSS2 準拠にしたいと思っていますし、<a
+href="http://pear.php.net/"><abbr title="PHP Extension and Application
+Repository">PEAR</abbr> のコーディング基準</a>に合わせたいと思っています。ご配慮ください。</li>
+    <li><code><a
 href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
-configuration directive.</li>
+ディレクティブを設定して、PHP のエラー/警告の表示を有効にしてください。</li>
     <li>ファイルの命名規則にあわせるようにしてください。テーブル関連のものは <i>tbl_*.php</i>、データベース関連のコードは
 <i>db_*.php</i>、サーバ関連のツールは <i>server_*.php</i> などとなっています。</li>
-    <li>Please use gettext wrappers around all messages (<code>__('Some
-text')</code> or <code>_ngettext()</code> function).  To translate them, you
-need to call <code>scripts/update-po</code> script. To use translated
-messages, call <code>scripts/generate-mo</code>, which generates binary
-files read by Gettext.</li>
+    <li>全てのメッセージに対して gettext ラッパーを施してください(<code>__('Some text')</code> もしくは
+<code>_ngettext()</code> 関数)。それらを翻訳するには、<code>scripts/update-po</code>
+スクリプトを呼び出す必要があります。翻訳されたメッセージを使うには、<code>scripts/generate-mo</code>
+を呼び出します。Gettext によって読み込まれるバイナリファイルが生成されます。</li>
     <li>さらにお願いしてもよければ、ChangeLog にエントリを書いてください。</li>
     <li id="developersdbg">
         The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
@@ -4404,7 +4376,7 @@ configuration options for more information.<br />
         このソフトを、地球への再突入時に失われたスペースシャトルコロンビア号（STS-107）と、人類のために命を散らした勇敢な男女に捧げます。</li>
 </ul>
 
-<h2 id="copyright">コピーライト</h2>
+<h2 id="copyright">著作権</h2>
 
 <pre>
 Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
@@ -4440,68 +4412,67 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 
 <!-- CREDITS -->
-<h2 id="credits">著作権表示</h2>
+<h2 id="credits">貢献者一覧</h2>
 
-<h3>Credits, in chronological order</h3>
+<h3>貢献者一覧（年代順）</h3>
 
 <ul>
 
 <li>Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
 <ul>
-  <li>creator of the phpmyadmin project</li>
-  <li>maintainer from 1998 to summer 2000</li>
+  <li>phpmyadmin プロジェクトの創始者</li>
+  <li>1998 年から 2000 年夏までの管理者</li>
 </ul></li>
 
 <li>Marc Delisle &lt;marc_at_infomarc.info&gt;
 <ul>
-  <li>multi-language version</li>
-  <li>various fixes and improvements</li>
-  <li><abbr title="structured query language">SQL</abbr> analyser (most of it)</li>
-  <li>current project maintainer</li>
+  <li>多言語版</li>
+  <li>修正・改善多数</li>
+  <li><abbr title="structured query language">SQL</abbr> アナライザ（の大半）</li>
+  <li>現在のプロジェクト管理者</li>
 </ul></li>
 
 <li>Olivier M&uuml;ller &lt;om_at_omnis.ch&gt;
 <ul>
-  <li>started SourceForge phpMyAdmin project in March 2001</li>
-  <li>sync'ed different existing CVS trees with new features and bugfixes</li>
-  <li>multi-language improvements, dynamic language selection</li>
-  <li>current project maintainer</li>
-  <li>many bugfixes and improvements</li>
+  <li>2001 年 3 月に SourceForge phpMyAdmin プロジェクトを立ち上げ</li>
+  <li>既存のさまざまな CVS ツリーの同期をとり、新機能、バグフィックスを反映</li>
+  <li>多言語対応の改善。動的言語選択</li>
+  <li>現在のプロジェクト管理者</li>
+  <li>バグフィックス・改善多数</li>
 </ul></li>
 
 <li>Lo&iuml;c Chapeaux &lt;lolo_at_phpheaven.net&gt;
 <ul>
-  <li>rewrote and optimized javascript, DHTML and DOM stuff</li>
-  <li>rewrote the scripts so they fit the <abbr title="PHP Extension and
-Application Repository">PEAR</abbr> coding standards and generate XHTML1.0
-and CSS2 compliant codes</li>
-  <li>improved the language detection system</li>
-  <li>many bugfixes and improvements</li>
+  <li>javascript、DHTML、DOM の書き直し、最適化</li>
+  <li>スクリプトを書き直して <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> のコーディング基準にあわせ、XHTML1.0 と CSS2 準拠のコードを生成するようにした</li>
+  <li>言語検知システムの改善</li>
+  <li>バグフィックス・改善多数</li>
 </ul></li>
 
 <li>Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
 <ul>
-  <li>database maintenance controls</li>
-  <li>table type code</li>
-  <li>Host authentication <abbr title="Internet Protocol">IP</abbr> Allow/Deny</li>
-  <li>DB-based configuration (Not completed)</li>
-  <li><abbr title="structured query language">SQL</abbr> parser and pretty-printer</li>
-  <li><abbr title="structured query language">SQL</abbr> validator</li>
-  <li>many bugfixes and improvements</li>
+  <li>データベースのメンテナンスコントロール</li>
+  <li>テーブル種別コード</li>
+  <li>ホスト認証 <abbr title="Internet Protocol">IP</abbr> アドレスによる許可/拒否</li>
+  <li>DBベースの設定（未完）</li>
+  <li><abbr title="structured query language">SQL</abbr> パーサと書式整備機能</li>
+  <li><abbr title="structured query language">SQL</abbr> 検証機能</li>
+  <li>バグフィックス・改善多数</li>
 </ul></li>
 
 <li>Armel Fauveau &lt;armel.fauveau_at_globalis-ms.com&gt;
 <ul>
-  <li>bookmarks feature</li>
-  <li>multiple dump feature</li>
-  <li>gzip dump feature</li>
-  <li>zip dump feature</li>
+  <li>ブックマーク機能</li>
+  <li>複数ダンプ機能</li>
+  <li>gzip ダンプ機能</li>
+  <li>zip ダンプ機能</li>
 </ul></li>
 
 <li>Geert Lund &lt;glund_at_silversoft.dk&gt;
 <ul>
-  <li>various fixes</li>
-  <li>moderator of the phpMyAdmin former users forum at phpwizard.net</li>
+  <li>修正多数</li>
+  <li>phpwizard.net の旧 phpMyAdmin ユーザフォーラムのモデレータ</li>
 </ul></li>
 
 <li>Korakot Chaovavanich &lt;korakot_at_iname.com&gt;
@@ -4511,115 +4482,113 @@ and CSS2 compliant codes</li>
 
 <li>Pete Kelly &lt;webmaster_at_trafficg.com&gt;
 <ul>
-  <li>rewrote and fix dump code</li>
-  <li>bugfixes</li>
+  <li>ダンプコードの書き直しと修正</li>
+  <li>バグフィックス</li>
 </ul></li>
 
 <li>Steve Alberty &lt;alberty_at_neptunlabs.de&gt;
 <ul>
-  <li>rewrote dump code for PHP4</li>
-  <li>mySQL table statistics</li>
-  <li>bugfixes</li>
+  <li>PHP4 向けにダンプコードを書き直し</li>
+  <li>mySQL テーブル統計機能</li>
+  <li>バグフィックス</li>
 </ul></li>
 
 <li>Benjamin Gandon &lt;gandon_at_isia.cma.fr&gt;
 <ul>
-  <li>main author of the version 2.1.0.1</li>
-  <li>bugfixes</li>
+  <li>バージョン 2.1.0.1 の主著者</li>
+  <li>バグフィックス</li>
 </ul></li>
 
 <li>Alexander M. Turek &lt;me_at_derrabus.de&gt;
 <ul>
-  <li>MySQL 4.0 / 4.1 / 5.0 互換</li>
-  <li>abstract database interface (PMA_DBI) with MySQLi support</li>
-  <li>privileges administration</li>
-  <li><abbr title="Extensible Markup Language">XML</abbr> exports</li>
-  <li>various features and fixes</li>
-  <li>German language file updates</li>
+  <li>MySQL 4.0 / 4.1 / 5.0 との互換性</li>
+  <li>MySQLi サポートによる抽象データベースインタフェース（PMA_DBI）</li>
+  <li>特権管理</li>
+  <li><abbr title="Extensible Markup Language">XML</abbr> エクスポート</li>
+  <li>追加機能・修正多数</li>
+  <li>ドイツ語ファイルの更新</li>
 </ul></li>
 
 <li>Mike Beck &lt;mike.beck_at_web.de&gt;
 <ul>
-  <li>automatic joins in QBE</li>
-  <li>links column in printview</li>
+  <li>QBE における自動結合</li>
+  <li>印刷用表示（printview）における links カラム</li>
   <li>リレーションビュー</li>
 </ul></li>
 
 <li>Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
 <ul>
-  <li>enhanced index creation/display feature</li>
-  <li>feature to use a different charset for HTML than for MySQL</li>
-  <li>improvements of export feature</li>
-  <li>various features and fixes</li>
-  <li>Czech language file updates</li>
+  <li>インデックス作成／表示機能の強化</li>
+  <li>MySQL とは異なる HTML 文字セットを利用する機能</li>
+  <li>エクスポート機能の改善</li>
+  <li>追加機能・修正多数</li>
+  <li>チェコ語ファイルの更新</li>
 </ul></li>
 
 <li>Christophe Gesch&eacute; from the &quot;MySQL Form Generator for
 PHPMyAdmin&quot; (http://sf.net/projects/phpmysqlformgen/)
 <ul>
-  <li>suggested the patch for multiple table printviews</li>
+  <li>複数テーブルを印刷用表示（printview）するためのパッチを提案</li>
 </ul></li>
 
 <li>Garvin Hicking &lt;me_at_supergarv.de&gt;
 <ul>
-  <li>built the patch for vertical display of table rows</li>
-  <li>built the Javascript based Query window + <abbr title="structured query
-language">SQL</abbr> history</li>
-  <li>Improvement of column/db comments</li>
-  <li>(MIME)-Transformations for columns</li>
-  <li>Use custom alias names for Databases in left frame</li>
-  <li>hierarchical/nested table display</li>
-  <li><abbr title="Portable Document Format">PDF</abbr>-scratchboard for
-WYSIWYG-distribution of <abbr title="Portable Document Format">PDF</abbr>
-relations</li>
-  <li>new icon sets</li>
-  <li>vertical display of column properties page</li>
-  <li>some bugfixes, features, support, German language additions</li>
+  <li>テーブルの行を縦に表示するパッチの作成</li>
+  <li>Javascript ベースのクエリウィンドウ + <abbr title="structured query language">SQL</abbr>
+履歴の作成</li>
+  <li>カラム／データベースコメントの改善</li>
+  <li>（MIME）- カラム変換</li>
+  <li>左フレームのデータベースに独自の別名を利用</li>
+  <li>テーブルの階層／ネスト表示</li>
+  <li><abbr title="Portable Document Format">PDF</abbr> リレーションを WYSIWYG 配布するための
+<abbr title="Portable Document Format">PDF</abbr> スクラッチボード</li>
+  <li>新しいアイコンセット</li>
+  <li>カラムプロパティページの縦表示</li>
+  <li>バグフィックス、追加機能、サポート、ドイツ語の追加を少々</li>
 </ul></li>
 
 <li>Yukihiro Kawada &lt;kawada_at_den.fujifilm.co.jp&gt;
 <ul>
-  <li>japanese kanji encoding conversion feature</li>
+  <li>日本語漢字エンコード変換機能</li>
 </ul></li>
 
-<li>Piotr Roszatycki &lt;d3xter_at_users.sourceforge.net&gt; and Dan Wilson
+<li>Piotr Roszatycki &lt;d3xter_at_users.sourceforge.net&gt; および Dan Wilson
 <ul>
   <li>クッキー認証モード</li>
 </ul></li>
 
 <li>Axel Sander &lt;n8falke_at_users.sourceforge.net&gt;
 <ul>
-  <li>table relation-links feature</li>
+  <li>テーブルリレーションリンク機能</li>
 </ul></li>
 
 <li>Maxime Delorme &lt;delorme.maxime_at_free.fr&gt;
 <ul>
-  <li><abbr title="Portable Document Format">PDF</abbr> schema output, thanks also
-to Olivier Plathey for the &quot;FPDF&quot; library (see <a
-href="http://www.fpdf.org/">http://www.fpdf.org/</a>) and Steven Wittens for
-the &quot;UFPDF&quot; library (see <a
-href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
+  <li><abbr title="Portable Document Format">PDF</abbr> スキーマ出力。Olivier Plathey
+の「FPDF」ライブラリ（→ <a href="http://www.fpdf.org/">http://www.fpdf.org/</a>）と
+Steven Wittens の「UFPDF」ライブラリ（→ <a
+href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感謝。</li>
 </ul></li>
 
 <li>Olof Edlund &lt;olof.edlund_at_upright.se&gt;
 <ul>
-  <li><abbr title="structured query language">SQL</abbr> validator server</li>
+  <li><abbr title="structured query language">SQL</abbr> 検証サーバ</li>
 </ul></li>
 
 <li>Ivan R. Lanin &lt;ivanlanin_at_users.sourceforge.net&gt;
 <ul>
-  <li>phpMyAdmin logo (until June 2004)</li>
+  <li>phpMyAdmin ロゴ（2004 年 6 月まで）</li>
 </ul></li>
 
 <li>Mike Cochrane &lt;mike_at_graftonhall.co.nz&gt;
 <ul>
-  <li>blowfish library from the Horde project</li>
+  <li>Horde プロジェクトより、blowfish ライブラリ</li>
 </ul></li>
 
 <li>Marcel Tschopp &lt;ne0x_at_users.sourceforge.net&gt;
 <ul>
   <li>mysqli サポート</li>
-  <li>many bugfixes and improvements</li>
+  <li>バグフィックス・改善多数</li>
 </ul></li>
 
 <li>Nicola Asuni (Tecnick.com)
@@ -4629,19 +4598,19 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
 <ul>
-  <li>redesign for 2.6.0</li>
-  <li>phpMyAdmin sailboat logo (June 2004)</li>
+  <li>2.6.0 向けの再デザイン</li>
+  <li>phpMyAdmin の帆船ロゴ（2004 年 6 月）</li>
 </ul></li>
 
 <li>Mathias Landh&auml;u&szlig;er
 <ul>
-  <li>Representation at conferences</li>
+  <li>カンファレンスでの発表</li>
 </ul></li>
 
 <li>Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
 <ul>
-  <li>interface improvements</li>
-  <li>various bugfixes</li>
+  <li>インタフェースの改善</li>
+  <li>バグフィックス多数</li>
 </ul></li>
 
 <li>Ivan A Kirillov
@@ -4716,8 +4685,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 </ul>
 
 <p>
-And also to the following people who have contributed minor changes,
-enhancements, bugfixes or support for a new language since version 2.1.0:
+その他、バージョン 2.1.0 以降、細々とした修正、強化、バグフィックス、新規言語サポート等をしてくださった方々。
 </p>
 
 <p>
@@ -4737,48 +4705,41 @@ Zigmantas, &quot;Manuzhai&quot;.
 <h3>Original Credits of Version 2.1.0</h3>
 
 <p>
-    This work is based on Peter Kuppelwieser's MySQL-Webadmin. It was his idea
-to create a web-based interface to MySQL using PHP3. Although I have not
-used any of his source-code, there are some concepts I've borrowed from
-him. phpMyAdmin was created because Peter told me he wasn't going to further
-develop his (great) tool.
+    このソフトのベースとなったのは Peter Kuppelwieser の MySQL-Webadmin です。PHP3 を使ってウェブベースの
+MySQL
+インタフェースを作るというのは元々彼のアイデアだったのです。私も、彼のソースコードはいっさい利用していませんが、いくつかのコンセプトはお借りしました。phpMyAdmin
+を作ったのは、彼がもうその（偉大な）ツールの開発を続けるつもりがないと言ったからです。
 </p>
 <p>
-    Thanks go to
+    以下の方々に感謝します。
 </p>
 <ul>
-  <li>Amalesh Kempf &lt;ak-lsml_at_living-source.com&gt; who contributed the code
-for the check when dropping a table or database. He also suggested that you
-should be able to specify the primary key on tbl_create.php3. To version
-1.1.1 he contributed the ldi_*.php3-set (Import text-files) as well as a
-bug-report. Plus many smaller improvements.
+  <li>Amalesh Kempf
+<ak-lsml_at_living-source.com>。テーブルやデータベースを削除するときのチェックコードを提供してくださいました。また、tbl_create.php3
+にプライマリキーを指定できるようにしたらどうかと薦めてくださったのも彼です。バージョン 1.1.1
+にはバグレポートだけでなくldi_*.php3-set（テキストファイルのインポート）も提供してくださいました。小さな改善も多数いただいています。
   </li>
-  <li>Jan Legenhausen &lt;jan_at_nrw.net&gt;: He made many of the changes that
-were introduced in 1.3.0 (including quite significant ones like the
-authentication). For 1.4.1 he enhanced the table-dump feature. Plus
-bug-fixes and help.
+  <li>Jan Legenhausen <jan_at_nrw.net>。1.3.0
+で導入された変更点の大部分を作ってくださいました（特に重要なものとしては認証があります）。1.4.1
+ではテーブルダンプ機能を増強してくださいました。バグフィックスや援助も多数いただいています。
   </li>
-  <li>Marc Delisle &lt;DelislMa_at_CollegeSherbrooke.qc.ca&gt; made phpMyAdmin
-language-independent by outsourcing the strings to a separate file. He also
-contributed the French translation.
+  <li>Marc Delisle <DelislMa_at_CollegeSherbrooke.qc.ca>。文字列を別ファイルにアウトソースすることで
+phpMyAdmin を言語に依存しないものにしてくださいました。フランス語への翻訳もされています。
   </li>
-  <li>Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt; who contributed
-tbl_select.php3, a feature to display only some columns from a table.
+  <li>Alexandr Bravo <abravo_at_hq.admiral.ru>。tbl_select.php3
+を提供してくださいました。これはテーブルのいくつかのフィールドのみを表示する機能です。
   </li>
-  <li>Chris Jackson &lt;chrisj_at_ctel.net&gt; added support for MySQL functions
-in tbl_change.php3. He also added the &quot;Query by Example&quot; feature
-in 2.0.
+  <li>Chris Jackson <chrisj_at_ctel.net>。tbl_change.php3 に MySQL
+関数のサポートを追加してくださいました。2.0 では「Query by Example」機能も追加してくださっています。
   </li>
-  <li>Dave Walton &lt;walton_at_nordicdms.com&gt; added support for multiple
-servers and is a regular contributor for bug-fixes.
+  <li>Dave Walton
+<walton_at_nordicdms.com>。複数サーバサポートを追加してくださいました。バグフィックスをくださる常連でもあります。
   </li>
-  <li>Gabriel Ash &lt;ga244_at_is8.nyu.edu&gt; contributed the random access
-features for 2.0.6.
+  <li>Gabriel Ash <ga244_at_is8.nyu.edu>。2.0.6 のランダムアクセス機能を提供してくださいました
   </li>
 </ul>
 <p>
-    The following people have contributed minor changes, enhancements, bugfixes
-or support for a new language:
+    細々とした修正、強化、バグフィックス、新規言語サポート等をしてくださった方々。
 </p>
 <p>
     Jim Kraai, Jordi Bruguera, Miquel Obrador, Geert Lund, Thomas Kleemann,
@@ -4787,8 +4748,7 @@ Kettler, Joe Pruett, Renato Lins, Mark Kronsbein, Jannis Hermanns,
 G. Wieggers.
 </p>
 <p>
-    And thanks to everyone else who sent me email with suggestions, bug-reports
-and or just some feedback.
+    また、提案、バグレポート、単なる感想など、私にメールをくださったすべての方々に感謝いたします。
 </p>
 
 <p>
