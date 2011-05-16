@@ -45,7 +45,7 @@ class="myadmin">MyAdmin</span></a> 3.5.0-dev ドキュメント
     <li><a href="Documentation.html#developers">開発者向け情報</a></li>
     <li><a href="Documentation.html#copyright">著作権</a></li>
     <li><a href="Documentation.html#credits">貢献者一覧</a></li>
-    <li><a href="Documentation.html#glossary">Glossary</a></li>
+    <li><a href="Documentation.html#glossary">用語集</a></li>
 </ul>
 
 <div id="body">
@@ -202,7 +202,7 @@ StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしま
 <abbr title="よくある質問">FAQ</abbr> 4.2</a> と <a href="#faq1_26"><abbr
 title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
     <li>まず最初に、インストールを設定する必要があります。やり方は2つあります。1つは、ユーザーが <tt>config.inc.php</tt>
-を手で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
+を手動で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
 を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法でもあります。
         <ul><li>手動でファイルを作成するには、単純にテキストエディタを使用して <tt>config.inc.php</tt> ファイルを phpMyAdmin
 のメイン（トップレベル）ディレクトリ（ここには <tt>index.php</tt>
@@ -456,8 +456,8 @@ read your config.inc.php can discover your username and password).
         <br />
         ただし、こうすると「管理ユーザ」を設定する必要はなくなります。あとは <a href="#servers_only_db"
 class="configrule">$cfg['Servers'][$i]['only_db']</a> を使えば十分かもしれません。</li>
-    <li><a href="#faqmultiuser"><abbr title="Internet service provider">ISP</abbr>
-<abbr title="よくある質問">FAQ</abbr></a> の節には設定ファイルを保護する方法が説明されています。</li>
+    <li><a href="#faqmultiuser"><abbr title="インターネット・サービス・プロバイダ">ISP</abbr> <abbr
+title="よくある質問">FAQ</abbr></a> の節には設定ファイルを保護する方法が説明されています。</li>
     <li>For additional security in this mode, you may wish to consider the Host
 authentication <a href="#servers_allowdeny_order" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['order']</a> and <a
@@ -568,7 +568,7 @@ href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
 から該当ブロックを丸ごと、あるいは必要な部分のみコピーしてください（すべての設定を定義する必要はありません。必要な部分のみ変更してください）。</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] 文字列</dt>
-    <dd>$i 番目の MySQL サーバのホスト名ないし <abbr title="Internet Protocol">IP</abbr>
+    <dd>$i 番目の MySQL サーバのホスト名ないし <abbr title="インターネット・プロトコル">IP</abbr>
 アドレスが入ります。（例）localhost</dd>
 
     <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] 文字列</dt>
@@ -763,22 +763,9 @@ phpMyAdmin の設定保存場所を格納するセントラルデータベース
 id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
 文字列
     </dt>
-    <dd>Since release 2.2.0 phpMyAdmin allows users to bookmark queries. This can be
-useful for queries you often run.<br /><br />
+    <dd>リリース 2.2.0 以降の phpMyAdmin ではブックマーククエリを利用できます。よく利用するクエリがある場合は便利です。<br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['bookmarktable']</tt> にテーブル名を入力します。</li>
         </ul>
@@ -787,40 +774,25 @@ Documentation_ja.html:570  #-#-#-#-#
     <dt id="relation">
         <span id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span> 文字列
     </dt>
-    <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
-column is a key in another table (a foreign key). phpMyAdmin currently uses
-this to
+    <dd>リリース 2.2.4
+以降、専用の「リレーション」テーブルにどのカラムが別のテーブルのキー（外部キー）になっているか記述することができるようになりました。phpMyAdmin
+は現在この機能を次のような用途で使っています。
         <ul><li>マスタテーブルを閲覧しているときに、外部テーブルを指し示すデータ値をクリックできるようにします。</li>
-            <li>display in an optional tool-tip the &quot;display column&quot; when browsing
-the master table, if you move the mouse to a column containing a foreign key
-(use also the 'table_info' table);<br />
+            <li>マスタテーブルを閲覧しているときにマウスを外部キーが含まれるカラムに移動すると、「表示するカラム」というオプションで指定されたツールチップを表示します（「table_info」テーブルも使用されます）。<br />
                 (<a href="#faqdisplay"><abbr title="よくある質問">FAQ</abbr> 6.7</a>参照)</li>
-            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
-value and &quot;display column&quot; are shown)<br />
+            <li>修正／挿入モードでは、使用できる外部キーをドロップダウンリストで表示します（キーの値と「表示するカラム」が表示されます）。<br />
                 (<a href="#faq6_21"><abbr title="よくある質問">FAQ</abbr> 6.21</a>参照)</li>
             <li>テーブルのプロパティページでは、記載されているキーごとに参照の整合性をチェックする（リンクの切れた外部キーを表示する）リンクを表示します。
             </li>
             <li>query-by-example では、自動結合を作成します（<a href="#faq6_6"><abbr
 title="よくある質問">FAQ</abbr> 6.6</a>参照）</li>
-            <li>enable you to get a <abbr title="Portable Document Format">PDF</abbr> schema
-of your database (also uses the table_coords table).</li>
+            <li>データベースの <abbr title="Portable Document Format">PDF</abbr>
+スキーマを取得できるようにします（table_coords テーブルも使用されます）。</li>
         </ul>
 
         キーは数値でも文字でも可です。<br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['relation']</tt> にリレーションテーブル名を入れます。</li>
@@ -869,19 +841,7 @@ Format">PDF</abbr> schema output).<br /><br />
 
         また、「リレーション」機能を使っていなければなりません。<br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['table_coords']</tt> と
@@ -912,19 +872,7 @@ href="#transformations">「変換機能」</a>をご覧ください。MIME 変�
 テーブルに「mimetype」、「transformation」、「transformation_options」というカラムを新たに付け加える必要があります。
         <br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['column_info']</tt>
 にテーブル名を入れます。（例：'pma_column_info'）</li>
@@ -960,19 +908,7 @@ to the maximum amount.<br /><br />
 
         クエリの履歴を利用できるのはブラウザの JavaScript が有効になっている場合のみです。<br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['history']</tt> にテーブル名を入れます。（例：'pma_history'）
@@ -1006,19 +942,7 @@ a list of names separated by ','.  In addition you can export the (filtered)
 report to a file or to a temporary database.
         <br/><br/>
         
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
@@ -1111,19 +1035,7 @@ users can still personalize phpMyAdmin, but settings will be saved in
 browser's local storage, or, it is is unavailable, until the end of session.
         <br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
@@ -1140,19 +1052,7 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 visually manage the relations.
         <br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:432  #-#-#-#-#
-この機能を有効にするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:515  #-#-#-#-#
-この機能を利用するには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
-#-#-#-#-#  Documentation_ja.html:472 Documentation_ja.html:537
-Documentation_ja.html:570  #-#-#-#-#
-この機能を利用できるようにするには、
+        この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['designer_coords']</tt>
@@ -1191,8 +1091,7 @@ anonymous (blank) user is defined.
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
 文字列
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authorization is disabled.<br /><br />
+    <dd>規則の適用順が空の場合、<abbr title="インターネット・プロトコル">IP</abbr> 認証は無効になります。<br /><br />
 
         If your rule order is set to <tt>'deny,allow'</tt> then the system applies
 all deny rules followed by allow rules. Access is allowed by default. Any
@@ -2782,7 +2681,7 @@ href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a>
 
 <p> Apache の設定によっては PHP が .php ファイルの解釈を間違ってしまうことがあります。</p>
 
-<p> この問題が起こるのは、下記のように 2 組の異なった（矛盾をきたす）ディレクティブを利用しているためです：</p>
+<p> この問題が起こるのは、下記のように２組の異なった（矛盾をきたす）ディレクティブを利用しているためです。</p>
 
 <pre>
 SetOutputFilter PHP
@@ -2795,7 +2694,7 @@ SetInputFilter PHP
 
 <p> 私たちが見た例の場合、一方のディレクティブは <tt>/etc/httpd/conf/httpd.conf</tt> に、もう一方のディレクティブは
 <tt>/etc/httpd/conf/addon-modules/php.conf</tt> に入っていました。<br />
-    <tt>AddType</tt> を使う方がおすすめですので、最初のディレクティブはコメントアウトして、Apache を再起動してください：</p>
+    <tt>AddType</tt> を使う方がおすすめですので、最初のディレクティブはコメントアウトして、Apache を再起動してください。</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -3371,10 +3270,10 @@ sake of efficiency.
 
 
 <!-- End: Import type-detection limitations -->
-<h3 id="faqmultiuser"><abbr title="Internet service provider">ISP</abbr>、マルチユーザ用インストール</h3>
+<h3 id="faqmultiuser"><abbr title="インターネット・サービス・プロバイダ">ISP</abbr>、マルチユーザ用インストール</h3>
 
 <h4 id="faq4_1">
-    <a href="#faq4_1">4.1 当方は <abbr title="Internet service provider">ISP</abbr>
+    <a href="#faq4_1">4.1 当方は <abbr title="インターネット・サービス・プロバイダ">ISP</abbr>
 なのですが、phpMyAdmin
 はセントラルコピーをひとつセットアップすればよいのでしょうか。それともお客様ひとりひとりにインストールする必要があるのでしょうか。</a></h4>
 <p>
@@ -3452,8 +3351,8 @@ class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている�
 href="#cfg_Servers_AllowDeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> 配列に加えるだけです。</p>
 
-<p> できあいのサンプルがほしい場合は、下記をお試しください。これは「root」ユーザがプライベートネットワークの <abbr title="Internet
-Protocol">IP</abbr> ブロックに含まれないネットワークからログインするのを防ぐものです。</p>
+<p> できあいのサンプルがほしい場合は、下記をお試しください。これは「root」ユーザがプライベートネットワークの <abbr
+title="インターネット・プロトコル">IP</abbr> ブロックに含まれないネットワークからログインするのを防ぐものです。</p>
 
 <pre>
 //プライベートネットワーク以外からの root によるログインをブロックする
@@ -3474,8 +3373,8 @@ $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
 Locator">URL</abbr> が <a href="#cfg_PmaAbsoluteUri"
 class="configrule">$cfg['PmaAbsoluteUri']</a> に設定されている <abbr title="Uniform
 Resource Locator">URL</abbr>
-と異なるためです。たとえば、「www」が抜けているとか、設定ファイルではドメイン名で登録してあるのに <abbr title="Internet
-Protocol">IP</abbr> アドレスを入力した場合がそうです。</p>
+と異なるためです。たとえば、「www」が抜けているとか、設定ファイルではドメイン名で登録してあるのに <abbr
+title="インターネット・プロトコル">IP</abbr> アドレスを入力した場合がそうです。</p>
 
 <h4 id="faq4_8">
     <a href="#faq4_8">4.8 phpMyAdmin スタートページで使うことができるパラメータはどれですか？</a></h4>
@@ -3610,9 +3509,8 @@ denied）」という Javascript のエラーが出ます。あるいは、Windo
 
 <p> 以下の点を確認してください。</p>
     <ul><li>たぶん <tt>config.inc.php</tt> の <tt>PmaAbsoluteUri</tt> の設定を <abbr
-title="Internet Protocol">IP</abbr>  アドレスに設定しているのに ドメイン名を含む <abbr
-title="Uniform Resource Locator">URL</abbr> で phpMyAdmin
-を起動しようとしている、あるいはその逆なのでは？</li>
+title="インターネット・プロトコル">IP</abbr>  アドレスに設定しているのに ドメイン名を含む <abbr title="Uniform
+Resource Locator">URL</abbr> で phpMyAdmin を起動しようとしている、あるいはその逆なのでは？</li>
         <li>IE や Microsoft Security Center のセキュリティ設定が高すぎるためにスクリプトが実行できなくなっているのでは？</li>
         <li>Windows Firewall が Apache と MySQL をブロックしているのでは？　「in」「out」双方で <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> ポート（80ないし443）と MySQL ポート（通常は
@@ -4353,8 +4251,8 @@ href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
 ディレクティブを設定して、PHP のエラー/警告の表示を有効にしてください。</li>
     <li>ファイルの命名規則にあわせるようにしてください。テーブル関連のものは <i>tbl_*.php</i>、データベース関連のコードは
 <i>db_*.php</i>、サーバ関連のツールは <i>server_*.php</i> などとなっています。</li>
-    <li>全てのメッセージに対して gettext ラッパーを施してください(<code>__('Some text')</code> もしくは
-<code>_ngettext()</code> 関数)。それらを翻訳するには、<code>scripts/update-po</code>
+    <li>全てのメッセージに対して gettext ラッパーを施してください（<code>__('Some text')</code> もしくは
+<code>_ngettext()</code> 関数）。それらを翻訳するには、<code>scripts/update-po</code>
 スクリプトを呼び出す必要があります。翻訳されたメッセージを使うには、<code>scripts/generate-mo</code>
 を呼び出します。Gettext によって読み込まれるバイナリファイルが生成されます。</li>
     <li>さらにお願いしてもよければ、ChangeLog にエントリを書いてください。</li>
@@ -4362,8 +4260,7 @@ href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
         The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
 now supported by phpMyAdmin for developers to better debug and profile their
 code.<br />
-        Please see the <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a>
-configuration options for more information.<br />
+        詳細は <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a> 設定オプションをご覧ください。<br />
         このソフトを、地球への再突入時に失われたスペースシャトルコロンビア号（STS-107）と、人類のために命を散らした勇敢な男女に捧げます。</li>
 </ul>
 
@@ -4379,7 +4276,7 @@ Copyright (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [check <a href="#credits">credits</a> for more details]
+                        [ 詳細は<a href="#credits">貢献者一覧</a>を確認してください ]
 </pre>
 
 <p>
@@ -4445,7 +4342,7 @@ Repository">PEAR</abbr> のコーディング基準にあわせ、XHTML1.0 と C
 <ul>
   <li>データベースのメンテナンスコントロール</li>
   <li>テーブル種別コード</li>
-  <li>ホスト認証 <abbr title="Internet Protocol">IP</abbr> アドレスによる許可/拒否</li>
+  <li>ホスト認証 <abbr title="インターネット・プロトコル">IP</abbr> アドレスによる許可/拒否</li>
   <li>DBベースの設定（未完）</li>
   <li><abbr title="structured query language">SQL</abbr> パーサと書式整備機能</li>
   <li><abbr title="structured query language">SQL</abbr> 検証機能</li>
@@ -4747,7 +4644,7 @@ This translation was brought to you by various translators on <a
 href="https://l10n.cihar.com/projects/pmadoc/">translation server</a>. They
 should have written their names here.
 </p>
-<h2 id="glossary">Glossary</h2>
+<h2 id="glossary">用語集</h2>
 
 <p> From Wikipedia, the free encyclopedia</p>
 
@@ -4778,16 +4675,17 @@ table.</li>
     <li><a href="http://www.wikipedia.org/wiki/HTTP_cookie">Cookie</a> - a packet of
 information sent by a server to a World Wide Web browser and then sent back
 by the browser each time it accesses that server.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Comma-separated_values">CSV</a> -
-Comma-separated values</li>
-    <li>DB - look at <a href="#database">Database</a>.</li>
-    <li><a id="database" href="http://www.wikipedia.org/wiki/Database">database</a>
-- an organized collection of data.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Comma-Separated_Values">CSV</a> -
+カンマ区切り (Comma-separated values)</li>
+    <li>DB - →<a href="#database">データベース (Database)</a></li>
+    <li><a id="database"
+href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+- 系統だったデータの集まり</li>
     <li>Engine - look at <a href="#glossar_storage_engine">Storage Engines</a>.</li>
     <li><a href="http://www.wikipedia.org/wiki/extension">extension</a> - a PHP
 module that extends PHP with additional functionality.</li>
-    <li><a href="http://www.wikipedia.org/wiki/FAQ">FAQ (Frequently Asked
-Questions)</a> - a list of commonly asked question and there answers.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/FAQ">FAQ（よくある質問）</a> -
+よく訊かれる質問とその答えの一覧</li>
     <li><a
 href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">Field</a>
 - one part of divided data/columns.</li>
@@ -4802,38 +4700,39 @@ dynamically manipulating images.</li>
     <li>GD2 - look at <a href="#gd">GD Graphics Library</a>.</li>
     <li><a href="http://www.wikipedia.org/wiki/Gzip">gzip</a> - gzip is short for
 GNU zip, a GNU free software file compression program.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Host">host</a> - any machine
-connected to a computer network, a node that has a hostname.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Hostname">hostname</a> - the unique
-name by which a network attached device is known on a network.</li>
-    <li><a href="http://www.wikipedia.org/wiki/HyperText_Transfer_Protocol">HTTP
-(HyperText Transfer Protocol)</a> - the primary method used to transfer or
-convey information on the World Wide Web.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF">ホスト</a>
+- コンピュータネットワークに接続された任意のマシンのこと。ホスト名を持っているノード。</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E5%90%8D">ホスト名</a>
+- 接続されたデバイスのネットワーク上における一意の名前</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP
+(HyperText Transfer Protocol)</a> - World Wide Web
+上で情報を転送したり伝えたりするために使用される主な方法</li>
     <li><a href="http://www.wikipedia.org/wiki/Https:_URI_scheme">https</a> - a
 <abbr title="HyperText Transfer Protocol">HTTP</abbr>-connection with
 additional security measures.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Internet_Information_Services">IIS
-(Internet Information Services)</a> - a set of Internet-based services for
-servers using Microsoft Windows.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Internet_Information_Services">IIS
+(Internet Information Services)</a> - Microsoft Windows
+を使用しているサーバ用のインターネット基礎サービスのセット</li>
     <li><a id="glossar_index"
-href="http://www.wikipedia.org/wiki/Index_%28database%29">Index</a> - a
-feature that allows quick access to the rows in a table.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Internet_Protocol">IP (Internet
-Protocol)</a> - a data-oriented protocol used by source and destination
-hosts for communicating data across a packet-switched internetwork.</li>
-    <li><a href="http://www.wikipedia.org/wiki/IP_Address">IP Address</a> - a unique
-number that devices use in order to identify and communicate with each other
-on a network utilizing the Internet Protocol standard.</li>
+href="http://ja.wikipedia.org/wiki/%E7%B4%A2%E5%BC%95_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">インデックス</a>
+- テーブル内の行への迅速なアクセスを可能にする機能</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/Internet_Protocol">IP（インターネット・プロトコル）</a>
+- パケット交換コンピュータネットワーク間でデータを通信するための、送信元と宛先のホストで使用されるデータ形式の規定</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/IP%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9">IP
+アドレス</a> - 標準的なインターネット・プロトコルを利用して、ネットワーク上で相互に識別し通信するデバイスに使用される一意な番号</li>
     <li><a href="http://www.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
 Application Programming Interface)</a> - the API of Internet Information
 Services (IIS).</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (Internet service
-provider)</a> - a business or organization that offers users access to the
-Internet and related services.</li>
-    <li><a id="jpeg" href="http://www.wikipedia.org/wiki/JPEG">JPEG</a> - a most
-commonly used standard method of lossy compression for photographic images.</li>
-    <li>JPG - look at <a href="#jpeg">JPEG</a>.</li>
-    <li>Key - look at <a href="#glossar_index">index</a>.</li>
+    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP（インターネット・サービス・プロバイダ）</a> -
+インターネット関連サービスへのユーザアクセスを提供している企業や組織</li>
+    <li><a id="jpeg" href="http://ja.wikipedia.org/wiki/JPEG">JPEG</a> -
+写真画像の非可逆圧縮に使われる最も一般的で標準的な方法</li>
+    <li>JPG - → <a href="#jpeg">JPEG</a></li>
+    <li>キー - →<a href="#glossar_index">インデックス</a></li>
     <li><a
 href="http://www.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><big>E</big></sub>X</a>
 - a document preparation system for the T<sub>E</sub>X typesetting program.</li>
@@ -4855,9 +4754,8 @@ extension for the Apache Webserver.</li>
     <li><a href="http://www.wikipedia.org/wiki/MySQL">MySQL</a> - a multithreaded,
 multi-user, SQL (Structured Query Language) Database Management System
 (DBMS).</li>
-    <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP
-拡張モジュール。</li>
-    <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール。</li>
+    <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP 拡張モジュール</li>
+    <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://www.wikipedia.org/wiki/OpenDocument">OpenDocument</a> - open
 standard for office documents.</li>
     <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating
@@ -4868,16 +4766,17 @@ system">OS</abbr> X</a>.</li>
 (Portable Document Format)</a> - a file format developed by Adobe Systems
 for representing two dimensional documents in a device independent and
 resolution independent format.</li>
-    <li><a href="http://pear.php.net/">PEAR</a> - the PHP Extension and Application
-Repository.</li>
+    <li><a href="http://pear.php.net/">PEAR</a> - PHP の拡張とアプリケーションのパッケージ (PHP
+Extension and Application Repository)</li>
     <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions)</a>
-- the perl-compatible regular expression functions for PHP</li>
+- Perl 互換の PHP 正規表現関数</li>
     <li><a href="http://www.wikipedia.org/wiki/PHP">PHP</a> - short for "PHP:
 Hypertext Preprocessor", is an open-source, reflective programming language
 used mainly for developing server-side applications and dynamic web content,
 and more recently, a broader range of software applications.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Port_%28computing%29">port</a> - a
-connection through which data is sent and received.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%88#port">ポート</a>
+- これを介してデータが送受信される</li>
     <li><a href="http://www.wikipedia.org/wiki/Request_for_Comments">RFC</a> -
 Request for Comments (RFC) documents are a series of memoranda encompassing
 new research, innovations, and methodologies applicable to Internet
@@ -4893,8 +4792,9 @@ network.</li>
     <li><a id="glossar_storage_engine"
 href="http://dev.mysql.com/doc/en/storage-engines.html">Storage Engines</a>
 - handlers for different table types</li>
-    <li><a href="http://www.wikipedia.org/wiki/Socket#Computer_sockets">socket</a> -
-a form of inter-process communication.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88_%28BSD%29">ソケット</a>
+- プロセス間の通信形式</li>
     <li><a href="http://www.wikipedia.org/wiki/Secure_Sockets_Layer">SSL (Secure
 Sockets Layer)</a> - a cryptographic protocol which provides secure
 communication on the Internet.</li>
@@ -4922,8 +4822,9 @@ serving them Web pages.</li>
 Language)</a> - a W3C-recommended general-purpose markup language for
 creating special-purpose markup languages, capable of describing many
 different kinds of data.</li>
-    <li><a href="http://www.wikipedia.org/wiki/ZIP_%28file_format%29">ZIP</a> - a
-popular data compression and archival format.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/ZIP_%28%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%29">ZIP</a>
+- 一般的なデータ圧縮とアーカイブ形式</li>
     <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - an open-source,
 cross-platform data compression library by Jean-loup Gailly and Mark Adler.</li>
 </ul>
@@ -4932,10 +4833,10 @@ cross-platform data compression library by Jean-loup Gailly and Mark Adler.</li>
   <ul id="footer">
     <li>Copyright &copy; 2003 - 2010 <a
 href="http://www.phpmyadmin.net/home_page/team.php">phpMyAdmin 開発チーム</a></li>
-    <li><a href="LICENSE">License</a></li>
-    <li><a href="http://www.phpmyadmin.net/home_page/donate.php">Donate</a></li>
-    <li class="last">Valid <a href="http://validator.w3.org/check/referer">HTML</a> and <a
-href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
+    <li><a href="LICENSE">ライセンス</a></li>
+    <li><a href="http://www.phpmyadmin.net/home_page/donate.php">寄付</a></li>
+    <li class="last"><a href="http://validator.w3.org/check/referer">HTML</a> と <a
+href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> の検証</li>
   </ul>
 
 </body>
