@@ -182,8 +182,8 @@ if you use PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
 
 <p class="important">
     <acronym title="Apple Macintosh">Mac</acronym> ユーザ向けの注意:<br />
-    <abbr title="operating system">OS</abbr> X より前のバージョンの <acronym title="Apple
-Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> を使うと、解凍の際に
+    <abbr title="オペレーティング・システム">OS</abbr> X より前のバージョンの <acronym title="Apple
+Macintosh">Mac</acronym> <abbr title="オペレーティング・システム">OS</abbr> を使うと、解凍の際に
 StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしまいます。<br />
     そのため、サーバにアップロードする前に BBEdit で全ての phpMyAdmin スクリプトを Unix
 風にセーブし直しておく必要があります。PHP はどうも <acronym title="Apple Macintosh">Mac</acronym>
@@ -1171,7 +1171,9 @@ list of databases for the navigation frame.
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 文字列</dt>
-    <dd>Name of session which will be used for signon authentication method.
+    <dd>Name of session which will be used for signon authentication method.  You
+should use something different than <code>phpMyAdmin</code>, because this is
+session which phpMyAdmin uses internally.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span> 文字列</dt>
     <dd>URL where user will be redirected to log in for signon authentication
@@ -1642,7 +1644,7 @@ have problems with long URLs.  Default is <code>1000</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] 整数</dt>
-    <dd>Navi frame width in pixels. See <tt>themes/themename/layout.inc.php</tt>.
+    <dd>ナビゲーションフレームの幅をピクセルで指定します。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> string [背景用の CSS
@@ -1650,18 +1652,15 @@ have problems with long URLs.  Default is <code>1000</code>.
         <span id="cfg_MainBackground">$cfg['MainBackground']</span> string [背景用の CSS
 色]
     </dt>
-    <dd>The background styles used for both the frames.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>両フレームの背景スタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
     <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] string [背景用の CSS 色]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> string [CSS
 色]</dt>
-    <dd>The style used for the pointer in the navi frame.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>ナビゲーションフレームのポインタスタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
-    <dd>A value of <tt>TRUE</tt> activates the navi pointer (when LeftFrameLight is
-<tt>FALSE</tt>).</dd>
+    <dd><tt>TRUE</tt> の場合はナビゲーションのポインタを有効にします（LeftFrameLight が <tt>FALSE</tt> の場合）。</dd>
 
     <dt id="cfg_Border">$cfg['Border'] 整数</dt>
     <dd>テーブルの幅のサイズ。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
@@ -1669,8 +1668,7 @@ have problems with long URLs.  Default is <code>1000</code>.
 
     <dt id="cfg_ThBackground">$cfg['ThBackground'] 文字列 [背景用の CSS 色]<br />
         <span id="cfg_ThColor">$cfg['ThColor']</span> 文字列 [CSS 色]</dt>
-    <dd>The style used for table headers. See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>テーブルのヘッダに使われるスタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] 文字列 [CSS 色]</dt>
     <dd>テーブルの奇数行に使われる色（HTML）。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
@@ -1689,22 +1687,17 @@ have problems with long URLs.  Default is <code>1000</code>.
         <span id="cfg_BrowseMarkerColor">$cfg['BrowseMarkerColor'] </span>文字列 [CSS
 色]
     </dt>
-    <dd>The colors (HTML) uses for the pointer and the marker in browse mode.<br />
-        The former feature highlights the row over which your mouse is passing and
-the latter lets you visually mark/unmark rows by clicking on
-them. Highlighting / marking a column is done by hovering over / clicking
-the column's header (outside of the text).<br />
+    <dd>表示モードでのポインタとマーカの色 (HTML)。<br />
+        前者はマウスが重なった行を強調表示するためのもの、後者はクリックした行に視覚的なマークを付けたり消したりできるようにするためのものです。カラムの強調表示とはカラムのヘッダにマウスカーソルを乗せることで、マークとはカラムヘッダ（のテキストの周辺）をクリックすることです。<br />
         <tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
 
     <dt id="cfg_FontFamily">$cfg['FontFamily'] 文字列</dt>
-    <dd>You put here a valid CSS font family value, for example <tt>arial,
-sans-serif</tt>.<br />
+    <dd>有効な CSS フォントファミリーの値を指定します。例えば、<tt>arial, sans-serif</tt>。<br />
         <tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
     <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] 文字列</dt>
-    <dd>You put here a valid CSS font family value, for example
-<tt>monospace</tt>. This one is used in textarea.<br />
+    <dd>有効な CSS フォントファミリーの値を指定します。例えば、<tt>monospace</tt>。この値は textarea で使われます。<br />
         <tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
     <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] boolean</dt>
@@ -2244,14 +2237,12 @@ options）」フィールドは自由に入力できるテキストフィール�
 
 <p> 変換機能がファイルに保管されているのは、カスタマイズや新しい変換機能の追加を容易にするためです。</p>
 
-<p> Because the user cannot enter own mimetypes, it is kept sure that
-transformations always work. It makes no sense to apply a transformation to
-a mimetype the transform-function doesn't know to handle.</p>
+<p> ユーザが独自の MIME タイプを入力することはできませんが、そのおかげで変換機能はいつでも確実に動作することができるのです。ある変換機能を未知の
+MIME タイプに適用しようとしても無駄です。変換関数は処理の方法を知らないためです。</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype than what they where built for, but pay attention to option usage
-as well as what the transformation does to your column.</p>
+<p> ただし、MIME タイプを空欄にしてグローバルな変換機能を利用することはできます。グローバルな変換機能は多くの MIME
+タイプで動作することが期待できます。本来の対象とは違う MIME
+タイプの変換機能を利用することもできますが、オプションの使い方や、その変換機能がカラムの値をどうするかにはご注意ください。</p>
 
 <p> 「<i>global.inc.php</i>」という基本ファイルは、どんな変換機能からでもインクルードできます。これはいくつかの基本的な関数を提供してくれます。</p>
 
@@ -2259,14 +2250,13 @@ as well as what the transformation does to your column.</p>
 
 <ol><li>MIME タイプ＋サブタイプ変換機能：<br /><br />
 
-        <tt>[mimetype]_[subtype]__[transform].inc.php</tt><br /><br />
+        <tt>[MIME タイプ]_[サブタイプ]__[機能名].inc.php</tt><br /><br />
 
         MIME タイプとサブタイプが「_」で区切られていることにご注意ください（「_」はMIME
 タイプやサブタイプの名前には含まれないことになっています）。また、変換機能／ファイル名に含められる文字は、ファイルシステムや PHP
 関数の命名規約上問題を起こさない文字のみです。<br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_[mimetype]_[subtype]__[transform]()</tt>'.<br /><br />
+        この変換関数は「<tt>PMA_transform_[MIME タイプ]_[サブタイプ]__[機能名]()</tt>」で呼び出せます。<br /><br />
 
         <b>例：</b><br /><br />
 
@@ -2275,13 +2265,12 @@ as well as what the transformation does to your column.</p>
 
     <li>MIME タイプ（サブタイプなし）変換機能：<br /><br />
 
-        <tt>[mimetype]__[transform].inc.php</tt><br /><br />
+        <tt>[MIME タイプ]__[機能名].inc.php</tt><br /><br />
 
         1 文字の「_」がないことにご注意ください。 変換機能／ファイル名に含められる文字は、ファイルシステムや PHP
 関数の命名規約上問題を起こさない文字のみです。<br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_[mimetype]__[transform]()</tt>'.<br /><br />
+        この変換関数は「<tt>PMA_transform_[MIME タイプ]__[機能名]()</tt>」で呼び出せます。<br /><br />
 
         <b>例：</b><br /><br />
 
@@ -2290,7 +2279,7 @@ as well as what the transformation does to your column.</p>
 
     <li>MIME タイプ＋サブタイプ。特定な変換関数はなし<br /><br />
 
-        <tt>[mimetype]_[subtype].inc.php</tt><br /><br />
+        <tt>[MIME タイプ]_[サブタイプ].inc.php</tt><br /><br />
 
         ファイル名に「__」が含まれないことにご注意ください。また、ファイル名にはファイルシステム上問題を起こす特殊文字は使わないでください。<br /><br />
 
@@ -2303,7 +2292,7 @@ as well as what the transformation does to your column.</p>
 
     <li>MIME タイプ（サブタイプなし）。特定の変換関数はなし<br /><br />
 
-        <tt>[mimetype].inc.php</tt><br /><br />
+        <tt>[MIME タイプ].inc.php</tt><br /><br />
 
         ファイル名に「_」の文字が含まれないことにご注意ください。また、ファイル名にはファイルシステム上問題を起こす特殊文字は使わないでください。
         <br /><br />
@@ -2317,10 +2306,9 @@ as well as what the transformation does to your column.</p>
 
     <li>グローバル変換関数。特定の MIME タイプはなし<br /><br />
 
-        <tt>global__[transform].inc.php</tt><br /><br />
+        <tt>global__[機能名].inc.php</tt><br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_global__[transform]()</tt>'.<br /><br />
+        変換関数は「<tt>PMA_transform_global__[機能名]()</tt>」で呼び出せます。<br /><br />
 
         <b>例：</b><br /><br />
 
@@ -2332,28 +2320,24 @@ as well as what the transformation does to your column.</p>
 
 <p> ファイル名に「__」を含まないものはいずれも有効な変換関数としてドロップダウンに表示されることはありません。</p>
 
-<p> Please see the libraries/transformations/TEMPLATE file for adding your own
-transform function. See the libraries/transformations/TEMPLATE_MIMETYPE for
-adding a mimetype without a transform function.</p>
+<p> 独自の変換関数を加えるには libraries/transformations/TEMPLATE ファイルを、変換関数なしで MIME
+タイプを追加するには libraries/transformations/TEMPLATE_MIMETYPE ファイルをご覧ください。</p>
 
-<p> To create a new transform function please see
-<tt>libraries/transformations/template_generator.sh</tt>.  To create a new,
-empty mimetype please see
-<tt>libraries/transformations/template_generator_mimetype.sh</tt>.</p>
+<p> 新しい変換関数を作成する場合は <tt>libraries/transformations/template_generator.sh</tt>
+を、新しい、空の MIME タイプを作成する場合は
+<tt>libraries/transformations/template_generator_mimetype.sh</tt> をご覧ください。</p>
 
 <p> 変換関数には常に 3 つの変数が渡されます：</p>
 
 <ol><li><b>$buffer</b> - カラム内のテキストが入ります。これが変換するテキストになります。</li>
     <li><b>$options</b> - ユーザから変換関数に渡されたオプションが配列で入ります。</li>
-    <li><b>$meta</b> - Contains an object with information about your column.  The
-data is drawn from the output of the <a
+    <li><b>$meta</b> - カラム情報を持つオブジェクトが入ります。データは <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
-function. This means, all object properties described on the <a
-href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
-this variable and can be used to transform a column accordingly to
-unsigned/zerofill/not_null/... properties.<br />
-        The $meta-&gt;mimetype variable contains the original MIME-type of the
-column (i.e. 'text/plain', 'image/jpeg' etc.)</li>
+関数の出力から抽出されます。そのため、この関数の <a
+href="http://www.php.net/mysql_fetch_field">マニュアルページ</a>
+で説明されているオブジェクトのプロパティすべてが利用できますし、unsigned/zerofill/not_null/...
+といったプロパティによってカラムを変換できます。<br />
+        $meta-&gt;mimetype 変数にはそのカラムの元の MIME タイプ（「text/plain」、「image/jpeg」など）が入ります。</li>
 </ol>
 
 <p> Additionally you should also provide additional function to provide
@@ -2375,8 +2359,7 @@ information about the transformation. Currently following keys can be used:
     <li><a href="#faqconfig">設定</a></li>
     <li><a href="#faqlimitations">既知の制限</a></li>
     <li><a href="#faqmultiuser">ISP、マルチユーザ用インストール</a></li>
-    <li><a href="#faqbrowsers">ブラウザ、クライアント <abbr title="operating
-system">OS</abbr></a></li>
+    <li><a href="#faqbrowsers">ブラウザ、クライアント <abbr title="オペレーティング・システム">OS</abbr></a></li>
     <li><a href="#faqusing">phpMyAdmin の使い方</a></li>
     <li><a href="#faqproject">phpMyAdmin プロジェクト</a></li>
     <li><a href="#faqsecurity">セキュリティ</a></li>
@@ -2473,9 +2456,8 @@ support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
     <a href="#faq1_9">1.9 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_10">
-    <a href="#faq1_10">1.10 I'm having troubles when uploading files with
-phpMyAdmin running on a secure server. My browser is Internet Explorer and
-I'm using the Apache server.</a></h4>
+    <a href="#faq1_10">1.10 セキュアサーバ上で稼動させている phpMyAdmin のファイルアップロードで困っています。ブラウザは
+Internet Explorer、サーバは Apache を使っています。</a></h4>
 
 <p> phpWizard フォーラムで「Rob M」が勧めていたように、<i>httpd.conf</i> に次の行を追加してください：</p>
 
@@ -2484,8 +2466,8 @@ I'm using the Apache server.</a></h4>
 <p> こうすると、Internet Explorer と SSL にまつわる多くの問題が解決されるようです。</p>
 
 <h4 id="faq1_11">
-    <a href="#faq1_11">1.11 I get an 'open_basedir restriction' while uploading
-a file from the query box.</a></h4>
+    <a href="#faq1_11">1.11 クエリボックスからファイルをアップロードすると「open_basedir 制限（open_basedir
+restriction）」が出ます。</a></h4>
 
 <p> Since version 2.2.4, phpMyAdmin supports servers with open_basedir
 restrictions. However you need to create temporary directory and configure
@@ -2496,9 +2478,8 @@ title="structured query language">SQL</abbr> commands, removed.</p>
 <h4 id="faq1_12">
     <a href="#faq1_12">1.12 MySQL のルートパスワードをなくしてしまいました。どうしたらよいのでしょうか？</a></h4>
 
-<p> The MySQL manual explains how to <a
-href="http://dev.mysql.com/doc/mysql/en/resetting-permissions.html"> reset
-the permissions</a>.</p>
+<p> MySQL のマニュアルに<a
+href="http://dev.mysql.com/doc/mysql/ja/resetting-permissions.html">パーミッションをリセットする</a>方法が説明されています。</p>
 
 <h4 id="faq1_13">
     <a href="#faq1_13">1.13 (該当しなくなったため取り下げ)。</a></h4>
@@ -3382,7 +3363,7 @@ title="インターネット・プロトコル">IP</abbr> アドレスを入力�
 <tt>$i</tt>）か、設定ファイル内にあるホスト名のいずれかを、使用することができます。<tt>pma_username</tt> と
 <tt>pma_password</tt> は、「クッキー」認証方式として取り扱われ、常に組んで使われます。</p>
 
-<h3 id="faqbrowsers">ブラウザ、クライアント <abbr title="operating system">OS</abbr></h3>
+<h3 id="faqbrowsers">ブラウザ、クライアント <abbr title="オペレーティング・システム">OS</abbr></h3>
 
 <h4 id="faq5_1">
     <a href="#faq5_1">5.1 カラムの数が 14
@@ -3478,9 +3459,9 @@ values">CSV</abbr> エクスポートファイルの各データ行の間に空�
 
 <h4 id="faq5_12">
     <a href="#faq5_12">5.12 <acronym title="Apple Macintosh">Mac</acronym> <abbr
-title="operating system">OS</abbr> X：Safari ブラウザでは特殊文字が「?」になってしまいます。</a></h4>
+title="オペレーティング・システム">OS</abbr> X：Safari ブラウザでは特殊文字が「?」になってしまいます。</a></h4>
 
-<p> この問題を報告してくれた <abbr title="operating system">OS</abbr> X
+<p> この問題を報告してくれた <abbr title="オペレーティング・システム">OS</abbr> X
 ユーザによると、Chimera、Netscape、Mozilla ではこの問題は起こらないそうです。</p>
 
 <h4 id="faq5_13">
@@ -4596,27 +4577,28 @@ MySQL
 </p>
 <ul>
   <li>Amalesh Kempf
-<ak-lsml_at_living-source.com>。テーブルやデータベースを削除するときのチェックコードを提供してくださいました。また、tbl_create.php3
+&lt;ak-lsml_at_living-source.com&gt;。テーブルやデータベースを削除するときのチェックコードを提供してくださいました。また、tbl_create.php3
 にプライマリキーを指定できるようにしたらどうかと薦めてくださったのも彼です。バージョン 1.1.1
 にはバグレポートだけでなくldi_*.php3-set（テキストファイルのインポート）も提供してくださいました。小さな改善も多数いただいています。
   </li>
-  <li>Jan Legenhausen <jan_at_nrw.net>。1.3.0
+  <li>Jan Legenhausen &lt;jan_at_nrw.net&gt;。1.3.0
 で導入された変更点の大部分を作ってくださいました（特に重要なものとしては認証があります）。1.4.1
 ではテーブルダンプ機能を増強してくださいました。バグフィックスや援助も多数いただいています。
   </li>
-  <li>Marc Delisle <DelislMa_at_CollegeSherbrooke.qc.ca>。文字列を別ファイルにアウトソースすることで
-phpMyAdmin を言語に依存しないものにしてくださいました。フランス語への翻訳もされています。
+  <li>Marc Delisle
+&lt;DelislMa_at_CollegeSherbrooke.qc.ca&gt;。文字列を別ファイルにアウトソースすることで phpMyAdmin
+を言語に依存しないものにしてくださいました。フランス語への翻訳もされています。
   </li>
-  <li>Alexandr Bravo <abravo_at_hq.admiral.ru>。tbl_select.php3
+  <li>Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt;。tbl_select.php3
 を提供してくださいました。これはテーブルのいくつかのフィールドのみを表示する機能です。
   </li>
-  <li>Chris Jackson <chrisj_at_ctel.net>。tbl_change.php3 に MySQL
+  <li>Chris Jackson &lt;chrisj_at_ctel.net&gt;。tbl_change.php3 に MySQL
 関数のサポートを追加してくださいました。2.0 では「Query by Example」機能も追加してくださっています。
   </li>
   <li>Dave Walton
-<walton_at_nordicdms.com>。複数サーバサポートを追加してくださいました。バグフィックスをくださる常連でもあります。
+&lt;walton_at_nordicdms.com&gt;。複数サーバサポートを追加してくださいました。バグフィックスをくださる常連でもあります。
   </li>
-  <li>Gabriel Ash <ga244_at_is8.nyu.edu>。2.0.6 のランダムアクセス機能を提供してくださいました
+  <li>Gabriel Ash &lt;ga244_at_is8.nyu.edu&gt;。2.0.6 のランダムアクセス機能を提供してくださいました。
   </li>
 </ul>
 <p>
