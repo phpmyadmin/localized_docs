@@ -1361,9 +1361,9 @@ tablo sayılarını saymak.
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 dizgi</dt>
-    <dd>Name of session which will be used for signon authentication method.  You
-should use something different than <code>phpMyAdmin</code>, because this is
-session which phpMyAdmin uses internally.
+    <dd>Oturum açma kimlik doğrulaması yöntemi için kullanılacak oturumun
+adı. <code>phpMyAdmin</code>'den farklı bir şey kullanmalısınız çünkü bu
+phpMyAdmin'in dahili olarak kullandığı oturumdur.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
 dizgi</dt>
@@ -1890,122 +1890,128 @@ edilir.</li>
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
     <dd>
-    We normally check the permissions on the configuration file to ensure it's
-not world writable. However, phpMyAdmin could be installed on a NTFS
-filesystem mounted on a non-Windows server, in which case the permissions
-seems wrong but in fact cannot be detected. In this case a sysadmin would
-set this parameter to <tt>FALSE</tt>. Default is <tt>TRUE</tt>.
+    Biz normal olarak herkes tarafından yazılabilir olmadığından emin olmak için
+yapılandırma dosyasındaki izinleri kontrol ederiz. Ancak phpMyAdmin, izinler
+yanlış göründüğü ama aslında algılanamadığı durumda, Windows olmayan
+sunucuya bağlanmış NTFS dosya sistemi üzerine kurulabilir. Bu durumda
+sysadmin bu parametreyi <tt>FALSE</tt> olarak ayarlayacaktır. Varsayılan
+<tt>TRUE</tt>'dur.
     </dd>
 
-    <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] integer</dt>
+    <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] tam sayı</dt>
     <dd>
-    Limit for length of URL in links. When length would be above this limit, it
-is replaced by form with button.  This is required as some web servers (IIS)
-have problems with long URLs.  Default is <code>1000</code>.
+    Bağlantılardaki URL uzunluğu için sınırdır. Uzunluk bu sınırın üzerinde
+olduğunda, düğmeyle birlikte form tarafından değiştirilir. Bu uzun URL'lerle
+sorunları olan bazı web sunucuları (IIS) için gerekir. Varsayılan
+<code>1000</code>'dir.
     </dd>
 
-    <dt id="cfg_NaviWidth">$cfg['NaviWidth'] integer</dt>
-    <dd>Navi frame width in pixels. See <tt>themes/themename/layout.inc.php</tt>.
+    <dt id="cfg_NaviWidth">$cfg['NaviWidth'] tam sayı</dt>
+    <dd>Piksel olarak rehber çerçeve
+genişliği. <tt>themes/themename/layout.inc.php</tt>'ye bakın.
     </dd>
 
-    <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> string [CSS
-color for background]<br />
-        <span id="cfg_MainBackground">$cfg['MainBackground']</span> string [CSS
-color for background]
+    <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> dizgi [arkaplan
+için CSS rengi]<br />
+        <span id="cfg_MainBackground">$cfg['MainBackground']</span> dizgi [arkaplan
+için CSS rengi]
     </dt>
-    <dd>The background styles used for both the frames.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>Her iki çerçeve için kullanılan arkaplan
+stilleri. <tt>themes/themename/layout.inc.php</tt>'ye bakın.</dd>
 
-    <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] string [CSS color for background]<br />
-        <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> string [CSS
-color]</dt>
-    <dd>The style used for the pointer in the navi frame.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] dizgi [arkaplan için CSS rengi]<br />
+        <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> dizgi [CSS
+rengi]</dt>
+    <dd>Rehber çerçevedeki imleç için kulanılan
+stil. <tt>themes/themename/layout.inc.php</tt>'ye bakın.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
-    <dd>A value of <tt>TRUE</tt> activates the navi pointer (when LeftFrameLight is
-<tt>FALSE</tt>).</dd>
+    <dd><tt>TRUE</tt> değeri rehber imleçi etkinleştirir (LeftFrameLight
+<tt>FALSE</tt> iken).</dd>
 
-    <dt id="cfg_Border">$cfg['Border'] integer</dt>
-    <dd>The size of a table's border. See <tt>themes/themename/layout.inc.php</tt>.
+    <dt id="cfg_Border">$cfg['Border'] tam sayı</dt>
+    <dd>Tabloların kenar boyutudur. <tt>themes/themename/layout.inc.php</tt>'ye
+bakın.
     </dd>
 
-    <dt id="cfg_ThBackground">$cfg['ThBackground'] string [CSS color for background]<br />
-        <span id="cfg_ThColor">$cfg['ThColor']</span> string [CSS color]</dt>
-    <dd>The style used for table headers. See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dt id="cfg_ThBackground">$cfg['ThBackground'] dizgi [arkaplan için CSS rengi]<br />
+        <span id="cfg_ThColor">$cfg['ThColor']</span> dizgi [CSS rengi]</dt>
+    <dd>Tablo başlıkları için kullanılan
+stil. <tt>themes/themename/layout.inc.php</tt>'ye bakın.</dd>
 
-    <dt id="cfg_BgcolorOne">$cfg['BgOne'] string [CSS color]</dt>
-    <dd>The color (HTML) #1 for table rows. See
-<tt>themes/themename/layout.inc.php</tt>.
+    <dt id="cfg_BgcolorOne">$cfg['BgOne'] dizgi [CSS rengi]</dt>
+    <dd>Tablo satırları için renk (HTML)
+#1. <tt>themes/themename/layout.inc.php</tt>'ye bakın.
     </dd>
 
-    <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] string [CSS color]</dt>
-    <dd>The color (HTML) #2 for table rows. See
-<tt>themes/themename/layout.inc.php</tt>.
+    <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] dizgi [CSS rengi]</dt>
+    <dd>Tablo satırları için renk (HTML)
+#2. <tt>themes/themename/layout.inc.php</tt>'ye bakın.
     </dd>
 
-    <dt><span id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']
-</span>string [CSS color]<br />
-        <span id="cfg_BrowsePointerColor">$cfg['BrowsePointerColor'] </span>string
-[CSS color]<br />
-        <span id="cfg_BrowseMarkerBackground">$cfg['BrowseMarkerBackground']
-</span>string [CSS color]<br />
-        <span id="cfg_BrowseMarkerColor">$cfg['BrowseMarkerColor'] </span>string
-[CSS color]
+    <dt><span
+id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']</span>
+dizgi [CSS rengi]<br />
+        <span id="cfg_BrowsePointerColor">$cfg['BrowsePointerColor']</span> dizgi
+[CSS rengi]<br />
+        <span id="cfg_BrowseMarkerBackground">$cfg['BrowseMarkerBackground']</span>
+dizgi [CSS rengi]<br />
+        <span id="cfg_BrowseMarkerColor">$cfg['BrowseMarkerColor']</span> dizgi [CSS
+rengi]
     </dt>
-    <dd>The colors (HTML) uses for the pointer and the marker in browse mode.<br />
-        The former feature highlights the row over which your mouse is passing and
-the latter lets you visually mark/unmark rows by clicking on
-them. Highlighting / marking a column is done by hovering over / clicking
-the column's header (outside of the text).<br />
-        See <tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>Gözatma kipinde imleç ve işaretleyici için kullanılan renkler (HTML).<br />
+        Biçimlendirici özelliği, farenizle üstünden geçerken satırı vurgular ve
+sonrasında onlara tıklayarak görsel olarak işaretlemenize/işareti
+kaldırmanıza izin verir. Sütunun başlığının (metnin dışına) üzerinde kalmak
+/ tıklamak, sütunun vurgulanmasını / işaretlenmesini yapar.<br />
+        <tt>themes/themename/layout.inc.php</tt>'ye bakın.</dd>
 
 
-    <dt id="cfg_FontFamily">$cfg['FontFamily'] string</dt>
-    <dd>You put here a valid CSS font family value, for example <tt>arial,
+    <dt id="cfg_FontFamily">$cfg['FontFamily'] dizgi</dt>
+    <dd>Buraya geçerli bir CSS yazı tipi ailesi değeri koyun, örneğin <tt>arial,
 sans-serif</tt>.<br />
-        See <tt>themes/themename/layout.inc.php</tt>.</dd>
+        <tt>themes/themename/layout.inc.php</tt>'ye bakın.</dd>
 
-    <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] string</dt>
-    <dd>You put here a valid CSS font family value, for example
-<tt>monospace</tt>. This one is used in textarea.<br />
-        See <tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] dizgi</dt>
+    <dd>Buraya geçerli bir CSS yazı tipi ailesi değeri koyun, örneğin
+<tt>monospace</tt>. Bu metin alanında kullanılır.<br />
+        <tt>themes/themename/layout.inc.php</tt>'ye bakın.</dd>
 
     <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] boolean</dt>
-    <dd>Whether to activate the browse pointer or not.</dd>
+    <dd>Gözatma imlecini etkinleştirir ya da etkinleştirmez.</dd>
 
     <dt id="cfg_BrowseMarkerEnable">$cfg['BrowseMarkerEnable'] boolean</dt>
-    <dd>Whether to activate the browse marker or not.</dd>
+    <dd>Gözatma işaretleyicisini etkinleştirir ya da etkinleştirmez.</dd>
 
-    <dt><span id="cfg_TextareaCols">$cfg['TextareaCols'] </span>integer<br />
-        <span id="cfg_TextareaRows">$cfg['TextareaRows'] </span>integer<br />
-        <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols'] </span>integer<br />
-        <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>integer
+    <dt><span id="cfg_TextareaCols">$cfg['TextareaCols']</span> tam sayı<br />
+        <span id="cfg_TextareaRows">$cfg['TextareaRows']</span> tam sayı<br />
+        <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols']</span> tam sayı<br />
+        <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows']</span> tam sayı
     </dt>
-    <dd>Number of columns and rows for the textareas.<br />
-        This value will be emphasized (*2) for <abbr title="structured query
-language">SQL</abbr> query textareas and (*1.25) for <abbr title="structured
-query language">SQL</abbr> textareas inside the query window.<br />
-        The Char* values are used for CHAR and VARCHAR editing (if configured via <a
-href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
+    <dd>Metin alanı için sütun ve satır sayısı.<br />
+        Bu değer, sorgu penceresi içerisindeki abbr title="structured query
+language">SQL</abbr> sorgu metin alanı için (*2) ve <abbr title="structured
+query language">SQL</abbr> metin alanı için (*1.25) olan önemi
+belirtecektir.<br />
+        Char* değerleri CHAR ve VARCHAR düzenlemesi için kullanılır (eğer <a
+href="#cfg_CharEditing">$cfg['CharEditing']</a> yapılandırılmışsa).</dd>
 
-    <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']
-</span>boolean
+    <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']</span>
+boolean
     </dt>
-    <dd>Defines whether textarea for LONGTEXT columns should have double size.</dd>
+    <dd>LONGTEXT sütunlar için metin alanının çift boyut olup olmayacağını tanımlar.</dd>
 
-    <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect'] </span>boolean
+    <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect']</span> boolean
     </dt>
-    <dd>Defines if the whole textarea of the query box will be selected on click.</dd>
+    <dd>Sorgu kutusunun bütün metin alanı tıklamayla seçilecekse tanımlar.</dd>
 
-    <dt id="cfg_LimitChars">$cfg['LimitChars'] integer</dt>
-    <dd>Maximum number of characters shown in any non-numeric field on browse view.
-Can be turned off by a toggle button on the browse page.</dd>
+    <dt id="cfg_LimitChars">$cfg['LimitChars'] tam sayı</dt>
+    <dd>Gözatma görünümünde sayısal olmayan herhangi bir alanda gösterilen en fazla
+karakter sayısı. Gözatma sayfasında bir geçiş düğmesiyle kapatılabilir.</dd>
 
-    <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft'] </span>boolean
-<span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']
-</span>boolean
+    <dt><span id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft']</span> boolean
+<span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']</span>
+boolean
     </dt>
     <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
 would be put when tables contents are displayed (you may have them displayed

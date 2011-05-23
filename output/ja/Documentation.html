@@ -55,7 +55,7 @@ class="myadmin">MyAdmin</span></a> 3.5.0-dev ドキュメント
 href="http://www.phpmyadmin.net/documentation/">phpMyAdminドキュメント</a>の翻訳版です。<a
 href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>にて翻訳作業に貢献することができます。
 </p>
-<ul><li><a href="http://www.phpmyadmin.net/"> phpMyAdmin ホームページ</a></li>
+<ul><li><a href="http://www.phpmyadmin.net/">phpMyAdmin オフィシャルサイト</a></li>
     <li><a href="https://sourceforge.net/projects/phpmyadmin/">SourceForge
 phpMyAdmin プロジェクトページ</a></li>
     <li><a href="http://wiki.phpmyadmin.net">オフィシャル phpMyAdmin wiki</a></li>
@@ -342,7 +342,7 @@ you might find near the end of your configuration file.</p>
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
 <ul><li><b>マルチユーザ環境</b>では、ユーザが自分のデータベースにアクセスできるよう、また他人のデータベースにいたずらできないよう、<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがお奨めです。<br />
+title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがお勧めです。<br />
         ただし、ご注意ください。マイクロソフトの Internet Explorer は、クッキーに関しては本当にバグが多いようです。少なくともバージョン 6
 まではそうです。<br />
         また、<b>シングルユーザ環境</b>であっても <abbr title="HyperText Transfer
@@ -355,8 +355,7 @@ href="#controluser">「管理ユーザ」</a>は別かもしれませんが）�
         ただし、忘れてはなりません。HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされます。<br />
         また、クッキーモードでは、blowfish アルゴリズムで暗号化されてはいますが、パスワードは一時的にクッキーに保管されます。</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<tt>--skip-show-database</tt>.<br /><br />
+    <li id="pmausr">注：この項目は、MySQL サーバが <tt>--skip-show-database</tt> を適用して稼動している場合のみに使用できます。<br /><br />
 
         「HTTP」／「クッキー」モードでは管理ユーザが必要です。このユーザは <i>`mysql`.`user` (`Password`
 以外の全カラム)</i>、<i>`mysql`.`db` (全カラム)</i>、<i>`mysql`.`host`
@@ -366,10 +365,9 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> と <tt><a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt> 項目には<a
 href="#controluser">管理ユーザ</a>の情報を登録しなければなりません。<br />
-        The following example assumes you want to use <tt>pma</tt> as the
-controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
-example: use something else in your file!</b> Input these statements from
-the phpMyAdmin SQL Query window or mysql command&#8211;line client.<br />
+        下記の例では <tt>pma</tt> を管理ユーザ、<tt>pmapass</tt>
+を管理パスワードと想定していますが、<b>これはあくまでも例です。ご自分のファイルでは設定を変えてください！</b> phpMyAdmin の SQL
+クエリウィンドウまたは mysql コマンドラインクライアントからこれらのコマンドを入力します。<br />
         もちろん MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
 をウェブサーバのホストで差し替える必要があります。
 
@@ -431,8 +429,7 @@ title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htacces
 <ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証のかわりに利用できます（たとえば
 <abbr title="Internet Information Services">IIS</abbr> を稼動させている場合など）。</li>
     <li>もちろんユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
-    <li>With this mode, the user can truly log out of phpMyAdmin and log in back
-with the same username.</li>
+    <li>このモードでは、ユーザは phpMyAdmin のログアウトが確実に行え、同じユーザー名でログインし直すことができます。</li>
     <li>任意のサーバにログインしたい場合は、<a href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a> ディレクティブをご覧ください。</li>
     <li><a href="#require">「必要なもの」</a>の章にも書いてある通り、<tt>mcrypt</tt>
@@ -602,7 +599,7 @@ MySQL サーバでもほぼ確実に利用できるためです。ソケット�
         <tt><i>mysql</i></tt> : 古典的な MySQL 拡張です。現時点ではおすすめできるデフォルトの方法です。<br /><br />
 
         <tt><i>mysqli</i></tt> : MySQL 拡張の改良版です。この拡張は PHP 5.0.0 で利用できるようになりました。MySQL
-4.1.x 以降が稼動しているサーバに接続する場合はお奨めです。</dd>
+4.1.x 以降が稼動しているサーバに接続する場合はお勧めです。</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
     <dd>MySQL サーバとの接続に圧縮プロトコルを使うかどうかが入ります（実験段階です）。<br />
@@ -1071,7 +1068,7 @@ superuser.<br /><br />
 
         このチェック機能はこの変数を false にすることで無効にできます。無効にするとパフォーマンスが向上します。<br /><br />
 
-        確実にテーブル構造が最新になっているときは FALSE にするのがおすすめです。</dd>
+        確実にテーブル構造が最新になっているときは FALSE にするのがお勧めです。</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span>
 boolean</dt>
     <dd>ルートのアクセスを許可するかどうか。これは下記の規則を簡略化しただけのものです。
@@ -1112,7 +1109,7 @@ detecting IP address behind proxies.
     <dt id="servers_allowdeny_rules">
         <span
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
-strings の array
+文字列の配列
     </dt>
     <dd>この規則の一般的なフォーマットは次の通りです。
 
@@ -1122,8 +1119,8 @@ strings の array
 
         すべてのユーザに一致させたいのであれば、<i>username</i> フィールドにワイルドカードとして <tt>'%'</tt>
 を入れることもできます。<br />
-        また、<i>ipmask</i>
-フィールドでもいくつかショートカットが利用できます（ご注意ください。SERVER_ADDRESSの部分はどんなサーバでも利用できるとは限りません）：
+        また、<i>ipmask</i> フィールドでもいくつかショートカットが利用できます（SERVER_ADDRESS
+の部分はどんなウェブサーバでも利用できるとは限りませんので注意してください）。
         <pre>
 'all' -&gt; 0.0.0.0/0
 'localhost' -&gt; 127.0.0.1/8
@@ -1136,18 +1133,17 @@ strings の array
 と、適用順が <tt>「allow,deny」</tt> ないし <tt>「explicit」</tt> の場合は <tt>「deny % from
 all」</tt> と等価になります。<br /><br />
 
-        For the <abbr title="Internet Protocol">IP</abbr> matching system, the
-following work:<br />
-        <tt>xxx.xxx.xxx.xxx</tt> (an exact <abbr title="Internet Protocol">IP</abbr>
-address)<br />
-        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (an <abbr title="Internet Protocol">IP</abbr>
-address range)<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, Classless Inter-Domain Routing type <abbr
-title="Internet Protocol">IP</abbr> addresses)<br />
-        ただし、下記は利用できません：<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (partial <abbr title="Internet
-Protocol">IP</abbr> address range)<br />
-        Also IPv6 addresses are not supported.
+        <abbr title="インターネット・プロトコル">IP</abbr> のマッチング規則としては、下記が利用できます。<br />
+        <tt>xxx.xxx.xxx.xxx</tt> （単一の <abbr title="インターネット・プロトコル">IP</abbr>
+アドレスそのもの）<br />
+        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt>（<abbr title="インターネット・プロトコル">IP</abbr>
+アドレスの範囲指定）<br />
+        <tt>xxx.xxx.xxx.xxx/nn</tt> （CIDR（Classless Inter-Domain Routing）タイプの <abbr
+title="インターネット・プロトコル">IP</abbr> アドレス）<br />
+        ただし、以下は利用できません。<br />
+        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt>（<abbr title="インターネット・プロトコル">IP</abbr>
+アドレスの一部範囲指定）<br />
+        それと、IPv6 アドレスもサポートしていません。
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
 boolean</dt>
@@ -1283,7 +1279,7 @@ might limit session validity and if session is lost, login cookie is also
 invalidated. So it is a good idea to set <code>session.gc_maxlifetime</code>
 not lower than the value of $cfg['LoginCookieValidity'].</dd>
 
-    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] integer [秒数]</dt>
+    <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] 整数 [秒数]</dt>
     <dd>Define how long login cookie should be stored in browser. Default 0 means
 that it will be kept for existing session. This is recommended for not
 trusted environments.</dd>
@@ -1300,9 +1296,8 @@ from other server, when you are using more of them.</dd>
     <dd>複数のクエリを含む文のクエリのひとつが失敗したときに処理を続けるかどうかを定義します。デフォルトでは処理を中止します。</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] boolean</dt>
-    <dd>Define whether phpMyAdmin will output the results of each query of a
-multi-query statement embedded into the <abbr title="structured query
-language">SQL</abbr> output as inline comments. Defaults to <tt>TRUE</tt>.</dd>
+    <dd>マルチクエリを含む文のそれぞれのクエリの結果を <abbr title="structured query language">SQL</abbr>
+出力のなかにインラインコメントとして埋め込むかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 boolean</dt>
@@ -1315,10 +1310,10 @@ Protocol">HTTP</abbr> サーバが置かれているファイアウォールの�
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
-    <dd>Whether to display errors from PHP or not.</dd>
+    <dd>PHP からのエラーを表示するかどうか。</dd>
 
     <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
-    <dd>Whether to gather errors from PHP or not.</dd>
+    <dd>PHP からのエラーを収集するかどうか。</dd>
 
     <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
     <dd>Defines whether to use a select-based menu and display only the current
@@ -1334,12 +1329,12 @@ href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a> もご覧ください。
     </dd>
 
-    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] string または array</dt>
+    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] 文字列または配列</dt>
     <dd>The string used to separate the parts of the database name when showing them
 in a tree. Alternatively you can specify more strings in an array and all of
 them will be used as a separator.</dd>
 
-    <dt id="cfg_LeftFrameTableSeparator">$cfg['LeftFrameTableSeparator'] string</dt>
+    <dt id="cfg_LeftFrameTableSeparator">$cfg['LeftFrameTableSeparator'] 文字列</dt>
     <dd>Defines a string to be used to nest table spaces. Defaults to '__'.  This
 means if you have tables like 'first__second__third' this will be shown as a
 three-level hierarchy like: first &gt; second &gt; third.  If set to FALSE
@@ -1347,7 +1342,7 @@ or empty, the feature is disabled.  NOTE: You should not use this separator
 at the beginning or end of a table name or multiple times after another
 without any other characters in between.</dd>
 
-    <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] string</dt>
+    <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] 文字列</dt>
     <dd>テーブルを上記の区切り文字で分割表示する際に何層まで表示するかを定義します。</dd>
 
     <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] boolean</dt>
@@ -1475,7 +1470,7 @@ edit/insert mode. The user can toggle this setting from the interface.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] 文字列</dt>
-    <dd>CHAR カラムと VARCHAR カラムでどちらの編集用コントロールを利用するか定義します。可能な値は次の通りです：
+    <dd>CHAR カラムと VARCHAR カラムでどちらの編集用コントロールを利用するか定義します。可能な値は次の通りです。
         <ul><li>input - テキストのサイズを MySQL のカラムのサイズまでに制限できますが、カラムに改行があると問題になります。</li>
             <li>textarea - カラムに改行があっても問題ありませんが、長さの制限はできません。</li>
         </ul>
@@ -1808,22 +1803,17 @@ you click the database or table name, then the Import tab.
 
         ユーザごとにディレクトリを変えたい場合は、%u を使うとユーザ名に置換されます。<br /><br />
 
-        ご注意ください。ファイル名にはかならず「.sql」（圧縮形式のサポートが有効になっている場合は「sql.bz2」や「sql.gz」）という拡張子でなければなりません。<br /><br />
+        拡張子に注意してください。ファイル名の末尾は必ず「.sql」（圧縮形式のサポートが有効になっている場合は「.sql.bz2」や「.sql.gz」）でなければなりません。<br /><br />
 
-        This feature is useful when your file is too big to be uploaded via <abbr
-title="HyperText Transfer Protocol">HTTP</abbr>, or when file uploads are
-disabled in PHP.<br /><br />
+        この機能は <abbr title="HyperText Transfer Protocol">HTTP</abbr>
+でアップロードするには大きすぎるファイルがあるときや、PHP のファイルアップロード機能が無効になっている場合に便利です。<br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:1149 Documentation_ja.html:1158  #-#-#-#-#
-ご注意ください。PHP がセーフモードになっている場合、このディレクトリは phpMyAdmin
-スクリプトのオーナーと同じユーザがオーナーになっている必要があります。
-#-#-#-#-#  Documentation_ja.html:1169  #-#-#-#-#
-また、PHP がセーフモードになっている場合、このディレクトリは phpMyAdmin
-スクリプトのオーナーと同じユーザがオーナーになっている必要があります。
+        このディレクトリのオーナに注意してください。PHP がセーフモードになっている場合、phpMyAdmin
+スクリプトのオーナと同じユーザがオーナになっていなければなりません。
         <br /><br />
 
-        See also <a href="#faq1_16"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.16</a> for alternatives.
+        また、別の方法もあります。<a href="#faq1_16"><abbr title="よくある質問">FAQ</abbr>
+1.16</a>をご覧ください。
     </dd>
 
     <dt id="cfg_SaveDir">$cfg['SaveDir'] 文字列</dt>
@@ -1832,15 +1822,10 @@ Questions">FAQ</abbr> 1.16</a> for alternatives.
 
         ユーザごとにディレクトリを変えたい場合は、%u を使うとユーザ名に置換されます。<br /><br />
 
-    Please note that the directory must exist and has to be writable for the
-user running webserver.<br /><br />
+    書き込み権限にご注意ください。このディレクトリはウェブサーバの実行ユーザが書き込みできるようになっている必要があります。<br /><br />
 
-        #-#-#-#-#  Documentation_ja.html:1149 Documentation_ja.html:1158  #-#-#-#-#
-ご注意ください。PHP がセーフモードになっている場合、このディレクトリは phpMyAdmin
-スクリプトのオーナーと同じユーザがオーナーになっている必要があります。
-#-#-#-#-#  Documentation_ja.html:1169  #-#-#-#-#
-また、PHP がセーフモードになっている場合、このディレクトリは phpMyAdmin
-スクリプトのオーナーと同じユーザがオーナーになっている必要があります。
+        このディレクトリのオーナに注意してください。PHP がセーフモードになっている場合、phpMyAdmin
+スクリプトのオーナと同じユーザがオーナになっていなければなりません。
     </dd>
 
     <dt id="cfg_TempDir">$cfg['TempDir'] 文字列</dt>
@@ -2366,22 +2351,18 @@ information about the transformation. Currently following keys can be used:
     <li><a href="#faqsynchronization">同期</a></li>
 </ol>
 
-<p> Please have a look at our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin homepage for in-depth coverage of phpMyAdmin's features
-and or interface.</p>
+<p> phpMyAdmin の機能やインタフェースの詳細については phpMyAdmin のオフィシャルページにある <a
+href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a> をご覧ください。</p>
 
 <h3 id="faqserver">サーバ</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
-required or phpMyAdmin sends a blank page or a page full of cryptic
-characters to my browser, what can I do?</a></h4>
+    <a href="#faq1_1">1.1
+特定のアクションが要求されるたびにサーバがクラッシュしたり、ブラウザに空白のページや暗号のような文字だらけのページが表示されます。どうしたらよいのでしょうか？</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
-directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
-<tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php
-configuration file.<br /></p>
+<p> <i>config.inc.php</i> ファイルの <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip']</a> ディレクティブを <tt>FALSE</tt> に、PHP の設定ファイルの
+<tt>zlib.output_compression</tt> ディレクティブを <tt>Off</tt> にしてみてください。<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 phpMyAdmin を使うと Apache サーバがクラッシュします。</a></h4>
@@ -2431,10 +2412,9 @@ declarations (2 lines) from the scripts <i>libraries/header.inc.php</i>,
     <a href="#faq1_7">1.7 どうすればダンプや <abbr title="comma separated
 values">CSV</abbr> エクスポートを GZip ないし Bzip 圧縮できるのでしょうか？ 動いていないようなんですが。</a></h4>
 
-<p> These features are based on the <tt>gzencode()</tt> and
-<tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
-support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
+<p> これらの機能はプラットフォーム（Unix か Windows か、セーフモードかどうか、など）からの独立性を高めるために PHP の
+<tt>gzencode()</tt> と <tt>bzcompress()</tt> 関数をベースにしています。そのため、Zlib/Bzip2
+サポート (<tt>--with-zlib</tt> と <tt>--with-bz2</tt>) が必要です。<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 テーブルにテキストファイルを挿入できません。セーフモードになっているというエラーが出ます。</a></h4>
@@ -2459,7 +2439,7 @@ support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
     <a href="#faq1_10">1.10 セキュアサーバ上で稼動させている phpMyAdmin のファイルアップロードで困っています。ブラウザは
 Internet Explorer、サーバは Apache を使っています。</a></h4>
 
-<p> phpWizard フォーラムで「Rob M」が勧めていたように、<i>httpd.conf</i> に次の行を追加してください：</p>
+<p> phpWizard フォーラムで「Rob M」が勧めていたように、<i>httpd.conf</i> に以下の行を追加してください。</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
@@ -2577,7 +2557,7 @@ these files.</p>
 
 <h4 id="faqmysql">
     <a href="#faqmysql">1.20 「cannot load MySQL extension, please check PHP
-Configuration（MySQL エクステンションをロードできません。PHP の設定をチェックしてください）」というエラーが出ます。</a></h4>
+Configuration（MySQL 拡張を読み込めません。PHP の設定をチェックしてください）」というエラーが出ます。</a></h4>
 
 <p> PHP が MySQL サーバに接続する際には「MySQL 拡張」という MySQL の関数セットを必要とします。この拡張は PHP
 の配布ファイルに含まれている（コンパイルで組み込まれている）こともありますが、そうでない場合、動的に読み込む必要があります。拡張名はたぶん
@@ -2695,9 +2675,8 @@ SetInputFilter PHP
 </p>
 
 <h4 id="faq1_32">
-    <a href="#faq1_32">1.32 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with <abbr title="Internet Information
-Services">IIS</abbr>?</a></h4>
+    <a href="#faq1_32"><abbr title="Internet Information Services">IIS</abbr> でも
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証を利用できますか？</a></h4>
 
 <p> はい。以下の手順は phpMyAdmin 2.6.1 と、<abbr title="Internet Information
 Services">IIS</abbr> 5.1 の <abbr title="Internet Server Application
@@ -2715,7 +2694,7 @@ enabled.) Click <tt>OK</tt>.</li>
 
 <h4 id="faq1_33">
     <a href="#faq1_33">1.33 64 ビットのシステムで PHP 5.0.4 を稼動させているときの mysqli
-エクステンションに問題がありませんか？</a></h4>
+拡張に問題がありませんか？</a></h4>
 
 <p> はい。この問題は phpMyAdmin にも影響を与えますので（「Call to undefined function
 pma_reloadnavigation（未定義の関数 pma_reloadnavigation の呼び出し）」）、PHP
@@ -3656,7 +3635,7 @@ Format">PDF</abbr> スキーマを作れるのでしょう。</a></h4>
     <li>1 ページめの <abbr title="Portable Document Format">PDF</abbr> ページの名前を入力して「実行する
 (Go)」をクリックします。お望みなら「自動レイアウト (automatic
 layout)」機能を利用して、リンクされているすべてのテーブルを新しいページに配置することもできます。</li>
-    <li>新しいページの名前を選択して（「修正（Edit）」のラジオボタンが選択されているのを確かめて）、「実行（Go）」をクリックします。</li>
+    <li>新しいページの名前を選択して（「修正 (Edit)」のラジオボタンが選択されているのを確かめて）、「実行する (Go)」をクリックします。</li>
     <li>リストからテーブルを選択して、座標を入力し、「保存（Save）」をクリックします。<br />
         座標は相対座標です。図表の大きさはページにあわせて自動的に調整されます。最初にテーブルを配置するときは適当な（たとえば50×50のような）座標を選んでおいてください。「保存（Save）」をクリックしてからは、<a
 href="#wysiwyg">グラフィカルエディタ</a>を利用して要素を正確に配置することもできます。</li>
@@ -4030,23 +4009,20 @@ href="https://sourceforge.net/projects/phpmyadmin/forums">https://sourceforge.ne
 <h4 id="faq7_2">
     <a href="#faq7_2">7.2 メッセージを別の言語に翻訳したい／既存の翻訳を修正したいのですが、まずはどうすればよいでしょうか？</a></h4>
 
-<p> Always use latest Git version of the po file to translate. You can
-optionally translate online at our <a
-href="http://l10n.cihar.com/">translation server</a> where you can also get
-the latest po files and merge them with your translations. For creating a
-new translation simply use <code>po/phpmyadmin.pot</code> and generate
-<code>po/LANG_CODE.po</code> for your language (you can use <code>msginit -i
-po/phpmyadmin.pot -l LANG_CODE --no-translator -o po/LANG_CODE.po</code> to
-do this) or ask on the mailing list to add the translation to the web
-interface. More details are available on <a
-href="http://wiki.phpmyadmin.net/pma/Gettext_for_translators">our wiki</a>.
+<p> 翻訳する po ファイルは必ず Git の最新版をお使いください。<a
+href="http://l10n.cihar.com/">翻訳サーバ</a>にてオンラインでいつでも翻訳することができます。また、翻訳サーバを通して、最新の
+po
+ファイルを入手したり、翻訳したものをマージすることもできます。新規の翻訳を作成するには、<code>po/phpmyadmin.pot</code>
+を用いて新規用の <code>po/LANG_CODE.po</code> を生成します（この作業は <code>msginit -i
+po/phpmyadmin.pot -l LANG_CODE --no-translator -o po/LANG_CODE.po</code>
+とすれば行えます）。もしくは、メーリングリストにてウェブインターフェース用の新規翻訳の追加を依頼してください。詳細は <a
+href="http://wiki.phpmyadmin.net/pma/Gettext_for_translators">wiki</a>
+をご覧ください。
 </p>
 <p>
-    Please note that we try not to use HTML entities like &amp;eacute; in the
-translations, since we define the right character set in the file.  With
-HTML entities, the text on JavaScript messages would not display correctly.
-However there are some entities that need to be there: quotes, non-breakable
-spaces, ampersands, less than, greater than.
+    エンティティに注意するようにしてください。phpMyAdmin の翻訳では &amp;eacute; のような HTML
+エンティティは利用せず、ファイルに適切な文字セットを定義するようにしています。HTML エンティティを使うと JavaScript
+のメッセージテキストが正しく表示できないためです。ただし、いくつかのエンティティは使う必要があります。クォート（&amp;quot;）、分離されては困るスペース（&amp;nbsp;）、＆（&amp;amp;）、＜（&amp;lt;）、＞（&amp;gt;）です。
 </p>
 <p>
     翻訳は sourceforge.net の<a
@@ -4060,18 +4036,15 @@ href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmy
 </p>
 
 <p>
-    Documentation is being translated using po4a and gettext (see <a
-href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
-existing translations). To start, checkout <a
+    現在、ドキュメントは po4a と gettext を用いて翻訳されています（翻訳されているものは <a
+href="http://www.phpmyadmin.net/home_page/docs.php">Documentation</a>
+を参照してください）。翻訳を始めるには、Git から <a
 href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>
-from Git, or just go to the <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
-translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
-it. If you prefer to directly translate the po files, please put updated
-ones into our <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker</a>. 
+をチェックアウトします。もしくは、<a
+href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>にてオンライン翻訳するのもいいでしょう。翻訳したい言語がない場合は、<a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>
+と連絡を取ってみてください。多分、彼が追加してくれます。直接 po ファイルを翻訳したい場合には、<a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳トラッカー</a>に翻訳したものをアップロードしてください。 
 </p>
 
 <h4 id="faq7_3">
@@ -4564,7 +4537,7 @@ Zigmantas, &quot;Manuzhai&quot;.
 </p>
 
 
-<h3>Original Credits of Version 2.1.0</h3>
+<h3>バージョン 2.1.0 当時の貢献者一覧</h3>
 
 <p>
     このソフトのベースとなったのは Peter Kuppelwieser の MySQL-Webadmin です。PHP3 を使ってウェブベースの
@@ -4628,17 +4601,15 @@ should have written their names here.
 default name of Apache's directory-level configuration file.</li>
     <li><a href="http://www.wikipedia.org/wiki/Blowfish_%28cipher%29">Blowfish</a> -
 a keyed, symmetric block cipher, designed in 1993 by Bruce Schneier.</li>
-    <li><a href="http://en.wikipedia.org/wiki/Web_browser">Browser (Web Browser)</a>
-- a software application that enables a user to display and interact with
-text, images, and other information typically located on a web page at a
-website on the World Wide Web.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Bzip2">bzip2</a> - a free
-software/open source data compression algorithm and program developed by
-Julian Seward.</li>
-    <li><a href="http://www.wikipedia.org/wiki/CGI">CGI (Common Gateway
-Interface)</a> - an important World Wide Web technology that enables a
-client web browser to request data from a program executed on the Web
-server.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6">ブラウザ（ウェブブラウザ）</a>
+- World Wide Web 上の Web サイトで Web
+ページに一般的に置かれているテキスト、画像、その他の情報をユーザに対して表示や双方向通信することができるアプリケーション</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Bzip2">bzip2</a> - Julian Seward
+により開発されたフリーソフトウェアでオープンソースのデータ圧縮アルゴリズムおよびプログラム</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Common_Gateway_Interface">CGI (Common
+Gateway Interface)</a> - Web サーバー上で実行されるプログラムでクライアントの Web
+ブラウザのデータを要求に応えることができる重要な World Wide Web 技術</li>
     <li><a href="http://www.wikipedia.org/wiki/Changelog">Changelog</a> - a log or
 record of changes made to a project.</li>
     <li><a
@@ -4669,12 +4640,11 @@ field or group of fields in a database record that point to a key field or
 group of fields forming a key of another database record in some (usually
 different) table.</li>
     <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - フリーの PDF ライブラリ</li>
-    <li><a id="gd" href="http://www.wikipedia.org/wiki/GD_Graphics_Library"> GD
-Graphics Library</a> - a library by Thomas Boutell and others for
-dynamically manipulating images.</li>
-    <li>GD2 - look at <a href="#gd">GD Graphics Library</a>.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Gzip">gzip</a> - gzip is short for
-GNU zip, a GNU free software file compression program.</li>
+    <li><a id="gd" href="http://ja.wikipedia.org/wiki/GD_Graphics_Library">GD
+グラフィックライブラリ</a> - Thomas Boutell 他によって開発された動的に画像を操作するためのライブラリ</li>
+    <li>GD2 - → <a href="#gd">GD Graphics Library</a></li>
+    <li><a href="http://ja.wikipedia.org/wiki/Gzip">gzip</a> - GNU zip の略称で、GNU
+フリーソフトウェアファイル圧縮プログラムのこと</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF">ホスト</a>
 - コンピュータネットワークに接続された任意のマシンのこと。ホスト名を持っているノード。</li>
@@ -4711,14 +4681,12 @@ Services (IIS).</li>
     <li><a
 href="http://www.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><big>E</big></sub>X</a>
 - a document preparation system for the T<sub>E</sub>X typesetting program.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Mac">Mac (Apple Macintosh)</a> - line
-of personal computers is designed, developed, manufactured, and marketed by
-Apple Computer.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Macintosh">Mac (Apple Macintosh)</a> -
+Apple Computer が設計、開発、製造、販売しているパソコンの一製品</li>
     <li><a id="glossar_mac_os_x"
-href="http://www.wikipedia.org/wiki/Mac_OS_X"><acronym title="Apple
-Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> X</a> -
-the operating system which is included with all currently shipping Apple
-Macintosh computers in the consumer and professional markets.</li>
+href="http://ja.wikipedia.org/wiki/Mac_OS_X"><acronym title="Apple
+Macintosh">Mac</acronym> <abbr title="オペレーティング・システム">OS</abbr> X</a> -
+一般消費者および専門家の市場向けに現在出荷されている全ての Apple Macintosh コンピュータに含まれているオペレーティングシステム</li>
     <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - a cryptographic
 library.</li>
     <li><a href="http://php.net/mcrypt">mcrypt</a> - the MCrypt PHP extension.</li>
@@ -4726,9 +4694,10 @@ library.</li>
 Mail Extensions)</a> - an Internet Standard for the format of e-mail.</li>
     <li><a href="http://www.wikipedia.org/wiki/module">module</a> - some sort of
 extension for the Apache Webserver.</li>
-    <li><a href="http://www.wikipedia.org/wiki/MySQL">MySQL</a> - a multithreaded,
-multi-user, SQL (Structured Query Language) Database Management System
-(DBMS).</li>
+    <li><a href="http://ja.wikipedia.org/wiki/MySQL">MySQL</a> -
+マルチスレッド、マルチユーザー、<abbr title="structured query
+language">SQL</abbr>が使えるデータベース管理システム (<abbr title="Database Management
+System">DBMS</abbr>)</li>
     <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://ja.wikipedia.org/wiki/OpenDocument">OpenDocument</a> -
@@ -4781,8 +4750,8 @@ identified by a label or key or by it?s position in relation to other items.</li
     <li>Table type</li>
     <li><a href="http://www.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> - a
 type of archive file format: the Tape ARchive format.</li>
-    <li><a href="http://www.wikipedia.org/wiki/TCP">TCP (Transmission Control
-Protocol)</a> - one of the core protocols of the Internet protocol suite.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Transmission_Control_Protocol">TCP
+(Transmission Control Protocol)</a> - インターネット・プロトコル群の中核となるプロトコルの一つ</li>
     <li><a href="http://www.acko.net/node/56">UFPDF</a> - FPDF 用の Unicode/UTF-8 拡張</li>
     <li><a href="http://www.wikipedia.org/wiki/URL">URL (Uniform Resource
 Locator)</a> - a sequence of characters, conforming to a standardized
@@ -4798,8 +4767,8 @@ different kinds of data.</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/ZIP_%28%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%29">ZIP</a>
 - 一般的なデータ圧縮とアーカイブ形式</li>
-    <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - an open-source,
-cross-platform data compression library by Jean-loup Gailly and Mark Adler.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Zlib">zlib</a> - Jean-loup Gailly および
+Mark Adlerによるオープンソースでクロスプラットフォームのデータ圧縮ライブラリ</li>
 </ul>
 </div>
 
