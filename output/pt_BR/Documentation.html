@@ -1105,6 +1105,54 @@ armazenagem do phpMyAdmin.</li>
         </ul>
     </dd>
 
+    <dt id="recent">
+        <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span> string
+    </dt>
+    <dd>
+        Since release 3.5.0 you can show recently used tables in the left navigation
+frame.  It helps you to jump across table directly, without the need to
+select the database, and then select the table. Using <a
+href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
+you can configure the maximum number of recent tables shown. When you select
+a table from the list, it will jump to the page specified in <a
+href="#cfg_LeftDefaultTabTable"
+class="configrule">$cfg['LeftDefaultTabTable']</a>.<br/><br/>
+
+        Without configuring the storage, you can still access the recently used
+tables, but it will disappear after you logout.<br/><br/>
+
+        Para permtir o uso desta funcionalidade:
+
+        <ul>
+            <li>configure o banco de dados <a href="#pmadb">pmadb</a> e as configurações de
+armazenagem do phpMyAdmin.</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['recent']</tt>
+(e.g. 'pma_recent')</li>
+        </ul>
+    </dd>
+
+    <dt id="table_uiprefs">
+        <span
+id="cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</span>
+string
+    </dt>
+    <dd>
+        Since release 3.5.0 phpMyAdmin can be configured to remember several things
+(table sorting <a href="#cfg_RememberSorting"
+class="configrule">$cfg['RememberSorting']</a> , etc.) for browsing tables.
+Without configuring the storage, these features still can be used, but the
+values will disappear after you logout.<br/><br/>
+
+        To allow the usage of these functionality persistently:
+
+        <ul>
+            <li>configure o banco de dados <a href="#pmadb">pmadb</a> e as configurações de
+armazenagem do phpMyAdmin.</li>
+            <li>put the table name in <tt>$cfg['Servers'][$i]['table_uiprefs']</tt>
+(e.g. 'pma_table_uiprefs')</li>
+        </ul>
+    </dd>
+
     <dt id="tracking">
         <span id="cfg_Servers_tracking">$cfg['Servers'][$i]['tracking']</span>
 string
@@ -1566,6 +1614,10 @@ without any other characters in between.</dd>
     <dd>Defines how many sublevels should be displayed when splitting up tables by
 the above separator.</dd>
 
+    <dt id="cfg_LeftRecentTable">$cfg['LeftRecentTable'] integer</dt>
+    <dd>The maximum number of recently used tables shown in the left navigation
+frame. Set this to 0 (zero) to disable the listing of recent tables.</dd>
+
     <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] booleano</dt>
     <dd>Defines whether to display table comment as tool-tip in left frame or not.</dd>
 
@@ -2007,6 +2059,9 @@ can use descriptive headers even though columns only contain small values
 and still print them out. The vertical mode sorts each row on a vertical
 lineup.
     </dd>
+
+    <dt id="cfg_RememberSorting">$cfg['RememberSorting'] boolean</dt>
+    <dd>If enabled, when browsing tables, the sorting of each table is remembered.</dd>
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
     <dd>
