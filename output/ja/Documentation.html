@@ -116,7 +116,7 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
         </li>
     <li>さまざまなフォーマットでデータをエクスポート<a href="#footnote_1"><sup>1</sup></a>：<abbr
 title="Comma Separated Values">CSV</abbr>、<abbr title="Extensible Markup
-Language">XML</abbr>、<abbr title="Portable Document Format">PDF</abbr>、<abbr
+Language">XML</abbr>、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>、<abbr
 title="International Standards Organisation">ISO</abbr>/<abbr
 title="International Electrotechnical Commission">IEC</abbr> 26300
 (OpenDocument テキストおよびスプレッドシート)、<abbr title="Microsoft Word
@@ -132,7 +132,7 @@ Values">CSV</abbr>、もちろん <abbr title="Server Query Language">SQL</abbr>
     <li>MySQL ユーザ・特権の管理</li>
     <li>MyISAM テーブルにおける参照完全性のチェック</li>
     <li>Query-by-example（QBE）を利用して必要なテーブルを自動的に結合する複雑なクエリの作成</li>
-    <li>データベースレイアウトの <abbr title="Portable Document Format">PDF</abbr> 画像の作成</li>
+    <li>データベースレイアウトの <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> 画像の作成</li>
     <li>データベースないしそのサブセットのグローバル検索</li>
     <li>あらかじめ定義された関数一式を使用して格納されているデータを任意のフォーマットに変換します。BLOB
 データをイメージもしくはダウンロードリンクとして表示するかのように。
@@ -294,7 +294,7 @@ Protocol">HTTP</abbr>／クッキー認証モードを使用している場合�
 <h3 id="linked-tables">phpMyAdmin の設定保存場所</h3>
 
 <p> 一連の新機能（ブックマーク、コメント、<abbr title="structured query language">SQL</abbr>
-履歴、コマンド追跡機能、<abbr title="Portable Document Format">PDF</abbr>
+履歴、コマンド追跡機能、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 生成、カラム内容の変換等）を使うには専用のテーブル群を作成する必要があります。これらのテーブル群はお使いのデータベースに格納することもできますし、マルチユーザの場合はセントラルデータベースに格納することもできます（このセントラルデータベースは管理ユーザがアクセスするものです。ほかのユーザはアクセスできないようにしてください）。</p>
 
 <p> <tt>./scripts/</tt> ディレクトリを確認してください。<i>create_tables.sql</i>
@@ -316,12 +316,11 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 
 <p> それまで使っていた <i>./config.inc.php</i>
 を新しいインストール先にコピーしていただくだけで結構です。古いバージョンから持ってきた設定ファイルは、オプションをいくつか変更または削除するなど若干の調整が必要な場合があります。特に、<tt>$cfg['AttributeTypes']</tt>
-の定義は、設定ファイルから削除して、デフォルト値が使われるように変更するほうがいいでしょう。 PHP 6
-との互換性のために、設定ファイルの終わりの方にあると思われる <tt>set_magic_quotes_runtime(0);</tt>
-文を削除してください。</p>
+の定義は、設定ファイルから削除して、デフォルト値が使われるように変更するほうがいいでしょう。PHP 6
+との互換性のために、set_magic_quotes_runtime(0); 文を削除してください（たぶん、設定ファイルの終わりの方にあります）。</p>
 
 <p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
-<tt>config.inc.php</tt> へコピー<strong>しない</strong>ようにしてださい。</p>
+<tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
 
 <p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、且つ、phpMyAdmin
 設定保存場所を使用している場合、<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
@@ -331,8 +330,8 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 
 <ul><li><b>マルチユーザ環境</b>では、ユーザが自分のデータベースにアクセスできるよう、また他人のデータベースにいたずらできないよう、<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがお勧めです。<br />
-        ただし、ご注意ください。マイクロソフトの Internet Explorer は、クッキーに関しては本当にバグが多いようです。少なくともバージョン 6
-まではそうです。<br />
+        ただし、マイクロソフトの Internet Explorer
+にはご注意ください。このブラウザはクッキーに関しては本当にバグが多いようです。少なくともバージョン 6 まではそうです。<br />
         また、<b>シングルユーザ環境</b>であっても <abbr title="HyperText Transfer
 Protocol">HTTP</abbr>／クッキーモードの方が好ましく思えるかもしれません。ユーザ／パスワードの組を設定ファイルに明記しなくてすみますから。
         </li>
@@ -340,7 +339,7 @@ Protocol">HTTP</abbr>／クッキーモードの方が好ましく思えるか�
     <li><abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードの方が安全です。MySQL
 のログイン情報を phpMyAdmin の設定ファイルに書く必要がありませんから（<a
 href="#controluser">「管理ユーザ」</a>は別かもしれませんが）。<br />
-        ただし、忘れてはなりません。HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされます。<br />
+        ただし、HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされることを、忘れないでください。<br />
         また、クッキーモードでは、blowfish アルゴリズムで暗号化されてはいますが、パスワードは一時的にクッキーに保管されます。</li>
 
     <li id="pmausr">注：この項目は、MySQL サーバが <tt>--skip-show-database</tt> を適用して稼動している場合のみに使用できます。<br /><br />
@@ -763,7 +762,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
             </li>
             <li>query-by-example では、自動結合を作成します（<a href="#faq6_6"><abbr
 title="よくある質問">FAQ</abbr> 6.6</a>参照）</li>
-            <li>データベースの <abbr title="Portable Document Format">PDF</abbr>
+            <li>データベースの <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 スキーマを取得できるようにします（table_coords テーブルも使用されます）。</li>
         </ul>
 
@@ -821,8 +820,7 @@ Format">PDF</abbr> schema output).<br /><br />
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt> に正しいテーブル名を入れます。</li>
         </ul>
 
-        使い方のコツ：<a href="#faqpdf"><abbr title="Portable Document Format">PDF</abbr>
-出力</a>
+        使い方のコツ：<a href="#faqpdf"><abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> 出力</a>
     </dd>
 
     <dt id="col_com">
@@ -1178,7 +1176,7 @@ authentication method). Should be absolute including protocol.
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
     <dd>複数のサーバが設定されている場合、<tt>$cfg['ServerDefault']</tt> にサーバ番号を設定しておくと phpMyAdmin
 を立ち上げたときに自動的にそのサーバに接続するようにできます。0 にセットするとログインしないでサーバのリストを表示します。<br />
-        サーバがひとつしか設定されていない場合、<tt>$cfg['ServerDefault']</tt> はそのサーバに設定「しなければなりません」。</dd>
+        サーバが１つしか設定されていない場合、<tt>$cfg['ServerDefault']</tt> はそのサーバに設定「しなければなりません」。</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] boolean</dt>
     <dd>Defines whether to refresh only parts of certain pages using Ajax
@@ -1682,19 +1680,14 @@ Can be turned off by a toggle button on the browse page.</dd>
 <span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']
 </span>boolean
     </dt>
-    <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
-would be put when tables contents are displayed (you may have them displayed
-both at the left and at the right).  &quot;Left&quot; and &quot;right&quot;
-are parsed as &quot;top&quot; and &quot;bottom&quot; with vertical display
-mode.</dd>
+    <dd>テーブルの内容を表示しているとき、行のリンク（編集、インライン編集、コピー、削除）をどこに表示するかを定義します（左右両方に表示することもできます）。
+「左 (left)」と「右 (right)」は、縦表示モードでは「上 (top)」と「下 (bottom)」と解釈されます。</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] 文字列</dt>
-    <dd>There are 3 display modes: horizontal, horizontalflipped and vertical.
-Define which one is displayed by default. The first mode displays each row
-on a horizontal line, the second rotates the headers by 90 degrees, so you
-can use descriptive headers even though columns only contain small values
-and still print them out. The vertical mode sorts each row on a vertical
-lineup.
+    <dd>表示モードには横並び (horizontal)、横並び縦ヘッダ (horizontalflipped)、縦並び
+(vertical)の３つがありますが、どれをデフォルトの表示にするかを定義します。横並びモードでは各行の内容を横一列に並べます。横並び縦ヘッダモードでは、ヘッダを
+90
+度回転させることで、フィールドに小さな値しか入っていない場合でも詳細なヘッダを表示できるようにします。縦並びモードでは各行の内容を縦一列に並べます。
     </dd>
 
     <dt id="cfg_RememberSorting">$cfg['RememberSorting'] boolean</dt>
@@ -1702,34 +1695,27 @@ lineup.
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] 文字列</dt>
     <dd>
-        The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css'
-the rotation of the header for horizontalflipped is done via CSS. The CSS
-transformation currently works only in Internet Explorer.If set to 'fake'
-PHP does the transformation for you, but of course this does not look as
-good as CSS. The 'auto' option enables CSS transformation when browser
-supports it and use PHP based one otherwise.
+        HeaderFlipType に設定できる値は「auto」、「css」、「fake」のいずれかです。「css」の場合、横並び縦ヘッダ
+(horizontalflipped) モードでのヘッダの回転は CSS を通じて行われます。CSS 変形は Internet Explorer
+のみ機能します。「fake」の場合は PHP が変換を行いますが、もちろんこの場合、CSS
+ほどの見栄えにはなりません。「auto」オプションは、ブラウザがサポートしている場合は CSS 変形を有効しますが、それ以外では PHP
+によるが変換が行われます。
     </dd>
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span> 文字列または整数</dt>
-    <dd>When editing/creating new columns in a table all fields normally get lined
-up one field a line. (default: 'horizontal'). If you set this to 'vertical'
-you can have each field lined up vertically beneath each other. You can save
-up a lot of place on the horizontal direction and no longer have to
-scroll. If you set this to integer, editing of fewer columns will appear in
-'vertical' mode, while editing of more columns still in 'horizontal'
-mode. This way you can still effectively edit large number of columns, while
-having full view on few of them.</dd>
+    <dd>テーブルのカラムを修正／新規作成する際、通常はすべてのフィールドが一列に横並びします（デフォルトの「横並び (horizontal)」）。「縦並び
+(vertical)」にすると、各フィールドが上から下へ縦並びになります。こうすると、横幅を大いに節約できるため、スクロールする必要がなくなります。整数を設定すると、これ以下のカラム数を編集しているときは「縦並び
+(vertical)」モードで、これを超えたカラム数を編集しているときは「横並び
+(horizontal)」モードで表示されます。このモードは多くのカラム数を編集するとき効果的で、少数のカラムの場合には自動的に全てが見渡せる表示になります。</dd>
 
     <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] boolean<br />
         <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']
 </span>boolean
     </dt>
-    <dd>By setting the corresponding variable to <tt>TRUE</tt> you can enable the
-display of column comments in Browse or Property display. In browse mode,
-the comments are shown inside the header. In property mode, comments are
-displayed using a CSS-formatted dashed-line below the name of the
-column. The comment is shown as a tool-tip for that column.
+    <dd>対応する変数を <tt>TRUE</tt>
+にすると、表示／プロパティ画面でカラムのコメントを表示できるようになります。表示モードの場合、コメントはヘッダのなかに表示されます。プロパティモードでは、コメントがついているカラム名の下に
+CSS による破線が表示されます。コメントはカラムのツールチップとして表示されます。
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
@@ -1750,10 +1736,9 @@ href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt> もご覧になってくだ�
 
     <dt id="cfg_UploadDir">$cfg['UploadDir'] 文字列</dt>
     <dd>
-        The name of the directory where <abbr title="structured query
-language">SQL</abbr> files have been uploaded by other means than phpMyAdmin
-(for example, ftp).  Those files are available under a drop-down box when
-you click the database or table name, then the Import tab.
+        phpMyAdmin 以外の方法（例えば ftp）でアップロードした <abbr title="structured query
+language">SQL</abbr>
+ファイルのあるディレクトリ名。このディレクトリにあるファイルは、インポートタブをクリックして表示されるドロップダウンボックスより利用できます。
         <br /><br />
 
         ユーザごとにディレクトリを変えたい場合は、%u を使うとユーザ名に置換されます。<br /><br />
@@ -1763,7 +1748,7 @@ you click the database or table name, then the Import tab.
         この機能は <abbr title="HyperText Transfer Protocol">HTTP</abbr>
 でアップロードするには大きすぎるファイルがあるときや、PHP のファイルアップロード機能が無効になっている場合に便利です。<br /><br />
 
-        このディレクトリのオーナに注意してください。PHP がセーフモードになっている場合、phpMyAdmin
+        また、このディレクトリのオーナに注意してください。PHP がセーフモードになっている場合、phpMyAdmin
 スクリプトのオーナと同じユーザがオーナになっていなければなりません。
         <br /><br />
 
@@ -1779,7 +1764,7 @@ you click the database or table name, then the Import tab.
 
     書き込み権限にご注意ください。このディレクトリはウェブサーバの実行ユーザが書き込みできるようになっている必要があります。<br /><br />
 
-        このディレクトリのオーナに注意してください。PHP がセーフモードになっている場合、phpMyAdmin
+        また、このディレクトリのオーナに注意してください。PHP がセーフモードになっている場合、phpMyAdmin
 スクリプトのオーナと同じユーザがオーナになっていなければなりません。
     </dd>
 
@@ -1794,13 +1779,9 @@ title="よくある質問">FAQ</abbr> 6.23</a> を参照してください。ア
 title="よくある質問">FAQ</abbr> 1.11</a> を参照してください。
         <br /><br />
 
-	If the directory where phpMyAdmin is installed is subject to an
-<tt>open_basedir</tt> restriction, you need to create a temporary directory
-in some directory accessible by the web server. However for security
-reasons, this directory should be outside the tree published by
-webserver. If you cannot avoid having this directory published by webserver,
-place at least an empty <tt>index.html</tt> file there, so that directory
-listing is not possible.
+	phpMyAdmin がインストールされているディレクトリが、<tt>open_basedir</tt>
+の制限の対象とされている場合、ウェブサーバによってアクセス可能なディレクトリの中に一時ディレクトリを作成する必要があります。しかしながら、セキュリティ上の理由から、このディレクトリはウェブサーバで公開されているツリーの外に配置しなければなりません。このディレクトリをウェブサーバで公開することを避けることができない場合、せめて空の
+<tt>index.html</tt> ファイルをそこへ配置して、ディレクトリリストを取得されないようにしてください。
         <br /><br />
 
         このディレクトリは、実行されているウェブサーバにおいて必要なユーザのみアクセスできるよう、可能な限り厳格な権限を有している必要があります。root
@@ -1857,63 +1838,53 @@ setfacl -d -m "g:www-data:rwx" tmp
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>整数
     </dt>
     <dd>
-        All those variables affect the query window feature. A <tt><abbr
-title="structured query language">SQL</abbr></tt> link or icon is always
-displayed on the left panel. If JavaScript is enabled in your browser, a
-click on this opens a distinct query window, which is a direct interface to
-enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
-the right panel changes to display a query box.<br /><br />
+        これらの変数はいずれもクエリウインドウ機能に関するものです。<tt><abbr title="structured query
+language">SQL</abbr></tt> というリンクないしアイコンは常に左パネルに表示されます。ブラウザの JavaScript
+が有効になっている場合は、ここをクリックすると別のクエリウインドウが開き、<abbr title="structured query
+language">SQL</abbr> クエリを直接入力できるようになります。JavaScript
+が無効の場合は、右パネルがクエリボックスに変わります。<br /><br />
 
-        The size of this query window can be customized with
-<tt>$cfg['QueryWindowWidth']</tt> and <tt>$cfg['QueryWindowHeight']</tt> -
-both integers for the size in pixels. Note that normally, those parameters
-will be modified in <tt>layout.inc.php</tt> for the theme you are using.<br /><br />
+        このクエリウインドウの大きさは <tt>$cfg['QueryWindowWidth']</tt> と
+<tt>$cfg['QueryWindowHeight']</tt>
+によってカスタマイズできます。いずれもピクセル数を表す整数値が入ります。なお、これらの値は通常 <tt>layout.inc.php</tt>
+の中でお使いのテーマにあわせて修正されます。<br /><br />
 
-        If <tt>$cfg['EditInWindow']</tt> is set to true, a click on [Edit] from the
-results page (in the &quot;Showing Rows&quot; section)  opens the query
-window and puts the current query inside it.  If set to false, clicking on
-the link puts the <abbr title="structured query language">SQL</abbr> query
-in the right panel's query box.
+        <tt>$cfg['EditInWindow']</tt> が true の場合は、結果ページの [修正 (Edit)]
+（「行の表示」の表示欄のところにあります）をクリックすると、現在のクエリが入ったクエリウインドウが開きます。false
+の場合は、リンクをクリックすると右パネルのクエリボックスに <abbr title="structured query
+language">SQL</abbr> クエリが入ります。
         <br /><br />
         JavaScript 対応ブラウザを使っているなら JavaScript
 クエリウインドウを使うことをおすすめします。やりとりする変数の数は多いですが、使っている関数は基本的なものなので、第四世代のブラウザならたいていこの機能を利用できるはずです。現在は
 Internet Explorer 6 と Mozilla 1.x のみでテストしています。
         <br /><br />
-        If <tt>$cfg['QueryHistoryDB']</tt> is set to <tt>TRUE</tt>, all your Queries
-are logged to a table, which has to be created by you (see <a
-href="#history" class="configrule">$cfg['Servers'][$i]['history']</a>).  If
-set to FALSE, all your queries will be appended to the form, but only as
-long as your window is opened they remain saved.
+        <tt>$cfg['QueryHistoryDB']</tt> が <tt>TRUE</tt>
+の場合、ユーザのクエリはすべてテーブルに記録されます。ただし、このテーブルはユーザが作成する必要があります（参照 <a href="#history"
+class="configrule">$cfg['Servers'][$i]['history']</a>）。FALSE
+の場合、フォームにはすべてのクエリが残りますが、保存されるのはウインドウが開いている間のみです。
         <br /><br />
-        When using the JavaScript based query window, it will always get updated
-when you click on a new table/db to browse and will focus if you click on
-"Edit <abbr title="structured query language">SQL</abbr>" after using a
-query. You can suppress updating the query window by checking the box "Do
-not overwrite this query from outside the window" below the query
-textarea. Then you can browse tables/databases in the background without
-losing the contents of the textarea, so this is especially useful when
-composing a query with tables you first have to look in. The checkbox will
-get automatically checked whenever you change the contents of the
-textarea. Please uncheck the button whenever you definitely want the query
-window to get updated even though you have made alterations.
+        JavaScript
+ベースのクエリウインドウを使うと、新しいテーブル／データベースをクリックして表示させるとかならず内容が更新されるようになります。また、クエリを利用したあとで「<abbr
+title="structured query language">SQL</abbr> の修正」をクリックするとフォーカスが移ります。クエリ
+textarea
+の下にある「別ウインドウからのクエリの上書きを禁止する」というチェックボックスをチェックすると、クエリウインドウの更新を抑制することもできます。テーブル／データベースをバックグラウンドで表示でき、textarea
+の中身はなくなりません。これは、最初に別のテーブルを調べなければならないクエリを作成するときには、特に便利です。このチェックボックスは textarea
+の内容を修正すると自動的にチェックされます。内容は修正してしまったけれどもやっぱりクエリウインドウを更新させたくなった場合は、チェックを外してください。
         <br /><br />
-        If <tt>$cfg['QueryHistoryDB']</tt> is set to <tt>TRUE</tt> you can specify
-the amount of saved history items using <tt>$cfg['QueryHistoryMax']</tt>.
+        <tt>$cfg['QueryHistoryDB']</tt> が <tt>TRUE</tt> の場合、保存する履歴アイテムの数は
+<tt>$cfg['QueryHistoryMax']</tt> で指定できます。
         <br /><br />
-        The query window also has a custom tabbed look to group the features.  Using
-the variable <tt>$cfg['QueryWindowDefTab']</tt> you can specify the default
-tab to be used when opening the query window. It can be set to either 'sql',
-'files', 'history' or 'full'.</dd>
+        また、クエリウインドウは機能をまとめるためにカスタマイズ可能なタブ形式になっています。<tt>$cfg['QueryWindowDefTab']</tt>
+変数を使うと、クエリウインドウを開いたときに表示されるデフォルトタブを指定できます。設定可能な値は「sql」、「files」、「history」、「full」です。</dd>
 
     <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] boolean</dt>
     <dd><a href="#transformations">MIME 変換機能</a>を有効にします。</dd>
 
     <dt id="cfg_MaxExactCount">$cfg['MaxExactCount'] 整数</dt>
-    <dd>For InnoDB tables, determines for how large tables phpMyAdmin should get the
-exact row count using <code>SELECT COUNT</code>.  If the approximate row
-count as returned by <code>SHOW TABLE STATUS</code> is smaller than this
-value, <code>SELECT COUNT</code> will be used, otherwise the approximate
-count will be used.
+    <dd>InnoDB テーブルにおいて、どの程度大きなテーブルまで <code>SELECT COUNT</code>
+で正確な行数を取得するかを指定します。<code>SHOW TABLE STATUS</code>
+によって返される概算の行数が、設定した値より小さい場合は <code>SELECT COUNT</code>
+が使われますが、そうでない場合はこの概算数が使われます。
     </dd>
     <dt id="cfg_MaxExactCountViews">$cfg['MaxExactCountViews'] 整数</dt>
     <dd>For VIEWs, since obtaining the exact count could have an impact on
@@ -3568,8 +3539,8 @@ country code の上にマウスを移動します。
 </p>
 
 <h4 id="faqpdf">
-    <a href="#faqpdf">6.8 どうすればデータベースの <abbr title="Portable Document
-Format">PDF</abbr> スキーマを作れるのでしょう。</a></h4>
+    <a href="#faqpdf">6.8 どうすればデータベースの <abbr
+title="ポータブル・ドキュメント・フォーマット">PDF</abbr> スキーマを作れるのでしょう。</a></h4>
 <p>
     まず、「relation」、「table_coords」、「pdf_pages」という設定変数に値を入れる必要があります。
     <br /><br />
@@ -3578,22 +3549,22 @@ Format">PDF</abbr> スキーマを作れるのでしょう。</a></h4>
 <ul>
     <li>左フレームのデータベース名を選択します。</li>
     <li>上部のナビゲーションバーで「操作（Operations）」を選択します。</li>
-    <li>ページの底辺近くに表示される「<abbr title="Portable Document Format">PDF</abbr> のページを編集
-(Edit <abbr title="Portable Document Format">PDF</abbr> Pages)」を選択します。</li>
-    <li>1 ページめの <abbr title="Portable Document Format">PDF</abbr> ページの名前を入力して「実行する
+    <li>ページの底辺近くに表示される「<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> のページを編集 (Edit
+<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> Pages)」を選択します。</li>
+    <li>1 ページめの <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> ページの名前を入力して「実行する
 (Go)」をクリックします。お望みなら「自動レイアウト (automatic
 layout)」機能を利用して、リンクされているすべてのテーブルを新しいページに配置することもできます。</li>
     <li>新しいページの名前を選択して（「修正 (Edit)」のラジオボタンが選択されているのを確かめて）、「実行する (Go)」をクリックします。</li>
     <li>リストからテーブルを選択して、座標を入力し、「保存（Save）」をクリックします。<br />
         座標は相対座標です。図表の大きさはページにあわせて自動的に調整されます。最初にテーブルを配置するときは適当な（たとえば50×50のような）座標を選んでおいてください。「保存（Save）」をクリックしてからは、<a
 href="#wysiwyg">グラフィカルエディタ</a>を利用して要素を正確に配置することもできます。</li>
-    <li><abbr title="Portable Document Format">PDF</abbr>
+    <li><abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 を見る場合は、まず忘れずにテーブル／座標のリストの下にある「保存
 (Save)」ボタンをクリックして、ここで行った変更を保存します。次に、ずっと下にスクロールしていって、お好みの <abbr
-title="Portable Document Format">PDF</abbr> オプションを選択し、「実行する (Go)」をクリックします。</li>
-    <li>Windows 版の Internet Explorer は、生成した <abbr title="Portable Document
-Format">PDF</abbr> を保存するときに間違ったファイル名を表示することがあります。生成した <abbr title="Portable
-Document Format">PDF</abbr>
+title="ポータブル・ドキュメント・フォーマット">PDF</abbr> オプションを選択し、「実行する (Go)」をクリックします。</li>
+    <li>Windows 版の Internet Explorer は、生成した <abbr
+title="ポータブル・ドキュメント・フォーマット">PDF</abbr> を保存するときに間違ったファイル名を表示することがあります。生成した
+<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 を保存する際にはかならずファイル名が「.pdf」で終わるようにしてください（例：「schema.pdf」）。他の OS のブラウザや、Windows
 環境の他のブラウザでは、この問題は起こりません。</li>
 </ul>
@@ -3870,22 +3841,18 @@ stored at upload time.</li>
 </ol>	
 
 <h4 id="faq6_26">
-    <a href="#faq6_26">6.26 How can I select a range of rows?</a></h4>
+    <a href="#faq6_26">6.26 行の範囲選択はどのように行いますか？</a></h4>
 
-<p> Click the first row of the range, hold the shift key and click the last row
-of the range. This works everywhere you see rows, for example in Browse mode
-or on the Structure page.</p>
+<p> 範囲の最初の行をクリックして、シフトキーを押しながら範囲の最後の行をクリックします。これは、表示モードまたは構造ページのように、行を閲覧していればいつでも動作します。</p>
 
 
 <h4 id="faq6_27">
-    <a href="#faq6_27">6.27 What format strings can I use?</a></h4>
+    <a href="#faq6_27">6.27 どのような書式が使えますか？</a></h4>
 
 <p>
-    In all places where phpMyAdmin accepts format strings, you can use
-<code>@VARIABLE@</code> expansion and <a
-href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (for example, if you haven't chosen a table,
-you can not get the table name), but the following variables can be used:
+    phpMyAdmin は書式を受け入れる全ての場所において、<code>@変数@</code>拡張および <a
+href="http://php.net/strftime">strftime</a>
+の書式を使用することができます。拡張された変数は（テーブルを選択していないとテーブル名を得られないなど）内容に依存しますが、以下の変数を使用することができます。
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
@@ -3893,10 +3860,9 @@ you can not get the table name), but the following variables can be used:
     <dt><code>@SERVER@</code></dt>
         <dd>MySQL サーバ名</dd>
     <dt><code>@VERBOSE@</code></dt>
-        <dd>Verbose MySQL server name as defined in <a
-href="#cfg_Servers_verbose">server configuration</a></dd>
+        <dd><a href="#cfg_Servers_verbose">サーバ設定</a>で定義された詳細な MySQL サーバ名</dd>
     <dt><code>@VSERVER@</code></dt>
-        <dd>Verbose MySQL server name if set, otherwise normal</dd>
+        <dd>設定されていれば @VERBOSE@ の内容、そうでなければ @SERVER@ の内容</dd>
     <dt><code>@DATABASE@</code></dt>
         <dd>現在開いているデータベース</dd>
     <dt><code>@TABLE@</code></dt>
@@ -3904,12 +3870,11 @@ href="#cfg_Servers_verbose">server configuration</a></dd>
     <dt><code>@FIELDS@</code></dt>
         <dd>現在開いているテーブルのフィールド</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
-        <dd>phpMyAdmin with version</dd>
+        <dd>バージョン番号付きの『phpMyAdmin』</dd>
 </dl>
 
 <h4 id="wysiwyg">
-    <a href="#wysiwyg">6.28 How can I easily edit relational schema for
-export?</a></h4>
+    <a href="#wysiwyg">6.28 どのようにしたら、エクスポート用のリレーショナルスキーマを簡単に編集することができますか？</a></h4>
 
     <p> 
         By clicking on the button 'toggle scratchboard' on the page where you edit
@@ -4022,11 +3987,11 @@ wiki</a>より入手できます。</p>
 <h3 id="faqsecurity">セキュリティ</h3>
 
 <h4 id="faq8_1">
-    <a href="#faq8_1">8.1 Where can I get information about the security alerts
-issued for phpMyAdmin?</a></h4>
+    <a href="#faq8_1">8.1 どこで、phpMyAdmin に対しての発行されたセキュリティに関する情報を得ることができますか？</a></h4>
 
-<p> Please refer to <a
+<p> <a
 href="http://www.phpmyadmin.net/home_page/security.php">http://www.phpmyadmin.net/home_page/security.php</a>
+を閲覧してください。
 </p>
 
 <h4 id="faq8_2">
@@ -4320,8 +4285,8 @@ PHPMyAdmin&quot; (http://sf.net/projects/phpmysqlformgen/)
   <li>（MIME）- カラム変換</li>
   <li>左フレームのデータベースに独自の別名を利用</li>
   <li>テーブルの階層／ネスト表示</li>
-  <li><abbr title="Portable Document Format">PDF</abbr> リレーションを WYSIWYG 配布するための
-<abbr title="Portable Document Format">PDF</abbr> スクラッチボード</li>
+  <li><abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> リレーションを WYSIWYG 配布するための <abbr
+title="ポータブル・ドキュメント・フォーマット">PDF</abbr> スクラッチボード</li>
   <li>新しいアイコンセット</li>
   <li>カラムプロパティページの縦表示</li>
   <li>バグフィックス、追加機能、サポート、ドイツ語の追加を少々</li>
@@ -4344,7 +4309,7 @@ PHPMyAdmin&quot; (http://sf.net/projects/phpmysqlformgen/)
 
 <li>Maxime Delorme &lt;delorme.maxime_at_free.fr&gt;
 <ul>
-  <li><abbr title="Portable Document Format">PDF</abbr> スキーマ出力。Olivier Plathey
+  <li><abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> スキーマ出力。Olivier Plathey
 の「FPDF」ライブラリ（→ <a href="http://www.fpdf.org/">http://www.fpdf.org/</a>）と
 Steven Wittens の「UFPDF」ライブラリ（→ <a
 href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感謝。</li>
@@ -4431,7 +4396,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Muhammad Adnan (Google Summer of Code 2010)
 <ul>
-  <li>Relation schema export to multiple formats</li>
+  <li>複数のフォーマットへのリレーションスキーマのエクスポート</li>
 </ul></li>
 
 <li>Lori Lee (Google Summer of Code 2010)
@@ -4542,8 +4507,8 @@ should have written their names here.
 <p> フリー百科事典 Wikipedia より</p>
 
 <ul>
-    <li><a href="http://www.wikipedia.org/wiki/.htaccess">.htaccess</a> - the
-default name of Apache's directory-level configuration file.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/.htaccess">.htaccess</a> -  Apache
+のディレクトリ単位での設定ファイルのデフォルトの名前</li>
     <li><a href="http://ja.wikipedia.org/wiki/Blowfish">Blowfish</a> - Bruce
 Schneier 氏によって 1993 年に設計された対称ブロック暗号およびそのキー</li>
     <li><a
@@ -4563,9 +4528,8 @@ href="http://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3
     <li><a
 href="http://ja.wikipedia.org/wiki/%E5%B1%9E%E6%80%A7_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">カラム</a>
 - 列のこと。特定の単一の型のデータ値の集まり。テーブルの各行に対しての一要素でもある。</li>
-    <li><a href="http://www.wikipedia.org/wiki/HTTP_cookie">Cookie</a> - a packet of
-information sent by a server to a World Wide Web browser and then sent back
-by the browser each time it accesses that server.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/HTTP_cookie">クッキー</a> -
+サーバにアクセスするたびにサーバから送信され World Wide Web ブラウザから送り返される情報のパケット</li>
     <li><a href="http://ja.wikipedia.org/wiki/Comma-Separated_Values">CSV</a> -
 カンマ区切り (Comma-separated values)</li>
     <li>DB - →<a href="#database">データベース (Database)</a></li>
@@ -4573,17 +4537,18 @@ by the browser each time it accesses that server.</li>
 href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
 - 系統だったデータの集まり</li>
     <li>Engine - look at <a href="#glossar_storage_engine">Storage Engines</a>.</li>
-    <li><a href="http://www.wikipedia.org/wiki/extension">extension</a> - a PHP
-module that extends PHP with additional functionality.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%B3">拡張（エクステンション）</a>
+- 追加機能を PHP に拡張する PHP モジュール</li>
     <li><a href="http://ja.wikipedia.org/wiki/FAQ">FAQ（よくある質問）</a> -
 よく訊かれる質問とその答えの一覧</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89_%28%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%A6%29">フィールド</a>
 - 分割されたデータ／カラムの１つ</li>
-    <li><a href="http://www.wikipedia.org/wiki/Foreign_key">foreign key</a> - a
-field or group of fields in a database record that point to a key field or
-group of fields forming a key of another database record in some (usually
-different) table.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E5%A4%96%E9%83%A8%E3%82%AD%E3%83%BC">外部キー</a>
+-
+データベースレコードのフィールドまたはグループフィールドの１つ。これらは、（通常は異なる）テーブル内における別のデータベースレコードのキーを形成しているフィールドキーまたはグループフィールドキーを指している。</li>
     <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - フリーの PDF ライブラリ</li>
     <li><a id="gd" href="http://ja.wikipedia.org/wiki/GD_Graphics_Library">GD
 グラフィックライブラリ</a> - Thomas Boutell 氏他によって開発された動的に画像を操作するためのライブラリ</li>
@@ -4613,9 +4578,9 @@ href="http://ja.wikipedia.org/wiki/Internet_Protocol">IP（インターネット
     <li><a
 href="http://ja.wikipedia.org/wiki/IP%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9">IP
 アドレス</a> - 標準的なインターネット・プロトコルを利用して、ネットワーク上で相互に識別し通信するデバイスに使用される一意な番号</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
-Application Programming Interface)</a> - the API of Internet Information
-Services (IIS).</li>
+    <li><a href="http://ja.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
+Application Programming Interface)</a> - Internet Information Services (IIS)
+の API</li>
     <li><a href="http://www.wikipedia.org/wiki/ISP">ISP（インターネット・サービス・プロバイダ）</a> -
 インターネット関連サービスへのユーザアクセスを提供している企業や組織</li>
     <li><a id="jpeg" href="http://ja.wikipedia.org/wiki/JPEG">JPEG</a> -
@@ -4635,8 +4600,9 @@ Macintosh">Mac</acronym> <abbr title="オペレーティング・システム">O
     <li><a href="http://php.net/mcrypt">mcrypt</a> - MCrypt の PHP 拡張</li>
     <li><a href="http://www.wikipedia.org/wiki/MIME">MIME (Multipurpose Internet
 Mail Extensions)</a> - an Internet Standard for the format of e-mail.</li>
-    <li><a href="http://www.wikipedia.org/wiki/module">module</a> - some sort of
-extension for the Apache Webserver.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">モジュール</a>
+- Apache ウェブサーバの拡張の一種</li>
     <li><a href="http://ja.wikipedia.org/wiki/MySQL">MySQL</a> -
 マルチスレッド、マルチユーザー、<abbr title="structured query
 language">SQL</abbr>が使えるデータベース管理システム (<abbr title="Database Management
@@ -4649,10 +4615,9 @@ System">DBMS</abbr>)</li>
 title="オペレーティング・システム">OS</abbr> X</a> - → <a
 href="#glossar_mac_os_x"><acronym title="Apple Macintosh">Mac</acronym>
 <abbr title="オペレーティング・システム">OS</abbr> X</a></li>
-    <li><a href="http://www.wikipedia.org/wiki/Portable_Document_Format">PDF
-(Portable Document Format)</a> - a file format developed by Adobe Systems
-for representing two dimensional documents in a device independent and
-resolution independent format.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Portable_Document_Format">PDF
+(ポータブル・ドキュメント・フォーマット)</a> - デバイスや解像度に依存しない形式で二次元ドキュメントを表現するために Adobe Systems
+よって開発されたファイル形式</li>
     <li><a href="http://pear.php.net/">PEAR</a> - PHP の拡張とアプリケーションのパッケージ (PHP
 Extension and Application Repository)</li>
     <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions)</a>
@@ -4669,9 +4634,9 @@ new research, innovations, and methodologies applicable to Internet
 technologies.</li>
     <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP
 ファイル形式の仕様バージョン 4.3</li>
-    <li><a href="http://www.wikipedia.org/wiki/Row_%28database%29">Row (record,
-tulpel)</a> - represents a single, implicitly structured data item in a
-table.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E7%B5%84_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">行（レコード、組)</a>
+- テーブル内において単一の、暗黙的に構造化されたデータ項目を表している</li>
     <li><a href="http://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%BC%E3%83%90">サーバ</a> -
 他のコンピュータシステムにネットワークを介してサービスを提供しているコンピュータシステムのこと</li>
     <li><a id="glossar_storage_engine"
@@ -4689,15 +4654,14 @@ set of data elements (cells) that is organized, defined and stored as
 horizontal rows and vertical columns where each item can be uniquely
 identified by a label or key or by it?s position in relation to other items.</li>
     <li>Table type</li>
-    <li><a href="http://www.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> - a
-type of archive file format: the Tape ARchive format.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Tar">tar</a> - アーカイブファイル形式の一種で Tape
+ARchive format の略</li>
     <li><a href="http://ja.wikipedia.org/wiki/Transmission_Control_Protocol">TCP
 (Transmission Control Protocol)</a> - インターネット・プロトコル群の中核となるプロトコルの一つ</li>
     <li><a href="http://www.acko.net/node/56">UFPDF</a> - FPDF 用の Unicode/UTF-8 拡張</li>
-    <li><a href="http://www.wikipedia.org/wiki/URL">URL (Uniform Resource
-Locator)</a> - a sequence of characters, conforming to a standardized
-format, that is used for referring to resources, such as documents and
-images on the Internet, by their location.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/URL">URL (Uniform Resource
+Locator)</a> -
+位置を示す連続した文字。標準化された形式に準拠しており、インターネット上の文書や画像などのリソースを参照するために使用される。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/Web%E3%82%B5%E3%83%BC%E3%83%90">ウェブサーバ</a>
 - クライアントからの HTTP 要求の受け入れおよびそれらに対する Web ページの提供を行っているコンピュータ（プログラム）</li>
