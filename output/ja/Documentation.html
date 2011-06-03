@@ -246,8 +246,8 @@ chmod o+rw config                   # 誰でも書き込める権限を与える
 cp config.inc.php config/           # 編集するためにカレントにある設定ファイルをコピー
 chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
 </pre>
-                他のプラットフォームでは、単純にフォルダを作成し、Web サーバに対して読み書きアクセス権があるか確認します。<a
-href="#faq1_26">FAQ 1.26</a> も役立つでしょう。<br /><br />
+                他のプラットフォームでは、単純にフォルダを作成し、ウェブサーバに対して読み書きアクセス権があるか確認します。<a href="#faq1_26">FAQ
+1.26</a> も役立つでしょう。<br /><br />
 
                 Next, open <tt><a href="setup/">setup/</a> </tt>in your browser. Note that
 <strong>changes are not saved to disk until explicitly choose
@@ -285,7 +285,7 @@ Protocol">HTTP</abbr>／クッキー認証モードを使用している場合�
     <li>
         一般的には、インストールしている phpMyAdmin
 を公開されている場合、検索エンジンロボットに自動的に収集されないようにするために、それらからのアクセスに対してを保護することをお勧めします。そのためには、<code>robots.txt</code>
-ファイルを Web サーバのルートに置くか、もしくは、Web サーバの設定によりアクセス制限を行います。phpMyAdmin の
+ファイルをウェブサーバのルートに置くか、もしくは、ウェブサーバの設定によりアクセス制限を行います。phpMyAdmin の
 <code>contrib</code> ディレクトリ内に、<code>.htaccess</code>
 ファイルのサンプルがあります。これは、その設定を行うための参考になるでしょう。
     </li>
@@ -455,7 +455,7 @@ $cfg['Servers'][$i]['AllowDeny']['rules']</a>
 </ul>
 <h4 id="swekey">Swekey 認証</h4>
 <p>
-Swekey は、Web アプリケーションで使用することができる低コストの USB 認証キーです。<br /><br />
+Swekey は、ウェブアプリケーションで使用することができる低コストの USB 認証キーです。<br /><br />
 Swekey 認証が有効にされている場合、phpMyAdmin はログインページに入る前にユーザの Swekey
 を接続しておく必要があります（現在はクッキー認証モードのみサポート）。 Swekey 認証は、デフォルトでは無効になっています。<br /><br />
 Swekey 認証を有効にするには、<tt>config.inc.php</tt> に以下の行を追加します。
@@ -464,9 +464,10 @@ Swekey 認証を有効にするには、<tt>config.inc.php</tt> に以下の行�
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-その後、各ユーザと Swekey ID が関連付けられている <tt>swekey.conf</tt> ファイルを作成する必要があります。このファイルを
-Web サーバのドキュメントルート外に置いておくことが重要です（上の例では、<tt>/etc</tt> にあります）。これのサンプルファイルが
-<tt>contrib</tt> ディレクトリにあります。これらはユーザ情報ではありますが、管理者が見たりしても特に問題はありません。<br /><br />
+その後、各ユーザと Swekey ID が関連付けられている <tt>swekey.conf</tt>
+ファイルを作成する必要があります。このファイルをウェブサーバのドキュメントルート外に置いておくことが重要です（上の例では、<tt>/etc</tt>
+にあります）。これのサンプルファイルが <tt>contrib</tt>
+ディレクトリにあります。これらはユーザ情報ではありますが、管理者が見たりしても特に問題はありません。<br /><br />
 Swekey を購入したい場合は、<a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 より訪問するようお願いいたします。このリンクを通すことにより phpMyAdmin へ紹介料が提供されますので。
@@ -1684,8 +1685,8 @@ Can be turned off by a toggle button on the browse page.</dd>
 「左 (left)」と「右 (right)」は、縦表示モードでは「上 (top)」と「下 (bottom)」と解釈されます。</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] 文字列</dt>
-    <dd>表示モードには横並び (horizontal)、横並び縦ヘッダ (horizontalflipped)、縦並び
-(vertical)の３つがありますが、どれをデフォルトの表示にするかを定義します。横並びモードでは各行の内容を横一列に並べます。横並び縦ヘッダモードでは、ヘッダを
+    <dd>表示モードには水平 (horizontal)、水平縦ヘッダ (horizontalflipped)、垂直
+(vertical)の３つがありますが、どれをデフォルトの表示にするかを定義します。水平モードでは各行の内容を横一列に並べます。水平縦ヘッダモードでは、ヘッダを
 90
 度回転させることで、フィールドに小さな値しか入っていない場合でも詳細なヘッダを表示できるようにします。縦並びモードでは各行の内容を縦一列に並べます。
     </dd>
@@ -1695,7 +1696,7 @@ Can be turned off by a toggle button on the browse page.</dd>
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] 文字列</dt>
     <dd>
-        HeaderFlipType に設定できる値は「auto」、「css」、「fake」のいずれかです。「css」の場合、横並び縦ヘッダ
+        HeaderFlipType に設定できる値は「auto」、「css」、「fake」のいずれかです。「css」の場合、水平縦ヘッダ
 (horizontalflipped) モードでのヘッダの回転は CSS を通じて行われます。CSS 変形は Internet Explorer
 のみ機能します。「fake」の場合は PHP が変換を行いますが、もちろんこの場合、CSS
 ほどの見栄えにはなりません。「auto」オプションは、ブラウザがサポートしている場合は CSS 変形を有効しますが、それ以外では PHP
@@ -1704,9 +1705,9 @@ Can be turned off by a toggle button on the browse page.</dd>
 
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span> 文字列または整数</dt>
-    <dd>テーブルのカラムを修正／新規作成する際、通常はすべてのフィールドが一列に横並びします（デフォルトの「横並び (horizontal)」）。「縦並び
-(vertical)」にすると、各フィールドが上から下へ縦並びになります。こうすると、横幅を大いに節約できるため、スクロールする必要がなくなります。整数を設定すると、これ以下のカラム数を編集しているときは「縦並び
-(vertical)」モードで、これを超えたカラム数を編集しているときは「横並び
+    <dd>テーブルのカラムを修正／新規作成する際、通常はすべてのフィールドが一列に横並びします（デフォルトの「水平 (horizontal)」）。「垂直
+(vertical)」にすると、各フィールドが上から下へ縦並びになります。こうすると、横幅を大いに節約できるため、スクロールする必要がなくなります。整数を設定すると、これ以下のカラム数を編集しているときは「垂直
+(vertical)」モードで、これを超えたカラム数を編集しているときは「水平
 (horizontal)」モードで表示されます。このモードは多くのカラム数を編集するとき効果的で、少数のカラムの場合には自動的に全てが見渡せる表示になります。</dd>
 
     <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] boolean<br />
@@ -1896,9 +1897,7 @@ COUNT ... LIMIT</code>. The default value of 0 bypasses any row counting.
     <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（ライトモード）とデータベース画面のテーブル一覧に実装されています。</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
-    <dd>If set to <tt>'closed'</tt>, the visual sliders are initially in a closed
-state. A value of <tt>'open'</tt> does the reverse. To completely disable
-all visual sliders, use <tt>'disabled'</tt>.</dd>
+    <dd><tt>「closed」</tt>に設定されている場合、折り畳みのデフォルトは閉じた状態です。<tt>「open」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 配列</dt>
     <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
@@ -1909,8 +1908,7 @@ users can't set through user preferences. For possible values, refer to
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] 文字列</dt>
     <dt id="cfg_TitleServer">$cfg['TitleServer'] 文字列</dt>
     <dt id="cfg_TitleDefault">$cfg['TitleDefault'] 文字列</dt>
-    <dd>Allows you to specify window's title bar. You can use <a
-href="#faq6_27">format string expansion</a>.
+    <dd>ウィンドウのタイトルバーを指定することができます。<a href="#faq6_27">書式の拡張</a>が使用できます。
     </dd>
 
     <dt id="cfg_ErrorIconic">$cfg['ErrorIconic'] boolean</dt>
@@ -1927,8 +1925,8 @@ href="#faq6_27">format string expansion</a>.
     <dd>テーママネージャが有効な場合、すべてのテーマが収録されているサブディレクトリのパスとして利用します。</dd>
 
     <dt id="cfg_ThemeManager">$cfg['ThemeManager'] boolean</dt>
-    <dd>Enables user-selectable themes. See <a href="#faqthemes"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 2.7</a>.</dd>
+    <dd>ユーザがテーマを選択できるようにします。<a href="#faqthemes"> <abbr title="よくある質問">FAQ</abbr>
+2.7</a> をご覧ください。</dd>
 
     <dt id="cfg_ThemeDefault">$cfg['ThemeDefault'] 文字列</dt>
     <dd>デフォルトテーマ（<tt>cfg['ThemePath']</tt> の下にあるサブディレクトリのひとつ）です。</dd>
@@ -1939,33 +1937,30 @@ title="Frequently Asked Questions">FAQ</abbr> 2.7</a>.</dd>
     <dt id="cfg_DefaultQueryTable">$cfg['DefaultQueryTable'] 文字列<br />
         <span id="cfg_DefaultQueryDatabase">$cfg['DefaultQueryDatabase']</span> 文字列
     </dt>
-    <dd>Default queries that will be displayed in query boxes when user didn't
-specify any. You can use standard <a href="#faq6_27">format string
-expansion</a>.
+    <dd>ユーザが指定しなかった時の、クエリボックスに表示されるデフォルトのクエリ。標準の<a
+href="#faq6_27">書式の拡張</a>を使用することができます。
         </dd>
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] 文字列 [<tt>html</tt>|<tt>none</tt>]</dt>
     <dd>
-        The main use of the new <abbr title="structured query language">SQL</abbr>
-Parser is to pretty-print <abbr title="structured query language">SQL</abbr>
-queries. By default we use HTML to format the query, but you can disable
-this by setting this variable to <tt>'none'</tt>.
+        新しい <abbr title="structured query language">SQL</abbr> パーサの主な用途は <abbr
+title="structured query language">SQL</abbr> クエリを読みやすくすることです。デフォルトでは HTML
+を使ってクエリを整形しますが、この変数を <tt>「none」</tt> にするとこの機能を無効にできます。
     </dd>
 
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] float<br />
         <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> 文字列
 [<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]</dt>
-    <dd>For the pretty-printing of <abbr title="structured query
-language">SQL</abbr> queries, under some cases the part of a query inside a
-bracket is indented. By changing <tt>$cfg['SQP']['fmtInd']</tt> you can
-change the amount of this indent.
+    <dd><abbr title="structured query language">SQL</abbr>
+クエリを読みやすくするために、場合によってはブラケット（ [ ]
+）で囲まれたクエリの一部がインデントされるのですが、<tt>$cfg['SQP']['fmtInd']</tt>
+を変更することで、このインデントの量を変更することができます。
         <br />それと似た <tt>$cfg['SQP']['fmtIndUnit']</tt>
 の方は、指定したインデント量の単位を指定します。スタイルシートで利用するものです。</dd>
 
-    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] string 組の array</dt>
-    <dd>This array is used to define the colours for each type of element of the
-pretty-printed <abbr title="structured query language">SQL</abbr>
-queries. The tuple format is<br />
+    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] 文字列の連想配列</dt>
+    <dd><abbr title="structured query language">SQL</abbr>
+クエリを読みやすくするために各要素の色定義に、この配列を使用します。色を定義するペア文字列の書式は次の通りです。<br />
         <i>クラス名</i> =&gt; [<i>HTML の色コード</i> | <i>空の文字列</i>]<br />
         空の文字列を指定した場合、そのクラスの色指定は無視されてスタイルシートに反映されません。クラス名は変えないでください。変えるのは色をあらわす文字列のみです。<br />
         <b>クラス名：</b>
@@ -1988,8 +1983,8 @@ queries. The tuple format is<br />
             <li><b>alpha_columnAttrib</b> データベース／テーブル／カラム属性に一致する識別子</li>
             <li><b>alpha_functionName</b> MySQL 関数名に一致する識別子</li>
             <li><b>alpha_reservedWord</b> その他の予約語に一致する識別子</li>
-            <li><b>alpha_variable</b> Identifiers matching a <abbr title="structured query
-language">SQL</abbr> variable <tt>"@foo"</tt></li>
+            <li><b>alpha_variable</b> <abbr title="structured query language">SQL</abbr> 変数
+<tt>「 @foo 」</tt>に一致する識別子</li>
             <li><b>alpha_identifier</b> その他すべての識別子</li>
             <li><b>quote</b> 引用符のクラスすべてに適用されます。</li>
             <li><b>quote_double</b> ダブルクォート <tt>"</tt></li>
@@ -2000,24 +1995,22 @@ language">SQL</abbr> variable <tt>"@foo"</tt></li>
 
     <dt id="cfg_SQLValidator">$cfg['SQLValidator'] boolean</dt>
     <dd><dl><dt id="cfg_SQLValidator_use">$cfg['SQLValidator']['use'] boolean</dt>
-            <dd>phpMyAdmin now supports use of the <a
-href="http://developer.mimer.com/validator/index.htm">Mimer <abbr
-title="structured query language">SQL</abbr> Validator</a> service, as
-originally published on <a
-href="http://developers.slashdot.org/article.pl?sid=02/02/19/1720246">Slashdot</a>.
+            <dd>phpMyAdmin は <a href="http://developer.mimer.com/validator/index.htm">Mimer
+<abbr title="structured query language">SQL</abbr>
+検証</a>サービスをサポートするようになりました。これは当初 <a
+href="http://developers.slashdot.org/article.pl?sid=02/02/19/1720246">Slashdot</a>
+で公開されていたものです。
                 <br />
-                For help in setting up your system to use the service, see the <a
-href="#faqsqlvalidator"><abbr title="Frequently Asked Questions">FAQ</abbr>
-6.14</a>.
+                このサービスをお使いのシステムに設定する方法については、<a href="#faqsqlvalidator"><abbr
+title="よくある質問">FAQ</abbr> 6.14</a> をご覧ください。
             </dd>
 
             <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] 文字列<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
 文字列</dt>
-            <dd>The SOAP service allows you to log in with <tt>anonymous</tt> and any
-password, so we use those by default. Instead, if you have an account with
-them, you can put your login details here, and it will be used in place of
-the anonymous login.</dd>
+            <dd>SOAP サービスを使うと <tt>anonymous</tt>
+（匿名）ユーザでパスワードによらずログインできるため、デフォルトではそのようになっています。SQL
+検証のアカウントをお持ちであれば、ログイン情報をここに記入することで、匿名でログインする代わりにその情報でログインするようになります。</dd>
         </dl>
     </dd>
 
@@ -2026,8 +2019,7 @@ the anonymous login.</dd>
 
     <dt id="cfg_DBG_enable_sql">$cfg['DBG']['sql'] boolean</dt>
     <dd><b>開発者限定！</b><br />
-        Enable logging queries and execution times to be displayed in the bottom of
-main page (right frame).</dd>
+        メインページ（右フレーム）の下部に、クエリと実行時間の表示を有効にします。</dd>
 
     <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] 配列</dt>
     <dd>MySQL のカラム種別としてとりうるすべての値が入ります。ほとんどの場合、この値を修正する必要はありません。</dd>
@@ -2042,32 +2034,29 @@ main page (right frame).</dd>
     <dd>カラム種別と、カラムの内容の表示方法を変えるための関数を結びつけるメタ種別との対応表です。ほとんどの場合、この値を修正する必要はありません。</dd>
 
     <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] 配列</dt>
-    <dd>Functions preferred for column meta types as defined in <a
-href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>. In most cases you don't
-need to edit this.</dd>
+    <dd><a href="#cfg_RestrictColumnTypes"
+class="configrule">$cfg['RestrictColumnTypes']</a>
+で定義されたカラムのメタ種別が利用する関数一覧です。ほとんどの場合、この値を修正する必要はありません。</dd>
 
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] 配列</dt>
-    <dd>Functions selected by default when inserting/changing row, Functions are
-defined for meta types from <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> and for
-<code>first_timestamp</code>, which is used for first timestamp column in
-table.</dd>
+    <dd>行を挿入／修正するときにデフォルトで選択される関数です。この関数は <a href="#cfg_RestrictColumnTypes"
+class="configrule">$cfg['RestrictColumnTypes']</a>
+のメタ種別ごとに定義します。<code>first_timestamp</code> については、テーブル内の最初の timestamp
+カラムに適用されます。</dd>
 
     <dt id="cfg_NumOperators">$cfg['NumOperators'] 配列</dt>
     <dd>数値や日付カラムの検索に利用できる演算子です。
     </dd>
 
     <dt id="cfg_TextOperators">$cfg['TextOperators'] 配列</dt>
-    <dd>Operators available for search operations on character columns.  Note that
-we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
-avoid unintended performance problems in case of huge tables.</dd>
+    <dd>文字カラムの検索に利用できる演算子です。 なお、デフォルトは <code>LIKE %...%</code> ではなく
+<code>LIKE</code> としてあります。これはテーブルが巨大な場合に不用意にパフォーマンスの問題を起こさないようにするためです。</dd>
 
     <dt id="cfg_EnumOperators">$cfg['EnumOperators'] 配列</dt>
     <dd>列挙 (enum) カラムの検索に利用できる演算子です。</dd>
 
     <dt id="cfg_NullOperators">$cfg['NullOperators'] 配列</dt>
-    <dd>カラムがヌル (null) になりうるときに利用できる追加の検索用演算子です。</dd>
+    <dd>カラムが NULL になりうるときに利用できる追加の検索用演算子です。</dd>
 
 </dl>
 
@@ -2087,33 +2076,25 @@ href="#config">「設定」の章</a>をご覧ください。</p>
 
 <p> カラムごとに別々の変換機能を適用できます。変換機能は各カラムの内容を取得してから、選択された機能に定義されている規則に従って変換を行うためです。</p>
 
-<p> Say you have a column 'filename' which contains a filename. Normally you
-would see in phpMyAdmin only this filename. Using transformations you can
-transform that filename into a HTML link, so you can click inside of the
-phpMyAdmin structure on the column's link and will see the file displayed in
-a new browser window. Using transformation options you can also specify
-strings to append/prepend to a string or the format you want the output
-stored in.</p>
+<p> たとえば、ファイル名を入れる「filename」というカラムがあるとします。ふつう phpMyAdmin
+ではこのファイル名しか表示されませんが、変換機能を使うと、このファイル名を HTML リンクに変換できます。phpMyAdmin
+システムの内部でそのカラムのリンクをクリックすると、新しいブラウザウインドウにそのファイルが表示されます。変換オプションを使えば、その文字列の前後に付け加える文字列や、出力を保存する形式も指定できます。</p>
 
-<p> For a general overview of all available transformations and their options,
-you can consult your
-<i>&lt;www.your-host.com&gt;/&lt;your-install-dir&gt;/transformation_overview.php</i>
-installation.</p>
+<p> 利用できるすべての変換機能とそのオプションについての概略は
+<i>&lt;お使いのホスト&gt;/&lt;インストールしたディレクトリ&gt;/transformation_overview.php</i>
+をご覧ください。</p>
 
 <p> 変換機能の効果的な使い方のチュートリアルについては、phpMyAdmin のオフィシャルホームページの <a
 href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>をご覧ください。</p>
 
 <h3 id="transformationshowto">2. 使い方</h3>
 
-<p> Go to your <i>tbl_structure.php</i> page (i.e. reached through clicking on
-the 'Structure' link for a table). There click on &quot;Change&quot; (or
-change icon) and there you will see three new fields at the end of the
-line. They are called 'MIME-type', 'Browser transformation' and
-'Transformation options'.</p>
+<p> <i>tbl_structure.php</i>
+ページに行きます（テーブルの「構造」リンクをクリックでたどり着きます）。「変更」（あるいは変更アイコン）をクリックすると、項目の最後の方に新しいフィールドが
+3 つ表示されます。それぞれ「MIME タイプ」、「ブラウザ変換」、「変換オプション」という名がついています。</p>
 
-    <ul><li>The field 'MIME-type' is a drop-down field. Select the MIME-type that
-corresponds to the column's contents. Please note that transformations are
-inactive as long as no MIME-type is selected.</li>
+    <ul><li>「MIME タイプ」フィールドはドロップダウンになっています。カラムの内容に対応した MIME タイプを選択してください。なお、MIME
+タイプを選択しないと変換機能は有効になりませんので注意ください。</li>
 
     <li>「ブラウザ変換（Browser
 transformation）」フィールドはドロップダウンになっています。そのうち数が増えていくであろう定義済みの変換機能を選択できます。自前の変換機能の作り方については下記をご覧ください。<br />
@@ -2152,7 +2133,7 @@ MIME タイプに適用しようとしても無駄です。変換関数は処理
 
 <p> 「<i>global.inc.php</i>」という基本ファイルは、どんな変換機能からでもインクルードできます。これはいくつかの基本的な関数を提供してくれます。</p>
 
-<p> ファイル名には 5 通りの可能性があります：</p>
+<p> ファイル名には 5 通りの可能性があります。</p>
 
 <ol><li>MIME タイプ＋サブタイプ変換機能：<br /><br />
 
@@ -2297,17 +2278,18 @@ title="よくある質問">FAQ</abbr> 1.1</a> もご覧ください。<br />
     <a href="#faq1_3">1.3 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_4">
-    <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information
-Services">IIS</abbr>, I'm displayed the error message: &quot;The specified
-<abbr title="Common Gateway Interface">CGI</abbr> application misbehaved by
-not returning a complete set of <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> headers ...&quot;.</a>
+    <a href="#faq1_4">1.4 phpMyAdmin を <abbr title="Internet Information
+Services">IIS</abbr> 上で使うと、「The specified <abbr title="Common Gateway
+Interface">CGI</abbr> application misbehaved by not returning a complete set
+of <abbr title="HyperText Transfer Protocol">HTTP</abbr> headers ...（指定した
+<abbr title="Common Gateway Interface">CGI</abbr> にはエラーがあります。<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>
+ヘッダが不完全です。）」というエラーメッセージが表示されます。</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the php
-distribution.  Have a look at the last message in this <a
-href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
-PHP bug database.</p>
+<p> PHP の配布ファイルに入っている <i>install.txt</i> を読み忘れたのでしょう。こちらの<a
+href="http://bugs.php.net/bug.php?id=12061">バグレポート</a>の最後のメッセージをご覧ください。出典は
+PHP のオフィシャルバグデータベースです。</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 phpMyAdmin を <abbr title="Internet Information
@@ -2323,11 +2305,9 @@ title="HyperText Transfer Protocol">HTTP</abbr> 認証モードではなく、�
 <h4 id="faq1_6">
     <a href="#faq1_6">1.6 PWS 上で phpMyAdmin を使えません。何も表示されません！</a></h4>
 
-<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
-time there is no better fix): remove or comment the <tt>DOCTYPE</tt>
-declarations (2 lines) from the scripts <i>libraries/header.inc.php</i>,
-<i>libraries/header_printview.inc.php</i>, <i>index.php</i>,
-<i>navigation.php</i> and <i>libraries/common.lib.php</i>.</p>
+<p> PWS のバグのようです。Filippo Simoncini
+が次に述べる回避策を見つけています（現時点ではこれ以上の対応策はありません）。<i>libraries/header.inc.php</i>、<i>libraries/header_printview.inc.php</i>、<i>index.php</i>、<i>navigation.php</i>、<i>libraries/common.lib.php</i>
+の <tt>DOCTYPE</tt> 宣言（2 行）を削除するかコメントにしてください。</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 どうすればダンプや <abbr title="comma separated
@@ -2344,7 +2324,7 @@ values">CSV</abbr> エクスポートを GZip ないし Bzip 圧縮できるの�
 変数に定義されている「アップロードディレクトリ（upload dir）」に保存されます（通常システムデフォルトは <i>/tmp</i>
 になっています）。<br />
     Apache
-サーバをセーフモードで走らせる場合は次のようにセットアップすることをおすすめします。こうすると、ファイルのアップロードを可能にしながらある程度のセキュリティも確保できます：</p>
+サーバをセーフモードで走らせる場合は次のようにセットアップすることをお勧めします。こうすると、ファイルのアップロードを可能にしながらある程度のセキュリティも確保できます。</p>
 
 <ul><li>アップロード用のディレクトリを別に作ります： <tt>mkdir /tmp/php</tt></li>
     <li>Apache サーバのユーザ／グループをオーナーします： <tt>chown apache.apache /tmp/php</tt></li>
@@ -2370,11 +2350,11 @@ Internet Explorer、サーバは Apache を使っています。</a></h4>
     <a href="#faq1_11">1.11 クエリボックスからファイルをアップロードすると「open_basedir 制限（open_basedir
 restriction）」が出ます。</a></h4>
 
-<p> Since version 2.2.4, phpMyAdmin supports servers with open_basedir
-restrictions. However you need to create temporary directory and configure
-it as <a href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a>.  The
-uploaded files will be moved there, and after execution of your <abbr
-title="structured query language">SQL</abbr> commands, removed.</p>
+<p> バージョン 2.2.4 以降、phpMyAdmin はサーバの open_basedir
+制限をサポートしています。しかしながら、一時ディレクトリを作成して、<a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a>
+にそのディレクトリを設定する必要があります。アップロードしたファイルはそこに移され、<abbr title="structured query
+language">SQL</abbr> コマンドの実行が終わったら削除されます。</p>
 
 <h4 id="faq1_12">
     <a href="#faq1_12">1.12 MySQL のルートパスワードをなくしてしまいました。どうしたらよいのでしょうか？</a></h4>
@@ -2733,13 +2713,12 @@ directive</a>.
     </p>
 
 <h4 id="faq1_39">
-    <a href="#faq1_39">1.39 When I try to connect via https, I can log in, but
-then my connection is redirected back to http. What can cause this
-behavior?</a></h4>
+    <a href="#faq1_39">1.39 https を経由して接続すると、ログインすることはできますが、接続が http
+にリダイレクトされてしまいます。何が原因でこの現象が発生するのですか？</a></h4>
 
-<p> Be sure that you have enabled <tt>SSLOptions</tt> and <tt>StdEnvVars</tt> in
-your Apache configuration. See <a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
+<p> Apache の設定で <tt>SSLOptions</tt> と <tt>StdEnvVars</tt>
+が有効になっていることを確認してください。<a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>を参照してください。</p>
 
 <h4 id="faq1_40">
     <a href="#faq1_40">1.40 Apache のリバースプロキシを介して phpMyAdmin
@@ -2771,11 +2750,10 @@ href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.o
 を参照してください。</p>
 
 <h4 id="faq1_41">
-	<a href="#faq1_41">1.41 When I view a database and ask to see its
-privileges, I get an error about an unknown column.</a></h4>
+	<a href="#faq1_41">1.41 データベースを表示しその権限を参照しようとすると、未知のカラムに関するエラーが表示されます。</a></h4>
 
-<p> The MySQL server's privilege tables are not up to date, you need to run the
-<tt>mysql_upgrade</tt> command on the server.</p>
+<p> MySQL サーバの権限テーブルが最新の状態にされていないません。サーバ上で <tt>mysql_upgrade</tt>
+コマンドを実行する必要があります。</p>
 
 
 <h3 id="faqconfig">設定</h3>
@@ -2832,9 +2810,9 @@ $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         また、このファイルのパーミッションを確かめて、ウェブサーバが読み込みできるようにしてください（「0755」など）。</li>
 </ul>
 
-<p> Have also a look at the <a
-href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">
-corresponding section of the MySQL documentation</a>.</p>
+<p> また、<a
+href="http://dev.mysql.com/doc/refman/4.1/ja/can-not-connect-to-server.html">MySQL
+ドキュメントの該当セクション</a>もご覧ください。</p>
 
 <h4 id="faq2_4">
     <a href="#faq2_4">2.4 phpMyAdmin
@@ -2908,7 +2886,7 @@ phpMyAdmin でもうまくいくようにしてください。世代の異なる
     <a href="#faqmissingparameters">2.8 「Missing
 parameters（パラメータが抜けています）」というエラーが出ます。どうしたらよいのでしょう？</a></h4>
 
-<p> 確認すべき点はいくつかあります：</p>
+<p> 確認すべき点はいくつかあります。</p>
 
 <ul><li><tt>config.inc.php</tt> の <a href="#cfg_PmaAbsoluteUri"
 class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブを空にしてみてください。また <a
@@ -2958,12 +2936,10 @@ Protocol">HTTP</abbr> 認証を使っているときにログアウトすると�
 <h4 id="faq3_2">
     <a href="#faq3_2">3.2 大きなテーブルを圧縮モードでダンプするとメモリ制限のエラーや時間制限のエラーが出ます。</a></h4>
 
-<p> Compressed dumps are built in memory and because of this are limited to
-php's memory limit. For GZip/BZip2 exports this can be overcome since 2.5.4
-using <a href="#cfg_CompressOnFly"
-class="configrule">$cfg['CompressOnFly']</a> (enabled by default). Zip
-exports can not be handled this way, so if you need Zip files for larger
-dump, you have to use another way.</p>
+<p> 圧縮されたダンプがメモリ上に生成されるために、PHP のメモリ制限にひっかかるのが原因です。GZip/BZip2 エクスポートについては 2.5.4
+以降 <a href="#cfg_CompressOnFly" class="configrule">$cfg['CompressOnFly']</a>
+（逐次圧縮）を使うとこの問題を克服できます（デフォルトで有効になっています）。Zip エクスポートではこの方法が行えませんので、大きめのダンプの Zip
+ファイルが必要な場合、別の方法をとる必要があります。</p>
 
 <h4 id="faq3_3">
     <a href="#faq3_3">3.3 InnoDB テーブルでテーブルやカラムをリネームすると外部キーのリレーションが切れます。</a></h4>
@@ -3022,16 +2998,12 @@ unable to parse url（警告：urlを解析できません）」というエラ�
 <h4 id="faq3_8">
     <a href="#faq3_8">3.8 カラムに MIME 変換機能を適用したら、（クリッカブルな）HTML フォームが使えなくなります！</a></h4>
 
-<p> Due to a surrounding form-container (for multi-row delete checkboxes), no
-nested forms can be put inside the table where phpMyAdmin displays the
-results.  You can, however, use any form inside of a table if keep the
-parent form-container with the target to tbl_row_delete.php and just put
-your own input-elements inside. If you use a custom submit input field, the
-form will submit itself to the displaying page again, where you can validate
-the $HTTP_POST_VARS in a transformation.  For a tutorial on how to
-effectively use transformations, see our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin-homepage.</p>
+<p> phpMyAdmin
+が結果を表示するテーブルは（複数列削除チェックボックス用の）フォームコンテナに囲まれているため、その中に入れ子にするフォームを置くことはできません。ただし、tbl_row_delete.php
+を対象とした親フォームのコンテナはそのまま残して、その中に独自の入力要素のみ加えるようにすれば、どんなフォームでもテーブルの中に入れられます。送信用の
+input フィールドをカスタマイズするとフォームのデータは表示しているページに再送されますので、変換機能のなかで $HTTP_POST_VARS
+を有効にしてください。 変換機能の効果的な使い方のチュートリアルについては phpMyAdmin のオフィシャルホームページの <a
+href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>をご覧ください。</p>
 
 <h4 id="faq3_9">
     <a href="#faq3_9">3.9 MySQL サーバに「--sql_mode=ANSI」を適用するとエラーメッセージが出ます。</a></h4>
@@ -4513,15 +4485,15 @@ should have written their names here.
 Schneier 氏によって 1993 年に設計された対称ブロック暗号およびそのキー</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6">ブラウザ（ウェブブラウザ）</a>
-- World Wide Web 上の Web サイトで Web
-ページに一般的に置かれているテキスト、画像、その他の情報をユーザに対して表示や双方向通信することができるアプリケーション</li>
+- World Wide Web
+上のウェブサイトでウェブページに一般的に置かれているテキスト、画像、その他の情報をユーザに対して表示や双方向通信することができるアプリケーション</li>
     <li><a href="http://ja.wikipedia.org/wiki/Bzip2">bzip2</a> - Julian Seward
 により開発されたフリーソフトウェアでオープンソースのデータ圧縮アルゴリズムおよびプログラム</li>
     <li><a href="http://ja.wikipedia.org/wiki/Common_Gateway_Interface">CGI (Common
-Gateway Interface)</a> - Web サーバー上で実行されるプログラムでクライアントの Web
-ブラウザのデータを要求に応えることができる重要な World Wide Web 技術</li>
-    <li><a href="http://www.wikipedia.org/wiki/Changelog">Changelog</a> - a log or
-record of changes made to a project.</li>
+Gateway Interface)</a> -
+ウェブサーバー上で実行されるプログラムでクライアントのウェブブラウザのデータを要求に応えることができる重要な World Wide Web 技術</li>
+    <li><a href="http://www.wikipedia.org/wiki/Changelog">変更履歴</a> -
+プロジェクトに加えられた変更の記録</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88_%28%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%29">クライアント</a>
 - 幾重かのネットワークを介して他のコンピュータ上の（リモート）サービスにアクセスするコンピュータシステムのこと</li>
@@ -4552,7 +4524,7 @@ href="http://ja.wikipedia.org/wiki/%E5%A4%96%E9%83%A8%E3%82%AD%E3%83%BC">外部�
     <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - フリーの PDF ライブラリ</li>
     <li><a id="gd" href="http://ja.wikipedia.org/wiki/GD_Graphics_Library">GD
 グラフィックライブラリ</a> - Thomas Boutell 氏他によって開発された動的に画像を操作するためのライブラリ</li>
-    <li>GD2 - → <a href="#gd">GD Graphics Library</a></li>
+    <li>GD2 - → <a href="#gd">GD グラフィックライブラリ</a></li>
     <li><a href="http://ja.wikipedia.org/wiki/Gzip">gzip</a> - GNU zip の略称で、GNU
 フリーソフトウェアファイル圧縮プログラムのこと</li>
     <li><a
@@ -4623,8 +4595,8 @@ Extension and Application Repository)</li>
     <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions)</a>
 - Perl 互換の PHP 正規表現関数</li>
     <li><a href="http://ja.wikipedia.org/wiki/PHP:_Hypertext_Preprocessor">PHP</a> -
-「PHP: Hypertext Preprocessor」の略称。オープンソース。主にサーバ側のアプリケーション開発と動的な Web
-コンテンツのために使用されるリフレクションプログラミング言語。最近では、ソフトウェアアプリケーションの広い範囲で使われている。</li>
+「PHP: Hypertext
+Preprocessor」の略称。オープンソース。主にサーバ側のアプリケーション開発と動的なウェブコンテンツのために使用されるリフレクションプログラミング言語。最近では、ソフトウェアアプリケーションの広い範囲で使われている。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%88#port">ポート</a>
 - これを介してデータが送受信される</li>
@@ -4664,7 +4636,7 @@ Locator)</a> -
 位置を示す連続した文字。標準化された形式に準拠しており、インターネット上の文書や画像などのリソースを参照するために使用される。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/Web%E3%82%B5%E3%83%BC%E3%83%90">ウェブサーバ</a>
-- クライアントからの HTTP 要求の受け入れおよびそれらに対する Web ページの提供を行っているコンピュータ（プログラム）</li>
+- クライアントからの HTTP 要求の受け入れおよびそれらに対するウェブページの提供を行っているコンピュータ（プログラム）</li>
     <li><a href="http://www.wikipedia.org/wiki/XML">XML (Extensible Markup
 Language)</a> - a W3C-recommended general-purpose markup language for
 creating special-purpose markup languages, capable of describing many
