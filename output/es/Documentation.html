@@ -1108,50 +1108,52 @@ phpMyAdmin</li>
     </dd>
 
     <dt id="recent">
-        <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span> string
+        cadena <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span>
     </dt>
     <dd>
-        Since release 3.5.0 you can show recently used tables in the left navigation
-frame.  It helps you to jump across table directly, without the need to
-select the database, and then select the table. Using <a
-href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
-you can configure the maximum number of recent tables shown. When you select
-a table from the list, it will jump to the page specified in <a
+        Desde la versión 3.5.0 se pueden mostrar las tablas recientemente utilizadas
+en el marco de navegación izquierdo. Facilita el saltar entre tablas
+directamente sin tener que seleccionar la base de datos y luego seleccionar
+la tabla. Utilizando <a href="#cfg_LeftRecentTable"
+class="configrule">$cfg['LeftRecentTable']</a> se puede configurar la máxima
+cantidad de tablas recientes a mostrar. Al seleccionar una tabla de la
+lista, saltará a la página especificada en <a
 href="#cfg_LeftDefaultTabTable"
 class="configrule">$cfg['LeftDefaultTabTable']</a>.<br/><br/>
 
-        Without configuring the storage, you can still access the recently used
-tables, but it will disappear after you logout.<br/><br/>
+        Sin configurar el almacenamiento aún se pueden aprovechar las tablas
+recientemente utilizadas, pero éstas desaparecerán luego de finalizar
+sesión.<br/><br/>
 
         Para permitir el uso de esta funcionalidad.
 
         <ul>
             <li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['recent']</tt>
-(e.g. 'pma_recent')</li>
+            <li>configure el nombre de la tabla <tt>$cfg['Servers'][$i]['recent']</tt> (por
+ejemplo 'pma_recent')</li>
         </ul>
     </dd>
 
     <dt id="table_uiprefs">
-        <span
+        cadena <span
 id="cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</span>
-string
     </dt>
     <dd>
-        Since release 3.5.0 phpMyAdmin can be configured to remember several things
-(table sorting <a href="#cfg_RememberSorting"
-class="configrule">$cfg['RememberSorting']</a> , etc.) for browsing tables.
-Without configuring the storage, these features still can be used, but the
-values will disappear after you logout.<br/><br/>
+        Desde la versión 3.5.0 phpMyAdmin puede configurarse para recordar varias
+cosas en la visualización de tablas (como el ordenamiento de las mismas <a
+href="#cfg_RememberSorting" class="configrule">$cfg['RememberSorting']</a>,
+etc.). Sin configurar el almacenamiento aún se pueden utilizar estas
+configuraciones pero sus valores desaparecerán al finalizar sesión.<br/><br/>
 
-        To allow the usage of these functionality persistently:
+        Para permitir el uso de esta funcionalidad de forma persistente:
 
         <ul>
             <li>configure <a href="#pmadb">pmadb</a> y el almacenamiento de configuración
 phpMyAdmin</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_uiprefs']</tt>
-(e.g. 'pma_table_uiprefs')</li>
+            <li>agrega el nombre de la tabla en
+<tt>$cfg['Servers'][$i]['table_uiprefs']</tt> (por ejemplo
+'pma_table_uiprefs')</li>
         </ul>
     </dd>
 
@@ -1630,9 +1632,10 @@ seguida sin caracteres intermedios.</dd>
     <dd>Define la cantidad de sub-niveles a mostrar cuando se separen nombres de
 tabla con el separador anterior.</dd>
 
-    <dt id="cfg_LeftRecentTable">$cfg['LeftRecentTable'] integer</dt>
-    <dd>The maximum number of recently used tables shown in the left navigation
-frame. Set this to 0 (zero) to disable the listing of recent tables.</dd>
+    <dt id="cfg_LeftRecentTable">entero $cfg['LeftRecentTable']</dt>
+    <dd>El número máximo de tablas utilizadas recientemente a mostrar en el marco de
+navegación izquierdo. Configure como 0 (cero) para deshabilitar las tablas
+recientes.</dd>
 
     <dt id="cfg_ShowTooltip">booleano $cfg['ShowTooltip']</dt>
     <dd>Define si mostrar el comentario de la tabla como texto suplementario o no.</dd>
@@ -1977,6 +1980,15 @@ algunos servidores web (IIS) tienen problemas con URLs extensas. El valor
 predeterminado es <code>1000</code>.
     </dd>
 
+    <dt
+    id="cfg_DisableMultiTableMaintenance">$cfg['DisableMultiTableMaintenance'] boolean</dt>
+    <dd>
+    In the database Structure page, it's possible to mark some tables then
+choose an operation like optimizing for many tables. This can slow down a
+server; therefore, setting this to <code>true</code> prevents this kind of
+multiple maintenance operation. Default is <code>false</code>.
+    </dd>
+
     <dt id="cfg_NaviWidth">entero $cfg['NaviWidth']</dt>
     <dd>Anchura del marco de navegación en píxeles. Revise
 <tt>themes/themename/layout.inc.php</tt>.
@@ -2087,15 +2099,13 @@ pulsar en ella.</dd>
 modo de exploración. Puede ser desactivado mediante un botón en la página de
 exploración.</dd>
 
-    <dt>booleano <span
-id="cfg_ModifyDeleteAtLeft">$cfg['ModifyDeleteAtLeft']</span>, booleano
-<span id="cfg_ModifyDeleteAtRight">$cfg['ModifyDeleteAtRight']</span>
+    <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks'] </span>string
     </dt>
-    <dd>Define la posición de los enlaces de fila de tabla (Editar, Editar en línea,
-Copiar, Borrar) al mostrar los contenidos de una tabla (pueden ser mostrados
-tanto a la derecha como a la izquierda). &quot;Left&quot; (izquierda) y
-&quot;right&quot; (derecha) son interpretados como &quot;top&quot; (arriba)
-y &quot;bottom&quot; (abajo) en el modo de visualización vertical.</dd>
+    <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
+would be put when tables contents are displayed (you may have them displayed
+at the left side, right side, both sides or nowhere).  &quot;left&quot; and
+&quot;right&quot; are parsed as &quot;top&quot; and &quot;bottom&quot; with
+vertical display mode.</dd>
 
     <dt id="cfg_DefaultDisplay">cadena $cfg['DefaultDisplay']</dt>
     <dd>Hay 3 modos de visualización: horizontal, horizontalflipped y vertical. Esta
@@ -2106,8 +2116,9 @@ valores cortos y poder imprimirlos. El modo 'vertical' ordena cada fila en
 una línea vertical.
     </dd>
 
-    <dt id="cfg_RememberSorting">$cfg['RememberSorting'] boolean</dt>
-    <dd>If enabled, when browsing tables, the sorting of each table is remembered.</dd>
+    <dt id="cfg_RememberSorting">booleano $cfg['RememberSorting']</dt>
+    <dd>Si está habilitado, al navegar por tablas, se recordará el ordenamiento de
+cada tabla.</dd>
 
     <dt id="cfg_HeaderFlipType">cadena $cfg['HeaderFlipType']</dt>
     <dd>
