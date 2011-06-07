@@ -249,10 +249,9 @@ chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
 1.26</a> も役立つでしょう。<br /><br />
 
                 次に、ブラウザで <tt><a href="setup/">setup/</a></tt>
-開きます。画面の<i>設定</i>領域から<strong>明示的に<tt>保存する</tt>を選択するまで、変更箇所はディスクに保存されていないこと</strong>に注意してください。通常、スクリプトは、<tt>config/</tt>
+開きます。画面の<i>設定</i>領域から<strong>明示的に<tt>保存する</tt>を選択するまで、変更箇所はディスクに保存されていない</strong>ことに注意してください。通常、スクリプトは、<tt>config/</tt>
 ディレクトリに新しい config.inc.php
-を保存します。しかし、ウェブサーバが適切なパーミッションを持っていない場合、「設定の読み込み・保存が出来ません」というエラーが表示されることがあります。を使用すると、
-<tt>config/</tt>
+を保存します。しかし、ウェブサーバが適切なパーミッションを持っていない場合、「設定の読み込み・保存が出来ません」というエラーが表示されることがあります。<tt>config/</tt>
 ディレクトリが存在していて適切なパーミッションを持っている確認してください。もしくは、<tt>ダウンロードする</tt>リンクを使用して、設定ファイルをローカルに保存してから、（FTP
 もしくは類似の手段を介して）適切な場所にアップロードしてください。<br /><br />
 
@@ -622,13 +621,17 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 （<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>'</tt>）は 1.3.0 で導入されました。HTTP-Auth を経由することで、あらゆる有効な
 MySQL ユーザでログインできます。</li>
-            <li>「signon」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、2.10.0
-で導入されました。用意されている PHP
-のセッションデータでログインすることを強化するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
-(<code>scripts/signon.php</code>) の中にあります。 別の例として、OpenID
-(<code>scripts/openid.php</code>) を使うのもあります。この認証方式を使用するには、<a
-href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>と<a
-href="#cfg_Servers_SignonURL" class="configrule">サインオン URL</a> を設定する必要があります。</li>
+            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
+introduced in 2.10.0 allows you to log in from prepared PHP session data or
+using supplied PHP script. This is useful for implementing single signon
+from another application.  Sample way how to seed session is in signon
+example: <code>scripts/signon.php</code>.  There is also alternative example
+using OpenID - <code>scripts/openid.php</code> and example for scripts based
+solution - <code>scripts/signon-script.php</code>.  You need to configure <a
+href="#cfg_Servers_SignonSession" class="configrule">session name</a> or <a
+href="#cfg_Servers_SignonScript" class="configrule">script to be
+executed</a> and <a href="#cfg_Servers_SignonURL" class="configrule">signon
+URL</a> to use this authentication method.</li>
         </ul>
 
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
@@ -1142,10 +1145,23 @@ probably be too slow, so it can be replaced by faster commands (see
 list of databases for the navigation frame.
     </dd>
     <dt><span
+id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
+string</dt>
+    <dd>Name of PHP script to be sourced and executed to obtain login
+credentials. This is alternative approach to session based single
+signon. The script needs to provide function
+<code>get_login_credentials</code> which returns list of username and
+pasword, accepting single parameter of existing username (can be empty).
+See <code>scripts/signon-script.php</code> for an example.
+    </dd>
+    <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 文字列</dt>
-    <dd>サインオン認証方式に使用されるセッションの名前です。<code>phpMyAdmin</code> という名前は phpMyAdmin
-が内部的に使用しているセッションであるため、それとは異なる名前を使用する必要があります。
+    <dd>Name of session which will be used for signon authentication method.  You
+should use something different than <code>phpMyAdmin</code>, because this is
+session which phpMyAdmin uses internally. Takes effect only if <a
+href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a> is not
+configured.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span> 文字列</dt>
     <dd>URL where user will be redirected to log in for signon authentication
@@ -1510,10 +1526,10 @@ href="http://dev.mysql.com/doc/mysql/ja/charset-charsets.html">MySQL
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] 文字列</dt>
-    <dd>Specify some parameters for iconv used in charset conversion. See <a
+    <dd>文字セット変換で利用する iconv 向けのパラメータを指定します。詳しくは <a
 href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.html">iconv
-documentation</a> for details. By default <code>//TRANSLIT</code> is used,
-so that invalid characters will be transliterated.</dd>
+のドキュメント</a>をご覧ください。デフォルトでは <code>//TRANSLIT</code>
+が使用されていて、無効な文字は書き直しが行われます。</dd>
 
     <dt id="cfg_AvailableCharsets">$cfg['AvailableCharsets'] 配列</dt>
     <dd>MySQL 変換で利用できる文字セットです。（recode/iconv
@@ -1547,22 +1563,20 @@ $cfg['TrustedProxies'] =
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] 論理型</dt>
     <dd>
-    We normally check the permissions on the configuration file to ensure it's
-not world writable. However, phpMyAdmin could be installed on a NTFS
-filesystem mounted on a non-Windows server, in which case the permissions
-seems wrong but in fact cannot be detected. In this case a sysadmin would
-set this parameter to <tt>FALSE</tt>. Default is <tt>TRUE</tt>.
+    通常、誰でも書き込みできないように、設定ファイルのパーミッションを確認を行います。しかしながら、Windows 以外のサーバ上でマウントされた NTFS
+ファイルシステムに phpMyAdmin
+がインストールされている場合、パーミッションが間違っているようなときでも、実際には検出することができません。この場合、システム管理者はこのパラメータを
+<tt>FALSE</tt> に設定します。デフォルトは <tt>TRUE</tt> です。
     </dd>
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] 整数</dt>
     <dd>
-    Limit for length of URL in links. When length would be above this limit, it
-is replaced by form with button.  This is required as some web servers (IIS)
-have problems with long URLs.  Default is <code>1000</code>.
+    リンクの URL の長さの制限です。長さがこの制限を超えてしているとき、ボタンを使用したフォームに置き換えられます。一部のウェブサーバ (IIS)
+は長い URL に問題があるため、この設定が必要となります。デフォルトは <code>1000</code> です。
     </dd>
 
     <dt
-    id="cfg_DisableMultiTableMaintenance">$cfg['DisableMultiTableMaintenance'] boolean</dt>
+    id="cfg_DisableMultiTableMaintenance">$cfg['DisableMultiTableMaintenance'] 論理型</dt>
     <dd>
     In the database Structure page, it's possible to mark some tables then
 choose an operation like optimizing for many tables. This can slow down a
@@ -1636,16 +1650,16 @@ multiple maintenance operation. Default is <code>false</code>.
         <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>整数
     </dt>
     <dd>textarea の行・列数。<br />
-        This value will be emphasized (*2) for <abbr title="structured query
-language">SQL</abbr> query textareas and (*1.25) for <abbr title="structured
-query language">SQL</abbr> textareas inside the query window.<br />
-        The Char* values are used for CHAR and VARCHAR editing (if configured via <a
-href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
+        この値は <abbr title="structured query language">SQL</abbr> クエリの textarea の場合は 2
+倍に、クエリウインドウ内の <abbr title="structured query language">SQL</abbr> 用 textarea
+の場合は 1.25 倍になります。<br />
+        Char のついた値は CHAR と VARCHAR を修正する際に使われます（<a
+href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定されている場合）。</dd>
 
     <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']</span>
 論理型
     </dt>
-    <dd>Defines whether textarea for LONGTEXT columns should have double size.</dd>
+    <dd>LONGTEXT カラムの textarea のサイズを倍にするかどうかを定義します。</dd>
 
     <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect']</span> 論理型
     </dt>
@@ -1655,13 +1669,11 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
     <dd>Maximum number of characters shown in any non-numeric field on browse view.
 Can be turned off by a toggle button on the browse page.</dd>
 
-    <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks'] </span>string
+    <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> 文字列
     </dt>
-    <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
-would be put when tables contents are displayed (you may have them displayed
-at the left side, right side, both sides or nowhere).  &quot;left&quot; and
-&quot;right&quot; are parsed as &quot;top&quot; and &quot;bottom&quot; with
-vertical display mode.</dd>
+    <dd>テーブルの内容を表示しているとき、行のリンク（編集、インライン編集、コピー、削除）をどこに表示するかを定義します（表示は、左側 (left)、右側
+(right)、左右両側 (both)、なし (none) が行えます）。「左 (left)」と「右 (right)」は、垂直表示モードでは「上
+(top)」と「下 (bottom)」と解釈されます。</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] 文字列</dt>
     <dd>表示モードには水平 (horizontal)、水平縦ヘッダ (horizontalflipped)、垂直
@@ -3912,8 +3924,8 @@ href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">phpMyAdmi
     </li>
 </ol>
 
-<p>git の詳細は、<a href="http://wiki.phpmyadmin.net/pma/Git">phpMyAdmin
-wiki</a>より入手できます。</p>
+<p>git の詳細は、<a href="http://wiki.phpmyadmin.net/pma/Git">phpMyAdmin wiki</a>
+より入手できます。</p>
 
 <p> リポジトリへの書き込みアクセス権は、今までに phpMyAdmin へ何らかの役立つ貢献してきて、経験を積んだ開発者にのみ付与されます。<br />
     <a href="#developers">開発者向け情報の章</a>もご覧ください。</p>
@@ -3960,63 +3972,41 @@ attempts.
 
 <h3 id="faqsynchronization">同期</h3>
 <h4 id="faq9_1">
-    <a href="#faq9_1">9.1 How can I synchronize two databases/tables in
-phpMyAdmin?</a></h4>
+    <a href="#faq9_1">9.1 どうすれば２つのテーブル／データベースを phpMyAdmin で同期させることができるのしょうか？</a></h4>
 
-<p> You can now synchronize databases/tables in phpMyAdmin using the Synchronize
-feature.  It allows you to connect to local as well as remote servers. This
-requires you to enter server host name, username, password, port and the
-name of the database. Therefore you can now synchronize your databases
-placed on the same server or some remote server.
+<p> 現在、同期機能を使用することで phpMyAdmin
+でデータベース／テーブルの同期が行えます。リモートサーバだけでなくローカルも接続可能です。これを使用するには、サーバのホスト名、ユーザ名、パスワード、ポート、データベース名を入力する必要があります。つまり、現在利用しているデータベースが置かれているのと同じサーバもしくは他のリモートサーバ上と、同期が行えるということです。
 </p>
 
 <p>
-This feature is helpful for developers who need to replicate their
-database&#8217;s structure as well as data. Moreover, this feature not only
-helps replication but also facilitates the user to keep his/her database in
-sync with another database. Other than the full database, certain tables of
-the databases can also be synchronized.
+この機能は、データだけでなくデータベースの構造もレプリケーションする必要のある開発者にとって有用です。更に、この機能はレプリケーションのためだけでなく、別のデータベースと同期することでユーザはデータベースを保持が容易に行えます。データベースに対して完全にやらなくとも、データベースの特定のテーブルにも同期させることができます。
 </p>
 
 <p>
-You need to fill in the host name of the server, the username and password
-of an user account already there in MySQL. Port is by default populated with
-3306 (MySQL default port). Then the name of the database should be mentioned
-at the end. All the information other than the port needs to be filled
-explicitly for the source as well as target servers.
+サーバのホスト名および有効な MySQL ユーザアカウントのユーザ名とパスワードを入力する必要があります。ポートは一般的な 3306
+がデフォルトです（MySQL
+のデフォルトポート）。そして、最後にデータベースの名前を記載する必要があります。ポート以外の全ての情報は、対象先サーバだけでなく同期元も明示的に入力する必要があります。
 </p>
 
 <p>
-After successfully passing through the authentication phase, the source and
-target database table names will be displayed. It will be a tabular
-representation. 
+正常に認証フェーズを通過した後、同期元および対象先のデータベースのテーブル名が表示されます。これは、表形式の表示されます。 
 </p>
 
 <p>
-On the left, are listed the source database table names. Some of the names
-have a <code>+</code> plus sign preceding them. This shows that these tables
-are only present in source database and they need to be added to the target
-database in order to synchronize the target database. The tables whose names
-are not preceded by a <code>+</code> sign are already present in the target
-database. 
+左側には、同期元データベースのテーブル名を記載されています。名前の前にプラス記号 <code>+</code>
+が付いているテーブルがあります。この記号は、同期元のデータベースにだけテーブルが存在しており、同期させるためには対象先のデータベースに追加する必要があることを示しています。名前の前に
+<code>+</code> 記号が付いていないテーブルは、すでに対象先のデータベースに存在しています。 
 </p>
 
 <p>
-On the right, are listed the target database table names. There are few
-table names that have <code>(not present)</code> appended after their
-names. This means that these tables are to be created in target database in
-order to synchronize target database with source database. Some table names
-have a <code>-</code> minus sign preceding them. This shows that these
-tables are only present in target database and they will remain unchanged in
-the target database. The column in the middle shows the difference between
-the source and target corresponding tables.
+右側には、対象先データベースのテーブル名を記載されています。名前の後に<code>（存在しません）</code>が付いているテーブルがあります。これは、同期元のデータベースと同期させるために、対象先のデータベースにテーブルが作成されることを意味します。名前の前に
+<code>-</code>
+マイナス記号が付いているテーブル名があります。この記号は、対象先のデータベースにだけ存在していて、これらのテーブルは、対象先のデータベース内で変更されずに残ることを示しています。中央の列は、同期元と対象先に対応するテーブル間の違い（差分）を表しています。
 </p>
 
 <p>
-The difference is depicted by the red and green buttons with <tt>S</tt> and
-<tt>D</tt> letters, indicating that either Structure or Data are not up to
-date. By clicking on them, they will turn grey, what means that they will be
-synchronized.
+差分は <tt>S</tt> と <tt>D</tt>
+の文字がある赤と緑のボタンで表されていて、構造かデータのいずれかもしくは両方が、最新ではないことを示しています。ボタンをクリックすると灰色になります。これは同期されることを意味します。
 </p>
 
 
@@ -4538,9 +4528,8 @@ Mail Extensions)</a> - an Internet Standard for the format of e-mail.</li>
 href="http://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">モジュール</a>
 - Apache ウェブサーバの拡張の一種</li>
     <li><a href="http://ja.wikipedia.org/wiki/MySQL">MySQL</a> -
-マルチスレッド、マルチユーザ、<abbr title="structured query
-language">SQL</abbr>が使えるデータベース管理システム (<abbr title="Database Management
-System">DBMS</abbr>)</li>
+マルチスレッド、マルチユーザ、<abbr title="structured query language">SQL</abbr>
+が使えるデータベース管理システム (<abbr title="Database Management System">DBMS</abbr>)</li>
     <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://ja.wikipedia.org/wiki/OpenDocument">OpenDocument</a> -

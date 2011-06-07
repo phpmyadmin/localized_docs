@@ -777,16 +777,17 @@ kimlik doğrulaması (önceki sürümlerde 'gelişmiş' olarak adlandırılırd�
 aynı zamanda 'http' olarak yazılabilir) (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>'</tt>) HTTP-Auth yoluyla
 herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin verir.</li>
-            <li>2.10.0'da sunulan 'oturumu açma' kimlik doğrulaması kipi
-(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) hazırlanmış PHP oturumu
-verisinden oturum açmanıza izin verir. Bu başka uygulamadan, tek oturum
-açmayı uygulamak için faydalıdır. Oturumu açma örneğindeki örnek yol,
-oturumu açmanın kökeninin nasıl olduğudur:
-<code>scripts/signon.php</code>. Aynı zamanda OpenID kullanan alternatif bir
-örnek vardır - <code>scripts/openid.php</code>. Bu kimlik doğrulama
-yöntemini kullanmak için <a href="#cfg_Servers_SignonSession"
-class="configrule">oturum adını</a> ve <a href="#cfg_Servers_SignonURL"
-class="configrule">oturumu açma URL'sini</a> yapılandırmanız gerekir.</li>
+            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
+introduced in 2.10.0 allows you to log in from prepared PHP session data or
+using supplied PHP script. This is useful for implementing single signon
+from another application.  Sample way how to seed session is in signon
+example: <code>scripts/signon.php</code>.  There is also alternative example
+using OpenID - <code>scripts/openid.php</code> and example for scripts based
+solution - <code>scripts/signon-script.php</code>.  You need to configure <a
+href="#cfg_Servers_SignonSession" class="configrule">session name</a> or <a
+href="#cfg_Servers_SignonScript" class="configrule">script to be
+executed</a> and <a href="#cfg_Servers_SignonURL" class="configrule">signon
+URL</a> to use this authentication method.</li>
         </ul>
 
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
@@ -1405,11 +1406,23 @@ boolean</dt>
 tablo sayılarını saymak.
     </dd>
     <dt><span
+id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
+string</dt>
+    <dd>Name of PHP script to be sourced and executed to obtain login
+credentials. This is alternative approach to session based single
+signon. The script needs to provide function
+<code>get_login_credentials</code> which returns list of username and
+pasword, accepting single parameter of existing username (can be empty).
+See <code>scripts/signon-script.php</code> for an example.
+    </dd>
+    <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 dizgi</dt>
-    <dd>Oturum açma kimlik doğrulaması yöntemi için kullanılacak oturumun
-adı. <code>phpMyAdmin</code>'den farklı bir şey kullanmalısınız çünkü bu
-phpMyAdmin'in dahili olarak kullandığı oturumdur.
+    <dd>Name of session which will be used for signon authentication method.  You
+should use something different than <code>phpMyAdmin</code>, because this is
+session which phpMyAdmin uses internally. Takes effect only if <a
+href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a> is not
+configured.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
 dizgi</dt>
@@ -1959,10 +1972,10 @@ sorunları olan bazı web sunucuları (IIS) için gerekir. Varsayılan
     <dt
     id="cfg_DisableMultiTableMaintenance">$cfg['DisableMultiTableMaintenance'] boolean</dt>
     <dd>
-    In the database Structure page, it's possible to mark some tables then
-choose an operation like optimizing for many tables. This can slow down a
-server; therefore, setting this to <code>true</code> prevents this kind of
-multiple maintenance operation. Default is <code>false</code>.
+    Veritabanı Yapı sayfasında, bazı tabloları işaretlemek sonrada birçok tablo
+için uyarlama gibi işlemler seçmek mümkündür. Bu sunucuyu yavaşlatabilir; bu
+nedenle bunu <code>true</code>'ya ayarlamak böyle çoklu bakım işlemlerini
+önleyebilir. Varsayılan <code>false</code>'dur.
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] tam sayı</dt>
@@ -2068,7 +2081,7 @@ boolean
     <dd>Gözatma görünümünde sayısal olmayan herhangi bir alanda gösterilen en fazla
 karakter sayısı. Gözatma sayfasında bir geçiş düğmesiyle kapatılabilir.</dd>
 
-    <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks'] </span>string
+    <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> dizgi
     </dt>
     <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
 would be put when tables contents are displayed (you may have them displayed
