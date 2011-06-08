@@ -536,8 +536,8 @@ href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
 配列です。ここにはさまざまなサーバへのログイン情報が格納されます。たとえば、最初の <a href="#cfg_Servers_host"
 class="configrule">$cfg['Servers'][$i]['host']</a> には最初のサーバのホスト名が、二番目の <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-には二番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt>
-にはひとつしかサーバ定義がありませんが、必要があれば <tt>./config.inc.php</tt>
+には二番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt> には 1
+つしかサーバ定義がありませんが、必要があれば <tt>./config.inc.php</tt>
 にいくつでも定義を追加できます。<tt>./libraries/config.default.php</tt>
 から該当ブロックを丸ごと、あるいは必要な部分のみコピーしてください（すべての設定を定義する必要はありません。必要な部分のみ変更してください）。</dd>
 
@@ -621,17 +621,14 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 （<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>'</tt>）は 1.3.0 で導入されました。HTTP-Auth を経由することで、あらゆる有効な
 MySQL ユーザでログインできます。</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
-from another application.  Sample way how to seed session is in signon
-example: <code>scripts/signon.php</code>.  There is also alternative example
-using OpenID - <code>scripts/openid.php</code> and example for scripts based
-solution - <code>scripts/signon-script.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> or <a
-href="#cfg_Servers_SignonScript" class="configrule">script to be
-executed</a> and <a href="#cfg_Servers_SignonURL" class="configrule">signon
-URL</a> to use this authentication method.</li>
+            <li>「signon」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、2.10.0
+で導入されました。用意された PHP のセッションデータからか、もしくは PHP
+スクリプトを使用してログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
+(<code>scripts/signon.php</code>) の中にあります。別の例として、OpenID
+(<code>scripts/openid.php</code>) を使うのもあります。この認証方式を使用するには、<a
+href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>か<a
+href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>それと<a
+href="#cfg_Servers_SignonURL" class="configrule">サインオン URL</a> を設定する必要があります。</li>
         </ul>
 
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
@@ -1134,42 +1131,35 @@ are present. Currently used in some parts of the code, more to come.
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
 文字列</dt>
-    <dd>On a server with a huge number of databases, the default <tt>SHOW
-DATABASES</tt> command used to fetch the name of available databases will
-probably be too slow, so it can be replaced by faster commands (see
-<tt>libraries/config.default.php</tt> for examples).
+    <dd>膨大な数のデータベースを持つサーバ上で、使用可能なデータベース名を取得するためにデフォルトの SHOW DATABASES
+コマンドを使うと、おそらくとても遅くなります。これを回避するために、高速コマンドに置き換えることができます（サンプルは、<tt>libraries/config.default.php</tt>
+を参照してください）。
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 論理型</dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation frame.
+    <dd>ナビゲーションフレームにデータベースのリストを作成したときに、各データベースのテーブル数も表示するかどうか。
     </dd>
     <dt><span
-id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
-string</dt>
-    <dd>Name of PHP script to be sourced and executed to obtain login
-credentials. This is alternative approach to session based single
-signon. The script needs to provide function
-<code>get_login_credentials</code> which returns list of username and
-pasword, accepting single parameter of existing username (can be empty).
-See <code>scripts/signon-script.php</code> for an example.
+id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span> 文字列</dt>
+    <dd>ログイン資格情報を取得するために実行される PHP
+スクリプトの名前。これは、セッションに基づくシングルサインオンに代わる手法です。このスクリプトは、ユーザ名とパスワードの一覧を返す関数
+<code>get_login_credentials</code>
+を提供していて、単一のパラメータとして存在するユーザ名（空欄も可）を受け入れる必要があります。サンプルは、<code>scripts/signon-script.php</code>
+を参照してください。
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 文字列</dt>
-    <dd>Name of session which will be used for signon authentication method.  You
-should use something different than <code>phpMyAdmin</code>, because this is
-session which phpMyAdmin uses internally. Takes effect only if <a
-href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a> is not
-configured.
+    <dd>サインオン認証方式に使用されるセッションの名前です。<code>phpMyAdmin</code> という名前は phpMyAdmin
+が内部的に使用しているセッションであるため、それとは異なる名前を使用する必要があります。<a
+href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
+を解除しないと、こちらは機能しません。
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span> 文字列</dt>
-    <dd>URL where user will be redirected to log in for signon authentication
-method. Should be absolute including protocol.
+    <dd>ユーザがサインオン認証方式でログインしてときにリダイレクトされる URL。プロトコルを含む完全な URL にしなければなりません。
     </dd>
     <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span> 文字列</dt>
-    <dd>URL where user will be redirected after logout (doesn't affect config
-authentication method). Should be absolute including protocol.
+    <dd>ユーザがログアウト後にリダイレクトされる URL（認証方式の設定には影響しません）。プロトコルを含む完全な URL にしなければなりません。
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
@@ -1178,9 +1168,8 @@ authentication method). Should be absolute including protocol.
         サーバが１つしか設定されていない場合、<tt>$cfg['ServerDefault']</tt> はそのサーバに設定「しなければなりません」。</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] 論理型</dt>
-    <dd>Defines whether to refresh only parts of certain pages using Ajax
-techniques. Applies only where a non-Ajax behavior is possible; for example,
-the Designer feature is Ajax-only so this directive does not apply to it.</dd>
+    <dd>Ajax を使用して特定のページの一部分だけを更新するかどうかを定義します。Ajax
+がなくても動作が可能なものにのみ適用されます。例えば、デザイナ機能は Ajax のみなので、この設定は適用されません。</dd>
 
     <dt id="cfg_VersionCheck">$cfg['VersionCheck'] 論理型</dt>
     <dd>javascript を使用した phpMyAdmin メインページ上の最新バージョンの確認を有効にします。</dd>
@@ -1192,11 +1181,9 @@ the Designer feature is Ajax-only so this directive does not apply to it.</dd>
     <dd>（エクスポートページを除く）メインパネルのリストに表示されるテーブル名の最大数。この制限は、軽快モード時のナビゲーションパネルにも適用されます。</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
-    <dd>The maximum number of characters when a SQL query is displayed. The default
-limit of 1000 should be correct to avoid the display of tons of hexadecimal
-codes that represent BLOBs, but some users have real SQL queries that are
-longer than 1000 characters. Also, if a query's length exceeds this limit,
-this query is not saved in the history.</dd>
+    <dd>SQL クエリ表示時の最大文字数。デフォルトの制限は 1000 ですが、BLOB を表現する多量の 16
+進コードの表示を回避するためには、このくらいが適切だと思われます。しかし、一部のユーザは 1000 文字よりも長い SQL
+クエリを使用します。また、クエリの長さがこの制限を超えている場合、このクエリは履歴に保存されません。</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] 文字列／論理型</dt>
     <dd><abbr title="HyperText Transfer Protocol">HTTP</abbr> 転送のスピードアップのために GZip
@@ -1400,7 +1387,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 の場合は降順、それ以外は昇順ことで、これがデフォルトです。</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] 論理型 </dt>
-    <dd>閲覧オプション「バイナリ内容を 16 進数で表示する」かどうかの定義します。デフォルトはチェックされています。</dd>
+    <dd>表示オプション「バイナリ内容を 16 進数で表示する」かどうかの定義します。デフォルトはチェックされています。</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
     <dd>テーブルの内容を表示しているときに <tt>BLOB</tt> カラムや <tt>BINARY</tt>
@@ -1578,10 +1565,8 @@ $cfg['TrustedProxies'] =
     <dt
     id="cfg_DisableMultiTableMaintenance">$cfg['DisableMultiTableMaintenance'] 論理型</dt>
     <dd>
-    In the database Structure page, it's possible to mark some tables then
-choose an operation like optimizing for many tables. This can slow down a
-server; therefore, setting this to <code>true</code> prevents this kind of
-multiple maintenance operation. Default is <code>false</code>.
+    データベースの構造ページにおいて、テーブルをマークして多くのテーブルを最適化するような操作を選択が可能です。この操作はサーバの動作を遅くさせてしまいますので、この値を
+<code>true</code> に設定し、この種の複数メンテナンスの操作を防止します。デフォルトは <code>false</code> です。
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] 整数</dt>
@@ -1666,8 +1651,7 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
     <dd>クリックしたときにクエリボックスの textarea 全体を選択するかどうかを定義します。</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] 整数</dt>
-    <dd>Maximum number of characters shown in any non-numeric field on browse view.
-Can be turned off by a toggle button on the browse page.</dd>
+    <dd>表示ページで、数字以外のフィールドに表示する最大文字数。表示ページ内のトグルボタンでオフにすることもできます。</dd>
 
     <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> 文字列
     </dt>
@@ -1888,7 +1872,7 @@ COUNT ... LIMIT</code>. The default value of 0 bypasses any row counting.
     <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（ライトモード）とデータベース画面のテーブル一覧に実装されています。</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
-    <dd><tt>「closed」</tt>に設定されている場合、折り畳みのデフォルトは閉じた状態です。<tt>「open」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
+    <dd><tt>「closed」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 配列</dt>
     <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
@@ -2444,8 +2428,7 @@ Documentation</a>.
 relations）」機能を実行できません。私が使っているフォントを認識してくれないようです。</a></h4>
 
 <p> 私たちがこの機能を実現するのに利用している「FPDF」ライブラリは、いくつかの特別なファイルがないとフォントを利用できません。<br />
-    Please refers to the <a href="http://www.fpdf.org/">FPDF manual</a> to build
-these files.</p>
+    その特別なファイルの作り方は <a href="http://www.fpdf.org/">FPDF マニュアル</a> をご覧ください。</p>
 
 <h4 id="faqmysql">
     <a href="#faqmysql">1.20 「cannot load MySQL extension, please check PHP
@@ -2576,11 +2559,10 @@ Services">IIS</abbr> 5.1 の <abbr title="Internet Server Application
 Programming Interface">ISAPI</abbr> モードで動かした PHP 4.3.9 で確認しました。</p>
 
 <ol><li>お使いの <tt>php.ini</tt> ファイルに <tt>cgi.rfc2616_headers = 0</tt> という設定を加えます。</li>
-    <li>In <tt>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
-Access</tt> dialog box, check the <tt>Anonymous access</tt> checkbox and
-uncheck any other checkboxes (i.e. uncheck <tt>Basic authentication</tt>,
-<tt>Integrated Windows authentication</tt>, and <tt>Digest</tt> if it's
-enabled.) Click <tt>OK</tt>.</li>
+    <li><tt>ウェブサイトの「プロパティ」 -&gt; 「ディレクトリセキュリティ」タブ -&gt;
+「匿名アクセスおよび認証コントロール」の「編集」</tt>で表示されるダイアログボックスで、<tt>匿名アクセス</tt>のチェックボックスをチェック、それ以外のチェックボックスのチェックを外します（つまり、<tt>基本認証</tt>、<tt>統合
+Windows 認証</tt>、有効になっている場合は<tt>ダイジェスト認証</tt>のチェックを外します）。<tt>OK</tt>
+をクリックします。</li>
     <li><tt>「カスタムエラー」</tt>タブで、<tt>401;1</tt> から <tt>401;5</tt>
 までを選択し、<tt>「既定値に設定」</tt>ボタンをクリックします。</li>
 </ol>
@@ -2962,11 +2944,11 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 ネストフォルダを使うと、複数の階層を持つものがおかしな表示になることがあります？！</a>(<a
+    <a href="#faq3_5">3.5 入れ子のフォルダを使うと、複数の階層を持つものがおかしな表示になることがあります？！</a>(<a
 href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
 
-<p> ご注意ください。間に文字をはさまずに区切り文字を連続して使ったり、テーブル名の前後に区切り文字を使ってはいけないのです。どうしてもそうする必要があるなら、別の区切り文字（TableSeparator）を使うか、この機能を無効にすることを検討してください。</p>
+<p> 区切り文字の使い方に注意ください。間に文字をはさまずに区切り文字を連続して使ったり、テーブル名の前後に区切り文字を使ってはいけないのです。どうしてもそうする必要があるなら、テーブル区切り文字に別のものを使用するか、この機能を無効にすることを検討してください。</p>
 
 <h4 id="faq3_6">
     <a href="#faq3_6">3.6 InnoDB では現在サポートされていない機能はありますか。</a></h4>
@@ -3612,20 +3594,16 @@ Validator そのものは &copy; 2001 Upright Database Technology です。私�
 column '...' used in key specification without a key length（BLOB
 カラム「…」をキーにしようとしましたが、キーの長さが指定されていません）」と言われてしまいます。</a></h4>
 
-<p> The right way to do this, is to create the column without any indexes, then
-display the table structure and use the &quot;Create an index&quot;
-dialog. On this page, you will be able to choose your BLOB column, and set a
-size to the index, which is the condition to create an index on a BLOB
-column.</p>
+<p> 正しくは、BLOB カラムをインデックスなしで作成したあと、テーブルの構造を表示し「インデックスを作成」ダイアログを使用します。このページ上で、BLOB
+カラムを選択して、インデックスにサイズを指定できます。このサイズが BLOB カラムにインデックスを作るときの条件なのです。</p>
 
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 どうしたらたくさんの編集フィールドがあるページで簡単に移動できますか。</a></h4>
 
-<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
-with many editing fields (table structure changes, row editing, etc.).  You
-can also have a look at the directive <a href="#DefaultPropDisplay"
-class="configrule">$cfg['DefaultPropDisplay']</a> ('vertical') and see if
-this eases up editing for you.</p>
+<p> （テーブルの構造を変更したり、行を編集したりなど）編集カラムが多いページでは Ctrl + カーソルキー（Safari の場合は Option +
+カーソルキー）を使うと移動できます。また、<a href="#DefaultPropDisplay"
+class="configrule">$cfg['DefaultPropDisplay']</a>
+ディレクティブの項もご覧ください。「vertical」にしたら編集が楽になるかもしれません。</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 変換機能：独自の MIME タイプを入力できません！　本当にこの機能は役に立つんですか？</a></h4>
