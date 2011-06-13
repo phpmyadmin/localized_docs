@@ -298,7 +298,7 @@ web sunucusu doğru izinlere sahip değilse "Yapılandırma yüklenemiyor veya
 kaydedilemiyor" hatası görebilirsiniz. <tt>Config/</tt> dizininin var
 olduğundan ve doğru yetkilere sahip olduğundan emin olun ya da yerel olarak
 yapılandırma dosyasını kaydetmek için <tt>İndir</tt> bağlantısını kullanın
-ve (FTP yoluyla ya da buna benzer bir yolla) doğru yere gönderin. <br /><br />
+ve (FTP yoluyla ya da buna benzer bir yolla) doğru yere gönderin.<br /><br />
 
                 Dosya bir kez kaydedildimi, <tt>config/</tt> dizini dışına taşınmalı ve
 güvenlik önlemi olarak izinleri sıfırlanmalıdır:
@@ -777,17 +777,19 @@ kimlik doğrulaması (önceki sürümlerde 'gelişmiş' olarak adlandırılırd�
 aynı zamanda 'http' olarak yazılabilir) (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>'</tt>) HTTP-Auth yoluyla
 herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin verir.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
-from another application.  Sample way how to seed session is in signon
-example: <code>scripts/signon.php</code>.  There is also alternative example
-using OpenID - <code>scripts/openid.php</code> and example for scripts based
-solution - <code>scripts/signon-script.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> or <a
-href="#cfg_Servers_SignonScript" class="configrule">script to be
-executed</a> and <a href="#cfg_Servers_SignonURL" class="configrule">signon
-URL</a> to use this authentication method.</li>
+            <li>2.10.0'da sunulan 'oturumu açma' kimlik doğrulaması kipi
+(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) hazırlanmış PHP oturumu
+verisinden ya da temin edilmiş PHP betiği kullanılarak oturum açmanıza izin
+verir. Bu başka uygulamadan, tek oturum açmayı uygulamak için
+faydalıdır. Oturumu açma örneğindeki örnek yol, oturumu açmanın kökeninin
+nasıl olduğudur: <code>scripts/signon.php</code>. Aynı zamanda OpenID
+kullanan - <code>scripts/openid.php</code> ve betik tabanlı çözüm için -
+<code>scripts/signon-script.php</code> alternatif bir örnek vardır. Bu
+kimlik doğrulama yöntemini kullanmak için <a
+href="#cfg_Servers_SignonSession" class="configrule">oturum adını</a> veya
+<a href="#cfg_Servers_SignonScript" class="configrule">çalıştırılan
+betiği</a> ve <a href="#cfg_Servers_SignonURL" class="configrule">oturumu
+açma URL'sini</a> yapılandırmanız gerekir.</li>
         </ul>
 
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
@@ -1407,26 +1409,26 @@ tablo sayılarını saymak.
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
-string</dt>
+dizgi</dt>
     <dd>Name of PHP script to be sourced and executed to obtain login
 credentials. This is alternative approach to session based single
 signon. The script needs to provide function
 <code>get_login_credentials</code> which returns list of username and
-pasword, accepting single parameter of existing username (can be empty).
+password, accepting single parameter of existing username (can be empty).
 See <code>scripts/signon-script.php</code> for an example.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
 dizgi</dt>
-    <dd>Name of session which will be used for signon authentication method.  You
-should use something different than <code>phpMyAdmin</code>, because this is
-session which phpMyAdmin uses internally. Takes effect only if <a
-href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a> is not
-configured.
+    <dd>Oturumu açma kimlik doğrulaması yöntemi için kullanılacak oturumun
+adı. <code>phpMyAdmin</code>'den farklı bir şey kullanmalısınız çünkü bu
+phpMyAdmin'in dahili olarak kullandığı oturumdur. Sadece <a
+href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
+yapılandırılmazsa etkili olur.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
 dizgi</dt>
-    <dd>Oturum açma kimlik doğrulaması yöntemi için kullanıcının oturum açmaya
+    <dd>Oturumu açma kimlik doğrulaması yöntemi için kullanıcının oturum açmaya
 yönlendirileceği URL. Protokol tam dahil olmalıdır.
     </dd>
     <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span>
@@ -2083,13 +2085,14 @@ karakter sayısı. Gözatma sayfasında bir geçiş düğmesiyle kapatılabilir.
 
     <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> dizgi
     </dt>
-    <dd>Defines the place where table row links (Edit, Inline edit, Copy, Delete)
-would be put when tables contents are displayed (you may have them displayed
-at the left side, right side, both sides or nowhere).  &quot;left&quot; and
-&quot;right&quot; are parsed as &quot;top&quot; and &quot;bottom&quot; with
-vertical display mode.</dd>
+    <dd>Tablo içerikleri görüntülendiğinde (hepsini sol tarafta, sağ tarafta, her
+iki tarafta görüntüleyebilir ya da hiçbir yerde görüntülemeyebilirsiniz)
+tablo satır bağlantılarının (Düzenle, Sıralı düzenle, Kopyala, Sil)
+koyulacağı yeri tanımlar. &quot;sol&quot; ve &quot;sağ&quot;, &quot;en
+süt&quot; ve &quot;en alt&quot; gibi dikey görüntüleme kipiyle birlikte
+ayrıştırılır.</dd>
 
-    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string</dt>
+    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] dizgi</dt>
     <dd>There are 3 display modes: horizontal, horizontalflipped and vertical.
 Define which one is displayed by default. The first mode displays each row
 on a horizontal line, the second rotates the headers by 90 degrees, so you
@@ -3709,7 +3712,7 @@ a built-in type. These are almost always guarenteed to import correctly.
     <a href="#faq3_18">3.18 When I import a CSV file that contains multiple
 tables, they are lumped together into a single table.</a></h4>
 <p>
-    There is no reliable way to differetiate tables in CSV format. For the time
+    There is no reliable way to differentiate tables in CSV format. For the time
 being, you will have to break apart CSV files containing multiple tables.
 </p>
 

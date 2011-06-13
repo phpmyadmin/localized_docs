@@ -276,7 +276,7 @@ title="HyperText Transfer
 Protocol">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
 は現行版では、ようこそ画面と管理データベース、もしくはログインダイアログが表示されます。</li>
     <li>ウェブサーバの設定でサブフォルダ <tt>./libraries</tt> と <tt>./setup/lib</tt>
-へのアクセスを拒否しておく必要があります。Apache の場合、該当フォルダに提供されている .htaccess
+へのアクセスを拒否しておく必要があります。Apache の場合は、該当フォルダに提供されている .htaccess
 ファイルを使用することができます。他のウェブサーバの場合は、各自で設定する必要があります。このような設定を行うことにより、サブフォルダの露出を防ぎ、万一、そこのコードにクロスサイドスクリプティングの脆弱性が見つかっても、利用されることはありません。</li>
     <li>
         一般的には、インストールしている phpMyAdmin
@@ -302,7 +302,7 @@ title="よくある質問">FAQ</abbr> 1.23</a> をよくお読みください）
 <i>./scripts/create_tables.sql</i> をインポートして新しいテーブルを作成するようにしてください。</p>
 
 <p> phpMyAdmin
-を使ってテーブル群を作成することもできますが、いくつか注意することがあります。データベースやテーブルを作成する際には特別な（管理者の）権限が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
+を使ってテーブル群を作成することもできますが、いくつか注意することがあります。データベースやテーブルを作成する際には特別な（管理者の）特権が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
 
 <p> <i>./scripts/create_tables.sql</i> ファイルをインポートしたら、<i>./config.inc.php</i>
 ファイルでテーブル名を指定してください。このとき使うディレクティブの説明は<a
@@ -377,7 +377,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
         （もちろん <a href="#linked-tables">phpMyAdmin の設定保存場所</a>を設定しておく必要があります）  
     <br /></li>
 
-    <li>上記が済んだら、<i>本当の</i>ユーザそれぞれについて、特定のデータベースにおける特権を付与していってください。ふつう、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが（たとえばスーパーユーザを作るときなど）。<br />
+    <li>上記が済んだら、<i>本当の</i>ユーザそれぞれについて、特定のデータベースにおける特権を付与していってください。ふつう、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが（例えばスーパーユーザを作るときなど）。<br />
         一例を示します。<i>real_user</i> というユーザに <i>user_base</i>
 というデータベースに関するすべての特権を付与するには、以下のようにします。<br />
 
@@ -409,7 +409,7 @@ title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htacces
 
 <h4>「クッキー」認証モード</h4>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証のかわりに利用できます（たとえば
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証のかわりに利用できます（例えば
 <abbr title="Internet Information Services">IIS</abbr> を稼動させている場合など）。</li>
     <li>もちろんユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
     <li>このモードでは、ユーザは phpMyAdmin のログアウトが確実に行え、同じユーザ名でログインし直すことができます。</li>
@@ -421,8 +421,7 @@ class="configrule">$cfg['AllowArbitraryServer']</a> ディレクティブをご�
 
 <h4>「サインオン」認証モード</h4>
 
-<ul><li>This mode is a convenient way of using credentials from another application
-to authenticate to phpMyAdmin.</li>
+<ul><li>このモードは、証明を使用した便利な方法で、別のアプリケーションで行った認証を phpMyAdmin へ持ってくるというものです。</li>
     <li>他のアプリケーションは、ログイン情報をセッションデータへ格納しなければなりません。</li>
     <li>詳細は <a href="#cfg_Servers_auth_type">auth_type</a> の項目をご覧ください。</li>
 </ul>
@@ -443,7 +442,7 @@ class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> ディレク�
 <a href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a>
 ディレクティブでホスト認証することを検討してみてもよいかもしれません。</li>
-    <li>クッキーや http 認証とは異なり、最初に phpMyAdmin
+    <li>クッキー／HTTP 認証とは異なり、最初に phpMyAdmin
 サイトを読み込んだときに、ログインユーザを必要としません。これは仕様によるものですが、インストール先へのアクセスをどのユーザにも許可しているということです。HTTP
 認証の設定や他のルータから HTTP 要求を拒否しているであろう <a href="#glossary">.htaccess</a>
 ファイル、十分に対策したファイアウォール、といったいくつかの制限をかけること推奨します（これらの方法はこのマニュアルの範疇を超えていますが、Google
@@ -488,22 +487,22 @@ href="#setup">クイックインストール</a>の項を参照して作成し�
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] 文字列</dt>
     <dd>ここには、phpMyAdmin がインストールされているディレクトリの <abbr title="Uniform Resource
-Locator">URL</abbr>
-をフルパスで設定します。（例）<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>
-なお、ウェブサーバによってはこの <abbr title="Uniform Resource Locator">URL</abbr>
+Locator">URL</abbr> をフルパスで設定します
+(例：<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>)。なお、ウェブサーバによってはこの
+<abbr title="Uniform Resource Locator">URL</abbr>
 の大文字小文字を区別します。末尾のスラッシュを忘れないようにしてください。<br /><br />
 
         バージョン 2.3.0 からはここを空欄にすることが推奨されています。たいていの場合、phpMyAdmin
 は自動的に適切な設定を検出します。ポート転送をしているユーザは PmaAbsoluteUri を設定する必要があるでしょう（<a
-href="https://sourceforge.net/tracker/index.php?func=detail&aid=1340187&group_id=23067&atid=377409">解説</a>）。
-試しに、テーブルを表示して、列を編集して保存してみてください。phpMyAdmin
+href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1340187&amp;group_id=23067&amp;atid=377409">解説</a>）。
+試しに、テーブルを表示して、行を編集して保存してみてください。phpMyAdmin
 が正しい値を自動検出できていない場合はエラーメッセージが表示されるはずです。この値を設定してくださいというエラーが出る、あるいは自動検出コードがパスの検出に失敗する場合は、開発陣がコードを改善できるよう、バグレポートをバグトラッカーにお送りください。</dd>
 
     <dt id="cfg_PmaNoRelation_DisableWarning">$cfg['PmaNoRelation_DisableWarning'] 論理型</dt>
     <dd>バージョン 2.3.0 以降、マスタ／外部テーブルを操作する機能が多数提供されています（<a href="#pmadb"
 class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
         <br />
-        そのマスタ／外部データベースをセットアップしてみてもうまくいかない場合、その機能を利用したいデータベースの「構造（Structure）」ページを見れば、無効になっている理由を分析するリンクが見つかるはずです。<br />
+        そのマスタ／外部データベースをセットアップしてみてもうまくいかない場合、その機能を利用したいデータベースの「構造」ページを見れば、無効になっている理由を分析するリンクが見つかるはずです。<br />
         そういった機能を使いたくない場合は、この変数を <tt>TRUE</tt> に設定しておけばメッセージが表示されなくなります。</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] 論理型</dt>
@@ -515,12 +514,11 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
 に設定しておくことで、このメッセージは表示されなくなります。</dd>
 
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
-    <dd>Show warning about incomplete translations on certain threshold.</dd>
+    <dd>指定されたしきい値に達していない不完全な翻訳に対して警告を表示します。</dd>
 
-    <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowArbitraryServer'] 論理型</dt>
-    <dd>Setting this to <tt>true</tt> allows a page located on a different domain to
-call phpMyAdmin inside a frame, and is a potential security hole allowing
-cross-frame scripting attacks.</dd>
+    <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] 論理型</dt>
+    <dd>これを <tt>true</tt>
+に設定すると、フレームに対して異なるドメインに置かれているページを許可します。このことは、クロスフレームスクリプト攻撃を可能にする潜在的なセキュリティホールにもなりえます。</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] 文字列</dt>
     <dd>「クッキー」認証方式は、パスワードを暗号化するために blowfish アルゴリズムを使用しています。<br />
@@ -533,7 +531,7 @@ cross-frame scripting attacks.</dd>
     <dt id="cfg_Servers">$cfg['Servers'] 配列</dt>
     <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
 href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
-配列です。ここにはさまざまなサーバへのログイン情報が格納されます。たとえば、最初の <a href="#cfg_Servers_host"
+配列です。ここにはさまざまなサーバへのログイン情報が格納されます。例えば、最初の <a href="#cfg_Servers_host"
 class="configrule">$cfg['Servers'][$i]['host']</a> には最初のサーバのホスト名が、二番目の <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
 には二番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt> には 1
@@ -543,7 +541,7 @@ href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] 文字列</dt>
     <dd>$i 番目の MySQL サーバのホスト名ないし <abbr title="インターネット・プロトコル">IP</abbr>
-アドレスが入ります。（例）localhost</dd>
+アドレスが入ります。（例：localhost）</dd>
 
     <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] 文字列</dt>
     <dd>$i 番目の MySQL サーバのポート番号が入ります。デフォルトは 3306
@@ -623,11 +621,11 @@ Protocol">HTTP</abbr>'</tt>）は 1.3.0 で導入されました。HTTP-Auth を
 MySQL ユーザでログインできます。</li>
             <li>「signon」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、2.10.0
 で導入されました。用意された PHP のセッションデータからか、もしくは PHP
-スクリプトを使用してログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
+スクリプトを使用して、ログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
 (<code>scripts/signon.php</code>) の中にあります。別の例として、OpenID
 (<code>scripts/openid.php</code>) を使うのもあります。この認証方式を使用するには、<a
 href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>か<a
-href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>それと<a
+href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>、それと<a
 href="#cfg_Servers_SignonURL" class="configrule">サインオン URL</a> を設定する必要があります。</li>
         </ul>
 
@@ -699,22 +697,20 @@ class="important">ほかのすべてのデータベースが使えなくなる�
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> 文字列
     </dt>
-    <dd>Regular expression for hiding some databases from unprivileged users.  This
-only hides them from listing, but a user is still able to access them
-(using, for example, the SQL query area). To limit access, use the MySQL
-privilege system.
+    <dd>特権のないユーザからデータベースを隠します。正規表現で指定します。これはリストから見えなくするだけで、ユーザがそれらに（SQL
+クエリ使用するなどして）アクセスすることはできてしまいます。アクセスを制限するには、MySQL 特権システムを使用しています。
         <br /><br />
-        For example, to hide all databases starting with the letter &#34;a&#34;, use<br />
+        例えば、文字「a」で始まるすべてのデータベースを非表示にするには、<br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^a';</pre>
-        and to hide both &#34;db1&#34; and &#34;db2&#34; use <br />
+        「db1」と「db2」の両方を非表示にするには、 <br />
         <pre>$cfg['Servers'][$i]['hide_db'] = '^(db1|db2)$';</pre>
-        More information on regular expressions can be found in the <a
-href="http://php.net/manual/en/reference.pcre.pattern.syntax.php"> PCRE
-pattern syntax</a> portion of the PHP reference manual.
+        正規表現の詳細は、PHP リファレンスマニュアルの <a
+href="http://php.net/manual/ja/reference.pcre.pattern.syntax.php">PCRE
+のパターン構文</a>の項にあります。
         </dd>
 
     <dt id="cfg_Servers_verbose">$cfg['Servers'][$i]['verbose'] 文字列</dt>
-    <dd>複数のサーバエントリがあるなら便利です。設定しておくと、メインページのプルダウンメニューに、ホスト名ではなく、この文字列が表示されます。たとえば、システム上のいくつかのデータベースのみ表示させる場合には便利でしょう。HTTP
+    <dd>複数のサーバエントリがあるなら便利です。設定しておくと、メインページのプルダウンメニューに、ホスト名ではなく、この文字列が表示されます。例えば、システム上のいくつかのデータベースのみ表示させる場合には便利でしょう。HTTP
 認証の場合、非 ASCII 文字は全て無視されるかもしれません。</dd>
 
     <dt id="pmadb">
@@ -727,7 +723,7 @@ pattern syntax</a> portion of the PHP reference manual.
 の設定保存場所</a>の節をご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
         <br /><br />
 
-        インストールした phpMyAdmin のユーザがひとりの場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
+        インストールした phpMyAdmin のユーザが１人の場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
 <tt>$cfg['Servers'][$i]['pmadb']</tt> にはお使いのデータベース名を入れていただければ結構です。マルチユーザの場合は
 phpMyAdmin の設定保存場所を格納するセントラルデータベース名を設定します。</dd>
 
@@ -758,7 +754,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
             <li>テーブルのプロパティページでは、記載されているキーごとに参照の整合性をチェックする（リンクの切れた外部キーを表示する）リンクを表示します。
             </li>
             <li>query-by-example では、自動結合を作成します（<a href="#faq6_6"><abbr
-title="よくある質問">FAQ</abbr> 6.6</a>参照）</li>
+title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
             <li>データベースの <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 スキーマを取得できるようにします（table_coords テーブルも使用されます）。</li>
         </ul>
@@ -1010,7 +1006,7 @@ id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_dr
 文字列
     </dt>
     <dd>
-        リリース 3.4.x より。ユーザが自分自身にとって最もよい環境設定をして、それをデータベースに格納することを許可します。
+        リリース 3.4.x より。ユーザが自分自身用の環境設定を行い、それをデータベースに格納することを許可します。
         <br /><br />
 
         <a href="#pmadb">pmadb</a> への設定格納を許可しなくても、依然としてユーザは phpMyAdmin
@@ -1141,11 +1137,12 @@ id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand'
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span> 文字列</dt>
-    <dd>ログイン資格情報を取得するために実行される PHP
-スクリプトの名前。これは、セッションに基づくシングルサインオンに代わる手法です。このスクリプトは、ユーザ名とパスワードの一覧を返す関数
-<code>get_login_credentials</code>
-を提供していて、単一のパラメータとして存在するユーザ名（空欄も可）を受け入れる必要があります。サンプルは、<code>scripts/signon-script.php</code>
-を参照してください。
+    <dd>Name of PHP script to be sourced and executed to obtain login
+credentials. This is alternative approach to session based single
+signon. The script needs to provide function
+<code>get_login_credentials</code> which returns list of username and
+password, accepting single parameter of existing username (can be empty).
+See <code>scripts/signon-script.php</code> for an example.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -1223,11 +1220,11 @@ href="http://php.net/session_save_path">session_save_path PHP パラメータ</a
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] 論理型</dt>
     <dd>通常ユーザ（administrator 以外のユーザ）に自分自身のデータベースの削除を許可するかどうかを定義します。FALSE
-にすると、「データベースの削除（Drop Database）」のリンクは表示されませんし、「DROP DATABASE
+にすると、「データベースの削除」のリンクは表示されませんし、「DROP DATABASE
 (自身のデータベース名)」すらも拒否されます。多くの顧客をかかえる <abbr
 title="インターネット・サービス・プロバイダ">ISP</abbr> にとってはきわめて実用的です。<br />
-        SQL クエリに対するこの制限は、MySQL の権限を使用するほど厳格ではないことに注意してください。これは SQL
-クエリの性質によるもので、非常に複雑になる可能性があります。この設定は、厳密な権限の制限というよりも、削除事故回避ためにヘルプとして表示するようなものです。</dd>
+        SQL クエリに対するこの制限は、MySQL の特権を使用するほど厳格ではないことに注意してください。これは SQL
+クエリの性質によるもので、非常に複雑になる可能性があります。この設定は、厳密な特権の制限というよりも、削除事故回避ためにヘルプとして表示するようなものです。</dd>
 
     <dt id="cfg_Confirm">$cfg['Confirm'] 論理型</dt>
     <dd>データが消失しそうな操作をしたときに警告（「本当に〜してもよいですか」）を表示するかどうか。</dd>
@@ -1240,7 +1237,7 @@ title="インターネット・サービス・プロバイダ">ISP</abbr> にと
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] 整数 [秒数]</dt>
-    <dd>ログインクッキーの有効期間を定義します。 PHP の設定オプション <a
+    <dd>ログインクッキーの有効期間を定義します。PHP の設定オプション <a
 href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>
 は、セッションの有効性を制限する可能性があるので注意してください。セッションが失われている場合、ログインクッキーも無効になります。ですから、<code>session.gc_maxlifetime</code>
 は $cfg['LoginCookieValidity'] の値よりも低く設定するほうがいいのです。</dd>
@@ -1285,7 +1282,7 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
     </dd>
 
     <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] 論理型</dt>
-    <dd>ライトモードのときに（セレクターの）データベース名をツリー表示するかどうかを定義します。<a
+    <dd>軽快モードのときに（セレクターの）データベース名をツリー表示するかどうかを定義します。<a
 href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a> もご覧ください。
     </dd>
@@ -1358,8 +1355,9 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
         <span id="cfg_ShowChgPassword">$cfg['ShowChgPassword']</span> 論理型<br />
         <span id="cfg_ShowCreateDb">$cfg['ShowCreateDb']</span> 論理型
     </dt>
-    <dd>立ち上げ時のメイン（右）フレームに、「PHP 情報」や「パスワードを変更する」のリンクやデータベース作成フォームを表示するかどうかを定義します。
-この設定は、直接入力された MySQL コマンドに対してチェックするわけではありません。<br /><br />
+    <dd>立ち上げ時のメイン（右）フレームに、「PHP
+情報」や「パスワードを変更する」のリンクやデータベース作成フォームを表示するかどうかを定義します。この設定は、直接入力された MySQL
+コマンドに対してチェックするわけではありません。<br /><br />
 
         phpinfo() において注意することがあります。スクリプト中でこの関数を使えなくするには、<i>php.ini</i>
 に下記の行を含める必要があります。
@@ -1369,7 +1367,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
         また、「パスワードの変更」リンクは「config」認証モードでは無効になります。設定ファイルにハードコードされたパスワードの値はエンドユーザが書き換えられないためです。</dd>
 
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] 論理型</dt>
-    <dd>「データベースの作成（Create Database）」フォームでデータベース名を提案するかテキストフィールドを空欄にしておくかを定義します。</dd>
+    <dd>「データベースを作成する」フォームでデータベース名を提案するかテキストフィールドを空欄にしておくかを定義します。</dd>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] 文字列</dt>
     <dd>ナビゲーションバーのボタンと、右パネルのトップメニューにテキストを含めるか、シンボルのみにするかを定義します。値が TRUE
@@ -1391,7 +1389,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
     <dd>テーブルの内容を表示しているときに <tt>BLOB</tt> カラムや <tt>BINARY</tt>
-カラムを保護して修正できないようにするかどうかを定義します。 有効な値は次の通りです：
+カラムを保護して修正できないようにするかどうかを定義します。有効な値は次の通りです。
         <ul><li><tt>FALSE</tt> すべてのカラムの修正を許可します。</li>
             <li><tt>blob</tt> <tt>BLOB</tt> 以外のすべてのカラムの修正を許可します。</li>
             <li><tt>all</tt> 全ての <tt>BINARY</tt> カラムと <tt>BLOB</tt> カラムの修正を不許可にします。</li>
@@ -1453,7 +1451,7 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 
 
     <dt id="cfg_DefaultTabServer">$cfg['DefaultTabServer'] 文字列</dt>
-    <dd>サーバ表示の際にデフォルトで表示されるタブを定義します。可能な値は次の通りです。「main.php」（マルチユーザ環境におすすめ）、「server_databases.php」、「server_status.php」、「server_variables.php」、「server_privileges.php」、「server_processlist.php」。</dd>
+    <dd>サーバ表示の際にデフォルトで表示されるタブを定義します。可能な値は次の通りです。「main.php」（マルチユーザ環境にお勧め）、「server_databases.php」、「server_status.php」、「server_variables.php」、「server_privileges.php」、「server_processlist.php」。</dd>
 
     <dt id="cfg_DefaultTabDatabase">$cfg['DefaultTabDatabase'] 文字列</dt>
     <dd>データベース表示の際にデフォルトで表示されるタブを定義します。可能な値は次のいずれかです。「db_structure.php」、「db_sql.php」、「db_search.php」。</dd>
@@ -1470,10 +1468,10 @@ class="configrule">$cfg['MySQLManualType']</a> の値によります）、適切
 
     <dt id="cfg_MySQLManualType">$cfg['MySQLManualType'] 文字列</dt>
     <dd>MySQL 文書のタイプです。
-        <ul><li>viewable - 「オンラインで閲覧可能」。現在MySQLのウェブサイトで利用されているものです。</li>
-            <li>searchable - 「検索可能。ユーザのコメントがついています（Searchable, with user comments）」</li>
-            <li>chapters - 「HTML 文書。章ごとにページがわかれています（HTML, one page per chapter）」</li>
-            <li>big - 「HTML 文書。すべてが 1 ページに収められています（HTML, all on one page）</li>
+        <ul><li>viewable - 「オンラインで閲覧可能」。現在 MySQL のウェブサイトで利用されているものです。</li>
+            <li>searchable - 「検索可能。ユーザのコメントがついています」</li>
+            <li>chapters - 「HTML 文書。章ごとにページが分かれています」</li>
+            <li>big - 「HTML 文書。全てが 1 ページに収められています」</li>
             <li>none - 文書へのリンクを表示しません。</li>
         </ul>
     </dd>
@@ -1594,11 +1592,11 @@ $cfg['TrustedProxies'] =
     <dd>テーブルのヘッダに使われるスタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] 文字列 [CSS 色]</dt>
-    <dd>テーブルの奇数行に使われる色（HTML）。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
+    <dd>テーブルの奇数行に使われる色 (HTML)。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
     </dd>
 
     <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] 文字列 [CSS 色]</dt>
-    <dd>テーブルの偶数行に使われる色（HTML）。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
+    <dd>テーブルの偶数行に使われる色 (HTML)。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
     </dd>
 
     <dt><span id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']
@@ -1831,7 +1829,7 @@ language">SQL</abbr> クエリを直接入力できるようになります。Ja
 language">SQL</abbr> クエリが入ります。
         <br /><br />
         JavaScript 対応ブラウザを使っているなら JavaScript
-クエリウインドウを使うことをおすすめします。やりとりする変数の数は多いですが、使っている関数は基本的なものなので、第四世代のブラウザならたいていこの機能を利用できるはずです。現在は
+クエリウインドウを使うことをお勧めします。やりとりする変数の数は多いですが、使っている関数は基本的なものなので、第四世代のブラウザならたいていこの機能を利用できるはずです。現在は
 Internet Explorer 6 と Mozilla 1.x のみでテストしています。
         <br /><br />
         <tt>$cfg['QueryHistoryDB']</tt> が <tt>TRUE</tt>
@@ -1863,21 +1861,20 @@ textarea
 が使われますが、そうでない場合はこの概算数が使われます。
     </dd>
     <dt id="cfg_MaxExactCountViews">$cfg['MaxExactCountViews'] 整数</dt>
-    <dd>For VIEWs, since obtaining the exact count could have an impact on
-performance, this value is the maximum to be displayed, using a <code>SELECT
-COUNT ... LIMIT</code>. The default value of 0 bypasses any row counting.
+    <dd>ビューの場合は、正確な行数を取得するのはパフォーマンスに影響を与える可能性があります。そのため、<code>SELECT COUNT
+... LIMIT</code> というふうにして、この設定値を限度とする行カウントを行います。デフォルト値は 0 で、行カウントをとばします。
     </dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] 論理型</dt>
-    <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（ライトモード）とデータベース画面のテーブル一覧に実装されています。</dd>
+    <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（軽快モード）とデータベース画面のテーブル一覧に実装されています。</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
     <dd><tt>「closed」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 配列</dt>
-    <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
-users can't set through user preferences. For possible values, refer to
-<tt>libraries/config/user_preferences.forms.php</tt>.</dd>
+    <dd>ユーザ環境設定を許可させない設定オプションの名前 (<tt>$cfg</tt> 配列のキーで指定)
+が入ります。指定できる値については、<tt>libraries/config/user_preferences.forms.php</tt>
+を参照してください。</dd>
 
     <dt id="cfg_TitleTable">$cfg['TitleTable'] 文字列</dt>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] 文字列</dt>
@@ -1983,8 +1980,8 @@ title="よくある質問">FAQ</abbr> 6.14</a> をご覧ください。
             <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] 文字列<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
 文字列</dt>
-            <dd>SOAP サービスを使うと <tt>anonymous</tt>
-（匿名）ユーザでパスワードによらずログインできるため、デフォルトではそのようになっています。SQL
+            <dd>SOAP サービスを使うと
+<tt>anonymous</tt>（匿名）ユーザでパスワードによらずログインできるため、デフォルトではそのようになっています。SQL
 検証のアカウントをお持ちであれば、ログイン情報をここに記入することで、匿名でログインする代わりにその情報でログインするようになります。</dd>
         </dl>
     </dd>
@@ -2028,7 +2025,7 @@ class="configrule">$cfg['RestrictColumnTypes']</a>
 <code>LIKE</code> としてあります。これはテーブルが巨大な場合に不用意にパフォーマンスの問題を起こさないようにするためです。</dd>
 
     <dt id="cfg_EnumOperators">$cfg['EnumOperators'] 配列</dt>
-    <dd>列挙 (enum) カラムの検索に利用できる演算子です。</dd>
+    <dd>列挙 (ENUM) カラムの検索に利用できる演算子です。</dd>
 
     <dt id="cfg_NullOperators">$cfg['NullOperators'] 配列</dt>
     <dd>カラムが NULL になりうるときに利用できる追加の検索用演算子です。</dd>
@@ -2051,7 +2048,7 @@ href="#config">「設定」の章</a>をご覧ください。</p>
 
 <p> カラムごとに別々の変換機能を適用できます。変換機能は各カラムの内容を取得してから、選択された機能に定義されている規則に従って変換を行うためです。</p>
 
-<p> たとえば、ファイル名を入れる「filename」というカラムがあるとします。ふつう phpMyAdmin
+<p> 例えば、ファイル名を入れる「filename」というカラムがあるとします。ふつう phpMyAdmin
 ではこのファイル名しか表示されませんが、変換機能を使うと、このファイル名を HTML リンクに変換できます。phpMyAdmin
 システムの内部でそのカラムのリンクをクリックすると、新しいブラウザウインドウにそのファイルが表示されます。変換オプションを使えば、その文字列の前後に付け加える文字列や、出力を保存する形式も指定できます。</p>
 
@@ -2282,7 +2279,7 @@ title="HyperText Transfer Protocol">HTTP</abbr> 認証モードではなく、�
 
 <p> PWS のバグのようです。Filippo Simoncini
 が次に述べる回避策を見つけています（現時点ではこれ以上の対応策はありません）。『<i>libraries/header.inc.php</i>、<i>libraries/header_printview.inc.php</i>、<i>index.php</i>、<i>navigation.php</i>、<i>libraries/common.lib.php</i>
-の <tt>DOCTYPE</tt> 宣言（2 行）を削除するかコメントにしてください。』</p>
+の <tt>DOCTYPE</tt> 宣言（2 行）を削除するかコメントにします。』</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 どうすればダンプや <abbr title="comma separated
@@ -2381,18 +2378,15 @@ href="#config">「設定」の章</a>をご覧ください。</li>
     <a id="faqmysqlversions" href="#faq1_17">1.17 phpMyAdmin をサポートしている MySQL
 のバージョンは？</a></h4>
 
-<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
-MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
-connect to your MySQL server using PHP's classic <a
-href="http://php.net/mysql">MySQL extension</a> as well as the <a
-href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have a good
-reason not to do so.<br />
-    When compiling PHP, we strongly recommend that you manually link the MySQL
-extension of your choice to a MySQL client library of at least the same
-minor version since the one that is bundled with some PHP distributions is
-rather old and might cause problems <a href="#faq1_17a"> (see <abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
+<p> phpMyAdmin 3.0.x より、MySQL 5.0.1 以降のみサポートするようになりました。古い MySQL バージョンに対しては、2.x
+ブランチでの最新版を使用する必要があります。phpMyAdmin が MySQL サーバに接続するときには、古典的な <a
+href="http://php.net/mysql">MySQL 拡張</a>だけでなく、PHP 5.0 で利用できるようになった<a
+href="http://php.net/mysqli">改良版 MySQL 拡張 (MySQLi)</a>
+も利用できます。特に理由がない限り、後者を使用するほうがいいでしょう。<br />
+    PHP をコンパイルするときには使用する MySQL 拡張を、少なくともマイナーバージョンまで同じ MySQL
+クライアントライブラリに、手作業でリンクさせることを強く推奨します。PHP
+配布ファイルにバンドルされているものはやや古くなっているために、問題を起こすことがあるためです <a href="#faq1_17a">(<abbr
+title="よくある質問">FAQ</abbr> 1.17a もご覧ください)</a>。<br /><br />
     MariaDB もサポートしています（バージョン 5.1 と 5.2 はテストしました）。
     </p>
 
@@ -2402,22 +2396,18 @@ authentication protocol requested by server; consider upgrading MySQL
 client（サーバが要求する認証プロトコルをクライアントがサポートしていません。MySQL
 クライアントのアップグレードをご検討ください）」というというエラーメッセージが返ってきます。</a></h5>
 
-<p> You tried to access MySQL with an old MySQL client library. The version of
-your MySQL client library can be checked in your phpinfo() output.  In
-general, it should have at least the same minor version as your server - as
-mentioned in <a href="#faq1_17"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.17</a>.<br /><br />
+<p> 古い MySQL クライアントライブラリで MySQL にアクセスしようとしたためです。お使いの MySQL クライアントライブラリのバージョンは
+phpinfo() の出力で確認できます。一般に、少なくともサーバと同じマイナーバージョンのものを使ってください。（<a
+href="#faq1_17"><abbr title="よくある質問">FAQ</abbr> 1.17</a> に述べた通りです。）<br /><br />
 
-    This problem is generally caused by using MySQL version 4.1 or newer. MySQL
-changed the authentication hash and your PHP is trying to use the old
-method.  The proper solution is to use the <a
-href="http://www.php.net/mysqli">mysqli extension</a> with the proper client
-library to match your MySQL installation. Your chosen extension is specified
-in <a href="#cfg_Servers_extension"
-class="configrule">$cfg['Servers'][$i]['extension']</a>.  More information
-(and several workarounds) are located in the <a
-href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL
-Documentation</a>.
+    この問題は一般的に 4.1 以上のバージョンの MySQL で起こります。MySQL の認証ハッシュが変わったのに、お使いの PHP
+が古い方法を試そうとするためです。この問題を適切に解決するには、お使いの MySQL のバージョンに合わせた適切なクライアントライブラリの <a
+href="http://www.php.net/mysqli">mysqli 拡張</a>を使用するようにしてください。使用する拡張は <a
+href="#cfg_Servers_extension"
+class="configrule">$cfg['Servers'][$i]['extension']</a>
+で指定します。詳細（とその対策）については <a
+href="http://dev.mysql.com/doc/mysql/ja/old-client.html">MySQL
+のドキュメント</a>をご覧ください。
 </p>
 
 <h4 id="faq1_18">
@@ -2457,8 +2447,8 @@ file)」フィールドが見つからないのでアップロードできませ
     <a href="#faq1_23">1.23 MySQL を Win32
 マシンで稼動させているのですが、新規テーブルを作成するたびにテーブル名とカラム名が小文字に変わってしまいます！</a></h4>
 
-<p> これは <tt>lower_case_table_names</tt> という MySQL のディレクティブが Win32 版のデフォルトでは
-1（<tt>ON</tt>）になっているためです。この動作はこのディレクティブを 0（<tt>OFF</tt>）にするだけで変えられます：<br />
+<p> これは <tt>lower_case_table_names</tt> という MySQL のディレクティブが Win32 版のデフォルトでは 1
+(<tt>ON</tt>) になっているためです。この動作はこのディレクティブを 0 (<tt>OFF</tt>) にするだけで変えられます。<br />
     Windows ディレクトリにあるはずの <tt>my.ini</tt> ファイルを編集して、次の行を [mysqld] グループに追加してください。</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
@@ -2494,7 +2484,7 @@ input file specified（入力ファイルが指定されていません）」と
 フォルダを右クリックして、プロパティを選んでください。セキュリティタブを開き、「追加（Add）」をクリックして、一覧から「IUSR_machine」を選択します。このユーザにパーミッションを設定すれば動くはずです。</p>
 
 <h4 id="faq1_27">
-    <a href="#faq1_27">1.27 巨大なページ（たとえばテーブルがたくさんある db_structure.php
+    <a href="#faq1_27">1.27 巨大なページ（例えばテーブルがたくさんある db_structure.php
 ）を表示したいのに空白ページが表示されます。</a></h4>
 
 <p> これは <a href="http://bugs.php.net/21079">PHP のバグ</a> です。GZIP
@@ -2528,7 +2518,7 @@ SetInputFilter PHP
 
 <p> 私たちが見た例の場合、一方のディレクティブは <tt>/etc/httpd/conf/httpd.conf</tt> に、もう一方のディレクティブは
 <tt>/etc/httpd/conf/addon-modules/php.conf</tt> に入っていました。<br />
-    <tt>AddType</tt> を使う方がおすすめですので、最初のディレクティブはコメントアウトして、Apache を再起動してください。</p>
+    <tt>AddType</tt> を使う方がお勧めですので、最初のディレクティブはコメントアウトして、Apache を再起動してください。</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -2622,13 +2612,11 @@ Error)」というエラーが出ます。</a>
 </p>
 
 <h4 id="faq1_37">
-    <a href="#faq1_37">1.37 I run phpMyAdmin on cluster of different machines
-and password encryption in cookie auth doesn't work.</a></h4>
+    <a href="#faq1_37">1.37 異なるマシンのクラスタ上で phpMyAdmin
+を稼動させていますが、クッキー認証でのパスワード暗号化が機能しません。</a></h4>
 
-<p> If your cluster consist of different architectures, PHP code used for
-encryption/decryption won't work correct. This is caused by use of
-pack/unpack functions in code. Only solution is to use mcrypt extension
-which works fine in this case.</p>
+<p> クラスタが異なるアーキテクチャで構成されている場合、暗号化／復号化の PHP コードが正しく動作しません。これは、コード内の pack/unpack
+関数の使用が原因で発生します。唯一の解決策は、この状況でも正常に動作している mcrypt 拡張を使用することです。</p>
 
 <h4 id="faq1_38">
     <a href="#faq1_38">1.38 Suhosin が有効になっているサーバ上で phpMyAdmin を使うことはできますか？</a></h4>
@@ -2721,9 +2709,9 @@ href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.o
 を参照してください。</p>
 
 <h4 id="faq1_41">
-	<a href="#faq1_41">1.41 データベースを表示しその権限を参照しようとすると、未知のカラムに関するエラーが表示されます。</a></h4>
+	<a href="#faq1_41">1.41 データベースを表示しその特権を参照しようとすると、未知のカラムに関するエラーが表示されます。</a></h4>
 
-<p> MySQL サーバの権限テーブルが最新の状態にされていないません。サーバ上で <tt>mysql_upgrade</tt>
+<p> MySQL サーバの特権テーブルが最新の状態にされていないません。サーバ上で <tt>mysql_upgrade</tt>
 コマンドを実行する必要があります。</p>
 
 
@@ -2736,9 +2724,9 @@ already sent by
 
 <p> <i>config.inc.php</i> ファイルを修正して、先頭の <tt>&lt;?php</tt> タグの前や末尾の
 <tt>?&gt;</tt>
-の後には何も入れない（改行やスペース、文字などがない）ようにしてください。また、zip形式の配布キットを使用しているIISでユーザから以下の報告を受けています。「ファイル
+の後には何も入れない（改行やスペース、文字などがない）ようにしてください。また、zip形式の配布キットを使用しているIISでユーザから以下の報告を受けています。『ファイル
 <tt>libraries/Config.class.php</tt> の末尾に改行コード (0x0A)
-が含まれていたので、この文字を削除したらエラーがなくなりました。」と。</p>
+が含まれていたので、この文字を削除したらエラーがなくなりました。』</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
@@ -2771,7 +2759,7 @@ local MySQL server through socket '/tmp/mysql.sock' (111)...（警告：MySQL
 <ul><li>まず、MySQL がどのソケットを利用しているか確認する必要があります。<br />
         手順は次の通りです。telnet でサーバに接続して、MySQL bin ディレクトリに移動します。このディレクトリには
 <i>mysqladmin</i> というファイルがあるはずです。<tt>./mysqladmin variables</tt>
-とタイプすると、MySQL サーバの情報がたくさん表示されるはずです。そのなかに、ソケットの情報も書いてあります（たとえば
+とタイプすると、MySQL サーバの情報がたくさん表示されるはずです。そのなかに、ソケットの情報も書いてあります（例えば
 <i>/tmp/mysql.sock</i>）</li>
     <li>次に、PHP にそのソケットを利用するよう伝える必要があります。<br /> phpMyAdmin で指定するなら、<i>config.inc.php</i> にソケットの情報をもれなく記入する必要があります。<br />
         例：<a href="#cfg_Servers_socket" class="configrule">
@@ -2812,9 +2800,9 @@ YES）（'root@localhost'ユーザのアクセスは拒否されました。パ�
 <p> localhost のポートを利用して、ポート転送で別のホストにリダイレクトすると、MySQL は期待通りに localhost を解決してくれません。<br />
     Erik Wasser は次のように説明しています。『解決法は以下に述べるようにします。ホストが「localhost」の場合、MySQL
 は（コマンドラインツールの <code>mysql</code>
-もそうですが）高速化のために必ずソケットを利用して接続しようとします。これは、このようにポート転送する設定では動作しません。』<br />
+もそうですが）高速化のために必ずソケットを利用して接続しようとします。これは、このようにポート転送する設定では動作しません。<br />
     ホスト名を「127.0.0.1」にすれば万事解決。MySQL は <abbr title="Transmission Control
-Protocol">TCP</abbr> 接続を利用するようになります。</p>
+Protocol">TCP</abbr> 接続を利用するようになります。』</p>
 
 <h4 id="faqthemes"><a href="#faqthemes">2.7 テーマの使い方と作り方</a></h4>
 
@@ -2834,7 +2822,7 @@ href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定�
 <p> テーマの作り方：</p>
 
 <ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>（デフォルトでは
-<tt>themes</tt>）ディレクトリの下に新しいサブディレクトリ（たとえば「your_theme_name」）を作ります</li>
+<tt>themes</tt>）ディレクトリの下に新しいサブディレクトリ（例えば「your_theme_name」）を作ります</li>
     <li>「original」から「your_theme_name」にファイルやディレクトリをコピーします</li>
     <li>「your_theme_name/css」の css ファイルを編集します。</li>
     <li>「your_theme_name/img」に新しい画像を入れます。</li>
@@ -2874,25 +2862,22 @@ Klaus Dorninger に感謝）。
     <li><tt>php.ini</tt> の <tt>arg_separator.input</tt>
 ディレクティブの値が「;」だとこのエラーになります。「&amp;;」に差し替えてください。
     </li>
-    <li>If you are using <a href="http://www.hardened-php.net/">Hardened-PHP</a>,
-you might want to increase <a
-href="http://www.hardened-php.net/hphp/troubleshooting.html">request
-limits</a>.
+    <li><a href="http://www.hardened-php.net/">Hardened-PHP</a> を使用している場合は、<a
+href="http://www.hardened-php.net/hphp/troubleshooting.html">リクエスト制限</a>を増やすことをお勧めします。
     </li>
-    <li>The directory specified in the <tt>php.ini</tt> directive
-<tt>session.save_path</tt> does not exist or is read-only.
+    <li><tt>php.ini</tt> の <tt>session.save_path</tt>
+ディレクティブで指定したディレクトリが、存在しないか読み取り専用になっている。
     </li>
 </ul>
 
 <h4 id="faq2_9">
-    <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
+    <a href="#faq2_9">2.9 アップロード進行状況バーを見えるようにしたいです。</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
-the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-one. Moreover, the JSON extension has to be enabled in your PHP.</p>
-    <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
-php.ini.</p>
+<p> アップロード中に進行状況バーを表示できるようにするには、ご使用のサーバが <a
+href="http://pecl.php.net/package/APC">APC</a> 拡張あるいは <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
+拡張のいずれかを対応している必要があります。また、JSON 拡張をお使いの PHP で有効にする必要があります。</p>
+    <p> APC を使用する場合は、php.ini で <tt>apc.rfc1867</tt> を <tt>on</tt> に設定する必要があります。</p>
 
 <h3 id="faqlimitations">既知の制限</h3>
 
@@ -3015,7 +3000,7 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 </p>
 
 <h4 id="faq3_14">
-    <a href="#faq3_14">3.14 カラムが1つでも正しく SELECT できないと、テーブルを参照することができません。</a></h4>
+    <a href="#faq3_14">3.14 カラムが１つでも正しく SELECT できないと、テーブルを参照することができません。</a></h4>
 <p>
     これは初期の頃から phpMyAdmin の制限として知られており、将来的に解決される見込みはありません。
 </p>
@@ -3038,7 +3023,7 @@ href="http://www.codeplex.com/PHPExcel/">PHPExcel</a>
     <a href="#faq3_16">3.16 Excel ワークブックを圧縮 (gzip、bzip2、zip)
 して、それをインポートしようとしましたが、何も起こりません。</a></h4>
 <p>
-    Excel の XLSX ワークブックは既に圧縮されています。それらを再度圧縮することでまだ僅かな効果があることもあります。圧縮された Excel の
+    Excel の XLSX ワークブックは既に圧縮されています。それらを再度圧縮することで、まだ僅かな効果があることもあります。圧縮された Excel の
 XLSX／XLS ワークブックに対してのサポートは、将来追加されるかもしれません。
 </p>
 
@@ -3059,7 +3044,8 @@ XLSX／XLS ワークブックに対してのサポートは、将来追加され
     <a href="#faq3_18">3.18 複数のテーブルを含む CSV
 ファイルをインポートすると、それらが単一のテーブルにまとめられてしまいます。</a></h4>
 <p>
-    CSV 形式でテーブルを区別する確実な方法はありません。当分の間は、複数のテーブルを含む CSV ファイルを分割する必要があります。
+    There is no reliable way to differentiate tables in CSV format. For the time
+being, you will have to break apart CSV files containing multiple tables.
 </p>
 
 
@@ -3100,7 +3086,7 @@ Protocol">HTTP</abbr> 認証の使い方」をご覧ください。
     <a href="#faq4_2">4.2 phpMyAdmin を不正アクセスから守るにはどうすればよいのでしょうか？</a></h4>
 <p>
     お使いのシステムによります。<br />
-    外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です（たとえば、Apache
+    外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です（例えば、Apache
 なら <i>.htaccess</i> ファイルを利用できます）。<br />
     外部の人が telnet でサーバにアクセスできるのであれば、phpMyAdmin の <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> 認証ないしクッキー認証機能を使った方がよいでしょう。
@@ -3142,7 +3128,7 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a> や <a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている。</li>
     <li>ログインダイアログで指定したユーザ名／パスワードが無効なものだった。</li>
-    <li>phpMyAdmin ディレクトリに別のセキュリティ機構がセットアップされている（たとえば .htaccess ファイル）。これは phpMyAdmin
+    <li>phpMyAdmin ディレクトリに別のセキュリティ機構がセットアップされている（例えば .htaccess ファイル）。これは phpMyAdmin
 の認証機構の邪魔になりますので除去してください。</li>
 </ul>
 
@@ -3150,7 +3136,7 @@ class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている�
     <a href="#faq4_5">4.5 ユーザに独自のデータベースを作成させることは可能でしょうか？</a></h4>
 
 <p> 2.2.5
-以降、ユーザ管理ページでユーザのデータベース名にワイルドカードを入れたり（たとえば「joe%」）、特権を与えることができるようになりました。たとえば、<tt>SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、INDEX、ALTER</tt>
+以降、ユーザ管理ページでユーザのデータベース名にワイルドカードを入れたり（たとえば「joe%」）、特権を与えることができるようになりました。例えば、<tt>SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、INDEX、ALTER</tt>
 特権を与えれば、ユーザが自分のデータベースを作成／管理できるようになります。</p>
 
 <h4 id="faq4_6">
@@ -3184,7 +3170,7 @@ $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
 Locator">URL</abbr> が <a href="#cfg_PmaAbsoluteUri"
 class="configrule">$cfg['PmaAbsoluteUri']</a> に設定されている <abbr title="Uniform
 Resource Locator">URL</abbr>
-と異なるためです。たとえば、「www」が抜けているとか、設定ファイルではドメイン名で登録してあるのに <abbr
+と異なるためです。例えば、「www」が抜けているとか、設定ファイルではドメイン名で登録してあるのに <abbr
 title="インターネット・プロトコル">IP</abbr> アドレスを入力した場合がそうです。</p>
 
 <h4 id="faq4_8">
@@ -3248,7 +3234,7 @@ found（ページが見つかりません）」のような）エラーが出ま
 <p>
     テーブルに主キーやユニークキーがないと、行を識別するために長い <abbr title="Uniform Resource
 Locator">URL</abbr> を使うことになってしまうのですが、これらのブラウザには <abbr title="Uniform
-Resource Locator">URL</abbr> の長さに制限があるため、その問題が起こります。この問題は、たとえば Netscape
+Resource Locator">URL</abbr> の長さに制限があるため、その問題が起こります。この問題は、例えば Netscape
 では起こりません。回避するには、主キーやユニークキーを作成するか、別のブラウザを使ってください。
     <br />
 </p>
@@ -3256,7 +3242,7 @@ Resource Locator">URL</abbr> の長さに制限があるため、その問題が
 <h4 id="faq5_7">
     <a href="#faq5_7">5.7 ブラウザで再読み込み（リロード）すると、入り口ページに戻ってしまいます。</a></h4>
 <p>
-    ブラウザによっては再読み込みしたいフレームのなかで右クリックできますので、右フレームのなかで右クリックして再読込してください。<br />
+    ブラウザによっては再読み込みしたいフレームのなかで右クリックできますので、右フレームのなかで右クリックして再読み込みしてください。<br />
 </p>
 
 <h4 id="faq5_8">
@@ -3345,7 +3331,7 @@ title="HyperText Transfer Protocol">HTTP</abbr> ポート (80 ないし 443) と
 title="structured query language">SQL</abbr> エラーを返します。</a></h4>
 <p>
     <abbr title="structured query language">SQL</abbr>
-エラーを事細か調べてみてください。よく問題になるのが、カラム種別の指定を間違えることです。<br />
+エラーを事細かに調べてみてください。よく問題になるのが、カラム種別の指定を間違えることです。<br />
     ありがちなエラーの例です。
 </p>
 <ul>
@@ -3364,11 +3350,11 @@ title="structured query language">SQL</abbr> エラーを返します。</a></h4
 </p>
 
 <h4 id="faq6_3">
-    <a href="#faq6_3">6.3 テーブルに null 値を挿入するにはどうすればよいのでしょうか？</a></h4>
+    <a href="#faq6_3">6.3 テーブルに NULL 値を挿入するにはどうすればよいのでしょうか？</a></h4>
 <p>
-    バージョン 2.2.3 以降、null にできるカラムにはそれぞれチェックボックスが用意されています。2.2.3
-より前は、カラムの値としてクォートなしで「null」と入力する必要がありました。バージョン 2.5.5 以降では、本当の null
-値を得るにはチェックボックスを使う必要があります。「NULL」と入力すると、そのカラムには null 値ではなく、文字列の NULL
+    バージョン 2.2.3 以降、NULL にできるカラムにはそれぞれチェックボックスが用意されています。2.2.3
+より前は、カラムの値としてクォートなしで「NULL」と入力する必要がありました。バージョン 2.5.5 以降では、本当の NULL
+値を得るにはチェックボックスを使う必要があります。「NULL」と入力すると、そのカラムには NULL 値ではなく、文字列の NULL
 が入ります（PHP4 ではそれでうまくいきます）。
 </p>
 
@@ -3404,7 +3390,7 @@ file)」セクションにダンプファイル名をタイプするか、選択
 <h4 id="faq6_6">
     <a href="#faq6_6">6.6 どうすれば Query-by-example の際にリレーションテーブルを使えるのでしょう。</a></h4>
 
-<p> たとえば、persons、towns、countries というテーブルがすべて mydb
+<p> 例えば、persons、towns、countries というテーブルがすべて mydb
 というデータベースのなかにあるとします。<tt>pma_relation</tt>
 テーブルがない場合は「設定」の章で説明されている通りに作ります。続いて、この例で使うテーブルを作ります。</p>
 
@@ -3455,7 +3441,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
     <li>persons、towns、countries テーブルを選択します。</li>
     <li>「クエリの更新（Update query）」をクリックします</li>
     <li>カラム行で persons.person_name を選択して、「表示 (Show)」のチェックボックスをクリックします。 </li>
-    <li>残り 2 つのコラムの towns.description と countries.descriptions についても同じことをします。</li>
+    <li>残り 2 つのカラムの towns.description と countries.descriptions についても同じことをします。</li>
     <li>「クエリの更新（Update query）」をクリックします。クエリボックスに正しく生成された結合が表示されます。</li>
     <li>「クエリの実行（Submit query）」をクリックします。</li>
 </ul>
@@ -3488,7 +3474,8 @@ title="ポータブル・ドキュメント・フォーマット">PDF</abbr> ス
 layout)」機能を利用して、リンクされているすべてのテーブルを新しいページに配置することもできます。</li>
     <li>新しいページの名前を選択して（「修正 (Edit)」のラジオボタンが選択されているのを確かめて）、「実行する (Go)」をクリックします。</li>
     <li>リストからテーブルを選択して、座標を入力し、「保存（Save）」をクリックします。<br />
-        座標は相対座標です。図表の大きさはページにあわせて自動的に調整されます。最初にテーブルを配置するときは適当な（たとえば50×50のような）座標を選んでおいてください。「保存（Save）」をクリックしてからは、<a
+        座標は相対座標です。図表の大きさはページにあわせて自動的に調整されます。最初にテーブルを配置するときは適当な（例えば 50×50
+のような）座標を選んでおいてください。「保存（Save）」をクリックしてからは、<a
 href="#wysiwyg">グラフィカルエディタ</a>を利用して要素を正確に配置することもできます。</li>
     <li><abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 を見る場合は、まず忘れずにテーブル／座標のリストの下にある「保存
@@ -3619,19 +3606,14 @@ class="configrule">$cfg['DefaultPropDisplay']</a>
     <a href="#faqbookmark">6.18
 ブックマーク：ブックマークはどこに保管すればよいのでしょう。どうしてクエリボックスの下にブックマークが見あたらないのでしよう。この変数は何のためにあるのでしょう。</a></h4>
 
-<p> Any query you have executed can be stored as a bookmark on the page where
-the results are displayed. You will find a button labeled 'Bookmark this
-query' just at the end of the page.<br />
+<p> 実行したクエリは、結果が表示されるページのブックマークとして保管できます。「このクエリをブックマークする」というボタンがページ末尾近くにあるはずです。<br />
     ブックマークを保管するとすぐにクエリを実行したデータベースに関連づけられ、そのデータベース用のクエリボックスが表示される各ページのドロップダウンからブックマークにアクセスできるようになります。<br /><br />
 
-    Since phpMyAdmin 2.5.0 you are also able to store variables for the
-bookmarks.  Just use the string <b>/*[VARIABLE]*/</b> anywhere in your
-query. Everything which is put into the <i>value</i> input box on the query
-box page will replace the string &quot;/*[VARIABLE]*/&quot; in your stored
-query. Just be aware of that you HAVE to create a valid query, otherwise
-your query won't be even able to be stored in the database.<br />
-    また、お忘れなく。<b>/*[VARIABLE]*/</b> 以外の文字列はすべてそのままクエリに残ります。ただし、/**/
-は削除されます。だから、次のような使い方もできます：<br /><br />
+    phpMyAdmin 2.5.0 以降、ブックマーク用の変数も保管できるようになりました。クエリのどこかに <b>/*[VARIABLE]*/</b>
+という文字列を入れてください。クエリボックスページの <i>値</i>
+という入力ボックスに入れたすべての値が、保管されているクエリの「/*[VARIABLE]*/」と置き換わります。ただし、有効なクエリを作成する「必要がある」ことにだけはご注意ください。さもないと、クエリをデータベースに保管することすらできません。<br />
+    また、<b>/*[VARIABLE]*/</b> 以外の文字列はすべてそのままクエリに残ることを忘れないようにしてください。ただし、/**/
+は削除されます。ですから、次のような使い方もできます。<br /><br />
 
     <code>/*, [VARIABLE] AS myname */</code><br /><br />
 
@@ -3639,14 +3621,14 @@ your query won't be even able to be stored in the database.<br />
 
     <code>, 変数 as myname</code><br /><br />
 
-    この VARIABLEは入力ボックスに入力した文字列になります。文字列が空の場合、置換は行われません。<br /><br />
+    この VARIABLE は入力ボックスに入力した文字列になります。文字列が空の場合、置換は行われません。<br /><br />
 
     もっと複雑な例です。例えば次のようなクエリを保管したとします。<br /><br />
     <code>SELECT Name, Address FROM addresses WHERE 1 /* AND Name LIKE
 '%[VARIABLE]%' */</code>
     <br /><br />
 
-    ここで、たとえば保管されたクエリ用の変数として「phpMyAdmin」と入力すると、最終的なクエリは次のようになります。<br /><br />
+    ここで、例えば保管されたクエリ用の変数として「phpMyAdmin」と入力すると、最終的なクエリは次のようになります。<br /><br />
 
     <code>SELECT Name, Address FROM addresses WHERE 1 AND Name LIKE
 '%phpMyAdmin%'</code>
@@ -3663,9 +3645,9 @@ your query won't be even able to be stored in the database.<br />
     <a href="#faq6_19">6.19 エクスポートしたテーブルをインクルードする簡単な
 L<sup>A</sup>T<sub><big>E</big></sub>X 文書の作り方は？</a></h4>
 
-<p> You can simply include table in your L<sup>A</sup>T<sub><big>E</big></sub>X
-documents, minimal sample document should look like following one (assuming
-you have table exported in file <code>table.tex</code>):</p>
+<p> L<sup>A</sup>T<sub><big>E</big></sub>X
+文書にテーブルをインクルードすれば簡単にできます。最低限のサンプル文書は次のようになります（エクスポートしたテーブルは
+<code>table.tex</code> というファイルに入っているとします）。</p>
 
 <pre>
 ¥documentclass{article} % お望みのクラス
@@ -3678,10 +3660,9 @@ you have table exported in file <code>table.tex</code>):</p>
 <h4 id="faq6_20">
     <a href="#faq6_20">6.20 自分のではないデータベースがたくさん見えます。また、そういったデータベースにアクセスできません。</a></h4>
 
-<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
-DATABASES, LOCK TABLES. Those privileges also enable users to see all the
-database names.  See this <a href="http://bugs.mysql.com/179">bug
-report</a>.<br /><br />
+<p> ふつうユーザには CREATE TEMPORARY TABLES、SHOW DATABASES、LOCK TABLES
+といったグローバル特権が与えられるのですが、これらの特権があるとすべてのデータベース名が見えてしまいます。こちらの<a
+href="http://bugs.mysql.com/179">バグレポート</a>もご覧ください。<br /><br />
 
     というわけで、ユーザにこれらの特権を与える必要がなければ、特権を削除してもかまいません。そうすると、データベースの一覧が短くなります。</p>
 
@@ -3689,23 +3670,18 @@ report</a>.<br /><br />
     <a href="#faq6_21">6.21
 どうすれば修正／挿入モードで外部テーブルにもとづいたカラムに入れられる値のリストを見られるようになるのでしょうか？</a></h4>
 
-<p> You have to setup appropriate links between the tables, and also setup the
-&quot;display column&quot; in the foreign table. See <a href="#faq6_6"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a> for an example. Then,
-if there are 100 values or less in the foreign table, a drop-down list of
-values will be available.  You will see two lists of values, the first list
-containing the key and the display column, the second list containing the
-display column and the key. The reason for this is to be able to type the
-first letter of either the key or the display column.<br /><br />
+<p> テーブル間に適切なリンクをセットアップする必要があります。また、外部テーブルの「表示するカラム」をセットアップする必要もあります。例については <a
+href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a>
+をご覧ください。セットアップすると、外部テーブルの値が 100 件以下の場合、値のドロップダウンリストが利用できます。値のリストは 2
+組あります。最初のリストはキーと表示するカラム、次の組は表示するカラムとキーの組み合わせです。このようにしてある理由は、キーでも表示するカラムでも、先頭の文字をタイプすれば選択できるようにするためです。<br /><br />
 
-    For 100 values or more, a distinct window will appear, to browse foreign key
-values and choose one. To change the default limit of 100, see <tt><a
-href="#cfg_ForeignKeyMaxLimit"
-class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt>.</p>
+    100 件を越えると別ウインドウが開き、外部キーの値が表示されますので、一つ選択してください。デフォルトの制限は 100
+件ですが、変更することができます。参照：<tt><a href="#cfg_ForeignKeyMaxLimit"
+class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt></p>
 
 <h4 id="faq6_22">
     <a href="#faq6_22">6.22
-ブックマーク：テーブルの表示（Browse）モードに入ったときに自動的にデフォルトのブックマークを実行するようにはできますか？</a></h4>
+ブックマーク：テーブルの表示モードに入ったときに自動的にデフォルトのブックマークを実行するようにはできますか？</a></h4>
 
 <p> できます。ブックマークのラベルがテーブル名と同じにしておくと実行されます。
 </p>
@@ -3714,11 +3690,11 @@ class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt>.</p>
     <a href="#faq6_23">6.23 エクスポート：phpMyAdmin は MS Excel
 ファイルをエクスポートできると聞いたのですが、どうすればよいのでしょうか？</a></h4>
 
-<p> You can use <abbr title="comma separated values">CSV</abbr> for Microsoft
-Excel, which works out of the box, but phpMyAdmin supports direct export to
-Microsoft Excel version 97 and newer.  For this to work, you need to set <a
-href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> to a place where
-the web server user can write (for example <tt>'./tmp'</tt>).</p>
+<p> MS Excel では <abbr title="comma separated values">CSV</abbr>
+形式を使用することができます。これなら特に設定もなく簡単に利用できますが、MS Excel のバージョン 97 以降の形式での直接エクスポートも
+phpMyAdmin はサポートしています。直接エクスポートを行うためには、ウェブサーバユーザで書き込みができる場所を <a
+href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> に設定する必要があります (例えば
+<tt>'./tmp'</tt>)。</p>
 <p> UNIX ベースのシステムで一時ディレクトリを作成するには、以下のようにします。</p>
 
 <pre>
@@ -3919,33 +3895,29 @@ href="http://www.phpmyadmin.net/home_page/security.php">http://www.phpmyadmin.ne
 </p>
 
 <h4 id="faq8_2">
-    <a href="#faq8_2">8.2 How can I protect phpMyAdmin against brute force
-attacks?</a></h4>
+    <a href="#faq8_2">8.2 どうすればブルートフォースアタック（総当たり攻撃）から phpMyAdmin
+を守るすることができますか？</a></h4>
 
-<p> If you use Apache web server, phpMyAdmin exports information about
-authentication to the Apache environment and it can be used in Apache logs.
-Currently there are two variables available:
+<p> Apache ウェブサーバ使用する場合、phpMyAdmin は Apache の環境へ認証情報を出力し、Apache
+のログに記録できます。現在、２つの変数を利用することができます。
 </p>
 <dl>
     <dt><code>userID</code></dt>
-    <dd>User name of currently active user (he does not have to be logged in).</dd>
+    <dd>現在アクティブなユーザのユーザー名（ログインする必要はありません）。</dd>
     <dt><code>userStatus</code></dt>
-    <dd>Status of currently active user, one of <code>ok</code> (user is logged in),
-<code>mysql-denied</code> (MySQL denied user login),
-<code>allow-denied</code> (user denied by allow/deny rules),
-<code>root-denied</code> (root is denied in configuration),
-<code>empty-denied</code> (empty password is denied).</dd>
+    <dd>現在アクティブなユーザの状態で、その状態は次のいずれかです。<code>ok</code>（ユーザはログインしている）、<code>mysql-denied</code>（MySQL
+がユーザのログインを拒否）、<code>allow-denied</code>（allow/deny
+設定によって拒否されたユーザ）、<code>root-denied</code>（ルートが設定で拒否）、<code>empty-denied</code>（パスワードが空で拒否）。</dd>
 </dl>
 <p>
-    <code>LogFormat</code> directive for Apache can look like following:
+    Apache の <code>LogFormat</code> ディレクティブは、次のようにすることができます。
 </p>
 <pre>
 LogFormat "%h %l %u %t \"%r\" %>s %b \
 \"%{Referer}i\" \"%{User-Agent}i\" %{userID}n %{userStatus}n"   pma_combined
 </pre>
 <p>
-    You can then use any log analyzing tools to detect possible break-in
-attempts.
+    あとで、ログ解析ツールを使用して、侵入を試みている可能性のあるものを検出することができます。
 </p>
 
 <h3 id="faqsynchronization">同期</h3>
@@ -3957,7 +3929,7 @@ attempts.
 </p>
 
 <p>
-この機能は、データだけでなくデータベースの構造もレプリケーションする必要のある開発者にとって有用です。更に、この機能はレプリケーションのためだけでなく、別のデータベースと同期することでユーザはデータベースを保持が容易に行えます。データベースに対して完全にやらなくとも、データベースの特定のテーブルにも同期させることができます。
+この機能は、データだけでなくデータベースの構造もレプリケーションする必要のある開発者にとって有用です。更に、この機能はレプリケーションのためだけでなく、別のデータベースと同期することでユーザはデータベースの保持が容易に行えます。データベースの完全な同期だけでなく、データベースの特定のテーブルだけを同期させることもできます。
 </p>
 
 <p>
@@ -3997,9 +3969,9 @@ attempts.
 
 <p> ソースを提供してくださる方は、下記の情報をお読みください。</p>
 
-<ul><li>All files include <i>libraries/header.inc.php</i> (layout),.
-<i>libraries/common.lib.php</i> (common functions) and
-<i>config.inc.php</i>.<br />
+<ul><li>どのファイルも
+<i>libraries/header.inc.php</i>（レイアウト）、<i>libraries/common.lib.php</i>（共通機能）、<i>config.inc.php</i>
+をインクルードするようにしてください。<br />
         設定データは <i>config.inc.php</i> にのみお入れください。また、このファイルにはそれ以外のコードを含めないようにしてください。<br />
         一般的に使われる機能は <i>libraries/common.lib.php</i> に加えてください。より用途の限られたものは
 <i>libraries</i> サブディレクトリに保存するライブラリに含めてもよいでしょう。</li>
@@ -4019,9 +3991,8 @@ href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
 を呼び出します。Gettext によって読み込まれるバイナリファイルが生成されます。</li>
     <li>さらにお願いしてもよければ、変更履歴 (ChangeLog) にエントリを書いてください。</li>
     <li id="developersdbg">
-        The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
-now supported by phpMyAdmin for developers to better debug and profile their
-code.<br />
+        開発者がデバッグやコードの解析が楽に行えるように、現在 phpMyAdmin では DBG 拡張 (<a
+href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) をサポートしています。<br />
         詳細は <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a> 設定オプションをご覧ください。<br />
         このソフトを、地球への再突入時に失われたスペースシャトルコロンビア号（STS-107）と、人類のために命を散らした勇敢な男女に捧げます。</li>
 </ul>
@@ -4325,7 +4296,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Ankit Gupta (Google Summer of Code 2010)
 <ul>
-  <li>クエリデザイナ</li>
+  <li>グラフィカルなクエリデザイナ</li>
 </ul></li>
 
 
