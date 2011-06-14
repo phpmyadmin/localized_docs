@@ -1137,12 +1137,11 @@ id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand'
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span> 文字列</dt>
-    <dd>Name of PHP script to be sourced and executed to obtain login
-credentials. This is alternative approach to session based single
-signon. The script needs to provide function
-<code>get_login_credentials</code> which returns list of username and
-password, accepting single parameter of existing username (can be empty).
-See <code>scripts/signon-script.php</code> for an example.
+    <dd>ログイン資格情報を取得するために実行される PHP
+スクリプトの名前。これは、セッションに基づくシングルサインオンに代わる手法です。このスクリプトは、ユーザ名とパスワードの一覧を返す関数
+<code>get_login_credentials</code>
+を提供していて、単一のパラメータとして存在するユーザ名（空欄も可）を受け入れる必要があります。サンプルは、<code>scripts/signon-script.php</code>
+を参照してください。
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -1660,8 +1659,7 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] 文字列</dt>
     <dd>表示モードには水平 (horizontal)、水平縦ヘッダ (horizontalflipped)、垂直
 (vertical)の３つがありますが、どれをデフォルトの表示にするかを定義します。水平モードでは各行の内容を横一列に並べます。水平縦ヘッダモードでは、ヘッダを
-90
-度回転させることで、フィールドに小さな値しか入っていない場合でも詳細なヘッダを表示できるようにします。縦並びモードでは各行の内容を縦一列に並べます。
+90 度回転させることで、フィールドに小さな値しか入っていない場合でも詳細なヘッダを表示できるようにします。垂直モードでは各行の内容を縦一列に並べます。
     </dd>
 
     <dt id="cfg_RememberSorting">$cfg['RememberSorting'] 論理型</dt>
@@ -2068,8 +2066,7 @@ href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>を�
     <ul><li>「MIME タイプ」フィールドはドロップダウンになっています。カラムの内容に対応した MIME タイプを選択してください。なお、MIME
 タイプを選択しないと変換機能は有効になりませんので注意ください。</li>
 
-    <li>「ブラウザ変換（Browser
-transformation）」フィールドはドロップダウンになっています。そのうち数が増えていくであろう定義済みの変換機能を選択できます。自前の変換機能の作り方については下記をご覧ください。<br />
+    <li>「ブラウザ変換機能」フィールドはドロップダウンになっています。そのうち数が増えていくであろう定義済みの変換機能を選択できます。自前の変換機能の作り方については以下をご覧ください。<br />
 
         変換機能にはグローバルなものと、MIME タイプに固有のものとがあります。グローバルな変換機能はどの MIME タイプでも利用できます（必要がある場合は
 MIME タイプも考慮します）。MIME タイプに固有の変換機能はふつう特定の MIME タイプのみを操作します。（「image」のように）MIME
@@ -2078,8 +2075,7 @@ MIME タイプも考慮します）。MIME タイプに固有の変換機能は�
         変換機能は関数が定義されていない MIME
 タイプでも利用できますが、正しい変換機能を選択したかどうかというセキュリティチェックはありませんので、出力結果がどうなるかにはご注意ください。</li>
 
-    <li>「変換オプション（Transformation
-options）」フィールドは自由に入力できるテキストフィールドです。変換用の関数特有のオプションはここに入力しなければなりません。ふつう変換機能はデフォルトのオプションで動作しますが、一般的に概略を読んでどんなオプションが必要になるか知っておくと便利です。<br />
+    <li>「変換オプション」フィールドは自由に入力できるテキストフィールドです。変換用の関数特有のオプションはここに入力しなければなりません。ふつう変換機能はデフォルトのオプションで動作しますが、一般的に概略を読んでどんなオプションが必要になるか知っておくと便利です。<br />
 
         ENUM/SET フィールドの場合と同じように、複数のオプションがある場合は
 'a','b','c',...（空白がないことに注意）のような形式で分割する必要があります。これは、内部的には配列に分解して、最初の要素には最初の値が入るようにするためです。<br />
@@ -3044,8 +3040,7 @@ XLSX／XLS ワークブックに対してのサポートは、将来追加され
     <a href="#faq3_18">3.18 複数のテーブルを含む CSV
 ファイルをインポートすると、それらが単一のテーブルにまとめられてしまいます。</a></h4>
 <p>
-    There is no reliable way to differentiate tables in CSV format. For the time
-being, you will have to break apart CSV files containing multiple tables.
+    CSV 形式でテーブルを区別する確実な方法はありません。当分の間は、複数のテーブルを含む CSV ファイルを分割する必要があります。
 </p>
 
 
@@ -3707,15 +3702,14 @@ chmod o+rwx tmp
     <a href="#faq6_24">6.24 phpMyAdmin が MySQL 4.1.x
 ネイティブのカラムコメントをサポートするようになりましたが、pmadb に保存されているカラムコメントはどうなるのでしょうか？</a></h4>
 
-<p> あるテーブルの「構造（Structure）」ページに入ったら、自動的にそのテーブルの pmadb
-スタイルのカラムコメントがネイティブのカラムコメントに移行されます。</p>
+<p> あるテーブルの「構造」ページに入ったら、自動的にそのテーブルの pmadb スタイルのカラムコメントがネイティブのカラムコメントに移行されます。</p>
 
 <h4 id="faq6_25">
-	<a href="#faq6_25">6.25 How does BLOB streaming work in phpMyAdmin?</a></h4>
+	<a href="#faq6_25">6.25 どうしたら phpMyAdmin で BLOB ストリームを機能させられますか？</a</h4>
 
-<p> For general information about BLOB streaming on MySQL, visit <a
-href="http://blobstreaming.org">blobstreaming.org</a>. You need the
-following components:</p>
+<p> MySQL での BLOB ストリームについての一般的な情報は、<a
+href="http://blobstreaming.org">blobstreaming.org</a>
+をご覧になってください。以下の機能を持ったものが必要になります。</p>
 <ul>
     <li>MySQL 用の PBMS BLOB ストリーミングデーモン (0.5.15 以降)</li>
     <li>ストリーミングが有効な MySQL 用の PBXT ストレージエンジン (1.0.11-6 以降)</li>
@@ -3723,21 +3717,16 @@ following components:</p>
     <li>MySQL 用の PBMS PHP 拡張 (0.1.1 以降)</li>
 </ul>
 
-<p>Here are details about configuration and operation:</p>
+<p>ここに、設定と操作についての詳細を上げておきます。</p>
 
 <ol>
-	<li>In <tt>config.inc.php</tt> your host should be defined with a FQDN (fully
-qualified domain name) instead of &quot;localhost&quot;.</li>
-    <li>Ensure that your target table is under the <tt>PBXT</tt> storage engine and
-has a <tt>LONGBLOB</tt> column (which must be nullable if you want to remove
-the BLOB reference from it).</li>
-	<li>When you insert or update a row in this table, put a checkmark on the
-&quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
-will be done directly in your LONGBLOB column instead of the repository.</li>
-	<li>Finally when you browse your table, you'll see in your column a link to
-stream your data, for example &quot;View image&quot;. A header containing
-the correct MIME-type will be sent to your browser; this MIME-type was
-stored at upload time.</li> 
+	<li><tt>config.inc.php</tt> でホストを、「localhost」ではなく、完全修飾ドメイン名 (FQDN) で定義する必要があります。</li>
+    <li>対象のテーブルが、<tt>PBXT</tt> ストレージエンジンであり、<tt>LONGBLOB</tt> カラム（BLOB 参照を削除する場合は
+NULL を許容する必要があります）があることを確認してください。</li>
+	<li>このテーブルに行の挿入／更新するときは、「BLOB 格納へアップロードする」オプションにチェックを入れます。それ以外の場合は、BLOB 格納ではなく
+LONGBLOB カラムに直接アップロードされます。</li>
+	<li>最後にこのテーブルを表示する場合ですが、「イメージの表示」というふうに、ストリームデータへリンクがカラムに表示されます。正しい MIME
+タイプを含むヘッダが、きちんとブラウザに送信されます。この MIME タイプは、アップロード時に格納されたものです。</li> 
 </ol>	
 
 <h4 id="faq6_26">
@@ -3777,33 +3766,26 @@ href="http://php.net/strftime">strftime</a>
     <a href="#wysiwyg">6.28 どのようにしたら、エクスポート用のリレーショナルスキーマを簡単に編集することができますか？</a></h4>
 
     <p> 
-        By clicking on the button 'toggle scratchboard' on the page where you edit
-x/y coordinates of those elements you can activate a scratchboard where all
-your elements are placed. By clicking on an element, you can move them
-around in the pre-defined area and the x/y coordinates will get updated
-dynamically. Likewise, when entering a new position directly into the input
-field, the new position in the scratchboard changes after your cursor leaves
-the input field.
+        要素の x/y
+座標を修正するページで「スクラッチボードを切り替える」ボタンをクリックすると、スクラッチボードが有効になります。このスクラッチボードにはすべての要素が配置されています。要素をクリックすると、あらかじめ定義されている領域のなかを移動でき、x/y
+座標は動的に更新されます。同様に、入力フィールドに直接新しい座標を入力しておくと、入力フィールドからカーソルが移動したときにスクラッチボード内の要素も新しい位置に移動します。
     </p>
     <p>
-        新しい位置を保存するには、テーブルの下に「OK」ボタンをクリックする必要があります。新しい要素を配置する場合は、まず要素のテーブルに追加してください。新しい要素をドラッグできるようになります。
+        新しい位置を保存するには、表の下に「OK」ボタンをクリックする必要があります。新しい要素を配置する場合は、まず要素のテーブルに追加してください。新しい要素をドラッグできるようになります。
     </p>
     <p>
         用紙の大きさや向きを変えると、スクラッチボードの大きさも変わります。これは下のドロップダウンフィールドを変更するだけで行えます。スクラッチボードの大きさは自動的に変わります。要素の現在位置は変わりません。
     </p>
     <p>
-        要素が範囲外に出てしまった場合、用紙の大きさを拡大するか、「リセット（reset）」ボタンをクリックして、すべての要素を縦一列に並べてください。
+        要素が範囲外に出てしまった場合、用紙の大きさを拡大するか、「リセット」ボタンをクリックして、すべての要素を縦一列に並べてください。
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.29 Why can't I get a chart from my query result
-table?</a></h4>
+    <a href="#faq6_29">6.29 クエリの結果／テーブルからグラフが作れません。なぜですか？</a></h4>
 
-<p> Not every table can be put to the chart. Only tables with one, two or three
-columns can be visualised as a chart. Moreover the table must be in a
-special format for chart script to understand it. Currently supported
-formats can be found in the <a
-href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
+<p> すべてのテーブルグラフにすることはできません。カラムが1つ、2つ、3つのいずれかのテーブルだけが、グラフとして表現することができます。また、テーブルは、グラフスクリプトが理解できる特別な形式である必要があります。現在サポートされている形式は、<a
+href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart">wiki</a>
+に記載されています。</p>
 
 <h3 id="faqproject">phpMyAdmin プロジェクト</h3>
 
@@ -4238,7 +4220,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Raj Kissu Rajandran (Google Summer of Code 2008)
 <ul>
-  <li>BLOBstreaming support</li>
+  <li>BLOB ストリームをサポート</li>
 </ul></li>
 
 <li>Piotr Przybylski (Google Summer of Code 2008 and 2010)
@@ -4291,7 +4273,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Barrie Leslie
 <ul>
-  <li>BLOBstreaming support with PBMS PHP extension</li>
+  <li>PBMS PHP 拡張による BLOB ストリームのサポート</li>
 </ul></li>
 
 <li>Ankit Gupta (Google Summer of Code 2010)
