@@ -142,6 +142,8 @@ Language">SQL</abbr> ファイルも。</li>
 参照)</a></li>
     <li>mysqli という改良版 MySQL 拡張のサポート<a href="#faq1_17">(<abbr
 title="よくある質問">FAQ</abbr> 1.17 参照)</a></li>
+    <li>create, edit, call, export and drop stored procedures and functions</li>
+    <li>create, edit, export and drop events and triggers</li>
     <li><a href="http://www.phpmyadmin.net/home_page/translations.php">62
 もの言語</a>に対応
         </li>
@@ -233,7 +235,7 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
                 設定できる値の詳細な解説については、このドキュメントの<a href="#config">「設定」の章</a>を参照してください。</li>
             <li id="setup_script"><tt>config.inc.php</tt> を手動で編集する代わりに、<a
 href="setup/">セットアップスクリプト</a>を使用することができます。まず、phpMyAdmin ディレクトリ内に
-<tt>config</tt> フォルダを手動で作成する必要があります。このようにするのは、セキュリティ対策ためです。 Linux/Unix
+<tt>config</tt> フォルダを手動で作成する必要があります。このようにするのは、セキュリティ対策のためです。Linux/Unix
 システムでは、次のコマンドを使用することができます。
 <pre>
 cd phpMyAdmin
@@ -252,7 +254,7 @@ chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
 開きます。画面の<i>設定</i>領域から<strong>明示的に<tt>保存する</tt>を選択するまで、変更箇所はディスクに保存されていない</strong>ことに注意してください。通常、スクリプトは、<tt>config/</tt>
 ディレクトリに新しい config.inc.php
 を保存します。しかし、ウェブサーバが適切なパーミッションを持っていない場合、「設定の読み込み・保存が出来ません」というエラーが表示されることがあります。<tt>config/</tt>
-ディレクトリが存在していて適切なパーミッションを持っている確認してください。もしくは、<tt>ダウンロードする</tt>リンクを使用して、設定ファイルをローカルに保存してから、（FTP
+ディレクトリが存在していて、適切なパーミッションを持っているかを確認してください。もしくは、<tt>ダウンロードする</tt>リンクを使用して、設定ファイルをローカルに保存してから、（FTP
 もしくは類似の手段を介して）適切な場所にアップロードしてください。<br /><br />
 
                 一旦ファイルを保存して、再度セキュリティ対策として、保存した設定ファイルを <tt>config/</tt>
@@ -265,9 +267,8 @@ rm -rf config                      # 必要なくなったディレクトリを�
                 今すぐその設定ファイルを使用しても構いませんが、設定ファイルをエディタで確認したり編集したりすることもできます。セットアップスクリプトが提供していない一部の高度なオプションの設定などが行えます。</li></ul></li>
     <li>認証タイプ (<tt>auth_type</tt>) に「config」を使用する場合、phpMyAdmin
 をインストールしたディレクトリを保護することを提案します。なぜなら、config 認証を使用するというのは、インストールされた phpMyAdmin
-にアクセスするのに、パスワードを入力しなければならないユーザを必要としないからです。<a
-href="#glossary"><i>.htaccess</i></a> ファイルによる HTTP 認証、もしくは、認証タイプ
-(<tt>auth_type</tt>) を cookie か http
+にアクセスするのに、ユーザはパスワードの入力を必要としないからです。<a href="#glossary"><i>.htaccess</i></a>
+ファイルによる HTTP 認証、もしくは、認証タイプ (<tt>auth_type</tt>) を cookie か http
 の使用に切り替えるなどといった、代替の認証方法の使用を推奨します。追加情報については、<abbr title="よくある質問">FAQ</abbr>
 の<a href="#faqmultiuser">マルチユーザの節</a>、特に <a href="#faq4_4"><abbr
 title="よくある質問">FAQ</abbr> 4.4</a> を参照してください。</li>
@@ -690,10 +691,10 @@ class="important">ほかのすべてのデータベースが使えなくなる�
         <br /><br />
 
         phpMyAdmin 2.5.5
-では、左フレームのデータベースの並び順を決める際に、配列のなかでの並び順を利用するようになったため、データベースの配置を個別に指定できるようになりました。<br />
-        いくつかのデータベースがトップにあれば、あとはかまわないということであれば、残りのデータベースを指定する必要はありません。次のようにしてください：<tt>$cfg['Servers'][$i]['only_db']
-= array('db3', 'db4', '*');</tt> phpMyAdmin は db3 と db4
-をトップに置いて、残りをアルファベット順に並べます。</dd>
+では、左フレームのデータベースの並び順を決める際に、配列における並び順を利用するようになったため、データベースの配置を個別に指定できるようになりました。<br />
+        いくつかのデータベースが最初に置かれていて、あとはかまわないということであれば、残りのデータベースを指定する必要はありません。「<tt>$cfg['Servers'][$i]['only_db']
+= array('db3', 'db4', '*');</tt>」とした場合、db3 と db4
+が最初に置かれ、残りのデータベースはアルファベット順に並べられます。</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> 文字列
     </dt>
@@ -882,7 +883,7 @@ class="configrule">$cfg['LeftDefaultTabTable']</a> 内において移動が行�
 
         設定保存場所がなくても、最近使用されたテーブルにアクセスすることができますが、ログアウトすると失われてしまいます。<br/><br/>
 
-        To allow the usage of this functionality persistently:
+        この機能を永続的に利用できるようにするには、
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
@@ -1363,7 +1364,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 
         <pre>disable_functions = phpinfo()</pre>
 
-        また、「パスワードの変更」リンクは「config」認証モードでは無効になります。設定ファイルにハードコードされたパスワードの値はエンドユーザが書き換えられないためです。</dd>
+        なお、「config」認証モードでは、たとえ設定が有効であっても「パスワードを変更する」リンクは無効になります。なぜなら、設定ファイルに直接書き込まれたパスワードは、使用者が書き換えることができないからです。</dd>
 
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] 論理型</dt>
     <dd>「データベースを作成する」フォームでデータベース名を提案するかテキストフィールドを空欄にしておくかを定義します。</dd>
@@ -1376,7 +1377,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
     <dd>表示モードで「全て（のレコード）を表示する」ボタンを表示するかどうかを定義します。</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] 整数</dt>
-    <dd>結果セットの表示行数。結果セットの行数の方が多い場合は「前（Previous）／次（Next）」のリンクが表示されます。</dd>
+    <dd>結果セットの表示行数。結果セットの行数の方が多い場合は「前へ／次へ」のリンクが表示されます。</dd>
 
     <dt id="cfg_Order">$cfg['Order'] 文字列 [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>昇順 (<tt>ASC</tt>)、降順 (<tt>DESC</tt>)、スマートな順番 (<tt>SMART</tt>)
@@ -2195,15 +2196,11 @@ href="http://www.php.net/mysql_fetch_field">マニュアルページ</a>
         $meta-&gt;mimetype 変数にはそのカラムの元の MIME タイプ（「text/plain」、「image/jpeg」など）が入ります。</li>
 </ol>
 
-<p> Additionally you should also provide additional function to provide
-information about the transformation to the user. This function should have
-same name as transformation function just with appended <code>_info</code>
-suffix. This function accepts no parameters and returns array with
-information about the transformation. Currently following keys can be used:
+<p> 更に、変換に対しての情報を提供している追加関数を、ユーザへ提供する必要があります。この関数は、<code>_info</code>の接尾辞を持つ変換関数と同じ名前を持つ必要があります。この関数は引数なしで、変換に関する情報配列を返します。戻り値の配列キーは以下の通りです。
 </p>
 <dl>
     <dt><code>info</code></dt>
-    <dd>Long description of the transformation.</dd>
+    <dd>変換に関する長めの説明。</dd>
 </dl>
 
 
@@ -2624,7 +2621,7 @@ Error)」というエラーが出ます。</a>
 <p>
     Suhosin の設定はいくつかのケースでは誤動作につながる可能性があります。phpMyAdmin は１回の HTTP
 リクエスト内で多量のカラムを転送を必要とするアプリケーションであり、Suhosin は HTTP
-リクエストに対して何らかの防止しようとするものであるため、この問題を完全に回避することはできません。一般的に、すべての
+リクエストに対して何らかの防止を行おうとするものであるため、この問題を完全に回避することはできません。一般的に、全ての
 <code>suhosin.request.*</code>、<code>suhosin.post.*</code>、<code>suhosin.get.*</code>
 ディレクティブは、phpMyAdmin の使用に対して悪影響を与えます。Suhosin
 によって削られた変数が発生したかをエラーログで確認できるので、この問題を診断して設定がうまく合うように調整することができます。
@@ -4353,9 +4350,9 @@ G. Wieggers.
 </p>
 
 <p>
-This translation was brought to you by various translators on <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a>. They
-should have written their names here.
+翻訳は、<a
+href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>を通じて多くの人達によって行われてきました。日本語版の主な翻訳者：石垣
+憲一、高橋 裕一郎。
 </p>
 <h2 id="glossary">用語集</h2>
 
@@ -4499,6 +4496,9 @@ href="http://ja.wikipedia.org/wiki/%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88_%28BSD%2
 - プロセス間の通信形式</li>
     <li><a href="http://ja.wikipedia.org/wiki/Transport_Layer_Security">SSL (Secure
 Sockets Layer)</a> - インターネット上のセキュアな通信を提供する暗号プロトコル</li>
+    <li><a href="http://en.wikipedia.org/wiki/Stored_procedure">Stored procedure</a>
+- a subroutine available to applications accessing a relational database
+system</li>
     <li><a href="http://ja.wikipedia.org/wiki/SQL">SQL</a> - リレーショナルデータベース用のデータベース言語
 (Structured Query Language)</li>
     <li><a
@@ -4510,6 +4510,9 @@ href="http://ja.wikipedia.org/wiki/%E8%A1%A8_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%8
 ARchive format の略</li>
     <li><a href="http://ja.wikipedia.org/wiki/Transmission_Control_Protocol">TCP
 (Transmission Control Protocol)</a> - インターネット・プロトコル群の中核となるプロトコルの一つ</li>
+    <li><a href="http://en.wikipedia.org/wiki/Database_trigger">trigger</a> - a
+procedural code that is automatically executed in response to certain events
+on a particular table or view in a database</li>
     <li><a href="http://www.acko.net/node/56">UFPDF</a> - FPDF 用の Unicode/UTF-8 拡張</li>
     <li><a href="http://ja.wikipedia.org/wiki/URL">URL (Uniform Resource
 Locator)</a> -
