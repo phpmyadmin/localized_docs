@@ -706,7 +706,7 @@ class="configrule">$cfg['Servers'][$i]['host']</a> içinde
 deneyin. Sonuçlanan bilgi arasında görüntülenen, kullanılan soket olacaktır.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] boolean</dt>
-    <dd>MySQL sunucusuna bağlanmak için SSL etkinleştirmek.
+    <dd>MySQL sunucusuna bağlanmak için SSL etkinleştirmek gerekirse.
     </dd>
 
     <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] dizgi</dt>
@@ -730,7 +730,8 @@ kullanılabilir olmuştur ve MySQL 4.1.x ya da daha yenisini çalıştıran
 sunuculara bağlanmak için önerilen yoldur.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
-    <dd>MySQL sunucusu bağlantısı için sıkıştırılmış protokol kullanmak (deneysel).<br />
+    <dd>MySQL sunucusu bağlantısı için sıkıştırılmış protokol kullanmak gerekirse ya
+da gerekmezse (deneysel).<br />
         Bu özellik PHP&nbsp;&gt;=&nbsp;4.3.0 gerektirir.</dd>
 
     <dt id="controluser">
@@ -1307,15 +1308,15 @@ davranışını etkizileştirebilirsiniz.<br /><br />
 güncellenir.</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span>
 boolean</dt>
-    <dd>Root erişimine izin verilmesi. Aşağıdaki AllowDeny kuralları için bu bir
-kısayoldur.
+    <dd>Root erişimine izin verilmesi gerekirse. Aşağıdaki AllowDeny kuralları için
+bu bir kısayoldur.
     </dd>
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 boolean</dt>
-	<dd>Parolasız oturum açmalara izin verilmesi. Bu parametre için varsayılan değer
-<tt>false</tt>, MySQL sunucusuna boş root parolası veya isimsiz (boş)
-kullanıcı tanımıyla istenmeden yapılan erişimi önler.
+	<dd>Parolasız oturum açmalara izin vermek gerekirse. Bu parametre için
+varsayılan değer <tt>false</tt>, MySQL sunucusuna boş root parolası veya
+isimsiz (boş) kullanıcı tanımıyla istenmeden yapılan erişimi önler.
     </dd>
     <dt id="servers_allowdeny_order">
         <span
@@ -1409,7 +1410,7 @@ bakın).
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 boolean</dt>
     <dd>Rehber çerçeve için veritabanları listesi hazırlanırken her veritabanı için
-tablo sayılarını saymak.
+tablo sayılarını saymak gerekirse.
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
@@ -1452,7 +1453,7 @@ dizgisi bu sunucuya ayarlanmak ZORUNDADIR.</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] boolean</dt>
     <dd>Ajax tekniklerini kullanarak sadece belirli sayfaların kısımlarını yenilemek
-için tanımlar. Sadece Ajax olmayan davranışların mümkün olduğu yerde
+gerekirse tanımlar. Sadece Ajax olmayan davranışların mümkün olduğu yerde
 uygulanır; örneğin, Tasarımcı özelliği sadece Ajax'tır bundan dolayı bu
 yönerge ona uygulanmaz.</dd>
 
@@ -1478,7 +1479,7 @@ geçmiş içine kaydedilmez.</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] dizgi/boolean</dt>
     <dd><abbr title="HyperText Transfer Protocol">HTTP</abbr> aktarımlarındaki artan
-hız için GZip çıktı arabelleklemesi kullanıp kullanmamayı tanımlar.<br />
+hız için GZip çıktı arabelleklemesi kullanmak gerekirse tanımlar.<br />
         Etkinleştirmek/etkisizleştirmek için true/false olarak ayarlayın. 'auto'
 olarak (dizgi) ayarlandığında, phpMyAdmin çıktı arabelleklemesini
 etkinleştirmeyi dener ve eğer tarayıcınız arabellekleme ile sorun yaşarsa
@@ -1490,7 +1491,7 @@ belli yama ile IE6'nın veri bozulmasına sebep olduğu bilinmektedir.</dd>
 mysql_pconnect).</dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
-    <dd>phpMyAdmin'e erişilirken https kullanımına zorlayıp zorlamaması.</dd>
+    <dd>phpMyAdmin'e erişilirken https kullanımına zorlamak gerekirse.</dd>
 
     <dt id="cfg_ExecTimeLimit">$cfg['ExecTimeLimit'] tam sayı [saniye sayısı]</dt>
     <dd>Bir betiğin çalışmasına izin vermek için saniye sayısı ayarı. Eğer saniyeler
@@ -1535,7 +1536,7 @@ gösterilmektedir.</dd>
 
     <dt id="cfg_Confirm">$cfg['Confirm'] boolean</dt>
     <dd>Veri kaybetmek üzere olduğunuzda bir uyarı (&quot;...emin misiniz?&quot;)
-görüntülenmesi.</dd>
+görüntülenmesi gerekirse.</dd>
 
     <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] boolean</dt>
     <dd>Tanımlama bilgisi kimlik doğrulaması kipinde önceki oturum açmayı hatırlayıp
@@ -1570,14 +1571,12 @@ bunlardan çok fazla kullandığınzda.</dd>
 
     <dt id="cfg_IgnoreMultiSubmitErrors">$cfg['IgnoreMultiSubmitErrors'] boolean</dt>
     <dd>Eğer sorgulardan biri başarısız olursa, phpMyAdmin'in çoklu sorgu ifadesini
-çalıştırmaya devam edip etmeyeceğini tanımlar. Varsayılan çalıştırmayı
-durdurmadır.</dd>
+çalıştırmaya devam edecekse tanımlar. Varsayılan çalıştırmayı durdurmadır.</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] boolean</dt>
     <dd>phpMyAdminin, <abbr title="structured query language">SQL</abbr> çıktısı
 içinde satır içi yorum olarak gömülü çoklu sorgu ifadesinin her bir
-sorgusunun sonuçlarını çıkartıp çıkartmayacağını tanımlar. Varsayılanları
-<tt>TRUE</tt>.</dd>
+sorgusunun sonuçlarını çıkartacaksa tanımlar. Varsayılanları <tt>TRUE</tt>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 boolean</dt>
@@ -1593,22 +1592,22 @@ verebilir.
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] boolean</dt>
-    <dd>PHP hatalarını görüntüleyip görüntülemeyeceği.</dd>
+    <dd>PHP hatalarını görüntülemek ya da görüntülememek gerekirse.</dd>
 
     <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
-    <dd>PHP hatalarını toplayıp toplamayacağı.</dd>
+    <dd>PHP hatalarını toplamak ya da toplamamak gerekirse.</dd>
 
     <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
     <dd>Seçim tabanlı menü kullanıp kullanmamayı ve sol çerçevede (daha küçük olan
-sayfa) sadece şu anki tabloları görüntüleyip görüntülememeyi
-tanımlar. Sadece Sade Olmayan kipte <a href="#cfg_LeftFrameTableSeparator"
+sayfa) sadece şu anki tabloları görüntülemek gerekirse tanımlar. Sadece Sade
+Olmayan kipte <a href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a> kullanarak içiçe
 klasörleri görüntülemek için özelliği kullanabilirsiniz.
     </dd>
 
     <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] boolean</dt>
-    <dd>Sade kipte ağaç görünümü kullanarak veritabanları adlarının (seçicide)
-görüntülenip görüntülenmemesini tanımlar, aynı zamanda <a
+    <dd>Sade kipte ağaç görünümü kullanarak veritabanı adlarını (seçicide)
+görüntülemek gerekirse tanımlar, aynı zamanda <a
 href="#cfg_LeftFrameDBSeparator"
 class="configrule">$cfg['LeftFrameDBSeparator']</a>'e bakın.
     </dd>
@@ -1664,7 +1663,7 @@ değiştirecek el yapımı temalarla kullanmak için. Bunun için varsayılan de
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] dizgi</dt>
     <dd>Bağlantılı sayfayı ana pencerede (<tt>main</tt>) ya da yeni bir pencerede
-(<tt>new</tt>) açıp açmaması. Not: eğer <tt>phpmyadmin.net</tt>'e
+(<tt>new</tt>) açmak gerekirse. Not: eğer <tt>phpmyadmin.net</tt>'e
 bağlıyorsanız, <tt>new</tt> kullanın.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] tam sayı</dt>
@@ -1677,13 +1676,13 @@ kullanılabilir (örn. 9999)</dd>
     <dd>Sol çerçevenin en üstünde sunucu seçiminin görüntülenip görüntülenmeyeceğini
 tanımlar. Varsayılanı FALSE.</dd>
     <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
-    <dd>Bu sunucu seçimini aşağı açılır menü yerine bağlantı olarak görüntülenip
-görüntülenmeyeceğini tanımlar. Varsayılanı FALSE (aşağı açılır menü).</dd>
+    <dd>Bu sunucu seçimini aşağı açılır menü yerine bağlantı olarak görüntülemek
+gerekirse tanımlar. Varsayılanı FALSE (aşağı açılır menü).</dd>
     <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean veya metin</dt>
     <dd>Sade rehber çerçevesi içinde veritabanı seçiminin aşağı açılır menü yerine
-bağlantı olarak görüntülenip görüntülenmeyeceğini tanımlar. Varsayılanı
-'auto' - ana sayfa listesinde gösterilir, veritabanı seçildiğinde sadece
-aşağı açılır menü görüntülenir.</dd>
+bağlantı olarak görüntülemek gerekirse tanımlar. Varsayılanı 'auto' - ana
+sayfa listesinde gösterilir, veritabanı seçildiğinde sadece aşağı açılır
+menü görüntülenir.</dd>
 
     <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] dizgi</dt>
     <dd>Rehber panelde her tablo adının yanındaki küçük simgeye tıklandığında
@@ -1699,7 +1698,7 @@ görüntülenip görüntülenmeyeceğini tanımlar.<br />
 MySQL Berkeley VT tabloları için böyle bilgi geri döndürmez.</dd>
 
     <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>boolean</dt>
-    <dd>Ana sayfada ayrıntılı sunucu bilgisinin görüntülenip görüntülenmeyeceğini
+    <dd>Ana sayfada ayrıntılı sunucu bilgisini görüntülemek gerekirse
 tanımlar. İlave olarak <tt><a
 href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 kullanarak fazla bilgiyi gizleyebilirsiniz.
@@ -1725,12 +1724,12 @@ yapılandırma dosyasındaki sabit kodlu paroladan dolayı, son kullanıcılara
 parolalarını değiştirmesi için izin verilemez.</dd>
 
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] boolean</dt>
-    <dd>&quot;Veritabanı Oluştur&quot; formunda veritabanı adı önerip önermemeyi ya
-da metin alanını boş bırakıp bırakmamayı tanımlar.</dd>
+    <dd>&quot;Veritabanı Oluştur&quot; formunda veritabanı adı önermek ya da metin
+alanını boş bırakmak gerekirse tanımlar.</dd>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] dizgi</dt>
     <dd>Rehber çubuğu düğmelerinin ve sağ panel üst menünün sadece metin veya
-sembolleri içerip içermeyeceğini tanımlar. TRUE değeri simgeleri gösterir,
+sembolleri içermesi gerekirse tanımlar. TRUE değeri simgeleri gösterir,
 FALSE metini gösterir ve 'both' simgeler ve metnin her ikisinide gösterir.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
@@ -1806,12 +1805,12 @@ dizgilerden biri veya ikisi olmalıdır: <i>'content-id'</i>,
         <span id="cfg_BZipDump">$cfg['BZipDump']</span> boolean
     </dt>
     <dd>Döküm dosyası oluşturulurken zip/GZip/BZip2 sıkıştırmasının kullanımına izin
-verilip verilmeyeceğini tanımlar</dd>
+vermek gerekirse tanımlar</dd>
 
     <dt><span id="cfg_CompressOnFly">$cfg['CompressOnFly']</span> boolean<br />
     </dt>
     <dd>Dışarı aktarılan GZip/BZip2 sıkıştırılmış dışarı aktarımlar için anında
-sıkıştırmaya izin verilip verilmeyeceğini tanımlar. Bu daha küçük dökümleri
+sıkıştırmaya izin vermek gerekirse tanımlar. Bu daha küçük dökümleri
 etkilemez ve bunun dışında kullanıcıların php bellek sınırlamasından dolayı
 belleğe uymayacak daha büyük dökümleri oluşturmasına izin verir. Üretilmiş
 dosyalar daha fazla GZip/BZip2 başlıkları içerir ama tüm normal programlar
@@ -2121,86 +2120,93 @@ PHP tabanlı kullanıldığında CSS dönüşümünü etkinleştirir.
     <dt id="DefaultPropDisplay">
         <span id="cfg_DefaultPropDisplay">$cfg['DefaultPropDisplay']</span> dizgi
 veya tam sayı</dt>
-    <dd>When editing/creating new columns in a table all fields normally get lined
-up one field a line. (default: 'horizontal'). If you set this to 'vertical'
-you can have each field lined up vertically beneath each other. You can save
-up a lot of place on the horizontal direction and no longer have to
-scroll. If you set this to integer, editing of fewer columns will appear in
-'vertical' mode, while editing of more columns still in 'horizontal'
-mode. This way you can still effectively edit large number of columns, while
-having full view on few of them.</dd>
+    <dd>Tablo içindeki tüm alanlarda yeni sütun düzenlendiğinde/oluşturulduğunda
+normal olarak bir alan satır olarak sıralanır. (varsayılan: 'yatay'). Eğer
+bunu 'dikey' olarak ayarlarsanız, her alana dikey olarak diğerinin altında
+sıralanmış şekilde sahip olabilirsiniz. Yatay yönde daha çok yerden tasarruf
+edebilirsiniz ve daha fazla kaydırmak zorunda kalmazsınız. Eğer bunu tam
+sayıya ayarlarsanız, daha az sütunun düzenlenmesi 'dikey' kipte, daha fazla
+sütunun düzenlenmesi ise hala 'yatay' kipte görünecektir. Bu yolla
+birkaçında tam görünüme sahipken, büyük sayıda sütunları hala etkin biçimde
+düzenleyebilirsiniz.</dd>
 
     <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] boolean<br />
-        <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']
-</span>boolean
+        <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']</span>
+boolean
     </dt>
-    <dd>By setting the corresponding variable to <tt>TRUE</tt> you can enable the
-display of column comments in Browse or Property display. In browse mode,
-the comments are shown inside the header. In property mode, comments are
-displayed using a CSS-formatted dashed-line below the name of the
-column. The comment is shown as a tool-tip for that column.
+    <dd>Uyan değişkeni <tt>TRUE</tt> olarak ayarlayarak Gözat veya Özellik
+görüntüsündeki sütun yorumlarının görüntülenmesini
+etkinleştirebilirsiniz. Gözatma kipinde, yorumlar başlığın içinde
+gösterilir. Özellik kipinde, yorumlar sütun adının altında
+CSS-biçimlendirilmiş kesikli çizgi kullanılarak görüntülenir. Yorum bu sütun
+için araç ipucu olarak gösterilir.
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
-    <dd>Whether to display an edit link to change a query in any SQL Query box.</dd>
+    <dd>Herhangi bir SQL Sorgu kutusunda sorguyu değiştirmek için düzenleme
+bağlantısını görüntülemek gerekirse.</dd>
 
     <dt id ="cfg_SQLQuery_Explain">$cfg['SQLQuery']['Explain'] boolean</dt>
-    <dd>Whether to display a link to explain a SELECT query in any SQL Query box.</dd>
+    <dd>Herhangi bir SQL Sorgu kutusunda SELECT sorgusunu açıklamak için bağlantı
+görüntülemek gerekirse.</dd>
 
     <dt id ="cfg_SQLQuery_ShowAsPHP">$cfg['SQLQuery']['ShowAsPHP'] boolean</dt>
-    <dd>Whether to display a link to wrap a query in PHP code in any SQL Query box.</dd>
+    <dd>Herhangi bir SQL Sorgu kutusunda PHP kodunda sorguyu yaydırmak için bağlantı
+görüntülemek gerekirse.</dd>
 
     <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] boolean</dt>
-    <dd>Whether to display a link to validate a query in any SQL Query box.  See
-also <tt><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt>.</dd>
+    <dd>Herhangi bir SQL Sorgu kutusunda sorguyu onaylamak için bağlantı
+görüntülemek gerekirse. Aynı zamanda <tt><a
+href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt>'a bakın.</dd>
 
     <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] boolean</dt>
-    <dd>Whether to display a link to refresh a query in any SQL Query box.</dd>
+    <dd>Herhangi bir SQL Sorgu kutusunda sorguyu yenilemek için bağlantı
+görüntülemek gerekirse.</dd>
 
-    <dt id="cfg_UploadDir">$cfg['UploadDir'] string</dt>
+    <dt id="cfg_UploadDir">$cfg['UploadDir'] dizgi</dt>
     <dd>
-        The name of the directory where <abbr title="structured query
-language">SQL</abbr> files have been uploaded by other means than phpMyAdmin
-(for example, ftp).  Those files are available under a drop-down box when
-you click the database or table name, then the Import tab.
+        <abbr title="structured query language">SQL</abbr> dosyalarının phpMyAdmin
+haricindeki diğerleriyle (örneğin, ftp) gönderildiği dizinin adıdır. Bu
+dosyalar veritabanı veya tablo adına tıkladığınızda aşağı açılır kutu
+altında, sonrada İçe Aktar sekmesinde kullanılabilir.
         <br /><br />
 
-        If you want different directory for each user, %u will be replaced with
-username.<br /><br />
+        Her kullanıcı için farklı dizin istiyorsanız, %u kullanıcı adı ile
+değiştirilecektir.<br /><br />
 
-        Please note that the file names must have the suffix &quot;.sql&quot; (or
-&quot;.sql.bz2&quot; or &quot;.sql.gz&quot; if support for compressed
-formats is enabled).<br /><br />
+        Lütfen unutmayın dosya adlarının soneki &quot;.sql&quot; olmak zorundadır
+(ya da &quot;.sql.bz2&quot; ya da &quot;.sql.gz&quot; eğer sıkıştırılmış
+biçimler için destek etkinleştirilirse).<br /><br />
 
-        This feature is useful when your file is too big to be uploaded via <abbr
-title="HyperText Transfer Protocol">HTTP</abbr>, or when file uploads are
-disabled in PHP.<br /><br />
+        Dosyasnız <abbr title="HyperText Transfer Protocol">HTTP</abbr> yoluyla
+göndermek için çok büyük olduğunda ya da dosya gönderimleri PHP'de
+etkisizleştirilmişse bu özellik faydalıdır.<br /><br />
 
-        Please note that if PHP is running in safe mode, this directory must be
-owned by the same user as the owner of the phpMyAdmin scripts.
+        Lütfen unutmayın eğer PHP güvenli kipte çalışıyorsa, bu dizinin sahibi
+phpMyAdmin betiklerinin sahibiyle aynı kullanıcı olmalıdır.
         <br /><br />
 
-        See also <a href="#faq1_16"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.16</a> for alternatives.
+        Alternatifler için aynı zamanda <a href="#faq1_16"> <abbr title="Sıkça
+Sorulan Sorular">SSS</abbr> 1.16</a>'ya bakın.
     </dd>
 
-    <dt id="cfg_SaveDir">$cfg['SaveDir'] string</dt>
+    <dt id="cfg_SaveDir">$cfg['SaveDir'] dizgi</dt>
     <dd>
-        The name of the directory where dumps can be saved.<br /><br />
+        Dökümlerin kaydedilebildiği dizinin adı.<br /><br />
 
-        If you want different directory for each user, %u will be replaced with
-username.<br /><br />
+        Her kullanıcı için farklı dizin istiyorsanız, %u kullanıcı adı ile
+değiştirilecektir.<br /><br />
 
-    Please note that the directory must exist and has to be writable for the
-user running webserver.<br /><br />
+    Lütfen unutmayın dizin mevcut olmak zorundadır ve web sunucusunu çalıştıran
+kullanıcı için yazılabilir olmalıdır.<br /><br />
 
-        Please note that if PHP is running in safe mode, this directory must be
-owned by the same user as the owner of the phpMyAdmin scripts.
+        Lütfen unutmayın eğer PHP güvenli kipte çalışıyorsa, bu dizinin sahibi
+phpMyAdmin betiklerinin sahibiyle aynı kullanıcı olmalıdır.
     </dd>
 
-    <dt id="cfg_TempDir">$cfg['TempDir'] string</dt>
+    <dt id="cfg_TempDir">$cfg['TempDir'] dizgi</dt>
     <dd>
-        The name of the directory where temporary files can be stored. 
+        Geçici dosyaların depolanabildiği dizinin adı. 
         <br /><br />
 
         This is needed for native MS Excel export, see <a href="#faq6_23"><abbr
@@ -2267,6 +2273,12 @@ option of using quick export</li>
         In this array are defined default parameters for import, names of items are
 similar to texts seen on import page, so you can easily identify what they
 mean.
+    </dd>
+
+    <dt id="cfg_ShowDisplayDir">$cfg['ShowDisplayDir'] boolean</dt>
+    <dd>
+        Defines whether or not type display direction option is shown when browsing
+a table.
     </dd>
 
     <dt id="cfg_RepeatCells">$cfg['RepeatCells'] integer</dt>
@@ -2519,22 +2531,6 @@ defined for meta types from <a href="#cfg_RestrictColumnTypes"
 class="configrule">$cfg['RestrictColumnTypes']</a> and for
 <code>first_timestamp</code>, which is used for first timestamp column in
 table.</dd>
-
-    <dt id="cfg_NumOperators">$cfg['NumOperators'] array</dt>
-    <dd>Operators available for search operations on numeric and date columns.
-    </dd>
-
-    <dt id="cfg_TextOperators">$cfg['TextOperators'] array</dt>
-    <dd>Operators available for search operations on character columns.  Note that
-we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
-avoid unintended performance problems in case of huge tables.</dd>
-
-    <dt id="cfg_EnumOperators">$cfg['EnumOperators'] array</dt>
-    <dd>Operators available for search operations on ENUM columns.</dd>
-
-    <dt id="cfg_NullOperators">$cfg['NullOperators'] array</dt>
-    <dd>Additional operators available for search operations when the column can be
-null.</dd>
 
 </dl>
 

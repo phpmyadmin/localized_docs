@@ -221,18 +221,17 @@ se jmenuje <tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.
 váš webserver. Pokud nemáte přímý přístup k vašemu webserveru, rozbalte
 soubory na vašem počítači a po kroku 4 je nakopírujte na váš webserver,
 například pomocí ftp.</li>
-    <li>Ensure that all the scripts have the appropriate owner (if PHP is running in
-safe mode, having some scripts with an owner different from the owner of
-other scripts will be a problem). See <a href="#faq4_2"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 4.2</a> and <a
-href="#faq1_26"><abbr title="Frequently Asked Questions">FAQ</abbr> 1.26</a>
-for suggestions.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<tt>config.inc.php</tt>, but now a wizard-style setup script is provided for
-those who prefer a graphical installation. Creating a
-<tt>config.inc.php</tt> is still a quick way to get started and needed for
-some advanced features.
+    <li>Ujistěte se, že všechny skripty patří odpovídajícímu vlastníkovi (pokud PHP
+běží v tzv. safe režimu, mohl by fakt, že různé soubory patří rozdílným
+vlastníkům, působit problémy). Více informací naleznete zde <a
+href="#faq4_2"> <abbr title="často kladené dotazy">FAQ</abbr> 4.2</a> a zde
+<a href="#faq1_26"><abbr title="často kladené dotazy">FAQ</abbr> 1.26</a>.</li>
+    <li>Nyní je potřeba instalaci nakonfigurovat. Toho lze dosáhnout dvěma
+způsoby. Dříve uživatelé obvykle ručně editovali kopii souboru
+<tt>config.inc.php</tt>, nyní je tu pro ty, kterým více vyhovuje grafická
+instalace, skript nabízející průvodce nastavením. Vytvoření souboru
+<tt>config.inc.php</tt> však stále představuje rychlý způsob, jak začít, a
+dokonce je nezbytné, přejete-li si využívat některé pokročilé funkce.
         <ul><li>To manually create the file, simply use your text editor to create the file
 <tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
 minimal configuration file) in the main (top-level) phpMyAdmin directory
@@ -2184,6 +2183,12 @@ similar to texts seen on import page, so you can easily identify what they
 mean.
     </dd>
 
+    <dt id="cfg_ShowDisplayDir">$cfg['ShowDisplayDir'] boolean</dt>
+    <dd>
+        Defines whether or not type display direction option is shown when browsing
+a table.
+    </dd>
+
     <dt id="cfg_RepeatCells">$cfg['RepeatCells'] číslo</dt>
     <dd>
         Repeat the headers every X cells, or 0 to deactivate.
@@ -2433,22 +2438,6 @@ defined for meta types from <a href="#cfg_RestrictColumnTypes"
 class="configrule">$cfg['RestrictColumnTypes']</a> and for
 <code>first_timestamp</code>, which is used for first timestamp column in
 table.</dd>
-
-    <dt id="cfg_NumOperators">$cfg['NumOperators'] pole</dt>
-    <dd>Operators available for search operations on numeric and date columns.
-    </dd>
-
-    <dt id="cfg_TextOperators">$cfg['TextOperators'] pole</dt>
-    <dd>Operators available for search operations on character columns.  Note that
-we put <code>LIKE</code> by default instead of <code>LIKE %...%</code>, to
-avoid unintended performance problems in case of huge tables.</dd>
-
-    <dt id="cfg_EnumOperators">$cfg['EnumOperators'] pole</dt>
-    <dd>Operators available for search operations on ENUM columns.</dd>
-
-    <dt id="cfg_NullOperators">$cfg['NullOperators'] pole</dt>
-    <dd>Additional operators available for search operations when the column can be
-null.</dd>
 
 </dl>
 
