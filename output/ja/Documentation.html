@@ -945,7 +945,7 @@ id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_vers
     <dd>
         コマンド追跡機能がテーブルやビューに対して自動的にバージョンを作成するかどうか。デフォルト値は false です。
         <br/><br/>
-        true に設定して、テーブルやビューを作成してあり、
+        TRUE に設定して、以下のようにテーブルやビューを作成してあり、
 
         <ul>
             <li>CREATE TABLE ...</li>
@@ -1048,7 +1048,7 @@ id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 つ追加されました。この変数を <tt>TRUE</tt>（デフォルト）にセットしておくと、phpMyAdmin
 は最新のテーブル構造が利用できるようになっているかチェックします。利用できない場合はスーパーユーザに警告を発します。<br /><br />
 
-        このチェック機能はこの変数を false にすることで無効にできます。無効にするとパフォーマンスが向上します。<br /><br />
+        このチェック機能はこの変数を FALSE にすることで無効にできます。無効にするとパフォーマンスが向上します。<br /><br />
 
         確実にテーブル構造が最新になっているときは FALSE にするのがお勧めです。</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span> 論理型</dt>
@@ -1180,7 +1180,7 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
     <dd>SQL クエリ表示時の最大文字数。デフォルトの制限は 1000 ですが、BLOB を表現する多量の 16
 進コードの表示を回避するためには、このくらいが適切だと思われます。しかし、一部のユーザは 1000 文字よりも長い SQL
-クエリを使用します。また、クエリの長さがこの制限を超えている場合、このクエリは履歴に保存されません。</dd>
+クエリを使用します。また、クエリの長さがこの制限を超えている場合、そのクエリは履歴に保存されません。</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] 文字列／論理型</dt>
     <dd><abbr title="HyperText Transfer Protocol">HTTP</abbr> 転送のスピードアップのために GZip
@@ -1798,10 +1798,9 @@ setfacl -d -m "g:www-data:rwx" tmp
         この配列はインポートの際のデフォルトパラメータを定義します。項目名はインポートページに表示されるテキストとほとんど同じですので、意味は簡単にわかるでしょう。
     </dd>
 
-    <dt id="cfg_ShowDisplayDir">$cfg['ShowDisplayDir'] boolean</dt>
+    <dt id="cfg_ShowDisplayDir">$cfg['ShowDisplayDir'] 論理型</dt>
     <dd>
-        Defines whether or not type display direction option is shown when browsing
-a table.
+        テーブルを閲覧するときに、表示方向のオプションが表示されるかどうかを定義します。
     </dd>
 
     <dt id="cfg_RepeatCells">$cfg['RepeatCells'] 整数</dt>
@@ -1874,7 +1873,7 @@ textarea
     <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（軽快モード）とデータベース画面のテーブル一覧に実装されています。</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
-    <dd><tt>「closed」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
+    <dd><tt>「closed（閉じている）」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open（開いている）」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 配列</dt>
     <dd>ユーザ環境設定を許可させない設定オプションの名前 (<tt>$cfg</tt> 配列のキーで指定)
@@ -2708,10 +2707,9 @@ already sent by
 ...（警告：ヘッダ情報を追加できません。ヘッダは送信済みです）」というエラーメッセージが表示されます。何がいけないのでしょう。</a></h4>
 
 <p> <i>config.inc.php</i> ファイルを修正して、先頭の <tt>&lt;?php</tt> タグの前や末尾の
-<tt>?&gt;</tt>
-の後には何も入れない（改行やスペース、文字などがない）ようにしてください。また、zip形式の配布キットを使用しているIISでユーザから以下の報告を受けています。『ファイル
-<tt>libraries/Config.class.php</tt> の末尾に改行コード (0x0A)
-が含まれていたので、この文字を削除したらエラーがなくなりました。』</p>
+<tt>?&gt;</tt> の後には何も入れない（改行やスペース、文字などがない）ようにしてください。また、zip 形式の配布キットを使用している
+IIS でユーザから以下の報告を受けています。『ファイル <tt>libraries/Config.class.php</tt> の末尾に改行コード
+(0x0A) が含まれていたので、この文字を削除したらエラーがなくなりました。』</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
@@ -2806,8 +2804,8 @@ href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定�
 
 <p> テーマの作り方：</p>
 
-<ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>（デフォルトでは
-<tt>themes</tt>）ディレクトリの下に新しいサブディレクトリ（例えば「your_theme_name」）を作ります</li>
+<ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
+ディレクトリ（デフォルトでは <tt>themes</tt>）の下に新しいサブディレクトリ（例：「your_theme_name」）を作ります</li>
     <li>「original」から「your_theme_name」にファイルやディレクトリをコピーします</li>
     <li>「your_theme_name/css」の css ファイルを編集します。</li>
     <li>「your_theme_name/img」に新しい画像を入れます。</li>
@@ -3218,8 +3216,8 @@ found（ページが見つかりません）」のような）エラーが出ま
 <p>
     テーブルに主キーやユニークキーがないと、行を識別するために長い <abbr title="Uniform Resource
 Locator">URL</abbr> を使うことになってしまうのですが、これらのブラウザには <abbr title="Uniform
-Resource Locator">URL</abbr> の長さに制限があるため、その問題が起こります。この問題は、例えば Netscape
-では起こりません。回避するには、主キーやユニークキーを作成するか、別のブラウザを使ってください。
+Resource Locator">URL</abbr> の長さに制限があるため、その問題が起こります。この問題は、Netscape
+などでは起こりません。回避するには、主キーやユニークキーを作成するか、別のブラウザを使ってください。
     <br />
 </p>
 
@@ -3497,31 +3495,27 @@ href="http://dev.mysql.com/doc/refman/5.1/ja/silent-column-changes.html">カラ�
 
 <p><b>構造：</b></p>
 
-<ul><li>「『DROP TABLE』を追加（Add DROP TABLE）」は、インポート中に既存のテーブルが存在していたら<a
+<ul><li>「『DROP TABLE』を追加」は、インポート中に既存のテーブルが存在していたら<a
 href="http://dev.mysql.com/doc/mysql/ja/drop-table.html">そのテーブルを削除する</a>よう指示する行を追加します。エクスポートしたあとでテーブルを削除するわけでは「ありません」。ファイルをインポートするときのみです。</li>
     <li>「『IF NOT
 EXISTS』を追加」は、そのテーブルが存在しないときにのみテーブルを作成するようになります。そうでなく、そのテーブル名が存在しているのに構造が異なる場合はエラーになることもあります。</li>
-    <li>「『AUTO_INCREMENT』値を追加（Add AUTO_INCREMENT value）」は、（あれば）AUTO_INCREMENT
-値もバックアップに含めるようにします。</li>
-    <li>「逆クォートでテーブル名やカラム名を囲む (Enclose table and column names with
-backquotes)」は、特殊文字を含むカラム名やテーブル名を保護します。</li>
-    <li>「コメントの追加（Add into comments）」は、pmadb に設定されているカラムのコメント、リレーション、MIME タイプを <abbr
-title="structured query language">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>)
-でダンプに含めます。
+    <li>「『AUTO_INCREMENT』値を追加」は、（あれば）AUTO_INCREMENT 値もバックアップに含めるようにします。</li>
+    <li>「逆クォートでテーブルやカラムの名前を囲む」は、特殊文字を含むカラム名やテーブル名を保護します。</li>
+    <li>「コメントの追加」は、pmadb に設定されているカラムのコメント、リレーション、MIME タイプを <abbr title="structured
+query language">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>) でダンプに含めます。
        </li>
 </ul>
 
 <p><b>データ：</b></p>
 
-<ul><li>「完全な INSERT 文を作成する（Complete inserts）」は、すべての INSERT
+<ul><li>「完全な INSERT 文を作成する」は、すべての INSERT
 コマンドにカラム名を付与して、ダンプを読みやすくします（ただし、結果としてできるファイルは大きくなります）。</li>
-    <li>「長い INSERT 文を作成する（Extended inserts）」は、ダンプファイルを短くするために INSERT
-句とテーブル名を一度しか使わないようにします。</li>
-    <li>「遅延インサートを使用する（Delayed inserts）」については、<a
+    <li>「長い INSERT 文を作成する」は、ダンプファイルを短くするために INSERT 句とテーブル名を一度しか使わないようにします。</li>
+    <li>「遅延インサートを使用する」については、<a
 href="http://dev.mysql.com/doc/mysql/ja/insert-delayed.html">MySQL
 マニュアル</a>の説明をご覧ください。
        </li>
-    <li>「『INSERT IGNORE』を使用する（Ignore inserts）」は、エラーを警告扱いにしてしまいます。これまた詳しくは <a
+    <li>「『INSERT IGNORE』を使用する」は、エラーを警告扱いにしてしまいます。これまた詳しくは <a
 href="http://dev.mysql.com/doc/mysql/ja/insert.html">MySQL
 マニュアル</a>に書いてありますが、基本的にこれを選択すると、無効な値があってもそれを調整して挿入するため、コマンドがまるごと失敗することはなくなります。</li>
 </ul>
