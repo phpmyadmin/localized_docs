@@ -78,7 +78,7 @@ href="#faq1_31">revise la <abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.31</a>), la extensión "Standard PHP Library" (SPL) y
 soporte JSON.
                 </li>
-		<li>Para subir archivos ZIP, necesita la extensión <tt>zip</tt> de PHP.</li>
+        <li>Para subir archivos ZIP, necesita la extensión <tt>zip</tt> de PHP.</li>
         <li>Para manejar adecuadamente las cadenas multibyte (por ejemplo UTF-8,
 actualmente el valor predeterminado) debería instalar las extensiones
 mbstring y ctype.
@@ -802,7 +802,7 @@ de inicio de sesión</a> para utilizar este método de autenticación.</li>
 
         Para más información vea la <a href="#setup">sección de instalación</a>,
 sobre &quot;Utilizando los modos de autenticación&quot;.
-	</dd>
+    </dd>
     <dt id="servers_auth_http_realm">
     cadena <span
 id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span><br />
@@ -1334,7 +1334,7 @@ continuación.
     </dd>
     <dt>booleano <span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span></dt>
-	<dd>Si se permiten inicios de sesión sin contraseña. El valor predeterminado es
+    <dd>Si se permiten inicios de sesión sin contraseña. El valor predeterminado es
 <tt>false</tt> para prevenir accessos involuntarios a un servidor MySQL al
 que le dejaron una contraseña vacía para root o en el que existe un usuario
 anónimo (en blanco).
@@ -2254,7 +2254,7 @@ archivos subidos revise la <a href="#faq1_11"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.11</a>.
         <br /><br />
 
-	Si el directorio en el que está instalado phpMyAdmin está limitado por
+    Si el directorio en el que está instalado phpMyAdmin está limitado por
 <tt>open_basedir</tt> necesitas crear un directorio temporal en un
 directorio que puede ser accedido por el servidor web. Sin embargo, por
 razones de seguridad, este directorio deberá estar fuera del árbol publicado
@@ -2318,7 +2318,7 @@ de la página de importación para poder identificar fácilmente lo que
 significan.
     </dd>
 
-    <dt id="cfg_ShowDisplayDir">booleano $cfg['ShowDisplayDir']</dt>
+    <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] boolean</dt>
     <dd>
         Define si se muestra la opción sobre el tipo de dirección de la
 visualización al examinar una tabla.
@@ -3398,7 +3398,7 @@ Apache, la autenticación por cookie no funciona.</a></h4>
 
 <p>Para poder utilizar autenticación por cookie Apache necesita saber que tiene
 que re-escribir las cabeceras set-cookie.<br />
-	Un ejemplo de la documentación de Apache 2.2:</p>
+    Un ejemplo de la documentación de Apache 2.2:</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
@@ -3410,7 +3410,7 @@ ProxyPassReverseCookiePath / /mirror/foo/
 http://servidor/~usuario/phpmyadmin, el tilde (~) tiene que ser encodeado
 para URLs como %7E en las líneas  ProxyPassReverse*. Esto no es específico a
 phpMyAdmin sino simplemente el comportamiento de Apache.
-	</p>
+    </p>
 
 <pre>
 ProxyPass /mirror/foo/ http://servidor/~usuario/phpmyadmin
@@ -3419,11 +3419,11 @@ http://servidor/%7Eusuario/phpmyadmin
 ProxyPassReverseCookiePath /%7Eusuario/phpmyadmin /mirror/foo
 </pre>
 
-	<p>Revisa <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">la
+    <p>Revisa <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">la
 documentación de mod_proxy</a> para más información.</p>
 
 <h4 id="faq1_41">
-	<a href="#faq1_41">1.41 Cuando veo una base de datos y pido por sus
+    <a href="#faq1_41">1.41 Cuando veo una base de datos y pido por sus
 privilegios, obtengo un error sobre una columna desconocida.</a></h4>
 
 <p> La tablas de privilegios del servidor MySQL no están actualizadas, necesitas
@@ -4660,7 +4660,7 @@ tabla en pmadb a los nativos cuando se ingresa a la página de Estructura de
 esa tabla.</p>
 
 <h4 id="faq6_25">
-	<a href="#faq6_25">6.25 ¿Cómo funciona la transmisión por flujo de BLOB en
+    <a href="#faq6_25">6.25 ¿Cómo funciona la transmisión por flujo de BLOB en
 phpMyAdmin?</a></h4>
 
 <p> Para información general de transmisión por flujo en MySQL, visita <a
@@ -4676,19 +4676,19 @@ siguientes componentes:</p>
 <p>Estos son los detalles de configuración y funcionamiento:</p>
 
 <ol>
-	<li>En el archivo <tt>config.inc.php</tt> el servidor debe estar definido con un
+    <li>En el archivo <tt>config.inc.php</tt> el servidor debe estar definido con un
 FQDN (Fully Qualified Domain Name) en lugar de &quot;localhost&quot;.</li>
     <li>Assegúrate que la tabla destino esté bajo el motor de almacenamiento
 <tt>PBXT</tt> y tenga una columna <tt>LONGBLOB</tt> (que debe poder ser NULL
 si se desea eliminar la referencia BLOB de la misma).</li>
-	<li>Al insertar o actualizar una fila en esta tabla, activa la casilla opcional
+    <li>Al insertar o actualizar una fila en esta tabla, activa la casilla opcional
 &quot;Cargar al repositorio BLOB&quot;; de lo contrario se subirá
 directamente a la columna LONGBLOB en lugar de al repositorio.</li>
-	<li>Finalmente, al examinar la tabla, verás en la columna un enlace para obtener
+    <li>Finalmente, al examinar la tabla, verás en la columna un enlace para obtener
 un flujo con los datos, por ejemplo &quot;Ver imagen&quot;. Una cabecera
 conteniendo el tipo MIME correcto será enviada al navegador; este tipo MIME
 fue almacenado al ser subido.</li> 
-</ol>	
+</ol>    
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 ¿Cómo puedo seleccionar rangos de columnas?</a></h4>

@@ -78,7 +78,7 @@ phpMyAdmin sur SourceForge</a></li>
 Questions">FAQ</abbr> 1.31</a>) et l'extension Standard PHP Library (SPL) et
 la gestion de JSON.
                 </li>
-		<li>Pour pouvoir télécharger des fichiers ZIP vers le serveur, vous avez besoin
+        <li>Pour pouvoir télécharger des fichiers ZIP vers le serveur, vous avez besoin
 de l'extension PHP <tt>zip</tt>.</li>
         <li>Pour la gestion correcte des chaînes multioctets (par ex. UTF-8, qui est le
 défaut actuellement), vous devez installer les extensions mbstring et ctype.
@@ -922,7 +922,7 @@ URL</a> to use this authentication method.</li>
         Veuillez consulter la section <a href="#setup">Installation</a> sur
 &laquo;&nbsp;Utiliser les modes d'authentification&nbsp;&raquo; pour plus de
 renseignements.
-	</dd>
+    </dd>
     <dt id="servers_auth_http_realm">
     <span
 id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
@@ -1503,7 +1503,7 @@ d'un raccourci pour les r&egrave;gles AllowDeny ci-dessous.
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 booléen</dt>
-	<dd>Permet d'autoriser les connexions sans mot de passe. La valeur par défaut
+    <dd>Permet d'autoriser les connexions sans mot de passe. La valeur par défaut
 est <tt>false</tt> pour ce paramètre, ce qui empêche les accès non voulus à
 un serveur MySQL pour lequel le mot de passe root est vide ou pour lequel un
 utilisateur anonyme (vide) a été défini.
@@ -2520,7 +2520,7 @@ les fichiers téléchargés, consulter la <a href="#faq1_11"><abbr title="Foire
 aux questions">FAQ</abbr>1.11</a>.
         <br /><br />
 
-	Si le répertoire où est installé phpMyAdmin est sujet à une restriction
+    Si le répertoire où est installé phpMyAdmin est sujet à une restriction
 <tt>open_basedir</tt>, vous devez créer un répertoire temporaire dans un
 répertoire accessible par le serveur Web. Cependant, pour des raisons de
 sécurité, ce répertoire doit se situer en dehors de l'arbre publié par le
@@ -2586,7 +2586,7 @@ textes affich&eacute;s dans la page d'importation, de sorte que vous pouvez
 facilement identifier ce qu'ils signifient.
     </dd>
 
-    <dt id="cfg_ShowDisplayDir">$cfg['ShowDisplayDir'] boolean</dt>
+    <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] boolean</dt>
     <dd>
         Defines whether or not type display direction option is shown when browsing
 a table.
@@ -3764,7 +3764,7 @@ Apache, le cookie de connexion ne fonctionne pas.</a></h4>
 
 <p>Pour pouvoir utiliser l'authetification par cookie, Apache doit savoir qu'il
 doit ré-écrire les en-têtes set-cookie.<br />
-	Exemple pris dans la documentation de Apache 2.2&nbsp;:</p>
+    Exemple pris dans la documentation de Apache 2.2&nbsp;:</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
@@ -3776,7 +3776,7 @@ ProxyPassReverseCookiePath / /mirror/foo/
 tilde «&nbsp;~&nbsp;» doit être encodé en «&nbsp;%7E&nbsp;» dans les lignes
 ProxyPassReverse.  Ce n'est pas spécifique à phpmyadmin, c'est juste le
 comportement d'Apache.
-	</p>
+    </p>
 
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/~user/phpmyadmin
@@ -3785,12 +3785,12 @@ http://backend.example.com/%7Euser/phpmyadmin
 ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
 </pre>
 
-	<p>Consulter <a
+    <p>Consulter <a
 href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>
 pour plus de détails.</p>
 
 <h4 id="faq1_41">
-	<a href="#faq1_41">1.41 Quand je vois une base de données et que je demande
+    <a href="#faq1_41">1.41 Quand je vois une base de données et que je demande
 à voir ses privilèges, j'obtiens une erreur à propos d'une colonne
 inconnue.</a></h4>
 
@@ -5164,7 +5164,7 @@ table vers le format natif est effectu&eacute;e chaque fois que vous entrez
 dans la page Structure pour cette table.</p>
 
 <h4 id="faq6_25">
-	<a href="#faq6_25">6.25 Comment le streaming de BLOB fonctionne dans
+    <a href="#faq6_25">6.25 Comment le streaming de BLOB fonctionne dans
 phpMyAdmin&nbsp;?</a></h4>
 
 <p> D'abord, pour des informations sur le streaming de BLOB, visiter la page <a
@@ -5180,21 +5180,21 @@ composants suivants&nbsp;:</p>
 <p>Ci-après, les détails sur la configuration et l'opération&nbsp;:</p>
 
 <ol>
-	<li>Dans le fichier <tt>config.inc.php</tt>, votre nom d'hôte doit être défini
+    <li>Dans le fichier <tt>config.inc.php</tt>, votre nom d'hôte doit être défini
 avec un nom de domaine totalement qualifié (FQDN) plutôt que quelque chose
 comme «&nbsp;localhost&nbsp;».</li>
     <li>Assurez-vous que votre table cible est sous le moteur de stockage PBXT et a
 une colonne LONGBLOB (qui doit pouvoir être définie à NULL si vous voulez
 supprimer la référence BLOB à celle-ci).</li>
-	<li>Quand vous insérez ou mettez à jour une ligne dans cette table, cochez
+    <li>Quand vous insérez ou mettez à jour une ligne dans cette table, cochez
 l'option «&nbsp;Télécharger vers le dépôt BLOB&nbsp;»&nbsp;; sinon, le
 téléchargement se fera directement dans votre colonne LONGBLOB au lieu du
 répertoire.</li>
-	<li>Enfin, quand vous parcourrez votre table, vous verrez un lien dans votre
+    <li>Enfin, quand vous parcourrez votre table, vous verrez un lien dans votre
 colonne pour voir les données, par exemple «&nbsp;Afficher
 l'image&nbsp;». Un en-tête contenant le type MIME correct sera envoyé à
 votre navigateur&nbsp;; ce type MIME a été stocké lors du téléchargement.</li> 
-</ol>	
+</ol>    
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 Comment puis-je sélectionner un ensemble de

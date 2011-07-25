@@ -76,7 +76,7 @@ SourceForge.net 的项目页 (英语)</a></li>
 (Frequently Asked Questions)">FAQ</abbr> 1.31</a>) 、标准 PHP 库 (SPL) 和 JSON
 扩展的 PHP 5.2.0 或更高版本。
                 </li>
-		<li>要支持上传 zip 文件，需要 <tt>zip</tt> 扩展。</li>
+        <li>要支持上传 zip 文件，需要 <tt>zip</tt> 扩展。</li>
         <li>为了更好的支持多字节字符串 (如 UTF-8 编码的文字, 当前默认编码)，你应该安装 mbstring 和 ctype 扩展。
         </li>
             <li>要支持内联 JPEG 图像的等比缩略图 (&quot;image/jpeg: inline&quot;)，需要 GD2 扩展</li>
@@ -601,7 +601,7 @@ URL</a> to use this authentication method.</li>
         </ul>
 
         详细信息请参见<a href="#setup">安装</a>一节中的&quot;使用认证&quot;。
-	</dd>
+    </dd>
     <dt id="servers_auth_http_realm">
     <span
 id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
@@ -1026,7 +1026,7 @@ id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 布尔</dt>
-	<dd>设置是否允许使用空密码登录。为了防止可能存在空密码的 root 或者其他匿名 (空) 用户访问到 MySQL 服务器，此项默认为
+    <dd>设置是否允许使用空密码登录。为了防止可能存在空密码的 root 或者其他匿名 (空) 用户访问到 MySQL 服务器，此项默认为
 <tt>false</tt> 。
     </dd>
     <dt id="servers_allowdeny_order">
@@ -1796,7 +1796,7 @@ href="#faq1_11"><abbr title="Frequently Asked Questions">FAQ</abbr>
 1.11</a>.
         <br /><br />
 
-	If the directory where phpMyAdmin is installed is subject to an
+    If the directory where phpMyAdmin is installed is subject to an
 <tt>open_basedir</tt> restriction, you need to create a temporary directory
 in some directory accessible by the web server. However for security
 reasons, this directory should be outside the tree published by
@@ -1855,7 +1855,7 @@ similar to texts seen on import page, so you can easily identify what they
 mean.
     </dd>
 
-    <dt id="cfg_ShowDisplayDir">$cfg['ShowDisplayDir'] boolean</dt>
+    <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] boolean</dt>
     <dd>
         Defines whether or not type display direction option is shown when browsing
 a table.
@@ -2745,7 +2745,7 @@ href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd
 proxy, cookie login does not work.</a></h4>
 
 <p>要在此方式下使用 cookie 认证，请确保将 Apache 设置为重写 set-cookie 头。<br />
-	Apache 2.2 中给出了一个例子：</p>
+    Apache 2.2 中给出了一个例子：</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
@@ -2754,7 +2754,7 @@ ProxyPassReverseCookiePath / /mirror/foo/
 </pre>
 
 <p>注意：如果您的 URL 中带有 ~ 字符，请在 ProxyPassReverse 设置中将其转义为 %7E，就像下面那样：
-	</p>
+    </p>
 
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/~user/phpmyadmin
@@ -2763,11 +2763,11 @@ http://backend.example.com/%7Euser/phpmyadmin
 ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
 </pre>
 
-	<p>更多信息请参考 <a
+    <p>更多信息请参考 <a
 href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>。</p>
 
 <h4 id="faq1_41">
-	<a href="#faq1_41">1.41 When I view a database and ask to see its
+    <a href="#faq1_41">1.41 When I view a database and ask to see its
 privileges, I get an error about an unknown column.</a></h4>
 
 <p> MySQL 服务器的权限表没有更新，请运行 <tt>mysql_upgrade</tt> 命令来进行更新。</p>
@@ -3839,7 +3839,7 @@ chmod o+rwx tmp
 <p> 它们将在你进入该表的结构页面时自动并入。</p>
 
 <h4 id="faq6_25">
-	<a href="#faq6_25">6.25 BLOB 流在 phpMyAdmin 中是怎样工作的？</a></h4>
+    <a href="#faq6_25">6.25 BLOB 流在 phpMyAdmin 中是怎样工作的？</a></h4>
 
 <p> 要获得关于 MySQL BLOB 流的信息，请访问 <a
 href="http://blobstreaming.org">blobstreaming.org</a> 。你需要下列组件:</p>
@@ -3853,14 +3853,14 @@ href="http://blobstreaming.org">blobstreaming.org</a> 。你需要下列组件:<
 <p>以下是详细的配置和操作说明:</p>
 
 <ol>
-	<li><tt>config.inc.php</tt> 中的主机必须是一个 FQDN (完全合格域名) 而不是 &quot;localhost&quot; 。</li>
+    <li><tt>config.inc.php</tt> 中的主机必须是一个 FQDN (完全合格域名) 而不是 &quot;localhost&quot; 。</li>
     <li>确保你的目标表正在使用 <tt>PBXT</tt> 存储引擎并且有一个 <tt>LONGBLOB</tt> 类型的字段 (如果你想去除 BLOB
 关系则必须可为空) 。</li>
-	<li>当上传或更新一条记录时，勾选 &quot;上传到 BLOB 库&quot; 复选框即可；否则，文件数据将被直接保存在你的 LONGBLOB 字段而不是
+    <li>当上传或更新一条记录时，勾选 &quot;上传到 BLOB 库&quot; 复选框即可；否则，文件数据将被直接保存在你的 LONGBLOB 字段而不是
 BLOB 库中。</li>
-	<li>最后在浏览数据表时，你会看到一个指向数据的链接，例如 &quot;查看图像&quot; 。若在上传时保存了正确的 MIME
+    <li>最后在浏览数据表时，你会看到一个指向数据的链接，例如 &quot;查看图像&quot; 。若在上传时保存了正确的 MIME
 类型，它将会被发送到你的浏览器。</li> 
-</ol>	
+</ol>    
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 我可以选择一段连续的行吗？</a></h4>
