@@ -572,14 +572,14 @@ MySQL サーバでもほぼ確実に利用できるためです。ソケット�
     <dd>接続に利用する PHP の MySQL 拡張が入ります。有効な選択肢は次の通りです。
         <br /><br />
 
-        <tt><i>mysql</i></tt> : 古典的な MySQL 拡張です。現時点ではお勧めできるデフォルトの方法です。<br /><br />
+        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt> : MySQL 拡張の改良版です。この拡張は PHP 5.0.0 で利用できるようになりました。MySQL
-4.1.x 以降が稼動しているサーバに接続する場合はお勧めです。</dd>
+        <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
+available with PHP 5.0.0 and is the recommended way to connect to a server
+running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] 論理型</dt>
-    <dd>MySQL サーバとの接続に圧縮プロトコルを使うかどうかが入ります（実験段階です）。<br />
-        この機能には PHP ≧ 4.3.0 が必要です。</dd>
+    <dd>MySQL サーバとの接続に圧縮プロトコルを使うかどうかが入ります（実験段階です）。</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1191,7 +1191,16 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
 に特定のパッチをあてると、バッファリングを有効にしたときにデータが壊れる問題があることが分かっています。</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] 論理型</dt>
-    <dd>持続的接続を利用するかどうか（mysql_connect するか mysql_pconnect するか）。</dd>
+    <dd>Whether <a
+href="http://php.net/manual/en/features.persistent-connections.php">persistent
+connections</a> should be used or not. Works with following extensions:
+        <ul>
+            <li>mysql (<a
+href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
+            <li>mysqli (requires PHP 5.3.0 or newer, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">more
+information</a>).</li>
+        </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] 論理型</dt>
     <dd>phpMyAdmin にアクセスするときに https を強制するかどうか。</dd>
@@ -1371,7 +1380,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] 文字列</dt>
     <dd>ナビゲーションバーのボタンと、右パネルのトップメニューにテキストを含めるか、シンボルのみにするかを定義します。値が TRUE
-のときはアイコンを、FALSE のときはテキストを、「both」のときはアイコンとテキストの双方を表示します。</dd>
+のときはアイコンを、FALSE のときはテキストを、「both (両方)」のときはアイコンとテキストの双方を表示します。</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] 論理型</dt>
     <dd>表示モードで「全て（のレコード）を表示する」ボタンを表示するかどうかを定義します。</dd>
@@ -1385,7 +1394,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 の場合は降順、それ以外は昇順ことで、これがデフォルトです。</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] 論理型 </dt>
-    <dd>表示オプション「バイナリ内容を 16 進数で表示する」かどうかの定義します。デフォルトはチェックされています。</dd>
+    <dd>表示オプション「バイナリ内容を 16 進数で表示する」を表示するかどうかの定義します。デフォルトはチェックされています。</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
     <dd>テーブルの内容を表示しているときに <tt>BLOB</tt> カラムや <tt>BINARY</tt>
@@ -1538,8 +1547,7 @@ $cfg['TrustedProxies'] =
     <dt id="cfg_GD2Available">$cfg['GD2Available'] 文字列</dt>
     <dd>GD ≧ 2 が利用できるかどうかを指定します。利用できる場合、MIME 変換の際に活用できます。<br />
         可能な値は次の通りです。
-        <ul><li>auto - 自動検知します。php &lt; 4.3.0
-の場合はやや重い処理になりますので、お使いのサーバの実態にあわせて変更しておく方がよいでしょう。</li>
+        <ul><li>auto - automatically detect</li>
             <li>yes - GD 2 関数を利用できます。</li>
             <li>no - GD 2 関数は利用できません。</li>
         </ul>
@@ -1798,7 +1806,7 @@ setfacl -d -m "g:www-data:rwx" tmp
         この配列はインポートの際のデフォルトパラメータを定義します。項目名はインポートページに表示されるテキストとほとんど同じですので、意味は簡単にわかるでしょう。
     </dd>
 
-    <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] boolean</dt>
+    <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] 論理型</dt>
     <dd>
         テーブルを閲覧するときに、表示方向のオプションが表示されるかどうかを定義します。
     </dd>
@@ -2243,9 +2251,10 @@ title="HyperText Transfer Protocol">HTTP</abbr>
 ヘッダが不完全です。）」というエラーメッセージが表示されます。</a>
 </h4>
 
-<p> PHP の配布ファイルに入っている <i>install.txt</i> を読み忘れたのでしょう。こちらの<a
-href="http://bugs.php.net/bug.php?id=12061">バグレポート</a>の最後のメッセージをご覧ください。出典は
-PHP のオフィシャルバグデータベースです。</p>
+<p> You just forgot to read the <i>install.txt</i> file from the PHP
+distribution.  Have a look at the last message in this <a
+href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
+PHP bug database.</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 phpMyAdmin を <abbr title="Internet Information
@@ -2362,11 +2371,13 @@ href="#config">「設定」の章</a>をご覧ください。</li>
     <a id="faqmysqlversions" href="#faq1_17">1.17 phpMyAdmin をサポートしている MySQL
 のバージョンは？</a></h4>
 
-<p> phpMyAdmin 3.0.x より、MySQL 5.0.1 以降のみサポートするようになりました。古い MySQL バージョンに対しては、2.x
-ブランチでの最新版を使用する必要があります。phpMyAdmin が MySQL サーバに接続するときには、古典的な <a
-href="http://php.net/mysql">MySQL 拡張</a>だけでなく、PHP 5.0 で利用できるようになった<a
-href="http://php.net/mysqli">改良版 MySQL 拡張 (MySQLi)</a>
-も利用できます。特に理由がない限り、後者を使用するほうがいいでしょう。<br />
+<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
+MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
+connect to your MySQL server using PHP's classic <a
+href="http://php.net/mysql">MySQL extension</a> as well as the <a
+href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
+available in PHP 5.0. The latter one should be used unless you have a good
+reason not to do so.<br />
     PHP をコンパイルするときには使用する MySQL 拡張を、少なくともマイナーバージョンまで同じ MySQL
 クライアントライブラリに、手作業でリンクさせることを強く推奨します。PHP
 配布ファイルにバンドルされているものはやや古くなっているために、問題を起こすことがあるためです <a href="#faq1_17a">(<abbr
@@ -2542,12 +2553,7 @@ Windows 認証</tt>、有効になっている場合は<tt>ダイジェスト認
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 64 ビットのシステムで PHP 5.0.4 を稼動させているときの mysqli
-拡張に問題がありませんか？</a></h4>
-
-<p> はい。この問題は phpMyAdmin にも影響を与えますので（「Call to undefined function
-pma_reloadnavigation（未定義の関数 pma_reloadnavigation の呼び出し）」）、PHP
-を新しいバージョンにアップグレードしてください。</p>
+    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
 
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 データベースやテーブルのページに直接アクセスできますか？</a></h4>
@@ -2763,8 +2769,9 @@ href="http://dev.mysql.com/doc/refman/4.1/ja/can-not-connect-to-server.html">MyS
 <p> phpMyAdmin の設定ファイルで <a href="#cfg_OBGzip"
 class="configrule">$cfg['OBGZip']</a> ディレクティブを <tt>FALSE</tt>
 にしてみてください。それでうまくいくことがあります。<br />
-    また、PHP のバージョンを確かめてください。「4.0b...」という文字が含まれている場合はベータ版の PHP
-が稼動しているということですが、これはあまりよいことではありませんので、ベータ版でないものにアップグレードしてください。</p>
+    Also have a look at your PHP version number: if it contains &quot;b&quot; or
+&quot;alpha&quot; it means you're running a testing version of PHP. That's
+not a so good idea, please upgrade to a plain revision.</p>
 
 <h4 id="faq2_5">
     <a href="#faq2_5">2.5
@@ -2778,7 +2785,7 @@ class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブの値をチ�
 <h4 id="faq2_6">
     <a href="#faq2_6">2.6 localhost にポート転送しているホストの MySQL サーバにアクセスしようとすると、「Access
 denied for user: 'root@localhost'（Using password:
-YES）（'root@localhost'ユーザのアクセスは拒否されました。パスワードは利用しています）」というエラーが出ます。</a></h4>
+YES）（'root@localhost'ユーザのアクセスは拒否されました。パスワードが設定されています）」というエラーが出ます。</a></h4>
 
 <p> localhost のポートを利用して、ポート転送で別のホストにリダイレクトすると、MySQL は期待通りに localhost を解決してくれません。<br />
     Erik Wasser は次のように説明しています。『解決法は以下に述べるようにします。ホストが「localhost」の場合、MySQL

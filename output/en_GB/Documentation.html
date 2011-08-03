@@ -691,17 +691,15 @@ Web server.</dd>
     <dd>What php MySQL extension to use for the connection. Valid options are:
         <br /><br />
 
-        <tt><i>mysql</i></tt> : The classic MySQL extension. This is the recommended
-and default method at this time.<br /><br />
+        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
 
         <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
-available with php 5.0.0 and is the recommended way to connect to a server
+available with PHP 5.0.0 and is the recommended way to connect to a server
 running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
     <dd>Whether to use a compressed protocol for the MySQL server connection or not
-(experimental).<br />
-        This feature requires PHP&nbsp;&gt;=&nbsp;4.3.0.</dd>
+(experimental).</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1436,8 +1434,16 @@ it if your browser has some problems with buffering. IE6 with a certain
 patch is known to cause data corruption when having enabled buffering.</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Whether persistent connections should be used or not (mysql_connect or
-mysql_pconnect).</dd>
+    <dd>Whether <a
+href="http://php.net/manual/en/features.persistent-connections.php">persistent
+connections</a> should be used or not. Works with following extensions:
+        <ul>
+            <li>mysql (<a
+href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
+            <li>mysqli (requires PHP 5.3.0 or newer, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">more
+information</a>).</li>
+        </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
     <dd>Whether to force using https while accessing phpMyAdmin.</dd>
@@ -1874,9 +1880,7 @@ address as usual.
     <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
 transformations.<br />
         Possible values are:
-        <ul><li>auto - automatically detect, this is a bit expensive operation for php &lt;
-4.3.0 so it is preferred to change this according to your server real
-possibilities</li>
+        <ul><li>auto - automatically detect</li>
             <li>yes - GD 2 functions can be used</li>
             <li>no - GD 2 function cannot be used</li>
         </ul>
@@ -2723,7 +2727,7 @@ not returning a complete set of <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> headers ...&quot;.</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the php
+<p> You just forgot to read the <i>install.txt</i> file from the PHP
 distribution.  Have a look at the last message in this <a
 href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
 PHP bug database.</p>
@@ -3069,11 +3073,7 @@ enabled.) Click <tt>OK</tt>.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Is there a problem with the mysqli extension when
-running PHP 5.0.4 on 64-bit systems?</a></h4>
-
-<p> Yes. This problem affects phpMyAdmin (&quot;Call to undefined function
-pma_reloadnavigation&quot;), so upgrade your PHP to the next version.</p>
+    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
 
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 Can I access directly to database or table
@@ -3308,8 +3308,8 @@ phpMyAdmin, what can I do?</a></h4>
 <p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
 directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
 sometime.<br />
-    Also have a look at your PHP version number: if it contains
-&quot;4.0b...&quot; it means you're running a beta version of PHP. That's
+    Also have a look at your PHP version number: if it contains &quot;b&quot; or
+&quot;alpha&quot; it means you're running a testing version of PHP. That's
 not a so good idea, please upgrade to a plain revision.</p>
 
 <h4 id="faq2_5">

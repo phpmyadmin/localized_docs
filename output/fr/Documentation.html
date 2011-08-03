@@ -835,18 +835,15 @@ m&ecirc;me machine que le serveur Web.</dd>
 options autoris&eacute;es sont&nbsp;:
         <br /><br />
 
-        <tt><i>mysql</i></tt>&nbsp;: L'extension MySQL classique.  C'est l'option
-recommand&eacute;e et par d&eacute;faut &agrave; ce jour.<br /><br />
+        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt>&nbsp;: L'extension MySQL am&eacute;lior&eacute;e.
-Cette extension devient disponible avec php version 5.0.0, et
-recommand&eacute;e pour se connecter sur un serveur ex&eacute;cutant MySQL
-version 4.1.x ou suivantes.</dd>
+        <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
+available with PHP 5.0.0 and is the recommended way to connect to a server
+running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] bool&eacute;en</dt>
     <dd>Pour utiliser ou non un protocole compress&eacute; pour la connexion au
-serveur MySQL (exp&eacute;rimental).<br />
-        Cette fonctionnalit&eacute; requiert PHP version 4.3.0 ou ult&eacute;rieure.</dd>
+serveur MySQL (exp&eacute;rimental).</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1694,8 +1691,16 @@ certain correctif, est connu pour provoquer une corruption de donn&eacute;es
 en ayant la mise en cache activ&eacute;e.</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] bool&eacute;en</dt>
-    <dd>D&eacute;finit si les connexions persistantes doivent &ecirc;tre
-utilis&eacute;es (mysql_connect ou mysql_pconnect).</dd>
+    <dd>Whether <a
+href="http://php.net/manual/en/features.persistent-connections.php">persistent
+connections</a> should be used or not. Works with following extensions:
+        <ul>
+            <li>mysql (<a
+href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
+            <li>mysqli (requires PHP 5.3.0 or newer, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">more
+information</a>).</li>
+        </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] bool&eacute;en</dt>
     <dd>Pour forcer ou pas l'utilisation de https lors de l'acc&egrave;s &agrave;
@@ -2228,10 +2233,7 @@ du client comme d'habitude.
 c'est le cas, il peut &ecirc;tre utilis&eacute; pour les transformations
 MIME.<br />
         Les valeurs autoris&eacute;es sont&nbsp;:
-        <ul><li>auto - d&eacute;tection automatique, qui est une op&eacute;ration
-consommatrice pour les versions de php ant&eacute;rieures &agrave; la 4.3.0;
-aussi, il est pr&eacute;f&eacute;rable de changer ce param&egrave;tre en
-fonction des possibilit&eacute;s r&eacute;elles de votre serveur,</li>
+        <ul><li>auto - automatically detect</li>
             <li>yes - les fonctions GD 2 peuvent &ecirc;tre utilis&eacute;es,</li>
             <li>no - les fonctions GD 2 ne peuvent pas &ecirc;tre utilis&eacute;es.</li>
         </ul>
@@ -3208,10 +3210,10 @@ complet d'en-t&ecirc;tes <abbr title="HyperText Transfer
 Protocol">HTTP</abbr>&hellip;&nbsp;&raquo;.</a>
 </h4>
 
-<p> Vous avez juste oubli&eacute; de lire le fichier <i>install.txt</i> de la
-distribution php. Consultez le dernier message dans ce <a
-href="http://bugs.php.net/bug.php?id=12061">rapport de bogue</a> de la base
-de donn&eacute;es officielle de bogues de PHP.</p>
+<p> You just forgot to read the <i>install.txt</i> file from the PHP
+distribution.  Have a look at the last message in this <a
+href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
+PHP bug database.</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 J'utilise phpMyAdmin avec <abbr title="Internet
@@ -3372,12 +3374,13 @@ la commande &laquo;&nbsp;source&nbsp;&raquo; dans MySQL&nbsp;: <tt>source
     <a id="faqmysqlversions" href="#faq1_17">1.17 Quelles versions de MySQL sont
 g&eacute;r&eacute;es par phpMyAdmin&nbsp;?</a></h4>
 
-<p> Depuis phpMyAdmin 3.0.x, seules les versions 5.0.1 et supérieures de MySQL
-5.0.1 sont  gérées. Pour les versions plus anciennes de MySQL, vous devez
-utiliser la branche 2.x. phpMyAdmin peut se connecter à votre serveur MySQL
-en utilisant <a href="http://php.net/mysqli">l'extension MySQL améliorée
-(MySQLi)</a> disponible dans php 5.0. Cette dernière doit être utilisée à
-moins que vous n'ayez de bonnes raisons de ne pas le faire.<br />
+<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
+MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
+connect to your MySQL server using PHP's classic <a
+href="http://php.net/mysql">MySQL extension</a> as well as the <a
+href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
+available in PHP 5.0. The latter one should be used unless you have a good
+reason not to do so.<br />
     En compilant PHP, nous recommandons fortement de lier manuellement
 l'extension MySQL de votre choix à une bibliothèque client MySQL d'au moins
 la même version mineure, puisque celle qui est fournie avec les
@@ -3616,12 +3619,7 @@ sur <tt>OK</tt>.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Y a-t-il un probl&egrave;me avec l'extension mysqli
-quand on utilise PHP 5.0.4 sur des syst&egrave;mes 64 bits&nbsp;?</a></h4>
-
-<p> Oui. Ce probl&egrave;me affecte phpMyAdmin (&laquo;&nbsp;Appel &agrave; la
-fonction ind&eacute;finie pma_reloadnavigation&nbsp;&raquo;), aussi,
-veuillez mettre &agrave; jour votre version de PHP.</p>
+    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
 
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 Puis-je acc&eacute;der directement aux pages des
@@ -3877,10 +3875,9 @@ d'ex&eacute;cuter phpMyAdmin, que puis-je faire&nbsp;?</a></h4>
 <p> Essayez de d&eacute;finir la directive <a href="#cfg_OBGzip"
 class="configrule">$cfg['OBGZip']</a> &agrave; <tt>FALSE</tt> dans le
 fichier de configuration de phpMyAdmin. Cela aide parfois.<br />
-    Veuillez &eacute;galement regarder le num&eacute;ro de version de PHP&nbsp;:
-s'il contient &laquo;&nbsp;4.0b&hellip;&nbsp;&raquo; cela signifie que vous
-ex&eacute;cutez une version beta de PHP. Ce n'est pas une tr&egrave;s bonne
-id&eacute;e, veuillez mettre &agrave; jour dans une version stable.</p>
+    Also have a look at your PHP version number: if it contains &quot;b&quot; or
+&quot;alpha&quot; it means you're running a testing version of PHP. That's
+not a so good idea, please upgrade to a plain revision.</p>
 
 <h4 id="faq2_5">
     <a href="#faq2_5">2.5 Chaque fois que je veux ins&eacute;rer ou modifier un

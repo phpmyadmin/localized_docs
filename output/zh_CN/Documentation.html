@@ -543,14 +543,14 @@ class="configrule">$cfg['Servers'][$i]['host']</a> 设为 &quot;127.0.0.1&quot;
     <dd>设置使用什么 PHP 扩展连接到 MySQL。可供选择的有:
         <br /><br />
 
-        <tt><i>mysql</i></tt> : 经典 MySQL 扩展。目前推荐以及默认的扩展。<br /><br />
+        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt> : 改进的 MySQL 扩展。该扩展自 PHP 5.0.0 起可用，并且推荐用于连接到 4.1.x
-或更高版本的 MySQL 。</dd>
+        <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
+available with PHP 5.0.0 and is the recommended way to connect to a server
+running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] 布尔</dt>
-    <dd>设置是否使用压缩协议连接到 MySQL 服务器 (试验性的)。<br />
-        此功能需要 PHP 4.3.0 或更高版本。</dd>
+    <dd>设置是否使用压缩协议连接到 MySQL 服务器 (试验性的)。</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1155,7 +1155,16 @@ Protocol)">HTTP</abbr> 传输。<br />
 将尝试启用输出缓冲并在浏览器对缓冲支持有问题时自动禁用。已知具有特定补丁的 IE6 会在启用缓冲时导致数据损坏。</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] 布尔</dt>
-    <dd>设置是否使用持久连接 (mysql_connect 还是 mysql_pconnect) 。</dd>
+    <dd>Whether <a
+href="http://php.net/manual/en/features.persistent-connections.php">persistent
+connections</a> should be used or not. Works with following extensions:
+        <ul>
+            <li>mysql (<a
+href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
+            <li>mysqli (requires PHP 5.3.0 or newer, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">more
+information</a>).</li>
+        </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] 布尔</dt>
     <dd>设置在访问 phpMyAdmin 时是否强制使用 https 安全连接。</dd>
@@ -1549,7 +1558,7 @@ address as usual.
     <dt id="cfg_GD2Available">$cfg['GD2Available'] 字符串</dt>
     <dd>指定 GD &gt;= 2 版本是否可用。它将被用于 MIME 类型转换。<br />
         可选值有:
-        <ul><li>自动 (auto) - 自动检测，在 PHP &lt; 4.3.0 版本下性能较差，所以我们推荐根据您服务器的实际情况来设置</li>
+        <ul><li>auto - automatically detect</li>
             <li>是 (yes) - GD 2 函数库可以使用</li>
             <li>否 (no) - GD 2 函数库不可用</li>
         </ul>
@@ -2334,8 +2343,10 @@ Gateway Interface">CGI</abbr> 应用程序错误，返回了不完整的<abbr ti
 Protocol">HTTP</abbr> 头 ...&quot;。</a>
 </h4>
 
-<p> 您是不是忘记阅读 PHP 发行版中的 <i>install.txt</i> 了？请参考 PHP 官方错误数据库中的<a
-href="http://bugs.php.net/bug.php?id=12061">这个错误反馈</a>。</p>
+<p> You just forgot to read the <i>install.txt</i> file from the PHP
+distribution.  Have a look at the last message in this <a
+href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
+PHP bug database.</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 Using phpMyAdmin on <abbr title="Internet Information
@@ -2454,7 +2465,7 @@ MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
 connect to your MySQL server using PHP's classic <a
 href="http://php.net/mysql">MySQL extension</a> as well as the <a
 href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have a good
+available in PHP 5.0. The latter one should be used unless you have a good
 reason not to do so.<br />
     When compiling PHP, we strongly recommend that you manually link the MySQL
 extension of your choice to a MySQL client library of at least the same
@@ -2626,10 +2637,7 @@ phpMyAdmin。</p>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 在 64 位系统上能正常使用 MySQLi 扩展吗？我的 PHP 版本是 5.0.4。</a></h4>
-
-<p> 不能。在这种情况下 phpMyAdmin 会出错（&quot; 调用了未定义的函数：pma_reloadnavigation&quot;）。请升级您的
-PHP。</p>
+    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
 
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 我能直接输入网址来显示数据库和表吗？</a></h4>
@@ -2831,8 +2839,9 @@ corresponding section of the MySQL documentation</a>.</p>
 
 <p> 请在 phpMyAdmin 的配置文件中将 <a href="#cfg_OBGzip"
 class="configrule">$cfg['OBGZip']</a> 显式地设为 <tt>FALSE</tt>，也许能解决此问题。<br />
-    另外，请查看您的 PHP 版本号，如果版本号是类似 &quot;4.0b...&quot; 这样的系列，这说明您使用的 PHP
-是一个测试版，使用测试版可能会产生一些奇怪的问题，请将 PHP 升级到稳定版。</p>
+    Also have a look at your PHP version number: if it contains &quot;b&quot; or
+&quot;alpha&quot; it means you're running a testing version of PHP. That's
+not a so good idea, please upgrade to a plain revision.</p>
 
 <h4 id="faq2_5">
     <a href="#faq2_5">2.5 当我删除记录、表或数据库时，浏览器总是显示 404 （找不到网页）。另外，如果使用 <abbr

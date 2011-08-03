@@ -722,17 +722,15 @@ olmak zorundadır.</dd>
     <dd>Bağlantı için ne php MySQL uzantısı kullanılır. Geçerli seçenekler:
         <br /><br />
 
-        <tt><i>mysql</i></tt> : Klasik MySQL uzantısı. Bu önerilir ve şimdilik
-varsayılan yöntemdir.<br /><br />
+        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt> : Gelişmiş MySQL uzantısı. Bu uzantı php 5.0.0 ile
-kullanılabilir olmuştur ve MySQL 4.1.x ya da daha yenisini çalıştıran
-sunuculara bağlanmak için önerilen yoldur.</dd>
+        <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
+available with PHP 5.0.0 and is the recommended way to connect to a server
+running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
     <dd>MySQL sunucusu bağlantısı için sıkıştırılmış protokol kullanmak gerekirse ya
-da gerekmezse (deneysel).<br />
-        Bu özellik PHP&nbsp;&gt;=&nbsp;4.3.0 gerektirir.</dd>
+da gerekmezse (deneysel).</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1487,8 +1485,16 @@ otomatik olarak etkisizleştirecektir. Arabellekleme etkinleştirildiğinde,
 belli yama ile IE6'nın veri bozulmasına sebep olduğu bilinmektedir.</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Sürekli bağlantıların kullanılması veya kullanılmaması (mysql_connect veya
-mysql_pconnect).</dd>
+    <dd>Whether <a
+href="http://php.net/manual/en/features.persistent-connections.php">persistent
+connections</a> should be used or not. Works with following extensions:
+        <ul>
+            <li>mysql (<a
+href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
+            <li>mysqli (requires PHP 5.3.0 or newer, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">more
+information</a>).</li>
+        </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
     <dd>phpMyAdmin'e erişilirken https kullanımına zorlamak gerekirse.</dd>
@@ -1947,9 +1953,7 @@ istemcinin IP adresini kullanır.
     <dd>GD &gt;= 2 olup olmadığını belirler. Eğer evet ise MIME dönüşümleri için
 kullanılabilir.<br />
         Olası değerler:
-        <ul><li>auto - otomatik olarak algılar, php &lt; 4.3.0 için bu bir parça masraflıdır
-bu yüzden sunucunuzun gerçek olasılıklarına göre değiştirmek için tercih
-edilir.</li>
+        <ul><li>auto - automatically detect</li>
             <li>yes - GD 2 işlevleri kullanılabilir</li>
             <li>no - GD 2 işlevi kullanılamaz</li>
         </ul>
@@ -2216,19 +2220,19 @@ bir çözüm bulmak için <a href="#faq1_11"><abbr title="Sıkça Sorulan
 Sorular">SSS</abbr> 1.11</a>'e bakın.
         <br /><br />
 
-    If the directory where phpMyAdmin is installed is subject to an
-<tt>open_basedir</tt> restriction, you need to create a temporary directory
-in some directory accessible by the web server. However for security
-reasons, this directory should be outside the tree published by
-webserver. If you cannot avoid having this directory published by webserver,
-place at least an empty <tt>index.html</tt> file there, so that directory
-listing is not possible.
+    Eğer phpMyAdmin'in kurulduğu dizin <tt>open_basedir</tt> kısıtlamasına
+bağlıysa, web sunucusu tarafından erişebilir bir takım dizin içine geçici
+bir dizin oluşturmanız gerekir. ancak güvenlik nedeniyle, bu dizin web
+sunucusu tarafından yayınlanan dizin ağacının dışında olmalıdır. Eğer bu
+dizinin web sunucusu tarafından yayınlanmasını önleyemiyorsanız, en azından
+boş bir <tt>index.html</tt> dosyası koyun, böylece dizini listelemek
+imkansızlaşsın.
         <br /><br />
 
-        This directory should have as strict permissions as possible as the only
-user required to access this directory is the one who runs the webserver. If
-you have root privileges, simply make this user owner of this directory and
-make it accessible only by it:
+        Mümkün olduğunca sadece web sunucusunu çalıştıran kullanıcının erişmesini
+gerektiren bu dizin tam izinlere sahip olmalıdır. Eğer root yetkileriniz
+varsa, kolayca bu dizinin sahibini bu kullanıcı yapar ve sadece bunun
+sayesinde erişilebilir yapılır:
         <br /><br />
 
 <pre>
@@ -2236,8 +2240,8 @@ chown www-data:www-data tmp
 chmod 700 tmp
 </pre>
 
-        If you cannot change owner of the directory, you can achieve a similar setup
-using <abbr title="Access Control List">ACL</abbr>:
+        Eğer diznin sahibini değiştiremiyorsanız, <abbr title="Erişim Denetim
+Listesi">ACL</abbr> kullanarak basit bir kur ile başarılı olabilirsiniz:
 
 <pre>
 chmod 700 tmp
@@ -2245,34 +2249,35 @@ setfacl -m "g:www-data:rwx" tmp
 setfacl -d -m "g:www-data:rwx" tmp
 </pre>
 
-        If neither of above works for you, you can still make the directory
-<code>chmod 777</code>, but it might impose risk of other users on system
-reading and writing data in this directory.
+        Eğer yukarıdaki hiçbiri işinize yaramadıysa, hala dizini <code>chmod
+777</code> yapabilirsiniz ama bu dizindeki sistem okuması ve yazması diğer
+kullanıcıları riske sokabilir.
     </dd>
 
-    <dt id="cfg_Export">$cfg['Export'] array</dt>
+    <dt id="cfg_Export">$cfg['Export'] dizilim</dt>
     <dd>
-        In this array are defined default parameters for export, names of items are
-similar to texts seen on export page, so you can easily identify what they
-mean.
+        Bu dizilimde dışa aktarma için varsayılan parametreler tanımlanır, öğelerin
+adları dışa aktarma sayfasındaki metin görünümüyle aynıdır bu yüzden ne
+anlama geldiklerini kolayca tanımlayabilirsiniz.
     </dd>
 
-    <dt id="cfg_Export_method">$cfg['Export']['method'] string</dt>
+    <dt id="cfg_Export_method">$cfg['Export']['method'] dizgi</dt>
     <dd>
-        Defines how the export form is displayed when it loads. Valid values are:
+        Yüklendiğinde dışa aktarma formunun nasıl görüntüleneceğini
+tanımlar. Geçerli değerler:
         <ul>
-        <li><tt>quick</tt> to display the minimum number of options to configure</li>
-        <li><tt>custom</tt> to display every available option to configure</li>
-        <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
-option of using quick export</li>
+        <li><tt>hızlı</tt> yapılandırmak için seçenekleri en az sayıda görüntüler</li>
+        <li><tt>özel</tt> yapılandırmak için her kullanılabilir seçeneği görüntüler</li>
+        <li><tt>özel-formsuz</tt> <tt>özel</tt> ile aynıdır ama kullanılan hızlı dışa
+aktar seçeneğini görüntülemez</li>
         </ul>
     </dd>
 
-    <dt id="cfg_Import">$cfg['Import'] array</dt>
+    <dt id="cfg_Import">$cfg['Import'] dizilim</dt>
     <dd>
-        In this array are defined default parameters for import, names of items are
-similar to texts seen on import page, so you can easily identify what they
-mean.
+        Bu dizilimde içe aktarma için varsayılan parametreler tanımlanır, öğelerin
+adları içe aktarma sayfasındaki metin görünümüyle aynıdır bu yüzden ne
+anlama geldiklerini kolayca tanımlayabilirsiniz.
     </dd>
 
     <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] boolean</dt>
@@ -2281,17 +2286,17 @@ mean.
 doldurulmasada gösterilmesini tanımlar.
     </dd>
 
-    <dt id="cfg_RepeatCells">$cfg['RepeatCells'] integer</dt>
+    <dt id="cfg_RepeatCells">$cfg['RepeatCells'] tam sayı</dt>
     <dd>
-        Repeat the headers every X cells, or 0 to deactivate.
+        Her X hücrede bir başlıkları tekrarlar ya da etkisiz kılmak için 0'dır.
     </dd>
 
     <dt id="cfg_EditInWindow">$cfg['EditInWindow'] boolean<br />
-        <span id="cfg_QueryWindowWidth">$cfg['QueryWindowWidth'] </span>integer<br />
-        <span id="cfg_QueryWindowHeight">$cfg['QueryWindowHeight'] </span>integer<br />
-        <span id="cfg_QueryHistoryDB">$cfg['QueryHistoryDB'] </span>boolean<br />
-        <span id="cfg_QueryWindowDefTab">$cfg['QueryWindowDefTab'] </span>string<br />
-        <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>integer
+        <span id="cfg_QueryWindowWidth">$cfg['QueryWindowWidth']</span> tam sayı<br />
+        <span id="cfg_QueryWindowHeight">$cfg['QueryWindowHeight']</span> tam sayı<br />
+        <span id="cfg_QueryHistoryDB">$cfg['QueryHistoryDB']</span> boolean<br />
+        <span id="cfg_QueryWindowDefTab">$cfg['QueryWindowDefTab']</span> dizgi<br />
+        <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span> tam sayı
     </dt>
     <dd>
         All those variables affect the query window feature. A <tt><abbr
@@ -2810,7 +2815,7 @@ not returning a complete set of <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> headers ...&quot;.</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the php
+<p> You just forgot to read the <i>install.txt</i> file from the PHP
 distribution.  Have a look at the last message in this <a
 href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
 PHP bug database.</p>
@@ -2952,7 +2957,7 @@ MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
 connect to your MySQL server using PHP's classic <a
 href="http://php.net/mysql">MySQL extension</a> as well as the <a
 href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have a good
+available in PHP 5.0. The latter one should be used unless you have a good
 reason not to do so.<br />
     When compiling PHP, we strongly recommend that you manually link the MySQL
 extension of your choice to a MySQL client library of at least the same
@@ -3156,11 +3161,7 @@ enabled.) Click <tt>OK</tt>.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Is there a problem with the mysqli extension when
-running PHP 5.0.4 on 64-bit systems?</a></h4>
-
-<p> Yes. This problem affects phpMyAdmin (&quot;Call to undefined function
-pma_reloadnavigation&quot;), so upgrade your PHP to the next version.</p>
+    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
 
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 Can I access directly to database or table
@@ -3395,8 +3396,8 @@ phpMyAdmin, what can I do?</a></h4>
 <p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
 directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
 sometime.<br />
-    Also have a look at your PHP version number: if it contains
-&quot;4.0b...&quot; it means you're running a beta version of PHP. That's
+    Also have a look at your PHP version number: if it contains &quot;b&quot; or
+&quot;alpha&quot; it means you're running a testing version of PHP. That's
 not a so good idea, please upgrade to a plain revision.</p>
 
 <h4 id="faq2_5">

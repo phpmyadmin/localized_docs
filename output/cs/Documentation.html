@@ -232,15 +232,16 @@ způsoby. Dříve uživatelé obvykle ručně editovali kopii souboru
 instalace, skript nabízející průvodce nastavením. Vytvoření souboru
 <tt>config.inc.php</tt> však stále představuje rychlý způsob, jak začít, a
 dokonce je nezbytné, přejete-li si využívat některé pokročilé funkce.
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
-minimal configuration file) in the main (top-level) phpMyAdmin directory
-(the one that contains <tt>index.php</tt>).  phpMyAdmin first loads
-<tt>libraries/config.default.php</tt> and then overrides those values with
-anything found in <tt>config.inc.php</tt>. If the default value is okay for
-a particular setting, there is no need to include it in
-<tt>config.inc.php</tt>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+        <ul><li>Soubor <tt>config.inc.php</tt> vytoříte v hlavním (nejvyšším) phpMyAdmin
+adresáři (tedy v tom, který obsahuje <tt>index.php</tt>) jednoduše pomocí
+svého textového editoru (jako základ je možné si vzít soubor
+<tt>config.sample.inc.php</tt>, který již obsahuje základní
+nastavení). PhpMyAdmin si nejprve načítá
+<tt>libraries/config.default.php</tt> a hodnoty zde získané poté případně
+přepíše těmi, které si načte z <tt>config.inc.php</tt>. Pokud tedy výchozí
+hodnota splňuje Vaše nároky, není nutné ji znovu deklarovat v
+<tt>config.inc.php</tt>. Abyste mohli začít, potřebujete jen pár řádků,
+jednoduchá konfigurace může vypadat třeba následovně:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // zde zadejte zvolenou hodnotu
@@ -690,17 +691,15 @@ Web server.</dd>
     <dd>What php MySQL extension to use for the connection. Valid options are:
         <br /><br />
 
-        <tt><i>mysql</i></tt> : The classic MySQL extension. This is the recommended
-and default method at this time.<br /><br />
+        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
 
         <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
-available with php 5.0.0 and is the recommended way to connect to a server
+available with PHP 5.0.0 and is the recommended way to connect to a server
 running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
     <dd>Whether to use a compressed protocol for the MySQL server connection or not
-(experimental).<br />
-        This feature requires PHP&nbsp;&gt;=&nbsp;4.3.0.</dd>
+(experimental).</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1431,8 +1430,16 @@ it if your browser has some problems with buffering. IE6 with a certain
 patch is known to cause data corruption when having enabled buffering.</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] boolean</dt>
-    <dd>Whether persistent connections should be used or not (mysql_connect or
-mysql_pconnect).</dd>
+    <dd>Whether <a
+href="http://php.net/manual/en/features.persistent-connections.php">persistent
+connections</a> should be used or not. Works with following extensions:
+        <ul>
+            <li>mysql (<a
+href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
+            <li>mysqli (requires PHP 5.3.0 or newer, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">more
+information</a>).</li>
+        </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] boolean</dt>
     <dd>Jestli má být vynuceno použití HTTPS při přístupu k phpMyAdminovi.</dd>
@@ -1869,9 +1876,7 @@ address as usual.
     <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
 transformations.<br />
         Possible values are:
-        <ul><li>auto - automatically detect, this is a bit expensive operation for php &lt;
-4.3.0 so it is preferred to change this according to your server real
-possibilities</li>
+        <ul><li>auto - automatically detect</li>
             <li>yes - GD 2 functions can be used</li>
             <li>no - GD 2 function cannot be used</li>
         </ul>
@@ -2716,7 +2721,7 @@ not returning a complete set of <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> headers ...&quot;.</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the php
+<p> You just forgot to read the <i>install.txt</i> file from the PHP
 distribution.  Have a look at the last message in this <a
 href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
 PHP bug database.</p>
@@ -2858,7 +2863,7 @@ MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
 connect to your MySQL server using PHP's classic <a
 href="http://php.net/mysql">MySQL extension</a> as well as the <a
 href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in php 5.0. The latter one should be used unless you have a good
+available in PHP 5.0. The latter one should be used unless you have a good
 reason not to do so.<br />
     When compiling PHP, we strongly recommend that you manually link the MySQL
 extension of your choice to a MySQL client library of at least the same
@@ -3062,11 +3067,7 @@ enabled.) Click <tt>OK</tt>.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 Is there a problem with the mysqli extension when
-running PHP 5.0.4 on 64-bit systems?</a></h4>
-
-<p> Yes. This problem affects phpMyAdmin (&quot;Call to undefined function
-pma_reloadnavigation&quot;), so upgrade your PHP to the next version.</p>
+    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
 
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 Can I access directly to database or table
@@ -3301,8 +3302,8 @@ phpMyAdmin, what can I do?</a></h4>
 <p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
 directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
 sometime.<br />
-    Also have a look at your PHP version number: if it contains
-&quot;4.0b...&quot; it means you're running a beta version of PHP. That's
+    Also have a look at your PHP version number: if it contains &quot;b&quot; or
+&quot;alpha&quot; it means you're running a testing version of PHP. That's
 not a so good idea, please upgrade to a plain revision.</p>
 
 <h4 id="faq2_5">
