@@ -258,7 +258,7 @@ chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
 もしくは類似の手段を介して）適切な場所にアップロードしてください。<br /><br />
 
                 一旦ファイルを保存して、再度セキュリティ対策として、保存した設定ファイルを <tt>config/</tt>
-ディレクトリの外に移動させ、パーミッションをリセットする必要があります。
+ディレクトリの外に移動させ、パーミッションを戻す必要があります。
 <pre>
 mv config/config.inc.php .         # カレントディレクトリにファイルを移動
 chmod o-rw config.inc.php          # 誰でも読み書きできる権限を削除
@@ -1190,15 +1190,14 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
 に特定のパッチをあてると、バッファリングを有効にしたときにデータが壊れる問題があることが分かっています。</dd>
 
     <dt id="cfg_PersistentConnections">$cfg['PersistentConnections'] 論理型</dt>
-    <dd>Whether <a
-href="http://php.net/manual/en/features.persistent-connections.php">persistent
-connections</a> should be used or not. Works with following extensions:
+    <dd><a
+href="http://php.net/manual/ja/features.persistent-connections.php">持続的な接続</a>を使用するかどうか。以下の
+PHP 拡張で機能します。
         <ul>
             <li>mysql (<a
-href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
-            <li>mysqli (requires PHP 5.3.0 or newer, <a
-href="http://php.net/manual/en/mysqli.persistconns.php">more
-information</a>).</li>
+href="http://php.net/manual/ja/function.mysql-pconnect.php">mysql_pconnect</a>)</li>
+            <li>mysqli (要 PHP 5.3.0 以降、<a
+href="http://php.net/manual/ja/mysqli.persistconns.php">詳細</a>)</li>
         </ul></dd>
 
     <dt id="cfg_ForceSSL">$cfg['ForceSSL'] 論理型</dt>
@@ -2644,6 +2643,9 @@ href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a>
 を増加 (例：8192)</li>
     <li><a
+href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.get.max_value_length">suhosin.get.max_value_length</a>
+should be increased (eg. 1024)</li>
+    <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
 を無効 (デフォルトです)</li>
     <li><a
@@ -2868,7 +2870,7 @@ href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
 
 <h4 id="login_bug">
     <a href="#login_bug">3.1 <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 認証を使っているときにログアウトすると、同じニックネームでは再ログインできません。</a></h4>
+Protocol">HTTP</abbr> 認証を使っているときにログアウトすると、同じユーザ名では再ログインできません。</a></h4>
 
 <p> これは phpMyAdmin
 が利用している認証のメカニズム（プロトコル）による制限です。この問題を回避するには、開いているブラウザのウインドウを一度すべて閉じてから、phpMyAdmin
@@ -3481,11 +3483,10 @@ href="http://dev.mysql.com/doc/refman/5.1/ja/silent-column-changes.html">カラ�
 <h4 id="underscore">
     <a href="#underscore">6.10 特権を作成するとき、データベース名にアンダースコア（下線）を入れるとどうなりますか。</a></h4>
 
-<p> アンダースコアの前にバックスラッシュをつけない場合は、「なにか 1
-文字」を表すワイルドカードになります。データベース名が「john_db」なら、そのユーザは john1db、john2db
-…への特権を得ることになります。<br /><br />
+<p> アンダースコアの前に ¥ をつけない場合は、「なにか 1 文字」を表すワイルドカードになります。データベース名が「john_db」なら、そのユーザは
+john1db、john2db …への特権を得ることになります。<br /><br />
 
-    アンダースコアの前にバックスラッシュをつけると、そのデータベース名には本当のアンダースコアが含まれているとみなされます。</p>
+    アンダースコアの前に ¥ をつけると、そのデータベース名には本当のアンダースコアが含まれているとみなされます。</p>
 
 <h4 id="faq6_11">
     <a href="#faq6_11">6.11 統計ページにある &oslash; という変わったシンボルの意味は？</a></h4>
