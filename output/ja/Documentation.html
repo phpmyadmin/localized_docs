@@ -114,18 +114,18 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
     <li>テキストファイルをテーブルに読み込み</li>
     <li>テーブルダンプの作成<a href="#footnote_1"><sup>1</sup></a>と読み込み
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, and L<sup>A</sup>T<sub><big>E</big></sub>X formats
+    <li>さまざまなフォーマットでデータをエクスポート<a href="#footnote_1"><sup>1</sup></a>：<abbr
+title="カンマ区切り">CSV</abbr>、<abbr title="Extensible Markup
+Language">XML</abbr>、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>、<abbr
+title="International Standards Organisation">ISO</abbr>/<abbr
+title="International Electrotechnical Commission">IEC</abbr> 26300
+(OpenDocument テキストおよびスプレッドシート)、<abbr title="Microsoft Word
+2000">Word</abbr>、L<sup>A</sup>T<sub><big>E</big></sub>X
         </li>
-    <li>import data and MySQL structures from OpenDocument spreadsheets, as well as
-<abbr title="Extensible Markup Language">XML</abbr>, <abbr title="Comma
-Separated Values">CSV</abbr>, and <abbr title="Server Query
-Language">SQL</abbr> files</li>
+    <li>さまざまファイルよりデータおよび構造のインポートが行えます。OpenDocument スプレッドシートにとどまらず、<abbr
+title="Extensible Markup Language">XML</abbr>、<abbr
+title="カンマ区切り">CSV</abbr>、もちろん <abbr title="Server Query
+Language">SQL</abbr> ファイルも。</li>
     <li>複数サーバの管理</li>
     <li>MySQL ユーザ・特権の管理</li>
     <li>MyISAM テーブルにおける参照完全性のチェック</li>
@@ -1043,7 +1043,7 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 
     <dt><span
 id="cfg_Servers_MaxTableUiprefs">$cfg['Servers'][$i]['MaxTableUiprefs']</span>
-integer
+整数
     </dt>
     <dd>Maximum number of rows saved in <a
 href="#cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</a>
@@ -1191,9 +1191,8 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] 整数</dt>
     <dd>（エクスポートページを除く）メインパネルのリストに表示されるテーブル名の最大数。この制限は、軽快モード時のナビゲーションパネルにも適用されます。</dd>
 
-    <dt id="cfg_ShowHint">$cfg['ShowHint'] boolean</dt>
-    <dd>Whether to show the hints or not (for example, hints when hovering table
-header)</dd>
+    <dt id="cfg_ShowHint">$cfg['ShowHint'] 論理型</dt>
+    <dd>ヒントを表示するかどうか（例：テーブルのヘッダ部にマウスカーソルを重ねたときに表示される）。</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
     <dd>SQL クエリ表示時の最大文字数。デフォルトの制限は 1000 ですが、BLOB を表現する多量の 16
@@ -1399,8 +1398,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 のときはアイコンを、FALSE のときはテキストを、「both (両方)」のときはアイコンとテキストの双方を表示します。</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] 論理型</dt>
-    <dd>Defines whether a user should be displayed a &quot;show all (rows)&quot;
-button in browse mode or not.</dd>
+    <dd>表示モードで「全て（の行）を表示する」ボタンを表示するかどうかを定義します。</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] 整数</dt>
     <dd>結果セットの表示行数。結果セットの行数の方が多い場合は「前へ／次へ」のリンクが表示されます。</dd>
@@ -1509,10 +1507,9 @@ class="configrule">$cfg['MySQLManualType']</a> の値によります）、適切
 
     <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] 文字列</dt>
     <dd>ユーザが定義されていないときに使用するデフォルトの接続の照合順序を定義します。<br />
-        See the <a
-href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">MySQL
-documentation</a> for list of possible values. This setting is ignored when
-connected to Drizzle server.</dd>
+        設定可能な値については <a
+href="http://dev.mysql.com/doc/mysql/ja/charset-charsets.html">MySQL
+のドキュメント</a>を参照してください。Drizzle サーバに接続されているときは、この値は無視されます。</dd>
 
     <dt id="cfg_Lang">$cfg['Lang'] 文字列</dt>
     <dd>強制的に使用する言語。<br />
@@ -1679,11 +1676,9 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
 
     <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> 文字列
     </dt>
-    <dd>Defines the place where table row links (Edit, Copy, Delete) would be put
-when tables contents are displayed (you may have them displayed at the left
-side, right side, both sides or nowhere).  &quot;left&quot; and
-&quot;right&quot; are parsed as &quot;top&quot; and &quot;bottom&quot; with
-vertical display mode.</dd>
+    <dd>テーブルの内容を表示しているとき、行のリンク（編集、コピー、削除）をどこに表示するかを定義します（表示は、左側 (left)、右側
+(right)、左右両側 (both)、なし (none) が行えます）。「左 (left)」と「右 (right)」は、垂直表示モードでは「上
+(top)」と「下 (bottom)」と解釈されます。</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] 文字列</dt>
     <dd>表示モードには水平 (horizontal)、水平縦ヘッダ (horizontalflipped)、垂直
@@ -1827,9 +1822,9 @@ setfacl -d -m "g:www-data:rwx" tmp
         この配列はインポートの際のデフォルトパラメータを定義します。項目名はインポートページに表示されるテキストとほとんど同じですので、意味は簡単にわかるでしょう。
     </dd>
 
-    <dt id="cfg_SaveCellsAtOnce">$cfg['SaveCellsAtOnce'] boolean</dt>
+    <dt id="cfg_SaveCellsAtOnce">$cfg['SaveCellsAtOnce'] 論理型</dt>
     <dd>
-        Defines whether or not to save all edited cells at once in browse-mode.
+        表示モードにおいて、変更したセルのデータを一度にまとめて保存するかどうかを定義します。
     </dd>
 
     <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] 論理型</dt>
@@ -2405,10 +2400,9 @@ href="http://php.net/mysqli">改良版 MySQL 拡張 (MySQLi)</a>
 クライアントライブラリに、手作業でリンクさせることを強く推奨します。PHP
 配布ファイルにバンドルされているものはやや古くなっているために、問題を起こすことがあるためです <a href="#faq1_17a">(<abbr
 title="よくある質問">FAQ</abbr> 1.17a もご覧ください)</a>。<br /><br />
-    <a href="http://mariadb.org/">MariaDB</a> is also supported (versions 5.1
-and 5.2 were tested).<br /><br />
-    Since phpMyAdmin 3.5 <a href="http://www.drizzle.org/">Drizzle</a> is
-supported.
+    <a href="http://mariadb.org/">MariaDB</a> もサポートしています（バージョン 5.1 と 5.2
+はテストしました）。<br /><br />
+    phpMyAdmin 3.5 以降は<a href="http://www.drizzle.org/">Drizzle</a> もサポートしています。
     </p>
 
 <h5 id="faq1_17a">
@@ -2802,10 +2796,10 @@ class="configrule">$cfg['OBGZip']</a> ディレクティブを <tt>FALSE</tt>
 が稼動しているということですが、これはあまりよいことではありませんので、テスト版でないものにアップグレードしてください。</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5 Each time I want to insert or change a row or drop a
-database or a table, an error 404 (page not found) is displayed or, with
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication, I'm asked to log in again. What's wrong?</a></h4>
+    <a href="#faq2_5">2.5
+行を挿入／修正しようとしたり、データベースやテーブルを削除しようとするたびに404（ページが見つかりません）エラーが表示されます。また、<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>
+ないしクッキー認証をしているときはログインしなおすように求められます。何が悪いのでしょうか？</a></h4>
 
 <p> phpMyAdmin 設定ファイルの <a href="#cfg_PmaAbsoluteUri"
 class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブの値をチェックしてください。</p>
@@ -3002,8 +2996,7 @@ firstname like 'A%'</tt> の結果「Smith」という値が 2
 <p> テーブルに主キーを設定するようにしてください。そうすると phpMyAdmin は修正／削除のリンクに主キーを利用するようになります。</p>
 
 <h4 id="faq3_11">
-    <a href="#faq3_11">3.11 The number of rows for InnoDB tables is not
-correct.</a></h4>
+    <a href="#faq3_11">3.11 InnoDB テーブルの行数が正しくありません。</a></h4>
 
 <p> phpMyAdmin は手軽な方法で行数を取得していますが、この方法を使うと InnoDB テーブルの場合は概数しか返ってこないのです。<a
 href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
@@ -3028,13 +3021,13 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 
 <!-- Begin: Excel import limitations -->
 <h4 id="faq3_15">
-    <a href="#faq3_15">3.15 (withdrawn).</a></h4>
+    <a href="#faq3_15">3.15 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq3_16">
-    <a href="#faq3_16">3.16 (withdrawn).</a></h4>
+    <a href="#faq3_16">3.16 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq3_17">
-    <a href="#faq3_17">3.17 (withdrawn).</a></h4>
+    <a href="#faq3_17">3.17 (該当しなくなったため取り下げ)。</a></h4>
 
 
 
@@ -3682,13 +3675,11 @@ class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt></p>
 </p>
 
 <h4 id="faq6_23">
-    <a href="#faq6_23">6.23 Export: I heard phpMyAdmin can export Microsoft
-Excel files?</a></h4>
+    <a href="#faq6_23">6.23 エクスポート：phpMyAdmin は MS Excel
+ファイルをエクスポートできると聞いたのですが？</a></h4>
 
-<p> You can use <abbr title="comma separated values">CSV</abbr> for Microsoft
-Excel, which works out of the box.<br />
-    Since phpMyAdmin 3.4.5 support for direct export to Microsoft Excel version
-97 and newer was dropped.
+<p> <abbr title="カンマ区切り">CSV</abbr> でやり取りができます。Microsoft Excel では標準サポートされています。<br />
+    phpMyAdmin 3.4.5 以降、Microsoft Excel 97 以降形式での直接エクスポートはサポートされなくなりました。
 </p>
 
 <h4 id="faq6_24">
@@ -4298,7 +4289,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 <ul>
   <li>セットアップスクリプトの改良</li>
   <li>ユーザ設定機能</li>
-  <li>Drizzle support</li>
+  <li>Drizzle のサポート</li>
 </ul></li>
 
 <li>Derek Schaefer (Google Summer of Code 2009)
@@ -4472,10 +4463,10 @@ href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%86%E3%83%B3
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89_%28%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%A6%29">フィールド</a>
 - 分割されたデータ／カラムの１つ</li>
-    <li><a href="http://www.wikipedia.org/wiki/Foreign_key">foreign key</a> - a
-column or group of columns in a database row that point to a key column or
-group of columns forming a key of another database row in some (usually
-different) table.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E5%A4%96%E9%83%A8%E3%82%AD%E3%83%BC">外部キー</a>
+-
+データベースの行のカラムまたはグループカラムの１つ。これらは、（通常は異なる）テーブル内における別のデータベースの行のキーを形成しているカラムキーまたはグループカラムキーを指している。</li>
     <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - フリーの PDF ライブラリ</li>
     <li><a id="gd" href="http://ja.wikipedia.org/wiki/GD_Graphics_Library">GD
 グラフィックライブラリ</a> - Thomas Boutell 氏他によって開発された動的に画像を操作するためのライブラリ</li>
@@ -4558,9 +4549,9 @@ href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%88#port">ポート</
 Comments)</a> - インターネット技術に適用される新しい研究、技術革新、方法論を書き連ねた文章。</li>
     <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP
 ファイル形式の仕様バージョン 4.3</li>
-    <li><a href="http://www.wikipedia.org/wiki/Row_%28database%29">Row (record,
-tuple)</a> - represents a single, implicitly structured data item in a
-table.</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E7%B5%84_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">行（レコード、組)</a>
+- テーブル内において単一の、暗黙的に構造化されたデータ項目を表している</li>
     <li><a href="http://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%BC%E3%83%90">サーバ</a> -
 他のコンピュータシステムにネットワークを介してサービスを提供しているコンピュータシステムのこと</li>
     <li><a id="glossar_storage_engine"
