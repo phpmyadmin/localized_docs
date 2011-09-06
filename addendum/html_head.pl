@@ -1,7 +1,7 @@
 PO4A-HEADER:mode=after;position=<div id="body">;beginboundary=<ul>
 <p>
-This is translated version of a <a
-href="http://www.phpmyadmin.net/documentation/">phpMyAdmin
-documentation</a>. You can contribute to it on our <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a>.
+To jest przetłumaczona wersja <a
+href="http://www.phpmyadmin.net/documentation/">Dokumentacji
+phpMyAdmina</a>. Możecie dołączyć do grona tłumaczy na naszym serwerze <a
+href="https://l10n.cihar.com/projects/pmadoc/">serwer tłumaczenia</a>.
 </p>

@@ -1,10 +1,11 @@
 PO4A-HEADER:mode=before;position=<head>
 <!--
 
-This file is generated using po4a, do not edit!
+Ten plik jest wygenerowany przy użyciu po4a, nie edytować!
 
-You can edit po files to change the translation.
+Aby zmienić to tłumaczenie, można edytować pliki po.
 
-Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
+Albo można je edytować online pod adresem
+https://l10n.cihar.com/projects/pmadoc/.
 
 -->
