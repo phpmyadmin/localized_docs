@@ -260,12 +260,12 @@ $cfg['Servers'][$i]['password']      = 'cbb74bc'; // zde zadejte vaše heslo
 $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
-                For a full explanation of possible configuration values, see the <a
-href="#config">Configuration Section</a> of this document.</li>
-            <li id="setup_script">Instead of manually editing <tt>config.inc.php</tt>, you can use the <a
-href="setup/">Setup Script</a>. First you must manually create a folder
-<tt>config</tt> in the phpMyAdmin directory. This is a security measure. On
-a Linux/Unix system you can use the following commands:
+                Vysvětlení všech možných konfiguračních hodnot najdete v  sekci <a
+href="#config">Nastavení</a>.</li>
+            <li id="setup_script">Namísto ruční úpravy <tt>config.inc.php</tt> můžete použít <a
+href="setup/">nastavovací skript</a>. Nejprve je nutné v adresáři phpMyAdmin
+ručně vytvořit adresář <tt>config</tt>. Toto je bezpečnostní opatření. Na
+systémech Linux/Unix je možné použít následující příkazy:
 <pre>
 cd phpMyAdmin
 mkdir config                        # vytvoří adresář pro ukládání
@@ -280,26 +280,27 @@ chmod o+w config/config.inc.php     # povolit zápis pro všechny
 váš web server do ní možnost zápisu a čtení. <a href="#faq1_26">FAQ 1.26</a>
 vám stím může pomoci.<br /><br />
 
-                Next, open <tt><a href="setup/">setup/</a> </tt>in your browser. Note that
-<strong>changes are not saved to disk until explicitly choose
-<tt>Save</tt></strong> from the <i>Configuration</i> area of the
-screen. Normally the script saves the new config.inc.php to the
-<tt>config/</tt> directory, but if the webserver does not have the proper
-permissions you may see the error "Cannot load or save configuration."
-Ensure that the <tt> config/</tt> directory exists and has the proper
-permissions - or use the <tt>Download</tt> link to save the config file
-locally and upload (via FTP or some similar means) to the proper location.<br /><br />
+                Dále ve svém prohlížeči otevřete <tt><a href="setup/">setup/</a>
+</tt>. Všimněte si, že <strong>změny nejsou uloženy na disk, dokud není
+explicitně zvoleno<tt>Save</tt></strong> v <i>konfigurační</i> oblasti
+obrazovky. Normálně skript ukládá nový config.inc.php do adresáře
+<tt>config/</tt>, ovšem v případě, že webserver nemá odpovídající oprávnění,
+múže se vyskytnout chyba "Cannot load or save configuration. (Nelze načíst
+či uložit nastavení.)" Ujistěte se, zda adresář <tt> config/</tt> existuje,
+a že má potřebná oprávnění - anebo použijte odkaz <tt>Download</tt> k
+uložení souboru nastavení do vlastního diskového prostoru a nahrajte soubor
+(přes FTP nebo podobných způsobem) do odpovídajícího umístění.<br /><br />
 
-                Once the file has been saved, it must be moved out of the <tt> config/</tt>
-directory and the permissions must be reset, again as a security measure:
+                Jakmile byl soubor uložen, musí být vyjmut z adresáře <tt> config/</tt> a
+oprávnění musí být resetována, opět coby bezpečnostní opatření.
 <pre>
 mv config/config.inc.php .         # přesunout soubor do aktuálního adresáře
 chmod o-rw config.inc.php          # odebrat práva k přístupu pro každého
 rm -rf config                      # odstranit nepotřebný adresář
 </pre>
-                Now the file is ready to be used. You can choose to review or edit the file
-with your favorite editor, if you prefer to set some advanced options which
-the setup script does not provide.</li></ul></li>
+                Nyní je soubor připraven k použití. Je možné ho prohlížet či jej v případě,
+že chcete nastavit nějaké další volby, které skript neumožňuje, upravovat ve
+vašem oblíbeném editoru.</li></ul></li>
     <li>If you are using the <tt>auth_type</tt> &quot;config&quot;, it is suggested
 that you protect the phpMyAdmin installation directory because using config
 does not require a user to enter a password to access the phpMyAdmin
