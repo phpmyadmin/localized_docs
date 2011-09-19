@@ -531,9 +531,9 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
     <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
 href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
 配列です。ここにはさまざまなサーバへのログイン情報が格納されます。例えば、最初の <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a> には最初のサーバのホスト名が、二番目の <a
+class="configrule">$cfg['Servers'][$i]['host']</a> には最初のサーバのホスト名が、2 番目の <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-には二番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt> には 1
+には 2 番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt> には 1
 つしかサーバ定義がありませんが、必要があれば <tt>./config.inc.php</tt>
 にいくつでも定義を追加できます。<tt>./libraries/config.default.php</tt>
 から該当ブロックを丸ごと、あるいは必要な部分のみコピーしてください（すべての設定を定義する必要はありません。必要な部分のみ変更してください）。</dd>
@@ -1045,14 +1045,13 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 id="cfg_Servers_MaxTableUiprefs">$cfg['Servers'][$i]['MaxTableUiprefs']</span>
 整数
     </dt>
-    <dd>Maximum number of rows saved in <a
+    <dd><a
 href="#cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</a>
-table.<br /><br />
+のテーブルに保存できる最大行数。<br /><br />
 
-        When tables are dropped or renamed, table_uiprefs may contain invalid data
-(referring to tables which no longer exist).<br />
-        We only keep this number of newest rows in table_uiprefs and automatically
-delete older rows.</dd>
+        テーブルが削除されたりテーブル名が変更されたりすると、table_uiprefs
+に無効なデータ（既に存在しないテーブルへの参照）が含まれる場合もあります。<br />
+        最大行数を超えた場合は、自動的に table_uiprefs 内の古い行から削除されます。</dd>
 
     <dt><span
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
@@ -1192,8 +1191,7 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
     <dd>（エクスポートページを除く）メインパネルのリストに表示されるテーブル名の最大数。この制限は、軽快モード時のナビゲーションパネルにも適用されます。</dd>
 
     <dt id="cfg_ShowHint">$cfg['ShowHint'] 論理型</dt>
-    <dd>Whether or not to show hints (for example, hints when hovering over table
-headers).</dd>
+    <dd>ヒントを表示するかどうか（例：テーブルのヘッダ部にマウスカーソルを重ねたときに表示される）。</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
     <dd>SQL クエリ表示時の最大文字数。デフォルトの制限は 1000 ですが、BLOB を表現する多量の 16
@@ -1688,7 +1686,7 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
     </dd>
 
     <dt id="cfg_RememberSorting">$cfg['RememberSorting'] 論理型</dt>
-    <dd>If enabled, remember the sorting of each table when browsing them.</dd>
+    <dd>有効にすると、表示している各テーブルのソートが記憶されます。</dd>
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] 文字列</dt>
     <dd>
@@ -2108,7 +2106,8 @@ MIME タイプも考慮します）。MIME タイプに固有の変換機能は�
 
         MIME 文字セットを指定したい場合は変換オプションで定義できますが、これはその MIME
 変換機能にもとから定義されているオプションとは別に、オプションの最後に置く必要があります。書式は「'; charset=XXX'」です。オプションを 2
-つ指定できる変換機能に文字セットを付け加えたいなら、「'最初のパラメータ','二番目のパラメータ','charset=us-ascii'」のように入力します。もっとも、「'','','charset=us-ascii'」のように、パラメータについてはデフォルトの値を利用することもできます。</li>
+つ指定できる変換機能に文字セットを付け加えたいなら、「'最初のパラメータ','2
+番目のパラメータ','charset=us-ascii'」のように入力します。もっとも、「'','','charset=us-ascii'」のように、パラメータについてはデフォルトの値を利用することもできます。</li>
 </ul>
 
 <h3 id="transformationsfiles">3. ファイル構造</h3>
@@ -2379,7 +2378,7 @@ Protocol">HTTP</abbr>、タイムアウトのせいで）大きなダンプフ�
 経由で送信／取り扱いできるデータサイズの上限を決めるものです。また、あるユーザによると、post_max_size と memory_limit も
 upload_max_filesize より大きい必要があるそうです。<br /> <br />
 
-    アップロードファイルが大きすぎる、あるいはホスティングしてもらっているプロバイダが設定を変えたがらない場合にはいくつかの対策があります。</p>
+    アップロードファイルが大きすぎる、あるいはホスティングしてもらっているプロバイダに設定を変えていただけないのであれば、いくつかの対策があります。</p>
 
 <ul><li><a href="#cfg_UploadDir" class="configrule">$cfg['UploadDir']</a>
 機能をご覧ください。この機能を使うと、SCP や FTP
@@ -2641,11 +2640,11 @@ Error)」というエラーが出ます。</a>
 をそのまま主キーとしたテーブルの編集などです。
 </p>
 <p>
-    Suhosin の設定はいくつかのケースでは誤動作につながる可能性があります。phpMyAdmin は１回の HTTP
-リクエスト内で多量のカラムを転送を必要とするアプリケーションであり、Suhosin は HTTP
+    Suhosin の設定はいくつかのケースでは誤動作につながる可能性があります。phpMyAdmin は 1 回の HTTP
+リクエスト内で多量のカラムの転送を必要とするアプリケーションであり、Suhosin は HTTP
 リクエストに対して何らかの防止を行おうとするものであるため、この問題を完全に回避することはできません。一般的に、全ての
 <code>suhosin.request.*</code>、<code>suhosin.post.*</code>、<code>suhosin.get.*</code>
-ディレクティブは、phpMyAdmin の使用に対して悪影響を与えます。Suhosin
+設定は、phpMyAdmin の使用に対して悪影響を与えます。Suhosin
 によって削られた変数が発生したかをエラーログで確認できるので、この問題を診断して設定がうまく合うように調整することができます。
 </p>
 <p>
@@ -2685,7 +2684,7 @@ href="http://www.hardened-php.net/suhosin/configuration.html#logging_configurati
 
     <p>
         また、<a href="#cfg_SuhosinDisableWarning"><tt>SuhosinDisableWarning</tt>
-ディレクティブ</a>を使用して警告を無効にすることができます。
+設定</a>を使用して警告を無効にすることができます。
     </p>
 
 <h4 id="faq1_39">
@@ -4172,7 +4171,7 @@ Repository">PEAR</abbr> のコーディング基準にあわせ、XHTML1.0 と C
 
 <li>Mike Beck &lt;mike.beck_at_web.de&gt;
 <ul>
-  <li>QBE における自動結合</li>
+  <li>定型問い合わせにおける自動結合処理</li>
   <li>印刷用表示（printview）における links カラム</li>
   <li>リレーションビュー</li>
 </ul></li>
@@ -4189,7 +4188,7 @@ Repository">PEAR</abbr> のコーディング基準にあわせ、XHTML1.0 と C
 <li>Christophe Gesch&eacute; &quot;MySQL Form Generator for PHPMyAdmin&quot;
 (http://sf.net/projects/phpmysqlformgen/) から
 <ul>
-  <li>複数テーブルを印刷用表示（printview）するためのパッチを提案</li>
+  <li>複数テーブルを印刷用表示するためのパッチを提案</li>
 </ul></li>
 
 <li>Garvin Hicking &lt;me_at_supergarv.de&gt;
@@ -4345,8 +4344,8 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Rouslan Placella (Google Summer of Code 2011)
 <ul>
-  <li>Improved support for Stored Routines, Triggers and Events</li>
-  <li>Italian translation updates</li>
+  <li>ストアドルーチン、トリガ、イベントのサポートの改善</li>
+  <li>イタリア語の翻訳更新</li>
 </ul></li>
 
 </ul>
