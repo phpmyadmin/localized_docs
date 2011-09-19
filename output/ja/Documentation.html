@@ -524,8 +524,8 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
         「クッキー」認証方式を利用する場合は、ここにお好みのランダムなパスフレーズを入力してください。このパスフレーズは blowfish
 アルゴリズムが内部的に利用するものです。ユーザがパスフレーズを入力するよう求められることはありません。このパラメータの文字数の上限はありません。<br /><br />
         
-        phpMyAdmin バージョン 3.1.0
-以降、このパスフレーズが（空の場合は）自動で生成されるようになっています。自動作成されたパスフレーズがセキュリティ上弱いということありません。この生成されたパスフレーズはセッションに格納され、さらに、クッキーからユーザ名を取り出すといったことは不可能です。</dd>
+        バージョン 3.1.0
+以降、このパスフレーズが（空の場合は）自動で生成されるようになってはいますが、これはセキュリティ上あまり強いものではありません。通常、クッキーからユーザ名を取り出すといったことは不可能ですが、自動生成された（暗号／複合に必要な）パスフレーズがセッションに格納されるからです。</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] 配列</dt>
     <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
@@ -1192,7 +1192,8 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
     <dd>（エクスポートページを除く）メインパネルのリストに表示されるテーブル名の最大数。この制限は、軽快モード時のナビゲーションパネルにも適用されます。</dd>
 
     <dt id="cfg_ShowHint">$cfg['ShowHint'] 論理型</dt>
-    <dd>ヒントを表示するかどうか（例：テーブルのヘッダ部にマウスカーソルを重ねたときに表示される）。</dd>
+    <dd>Whether or not to show hints (for example, hints when hovering over table
+headers).</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
     <dd>SQL クエリ表示時の最大文字数。デフォルトの制限は 1000 ですが、BLOB を表現する多量の 16
@@ -1687,7 +1688,7 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
     </dd>
 
     <dt id="cfg_RememberSorting">$cfg['RememberSorting'] 論理型</dt>
-    <dd>有効にすると、表示している各テーブルのソートが記憶されます。</dd>
+    <dd>If enabled, remember the sorting of each table when browsing them.</dd>
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] 文字列</dt>
     <dd>
@@ -2249,7 +2250,7 @@ href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a> を
 
 <h4 id="faq1_1">
     <a href="#faq1_1">1.1
-特定のアクションが要求されるたびにサーバがクラッシュしたり、ブラウザに空白のページや暗号のような文字だらけのページが表示されます。どうしたらよいのでしょうか？</a></h4>
+サーバが度々クラッシュします。その度に、特定のアクションを要求されたり、ブラウザに空白のページや暗号のような文字だらけのページが表示されます。どうしたらよいのでしょうか？</a></h4>
 
 <p> <i>config.inc.php</i> ファイルの <a href="#cfg_OBGzip"
 class="configrule">$cfg['OBGzip']</a> ディレクティブを <tt>FALSE</tt> に、PHP の設定ファイルの
@@ -3813,7 +3814,7 @@ chmod o+rwx tmp
     </ul>
 
 <h4 id="faq6_31">
-    <a href="#faq6_31">6.31 How do I create a relation in designer?</a></h4>
+    <a href="#faq6_31">6.31 デザイナでリレーションを作成するには、どのようにすればいいのでしょうか？</a></h4>
 
     <p>リレーションを選択します:</p>
 
@@ -3821,20 +3822,14 @@ chmod o+rwx tmp
     <p>表示するカラムはピンク色で表示されます。表示非表示を切り替える場合は「表示するカラムを選択する」というアイコンをクリックしてから適切なカラム名をクリックください。</p>
 
 <h4 id="faq6_32">
-    <a href="#faq6_32">6.32 How can I use the zoom search feature?</a></h4>
+    <a href="#faq6_32">6.32 検索プロット機能の使い方を教えてください。</a></h4>
 
-    <p> The Zoom search feature is an alternative to table search feature. It allows
-you to explore a table by representing its data in a scatter plot. You can
-locate this feature by selecting a table and clicking the 'Search' tab. One
-of the sub-tabs in the 'Table Search' page is 'Zoom Search'. <br/><br/>
+    <p> 検索プロット機能は、テーブル検索とは異なった機能です。データを散布図に描くことにより、テーブルデータを調査するものです。この機能は、テーブルを選択して「検索」タブをクリックしたところから使用できます。「テーブル検索」ページ内のタブに、「検索プロット」の項目があります。 <br/><br/>
 
-    Consider the table REL_persons in <a href="#faq6_6"><abbr title="Frequently
-Asked Questions"> FAQ</abbr> 6.6</a> for an example. To use zoom search, two
-columns need to be selected, for example, id and town_code. The id values
-will be represented on one axis and town_code values on the other axis. Each
-row will be represented as a point in a scatter plot based on its id and
-town_code. You can include two additional search criteria apart from the two
-fields to display.<br/><br/>
+    <a href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a>の REL_persons
+テーブルを例に上げて説明していきます。検索プロットを使用するには、id と town_code というように、2
+つのカラムを選択する必要があります。id の値を一方の軸に置かれれば、town_code はもう一方の軸に置かれます。それぞれの行は、id と
+town_code をもとに点として散布図内に配置されます。表示されているフィールドより、追加の絞り込み条件を 2 つまで含めることができます。<br/><br/>
 
     You can choose which field should be displayed as label for each point. If a
 display column has been set for the table (see <a href="#faqdisplay"><abbr
@@ -4348,6 +4343,11 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
   <li>グラフィカルなクエリデザイナ</li>
 </ul></li>
 
+<li>Rouslan Placella (Google Summer of Code 2011)
+<ul>
+  <li>Improved support for Stored Routines, Triggers and Events</li>
+  <li>Italian translation updates</li>
+</ul></li>
 
 </ul>
 
