@@ -603,21 +603,20 @@ Protocol">HTTP</abbr>／クッキー認証モード（あるいは、phpMyAdmin 
 Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
     <dd>そのサーバで利用する認証方法が入ります（config／cookie／<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>／signon）。
-        <ul><li>「config」認証
-（<tt>$auth_type&nbsp;=&nbsp;'config'</tt>）は昔ながらの簡単な方法です。ユーザ名とパスワードは
-<i>config.inc.php</i> に保存されます。</li>
-            <li>「cookie」認証モード （<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>）は 2.2.3
-で導入されました。クッキーの助けを借りることで、あらゆる有効な MySQL
+        <ul><li>「config」認証 (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)
+は昔ながらの簡単な方法です。ユーザ名とパスワードは <i>config.inc.php</i> に保存されます。</li>
+            <li>「クッキー」認証モード (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) はバージョン 2.2.3
+で導入されました。クッキーを利用することで、あらゆる有効な MySQL
 ユーザでログインできます。ユーザ名とパスワードは、セッションの間はクッキーに保管されます。セッションが終わるとパスワードは破棄されます。また、<tt><a
 href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 が有効になっている場合は任意のサーバにログインできます。
             </li>
-            <li>「<abbr title="HyperText Transfer Protocol">HTTP</abbr>」認証（旧版の「advanced」）
-（<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'</tt>）は 1.3.0 で導入されました。HTTP-Auth を経由することで、あらゆる有効な
-MySQL ユーザでログインできます。</li>
-            <li>「signon」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、2.10.0
+            <li>「<abbr title="HyperText Transfer Protocol">HTTP</abbr>」認証 (旧版の「advanced」)
+(<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
+を経由することで、あらゆる有効な MySQL ユーザでログインできます。</li>
+            <li>「サインオン」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、バージョン 2.10.0
 で導入されました。用意された PHP のセッションデータからか、もしくは PHP
 スクリプトを使用して、ログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
 (<code>scripts/signon.php</code>) の中にあります。別の例として、OpenID
@@ -856,7 +855,7 @@ ALTER TABLE `pma_column_comments`
 
         <a href="#cfg_QueryHistoryMax"
 class="configrule">$cfg['QueryHistoryMax']</a>
-を使うと、保持しておきたい履歴アイテムの数を指定できます。このリストはログインのたびに上限値にまで切り詰められます。<br /><br />
+を使うと、保持しておきたい履歴リストの上限を指定できます。このリストはログインのたびに上限値にまで切り詰められます。<br /><br />
 
         クエリの履歴を利用できるのはブラウザの JavaScript が有効になっている場合のみです。<br /><br />
 
@@ -3825,18 +3824,14 @@ chmod o+rwx tmp
 
     <p> 検索プロット機能は、テーブル検索とは異なった機能です。データを散布図に描くことにより、テーブルデータを調査するものです。この機能は、テーブルを選択して「検索」タブをクリックしたところから使用できます。「テーブル検索」ページ内のタブに、「検索プロット」の項目があります。 <br/><br/>
 
-    <a href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a>の REL_persons
+    <a href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a> の REL_persons
 テーブルを例に上げて説明していきます。検索プロットを使用するには、id と town_code というように、2
 つのカラムを選択する必要があります。id の値を一方の軸に置かれれば、town_code はもう一方の軸に置かれます。それぞれの行は、id と
 town_code をもとに点として散布図内に配置されます。表示されているフィールドより、追加の絞り込み条件を 2 つまで含めることができます。<br/><br/>
 
-    You can choose which field should be displayed as label for each point. If a
-display column has been set for the table (see <a href="#faqdisplay"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.7</a>), it is taken as the
-label unless you specify otherwise.  You can also select the maximum number
-of rows you want to be displayed in the plot by specifing it in the 'Max
-rows to plot' field. Once you have decided over your criteria, click 'Go' to
-display the plot.<br/><br/>
+    各点のラベルとして表示される項目を選択することができます。テーブルに表示するカラム (<a href="#faqdisplay"><abbr
+title="よくある質問">FAQ</abbr> 6.7</a> 参照)
+が設定されている場合は、特に指定しない限りそれがラベルとして扱われます。また、「プロットする結果の最大数」で、散布図内に表示させたいプロットの最大数が指定できます。描画の指定がよければ、「実行」をクリックすると散布図が表示されます。<br/><br/>
 
     After the plot is generated, you can use the mousewheel to zoom in and out
 of the plot.  In addition, panning feature is enabled to navigate through
