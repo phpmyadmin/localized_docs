@@ -191,7 +191,7 @@ StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしま
 <h3 id="quick_install">クイックインストール</h3>
 <ol><li>phpmyadmin.net のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、UTF-8
 形式の全言語版もあります。これには、全ての言語と全ての文字セットが含まれています（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
-ような名前のキットを選んだと仮定して説明していきます。
+のような名前のキットを選んだと仮定して説明していきます。
     </li>
     <li>ウェブサーバのドキュメントルートで <tt>tar -xzvf phpMyAdmin_x.x.x.tar.gz</tt>
 を実行して配布ファイルを解凍します（サブディレクトリを展開するように解凍してください）。ドキュメントルートに直接アクセスできない場合は、ローカルマシンのディレクトリにファイルを解凍します。ステップ
@@ -255,7 +255,7 @@ chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
 ディレクトリが存在していて、適切なパーミッションを持っているかを確認してください。もしくは、<tt>ダウンロードする</tt>リンクを使用して、設定ファイルをローカルに保存してから、（FTP
 もしくは類似の手段を介して）適切な場所にアップロードしてください。<br /><br />
 
-                一旦ファイルを保存して、再度セキュリティ対策として、保存した設定ファイルを <tt>config/</tt>
+                一旦ファイルを保存した後、再度セキュリティ対策として、保存した設定ファイルを <tt>config/</tt>
 ディレクトリの外に移動させ、パーミッションを戻す必要があります。
 <pre>
 mv config/config.inc.php .         # カレントディレクトリにファイルを移動
@@ -275,7 +275,7 @@ title="HyperText Transfer
 Protocol">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
 は現行版では、ようこそ画面と管理データベース、もしくはログインダイアログが表示されます。</li>
     <li>ウェブサーバの設定でサブフォルダ <tt>./libraries</tt> と <tt>./setup/lib</tt>
-へのアクセスを拒否しておく必要があります。Apache の場合は、該当フォルダに提供されている .htaccess
+へのアクセスを拒否しておいたほうがいいでしょう。Apache の場合は、該当フォルダに提供されている .htaccess
 ファイルを使用することができます。他のウェブサーバの場合は、各自で設定する必要があります。このような設定を行うことにより、サブフォルダの露出を防ぎ、万一、そこのコードにクロスサイドスクリプティングの脆弱性が見つかっても、利用されることはありません。</li>
     <li>
         一般的には、インストールしている phpMyAdmin
@@ -543,8 +543,7 @@ href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
 アドレスが入ります。（例：localhost）</dd>
 
     <dt id="cfg_Servers_port">$cfg['Servers'][$i]['port'] 文字列</dt>
-    <dd>$i 番目の MySQL サーバのポート番号が入ります。デフォルトは 3306
-です（空欄にしておいてください）。ホスト名を「localhost」にすると、MySQL
+    <dd>$i 番目の MySQL サーバのポート番号が入ります。デフォルト（空欄）は 3306 です。ホスト名を「localhost」にすると、MySQL
 はポート番号を無視してソケット接続しますので、デフォルトとは別のポートで接続したい場合は <a href="#cfg_Servers_host"
 class="configrule">$cfg['Servers'][$i]['host']</a>
 に「127.0.0.1」か、本来のホスト名を入れてください。
@@ -1766,11 +1765,10 @@ language">SQL</abbr>
         一時ファイルが保管可能なディレクトリの名前です。 
         <br /><br />
 
-        This is needed for importing ESRI Shapefiles, see <a href="#faq6_30"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.30</a> and to work around
-limitations of <tt>open_basedir</tt> for uploaded files, see <a
-href="#faq1_11"><abbr title="Frequently Asked Questions">FAQ</abbr>
-1.11</a>.
+        この設定は、ESRI シェープファイルをインポートするときに必要になります。<a href="#faq6_30"><abbr
+title="よくある質問">FAQ</abbr> 6.30</a> を参照してください。また、この設定ではファイルのアップロードに対して
+<tt>open_basedir</tt> 制限が働きます。これに関しては <a href="#faq1_11"><abbr
+title="よくある質問">FAQ</abbr> 1.11</a> をご覧になってください。
         <br /><br />
 
     phpMyAdmin がインストールされているディレクトリが、<tt>open_basedir</tt>
@@ -2907,9 +2905,10 @@ Protocol">HTTP</abbr> 認証を使っているときにログアウトすると�
 <h4 id="faq3_2">
     <a href="#faq3_2">3.2 大きなテーブルを圧縮モードでダンプするとメモリ制限のエラーや時間制限のエラーが出ます。</a></h4>
 
-<p> 圧縮されたダンプがメモリ上に生成されるために、PHP のメモリ制限にひっかかるのが原因です。GZip/BZip2 エクスポートについては 2.5.4
-以降 <a href="#cfg_CompressOnFly" class="configrule">$cfg['CompressOnFly']</a>
-（逐次圧縮）を使うとこの問題を克服できます（デフォルトで有効になっています）。Zip エクスポートではこの方法が行えませんので、大きめのダンプの Zip
+<p> 圧縮されたダンプがメモリ上に生成されるために、PHP のメモリ制限にひっかかるのが原因です。GZip/BZip2 エクスポートについてはバージョン
+2.5.4 以降での <a href="#cfg_CompressOnFly"
+class="configrule">$cfg['CompressOnFly']</a> (逐次圧縮) を使うとこの問題を克服できます
+(デフォルトで有効になっています)。Zip エクスポートではこの方法が行えませんので、大きめのダンプの Zip
 ファイルが必要な場合、別の方法をとる必要があります。</p>
 
 <h4 id="faq3_3">
@@ -3316,7 +3315,7 @@ title="HyperText Transfer Protocol">HTTP</abbr> ポート (80 ないし 443) と
 
 <h4 id="faq5_18">
 <a href="#faq5_18">5.18 Konqueror 4.2.x でテーブルを表示するとき、無効な <tt>LIMIT</tt>
-句が生成されます。</a></h4>
+節が生成されます。</a></h4>
 <p> <tt>http</tt> 認証モードを使用しており、サーバ上で <tt>register_globals</tt> が <tt>On</tt>
 に設定されている場合にのみ発生します。これはブラウザ固有の問題と思われますので、<tt>クッキー</tt>認証モードを使用するようにしてください。</p>
 
@@ -3523,7 +3522,7 @@ query language">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>) でダン
 
 <ul><li>「完全な INSERT 文を作成する」は、すべての INSERT
 コマンドにカラム名を付与して、ダンプを読みやすくします（ただし、結果としてできるファイルは大きくなります）。</li>
-    <li>「長い INSERT 文を作成する」は、ダンプファイルを短くするために INSERT 句とテーブル名を一度しか使わないようにします。</li>
+    <li>「長い INSERT 文を作成する」は、ダンプファイルを短くするために INSERT 節とテーブル名を一度しか使わないようにします。</li>
     <li>「遅延インサートを使用する」については、<a
 href="http://dev.mysql.com/doc/mysql/ja/insert-delayed.html">MySQL
 マニュアル</a>の説明をご覧ください。
@@ -3674,7 +3673,8 @@ class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt></p>
     <a href="#faq6_22">6.22
 ブックマーク：テーブルの表示モードに入ったときに自動的にデフォルトのブックマークを実行するようにはできますか？</a></h4>
 
-<p> できます。ブックマークのラベルがテーブル名と同じにしておくと実行されます。
+<p> Yes. If a bookmark has the same label as a table name and it's not a public
+bookmark, it will be executed.
 </p>
 
 <h4 id="faq6_23">
@@ -3778,28 +3778,26 @@ href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart
     <a href="#faq6_30">6.30 Import: How can I import ESRI Shapefiles</a></h4>
 
     <p> 
-        An ESRI Shapefile is actually a set of several files, where .shp file
-contains geometry data and .dbf file contains data related to those geometry
-data.  To read data from .dbf file you need to have PHP compiled with the
-dBase extension (--enable-dbase). Otherwise only geometry data will be
-imported.
+        ESRI シェープファイルは、実際には単独ファイルではなくいくつかの集合ファイルです。空間データが含まれている .shp
+ファイルと、その空間データに関連するデータが含まれている .dbf ファイルから構成されています。.dbf
+ファイルから関連するデータを読み込むには、PHPに dBase
+拡張が必要になります(--enable-dbase)。そうでない場合は、空間データのみがインポートされることになります。
     </p>
 
-    <p>To upload these set of files you can use either of the following methods:</p>
+    <p>これらの集合ファイルのアップロードは、以下に上げるいずれかの方法で行えます。</p>
     <ul>
         <li>
             <p>
-            Configure upload directory with <a href="#cfg_UploadDir"
-class="configrule">$cfg['UploadDir']</a>, upload both .shp and .dbf files
-with the same filename and chose the .shp file from the import page.
+            アップロードディレクトリを <a href="#cfg_UploadDir"
+class="configrule">$cfg['UploadDir']</a> で設定し、そこへ .shp、.dbf
+ファイル共にアップロード。ファイル名（拡張子を含まない部分）は共に同じにしておく必要があります。
             </p>
         </li>
         <li>
             <p>
-            Create a Zip archive with .shp and .dbf files and import it. For this to
-work, you need to set <a href="#cfg_TempDir"
-class="configrule">$cfg['TempDir']</a> to a place where the web server user
-can write (for example <tt>'./tmp'</tt>).
+            .shp、.dbf ファイルを Zip ファイルにまとめ、それをインポート。この方法を行うには、ウェブサーバユーザで書き込み可能な場所
+(例：<tt>'./tmp'</tt>) を <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> に指定しておく必要があります。
             </p>
 
             <p> UNIX ベースのシステムで一時ディレクトリを作成するには、以下のようにします。</p>
