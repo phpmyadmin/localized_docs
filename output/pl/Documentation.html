@@ -169,7 +169,7 @@ językach,</a>
         </li>
     <li>synchronizować dwie bazy danych umieszczone na tych samych lub zdalnych
 serwerach, <a href="#faq9_1">(patrz: <abbr title="Frequently Asked
-Questions">FAQ</abbr> 9.1)</a>
+Questions">FAQ</abbr> 9.1).</a>
     </li>
 
 </ul>
@@ -178,20 +178,21 @@ Questions">FAQ</abbr> 9.1)</a>
 <p> Wiele osób ma trudności ze zrozumieniem koncepcji zarządzania użytkownikami
 w phpMyAdmin. Mechanizm tego zarządzania wygląda następująco:
 
--- aby zalogować się do phpMyAdmin, wszyscy użytkownicy muszą mieć wcześniej
+1. aby zalogować się do phpMyAdmin, wszyscy użytkownicy muszą mieć wcześniej
 założone konta w MySQL,
--- gdy użytkownik loguje się do phpMyAdmin, jego nazwa i hasło przesyłane są
+2. gdy użytkownik loguje się do phpMyAdmin, jego nazwa i hasło przesyłane są
 bezpośrednio do MySQL,
--- zarządzanie użytkownikami w phpMyAdmin może odbywać się <b> wyłącznie</b>
+3. zarządzanie użytkownikami w phpMyAdmin może odbywać się <b> wyłącznie</b>
 na zasadzie przetwarzania i/lub modyfikacji <b>informacji</b> o kontach
 użytkownika.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1</sup> phpMyAdmin może kompresować kopie zapasowe (w formatach: Zip,
-GZip -RFC 1952- lub Bzip2) i eksportować <abbr title="comma separated
-values">CSV</abbr>, jeśli użyje się do tego PHP z obsługą Zlib
-(<tt>--with-zlib</tt>) i/lub obsługą Bzip2 (<tt>--with-bz2</tt>). Właściwa
-obsługa może być też związana ze zmianami w pliku <tt>php.ini</tt>.</p>
+    <sup>[ 1 ]</sup> phpMyAdmin może kompresować kopie zapasowe (w formatach:
+Zip, GZip -RFC 1952- lub Bzip2) i eksportować w formacie <abbr title="comma
+separated values">CSV (Comma Seperated Values)</abbr>, jeśli użyje się do
+tego PHP z obsługą Zlib (<tt>--with-zlib</tt>) i/lub obsługą Bzip2
+(<tt>--with-bz2</tt>). Właściwa obsługa może być też związana ze zmianami w
+pliku <tt>php.ini</tt>.</p>
 
 
 <!-- INSTALLATION -->
@@ -200,17 +201,16 @@ obsługa może być też związana ze zmianami w pliku <tt>php.ini</tt>.</p>
 <ol><li><a href="#quick_install">Szybka instalacja</a></li>
     <li><a href="#setup_script">Użycie skryptu instalacyjnego</a></li>
     <li><a href="#linked-tables">Przechowywanie konfiguracji phpMyAdmin </a></li>
-    <li><b>Aktualizacja ze starszej wersji:</b></li>
-    <li><b>Używanie trybów uwierzytelniania:</b></li>
+    <li><a href="#upgrading">Podwyższenie wersji z wersji starszej</a></li>
+    <li><a href="#authentication_modes">Używanie trybów uwierzytelniania</a></li>
 </ol>
 
 <p class="important">
     phpMyAdmin nie stosuje żadnych specjalnych mechanizmów zabezpieczeń serwera
-MySQL. Przyznanie odpowiednich uprawnień do baz danych MySQL jest ciągle
-zadaniem administratora. Na stronie &quot;Uprawnienia&quot;
-(&quot;Privileges&quot;) w phpMyAdmin można odpowiednio zabezpieczyć bazy
-danych, przydzielając lub odbierając określone uprawnienia użytkownikom
-poszczególnych baz.
+MySQL. Przyznanie odpowiednich uprawnień do baz danych jest zadaniem
+administratora. Na stronie &quot;Uprawnienia&quot; (&quot;Privileges&quot;)
+w phpMyAdmin można zabezpieczyć bazy, przydzielając lub odbierając określone
+uprawnienia użytkownikom poszczególnych baz.
 </p>
 
 <p class="important">
@@ -220,82 +220,93 @@ poszczególnych baz.
 title="operating system">OS</abbr> X, archiwa trzeba rozpakować do formatów
 <acronym title="Apple Macintosh">Mac</acronym> za pomocą programu StuffIt
 Expander.<br />
-    Tak więc będziesz musiał ponownie zapisać w programie BBEdit WSZYSTKIE
-skrypty phpMyAdmina w stylu Uniksa przed wrzuceniem ich na serwer, jako że
-PHP wydaje się nie lubić znaków końca linii w stylu <tt>Maca</tt>.</p>
+    Tak więc trzeba ponownie zapisać w programie BBEdit WSZYSTKIE skrypty
+phpMyAdmina w stylu Uniksa przed wrzuceniem ich na serwer, jako że PHP
+wydaje się&quot; nie lubić&quot; znaków końca linii w stylu <tt>Mac</tt>.</p>
 
 <h3 id="quick_install">Szybka instalacja</h3>
-<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
-page. Some kits contain only the English messages, others contain all
-languages in UTF-8 format (this should be fine in most situations), others
-contain all languages and all character sets. We'll assume you chose a kit
-whose name looks like <tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.
+<ol><li>Wybrać odpowiedni zestaw dystrybucyjny ze strony pobierania phpmyadmin.net.
+
+UWAGA: niektóre zestawy zawierają wiadomości tylko w języku angielskim, inne
+- zawierają wszystkie języki w formacie UTF-8 (w większości przypadków jest
+to wystarczające), jeszcze inne zawierają wszystkie języki z pełnym zestawem
+kodowania znaków. Zakładamy, że wybrany będzie zestaw podobny do tego:
+<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.
     </li>
-    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
-<tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt> in your webserver's
-document root. If you don't have direct access to your document root, put
-the files in a directory on your local machine, and, after step 4, transfer
-the directory on your web server using, for example, ftp.</li>
-    <li>Ensure that all the scripts have the appropriate owner (if PHP is running in
-safe mode, having some scripts with an owner different from the owner of
-other scripts will be a problem). See <a href="#faq4_2"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 4.2</a> and <a
-href="#faq1_26"><abbr title="Frequently Asked Questions">FAQ</abbr> 1.26</a>
-for suggestions.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<tt>config.inc.php</tt>, but now a wizard-style setup script is provided for
-those who prefer a graphical installation. Creating a
-<tt>config.inc.php</tt> is still a quick way to get started and needed for
-some advanced features.
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<tt>config.inc.php</tt> (you can copy <tt>config.sample.inc.php</tt> to get
-minimal configuration file) in the main (top-level) phpMyAdmin directory
-(the one that contains <tt>index.php</tt>).  phpMyAdmin first loads
-<tt>libraries/config.default.php</tt> and then overrides those values with
-anything found in <tt>config.inc.php</tt>. If the default value is okay for
-a particular setting, there is no need to include it in
-<tt>config.inc.php</tt>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+    <li>Rozpakować zestaw za pomocą programów untar lub unzip (upewnić się, że
+zostały rozpakowane również wszystkie podkatalogi) do katalogu root serwera
+zdalnego:<tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt> Jeżeli
+brak bezpośredniego dostępu do tego katalogu - wrzucić pliki do katalogu na
+maszynie lokalnej, i, po wykonaniu kroku 4, przesłać katalog na sewer za
+pomocą, na przykład, klienta ftp.</li>
+    <li>Upewnić się, że wszystkie skrypty mają odpowiedniego właściciela (jeśli PHP
+pracuje w trybie bezpiecznym, posiadanie niektórych skryptów, mających
+właściciela innego niż właściciel innych skryptów, będzie powodować
+problemy). Zobacz sugestie w: <a href="#faq4_2"> <abbr title="Frequently
+Asked Questions">FAQ</abbr> 4.2</a> i <a href="#faq1_26"><abbr
+title="Frequently Asked Questions">FAQ</abbr> 1.26.</a></li>
+    <li>Skonfigurować instalację. Istnieją dwie metody, które można użyć w tym celu:
+
+1. Ręczna edycja kopii pliku <tt>config.inc.php</tt>,
+
+2. Instalacja za pomocą skryptu w stylu kreatora graficznego.
+
+Pierwsza metoda jest szybkim sposobem rozpoczęcia instalacji w trybie
+zaawansowanym, druga natomiast - jest dużym ułatwieniem dla tych, którzy
+preferują instalację w trybie graficznym.
+        <ul><li>Aby ręcznie utworzyć plik <tt>config.inc.php</tt>, trzeba w dowolnym
+edytorze tekstowym utworzyć pusty plik o tej właśnie nazwie, a następnie
+umieścić w nim odpowiednie wpisy (dyrektywy konfiguracyjne). Można też
+skopiować do niego zawartość pliku <tt>config.sample.inc.php</tt>, który
+zawiera minimalny zestaw konfiguracyjny; w tym przypadku plik z nową
+zawartością należy skopiować do głównego katalogu phpMyAdmin (do katalogu, w
+którym znajduje się plik <tt>index.php</tt>).
+phpMyAdmin wczytuje najpierw plik <tt>libraries/config.default.php</tt>, a
+następnie nadpisuje umieszczoną w nim zawartość tym, co znajdzie w pliku
+<tt>config.inc.php</tt>. Jeśli wartość domyślna jest odpowiednio dobra dla
+określonych ustawień, nie ma potrzeby załączać jej do pliku
+<tt>config.inc.php</tt>, trzeba natomiast zastosować kilka dodatkowych
+dyrektyw; prosta konfiguracja może wyglądać następująco:
 <pre>
 &lt;?php
-$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // use here a value of your choice
+$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // użyj tutaj własnej, dowolnej wartości
 
 $i=0;
 $i++;
 $cfg['Servers'][$i]['auth_type']     = 'cookie';
 ?&gt;
-</pre>
-                Or, if you prefer to not be prompted every time you log in:
+ </pre>
+                Albo, jeśli nie chcesz być proszony o hasło za każdym, gdy się logujesz:
 <pre>
 &lt;?php
 
 $i=0;
 $i++;
 $cfg['Servers'][$i]['user']          = 'root';
-$cfg['Servers'][$i]['password']      = 'cbb74bc'; // use here your password
+$cfg['Servers'][$i]['password']      = 'cbb74bc'; // wpisz tutaj swoje hasło
 $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
-                For a full explanation of possible configuration values, see the <a
-href="#config">Configuration Section</a> of this document.</li>
-            <li id="setup_script">Instead of manually editing <tt>config.inc.php</tt>, you can use the <a
-href="setup/">Setup Script</a>. First you must manually create a folder
-<tt>config</tt> in the phpMyAdmin directory. This is a security measure. On
-a Linux/Unix system you can use the following commands:
+                Pełne wyjaśnienie możliwych wartości konfiguracyjnych dostępne jest w <a
+href="#config">Sekcji Konfiguracja</a> tego dokumentu.</li>
+            <li id="setup_script">Zamiast ręcznej edycji pliku <tt>config.inc.php</tt>, można użyć <a
+href="setup/">Skryptu instalacyjnego</a>. W tym celu trzeba ręcznie utworzyć
+katalog <tt>config</tt> w katalogu głównym phpMyAdmin. Jest to podyktowane
+koniecznymi środkami bezpieczeństwa. W systemie Linux/Unix można użyć
+następujących poleceń:
 <pre>
 cd phpMyAdmin
-mkdir config                        # create directory for saving
-chmod o+rw config                   # give it world writable permissions
+mkdir config                        # utwórz katalog do zapisu
+chmod o+rw config                   # przypisz mu uprawnienia do zapisu
 </pre>
-                And to edit an existing configuration, copy it over first:
+                Aby wyedytować istniejącą konfigurację, trzeba ją najpierw skopiować:
 <pre>
-cp config.inc.php config/           # copy current configuration for editing
-chmod o+w config/config.inc.php     # give it world writable permissions
-</pre>
-                On other platforms, simply create the folder and ensure that your web server
-has read and write access to it. <a href="#faq1_26">FAQ 1.26</a> can help
-with this.<br /><br />
+cp config.inc.php config/           # skopiuj bieżącą konfigurację przeznaczoną do edycji
+chmod o+w config/config.inc.php                                                    # przypisz jej uprawnienia do zapisu
+ </pre>
+                Na innych platformach systemowych trzeba także utworzyć katalog
+<tt>config</tt> i upewnić się, że serwer WWW ma ustawiony dostęp do odczytu
+i zapisu. <a href="#faq1_26">FAQ 1.26</a> może pomóc zrozumieć tę kwestię.<br /><br />
 
                 Next, open <tt><a href="setup/">setup/</a> </tt>in your browser. Note that
 <strong>changes are not saved to disk until explicitly choose
