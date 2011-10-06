@@ -10,7 +10,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 
 Ten plik jest wygenerowany przy użyciu po4a, nie zmieniać jego treści!
 
-Aby zmienić to tłumaczenie, można edytować pliki po.
+Aby zmienić to tłumaczenie, można edytować pliki w formacie .po.
 
 Albo można je modyfikować online pod adresem
 https://l10n.cihar.com/projects/pmadoc/.
@@ -53,10 +53,14 @@ Questions">FAQ</abbr></a></li>
 <div id="body">
 
 <p>
-To jest przetłumaczona wersja <a
-href="http://www.phpmyadmin.net/documentation/">Dokumentacji
-phpMyAdmin</a>. Możecie dołączyć do grona tłumaczy na naszym serwerze <a
-href="https://l10n.cihar.com/projects/pmadoc/">serwer tłumaczenia</a>.
+To jest (<b>częściowe</b>) tłumaczenie oficjalnej <a
+href="http://www.phpmyadmin.net /documentation/">dokumentacji programu
+phpMyAdmin -- wersja 3.5.0-dev</a>.
+
+Wszystkich sympatyków, zwolenników i użytkowników <b>Wolnego
+Oprogramowania</b> zapraszamy do wspólnego tłumaczenia tej
+dokumentacji. Nasz serwer tłumaczeń znajduje sie pod adresem: <a
+href="https://l10n.cihar.com/projects/pmadoc/">https://l10n.cihar.com/projects/pmadoc/</a>
 </p>
 <ul><li><a href="http://www.phpmyadmin.net/"> Strona domowa phpMyAdmin</a></li>
     <li><a href="https://sourceforge.net/projects/phpmyadmin/">Strona projektu
@@ -74,18 +78,17 @@ SourceForge phpMyAdmin</a></li>
 <h2 id="require">Wymagania</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li>Potrzebna jest wersja PHP 5.2.0 lub nowsza, z <tt>obsługą sesji</tt> (<a
-href="#faq1_31">patrz:<abbr title="Frequently Asked Questions">FAQ</abbr>
+        <ul><li>PHP w wersji 5.2.0 lub nowszej, z <tt>obsługą sesji</tt> (<a
+href="#faq1_31">Zobacz: <abbr title="Frequently Asked Questions">FAQ</abbr>
 1.31</a>), rozszerzenie Standard PHP Library (SPL) i obsługa JSON.
                 </li>
-        <li>Do obsługi publikacji plików ZIP na serwerze, potrzebne jest rozszerzenie
-PHP <tt>zip</tt></li>
-        <li>Do poprawnej obsługi wielobajtowych napisów (np. UTF-8, które aktualnie jest
-domyślne), trzeba zainstalować rozszerzenia <tt>mbstring</tt> i
-<tt>ctype</tt>.
+        <li>Do obsługi wysyłania plików ZIP na serwer, potrzebne jest rozszerzenie
+PHP<tt> zip</tt>.</li>
+        <li>Do poprawnej obsługi wielobajtowych napisów (np. domyślnego formatu UTF-8),
+potrzebna jest instalacja rozszerzeń <tt>mbstring</tt> i <tt>ctype</tt>.
         </li>
-            <li>Aby bezpośrednio wyświetlać miniaturki plików w formacie JPEG w oryginalnych
-proporcjach, w PHP wymagana jest również obsługa GD2.</li>
+            <li>Obsługa GD2 -- do bezpośredniego wyświetlania miniaturek plików w formacie
+JPEG, w oryginalnych proporcjach.</li>
             <li>Używanie <a href="#authentication_modes">metody uwierzytelniania
 &quot;cookie&quot;</a>, zakłada również stosowanie rozszerzenia <a
 href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a>. Jest to stanowcze
@@ -96,48 +99,49 @@ znacznie wolniej, niż zwykle.
                 </li>
                 <li>Aby obsługiwać paski postępu wczytywania stron, zobacz <a href="#faq2_9">
 <abbr title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
-                <li>Obsługa strumieni danych BLOB (Binary Large Object - pol. duże obiekty
-binarne), patrz: wymagania PHP i MySQL, w: <a href="#faq6_25"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.25</a>.</li>
+                <li>Obsługa strumieni danych BLOB, Zobacz: wymagania PHP i MySQL, w: <a
+href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
+6.25</a>.</li>
         </ul>
     </li>
-    <li><b>Wersja MySQL</b> 5.0 or nowsza (<a href="#faq1_17">szczegóły</a>);</li>
-    <li><b>Przeglądarka Web</b> z włączonymi <i>cookies</i>.</li>
+    <li><b>Wersja MySQL</b> 5.0 lub nowsza <a href="#faq1_17">Więcej szczegółów
+... </a></li>
+    <li><b>Przeglądarka stron WWW</b> z włączonymi plikami <b>cookies</b>.</li>
 </ul>
 
 
 <!-- INTRODUCTION -->
 <h2 id="intro">Wprowadzenie</h2>
 
-<p> phpMyAdmin potrafi zarządzać całym serwerem MySQL (wymaga to konta
-superużytkowika), jak również pojedynczą bazą danych -- pod warunkiem, że
-jest prawidłowo skonfigurowane konto użytkownika MySQL (włączenie
-odczytu/modyfikacji tylko określonej bazy danych).
-Do Ciebie, użytkowniku tej dokumentacji, należy odszukanie odpowiedniego
-fragmentu podręcznika MySQL, dotyczący tego zagadnienia.
+<p> Za pomocą phpMyAdmin można zarządzać całym serwerem MySQL (administracja
+serwerem z konta root), jak również pojedynczą bazą danych. W tym ostatnim
+przypadku pod warunkiem, że jest prawidłowo skonfigurowane konto użytkownika
+MySQL (włączenie odczytu/modyfikacji tylko określonej bazy danych).
+Do ciebie, Użytkowniku tej dokumentacji, należy odszukanie odpowiedniego
+fragmentu podręcznika MySQL, na temat tej kwestii.
 </p>
 
-<h3>Obecnie phpMyAdmin potrafi:</h3>
+<h3>Obecnie, za pomocą phpMyAdmin można:</h3>
 
 <ul><li>przeglądać i usuwać bazy danych, tabele, widoki, kolumny i indeksy,</li>
-    <li>tworzyć, kopiować, usuwać, zmieniać nazwy i modyfikować tabele, kolumny i
+    <li>tworzyć, kopiować, usuwać, zmieniać nazwy, modyfikować tabele, kolumny i
 indeksy,</li>
     <li>utrzymywać w dobrym stanie serwer, bazy danych i tabele, z propozycjami na
 temat konfiguracji serwera,</li>
     <li>wykonywać, edytować i tworzyć zakładki dowolnego wyrażenia<abbr
-title="structured query language">SQL</abbr>; dotyczy to nawet zapytań
+title="structured query language">SQL</abbr>; dotyczy to także zapytań
 wsadowych,</li>
     <li>wczytywać pliki tekstowe do tabel,</li>
-    <li>tworzyć<a href="#footnote_1"><sup>1</sup></a>i odczytywać zrzuty tabel,
+    <li>tworzyć<a href="#footnote_1"><sup>1</sup></a> i odczytywać zrzuty tabel,
         </li>
-    <li>eksportować <a href="#footnote_1"><sup>1</sup></a> do różnych formatów
-danych: <abbr title="Comma Separated Values">CSV</abbr>, <abbr
-title="Extensible Markup Language">XML</abbr>, <abbr title="Portable
-Document Format">PDF</abbr>, <abbr title="International Standards
+    <li>eksportować dane <a href="#footnote_1"><sup>1</sup></a> do różnych formatów:
+<abbr title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible
+Markup Language">XML</abbr>, <abbr title="Portable Document
+Format">PDF</abbr>, <abbr title="International Standards
 Organisation">ISO</abbr>/<abbr title="International Electrotechnical
 Commission">IEC</abbr> 26300 - OpenDocument Text and Spreadsheet, <abbr
-title="Microsoft Word 2000">Word</abbr>, i formatów
-L<sup>A</sup>T<sub><big>E</big></sub>X,
+title="Microsoft Word 2000">Word</abbr>, i formatów L<sup> A</sup>T
+<sub><big>E</big> </sub>X,
         </li>
     <li>importować dane i struktury MySQL z arkuszy kalkulacyjnych OpenDocument, jak
 również <abbr title="Extensible Markup Language">XML</abbr>, <abbr
@@ -146,53 +150,55 @@ Query Language">SQL</abbr>, </li>
     <li>administrować wieloma serwerami,</li>
     <li>zarządzać użytkownikami MySQL i ich uprawnieniami,</li>
     <li>sprawdzać referencyjną integralność powiązań w tabelach MyISAM,</li>
-    <li>używać Query-by-example (QBE) - pol. zapytanie-przez-przykład, tworzyć
+    <li>używać <b>zapytań przez przykład</b> (Query-by-example - QBE); tworzyć
 automatyczne zapytania, łączące żądane tabele,</li>
     <li>tworzyć grafikę PDF z graficznym układem bazy danych,</li>
-    <li>wyszukiwać danych globalnie w bazie lub w jej podzestawie,</li>
-    <li>przekształcać składowane dane do dowolnego formatu używając zestawu
+    <li>wyszukiwać dane w sposób globalny w bazie lub w jej podzestawie,</li>
+    <li>przekształcać składowane dane do dowolnego formatu, używając zestawu
 predefiniowanych funkcji, takich jak wyświetlanie danych BLOB w postaci
 obrazu lub odsyłacza do pobrania, 
         </li>
     <li>śledzić zmiany w bazach danych, tabelach i widokach,</li>
-    <li>obsługiwać tabele InnoDB i klucze obce (foreign keys), <a
-href="#faq3_6">(patrz: <abbr title="Frequently Asked Questions">FAQ</abbr>
-3.6)</a></li>
-    <li>obsługiwać mysqli, ulepszone rozszerzenie MySQL, <a href="#faq1_17"> (patrz:
-<abbr title="Frequently Asked Questions">FAQ</abbr> 1.17)</a></li>
+    <li>obsługiwać tabele InnoDB i klucze obce <a href="#faq3_6">. Zobacz: <abbr
+title="Frequently Asked Questions">FAQ</abbr> 3.6</a>,</li>
+    <li>obsługiwać mysqli, ulepszone rozszerzenie MySQL, <a
+href="#faq1_17">. Zobacz: <abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.17)</a>,</li>
     <li>tworzyć, edytować, wywoływać, eksportować i usuwać przechowywane procedury i
 funkcje,</li>
     <li>tworzyć, edytować, eksportować i usuwać zdarzenia i wyzwalacze, </li>
     <li>komunikować się w <a
-href="http://www.phpmyadmin.net/home_page/translations.php">62 różnych
-językach,</a>
+href="http://www.phpmyadmin.net/home_page/translations.php">62 narodowych
+językach</a>,
         </li>
     <li>synchronizować dwie bazy danych umieszczone na tych samych lub zdalnych
-serwerach, <a href="#faq9_1">(patrz: <abbr title="Frequently Asked
-Questions">FAQ</abbr> 9.1).</a>
+serwerach, <a href="#faq9_1">Zobacz: <abbr title="Frequently Asked
+Questions">FAQ</abbr> 9.1</a>,
     </li>
 
 </ul>
 
-<h4>Kilka słów na temat użytkowników:</h4>
+<h4>Kilka słów na temat Użytkowników:</h4>
 <p> Wiele osób ma trudności ze zrozumieniem koncepcji zarządzania użytkownikami
 w phpMyAdmin. Mechanizm tego zarządzania wygląda następująco:
 
 1. aby zalogować się do phpMyAdmin, wszyscy użytkownicy muszą mieć wcześniej
-założone konta w MySQL,
+założone konta w MySQL,n\ 
+
 2. gdy użytkownik loguje się do phpMyAdmin, jego nazwa i hasło przesyłane są
 bezpośrednio do MySQL,
+
 3. zarządzanie użytkownikami w phpMyAdmin może odbywać się <b> wyłącznie</b>
-na zasadzie przetwarzania i/lub modyfikacji <b>informacji</b> o kontach
+na zasadzie przetwarzania i/lub modyfikacji informacji o kontach
 użytkownika.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>[ 1 ]</sup> phpMyAdmin może kompresować kopie zapasowe (w formatach:
-Zip, GZip -RFC 1952- lub Bzip2) i eksportować w formacie <abbr title="comma
-separated values">CSV (Comma Seperated Values)</abbr>, jeśli użyje się do
-tego PHP z obsługą Zlib (<tt>--with-zlib</tt>) i/lub obsługą Bzip2
-(<tt>--with-bz2</tt>). Właściwa obsługa może być też związana ze zmianami w
-pliku <tt>php.ini</tt>.</p>
+    <sup> 1 </sup> phpMyAdmin może kompresować kopie zapasowe w formatach: Zip,
+GZip -RFC 1952- lub Bzip2, i eksportować te kopie  w formacie <abbr
+title="comma separated values">CSV </abbr>, jeśli użyje się do tego PHP z
+obsługą Zlib (<tt>--with-zlib</tt>) i/lub obsługą Bzip2
+(<tt>--with-bz2</tt>). Właściwa obsługa kompresji może wiazać się także ze
+zmianami w pliku <tt>php.ini</tt>. </p>
 
 
 <!-- INSTALLATION -->
@@ -201,16 +207,16 @@ pliku <tt>php.ini</tt>.</p>
 <ol><li><a href="#quick_install">Szybka instalacja</a></li>
     <li><a href="#setup_script">Użycie skryptu instalacyjnego</a></li>
     <li><a href="#linked-tables">Przechowywanie konfiguracji phpMyAdmin </a></li>
-    <li><a href="#upgrading">Podwyższenie wersji z wersji starszej</a></li>
-    <li><a href="#authentication_modes">Używanie trybów uwierzytelniania</a></li>
+    <li><a href="#upgrading">Aktualizacja phpMyAdmin ze starszej wersji</a></li>
+    <li><a href="#authentication_modes">Używanie trybów uwierzytelnienia</a></li>
 </ol>
 
 <p class="important">
     phpMyAdmin nie stosuje żadnych specjalnych mechanizmów zabezpieczeń serwera
 MySQL. Przyznanie odpowiednich uprawnień do baz danych jest zadaniem
-administratora. Na stronie &quot;Uprawnienia&quot; (&quot;Privileges&quot;)
-w phpMyAdmin można zabezpieczyć bazy, przydzielając lub odbierając określone
-uprawnienia użytkownikom poszczególnych baz.
+administratora. Na stronie <b>Uprawnienia</b> interfejsu phpMyAdmin można
+zabezpieczyć bazy, przydzielając lub odbierając określone uprawnienia
+użytkownikom poszczególnych baz.
 </p>
 
 <p class="important">
@@ -218,11 +224,10 @@ uprawnienia użytkownikom poszczególnych baz.
     jeśli pracujesz w wersji <acronym title="Apple Macintosh">Mac</acronym>
 <abbr title="operating system">OS</abbr>, która poprzedza wersję <abbr
 title="operating system">OS</abbr> X, archiwa trzeba rozpakować do formatów
-<acronym title="Apple Macintosh">Mac</acronym> za pomocą programu StuffIt
-Expander.<br />
-    Tak więc trzeba ponownie zapisać w programie BBEdit WSZYSTKIE skrypty
-phpMyAdmina w stylu Uniksa przed wrzuceniem ich na serwer, jako że PHP
-wydaje się&quot; nie lubić&quot; znaków końca linii w stylu <tt>Mac</tt>.</p>
+<acronym title="Apple Macintosh">Mac</acronym>.<br />
+    Trzeba ponownie zapisać, w programie BBEdit, WSZYSTKIE skrypty phpMyAdmin
+napisane w stylu Unix przed wysłaniem ich na serwer. Język PHP wydaje
+się&quot; nie lubić&quot; znaków końca linii w stylu <tt>Mac</tt>.</p>
 
 <h3 id="quick_install">Szybka instalacja</h3>
 <ol><li>Wybrać odpowiedni zestaw dystrybucyjny ze strony pobierania phpmyadmin.net.
@@ -236,15 +241,15 @@ kodowania znaków. Zakładamy, że wybrany będzie zestaw podobny do tego:
     <li>Rozpakować zestaw za pomocą programów untar lub unzip (upewnić się, że
 zostały rozpakowane również wszystkie podkatalogi) do katalogu root serwera
 zdalnego:<tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt> Jeżeli
-brak bezpośredniego dostępu do tego katalogu - wrzucić pliki do katalogu na
-maszynie lokalnej, i, po wykonaniu kroku 4, przesłać katalog na sewer za
-pomocą, na przykład, klienta ftp.</li>
+brak bezpośredniego dostępu do tego katalogu -- umieścić pliki w jakimś
+katalogu w maszynie lokalnej, i, po wykonaniu kroku 4, przesłać katalog na
+sewer za pomocą, na przykład, klienta FTP.</li>
     <li>Upewnić się, że wszystkie skrypty mają odpowiedniego właściciela (jeśli PHP
-pracuje w trybie bezpiecznym, posiadanie niektórych skryptów, mających
-właściciela innego niż właściciel innych skryptów, będzie powodować
-problemy). Zobacz sugestie w: <a href="#faq4_2"> <abbr title="Frequently
-Asked Questions">FAQ</abbr> 4.2</a> i <a href="#faq1_26"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.26.</a></li>
+pracuje w trybie bezpiecznym, posiadanie skryptów, mających innego
+właściciela niż właściciel podstawowy, będzie powodować problemy). Zobacz
+sugestie w: <a href="#faq4_2"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.2</a> i <a href="#faq1_26"><abbr title="Frequently
+Asked Questions">FAQ</abbr> 1.26.</a></li>
     <li>Skonfigurować instalację. Istnieją dwie metody, które można użyć w tym celu:
 
 1. Ręczna edycja kopii pliku <tt>config.inc.php</tt>,
@@ -255,12 +260,13 @@ Pierwsza metoda jest szybkim sposobem rozpoczęcia instalacji w trybie
 zaawansowanym, druga natomiast - jest dużym ułatwieniem dla tych, którzy
 preferują instalację w trybie graficznym.
         <ul><li>Aby ręcznie utworzyć plik <tt>config.inc.php</tt>, trzeba w dowolnym
-edytorze tekstowym utworzyć pusty plik o tej właśnie nazwie, a następnie
+edytorze tekstowym utworzyć nowy plik o tej właśnie nazwie, a następnie
 umieścić w nim odpowiednie wpisy (dyrektywy konfiguracyjne). Można też
 skopiować do niego zawartość pliku <tt>config.sample.inc.php</tt>, który
 zawiera minimalny zestaw konfiguracyjny; w tym przypadku plik z nową
 zawartością należy skopiować do głównego katalogu phpMyAdmin (do katalogu, w
 którym znajduje się plik <tt>index.php</tt>).
+
 phpMyAdmin wczytuje najpierw plik <tt>libraries/config.default.php</tt>, a
 następnie nadpisuje umieszczoną w nim zawartość tym, co znajdzie w pliku
 <tt>config.inc.php</tt>. Jeśli wartość domyślna jest odpowiednio dobra dla
@@ -269,21 +275,22 @@ określonych ustawień, nie ma potrzeby załączać jej do pliku
 dyrektyw; prosta konfiguracja może wyglądać następująco:
 <pre>
 &lt;?php
-$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // użyj tutaj własnej, dowolnej wartości
+$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // użyć dowolnej wartości
 
 $i=0;
 $i++;
 $cfg['Servers'][$i]['auth_type']     = 'cookie';
 ?&gt;
- </pre>
-                Albo, jeśli nie chcesz być proszony o hasło za każdym, gdy się logujesz:
+</pre>
+                Albo, jeśli użytkownik nie chce podawać hasła za każdym razem, gdy loguje
+się do PhpMyAdmin (opcja mniej bezpieczna):
 <pre>
 &lt;?php
 
 $i=0;
 $i++;
 $cfg['Servers'][$i]['user']          = 'root';
-$cfg['Servers'][$i]['password']      = 'cbb74bc'; // wpisz tutaj swoje hasło
+$cfg['Servers'][$i]['password']      = 'cbb74bc'; // wpisać swoje hasło
 $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
@@ -296,17 +303,17 @@ koniecznymi środkami bezpieczeństwa. W systemie Linux/Unix można użyć
 następujących poleceń:
 <pre>
 cd phpMyAdmin
-mkdir config                        # utwórz katalog do zapisu
-chmod o+rw config                   # przypisz mu uprawnienia do zapisu
+mkdir config                        # utworzyć katalog do zapisu
+chmod o+rw config                   # nadać mu uprawnienia do zapisu
 </pre>
                 Aby wyedytować istniejącą konfigurację, trzeba ją najpierw skopiować:
 <pre>
-cp config.inc.php config/           # skopiuj bieżącą konfigurację przeznaczoną do edycji
-chmod o+w config/config.inc.php                                                    # przypisz jej uprawnienia do zapisu
- </pre>
+cp config.inc.php config/           # skopiować bieżacą konfigurację
+chmod o+w config/config.inc.php              # nadać jej uprawnienia do zapisu
+</pre>
                 Na innych platformach systemowych trzeba także utworzyć katalog
-<tt>config</tt> i upewnić się, że serwer WWW ma ustawiony dostęp do odczytu
-i zapisu. <a href="#faq1_26">FAQ 1.26</a> może pomóc zrozumieć tę kwestię.<br /><br />
+<tt>config</tt> i sprawdzić, czy serwer WWW ma ustawiony dostęp do odczytu i
+zapisu. <a href="#faq1_26">Zobacz: FAQ 1.26</a><br /><br />
 
                 Next, open <tt><a href="setup/">setup/</a> </tt>in your browser. Note that
 <strong>changes are not saved to disk until explicitly choose
@@ -4531,8 +4538,8 @@ href="#cfg_Servers_verbose">server configuration</a></dd>
         <dd>Currently opened database</dd>
     <dt><code>@TABLE@</code></dt>
         <dd>Currently opened table</dd>
-    <dt><code>@FIELDS@</code></dt>
-        <dd>Fields of currently opened table</dd>
+    <dt><code>@COLUMNS@</code></dt>
+        <dd>Columns of the currently opened table</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
         <dd>phpMyAdmin with version</dd>
 </dl>
@@ -5291,10 +5298,14 @@ and or just some feedback.
 </p>
 
 <p>
-To tłumaczenie zostało Wam dostarczone przez różnych tłumaczy z serwera <a
-href="https://l10n.cihar.com/projects/pmadoc/">serwer
-tłumaczenia</a>. Właśnie tutaj powinni oni wpisać swoje imiona i nazwiska.
-Stanisław Krukowski
+To tłumaczenie jest <b>wspólną</b> pracą <b>różnych</b> tłumaczy, którzy
+pracowali nad tłumaczeniem, z języka angielskiego, dokumentacji phpMyAdmin
+-- wersja 3.5.0-dev, na <a
+href="https://l10n.cihar.com/projects/pmadoc/">serwerze tłumaczeń
+(Pootle)</a>. Właśnie tutaj powinni oni podpisać się (w dowolnej
+kolejności):
+
+-- Stanisław Krukowski --
 </p>
 <h2 id="glossary">Słownik</h2>
 
