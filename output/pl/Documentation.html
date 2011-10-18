@@ -245,9 +245,9 @@ sugestie w: <a href="#faq4_2"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.2</a> i <a href="#faq1_26"><abbr title="Frequently
 Asked Questions">FAQ</abbr> 1.26.</a></li>
     <li>Skonfigurować instalację. Istnieją dwie metody, które można użyć w tym
-celu:<strong>-- ręczna edycja kopii pliku</strong><tt>config.inc.php</tt>,
+celu:<strong> -- ręczna edycja kopii pliku </strong><tt>config.inc.php</tt>,
 (szybki sposób na rozpoczęcie instalacji w tekstowym trybie dla użytkowników
-zaawansowanych), <strong>-- instalacja za pomocą skryptu (kreator
+zaawansowanych), <strong> -- instalacja za pomocą skryptu (kreator
 graficzny).</strong>
         <ul><li>Aby ręcznie utworzyć plik <tt>config.inc.php</tt>, trzeba w dowolnym
 edytorze tekstowym utworzyć nowy plik o tej właśnie nazwie, a następnie
@@ -356,38 +356,43 @@ chroni konfigurację przed ewentualnym, niepożadanym wyjawieniem ścieżek
 dostepu do plików instalacyjnych i przed zegrożeniami ze strony szkodliwych
 skryptów.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration. You can find example
-<code>.htaccess</code> file which can help you achieve this in
-<code>contrib</code> directory in phpMyAdmin.
+        Podczas instalacji phpMyAdmin na serwerze publicznym warto
+<strong>ograniczyć robotom wyszukiwarek sieciowych</strong> dostęp do
+naszych zasobów. Można to zrobić albo za pomocą pliku
+<code>robots.txt</code>, który umieszczamy w katalogu głównym naszej domeny
+na serwerze WWW (z odpowiednim wpisem wewnątrz tego pliku), albo porzez
+konfigurację pliku <code>.htaccess</code>, którego przykład, z odpowiednimi
+wpisami konfiguracyjnymi, można znależć w katalogu<code>contrib</code> w
+phpMyAdmin.
     </li>
 </ol>
 
 <h3 id="linked-tables">Przechowywanie konfiguracji phpMyAdmin</h3>
 
-<p> For a whole set of new features (bookmarks, comments, <abbr
-title="structured query language">SQL</abbr>-history, tracking mechanism,
-<abbr title="Portable Document Format">PDF</abbr>-generation, column
-contents transformation, etc.) you need to create a set of special
-tables. Those tables can be located in your own database, or in a central
-database for a multi-user installation (this database would then be accessed
-by the controluser, so no other user should have rights to it).</p>
+<p> Aby w pełni wykorzystać zestaw nowych możliwości phpMyAdmin (zakładki,
+komentarze, <abbr title="structured query language">SQL</abbr>, historia
+zdarzeń, mechanizm monitorowania, generowanie plików<abbr title="Portable
+Document Format">PDF</abbr>, transformacja zawartości kolumn, itd.) trzeba
+utworzyć zestaw specjalnych tabel. Tabele te mogą znajdować się albo w
+indywidualnej bazie danych użytkownika, albo w centralnej bazie danych,
+jeśli zastosowano instalację wieloużytkownikową. W tym ostatnim przypadku
+baza powinna być dostępna za pomocą konta użytkownika kontrolnego -- po to,
+aby nikt inny, oprócz danego użytkownika, nie miał do niej dostępu.</p>
 
-<p> Please look at your <tt>./scripts/</tt> directory, where you should find a
-file called <i>create_tables.sql</i>. (If you are using a Windows server,
-pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Proszę zajrzeć do katalogu <tt>./scripts/</tt>, gdzie powinien znajdować się
+plik o nazwie <i>create_tables.sql</i>. (użytkownicy serwerów Windows
+powinni zwrócić szczególną uwagę na <a href="#faq1_23"> <abbr
+title="Frequently Asked Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./scripts/create_tables.sql</i>.</p>
+<p> Użytkownicy, którzy mają już taką infrastrukturę tabel i posiadają MySQL w
+wersji 4.1.2 lub wyższej, powinni użyć pliku
+<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>, a nastpnie utworzyć nowe
+tabele importując plik <i>./scripts/create_tables.sql</i></p>
 
-<p> Możesz używać swojego phpMyAdmin do tworzenia własnych tabel. Bądź jednak
-przygotowany na to, że możesz potrzebować specjalnych uprawnienie
-(administratora) aby stworzyć własną bazę danych oraz tabele, a także na to,
-że skrypt może wymagać odpowiednich zmian w zależności od nazwy bazy danych.</p>
+<p> Możesz używać swojego phpMyAdmin do tworzenia własnych tabel, bądź jednak
+przygotowany na to, że możesz potrzebować specjalnych uprawnień
+administratora, aby utworzyć własną bazę oraz tabele, a także na to, że
+skrypt może wymagać odpowiednich zmian w zależności od nazwy bazy danych.</p>
 
 <p> After having imported the <i>./scripts/create_tables.sql</i> file, you
 should specify the table names in your <i>./config.inc.php</i> file. The
