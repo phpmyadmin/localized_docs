@@ -271,8 +271,7 @@ rm -rf config                      # 必要なくなったディレクトリを�
 の<a href="#faqmultiuser">マルチユーザの節</a>、特に <a href="#faq4_4"><abbr
 title="よくある質問">FAQ</abbr> 4.4</a> を参照してください。</li>
     <li>お使いのブラウザで <a href="index.php">phpMyAdmin のメインディレクトリ</a>を開きます。<abbr
-title="HyperText Transfer
-Protocol">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
 は現行版では、ようこそ画面と管理データベース、もしくはログインダイアログが表示されます。</li>
     <li>ウェブサーバの設定でサブフォルダ <tt>./libraries</tt> と <tt>./setup/lib</tt>
 へのアクセスを拒否しておいたほうがいいでしょう。Apache の場合は、該当フォルダに提供されている .htaccess
@@ -324,25 +323,25 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
 <ul><li><b>マルチユーザ環境</b>では、ユーザが自分のデータベースにアクセスできるよう、また他人のデータベースにいたずらできないよう、<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードにするのがお勧めです。<br />
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードにするのがお勧めです。<br />
         ただし、マイクロソフトの Internet Explorer
 にはご注意ください。このブラウザはクッキーに関しては本当にバグが多いようです。少なくともバージョン 6 まではそうです。<br />
-        また、<b>シングルユーザ環境</b>であっても <abbr title="HyperText Transfer
-Protocol">HTTP</abbr>／クッキーモードの方が好ましく思えるかもしれません。ユーザ／パスワードの組を設定ファイルに明記しなくてすみますから。
+        また、<b>シングルユーザ環境</b>であっても <abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキーモードの方が好ましく思えるかもしれません。ユーザ／パスワードの組を設定ファイルに明記しなくてすみますから。
         </li>
 
-    <li><abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードの方が安全です。MySQL
-のログイン情報を phpMyAdmin の設定ファイルに書く必要がありませんから（<a
-href="#controluser">「管理ユーザ」</a>は別かもしれませんが）。<br />
+    <li><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードの方が安全です。MySQL のログイン情報を
+phpMyAdmin の設定ファイルに書く必要がありませんから (<a
+href="#controluser">「管理ユーザ」</a>は別かもしれませんが)。<br />
         ただし、HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされることを、忘れないでください。<br />
         また、クッキーモードでは、blowfish アルゴリズムで暗号化されてはいますが、パスワードは一時的にクッキーに保管されます。</li>
 
     <li id="pmausr">注：この項目は、MySQL サーバが <tt>--skip-show-database</tt> を適用して稼動している場合のみ使用できます。<br /><br />
 
-        「HTTP」／「クッキー」モードでは管理ユーザが必要です。このユーザは <i>`mysql`.`user` (`Password`
-以外の全カラム)</i>、<i>`mysql`.`db` (全カラム)</i>、<i>`mysql`.`host`
-(全カラム)</i>、<i>`mysql`.`tables_priv` (`Grantor` と `Timestamp` 以外の全カラム)</i>
-テーブルについて、<tt>SELECT</tt> 特権<b>のみ</b>を持つようにします。<br /> また、<i>config.inc.php</i> ファイルの <tt><a href="#cfg_Servers_controluser"
+        「<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>」／「クッキー」モードでは管理ユーザが必要です。このユーザは
+<i>`mysql`.`user` (`Password` 以外の全カラム)</i>、<i>`mysql`.`db`
+(全カラム)</i>、<i>`mysql`.`host` (全カラム)</i>、<i>`mysql`.`tables_priv` (`Grantor`
+と `Timestamp` 以外の全カラム)</i> テーブルについて、<tt>SELECT</tt> 特権<b>のみ</b>を持つようにします。<br /> また、<i>config.inc.php</i> ファイルの <tt><a href="#cfg_Servers_controluser"
 class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> と <tt><a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt> 項目には<a
@@ -385,15 +384,14 @@ GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real
 </pre>
 
         こうすることで、そのユーザができることを MySQL のユーザ管理システムが完全に管理できるようになります。<br />
-        <abbr title="HyperText Transfer Protocol">HTTP</abbr>／クッキー認証モードでは、<a
-href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
-配列のユーザ／パスワードフィールドに値を入れる必要はありません。</li>
+        <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードでは、<a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a> 配列のユーザ／パスワード項目に値を入れる必要はありません。</li>
 </ul>
 
-<h4>「<abbr title="HyperText Transfer Protocol">HTTP</abbr>」認証モード</h4>
+<h4>「<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証モード</h4>
 
-<ul><li>基本 <abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証を利用することで、有効な
-MySQL ユーザのいずれかとしてログインできるようになります。</li>
+<ul><li>基本 <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証を利用することで、有効な MySQL
+ユーザのいずれかとしてログインできるようになります。</li>
     <li>ほとんどの PHP の設定でサポートされています。 <abbr title="Internet Information
 Services">IIS</abbr> (<abbr title="Internet Server Application Programming
 Interface">ISAPI</abbr>) での <abbr title="Common Gateway
@@ -401,15 +399,14 @@ Interface">CGI</abbr> 版 PHPの使用をサポートに関しては <a href="#f
 title="よくある質問">FAQ</abbr> 1.32</a> を参照してください。Apache での <abbr title="Common
 Gateway Interface">CGI</abbr> の使用に関しては、<a href="#faq1_35"><abbr
 title="よくある質問">FAQ</abbr> 1.35</a> を参照してください。</li>
-    <li><a href="#faq4_4"> <abbr title="よくある質問">FAQ</abbr> 4.4</a> もご覧ください。「<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>」認証モードと <i>.htaccess</i>
-機構は併用しないようにします。</li>
+    <li><a href="#faq4_4"><abbr title="よくある質問">FAQ</abbr> 4.4</a> もご覧ください。「<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証モードと <i>.htaccess</i> 機構は併用しないようにします。</li>
 </ul>
 
 <h4>「クッキー」認証モード</h4>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> 認証のかわりに利用できます（例えば
-<abbr title="Internet Information Services">IIS</abbr> を稼動させている場合など）。</li>
+<ul><li><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証の代わりに利用できます (例えば <abbr
+title="Internet Information Services">IIS</abbr> を稼動させている場合など)。</li>
     <li>もちろんユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
     <li>このモードでは、ユーザは phpMyAdmin のログアウトが確実に行え、同じユーザ名でログインし直すことができます。</li>
     <li>任意のサーバにログインしたい場合は、<a href="#AllowArbitraryServer"
@@ -589,25 +586,25 @@ string<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 文字列
     </dt>
-    <dd>この特別なアカウントは２つの異なった目的で使われます。リレーション機能全般を利用できるようにするのと（<a href="#pmadb"
+    <dd>この特別なアカウントは２つの異なった目的で使われます。リレーション機能全般を利用できるようにするのと (<a href="#pmadb"
 class="configrule">$cfg['Servers'][$i]['pmadb']</a>
-参照）、<tt>--skip-show-database</tt> を適用して稼動している MySQL
-サーバで、マルチユーザインストールを可能にするためです（<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>／クッキー認証モード）。<br /><br />
+参照)、<tt>--skip-show-database</tt> を適用して稼動している MySQL
+サーバで、マルチユーザインストールを可能にするためです (<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モード)。<br /><br />
 
-        <abbr title="HyperText Transfer
-Protocol">HTTP</abbr>／クッキー認証モード（あるいは、phpMyAdmin 2.2.1
-以降の「config」認証モード）を使う場合、<i>mysql.user（「Password」以外の全カラム）</i>、<i>mysql.db（全カラム）</i>、<i>mysql.tables_priv（「Grantor」、「Timestamp」以外の全カラム）</i>
-テーブルに <tt>SELECT</tt> 特権を持つ MySQL
+        <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モード (あるいは、phpMyAdmin 2.2.1
+以降の「config」認証モード) を使う場合、<i>mysql.user (「Password」以外の全カラム)</i>、<i>mysql.db
+(全カラム)</i>、<i>mysql.tables_priv (「Grantor」、「Timestamp」以外の全カラム)</i> テーブルに
+<tt>SELECT</tt> 特権を持つ MySQL
 アカウントの情報を提供する必要があります。このアカウントはログイン時にどのデータベースを表示するかチェックするのに利用されます。<br />
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。<br /><br />
 
         phpMyAdmin 2.2.5 より前では「stduser/stdpass」という名前でした。</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] 文字列 <tt>['<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
-    <dd>そのサーバで利用する認証方法が入ります（config／cookie／<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>／signon）。
+    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] 文字列 <tt>['<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
+    <dd>そのサーバで利用する認証方法が入ります (config／cookie／<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>／signon)。
         <ul><li>「config」認証 (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)
 は昔ながらの簡単な方法です。ユーザ名とパスワードは <i>config.inc.php</i> に保存されます。</li>
             <li>「クッキー」認証モード (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) はバージョン 2.2.3
@@ -617,9 +614,9 @@ href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 が有効になっている場合は任意のサーバにログインできます。
             </li>
-            <li>「<abbr title="HyperText Transfer Protocol">HTTP</abbr>」認証 (旧版の「advanced」)
-(<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
+            <li>「<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証 (旧版の「advanced」)
+(<tt>$auth_type&nbsp;=&nbsp;'<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
 を経由することで、あらゆる有効な MySQL ユーザでログインできます。</li>
             <li>「サインオン」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、バージョン 2.10.0
 で導入されました。用意された PHP のセッションデータからか、もしくは PHP
@@ -639,7 +636,7 @@ id="cfg_Servers_auth_http_realm">$cfg['Servers'][$i]['auth_http_realm']</span>
 文字列<br />
     </dt>
     <dd>
-    auth_type = '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
+    auth_type = '<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>'
 を使用する場合、この項目に、ユーザに表示される Basic
 認証領域を定義することができます。明示的に設定で指定されていない場合には、"phpMyAdmin " と <a
 href="#cfg_Servers_verbose"
@@ -662,8 +659,8 @@ id="cfg_Servers_auth_swekey_config">$cfg['Servers'][$i]['auth_swekey_config']</s
     </dt>
     <dd>
         auth_type = 'config' の場合は MySQL サーバに接続するときに phpMyAdmin
-が利用するユーザ／パスワードの組が入ります。このユーザ／パスワードの組は、<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>／クッキー認証を利用する場合は必要ありませんので、空欄にしておいてください。</dd>
+が利用するユーザ／パスワードの組が入ります。このユーザ／パスワードの組は、<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証を利用する場合は必要ありませんので、空欄にしておいてください。</dd>
     <dt id="servers_nopassword">
         <span id="cfg_Servers_nopassword">$cfg['Servers'][$i]['nopassword']</span>
 論理型
@@ -1203,7 +1200,7 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
 クエリを使用します。また、クエリの長さがこの制限を超えている場合、そのクエリは履歴に保存されません。</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] 文字列／論理型</dt>
-    <dd><abbr title="HyperText Transfer Protocol">HTTP</abbr> 転送のスピードアップのために GZip
+    <dd><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 転送のスピードアップのために GZip
 出力バッファリングを利用するかどうかを定義します。<br />
         true／false にセットすると有効／無効になります。（文字列で）「auto」にすると、phpMyAdmin
 は出力バッファリングを有効にしようとしますが、ブラウザの方で何かバッファリングに問題が出た場合は自動的に無効にします。IE6
@@ -1291,8 +1288,8 @@ href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifet
     <dd>有効にすると、クッキー認証を利用して任意のサーバにログインでき、同期ダイアログで選択したサーバを指定することができます。
         <br /><br />
 
-        <b>注意：</b> この機能は慎重にご利用ください。<abbr title="HyperText Transfer
-Protocol">HTTP</abbr> サーバが置かれているファイアウォールの外にある MySQL サーバにアクセスできてしまうことがあります。
+        <b>注意：</b> この機能は慎重にご利用ください。<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+サーバが置かれているファイアウォールの外にある MySQL サーバにアクセスできてしまうことがあります。
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] 論理型</dt>
@@ -1744,7 +1741,7 @@ language">SQL</abbr>
 
         拡張子に注意してください。ファイル名の末尾は必ず「.sql」（圧縮形式のサポートが有効になっている場合は「.sql.bz2」や「.sql.gz」）でなければなりません。<br /><br />
 
-        この機能は <abbr title="HyperText Transfer Protocol">HTTP</abbr>
+        この機能は <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
 でアップロードするには大きすぎるファイルがあるときや、PHP のファイルアップロード機能が無効になっている場合に便利です。<br /><br />
 
         また、このディレクトリの所有者にも注意する必要があります。PHP がセーフモードになっている場合、phpMyAdmin
@@ -2272,12 +2269,12 @@ title="よくある質問">FAQ</abbr> 1.1</a> もご覧ください。<br />
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 phpMyAdmin を <abbr title="Internet Information
-Services">IIS</abbr> 上で使うと、「The specified <abbr title="Common Gateway
-Interface">CGI</abbr> application misbehaved by not returning a complete set
-of <abbr title="HyperText Transfer Protocol">HTTP</abbr> headers ...（指定した
-<abbr title="Common Gateway Interface">CGI</abbr> にはエラーがあります。<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>
-ヘッダが不完全です。）」というエラーメッセージが表示されます。</a>
+Services">IIS</abbr> 上で使うと、「The specified <abbr
+title="コモン・ゲートウェイ・インタフェース">CGI</abbr> application misbehaved by not
+returning a complete set of <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+headers ... (指定した <abbr title="Common Gateway Interface">CGI</abbr>
+にはエラーがあります。<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+ヘッダが不完全です。)」というエラーメッセージが表示されます。</a>
 </h4>
 
 <p> PHP の配布ファイルに入っている <i>install.txt</i> を読み忘れたのでしょう。こちらの<a
@@ -2286,13 +2283,13 @@ PHP のオフィシャルバグデータベースです。</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 phpMyAdmin を <abbr title="Internet Information
-Services">IIS</abbr> 上で使うと、<abbr title="HyperText Transfer
-Protocol">HTTP</abbr> においてクラッシュしたり、エラーメッセージがたくさん表示されます。</a></h4>
+Services">IIS</abbr> 上で使うと、<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+においてクラッシュしたり、エラーメッセージがたくさん表示されます。</a></h4>
 
 <p> これは PHP の <abbr title="Internet Server Application Programming
-Interface">ISAPI</abbr> フィルタの既知の問題です（<abbr title="Internet Server
-Application Programming Interface">ISAPI</abbr> フィルタはあまり安定していないのです）。<abbr
-title="HyperText Transfer Protocol">HTTP</abbr> 認証モードではなく、クッキー認証モードをお使いください。
+Interface">ISAPI</abbr> フィルタの既知の問題です (<abbr title="Internet Server
+Application Programming Interface">ISAPI</abbr> フィルタはあまり安定していないのです)。<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証モードではなく、クッキー認証モードをお使いください。
 </p>
 
 <h4 id="faq1_6">
@@ -2369,8 +2366,8 @@ href="http://dev.mysql.com/doc/mysql/ja/resetting-permissions.html">パーミッ
 <tt>user</tt>／<tt>password</tt> という名前だったせいです。カラム名を現在の標準にあわせて修正してください。</p>
 
 <h4 id="faq1_16">
-    <a href="#faq1_16">1.16 （メモリ、<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>、タイムアウトのせいで）大きなダンプファイルをアップロードできません。</a>
+    <a href="#faq1_16">1.16 (メモリ、<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>、タイムアウトのせいで) 大きなダンプファイルをアップロードできません。</a>
 </h4>
 
 <p> バージョン 2.7.0 以降はインポートエンジンが書き直されたため、この問題は起こらないはずです。可能であればお使いの phpMyAdmin
@@ -2564,8 +2561,8 @@ SetInputFilter PHP
 
 <h4 id="faq1_32">
     <a href="#faq1_32">1.32 <abbr title="Internet Information
-Services">IIS</abbr> でも <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 認証を利用できますか？</a></h4>
+Services">IIS</abbr> でも <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+認証を利用できますか？</a></h4>
 
 <p> はい。以下の手順は phpMyAdmin 2.6.1 と、<abbr title="Internet Information
 Services">IIS</abbr> 5.1 の <abbr title="Internet Server Application
@@ -2610,11 +2607,11 @@ RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]
 </pre>
 
 <h4 id="faq1_35">
-    <a href="#faq1_35">1.35 Apache の <abbr title="Common Gateway
-Interface">CGI</abbr> 版 で <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 認証が使用できますか？</a></h4>
+    <a href="#faq1_35">1.35 Apache の <abbr title="コモン・ゲートウェイ・インタフェース">CGI</abbr>
+版 で <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証が使用できますか？</a></h4>
 
-<p> はい。しかしながら、CGI 版で認証用変数を通過させるには、以下のように書き直す必要があります。</p>
+<p> はい。しかしながら、<abbr title="コモン・ゲートウェイ・インタフェース">CGI</abbr>
+版で認証用変数を通過させるには、以下のように書き直す必要があります。</p>
 
 <pre>
 RewriteEngine On
@@ -2804,9 +2801,8 @@ class="configrule">$cfg['OBGZip']</a> ディレクティブを <tt>FALSE</tt>
 が稼動しているということですが、これはあまりよいことではありませんので、テスト版でないものにアップグレードしてください。</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5
-行を挿入／修正しようとしたり、データベースやテーブルを削除しようとするたびに404（ページが見つかりません）エラーが表示されます。また、<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>
+    <a href="#faq2_5">2.5 行を挿入／修正しようとしたり、データベースやテーブルを削除しようとするたびに404
+(ページが見つかりません) エラーが表示されます。また、<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
 ないしクッキー認証をしているときはログインしなおすように求められます。何が悪いのでしょうか？</a></h4>
 
 <p> phpMyAdmin 設定ファイルの <a href="#cfg_PmaAbsoluteUri"
@@ -2902,8 +2898,8 @@ href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
 <h3 id="faqlimitations">既知の制限</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 認証を使っているときにログアウトすると、同じユーザ名では再ログインできません。</a></h4>
+    <a href="#login_bug">3.1 <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+認証を使っているときにログアウトすると、同じユーザ名では再ログインできません。</a></h4>
 
 <p> これは phpMyAdmin
 が利用している認証のメカニズム（プロトコル）による制限です。この問題を回避するには、開いているブラウザのウインドウを一度すべて閉じてから、phpMyAdmin
@@ -3079,9 +3075,9 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
     バージョン 2.0.3 以降、phpMyAdmin
 はユーザ全員が使えるセントラルコピーをセットアップできるようになりました。この機能の開発にあたってはありがたいことに NetCologne GmbH
 社がスポンサーになってくださいました。この機能を使うには、MySQL ユーザ管理機構が適切にセットアップされていること、phpMyAdmin は
-<abbr title="HyperText Transfer Protocol">HTTP</abbr>
-ないしクッキー認証を使うことが必要です。インストールの章の「<abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 認証の使い方」をご覧ください。
+<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+ないしクッキー認証を使うことが必要です。インストールの章の「<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+認証の使い方」をご覧ください。
 </p>
 
 <h4 id="faq4_2">
@@ -3090,8 +3086,8 @@ Protocol">HTTP</abbr> 認証の使い方」をご覧ください。
     お使いのシステムによります。<br />
     外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です（例えば、Apache
 なら <i>.htaccess</i> ファイルを利用できます）。<br />
-    外部の人が telnet でサーバにアクセスできるのであれば、phpMyAdmin の <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> 認証ないしクッキー認証機能を使った方がよいでしょう。
+    外部の人が telnet でサーバにアクセスできるのであれば、phpMyAdmin の <abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証ないしクッキー認証機能を使った方がよいでしょう。
     <br /><br />
     提案：
 </p>
@@ -3120,8 +3116,8 @@ Protocol">HTTP</abbr> 認証ないしクッキー認証機能を使った方が�
 </p>
 
 <h4 id="faq4_4">
-    <a href="#faq4_4">4.4 <abbr title="HyperText Transfer Protocol">HTTP</abbr>
-認証を使うとかならず「Access denied（アクセスは拒否されました）」になります。</a></h4>
+    <a href="#faq4_4">4.4 <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
+認証を使うとかならず「Access denied (アクセスは拒否されました)」になります。</a></h4>
 
 <p> いくつかの理由が考えられます。</p>
 
@@ -3285,9 +3281,9 @@ title="オペレーティング・システム">OS</abbr> X：Safari ブラウ�
 ユーザによると、Chimera、Netscape、Mozilla ではこの問題は起こらないそうです。</p>
 
 <h4 id="faq5_13">
-    <a href="#faq5_13">5.13 Internet Explorer 5.5 や 6 で <abbr title="HyperText
-Transfer Protocol">HTTP</abbr>
-認証タイプを利用すると、２つのサーバを管理できなくなります。最初のサーバにログインして、別のサーバにログインするまではよいのですが、最初のサーバに戻ると、操作するたびにログインしなければならなくなるのです。</a></h4>
+    <a href="#faq5_13">5.13 Internet Explorer 5.5 や 6 で <abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証タイプを利用すると、2
+つのサーバを管理できなくなります。最初のサーバにログインして、別のサーバにログインするまではよいのですが、最初のサーバに戻ると、操作するたびにログインしなければならなくなるのです。</a></h4>
 
 <p> これは Internet Explorer のバグです。ほかのブラウザではこのようなことは起こりません。</p>
 
@@ -3312,8 +3308,8 @@ title="インターネット・プロトコル">IP</abbr>  アドレスに設定
 Resource Locator">URL</abbr> で phpMyAdmin を起動しようとしている、あるいはその逆なのでは？</li>
         <li>IE や Microsoft Security Center のセキュリティ設定が高すぎるためにスクリプトが実行できなくなっているのでは？</li>
         <li>Windows Firewall が Apache と MySQL をブロックしているのでは？　「in」、「out」双方で <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> ポート (80 ないし 443) と MySQL ポート
-(通常は 3306) が開いている必要があります。</li>
+title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 ないし 443) と MySQL ポート (通常は 3306)
+が開いている必要があります。</li>
     </ul>
 
 <h4 id="faq5_17">
@@ -4079,7 +4075,7 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 
 <li>Marc Delisle &lt;marc_at_infomarc.info&gt;
 <ul>
-  <li>多言語版</li>
+  <li>multi-language version in December 1998</li>
   <li>修正・改善多数</li>
   <li><abbr title="structured query language">SQL</abbr> アナライザ（の大半）</li>
   <li>現在のプロジェクト管理者</li>
@@ -4090,7 +4086,6 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   <li>2001 年 3 月に SourceForge phpMyAdmin プロジェクトを立ち上げ</li>
   <li>既存のさまざまな CVS ツリーの同期をとり、新機能、バグフィックスを反映</li>
   <li>多言語対応の改善。動的言語選択</li>
-  <li>現在のプロジェクト管理者</li>
   <li>バグフィックス・改善多数</li>
 </ul></li>
 
@@ -4477,10 +4472,9 @@ href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E3%82%B3%E3%83%B3
 href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E5%90%8D">ホスト名</a>
 - 接続されたデバイスのネットワーク上における一意の名前</li>
     <li><a href="http://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP
-(HyperText Transfer Protocol)</a> - World Wide Web
-上で情報を転送したり伝えたりするために使用される主な方法</li>
+(ハイパーテキスト転送プロトコル)</a> - World Wide Web 上で情報を転送したり伝えたりするために使用される主な方法</li>
     <li><a href="http://ja.wikipedia.org/wiki/HTTPS">https</a> - セキュリティ対策を付加した <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> 接続</li>
+title="ハイパーテキスト転送プロトコル">HTTP</abbr> 接続</li>
     <li><a href="http://ja.wikipedia.org/wiki/Internet_Information_Services">IIS
 (Internet Information Services)</a> - Microsoft Windows
 を使用しているサーバ用のインターネット基礎サービスのセット</li>
