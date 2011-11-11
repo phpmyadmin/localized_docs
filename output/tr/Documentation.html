@@ -98,6 +98,9 @@ sebep olacaktır.
 title="Sıkça Sorulan Sorular">SSS</abbr> 2.9</a>'a bakın.</li>
                 <li>BLOB akışı desteği için <a href="#faq6_25"> <abbr title="Sıkça Sorulan
 Sorular">SSS</abbr> 6.25</a>'teki PHP ve MySQL gereksinimlerine bakın.</li>
+                <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
+or newer and the <a href="http://www.php.net/libxml"><tt>libxml</tt></a>
+extension.</li>
         </ul>
     </li>
     <li><b>MySQL</b> 5.0 veya daha yenisi (<a href="#faq1_17">ayrıntılar</a>);</li>
@@ -732,9 +735,10 @@ da gerekmezse (deneysel).</dd>
 
     <dt id="controlhost">
         <span id="cfg_Servers_controlhost">$cfg['Servers'][$i]['controlhost']</span>
-string<br />
+dizgi<br />
     </dt>
-    <dd>Permits to use an alternate host to hold the configuration storage data.</dd>
+    <dd>Yapılandırma depolaması verisini tutmak için başka anamakine kullanımına
+izin verir.</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1813,13 +1817,13 @@ uzunluk sınırlaması yoktur</li>
         </ul>
         Varsayılan eski davranış şekli input.</dd>
 
-    <dt id="cfg_MinSizeForInputField">$cfg['MinSizeForInputField'] integer</dt>
-    <dd>Defines the minimum size for input fields generated for CHAR and VARCHAR
-columns.</dd>
+    <dt id="cfg_MinSizeForInputField">$cfg['MinSizeForInputField'] tam sayı</dt>
+    <dd>CHAR ve VARCHAR sütunları için girdi alanlarının oluşturulmasında en az
+boyutu tanımlar.</dd>
 
-    <dt id="cfg_MaxSizeForInputField">$cfg['MaxSizeForInputField'] integer</dt>
-    <dd>Defines the maximum size for input fields generated for CHAR and VARCHAR
-columns.</dd>
+    <dt id="cfg_MaxSizeForInputField">$cfg['MaxSizeForInputField'] tam sayı</dt>
+    <dd>CHAR ve VARCHAR sütunları için girdi alanlarının oluşturulmasında en fazla
+boyutu tanımlar.</dd>
 
     <dt id="cfg_InsertRows">$cfg['InsertRows'] tam sayı</dt>
     <dd>Ekleme sayfası için en fazla aynı olan girişlerin sayısını tanımlar.</dd>
@@ -2466,10 +2470,10 @@ etkisizleştirebilirsiniz.
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] float<br />
         <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> dizgi
 [<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]</dt>
-    <dd>For the pretty-printing of <abbr title="structured query
-language">SQL</abbr> queries, under some cases the part of a query inside a
-bracket is indented. By changing <tt>$cfg['SQP']['fmtInd']</tt> you can
-change the amount of this indent.
+    <dd><abbr title="structured query language">SQL</abbr> sorgularının hoş
+yazdırımı için, bazı durumlar altında köşeli parantez içindeki sorgunun
+kısmı amaçlanır. <tt>$cfg['SQP']['fmtInd']</tt> değiştirilerek bu girintinin
+miktarını değiştirebilirsiniz.
         <br />Related in purpose is <tt>$cfg['SQP']['fmtIndUnit']</tt> which specifies the
 units of the indent amount that you specified. This is used via stylesheets.</dd>
 
@@ -3799,8 +3803,7 @@ user whose password is only known to you, and apache is the group under
 which Apache runs.
     </li>
     <li>
-        You should use PHP safe mode, to protect from other users that try to
-include your <i>config.inc.php</i> in their scripts.
+        Follow security recommendations for PHP and your webserver.
     </li>
 </ul>
 
