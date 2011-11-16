@@ -2474,123 +2474,127 @@ etkisizleştirebilirsiniz.
 yazdırımı için, bazı durumlar altında köşeli parantez içindeki sorgunun
 kısmı amaçlanır. <tt>$cfg['SQP']['fmtInd']</tt> değiştirilerek bu girintinin
 miktarını değiştirebilirsiniz.
-        <br />Related in purpose is <tt>$cfg['SQP']['fmtIndUnit']</tt> which specifies the
-units of the indent amount that you specified. This is used via stylesheets.</dd>
+        <br />Belirttiğiniz girinti miktarı birimini belirlemek amacı açısından ilgili
+olan <tt>$cfg['SQP']['fmtIndUnit']</tt>. Bu, çalışma sayfası biçemi yoluyla
+kullanılır.</dd>
 
-    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] array of string tuples</dt>
-    <dd>This array is used to define the colours for each type of element of the
-pretty-printed <abbr title="structured query language">SQL</abbr>
-queries. The tuple format is<br />
-        <i>class</i> =&gt; [<i>HTML colour code</i> | <i>empty string</i>]<br />
-        If you specify an empty string for the color of a class, it is ignored in
-creating the stylesheet.  You should not alter the class names, only the
-colour strings.<br />
-        <b>Class name key:</b>
-        <ul><li><b>comment</b> Applies to all comment sub-classes</li>
-            <li><b>comment_mysql</b> Comments as <tt>"#...\n"</tt></li>
-            <li><b>comment_ansi</b> Comments as <tt>"-- ...\n"</tt></li>
-            <li><b>comment_c</b> Comments as <tt>"/*...*/"</tt></li>
-            <li><b>digit</b> Applies to all digit sub-classes</li>
-            <li><b>digit_hex</b> Hexadecimal numbers</li>
-            <li><b>digit_integer</b> Integer numbers</li>
-            <li><b>digit_float</b> Floating point numbers</li>
-            <li><b>punct</b> Applies to all punctuation sub-classes</li>
-            <li><b>punct_bracket_open_round</b> Opening brackets<tt>"("</tt></li>
-            <li><b>punct_bracket_close_round</b> Closing brackets <tt>")"</tt></li>
-            <li><b>punct_listsep</b> List item Separator <tt>","</tt></li>
-            <li><b>punct_qualifier</b> Table/Column Qualifier <tt>"."</tt> </li>
-            <li><b>punct_queryend</b> End of query marker <tt>";"</tt></li>
-            <li><b>alpha</b> Applies to all alphabetic classes</li>
-            <li><b>alpha_columnType</b> Identifiers matching a column type</li>
-            <li><b>alpha_columnAttrib</b> Identifiers matching a database/table/column
-attribute</li>
-            <li><b>alpha_functionName</b> Identifiers matching a MySQL function name</li>
-            <li><b>alpha_reservedWord</b> Identifiers matching any other reserved word</li>
-            <li><b>alpha_variable</b> Identifiers matching a <abbr title="structured query
-language">SQL</abbr> variable <tt>"@foo"</tt></li>
-            <li><b>alpha_identifier</b> All other identifiers</li>
-            <li><b>quote</b> Applies to all quotation mark classes</li>
-            <li><b>quote_double</b> Double quotes <tt>"</tt></li>
-            <li><b>quote_single</b> Single quotes <tt>'</tt></li>
-            <li><b>quote_backtick</b> Backtick quotes <tt>`</tt></li>
+    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] dizgi demeti dizilimi</dt>
+    <dd>Bu dizilim hoş yazılı <abbr title="structured query language">SQL</abbr>
+sorgularının her türde öğesi için renkleri tanımlamada kullanılır. Demetin
+biçimi<br />
+        <i>class</i> =&gt; [<i>HTML renk kodu</i> | <i>boş dizgi</i>]<br />
+        Eğer bir renk sınıfı (class) için boş dizgi belirtirseniz, çalışma sayfası
+oluşturulmasında yoksayılır. Sınıf (class) adlarını değiştirmemelisiniz,
+sadece renk dizgilerini.<br />
+        <b>Sınıf adı anahtarı:</b>
+        <ul><li><b>comment</b> Tüm yorum alt sınıflarına uygular</li>
+            <li><b>comment_mysql</b> <tt>"#...\n"</tt> gibi yorumlar</li>
+            <li><b>comment_ansi</b> <tt>"-- ...\n"</tt> gibi yorumlar</li>
+            <li><b>comment_c</b> <tt>"/*...*/"</tt> gibi yorumlar</li>
+            <li><b>digit</b> Tüm rakam alt sınıflarına uygular</li>
+            <li><b>digit_hex</b> Onaltılık sayılar</li>
+            <li><b>digit_integer</b> Tam sayılar</li>
+            <li><b>digit_float</b> Kayan noktalı sayılar</li>
+            <li><b>punct</b> Tüm noktalama işareti alt sınıflarına uygular</li>
+            <li><b>punct_bracket_open_round</b> Açılış parantezleri <tt>"("</tt></li>
+            <li><b>punct_bracket_close_round</b> Kapanış parantezleri <tt>")"</tt></li>
+            <li><b>punct_listsep</b> Liste öğesi Ayıracı <tt>","</tt></li>
+            <li><b>punct_qualifier</b> Tablo/Sütun Nitelendiricisi <tt>"."</tt> </li>
+            <li><b>punct_queryend</b> Sorgu sonu işaretleyicisi <tt>";"</tt></li>
+            <li><b>alpha</b> Tüm alfabetik sınıflara uygular</li>
+            <li><b>alpha_columnType</b> Sütun türüyle eşleşen tanımlayıcılar</li>
+            <li><b>alpha_columnAttrib</b> Veritabanı/tablo/sütun özniteliğiyle eşleşen
+tanımlayıcılar</li>
+            <li><b>alpha_functionName</b> MySQL işlev adıyla eşleşen tanımlayıcılar</li>
+            <li><b>alpha_reservedWord</b> Herhangi bir diğer ayrılmış kelimeyle eşleşen
+tanımlayıcılar</li>
+            <li><b>alpha_variable</b> <abbr title="structured query language">SQL</abbr>
+değişkeniyle <tt>"@foo"</tt> eşleşen tanımlayıcılar</li>
+            <li><b>alpha_identifier</b> Tüm diğer tanımlayıcılar</li>
+            <li><b>quote</b> Tüm tırnak işareti sınıflarına uygular</li>
+            <li><b>quote_double</b> Çift tırnak <tt>"</tt></li>
+            <li><b>quote_single</b> Tek tırnak <tt>'</tt></li>
+            <li><b>quote_backtick</b> Ters tırnak <tt>`</tt></li>
         </ul>
     </dd>
 
     <dt id="cfg_SQLValidator">$cfg['SQLValidator'] boolean</dt>
     <dd><dl><dt id="cfg_SQLValidator_use">$cfg['SQLValidator']['use'] boolean</dt>
-            <dd>phpMyAdmin now supports use of the <a
+            <dd>phpMyAdmin artık, orijinal olarak <a
+href="http://developers.slashdot.org/article.pl?sid=02/02/19/1720246">Slashdot</a>'ta
+yayımlanmış olan <a
 href="http://developer.mimer.com/validator/index.htm">Mimer <abbr
-title="structured query language">SQL</abbr> Validator</a> service, as
-originally published on <a
-href="http://developers.slashdot.org/article.pl?sid=02/02/19/1720246">Slashdot</a>.
+title="structured query language">SQL</abbr> Onaylayıcısı hizmetinin
+kullanımını destekler.
                 <br />
-                For help in setting up your system to use the service, see the <a
-href="#faqsqlvalidator"><abbr title="Frequently Asked Questions">FAQ</abbr>
-6.14</a>.
+                Hizmeti kullanmak için sisteminizi ayarlamada yardım için <a
+href="#faqsqlvalidator"><abbr title="Sıkça Sorulan Sorular">SSS</abbr>
+6.14</a>'e bakın.
             </dd>
 
-            <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] string<br />
+            <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] dizgi<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
-string</dt>
-            <dd>The SOAP service allows you to log in with <tt>anonymous</tt> and any
-password, so we use those by default. Instead, if you have an account with
-them, you can put your login details here, and it will be used in place of
-the anonymous login.</dd>
+dizgi</dt>
+            <dd>SOAP hizmeti <tt>isimsiz</tt> ve herhangi bir parolayla oturum açmanıza izin
+verir, bu yüzden biz bunları varsayılan olarak kullanırız. Onun yerine eğer
+bir hesabınız varsa, oturum açma ayrıntılarını buraya girebilirsiniz ve
+isimsiz oturum açmak yerine bu kullanılacaktır.</dd>
         </dl>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']</dt>
-    <dd><b>DEVELOPERS ONLY!</b></dd>
+    <dd><b>SADECE GELİŞTİRİCİLER!</b></dd>
 
     <dt id="cfg_DBG_sql">$cfg['DBG']['sql'] boolean</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
-        Enable logging queries and execution times to be displayed in the bottom of
-main page (right frame).</dd>
+    <dd><b>SADECE GELİŞTİRİCİLER!</b><br />
+        Sorguları ve çalıştırma zamanlarını ana sayfanın en altında (sağ çerçeve)
+görüntülemek için günlükleme etkin.</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] array</dt>
-    <dd>All possible types of a MySQL column. In most cases you don't need to edit
-this.</dd>
+    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] dizilim</dt>
+    <dd>Tüm olası MySQL sütunu türleri. Çoğu durumda bunu düzenlemenize gerek
+yoktur.</dd>
 
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] array</dt>
-    <dd>Possible attributes for columns. In most cases you don't need to edit this.</dd>
+    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] dizilim</dt>
+    <dd>Sütunlar için olası öznitelikler. Çoğu durumda bunu düzenlemenize gerek
+yoktur.</dd>
 
-    <dt id="cfg_Functions">$cfg['Functions'] array</dt>
-    <dd>A list of functions MySQL supports. In most cases you don't need to edit
-this.</dd>
+    <dt id="cfg_Functions">$cfg['Functions'] dizilim</dt>
+    <dd>MySQL'in desteklediği işlevler listesi. Çoğu durumda bunu düzenlemenize
+gerek yoktur.</dd>
 
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] array</dt>
-    <dd>Mapping of column types to meta types used for preferring displayed
-functions. In most cases you don't need to edit this.</dd>
+    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] dizilim</dt>
+    <dd>Tercih edilen görüntüleme işlevlerini kullanmak için meta türlerini sütun
+türlerine eşlenmesi. Çoğu durumda bunu düzenlemenize gerek yoktur.</dd>
 
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] array</dt>
-    <dd>Functions preferred for column meta types as defined in <a
-href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>. In most cases you don't
-need to edit this.</dd>
+    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] dizilim</dt>
+    <dd><a href="#cfg_RestrictColumnTypes"
+class="configrule">$cfg['RestrictColumnTypes']</a> içinde tanımlandığı gibi
+sütun meta türleri için tercik edilen işlevler. Çoğu durumda bunu
+düzenlemenize gerek yoktur.</dd>
 
-    <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] array</dt>
-    <dd>Functions selected by default when inserting/changing row, Functions are
-defined for meta types from <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> and for
-<code>first_timestamp</code>, which is used for first timestamp column in
-table.</dd>
+    <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] dizilim</dt>
+    <dd>Satır eklendiğinde/değiştirildiğinde varsayılan olarak seçili
+işlevler. Tabloda ilk zaman damgası sütunu için kullanılan
+<code>first_timestamp</code> için ve <a href="#cfg_RestrictColumnTypes"
+class="configrule">$cfg['RestrictColumnTypes']</a>'tan meta türleri için
+tanımlanan işlevler.</dd>
 
 </dl>
 
 
 <!-- TRANSFORMATIONS -->
-<h2 id="transformations">Transformations</h2>
+<h2 id="transformations">Dönüştürmeler</h2>
 
-<ol><li><a href="#transformationsintro">Introduction</a></li>
-    <li><a href="#transformationshowto">Usage</a></li>
-    <li><a href="#transformationsfiles">File structure</a></li>
+<ol><li><a href="#transformationsintro">Giriş</a></li>
+    <li><a href="#transformationshowto">Kullanım</a></li>
+    <li><a href="#transformationsfiles">Dosya yapısı</a></li>
 </ol>
 
-<h3 id="transformationsintro">1. Introduction</h3>
+<h3 id="transformationsintro">1. Giriş</h3>
 
-<p> To enable transformations, you have to setup the <tt>column_info</tt> table
-and the proper directives. Please see the <a href="#config">Configuration
-section</a> on how to do so.</p>
+<p> Dönüştürmeleri etkinleştirmek için <tt>column_info</tt> tablosunu ve doğru
+yönergeleri ayarlamalısınız. Lütfen bunun nasıl yapılacağını <a
+href="#config">Yapılandırma bölümünden</a> bakın.</p>
 
 <p> You can apply different transformations to the contents of each column. The
 transformation will take the content of each column and transform it with
@@ -4996,7 +5000,7 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <li>Marc Delisle &lt;marc_at_infomarc.info&gt;
 <ul>
-  <li>multi-language version in December 1998</li>
+  <li>Aralık 1998'de çoklu dil sürümü</li>
   <li>çeşitli onarımlar ve geliştirmeler</li>
   <li><abbr title="structured query language">SQL</abbr> analizcisi (çoğunun)</li>
   <li>şu anki proje sürdürücüsü</li>
