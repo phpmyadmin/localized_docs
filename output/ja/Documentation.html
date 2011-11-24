@@ -109,7 +109,7 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
 <h3>phpMyAdmin は現在次のことができます。</h3>
 
 <ul><li>データベース、テーブル、ビュー、カラム、インデックスの閲覧および削除</li>
-    <li>データベース、テーブル、カラム、インデックスの作成・コピー・削除・リネーム・定義の変更</li>
+    <li>データベース、テーブル、カラム、インデックスの作成・複製・削除・名称および定義の変更</li>
     <li>サーバ、データベース、テーブルの保守、そのためのサーバの設定を提案</li>
     <li>任意の <abbr title="structured query language">SQL</abbr>
 文の実行、編集、ブックマーク。マルチクエリにも対応。</li>
@@ -843,9 +843,9 @@ ALTER TABLE `pma_column_comments`
     ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                また、忘れずに <i>config.inc.php</i> にある変数を<br />
+                また、忘れずに <i>config.inc.php</i> にある変数名を<br />
                 <tt>$cfg['Servers'][$i]['column_comments']</tt> から
-<tt>$cfg['Servers'][$i]['column_info']</tt> にリネームします。</li>
+<tt>$cfg['Servers'][$i]['column_info']</tt> に変更します。</li>
         </ul>
     </dd>
 
@@ -1308,9 +1308,8 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
     </dd>
 
     <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] 論理型</dt>
-    <dd>Defines whether to display the names of databases (in the selector) using a
-tree, see also <a href="#cfg_LeftFrameDBSeparator"
-class="configrule">$cfg['LeftFrameDBSeparator']</a>.
+    <dd>(セレクターの) データベース名をツリー表示するかどうかを定義します。<a href="#cfg_LeftFrameDBSeparator"
+class="configrule">$cfg['LeftFrameDBSeparator']</a> もご覧ください。
     </dd>
 
     <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] 文字列または配列</dt>
@@ -1684,8 +1683,8 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
 
     <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> 文字列
     </dt>
-    <dd>テーブルの内容を表示しているとき、行のリンク（編集、コピー、削除）をどこに表示するかを定義します（表示は、左側 (left)、右側
-(right)、左右両側 (both)、なし (none) が行えます）。「左 (left)」と「右 (right)」は、垂直表示モードでは「上
+    <dd>テーブルの内容を表示しているとき、行のリンク (編集、複製、削除) をどこに表示するかを定義します (表示は、左側 (left)、右側
+(right)、左右両側 (both)、なし (none) が行えます)。「左 (left)」と「右 (right)」は、垂直表示モードでは「上
 (top)」と「下 (bottom)」と解釈されます。</dd>
 
     <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] 文字列</dt>
@@ -1902,7 +1901,8 @@ textarea
     <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（軽快モード）とデータベース画面のテーブル一覧に実装されています。</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
-    <dd><tt>「closed（閉じている）」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open（開いている）」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled」</tt>にします。</dd>
+    <dd><tt>「closed (閉じておく)」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open
+(開いておく)」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled (無効)」</tt>にします。</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 配列</dt>
     <dd>ユーザ環境設定を許可させない設定オプションの名前 (<tt>$cfg</tt> 配列のキーで指定)
@@ -2915,7 +2915,7 @@ class="configrule">$cfg['CompressOnFly']</a> (逐次圧縮) を使うとこの�
 ファイルが必要な場合、別の方法をとる必要があります。</p>
 
 <h4 id="faq3_3">
-    <a href="#faq3_3">3.3 InnoDB テーブルでテーブルやカラムをリネームすると外部キーのリレーションが切れます。</a></h4>
+    <a href="#faq3_3">3.3 InnoDB テーブルでテーブルやカラムの名称を変更すると外部キーのリレーションが切れます。</a></h4>
 
 <p> これは InnoDB のバグです。<a
 href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>
