@@ -2633,98 +2633,101 @@ dönüşümlerin umut verici bir biçimde büyüyen miktarından
 seçebilirsiniz. Kendi dönüştürmelerinizi nasıl yapıcağınızla ilgili bilgi
 için aşağıya bakın.<br />
 
-        There are global transformations and mimetype-bound transformations. Global
-transformations can be used for any mimetype. They will take the mimetype,
-if necessary, into regard.  Mimetype-bound transformations usually only
-operate on a certain mimetype. There are transformations which operate on
-the main mimetype (like 'image'), which will most likely take the subtype
-into regard, and those who only operate on a specific subtype (like
-'image/jpeg').<br />
+        Genel dönüştürmeler ve mime türü sınırlı dönüştürmeler vardır. Genel
+dönüştürmeler herhangi bir mime türü için kullanılabilir. Eğer gerekli
+olursa, ne olursa olsun mime türünü alacaklardır. Mime türü sınırlı
+dönüştürmeler genellikle sadece belli bir mime türünde işler. Ana mime
+türünde ('image' gibi) işleyen dönüştürmeler vardır, büyük olasılıkla ne
+olursa olsun alt türü alacaktır ve sadece belirli bir alt türde
+('image/jpeg' gibi) işleyenlerdir.<br />
 
-        You can use transformations on mimetypes for which the function was not
-defined for. There is no security check for you selected the right
-transformation, so take care of what the output will be like.</li>
+        Bu işlev için tanımlanmamış olduğu için mime türlerinde dönüştürmeleri
+kullanabilirsiniz. Doğru dönüştürmeyi seçtiğiniz için güvenlik kontorolü
+yoktur, bu yüzden çıktının ne gibi birşey olacağına dikkat edin.</li>
 
-    <li>The field 'Transformation options' is a free-type textfield. You have to
-enter transform-function specific options here. Usually the transforms can
-operate with default options, but it is generally a good idea to look up the
-overview to see which options are necessary.<br />
+    <li>'Dönüştürme seçenekleri' alanı serbest türde metin alanıdır. Buraya belirli
+seçeneklerdeki dönüştürme işlevi girmek zorundasınız. Genellikle
+dönüştürmeler varsayılan seçeneklerle işleyebilirler ama genel olarak hangi
+seçeneklerin gerekli olduğunu görmek için genel bakış açısıyla bir bakmak
+iyi fikirdir.<br />
 
-        Much like the ENUM/SET-Fields, you have to split up several options using
-the format 'a','b','c',...(NOTE THE MISSING BLANKS). This is because
-internally the options will be parsed as an array, leaving the first value
-the first element in the array, and so forth.<br />
+        Daha çok ENUM/SET Alanları gibi, 'a','b','c',...(EKSİK BOŞLUKLARI NOT EDİN)
+biçimini kullanarak birkaç seçeneği bölmek zorundasınız. Çünkü dahili olarak
+seçenekler dizilim olarak ayrıştırılacaktır, dizilimdeki ilk değer ilk öğe
+bırakılır ve böyle gider.<br />
 
-        If you want to specify a MIME character set you can define it in the
-transformation_options.  You have to put that outside of the pre-defined
-options of the specific mime-transform, as the last value of the set. Use
-the format "'; charset=XXX'". If you use a transform, for which you can
-specify 2 options and you want to append a character set, enter "'first
-parameter','second parameter','charset=us-ascii'". You can, however use the
-defaults for the parameters: "'','','charset=us-ascii'".</li>
+        Eğer MIME karakter grubu belirlemek istiyorsanız, dönüştürme_seçenekleri
+içinden tanımlayabilirsiniz. Bunu, gurubun son değeri olarak belirli
+mime-dönüşümün ön tanımlanmış seçeneklerinin dışına koymalısınız. "';
+charset=XXX'" biçimini kullanın. Eğer dönüşüm kullanırsanız,
+belirliyebileceğiniz 2 seçenek için ve karakter grubuna ilave etmek
+isterseniz, "'birinci parametre','ikinci parametre','charset=us-ascii'"
+girin. Ancak varsayılanları kullanabileceğiniz parametreler:
+"'','','charset=us-ascii'".</li>
 </ul>
 
-<h3 id="transformationsfiles">3. File structure</h3>
+<h3 id="transformationsfiles">3. Dosya yapısı</h3>
 
-<p> All mimetypes and their transformations are defined through single files in
-the directory 'libraries/transformations/'.</p>
+<p> Tüm mime türleri ve dönüşümleri 'libraries/transformations/' dizinindeki tek
+dosya üzerinden tanımlanır.</p>
 
-<p> They are stored in files to ease up customization and easy adding of new
-transformations.</p>
+<p> Özelleştirmeyi genişletmek ve yeni dönüşümlerin kolay eklenmesi için
+dosyalarda depolanır.</p>
 
-<p> Because the user cannot enter own mimetypes, it is kept sure that
-transformations always work. It makes no sense to apply a transformation to
-a mimetype the transform-function doesn't know to handle.</p>
+<p> Çünkü kullanıcı kendi mime türlerini giremez, dönüştürmelerin daima
+çalıştığından emin olunmasını sağlar. Mime türüne dönüşümün uygulanmasını
+mantıksız yapar, dönüştürme işlevi başa çıkmayı bilmez.</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype than what they where built for, but pay attention to option usage
-as well as what the transformation does to your column.</p>
+<p> Ancak biri birçok mime türü için çalışan boş mime türlerini ve genel
+dönüştürmeleri kullanabilir. Ne için yapıldıklarından farklı olarak ayrıca
+mime türlerinde dönüşümleri kullanabilirsiniz, ancak dönüştürmenin
+sütununuza ne yaptığının yanısıra seçeneğin kullanımına dikkat edin.</p>
 
-<p> There is a basic file called '<i>global.inc.php</i>'. This function can be
-included by any other transform function and provides some basic functions.</p>
+<p> '<i>global.inc.php</i>' adında temel bir dosya vardır. Bu işlev herhangi bir
+diğer dönüştürme işlevi tarafından dahil edilebilir ve bazı temel işlevler
+sağlar.</p>
 
-<p> There are 5 possible file names:</p>
+<p> 5 olası dosya adı vardır:</p>
 
-<ol><li>A mimetype+subtype transform:<br /><br />
+<ol><li>Mime türü+alt tür dönüşüm:<br /><br />
 
         <tt>[mimetype]_[subtype]__[transform].inc.php</tt><br /><br />
 
-        Please not that mimetype and subtype are separated via '_', which shall not
-be contained in their names. The transform function/filename may contain
-only characters which cause no problems in the file system as well as the
-PHP function naming convention.<br /><br />
+        Lütfen unutmayın mime türü ve alt tür, adları içinde içermeyecek '_' ile
+ayrılır. Dönüştürme işlevi/dosya adı sadece dosya sisteminde soruna sebep
+olmayacak karakterlerin yanısıra PHP işlevi adlandırma kuralını içerebilir.<br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_[mimetype]_[subtype]__[transform]()</tt>'.<br /><br />
+        Dönüştürme işlevi
+'<tt>PMA_transform_[mimetype]_[subtype]__[transform]()</tt>' olarak
+adlandırılacaktır.<br /><br />
 
         <b>Example:</b><br /><br />
 
         <tt>text_html__formatted.inc.php</tt><br />
         <tt>PMA_transform_text_html__formatted()</tt></li>
 
-    <li>A mimetype (w/o subtype) transform:<br /><br />
+    <li>Mime türü (alt tür ile/ile değil) dönüşümü:<br /><br />
 
         <tt>[mimetype]__[transform].inc.php</tt><br /><br />
 
-        Please note that there are no single '_' characters.  The transform
-function/filename may contain only characters which cause no problems in the
-file system as well as the PHP function naming convention.<br /><br />
+        Lütfen unutmayın tek '_' karakteri yoktur. Dönüştürme işlevi/dosya adı
+sadece dosya sisteminde soruna sebep olmayacak karakterlerin yanısıra PHP
+işlevi adlandırma kuralını içerebilir.<br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_[mimetype]__[transform]()</tt>'.<br /><br />
+        Dönüştürme işlevi '<tt>PMA_transform_[mimetype]__[transform]()</tt>' olarak
+adlandırılacaktır.<br /><br />
 
         <b>Example:</b><br /><br />
 
         <tt>text__formatted.inc.php</tt><br />
         <tt>PMA_transform_text__formatted()</tt></li>
 
-    <li>A mimetype+subtype without specific transform function<br /><br />
+    <li>Belirli dönüştürme işlevsiz Mime türü+alt tür<br /><br />
 
         <tt>[mimetype]_[subtype].inc.php</tt><br /><br />
 
-        Please note that there are no '__' characters in the filename. Do not use
-special characters in the filename causing problems with the file system.<br /><br />
+        Lütfen unutmayın dosya adında '__' karakterleri yoktur. Dosya adında dosya
+sistemiyle sorunlara sebep olan özel karakterler kullanmayın.<br /><br />
 
         No transformation function is defined in the file itself.<br /><br />
 
