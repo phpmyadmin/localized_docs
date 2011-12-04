@@ -148,7 +148,7 @@ OpenDocument spreadsheets dosyalarından aktarabilir</li>
     <li>çoklu sunucuları yönetebilir</li>
     <li>MySQL kullanıcılarını ve yetkilerini yönetebilir</li>
     <li>MyISAM tablolarında veri tutarlılığını kontrol edebilir</li>
-    <li>Örnekle sorgulama (QBE) kullanarak, gerekli tablolara otomatik olarak
+    <li>örnekle Sorgulama (QBE) kullanarak, gerekli tablolara otomatik olarak
 bağlanan karışık sorgulamalar oluşturabilir</li>
     <li>Veritabanı düzeninizin <abbr title="Portable Document Format">PDF</abbr>
 grafiğini oluşturabilir</li>
@@ -1978,7 +1978,7 @@ HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>) başlığını belirler:
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
 </pre>
-        $cfg['Servers'][$i]['AllowDeny']['kurallar'] yönergesi herzamanki gibi
+        $cfg['Servers'][$i]['AllowDeny']['kurallar'] yönergesi her zamanki gibi
 istemcinin IP adresini kullanır.
     </dd>
 
@@ -2592,7 +2592,7 @@ tanımlanan işlevler.</dd>
 <h3 id="transformationsintro">1. Giriş</h3>
 
 <p> Dönüşümleri etkinleştirmek için <tt>column_info</tt> tablosunu ve doğru
-yönergeleri ayarlamalısınız. Lütfen bunun nasıl yapılacağını <a
+yönergeleri ayarlamalısınız. Lütfen bunun nasıl yapılacağına <a
 href="#config">Yapılandırma bölümünden</a> bakın.</p>
 
 <p> Her bir sütunun içeriklerine farklı dönüşümleri uygulayabilirsiniz. Dönüşüm
@@ -2687,7 +2687,7 @@ sütununuza ne yaptığının yanısıra seçeneğin kullanımına dikkat edin.<
 diğer dönüştürme işlevi tarafından dahil edilebilir ve bazı temel işlevler
 sağlar.</p>
 
-<p> 5 olası dosya adı vardır:</p>
+<p> 5 dosya adı olasılığı vardır:</p>
 
 <ol><li>Mime türü+alt tür dönüşüm:<br /><br />
 
@@ -2722,41 +2722,41 @@ adlandırılacaktır.<br /><br />
         <tt>text__formatted.inc.php</tt><br />
         <tt>PMA_transform_text__formatted()</tt></li>
 
-    <li>Belirli dönüştürme işlevsiz Mime türü+alt tür<br /><br />
+    <li>Belirli dönüştürme işlevsiz mime türü+alt tür<br /><br />
 
         <tt>[mimetype]_[subtype].inc.php</tt><br /><br />
 
         Lütfen unutmayın dosya adında '__' karakterleri yoktur. Dosya adında dosya
 sistemiyle sorunlara sebep olan özel karakterler kullanmayın.<br /><br />
 
-        No transformation function is defined in the file itself.<br /><br />
+        Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
 
         <b>Example:</b><br /><br />
 
         <tt>text_plain.inc.php</tt><br />
-        (No function)</li>
+        (İşlev yok)</li>
 
-    <li>A mimetype (w/o subtype) without specific transform function<br /><br />
+    <li>Belirli dönüştürme işlevsiz mime türü (alt tür ile/ile değil)<br /><br />
 
         <tt>[mimetype].inc.php</tt><br /><br />
 
-        Please note that there are no '_' characters in the filename. Do not use
-special characters in the filename causing problems with the file system.
+        Lütfen unutmayın dosya adında '_' karakterleri yoktur. Dosya adında dosya
+sistemiyle sorunlara sebep olan özel karakterler kullanmayın.
         <br /><br />
 
-        No transformation function is defined in the file itself.<br /><br />
+        Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
 
         <b>Example:</b><br /><br />
 
         <tt>text.inc.php</tt><br />
-        (No function)</li>
+        (İşlev yok)</li>
 
-    <li>A global transform function with no specific mimetype<br /><br />
+    <li>Belirli mime türü olmayan genel dönüştürme işlevi<br /><br />
 
         <tt>global__[transform].inc.php</tt><br /><br />
 
-        The transform function will the be called
-'<tt>PMA_transform_global__[transform]()</tt>'.<br /><br />
+        Dönüştürme işlevi '<tt>PMA_transform_global__[transform]()</tt>' olarak
+adlandırılacaktır.<br /><br />
 
         <b>Example:</b><br /><br />
 
@@ -2764,43 +2764,45 @@ special characters in the filename causing problems with the file system.
         <tt>PMA_transform_global__formatted()</tt></li>
 </ol>
 
-<p> So generally use '_' to split up mimetype and subtype, and '__' to provide a
-transform function.</p>
+<p> Mime türü ve alt türü bölmek için genel olarak '_' ve dönüştürme işlevi
+sağlamak için '__' çok kullanılır.</p>
 
-<p> All filenames containing no '__' in themselves are not shown as valid
-transform functions in the dropdown.</p>
+<p> Tüm dosya adlarının kendilerinde '__' içermemesi aşağı açılır menüde geçerli
+dönüştürme işlevleri olarak gösterilmez.</p>
 
-<p> Please see the libraries/transformations/TEMPLATE file for adding your own
-transform function. See the libraries/transformations/TEMPLATE_MIMETYPE for
-adding a mimetype without a transform function.</p>
+<p> Lütfen kendi dönüştürme işlevinizi eklemek için
+libraries/transformations/TEMPLATE dosyasına bakın. Dönüştürme işlevi
+olmadan mime türü eklemek için libraries/transformations/TEMPLATE_MIMETYPE
+içine bakın.</p>
 
-<p> To create a new transform function please see
-<tt>libraries/transformations/template_generator.sh</tt>.  To create a new,
-empty mimetype please see
-<tt>libraries/transformations/template_generator_mimetype.sh</tt>.</p>
+<p> Yeni dönüştürme işlevi için lütfen
+<tt>libraries/transformations/template_generator.sh</tt> içine bakın. Yeni
+bir, boş mime türü oluşturmak için lütfen
+<tt>libraries/transformations/template_generator_mimetype.sh</tt> içine
+bakın.</p>
 
-<p> A transform function always gets passed three variables:</p>
+<p> Dönüştürme işlevi her zaman üç değişkene iletilir:</p>
 
-<ol><li><b>$buffer</b> - Contains the text inside of the column. This is the text,
-you want to transform.</li>
-    <li><b>$options</b> - Contains any user-passed options to a transform function
-as an array.</li>
-    <li><b>$meta</b> - Contains an object with information about your column.  The
-data is drawn from the output of the <a
+<ol><li><b>$buffer</b> - Sütunun içindeki metni içerir. Bu dönüştürmek istediğiniz
+metindir.</li>
+    <li><b>$options</b> - Dizilim olarak herhangi bir kullanıcı geçişli seçenekten
+bir dönüştürme işlevine kadar olanı içerir.</li>
+    <li><b>$meta</b> - Sütununuz hakkındaki bilgiye sahip bir nesne içerir. Veri <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
-function. This means, all object properties described on the <a
-href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
-this variable and can be used to transform a column accordingly to
-unsigned/zerofill/not_null/... properties.<br />
-        The $meta-&gt;mimetype variable contains the original MIME-type of the
-column (i.e. 'text/plain', 'image/jpeg' etc.)</li>
+işlevinin çıktısından çizilir. Bunun anlamı, <a
+href="http://www.php.net/mysql_fetch_field">rehber sayfasında</a>
+tanımlanmış tüm nesne tercihleri bu değişken içinde mevcuttur ve
+unsigned/zerofill/not_null/... tercihlerine göre sütunu dönüştürmek için
+kullanılabilir.<br />
+        $meta-&gt;mime türü değişkeni sütunun orijinal MIME-türünü içerir (yani
+'text/plain', 'image/jpeg' v.s.)</li>
 </ol>
 
-<p> Additionally you should also provide additional function to provide
-information about the transformation to the user. This function should have
-same name as transformation function just with appended <code>_info</code>
-suffix. This function accepts no parameters and returns array with
-information about the transformation. Currently following keys can be used:
+<p> İlave olarak ayrıca kullanıcıya dönüşümler hakkında bilgi sağlamak için
+ilave işlev sağlamalısınız. Bu işlev <code>_info</code> son eki eklenmiş
+dönüştürme işlevi adıyla aynı isimde olmalıdır. Bu işlev parametreleri kabul
+etmez ve dönüştürme hakkında bilgiyle dizilimi geri döndürür. Şimdilik
+aşağıdaki anahtarlar kullanılabilir:
 </p>
 <dl>
     <dt><code>bilgi</code></dt>
@@ -2823,34 +2825,36 @@ system">İS</abbr></a></li>
     <li><a href="#faqsynchronization">Eşitleme</a></li>
 </ol>
 
-<p> Please have a look at our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin homepage for in-depth coverage of phpMyAdmin's features
-and or interface.</p>
+<p> Lütfen phpMyAdmin'nin özelliklerinin ve/veya arabiriminin derinlemesine
+kapsamı için phpMyAdmin ana sayfasındaki <a
+href="http://www.phpmyadmin.net/home_page/docs.php">Bağlantı bölümü'müze</a>
+bir göz atın.</p>
 
 <h3 id="faqserver">Sunucu</h3>
 
 <h4 id="faq1_1">
-    <a href="#faq1_1">1.1 My server is crashing each time a specific action is
-required or phpMyAdmin sends a blank page or a page full of cryptic
-characters to my browser, what can I do?</a></h4>
+    <a href="#faq1_1">1.1 Sunucum belirli eylemler gerektiğinde her seferinde
+arızalanıyor ya da phpMyAdmin boş sayfa gönderiyor veya tarayıcımda sayfa
+şifreli karakterlerle doluyor, ne yapabilirim?</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
-directive to <tt>FALSE</tt> in your <i>config.inc.php</i> file and the
-<tt>zlib.output_compression</tt> directive to <tt>Off</tt> in your php
-configuration file.<br /></p>
+<p> <i>config.inc.php</i> dosyasındaki <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip']</a> yönergesini <tt>FALSE</tt> ve php
+yapılandırma dosyanızdaki <tt>zlib.output_compression</tt> yönergesini
+<tt>Off</tt> olarak ayarlamayı deneyin.<br /></p>
 
 <h4 id="faq1_2">
-    <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
+    <a href="#faq1_2">1.2 phpMyAdmin kullandığımda Apache sunucum
+arızalanıyor.</a></h4>
 
-<p> You should first try the latest versions of Apache (and possibly MySQL).<br />
-    See also the <a href="#faq1_1"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
-    If your server keeps crashing, please ask for help in the various Apache
-support groups.</p>
+<p> Önce Apache'nin (ve mümkünse MySQL'in) en son sürümünü denemelisiniz.<br />
+    Aynı zamanda çıktı arabelleklemesi ile PHP hataları hakkında <a
+href="#faq1_1"><abbr title="Sıkça Sorulan Sorular">SSS</abbr> 1.1</a>
+girişine bakın.<br />
+    Eğer sunucunuz arızalanmaya devam ederse, lütfen çeşitli Apache destek
+gruplarında yardım isteyin.</p>
 
 <h4 id="faq1_3">
-    <a href="#faq1_3">1.3 (withdrawn).</a></h4>
+    <a href="#faq1_3">1.3 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_4">
     <a href="#faq1_4">1.4 Using phpMyAdmin on <abbr title="Internet Information

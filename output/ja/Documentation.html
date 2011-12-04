@@ -170,7 +170,7 @@ title="カンマ区切り">CSV</abbr> エクスポートを（Zip、GZip -RFC 19
 
 <ol><li><a href="#quick_install">クイックインストール</a></li>
     <li><a href="#setup_script">セットアップスクリプトの使用</a></li>
-    <li><a href="#linked-tables">phpMyAdmin の設定保存場所</a></li>
+    <li><a href="#linked-tables">phpMyAdmin 環境保管領域</a></li>
     <li><a href="#upgrading">旧版からのアップグレード</a></li>
     <li><a href="#authentication_modes">認証モードの使い方</a></li>
 </ol>
@@ -287,7 +287,7 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー
     </li>
 </ol>
 
-<h3 id="linked-tables">phpMyAdmin の設定保存場所</h3>
+<h3 id="linked-tables">phpMyAdmin 環境保管領域</h3>
 
 <p> 一連の新機能（ブックマーク、コメント、<abbr title="structured query language">SQL</abbr>
 履歴、コマンド追跡機能、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
@@ -319,7 +319,7 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 <tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
 
 <p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、且つ、phpMyAdmin
-設定保存場所を使用している場合、<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
+環境保管領域を使用している場合、<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
 スクリプトを実行する必要があります。</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
@@ -374,7 +374,7 @@ GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        （もちろん <a href="#linked-tables">phpMyAdmin の設定保存場所</a>を設定しておく必要があります）  
+        (もちろん <a href="#linked-tables">phpMyAdmin 環境保管領域</a>を設定しておく必要があります。)  
     <br /></li>
 
     <li>上記が済んだら、<i>本当の</i>ユーザそれぞれについて、特定のデータベースにおける特権を付与していってください。ふつう、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが（例えばスーパーユーザを作るときなど）。<br />
@@ -580,7 +580,7 @@ MySQL サーバでもほぼ確実に利用できるためです。ソケット�
         <span id="cfg_Servers_controlhost">$cfg['Servers'][$i]['controlhost']</span>
 string<br />
     </dt>
-    <dd>Permits to use an alternate host to hold the configuration storage data.</dd>
+    <dd>指定すると、phpMyAdmin 環境保管領域に対して代替ホストが使えるようになります。</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -717,16 +717,16 @@ href="http://php.net/manual/ja/reference.pcre.pattern.syntax.php">PCRE
     <dt id="pmadb">
         <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span> 文字列
     </dt>
-    <dd>phpMyAdmin の設定保存場所を格納するデータベース名が入ります。
+    <dd>phpMyAdmin 環境保管領域を格納するデータベース名が入ります。
         <br /><br />
 
         この文書の <a href="#linked-tables">phpMyAdmin
-の設定保存場所</a>の節をご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
+環境保管領域</a>の節をご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
         <br /><br />
 
-        インストールした phpMyAdmin のユーザが１人の場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
+        インストールした phpMyAdmin のユーザが 1 人の場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
 <tt>$cfg['Servers'][$i]['pmadb']</tt> にはお使いのデータベース名を入れていただければ結構です。マルチユーザの場合は
-phpMyAdmin の設定保存場所を格納するセントラルデータベース名を設定します。</dd>
+phpMyAdmin 環境保管領域を格納するセントラルデータベース名を設定します。</dd>
 
     <dt id="bookmark">
         <span
@@ -736,7 +736,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
     <dd>バージョン 2.2.0 以降の phpMyAdmin ではブックマーククエリを利用できます。よく利用するクエリがある場合は便利です。<br /><br />
 
         この機能を利用できるようにするには、
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['bookmarktable']</tt> にテーブル名を入力します。</li>
         </ul>
     </dd>
@@ -764,7 +764,7 @@ title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
 
         この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['relation']</tt> にリレーションテーブル名を入れます。</li>
             <li>通常ユーザとして phpMyAdmin
 を開き、この機能を使いたいテーブル一つ々々に対して、「構造⇒リレーションビュー」とクリックして、外部カラムを選択します。
@@ -783,7 +783,7 @@ title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
         バージョン 2.3.0
 以降、対応するキーにカーソルを動かしたときどのカラムをツールチップとして表示するか、専用の「table_info」テーブルに記述できるようになりました。<br />
         この設定変数はその専用のテーブル名を保持します。この機能を利用できるようにするには、
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li>テーブル名を <tt>$cfg['Servers'][$i]['table_info']</tt> に入れます。（例：'pma_table_info'）</li>
             <li>それから、この機能を利用したいテーブルごとに「構造⇒リレーションビュー⇒表示するカラムの選択」をクリックして、カラムを選択します。</li>
         </ul>
@@ -805,7 +805,7 @@ title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 
         この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['table_coords']</tt> と
 <tt>$cfg['Servers'][$i]['pdf_pages']</tt> に正しいテーブル名を入れます。</li>
         </ul>
@@ -831,7 +831,7 @@ href="#transformations">「変換機能」</a>をご覧ください。MIME 変�
         <br /><br />
 
         この機能を利用できるようにするには、
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['column_info']</tt>
 にテーブル名を入れます。（例：'pma_column_info'）</li>
             <li>2.5.0 より前の Column_comments テーブルを更新するには次のようにします。
@@ -865,7 +865,7 @@ class="configrule">$cfg['QueryHistoryMax']</a>
 
         この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['history']</tt> にテーブル名を入れます。（例：'pma_history'）
                 </li>
         </ul>
@@ -882,12 +882,12 @@ href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
 href="#cfg_LeftDefaultTabTable"
 class="configrule">$cfg['LeftDefaultTabTable']</a> 内において移動が行われます。<br/><br/>
 
-        設定保存場所がなくても、最近使用されたテーブルにアクセスすることができますが、ログアウトすると失われてしまいます。<br/><br/>
+        phpMyAdmin 環境保管領域がなくても、最近使用されたテーブルにアクセスすることができますが、ログアウトすると失われてしまいます。<br/><br/>
 
         この機能を永続的に利用できるようにするには、
 
         <ul>
-            <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+            <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['recent']</tt> にテーブル名を入れます。（例：'pma_recent'）</li>
         </ul>
     </dd>
@@ -898,17 +898,15 @@ id="cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</span>
 文字列
     </dt>
     <dd>
-        Since release 3.5.0 phpMyAdmin can be configured to remember several things
-(sorted column <a href="#cfg_RememberSorting"
-class="configrule">$cfg['RememberSorting']</a> , column order, and column
-visibility from a database table) for browsing tables.  Without configuring
-the storage, these features still can be used, but the values will disappear
-after you logout.<br/><br/>
+        バージョン 3.5.0 以降、表示しているテーブルのさまざまな環境設定 (テーブルのソート <a href="#cfg_RememberSorting"
+class="configrule">$cfg['RememberSorting']</a>、カラムの表示順番、カラムの表示有無)
+を覚えておくことができます。phpMyAdmin
+環境保管領域がなくても、これらの機能は使用することができますが、ログアウトすると値は失われてしまいます。<br/><br/>
 
         これらの機能を永続的に利用できるようにするには、
 
         <ul>
-            <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+            <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['table_uiprefs']</tt>
 にテーブル名を入れます。（例：'pma_table_uiprefs'）</li>
         </ul>
@@ -936,7 +934,7 @@ title="データベース用の問い合わせ言語">SQL</abbr>
         この機能を利用できるようにするには、
 
         <ul>
-            <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+            <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li>テーブル名を <tt>$cfg['Servers'][$i]['tracking']</tt> に入れます。（例：'pma_tracking'）</li>
         </ul>
     </dd>
@@ -1011,10 +1009,11 @@ id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_dr
 文字列
     </dt>
     <dd>
-        バージョン 3.4.x より。ユーザが自分自身用の環境設定を行い、それをデータベースに格納することを許可します。
+        バージョン 3.4.x より。ユーザが自分自身用の環境設定を行い、それをデータベース (phpMyAdmin 環境保管領域)
+に格納することを許可します。
         <br /><br />
 
-        <a href="#pmadb">pmadb</a> への設定格納を許可しなくても、依然としてユーザは phpMyAdmin
+        <a href="#pmadb">pmadb</a> への環境格納を許可しなくても、依然としてユーザは phpMyAdmin
 をカスタマイズすることができますが、ブラウザのローカルストレージ (Web Storage)
 に設定を保存することになります。もしくは、それもできない場合はセッションの終了時までとなります。
         <br /><br />
@@ -1022,7 +1021,7 @@ id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_dr
         この機能を利用できるようにするには、
 
         <ul>
-            <li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+            <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li>テーブル名を <tt>$cfg['Servers'][$i]['userconfig']</tt> に入れます。</li>
         </ul>
     </dd>
@@ -1037,7 +1036,7 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 
         この機能を利用できるようにするには、
 
-        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin の設定保存場所をセットアップします。</li>
+        <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['designer_coords']</tt>
 にテーブル名を入れます。（例：'pma_designer_coords'）
                 </li>
@@ -1910,8 +1909,7 @@ textarea
 を参照してください。</dd>
 
     <dt id="cfg_UserprefsDeveloperTab">$cfg['UserprefsDeveloperTab'] 論理型</dt>
-    <dd>Activates in the user preferences a tab containing options for developers of
-phpMyAdmin.</dd>
+    <dd>ユーザ設定環境に phpMyAdmin 開発者向け用のオプションタブを表示させます。</dd>
 
     <dt id="cfg_TitleTable">$cfg['TitleTable'] 文字列</dt>
     <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] 文字列</dt>
