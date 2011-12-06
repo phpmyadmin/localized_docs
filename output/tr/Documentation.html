@@ -2892,25 +2892,28 @@ sefer daha iyi bir onarımı yok): <i>libraries/header.inc.php</i>,
 <tt>DOCTYPE</tt> bildirimlerini (2 satır) yorumlayın ya da kaldırın.</p>
 
 <h4 id="faq1_7">
-    <a href="#faq1_7">1.7 How can I GZip or Bzip a dump or a <abbr title="comma
-separated values">CSV</abbr> export? It does not seem to work.</a></h4>
+    <a href="#faq1_7">1.7 Nasıl GZip veya Bzip dökümü alabilirim ya da <abbr
+title="comma separated values">CSV</abbr> dışa aktarabilirim? Bu çalışmıyor
+gibi görünüyor.</a></h4>
 
-<p> These features are based on the <tt>gzencode()</tt> and
-<tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
-support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
+<p> Bu özellikler platformların (Unix/Windows, Güvenli Kip veya değil, ve
+benzeri) daha bağımsız olması için <tt>gzencode()</tt> ve
+<tt>bzcompress()</tt> PHP işlevleri tabanlıdır. Bu yüzden Zlib/Bzip2
+desteğine (<tt>--with-zlib</tt> ve <tt>--with-bz2</tt>) sahip olmak
+zorundasınız.<br /></p>
 
 <h4 id="faq1_8">
-    <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
-error about safe mode being in effect.</a></h4>
+    <a href="#faq1_8">1.8 Tabloya metin dosyası ekleyemiyorum ve güvenli kipin
+etkili olmasıyla ilgili bir hata alıyorum.</a></h4>
 
-<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
-in <i>php.ini</i> by the variable <tt>upload_tmp_dir</tt> (usually the
-system default is <i>/tmp</i>).<br />
-    We recommend the following setup for Apache servers running in safe mode, to
-enable uploads of files while being reasonably secure:</p>
+<p> Gönderdiğiniz dosya <i>php.ini</i> dosyasında tanımlı
+<tt>upload_tmp_dir</tt> (genellikle sistem varsayılanı <i>/tmp</i>'dir)
+değişkeninden dolayı PHP tarafından &quot;gönderme dizinine&quot;
+kaydedilir.<br />
+    Aşağıdaki ayarlamayı güvenli kipte çalışan Apache sunucuları için öneririz,
+dosyaların gönderilmesini oldukça güvenli yaparak etkinleştirmek için:</p>
 
-<ul><li>create a separate directory for uploads: <tt>mkdir /tmp/php</tt></li>
+<ul><li>göndermeler için ayrı dizin oluşturun: <tt>mkdir /tmp/php</tt></li>
     <li>give ownership to the Apache server's user.group: <tt>chown apache.apache
 /tmp/php</tt></li>
     <li>give proper permission: <tt>chmod 600 /tmp/php</tt></li>
