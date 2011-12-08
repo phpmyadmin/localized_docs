@@ -2448,7 +2448,7 @@ title="Sıkça Sorulan Sorular">SSS</abbr> 2.7</a>'ye bakın.</dd>
     <dt id="cfg_ThemePerServer">$cfg['ThemePerServer'] boolean</dt>
     <dd>Her sunucu için farklı temaya izin vermek gerekirse.</dd>
 
-    <dt id="cfg_DefaultQueryTable">$cfg['DefaultQueryTable'] string<br />
+    <dt id="cfg_DefaultQueryTable">$cfg['DefaultQueryTable'] dizgi<br />
         <span id="cfg_DefaultQueryDatabase">$cfg['DefaultQueryDatabase']</span>
 dizgi
     </dt>
@@ -2689,7 +2689,7 @@ sağlar.</p>
 
 <p> 5 dosya adı olasılığı vardır:</p>
 
-<ol><li>Mime türü+alt tür dönüşüm:<br /><br />
+<ol><li>Mime türü+alt tür dönüşümü:<br /><br />
 
         <tt>[mimetype]_[subtype]__[transform].inc.php</tt><br /><br />
 
@@ -2701,7 +2701,7 @@ olmayacak karakterlerin yanısıra PHP işlevi adlandırma kuralını içerebili
 '<tt>PMA_transform_[mimetype]_[subtype]__[transform]()</tt>' olarak
 adlandırılacaktır.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Örnek:</b><br /><br />
 
         <tt>text_html__formatted.inc.php</tt><br />
         <tt>PMA_transform_text_html__formatted()</tt></li>
@@ -2717,12 +2717,12 @@ işlevi adlandırma kuralını içerebilir.<br /><br />
         Dönüştürme işlevi '<tt>PMA_transform_[mimetype]__[transform]()</tt>' olarak
 adlandırılacaktır.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Örnek:</b><br /><br />
 
         <tt>text__formatted.inc.php</tt><br />
         <tt>PMA_transform_text__formatted()</tt></li>
 
-    <li>Belirli dönüştürme işlevsiz mime türü+alt tür<br /><br />
+    <li>Belirli dönüştürme işlevsiz, mime türü+alt tür<br /><br />
 
         <tt>[mimetype]_[subtype].inc.php</tt><br /><br />
 
@@ -2731,12 +2731,12 @@ sistemiyle sorunlara sebep olan özel karakterler kullanmayın.<br /><br />
 
         Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Örnek:</b><br /><br />
 
         <tt>text_plain.inc.php</tt><br />
-        (İşlev yok)</li>
+        (İşlevi yok)</li>
 
-    <li>Belirli dönüştürme işlevsiz mime türü (alt tür ile/ile değil)<br /><br />
+    <li>Belirli dönüştürme işlevsiz, mime türü (alt tür ile/ile değil)<br /><br />
 
         <tt>[mimetype].inc.php</tt><br /><br />
 
@@ -2746,10 +2746,10 @@ sistemiyle sorunlara sebep olan özel karakterler kullanmayın.
 
         Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Örnek:</b><br /><br />
 
         <tt>text.inc.php</tt><br />
-        (İşlev yok)</li>
+        (İşlevi yok)</li>
 
     <li>Belirli mime türü olmayan genel dönüştürme işlevi<br /><br />
 
@@ -2758,7 +2758,7 @@ sistemiyle sorunlara sebep olan özel karakterler kullanmayın.
         Dönüştürme işlevi '<tt>PMA_transform_global__[transform]()</tt>' olarak
 adlandırılacaktır.<br /><br />
 
-        <b>Example:</b><br /><br />
+        <b>Örnek:</b><br /><br />
 
         <tt>global__formatted</tt><br />
         <tt>PMA_transform_global__formatted()</tt></li>
@@ -2805,7 +2805,7 @@ etmez ve dönüştürme hakkında bilgiyle dizilimi geri döndürür. Şimdilik
 aşağıdaki anahtarlar kullanılabilir:
 </p>
 <dl>
-    <dt><code>bilgi</code></dt>
+    <dt><code>info</code></dt>
     <dd>Uzun dönüşüm açıklaması.</dd>
 </dl>
 
@@ -2914,31 +2914,31 @@ kaydedilir.<br />
 dosyaların gönderilmesini oldukça güvenli yaparak etkinleştirmek için:</p>
 
 <ul><li>göndermeler için ayrı dizin oluşturun: <tt>mkdir /tmp/php</tt></li>
-    <li>give ownership to the Apache server's user.group: <tt>chown apache.apache
+    <li>Apache sunucusunun kullanıcı grubuna sahiplik verin: <tt>chown apache.apache
 /tmp/php</tt></li>
-    <li>give proper permission: <tt>chmod 600 /tmp/php</tt></li>
-    <li>put <tt>upload_tmp_dir = /tmp/php</tt> in <i>php.ini</i></li>
-    <li>restart Apache</li>
+    <li>tam izin verin: <tt>chmod 600 /tmp/php</tt></li>
+    <li><i>php.ini</i> içine <tt>upload_tmp_dir = /tmp/php</tt> koyun</li>
+    <li>Apache'yi yeniden başlatın</li>
 </ul>
 
 <h4 id="faq1_9">
-    <a href="#faq1_9">1.9 (withdrawn).</a></h4>
+    <a href="#faq1_9">1.9 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_10">
-    <a href="#faq1_10">1.10 I'm having troubles when uploading files with
-phpMyAdmin running on a secure server. My browser is Internet Explorer and
-I'm using the Apache server.</a></h4>
+    <a href="#faq1_10">1.10 Güvenli bir sunucu üzerinde çalışan phpMyAdmin ile
+dosyaları gönderirken sorun yaşıyorum. Tarayıcım Internet Explorer ve Apache
+sunucusu kullanıyorum.</a></h4>
 
-<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
-your <i>httpd.conf</i>:</p>
+<p> phpWizard forumunda &quot;Rob M&quot;'in önerdiğine göre bu satırı
+<i>httpd.conf</i> dosyanızın içine ekleyin:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
-<p> It seems to clear up many problems between Internet Explorer and SSL.</p>
+<p> Internet Explorer ve SSL arasındaki çoğu sorunu hallettiği görünüyor.</p>
 
 <h4 id="faq1_11">
-    <a href="#faq1_11">1.11 I get an 'open_basedir restriction' while uploading
-a file from the query box.</a></h4>
+    <a href="#faq1_11">1.11 Sorgu kutusundan bir dosya gönderirken bir
+'open_basedir kısıtlaması' alıyorum.</a></h4>
 
 <p> Since version 2.2.4, phpMyAdmin supports servers with open_basedir
 restrictions. However you need to create temporary directory and configure
