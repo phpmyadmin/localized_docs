@@ -2929,7 +2929,7 @@ dosyaların gönderilmesini oldukça güvenli yaparak etkinleştirmek için:</p>
 dosyaları gönderirken sorun yaşıyorum. Tarayıcım Internet Explorer ve Apache
 sunucusu kullanıyorum.</a></h4>
 
-<p> phpWizard forumunda &quot;Rob M&quot;'in önerdiğine göre bu satırı
+<p> phpWizard forumunda &quot;Rob M&quot;in önerdiğine göre bu satırı
 <i>httpd.conf</i> dosyanızın içine ekleyin:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
@@ -2940,79 +2940,82 @@ sunucusu kullanıyorum.</a></h4>
     <a href="#faq1_11">1.11 Sorgu kutusundan bir dosya gönderirken bir
 'open_basedir kısıtlaması' alıyorum.</a></h4>
 
-<p> Since version 2.2.4, phpMyAdmin supports servers with open_basedir
-restrictions. However you need to create temporary directory and configure
-it as <a href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a>.  The
-uploaded files will be moved there, and after execution of your <abbr
-title="structured query language">SQL</abbr> commands, removed.</p>
+<p> 2.2.4 sürümünden bu yana, phpMyAdmin open_basedir kısıtlamalarıyla
+sunucuları destekler. Ancak geçici dizin oluşturmanız ve <a
+href="#cfg_TempDir" class="configrule">$cfg['TempDir']</a> olarak
+yapılandırmanız gerekir. Gönderilmiş dosyalar buraya taşınacaktır ve <abbr
+title="structured query language">SQL</abbr> komutlarınızın yürütülmesinden
+sonra kaldırılacaktır.</p>
 
 <h4 id="faq1_12">
-    <a href="#faq1_12">1.12 I have lost my MySQL root password, what can I
-do?</a></h4>
+    <a href="#faq1_12">1.12 MySQL root parolamı kaybettim, ne yapabilirim?</a></h4>
 
-<p> The MySQL manual explains how to <a
-href="http://dev.mysql.com/doc/mysql/en/resetting-permissions.html"> reset
-the permissions</a>.</p>
+<p> MySQL kılavuzu <a
+href="http://dev.mysql.com/doc/mysql/en/resetting-permissions.html">izinleri
+nasıl sıfırlayacağınızı</a> anlatır.</p>
 
 <h4 id="faq1_13">
-    <a href="#faq1_13">1.13 (withdrawn).</a></h4>
+    <a href="#faq1_13">1.13 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_14">
-    <a href="#faq1_14">1.14 (withdrawn).</a></h4>
+    <a href="#faq1_14">1.14 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
-names.</a>
+    <a href="#faq1_15">1.15 <i>mysql.user</i> sütun adlarıyla sorunlarım
+var.</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
-were named <tt>user</tt> and <tt>password</tt>. Please modify your column
-names to align with current standards.</p>
+<p> Önceki MySQL sürümlerinde, <tt>User</tt> ve <tt>Password</tt> sütunları
+<tt>user</tt> ve <tt>password</tt> olarak adlandırılırdı. Lütfen sütun
+adlarınızı şu anki standartlarla hizalamak için değiştirin.</p>
 
 <h4 id="faq1_16">
-    <a href="#faq1_16">1.16 I cannot upload big dump files (memory, <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> or timeout problems).</a>
+    <a href="#faq1_16">1.16 Büyük döküm dosyalarını gönderemiyorum (bellek,
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> ya da zaman aşımı
+sorunları).</a>
 </h4>
 
-<p> Starting with version 2.7.0, the import engine has been re&#8211;written and
-these problems should not occur. If possible, upgrade your phpMyAdmin to the
-latest version to take advantage of the new import features.</p>
+<p> 2.7.0 sürümünden başlayarak, içe aktarma motoru yeniden yazıldı ve bu
+sorunlar meydana gelmemelidir. Eğer mümkünse, yeni içe aktarma
+özelliklerinin avantajından yararlanmak için phpMyAdmin'inizi en son sürüme
+yükseltin.</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that post_max_size and memory_limit
-need to be larger than upload_max_filesize.<br /> <br />
+<p> Kontrol edilecek (veya kontrol etmesi için anamakine sağlayacısına
+sorulacak) ilk şeyler <i>php.ini</i> yapılandırma dosyası içindeki
+<tt>upload_max_filesize</tt>, <tt>memory_limit</tt> ve
+<tt>post_max_size</tt> değerleridir. Tüm bu üç ayar PHP tarafından işlenen
+ve gönderilebilen en fazla veri boyutunu sınırlandırır. Aynı zamanda bir
+kullanıcı post_max_size ve memory_limit değerlerinin upload_max_filesize
+değerinden daha büyük olması gerektiğini söylemiştir.<br /> <br />
 
-    There exist several workarounds if your upload is too big or your hosting
-provider is unwilling to change the settings:</p>
+    Eğer göndermeniz çok büyükse ye da barındırma sağlayıcınız ayarları
+değiştirmeye yanaşmıyorsa birkaç çözüm mevcuttur:</p>
 
-<ul><li>Look at the <a href="#cfg_UploadDir"
-class="configrule">$cfg['UploadDir']</a> feature. This allows one to upload
-a file to the server via scp, ftp, or your favorite file transfer
-method. PhpMyAdmin is then able to import the files from the temporary
-directory. More information is available in the <a
-href="#config">Configuration section</a> of this document.</li>
-    <li>Using a utility (such as <a href="http://www.ozerov.de/bigdump.php">
-BigDump</a>) to split the files before uploading. We cannot support this or
-any third party applications, but are aware of users having success with it.</li>
-    <li>If you have shell (command line) access, use MySQL to import the files
-directly. You can do this by issuing the &quot;source&quot; command from
-within MySQL: <tt>source <i>filename.sql</i></tt>.</li>
+<ul><li><a href="#cfg_UploadDir" class="configrule">$cfg['UploadDir']</a> özelliğine
+bakın. Bu, scp, ftp veya sık kullandığınız dosya aktarım yönteminizle bir
+dosyayı göndermenize izin verir. phpMyAdmin sonrasında dosyaları geçici
+dizinden içe aktarabilir. Daha fazla bilgi bu belgenin <a
+href="#config">Yapılandırma bölümü</a> içinde mevcuttur.</li>
+    <li>Göndermeden önce dosyaları bölmek için yardımcı uygulama (<a
+href="http://www.ozerov.de/bigdump.php"> BigDump</a> gibi) kullanmak. Bunu
+ya da üçüncü parti uygulamaları destekleyemiyoruz ama kullanıcıların bununla
+başarılı olduğunun farkındayız.</li>
+    <li>Eğer kabuk (komut satırı) erişiminiz varsa, doğrudan dosyaları içe aktarmak
+için MySQL kullanın. Bunu MySQL içinden &quot;source&quot; komutunu vererek
+yapabilirsiniz: <tt>source <i>dosyaadı.sql</i></tt>.</li>
 </ul>
 
 <h4 id="faq1_17">
-    <a id="faqmysqlversions" href="#faq1_17">1.17 Which MySQL versions does
-phpMyAdmin support?</a></h4>
+    <a id="faqmysqlversions" href="#faq1_17">1.17 phpMyAdmin hangi MySQL
+sürümlerini destekliyor?</a></h4>
 
-<p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
-MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
-connect to your MySQL server using PHP's classic <a
-href="http://php.net/mysql">MySQL extension</a> as well as the <a
-href="http://php.net/mysqli">improved MySQL extension (MySQLi)</a> that is
-available in PHP 5.0. The latter one should be used unless you have a good
-reason not to do so.<br />
+<p> phpMyAdmin 3.0.x sürümlerinden bu yana, sadece MySQL 5.0.1 ve daha yenileri
+desteklenir. MySQL sürümlerinin daha eskileri için en son 2.x dalını
+kullanmanız gerekir. phpMyAdmin, MySQL sunucunuza PHP'nin klasik <a
+href="http://php.net/mysql">MySQL uzantısının</a> yanı sıra PHP 5.0'da
+bulunan <a href="http://php.net/mysqli">geliştirilmiş MySQL uzantısını
+(MySQLi)</a> kullanarak bağlanabilir. İkincisi, birinciyi yapmamak için iyi
+bir nedeniniz yoksa kullanılmalıdır.<br />
     When compiling PHP, we strongly recommend that you manually link the MySQL
 extension of your choice to a MySQL client library of at least the same
 minor version since the one that is bundled with some PHP distributions is
