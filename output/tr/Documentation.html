@@ -54,7 +54,7 @@ SSS</abbr></a></li>
 
 <p>
 Bu <a href="http://www.phpmyadmin.net/documentation/">phpMyAdmin
-belgesinin</a> çevirilmiş sürümüdür. <a
+belgesinin</a> çevrilmiş sürümüdür. <a
 href="https://l10n.cihar.com/projects/pmadoc/">Çeviri sunucumuzda</a>
 katkıda bulunabilirsiniz.
 </p>
@@ -491,9 +491,9 @@ alanlarını doldurmanıza gerek yok.</li>
 <h4>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' kimlik doğrulaması
 kipi</h4>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> Temel kimlik doğrulama
-yöntemini kullanır ve herhangi bir geçerli MySQL kullanıcısı olarak oturum
-açmanıza izin verir.</li>
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> Basit kimlik
+doğrulaması yöntemini kullanır ve herhangi bir geçerli MySQL kullanıcısı
+olarak oturum açmanıza izin verir.</li>
     <li>Pek çok PHP yapılandırmasıyla desteklenir. <abbr title="Internet Information
 Services">IIS</abbr> (<abbr title="Internet Server Application Programming
 Interface">ISAPI</abbr>) desteği için <abbr title="Common Gateway
@@ -550,7 +550,7 @@ href="#servers_allowdeny_order" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['order']</a> and <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> yapılandırma yönergelerini
-dikkate almayı isteyebilirsiniz.</li>
+dikkate almak isteyebilirsiniz.</li>
     <li>Tanımlama bilgisi ve http'den farklı olarak, phpMyAdmin sitesinin ilk
 yüklenmesinde oturum açmak için kullanıcı gerekmez.Bu tasarımındandır ama
 herhangi bir kullanıcının kurulumunuza erişmesine izin verebilir. Bazı
@@ -763,8 +763,7 @@ yetkisinin olduğu ayrıntılı MySQL hesabı sağlamanız gerekir.<br />
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
 kullanımı&quot;nda <a href="#setup">kur bölümü</a>'ne bakın.<br /><br />
 
-        phpMyAdmin'in 2.2.5 sürümünden önce bunlar &quot;stduser/stdpass&quot;
-olarak adlandırılırdı.</dd>
+        phpMyAdmin'in 2.2.5 sürümünden önce &quot;stduser/stdpass&quot; denilirdi.</dd>
 
     <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] dizgi <tt>['<abbr title="HyperText Transfer
 Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
@@ -814,8 +813,8 @@ dizgi<br />
     <dd>
     auth_type = '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
 kullanıldığı zaman, bu alan kullanıcıya gösterilecek özel <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> Temel Kimlik Doğrulama Alanı
-tanımlamak için izin verir. Eğer yapılandırma dosyanızda açıkça
+title="HyperText Transfer Protocol">HTTP</abbr> Basit Kimlik Doğrulaması
+Alanı tanımlamak için izin verir. Eğer yapılandırma dosyanızda açıkça
 belirtilmemişse, "phpMyAdmin"in dizgi birleşimi ve ya <a
 href="#cfg_Servers_verbose"
 class="configrule">$cfg['Servers'][$i]['verbose']</a> ya da <a
@@ -2989,7 +2988,7 @@ kullanıcı post_max_size ve memory_limit değerlerinin upload_max_filesize
 değerinden daha büyük olması gerektiğini söylemiştir.<br /> <br />
 
     Eğer göndermeniz çok büyükse ye da barındırma sağlayıcınız ayarları
-değiştirmeye yanaşmıyorsa birkaç çözüm mevcuttur:</p>
+değiştirmeye yanaşmıyorsa birkaç geçici çözüm mevcuttur:</p>
 
 <ul><li><a href="#cfg_UploadDir" class="configrule">$cfg['UploadDir']</a> özelliğine
 bakın. Bu, scp, ftp veya sık kullandığınız dosya aktarım yönteminizle bir
@@ -3016,154 +3015,160 @@ href="http://php.net/mysql">MySQL uzantısının</a> yanı sıra PHP 5.0'da
 bulunan <a href="http://php.net/mysqli">geliştirilmiş MySQL uzantısını
 (MySQLi)</a> kullanarak bağlanabilir. İkincisi, birinciyi yapmamak için iyi
 bir nedeniniz yoksa kullanılmalıdır.<br />
-    When compiling PHP, we strongly recommend that you manually link the MySQL
-extension of your choice to a MySQL client library of at least the same
-minor version since the one that is bundled with some PHP distributions is
-rather old and might cause problems <a href="#faq1_17a"> (see <abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
-    <a href="http://mariadb.org/">MariaDB</a> is also supported (versions 5.1
-and 5.2 were tested).<br /><br />
-    Since phpMyAdmin 3.5 <a href="http://www.drizzle.org/">Drizzle</a> is
-supported.
+    PHP derlerken, seçiminizin MySQL uzantısını oldukça eski ve sorunlara neden
+olabilen bazı PHP dağıtımlarıyla birlikte paketlenmiş olan en az aynı küçük
+sürümünün MySQL istemcisi kütüphanesine elle bağlantılamanızı şiddetle
+öneririz <a href="#faq1_17a"> (<abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 1.17a'ya bakın)</a>.<br /><br />
+    Aynı zamanda <a href="http://mariadb.org/">MariaDB</a> desteklenmektedir
+(5.1 ve 5.2 sürümleri denenmiştir).<br /><br />
+    phpMyAdmin 3.5'ten bu yana <a href="http://www.drizzle.org/">Drizzle</a>
+desteklenmektedir.
     </p>
 
 <h5 id="faq1_17a">
-    <a href="#faq1_17a">1.17a I cannot connect to the MySQL server. It always
-returns the error message, &quot;Client does not support authentication
-protocol requested by server; consider upgrading MySQL client&quot;</a></h5>
+    <a href="#faq1_17a">1.17a MySQL sunucusuna bağlanamıyorum. Her zaman hata
+mesajı döndürüyor, &quot;İstemci, sunucu tarafından istenen kimlik doğrulama
+protokolünü desteklemiyor; MySQL istemcisinin yükseltilmesi
+düşünülmeli&quot;</a></h5>
 
-<p> You tried to access MySQL with an old MySQL client library. The version of
-your MySQL client library can be checked in your phpinfo() output.  In
-general, it should have at least the same minor version as your server - as
-mentioned in <a href="#faq1_17"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.17</a>.<br /><br />
+<p> MySQL'e eski MySQL istemci kütüphanesi ile erişmeyi denediniz. MySQL istemci
+kütüphanenizin sürümü, phpinfo() çıktınızda kontrol edilebilir. Genelde, en
+az sunucunuzla aynı küçük sürüme sahip olmalı - <a href="#faq1_17"> <abbr
+title="Sıkça Sorulan Sorular">SSS</abbr> 1.17</a>'de bahsedildiği gibi.<br /><br />
 
-    This problem is generally caused by using MySQL version 4.1 or newer. MySQL
-changed the authentication hash and your PHP is trying to use the old
-method.  The proper solution is to use the <a
-href="http://www.php.net/mysqli">mysqli extension</a> with the proper client
-library to match your MySQL installation. Your chosen extension is specified
-in <a href="#cfg_Servers_extension"
-class="configrule">$cfg['Servers'][$i]['extension']</a>.  More information
-(and several workarounds) are located in the <a
+    Bu soruna genel olarak MySQL sürümü 4.1 veya daha yenisi neden olur. MySQL
+kimlik doğrulama adreslemesini değiştirdi ve PHP'niz eski yöntemi kullanmaya
+çalışıyor. Uygun çözüm, MySQL kurulumuyla eşleşen, uygun istemci kütüphanesi
+ile <a href="http://www.php.net/mysqli">mysqli uzantısını</a>
+kullanmaktır. Seçtiğiniz uzantı <a href="#cfg_Servers_extension"
+class="configrule">$cfg['Servers'][$i]['extension']</a> içinde
+belirtilmelidir. Daha fazla bilgi (ve birkaç geçici çözüm) <a
 href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL
-Documentation</a>.
+Belgesinde</a> yer almaktadır.
 </p>
 
 <h4 id="faq1_18">
-    <a href="#faq1_18">1.18 (withdrawn).</a></h4>
+    <a href="#faq1_18">1.18 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_19">
-    <a href="#faq1_19">1.19 I can't run the &quot;display relations&quot;
-feature because the script seems not to know the font face I'm using!</a></h4>
+    <a href="#faq1_19">1.19 &quot;Görüntüleme bağlantıları&quot; özelliğini
+çalıştıramıyorum çünkü betik kullandığım yazı tipi yüzünü bilmiyor
+görünüyor!</a></h4>
 
-<p> The &quot;FPDF&quot; library we're using for this feature requires some
-special files to use font faces.<br />
-    Please refers to the <a href="http://www.fpdf.org/">FPDF manual</a> to build
-these files.</p>
+<p> Bu özellik için kullandığımız &quot;FPDF&quot; kütüphanesi yazı tipi
+yüzlerini kullanmak için bazı özel dosyalar gerektirir.<br />
+    Lütfen bu dosyaları yapmak için <a href="http://www.fpdf.org/">FPDF
+kılavuzuna</a> başvurun.</p>
 
 <h4 id="faqmysql">
-    <a href="#faqmysql">1.20 I receive the error &quot;cannot load MySQL
-extension, please check PHP Configuration&quot;.</a></h4>
+    <a href="#faqmysql">1.20 &quot;MySQL uzantısı yüklenemiyor, lütfen PHP
+Yapılandırmasını kontrol edin&quot; hatası alıyorum.</a></h4>
 
-<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
-&quot;MySQL extension&quot;. This extension may be part of the PHP
-distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
-name is probably <i>mysql.so</i> or <i>php_mysql.dll</i>. phpMyAdmin tried
-to load the extension but failed.<br /><br />
+<p> Bir MySQL sunucusuna bağlanmak için PHP'nin &quot;MySQL uzantısı&quot;
+olarak adlandırılan MySQL işlevleri grubuna ihtiyacı vardır. Bu uzantı PHP
+dağıtımının parçası (birlikte derlenmiş) olabilir, ayrıca dinamik olarak
+yüklenmesi gerekebilir. Adı büyük olasılıkla <i>mysql.so</i> veya
+<i>php_mysql.dll</i> dir. phpMyAdmin uzantıyı yüklemeyi denemiştir ama
+başarısız olmuştur.<br /><br />
 
-    Usually, the problem is solved by installing a software package called
-&quot;PHP-MySQL&quot; or something similar.</p>
+    Genellikle sorun &quot;PHP-MySQL&quot; veya benzer bir şey denilen paketin
+kurulumuyla çözülür.</p>
 
 <h4 id="faq1_21">
-    <a href="#faq1_21">1.21 I am running the <abbr title="Common Gateway
-Interface">CGI</abbr> version of PHP under Unix, and I cannot log in using
-cookie auth.</a></h4>
+    <a href="#faq1_21">1.21 Unix altında PHP'nin <abbr title="Common Gateway
+Interface">CGI</abbr> sürümünü çalıştırıyorum ve kimlik doğ. kullanarak
+oturum açamıyorum.</a></h4>
 
-<p> In <i>php.ini</i>, set <tt>mysql.max_links</tt> higher than 1.</p>
+<p> <i>php.ini</i> içinde <tt>mysql.max_links</tt> değerini 1'den büyüğe
+ayarlayın.</p>
 
 <h4 id="faq1_22">
-    <a href="#faq1_22">1.22 I don't see the &quot;Location of text file&quot;
-field, so I cannot upload.</a></h4>
+    <a href="#faq1_22">1.22 &quot;Metin dosyası yeri&quot; alanını göremiyorum
+bu yüzden gönderemiyorum.</a></h4>
 
-<p> This is most likely because in <i>php.ini</i>, your <tt>file_uploads</tt>
-parameter is not set to &quot;on&quot;.</p>
+<p> Bu büyük ihtimalle <i>php.ini</i> içinden kaynaklanıyor,
+<tt>file_uploads</tt> parametreniz &quot;on&quot; olarak ayarlı değil.</p>
 
 <h4 id="faq1_23">
-    <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
-create a new table the table and column names are changed to lowercase!</a></h4>
+    <a href="#faq1_23">1.23 Win32 makinede MySQL çalıştırıyorum. Her defasında
+yeni bir tablo oluşturduğumda tablo ve sütun adları küçük harfe
+değiştiriliyor!</a></h4>
 
-<p> This happens because the MySQL directive <tt>lower_case_table_names</tt>
-defaults to 1 (<tt>ON</tt>) in the Win32 version of MySQL. You can change
-this behavior by simply changing the directive to 0 (<tt>OFF</tt>):<br />
-    Just edit your <tt>my.ini</tt> file that should be located in your Windows
-directory and add the following line to the group [mysqld]:</p>
+<p> Bu oluyor çünkü MySQL'in Win32 sürümü içinde <tt>lower_case_table_names</tt>
+yönergesi varsayılanı 1 (<tt>AÇIK</tt>). Yönergeyi basitçe 0'a
+(<tt>KAPALI</tt>) değiştirerek bu davranışı değiştirebilirsiniz:<br />
+    Sadece Windows dizininiz içinde bulunan <tt>my.ini</tt> dosyanızı düzenleyin
+ve aşağıdaki satırı [mysqld] grubuna ekleyin:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
-<p> Next, save the file and restart the MySQL service. You can always check the
-value of this directive using the query</p>
+<p> Sonra, dosyayı kaydedin ve MySQL hizmetini yeniden başlatın. Sorgu
+kullanarak bu yönergenin değerini her zaman kontrol edebilirsiniz</p>
 
 <pre>SHOW VARIABLES LIKE 'lower_case_table_names';</pre>
 
 <h4 id="faq1_24">
-    <a href="#faq1_24">1.24 (withdrawn).</a></h4>
+    <a href="#faq1_24">1.24 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_25">
-    <a href="#faq1_25">1.25 I am running Apache with mod_gzip-1.3.26.1a on
-Windows XP, and I get problems, such as undefined variables when I run a
-<abbr title="structured query language">SQL</abbr> query.</a></h4>
+    <a href="#faq1_25">1.25 Windows XP üzerinde mod_gzip-1.3.26.1a ile birlikte
+Apache çalıştırıyorum ve sorunlar yaşıyorum, mesela <abbr title="structured
+query language">SQL</abbr> sorgusu çalıştırdığımda tanımsız değişkenler
+gibi.</a></h4>
 
-<p> A tip from Jose Fandos: put a comment on the following two lines in
-httpd.conf, like this:</p>
+<p> Jose Fandos'tan bir ipucu: httpd.conf içinde aşağıdaki iki satıra şöyle bir
+yorum koyun:</p>
 
 <pre>
 # mod_gzip_item_include file \.php$
 # mod_gzip_item_include mime "application/x-httpd-php.*"
 </pre>
 
-<p> as this version of mod_gzip on Apache (Windows) has problems handling PHP
-scripts. Of course you have to restart Apache.</p>
+<p> Apache (Windows) üzerinde mod_gzip sürümü olarak PHP betikleri kullanma
+sorun olur. Elbette Apache'yi yeniden başlatmak zorundasınız.</p>
 
 <h4 id="faq1_26">
-    <a href="#faq1_26">1.26 I just installed phpMyAdmin in my document root of
-<abbr title="Internet Information Services">IIS</abbr> but I get the error
-&quot;No input file specified&quot; when trying to run phpMyAdmin.</a></h4>
+    <a href="#faq1_26">1.26 phpMyAdmin'i henüz <abbr title="Internet Information
+Services">IIS</abbr>'nin belge kök klasörü içine kurdum ama phpMyAdmin'i
+çalıştırmayı denediğimde &quot;Belirtilmiş girdi dosyası yok&quot; hatası
+alıyorum.</a></h4>
 
-<p> This is a permission problem. Right-click on the phpmyadmin folder and
-choose properties. Under the tab Security, click on &quot;Add&quot; and
-select the user &quot;IUSR_machine&quot; from the list. Now set his
-permissions and it should work.</p>
+<p> Bu izin sorunudur. Phpmyadmin klasörüne sağ tuşla tıklayın ve özellikleri
+seçin. Güvenlik sekmesi altında, &quot;Düzenle -> Ekle -> Gelişmiş -> Şimdi
+Bul&quot; ve listeden &quot;IUSR&quot; kullanıcısını seçin. Şimdi onun
+izinlerini ayarlayın ve bu çalışmalıdır.</p>
 
 <h4 id="faq1_27">
-    <a href="#faq1_27">1.27 I get empty page when I want to view huge page (eg.
-db_structure.php with plenty of tables).</a></h4>
+    <a href="#faq1_27">1.27 Çok büyük bir sayfa görüntülemek istediğimde boş bir
+sayfa alıyorum (yani bir yığın tablolu db_structure.php).</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
-GZIP output buffering is enabled. If you turn off it (by <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
-<i>config.inc.php</i>), it should work. This bug will be fixed in
-PHP&nbsp;5.0.0.</p>
+<p> Bu, GZIP çıktı arabelleklemesi etkin olduğunda meydana gelen <a
+href="http://bugs.php.net/21079">PHP hatasıdır</a>. Eğer kapatırsanız
+(<i>config.inc.php</i> içinde <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip'] = false</a> olarak ayarlayarak),
+çalışmalıdır. Bu hata PHP&nbsp;5.0.0'da düzeltilecektir.</p>
 
 <h4 id="faq1_28">
-    <a href="#faq1_28">1.28 My MySQL server sometimes refuses queries and
-returns the message 'Errorcode: 13'. What does this mean?</a></h4>
+    <a href="#faq1_28">1.28 MySQL sunucum bazen sorguları reddediyor ve
+'Errorcode: 13' mesajını döndürüyor. Bu ne anlama geliyor?</a></h4>
 
-<p> This can happen due to a MySQL bug when having database / table names with
-upper case characters although <tt>lower_case_table_names</tt> is set to 1.
-To fix this, turn off this directive, convert all database and table names
-to lower case and turn it on again. Alternatively, there's a bug-fix
-available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
+<p> <tt>lower_case_table_names</tt> değeri 1'e ayarlı omasına rağmen veritabanı
+/ tablo adlarında büyük harfli karakterler olduğunda bir MySQL hatasından
+dolayı bu olabiliyor. Bunu düzeltmek için bu yönergeyi kapatın, tüm
+veritabanı ve tablo adlarını küçük harfe dönüştürün ve tekrar
+açın. Alternatif olarak MySQL&nbsp;3.23.56 / 4.0.11-gamma ile başlayan
+mevcut bir hata düzeltmesi vardır.</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 When I create a table or modify a column, I get an
-error and the columns are duplicated.</a></h4>
+    <a href="#faq1_29">1.29 Bir tablo oluşturduğumda ya da sütun
+değiştirdiğimde, bir hata alıyorum ve sütunlar çoğalıyor.</a></h4>
 
-<p> It is possible to configure Apache in such a way that PHP has problems
-interpreting .php files.</p>
+<p> PHP'nin .php dosyalarını yorumlama sorunlarının olduğu bir şekilde Apache'yi
+yapılandırmak mümkün.</p>
 
-<p> The problems occur when two different (and conflicting) set of directives
-are used:</p>
+<p> Bu sorun iki farklı (ve çakışan) yönergeler grubu kullanıldığında meydana
+gelir:</p>
 
 <pre>
 SetOutputFilter PHP
@@ -3174,11 +3179,11 @@ SetInputFilter PHP
 
 <pre>AddType application/x-httpd-php .php</pre>
 
-<p> In the case we saw, one set of directives was in
-<tt>/etc/httpd/conf/httpd.conf</tt>, while the other set was in
-<tt>/etc/httpd/conf/addon-modules/php.conf</tt>.<br />
-    The recommended way is with <tt>AddType</tt>, so just comment out the first
-set of lines and restart Apache:</p>
+<p> Gördüğümüz durumda, <tt>/etc/httpd/conf/addon-modules/php.conf</tt> içinde
+diğer grup varken, bir grup yönerge <tt>/etc/httpd/conf/httpd.conf</tt>
+içindeydi.<br />
+    Önerilen yol <tt>AddType</tt> ile, bu yüzden sadece satırların ilk grubunu
+yorum dışı bırakın ve Apache'yi yeniden başlatın:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -3186,62 +3191,66 @@ set of lines and restart Apache:</p>
 </pre>
 
 <h4 id="faq1_30">
-    <a href="#faq1_30">1.30 I get the error &quot;navigation.php: Missing
-hash&quot;.</a></h4>
+    <a href="#faq1_30">1.30 &quot;navigation.php: Eksik adresleme&quot; hatası
+alıyorum.</a></h4>
 
-<p> This problem is known to happen when the server is running Turck MMCache but
-upgrading MMCache to version 2.3.21 solves the problem.</p>
+<p> Bu sorunun, sunucu Turck MMCache çalıştırdığı zaman olduğu bilinir ama
+MMCache'i 2.3.21 sürümüne yükseltmek sorunu çözer.</p>
 
 <h4 id="faq1_31">
-    <a href="#faq1_31">1.31 Does phpMyAdmin support php5?</a></h4>
+    <a href="#faq1_31">1.31 phpMyAdmin php5'i destekler mi?</a></h4>
 
-<p>Yes.</p>
+<p>Evet.</p>
 <p>
-    Since release 3.0 only PHP 5.2 and newer. For older PHP versions 2.9 branch
-is still maintained.
+    3.0 yayınlandığından bu yana sadece PHP 5.2 ve daha yenisi. Daha eski PHP
+sürümleri 2.9 dalı için hala sürdürülmekte.
 </p>
 
 <h4 id="faq1_32">
-    <a href="#faq1_32">1.32 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with <abbr title="Internet Information
-Services">IIS</abbr>?</a></h4>
+    <a href="#faq1_32">1.32 <abbr title="Internet Information
+Services">IIS</abbr> ile <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> kimlik doğrulaması kullanabiliyor muyum?</a></h4>
 
-<p> Yes. This procedure was tested with phpMyAdmin 2.6.1, PHP 4.3.9 in <abbr
-title="Internet Server Application Programming Interface">ISAPI</abbr> mode
-under <abbr title="Internet Information Services">IIS</abbr> 5.1.</p>
+<p> Evet. Bu işlem <abbr title="Internet Information Services">IIS</abbr> 5.1
+altında <abbr title="Internet Server Application Programming
+Interface">ISAPI</abbr> kipinde PHP 4.3.9, phpMyAdmin 2.6.1 ile denendi.</p>
 
-<ol><li>In your <tt>php.ini</tt> file, set <tt>cgi.rfc2616_headers = 0</tt></li>
-    <li>In <tt>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
-Access</tt> dialog box, check the <tt>Anonymous access</tt> checkbox and
-uncheck any other checkboxes (i.e. uncheck <tt>Basic authentication</tt>,
-<tt>Integrated Windows authentication</tt>, and <tt>Digest</tt> if it's
-enabled.) Click <tt>OK</tt>.</li>
-    <li>In <tt>Custom Errors</tt>, select the range of <tt>401;1</tt> through
-<tt>401;5</tt> and click the <tt>Set to Default</tt> button.</li>
+<ol><li><tt>php.ini</tt> dosyanız içinde <tt>cgi.rfc2616_headers = 0</tt> olarak
+ayarlayın</li>
+    <li><tt>Web Sitesi Özellikleri -&gt; Dizin Güvenliği -&gt; Adsız Erişim</tt>
+ileti kutusunda, <tt>Adsız erişim</tt> işaretleme kutusunu işaretleyin ve
+herhangi bir diğer işaretleme kutularından işaretleri kaldırın (yani eğer
+etkinleştirilmişse, <tt>Basit kimlik doğrulaması</tt>, <tt>Tümleşik Windows
+kimlik doğrulaması</tt> ve <tt>Özet kimlik doğrulaması</tt> seçeneklerinden
+işaretleri kaldırın.) <tt>Tamam</tt>'a tıklayın.</li>
+    <li><tt>Özel Hatalar</tt> içinde <tt>401;1</tt>'den <tt>401;5</tt>'e kadar olan
+aralığı seçin ve <tt>Varsayılana Ayarla</tt> düğmesine tıklayın.</li>
 </ol>
 
 <h4 id="faq1_33">
-    <a href="#faq1_33">1.33 (withdrawn).</a></h4>
+    <a href="#faq1_33">1.33 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_34">
-    <a href="#faq1_34">1.34 Can I access directly to database or table
-pages?</a></h4>
+    <a href="#faq1_34">1.34 Doğrudan veritabanı veya tablo sayfalarına
+erişebilir miyim?</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <code>.htaccess</code>
-file in root folder of phpMyAdmin installation (don't forget to change
-directory name inside of it):</p>
+<p> Evet. Kutudan çıkar çıkmaz,
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
+gibi <abbr title="Uniform Resource Locator">URL</abbr>'leri
+kullanabilirsiniz. <tt>Sunucu</tt> için <tt>config.inc.php</tt> içindeki
+sunucu paragrafı sırasını ifade eden sunucu sayısını kullanın. Tablo ve
+betik kısımları isteğe bağlıdır. Eğer
+http://sunucu/phpMyAdmin/veritabanı[/table][/script] <abbr title="Uniform
+Resource Locator">URL</abbr>'leri istiyorsanız, bazı yapılandırmalar
+yapmanız gerekir. Aşağıdaki satırlar sadece <a
+href="http://httpd.apache.org">Apache</a> web sunucusu için uygulanır. Önce
+genel yapılandırmayla birlikte bazı özellikleri etkinleştirdiğinizden emin
+olun. phpMyAdmin'nin kurulu olduğu dizin için <code>Options
+FollowSymLinks</code> ve <code>AllowOverride FileInfo</code> etkinleştirmiş
+olmanız gerekir ve mod_rewrite'ın etkinleştirilmiş olmasına ihtiyacınız
+vardır. Sonra sadece phpMyAdmin kurulumunun (içinde bulunduğu dizin adını
+değiştirmeyi unutmayın) kök klasöründe aşağıdaki <code>.htaccess</code>
+dosyasını oluşturmaya ihtiyacınız var:</p>
 
 <pre>
 RewriteEngine On
@@ -3253,12 +3262,13 @@ RewriteRule ^([a-zA-Z0-9_]+)$ index.php?db=$1 [R]
 </pre>
 
 <h4 id="faq1_35">
-    <a href="#faq1_35">1.35 Can I use <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication with Apache <abbr title="Common Gateway
-Interface">CGI</abbr>?</a></h4>
+    <a href="#faq1_35">1.35 Apache <abbr title="Common Gateway
+Interface">CGI</abbr> ile <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> kimlik doğrulaması kullanabilir miyim?</a></h4>
 
-<p> Yes. However you need to pass authentication variable to <abbr title="Common
-Gateway Interface">CGI</abbr> using following rewrite rule:</p>
+<p> Evet. Ancak aşağıdaki yeniden yazma kuralını kullanarak kimlik doğrulaması
+değişkenini <abbr title="Common Gateway Interface">CGI</abbr>'a geçirmeniz
+gerekir:</p>
 
 <pre>
 RewriteEngine On
@@ -3266,17 +3276,18 @@ RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
 </pre>
 
 <h4 id="faq1_36">
-    <a href="#faq1_36">1.36 I get an error &quot;500 Internal Server
-Error&quot;.</a>
+    <a href="#faq1_36">1.36 &quot;500 Dahili Sunucu Hatası&quot; hatası
+alıyorum.</a>
 </h4>
 <p>
-    There can be many explanations to this and a look at your server's error log
-file might give a clue.
+    Bunun için çok açıklama olabilir ve sunucunuzun hata günlük dosyasına bir
+bakın, bir ipucu verebilir.
 </p>
 
 <h4 id="faq1_37">
-    <a href="#faq1_37">1.37 I run phpMyAdmin on cluster of different machines
-and password encryption in cookie auth doesn't work.</a></h4>
+    <a href="#faq1_37">1.37 Farklı makinelerde küme olarak phpMyAdmin
+çalıştırıyorum ve tanımlama bilgisi kimlik doğrulamasında parola şifreleme
+çalışmıyor.</a></h4>
 
 <p> If your cluster consist of different architectures, PHP code used for
 encryption/decryption won't work correct. This is caused by use of
@@ -5360,7 +5371,7 @@ and or just some feedback.
 <p>
 Bu çeviri <a href="https://l10n.cihar.com/projects/pmadoc/">çeviri
 sunucusunda</a> birçok çevirmenimiz tarafından size getirilir. Buraya
-adlarını yazarlar.
+adlarını yazmaktadırlar.
 </p>
 <h2 id="glossary">Terimler Sözlüğü</h2>
 
@@ -5410,7 +5421,7 @@ href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">Field</a>
 column or group of columns in a database row that point to a key column or
 group of columns forming a key of another database row in some (usually
 different) table.</li>
-    <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - the free PDF library</li>
+    <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - ücretsiz PDF kütüphanesi</li>
     <li><a id="gd" href="http://www.wikipedia.org/wiki/GD_Graphics_Library"> GD
 Graphics Library</a> - a library by Thomas Boutell and others for
 dynamically manipulating images.</li>

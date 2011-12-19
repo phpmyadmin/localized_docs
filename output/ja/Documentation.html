@@ -351,8 +351,8 @@ href="#controluser">管理ユーザ</a>の情報を登録しなければなり�
         下記の例では <tt>pma</tt> を管理ユーザ、<tt>pmapass</tt>
 を管理パスワードと想定していますが、<b>これはあくまでも例です。ご自分のファイルでは設定を変えてください！</b> phpMyAdmin の SQL
 クエリウィンドウまたは mysql コマンドラインクライアントからこれらのコマンドを入力します。<br />
-        もちろん MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
-をウェブサーバのホストで差し替える必要があります。
+        当然のことながら、MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
+をウェブサーバのホストに差し替える必要があります。
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -377,7 +377,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
         (もちろん <a href="#linked-tables">phpMyAdmin 環境保管領域</a>を設定しておく必要があります。)  
     <br /></li>
 
-    <li>上記が済んだら、<i>本当の</i>ユーザそれぞれについて、特定のデータベースにおける特権を付与していってください。ふつう、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが（例えばスーパーユーザを作るときなど）。<br />
+    <li>上記の作業が済みましたら、それぞれの<i>一般</i>ユーザに対して、必要なデータベースにおける必要な特権を付与していきます。なお通常は、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが
+(例えばスーパーユーザを作るときなど)。<br />
         一例を示します。<i>real_user</i> というユーザに <i>user_base</i>
 というデータベースに関するすべての特権を付与するには、以下のようにします。<br />
 
@@ -409,7 +410,7 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証モー
 
 <ul><li><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証の代わりに利用できます (例えば <abbr
 title="Internet Information Services">IIS</abbr> を稼動させている場合など)。</li>
-    <li>もちろんユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
+    <li>言うまでもなくユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
     <li>このモードでは、ユーザは phpMyAdmin のログアウトが確実に行え、同じユーザ名でログインし直すことができます。</li>
     <li>任意のサーバにログインしたい場合は、<a href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a> ディレクティブをご覧ください。</li>
@@ -425,21 +426,19 @@ class="configrule">$cfg['AllowArbitraryServer']</a> ディレクティブをご�
 </ul>
 <h4>「config」認証モード</h4>
 
-<ul><li>このモードはそれほど安全ではありません。<a href="#servers_user"
+<ul><li>このモードはそれほど安全ではありません。設定項目の <a href="#servers_user"
 class="configrule">$cfg['Servers'][$i]['user']</a> と <a href="#servers_user"
-class="configrule"> $cfg['Servers'][$i]['password']</a>
-のフィールドに値を記入する必要があるからです（そのため、config.inc.php
-を読める人なら誰でもユーザ名とパスワードを見ることができてしまいます）。
+class="configrule">$cfg['Servers'][$i]['password']</a> を記入する必要があるからです
+(そのため、config.inc.php を読める人なら誰でもユーザ名とパスワードを見ることができてしまいます)。
         <br />
         ただし、こうすると「管理ユーザ」を設定する必要はなくなります。あとは <a href="#servers_only_db"
 class="configrule">$cfg['Servers'][$i]['only_db']</a> を使えば十分かもしれません。</li>
     <li><a href="#faqmultiuser"><abbr title="よくある質問">FAQ</abbr> の <abbr
 title="インターネット・サービス・プロバイダ">ISP</abbr></a> の節には設定ファイルを保護する方法が説明されています。</li>
-    <li>このモードでもセキュリティを向上させたければ、<a href="#servers_allowdeny_order"
-class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> ディレクティブと
-<a href="#servers_allowdeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a>
-ディレクティブでホスト認証することを検討してみてもよいかもしれません。</li>
+    <li>このモードでもセキュリティを向上させる必要がある場合には、<a href="#servers_allowdeny_order"
+class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> と <a
+href="#servers_allowdeny_rules" class="configrule">
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> の設定でホスト認証することを検討してみてください。</li>
     <li>クッキー／HTTP 認証とは異なり、最初に phpMyAdmin
 サイトを読み込んだときに、ログインユーザを必要としません。これは仕様によるものですが、インストール先へのアクセスをどのユーザにも許可しているということです。HTTP
 認証の設定や他のルータから HTTP 要求を拒否しているであろう <a href="#glossary">.htaccess</a>
@@ -882,7 +881,7 @@ href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
 href="#cfg_LeftDefaultTabTable"
 class="configrule">$cfg['LeftDefaultTabTable']</a> 内において移動が行われます。<br/><br/>
 
-        phpMyAdmin 環境保管領域がなくても、最近使用されたテーブルにアクセスすることができますが、ログアウトすると失われてしまいます。<br/><br/>
+        phpMyAdmin 環境保管領域がなくても、最近使用されたテーブルにアクセスすることができますが、ログアウトすると記録は失われてしまいます。<br/><br/>
 
         この機能を永続的に利用できるようにするには、
 
@@ -1101,16 +1100,15 @@ href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> もご覧になってく�
 id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span>
 文字列の配列
     </dt>
-    <dd>この規則の一般的なフォーマットは次の通りです。
+    <dd>この規則の一般的な書式は次の通りです。
 
         <pre>
 &lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
 </pre>
 
-        すべてのユーザに一致させたいのであれば、<i>username</i> フィールドにワイルドカードとして <tt>'%'</tt>
-を入れることもできます。<br />
-        また、<i>ipmask</i> フィールドでもいくつかショートカットが利用できます（SERVER_ADDRESS
-の部分はどんなウェブサーバでも利用できるとは限りませんので注意してください）。
+        全てのユーザに一致させたいのであれば、<i>username</i> 項目にワイルドカードとして <tt>'%'</tt> を入れることもできます。<br />
+        また、<i>ipmask</i> 項目でもいくつかショートカットが利用できます (SERVER_ADDRESS
+の部分はどんなウェブサーバでも利用できるとは限りませんので注意してください)。
         <pre>
 'all' -&gt; 0.0.0.0/0
 'localhost' -&gt; 127.0.0.1/8
@@ -1678,7 +1676,7 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
     <dd>クリックしたときにクエリボックスの textarea 全体を選択するかどうかを定義します。</dd>
 
     <dt id="cfg_LimitChars">$cfg['LimitChars'] 整数</dt>
-    <dd>表示ページで、数字以外のフィールドに表示する最大文字数。表示ページ内のトグルボタンでオフにすることもできます。</dd>
+    <dd>表示ページで、数字以外の項目に表示する最大文字数。表示ページ内のトグルボタンでオフにすることもできます。</dd>
 
     <dt><span id="cfg_RowActionLinks">$cfg['RowActionLinks']</span> 文字列
     </dt>
@@ -3774,7 +3772,7 @@ href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart
 に記載されています。</p>
 
 <h4 id="faq6_30">
-    <a href="#faq6_30">6.30 Import: How can I import ESRI Shapefiles</a></h4>
+    <a href="#faq6_30">6.30 インポート：ESRI シェープファイルのインポートはどのようにしたらできますか？</a></h4>
 
     <p> 
         ESRI シェープファイルは、実際には単独ファイルではなくいくつかの集合ファイルです。空間データが含まれている .shp
@@ -3861,9 +3859,11 @@ href="http://wiki.phpmyadmin.net/pma/Gettext_for_translators">wiki</a>
 をご覧ください。
 </p>
 <p>
-    エンティティに注意するようにしてください。phpMyAdmin の翻訳では &amp;eacute; のような HTML
+    翻訳の際はエンティティに注意するようにしてください。phpMyAdmin の翻訳では &amp;eacute; のような HTML
 エンティティは利用せず、ファイルに適切な文字セットを定義するようにしています。HTML エンティティを使うと JavaScript
-のメッセージテキストが正しく表示できないためです。ただし、いくつかのエンティティは使う必要があります。クォート（&amp;quot;）、分離されては困るスペース（&amp;nbsp;）、＆（&amp;amp;）、＜（&amp;lt;）、＞（&amp;gt;）です。
+のメッセージテキストが正しく表示できないためです。ただし、いくつかのエンティティは使う必要があります。クォート
+(&amp;quot;)、分離されては困るスペース (&amp;nbsp;)、＆ (&amp;amp;)、＜ (&amp;lt;)、＞
+(&amp;gt;) です。
 </p>
 <p>
     翻訳は sourceforge.net の<a
