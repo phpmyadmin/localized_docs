@@ -3141,7 +3141,7 @@ izinlerini ayarlayın ve bu çalışmalıdır.</p>
 
 <h4 id="faq1_27">
     <a href="#faq1_27">1.27 Çok büyük bir sayfa görüntülemek istediğimde boş bir
-sayfa alıyorum (yani bir yığın tablolu db_structure.php).</a></h4>
+sayfa alıyorum (örn. bir yığın tablolu db_structure.php).</a></h4>
 
 <p> Bu, GZIP çıktı arabelleklemesi etkin olduğunda meydana gelen <a
 href="http://bugs.php.net/21079">PHP hatasıdır</a>. Eğer kapatırsanız
@@ -3289,91 +3289,94 @@ bakın, bir ipucu verebilir.
 çalıştırıyorum ve tanımlama bilgisi kimlik doğrulamasında parola şifreleme
 çalışmıyor.</a></h4>
 
-<p> If your cluster consist of different architectures, PHP code used for
-encryption/decryption won't work correct. This is caused by use of
-pack/unpack functions in code. Only solution is to use mcrypt extension
-which works fine in this case.</p>
+<p> Eğer küme farklı yapılardan oluşuyorsa, şifreleme/çözme için PHP kodu doğru
+çalışmayacaktır. Bunun nedeni kod içinde işlevleri paketleme/açma
+işlevlerinin kullanımıdır. Tek çözüm bu durumda iyi çalışan mcrypt uzantısı
+kullanmaktır.</p>
 
 <h4 id="faq1_38">
-    <a href="#faq1_38">1.38 Can I use phpMyAdmin on a server on which Suhosin is
-enabled?</a></h4>
+    <a href="#faq1_38">1.38 Suhosin etkin bir sunucuda phpMyAdmin kullanabilir
+miyim?</a></h4>
 
-<p> Yes but the default configuration values of Suhosin are known to cause
-problems with some operations, for example editing a table with many columns
-and no primary key or with textual primary key.
+<p> Evet ama Suhosin'in varsayılan yapılandırma değerlerinin bazı işlemlerle
+sorunlara neden olduğu bilinir, örneğin çok sütun ile ve birincil anahtar
+yoksa veya metinsel birincil anahtarla bir tabloyu düzenlediğinizde.
 </p>
 <p>
-    Suhosin configuration might lead to malfunction in some cases and it can not
-be fully avoided as phpMyAdmin is kind of application which needs to
-transfer big amounts of columns in single HTTP request, what is something
-what Suhosin tries to prevent. Generally all <code>suhosin.request.*</code>,
-<code>suhosin.post.*</code> and <code>suhosin.get.*</code> directives can
-have negative effect on phpMyAdmin usability. You can always find in your
-error logs which limit did cause dropping of variable, so you can diagnose
-the problem and adjust matching configuration variable.
+    Suhosin yapılandırması bazı durumlarda bozukluklara yol açabilir ve tek HTTP
+isteğinde büyük miktarlarda sütunların aktarılması gereken benzeri bir
+uygulama olan phpMyAdmin gibi tamamen önleyemez, Suhosin önlemeyi denediği
+şey neyse. Genel olarak tüm <code>suhosin.request.*</code>,
+<code>suhosin.post.*</code> ve <code>suhosin.get.*</code> yönergeleri
+phpMyAdmin kullanılabilirliği üzerinde olumsuz etkilere sahip
+olabilir. Hangi sınırın değişken düşümlerine neden olduğunu her zaman hata
+günlüklerinizde bulabilirsiniz, böylece sorunu teşhis edebilir ve eşleşen
+yapılandırma değişkenlerini ayarlayabilirsiniz.
 </p>
 <p>
-    The default values for most Suhosin configuration options will work in most
-scenarios, however you might want to adjust at least following parameters:
+    Çoğu Suhosin yapılandırma seçenekleri için varsayılan değerler pek çok
+senaryoda çalışacaktır, ancak en az aşağıdaki parametreleri ayarlamak
+isteyebilirsiniz:
 </p>
 
 <ul>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_vars">suhosin.request.max_vars</a>
-should be increased (eg. 2048)</li>
+arttırılmalı (örn. 2048)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_vars">suhosin.post.max_vars</a>
-should be increased (eg. 2048)</li>
+arttırılmalı (örn. 2048)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_array_index_length">suhosin.request.max_array_index_length</a>
-should be increased (eg. 256)</li>
+arttırılmalı (örn. 256)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_array_index_length">suhosin.post.max_array_index_length</a>
-should be increased (eg. 256)</li>
+arttırılmalı (örn. 256)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_totalname_length">suhosin.request.max_totalname_length</a>
-should be increased (eg. 8192)</li>
+arttırılmalı (örn. 8192)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a>
-should be increased (eg. 8192)</li>
+arttırılmalı (örn. 8192)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.get.max_value_length">suhosin.get.max_value_length</a>
-should be increased (eg. 1024)</li>
+arttırılmalı (örn. 1024)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
-needs to be disabled (the default)</li>
+etkisizleştirilmesi gerekli (varsayılan)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
-should not include SQL, otherwise you get big slowdown</li>
+SQL'e dahil edilmemeli, yoksa büyük yavaşlama yaşarsınız</li>
 </ul>
 
     <p>
-        You can also disable the warning using the <a
-href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt>
-directive</a>.
+        Aynı zamanda <a
+href="#cfg_SuhosinDisableWarning"><tt>SuhosinDisableWarning</tt>
+yönergesini</a> kullanarak uyarıyı etkisizleştirebilirsiniz.
     </p>
 
 <h4 id="faq1_39">
-    <a href="#faq1_39">1.39 When I try to connect via https, I can log in, but
-then my connection is redirected back to http. What can cause this
-behavior?</a></h4>
+    <a href="#faq1_39">1.39 Https yoluyla bağlanmayı denediğimde, oturum
+açabiliyorum ama sonra bağlantım http'ye yeniden geri yönlendiriliyor. Bu
+davranışa ne neden olabilir?</a></h4>
 
-<p> Be sure that you have enabled <tt>SSLOptions</tt> and <tt>StdEnvVars</tt> in
-your Apache configuration. See <a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
+<p> Apache yapılandırmanızda  <tt>SSLOptions</tt> ve <tt>StdEnvVars</tt>
+ayarlarını etkinleştirdiğinizden emin olun. <a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>'a
+bakın.</p>
 
 <h4 id="faq1_40">
-    <a href="#faq1_40">1.40 When accessing phpMyAdmin via an Apache reverse
-proxy, cookie login does not work.</a></h4>
+    <a href="#faq1_40">1.40 Apache ters proksi yoluyla phpMyAdmin'e eriştiğimde,
+tanımlama bilgisiyle oturum açma çalışmıyor.</a></h4>
 
-<p>To be able to use cookie auth Apache must know that it has to rewrite the
-set-cookie headers.<br />
-    Example from the Apache 2.2 documentation:</p>
+<p>Tanımlama bilgisi kimlik doğrulaması kullanabilmek için Apache, ayarlı
+tanımlama bilgisi üst bilgilerini yeniden yazacağını bilmeli.<br />
+    Apache 2.2 belgesinden örnek:</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
-ProxyPassReverseCookieDomain backend.example.com public.example.com 
-ProxyPassReverseCookiePath / /mirror/foo/ 
+ProxyPassReverseCookieDomain backend.example.com public.example.com
+ProxyPassReverseCookiePath / /mirror/foo/
 </pre>
 
 <p>Note: if the backend url looks like http://host/~user/phpmyadmin, the tilde

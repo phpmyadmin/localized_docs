@@ -1386,10 +1386,10 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 
         <pre>disable_functions = phpinfo()</pre>
 
-        なお、「config」認証モードでは、たとえ設定が有効であっても「パスワードを変更する」リンクは無効になります。なぜなら、設定ファイルに直接書き込まれたパスワードは、使用者が書き換えることができないからです。</dd>
+        なお、「config」認証モードでは、たとえ設定が有効であっても「パスワードを変更する」リンクは無効になります。なぜなら、設定ファイルに直接書き込まれたパスワードは、ログインユーザによって書き換えることができないからです。</dd>
 
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] 論理型</dt>
-    <dd>「データベースを作成する」フォームでデータベース名を提案するかテキストフィールドを空欄にしておくかを定義します。</dd>
+    <dd>「データベースを作成する」フォームでデータベース名を提案するかテキスト入力項目を空欄にしておくかを定義します。</dd>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] 文字列</dt>
     <dd>ナビゲーションバーのボタンと、右パネルのトップメニューにテキストを含めるか、シンボルのみにするかを定義します。値が TRUE
@@ -1466,7 +1466,7 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 ヘッダが多くなってしまいますが、まともなプログラムならどれでも正しく処理してくれます。</dd>
 
     <dt id="cfg_LightTabs">$cfg['LightTabs'] 論理型</dt>
-    <dd><tt>TRUE</tt> にすると、メインフレーム上部のタブをグラフィックの少ないものにします。</dd>
+    <dd><tt>TRUE</tt> にすると、メインフレーム上部のタブをグラフィックの少ないものになります。</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] 文字列</dt>
     <dd><tt>True</tt>
@@ -2859,26 +2859,27 @@ parameters（パラメータが抜けています）」というエラーが出�
 
 <p> 確認すべき点はいくつかあります。</p>
 
-<ul><li><tt>config.inc.php</tt> の <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブを空にしてみてください。また <a
+<ul><li><tt>config.inc.php</tt> の設定項目 <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> を空にしてみてください。また <a
 href="#faq4_7"><abbr title="よくある質問">FAQ</abbr> 4.7</a> もご覧ください。
     </li>
     <li>インストールされている PHP が壊れているか、Zend Optimizer をアップデートする必要があるのかもしれません。<a
 href="http://bugs.php.net/bug.php?id=31134">http://bugs.php.net/bug.php?id=31134</a>
 をご覧ください。
     </li>
-    <li>Hardened PHP を使っていて、ini の <tt>varfilter.max_request_variables</tt>
-ディレクティブがデフォルトの値（200）ないしそのような低い値になっている場合、テーブルのカラム数が多いとこのエラーが出ることがあります。適切な値に調整してください（ヒントをくれた
-Klaus Dorninger に感謝）。
+    <li>Hardened PHP を使っていて、ini の設定項目 <tt>varfilter.max_request_variables</tt>
+がデフォルトの値 (200)
+ないしそのような低い値になっている場合、テーブルのカラム数が多いとこのエラーが出ることがあります。適切な値に調整してください (ヒントをくれた
+Klaus Dorninger に感謝)。
     </li>
-    <li><tt>php.ini</tt> の <tt>arg_separator.input</tt>
-ディレクティブの値が「;」だとこのエラーになります。「&amp;;」に差し替えてください。
+    <li><tt>php.ini</tt> の設定項目 <tt>arg_separator.input</tt>
+の値が「;」だとこのエラーになります。「&amp;;」に差し替えてください。
     </li>
     <li><a href="http://www.hardened-php.net/">Hardened-PHP</a> を使用している場合は、<a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">リクエスト制限</a>を増やすことをお勧めします。
     </li>
-    <li><tt>php.ini</tt> の <tt>session.save_path</tt>
-ディレクティブで指定したディレクトリが、存在しないか読み取り専用になっている。
+    <li><tt>php.ini</tt> の設定項目 <tt>session.save_path</tt>
+で指定したディレクトリが、存在しないか読み取り専用になっている。
     </li>
 </ul>
 
@@ -3249,8 +3250,8 @@ Resource Locator">URL</abbr> の長さに制限があるため、その問題が
 title="structured query language">SQL</abbr>
 クエリの編集領域で空白をタイプできません。ページがスクロールダウンしてしまいます。</a></h4>
 <p>
-    これは Mozilla のバグです（<a href="http://bugzilla.mozilla.org/">BugZilla</a> のバグ
-#26882 参照）<br />
+    これは Mozilla のバグです (<a href="http://bugzilla.mozilla.org/">BugZilla</a> のバグ
+#26882 参照)。<br />
 </p>
 
 <h4 id="faq5_10">
@@ -3534,7 +3535,7 @@ href="http://dev.mysql.com/doc/mysql/ja/insert.html">MySQL
     <a href="#faq6_13">6.13 名前にピリオドを含むデータベースを作りたいのですが。</a></h4>
 
 <p> いけません。MySQL の文法では通例データベースとテーブルの名前を参照するのに「database.table」と書きますし、なお悪いことに、MySQL
-の場合、ピリオド付きのデータベースでもふつう作成はできるのですが、それで作業したり、削除したりができないからです。</p>
+の場合、ピリオド付きのデータベースでも普通に作成はできるのですが、それで作業したり、削除したりができないからです。</p>
 
 <h4 id="faqsqlvalidator">
     <a href="#faqsqlvalidator">6.14 どうすれば <abbr title="structured query
@@ -3573,7 +3574,7 @@ column '...' used in key specification without a key length（BLOB
 カラムを選択して、インデックスにサイズを指定できます。このサイズが BLOB カラムにインデックスを作るときの条件なのです。</p>
 
 <h4 id="faq6_16">
-    <a href="#faq6_16">6.16 どうしたらたくさんの編集フィールドがあるページで簡単に移動できますか。</a></h4>
+    <a href="#faq6_16">6.16 どうしたら多くの編集項目があるページで簡単に移動できますか。</a></h4>
 
 <p> （テーブルの構造を変更したり、行を編集したりなど）編集カラムが多いページでは Ctrl + カーソルキー（Safari の場合は Option +
 カーソルキー）を使うと移動できます。また、<a href="#DefaultPropDisplay"
@@ -3648,8 +3649,8 @@ L<sup>A</sup>T<sub><big>E</big></sub>X 文書の作り方は？</a></h4>
 <h4 id="faq6_20">
     <a href="#faq6_20">6.20 自分のではないデータベースがたくさん見えます。また、そういったデータベースにアクセスできません。</a></h4>
 
-<p> ふつうユーザには CREATE TEMPORARY TABLES、SHOW DATABASES、LOCK TABLES
-といったグローバル特権が与えられるのですが、これらの特権があるとすべてのデータベース名が見えてしまいます。こちらの<a
+<p> 通常ユーザには CREATE TEMPORARY TABLES、SHOW DATABASES、LOCK TABLES
+といったグローバル特権が与えられるのですが、これらの特権があると全てのデータベース名が見えてしまいます。こちらの<a
 href="http://bugs.mysql.com/179">バグレポート</a>もご覧ください。<br /><br />
 
     というわけで、ユーザにこれらの特権を与える必要がなければ、特権を外してしまってもかまいません。そうすると、データベースの一覧が短くなります。</p>
@@ -3777,8 +3778,8 @@ href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart
     <p> 
         ESRI シェープファイルは、実際には単独ファイルではなくいくつかの集合ファイルです。空間データが含まれている .shp
 ファイルと、その空間データに関連するデータが含まれている .dbf ファイルから構成されています。.dbf
-ファイルから関連するデータを読み込むには、PHPに dBase
-拡張が必要になります(--enable-dbase)。そうでない場合は、空間データのみがインポートされることになります。
+ファイルから関連するデータを読み込むには、PHP に dBase 拡張 (--enable-dbase)
+が必要になります。そうでない場合は、空間データのみがインポートされることになります。
     </p>
 
     <p>これらの集合ファイルのアップロードは、以下に上げるいずれかの方法で行えます。</p>
@@ -3822,7 +3823,7 @@ chmod o+rwx tmp
     <a href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a> の REL_persons
 テーブルを例に上げて説明していきます。検索プロットを使用するには、id と town_code というように、2
 つのカラムを選択する必要があります。id の値を一方の軸に置かれれば、town_code はもう一方の軸に置かれます。それぞれの行は、id と
-town_code をもとに点として散布図内に配置されます。表示されているフィールドより、追加の絞り込み条件を 2 つまで含めることができます。<br/><br/>
+town_code を基に点として散布図内に配置されます。表示されている入力項目より、追加の絞り込み条件を 2 つまで含めることができます。<br/><br/>
 
     各点のラベルとして表示される項目を選択することができます。テーブルに表示するカラム (<a href="#faqdisplay"><abbr
 title="よくある質問">FAQ</abbr> 6.7</a> 参照)
@@ -3852,9 +3853,9 @@ href="https://sourceforge.net/projects/phpmyadmin/forums">https://sourceforge.ne
 href="http://l10n.cihar.com/">翻訳サーバ</a>にてオンラインでいつでも翻訳することができます。また、翻訳サーバを通して、最新の
 po
 ファイルを入手したり、翻訳したものをマージすることもできます。新規の翻訳を作成するには、<code>po/phpmyadmin.pot</code>
-を用いて新規用の <code>po/LANG_CODE.po</code> を生成します（この作業は <code>msginit -i
-po/phpmyadmin.pot -l LANG_CODE --no-translator -o po/LANG_CODE.po</code>
-とすれば行えます）。もしくは、メーリングリストにてウェブインターフェース用の新規翻訳の追加を依頼してください。詳細は <a
+を用いて新規用の <code>po/言語コード.po</code> を生成します (この作業は <code>msginit -i
+po/phpmyadmin.pot -l 言語コード --no-translator -o po/言語コード.po</code>
+とすれば行えます)。もしくは、メーリングリストにてウェブインターフェース用の新規翻訳の追加を依頼してください。詳細は <a
 href="http://wiki.phpmyadmin.net/pma/Gettext_for_translators">wiki</a>
 をご覧ください。
 </p>
