@@ -196,7 +196,7 @@ izin verir); tüm kullanıcılar geçerli MySQL kullanıcısı olmak zorundadır
 <h2 id="setup">Kurulum</h2>
 
 <ol><li><a href="#quick_install">Hızlı Kurma</a></li>
-    <li><a href="#setup_script">Betik kur kullanımı</a></li>
+    <li><a href="#setup_script">Kur betiği kullanımı</a></li>
     <li><a href="#linked-tables">phpMyAdmin yapılandırma depolaması</a></li>
     <li><a href="#upgrading">Eski sürümden yükseltme</a></li>
     <li><a href="#authentication_modes">Kimlik doğrulama kipleri kullanımı</a></li>
@@ -3379,9 +3379,10 @@ ProxyPassReverseCookieDomain backend.example.com public.example.com
 ProxyPassReverseCookiePath / /mirror/foo/
 </pre>
 
-<p>Note: if the backend url looks like http://host/~user/phpmyadmin, the tilde
-(~) must be url encoded as %7E in the ProxyPassReverse* lines.  This is not
-specific to phpmyadmin, it's just the behavior of Apache.
+<p>Not: eğer arka uç url http://anamakine/~kullanici/phpmyadmin gibi
+görünüyorsa, ProxyPassReverse* satırlarındaki tilda (~), %7E olarak
+kodlanmış url olmak zorundadır. Bu phpmyadmin'e özgü değildir, sadece
+Apache'nin davranışıdır.
     </p>
 
 <pre>
@@ -3391,80 +3392,82 @@ http://backend.example.com/%7Euser/phpmyadmin
 ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
 </pre>
 
-    <p>See <a
+    <p>Daha fazla ayrıntı için <a
 href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>
-for more details.</p>
+adresine bakın.</p>
 
 <h4 id="faq1_41">
-    <a href="#faq1_41">1.41 When I view a database and ask to see its
-privileges, I get an error about an unknown column.</a></h4>
+    <a href="#faq1_41">1.41 Veritabanını görüntülediğimde ve yetkilerini görmek
+için sorduğumda, bilinmeyen bir sütunla ilgili hata alıyorum.</a></h4>
 
-<p> The MySQL server's privilege tables are not up to date, you need to run the
-<tt>mysql_upgrade</tt> command on the server.</p>
+<p> MySQL sunucusunun yetki tabloları güncel değil, sunucuda
+<tt>mysql_upgrade</tt> komutunu çalıştırmanız gerekir.</p>
 
 
 <h3 id="faqconfig">Yapılandırma</h3>
 
 <h4 id="faq2_1">
-    <a href="#faq2_1">2.1 The error message &quot;Warning: Cannot add header
-information - headers already sent by ...&quot; is displayed, what's the
-problem?</a></h4>
+    <a href="#faq2_1">2.1 &quot;Uyarı: Başlık bilgisi eklenemiyor -
+... tarafından başlıklar zaten gönderildi&quot; hata mesajı görüntüleniyor,
+sorun nedir?</a></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under IIS, that used a zipped
-distribution kit: the file <tt>libraries/Config.class.php</tt> contained an
-end-of-line character (hex 0A) at the end; removing this character cleared
-his errors.</p>
+<p> <i>config.inc.php</i> dosyanızı düzenleyin ve <tt>&lt;?php</tt> etiketinden
+önce ne başında ve <tt>?&gt;</tt> etiketinden sonra ne de sonunda hiçbir şey
+(örn. boş satırlar, boşluklar, karakterler olmasın...) olmadığından emin
+olun. Ayrıca IIS altında zip'li dağıtım paketi kullanan kullanıcılardan
+raporlar alıyoruz: <tt>libraries/Config.class.php</tt> dosyasının sonundaki
+en son satır karakter (hex 0A) içermekte, bu karakteri kaldırmak hatalarını
+ortadan kaldırıyor.</p>
 
 <h4 id="faq2_2">
-    <a href="#faq2_2">2.2 phpMyAdmin can't connect to MySQL. What's wrong?</a></h4>
+    <a href="#faq2_2">2.2 phpMyAdmin, MySQL'e bağlanamıyor. Yanlış olan
+nedir?</a></h4>
 
-<p> Either there is an error with your PHP setup or your username/password is
-wrong. Try to make a small script which uses mysql_connect and see if it
-works. If it doesn't, it may be you haven't even compiled MySQL support into
-PHP.</p>
+<p> Ya PHP ayarınızla ile ilgili bir hata vardır ya da kullanıcı
+adınız/parolanız yanlıştır. mysql_connect kullanan küçük bir betik yapmayı
+deneyin ve eğer çalışırsa görürsünüz. Eğer çalışmazsa, PHP içinde MySQL
+desteğini bile derlememiş olabilirsiniz.</p>
 
 <h4 id="faq2_3">
-    <a href="#faq2_3">2.3 The error message &quot;Warning: MySQL Connection
-Failed: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
-(111) ...&quot; is displayed. What can I do?</a></h4>
+    <a href="#faq2_3">2.3 &quot;Uyarı: MySQL Bağlantısı Başarısız: Yerel MySQL
+sunucusuna '/tmp/mysql.sock' (111) soketi aracılığıyla
+bağlanılamıyor...&quot; hata mesajı görüntüleniyor. Ne yapabilirim?</a></h4>
 
-<p> For RedHat users, Harald Legner suggests this on the mailing list:</p>
+<p> RedHat kullanıcıları için Harald Legner posta listesinde şunu öneriyor:</p>
 
-<p> On my RedHat-Box the socket of MySQL is <i>/var/lib/mysql/mysql.sock</i>.
-In your <i>php.ini</i> you will find a line</p>
+<p> RedHat-Box'ımda MySQL soketi
+<i>/var/lib/mysql/mysql.sock</i>. <i>php.ini</i> dosyanızın içinde bir satır
+bulacaksınız</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
-<p> change it to</p>
+<p> şuna değiştirin</p>
 
 <pre>mysql.default_socket = /var/lib/mysql/mysql.sock</pre>
 
-<p> Then restart apache and it will work.</p>
+<p> Sonra apache'yi yeniden başlatın ve çalışacaktır.</p>
 
-<p> Here is a fix suggested by Brad Ummer:</p>
+<p> İşte Brad Ummer tarafından önerilen düzeltme:</p>
 
-<ul><li>First, you need to determine what socket is being used by MySQL.<br />
-        To do this, telnet to your server and go to the MySQL bin directory. In this
-directory there should be a file named <i>mysqladmin</i>. Type
-<tt>./mysqladmin variables</tt>, and this should give you a bunch of info
-about your MySQL server, including the socket (<i>/tmp/mysql.sock</i>, for
-example).</li>
-    <li>Then, you need to tell PHP to use this socket.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
-<i>config.inc.php</i>.<br />
-        For example: <a href="#cfg_Servers_socket" class="configrule">
+<ul><li>Önce, MySQL tarafından kullanılan sokete karar vermeniz gerekli.<br />
+        Bunu yapmak için sunucunuza telnet ile bağlanın ve MySQL bin dizinine
+gidin. Bu dizinde <i>mysqladmin</i> adında bir dosya
+olmalı. <tt>./mysqladmin variables</tt> yazın ve bu size MySQL sunucunuz
+hakkında bir takım bilgi vermeli, soket dahil (<i>/tmp/mysql.sock</i>,
+örneğin).</li>
+    <li>Sonra PHP'ye bu soketi kullanmasını söylemeniz gerekli.<br /> Bunu phpMyAdmin içinde yapmanız için <i>config.inc.php</i> içindeki soket
+bilgisini tamamlamanız gerekli.<br />
+        Örneğin: <a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
 
-        Please also make sure that the permissions of this file allow to be readable
-by your webserver (i.e. '0755').</li>
+        Lütfen aynı zamanda bu dosyanın izinlerinin web sunucusu tarafından
+okunabilirliğine izin verildiğine emin olun (örn. '0755').</li>
 </ul>
 
-<p> Have also a look at the <a
-href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">
-corresponding section of the MySQL documentation</a>.</p>
+<p> Ayrıca <a
+href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">MySQL
+belgelemesinin ilgili bölümüne</a> bir gözatın.</p>
 
 <h4 id="faq2_4">
     <a href="#faq2_4">2.4 Nothing is displayed by my browser when I try to run
@@ -5037,7 +5040,7 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 <li>Olivier M&uuml;ller &lt;om_at_omnis.ch&gt;
 <ul>
-  <li>SourceForge phpMyAdmin projesi Mart 2001'de başladı</li>
+  <li>SourceForge phpMyAdmin projesine Mart 2001'de başladı</li>
   <li>sync'ed different existing CVS trees with new features and bugfixes</li>
   <li>multi-language improvements, dynamic language selection</li>
   <li>many bugfixes and improvements</li>
