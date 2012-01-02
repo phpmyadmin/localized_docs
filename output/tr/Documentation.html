@@ -419,7 +419,7 @@ phpMyAdmin yapılandırma dosyasında (mümkünse <a href="#controluser">denetim
 kullanıcısı</a> için hariç) ayarlanmasına ihtiyacı yoktur.<br />
         Yinede aklınızda olsun HTTPS protokolü kullanmadığınız sürece parola düz
 metinde yolculuk eder.<br />
-        Tanımlama bilgisi kipinde parola geçici tanımlama bilgisinde depolanır,
+        Tanımlama bilgisi kipinde parola geçici tanımlama bilgisinde saklanır,
 blowfish algoritması ile şifrelenir.</li>
 
     <li id="pmausr">Not: bu bölüm sadece eğer MySQL sunucunuz
@@ -528,7 +528,7 @@ gerekli değildir.</li>
 
 <ul><li>Bu kip başka bir uygulamadan phpMyAdmin'e kimlik doğrulamayı tanıtmakta
 kullanılan elverişli bir yoldur.</li>
-    <li>Diğer uygulamalar oturum açma bilgisini oturum verisi içinde depolamaktadır.</li>
+    <li>Diğer uygulamalar oturum açma bilgisini oturum verisi içinde saklanmaktadır.</li>
     <li>Daha fazla ayrıntı <a href="#cfg_Servers_auth_type">auth_type</a> bölümünde.</li>
 </ul>
 <h4>'yapılandırma' kimlik doğrulaması kipi</h4>
@@ -772,12 +772,12 @@ title="HyperText Transfer Protocol">HTTP</abbr> veya oturumu açma kimlik
 doğrulaması kullanılması.
         <ul><li>'yapılandırma' kimlik doğrulaması (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)
 sade eski usüldür: kullanıcı adı ve parola <i>config.inc.php</i> içinde
-depolanır.</li>
+saklanır.</li>
             <li>2.2.3'te sunulan 'tanımlama bilgisi' kimlik doğrulaması kipi
 (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) tanımlama bilgilerinin yardımıyla
 herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin
 verir. Oturum sırasında kullanıcı adı ve parola tanımlama bilgilerinde
-depolanır ve sonlandığında parola silinir. Eğer <tt><a
+saklanır ve sonlandığında parola silinir. Eğer <tt><a
 href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a></tt> etkinse, bu aynı
 zamanda gelişigüzel sunucuya oturum açmanıza izin verir.
@@ -963,7 +963,7 @@ sütunu&quot; gösterilir)<br />
 her tanımlanan anahtar için veri tutarlılığını (eksik dış anahtarları
 görüntüleme) kontrol etmek için;
             </li>
-            <li>örnekli sorguda, otomatik katılımlar oluşturmak için bunu kullanır (<a
+            <li>örnekle sorgulamada, otomatik katılımlar oluşturmak için bunu kullanır (<a
 href="#faq6_6"> <abbr title="Sıkça Sorulan Sorular">SSS</abbr> 6.6</a>'ya
 bakın)</li>
             <li>veritabanınızın <abbr title="Portable Document Format">PDF</abbr> şemasını
@@ -1587,7 +1587,7 @@ açma tanımlama bilgisi dahi geçersiz kılınır. Bu yüzden
 değerinden daha düşük tutmamak en iyisidir.</dd>
 
     <dt id="cfg_LoginCookieStore">$cfg['LoginCookieStore'] tam sayı [saniye sayısı]</dt>
-    <dd>Oturum açma tanımlama bilgisinin tarayıcıda ne kadar süreyle depolanacağını
+    <dd>Oturum açma tanımlama bilgisinin tarayıcıda ne kadar süreyle saklanacağını
 tanımlar. Varsayılan 0 değeri anlamı sadece var olan oturum için
 tutulacağıdır. Bu güvenli olmayan ortamlar için önerilir.</dd>
 
@@ -1810,8 +1810,8 @@ görüntülenmemesini tanımlar. Kullanıcı bu ayarı arabirimden değiştirebi
 kullanılmasını tanımlar. Olası değerler:
         <ul><li>input - bu, MySQL içinde sütunların boyutları için metnin boyutunu
 sınırlamaya izin verir, ama sütunlarda yeni satırlarda sorunlar yaşanır</li>
-            <li>textarea - sütunlarda yeni satırlarda sorunlar yaşanmaz ama aynı zamanda
-uzunluk sınırlaması yoktur</li>
+            <li>textarea - sütunlarda yeni satırlarla sorunlar yaşanmaz ama ayrıca uzunluk
+kısıtlamaları yoktur</li>
         </ul>
         Varsayılan eski davranış şekli input.</dd>
 
@@ -2233,7 +2233,7 @@ phpMyAdmin betiklerinin sahibiyle aynı kullanıcı olmalıdır.
 
         Bu, ESRI Shapefiles'ı içe aktarmak için gereklidir, <a href="#faq6_30"><abbr
 title="Sıkça Sorulan Sorular">SSS</abbr> 6.30</a>'a bakın ve gönderilmiş
-dosyalarda <tt>open_basedir</tt> sınırlamalarına geçici bir çözüm bulmak
+dosyalarda <tt>open_basedir</tt> kısıtlamalarına geçici bir çözüm bulmak
 için <a href="#faq1_11"><abbr title="Sıkça Sorulan Sorular">SSS</abbr>
 1.11</a>'e bakın.
         <br /><br />
@@ -2671,7 +2671,7 @@ girin. Ancak varsayılanları kullanabileceğiniz parametreler:
 dosya üzerinden tanımlanır.</p>
 
 <p> Özelleştirmeyi genişletmek ve yeni dönüşümlerin kolay eklenmesi için
-dosyalarda depolanır.</p>
+dosyalarda saklanır.</p>
 
 <p> Çünkü kullanıcı kendi mime türlerini giremez, dönüştürmelerin daima
 çalıştığından emin olunmasını sağlar. Mime türüne dönüşümün uygulanmasını
@@ -2814,7 +2814,7 @@ aşağıdaki anahtarlar kullanılabilir:
 
 <ol><li><a href="#faqserver">Sunucu</a></li>
     <li><a href="#faqconfig">Yapılandırma</a></li>
-    <li><a href="#faqlimitations">Bilinen sınırlamalar</a></li>
+    <li><a href="#faqlimitations">Bilinen kısıtlamalar</a></li>
     <li><a href="#faqmultiuser">ISP'ler, çoklu kullanıcı kurulumları</a></li>
     <li><a href="#faqbrowsers">Tarayıcılar veya istemci <abbr title="operating
 system">İS</abbr></a></li>
@@ -3470,178 +3470,191 @@ href="http://dev.mysql.com/doc/en/can-not-connect-to-server.html">MySQL
 belgelemesinin ilgili bölümüne</a> bir gözatın.</p>
 
 <h4 id="faq2_4">
-    <a href="#faq2_4">2.4 Nothing is displayed by my browser when I try to run
-phpMyAdmin, what can I do?</a></h4>
+    <a href="#faq2_4">2.4 phpMyAdmin'i çalıştırmayı denediğimde tarayıcımda
+hiçbir şey görüntülenmiyor, ne yapabilirim?</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
-directive to <tt>FALSE</tt> in the phpMyAdmin configuration file. It helps
-sometime.<br />
-    Also have a look at your PHP version number: if it contains &quot;b&quot; or
-&quot;alpha&quot; it means you're running a testing version of PHP. That's
-not a so good idea, please upgrade to a plain revision.</p>
+<p> phpMyAdmin yapılandırma dosyasındaki <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGZip']</a> yönergesini <tt>FALSE</tt> olarak
+ayarlamayı deneyin. Bazen yardımı olur.<br />
+    Aynı zamanda PHP sürüm numarasına bir göz atın: eğer &quot;b&quot; veya
+&quot;alpha&quot; içeriyorsa, PHP'nin deneme sürümünü çalıştırıyorsunuz
+anlamına gelir. Bu o kadar iyi bir fikir değildir, lütfen düz revizyonuna
+yükseltin.</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5 Each time I want to insert or change a row or drop a
-database or a table, an error 404 (page not found) is displayed or, with
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication, I'm asked to log in again. What's wrong?</a></h4>
+    <a href="#faq2_5">2.5 Her defasında satır eklemek veya değiştirmek ya da bir
+veritabanı veya bir tablo kaldırmak istiyorum, bir hata 404 (sayfa
+bulunamadı) görüntüleniyor veya <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> ya da tanımlama bilgisi kimlik doğrulaması ile, tekrar
+oturum açmak için soruyor. Yanlış olan nedir?</a></h4>
 
-<p> Check the value you set for the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive in the phpMyAdmin
-configuration file.</p>
+<p> phpMyAdmin yapılandırma dosyasındaki <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> yönergesi için ayarladığınız
+değeri kontrol edin.</p>
 
 <h4 id="faq2_6">
-    <a href="#faq2_6">2.6 I get an &quot;Access denied for user:
-'root@localhost' (Using password: YES)&quot;-error when trying to access a
-MySQL-Server on a host which is port-forwarded for my localhost.</a></h4>
+    <a href="#faq2_6">2.6 Localhost'um için bağlantı noktası yönlendirilmiş bir
+anamakinedeki MySQL Sunucusuna erişmeyi denerken &quot;Şu kullanıcı için
+erişim reddedildi: 'root@localhost' (Parola kullanıyor: EVET)&quot; hatası
+alıyorum.</a></h4>
 
-<p> When you are using a port on your localhost, which you redirect via
-port-forwarding to another host, MySQL is not resolving the localhost as
-expected.<br />
-    Erik Wasser explains: The solution is: if your host is &quot;localhost&quot;
-MySQL (the command line tool <code>mysql</code> as well) always tries to use
-the socket connection for speeding up things. And that doesn't work in this
-configuration with port forwarding.<br />
-    If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
-<abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
+<p> Başka bir anamakineye bağlantı noktası yönlendirme yoluyla yeniden
+yönlendirlen localhost'unuzda bağlantı noktası kullandığınızda, beklendiği
+gibi MySQL localhost'u çözemez.<br />
+    Erik Wasser şöyle açıklıyor: Çözümü: eğer anamakineniz &quot;localhost&quot;
+ise MySQL (komut satırı aracı <code>mysql</code> de) her zaman bir şeyleri
+hızlandırmak için soket bağlantısı kullanmayı dener. Ve bu yapılandırma
+bağlantı noktası yönlendirmesiyle çalışmaz.<br />
+    Eğer anamakine adı olarak "127.0.0.1" girerseniz, her şey doğrudur ve MySQL
+<abbr title="Transmission Control Protocol">TCP</abbr>TCP</abbr> bağlantısı
+kullanır.</p>
 
-<h4 id="faqthemes"><a href="#faqthemes">2.7 Using and creating themes</a></h4>
+<h4 id="faqthemes"><a href="#faqthemes">2.7 Temaların kullanımı ve oluşturması</a></h4>
 
-<p> Themes are configured with <a href="#cfg_ThemePath"
-class="configrule">$cfg['ThemePath']</a>, <a href="#cfg_ThemeManager"
-class="configrule">$cfg['ThemeManager']</a> and <a href="#cfg_ThemeDefault"
-class="configrule">$cfg['ThemeDefault']</a>.<br />
+<p> Temalar <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>,
+<a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a> ve
+<a href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> ile
+yapılandırılır.<br />
     <br />
-    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
-should not delete the directory &quot;original&quot; or its underlying
-structure, because this is the system theme used by phpMyAdmin.
-&quot;original&quot; contains all images and styles, for backwards
-compatibility and for all themes that would not include images or css-files.
+    <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> altında,
+&quot;original&quot; dizinini ya da temel yapıyı silmemelisiniz çünkü bu
+phpMyAdmin tarafından kullanılan sistem temasıdır. &quot;original&quot;,
+geriye dönük uyumluluk için ve imajları ya da css dosyalarını içermeyen tüm
+temalar için, tüm imajları ve stilleri içerir.
     <br /><br />
 
-    If <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
-is enabled, you can select your favorite theme on the main page. Your
-selected theme will be stored in a cookie.<br /><br /></p>
+    Eğer <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
+etkinse, ana sayfada sık kullandığınız temanızı seçebilirsiniz. Seçtiğiniz
+tema tanımlama bilgisinde saklanacaktır.<br /><br /></p>
 
-<p> To create a theme:</p>
+<p> Tema oluşturmak için:</p>
 
-<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
-href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
-<tt>themes</tt>)</li>
-    <li>copy the files and directories from &quot;original&quot; to
-&quot;your_theme_name&quot;</li>
-    <li>edit the css-files in &quot;your_theme_name/css&quot;</li>
-    <li>put your new images in &quot;your_theme_name/img&quot;</li>
-    <li>edit <tt>layout.inc.php</tt> in &quot;your_theme_name&quot;</li>
-    <li>edit <tt>info.inc.php</tt> in &quot;your_theme_name&quot; to contain your
-chosen theme name, that will be visible in user interface</li>
-    <li>make a new screenshot of your theme and save it under
-&quot;your_theme_name/screen.png&quot;</li>
+<ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
+(varsayılan olarak <tt>themes</tt>) altında yeni bir alt dizin yapın
+(örneğin &quot;temanızın_adı&quot; )</li>
+    <li>&quot;original&quot; dizininden &quot;temanızın_adı&quot; dizinine dosyaları
+ve dizinleri kopyalayın</li>
+    <li>&quot;temanızın_adı/css&quot; dizinindeki css dosyalarını düzenleyin</li>
+    <li>yeni resimlerinizi &quot;temanızın_adı/img&quot; dizinine koyun</li>
+    <li>&quot;temanızın_adı&quot; dizinindeki <tt>layout.inc.php</tt> dosyasını
+düzenleyin</li>
+    <li>&quot;temanızın_adı&quot; dizinindeki <tt>info.inc.php</tt> dosyasını,
+seçtiğiniz tema adınızı içermesi için düzenleyin, böylece kullanıcı
+arabiriminde görülebilecek</li>
+    <li>temanızın yeni bir ekran görüntüsünü yapın ve
+&quot;temanızın_adı/screen.png&quot; adı altında kaydedin</li>
 </ul>
 
-<p> In theme directory there is file <tt>info.inc.php</tt> which contains theme
-verbose name, theme generation and theme version. These versions and
-generations are enumerated from 1 and do not have any direct dependence on
-phpMyAdmin version. Themes within same generation should be backwards
-compatible - theme with version 2 should work in phpMyAdmin requiring
-version 1. Themes with different generation are incompatible.</p>
+<p> Tema dizininde ayrıntılı tema adını, tema üretimini ve tema sürümünü içeren
+<tt>info.inc.php</tt> dosyası vardır. Bu sürümler ve üretimler 1'den
+başlayarak numaralandırılır ve phpMyAdmin sürümüne herhangi bir doğrudan
+bağlılığı yoktur. Aynı üretimde temalar geriye dönük uyumlu olmalıdır -
+sürüm 2 ile tema, sürüm 1 gerektiren phpMyAdmin'de çalışmalıdır. Farklı
+üretimli temalar uyumsuzdur.</p>
 
-<p> If you do not want to use your own symbols and buttons, remove the directory
-&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the
-default icons and buttons (from the system-theme &quot;original&quot;).
+<p> Eğer kendi simgelerinizi ve düğmelerinizi kullanmak istemiyorsanız,
+&quot;temanızın_adı&quot; içindeki &quot;img&quot; dizinini
+kaldırın. phpMyAdmin varsayılan simgeleri ve düğmeleri kullanacaktır (sistem
+teması &quot;original&quot;dan).
 </p>
 
 <h4 id="faqmissingparameters">
-    <a href="#faqmissingparameters">2.8 I get &quot;Missing parameters&quot;
-errors, what can I do?</a></h4>
+    <a href="#faqmissingparameters">2.8 &quot;Eksik paremetreler&quot; hataları
+alıyorum, ne yapabilirim?</a></h4>
 
-<p> Here are a few points to check:</p>
+<p> İşte kontrol etmeniz için birkaç nokta:</p>
 
-<ul><li>In <tt>config.inc.php</tt>, try to leave the <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> directive empty. See also <a
-href="#faq4_7"><abbr title="Frequently Asked Questions">FAQ</abbr> 4.7</a>.
+<ul><li><tt>config.inc.php</tt> içinde <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> yönergesini boş bırakmayı
+deneyin. Aynı zamanda <a href="#faq4_7"><abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 4.7</a>'ye bakın.
     </li>
-    <li>Maybe you have a broken PHP installation or you need to upgrade your Zend
-Optimizer. See <a href="http://bugs.php.net/bug.php?id=31134">
-http://bugs.php.net/bug.php?id=31134</a>.
+    <li>Belki bozuk PHP kurulumuna sahipsiniz ya da Zend Optimizer'ınızı
+yükseltmeniz gerekli. <a
+href="http://bugs.php.net/bug.php?id=31134">http://bugs.php.net/bug.php?id=31134</a>
+adresine bakın.
     </li>
-    <li>If you are using Hardened PHP with the ini directive
-<tt>varfilter.max_request_variables</tt> set to the default (200) or another
-low value, you could get this error if your table has a high number of
-columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for the
-hint).
+    <li>Eğer ini yönergesi <tt>varfilter.max_request_variables</tt> ile Hardened PHP
+kullanıyorsanız, varsayılana (200) ayarlayın ya da başka bir düşük değere,
+eğer tablonuz yüksek sayıda sütuna sahipse, bu hatayı alabilirsiniz. Ona
+göre bu ayarı ayarlayın. (Klaus Dorninger'e ipucu için teşekkürler).
     </li>
-    <li>In the <tt>php.ini</tt> directive <tt>arg_separator.input</tt>, a value of
-&quot;;&quot; will cause this error. Replace it with &quot;&amp;;&quot;.
+    <li><tt>php.ini</tt> yönergesi <tt>arg_separator.input</tt> içindeki
+&quot;;&quot; değeri bu hataya neden olacaktır. &quot;&amp;;&quot; ile
+değiştirin.
     </li>
-    <li>If you are using <a href="http://www.hardened-php.net/">Hardened-PHP</a>,
-you might want to increase <a
-href="http://www.hardened-php.net/hphp/troubleshooting.html">request
-limits</a>.
+    <li>Eğer <a href="http://www.hardened-php.net/">Hardened-PHP</a>
+kullanıyorsanız, <a
+href="http://www.hardened-php.net/hphp/troubleshooting.html">istenen
+sınırları</a> arttırmak isteyebilirsiniz.
     </li>
-    <li>The directory specified in the <tt>php.ini</tt> directive
-<tt>session.save_path</tt> does not exist or is read-only.
+    <li><tt>php.ini</tt> yönergesi <tt>session.save_path</tt> içinde belirtilmiş
+dizin mevcut değil ya da salt okunur.
     </li>
 </ul>
 
 <h4 id="faq2_9">
-    <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
+    <a href="#faq2_9">2.9 Gönderme ilerlemesi çubuğu görme</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
-the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-one. Moreover, the JSON extension has to be enabled in your PHP.</p>
-    <p> If using APC, you must set <tt>apc.rfc1867</tt> to <tt>on</tt> in your
-php.ini.</p>
+<p> Göndermeleriniz sırasında ilerleme çubuğunu görebilmeniz için sunucunuz ya
+<a href="http://pecl.php.net/package/APC">APC</a> uzantısına ya da <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>'in
+birine sahip olmalıdır. Dahası PHP'nizde JSON uzantısı etkinleştirilmiş
+olmalıdır.</p>
+    <p> Eğer APC kullanılıyorsa, php.ini dosyanız içindeki <tt>apc.rfc1867</tt>'yi,
+<tt>on</tt> olarak ayarlamalısınız.</p>
 
-<h3 id="faqlimitations">Known limitations</h3>
+<h3 id="faqlimitations">Bilinen kısıtlamalar</h3>
 
 <h4 id="login_bug">
-    <a href="#login_bug">3.1 When using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> authentication, a user who logged out can not log in
-again in with the same nick.</a></h4>
+    <a href="#login_bug">3.1 <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> kimlik doğrulaması kullanıldığında, oturumu kapatan
+bir kullanıcı aynı takma ad ile tekrar oturum açamaz.</a></h4>
 
-<p> This is related to the authentication mechanism (protocol) used by
-phpMyAdmin. To bypass this problem: just close all the opened browser
-windows and then go back to phpMyAdmin. You should be able to log in again.</p>
+<p> Bu, phpMyAdmin tarafından kullanılan kimlik doğrulaması mekanizmasıyla
+(protokol) ilgilidir. Bu sorunu atlatmak için: sadece tüm açılmış tarayıcı
+pencerelerini kapatın ve sonra phpMyAdmin'e geri dönün. Tekrar oturum
+açabilmelisiniz.</p>
 
 <h4 id="faq3_2">
-    <a href="#faq3_2">3.2 When dumping a large table in compressed mode, I get a
-memory limit error or a time limit error.</a></h4>
+    <a href="#faq3_2">3.2 Sıkıştırılmış kipte büyük bir tablo dökümlendiğinde,
+bellek sınırı hatası veya süre sınırı hatası alıyorum.</a></h4>
 
-<p> Compressed dumps are built in memory and because of this are limited to
-php's memory limit. For GZip/BZip2 exports this can be overcome since 2.5.4
-using <a href="#cfg_CompressOnFly"
-class="configrule">$cfg['CompressOnFly']</a> (enabled by default). Zip
-exports can not be handled this way, so if you need Zip files for larger
-dump, you have to use another way.</p>
+<p> Sıkıştırılmış dökümler bellek içinde yapılır ve bu php'nin bellek
+sınırlamasından dolayı kısıtlıdır. GZip/BZip2 dışa aktarmaları için
+2.5.4'ten bu yana <a href="#cfg_CompressOnFly"
+class="configrule">$cfg['CompressOnFly']</a> (varsayılan olarak etkindir)
+kullanılarak bunun üstesinden gelinebiliyor. Zip dışa aktarmaları bu yolla
+baş edemiyor, bu yüzden büyük döküm için Zip dosyalarına ihtiyacınız olursa,
+başka bir yol kullanmak zorundasınız.</p>
 
 <h4 id="faq3_3">
-    <a href="#faq3_3">3.3 With InnoDB tables, I lose foreign key relationships
-when I rename a table or a column.</a></h4>
+    <a href="#faq3_3">3.3 InnoDB tablolar ile, tablo veya sütunu yeniden
+adlandırdığımda, dış anahtar ilişkilerini kaybettim.</a></h4>
 
-<p> This is an InnoDB bug, see <a
-href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>.</p>
+<p> Bu bir InnoDB hatasıdır, <a
+href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=21704</a>
+adresine bakın.</p>
 
 <h4 id="faq3_4">
-    <a href="#faq3_4">3.4 I am unable to import dumps I created with the
-mysqldump tool bundled with the MySQL server distribution.</a></h4>
+    <a href="#faq3_4">3.4 MySQL sunucusu dağıtıma ile paketlenmiş mysqldump
+aracıyla oluşturduğum dökümleri içe aktaramamaktayım.</a></h4>
 
-<p> The problem is that older versions of <code>mysqldump</code> created invalid
-comments like this:</p>
+<p> Sorun <code>mysqldump</code>'ın eski bir sürümünün oluşturduğu geçersiz şu
+tip yorumlar:</p>
 
 <pre>
--- MySQL dump 8.22
+-- MySQL döküm 8.22
 --
--- Host: localhost Database: database
+-- Anamakine: localhost Veritabanı: veritabanı
 ---------------------------------------------------------
--- Server version 3.23.54
+-- Sunucu sürümü 3.23.54
 </pre>
 
-<p> The invalid part of the code is the horizontal line made of dashes that
-appears once in every dump created with mysqldump. If you want to run your
-dump you have to turn it into valid MySQL. This means, you have to add a
-whitespace after the first two dashes of the line or add a # before it:
+<p> Kodun geçersiz kısmı mysqldump ile oluşturulmuş her döküm içinde görünen,
+çizgilerden yapılmış yatay satırdır. Eğer dökümünüzü çalıştırmak
+istiyorsanız, geçerli MySQL içerisine döndürmek zorundasınız. Bu, ilk iki
+çizgiden sonra boşluk ya da önce # eklemek zorundasınız anlamına gelir:
     <br />
     <code> -- -------------------------------------------------------<br />
     </code> ya da<br />
@@ -3649,34 +3662,35 @@ whitespace after the first two dashes of the line or add a # before it:
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 When using nested folders there are some multiple
-hierarchies displayed in a wrong manner?!</a> (<a
+    <a href="#faq3_5">3.5 İç içe klasörler kullanıldığında yanlış biçimde
+görüntülenmiş çoklu hiyerarşiler oluyor?!</a> (<a
 href="#cfg_LeftFrameTableSeparator"
 class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
 
-<p> Please note that you should not use the separating string multiple times
-without any characters between them, or at the beginning/end of your table
-name. If you have to, think about using another TableSeparator or disabling
-that feature</p>
+<p> Lütfen unutmayın aralarında herhangi bir karakter olmadan çok kez ayırma
+dizgisi kullanmamalısınız ya da tablo adınızın başında/sonunda. Eğer
+zorundaysanız, başka bir TableSeparator kullanmayı veya bu özelliği
+etkisizleştirmeyi düşünün.</p>
 
 <h4 id="faq3_6">
-    <a href="#faq3_6">3.6 What is currently not supported in phpMyAdmin about
-InnoDB?</a></h4>
+    <a href="#faq3_6">3.6 InnoDB ile ilgili olarak phpMyAdmin'de şimdilik
+desteklenmeyen nedir?</a></h4>
 
-<p> In Relation view, being able to choose a table in another database, or
-having more than one index column in the foreign key.<br /><br/>
-    In Query-by-example (Query), automatic generation of the query LEFT JOIN
-from the foreign table.<br /><br/>
+<p> Bağlantı görünümünde, başka bir veritabanındaki tablo seçilebilir ya da dış
+anahtardaki birden fazla indeks sütununa sahip olunabilir.<br /><br/>
+    Örnekle sorgulamada (Sorgu), dış tablodan LEFT JOIN sorgusunun otomatik
+oluşturulması.<br /><br/>
 </p>
 
 <h4 id="faq3_7">
-    <a href="#faq3_7">3.7 I have table with many (100+) columns and when I try
-to browse table I get series of errors like &quot;Warning: unable to parse
-url&quot;. How can this be fixed?</a></h4>
+    <a href="#faq3_7">3.7 Çok sütunlu (100+) tablom var ve tabloya gözatmayı
+denediğimde &quot;Uyarı: url ayrıştırılamaz&quot; gibi bir dizi hata
+alıyorum. Bu nasıl düzeltilebilir?</a></h4>
 <p>
-    Your table neither have a primary key nor an unique one, so we must use a
-long expression to identify this row. This causes problems to parse_url
-function. The workaround is to create a primary or unique key.
+    Tablonuz ne birincil anahtara ne de benzersiz anahtara sahiptir, bu yüzden
+bu satırı tanımlamak için uzun ifade kullanmak zorundayız. Buna parse_url
+işlevi için sorunlar neden olur. Geçici çözüm birincil anahtar veya
+benzersiz anahtar oluşturmaktır.
     <br />
 </p>
 
