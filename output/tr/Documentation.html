@@ -20,7 +20,7 @@ düzenleyebilirisiniz.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.5.0-dev - Belgeler</title>
+    <title>phpMyAdmin 3.5.0-beta1-dev - Belgeler</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ düzenleyebilirisiniz.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.5.0-dev Belgesi
+class="myadmin">MyAdmin</span></a> 3.5.0-beta1-dev Belgesi
     </h1>
 </div>
 
@@ -552,7 +552,7 @@ href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> yapılandırma yönergelerini
 dikkate almak isteyebilirsiniz.</li>
     <li>Tanımlama bilgisi ve http'den farklı olarak, phpMyAdmin sitesinin ilk
-yüklenmesinde oturum açmak için kullanıcı gerekmez.Bu tasarımındandır ama
+yüklenmesinde oturum açmak için kullanıcı gerekmez. Bu tasarımındandır ama
 herhangi bir kullanıcının kurulumunuza erişmesine izin verebilir. Bazı
 kısıtlama yöntemlerini kullanmak önerilmektedir, belki HTTP-AUTH
 yönergesiyle <a href="#glossary">.htaccess</a> dosyası veya gelen HTTP
@@ -621,14 +621,15 @@ işaretini unutmayın.<br /><br />
 
         Sürüm 2.3.0 ile başlayaraktan, bunu boş bırakmayı denemek tavsiye
 edilebilir. Bir çok durumda phpMyAdmin düzgün ayarı otomatik olarak
-algılar.Bağlantı noktası yönlendirilen kullanıcıların PmaAbsoluteUri (<a
+algılar. Bağlantı noktası yönlendirilen kullanıcıların PmaAbsoluteUri
+ayarlaması gerekecektir (<a
 href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1340187&amp;group_id=23067&amp;atid=377409">daha
-fazla bilgi</a>) ayarlaması gerekecektir. İyi bir sınama tabloya gözatmak,
-satırı düzenlemek ve bunu kaydetmektir. Eğer phpMyAdmin doğru değeri
-otomatik algılamada sorun yaşarsa, bir hata mesajı olmalıdır. Bunu ayarlamak
-zorunda kalındığında eğer hata alırsanız, eğer otomatik algılama kodu
-yolunuzu algılamada başarısız olursa, lütfen hata izleyicimize bir hata
-raporu gönderin böylece bizde kodu düzeltelim.</dd>
+fazla bilgi</a>). İyi bir sınama tabloya gözatmak, satırı düzenlemek ve bunu
+kaydetmektir. Eğer phpMyAdmin doğru değeri otomatik algılamada sorun
+yaşarsa, bir hata mesajı olmalıdır. Bunu ayarlamak zorunda kalındığında eğer
+hata alırsanız, eğer otomatik algılama kodu yolunuzu algılamada başarısız
+olursa, lütfen hata izleyicimize bir hata raporu gönderin böylece bizde kodu
+düzeltelim.</dd>
 
     <dt id="cfg_PmaNoRelation_DisableWarning">$cfg['PmaNoRelation_DisableWarning'] boolean</dt>
     <dd>Sürüm 2.3.0 ile başlayaraktan phpMyAdmin master / dış &#8211; tablolarla
@@ -759,7 +760,9 @@ kimlik doğrulaması kipi) kullanıldığı zaman, <i>mysql.user
 (&quot;Password&quot; hariç tüm sütunlar)</i>, <i>mysql.db (tüm
 sütunlar)</i> ve <i>mysql.tables_priv (&quot;Grantor&quot; ve
 &quot;Timestamp&quot; hariç tüm sütunlar)</i> tablolarında <tt>SELECT</tt>
-yetkisinin olduğu ayrıntılı MySQL hesabı sağlamanız gerekir.<br />
+yetkisinin olduğu ayrıntılı MySQL hesabı sağlamanız gerekir. Bu hesap
+kullanıcının oturum açtığında göreceği veritabanlarını kontrol etmek için
+kullanılır.<br />
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
 kullanımı&quot;nda <a href="#setup">kur bölümü</a>'ne bakın.<br /><br />
 
@@ -1552,6 +1555,10 @@ veritabanlarını göstermeyi mümkün kılar (MySQL 3.23.30'dan beri).</dd>
     <dd>phpMyAdmin tarafından üretilmiş <abbr title="structured query
 language">SQL</abbr> sorgularının gösterilip gösterilmemesini tanımlar.</dd>
 
+    <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] boolean</dt>
+    <dd>Defines whether the <abbr title="structured query language">SQL</abbr> query
+box should be kept displayed after its submission.</dd>
+
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] boolean</dt>
     <dd>Normal kullanıcıların (yönetici olmayan) kendi veritabanını silmeye izin
 verip vermeyeceğini tanımlar. Eğer FALSE olarak ayarlanırsa,
@@ -2240,7 +2247,7 @@ için <a href="#faq1_11"><abbr title="Sıkça Sorulan Sorular">SSS</abbr>
 
     Eğer phpMyAdmin'in kurulduğu dizin <tt>open_basedir</tt> kısıtlamasına
 bağlıysa, web sunucusu tarafından erişebilir bir takım dizin içine geçici
-bir dizin oluşturmanız gerekir. ancak güvenlik nedeniyle, bu dizin web
+bir dizin oluşturmanız gerekir. Ancak güvenlik nedeniyle, bu dizin web
 sunucusu tarafından yayınlanan dizin ağacının dışında olmalıdır. Eğer bu
 dizinin web sunucusu tarafından yayınlanmasını önleyemiyorsanız, en azından
 boş bir <tt>index.html</tt> dosyası koyun, böylece dizini listelemek
@@ -2388,10 +2395,9 @@ tarafından döndürülen sayı gibi bu değerden küçükse, <code>SELECT
 COUNT</code> kullanılacaktır yoksa yaklaşık sayı kullanılacaktır.
     </dd>
     <dt id="cfg_MaxExactCountViews">$cfg['MaxExactCountViews'] tam sayı</dt>
-    <dd>VIEW'ler için, tam sayı elde edildiğinden bu yana performansta etkisi
-vardır, <code>SELECT COUNT ... LIMIT</code> kullanarak bu değer en fazla
-olarak gösterilendir. Varsayılan 0 değeri herhangi bir satır sayımını
-atlatır.
+    <dd>For VIEWs, since obtaining the exact count could have an impact on
+performance, this value is the maximum to be displayed, using a <code>SELECT
+COUNT ... LIMIT</code>. Setting this to 0 bypasses any row counting.
     </dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] boolean</dt>
@@ -2793,7 +2799,7 @@ href="http://www.php.net/mysql_fetch_field">rehber sayfasında</a>
 tanımlanmış tüm nesne tercihleri bu değişken içinde mevcuttur ve
 unsigned/zerofill/not_null/... tercihlerine göre sütunu dönüştürmek için
 kullanılabilir.<br />
-        $meta-&gt;mime türü değişkeni sütunun orijinal MIME-türünü içerir (yani
+        $meta-&gt;Mime türü değişkeni sütunun orijinal MIME-türünü içerir (yani
 'text/plain', 'image/jpeg' v.s.)</li>
 </ol>
 
@@ -3462,7 +3468,7 @@ $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
 
         Lütfen aynı zamanda bu dosyanın izinlerinin web sunucusu tarafından
-okunabilirliğine izin verildiğine emin olun (örn. '0755').</li>
+okunabilirliğine izin verildiğine emin olun (yani '0755').</li>
 </ul>
 
 <p> Ayrıca <a
@@ -3509,7 +3515,7 @@ bağlantı noktası yönlendirmesiyle çalışmaz.<br />
 <abbr title="Transmission Control Protocol">TCP</abbr>TCP</abbr> bağlantısı
 kullanır.</p>
 
-<h4 id="faqthemes"><a href="#faqthemes">2.7 Temaların kullanımı ve oluşturması</a></h4>
+<h4 id="faqthemes"><a href="#faqthemes">2.7 Temaların kullanımı ve oluşturulması</a></h4>
 
 <p> Temalar <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>,
 <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a> ve
@@ -3695,86 +3701,87 @@ benzersiz anahtar oluşturmaktır.
 </p>
 
 <h4 id="faq3_8">
-    <a href="#faq3_8">3.8 I cannot use (clickable) HTML-forms in columns where I
-put a MIME-Transformation onto!</a></h4>
+    <a href="#faq3_8">3.8 Üzerine MIME-Dönüştürmesi koyduğum sütunların içinde
+(tıklanabilir) HTML-formları kullanamıyorum!</a></h4>
 
-<p> Due to a surrounding form-container (for multi-row delete checkboxes), no
-nested forms can be put inside the table where phpMyAdmin displays the
-results.  You can, however, use any form inside of a table if keep the
-parent form-container with the target to tbl_row_delete.php and just put
-your own input-elements inside. If you use a custom submit input field, the
-form will submit itself to the displaying page again, where you can validate
-the $HTTP_POST_VARS in a transformation.  For a tutorial on how to
-effectively use transformations, see our <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
-official phpMyAdmin-homepage.</p>
+<p> Çevreleyen form kalıbından dolayı (çoklu satır silme işaretleme kutuları
+için), phpMyAdmin'nin sonuçları görüntülediği iç içe formlar tablo içerisine
+koyulamıyor. Eğer esas form kalıbı tbl_row_delete.php'yi hedef gösteren ile
+birlikte tutulursa ancak, tablo içerisinde herhangi bir form
+kullanabilirsiniz ve içerisine sadece kendi girdi öğelerinizi
+koyabilirsiniz. Eğer özel gönderi girdi alanı kullanıyorsanız,
+dönüşümlerdeki $HTTP_POST_VARS doğrulandığı yerde, sayfayı tekrar
+görüntülemek için form kendiliğinden gönderecektir. Dönüşümlerin nasıl etkin
+bir şekilde kullanılacağının eğitimi için resmi phpMyAdmin ana sayfasındaki
+<a href="http://www.phpmyadmin.net/home_page/docs.php">Bağlantı
+bölümümüze</a> bakın.</p>
 
 <h4 id="faq3_9">
-    <a href="#faq3_9">3.9 I get error messages when using "--sql_mode=ANSI" for
-the MySQL server</a></h4>
+    <a href="#faq3_9">3.9 MySQL sunucusu için "--sql_mode=ANSI" kullandığımda
+hata mesajları alıyorum</a></h4>
 
-<p> When MySQL is running in ANSI-compatibility mode, there are some major
-differences in how <abbr title="structured query language">SQL</abbr> is
-structured (see <a href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">
-http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a>). Most important of
-all, the quote-character (") is interpreted as an identifier quote character
-and not as a string quote character, which makes many internal phpMyAdmin
-operations into invalid <abbr title="structured query language">SQL</abbr>
-statements. There is no workaround to this behaviour. News to this item will
-be posted in Bug report <a
-href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;group_id=23067&amp;atid=377408">#816858</a>
+<p> MySQL ANSI-uyumluluk kipinde çalıştığında, <abbr title="structured query
+language">SQL</abbr>'in nasıl yapılandırıldığında bazı başlıca farklılıklar
+vardır (<a href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">
+http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a> adresine
+bakın). Hepsinden önemlisi, tırnak karakteri ("), geçersiz <abbr
+title="structured query language">SQL</abbr> ifadeleri içerisinde çoğu
+dahili phpMyAdmin işlemlerini yapan dizgi tırnak karakteri olarak değil
+tanımlayıcı tırnak karakteri olarak yorumlanır. Bu davranış için geçici
+çözüm yoktur. Bu öğe için haber Hata raporu <a
+href="https://sourceforge.net/tracker/index.php?func=detail&aid=816858&group_id=23067&atid=377408">#816858</a>
+içinde bildirilecektir
 </p>
 
 <h4 id="faq3_10">
-    <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
-SELECT display more that one column with the same value (for example
-<tt>SELECT lastname from employees where firstname like 'A%'</tt> and two
-&quot;Smith&quot; values are displayed), if I click Edit I cannot be sure
-that I am editing the intended row.</a></h4>
+    <a href="#faq3_10">3.10 Eşadlı ve birincil anahtar yok: SELECT'in sonuçları
+aynı değer ile bir sütundan daha fazlasını görüntülediğinde (örneğin
+<tt>SELECT soyadi from calisanlar where ilkadi like 'A%'</tt> ve iki
+&quot;Yavuz&quot; değeri görüntülenir), Düzenle'ye tıklarsam istenilen
+satırı düzenlediğimden emin olamıyorum.</a></h4>
 
-<p> Please make sure that your table has a primary key, so that phpMyAdmin can
-use it for the Edit and Delete links.</p>
+<p> Lütfen tablonuzun birincil anahtara sahip olduğundan emin olun, böylece
+phpMyAdmin Düzenle ve Sil bağlantıları için bunu kullanabilsin.</p>
 
 <h4 id="faq3_11">
-    <a href="#faq3_11">3.11 The number of rows for InnoDB tables is not
-correct.</a></h4>
+    <a href="#faq3_11">3.11 InnoDB tabloları için satır sayısı doğru değil.</a></h4>
 
-<p> phpMyAdmin uses a quick method to get the row count, and this method only
-returns an approximate count in the case of InnoDB tables. See <a
-href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a> for a
-way to modify those results, but this could have a serious impact on
-performance.</p>
+<p> phpMyAdmin satır sayısını getirmek için hızlı bir yöntem kullanır ve bu
+yöntem sadece InnoDB tabloları durumunda yaklaşık bir sayıyı döndürür. Bu
+sonuçları değiştirmenin bir yolu için <a href="#cfg_MaxExactCount"
+class="configrule">$cfg['MaxExactCount']</a>'a bakın ama bu, performansta
+ciddi etki yapabilir.</p>
 
 <h4 id="faq3_12">
-    <a href="#faq3_12">3.12 (withdrawn).</a></h4>
+    <a href="#faq3_12">3.12 (kaldırıldı).</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 I get an error when entering <tt>USE</tt> followed
-by a db name containing an hyphen.  </a></h4>
+    <a href="#faq3_13">3.13 Bir tire içeren vt adını takiben <tt>USE</tt>
+girdiğimde bir hata alıyorum.</a></h4>
 <p>
-    The tests I have made with MySQL 5.1.49 shows that the API does not accept
-this syntax for the USE command.
+    MySQL 5.1.49 ile yaptığım denemeler gösterdiki API, USE komutu için bu
+sözdizimini kabul etmiyor.
 </p>
 
 <h4 id="faq3_14">
-    <a href="#faq3_14">3.14 I am not able to browse a table when I don't have
-the right to SELECT one of the columns.</a></h4>
+    <a href="#faq3_14">3.24 Sütunlardan birini SELECT hakkına sahip olmadığımda
+tabloya gözatamıyorum.</a></h4>
 <p>
-    This has been a known limitation of phpMyAdmin since the beginning and it's
-not likely to be solved in the future.
+    Bu başından beri phpMyAdmin'nin bilinen bir kısıtlamasıydı ve gelecektede
+çözülmesi muhtemel değil.
 </p>
 
 
 
 <!-- Begin: Excel import limitations -->
 <h4 id="faq3_15">
-    <a href="#faq3_15">3.15 (withdrawn).</a></h4>
+    <a href="#faq3_15">3.15 (kaldırıldı).</a></h4>
 
 <h4 id="faq3_16">
-    <a href="#faq3_16">3.16 (withdrawn).</a></h4>
+    <a href="#faq3_16">3.16 (kaldırıldı).</a></h4>
 
 <h4 id="faq3_17">
-    <a href="#faq3_17">3.17 (withdrawn).</a></h4>
+    <a href="#faq3_17">3.17 (kaldırıldı).</a></h4>
 
 
 
@@ -3782,11 +3789,11 @@ not likely to be solved in the future.
 <!-- End: Excel import limitations -->
 <!-- Begin: CSV import limitations -->
 <h4 id="faq3_18">
-    <a href="#faq3_18">3.18 When I import a CSV file that contains multiple
-tables, they are lumped together into a single table.</a></h4>
+    <a href="#faq3_18">3.18 Çoklu tabloları içeren bir CSV dosyası içe
+aktardığımda, hepsi birlikte tek bir tabloya birleştiriliyor.</a></h4>
 <p>
-    There is no reliable way to differentiate tables in CSV format. For the time
-being, you will have to break apart CSV files containing multiple tables.
+    CSV biçimindeki tabloları ayırt etmek için güvenilir bir yol yok. Bir
+süreliğine çoklu tabloları içeren CSV dosyalarını parçalamak zorundasınız.
 </p>
 
 
@@ -4999,8 +5006,8 @@ and women who gave their lives for the people of Earth.</li>
 <h2 id="copyright">Telif hakkı</h2>
 
 <pre>
-Telif hakkı (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Telif hakkı (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
+Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
+Copyright (C) 2001-2012 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
@@ -5008,7 +5015,7 @@ Telif hakkı (C) 2001-2010 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [daha fazla ayrıntı için <a href="#credits">katkıda bulunanları</a> kontrol edin]
+                        [check <a href="#credits">credits</a> for more details]
 </pre>
 
 <p>
