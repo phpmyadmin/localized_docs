@@ -1556,8 +1556,8 @@ veritabanlarını göstermeyi mümkün kılar (MySQL 3.23.30'dan beri).</dd>
 language">SQL</abbr> sorgularının gösterilip gösterilmemesini tanımlar.</dd>
 
     <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] boolean</dt>
-    <dd>Defines whether the <abbr title="structured query language">SQL</abbr> query
-box should be kept displayed after its submission.</dd>
+    <dd><abbr title="structured query language">SQL</abbr> sorgu kutusunun
+sunuşundan sonra ekranda gösterilip gösterilmemesini tanımlar.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] boolean</dt>
     <dd>Normal kullanıcıların (yönetici olmayan) kendi veritabanını silmeye izin
@@ -2395,9 +2395,10 @@ tarafından döndürülen sayı gibi bu değerden küçükse, <code>SELECT
 COUNT</code> kullanılacaktır yoksa yaklaşık sayı kullanılacaktır.
     </dd>
     <dt id="cfg_MaxExactCountViews">$cfg['MaxExactCountViews'] tam sayı</dt>
-    <dd>For VIEWs, since obtaining the exact count could have an impact on
-performance, this value is the maximum to be displayed, using a <code>SELECT
-COUNT ... LIMIT</code>. Setting this to 0 bypasses any row counting.
+    <dd>VIEW'ler için, tam sayı elde edildiğinden bu yana performansta etkisi
+vardır, <code>SELECT COUNT ... LIMIT</code> kullanarak, bu değer en fazla
+olarak gösterilendir. Bunu 0'a ayarlamak herhangi bir satır sayımını
+atlatır.
     </dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] boolean</dt>
@@ -3749,8 +3750,8 @@ phpMyAdmin Düzenle ve Sil bağlantıları için bunu kullanabilsin.</p>
 <p> phpMyAdmin satır sayısını getirmek için hızlı bir yöntem kullanır ve bu
 yöntem sadece InnoDB tabloları durumunda yaklaşık bir sayıyı döndürür. Bu
 sonuçları değiştirmenin bir yolu için <a href="#cfg_MaxExactCount"
-class="configrule">$cfg['MaxExactCount']</a>'a bakın ama bu, performansta
-ciddi etki yapabilir.</p>
+class="configrule">$cfg['MaxExactCount']</a>'a bakın ama bunun performansta
+ciddi etkisi vardır.</p>
 
 <h4 id="faq3_12">
     <a href="#faq3_12">3.12 (kaldırıldı).</a></h4>
@@ -3802,53 +3803,54 @@ süreliğine çoklu tabloları içeren CSV dosyalarını parçalamak zorundasın
 <!-- End: CSV import limitations -->
 <!-- Begin: Import type-detection limitations -->
 <h4 id="faq3_19">
-    <a href="#faq3_19">3.19 When I import a file and have phpMyAdmin determine
-the appropriate data structure it only uses int, decimal, and varchar
-types.</a></h4>
+    <a href="#faq3_19">3.19 Dosyayı içe aktardığımda ve phpMyAdmin uygun veri
+yapısını belirlediğinde sadece int, decimal ve varchar türlerini
+kullanıyor.</a></h4>
 <p>
-    Currently, the import type-detection system can only assign these MySQL
-types to columns. In future, more will likely be added but for the time
-being you will have to edit the structure to your liking post-import.
+    Şimdilik, içe aktarma tür algılama sistemi sadece bu MySQL türlerini
+sütunlara atayabilir. Gelecekte, muhtemelen daha fazlası eklenecektir ama
+bir süreliğine ilgili içe aktarma gönderiminiz için yapıyı düzenlemek
+zorundasınız.
     <br /><br />
-    Also, you should note the fact that phpMyAdmin will use the size of the
-largest item in any given column as the column size for the appropriate
-type. If you know you will be adding larger items to that column then you
-should manually adjust the column sizes accordingly. This is done for the
-sake of efficiency.
+    Ayrıca, şu gerçeğide unutmamalısınız ki phpMyAdmin uygun tür için sütun
+boyutu olarak verilen herhangi bir sütundaki en büyük öğe boyutunu
+kullanacaktır. Bu sütuna ekleyeceğiniz büyük öğeleri biliyorsanız sonrasında
+buna göre sütun boyutlarını elle ayarlamalısınız. Bu, verim hatrına yapılır.
 </p>
 
 
 
 <!-- End: Import type-detection limitations -->
-<h3 id="faqmultiuser"><abbr title="Internet service provider">ISP</abbr>s, multi-user
-installations</h3>
+<h3 id="faqmultiuser"><abbr title="Internet service provider">ISP</abbr>'ler, çoklu kullanıcı
+kurulumları</h3>
 
 <h4 id="faq4_1">
-    <a href="#faq4_1">4.1 I'm an <abbr title="Internet service
-provider">ISP</abbr>. Can I setup one central copy of phpMyAdmin or do I
-need to install it for each customer.  </a></h4>
+    <a href="#faq4_1">4.1 Bir <abbr title="Internet service
+provider">ISP</abbr>'im var. Merkezi bir phpMyAdmin kopyasını kurabilir
+miyim veya her müşteri için kurmam mı gerekir?</a></h4>
 <p>
-    Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your
-users. The development of this feature was kindly sponsored by NetCologne
-GmbH.  This requires a properly setup MySQL user management and phpMyAdmin
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication. See the install section on &quot;Using <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> authentication&quot;.
+    2.0.3 sürümünden bu yana, merkezi bir phpMyAdmin kopyasını tüm
+kullanıcılarınız için kurabiliyorsunuz. Bu özelliği geliştirilmesine
+NetCologne GmbH nazikçe sponsor oldu. Bu, doğru bir biçimde kurulu MySQL
+kullanıcı yönetimi ve phpMyAdmin <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> ya da tanımlama bilgisi kimlik doğrulaması
+gerektirir. &quot;<abbr title="HyperText Transfer Protocol">HTTP</abbr>
+kimlik doğrulaması kullanımında&quot; kurma bölümüne bakın.
 </p>
 
 <h4 id="faq4_2">
-    <a href="#faq4_2">4.2 What's the preferred way of making phpMyAdmin secure
-against evil access.  </a></h4>
+    <a href="#faq4_2">4.2 phpMyAdmin'ni kötü niyetli erişime karşı güvenli
+yapmanın tercih edilen yolu nedir?</a></h4>
 <p>
-    This depends on your system.<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <i>.htaccess</i> files, for example).<br />
-    If other people have telnet access to your server, you should use
-phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication features.
+    Bu sisteminize bağlıdır.<br />
+    Eğer diğer insanlar tarafından erişilemeyen bir sunucu çalıştırıyorsanız,
+web sunucunuz ile paketlenmiş dizin koruması kullanmak yeterlidir (Apache
+ile  <i>.htaccess</i> dosyaları kullanabilirsiniz, örneğin).<br />
+    Eğer diğer insanların sunucunuza telnet erişimi varsa, phpMyAdmin'nin <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> ya da tanımlama bilgisi
+kimlik doğrulaması özelliklerini kullanmalısınız.
     <br /><br />
-    Suggestions:
+    Öneriler:
 </p>
 <ul>
     <li>
