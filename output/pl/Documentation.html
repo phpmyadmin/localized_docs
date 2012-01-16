@@ -420,53 +420,58 @@ końca pliku konfiguracyjnego.</p>
 jest plikiem konfiguracji domyślnej), gdyż ten ostatni plik ma zapisane
 ustawienia zależne od wersji phpMyAdmin.</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the SQL script found in
-<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> Jeśli serwer MySQL, mający wersję 4.1.2 zaktualizowano do wersji 5.x lub
+wyższej, a stosuje się przechowywanie konfiguracji phpMyAdmin, powinno się
+uruchomić skrypt, znajdujący się w
+pliku<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
-<h3 id="authentication_modes">Using authentication modes</h3>
+<h3 id="authentication_modes">Używanie trybów uwierzytelniania</h3>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are recommended in a <b>multi-user environment</b>
-where you want to give users access to their own database and don't want
-them to play around with others.<br />
-        Nevertheless be aware that MS Internet Explorer seems to be really buggy
-about cookies, at least till version 6.<br />
-        Even in a <b>single-user environment</b>, you might prefer to use <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that your
-user/password pair are not in clear in the configuration file.
+<ul><li>Tryby uwierzytelniania HTTP i cookie są zalecane w <b>środowisku
+wieloużytkownikowym</b>, to znaczy wszędzie tam, gdzie wielu użytkowników ma
+dostęp do tej samej bazy danych lub do różnych baz danych, przy założeniu,
+że użytkownicy ci mają ustawione różne prawa dostepu do tych baz.<br />
+        Niemniej jednak należy być ostrożnym, gdyż MS Internet Explorer wydaje się
+być wyjątkowo dziurawy, jeśli chodzi o ciasteczka (cookies), przynajmniej do
+wersji 6.<br />
+        Nawet w <b>środowisku jednoużytkownikowym</b>użycie trybu <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> lub cookie wydaje się być
+podejściem rozsądnym, gdyż w ten sposób nazwa użytkownika/hasło nie są
+przechowywane w sposób jawny w pliku konfiguracyjnym.
         </li>
 
-    <li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are more secure: the MySQL login information does not
-need to be set in the phpMyAdmin configuration file (except possibly for the
-<a href="#controluser">controluser</a>).<br />
-        Z drugiej strony, należy pamiętać, że hasło - jeżeli nie używasz protokołu
-HTTPS - jest przesyłane czystym tekstem.<br />
-        W trybie cookie hasło, zakodowane algorytmem blowfish, jest przechowywane w
-tymczasowym ciasteczku.</li>
+    <li>Tryby uwierzytelnienia <abbr title="HyperText Transfer Protocol">HTTP</abbr>
+i cookie są bezpieczniejsze: informacje o logowaniu do MySQL nie muszą być
+przechowywane w pliku konfiguracyjnym phpMyAdmin (z możliwym wyjątkiem dla
+<a href="#controluser">użytkownika kontrolnego -
+ang. <i>controluser</i></a>).<br />
+        Należy jednak pamiętać, że hasło przesyłane jest w tak zwanym "czystym
+tekście" (ang. <i>plain text<i/>); w przypadku użycia bezpiecznego protokołu
+HTTPS uwaga ta nie ma zastosowania.<br />
+        W trybie cookie hasło, zakodowane za pomocą algorytmu <i>blowfish</i>, jest
+przechowywane w ciasteczku tymczasowym.</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<tt>--skip-show-database</tt>.<br /><br />
+    <li id="pmausr">Uwaga: ta sekcja ma zastosowanie tylko wtedy, gdy serwer MySQL jest
+uruchamiany za pomocą <tt>--skip-show-database</tt>.<br /><br />
 
-        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
-modes, phpMyAdmin needs a controluser that has <b>only</b> the
-<tt>SELECT</tt> privilege on the <i>`mysql`.`user` (all columns except
-`Password`)</i>, <i>`mysql`.`db` (all columns)</i>, <i>`mysql`.`host` (all
-columns)</i> and <i>`mysql`.`tables_priv` (all columns except `Grantor` and
-`Timestamp`)</i> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
-in the <tt>config.inc.php</tt> file under the <tt><a
+        Dla trybów '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' i
+'cookie', phpMyAdmin potrzebuje użytkownika kontrolnego, który ma
+<b>tylko</b> uprawnienie <tt>SELECT</tt> do <i>`mysql`.`user` (wszystkie
+kolumny z wyjątkiem `Password`)</i>, <i>`mysql`.`db` (wszystkie
+kolumny)</i>, <i>`mysql`.`host` (wszystkie kolumny)</i> i
+<i>`mysql`.`tables_priv` (wszystkie kolumny z wyjątkiem tabel `Grantor` i
+`Timestamp`)</i>.<br /> Szczegóły dla <a href="#controluser">controluser</a> trzeba określić w pliku
+<tt>config.inc.php</tt> w ustawieniach <tt><a
 href="#cfg_Servers_controluser" class="configrule">
-$cfg['Servers'][$i]['controluser']</a></tt> and <tt><a
+$cfg['Servers'][$i]['controluser']</a></tt> i w ustawieniach<tt><a
 href="#cfg_Servers_controlpass" class="configrule">
-$cfg['Servers'][$i]['controlpass']</a></tt> settings.<br />
-        The following example assumes you want to use <tt>pma</tt> as the
-controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
-example: use something else in your file!</b> Input these statements from
-the phpMyAdmin SQL Query window or mysql command&#8211;line client.<br />
-        Of course you have to replace <tt>localhost</tt> with the webserver's host
-if it's not the same as the MySQL server's one.
+$cfg['Servers'][$i]['controlpass']</a></tt>.<br />
+        Następujący przykład zakłada, że użytkownik chce użyć <tt>pma</tt> jako
+użytkownika kontrolnego i <tt>pmapass</tt> jako jego hasło, <b>ale to tylko
+przykład: użyj czegoś innego w swoim pliku!</b> Wprowadź te wiersze z okna
+zapytań phpMyAdmin SQL lub wiersza poleceń klienta mysql.<br />
+        Oczywiście, jeśli nazwa serwera MySQL jest inna, trzeba zamienić
+<tt>localhost</tt> na nazwę hosta serwera WWW.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -482,59 +487,63 @@ GRANT SELECT ON mysql.host TO 'pma'@'localhost';
 GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
     ON mysql.tables_priv TO 'pma'@'localhost';</pre>
 
-        If you want to use the many new relation and bookmark features:
+        Jeśli użytkownik chce używać wielu cech zakładek i nowych relacji:
 
         <pre>
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (this of course requires that your <a href="#linked-tables">phpMyAdmin
-configuration storage</a> be set up).  
+        (to oczywiście wymaga ustawionego <a href="#linked-tables">przechowywania
+konfiguracji phpMyAdmin</a>).  
     <br /></li>
 
     <li>Każdy z <i>prawdziwych</i> użytkowników powinien uzyskać uprawnienia do
-poszczególnych pojedynczych baz danych. Zwykle nie powinieneś dawać
-uprawnień globalnych zwykłemu użytkownikowi, chyba że zdajesz sobie sprawę
-ze skutków takich uprawnień (np. tworzysz superużytkownika).<br />
-        Na przykład by nadać użytkownikowi <i>prawdziwy_uzytkownik</i> wszystkie
+poszczególnych pojedynczych baz danych. Zwykle nie powinno nadawać się
+uprawnień globalnych zwykłemu użytkownikowi, chyba że administrator bazy
+danych zdaje sobie sprawę ze skutków takiej decyzji (np. tworzy
+superużytkownika).<br />
+        Na przykład, aby nadać użytkownikowi <i>prawdziwy_uzytkownik</i> wszystkie
 uprawnienia do bazy danych <i>baza_uzytkownika</i>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
 </pre>
 
-        To, co może teraz zrobić użytkownik, jest całkowicie kontrolowane przez
+        To, co może teraz robić użytkownik, jest całkowicie kontrolowane przez
 system zarządzania użytkownikami MySQL.<br />
-        With <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication mode, you don't need to fill the user/password fields inside
-the <a href="#cfg_Servers" class="configrule">$cfg['Servers']</a> array.</li>
+        W trybach uwierzytelniania <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> lub cookie nie trzeba wypełniać pól użytkownik/hasło
+wewnątrz tablicy <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>.</li>
 </ul>
 
-<h4>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode</h4>
+<h4>Tryb uwierzytelniania '<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>' </h4>
 
-<ul><li>Uses <abbr title="HyperText Transfer Protocol">HTTP</abbr> Basic
-authentication method and allows you to log in as any valid MySQL user.</li>
-    <li>Is supported with most PHP configurations. For <abbr title="Internet
-Information Services">IIS</abbr> (<abbr title="Internet Server Application
-Programming Interface">ISAPI</abbr>)  support using <abbr title="Common
-Gateway Interface">CGI</abbr> PHP see <a href="#faq1_32"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.32</a>, for using with
-Apache <abbr title="Common Gateway Interface">CGI</abbr> see <a
-href="#faq1_35"><abbr title="Frequently Asked Questions">FAQ</abbr>
-1.35</a>.</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <i>.htaccess</i> mechanism
-along with '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
-authentication mode.</li>
+<ul><li>Używa metody uwierzytelniania Basic <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> i pozwala na logowanie się jako ważny (=prawomocny)
+użytkownik MySQL.</li>
+    <li>Jest obsługiwany przez większość konfiguracji PHP. Do obsługi interfejsu
+<abbr title="Internet Information Services">IIS</abbr> (<abbr
+title="Internet Server Application Programming Interface">ISAPI</abbr>),
+który używa <abbr title="Common Gateway Interface">CGI</abbr> PHP zobacz: <a
+href="#faq1_32"><abbr title="Frequently Asked Questions">FAQ</abbr>
+1.32</a>, do używania z serwerem Apache <abbr title="Common Gateway
+Interface">CGI</abbr> zobacz: <a href="#faq1_35"><abbr title="Frequently
+Asked Questions">FAQ</abbr> 1.35</a>.</li>
+    <li>Zobacz także: <a href="#faq4_4"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.4</a> na temat nieużywania mechanizmu
+<i>.htaccess</i> razem z trybem uwierzytelniania '<abbr title="HyperText
+Transfer Protocol">HTTP</abbr>'.</li>
 </ul>
 
 <h4>tryb uwierzytelniania 'cookie'</h4>
 
-<ul><li>You can use this method as a replacement for the <abbr title="HyperText
-Transfer Protocol">HTTP</abbr> authentication (for example, if you're
-running <abbr title="Internet Information Services">IIS</abbr>).</li>
-    <li>Obviously, the user must enable cookies in the browser, but this is now a
-requirement for all authentication modes.</li>
+<ul><li>Może to być zamiennik dla trybu uwierzytelniania <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> (na przykład, jeśli jest uruchomiony
+interfejs <abbr title="Internet Information Services">IIS</abbr>).</li>
+    <li>Oczywiście, użytkownik musi mieć włączone ciasteczka (cookies) w swojej
+przeglądarce WWW.</li>
     <li>With this mode, the user can truly log out of phpMyAdmin and log in back
 with the same username.</li>
     <li>If you want to log in to arbitrary server see <a
@@ -4033,6 +4042,12 @@ clause is generated when I browse a table.</a></h4>
 <tt>http</tt> authentication mode and <tt>register_globals</tt> being set to
 <tt>On</tt> on the server. It seems to be a browser-specific problem;
 meanwhile use the <tt>cookie</tt> authentication mode.</p>
+
+<h4 id="faq5_19">
+<a href="#faq5_19">5.19 I get JavaScript errors in my browser.</a></h4>
+<p> Issues have been reported with some combinations of browser extensions.  To
+troubleshoot, disable all extensions then clear your browser cache to see if
+the problem goes away.</p>
 
 <h3 id="faqusing">Using phpMyAdmin</h3>
 
