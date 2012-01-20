@@ -20,7 +20,7 @@ https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Dokumentacja phpMyAdmin - 3.5.0-beta1-dev</title>
+    <title>phpMyAdmin 3.5.0-beta1-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> Dokumentacja 3.5.0-beta1-dev
+class="myadmin">MyAdmin</span></a> 3.5.0-beta1-dev Documentation
     </h1>
 </div>
 
@@ -66,7 +66,7 @@ SourceForge phpMyAdmin</a></li>
     <li><a href="http://wiki.phpmyadmin.net"> Oficjalna strona wiki phpMyAdmin</a></li>
     <li>Lokalne dokumenty:
         <ul><li>Historia wersji: <a href="changelog.php">Dziennik zmian</a></li>
-            <li>Licencja: <a href="license.php">LICENSE</a></li>
+            <li>Licencja: <a href="license.php">LICENCJA</a></li>
         </ul>
     </li>
 </ul>
@@ -76,17 +76,19 @@ SourceForge phpMyAdmin</a></li>
 <h2 id="require">Wymagania</h2>
 
 <ul><li><b>PHP</b>
-        <ul><li>PHP w wersji 5.2.0 lub nowszej, z <tt>obsługą sesji</tt> (<a
-href="#faq1_31">Zobacz: <abbr title="Frequently Asked Questions">FAQ</abbr>
-1.31</a>), rozszerzenie Standard PHP Library (SPL) i obsługa JSON.
+        <ul><li>Potrzebny jest PHP w wersji 5.2.0 lub nowszej, z <tt>obsługą sesji</tt> (<a
+href="#faq1_31">zobacz: <abbr title="Frequently Asked Questions">FAQ</abbr>
+1.31</a>), rozszerzenie Standard PHP Library (SPL) oraz obsługa JSON.
                 </li>
         <li>Do obsługi wysyłania plików ZIP na serwer, potrzebne jest rozszerzenie
-PHP<tt> zip</tt>.</li>
-        <li>Do poprawnej obsługi wielobajtowych napisów (np. domyślnego formatu UTF-8),
-potrzebna jest instalacja rozszerzeń <tt>mbstring</tt> i <tt>ctype</tt>.
+PHP<tt>zip</tt>.</li>
+        <li>Do poprawnej obsługi wielobajtowych napisów (np. UTF-8, który obecnie jest
+formatem domyślnym), potrzebna jest instalacja rozszerzeń <tt>mbstring</tt>
+i <tt>ctype</tt>.
         </li>
-            <li>Obsługa GD2 -- do bezpośredniego wyświetlania miniaturek plików w formacie
-JPEG, w oryginalnych proporcjach.</li>
+            <li>Do bezpośredniego wyświetlania miniaturek plików w formacie JPEG
+(&quot;image/jpeg: inline&quot;), w oryginalnych proporcjach, potrzebna jest
+obsługa GD2.</li>
             <li>Używanie <a href="#authentication_modes">metody uwierzytelniania
 &quot;cookie&quot;</a>, zakłada również stosowanie rozszerzenia <a
 href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a>. Jest to stanowcze
@@ -97,16 +99,15 @@ znacznie wolniej, niż zwykle.
                 </li>
                 <li>Aby obsługiwać paski postępu wczytywania stron, zobacz <a href="#faq2_9">
 <abbr title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
-                <li>Obsługa strumieni danych BLOB, Zobacz: wymagania PHP i MySQL, w: <a
+                <li>Obsługa strumieni danych BLOB, zobacz: wymagania PHP i MySQL, w: <a
 href="#faq6_25"> <abbr title="Frequently Asked Questions">FAQ</abbr>
 6.25</a>.</li>
-                <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
-or newer and the <a href="http://www.php.net/libxml"><tt>libxml</tt></a>
-extension.</li>
+                <li>Do obsługi XML oraz importu arkuszy Open Document potrzebny jest PHP, w
+wersji 5.2.17 lub nowszej, a także rozszerzenie <a
+href="http://www.php.net/libxml"><tt>libxml</tt></a>.</li>
         </ul>
     </li>
-    <li><b>Wersja MySQL</b> 5.0 lub nowsza <a href="#faq1_17">Więcej szczegółów
-... </a></li>
+    <li><b>MySQL</b> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
     <li><b>Przeglądarka stron WWW</b> z włączonymi plikami <b>cookies</b>.</li>
 </ul>
 
@@ -114,19 +115,20 @@ extension.</li>
 <!-- INTRODUCTION -->
 <h2 id="intro">Wprowadzenie</h2>
 
-<p> Za pomocą phpMyAdmin można zarządzać całym serwerem MySQL (administracja
-serwerem z konta root), jak również pojedynczą bazą danych. W tym ostatnim
-przypadku pod warunkiem, że jest prawidłowo skonfigurowane konto użytkownika
+<p> Za pomocą phpMyAdmin można zarządzać całym serwerem MySQL (potrzebne jest
+konto super-użytkownika), jak również pojedynczą bazą danych. W tym drugim
+przypadku pod warunkiem, że prawidłowo skonfigurowane jest konto użytkownika
 MySQL (włączenie odczytu / modyfikacji tylko określonej bazy danych). Do
 ciebie, Użytkowniku tej dokumentacji, należy odszukanie odpowiedniego
-fragmentu podręcznika MySQL, na temat tej kwestii.
+fragmentu podręcznika MySQL, gdzie znacznie szerzej omówione są
+zasygnalizowane tutaj kwestie.
 </p>
 
 <h3>Obecnie, za pomocą phpMyAdmin można:</h3>
 
 <ul><li>przeglądać i usuwać bazy danych, tabele, widoki, kolumny i indeksy,</li>
-    <li>tworzyć, kopiować, usuwać, zmieniać nazwy, modyfikować tabele, kolumny i
-indeksy,</li>
+    <li>tworzyć, kopiować, usuwać, zmieniać nazwy baz danych; dotyczy to również
+tabel, kolumn i indeksów,</li>
     <li>utrzymywać w dobrym stanie serwer, bazy danych i tabele, z propozycjami na
 temat konfiguracji serwera,</li>
     <li>wykonywać, edytować i tworzyć zakładki dowolnego wyrażenia<abbr
@@ -135,14 +137,14 @@ wsadowych,</li>
     <li>wczytywać pliki tekstowe do tabel,</li>
     <li>tworzyć<a href="#footnote_1"><sup>1</sup></a> i odczytywać zrzuty tabel,
         </li>
-    <li>eksportować dane <a href="#footnote_1"><sup>1</sup></a> do różnych formatów:
-<abbr title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible
-Markup Language">XML</abbr>, <abbr title="Portable Document
-Format">PDF</abbr>, <abbr title="International Standards
-Organisation">ISO</abbr>/<abbr title="International Electrotechnical
-Commission">IEC</abbr> 26300 - OpenDocument Text and Spreadsheet, <abbr
-title="Microsoft Word 2000">Word</abbr>, i formatów L<sup> A</sup>T
-<sub><big>E</big> </sub>X,
+    <li>eksportować dane do różnych formatów:<a
+href="#footnote_1"><sup>1</sup></a><abbr title="Comma Separated
+Values">CSV</abbr>, <abbr title="Extensible Markup Language">XML</abbr>,
+<abbr title="Portable Document Format">PDF</abbr>, <abbr
+title="International Standards Organisation">ISO</abbr>/<abbr
+title="International Electrotechnical Commission">IEC</abbr> 26300 -
+OpenDocument (pliki tekstowe i arkusze kalkulacyjne), <abbr title="Microsoft
+Word 2000">Word</abbr>, LaTeX.
         </li>
     <li>importować dane i struktury MySQL z arkuszy kalkulacyjnych OpenDocument, jak
 również <abbr title="Extensible Markup Language">XML</abbr>, <abbr
@@ -153,33 +155,34 @@ Query Language">SQL</abbr>, </li>
     <li>sprawdzać referencyjną integralność powiązań w tabelach MyISAM,</li>
     <li>używać <b>zapytań przez przykład</b> (Query-by-example - QBE); tworzyć
 automatyczne zapytania, łączące żądane tabele,</li>
-    <li>tworzyć grafikę PDF z graficznym układem bazy danych,</li>
+    <li>tworzyć grafikę <abbr title="Portable Document Format">PDF</abbr> z układu
+bazy danych, </li>
     <li>wyszukiwać dane w sposób globalny w bazie lub w jej podzestawie,</li>
     <li>przekształcać składowane dane do dowolnego formatu, używając zestawu
 predefiniowanych funkcji, takich jak wyświetlanie danych BLOB w postaci
-obrazu lub odsyłacza do pobrania, 
+obrazu lub odsyłacza do pobrania,
         </li>
     <li>śledzić zmiany w bazach danych, tabelach i widokach,</li>
-    <li>obsługiwać tabele InnoDB i klucze obce <a href="#faq3_6">. Zobacz: <abbr
-title="Frequently Asked Questions">FAQ</abbr> 3.6</a>,</li>
+    <li>obsługiwać tabele InnoDB i klucze obce <a href="#faq3_6">. (zobacz: <abbr
+title="Frequently Asked Questions">FAQ</abbr> 3.6)</a>,</li>
     <li>obsługiwać mysqli, ulepszone rozszerzenie MySQL, <a
-href="#faq1_17">. Zobacz: <abbr title="Frequently Asked
+href="#faq1_17">. (zobacz: <abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.17)</a>,</li>
     <li>tworzyć, edytować, wywoływać, eksportować i usuwać przechowywane procedury i
 funkcje,</li>
     <li>tworzyć, edytować, eksportować i usuwać zdarzenia i wyzwalacze, </li>
     <li>komunikować się w <a
-href="http://www.phpmyadmin.net/home_page/translations.php">62 narodowych
-językach</a>,
+href="http://www.phpmyadmin.net/home_page/translations.php">62 językach
+narodowych</a>,
         </li>
     <li>synchronizować dwie bazy danych umieszczone na tych samych lub zdalnych
-serwerach, <a href="#faq9_1">Zobacz: <abbr title="Frequently Asked
+serwerach, <a href="#faq9_1">(zobacz: <abbr title="Frequently Asked
 Questions">FAQ</abbr> 9.1</a>,
     </li>
 
 </ul>
 
-<h4>Kilka słów na temat Użytkowników:</h4>
+<h4>Kilka słów na temat użytkowników:</h4>
 <p> Wiele osób ma trudności ze zrozumieniem koncepcji zarządzania użytkownikami
 w phpMyAdmin. Mechanizm tego zarządzania wygląda następująco: 1. aby
 zalogować się do phpMyAdmin, wszyscy użytkownicy muszą mieć wcześniej
@@ -202,7 +205,7 @@ zmianami w pliku <tt>php.ini</tt>.</p>
 
 <ol><li><a href="#quick_install">Szybka instalacja</a></li>
     <li><a href="#setup_script">Użycie skryptu instalacyjnego</a></li>
-    <li><a href="#linked-tables">Przechowywanie konfiguracji phpMyAdmin </a></li>
+    <li><a href="#linked-tables">Przechowywanie konfiguracji phpMyAdmin</a></li>
     <li><a href="#upgrading">Aktualizacja phpMyAdmin ze starszej wersji</a></li>
     <li><a href="#authentication_modes">Używanie trybów uwierzytelnienia</a></li>
 </ol>
