@@ -213,47 +213,45 @@ zmianami w pliku <tt>php.ini</tt>.</p>
 <p class="important">
     phpMyAdmin nie stosuje żadnych specjalnych mechanizmów zabezpieczeń serwera
 MySQL. Przyznanie odpowiednich uprawnień do baz danych jest zadaniem
-administratora. Na stronie <b>Uprawnienia</b> interfejsu phpMyAdmin można
-zabezpieczyć bazy, przydzielając lub odbierając określone uprawnienia
-użytkownikom poszczególnych baz.
+administratora. Można to zrobić na stronie &quot;Uprawnienia&quot;
+interfejsu phpMyAdmin.
 </p>
 
 <p class="important">
-    Ostrzeżenie dla użytkowników <acronym title="Apple Macintosh">Mac:</acronym><br />
+    Ostrzeżenie dla użytkowników <acronym title="Apple Macintosh">Mac</acronym><br />
     jeśli pracujesz w wersji <acronym title="Apple Macintosh">Mac</acronym>
 <abbr title="operating system">OS</abbr>, która poprzedza wersję <abbr
 title="operating system">OS</abbr> X, archiwa trzeba rozpakować do formatów
 <acronym title="Apple Macintosh">Mac</acronym>.<br />
     Trzeba ponownie zapisać, w programie BBEdit, WSZYSTKIE skrypty phpMyAdmin
-napisane w stylu Unix przed wysłaniem ich na serwer. Język PHP wydaje
-się&quot; nie lubić&quot; znaków końca linii w stylu <tt>Mac</tt>.</p>
+napisane w stylu Unix przed wysłaniem ich na serwer. Język PHP wydaje się
+&quot;nie lubić&quot; znaków końca linii w stylu <tt>Mac</tt>.</p>
 
 <h3 id="quick_install">Szybka instalacja</h3>
-<ol><li>Wybrać odpowiedni zestaw dystrybucyjny ze strony pobierania
-phpmyadmin.net<strong> Uwaga:</strong> niektóre zestawy zawierają wiadomości
-tylko w języku angielskim, inne -- zawierają wszystkie języki w formacie
-UTF-8 (w większości przypadków jest to wystarczające), jeszcze inne --
-zawierają wszystkie języki z pełnym zestawem kodowania znaków. Zakładamy, że
-wybrany będzie zestaw podobny do
+<ol><li>Wybrać odpowiedni zestaw dystrybucyjny ze strony pobierania phpmyadmin.net
+<strong>Uwaga:</strong> niektóre zestawy zawierają wiadomości tylko w języku
+angielskim, inne - wszystkie języki w formacie UTF-8 (w większości
+przypadków jest to wystarczające), jeszcze inne -wszystkie języki z pełnym
+zestawem kodowania znaków. Zakładamy, że wybrany będzie zestaw podobny do
 tego:<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
     </li>
-    <li>Rozpakować zestaw za pomocą programów untar lub unzip (upewnić się, że
-zostały rozpakowane również wszystkie podkatalogi) do katalogu root serwera
-zdalnego:<tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt> Jeżeli
-brak bezpośredniego dostępu do tego katalogu -- umieścić pliki w jakimś
-katalogu w maszynie lokalnej, i, po wykonaniu kroku 4, przesłać katalog na
-serwer za pomocą, na przykład, klienta FTP.</li>
+    <li>Rozpakować zestaw za pomocą programów <tt>untar</tt> lub <tt>unzip</tt>
+(upewnić się, że zostały rozpakowane również wszystkie podkatalogi) do
+katalogu root serwera zdalnego:<tt>tar -xzvf
+phpMyAdmin_x.x.x-all-languages.tar.gz</tt> Jeżeli brak bezpośredniego
+dostępu do tego katalogu - umieścić pliki w jakimś katalogu na maszynie
+lokalnej, a po wykonaniu kroku 4, przesłać katalog na serwer za pomocą, na
+przykład, klienta FTP.</li>
     <li>Upewnić się, że wszystkie skrypty mają odpowiedniego właściciela (jeśli PHP
 pracuje w trybie bezpiecznym, posiadanie skryptów, mających innego
 właściciela niż właściciel podstawowy, będzie powodować problemy). Zobacz
-sugestie w: <a href="#faq4_2"> <abbr title="Frequently Asked
+sugestie w: <a href="#faq4_2"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.2</a> i <a href="#faq1_26"><abbr title="Frequently
 Asked Questions">FAQ</abbr> 1.26.</a></li>
-    <li>Skonfigurować instalację. Istnieją dwie metody, które można użyć w tym
-celu:<strong>  -- ręczna edycja kopii pliku
-</strong><tt>config.inc.php</tt>, (szybki sposób na rozpoczęcie instalacji w
-tekstowym trybie dla użytkowników zaawansowanych), <strong>  -- instalacja
-za pomocą skryptu (kreator graficzny).</strong>
+    <li>Skonfigurować instalację. Istnieją dwie metody, które można użyć w tym celu:
+1. metoda tradycyjna - ręczna edycja kopii pliku<tt>config.inc.php</tt>,
+(szybki sposób na rozpoczęcie instalacji w trybie tekstowym dla użytkowników
+zaawansowanych), 2. instalacja za pomocą skryptu (kreator graficzny).
         <ul><li>Aby ręcznie utworzyć plik <tt>config.inc.php</tt>, trzeba w dowolnym
 edytorze tekstowym utworzyć nowy plik o tej właśnie nazwie, a następnie
 umieścić w nim odpowiednie wpisy (dyrektywy konfiguracyjne). Można też
@@ -261,12 +259,12 @@ skopiować do niego zawartość pliku <tt>config.sample.inc.php</tt>, który
 zawiera minimalny zestaw konfiguracyjny; w tym przypadku plik z nową
 zawartością należy skopiować do głównego katalogu phpMyAdmin (do katalogu, w
 którym znajduje się plik <tt>index.php</tt>). phpMyAdmin wczytuje najpierw
-plik<tt>libraries/config.default.php</tt>, a następnie nadpisuje umieszczoną
-w nim zawartość tym, co znajdzie w pliku <tt>config.inc.php</tt>. Jeśli
-wartość domyślna jest odpowiednio dobra dla określonych ustawień, nie ma
-potrzeby załączać jej do pliku <tt>config.inc.php</tt>, trzeba natomiast
-zastosować kilka dodatkowych dyrektyw; prosta konfiguracja może wyglądać
-następująco:
+plik <tt>libraries/config.default.php</tt>, a następnie nadpisuje
+umieszczoną w nim zawartość tym, co znajdzie w pliku
+<tt>config.inc.php</tt>. Jeśli wartość domyślna jest odpowiednio dobra dla
+określonych ustawień, nie ma potrzeby załączać jej do pliku
+<tt>config.inc.php</tt>, trzeba natomiast zastosować kilka dodatkowych
+dyrektyw; prosta konfiguracja może wyglądać następująco:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // użyć dowolnej wartości
@@ -289,7 +287,7 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
                 Pełne wyjaśnienie możliwych wartości konfiguracyjnych dostępne jest w sekcji
-<a href="#config">Konfiguracja</a></li>
+<a href="#config">Konfiguracja</a> tego dokumentu.</li>
             <li id="setup_script">Zamiast ręcznej edycji pliku <tt>config.inc.php</tt>, można użyć <a
 href="setup/">Skryptu instalacyjnego</a>. W tym celu trzeba ręcznie utworzyć
 katalog <tt>config</tt> w katalogu głównym phpMyAdmin. Jest to podyktowane
@@ -310,7 +308,7 @@ chmod o+w config/config.inc.php   # nadać uprawnienia do zapisu
 zapisu. <a href="#faq1_26">Zobacz: FAQ 1.26</a><br /><br />
 
                 Następnie, klikamy w przeglądarce odnośnik <tt><a href="setup/">skrypt
-instalacyjny</a> </tt>, co uruchomi proces konfiguracyjny. Pojawia się
+instalacyjny</a></tt>, co uruchomi proces konfiguracyjny. Pojawia się
 najpierw okno z informacją: "phpMyAdmin Setup Script", gdzie, po kliknięciu
 odnośnika "phpMyAdmin Setup Script" możemy, alternatywnie, przejść na stronę
 WWW <strong>serwera demo phpMyAdmin</strong>, gdzie można kontynuować
@@ -328,7 +326,7 @@ serwer WWW za pomocą, na przykład, klienta FTP.<br /><br />
 
                 Jak tylko nasz plik zostanie zapisany, musimy go usunąć z katalogu
 <tt>config/</tt>; trzeba także <strong>ponownie zresetować
-uprawnienia</strong> -- jest to podyktowane względami bezpieczeństwa:
+uprawnienia</strong>, jest to podyktowane względami bezpieczeństwa:
 <pre>
 mv config/config.inc.php .         # przenieść plik do bieżacego katalogu
 chmod o-rw config.inc.php          # usunać uprawnienia odczytu i zapisu dla innych
@@ -344,9 +342,9 @@ phpMyAdmin. Zalecane jest użycie jednej z alternatywnych metod
 uwierzytelnienia, na przykład za pomocą HTTP&#8211;AUTH w pliku <a
 href="#glossary"><i>.htaccess</i></a> lub przełączenie się na używanie pliku
 <ttt>cookie</tt> lub uwierzytelnienie za pomocą http
-<tt>auth_type</tt>. Zobacz też <a href="#faqmultiuser">podsekcję "tryb
-wieloużytkownikowy"</a><abbr title="Frequently Asked Questions">FAQ</abbr>,
-a szczególnie <a href="#faq4_4"><abbr title="Frequently Asked
+<tt>auth_type</tt>. Zobacz też <a href="#faqmultiuser">podsekcję "tryb wielu
+użytkowników"</a><abbr title="Frequently Asked Questions">FAQ</abbr>, a
+szczególnie <a href="#faq4_4"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.4</a>.</li>
     <li>Otworzyć <a href="index.php"> główny katalog phpMyAdmin</a> w przegladarce
 WWW -- phpMyAdmin powinien wyświetlić ekran powitalny i bazy danych, albo
