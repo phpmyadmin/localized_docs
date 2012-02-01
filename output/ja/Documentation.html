@@ -19,7 +19,7 @@ po ファイルを編集することで、翻訳を変更することができ�
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.5.0-beta1-dev ドキュメント</title>
+    <title>phpMyAdmin 3.6.0-dev ドキュメント</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ po ファイルを編集することで、翻訳を変更することができ�
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.5.0-beta1-dev ドキュメント
+class="myadmin">MyAdmin</span></a> 3.6.0-dev ドキュメント
     </h1>
 </div>
 
@@ -161,8 +161,8 @@ title="よくある質問">FAQ</abbr> 9.1 参照)</a>
 <p class="footnote" id="footnote_1">
     <sup>1)</sup> phpMyAdmin は、Zlib (<tt>--with-zlib</tt>)／Bzip2
 (<tt>--with-bz2</tt>) をサポートした PHP を利用すると、ダンプや <abbr
-title="カンマ区切り">CSV</abbr> エクスポートを（Zip、GZip -RFC 1952-、Bzip2
-形式で）圧縮できます。これらを適切に使用するには、<tt>php.ini</tt> の変更が必要な場合もあります。</p>
+title="カンマ区切り">CSV</abbr> エクスポートを (Zip、GZip -RFC 1952-、Bzip2 形式で)
+圧縮して出力することできるようになります。これらを適切に使用するには、<tt>php.ini</tt> の変更が必要な場合もあります。</p>
 
 
 <!-- INSTALLATION -->
@@ -206,12 +206,12 @@ title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
 を手動で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
 を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法でもあります。
         <ul><li>手動でファイルを作成するには、単純にテキストエディタを使用して <tt>config.inc.php</tt> ファイルを phpMyAdmin
-のメイン（トップレベル）ディレクトリ（ここには <tt>index.php</tt>
-が含まれています）に作成します（その際、<tt>config.sample.inc.php</tt>
-をコピーすることで最小限の設定ファイルを取得することもできます）。最初に phpMyAdmin は
-<tt>libraries/config.default.php</tt> を読み込み、それから <tt>config.inc.php</tt>
-内で見つかった値でデフォルト値を上書きします。設定に問題がなければ、デフォルト値は <tt>config.inc.php</tt>
-に含める必要はありません。稼動させるにはディレクティブをいくつか設定する必要がありますが、単純な設定では以下にような感じになります。
+のメイン (トップレベル) ディレクトリ (ここには <tt>index.php</tt> が含まれています) に作成します
+(その際、<tt>config.sample.inc.php</tt> をコピーすることで最小限の設定ファイルを取得することもできます)。最初に
+phpMyAdmin は <tt>libraries/config.default.php</tt> を読み込み、それから
+<tt>config.inc.php</tt> 内で見つかった値でデフォルト値を上書きします。設定に問題がなければ、デフォルト値は
+<tt>config.inc.php</tt>
+に含める必要はありません。稼動させるにはいくつか設定する必要がありますが、単純な設定では以下にような感じになります。
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // この値は適当に決めてください
@@ -305,8 +305,9 @@ title="よくある質問">FAQ</abbr> 1.23</a> をよくお読みください）
 を使ってテーブル群を作成することもできますが、いくつか注意することがあります。データベースやテーブルを作成する際には特別な（管理者の）特権が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
 
 <p> <i>./scripts/create_tables.sql</i> ファイルをインポートしたら、<i>./config.inc.php</i>
-ファイルでテーブル名を指定してください。このとき使うディレクティブの説明は<a
-href="#config">「設定」の章</a>にあります。また、これらのテーブル群に対する適切なアクセス権を持った管理ユーザが必要になります（後述の<i>認証モードの使い方</i>の節をご覧ください）。</p>
+ファイルでテーブル名を指定してください。このとき使う設定項目の説明は<a
+href="#config">「設定」の章</a>にあります。また、これらのテーブル群に対する適切なアクセス権を持った管理ユーザが必要になります
+(後述の<i>認証モードの使い方</i>の節をご覧ください)。</p>
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
@@ -412,8 +413,8 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証モー
 title="Internet Information Services">IIS</abbr> を稼動させている場合など)。</li>
     <li>言うまでもなくユーザがブラウザのクッキーを有効にしている必要がありますが、現在では全ての認証方式でクッキーが必要となっています。</li>
     <li>このモードでは、ユーザは phpMyAdmin のログアウトが確実に行え、同じユーザ名でログインし直すことができます。</li>
-    <li>任意のサーバにログインしたい場合は、<a href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a> ディレクティブをご覧ください。</li>
+    <li>任意のサーバにログインしたい場合は、設定項目 <a href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a> をご覧ください。</li>
     <li><a href="#require">「必要なもの」</a>の章にも書いてある通り、<tt>mcrypt</tt>
 拡張を利用するとアクセス速度がかなり向上します。ただし、これは必須ではありません。</li>
 </ul>
@@ -669,16 +670,15 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー
     <dd>
         パスワードを使用してログインが失敗したときにパスワードなしでログインしようとするとを許可します。これは、HTTP
 認証と一緒に使用することができます。MySQL
-に接続する手段の一つとして、ユーザ名と空のパスワードを使用して認証を行います。パスワードログインを行わないというわけではなく、パスワードログインが最初に試され、最後の手段としてパスワード無し方式が試されます。</dd>
+に接続する手段の一つとして、ユーザ名と空のパスワードを使用して認証を行います。パスワードログインを行わないというわけではなく、パスワードログインが最初に試され、最後の手段としてパスワードなし方式が試されます。</dd>
     <dt id="servers_only_db">
         <span id="cfg_Servers_only_db">$cfg['Servers'][$i]['only_db']</span>
 文字列または配列
     </dt>
     <dd>
-        データベース名（の配列）を設定すると、ユーザにはそのデータベースしか見えなくなります。phpMyAdmin 2.2.1 以降、このデータベース名には
-MySQL
-のワイルドカード文字（「_」と「%」）を含められます。ワイルドカード文字をリテラルとして使う場合はエスケープしてください（<tt>'my_db'</tt>
-ではなく、 <tt>'my¥_db'</tt> のようにします）。<br />
+        データベース名 (の配列) を設定すると、ユーザにはそのデータベースしか見えなくなります。phpMyAdmin 2.2.1 以降、このデータベース名には
+MySQL のワイルドカード文字 (「_」と「%」) を含められます。ワイルドカード文字を実際の文字として使う場合はエスケープしてください
+(<tt>'my_db'</tt> ではなく、<tt>'my\_db'</tt> のようにします)。<br />
         この設定はサーバの負荷を下げるのに効果的です。利用できるデータベースのリストを作成する際に MySQL
 にリクエストを送る必要がなくなるためです。ただし、<span class="important">これは MySQL
 データベースサーバの特権を差し替えるものではありません。</span>つまり、設定すればそのデータベースだけが表示されるようになりますが、<span
@@ -1243,8 +1243,7 @@ session_save_path</a>）</dd>
 クエリを表示するかどうかを定義します。</dd>
 
     <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] 論理型</dt>
-    <dd>Defines whether the <abbr title="structured query language">SQL</abbr> query
-box should be kept displayed after its submission.</dd>
+    <dd>送信後もそのまま <abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリボックスを表示させておくかどうかを定義します。</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] 論理型</dt>
     <dd>通常ユーザ（administrator 以外のユーザ）に自分自身のデータベースの削除を許可するかどうかを定義します。FALSE
@@ -1400,10 +1399,12 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 のときはアイコンを、FALSE のときはテキストを、「both (両方)」のときはアイコンとテキストの双方を表示します。</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] 論理型</dt>
-    <dd>表示モードで「全て（の行）を表示する」ボタンを表示するかどうかを定義します。</dd>
+    <dd>表示モードで「(行を) すべて表示」ボタンを表示するかどうかを定義します。</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] 整数</dt>
-    <dd>結果セットの表示行数。結果セットの行数の方が多い場合は「前へ／次へ」のリンクが表示されます。</dd>
+    <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
+used. If the result set contains more rows, &quot;Previous&quot; and
+&quot;Next&quot; links will be shown.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] 文字列 [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>昇順 (<tt>ASC</tt>)、降順 (<tt>DESC</tt>)、スマートな順番 (<tt>SMART</tt>)
@@ -2795,7 +2796,7 @@ href="http://dev.mysql.com/doc/refman/4.1/ja/can-not-connect-to-server.html">MyS
 を実行しようとしているのですがブラウザに何も表示されません。どうしたらよいのでしょう。</a></h4>
 
 <p> phpMyAdmin の設定ファイルで <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGZip']</a> ディレクティブを <tt>FALSE</tt>
+class="configrule">$cfg['OBGZip']</a> 設定を <tt>FALSE</tt>
 にしてみてください。それでうまくいくことがあります。<br />
     また、PHP のバージョンを確かめてください。「b」ないし「alpha」という文字が含まれている場合はテスト版の PHP
 が稼動しているということですが、これはあまりよいことではありませんので、テスト版でないものにアップグレードしてください。</p>
@@ -2805,8 +2806,8 @@ class="configrule">$cfg['OBGZip']</a> ディレクティブを <tt>FALSE</tt>
 (ページが見つかりません) エラーが表示されます。また、<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
 ないしクッキー認証をしているときはログインしなおすように求められます。何が悪いのでしょうか？</a></h4>
 
-<p> phpMyAdmin 設定ファイルの <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> ディレクティブの値をチェックしてください。</p>
+<p> phpMyAdmin 設定ファイルにある <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> 設定の値を確認してください。</p>
 
 <h4 id="faq2_6">
     <a href="#faq2_6">2.6 localhost にポート転送しているホストの MySQL サーバにアクセスしようとすると、「Access
@@ -2936,9 +2937,9 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
 -- Server version 3.23.54
 </pre>
 
-<p> このコードで無効なのは - を並べた区切り線の部分です。この区切り線は、mysqldump
+<p> このコードで無効なのはハイフン - を並べた区切り線の部分です。この区切り線は、mysqldump
 で作成したダンプにはかならず一度登場します。このダンプを利用するには、ダンプを修正して MySQL
-で有効な形にする必要があります。つまり、問題の行の先頭 2 つのハイフンのあとに空白を入れるか、問題の行の先頭に #
+で有効な形にする必要があります。つまり以下に示すように、問題の行の先頭 2 つのハイフンのあとに空白を入れるか、問題の行の先頭に #
 を付け加える必要があるということです。
     <br />
     <code> -- -------------------------------------------------------<br />
@@ -3323,10 +3324,8 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 
 に設定されている場合にのみ発生します。これはブラウザ固有の問題と思われますので、<tt>クッキー</tt>認証モードを使用するようにしてください。</p>
 
 <h4 id="faq5_19">
-<a href="#faq5_19">5.19 I get JavaScript errors in my browser.</a></h4>
-<p> Issues have been reported with some combinations of browser extensions.  To
-troubleshoot, disable all extensions then clear your browser cache to see if
-the problem goes away.</p>
+<a href="#faq5_19">5.19 ブラウザが JavaScript エラーを発生します。</a></h4>
+<p> ブラウザの拡張機能をいくつか組み合わせることによって、このようなことがあると報告されています。原因を特定するには、まず拡張機能をすべて無効にしたのちブラウザのキャッシュをクリアして、問題が発生しなくなるかを確認してください。</p>
 
 <h3 id="faqusing">phpMyAdmin の使い方</h3>
 
@@ -3949,7 +3948,7 @@ href="http://www.phpmyadmin.net/home_page/security.php">http://www.phpmyadmin.ne
 設定によって拒否されたユーザ）、<code>root-denied</code>（ルートが設定で拒否）、<code>empty-denied</code>（パスワードが空で拒否）。</dd>
 </dl>
 <p>
-    Apache の <code>LogFormat</code> ディレクティブは、次のようにすることができます。
+    Apache の <code>LogFormat</code> 設定は、次のようにすることができます。
 </p>
 <pre>
 LogFormat "%h %l %u %t \"%r\" %>s %b \

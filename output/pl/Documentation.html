@@ -20,7 +20,7 @@ https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.5.0-beta1-dev - Documentation</title>
+    <title>phpMyAdmin 3.6.0-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.5.0-beta1-dev Documentation
+class="myadmin">MyAdmin</span></a> 3.6.0-dev Documentation
     </h1>
 </div>
 
@@ -448,30 +448,30 @@ ang. <i>controluser</i></a>).<br />
         Należy jednak pamiętać, że hasło przesyłane jest w tak zwanym "czystym
 tekście" (ang. <i>plain text<i/>); w przypadku użycia bezpiecznego protokołu
 HTTPS uwaga ta nie ma zastosowania.<br />
-        W trybie cookie hasło, zakodowane za pomocą algorytmu <i>blowfish</i>, jest
-przechowywane w ciasteczku tymczasowym.</li>
+        W trybie 'cookie' hasło, zakodowane za pomocą algorytmu <i>blowfish</i>,
+jest przechowywane w ciasteczku tymczasowym.</li>
 
     <li id="pmausr">Uwaga: ta sekcja ma zastosowanie tylko wtedy, gdy serwer MySQL jest
 uruchamiany za pomocą <tt>--skip-show-database</tt>.<br /><br />
 
-        Dla trybów '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' i
-'cookie', phpMyAdmin potrzebuje użytkownika kontrolnego, który ma
-<b>tylko</b> uprawnienie <tt>SELECT</tt> do <i>`mysql`.`user` (wszystkie
-kolumny z wyjątkiem `Password`)</i>, <i>`mysql`.`db` (wszystkie
-kolumny)</i>, <i>`mysql`.`host` (wszystkie kolumny)</i> i
-<i>`mysql`.`tables_priv` (wszystkie kolumny z wyjątkiem tabel `Grantor` i
-`Timestamp`)</i>.<br /> Szczegóły dla <a href="#controluser">controluser</a> trzeba określić w pliku
-<tt>config.inc.php</tt> w ustawieniach <tt><a
+        Dla trybów <abbr title="HyperText Transfer Protocol">'HTTP'</abbr> i
+'cookie', phpMyAdmin potrzebuje użytkownika kontrolnego, który ma tylko
+uprawnienie <b><tt>SELECT</tt></b> do: <i>`mysql.user` (wszystkie kolumny z
+wyjątkiem `Password`)</i>, <i>`mysql.db` (wszystkie kolumny)</i>,
+<i>`mysql.host` (wszystkie kolumny)</i> i <i>`mysql.tables_priv` (wszystkie
+kolumny z wyjątkiem tabel `Grantor` i `Timestamp`)</i>.<br /> Należy określić szczegóły dla <a href="#controluser">użytkownika
+kontrolnego</a> w pliku <tt>config.inc.php</tt>, w ustawieniach <tt><a
 href="#cfg_Servers_controluser" class="configrule">
-$cfg['Servers'][$i]['controluser']</a></tt> i w ustawieniach<tt><a
+$cfg['Servers'][$i]['controluser']</a></tt> i <tt><a
 href="#cfg_Servers_controlpass" class="configrule">
 $cfg['Servers'][$i]['controlpass']</a></tt>.<br />
         Następujący przykład zakłada, że użytkownik chce użyć <tt>pma</tt> jako
 użytkownika kontrolnego i <tt>pmapass</tt> jako jego hasło, <b>ale to tylko
-przykład: użyj czegoś innego w swoim pliku!</b> Wprowadź te wiersze z okna
-zapytań phpMyAdmin SQL lub wiersza poleceń klienta mysql.<br />
-        Oczywiście, jeśli nazwa serwera MySQL jest inna, trzeba zamienić
-<tt>localhost</tt> na nazwę hosta serwera WWW.
+przykład: zaleca się użycie innej nazwy/hasła w tym pliku!</b> Instrukcje te
+można wprowadzić z okna SQL Query w phpMyAdmin lub z linii poleceń klienta
+mysql.<br />
+        Jeśli nazwa serwera MySQL jest inna, trzeba zamienić <tt>localhost</tt> na
+nazwę hosta serwera WWW.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -487,100 +487,98 @@ GRANT SELECT ON mysql.host TO 'pma'@'localhost';
 GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
     ON mysql.tables_priv TO 'pma'@'localhost';</pre>
 
-        Jeśli użytkownik chce używać wielu cech zakładek i nowych relacji:
+        Jeśli użytkownik chce używać wielu nowych cech relacji i zakładek:
 
         <pre>
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (to oczywiście wymaga ustawionego <a href="#linked-tables">przechowywania
-konfiguracji phpMyAdmin</a>).  
+        (wymaga to ustawienia <a href="#linked-tables">przechowywania konfiguracji
+phpMyAdmin</a>).  
     <br /></li>
 
-    <li>Każdy z <i>prawdziwych</i> użytkowników powinien uzyskać uprawnienia do
+    <li>Każdy z <i>faktycznych</i> użytkowników powinien uzyskać uprawnienia do
 poszczególnych pojedynczych baz danych. Zwykle nie powinno nadawać się
 uprawnień globalnych zwykłemu użytkownikowi, chyba że administrator bazy
 danych zdaje sobie sprawę ze skutków takiej decyzji (np. tworzy
 superużytkownika).<br />
-        Na przykład, aby nadać użytkownikowi <i>prawdziwy_uzytkownik</i> wszystkie
-uprawnienia do bazy danych <i>baza_uzytkownika</i>:<br />
+        Na przykład, aby nadać wszystkie uprawnienia użytkownikowi
+<i>prawdziwy_uzytkownik</i> do bazy danych <i>baza_uzytkownika</i>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
 </pre>
 
-        To, co może teraz robić użytkownik, jest całkowicie kontrolowane przez
-system zarządzania użytkownikami MySQL.<br />
+        Wszystkie działania użytkownika są od tej chwili całkowicie kontrolowane
+przez system zarządzania użytkownikami MySQL.<br />
         W trybach uwierzytelniania <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> lub cookie nie trzeba wypełniać pól użytkownik/hasło
-wewnątrz tablicy <a href="#cfg_Servers"
+Protocol">'HTTP'</abbr> lub 'cookie' nie trzeba wypełniać pól
+użytkownik/hasło wewnątrz tablicy <a href="#cfg_Servers"
 class="configrule">$cfg['Servers']</a>.</li>
 </ul>
 
-<h4>Tryb uwierzytelniania '<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>' </h4>
+<h4>Tryb uwierzytelniania <abbr title="HyperText Transfer
+Protocol">'HTTP'</abbr> </h4>
 
-<ul><li>Używa metody uwierzytelniania Basic <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> i pozwala na logowanie się jako ważny (=prawomocny)
+<ul><li>Używa metody uwierzytelniania 'Basic <abbr title="HyperText Transfer
+Protocol">HTTP'</abbr> i pozwala na logowanie się jako ważny (=prawomocny)
 użytkownik MySQL.</li>
-    <li>Jest obsługiwany przez większość konfiguracji PHP. Do obsługi interfejsu
+    <li>Jest obsługiwany przez większość konfiguracji PHP do obsługi interfejsu
 <abbr title="Internet Information Services">IIS</abbr> (<abbr
 title="Internet Server Application Programming Interface">ISAPI</abbr>),
-który używa <abbr title="Common Gateway Interface">CGI</abbr> PHP zobacz: <a
-href="#faq1_32"><abbr title="Frequently Asked Questions">FAQ</abbr>
+który używa <abbr title="Common Gateway Interface">CGI</abbr> PHP, zobacz:
+<a href="#faq1_32"><abbr title="Frequently Asked Questions">FAQ</abbr>
 1.32</a>, do używania z serwerem Apache <abbr title="Common Gateway
-Interface">CGI</abbr> zobacz: <a href="#faq1_35"><abbr title="Frequently
+Interface">CGI</abbr>, zobacz: <a href="#faq1_35"><abbr title="Frequently
 Asked Questions">FAQ</abbr> 1.35</a>.</li>
     <li>Zobacz także: <a href="#faq4_4"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.4</a> na temat nieużywania mechanizmu
-<i>.htaccess</i> razem z trybem uwierzytelniania '<abbr title="HyperText
-Transfer Protocol">HTTP</abbr>'.</li>
+<i>.htaccess</i> razem z trybem uwierzytelniania <abbr title="HyperText
+Transfer Protocol">'HTTP'</abbr>.</li>
 </ul>
 
 <h4>tryb uwierzytelniania 'cookie'</h4>
 
 <ul><li>Może to być zamiennik dla trybu uwierzytelniania <abbr title="HyperText
-Transfer Protocol">HTTP</abbr> (na przykład, jeśli jest uruchomiony
+Transfer Protocol">'HTTP'</abbr> (na przykład, jeśli jest uruchomiony
 interfejs <abbr title="Internet Information Services">IIS</abbr>).</li>
-    <li>Oczywiście, użytkownik musi mieć włączone ciasteczka (cookies) w swojej
+    <li>Użytkownik w tym trybie musi mieć włączone 'ciasteczka' w swojej
 przeglądarce WWW.</li>
-    <li>With this mode, the user can truly log out of phpMyAdmin and log in back
-with the same username.</li>
-    <li>If you want to log in to arbitrary server see <a
-href="#AllowArbitraryServer" class="configrule">
-$cfg['AllowArbitraryServer']</a> directive.</li>
-    <li>As mentioned in the <a href="#require">requirements</a> section, having the
-<tt>mcrypt</tt> extension will speed up access considerably, but is not
-required.</li>
+    <li>W tym trybie użytkownik może wylogować się z phpMyAdmina i zalogować się
+ponownie mając tę samą nazwę użytkownika.</li>
+    <li>Jeśli użytkownik chce zalogować się do dowolnego serwera, zobacz dyrektywę
+<a href="#AllowArbitraryServer" class="configrule">
+$cfg['AllowArbitraryServer']</a>.</li>
+    <li>Jak już wspomniano w sekcji <a href="#require">wymagania</a>, posiadanie
+rozszerzenia <tt>mcrypt</tt> znacznie przyspiesza dostep do serwera (choć
+nie jest to bezwzględnie wymagane).</li>
 </ul>
 
 <h4>tryb uwierzytelniania 'signon'</h4>
 
-<ul><li>This mode is a convenient way of using credentials from another application
-to authenticate to phpMyAdmin.</li>
-    <li>The other application has to store login information into session data.</li>
-    <li>More details in the <a href="#cfg_Servers_auth_type">auth_type</a> section.</li>
+<ul><li>Tryb ten jest wygodnym sposobem używania poświadczeń z innej aplikacji do
+uwierzytelnienia w phpMyAdmin.</li>
+    <li>Inna aplikacja musi przechować informacje logowania w danych sesyjnych.</li>
+    <li>Więcej szczegółów w sekcji <a href="#cfg_Servers_auth_type">auth_type</a>.</li>
 </ul>
 <h4>tryb uwierzytelniania 'config'</h4>
 
-<ul><li>This mode is the less secure one because it requires you to fill the <a
-href="#servers_user" class="configrule"> $cfg['Servers'][$i]['user']</a> and
+<ul><li>Ten tryb jest mniej bezpieczny, ponieważ wymaga wypełniania pól <a
+href="#servers_user" class="configrule"> $cfg['Servers'][$i]['user']</a> i
 <a href="#servers_user" class="configrule">
-$cfg['Servers'][$i]['password']</a> fields (and as a result, anyone who can
-read your config.inc.php can discover your username and password).
+$cfg['Servers'][$i]['password']</a> (i w rezultacie, ktokolwiek, kto odczyta
+plik <tt>config.inc.php</tt> może odkryć nazwę użytkownika i hasło).
         <br />
-        But you don't need to setup a &quot;controluser&quot; here: using the <a
-href="#servers_only_db" class="configrule">
-$cfg['Servers'][$i]['only_db']</a> might be enough.</li>
-    <li>In the <a href="#faqmultiuser"> <abbr title="Internet service
+        Nie należy jednak ustawiać tutaj &quot;użytkownika kontrolnego&quot; użycie
+<a href="#servers_only_db" class="configrule">
+$cfg['Servers'][$i]['only_db']</a> może być wystarczające.</li>
+    <li>W sekcji <a href="#faqmultiuser"> <abbr title="Internet service
 provider">ISP</abbr> <abbr title="Frequently Asked Questions">FAQ</abbr></a>
-section, there is an entry explaining how to protect your configuration
-file.</li>
-    <li>For additional security in this mode, you may wish to consider the Host
-authentication <a href="#servers_allowdeny_order" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['order']</a> and <a
-href="#servers_allowdeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> configuration directives.</li>
+jest wpis, który wyjaśnia, jak zabezpieczyć plik konfiguracyjny.</li>
+    <li>Dla dodatkowego bezpieczeństwa w tym trybie, można rozważyć uwierzytelnienie
+hosta w oparciu o dyrektywy konfiguracyjne
+<tt>$cfg['Servers'][$i]['AllowDeny']['order']</tt> i
+<tt>$cfg['Servers'][$i]['AllowDeny']['rules']</tt>.</li>
     <li>Unlike cookie and http, does not require a user to log in when first loading
 the phpMyAdmin site. This is by design but could allow any user to access
 your installation. Use of some restriction method is suggested, perhaps a <a
@@ -1767,9 +1765,9 @@ and 'both' displays both icons and text.</dd>
 button in browse mode or not.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
-    <dd>Number of rows displayed when browsing a result set. If the result set
-contains more rows, &quot;Previous&quot; and &quot;Next&quot; links will be
-shown.</dd>
+    <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
+used. If the result set contains more rows, &quot;Previous&quot; and
+&quot;Next&quot; links will be shown.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] string [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in

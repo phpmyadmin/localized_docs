@@ -20,7 +20,7 @@ düzenleyebilirisiniz.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.5.0-beta1-dev - Belgeler</title>
+    <title>phpMyAdmin 3.6.0-dev - Belgeler</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ düzenleyebilirisiniz.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.5.0-beta1-dev Belgesi
+class="myadmin">MyAdmin</span></a> 3.6.0-dev Belgesi
     </h1>
 </div>
 
@@ -1774,9 +1774,9 @@ FALSE metini gösterir ve 'both' simgeler ve metnin her ikisinide gösterir.</dd
 görüntüleyip görüntülememesi tanımlar.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] tam sayı</dt>
-    <dd>Sonuç grubuna göz atarken görüntülenecek satır sayısıdır. Eğer sonuç grubu
-daha fazla satır içeriyorsa, &quot;Önceki&quot; ve &quot;Sonraki&quot;
-bağlantıları gösterilecektir.</dd>
+    <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
+used. If the result set contains more rows, &quot;Previous&quot; and
+&quot;Next&quot; links will be shown.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] dizgi [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>Sütunların küçükten büyüğe (<tt>ASC</tt>), büyükten küçüğe (<tt>DESC</tt>)
@@ -4464,86 +4464,87 @@ bakabilirsiniz ve sizin için bunu düzenlemeyi kolaylaştırdığını
 görebelirsiniz.</p>
 
 <h4 id="faq6_17">
-    <a href="#faq6_17">6.17 Transformations: I can't enter my own mimetype! WTF
-is this feature then useful for?</a></h4>
+    <a href="#faq6_17">6.17 Dönüşümler: Kendi mime türümü giremiyorum! WTF bu
+özellik sonra yararlı mıdır?</a></h4>
 
-<p> Slow down :). Defining mimetypes is of no use, if you can't put
-transformations on them. Otherwise you could just put a comment on the
-column. Because entering your own mimetype will cause serious syntax
-checking issues and validation, this introduces a high-risk false-user-input
-situation. Instead you have to initialize mimetypes using functions or empty
-mimetype definitions.<br />
-    Plus, you have a whole overview of available mimetypes. Who knows all those
-mimetypes by heart so he/she can enter it at will?</p>
+<p> Yavaş olun :). Eğer dönüşümleri onlara koyamazsanız, tanımlanan mime türleri
+kullanımda olmaz. Yoksa sütuna sadece yorum koyabilirdiniz. Çünkü kendi mime
+türünüzü girmek ciddi sözdizimi kontrol sorunları ve doğrulamasına neden
+olacaktır, bu yüksek riskte yanlış kullanıcı girdisi durumuna sokar. Bunun
+yerine işlevleri ya da boş mime türü tanımlamalarını kullanarak mime
+türlerini başlatmak zorundasınız.<br />
+    Artı, kullanılabilir mime türlerinin bütün genel bakışına sahipsiniz. Tüm bu
+mime türlerini böyle ezbere girebilmeyi kim bilir?</p>
 
 <h4 id="faqbookmark">
-    <a href="#faqbookmark">6.18 Bookmarks: Where can I store bookmarks? Why
-can't I see any bookmarks below the query box? What is this variable for?
-</a></h4>
+    <a href="#faqbookmark">6.18 Yer İmleri: Yer imlerini nerede saklayabilirim?
+Sorgu kutusunun altında neden hiç yer imlerini göremiyorum? Bu değiken ne
+için?</a></h4>
 
-<p> Any query you have executed can be stored as a bookmark on the page where
-the results are displayed. You will find a button labeled 'Bookmark this
-query' just at the end of the page.<br />
-    As soon as you have stored a bookmark, it is related to the database you run
-the query on. You can now access a bookmark dropdown on each page, the query
-box appears on for that database.<br /><br />
+<p> Çalıştırdığınız herhangi bir sorgu sonuçların görüntülendiği sayfada yer imi
+olarak saklanabilir. Sadece sayfanın en sonunda 'Bu sorguyu işaretle'
+etiketli bir düğme bulacaksınız.<br />
+    En kısa zamanda sakladığınız yer imi, sorguyu çalıştırdığınız veritabanıyla
+ilgilidir. Her sayfada aşağı açılır yer imine artık erişebilirsiniz, sorgu
+kutusu bu veritabanı için görünür.<br /><br />
 
-    Since phpMyAdmin 2.5.0 you are also able to store variables for the
-bookmarks.  Just use the string <b>/*[VARIABLE]*/</b> anywhere in your
-query. Everything which is put into the <i>value</i> input box on the query
-box page will replace the string &quot;/*[VARIABLE]*/&quot; in your stored
-query. Just be aware of that you HAVE to create a valid query, otherwise
-your query won't be even able to be stored in the database.<br />
-    Also remember, that everything else inside the <b>/*[VARIABLE]*/</b> string
-for your query will remain the way it is, but will be stripped of the /**/
-chars. So you can use:<br /><br />
+    phpMyAdmin 2.5.0'dan bu yana yer imleri için değişkenleri
+saklayabiliyorsunuz. Sadece <b>/*[DEĞİŞKEN]*/</b> dizgisini sorgunuzun
+herhangi bir yerinde kullanın.  Sorgu kutusu sayfasındaki <i>değer</i> girdi
+kutusu içine koyulan her şey saklanan sorgunuzdaki
+&quot;/*[DEĞİŞKEN]*/&quot; dizgisi ile değiştirilecektir. Sadece geçerli bir
+sorgu oluşturmak zorunda olduğunuzun farkında olun, yoksa sorgunuz bile
+veritabanında saklanamayacaktır.<br />
+    Ayrıca, sorgunuz için &quot;/*[DEĞİŞKEN]*/&quot; dizgisi içerisindeki her
+şeyin bu şekilde kalacağını ama /**/ karakterlerinin çıkarılacağını
+hatırlayın. Bu yüzden girdi kutusunda DEĞİŞKEN'nin dizgi olduğu sorgunuz
+içinde:<br /><br />
 
-    <code>/*, [VARIABLE] AS myname */</code><br /><br />
+    <code>, VARIABLE as ismim</code><br /><br />
 
-    which will be expanded to<br /><br />
+    olarak genişletilecek<br /><br />
 
-    <code>, VARIABLE as myname</code><br /><br />
+    <code>/*, [VARIABLE] AS ismim */</code><br /><br />
 
-    in your query, where VARIABLE is the string you entered in the input box. If
-an empty string is provided, no replacements are made.<br /><br />
+    kullanabilirsiniz. Eğer boş bir dizgi sağlanırsa, değiştirmeler yapılmaz.<br /><br />
 
-    A more complex example. Say you have stored this query:<br /><br />
-    <code>SELECT Name, Address FROM addresses WHERE 1 /* AND Name LIKE
-'%[VARIABLE]%' */</code>
+    Daha karışık bir örnek. Diyelimki bu sorguyu sakladınız:<br /><br />
+    <code>SELECT Ad, Adres FROM adresler WHERE 1 /* AND Ad LIKE '%[DEĞİŞKEN]%'
+*/</code>
     <br /><br />
 
-    Say, you now enter &quot;phpMyAdmin&quot; as the variable for the stored
-query, the full query will be:<br /><br />
+    Diyelimki, şimdi saklanan sorgu için değişken olarak &quot;phpMyAdmin&quot;
+girdiniz, tam sorgu:<br /><br />
 
-    <code>SELECT Name, Address FROM addresses WHERE 1 AND Name LIKE
-'%phpMyAdmin%'</code>
+    <code>SELECT Ad, Adres FROM adresler WHERE 1 AND Ad LIKE
+'%phpMyAdmin%'</code> olacaktır
     <br /><br />
 
-    You can use multiple occurrences of <b>/*[VARIABLE]*/</b> in a single query
-(that is, multiple occurrences of the <i>same</i> variable).<br />
-    <b>NOTE THE ABSENCE OF SPACES</b> inside the &quot;/**/&quot; construct. Any
-spaces inserted there will be later also inserted as spaces in your query
-and may lead to unexpected results especially when using the variable
-expansion inside of a &quot;LIKE ''&quot; expression.<br />
-    Your initial query which is going to be stored as a bookmark has to yield at
-least one result row so you can store the bookmark. You may have that to
-work around using well positioned &quot;/**/&quot; comments.</p>
+    Tek bir sorgu içinde <b>/*[DEĞİŞKEN]*/</b>'in çoklu oluşumlarını
+kullanabilirsiniz (yani, <i>aynı</i> değişkenin çoklu oluşumları).<br />
+    &quot;/**/&quot; yapısının içerisinde <b>BOŞLUKLARIN OLMAYACAĞINI
+UNUTMAYIN</b>. Buraya girilen herhangi bir boşluk sorgunuza daha sonra
+üstelik boşluk olarak eklenecektir ve özellikle &quot;LIKE ''&quot; ifadesi
+içerisinde değişken genişletmesi kullanıldığında beklenmedik sonuçlara yol
+açabilir.<br />
+    Yer imi olarak saklanacak başlangıçtaki sorgunuz en az bir sonuç satırı
+vermelidir böylece yer imini saklayabilirsiniz. İyi konumlandırılmış
+&quot;/**/&quot; yorumlarını kullanarak çözüm bulabilmelisiniz.</p>
 
 <h4 id="faq6_19">
-    <a href="#faq6_19">6.19 How can I create simple
-L<sup>A</sup>T<sub><big>E</big></sub>X document to include exported
-table?</a></h4>
+    <a href="#faq6_19">6.19 Dışa aktarılmış tabloyu dahil etmek için basit
+L<sup>A</sup>T<sub><big>E</big></sub>X belgesini nasıl oluşturabilirim?</a></h4>
 
-<p> You can simply include table in your L<sup>A</sup>T<sub><big>E</big></sub>X
-documents, minimal sample document should look like following one (assuming
-you have table exported in file <code>table.tex</code>):</p>
+<p> L<sup>A</sup>T<sub><big>E</big></sub>X belgelerinize basitçe tabloyu dahil
+edebilirsiniz, en az örnek belge aşağıdaki gibi görünmelidir (
+<code>tablo.tex</code> dosyasına aktarılmış tablo var farzedilirse):</p>
 
 <pre>
-\documentclass{article} % or any class you want
-\usepackage{longtable}  % for displaying table
-\begin{document}        % start of document
-\include{table}         % including exported table
-\end{document}          % end of document
+\documentclass{article} % ya da istediğiniz herhangi bir sınıf
+\usepackage{longtable} % tabloyu görüntülemek için
+\begin{document} % belge başlangıcı
+\include{table} % dışa aktarılmış tabloyu dahil eder
+\end{document} % belge sonu
 </pre>
 
 <h4 id="faq6_20">
