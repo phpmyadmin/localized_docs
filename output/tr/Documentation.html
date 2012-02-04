@@ -1774,9 +1774,10 @@ FALSE metini gösterir ve 'both' simgeler ve metnin her ikisinide gösterir.</dd
 görüntüleyip görüntülememesi tanımlar.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] tam sayı</dt>
-    <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
-used. If the result set contains more rows, &quot;Previous&quot; and
-&quot;Next&quot; links will be shown.</dd>
+    <dd>Sonuç grubuna göz atıldığında ve SINIR yok tümcesi kullanıldığında
+görüntülenecek satır sayısıdır. Eğer sonuç grubu daha fazla satır
+içeriyorsa, &quot;Önceki&quot; ve &quot;Sonraki&quot; bağlantıları
+gösterilecektir.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] dizgi [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>Sütunların küçükten büyüğe (<tt>ASC</tt>), büyükten küçüğe (<tt>DESC</tt>)
@@ -4548,107 +4549,110 @@ edebilirsiniz, en az örnek belge aşağıdaki gibi görünmelidir (
 </pre>
 
 <h4 id="faq6_20">
-    <a href="#faq6_20">6.20 I see a lot of databases which are not mine, and
-cannot access them.  </a></h4>
+    <a href="#faq6_20">6.20 Benim olmayan bir çok veritabanı görüyorum ve onlara
+erişemiyorum.</a></h4>
 
-<p> You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW
-DATABASES, LOCK TABLES. Those privileges also enable users to see all the
-database names.  See this <a href="http://bugs.mysql.com/179">bug
-report</a>.<br /><br />
+<p> Bu genel yetkilerden birine sahipsiniz: CREATE TEMPORARY TABLES, SHOW
+DATABASES, LOCK TABLES. Bu yetkiler aynı zamanda kullanıcılara tüm
+veritabanı adlarını görmelerini etkinleştirir. Bu <a
+href="http://bugs.mysql.com/179">hata raporuna</a> bakın.<br /><br />
 
-    So if your users do not need those privileges, you can remove them and their
-databases list will shorten.</p>
+    Yani eğer kullanıcılarınızın bu yetkilere ihtiyacı yoksa, onları
+kaldırabilirsiniz ve veritabanlarının listesi kısalacaktır.</p>
 
 <h4 id="faq6_21">
-    <a href="#faq6_21">6.21 In edit/insert mode, how can I see a list of
-possible values for a column, based on some foreign table?</a></h4>
+    <a href="#faq6_21">6.21 Düzenle/ekle kipinde, bazı dış tablo tabanlı, bir
+sütun için olası değerlerin listesini nasıl görebilirim?</a></h4>
 
-<p> You have to setup appropriate links between the tables, and also setup the
-&quot;display column&quot; in the foreign table. See <a href="#faq6_6"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a> for an example. Then,
-if there are 100 values or less in the foreign table, a drop-down list of
-values will be available.  You will see two lists of values, the first list
-containing the key and the display column, the second list containing the
-display column and the key. The reason for this is to be able to type the
-first letter of either the key or the display column.<br /><br />
+<p> Tablolar arasında ilgili bağlantıları kurmak zorundasınız ve aynı zamanda
+dış tablo içindeki &quot;görüntüleme sütununu&quot; kurun. Örnek için <a
+href="#faq6_6"><abbr title="Sıkça Sorulan Sorular">SSS</abbr> 6.6</a>'ya
+bakın. Sonra, eğer dış tablo içinde 100 değer veya daha azı varsa,
+değerlerin aşağı açılır listesi kullanılabilir olacaktır. Değerlerin iki
+listesini göreceksiniz, birinci liste anahtarı ve görüntüleme sütununu
+içerir, ikinci liste görüntüleme sütununu ve anahtarı içerir. Bunun nedeni
+ya anahtarın ya da görüntüleme sütununun ilk harfinin yazılabilmesidir.<br /><br />
 
-    For 100 values or more, a distinct window will appear, to browse foreign key
-values and choose one. To change the default limit of 100, see <tt><a
-href="#cfg_ForeignKeyMaxLimit"
-class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt>.</p>
+    100 değer veya daha fazlası için, farklı bir pencere gözükecektir, dış
+anahtar değerlerine gözatmak ve birini seçmek için. Varsayılan 100 sınırını
+değiştirmek için, <tt><a href="#cfg_ForeignKeyMaxLimit"
+class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt>'e bakın.</p>
 
 <h4 id="faq6_22">
-    <a href="#faq6_22">6.22 Bookmarks: Can I execute a default bookmark
-automatically when entering Browse mode for a table?</a></h4>
+    <a href="#faq6_22">6.22 Yer İmleri: Tablo için Gözatma kipine girildiğinde
+otomatik olarak varsayılan yer imini çalıştırabilir miyim?</a></h4>
 
-<p> Yes. If a bookmark has the same label as a table name and it's not a public
-bookmark, it will be executed.
+<p> Evet. Eğer yer imi tablo adıyla aynı etikete sahipse ve ortak yer imi
+değilse, çalıştırılacaktır.
 </p>
 
 <h4 id="faq6_23">
-    <a href="#faq6_23">6.23 Export: I heard phpMyAdmin can export Microsoft
-Excel files?</a></h4>
+    <a href="#faq6_23">6.23 Dışa Aktar: phpMyAdmin'in Microsoft Excel
+dosyalarını dışa aktarabildiğini duydum?</a></h4>
 
-<p> You can use <abbr title="comma separated values">CSV</abbr> for Microsoft
-Excel, which works out of the box.<br />
-    Since phpMyAdmin 3.4.5 support for direct export to Microsoft Excel version
-97 and newer was dropped.
+<p> Kutudan çıkar çıkmaz çalışan, Microsoft Excel için <abbr title="comma
+separated values">CSV</abbr> kullanabilirsiniz.<br />
+    phpMyAdmin 3.4.5'den beri Microsoft Excel sürüm 97 ve yenisine doğrudan dışa
+aktarma için destek kaldırıldı.
 </p>
 
 <h4 id="faq6_24">
-    <a href="#faq6_24">6.24 Now that phpMyAdmin supports native MySQL 4.1.x
-column comments, what happens to my column comments stored in pmadb?</a></h4>
+    <a href="#faq6_24">6.24 Artık phpMyAdmin yerel MySQL 4.1.x sütun yorumlarını
+destekliyor, pmadb içinde saklanan sütun yorumlarıma ne oldu?</a></h4>
 
-<p> Automatic migration of a table's pmadb-style column comments to the native
-ones is done whenever you enter Structure page for this table.</p>
+<p> Tablonun pmadb-stili sütun yorumlarının yerel biriyle otomatik yer
+değiştirmesi bu tablo için Yapı sayfasına girdiğinizde yapılır.</p>
 
 <h4 id="faq6_25">
-    <a href="#faq6_25">6.25 How does BLOB streaming work in phpMyAdmin?</a></h4>
+    <a href="#faq6_25">6.25 BLOB akışı phpMyAdmin içinde nasıl çalışıyor?</a></h4>
 
-<p> For general information about BLOB streaming on MySQL, visit <a
-href="http://blobstreaming.org">blobstreaming.org</a>. You need the
-following components:</p>
+<p> MySQL'de BLOB akışı ile ilgili genel bilgi için <a
+href="http://blobstreaming.org">blobstreaming.org</a> adresini ziyaret
+edin. Aşağıdaki bileşenlere ihtiyacınız var:</p>
 <ul>
-    <li>PBMS BLOB Streaming Daemon for MySQL (0.5.15 or later)</li>
-    <li>Streaming enabled PBXT Storage engine for MySQL (1.0.11-6 or later)</li>
-    <li>PBMS Client Library for MySQL (0.5.15 or later)</li>
-    <li>PBMS PHP Extension for MySQL (0.1.1 or later)</li>
+    <li>MySQL (0.5.15 veya sonrası) için PBMS BLOB Streaming Daemon</li>
+    <li>MySQL (1.0.11-6 veya sonrası) için akışı etkinleştirilmiş PBXT Depolama
+motoru</li>
+    <li>MySQL (0.5.15 veya sonrası) için PBMS İstemci Kütüphanesi</li>
+    <li>MySQL (0.1.1 veya sonrası) için PBMS PHP Uzantısı</li>
 </ul>
 
-<p>Here are details about configuration and operation:</p>
+<p>İşte yapılandırma ve işlemler hakkında ayrıntılar:</p>
 
 <ol>
-    <li>In <tt>config.inc.php</tt> your host should be defined with a FQDN (fully
-qualified domain name) instead of &quot;localhost&quot;.</li>
-    <li>Ensure that your target table is under the <tt>PBXT</tt> storage engine and
-has a <tt>LONGBLOB</tt> column (which must be nullable if you want to remove
-the BLOB reference from it).</li>
-    <li>When you insert or update a row in this table, put a checkmark on the
-&quot;Upload to BLOB repository&quot; optional choice; otherwise, the upload
-will be done directly in your LONGBLOB column instead of the repository.</li>
-    <li>Finally when you browse your table, you'll see in your column a link to
-stream your data, for example &quot;View image&quot;. A header containing
-the correct MIME-type will be sent to your browser; this MIME-type was
-stored at upload time.</li> 
+    <li><tt>config.inc.php</tt> dosyasında anamakineniz &quot;localhost&quot; yerine
+FQDN (fully qualified domain name (tam tanımlanmış alan adı)) ile
+tanımlanmalıdır.</li>
+    <li>Hedef tablonuzun <tt>PBXT</tt> depolama motoru altında olduğundan ve
+<tt>LONGBLOB</tt> sütununa (BLOB referansını ondan kaldırmak isterseniz boş
+bırakılabilir olmak zorunda olan) sahip olduğundan emin olun.</li>
+    <li>Bu tabloya bir satır eklediğinizde veya güncellediğinizde, &quot;BLOB
+havuzuna gönder&quot; isteğe bağlı seçeneğe kontrol işareti koyun; aksi
+halde gönderme, havuz yerine doğrudan LONGBLOB sütununa yapılacaktır.</li>
+    <li>Son olarak tablonuza gözattığınızda, verinizin akışı için sütununuzda bir
+bağlantı göreceksiniz, örneğin &quot;İmajı göster&quot;. Doğru MIME-türünü
+içeren başlık tarayıcınıza gönderilecektir; bu MIME-türü gönderme süresinde
+saklanmıştır.</li> 
 </ol>    
 
 <h4 id="faq6_26">
-    <a href="#faq6_26">6.26 How can I select a range of rows?</a></h4>
+    <a href="#faq6_26">6.26 Satırların aralığını nasıl seçebilirim?</a></h4>
 
-<p> Click the first row of the range, hold the shift key and click the last row
-of the range. This works everywhere you see rows, for example in Browse mode
-or on the Structure page.</p>
+<p> Aralığın ilk satırına tıklayın, shift (üst) tuşuna basılı tutun ve aralığın
+son satırına tıklayın. Bu, satırları gördüğünüz her yerde çalışır, örneğin
+Gözatma kipinde veya Yapı sayfasında.</p>
 
 
 <h4 id="faq6_27">
-    <a href="#faq6_27">6.27 What format strings can I use?</a></h4>
+    <a href="#faq6_27">6.27 Ne biçimde dizgiler kullanabilirim?</a></h4>
 
 <p>
-    In all places where phpMyAdmin accepts format strings, you can use
-<code>@VARIABLE@</code> expansion and <a
-href="http://php.net/strftime">strftime</a> format strings. The expanded
-variables depend on a context (for example, if you haven't chosen a table,
-you can not get the table name), but the following variables can be used:
+    phpMyAdmin'nin biçim dizgilerini kabul ettiği tüm yerlerde,
+<code>@VARIABLE@</code> genişlemesini ve <a
+href="http://php.net/strftime">strftime</a> biçim dizgilerini
+kullanabilirsiniz. Genişletilmiş değişkenler içeriğe bağlıdır (örneğin, eğer
+seçili bir tabloya sahip değilseniz, tablo adını alamazsınız) ama aşağıdaki
+değişkenler kullanılabilir:
 </p>
 <dl>
     <dt><code>@HTTP_HOST@</code></dt>
@@ -4656,10 +4660,10 @@ you can not get the table name), but the following variables can be used:
     <dt><code>@SERVER@</code></dt>
         <dd>MySQL sunucu adı</dd>
     <dt><code>@VERBOSE@</code></dt>
-        <dd>Verbose MySQL server name as defined in <a
-href="#cfg_Servers_verbose">server configuration</a></dd>
+        <dd><a href="#cfg_Servers_verbose">Sunucu yapılandırması</a> içinde tanımlandığı
+gibi ayrıntılı MySQL sunucusu adı</dd>
     <dt><code>@VSERVER@</code></dt>
-        <dd>Verbose MySQL server name if set, otherwise normal</dd>
+        <dd>Eğer ayarlı ise ayrıntılı MySQL sunucusu adı, yoksa normaldir</dd>
     <dt><code>@DATABASE@</code></dt>
         <dd>Şu anda açık olan veritabanı</dd>
     <dt><code>@TABLE@</code></dt>
@@ -4667,77 +4671,82 @@ href="#cfg_Servers_verbose">server configuration</a></dd>
     <dt><code>@COLUMNS@</code></dt>
         <dd>Şu anda açık olan tablo sütunları</dd>
     <dt><code>@PHPMYADMIN@</code></dt>
-        <dd>phpMyAdmin ile birlikte sürümü</dd>
+        <dd>Sürümü ile phpMyAdmin</dd>
 </dl>
 
 <h4 id="wysiwyg">
-    <a href="#wysiwyg">6.28 How can I easily edit relational schema for
-export?</a></h4>
+    <a href="#wysiwyg">6.28 Dışa aktarma için ilişkisel şemayı nasıl kolayca
+düzenleyebilirim?</a></h4>
 
     <p> 
-        By clicking on the button 'toggle scratchboard' on the page where you edit
-x/y coordinates of those elements you can activate a scratchboard where all
-your elements are placed. By clicking on an element, you can move them
-around in the pre-defined area and the x/y coordinates will get updated
-dynamically. Likewise, when entering a new position directly into the input
-field, the new position in the scratchboard changes after your cursor leaves
-the input field.
+        Bu öğelerin x/y koordinatlarını düzenlediğiniz sayfada 'Karalama panosunu
+değiştir' düğmesine tıklayarak tüm öğelerinizin olduğu yerdeki karalama
+panosunu etkinleştirebilirsiniz. Bir öğeye tıklayarak, etrafında ön tanımlı
+alan içindeki çevrede taşıyabilirsiniz ve x/y koordinatları dinamik olarak
+güncellenecektir. Ayrıca, girdi alanı içerisine doğrudan yeni bir konum
+girildiğinde, imleciniz girdi alanınında çıktıktan sonra karalama
+panosundaki yeni konum değişir.
     </p>
     <p>
-        You have to click on the 'OK'-button below the tables to save the new
-positions.  If you want to place a new element, first add it to the table of
-elements and then you can drag the new element around.
+        Yeni konumları kaydetmek için tabloların altındaki 'TAMAM' düğmesine
+tıklamak zorundasınız. Eğer yeni bir öğe yerleştirmek istiyorsanız, önce
+öğelerin tablosunu ekleyin ve sonra yeni öğeyi çevresinde
+sürükleyebilirsiniz.
     </p>
     <p>
-        By changing the paper size and the orientation you can change the size of
-the scratchboard as well. You can do so by just changing the dropdown field
-below, and the scratchboard will resize automatically, without interfering
-with the current placement of the elements.
+        Sayfa boyutunu ve yönünü değiştirerek bile karalama panosunun boyutunu
+değiştirebilirsiniz. Sadece alttaki aşağı açılır alanı değiştirerek de
+yapabilirsiniz ve öğelerin şu anki yerleşimi ile karışmadan, karalama panosu
+otomatik olarak yeniden boyutlandıralacaktır.
     </p>
     <p>
-        If ever an element gets out of range you can either enlarge the paper size
-or click on the 'reset' button to place all elements below each other.
+        Eğer olur da bir öğe erişim dışına çıkarsa ya sayfa boyutunu büyütebilir ya
+da tüm öğeleri birbirinin altına yerleştirmek için 'sıfırla' düğmesine
+tıklayabilirsiniz.
     </p>
 
 <h4 id="faq6_29">
-    <a href="#faq6_29">6.29 Why can't I get a chart from my query result
-table?</a></h4>
+    <a href="#faq6_29">6.29 Sorgu sonuç tablomdan neden çizelge alamıyorum?</a></h4>
 
-<p> Not every table can be put to the chart. Only tables with one, two or three
-columns can be visualised as a chart. Moreover the table must be in a
-special format for chart script to understand it. Currently supported
-formats can be found in the <a
-href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart">wiki</a>.</p>
+<p> Her tablo çizelgeye koyulabilir değildir. Sadece bir, iki veya üç sütunlu
+tablolar çizelge olarak görselleştirilebilir. Üstelik tablo, onu anlamak
+için çizelge betiği olarak özel bir biçimde olmak zorundadır. Şimdilik
+desteklenen biçimler <a
+href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart">viki</a>
+içinde bulunabilir.</p>
 
 <h4 id="faq6_30">
-    <a href="#faq6_30">6.30 Import: How can I import ESRI Shapefiles</a></h4>
+    <a href="#faq6_30">6.30 İçe Aktar: ESRI Şekil dosyalarını nasıl içe
+aktarabilirim?</a></h4>
 
     <p> 
-        An ESRI Shapefile is actually a set of several files, where .shp file
-contains geometry data and .dbf file contains data related to those geometry
-data.  To read data from .dbf file you need to have PHP compiled with the
-dBase extension (--enable-dbase). Otherwise only geometry data will be
-imported.
+        Aslında bir ESRI Şekil dosyası .shp dosyasının geometri verisini içeren ve
+.dbf dosyasının bu geometri verisiyle ilgili veriyi içeren çeşitli dosyalar
+grubudur. .dbf dosyasından okumak için dBase uzantısı (--enable-dbase) ile
+derlenmiş PHP'ye sahip olmanız gerekir. Yoksa sadece geometri verisi içe
+aktarılacaktır.
     </p>
 
-    <p>To upload these set of files you can use either of the following methods:</p>
+    <p>Bu dosyaların grubunu göndermek için aşağıdaki yöntemlerden birini
+kullanabilirsiniz:</p>
     <ul>
         <li>
             <p>
-            Configure upload directory with <a href="#cfg_UploadDir"
-class="configrule">$cfg['UploadDir']</a>, upload both .shp and .dbf files
-with the same filename and chose the .shp file from the import page.
+            Gönderme dizinini <a href="#cfg_UploadDir"
+class="configrule">$cfg['UploadDir']</a> ile yapılandırın, her iki .shp ve
+.dbf dosyalarını aynı dosya adı ile gönderin ve içe aktar sayfasından .shp
+dosyasını seçin.
             </p>
         </li>
         <li>
             <p>
-            Create a Zip archive with .shp and .dbf files and import it. For this to
-work, you need to set <a href="#cfg_TempDir"
-class="configrule">$cfg['TempDir']</a> to a place where the web server user
-can write (for example <tt>'./tmp'</tt>).
+            .shp ve .dbf dosyalarıyla bir Zip arşivi oluşturun ve içe aktarın. Bunun
+çalışması için, kullanıcının yazabileceği (örneğin <tt>'./tmp'</tt>) web
+sunucusunun olduğu yerde <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> dizgisini ayarlamanız gerekir.
             </p>
 
-            <p> To create the temporary directory on a UNIX-based system, you can do:</p>
+            <p> UNIX-tabanlı sistemde geçici dizin oluşturmak için yapabileceğiniz:</p>
 <pre>
 cd phpMyAdmin
 mkdir tmp
@@ -4747,7 +4756,7 @@ chmod o+rwx tmp
     </ul>
 
 <h4 id="faq6_31">
-    <a href="#faq6_31">6.31 How do I create a relation in designer?</a></h4>
+    <a href="#faq6_31">6.31 Tasarımcıda bağlantıyı nasıl oluştururum?</a></h4>
 
     <p>Bağlantı seçmek için, tıklayın :</p>
 
@@ -4757,20 +4766,21 @@ ayarlamak/ayarı kaldırmak için "Görüntülemek için sütun seçin" simgesin
 tıklayın, sonrada uygun sütun adı üzerine tıklayın.</p>
 
 <h4 id="faq6_32">
-    <a href="#faq6_32">6.32 How can I use the zoom search feature?</a></h4>
+    <a href="#faq6_32">6.32 Odaklı arama özelliğini nasıl kullanabilirim?</a></h4>
 
-    <p> The Zoom search feature is an alternative to table search feature. It allows
-you to explore a table by representing its data in a scatter plot. You can
-locate this feature by selecting a table and clicking the 'Search' tab. One
-of the sub-tabs in the 'Table Search' page is 'Zoom Search'. <br/><br/>
+    <p> Odaklı arama özelliği tablo arama özelliğine bir alternatifdir. Serpme çizim
+içindeki verisini temsil eden bir tablo keşfetmenize izin verir. Bir tablo
+seçerek ve 'Ara' sekmesine tıklayarak bu özelliğin yerini
+öğrenebilirsiniz. 'Tablo Arama' sayfasındaki alt sekmelerden birisi 'Odaklı
+Arama'dır. <br/><br/>
 
-    Consider the table REL_persons in <a href="#faq6_6"><abbr title="Frequently
-Asked Questions"> FAQ</abbr> 6.6</a> for an example. To use zoom search, two
-columns need to be selected, for example, id and town_code. The id values
-will be represented on one axis and town_code values on the other axis. Each
-row will be represented as a point in a scatter plot based on its id and
-town_code. You can include two additional search criteria apart from the two
-fields to display.<br/><br/>
+    Bir örnek için <abbr title="Sıkça Sorulan Sorular">SSS</abbr> 6.6</a>'daki
+REL_persons tablosunu göz önüne alın. Odaklı aramayı kullanmak için iki
+sütunun seçilmesi gerekir, örneğin, id ve town_code. id değerleri bir
+eksende temsil edilir ve town_code değerleri diğer eksende. Her bir satır,
+id'si ve town_code'u tabanlı serpme çizim içinde işaret edilerek temsil
+edilecektir. Görüntülemek için iki alan dışında iki ilave arama kriterini
+dahil edebilirsiniz.<br/><br/>
 
     You can choose which field should be displayed as label for each point. If a
 display column has been set for the table (see <a href="#faqdisplay"><abbr
