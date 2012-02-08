@@ -1399,7 +1399,10 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 のときはアイコンを、FALSE のときはテキストを、「both (両方)」のときはアイコンとテキストの双方を表示します。</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] 論理型</dt>
-    <dd>表示モードで「(行を) すべて表示」ボタンを表示するかどうかを定義します。</dd>
+    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
+browse mode or not in all cases.  By default it is shown only on small
+tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
+to avoid performance issues while getting too many rows.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] 整数</dt>
     <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
@@ -3585,10 +3588,8 @@ column '...' used in key specification without a key length（BLOB
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 どうしたら多くの編集項目があるページで簡単に移動できますか。</a></h4>
 
-<p> （テーブルの構造を変更したり、行を編集したりなど）編集カラムが多いページでは Ctrl + カーソルキー（Safari の場合は Option +
-カーソルキー）を使うと移動できます。また、<a href="#DefaultPropDisplay"
-class="configrule">$cfg['DefaultPropDisplay']</a>
-ディレクティブの項もご覧ください。「vertical」にしたら編集が楽になるかもしれません。</p>
+<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
+with many editing fields (table structure changes, row editing, etc.).</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 変換機能：独自の MIME タイプを入力できません！　本当にこの機能は役に立つんですか？</a></h4>
@@ -3819,10 +3820,9 @@ chmod o+rwx tmp
 <h4 id="faq6_31">
     <a href="#faq6_31">6.31 デザイナでリレーションを作成するには、どのようにすればいいのでしょうか？</a></h4>
 
-    <p>リレーションを選択します:</p>
-
-    <img src="pmd/images/help_relation.png" />
-    <p>表示するカラムはピンク色で表示されます。表示非表示を切り替える場合は「表示するカラムを選択する」というアイコンをクリックしてから適切なカラム名をクリックください。</p>
+    <p>To select relation, click:<br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    表示するカラムはピンク色で表示されます。表示非表示を切り替える場合は「表示するカラムを選択する」というアイコンをクリックしてから適切なカラム名をクリックください。</p>
 
 <h4 id="faq6_32">
     <a href="#faq6_32">6.32 検索プロット機能の使い方を教えてください。</a></h4>
@@ -3887,15 +3887,18 @@ href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmy
 </p>
 
 <p>
-    現在、ドキュメントは po4a と gettext を用いて翻訳されています（翻訳されているものは <a
-href="http://www.phpmyadmin.net/home_page/docs.php">Documentation</a>
-を参照してください）。翻訳を始めるには、Git から <a
-href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>
-をチェックアウトします。もしくは、<a
-href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>にてオンライン翻訳するのもいいでしょう。翻訳したい言語がない場合は、<a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>
-と連絡を取ってみてください。多分、彼が追加してくれます。直接 po ファイルを翻訳したい場合には、<a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳トラッカー</a>に翻訳したものをアップロードしてください。 
+    Documentation is being translated using po4a and gettext (see <a
+href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
+existing translations). To start, checkout <a
+href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
+from Git, or just go to the <a
+href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
+translate it online. If your language is missing, just contact <a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
+tracker</a>. 
 </p>
 
 <h4 id="faq7_3">
@@ -3904,8 +3907,7 @@ href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳ト
 <p> 新規の開発者は、なるべく下記の手順に従ってください。</p>
 
 <ol><li>アノニマス git から現在の git リポジトリを取得します。<br />
-    <tt>git clone
-git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
+    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
     </li>
     <li>手を加えます。</li>
     <li>「<tt>git diff &gt; xxx.diff</tt>」としてパッチを生成します。<br />
@@ -3995,6 +3997,15 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 <p>
 差分は <tt>S</tt> と <tt>D</tt>
 の文字がある赤と緑のボタンで表されていて、構造かデータのいずれかもしくは両方が、最新ではないことを示しています。ボタンをクリックすると灰色になります。これは同期されることを意味します。
+</p>
+
+<h4 id="faq9_2">
+    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
+tables?</a></h4>
+
+<p>
+Yes. This aspect of synchronization is currently limited to small tables,
+and they must have a primary key.
 </p>
 
 

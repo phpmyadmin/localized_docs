@@ -1707,8 +1707,10 @@ text or symbols only. A value of TRUE displays icons, FALSE displays text
 and 'both' displays both icons and text.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Defines whether a user should be displayed a &quot;show all (rows)&quot;
-button in browse mode or not.</dd>
+    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
+browse mode or not in all cases.  By default it is shown only on small
+tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
+to avoid performance issues while getting too many rows.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
     <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
@@ -4292,10 +4294,7 @@ column.</p>
 fields?</a></h4>
 
 <p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
-with many editing fields (table structure changes, row editing, etc.).  You
-can also have a look at the directive <a href="#DefaultPropDisplay"
-class="configrule">$cfg['DefaultPropDisplay']</a> ('vertical') and see if
-this eases up editing for you.</p>
+with many editing fields (table structure changes, row editing, etc.).</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 Transformations: I can't enter my own mimetype! WTF
@@ -4582,10 +4581,9 @@ chmod o+rwx tmp
 <h4 id="faq6_31">
     <a href="#faq6_31">6.31 How do I create a relation in designer?</a></h4>
 
-    <p>To select relation, click :</p>
-
-    <img src="pmd/images/help_relation.png" />
-    <p>The display column is shown in pink. To set/unset a column as the display
+    <p>To select relation, click:<br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    The display column is shown in pink. To set/unset a column as the display
 column, click the "Choose column to display" icon, then click on the
 appropriate column name.</p>
 
@@ -4674,7 +4672,7 @@ mailing list, because this is where we ask for translations of new messages.
     Documentation is being translated using po4a and gettext (see <a
 href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
 existing translations). To start, checkout <a
-href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>
+href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
 from Git, or just go to the <a
 href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
 translate it online. If your language is missing, just contact <a
@@ -4692,8 +4690,7 @@ phpMyAdmin. How should I proceed?</a></h4>
 <p> The following method is preferred for new developers:</p>
 
 <ol><li>fetch the current git repository over anonymous git:<br />
-    <tt>git clone
-git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
+    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
     </li>
     <li>add your stuff</li>
     <li>generate patch with your changes: <tt>git diff &gt; xxx.diff</tt><br />
@@ -4810,6 +4807,15 @@ The difference is depicted by the red and green buttons with <tt>S</tt> and
 <tt>D</tt> letters, indicating that either Structure or Data are not up to
 date. By clicking on them, they will turn grey, what means that they will be
 synchronised.
+</p>
+
+<h4 id="faq9_2">
+    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
+tables?</a></h4>
+
+<p>
+Yes. This aspect of synchronization is currently limited to small tables,
+and they must have a primary key.
 </p>
 
 

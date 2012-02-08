@@ -2027,8 +2027,10 @@ seulement. La valeur TRUE affiche les ic&ocirc;nes, FALSE affiche seulement
 le texte et 'both' affiche le texte et les ic&ocirc;nes.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] bool&eacute;en</dt>
-    <dd>D&eacute;finit si un utilisateur peut avoir un bouton &laquo;&nbsp;Tout
-afficher (lignes)&nbsp;&raquo; en mode &laquo;&nbsp;Afficher&nbsp;&raquo;.</dd>
+    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
+browse mode or not in all cases.  By default it is shown only on small
+tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
+to avoid performance issues while getting too many rows.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] entier</dt>
     <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
@@ -5006,12 +5008,8 @@ l'index sur une colonne BLOB.</p>
     <a href="#faq6_16">6.16 Comment puis-je me d&eacute;placer simplement dans
 une page remplie de champs modifiables&nbsp;?</a></h4>
 
-<p> Vous pouvez utiliser Ctrl + flèches de direction (Option + flèches de
-direction dans Safari) sur la plupart des pages remplies de champs
-modifiables (structure de table, ligne modifiable, etc.). Vous pouvez
-également consulter la directive <a href="#DefaultPropDisplay"
-class="configrule">$cfg['DefaultPropDisplay']</a> ('vertical')  et voir si
-cela vous aide pour les modifications.</p>
+<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
+with many editing fields (table structure changes, row editing, etc.).</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 Transformations&nbsp;: je ne peux pas entrer mon
@@ -5343,10 +5341,9 @@ bas&eacute; sur UNIX, vous pouvez faire ceci&nbsp;:</p>
     <a href="#faq6_31">6.31 Comment puis-je créer une relation dans le
 Designer&nbsp;?</a></h4>
 
-    <p>Pour sélectionner un lien, cliquez : </p>
-
-    <img src="pmd/images/help_relation.png" />
-    <p>La colonne descriptive est montrée en rose. Pour indiquer qu'une colonne est
+    <p>To select relation, click:<br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    La colonne descriptive est montrée en rose. Pour indiquer qu'une colonne est
 ou n'est plus la colonne descriptive, cliquer l'icône «Colonne descriptive»,
 puis cliquer sur le nom de colonne approprié.</p>
 
@@ -5445,18 +5442,18 @@ messages.
 </p>
 
 <p>
-    La documentation est traduite en utiilsant po4a et gettext (voir la <a
-href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> pour
-les traductions existantes). Pour débuter, faites un checkout <a
-href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>
-à partir de Git, ou rendez-vous sur le <a
-href="https://l10n.cihar.com/projects/pmadoc/">serveur de traduction</a> et
-traduisez en ligne. Si votre langue n'est pas présente, contactez <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; il l'ajoutera. Si
-vous préférez traduire directement les fichiers .po, merci de joindre vos
-fichiers traduits sur notre <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">traqueur
-de traduction</a>. 
+    Documentation is being translated using po4a and gettext (see <a
+href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
+existing translations). To start, checkout <a
+href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
+from Git, or just go to the <a
+href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
+translate it online. If your language is missing, just contact <a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
+tracker</a>. 
 </p>
 
 <h4 id="faq7_3">
@@ -5467,8 +5464,7 @@ phpMyAdmin. Comment dois-je proc&eacute;der&nbsp;?</a></h4>
 d&eacute;veloppeurs&nbsp;:</p>
 
 <ol><li>récupérer le dépôt Git en cours en mode anonyme&nbsp;:<br />
-    <tt>git clone
-git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
+    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
     </li>
     <li>ajouter votre travail</li>
     <li>g&eacute;n&eacute;rer le patch avec vos changements&nbsp;: <tt>git diff &gt;
@@ -5593,6 +5589,15 @@ Les différences sont indiquées par des boutons rouges et verts avec les
 lettres <tt>S</tt> et <tt>D</tt>, désignant respectivement que la Structure
 ou les Données ne sont pas à jour. En cliquant dessus, ils deviennent
 grisés, ce qui signifie qu'ils vont être synchronisés.
+</p>
+
+<h4 id="faq9_2">
+    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
+tables?</a></h4>
+
+<p>
+Yes. This aspect of synchronization is currently limited to small tables,
+and they must have a primary key.
 </p>
 
 

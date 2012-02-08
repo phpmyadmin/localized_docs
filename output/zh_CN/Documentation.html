@@ -1400,8 +1400,10 @@ text or symbols only. A value of TRUE displays icons, FALSE displays text
 and 'both' displays both icons and text.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Defines whether a user should be displayed a &quot;show all (rows)&quot;
-button in browse mode or not.</dd>
+    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
+browse mode or not in all cases.  By default it is shown only on small
+tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
+to avoid performance issues while getting too many rows.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] integer</dt>
     <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
@@ -3749,10 +3751,7 @@ Upright Database Technology.  我们使用它的免费 SOAP 服务。
 fields?</a></h4>
 
 <p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
-with many editing fields (table structure changes, row editing, etc.).  You
-can also have a look at the directive <a href="#DefaultPropDisplay"
-class="configrule">$cfg['DefaultPropDisplay']</a> ('vertical') and see if
-this eases up editing for you.</p>
+with many editing fields (table structure changes, row editing, etc.).</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 Transformations: I can't enter my own mimetype! WTF
@@ -4004,10 +4003,9 @@ chmod o+rwx tmp
 <h4 id="faq6_31">
     <a href="#faq6_31">6.31 How do I create a relation in designer?</a></h4>
 
-    <p>要选择关系，点击：</p>
-
-    <img src="pmd/images/help_relation.png" />
-    <p>显示的字段为粉红色。要设置/取消显示的字段，点击“选择显示字段”图标，然后选择需要的字段名。</p>
+    <p>To select relation, click:<br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    显示的字段为粉红色。要设置/取消显示的字段，点击“选择显示字段”图标，然后选择需要的字段名。</p>
 
 <h4 id="faq6_32">
     <a href="#faq6_32">6.32 How can I use the zoom search feature?</a></h4>
@@ -4081,14 +4079,18 @@ href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpMy
 </p>
 
 <p>
-    文档是通过 po4a 和 gettext 翻译的 (参见<a
-href="http://www.phpmyadmin.net/home_page/docs.php">文档</a>查看现有的翻译) 。要开始翻译，先从
-Git 检出 <a
-href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>，或者直接到<a
-href="https://l10n.cihar.com/projects/pmadoc/">翻译服务器</a>在线翻译。如果没有找到你的语言，请联系
-<a href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>;
-他会加上。如果你更喜欢直接翻译 po 文件，请将翻译好的文件放在我们的<a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻译追踪器</a>上。 
+    Documentation is being translated using po4a and gettext (see <a
+href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
+existing translations). To start, checkout <a
+href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
+from Git, or just go to the <a
+href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
+translate it online. If your language is missing, just contact <a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
+tracker</a>. 
 </p>
 
 <h4 id="faq7_3">
@@ -4097,8 +4099,7 @@ href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻译追
 <p> 对新开发者推荐以下方式:</p>
 
 <ol><li>通过匿名方式获取当前 git 库:<br />
-    <tt>git clone
-git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
+    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
     </li>
     <li>添加你的内容</li>
     <li>生成你的补丁: <tt>git diff &gt; xxx.diff</tt><br />
@@ -4182,6 +4183,15 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 <p>
 红色 <tt>S</tt> 和绿色 <tt>D</tt> 按钮表示结构 (S) 或数据 (D)
 是否需要更新。当点击按钮时，它们将变成灰色，表示相应表将会被同步。
+</p>
+
+<h4 id="faq9_2">
+    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
+tables?</a></h4>
+
+<p>
+Yes. This aspect of synchronization is currently limited to small tables,
+and they must have a primary key.
 </p>
 
 

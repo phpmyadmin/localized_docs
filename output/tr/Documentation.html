@@ -128,7 +128,7 @@ oluşturabilir, kopyalayabilir, kaldırabilir ve değiştirebilir</li>
 bakım yapabilir</li>
     <li>herhangi bir <abbr title="structured query language">SQL</abbr>-ifadesini,
 hatta toplu sorguları çalıştırabilir, düzenleyebilir, işaretleyebilir</li>
-    <li>tablolara metin dosyaları yükleyebilir</li>
+    <li>tabloların içine metin dosyalarını yükleyebilir</li>
     <li>tablo dökümlerini okuyabilir ve oluşturabilir<a
 href="#footnote_1"><sup>1</sup></a>
         </li>
@@ -1083,7 +1083,7 @@ ALTER TABLE `pma_column_comments`
     <dt id="history">
         <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> dizgi
     </dt>
-    <dd>2.5.0 yayımından bu yana phpMyAdmin arabirimi içinden elle girdiğiniz tüm
+    <dd>2.5.0 yayımından bu yana phpMyAdmin arayüzü içinden elle girdiğiniz tüm
 sorguları <abbr title="structured query language">SQL</abbr> geçmişinde
 depolayabilirsiniz. Eğer tablo tabanlı geçmiş kulanmak istemiyorsanız,
 JavaScript tabanlı geçmiş kulanabilirsiniz. Bunun kullanımıyla, pencereyi
@@ -1287,7 +1287,7 @@ kullanılamaz olacaktır.
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
 dizgi
     </dt>
-    <dd>2.10.0 yayımından bu yana Tasarımcı arabirimi mevcuttur; bağlantıları görsel
+    <dd>2.10.0 yayımından bu yana Tasarımcı arayüzü mevcuttur; bağlantıları görsel
 yönetmeye izin verir.
         <br /><br />
 
@@ -1770,8 +1770,10 @@ sembolleri içermesi gerekirse tanımlar. TRUE değeri simgeleri gösterir,
 FALSE metini gösterir ve 'both' simgeler ve metnin her ikisinide gösterir.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Gözatma kipinde kullanıcının &quot;tümünü göster (satırlar)&quot; düğmesini
-görüntüleyip görüntülememesi tanımlar.</dd>
+    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
+browse mode or not in all cases.  By default it is shown only on small
+tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
+to avoid performance issues while getting too many rows.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] tam sayı</dt>
     <dd>Sonuç grubuna göz atıldığında ve SINIR yok tümcesi kullanıldığında
@@ -1805,12 +1807,12 @@ vermemek için <tt>'all'</tt>.</li>
     <dt id="cfg_ShowFunctionFields">$cfg['ShowFunctionFields'] boolean</dt>
     <dd>Düzenle/ekle kipinde MySQL işlevleri alanlarının başlangıçta görüntülenip
 görüntülenmemesini tanımlar. 2.10 sürümünden bu yana kullanıcı bu ayarı
-arabirimden değiştirebilir.
+arayüzden değiştirebilir.
     </dd>
     
     <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] boolean</dt>
     <dd>Düzenle/ekle kipinde yazma alanlarının başlangıçta görüntülenip
-görüntülenmemesini tanımlar. Kullanıcı bu ayarı arabirimden değiştirebilir.
+görüntülenmemesini tanımlar. Kullanıcı bu ayarı arayüzden değiştirebilir.
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] dizgi</dt>
@@ -2335,7 +2337,7 @@ doldurulmasada gösterilmesini tanımlar.
 title="structured query language">SQL</abbr></tt> bağlantısı ve simgesi
 daima sol panelde görüntülenir. Eğer tarayıcınızda JavaScript etkinse, bunun
 üzerine tıklamak <abbr title="structured query language">SQL</abbr>
-sorgularını girmek için doğrudan arabirim olan ayrı sorgu penceresi
+sorgularını girmek için doğrudan arayüz olan ayrı sorgu penceresi
 açar. Yoksa sağ panel sorgu kutusunu görüntülemek için değişir.<br /><br />
 
         Sorgu penceresinin boyutu <tt>$cfg['QueryWindowWidth']</tt> ve
@@ -2832,7 +2834,7 @@ system">İS</abbr></a></li>
     <li><a href="#faqsynchronization">Eşitleme</a></li>
 </ol>
 
-<p> Lütfen phpMyAdmin'nin özelliklerinin ve/veya arabiriminin derinlemesine
+<p> Lütfen phpMyAdmin'nin özelliklerinin ve/veya arayüzünün derinlemesine
 kapsamı için phpMyAdmin ana sayfasındaki <a
 href="http://www.phpmyadmin.net/home_page/docs.php">Bağlantı bölümü'müze</a>
 bir göz atın.</p>
@@ -3548,7 +3550,7 @@ ve dizinleri kopyalayın</li>
 düzenleyin</li>
     <li>&quot;temanızın_adı&quot; dizinindeki <tt>info.inc.php</tt> dosyasını,
 seçtiğiniz tema adınızı içermesi için düzenleyin, böylece kullanıcı
-arabiriminde görülebilecek</li>
+arayüzünde görülebilecek</li>
     <li>temanızın yeni bir ekran görüntüsünü yapın ve
 &quot;temanızın_adı/screen.png&quot; adı altında kaydedin</li>
 </ul>
@@ -4457,12 +4459,8 @@ ayarlayabileceksiniz.</p>
     <a href="#faq6_16">6.16 Bir yığın düzenleme alanı ile sayfa içinde nasıl
 basitçe taşıyabilirim?</a></h4>
 
-<p> Çoğu sayfada pek çok düzenleme alanı (tablo yapısı değişiklikleri, satır
-düzenleme, v.s.) ile taşımak için Ctrl+ok tuşlarını (Safari'de Option+Ok
-tuşları) kullanabilirsiniz. Aynı zamanda <a href="#DefaultPropDisplay"
-class="configrule">$cfg['DefaultPropDisplay']</a> ('dikey') yönergesine
-bakabilirsiniz ve sizin için bunu düzenlemeyi kolaylaştırdığını
-görebelirsiniz.</p>
+<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
+with many editing fields (table structure changes, row editing, etc.).</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 Dönüşümler: Kendi mime türümü giremiyorum! WTF bu
@@ -4758,10 +4756,9 @@ chmod o+rwx tmp
 <h4 id="faq6_31">
     <a href="#faq6_31">6.31 Tasarımcıda bağlantıyı nasıl oluştururum?</a></h4>
 
-    <p>Bağlantı seçmek için, tıklayın :</p>
-
-    <img src="pmd/images/help_relation.png" />
-    <p>Görüntü sütunu pembe ile gösterilir. Alanı, görüntü sütunu olarak
+    <p>To select relation, click:<br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    Görüntü sütunu pembe ile gösterilir. Alanı, görüntü sütunu olarak
 ayarlamak/ayarı kaldırmak için "Görüntülemek için sütun seçin" simgesine
 tıklayın, sonrada uygun sütun adı üzerine tıklayın.</p>
 
@@ -4827,8 +4824,8 @@ sunucusunda</a> isteğe bağlı çeviriyi çevrimiçi yapabilirsiniz. Yeni bir
 çeviri oluşturmak için basitçe <code>po/phpmyadmin.pot</code> kullanın ve
 diliniz için <code>po/LANG_CODE.po</code> dosyası üretin (bunu yapmak için
 <code>msginit -i po/phpmyadmin.pot -l LANG_CODE --no-translator -o
-po/LANG_CODE.po</code> kullanabilirisiniz) veya web arabirimine çeviri
-eklemek için postalama listesinde sorun. Daha fazla ayrıntı <a
+po/LANG_CODE.po</code> kullanabilirisiniz) veya web arayüzüne çeviri eklemek
+için postalama listesinde sorun. Daha fazla ayrıntı <a
 href="http://wiki.phpmyadmin.net/pma/Gettext_for_translators">bizim
 viki</a>'de mevcut.
 </p>
@@ -4853,17 +4850,18 @@ mesajların çevirilerini soracağımız yer burasıdır.
 </p>
 
 <p>
-    Belge po4a ve gettext kullanılarak çevrilir (mevcut çeviriler için <a
-href="http://www.phpmyadmin.net/home_page/docs.php">belgeye</a>
-bakın). Başlamak için, Git'ten <a
-href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>'yu
-kontrol edin ya da <a href="https://l10n.cihar.com/projects/pmadoc/">çeviri
-sunucusu</a>'na gidin ve çevrimiçi çevirin. Eğer diliniz eksikse, sadece <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a> ile temasa geçin;
-o ekleyecektir. Doğrudan po dosyalarını çevirmeyi tercih ederseniz, lütfen
-bizim <a
-href="https://sourceforge.net/tracker/?group_id=23067&atid=387645">çeviri
-takipçisi</a> içerisine güncellenmiş birini koyun. 
+    Documentation is being translated using po4a and gettext (see <a
+href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
+existing translations). To start, checkout <a
+href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
+from Git, or just go to the <a
+href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
+translate it online. If your language is missing, just contact <a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
+it. If you prefer to directly translate the po files, please put updated
+ones into our <a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
+tracker</a>. 
 </p>
 
 <h4 id="faq7_3">
@@ -4873,8 +4871,7 @@ isterim. Nasıl başlamalıyım?</a></h4>
 <p> Aşağıdaki yöntem yeni geliştiriciler için tercih edilir:</p>
 
 <ol><li>şu anki git havuzunu isimsiz git üzerinden alın:<br />
-    <tt>git clone
-git://phpmyadmin.git.sourceforge.net/gitroot/phpmyadmin/phpmyadmin</tt><br />
+    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
     </li>
     <li>kendinizinkileri ekleyin</li>
     <li>değişikliklerinizle yama üretin: <tt>git diff &gt; xxx.diff</tt><br />
@@ -4969,79 +4966,87 @@ veritabanı tablo adları görüntülenecektir. Sekmeli gösterim olacaktır.
 </p>
 
 <p>
-On the left, are listed the source database table names. Some of the names
-have a <code>+</code> plus sign preceding them. This shows that these tables
-are only present in source database and they need to be added to the target
-database in order to synchronize the target database. The tables whose names
-are not preceded by a <code>+</code> sign are already present in the target
-database. 
+Solda, kaynak veritabanı tablo adları listelenir. Bazı adlar, adların
+öncesinde <code>+</code> artı işaretine sahiptir. Bu tabloların sadece
+kaynak veritabanında bulunduğunu bu işaret gösterir ve hedef veritabanını
+eşitlemesi için hedef veritabanına eklenmeleri gerekir. Adlarının öncesinde
+<code>+</code> işareti olmayan tablolar zaten hedef veritabanında
+bulunmaktadır. 
 </p>
 
 <p>
-On the right, are listed the target database table names. There are few
-table names that have <code>(not present)</code> appended after their
-names. This means that these tables are to be created in target database in
-order to synchronize target database with source database. Some table names
-have a <code>-</code> minus sign preceding them. This shows that these
-tables are only present in target database and they will remain unchanged in
-the target database. The column in the middle shows the difference between
-the source and target corresponding tables.
+Sağda, hedef veritabanı tablo adları listelenir. İsimlerinden sonra
+<code>(not present)</code> eklenmiş bir kaç tablo adı vardır. Bu, kaynak
+veritabanı ile hedef veritabanının eşitlemesi için bu tabloların hedef
+veritabanında oluşturulması anlamına gelir. Bazı tablo adları, adlarının
+öncesinde <code>-</code> eksi işaretine sahiptir. Bu tabloların sadece hedef
+veritabanında bulunduğunu bu işaret gösterir ve hedef veritabanında
+değiştirilmeden kalacaklardır. Ortadaki sütun ilgili kaynak ve hedef
+tablolar arasındaki farkı gösterir.
 </p>
 
 <p>
-The difference is depicted by the red and green buttons with <tt>S</tt> and
-<tt>D</tt> letters, indicating that either Structure or Data are not up to
-date. By clicking on them, they will turn grey, what means that they will be
-synchronized.
+Fark <tt>S</tt> ve <tt>D</tt> harfleri ile kırmızı ve yeşil düğmelerle
+gösterilir, ya yapının ya da verinin güncel olmadığını işaret eder. Bunlara
+tıklayarak, eşitlenecekleri anlamına gelen yeşile döneceklerdir.
+</p>
+
+<h4 id="faq9_2">
+    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
+tables?</a></h4>
+
+<p>
+Yes. This aspect of synchronization is currently limited to small tables,
+and they must have a primary key.
 </p>
 
 
 <!-- DEVELOPERS -->
-<h2 id="developers">Developers Information</h2>
+<h2 id="developers">Geliştirici Bilgileri</h2>
 
-<p> phpMyAdmin is Open Source, so you're invited to contribute to it. Many great
-features have been written by other people and you too can help to make
-phpMyAdmin a useful tool.</p>
+<p> phpMyAdmin açık kaynaklıdır, bu yüzden katkıda bulunmak için
+davetlisiniz. Bir çok büyük özellik diğer insanlar tarafından yazıldı ve siz
+de phpMyAdmin'i faydalı bir araç yapmak için yardım edebilirsiniz.</p>
 
-<p> If you're planning to contribute source, please read the following
-information:</p>
+<p> Eğer kaynağa katkıda bulunmayı planlıyorsanız, lütfen aşağıdaki bilgiyi
+okuyun:</p>
 
-<ul><li>All files include <i>libraries/header.inc.php</i> (layout),.
-<i>libraries/common.lib.php</i> (common functions) and
-<i>config.inc.php</i>.<br />
-        Only configuration data should go in <i>config.inc.php</i>. Please keep it
-free from other code.<br />
-        Commonly used functions should be added to <i>libraries/common.lib.php</i>
-and more specific ones may be added within a library stored into the
-<i>libraries</i> sub-directory.</li>
-    <li>Obviously, you're free to use whatever coding style you want. But please try
-to keep your code as simple as possible: beginners are using phpMyAdmin as
-an example application.<br />
-        As far as possible, we want the scripts to be XHTML1.0 and CSS2 compliant on
-one hand, they fit the <a href="http://pear.php.net/"> <abbr title="PHP
-Extension and Application Repository">PEAR</abbr> coding standards</a> on
-the other hand. Please pay attention to this.</li>
-    <li>Please enable showing PHP errors and warnings by the <code><a
+<ul><li><i>libraries/header.inc.php</i> (düzeni), <i>libraries/common.lib.php</i>
+(genel işlevleri) ve <i>config.inc.php</i> dahil tüm dosyalar.<br />
+        Sadece <i>config.inc.php</i> içindeki yapılandırma verisi olduğu gibi
+kalmalı. Lütfen diğer koddan uzak tutun.<br />
+        Genellikle kullanılan işlevler <i>libraries/common.lib.php</i> dosyasına
+eklenmelidir ve daha belirli olanlar <i>libraries</i> alt dizini içine
+saklandığı kütüphane içerisine eklenebilir.</li>
+    <li>Açıkça, her ne kodlama stili istiyorsanız serbestsiniz. Ama lütfen kodunuzu
+olabildiğince basit tutmaya çalışın: yeni başlayanlar phpMyAdmin'i örnek
+uygulama olarak kullanıyorlar.<br />
+        Mümkün olduğunda, bir taraftan betiklerin XHTML1.0 ve CSS2 uyumlu olmasını
+istiyoruz, diğer taraftan <a href="http://pear.php.net/"> <abbr title="PHP
+Extension and Application Repository">PEAR</abbr> kodlama standartlarına</a>
+uygun olmalı. Lütfen buna dikkat edin.</li>
+    <li>Lütfen PHP hatalarını ve uyarılarını göstermeyi <code><a
 href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
-configuration directive.</li>
-    <li>Please try to keep up the file-naming conventions. Table-related stuff goes
-to <i>tbl_*.php</i>, db-related code to <i>db_*.php</i>, server-related
-tools to <i>server_*.php</i> and so on.</li>
-    <li>Please use gettext wrappers around all messages (<code>__('Some
-text')</code> or <code>_ngettext()</code> function).  To translate them, you
-need to call <code>scripts/update-po</code> script. To use translated
-messages, call <code>scripts/generate-mo</code>, which generates binary
-files read by Gettext.</li>
-    <li>If you want to be really helpful, write an entry for the ChangeLog.</li>
+yapılandırma yönergesiyle etkinleştirin.</li>
+    <li>Lütfen dosya adlandırma geleneğine uymaya çalışın. Tablo ile ilgili şeyler
+<i>tbl_*.php</i> olarak, vt ile ilgili kodlar <i>db_*.php</i> olarak, sunucu
+ile ilgili araçlar <i>server_*.php</i> olarak ve buna benzer şekilde gider.</li>
+    <li>Lütfen tüm mesajların etrafında gettext sarmalayıcılarını kullanın
+(<code>__('Örnek Yazı')</code> veya <code>_ngettext()</code> işlevi). Onları
+çevirmek için, <code>scripts/update-po</code> betiğini çağırmanız
+gerekli. Çevrilmiş mesajları kullanmak için, Gettext tarafından okunan
+binari dosyalarını üreten <code>scripts/generate-mo</code> betiğini çağırın.</li>
+    <li>Eğer gerçekten yardımcı olmak istiyorsanız, Değişiklik günlüğü için giriş
+yazın.</li>
     <li id="developersdbg">
-        The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
-now supported by phpMyAdmin for developers to better debug and profile their
-code.<br />
-        Please see the <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a>
-configuration options for more information.<br />
-        This is in memoriam of the Space Shuttle Columbia (STS-107) which was lost
-during its re-entry into Earth's atmosphere and in memory of the brave men
-and women who gave their lives for the people of Earth.</li>
+        Artık daha iyi hata ayıklama ve kodlarının profilini çıkarmada
+geliştiriciler için phpMyAdmin tarafından DBG uzantısı (<a
+href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) desteklenmektedir.<br />
+        Lütfen daha fazla bilgi için <a href="#cfg_DBG"
+class="configrule">$cfg['DBG']*</a> yapılandırma seçeneklerine bakın.<br />
+        Bu, Dünya'nın atmosferine yeniden girişi sırasında kaybolan Uzay Mekiği
+Columbia'nın (STS-107) ve Dünya insanları için hayatlarını veren cesur kadın
+ve erkeklerin anısınadır.</li>
 </ul>
 
 <h2 id="copyright">Telif hakkı</h2>
@@ -5066,16 +5071,16 @@ yeniden dağıtabilir ve/veya değiştirebilirsiniz.
 </p>
 
 <p>
-This program is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-more details.
+Bu program faydalı olacağı umuduyla dağıtılmaktadır ama HERHANGİ BİR
+GARANTİSİ YOKTUR; BELİRLİ BİR AMACA veya TİCARETE UYGUNLUĞUNUN dolaylı bile
+garantisi yoktur. Daha fazla ayrıntı için GNU General Public License'a
+bakın.
 </p>
 
 <p>
-You should have received a copy of the GNU General Public License along with
-this program; if not, write to the Free Software Foundation, Inc., 51
-Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+Bu program ile GNU General Public License kopyasını beraberinde almalısınız;
+eğer almadıysanız, Free Software Foundation, Inc., 51 Franklin St, Fifth
+Floor, Boston, MA 02110-1301 USA adresine yazın
 </p>
 
 
@@ -5095,7 +5100,7 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <li>Marc Delisle &lt;marc_at_infomarc.info&gt;
 <ul>
   <li>Aralık 1998'de çoklu dil sürümü</li>
-  <li>çeşitli onarımlar ve geliştirmeler</li>
+  <li>çeşitli onarımlar ve iyileştirilmeler</li>
   <li><abbr title="structured query language">SQL</abbr> analizcisi (çoğunun)</li>
   <li>şu anki proje sürdürücüsü</li>
 </ul></li>
@@ -5103,117 +5108,120 @@ Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <li>Olivier M&uuml;ller &lt;om_at_omnis.ch&gt;
 <ul>
   <li>SourceForge phpMyAdmin projesine Mart 2001'de başladı</li>
-  <li>sync'ed different existing CVS trees with new features and bugfixes</li>
-  <li>multi-language improvements, dynamic language selection</li>
-  <li>many bugfixes and improvements</li>
+  <li>yeni özellikleri ve hata onarımları ile farklı mevcut CVS ağaçlarının
+eşitlenmesi</li>
+  <li>çoklu dil iyileştirilmeleri, dinamik dil seçimi</li>
+  <li>bir çok hata onarımları ve iyileştirilmeler</li>
 </ul></li>
 
 <li>Lo&iuml;c Chapeaux &lt;lolo_at_phpheaven.net&gt;
 <ul>
-  <li>rewrote and optimized javascript, DHTML and DOM stuff</li>
-  <li>rewrote the scripts so they fit the <abbr title="PHP Extension and
-Application Repository">PEAR</abbr> coding standards and generate XHTML1.0
-and CSS2 compliant codes</li>
-  <li>improved the language detection system</li>
-  <li>many bugfixes and improvements</li>
+  <li>javascript, DHTML ve DOM unsurlarını yeniden yazdı ve uyarladı</li>
+  <li>betikler yeniden yazıldı böylece <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> kodlama standartlarına uygun oldu ve XHTML1.0 ve
+CSS2 uyumlu kodlar üretti.</li>
+  <li>gelişmiş dil algılama sistemi</li>
+  <li>bir çok hata onarımları ve iyileştirilmeler</li>
 </ul></li>
 
 <li>Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
 <ul>
-  <li>database maintenance controls</li>
-  <li>table type code</li>
-  <li>Host authentication <abbr title="Internet Protocol">IP</abbr> Allow/Deny</li>
-  <li>DB-based configuration (Not completed)</li>
-  <li><abbr title="structured query language">SQL</abbr> parser and pretty-printer</li>
-  <li><abbr title="structured query language">SQL</abbr> validator</li>
-  <li>many bugfixes and improvements</li>
+  <li>veritabanı bakım denetimleri</li>
+  <li>tablo türü kod</li>
+  <li>Anamakine kimlik doğrulaması <abbr title="Internet Protocol">IP</abbr> İzin
+Verme/Reddetme</li>
+  <li>VT-tabanlı yapılandırma (Tamamlanmadı)</li>
+  <li> <abbr title="structured query language">SQL</abbr> ayrıştırıcısı ve hoş
+yazım</li>
+  <li><abbr title="structured query language">SQL</abbr> onaylayıcısı</li>
+  <li>bir çok hata onarımları ve iyileştirilmeler</li>
 </ul></li>
 
 <li>Armel Fauveau &lt;armel.fauveau_at_globalis-ms.com&gt;
 <ul>
-  <li>bookmarks feature</li>
-  <li>multiple dump feature</li>
-  <li>gzip dump feature</li>
-  <li>zip dump feature</li>
+  <li>yer imleri özelliği</li>
+  <li>çoklu döküm özelliği</li>
+  <li>gzip döküm özelliği</li>
+  <li>zip döküm özelliği</li>
 </ul></li>
 
 <li>Geert Lund &lt;glund_at_silversoft.dk&gt;
 <ul>
-  <li>various fixes</li>
-  <li>moderator of the phpMyAdmin former users forum at phpwizard.net</li>
+  <li>çeşitli onarımlar</li>
+  <li>phpwizard.net adresindeki eski phpMyAdmin kullanıcıları forumunun moderatörü</li>
 </ul></li>
 
 <li>Korakot Chaovavanich &lt;korakot_at_iname.com&gt;
 <ul>
-  <li>&quot;insert as new row&quot; feature</li>
+  <li>&quot;yeni bir satır olarak ekle&quot; özelliği</li>
 </ul></li>
 
 <li>Pete Kelly &lt;webmaster_at_trafficg.com&gt;
 <ul>
-  <li>rewrote and fix dump code</li>
-  <li>bugfixes</li>
+  <li>döküm kodunu yeniden yazdı ve onardı</li>
+  <li>hata onarımları</li>
 </ul></li>
 
 <li>Steve Alberty &lt;alberty_at_neptunlabs.de&gt;
 <ul>
-  <li>rewrote dump code for PHP4</li>
-  <li>mySQL table statistics</li>
-  <li>bugfixes</li>
+  <li>PHP4 için döküm kodunu yeniden yazdı</li>
+  <li>mySQL tablo istatistikleri</li>
+  <li>hata onarımları</li>
 </ul></li>
 
 <li>Benjamin Gandon &lt;gandon_at_isia.cma.fr&gt;
 <ul>
-  <li>main author of the version 2.1.0.1</li>
-  <li>bugfixes</li>
+  <li>2.1.0.1 sürümünün asıl yazarı</li>
+  <li>hata onarımları</li>
 </ul></li>
 
 <li>Alexander M. Turek &lt;me_at_derrabus.de&gt;
 <ul>
-  <li>MySQL 4.0 / 4.1 / 5.0 compatibility</li>
-  <li>abstract database interface (PMA_DBI) with MySQLi support</li>
-  <li>privileges administration</li>
-  <li><abbr title="Extensible Markup Language">XML</abbr> exports</li>
-  <li>various features and fixes</li>
-  <li>German language file updates</li>
+  <li>MySQL 4.0 / 4.1 / 5.0 uyumluluğu</li>
+  <li>mySQLi desteği ile özet veritabanı arayüzü (PMA_DBI)</li>
+  <li>yetkiler yönetimi</li>
+  <li><abbr title="Extensible Markup Language">XML</abbr> dışa aktarmaları</li>
+  <li>çeşitli özellikler ve onarımlar</li>
+  <li>Almanca dil dosyası güncellemeleri</li>
 </ul></li>
 
 <li>Mike Beck &lt;mike.beck_at_web.de&gt;
 <ul>
-  <li>automatic joins in QBE</li>
-  <li>links column in printview</li>
+  <li>QBE içindeki otomatik birleştirmeler</li>
+  <li>baskı görünümü içinde bağlantılar sütunu</li>
   <li>Bağlantı görünümü</li>
 </ul></li>
 
 <li>Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
 <ul>
-  <li>enhanced index creation/display feature</li>
-  <li>feature to use a different charset for HTML than for MySQL</li>
-  <li>improvements of export feature</li>
-  <li>various features and fixes</li>
-  <li>Czech language file updates</li>
+  <li>geliştirilmiş indeks oluşturma/görüntüsü özelliği</li>
+  <li>MySQL'den farklı HTML için karakter grubu kullanma özelliği</li>
+  <li>dışa aktarma özelliği iyileştirilmeleri</li>
+  <li>çeşitli özellikler ve onarımlar</li>
+  <li>Çekçe dil dosyası güncellemeleri</li>
 </ul></li>
 
-<li>Christophe Gesch&eacute; from the &quot;MySQL Form Generator for
-PHPMyAdmin&quot; (http://sf.net/projects/phpmysqlformgen/)
+<li>&quot;phpMyAdmin için MySQL Form Oluşturucusu&quot; Christophe Gesch&eacute;
+(http://sf.net/projects/phpmysqlformgen/)
 <ul>
-  <li>suggested the patch for multiple table printviews</li>
+  <li>çoklu tablo baskı görünümleri için yama önerdi</li>
 </ul></li>
 
 <li>Garvin Hicking &lt;me_at_supergarv.de&gt;
 <ul>
-  <li>built the patch for vertical display of table rows</li>
-  <li>built the Javascript based Query window + <abbr title="structured query
-language">SQL</abbr> history</li>
-  <li>Improvement of column/db comments</li>
-  <li>(MIME)-Transformations for columns</li>
-  <li>Use custom alias names for Databases in left frame</li>
-  <li>hierarchical/nested table display</li>
-  <li><abbr title="Portable Document Format">PDF</abbr>-scratchboard for
-WYSIWYG-distribution of <abbr title="Portable Document Format">PDF</abbr>
-relations</li>
-  <li>new icon sets</li>
-  <li>vertical display of column properties page</li>
-  <li>some bugfixes, features, support, German language additions</li>
+  <li>tablo satırlarının dikey görünümü için yama yaptı</li>
+  <li>Sorgu penceresi tabanlı Javascript + <abbr title="structured query
+language">SQL</abbr> geçmişini yaptı</li>
+  <li>sütun/vt yorumlarının iyileştirilmesi</li>
+  <li>sütunlar için (MIME)-Dönüşümleri</li>
+  <li>sol çerçevede Veritabanları için özel kod adı kullanma</li>
+  <li>sıra düzenli/iç içe tablo görüntüleme</li>
+  <li><abbr title="Portable Document Format">PDF</abbr> bağlantılarının
+WYSIWYG-dağıtımı için <abbr title="Portable Document
+Format">PDF</abbr>-karalama panosu </li>
+  <li>yeni simge grupları</li>
+  <li>sütun özellikleri sayfasının dikey görüntülenmesi</li>
+  <li>bazı hata onarımları, özellikler, destek, Almanca dil ilaveleri</li>
 </ul></li>
 
 <li>Yukihiro Kawada &lt;kawada_at_den.fujifilm.co.jp&gt;
@@ -5233,11 +5241,12 @@ relations</li>
 
 <li>Maxime Delorme &lt;delorme.maxime_at_free.fr&gt;
 <ul>
-  <li><abbr title="Portable Document Format">PDF</abbr> schema output, thanks also
-to Olivier Plathey for the &quot;FPDF&quot; library (see <a
-href="http://www.fpdf.org/">http://www.fpdf.org/</a>) and Steven Wittens for
-the &quot;UFPDF&quot; library (see <a
-href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
+  <li><abbr title="Portable Document Format">PDF</abbr> şeması çıktısı, aynı
+zamanda &quot;FPDF&quot; kütüphanesi (<a
+href="http://www.fpdf.org/">http://www.fpdf.org/</a> adresine bakın) için
+Olivier Plathey'e ve &quot;UFPDF&quot; kütüphanesi (<a
+href="http://www.acko.net/node/56">http://www.acko.net/node/56</a> adresine
+bakın) için Steven Wittens'a teşekkür ederiz.</li>
 </ul></li>
 
 <li>Olof Edlund &lt;olof.edlund_at_upright.se&gt;
@@ -5258,7 +5267,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 <li>Marcel Tschopp &lt;ne0x_at_users.sourceforge.net&gt;
 <ul>
   <li>mysqli desteği</li>
-  <li>many bugfixes and improvements</li>
+  <li>bir çok hata onarımları ve iyileştirilmeler</li>
 </ul></li>
 
 <li>Nicola Asuni (Tecnick.com)
@@ -5279,7 +5288,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
 <ul>
-  <li>arabirim geliştirmeleri</li>
+  <li>arayüz iyileştirilmeleri</li>
   <li>çeşitli hata onarımları</li>
 </ul></li>
 
@@ -5327,14 +5336,14 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Lori Lee (Google Summer of Code 2010)
 <ul>
-  <li>Kullanıcı arabirimi geliştirmeleri</li>
+  <li>Kullanıcı arayüzü iyileştirilmeleri</li>
   <li>ENUM/SET düzenleyicisi</li>
-  <li>Dışa/İçe aktarma için basitleştirilmiş arabirim</li>
+  <li>Dışa/İçe aktarma için basitleştirilmiş arayüz</li>
 </ul></li>
 
 <li>Ninad Pundalik (Google Summer of Code 2010)
 <ul>
-  <li>Arabirimi AJAX ile donatma</li>
+  <li>Arayüzü AJAX ile donatma</li>
 </ul></li>
 
 <li>Martynas Mickevičius (Google Summer of Code 2010)
@@ -5354,19 +5363,19 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Rouslan Placella (Google Summer of Code 2011)
 <ul>
-  <li>Improved support for Stored Routines, Triggers and Events</li>
+  <li>Saklanan Yordamlar, Tetikleyiciler ve Olaylar için gelişmiş destek</li>
   <li>İtalyanca çeviri güncellemeleri</li>
 </ul></li>
 
 </ul>
 
 <p>
-And also to the following people who have contributed minor changes,
-enhancements, bugfixes or support for a new language since version 2.1.0:
+Ve ayrıca 2.1.0 sürümünden beri yeni dil için destek veya hata onarımları,
+küçük değişiklikler, geliştirmeler ile katkıda bulunan aşağıdaki insanlar:
 </p>
 
 <p>
-Bora Alioglu, Ricardo ?, Sven-Erik Andersen, Alessandro Astarita,
+Bora Alioğlu, Ricardo ?, Sven-Erik Andersen, Alessandro Astarita,
 P&eacute;ter Bakondy, Borges Botelho, Olivier Bussier, Neil Darlow, Mats
 Engstrom, Ian Davidson, Laurent Dhima, Kristof Hamann, Thomas Kl&auml;ger,
 Lubos Klokner, Martin Marconcini, Girish Nair, David Nordenberg, Andreas
@@ -5382,48 +5391,48 @@ Zigmantas, &quot;Manuzhai&quot;.
 <h3>Sürüm 2.1.0'ın Orijinal Katkıda Bulunanları</h3>
 
 <p>
-    This work is based on Peter Kuppelwieser's MySQL-Webadmin. It was his idea
-to create a web-based interface to MySQL using PHP3. Although I have not
-used any of his source-code, there are some concepts I've borrowed from
-him. phpMyAdmin was created because Peter told me he wasn't going to further
-develop his (great) tool.
+    Bu iş Peter Kuppelwieser'ın MySQL-Webadmin'i esas alır. PHP3 kullanarak
+MySQL için web-tabanlı arayüz oluşturmak onun fikriydi. Onun hiç kaynak
+kodunu kullanmamış olmama rağmen, ondan ödünç aldığım bazı fikirler
+var. phpMyAdmin yaratıldı çünkü Peter (muazzam) aracının geliştirilmesinin
+daha öteye götürmeyeceğini söyledi.
 </p>
 <p>
-    Thanks go to
+    Teşekkürlerin sahipleri
 </p>
 <ul>
-  <li>Amalesh Kempf &lt;ak-lsml_at_living-source.com&gt; who contributed the code
-for the check when dropping a table or database. He also suggested that you
-should be able to specify the primary key on tbl_create.php3. To version
-1.1.1 he contributed the ldi_*.php3-set (Import text-files) as well as a
-bug-report. Plus many smaller improvements.
+  <li>Tablo ve veritabanı kaldırılırken kontrol için kod ile katkıda bulunan
+Amalesh Kempf &lt;ak-lsml_at_living-source.com&gt;. Kendisi aynı zamanda
+tbl_create.php3 dosyasında birincil anahtar belirlenebilmesini önerdi. Sürüm
+1.1.1'de hata raporunun yanı sıra ldi_*.php3-set (Metin-dosyalarını içe
+aktarma) ile katkıda bulundu. Artı bir çok ufak tefek iyileştirmeler.
   </li>
-  <li>Jan Legenhausen &lt;jan_at_nrw.net&gt;: He made many of the changes that
-were introduced in 1.3.0 (including quite significant ones like the
-authentication). For 1.4.1 he enhanced the table-dump feature. Plus
-bug-fixes and help.
+  <li>Jan Legenhausen &lt;jan_at_nrw.net&gt;: 1.3.0'da tanıtılan pek çok
+değişikliği yaptı (kimlik doğrulaması gibi oldukça önemli olanlar
+dahil). 1.4.1 için tablo-döküm özelliğini geliştirdi. Artı hata onarımları
+ve yardım.
   </li>
-  <li>Marc Delisle &lt;DelislMa_at_CollegeSherbrooke.qc.ca&gt; made phpMyAdmin
-language-independent by outsourcing the strings to a separate file. He also
-contributed the French translation.
+  <li>Marc Delisle &lt;DelislMa_at_CollegeSherbrooke.qc.ca&gt; phpMyAdmin dilini,
+dizgileri kaynak dışına ayrı bir dosyaya alarak bağımsız yaptı. Kendisi aynı
+zamanda Fransızca çevirisiyle katkıda bulundu.
   </li>
-  <li>Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt; who contributed
-tbl_select.php3, a feature to display only some columns from a table.
+  <li>Bir tablodan sadece bazı sütunların görüntülenmesi özelliği, tbl_select.php3
+ile katkıda bulunan Alexandr Bravo &lt;abravo_at_hq.admiral.ru&gt;.
   </li>
-  <li>Chris Jackson &lt;chrisj_at_ctel.net&gt; added support for MySQL functions
-in tbl_change.php3. He also added the &quot;Query by Example&quot; feature
-in 2.0.
+  <li>Chris Jackson &lt;chrisj_at_ctel.net&gt; tbl_change.php3 içine MySQL
+işlevleri için destek ekledi. Kendisi aynı zamanda 2.0'da &quot;Örnekli
+Sorgu&quot; özelliğini ekledi.
   </li>
-  <li>Dave Walton &lt;walton_at_nordicdms.com&gt; added support for multiple
-servers and is a regular contributor for bug-fixes.
+  <li>Dave Walton &lt;walton_at_nordicdms.com&gt; çoklu sunucular için destek
+ekledi ve hata onarımları için düzenli katkıda bulunan bir kişidir.
   </li>
-  <li>Gabriel Ash &lt;ga244_at_is8.nyu.edu&gt; contributed the random access
-features for 2.0.6.
+  <li>Gabriel Ash &lt;ga244_at_is8.nyu.edu&gt; 2.0.6 için gelişi güzel erişim
+özelliği ile katkıda bulundu.
   </li>
 </ul>
 <p>
-    The following people have contributed minor changes, enhancements, bugfixes
-or support for a new language:
+    Aşağıdaki insanlar yeni dil için destek veya hata onarımları, küçük
+değişiklikler, geliştirmeler ile katkıda bulundu:
 </p>
 <p>
     Jim Kraai, Jordi Bruguera, Miquel Obrador, Geert Lund, Thomas Kleemann,
@@ -5432,8 +5441,8 @@ Kettler, Joe Pruett, Renato Lins, Mark Kronsbein, Jannis Hermanns,
 G. Wieggers.
 </p>
 <p>
-    And thanks to everyone else who sent me email with suggestions, bug-reports
-and or just some feedback.
+    Ve bana önerileri, hata raporları ve/veya sadece bazı geri bildirimler ile
+eposta gönderen herkese teşekkürler.
 </p>
 
 <p>
@@ -5446,45 +5455,47 @@ adlarını yazmaktadırlar.
 <p> Vikipedi'den alınmıştır, ücretsiz ansiklopedi</p>
 
 <ul>
-    <li><a href="http://www.wikipedia.org/wiki/.htaccess">.htaccess</a> - the
-default name of Apache's directory-level configuration file.</li>
+    <li><a href="http://www.wikipedia.org/wiki/.htaccess">.htaccess</a> - Apache'nin
+dizin-seviye yapılandırma dosyasının varsayılan adı.</li>
     <li><a href="http://www.wikipedia.org/wiki/Blowfish_%28cipher%29">Blowfish</a> -
-a keyed, symmetric block cipher, designed in 1993 by Bruce Schneier.</li>
-    <li><a href="http://en.wikipedia.org/wiki/Web_browser">Browser (Web Browser)</a>
-- a software application that enables a user to display and interact with
-text, images, and other information typically located on a web page at a
-website on the World Wide Web.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Bzip2">bzip2</a> - a free
-software/open source data compression algorithm and program developed by
-Julian Seward.</li>
-    <li><a href="http://www.wikipedia.org/wiki/CGI">CGI (Common Gateway
-Interface)</a> - an important World Wide Web technology that enables a
-client web browser to request data from a program executed on the Web
-server.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Changelog">Changelog</a> - a log or
-record of changes made to a project.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Client_%28computing%29">Client</a> -
-a computer system that accesses a (remote) service on another computer by
-some kind of network.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Column_%28database%29">column</a> - a
-set of data values of a particular simple type, one for each row of the
-table.</li>
-    <li><a href="http://www.wikipedia.org/wiki/HTTP_cookie">Cookie</a> - a packet of
-information sent by a server to a World Wide Web browser and then sent back
-by the browser each time it accesses that server.</li>
+anahtarlama, simetrik blok şifreleme, 1993'te Bruce Schneier tarafından
+tasarlandı.</li>
+    <li><a href="http://en.wikipedia.org/wiki/Web_browser">Tarayıcı (Web
+Tarayıcısı)</a> - Kullanıcının Dünya Çapında Web (World Wide Web) üzerinde
+web sitesindeki web sayfasında tipik olarak bulunan metin, resimler ve diğer
+bilgiler ile etkileşimini ve görüntülemesini etkinleştiren bir yazılım
+uygulamasıdır.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Bzip2">bzip2</a> - Julian Seward
+tarafından geliştirilmiş ücretsiz yazılım/açık kaynaklı veri sıkıştırma
+algoritması ve programı.</li>
+    <li><a href="http://www.wikipedia.org/wiki/CGI">CGI (Common Gateway Interface -
+Ortak Ağ Geçidi Arayüzü)</a> - Web sunucusu üzerinde çalıştırılan bir
+programdan veri istemesi için istemci web tarayıcısını etkinleştiren önemli
+bir Dünya Çapında Web (World Wide Web) teknolojisidir.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Changelog">Changelog - Değişiklik
+günlüğü</a> - projede yapılan değişikliklerin kaydı veya günlüğü.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Client_%28computing%29">Client -
+İstemci</a> - bir çeşit ağ tarafından başka bir bilgisayardaki (uzak)
+hizmete erişen bir bilgisayar sistemi.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Column_%28database%29">column -
+sütun</a> - belirli basit bir türün veri değerleri grubudur, tablonun her
+bir satırı için tektir.</li>
+    <li><a href="http://www.wikipedia.org/wiki/HTTP_cookie">Cookie - Tanımlama
+Bilgisi</a> - sunucu tarafından World Wide Web tarayıcısına gönderilen ve
+sonra her defasında bu sunucuya erişen tarayıcı tarafından geri gönderilen
+bilgi paketi.</li>
     <li><a href="http://www.wikipedia.org/wiki/Comma-separated_values">CSV</a> -
-Comma-separated values</li>
-    <li>DB - look at <a href="#database">Database</a>.</li>
-    <li><a id="database" href="http://www.wikipedia.org/wiki/Database">database</a>
-- an organized collection of data.</li>
-    <li>Engine - look at <a href="#glossar_storage_engine">Storage Engines</a>.</li>
-    <li><a href="http://www.wikipedia.org/wiki/extension">extension</a> - a PHP
-module that extends PHP with additional functionality.</li>
-    <li><a href="http://www.wikipedia.org/wiki/FAQ">FAQ (Frequently Asked
-Questions)</a> - a list of commonly asked question and there answers.</li>
-    <li><a
-href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">Field</a>
-- one part of divided data/columns.</li>
+Virgülle ayrılmış değerler</li>
+    <li>VT - <a href="#database">Veritabanına</a> bakın.</li>
+    <li><a id="database" href="http://www.wikipedia.org/wiki/Database">database -
+veritabanı</a> - düzenli veri koleksiyonu.</li>
+    <li>Motor - <a href="#glossar_storage_engine">Depolama Motorlarına</a> bakın.</li>
+    <li><a href="http://www.wikipedia.org/wiki/extension">extension - uzantı</a> -
+ilave işlevsellikler ile PHP'yi genişleten bir PHP modülü.</li>
+    <li><a href="http://www.wikipedia.org/wiki/FAQ">FAQ - SSS (Sıkça Sorulan
+Sorular)</a> - genellikle sorulmuş soru listesi ve yanıtları.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">Field -
+Alan</a> - bölünmüş veri/sütunların bir parçası.</li>
     <li><a href="http://www.wikipedia.org/wiki/Foreign_key">foreign key</a> - a
 column or group of columns in a database row that point to a key column or
 group of columns forming a key of another database row in some (usually
