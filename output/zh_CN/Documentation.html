@@ -19,7 +19,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.6.0-dev - 文档</title>
+    <title>phpMyAdmin 4.0.0-dev - 文档</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.6.0-dev 文档
+class="myadmin">MyAdmin</span></a> 4.0.0-dev 文档
     </h1>
 </div>
 
@@ -60,6 +60,7 @@ href="https://l10n.cihar.com/projects/pmadoc/">翻译服务器</a>来帮助我�
     <li><a href="https://sourceforge.net/projects/phpmyadmin/"> phpMyAdmin 在
 SourceForge.net 的项目页 (英语)</a></li>
     <li><a href="http://wiki.phpmyadmin.net"> phpMyAdmin 官方维基 (wiki，英语)</a></li>
+    <li><a href="https://github.com/phpmyadmin"> Git repositories on Github</a></li>
     <li>本地文档:
         <ul><li>版本历史: <a href="changelog.php">更新记录 (ChangeLog，英语)</a></li>
             <li>授权: <a href="license.php">授权 (LICENSE，英语)</a></li>
@@ -264,12 +265,17 @@ Questions)">FAQ</abbr> 4.4</a> 中所提到的问题。</li>
     <li>在浏览器中打开 <a href="index.php">phpMyAdmin 主目录</a>。现在 phpMyAdmin
 应该显示一个欢迎页面和你的数据库，如果使用 <abbr title="超文本转移协议 (HyperText Transfer
 Protocol)">HTTP</abbr> 或 cookie 认证，则将显示一个登录对话框。</li>
-    <li>你应该在你的网站服务器中设置禁止对 <tt>./libraries</tt> 和 <tt>./setup/lib</tt> 这两个子目录的访问。在
-Apache 中你可以通过 .htaccess 文件设置，其他网站服务器请自行设置。通过设置来预防可能的路径泄露以及跨占脚本攻击，加强服务器的安全性。</li>
+    <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
+subfolders in your webserver configuration. For Apache you can use supplied
+<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
+webservers, you should configure this yourself.  Such configuration prevents
+from possible path exposure and cross side scripting vulnerabilities that
+might happen to be found in that code.</li>
     <li>
-        禁止搜索引擎访问公开的 phpMyAdmin 是个好方法，因为这对它们没有任何用处。你可以使用网站服务器根目录的
-<code>robots.txt</code> 文件或直接从网站服务器设置中限制其访问。你可以在 <code>contrib</code> 目录下找到
-<code>.htaccess</code> 文件的范例。
+        It is generally good idea to protect public phpMyAdmin installation against
+access by robots as they usually can not do anything good there. You can do
+this using <code>robots.txt</code> file in root of your webserver or limit
+access by web server configuration, see <a href="#faq1_42">FAQ 1.42</a>.
     </li>
 </ol>
 
@@ -389,9 +395,10 @@ title="通用网关接口 (Common Gateway Interface)">CGI</abbr> 方式使用的
 href="#faq1_35"><abbr title="常见问题 (Frequently Asked Questions)">FAQ</abbr>
 1.35</a> 了解如何设置在 Apache 中以 <abbr title="通用网关接口 (Common Gateway
 Interface)">CGI</abbr> 方式使用的 PHP 。</li>
-    <li>参见 <a href="#faq4_4"> <abbr title="常见问题 (Frequently Asked
-Questions)">FAQ</abbr> 4.4</a> 关于不要同时使用 <i>.htaccess</i> 和 '<abbr
-title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>' 认证的问题。</li>
+    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.4</a> about not using the <a
+href="#glossary"><i>.htaccess</i></a> mechanism along with '<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
 </ul>
 
 <h4>'cookie' 认证</h4>
@@ -428,10 +435,13 @@ Questions)">FAQ</abbr></a> 一节中将会说明如何保护你的配置文件�
 class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> 和 <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> 指令。</li>
-    <li>与 cookie 和 http 认证不同，在首次访问 phpMyAdmin 时 config
-认证不会要求用户登录。这将导致任意用户都能访问。我们建议使用其他方式进行限制，如要求 HTTP 认证设置的 <a
-href="#glossary">.htaccess</a> 文件或者从路由器/防火墙禁止访问 (上述方法均不属于本手册的范围，但可以通过 Google
-等搜索引擎很容易的找到)。</li>
+    <li>Unlike cookie and http, does not require a user to log in when first loading
+the phpMyAdmin site. This is by design but could allow any user to access
+your installation. Use of some restriction method is suggested, perhaps a <a
+href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
+disallowing incoming HTTP requests at one&#8217;s router or firewall will
+suffice (both of which are beyond the scope of this manual but easily
+searchable with Google).</li>
 </ul>
 <h4 id="swekey">Swekey 认证</h4>
 <p>
@@ -444,9 +454,12 @@ Swekey 是可用于网站应用程序上的廉价 USB 证书。<br /><br />
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-然后你要创建用来保存每个用户 Swekey 标识的文件 <tt>swekey.conf</tt> 。这个文件不应该放在网站服务器的文档根目录
-(在例子中，我们把它放在了 <tt>/etc</tt>) 。在 <tt>contrib</tt>
-目录下可以找到一个带有说明的范例文件。欢迎使用你自己的用户信息。<br /><br />
+You then have to create the <tt>swekey.conf</tt> file that will associate
+each user with their Swekey Id. It is important to place this file outside
+of your web server's document root (in the example, it is located in
+<tt>/etc</tt>). A self documented sample file is provided in the
+<tt>examples</tt> directory. Feel free to use it with your own users'
+information.<br /><br />
 如果你想购买 Swekey 请访问 <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key
 (外链，英语)</a>，通过此链接购买 phpMyAdmin 将会得到捐助。
@@ -599,13 +612,13 @@ title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>'</tt>) �
 introduced in 2.10.0 allows you to log in from prepared PHP session data or
 using supplied PHP script. This is useful for implementing single signon
 from another application.  Sample way how to seed session is in signon
-example: <code>scripts/signon.php</code>.  There is also alternative example
-using OpenID - <code>scripts/openid.php</code> and example for scripts based
-solution - <code>scripts/signon-script.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> or <a
-href="#cfg_Servers_SignonScript" class="configrule">script to be
-executed</a> and <a href="#cfg_Servers_SignonURL" class="configrule">signon
-URL</a> to use this authentication method.</li>
+example: <code>examples/signon.php</code>.  There is also alternative
+example using OpenID - <code>examples/openid.php</code> and example for
+scripts based solution - <code>examples/signon-script.php</code>.  You need
+to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
+name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
+be executed</a> and <a href="#cfg_Servers_SignonURL"
+class="configrule">signon URL</a> to use this authentication method.</li>
         </ul>
 
         详细信息请参见<a href="#setup">安装</a>一节中的&quot;使用认证&quot;。
@@ -1131,7 +1144,7 @@ credentials. This is alternative approach to session based single
 signon. The script needs to provide function
 <code>get_login_credentials</code> which returns list of username and
 password, accepting single parameter of existing username (can be empty).
-See <code>scripts/signon-script.php</code> for an example.
+See <code>examples/signon-script.php</code> for an example.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -2687,15 +2700,21 @@ phpMyAdmin。</p>
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 我能直接输入网址来显示数据库和表吗？</a></h4>
 
-<p> 当然可以。您可以直接输入类似
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
-的 <abbr title="Uniform Resource Locator">URL</abbr>。其中，server 域指定了您在
-<tt>config.inc.php</tt> 中设置的服务器编号。table 和 script 域是可选的。如果您想使用类似
-http://server/phpMyAdmin/database[/table][/script] 这样的 <abbr title="Uniform
-Resource Locator">URL</abbr>，还需要进行一些额外的设置。下面给出在 Apache 上进行设置的方法：
-首先请确定您已经在全局范围内启用了 <code>Options FollowSymLinks</code> 和 <code>AllowOverride
-FileInfo</code> 功能，然后，在 phpMyAdmin 的目录配置下启用这两个功能。接着，在 phpMyAdmin 根目录下创建
-.htaccess 文件，并将如下内容写入文件中：</p>
+<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
+Locator">URL</abbr>s like
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
+For <tt>server</tt> you use the server number which refers to the order of
+the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
+optional. If you want http://server/phpMyAdmin/database[/table][/script]
+<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
+configuration. Following lines apply only for <a
+href="http://httpd.apache.org">Apache</a> web server. First make sure, that
+you have enabled some features within global configuration. You need
+<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
+enabled for directory where phpMyAdmin is installed and you need mod_rewrite
+to be enabled. Then you just need to create following <a
+href="#glossary"><i>.htaccess</i></a> file in root folder of phpMyAdmin
+installation (don't forget to change directory name inside of it):</p>
 
 <pre>
 RewriteEngine On
@@ -2827,6 +2846,36 @@ href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.o
 privileges, I get an error about an unknown column.</a></h4>
 
 <p> MySQL 服务器的权限表没有更新，请运行 <tt>mysql_upgrade</tt> 命令来进行更新。</p>
+
+<h4 id="faq1_42">
+    <a href="#faq1_42">1.42 How can I prevent robots from accessing
+phpMyAdmin?</a></h4>
+
+<p>You can add various rules to <a href="#glossary"><i>.htaccess</i></a> to
+filter access based on user agent field. This is quite easy to circumvent,
+but could prevent at least some robots accessing your installation.</p>
+
+<pre>
+RewriteEngine on
+
+# Allow only GET and POST verbs
+RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
+
+# Ban Typical Vulnerability Scanners and others
+# Kick out Script Kiddies
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|scan|acunetix).* [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
+
+# Ban Search Engines, Crawlers to your administrative panel
+# No reasons to access from bots
+# Ultimately Better than the useless robots.txt
+# Did google respect robots.txt?
+# Try google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
+RewriteCond %{HTTP_USER_AGENT} ^.*(AdsBot-Google|ia_archiver|Scooter|Ask.Jeeves|Baiduspider|Exabot|FAST.Enterprise.Crawler|FAST-WebCrawler|www\.neomo\.de|Gigabot|Mediapartners-Google|Google.Desktop|Feedfetcher-Google|Googlebot|heise-IT-Markt-Crawler|heritrix|ibm.com\cs/crawler|ICCrawler|ichiro|MJ12bot|MetagerBot|msnbot-NewsBlogs|msnbot|msnbot-media|NG-Search|lucene.apache.org|NutchCVS|OmniExplorer_Bot|online.link.validator|psbot0|Seekbot|Sensis.Web.Crawler|SEO.search.Crawler|Seoma.\[SEO.Crawler\]|SEOsearch|Snappy|www.urltrends.com|www.tkl.iis.u-tokyo.ac.jp/~crawler|SynooBot|crawleradmin.t-info@telekom.de|TurnitinBot|voyager|W3.SiteSearch.Crawler|W3C-checklink|W3C_Validator|www.WISEnutbot.com|yacybot|Yahoo-MMCrawler|Yahoo\!.DE.Slurp|Yahoo\!.Slurp|YahooSeeker).* [NC]
+RewriteRule .* - [F]
+</pre>
+
 
 
 <h3 id="faqconfig">设置</h3>
@@ -3202,7 +3251,8 @@ against evil access.  </a></h4>
     This depends on your system.<br />
     If you're running a server which cannot be accessed by other people, it's
 sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <i>.htaccess</i> files, for example).<br />
+Apache you can use <a href="#glossary"><i>.htaccess</i></a> files, for
+example).<br />
     If other people have telnet access to your server, you should use
 phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
 authentication features.
@@ -3246,8 +3296,8 @@ href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
     <li>The username/password you specify in the login dialog are invalid.</li>
     <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a .htaccess file. This would interfere with phpMyAdmin's authentication,
-so remove it.</li>
+eg. a <a href="#glossary"><i>.htaccess</i></a> file. This would interfere
+with phpMyAdmin's authentication, so remove it.</li>
 </ul>
 
 <h4 id="faq4_5">
@@ -3264,13 +3314,13 @@ his/her database(s).</p>
     <a href="#faq4_6">4.6 How can I use the Host-based authentication
 additions?</a></h4>
 
-<p> If you have existing rules from an old .htaccess file, you can take them and
-add a username between the <tt>'deny'</tt>/<tt>'allow'</tt> and
-<tt>'from'</tt> strings. Using the username wildcard of <tt>'%'</tt> would
-be a major benefit here if your installation is suited to using it. Then you
-can just add those updated lines into the <a
-href="#cfg_Servers_AllowDeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+<p> If you have existing rules from an old <a
+href="#glossary"><i>.htaccess</i></a> file, you can take them and add a
+username between the <tt>'deny'</tt>/<tt>'allow'</tt> and <tt>'from'</tt>
+strings. Using the username wildcard of <tt>'%'</tt> would be a major
+benefit here if your installation is suited to using it. Then you can just
+add those updated lines into the <a href="#cfg_Servers_AllowDeny_rules"
+class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
 
 <p> If you want a pre-made sample, you can try this fragment. It stops the
 'root' user from logging in from any networks other than the private network
@@ -4098,24 +4148,11 @@ tracker</a>.
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 怎样帮助开发 phpMyAdmin ？</a></h4>
 
-<p> 对新开发者推荐以下方式:</p>
-
-<ol><li>通过匿名方式获取当前 git 库:<br />
-    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
-    </li>
-    <li>添加你的内容</li>
-    <li>生成你的补丁: <tt>git diff &gt; xxx.diff</tt><br />
-    </li>
-    <li>通过 <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">phpMyAdmin
-项目的补丁追踪器</a>提交你的补丁。
-    </li>
-</ol>
-
-<p>更多关于 git 的详细信息请见<a href="http://wiki.phpmyadmin.net/pma/Git">我们的维基</a>。</p>
-
-<p> 库的写入权限仅授予给那些对 phpMyAdmin 作出大量贡献且富有经验的开发者。<br />
-    同时，请看一下<a href="#developers">开发</a>一节。</p>
+<p>We welcome every contribution to the development of phpMyAdmin.  You can
+check out all the possibilities to contribute in the <a
+href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
+our website</a>.
+   </p>
 
 <h3 id="faqsecurity">安全</h3>
 
@@ -4202,32 +4239,10 @@ and they must have a primary key.
 
 <p> phpMyAdmin 是开源的，我们欢迎您的参与。很多优秀的功能都不是我们写的，你同样可以帮助 phpMyAdmin 变成更加实用的工具。</p>
 
-<p> 如果您正打算贡献源代码，请阅读以下信息:</p>
-
-<ul><li>所有文件包括 <i>libraries/header.inc.php</i> (布局)、<i>libraries/common.lib.php</i>
-(公共函数) 以及 <i>config.inc.php</i> 。<br />
-        <i>config.inc.php</i> 中应只存放设置。请勿在其中加入其他代码。<br />
-        公共函数应添加在 <i>libraries/common.lib.php</i> 中，特定功能的函数可以单独的函数库文件形式放在
-<i>libraries</i> 子目录中。</li>
-    <li>您可以使用任何喜欢的格式书写代码。但请尽量保持代码简洁: 初学者经常使用 phpMyAdmin 作为范例来学习。<br />
-        此外，我们希望能兼容 XHTML1.0 和 CSS2 并且符合 <a href="http://pear.php.net/"> <abbr
-title="PHP 扩展和应用程序库 (PHP Extension and Application Repository)">PEAR</abbr>
-代码标准</a>。请尽量注意。</li>
-    <li>请通过 <code><a
-href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
-指令开启显示 PHP 错误和警告。</li>
-    <li>请尽量保持文件命名约定。数据表相关的用 <i>tbl_*.php</i>，数据库相关的用 <i>db_*.php</i>，服务器相关的用
-<i>server_*.php</i> 等。</li>
-    <li>请使用 gettext 调用所有文本 (<code>__('文本')</code> 或 <code>_ngettext()</code> 函数)。
-若需要翻译，运行 <code>scripts/update-po</code> 脚本。要使用已翻译的文本，运行
-<code>scripts/generate-mo</code>，即可生成 Gettext 所需的二进制文件。</li>
-    <li>如果您写一份更新记录，这将会更加有帮助。</li>
-    <li id="developersdbg">
-        phpMyAdmin 现在已经支持 DBG 扩展 (<a href="http://dd.cron.ru/dbg/">PHP 调试器 DBG
-(外链，英语)</a>) 以便开发者能更好地调试以及测试他们的代码。<br />
-        更多信息请参见 <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a> 设置选项。<br />
-        纪念哥伦比亚号航天飞机 (STS-107) 在重新进入地球大气层时爆炸以及为了地球人民牺牲的勇敢的人们。</li>
-</ul>
+<p>You can check out all the possibilities to contribute in the <a
+href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
+our website</a>.
+   </p>
 
 <h2 id="copyright">版权</h2>
 
@@ -4253,8 +4268,9 @@ Copyright (C) 2001-2012 Marc Delisle &lt;marc_at_infomarc.info&gt;
 </p>
 
 <p>
-你应该在获得此软件的同时收到一份 GNU 通用公共许可协议的副本如果没有，请致函 Free Software Foundation, Inc., 51
-Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <a
+href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 </p>
 
 

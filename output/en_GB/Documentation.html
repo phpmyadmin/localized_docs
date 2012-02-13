@@ -19,7 +19,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 3.6.0-dev - Documentation</title>
+    <title>phpMyAdmin 4.0.0-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -27,7 +27,7 @@ Or you can edit them online at https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 3.6.0-dev Documentation
+class="myadmin">MyAdmin</span></a> 4.0.0-dev Documentation
     </h1>
 </div>
 
@@ -61,6 +61,7 @@ href="https://l10n.cihar.com/projects/pmadoc/">translation server</a>.
     <li><a href="https://sourceforge.net/projects/phpmyadmin/"> SourceForge
 phpMyAdmin project page</a></li>
     <li><a href="http://wiki.phpmyadmin.net"> Official phpMyAdmin wiki</a></li>
+    <li><a href="https://github.com/phpmyadmin"> Git repositories on Github</a></li>
     <li>Local documents:
         <ul><li>Version history: <a href="changelog.php">ChangeLog</a></li>
             <li>License: <a href="license.php">LICENSE</a></li>
@@ -318,17 +319,15 @@ or a login dialogue if using <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> or cookie authentication mode.</li>
     <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
 subfolders in your webserver configuration. For Apache you can use supplied
-.htaccess file in that folder, for other webservers, you should configure
-this yourself.  Such configuration prevents from possible path exposure and
-cross side scripting vulnerabilities that might happen to be found in that
-code.</li>
+<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
+webservers, you should configure this yourself.  Such configuration prevents
+from possible path exposure and cross side scripting vulnerabilities that
+might happen to be found in that code.</li>
     <li>
         It is generally good idea to protect public phpMyAdmin installation against
 access by robots as they usually can not do anything good there. You can do
 this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration. You can find example
-<code>.htaccess</code> file which can help you achieve this in
-<code>contrib</code> directory in phpMyAdmin.
+access by web server configuration, see <a href="#faq1_42">FAQ 1.42</a>.
     </li>
 </ol>
 
@@ -480,9 +479,9 @@ Apache <abbr title="Common Gateway Interface">CGI</abbr> see <a
 href="#faq1_35"><abbr title="Frequently Asked Questions">FAQ</abbr>
 1.35</a>.</li>
     <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <i>.htaccess</i> mechanism
-along with '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'
-authentication mode.</li>
+Questions">FAQ</abbr> 4.4</a> about not using the <a
+href="#glossary"><i>.htaccess</i></a> mechanism along with '<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
 </ul>
 
 <h4>'cookie' authentication mode</h4>
@@ -532,7 +531,7 @@ $cfg['Servers'][$i]['AllowDeny']['rules']</a> configuration directives.</li>
     <li>Unlike cookie and http, does not require a user to log in when first loading
 the phpMyAdmin site. This is by design but could allow any user to access
 your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary">.htaccess</a> file with the HTTP-AUTH directive or
+href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
 disallowing incoming HTTP requests at one&#8217;s router or firewall will
 suffice (both of which are beyond the scope of this manual but easily
 searchable with Google).</li>
@@ -555,7 +554,7 @@ You then have to create the <tt>swekey.conf</tt> file that will associate
 each user with their Swekey Id. It is important to place this file outside
 of your web server's document root (in the example, it is located in
 <tt>/etc</tt>). A self documented sample file is provided in the
-<tt>contrib</tt> directory. Feel free to use it with your own users'
+<tt>examples</tt> directory. Feel free to use it with your own users'
 information.<br /><br />
 If you want to purchase a Swekey please visit <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
@@ -758,13 +757,13 @@ any valid MySQL user via HTTP-Auth.</li>
 introduced in 2.10.0 allows you to log in from prepared PHP session data or
 using supplied PHP script. This is useful for implementing single signon
 from another application.  Sample way how to seed session is in signon
-example: <code>scripts/signon.php</code>.  There is also alternative example
-using OpenID - <code>scripts/openid.php</code> and example for scripts based
-solution - <code>scripts/signon-script.php</code>.  You need to configure <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> or <a
-href="#cfg_Servers_SignonScript" class="configrule">script to be
-executed</a> and <a href="#cfg_Servers_SignonURL" class="configrule">signon
-URL</a> to use this authentication method.</li>
+example: <code>examples/signon.php</code>.  There is also alternative
+example using OpenID - <code>examples/openid.php</code> and example for
+scripts based solution - <code>examples/signon-script.php</code>.  You need
+to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
+name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
+be executed</a> and <a href="#cfg_Servers_SignonURL"
+class="configrule">signon URL</a> to use this authentication method.</li>
         </ul>
 
         Please see the <a href="#setup">install section</a> on &quot;Using
@@ -1391,7 +1390,7 @@ credentials. This is alternative approach to session based single
 signon. The script needs to provide function
 <code>get_login_credentials</code> which returns list of username and
 password, accepting single parameter of existing username (can be empty).
-See <code>scripts/signon-script.php</code> for an example.
+See <code>examples/signon-script.php</code> for an example.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -3131,9 +3130,9 @@ href="http://httpd.apache.org">Apache</a> web server. First make sure, that
 you have enabled some features within global configuration. You need
 <code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
 enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <code>.htaccess</code>
-file in root folder of phpMyAdmin installation (don't forget to change
-directory name inside of it):</p>
+to be enabled. Then you just need to create following <a
+href="#glossary"><i>.htaccess</i></a> file in root folder of phpMyAdmin
+installation (don't forget to change directory name inside of it):</p>
 
 <pre>
 RewriteEngine On
@@ -3279,6 +3278,36 @@ privileges, I get an error about an unknown column.</a></h4>
 
 <p> The MySQL server's privilege tables are not up to date, you need to run the
 <tt>mysql_upgrade</tt> command on the server.</p>
+
+<h4 id="faq1_42">
+    <a href="#faq1_42">1.42 How can I prevent robots from accessing
+phpMyAdmin?</a></h4>
+
+<p>You can add various rules to <a href="#glossary"><i>.htaccess</i></a> to
+filter access based on user agent field. This is quite easy to circumvent,
+but could prevent at least some robots accessing your installation.</p>
+
+<pre>
+RewriteEngine on
+
+# Allow only GET and POST verbs
+RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
+
+# Ban Typical Vulnerability Scanners and others
+# Kick out Script Kiddies
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|scan|acunetix).* [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
+
+# Ban Search Engines, Crawlers to your administrative panel
+# No reasons to access from bots
+# Ultimately Better than the useless robots.txt
+# Did google respect robots.txt?
+# Try google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
+RewriteCond %{HTTP_USER_AGENT} ^.*(AdsBot-Google|ia_archiver|Scooter|Ask.Jeeves|Baiduspider|Exabot|FAST.Enterprise.Crawler|FAST-WebCrawler|www\.neomo\.de|Gigabot|Mediapartners-Google|Google.Desktop|Feedfetcher-Google|Googlebot|heise-IT-Markt-Crawler|heritrix|ibm.com\cs/crawler|ICCrawler|ichiro|MJ12bot|MetagerBot|msnbot-NewsBlogs|msnbot|msnbot-media|NG-Search|lucene.apache.org|NutchCVS|OmniExplorer_Bot|online.link.validator|psbot0|Seekbot|Sensis.Web.Crawler|SEO.search.Crawler|Seoma.\[SEO.Crawler\]|SEOsearch|Snappy|www.urltrends.com|www.tkl.iis.u-tokyo.ac.jp/~crawler|SynooBot|crawleradmin.t-info@telekom.de|TurnitinBot|voyager|W3.SiteSearch.Crawler|W3C-checklink|W3C_Validator|www.WISEnutbot.com|yacybot|Yahoo-MMCrawler|Yahoo\!.DE.Slurp|Yahoo\!.Slurp|YahooSeeker).* [NC]
+RewriteRule .* - [F]
+</pre>
+
 
 
 <h3 id="faqconfig">Configuration</h3>
@@ -3697,7 +3726,8 @@ against evil access.  </a></h4>
     This depends on your system.<br />
     If you're running a server which cannot be accessed by other people, it's
 sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <i>.htaccess</i> files, for example).<br />
+Apache you can use <a href="#glossary"><i>.htaccess</i></a> files, for
+example).<br />
     If other people have telnet access to your server, you should use
 phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
 authentication features.
@@ -3741,8 +3771,8 @@ href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
     <li>The username/password you specify in the login dialogue are invalid.</li>
     <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a .htaccess file. This would interfere with phpMyAdmin's authentication,
-so remove it.</li>
+eg. a <a href="#glossary"><i>.htaccess</i></a> file. This would interfere
+with phpMyAdmin's authentication, so remove it.</li>
 </ul>
 
 <h4 id="faq4_5">
@@ -3759,13 +3789,13 @@ his/her database(s).</p>
     <a href="#faq4_6">4.6 How can I use the Host-based authentication
 additions?</a></h4>
 
-<p> If you have existing rules from an old .htaccess file, you can take them and
-add a username between the <tt>'deny'</tt>/<tt>'allow'</tt> and
-<tt>'from'</tt> strings. Using the username wildcard of <tt>'%'</tt> would
-be a major benefit here if your installation is suited to using it. Then you
-can just add those updated lines into the <a
-href="#cfg_Servers_AllowDeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+<p> If you have existing rules from an old <a
+href="#glossary"><i>.htaccess</i></a> file, you can take them and add a
+username between the <tt>'deny'</tt>/<tt>'allow'</tt> and <tt>'from'</tt>
+strings. Using the username wildcard of <tt>'%'</tt> would be a major
+benefit here if your installation is suited to using it. Then you can just
+add those updated lines into the <a href="#cfg_Servers_AllowDeny_rules"
+class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
 
 <p> If you want a pre-made sample, you can try this fragment. It stops the
 'root' user from logging in from any networks other than the private network
@@ -4687,26 +4717,11 @@ tracker</a>.
     <a href="#faq7_3">7.3 I would like to help out with the development of
 phpMyAdmin. How should I proceed?</a></h4>
 
-<p> The following method is preferred for new developers:</p>
-
-<ol><li>fetch the current git repository over anonymous git:<br />
-    <tt>git clone git://github.com/phpmyadmin/phpmyadmin.git</tt><br />
-    </li>
-    <li>add your stuff</li>
-    <li>generate patch with your changes: <tt>git diff &gt; xxx.diff</tt><br />
-    </li>
-    <li>submit your patch via the <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=377410">patch
-tracker of the phpMyAdmin project</a>.
-    </li>
-</ol>
-
-<p>More details on git are available on <a
-href="http://wiki.phpmyadmin.net/pma/Git">our wiki</a>.</p>
-
-<p> Write access to the repository is granted only to experienced developers who
-have already contributed something useful to phpMyAdmin.<br />
-    Also, have a look at the <a href="#developers">Developers section</a>.</p>
+<p>We welcome every contribution to the development of phpMyAdmin.  You can
+check out all the possibilities to contribute in the <a
+href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
+our website</a>.
+   </p>
 
 <h3 id="faqsecurity">Security</h3>
 
@@ -4826,46 +4841,10 @@ and they must have a primary key.
 features have been written by other people and you too can help to make
 phpMyAdmin a useful tool.</p>
 
-<p> If you're planning to contribute source, please read the following
-information:</p>
-
-<ul><li>All files include <i>libraries/header.inc.php</i> (layout),.
-<i>libraries/common.lib.php</i> (common functions) and
-<i>config.inc.php</i>.<br />
-        Only configuration data should go in <i>config.inc.php</i>. Please keep it
-free from other code.<br />
-        Commonly used functions should be added to <i>libraries/common.lib.php</i>
-and more specific ones may be added within a library stored into the
-<i>libraries</i> sub-directory.</li>
-    <li>Obviously, you're free to use whatever coding style you want. But please try
-to keep your code as simple as possible: beginners are using phpMyAdmin as
-an example application.<br />
-        As far as possible, we want the scripts to be XHTML1.0 and CSS2 compliant on
-one hand, they fit the <a href="http://pear.php.net/"> <abbr title="PHP
-Extension and Application Repository">PEAR</abbr> coding standards</a> on
-the other hand. Please pay attention to this.</li>
-    <li>Please enable showing PHP errors and warnings by the <code><a
-href="#cfg_Error_Handler_display">$cfg['Error_Handler']['display']</a></code>
-configuration directive.</li>
-    <li>Please try to keep up the file-naming conventions. Table-related stuff goes
-to <i>tbl_*.php</i>, db-related code to <i>db_*.php</i>, server-related
-tools to <i>server_*.php</i> and so on.</li>
-    <li>Please use gettext wrappers around all messages (<code>__('Some
-text')</code> or <code>_ngettext()</code> function).  To translate them, you
-need to call <code>scripts/update-po</code> script. To use translated
-messages, call <code>scripts/generate-mo</code>, which generates binary
-files read by Gettext.</li>
-    <li>If you want to be really helpful, write an entry for the ChangeLog.</li>
-    <li id="developersdbg">
-        The DBG extension (<a href="http://dd.cron.ru/dbg/">PHP Debugger DBG</a>) is
-now supported by phpMyAdmin for developers to better debug and profile their
-code.<br />
-        Please see the <a href="#cfg_DBG" class="configrule">$cfg['DBG']*</a>
-configuration options for more information.<br />
-        This is in memoriam of the Space Shuttle Columbia (STS-107) which was lost
-during its re-entry into Earth's atmosphere and in memory of the brave men
-and women who gave their lives for the people of Earth.</li>
-</ul>
+<p>You can check out all the possibilities to contribute in the <a
+href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
+our website</a>.
+   </p>
 
 <h2 id="copyright">Copyright</h2>
 
@@ -4897,8 +4876,8 @@ more details.
 
 <p>
 You should have received a copy of the GNU General Public License along with
-this program; if not, write to the Free Software Foundation, Inc., 51
-Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+this program.  If not, see <a
+href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 </p>
 
 
