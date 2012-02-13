@@ -1770,10 +1770,11 @@ sembolleri içermesi gerekirse tanımlar. TRUE değeri simgeleri gösterir,
 FALSE metini gösterir ve 'both' simgeler ve metnin her ikisinide gösterir.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] boolean</dt>
-    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
-browse mode or not in all cases.  By default it is shown only on small
-tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
-to avoid performance issues while getting too many rows.</dd>
+    <dd>Kullanıcının gözatma kipinde veya tüm durumlarda &quot;Tümünü göster&quot;
+düğmesini görüntüleyip görüntülememesini tanımlar. Varsayılan olarak çok
+fazla satır getirilirken performans sorunlarını önlemek için sadece küçük
+tablolarda (5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> satırdan
+daha az) gösterilir.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] tam sayı</dt>
     <dd>Sonuç grubuna göz atıldığında ve SINIR yok tümcesi kullanıldığında
@@ -2989,13 +2990,12 @@ sorunlar meydana gelmemelidir. Eğer mümkünse, yeni içe aktarma
 özelliklerinin avantajından yararlanmak için phpMyAdmin'inizi en son sürüme
 yükseltin.</p>
 
-<p> Kontrol edilecek (veya kontrol etmesi için anamakine sağlayacısına
-sorulacak) ilk şeyler <i>php.ini</i> yapılandırma dosyası içindeki
-<tt>upload_max_filesize</tt>, <tt>memory_limit</tt> ve
-<tt>post_max_size</tt> değerleridir. Tüm bu üç ayar PHP tarafından işlenen
-ve gönderilebilen en fazla veri boyutunu sınırlandırır. Aynı zamanda bir
-kullanıcı post_max_size ve memory_limit değerlerinin upload_max_filesize
-değerinden daha büyük olması gerektiğini söylemiştir.<br /> <br />
+<p> The first things to check (or ask your host provider to check) are the
+values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
+<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
+these three settings limit the maximum size of data that can be submitted
+and handled by PHP. One user also said that <tt>post_max_size</tt> and
+<tt>memory_limit</tt> need to be larger than <tt>upload_max_filesize</tt>.<br /> <br />
 
     Eğer göndermeniz çok büyükse ye da barındırma sağlayıcınız ayarları
 değiştirmeye yanaşmıyorsa birkaç geçici çözüm mevcuttur:</p>
@@ -4459,8 +4459,9 @@ ayarlayabileceksiniz.</p>
     <a href="#faq6_16">6.16 Bir yığın düzenleme alanı ile sayfa içinde nasıl
 basitçe taşıyabilirim?</a></h4>
 
-<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
-with many editing fields (table structure changes, row editing, etc.).</p>
+<p> Çoğu sayfada pek çok düzenleme alanı (tablo yapısı değişiklikleri, satır
+düzenleme, v.s.) ile taşımak için Ctrl+ok tuşlarını (Safari'de Option+Ok
+tuşları) kullanabilirsiniz.</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 Dönüşümler: Kendi mime türümü giremiyorum! WTF bu
@@ -4756,8 +4757,8 @@ chmod o+rwx tmp
 <h4 id="faq6_31">
     <a href="#faq6_31">6.31 Tasarımcıda bağlantıyı nasıl oluştururum?</a></h4>
 
-    <p>To select relation, click:<br />
-    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    <p>Bağlantı seçmek için, tıklayın:<br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[bağlantı simgesi]" /><br />
     Görüntü sütunu pembe ile gösterilir. Alanı, görüntü sütunu olarak
 ayarlamak/ayarı kaldırmak için "Görüntülemek için sütun seçin" simgesine
 tıklayın, sonrada uygun sütun adı üzerine tıklayın.</p>
@@ -4771,13 +4772,13 @@ seçerek ve 'Ara' sekmesine tıklayarak bu özelliğin yerini
 öğrenebilirsiniz. 'Tablo Arama' sayfasındaki alt sekmelerden birisi 'Odaklı
 Arama'dır. <br/><br/>
 
-    Bir örnek için <abbr title="Sıkça Sorulan Sorular">SSS</abbr> 6.6</a>'daki
-REL_persons tablosunu göz önüne alın. Odaklı aramayı kullanmak için iki
-sütunun seçilmesi gerekir, örneğin, id ve town_code. id değerleri bir
-eksende temsil edilir ve town_code değerleri diğer eksende. Her bir satır,
-id'si ve town_code'u tabanlı serpme çizim içinde işaret edilerek temsil
-edilecektir. Görüntülemek için iki alan dışında iki ilave arama kriterini
-dahil edebilirsiniz.<br/><br/>
+    Bir örnek için <a href="#faq6_6"><abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 6.6</a>'daki REL_persons tablosunu göz önüne
+alın. Odaklı aramayı kullanmak için iki sütunun seçilmesi gerekir, örneğin,
+id ve town_code. id değerleri bir eksende temsil edilir ve town_code
+değerleri diğer eksende. Her bir satır, id'si ve town_code'u tabanlı serpme
+çizim içinde işaret edilerek temsil edilecektir. Görüntülemek için iki alan
+dışında iki ilave arama kriterini dahil edebilirsiniz.<br/><br/>
 
     Her bir nokta için etiket olarak hangi alanın görüntüleneceğini
 seçebilirsiniz. Eğer görüntülenme sütunu tablo için ayarlanmışsa (<a
@@ -4850,18 +4851,18 @@ mesajların çevirilerini soracağımız yer burasıdır.
 </p>
 
 <p>
-    Documentation is being translated using po4a and gettext (see <a
-href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
-existing translations). To start, checkout <a
-href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
-from Git, or just go to the <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
-translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
-it. If you prefer to directly translate the po files, please put updated
-ones into our <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker</a>. 
+    Belge po4a ve gettext kullanılarak çevrilir (mevcut çeviriler için <a
+href="http://www.phpmyadmin.net/home_page/docs.php">belgeye</a>
+bakın). Başlamak için, Git'ten <a
+href="http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/localized_docs;a=tree;f=po"><code>localized_docs/po</code></a>'yu
+kontrol edin ya da sadece <a
+href="https://l10n.cihar.com/projects/pmadoc/">çeviri sunucusu</a>'na gidin
+ve çevrimiçi çevirin. Eğer diliniz eksikse, sadece <a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a> ile temasa geçin;
+o ekleyecektir. Doğrudan po dosyalarını çevirmeyi tercih ederseniz, lütfen
+bizim <a
+href="https://sourceforge.net/tracker/?group_id=23067&atid=387645">çeviri
+takipçimiz</a> içerisine güncellenmiş birini koyun. 
 </p>
 
 <h4 id="faq7_3">
@@ -4992,12 +4993,12 @@ tıklayarak, eşitlenecekleri anlamına gelen yeşile döneceklerdir.
 </p>
 
 <h4 id="faq9_2">
-    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
-tables?</a></h4>
+    <a href="#faq9_2">9.2 Büyük tabloların veri eşitlemesi ile sorunlar var
+mı?</a></h4>
 
 <p>
-Yes. This aspect of synchronization is currently limited to small tables,
-and they must have a primary key.
+Evet. Eşitlemenin boyu şimdilik küçük tablolarla sınırlı ve birincil
+anahtara sahip olmak zorundalar.
 </p>
 
 
@@ -5119,7 +5120,7 @@ eşitlenmesi</li>
   <li>javascript, DHTML ve DOM unsurlarını yeniden yazdı ve uyarladı</li>
   <li>betikler yeniden yazıldı böylece <abbr title="PHP Extension and Application
 Repository">PEAR</abbr> kodlama standartlarına uygun oldu ve XHTML1.0 ve
-CSS2 uyumlu kodlar üretti.</li>
+CSS2 uyumlu kodlar üretti</li>
   <li>gelişmiş dil algılama sistemi</li>
   <li>bir çok hata onarımları ve iyileştirilmeler</li>
 </ul></li>
@@ -5131,7 +5132,7 @@ CSS2 uyumlu kodlar üretti.</li>
   <li>Anamakine kimlik doğrulaması <abbr title="Internet Protocol">IP</abbr> İzin
 Verme/Reddetme</li>
   <li>VT-tabanlı yapılandırma (Tamamlanmadı)</li>
-  <li> <abbr title="structured query language">SQL</abbr> ayrıştırıcısı ve hoş
+  <li><abbr title="structured query language">SQL</abbr> ayrıştırıcısı ve hoş
 yazım</li>
   <li><abbr title="structured query language">SQL</abbr> onaylayıcısı</li>
   <li>bir çok hata onarımları ve iyileştirilmeler</li>
@@ -5218,7 +5219,7 @@ language">SQL</abbr> geçmişini yaptı</li>
   <li>sıra düzenli/iç içe tablo görüntüleme</li>
   <li><abbr title="Portable Document Format">PDF</abbr> bağlantılarının
 WYSIWYG-dağıtımı için <abbr title="Portable Document
-Format">PDF</abbr>-karalama panosu </li>
+Format">PDF</abbr>-karalama panosu</li>
   <li>yeni simge grupları</li>
   <li>sütun özellikleri sayfasının dikey görüntülenmesi</li>
   <li>bazı hata onarımları, özellikler, destek, Almanca dil ilaveleri</li>
@@ -5495,7 +5496,7 @@ ilave işlevsellikler ile PHP'yi genişleten bir PHP modülü.</li>
     <li><a href="http://www.wikipedia.org/wiki/FAQ">FAQ - SSS (Sıkça Sorulan
 Sorular)</a> - genellikle sorulmuş soru listesi ve yanıtları.</li>
     <li><a href="http://www.wikipedia.org/wiki/Field_%28computer_science%29">Field -
-Alan</a> - bölünmüş veri/sütunların bir parçası.</li>
+Alan</a> - bölünmüş verinin/sütunların bir parçası.</li>
     <li><a href="http://www.wikipedia.org/wiki/Foreign_key">foreign key - dış
 anahtar</a> - bazı (genellikle farklı) tablolardaki başka bir veritabanı
 satırının anahtarına biçim veren sütunlar grubu veya bir anahtar sütununu
@@ -5503,7 +5504,7 @@ işaret eden bir sütun veya veritabanı satırındaki sütunlar grubu.</li>
     <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - ücretsiz PDF kütüphanesi</li>
     <li><a id="gd" href="http://www.wikipedia.org/wiki/GD_Graphics_Library">GD
 Grafik Kütüphanesi</a> - Thomas Boutell sayesinde olan bir kütüphane ve
-dinamik olarak resimleri el ile işleyen diğerleri</li>
+dinamik olarak resimleri el ile işleyen diğerleri.</li>
     <li>GD2 - <a href="#gd">GD Grafik Kütüphanesi</a>'ne bakın.</li>
     <li><a href="http://www.wikipedia.org/wiki/Gzip">gzip</a> - gzip, GNU zip için
 kısaltmadır, GNU ücretsiz yazılım, dosya sıkıştırma programı.</li>
@@ -5518,125 +5519,128 @@ veya aktarım için kullanılan birincil yöntem.</li>
 güvenlik önlemleriyle <abbr title="HyperText Transfer Protocol">HTTP</abbr>
 bağlantısı.</li>
     <li><a href="http://www.wikipedia.org/wiki/Internet_Information_Services">IIS
-(Internet Information Services)</a> - Microsoft Windows kullanan sunucular
-için bir grup Internet tabanlı hizmetler.</li>
+(Internet Information Services - Internet Bilgi Hizmetleri)</a> - Microsoft
+Windows kullanan sunucular için bir grup Internet tabanlı hizmetler.</li>
     <li><a id="glossar_index"
-href="http://www.wikipedia.org/wiki/Index_%28database%29">Index</a> - Bir
+href="http://www.wikipedia.org/wiki/Index_%28database%29">Index</a> - bir
 tablodaki satırlara hızlı erişmeye izin veren bir özellik.</li>
     <li><a href="http://www.wikipedia.org/wiki/Internet_Protocol">IP (Internet
-Protocol)</a> - a data-oriented protocol used by source and destination
-hosts for communicating data across a packet-switched internetwork.</li>
-    <li><a href="http://www.wikipedia.org/wiki/IP_Address">IP Address</a> - a unique
-number that devices use in order to identify and communicate with each other
-on a network utilizing the Internet Protocol standard.</li>
+Protocol - Internet Protokolü)</a> - paket değiştirmeli ağlar üzerinden veri
+iletişimi için kaynak ve hedef anamakineler tarafından kullanılan veri
+odaklı bir protokol.</li>
+    <li><a href="http://www.wikipedia.org/wiki/IP_Address">IP Adres</a> - aygıtların
+Internet Protokolü standartını kullanan bir ağ üzerinde tanımlamak ve
+birbiriyle iletişim kurmak için kullandıkları benzersiz bir numara.</li>
     <li><a href="http://www.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
-Application Programming Interface)</a> - the API of Internet Information
-Services (IIS).</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (Internet service
-provider)</a> - a business or organization that offers users access to the
-Internet and related services.</li>
-    <li><a id="jpeg" href="http://www.wikipedia.org/wiki/JPEG">JPEG</a> - a most
-commonly used standard method of lossy compression for photographic images.</li>
-    <li>JPG - look at <a href="#jpeg">JPEG</a>.</li>
-    <li>Key - look at <a href="#glossar_index">index</a>.</li>
+Application Programming Interface - Internet Sunucusu Uygulaması Programlama
+Arayüzü)</a> - Internet Bilgi Hizmetleri (IIS) API'si.</li>
+    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (Internet service provider-
+Internet hizmeti sağlayıcısı)</a> - kullanıcıların Internet'e ve ilgili
+hizmetlere erişmesini sağlayan iş kurumu ya da kuruluş.</li>
+    <li><a id="jpeg" href="http://www.wikipedia.org/wiki/JPEG">JPEG</a> - fotoğrafla
+ilgili imajlar için en sık kullanılan standart kayıplı sıkıştırma yöntemi.</li>
+    <li>JPG - <a href="#jpeg">JPEG</a>'e bakın.</li>
+    <li>Anahatar - <a href="#glossar_index">indeks</a>'e bakın.</li>
     <li><a
 href="http://www.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><big>E</big></sub>X</a>
-- a document preparation system for the T<sub>E</sub>X typesetting program.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Mac">Mac (Apple Macintosh)</a> - line
-of personal computers is designed, developed, manufactured, and marketed by
-Apple Computer.</li>
+- T<sub>E</sub>X karakter dizisi programı için belge hazırlama sistemi.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Mac">Mac (Apple Macintosh)</a> -
+Apple Computer tarafından tasarlanmış, geliştirilmiş, üretilmiş ve
+pazarlanmış kişisel bilgisayarlar dizisi.</li>
     <li><a id="glossar_mac_os_x"
 href="http://www.wikipedia.org/wiki/Mac_OS_X"><acronym title="Apple
-Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> X</a> -
-the operating system which is included with all currently shipping Apple
-Macintosh computers in the consumer and professional markets.</li>
-    <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - a cryptographic
-library.</li>
-    <li><a href="http://php.net/mcrypt">mcrypt</a> - the MCrypt PHP extension.</li>
+Macintosh">Mac</acronym> <abbr title="operating system - işletim
+sistemi">OS</abbr> X</a> - tümü şimdilik tüketici ve profesyonel pazarlarda
+Apple Macintosh bilgisayarlar ile birlikte gelen işletim sistemi.</li>
+    <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - kriptografik
+kütüphane.</li>
+    <li><a href="http://php.net/mcrypt">mcrypt</a> - MCrypt PHP uzantısı.</li>
     <li><a href="http://www.wikipedia.org/wiki/MIME">MIME (Multipurpose Internet
-Mail Extensions)</a> - an Internet Standard for the format of e-mail.</li>
-    <li><a href="http://www.wikipedia.org/wiki/module">module</a> - some sort of
-extension for the Apache Webserver.</li>
-    <li><a href="http://www.wikipedia.org/wiki/MySQL">MySQL</a> - a multithreaded,
-multi-user, SQL (Structured Query Language) Database Management System
+Mail Extensions - Çok Amaçlı Internet Posta Uzantıları)</a> - e-posta biçimi
+için bir Internet Standartı.</li>
+    <li><a href="http://www.wikipedia.org/wiki/module">module - modül</a> - Apache
+Web Sunucusu için uzantı çeşidi.</li>
+    <li><a href="http://www.wikipedia.org/wiki/MySQL">MySQL</a> - çoklu işlemli,
+çoklu kullanıcı, SQL (Structured Query Language) Veritabanı Yönetim Sistemi
 (DBMS).</li>
-    <li><a href="http://php.net/mysqli">mysqli</a> - the improved MySQL client PHP
-extension.</li>
-    <li><a href="http://php.net/mysql">mysql</a> - the MySQL client PHP extension.</li>
-    <li><a href="http://www.wikipedia.org/wiki/OpenDocument">OpenDocument</a> - open
-standard for office documents.</li>
-    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating
-system">OS</abbr> X</a> - look at <a href="#glossar_mac_os_x"><acronym
+    <li><a href="http://php.net/mysqli">mysqli</a> - geliştirilmiş MySQL istemcisi
+PHP uzantısı.</li>
+    <li><a href="http://php.net/mysql">mysql</a> - MySQL istemcisi PHP uzantısı.</li>
+    <li><a href="http://www.wikipedia.org/wiki/OpenDocument">OpenDocument</a> -
+office belgeleri için açık standart.</li>
+    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating system-
+işletim sistemi">OS</abbr> X</a> - <a href="#glossar_mac_os_x"><acronym
 title="Apple Macintosh">Mac</acronym> <abbr title="operating
-system">OS</abbr> X</a>.</li>
+system">OS</abbr> X</a>'e bakın.</li>
     <li><a href="http://www.wikipedia.org/wiki/Portable_Document_Format">PDF
-(Portable Document Format)</a> - a file format developed by Adobe Systems
-for representing two dimensional documents in a device independent and
-resolution independent format.</li>
-    <li><a href="http://pear.php.net/">PEAR</a> - the PHP Extension and Application
-Repository.</li>
-    <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions)</a>
-- the perl-compatible regular expression functions for PHP</li>
-    <li><a href="http://www.wikipedia.org/wiki/PHP">PHP</a> - short for "PHP:
-Hypertext Preprocessor", is an open-source, reflective programming language
-used mainly for developing server-side applications and dynamic web content,
-and more recently, a broader range of software applications.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Port_%28computing%29">port</a> - a
-connection through which data is sent and received.</li>
+(Portable Document Format - Taşınabilir Belge Biçimi)</a> - aygıt
+bağımsızlığında ve çözünürlüğü bağımsız biçimde iki boyutlu belgeleri temsil
+etmek için Adobe Systems tarafından geliştirilmiş dosya biçimi.</li>
+    <li><a href="http://pear.php.net/">PEAR</a> - PHP Uzantısı ve Uygulama Havuzu.</li>
+    <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions -
+Perl Uyumlu Düzenli İfadeler)</a> - PHP için perl uyumlu düzenli ifadeler</li>
+    <li><a href="http://www.wikipedia.org/wiki/PHP">PHP</a> - "PHP: Hypertext
+Preprocessor" kısaltması, açık kaynaklıdır, dinamik web içeriği ve sunucu
+taraflı uygulamaların geliştirilmesi için başlıca kullanılan yansıtıcı
+programlama dili.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Port_%28computing%29">port - bağlantı
+noktası</a> - gönderilen ve alınan veri vasıtasıyla bağlantı.</li>
     <li><a href="http://www.wikipedia.org/wiki/Request_for_Comments">RFC</a> -
-Request for Comments (RFC) documents are a series of memoranda encompassing
-new research, innovations, and methodologies applicable to Internet
-technologies.</li>
-    <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP file
-format specification version 4.3</li>
-    <li><a href="http://www.wikipedia.org/wiki/Row_%28database%29">Row (record,
-tuple)</a> - represents a single, implicitly structured data item in a
-table.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Server_%28computing%29">Server</a> -
-a computer system that provides services to other computing systems over a
-network.</li>
+Request for Comments (RFC) belgeleri yeni araştırma, yenilikler ve internet
+teknolojileri için geçerli yöntemleri kapsayan bir dizi bildirim.</li>
+    <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP dosya
+biçimi özelliği sürüm 4.3</li>
+    <li><a href="http://www.wikipedia.org/wiki/Row_%28database%29">Row - Satır
+(kayıt, değişkenler grubu)</a> - bir tablodaki tek, tamamıyla
+yapılandırılmış öğeyi temsil eder.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Server_%28computing%29">Server -
+Sunucu</a> - bir ağ üzerinden diğer sistemlere hizmet sağlayan bir
+bilgisayar sistemi.</li>
     <li><a id="glossar_storage_engine"
-href="http://dev.mysql.com/doc/en/storage-engines.html">Storage Engines</a>
-- handlers for different table types</li>
-    <li><a href="http://www.wikipedia.org/wiki/Socket#Computer_sockets">socket</a> -
-a form of inter-process communication.</li>
+href="http://dev.mysql.com/doc/en/storage-engines.html">Storage Engines -
+Depolama Motorları</a> - farklı tablo türleri için işleyiciler</li>
+    <li><a href="http://www.wikipedia.org/wiki/Socket#Computer_sockets">socket -
+soket</a> - süreçler arası iletişim şekli.</li>
     <li><a href="http://www.wikipedia.org/wiki/Secure_Sockets_Layer">SSL (Secure
-Sockets Layer)</a> - a cryptographic protocol which provides secure
-communication on the Internet.</li>
-    <li><a href="http://en.wikipedia.org/wiki/Stored_procedure">Stored procedure</a>
-- a subroutine available to applications accessing a relational database
-system</li>
+Sockets Layer - Güvenli Soketler Katmanı)</a> - Internet'te güvenli iletişim
+sağlayan bir kriptografik protokol.</li>
+    <li><a href="http://en.wikipedia.org/wiki/Stored_procedure">Stored procedure -
+Saklı işlem</a> - bağlantılı veritabanı sistemine uygulamaların erişimi için
+kullanılabilir alt yordam</li>
     <li><a href="http://www.wikipedia.org/wiki/SQL">SQL</a> - Structured Query
-Language</li>
-    <li><a href="http://www.wikipedia.org/wiki/Table_%28database%29">table</a> - a
-set of data elements (cells) that is organized, defined and stored as
-horizontal rows and vertical columns where each item can be uniquely
-identified by a label or key or by it?s position in relation to other items.</li>
+Language - Yapısal Sorgulama Dili</li>
+    <li><a href="http://www.wikipedia.org/wiki/Table_%28database%29">table -
+tablo</a> - diğer öğelere bağlantılı konumuyla ya da anahtar veya bir
+etiketle benzersiz olarak tanımlanabilen her öğenin olduğu yatay satırlar ve
+dikey sütunlar olarak düzenlenen, tanımlanan, depolanan veri öğeleri
+(hücreler) grubu.</li>
     <li>Tablo türü</li>
-    <li><a href="http://www.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> - a
-type of archive file format: the Tape ARchive format.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Tar_%28file_format%29">tar</a> - bir
+arşiv dosyası biçimi tüyü: Tape ARchive biçimi.</li>
     <li><a href="http://www.wikipedia.org/wiki/TCP">TCP (Transmission Control
-Protocol)</a> - one of the core protocols of the Internet protocol suite.</li>
-    <li><a href="http://en.wikipedia.org/wiki/Database_trigger">trigger</a> - a
-procedural code that is automatically executed in response to certain events
-on a particular table or view in a database</li>
-    <li><a href="http://www.acko.net/node/56">UFPDF</a> - Unicode/UTF-8 extension
-for FPDF</li>
-    <li><a href="http://www.wikipedia.org/wiki/URL">URL (Uniform Resource
-Locator)</a> - a sequence of characters, conforming to a standardized
-format, that is used for referring to resources, such as documents and
-images on the Internet, by their location.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Webserver">Webserver</a> - A computer
-(program) that is responsible for accepting HTTP requests from clients and
-serving them Web pages.</li>
+Protocol - İletim Denetimi Protokolü)</a> - Internet Protokolü takımının
+çekirdek protokollerinden biri.</li>
+    <li><a href="http://en.wikipedia.org/wiki/Database_trigger">trigger -
+tetikleyici</a> - veritabanı görünümünde veya belirli bir tabloda belli
+olaylara yanıtta otomatik olarak çalıştırılan işlemsel bir kod</li>
+    <li><a href="http://www.acko.net/node/56">UFPDF</a> - FPDF için Unicode/UTF-8
+uzantısı</li>
+    <li><a href="http://www.wikipedia.org/wiki/URL">URL (Uniform Resource Locator -
+Birörnek Kaynak Konumlayıcı)</a> - Internet'te belge ve resimler gibi,
+yerlerine göre, kaynaklarına göndermesi için kullanılan, standart hale
+getirilmiş bir biçime uygun, bir karakter dizisi.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Webserver">Webserver - Web
+sunucusu</a> - istemcilerden HTTP isteklerini kabul etmekten sorumlu ve
+onlara Web sayfalarıyla hizmet eden bir bilgisayar (program).</li>
     <li><a href="http://www.wikipedia.org/wiki/XML">XML (Extensible Markup
 Language)</a> - a W3C-recommended general-purpose markup language for
 creating special-purpose markup languages, capable of describing many
 different kinds of data.</li>
-    <li><a href="http://www.wikipedia.org/wiki/ZIP_%28file_format%29">ZIP</a> - a
-popular data compression and archival format.</li>
-    <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - an open-source,
-cross-platform data compression library by Jean-loup Gailly and Mark Adler.</li>
+    <li><a href="http://www.wikipedia.org/wiki/ZIP_%28file_format%29">ZIP</a> -
+yaygın bir veri sıkıştırma ve arşivsel biçim.</li>
+    <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - açık kaynaklı,
+Jean-loup Gailly ve Mark Adler sayesinde birden fazla işletim sisteminde
+çalışabilen veri sıkıştırma kütüphanesi.</li>
 </ul>
 </div>
 
