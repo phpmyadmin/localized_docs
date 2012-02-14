@@ -28,8 +28,6 @@ PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" $(PMA_DIR)/libra
 all: $(addsuffix /Documentation.html.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /index.html, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /README.stamp, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /INSTALL.stamp, $(addprefix output/, ${LANGUAGES})) \
-	$(addsuffix /TODO.stamp, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /themes/original/img/docs_menu_bg.png, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /themes/original/img/logo_right.png, $(addprefix output/, ${LANGUAGES})) \
 	$(addsuffix /favicon.ico, $(addprefix output/, ${LANGUAGES})) \
@@ -51,18 +49,6 @@ output/%/README.stamp: po/%.po orig-docs/README
 	@echo 'TRANSLATE $@'
 	@po4a-translate $(PO4A_TEXT_OPTS) -m orig-docs/README -p $< -l output/$*/README ${PO4AOPTS}
 	@if [ -f output/$*/README ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/README ; fi
-	@touch $@
-
-output/%/TODO.stamp: po/%.po orig-docs/TODO
-	@echo 'TRANSLATE $@'
-	@po4a-translate $(PO4A_TEXT_OPTS) -m orig-docs/TODO -p $< -l output/$*/TODO ${PO4AOPTS}
-	@if [ -f output/$*/TODO ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/TODO ; fi
-	@touch $@
-
-output/%/INSTALL.stamp: po/%.po orig-docs/INSTALL
-	@echo 'TRANSLATE $@'
-	@po4a-translate $(PO4A_TEXT_OPTS) -m orig-docs/INSTALL -p $< -l output/$*/INSTALL ${PO4AOPTS}
-	@if [ -f output/$*/INSTALL ] ; then sed -i 's/@@VER@@/$(PMA_VERSION)/' output/$*/INSTALL ; fi
 	@touch $@
 
 .PRECIOUS: addendum/html_head.%
@@ -88,8 +74,6 @@ addendum/html_credits.%: po/%.po addendum/credits.html addendum/add-html_credits
 output/%/index-template.html: generate-lang-index get-lang-name \
 	$(wildcard $(addsuffix /Documentation.html, output/%) \
 	$(addsuffix /README, output/%) \
-	$(addsuffix /INSTALL, output/%) \
-	$(addsuffix /TODO, output/%))
 	@./generate-lang-index $* > $@
 
 output/%/docs.css: $(PMA_DIR)/docs.css
@@ -127,12 +111,10 @@ pot/%-html.pot: orig-docs/Documentation.html output/%/index-full-template.html a
 		-p $@
 
 .PRECIOUS: pot/%-txt.pot
-pot/%-txt.pot: orig-docs/INSTALL orig-docs/TODO orig-docs/README addendum/comment.html
+pot/%-txt.pot: orig-docs/README addendum/comment.html
 	@echo 'GEN $@'
 	@po4a-gettextize $(PO4A_TEXT_OPTS) ${PO4A_PO_OPTS} \
 		-m addendum/comment.html \
-		-m orig-docs/INSTALL \
-		-m orig-docs/TODO \
 		-m orig-docs/README \
 		-p $@
 
