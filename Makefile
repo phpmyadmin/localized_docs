@@ -73,7 +73,7 @@ addendum/html_credits.%: po/%.po addendum/credits.html addendum/add-html_credits
 
 output/%/index-template.html: generate-lang-index get-lang-name \
 	$(wildcard $(addsuffix /Documentation.html, output/%) \
-	$(addsuffix /README, output/%) \
+	$(addsuffix /README, output/%))
 	@./generate-lang-index $* > $@
 
 output/%/docs.css: $(PMA_DIR)/docs.css
