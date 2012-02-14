@@ -62,7 +62,7 @@ katkıda bulunabilirsiniz.
     <li><a href="https://sourceforge.net/projects/phpmyadmin/"> SourceForge
 phpMyAdmin proje sayfası</a></li>
     <li><a href="http://wiki.phpmyadmin.net"> Resmi phpMyAdmin viki</a></li>
-    <li><a href="https://github.com/phpmyadmin"> Git repositories on Github</a></li>
+    <li><a href="https://github.com/phpmyadmin">Github üzerindeki Git havuzları</a></li>
     <li>Yerel belgeler:
         <ul><li>Sürüm geçmişi: <a href="changelog.php">Değişiklikler</a></li>
             <li>Lisans: <a href="license.php">LİSANS</a></li>
@@ -330,17 +330,18 @@ title="Sıkça Sorulan Sorular">SSS</abbr> 4.4</a>'e.</li>
 açın. phpMyAdmin artık karşılama ekranını ve veritabanınızı ya da <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> veya tanımlama bilgisi
 kimlik doğrulaması kipi kullanılıyorsa oturum açma iletisi görüntülemelidir.</li>
-    <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
-subfolders in your webserver configuration. For Apache you can use supplied
-<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
-webservers, you should configure this yourself.  Such configuration prevents
-from possible path exposure and cross side scripting vulnerabilities that
-might happen to be found in that code.</li>
+    <li>Web sunucusu yapılandırmanızda <tt>./libraries</tt> ve <tt>./setup/lib</tt>
+altklasörlerine erişimi engellemelisiniz. Apache için bu klasörde sağlanan
+href="#glossary"><i>.htaccess</i></a> dosyasını kullanabilirsiniz, diğer web
+sunucuları için bunu kendiniz yapmalısınız. Bu gibi yapılandırma olası yolu
+açıkta bırakmaya ve bu kodda bulunmuş olabilecek çapraz taraflı betik yazımı
+savunmazsızlığına engel olur.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42">FAQ 1.42</a>.
+        Bu genel olarak, herkese açık phpMyAdmin kurulumunu, çoğunlukla iyi hiçbir
+şey yapamayan robotların erişimine karşı korumak için iyi bir fikirdir. Bunu
+web sunucunuzun kök dizininde <code>robots.txt</code> dosyasını kullanarak
+veya web sunucusu yapılandırması sayesinde erişimi sınırlandırarak
+yapabilirsiniz. <a href="#faq1_42">SSS 1.42</a>'ye bakın.
     </li>
 </ol>
 
@@ -499,10 +500,10 @@ Interface">CGI</abbr> PHP kullanılır <a href="#faq1_32"><abbr title="Sıkça
 Sorulan Sorular">SSS</abbr> 1.32</a>'ye bakın, Apache <abbr title="Common
 Gateway Interface">CGI</abbr> ile kullanmak için <a href="#faq1_35"><abbr
 title="Sıkça Sorulan Sorular">SSS</abbr> 1.35</a>'e bakın.</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <a
-href="#glossary"><i>.htaccess</i></a> mechanism along with '<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
+    <li>Aynı zamanda <a href="#glossary"><i>.htaccess</i></a> mekanizmasını '<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>' kimlik doğrulaması kipi ile
+yalnız kullanmamakla ilgili <a href="#faq4_4"> <abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 4.4</a>'e bakın.</li>
 </ul>
 
 <h4>'tanımlama bilgisi' kimlik doğrulaması kipi</h4>
@@ -549,13 +550,14 @@ $cfg['Servers'][$i]['AllowDeny']['order']</a> and <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> yapılandırma yönergelerini
 dikkate almak isteyebilirsiniz.</li>
-    <li>Unlike cookie and http, does not require a user to log in when first loading
-the phpMyAdmin site. This is by design but could allow any user to access
-your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
-disallowing incoming HTTP requests at one&#8217;s router or firewall will
-suffice (both of which are beyond the scope of this manual but easily
-searchable with Google).</li>
+    <li>Tanımlama bilgisi ve http'den farklı olarak, phpMyAdmin sitesinin ilk
+yüklenmesinde oturum açmak için kullanıcı gerekmez. Bu tasarımındandır ama
+herhangi bir kullanıcının kurulumunuza erişmesine izin verebilir. Bazı
+kısıtlama yöntemlerini kullanmak önerilmektedir, belki HTTP-AUTH
+yönergesiyle <a href="#glossary"><i>.htaccess</i></a> dosyası veya birinin
+yönlendiricisinde gelen HTTP isteklerine izin vermemek ya da güvenlik duvarı
+yetecektir (her ikiside bu kılavuzun kapsamı dışında ama kolaylıkla Google
+ile aranabilir).</li>
 </ul>
 <h4 id="swekey">Swekey kimlik doğrulaması</h4>
 <p>
@@ -572,12 +574,12 @@ ekleyin:
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-You then have to create the <tt>swekey.conf</tt> file that will associate
-each user with their Swekey Id. It is important to place this file outside
-of your web server's document root (in the example, it is located in
-<tt>/etc</tt>). A self documented sample file is provided in the
-<tt>examples</tt> directory. Feel free to use it with your own users'
-information.<br /><br />
+Sonrasında her bir kullanıcının Swekey Id'si ile ilişkilendirilecek
+<tt>swekey.conf</tt> dosyası oluşturmak zorundasınız. Bu dosyayı web
+sunucunuzun belge kök dizininin (örnekte, dosya <tt>/etc</tt> dizininde yer
+almakta) dışına koyulması önemlidir. Kendinden belgelenmiş örnek dosyası
+<tt>examples</tt> dizininde verilmektedir. Bunu kendi kullanıcılarınızın
+bilgisiyle rahatlıkla kullanabilirsiniz.<br /><br />
 Eğer Swekey satın almak isterseniz, phpMyAdmin için sermaye sağlayan bu <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 bağlantısını ziyaret edin.
@@ -787,17 +789,19 @@ kimlik doğrulaması (önceki sürümlerde 'gelişmiş' olarak adlandırılırd�
 aynı zamanda 'http' olarak yazılabilir) (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>'</tt>) HTTP-Auth yoluyla
 herhangi bir geçerli MySQL kullanıcısı gibi oturum açmanıza izin verir.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
-from another application.  Sample way how to seed session is in signon
-example: <code>examples/signon.php</code>.  There is also alternative
-example using OpenID - <code>examples/openid.php</code> and example for
-scripts based solution - <code>examples/signon-script.php</code>.  You need
-to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
-name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
-be executed</a> and <a href="#cfg_Servers_SignonURL"
-class="configrule">signon URL</a> to use this authentication method.</li>
+            <li>2.10.0'da sunulan 'oturumu açma' kimlik doğrulaması kipi
+(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) hazırlanmış PHP oturumu
+verisinden ya da temin edilmiş PHP betiği kullanılarak oturum açmanıza izin
+verir. Bu başka uygulamadan, tek oturum açmayı uygulamak için
+faydalıdır. Oturumu açma örneğindeki örnek yol, oturumu açmanın kökeninin
+nasıl olduğudur: <code>examples/signon.php</code>. Aynı zamanda OpenID
+kullanan - <code>examples/openid.php</code> ve betik tabanlı çözüm için -
+<code>examples/signon-script.php</code> alternatif bir örnek vardır. Bu
+kimlik doğrulama yöntemini kullanmak için <a
+href="#cfg_Servers_SignonSession" class="configrule">oturum adını</a> veya
+<a href="#cfg_Servers_SignonScript" class="configrule">çalıştırılan
+betiği</a> ve <a href="#cfg_Servers_SignonURL" class="configrule">oturumu
+açma URL'sini</a> yapılandırmanız gerekir.</li>
         </ul>
 
         Lütfen daha fazla bilgi için &quot;Kimlik doğrulama kipleri
@@ -1432,12 +1436,12 @@ tablo sayılarını saymak gerekirse.
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
 dizgi</dt>
-    <dd>Name of PHP script to be sourced and executed to obtain login
-credentials. This is alternative approach to session based single
-signon. The script needs to provide function
-<code>get_login_credentials</code> which returns list of username and
-password, accepting single parameter of existing username (can be empty).
-See <code>examples/signon-script.php</code> for an example.
+    <dd>Kaynak olan ve oturum açma referansları sağlamak için çalıştırılan PHP
+betiğin adıdır. Bu alternatif, oturum tabanlı tek oturumu açma
+yaklaşımıdır. Betiğin, kullanıcı adı ve parola listesini döndüren, mevcut
+kulanıcı adının (boş olabilir) tek parametresini kabul eden
+<code>get_login_credentials</code> işlevini sağlaması gerekir. Örnek için
+<code>examples/signon-script.php</code> dosyasına bakın.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -2985,12 +2989,14 @@ sorunlar meydana gelmemelidir. Eğer mümkünse, yeni içe aktarma
 özelliklerinin avantajından yararlanmak için phpMyAdmin'inizi en son sürüme
 yükseltin.</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that <tt>post_max_size</tt> and
-<tt>memory_limit</tt> need to be larger than <tt>upload_max_filesize</tt>.<br /> <br />
+<p> Kontrol edilecek (veya kontrol etmesi için anamakine sağlayacısına
+sorulacak) ilk şeyler <i>php.ini</i> yapılandırma dosyası içindeki
+<tt>upload_max_filesize</tt>, <tt>memory_limit</tt> ve
+<tt>post_max_size</tt> değerleridir. Tüm bu üç ayar PHP tarafından işlenen
+ve gönderilebilen en fazla veri boyutunu sınırlandırır. Aynı zamanda bir
+kullanıcı <tt>post_max_size</tt> ve <tt>memory_limit</tt> değerlerinin
+<tt>upload_max_filesize</tt> değerinden daha büyük olması gerektiğini
+söylemiştir.<br /> <br />
 
     Eğer göndermeniz çok büyükse ye da barındırma sağlayıcınız ayarları
 değiştirmeye yanaşmıyorsa birkaç geçici çözüm mevcuttur:</p>
@@ -3239,21 +3245,23 @@ aralığı seçin ve <tt>Varsayılana Ayarla</tt> düğmesine tıklayın.</li>
     <a href="#faq1_34">1.34 Doğrudan veritabanı veya tablo sayfalarına
 erişebilir miyim?</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <a
-href="#glossary"><i>.htaccess</i></a> file in root folder of phpMyAdmin
-installation (don't forget to change directory name inside of it):</p>
+<p> Evet. Kutudan çıkar çıkmaz,
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
+gibi <abbr title="Uniform Resource Locator">URL</abbr>'leri
+kullanabilirsiniz. <tt>Sunucu</tt> için <tt>config.inc.php</tt> içindeki
+sunucu paragrafı sırasını ifade eden sunucu sayısını kullanın. Tablo ve
+betik kısımları isteğe bağlıdır. Eğer
+http://sunucu/phpMyAdmin/veritabanı[/table][/script] <abbr title="Uniform
+Resource Locator">URL</abbr>'leri istiyorsanız, bazı yapılandırmalar
+yapmanız gerekir. Aşağıdaki satırlar sadece <a
+href="http://httpd.apache.org">Apache</a> web sunucusu için uygulanır. Önce
+genel yapılandırmayla birlikte bazı özellikleri etkinleştirdiğinizden emin
+olun. phpMyAdmin'nin kurulu olduğu dizin için <code>Options
+FollowSymLinks</code> ve <code>AllowOverride FileInfo</code> etkinleştirmiş
+olmanız gerekir ve mod_rewrite'ın etkinleştirilmiş olmasına ihtiyacınız
+vardır. Sonra sadece phpMyAdmin kurulumunun (içinde bulunduğu dizin adını
+değiştirmeyi unutmayın) kök klasöründe aşağıdaki <a
+href="#glossary"><i>.htaccess</i></a> dosyasını oluşturmaya ihtiyacınız var:</p>
 
 <pre>
 RewriteEngine On
@@ -3407,30 +3415,31 @@ için sorduğumda, bilinmeyen bir sütunla ilgili hata alıyorum.</a></h4>
 <tt>mysql_upgrade</tt> komutunu çalıştırmanız gerekir.</p>
 
 <h4 id="faq1_42">
-    <a href="#faq1_42">1.42 How can I prevent robots from accessing
-phpMyAdmin?</a></h4>
+    <a href="#faq1_42">1.42 Robot'ları phpMyAdmin'e erişimini nasıl
+önleyebilirim?</a></h4>
 
-<p>You can add various rules to <a href="#glossary"><i>.htaccess</i></a> to
-filter access based on user agent field. This is quite easy to circumvent,
-but could prevent at least some robots accessing your installation.</p>
+<p>Kullanıcı tanıtıcı alanı tabanlı erişimi süzmek için <a
+href="#glossary"><i>.htaccess</i></a> dosyasına çeşitli kuralları
+ekleyebilirsiniz. Bu kurtulmak için oldukça kolaydır ama en azından bazı
+robot'ların kurulumunuza erişimini önleyebilir.</p>
 
 <pre>
 RewriteEngine on
 
-# Allow only GET and POST verbs
+# Sadece GET ve POST eylemlerine izin verir
 RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
 
-# Ban Typical Vulnerability Scanners and others
-# Kick out Script Kiddies
+# Tipik Güvenlik Açığı Tarayıcılarını ve diğerlerini yasaklar
+# Ufak Tefek Betikleri defeder
 RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|scan|acunetix).* [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
 
-# Ban Search Engines, Crawlers to your administrative panel
-# No reasons to access from bots
-# Ultimately Better than the useless robots.txt
-# Did google respect robots.txt?
-# Try google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
+# Yönetim paneliniz için Arama Motorlarını, Tarayıcıları yasaklar
+# Bot'ların erişmesi için sevep yoktur
+# Eninde sonunda yararsız robots.txt'den daha iyi
+# Google robots.txt kayıtlarına saygı gösterdi mi?
+# Google'ı deneyin: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
 RewriteCond %{HTTP_USER_AGENT} ^.*(AdsBot-Google|ia_archiver|Scooter|Ask.Jeeves|Baiduspider|Exabot|FAST.Enterprise.Crawler|FAST-WebCrawler|www\.neomo\.de|Gigabot|Mediapartners-Google|Google.Desktop|Feedfetcher-Google|Googlebot|heise-IT-Markt-Crawler|heritrix|ibm.com\cs/crawler|ICCrawler|ichiro|MJ12bot|MetagerBot|msnbot-NewsBlogs|msnbot|msnbot-media|NG-Search|lucene.apache.org|NutchCVS|OmniExplorer_Bot|online.link.validator|psbot0|Seekbot|Sensis.Web.Crawler|SEO.search.Crawler|Seoma.\[SEO.Crawler\]|SEOsearch|Snappy|www.urltrends.com|www.tkl.iis.u-tokyo.ac.jp/~crawler|SynooBot|crawleradmin.t-info@telekom.de|TurnitinBot|voyager|W3.SiteSearch.Crawler|W3C-checklink|W3C_Validator|www.WISEnutbot.com|yacybot|Yahoo-MMCrawler|Yahoo\!.DE.Slurp|Yahoo\!.Slurp|YahooSeeker).* [NC]
 RewriteRule .* - [F]
 </pre>
@@ -3869,10 +3878,10 @@ kimlik doğrulaması kullanımında&quot; kurma bölümüne bakın.
 yapmanın tercih edilen yolu nedir?</a></h4>
 <p>
     Bu sisteminize bağlıdır.<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <a href="#glossary"><i>.htaccess</i></a> files, for
-example).<br />
+    Eğer diğer insanlar tarafından erişilemeyen bir sunucu çalıştırıyorsanız,
+web sunucunuz ile paketlenmiş dizin koruması kullanmak yeterlidir (Apache
+ile <a href="#glossary"><i>.htaccess</i></a> dosyaları kullanabilirsiniz,
+örneğin).<br />
     Eğer diğer insanların sunucunuza telnet erişimi varsa, phpMyAdmin'nin <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> ya da tanımlama bilgisi
 kimlik doğrulaması özelliklerini kullanmalısınız.
@@ -3916,9 +3925,9 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a> ve/veya <a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> yanlıştır.</li>
     <li>Oturum açma iletisinde belirttiğiniz kullanıcı adı/parola geçersizdir.</li>
-    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a <a href="#glossary"><i>.htaccess</i></a> file. This would interfere
-with phpMyAdmin's authentication, so remove it.</li>
+    <li>phpMyAdmin dizini için zaten güvenlik mekanizması kurmuşsunuzdur, örn. <a
+href="#glossary"><i>.htaccess</i></a> dosyası. Bu phpMyAdmin'nin kimlik
+doğrulamasına engel olacaktır, o yüzden kaldırın.</li>
 </ul>
 
 <h4 id="faq4_5">
@@ -3935,13 +3944,14 @@ veritabanını(larını) oluşturmasına/yönetmesine izin verecektir.</p>
     <a href="#faq4_6">4.6 Anamakine tabanlı kimlik doğrulaması ilavelerini nasıl
 kullanabilirim?</a></h4>
 
-<p> If you have existing rules from an old <a
-href="#glossary"><i>.htaccess</i></a> file, you can take them and add a
-username between the <tt>'deny'</tt>/<tt>'allow'</tt> and <tt>'from'</tt>
-strings. Using the username wildcard of <tt>'%'</tt> would be a major
-benefit here if your installation is suited to using it. Then you can just
-add those updated lines into the <a href="#cfg_Servers_AllowDeny_rules"
-class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+<p> Eğer eski <a href="#glossary"><i>.htaccess</i></a> dosyasından mevcut
+kurallarınız varsa, onları alabilir ve <tt>'deny'</tt>/<tt>'allow'</tt> ve
+<tt>'from'</tt> dizgileri arasına kullanıcı adı ekleyebilirsiniz. Eğer
+kurulumunuz bunu kullanmak için uygunsa, <tt>'%'</tt> kullanıcı adı jokerini
+burada kullanmak başlıca bir yararı olacaktır. Sonrasında sadece bu
+güncellenmiş satırları <a href="#cfg_Servers_AllowDeny_rules"
+class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> dizilimi
+içerisine ekleyebilirisiniz.</p>
 
 <p> Eğer önceden yaplmış örnek isterseniz, bu kısmı deneyebilirisiniz. Özel ağ
 <abbr title="Internet Protocol">IP</abbr> bloklarından başka herhangi bir
@@ -4892,10 +4902,9 @@ takipçimiz</a> içerisine güncellenmiş birini koyun.
     <a href="#faq7_3">7.3 phpMyAdmin'in geliştirilmesine yardım etmek
 isterim. Nasıl başlamalıyım?</a></h4>
 
-<p>We welcome every contribution to the development of phpMyAdmin.  You can
-check out all the possibilities to contribute in the <a
-href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
-our website</a>.
+<p>phpMyAdmin'in geliştirilmesi için her katkıyı bekliyoruz. <a
+href="http://www.phpmyadmin.net/home_page/improve.php">Web sitemizdeki katkı
+bölümünde</a> katkıda bulunmak için tüm olasılıkları kontrol edebilirsiniz.
    </p>
 
 <h3 id="faqsecurity">Güvenlik</h3>
@@ -5017,9 +5026,9 @@ anahtara sahip olmak zorundalar.
 davetlisiniz. Bir çok büyük özellik diğer insanlar tarafından yazıldı ve siz
 de phpMyAdmin'i faydalı bir araç yapmak için yardım edebilirsiniz.</p>
 
-<p>You can check out all the possibilities to contribute in the <a
-href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
-our website</a>.
+<p><a href="http://www.phpmyadmin.net/home_page/improve.php">Web sitemizdeki
+katkı bölümünde</a> katkıda bulunmak için tüm olasılıkları kontrol
+edebilirsiniz.
    </p>
 
 <h2 id="copyright">Telif hakkı</h2>
@@ -5051,9 +5060,10 @@ bakın.
 </p>
 
 <p>
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <a
-href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+Bu program ile GNU General Public License kopyasını beraberinde almalısınız,
+Eğer almadıysanız, <a
+href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>
+adresine bakın.
 </p>
 
 
@@ -5604,10 +5614,10 @@ getirilmiş bir biçime uygun, bir karakter dizisi.</li>
     <li><a href="http://www.wikipedia.org/wiki/Webserver">Webserver - Web
 sunucusu</a> - istemcilerden HTTP isteklerini kabul etmekten sorumlu ve
 onlara Web sayfalarıyla hizmet eden bir bilgisayar (program).</li>
-    <li><a href="http://www.wikipedia.org/wiki/XML">XML (Extensible Markup
-Language)</a> - a W3C-recommended general-purpose markup language for
-creating special-purpose markup languages, capable of describing many
-different kinds of data.</li>
+    <li><a href="http://www.wikipedia.org/wiki/XML">XML (Extensible Markup Language
+- Genişletilebilir İşaretleme Dili)</a> - Özel amaçlı işaretleme dilleri
+oluşturmak için W3C tarafından tavsiye edilen genel amaçlı işaretleme dili,
+pek çok farklı türde verinin tanımlamasını yapabilir.</li>
     <li><a href="http://www.wikipedia.org/wiki/ZIP_%28file_format%29">ZIP</a> -
 yaygın bir veri sıkıştırma ve arşivsel biçim.</li>
     <li><a href="http://www.wikipedia.org/wiki/Zlib">zlib</a> - açık kaynaklı,
