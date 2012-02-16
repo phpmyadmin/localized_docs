@@ -296,21 +296,24 @@ access by web server configuration, see <a href="#faq1_42">FAQ 1.42</a>.
 履歴、コマンド追跡機能、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 生成、カラム内容の変換等）を使うには専用のテーブル群を作成する必要があります。これらのテーブル群はお使いのデータベースに格納することもできますし、マルチユーザの場合はセントラルデータベースに格納することもできます（このセントラルデータベースは管理ユーザがアクセスするものです。ほかのユーザはアクセスできないようにしてください）。</p>
 
-<p> <tt>./scripts/</tt> ディレクトリを確認してください。<i>create_tables.sql</i>
-というファイルがあるはずです（Windows サーバをお使いの場合は <a href="#faq1_23"><abbr
-title="よくある質問">FAQ</abbr> 1.23</a> をよくお読みください）。</p>
+<p> Please look at your <tt>./examples/</tt> directory, where you should find a
+file called <i>create_tables.sql</i>. (If you are using a Windows server,
+pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> 既存のテーブル構造を MySQL 4.1.2
-以降にアップグレードする場合は、<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> を使ってから
-<i>./scripts/create_tables.sql</i> をインポートして新しいテーブルを作成するようにしてください。</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./examples/create_tables.sql</i>.</p>
 
 <p> phpMyAdmin
 を使ってテーブル群を作成することもできますが、いくつか注意することがあります。データベースやテーブルを作成する際には特別な（管理者の）特権が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
 
-<p> <i>./scripts/create_tables.sql</i> ファイルをインポートしたら、<i>./config.inc.php</i>
-ファイルでテーブル名を指定してください。このとき使う設定項目の説明は<a
-href="#config">「設定」の章</a>にあります。また、これらのテーブル群に対する適切なアクセス権を持った管理ユーザが必要になります
-(後述の<i>認証モードの使い方</i>の節をご覧ください)。</p>
+<p> After having imported the <i>./examples/create_tables.sql</i> file, you
+should specify the table names in your <i>./config.inc.php</i> file. The
+directives used for that can be found in the <a href="#config">Configuration
+section</a>. You will also need to have a controluser with the proper rights
+to those tables (see section <a href="#authentication_modes">Using
+authentication modes</a> below).</p>
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
@@ -322,9 +325,10 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 <p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
 <tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
 
-<p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、且つ、phpMyAdmin
-環境保管領域を使用している場合、<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
-スクリプトを実行する必要があります。</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the SQL script found in
+<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 

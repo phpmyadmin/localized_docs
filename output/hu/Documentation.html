@@ -359,27 +359,26 @@ saját adatbázisába kerülnek elhelyezésre, vagy egy központi adatbázisban
 több felhasználós telepítés esetén (ehhez az adatbázishoz csak a kezelő
 felhasználó férhet hozzá, más egyéb felhasználónak nem lehet hozzá joga).</p>
 
-<p> Nézzen bele a <tt>./scripts/</tt> mappába, ahol található egy
-<i>create_tables.sql</i> nevű fájl. (Ha Windows szervert használt, nagyon
-figyeljen a <a href="#faq1_23"> <abbr title="Gyakran ismételt
-kérdések">GyIK</abbr> 1.23</a> pontjában leírtakra).</p>
+<p> Please look at your <tt>./examples/</tt> directory, where you should find a
+file called <i>create_tables.sql</i>. (If you are using a Windows server,
+pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> Ha már megvan önnek ez az infrastruktúra és frissítette a MySQL-t 4.1.2 vagy
-újabbra, kérjük használja a <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>
-fájlt és ezután hozza létre az új táblát a
-<i>./scripts/create_tables.sql</i> importálásával.</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./examples/create_tables.sql</i>.</p>
 
 <p> Használhatja a phpMyAdmint a táblák létrehozásához. Kérjük legyen tisztában
 azzal, hogy speciális (adminisztrátori) jogosultság szükséges az adatbázisok
 és táblák létrehozásához és a parancsfájlt esetleg módosítani kell az
 adatbázis nevének függvényében.</p>
 
-<p> A <i>./scripts/create_tables.sql</i> fájl importálása után meg kell adni a
-táblaneveket a <i>./config.inc.php</i> fájlban. Az ehhez használt
-irányelveket megtalálja a <a href="#config">Beállítás részben</a>. Szüksége
-lesz továbbá egy megfelelő jogosultsággal rendelkező irányító felhasználóra
-ezekhez a táblákhoz (lásd a lenti <a
-href="#authentication_modes">Hitelesítési módok használata</a> fejezetet).</p>
+<p> After having imported the <i>./examples/create_tables.sql</i> file, you
+should specify the table names in your <i>./config.inc.php</i> file. The
+directives used for that can be found in the <a href="#config">Configuration
+section</a>. You will also need to have a controluser with the proper rights
+to those tables (see section <a href="#authentication_modes">Using
+authentication modes</a> below).</p>
 
 <h3 id="upgrading">Frissítés egy korábbi verzióról</h3>
 
@@ -396,9 +395,10 @@ vége felé található.</p>
 a <tt>config.inc.php</tt> fájlon kívül, mert a alapértelmezett beállítófájl
 verzió-specifikus.</p>
 
-<p> Ha frissítette a MySQL szervert a korábbi 4.1.2 verzióról az 5.x vagy újabb
-verzióra és ha használja a phpMyAdmin beállítás tárolását, le kell futtatnia
-a <tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> SQL parancsfájlt.</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the SQL script found in
+<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">Hitelesítési módok használata</h3>
 

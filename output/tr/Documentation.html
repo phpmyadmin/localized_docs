@@ -355,28 +355,26 @@ veritabanınıza veya çoklu kullanıcılı kurulumlar (bu veritabanına, deneti
 kullanıcısı tarafından erişilebilecektir bu yüzden diğer hiçbir kullanıcı bu
 hakka sahip olmamalıdır) için merkezi veritabanına yerleştirilebilir.</p>
 
-<p> Lütfen <tt>./scripts/</tt> dizininize bakın, <i>create_tables.sql</i>
-adındaki dosyayı burada bulmalısınız. (Eğer Windows sunucusu
-kullanıyorsanız, <a href="#faq1_23"> <abbr title="Sıkça Sorulan
-Sorular">SSS</abbr> 1.23</a>'e özellikle dikkat edin).</p>
+<p> Please look at your <tt>./examples/</tt> directory, where you should find a
+file called <i>create_tables.sql</i>. (If you are using a Windows server,
+pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> Eğer zaten bu altyapıya sahipseniz ve MySQL 4.1.2 veya yenisine
-yükseltmişseniz, lütfen <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>
-dosyasını kullanın ve sonra <i>./scripts/create_tables.sql</i> dosyasını içe
-aktararak yeni tabloları oluşturun.</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
+new tables by importing <i>./examples/create_tables.sql</i>.</p>
 
 <p> phpMyAdmin'ninizi sizin için tablo oluşturmada kullanabilirsiniz. Lütfen
 veritabanları ve tablolar oluşturmak için özel (yönetici) yetkilere
 ihtiyacınız olduğunun farkında olun ve bu betiğin veritabanının adına bağlı
 olarak bazı ayarlamalara ihtiyacı olabilir.</p>
 
-<p> <i>./scripts/create_tables.sql</i> dosyası içe aktarıldıktan sonra
-<i>./config.inc.php</i> dosyanız içindeki tablo adlarını
-belirlemelisiniz. Bunun için kullanılan yönergeler <a
-href="#config">Yapılandırma bölümü</a>'nde bulunabilir. Aynı zamanda bu
-tablolar için doğru haklara sahip denetim kullanıcısına ihtiyacınız
-olacaktır (aşağıdan <a href="#authentication_modes">Kimlik doğrulama
-kipleri</a> bölümüne bakın).</p>
+<p> After having imported the <i>./examples/create_tables.sql</i> file, you
+should specify the table names in your <i>./config.inc.php</i> file. The
+directives used for that can be found in the <a href="#config">Configuration
+section</a>. You will also need to have a controluser with the proper rights
+to those tables (see section <a href="#authentication_modes">Using
+authentication modes</a> below).</p>
 
 <h3 id="upgrading">Eski sürümden yükseltme</h3>
 
@@ -393,10 +391,10 @@ kaldırın.</p>
 üzerine <strong>kopyalamamalısınız</strong> çünkü varsayılan yapılandırma
 dosyası sürüme özgüdür.</p>
 
-<p> Eğer önceki 4.1.2 sürümünden 5.x veya daha yeni sürüme yükseltilmiş MySQL
-sunucunuz varsa ve phpMyAdmin yapılandırma depolaması kullanıyorsanız,
-<tt>scripts/upgrade_tables_mysql_4_1_2+.sql</tt> içinde bulunan SQL betiğini
-çalıştırmalısınız.</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the SQL script found in
+<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">Kimlik doğrulama kipleri kullanımı</h3>
 
