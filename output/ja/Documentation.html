@@ -59,7 +59,7 @@ href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>にて翻訳�
     <li><a href="https://sourceforge.net/projects/phpmyadmin/">SourceForge
 phpMyAdmin プロジェクトページ</a></li>
     <li><a href="http://wiki.phpmyadmin.net">オフィシャル phpMyAdmin wiki</a></li>
-    <li><a href="https://github.com/phpmyadmin"> Git repositories on Github</a></li>
+    <li><a href="https://github.com/phpmyadmin">Git リポジトリ (Github)</a></li>
     <li>ローカル文書：
         <ul><li>バージョン履歴：<a href="changelog.php">変更履歴</a></li>
             <li>ライセンス: <a href="license.php">LICENSE</a></li>
@@ -276,17 +276,15 @@ title="よくある質問">FAQ</abbr> 4.4</a> を参照してください。</li
     <li>お使いのブラウザで <a href="index.php">phpMyAdmin のメインディレクトリ</a>を開きます。<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
 は現行版では、ようこそ画面と管理データベース、もしくはログインダイアログが表示されます。</li>
-    <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
-subfolders in your webserver configuration. For Apache you can use supplied
-<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
-webservers, you should configure this yourself.  Such configuration prevents
-from possible path exposure and cross side scripting vulnerabilities that
-might happen to be found in that code.</li>
+    <li>ウェブサーバの設定でサブフォルダ <tt>./libraries</tt> と <tt>./setup/lib</tt>
+へのアクセスを拒否しておいたほうがいいでしょう。Apache の場合は、該当フォルダに提供されている <a
+href="#glossary"><i>.htaccess</i></a>
+ファイルを使用することができます。他のウェブサーバの場合は、各自で設定する必要があります。このような設定を行うことにより、サブフォルダの露出を防ぎ、万一、そこのコードにクロスサイドスクリプティングの脆弱性が見つかっても、利用されることはありません。</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42">FAQ 1.42</a>.
+        一般的には、インストールしている phpMyAdmin
+を公開されている場合、検索エンジンロボットに自動的に収集されないようにするために、それらからのアクセスに対してを保護することをお勧めします。そのためには、<code>robots.txt</code>
+ファイルをウェブサーバのルートに置くか、もしくは、ウェブサーバの設定によりアクセス制限を行います。アクセス制限のやり方は、<a
+href="#faq1_42"><abbr title="よくある質問">FAQ</abbr> 1.42</a>を参照してください。
     </li>
 </ol>
 
@@ -301,19 +299,17 @@ file called <i>create_tables.sql</i>. (If you are using a Windows server,
 pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./examples/create_tables.sql</i>.</p>
+<p> 既存のテーブル構造を MySQL 4.1.2
+以降にアップグレードする場合は、<i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> を使ってから
+<i>./examples/create_tables.sql</i> をインポートして新しいテーブルを作成するようにしてください。</p>
 
 <p> phpMyAdmin
 を使ってテーブル群を作成することもできますが、いくつか注意することがあります。データベースやテーブルを作成する際には特別な（管理者の）特権が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
 
-<p> After having imported the <i>./examples/create_tables.sql</i> file, you
-should specify the table names in your <i>./config.inc.php</i> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> <i>./examples/create_tables.sql</i> ファイルをインポートしたら、<i>./config.inc.php</i>
+ファイルでテーブル名を指定してください。このとき使う設定項目の説明は<a
+href="#config">「設定」の章</a>にあります。また、これらのテーブル群に対する適切なアクセス権を持った管理ユーザが必要になります
+(後述の<i>認証モードの使い方</i>の節をご覧ください)。</p>
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
@@ -325,10 +321,9 @@ authentication modes</a> below).</p>
 <p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
 <tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the SQL script found in
-<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、かつ、phpMyAdmin
+環境保管領域を使用している場合、<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
+スクリプトを実行する必要があります。</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
@@ -410,10 +405,9 @@ PHP の使用をサポートに関しては <a href="#faq1_32"><abbr title="よ�
 1.32</a> を参照してください。Apache での <abbr title="コモン・ゲートウェイ・インタフェース">CGI</abbr>
 の使用に関しては、<a href="#faq1_35"><abbr title="よくある質問">FAQ</abbr> 1.35</a>
 を参照してください。</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <a
-href="#glossary"><i>.htaccess</i></a> mechanism along with '<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
+    <li><a href="#faq4_4"><abbr title="よくある質問">FAQ</abbr> 4.4</a> もご覧ください。「<abbr
+title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証モードと <a
+href="#glossary"><i>.htaccess</i></a> 機構は併用しないようにします。</li>
 </ul>
 
 <h4>「クッキー」認証モード</h4>
@@ -449,13 +443,11 @@ title="インターネット・サービス・プロバイダ">ISP</abbr></a> �
 class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> と <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> の設定でホスト認証することを検討してみてください。</li>
-    <li>Unlike cookie and http, does not require a user to log in when first loading
-the phpMyAdmin site. This is by design but could allow any user to access
-your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
-disallowing incoming HTTP requests at one&#8217;s router or firewall will
-suffice (both of which are beyond the scope of this manual but easily
-searchable with Google).</li>
+    <li>クッキー／HTTP 認証とは異なり、最初に phpMyAdmin
+サイトを読み込んだときに、ログインユーザを必要としません。これは仕様によるものですが、インストール先へのアクセスをどのユーザにも許可しているということです。HTTP
+認証の設定や他のルータから HTTP 要求を拒否している <a href="#glossary"><i>.htaccess</i></a>
+ファイルの設定、十分に対策したファイアウォール、といったいくつかの制限をかけること推奨します
+(これらの方法はこのマニュアルの範疇を超えていますが、Google で容易に検索できます)。</li>
 </ul>
 <h4 id="swekey">Swekey 認証</h4>
 <p>
@@ -468,12 +460,10 @@ Swekey 認証を有効にするには、<tt>config.inc.php</tt> に以下の行�
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-You then have to create the <tt>swekey.conf</tt> file that will associate
-each user with their Swekey Id. It is important to place this file outside
-of your web server's document root (in the example, it is located in
-<tt>/etc</tt>). A self documented sample file is provided in the
-<tt>examples</tt> directory. Feel free to use it with your own users'
-information.<br /><br />
+その後、各ユーザと Swekey ID が関連付けられている <tt>swekey.conf</tt>
+ファイルを作成する必要があります。このファイルをウェブサーバのドキュメントルート外に置いておくことが重要です (上の例では、<tt>/etc</tt>
+にあります)。これのサンプルファイルが <tt>examples</tt>
+ディレクトリにあります。これらはユーザ情報ではありますが、管理者が見ても特に問題はありません。<br /><br />
 Swekey を購入したい場合は、<a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 より訪問するようお願いいたします。このリンクを通すことにより phpMyAdmin へ紹介料が提供されますので。
@@ -633,17 +623,15 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
 を経由することで、あらゆる有効な MySQL ユーザでログインできます。</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
-from another application.  Sample way how to seed session is in signon
-example: <code>examples/signon.php</code>.  There is also alternative
-example using OpenID - <code>examples/openid.php</code> and example for
-scripts based solution - <code>examples/signon-script.php</code>.  You need
-to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
-name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
-be executed</a> and <a href="#cfg_Servers_SignonURL"
-class="configrule">signon URL</a> to use this authentication method.</li>
+            <li>「サインオン」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、バージョン 2.10.0
+で導入されました。用意された PHP のセッションデータからか、もしくは PHP
+スクリプトを使用して、ログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
+(<code>examples/signon.php</code>) の中にあります。別の例として、OpenID を使うもの
+(<code>examples/openid.php</code>) や、システムソリューションに基づいたもの
+(<code>examples/signon-script.php</code>) もあります。この認証方式を使用するには、<a
+href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>か<a
+href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>、それと<a
+href="#cfg_Servers_SignonURL" class="configrule">サインオン URL</a> を設定する必要があります。</li>
         </ul>
 
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
@@ -1167,12 +1155,10 @@ id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand'
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span> 文字列</dt>
-    <dd>Name of PHP script to be sourced and executed to obtain login
-credentials. This is alternative approach to session based single
-signon. The script needs to provide function
-<code>get_login_credentials</code> which returns list of username and
-password, accepting single parameter of existing username (can be empty).
-See <code>examples/signon-script.php</code> for an example.
+    <dd>ログイン資格情報を取得するために実行される PHP
+スクリプトの名前。これは、セッションに基づくシングルサインオンに代わる手法です。このスクリプトは、ユーザ名とパスワードの一覧を返す関数
+<code>get_login_credentials</code> を提供していて、単一のパラメータとして存在するユーザ名 (空欄も可)
+を受け入れる必要があります。サンプルは、<code>examples/signon-script.php</code> を参照してください。
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -1416,15 +1402,12 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 のときはアイコンを、FALSE のときはテキストを、「both (両方)」のときはアイコンとテキストの双方を表示します。</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] 論理型</dt>
-    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
-browse mode or not in all cases.  By default it is shown only on small
-tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
-to avoid performance issues while getting too many rows.</dd>
+    <dd>表示モードで「(行を)
+すべて表示」ボタンを表示するか、それとも全く表示させないか、を定義します。多量の行を取得することによるパフォーマンス上の問題のため、デフォルトでは小さいテーブル
+(5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> 行以下) にのみ表示されます。</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] 整数</dt>
-    <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
-used. If the result set contains more rows, &quot;Previous&quot; and
-&quot;Next&quot; links will be shown.</dd>
+    <dd>LIMIT 節を使用しなかった場合の結果セットの表示行数。この場合において結果セットがこの行数を上回ったときは、「前へ／次へ」のリンクが表示されます。</dd>
 
     <dt id="cfg_Order">$cfg['Order'] 文字列 [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
     <dd>昇順 (<tt>ASC</tt>)、降順 (<tt>DESC</tt>)、スマートな順番 (<tt>SMART</tt>)
@@ -2394,12 +2377,11 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>、タイムア
 <p> バージョン 2.7.0 以降はインポートエンジンが書き直されたため、この問題は起こらないはずです。可能であればお使いの phpMyAdmin
 を最新のバージョンにアップグレードして新しいインポート機能をご利用ください。</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that <tt>post_max_size</tt> and
-<tt>memory_limit</tt> need to be larger than <tt>upload_max_filesize</tt>.<br /> <br />
+<p> まずは <i>php.ini</i> 設定ファイルの
+<tt>upload_max_filesize</tt>、<tt>memory_limit</tt>、<tt>post_max_size</tt>
+の値を確認してください (あるいはプロバイダに確認してもらってください)。この 3 つの設定はいずれも PHP
+経由で送信／取り扱いできるデータサイズの上限を決めるものです。また、あるユーザによると、<tt>post_max_size</tt> と
+<tt>memory_limit</tt> も <tt>upload_max_filesize</tt> より大きい必要があるそうです。<br /> <br />
 
     アップロードファイルが大きすぎる、あるいはホスティングしてもらっているプロバイダに設定を変えていただけないのであれば、いくつかの対策があります。</p>
 
@@ -2605,21 +2587,19 @@ Windows 認証</tt>、有効になっている場合は<tt>ダイジェスト認
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 データベースやテーブルのページに直接アクセスできますか？</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <a
-href="#glossary"><i>.htaccess</i></a> file in root folder of phpMyAdmin
-installation (don't forget to change directory name inside of it):</p>
+<p> はい。そのままでも
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
+のような <abbr title="Uniform Resource Locator">URL</abbr>
+は利用できます。<tt>server</tt> パラメータには、<tt>config.inc.php</tt>
+内のサーバ項目で使われているインデックスの数字が入ります。table と script
+の部分はオプションです。http://server/phpMyAdmin/database[/table][/script] のような <abbr
+title="Uniform Resource Locator">URL</abbr> を使いたい場合はいくつかの設定をする必要があります。以下の例は
+<a href="http://httpd.apache.org">Apache</a>
+ウェブサーバにしか適用できませんが、まずはグローバルな設定でいくつかの機能を有効にしてあるか確認してください。phpMyAdmin
+をインストールしたディレクトリについては <code>Options FollowSymLinks</code> と
+<code>AllowOverride FileInfo</code> が有効になっている必要がありますし、mod_rewrite
+を有効にしておく必要もあります。あとは、以下のような <a href="#glossary"><i>.htaccess</i></a> ファイルを
+phpMyAdmin をインストールした場所のルートフォルダに作成するだけです (以下のディレクトリ名は例ですので、これは忘れずに修正してください)。</p>
 
 <pre>
 RewriteEngine On
@@ -3139,10 +3119,8 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
     <a href="#faq4_2">4.2 phpMyAdmin を不正アクセスから守るにはどうすればよいのでしょうか？</a></h4>
 <p>
     お使いのシステムによります。<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <a href="#glossary"><i>.htaccess</i></a> files, for
-example).<br />
+    外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です
+(例えば、Apache なら <a href="#glossary"><i>.htaccess</i></a> ファイルを利用できます)。<br />
     外部の人が telnet でサーバにアクセスできるのであれば、phpMyAdmin の <abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証ないしクッキー認証機能を使った方がよいでしょう。
     <br /><br />
@@ -3182,9 +3160,9 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a> や <a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている。</li>
     <li>ログインダイアログで指定したユーザ名／パスワードが無効なものだった。</li>
-    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a <a href="#glossary"><i>.htaccess</i></a> file. This would interfere
-with phpMyAdmin's authentication, so remove it.</li>
+    <li>phpMyAdmin ディレクトリに別のセキュリティ機構がセットアップされている (例えば <a
+href="#glossary"><i>.htaccess</i></a> ファイル)。これは phpMyAdmin
+の認証機構の邪魔になりますので除去してください。</li>
 </ul>
 
 <h4 id="faq4_5">
@@ -3197,13 +3175,12 @@ with phpMyAdmin's authentication, so remove it.</li>
 <h4 id="faq4_6">
     <a href="#faq4_6">4.6 どうすればホストベースの認証の追加指定を利用できますか？</a></h4>
 
-<p> If you have existing rules from an old <a
-href="#glossary"><i>.htaccess</i></a> file, you can take them and add a
-username between the <tt>'deny'</tt>/<tt>'allow'</tt> and <tt>'from'</tt>
-strings. Using the username wildcard of <tt>'%'</tt> would be a major
-benefit here if your installation is suited to using it. Then you can just
-add those updated lines into the <a href="#cfg_Servers_AllowDeny_rules"
-class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+<p> 古い <a href="#glossary"><i>.htaccess</i></a>
+ファイルに既存のルールがある場合は、それを取ってきて、<tt>「deny」</tt>／<tt>「allow」</tt> と
+<tt>「from」</tt> の文字列の間にユーザ名を加えてください。利用できるようにインストールしてあるなら、ユーザ名にワイルドカード
+<tt>「%」</tt> が使えるのでとても便利です。それが済んだら、あとは更新した行を <a
+href="#cfg_Servers_AllowDeny_rules" class="configrule">
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> 配列に加えるだけです。</p>
 
 <p> できあいのサンプルがほしい場合は、下記をお試しください。これは「root」ユーザがプライベートネットワークの <abbr
 title="インターネット・プロトコル">IP</abbr> ブロックに含まれないネットワークからログインするのを防ぐものです。</p>
@@ -3643,8 +3620,8 @@ column '...' used in key specification without a key length（BLOB
 <h4 id="faq6_16">
     <a href="#faq6_16">6.16 どうしたら多くの編集項目があるページで簡単に移動できますか。</a></h4>
 
-<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
-with many editing fields (table structure changes, row editing, etc.).</p>
+<p> (テーブルの構造を変更したり、行を編集したりなど) 編集カラムが多いページでは Ctrl + カーソルキー (Safari の場合は Option +
+カーソルキー) を使うと移動できます。</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 変換機能：独自の MIME タイプを入力できません！　本当にこの機能は役に立つんですか？</a></h4>
@@ -3942,18 +3919,15 @@ href="https://lists.sourceforge.net/lists/listinfo/phpmyadmin-translators">phpmy
 </p>
 
 <p>
-    Documentation is being translated using po4a and gettext (see <a
-href="http://www.phpmyadmin.net/home_page/docs.php">documentation</a> for
-existing translations). To start, checkout <a
+    現在、ドキュメントは po4a と gettext を用いて翻訳されています（翻訳されているものは <a
+href="http://www.phpmyadmin.net/home_page/docs.php">Documentation</a>
+を参照してください）。翻訳を始めるには、Git から <a
 href="http://github.com/phpmyadmin/localized_docs/tree/master/po"><code>localized_docs/po</code></a>
-from Git, or just go to the <a
-href="https://l10n.cihar.com/projects/pmadoc/">translation server</a> and
-translate it online. If your language is missing, just contact <a
-href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>; he will add
-it. If you prefer to directly translate the po files, please put updated
-ones into our <a
-href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">translation
-tracker</a>. 
+をチェックアウトします。もしくは、<a
+href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>にてオンライン翻訳するのもいいでしょう。翻訳したい言語がない場合は、<a
+href="mailto:michal@cihar.com">Michal &#268;iha&#345;</a>
+と連絡を取ってみてください。多分、彼が追加してくれます。直接 po ファイルを翻訳したい場合には、<a
+href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳トラッカー</a>に翻訳したものをアップロードしてください。 
 </p>
 
 <h4 id="faq7_3">
