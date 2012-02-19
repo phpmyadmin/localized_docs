@@ -94,9 +94,6 @@ mcrypt hará que phpMyAdmin cargue las páginas sensiblemente más lento.
                 </li>
                 <li>Para obtener barras de progreso en las subidas, vea <a href="#faq2_9"> <abbr
 title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
-                <li>Para soportar flujos de BLOBs, revise los requerimientos de PHP y MySQL en
-<a href="#faq6_25"><abbr title="Frequently Asked Questions">FAQ</abbr>
-6.25</a></li>
                 <li>Para poder importar XML y Hojas de Cálculo «Open Document», necesitará PHP
 5.2.17 o más reciente y la extensión <a
 href="http://www.php.net/libxml"><tt>libxml</tt></a>.</li>
@@ -4703,35 +4700,7 @@ tabla en pmadb a los nativos cuando se ingresa a la página de Estructura de
 esa tabla.</p>
 
 <h4 id="faq6_25">
-    <a href="#faq6_25">6.25 ¿Cómo funciona la transmisión por flujo de BLOB en
-phpMyAdmin?</a></h4>
-
-<p> Para información general de transmisión por flujo en MySQL, visita <a
-href="http://blobstreaming.org">blobstreaming.org</a>. Necesitarás los
-siguientes componentes:</p>
-<ul>
-    <li>PBMS BLOB Streaming Daemon para MySQL (0.5.15 o superior)</li>
-    <li>Motor PBXT Storage con flujos activados para MySQL (1.0.11-6 o superior)</li>
-    <li>PBMS Client Library para MYSQL (0.5.15 o superior)</li>
-    <li>Extensión PBMS PHP para MySQL (0.1.1 o superior)</li>
-</ul>
-
-<p>Estos son los detalles de configuración y funcionamiento:</p>
-
-<ol>
-    <li>En el archivo <tt>config.inc.php</tt> el servidor debe estar definido con un
-FQDN (Fully Qualified Domain Name) en lugar de &quot;localhost&quot;.</li>
-    <li>Assegúrate que la tabla destino esté bajo el motor de almacenamiento
-<tt>PBXT</tt> y tenga una columna <tt>LONGBLOB</tt> (que debe poder ser NULL
-si se desea eliminar la referencia BLOB de la misma).</li>
-    <li>Al insertar o actualizar una fila en esta tabla, activa la casilla opcional
-&quot;Cargar al repositorio BLOB&quot;; de lo contrario se subirá
-directamente a la columna LONGBLOB en lugar de al repositorio.</li>
-    <li>Finalmente, al examinar la tabla, verás en la columna un enlace para obtener
-un flujo con los datos, por ejemplo &quot;Ver imagen&quot;. Una cabecera
-conteniendo el tipo MIME correcto será enviada al navegador; este tipo MIME
-fue almacenado al ser subido.</li> 
-</ol>    
+    <a href="#faq6_25">6.25 (withdrawn).</a></h4>
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 ¿Cómo puedo seleccionar rangos de columnas?</a></h4>
@@ -5351,7 +5320,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Raj Kissu Rajandran (Google Summer of Code 2008)
 <ul>
-  <li>soporte para flujos BLOB</li>
+  <li>BLOBstreaming support (withdrawn in release 4.0)</li>
 </ul></li>
 
 <li>Piotr Przybylski (Google Summer of Code 2008, 2010 y 2011)
@@ -5405,7 +5374,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Barrie Leslie
 <ul>
-  <li>Soporte para flujos BLOB con la extensión PHP PBMS </li>
+  <li>BLOBstreaming support with PBMS PHP extension (withdrawn in release 4.0)</li>
 </ul></li>
 
 <li>Ankit Gupta (Google Summer of Code 2010)

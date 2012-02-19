@@ -88,8 +88,6 @@ href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a>
                 </li>
                 <li>アップロード進行状況バーをサポートするには、<a href="#faq2_9"><abbr title="よくある質問">FAQ</abbr>
 2.9</a>を参照してください。</li>
-                <li>BLOB ストリームをサポートするには、<a href="#faq6_25"><abbr title="よくある質問">FAQ</abbr>
-6.25</a> にある PHP と MySQL の必要構成を参照してください。</li>
                 <li>XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP 5.2.17 以降および <a
 href="http://www.php.net/libxml"><tt>libxml</tt></a> 拡張が必要です。</li>
         </ul>
@@ -769,8 +767,8 @@ title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
             <li><tt>$cfg['Servers'][$i]['relation']</tt> にリレーションテーブル名を入れます。</li>
-            <li>通常ユーザとして phpMyAdmin
-を開き、この機能を使いたいテーブル一つ々々に対して、「構造⇒リレーションビュー」とクリックして、外部カラムを選択します。
+            <li>一般ユーザとして phpMyAdmin
+を開き、この機能を使いたいテーブル一つ一つに対して、「構造⇒リレーションビュー」とクリックして、外部カラムを選択します。
                 </li>
         </ul>
 
@@ -1092,7 +1090,7 @@ id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span
 の場合、システムはすべての許可規則を適用してから拒否規則を適用します。アクセスは拒否がデフォルトです。許可コマンドに一致しないクライアント、拒否コマンドに一致するクライアントはすべてサーバへのアクセスが拒否されます。<br /><br />
 
         規則の適用順が「explicit」の場合、認証は「deny,allow」と同様に行われますが、制限が追加されて、ホスト名／ユーザ名の組が
-<i>allow</i> 規則に含まれ、且つ、<i>deny</i>
+<i>allow</i> 規則に含まれ、かつ、<i>deny</i>
 規則には含まれない<b>必要があります</b>。これは「Allow/Deny」規則を利用するうえでは<b>最も</b>安全な方法です。以前は
 Apache で順番を指定せずに許可・拒否規則を指定することで実現していたものです。<br /><br />
 
@@ -1457,7 +1455,7 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 の設定にあわせたスタイルで外部キーのドロップダウンボックスが表示されます。</dd>
 
     <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] 配列</dt>
-    <dd>外部キーのドロップダウンフィールドには、いくつかの表示方法がありますが、キーと値データの両方が表示されます。この配列には、<i>「content-id」</i>、<i>「id-content」</i>
+    <dd>外部キーのドロップダウン項目には、いくつかの表示方法がありますが、キーと値データの両方が表示されます。この配列には、<i>「content-id」</i>、<i>「id-content」</i>
 のいずれか、または両方が入ります。</dd>
 
     <dt><span id="cfg_ZipDump">$cfg['ZipDump']</span> 論理型<br />
@@ -2070,7 +2068,7 @@ class="configrule">$cfg['RestrictColumnTypes']</a>
 
 <h3 id="transformationsintro">1. はじめに</h3>
 
-<p> 変換機能を有効にするには、<tt>column_info</tt> テーブルと、適切なディレクティブを設定する必要があります。手順については<a
+<p> 変換機能を有効にするには、<tt>column_info</tt> テーブルと、適切な設定を行う必要があります。手順については<a
 href="#config">「設定」の章</a>をご覧ください。</p>
 
 <p> カラムごとに別々の変換機能を適用できます。変換機能は各カラムの内容を取得してから、選択された機能に定義されている規則に従って変換を行うためです。</p>
@@ -2092,10 +2090,10 @@ href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>を�
 ページに行きます（テーブルの「構造」リンクをクリックでたどり着きます）。「変更」（あるいは変更アイコン）をクリックすると、項目の最後の方に新しいフィールドが
 3 つ表示されます。それぞれ「MIME タイプ」、「ブラウザ変換」、「変換オプション」という名がついています。</p>
 
-    <ul><li>「MIME タイプ」フィールドはドロップダウンになっています。カラムの内容に対応した MIME タイプを選択してください。なお、MIME
+    <ul><li>「MIME タイプ」項目はドロップダウンになっています。カラムの内容に対応した MIME タイプを選択してください。なお、MIME
 タイプを選択しないと変換機能は有効になりませんので注意ください。</li>
 
-    <li>「ブラウザ変換機能」フィールドはドロップダウンになっています。そのうち数が増えていくであろう定義済みの変換機能を選択できます。自前の変換機能の作り方については以下をご覧ください。<br />
+    <li>「ブラウザ変換機能」項目はドロップダウンになっており、定義済みの変換機能を選択できます。これらの定義は今後増えていくと思われます。自前の変換機能の作り方については以下をご覧ください。<br />
 
         変換機能にはグローバルなものと、MIME タイプに固有のものとがあります。グローバルな変換機能はどの MIME タイプでも利用できます（必要がある場合は
 MIME タイプも考慮します）。MIME タイプに固有の変換機能はふつう特定の MIME タイプのみを操作します。（「image」のように）MIME
@@ -2104,10 +2102,10 @@ MIME タイプも考慮します）。MIME タイプに固有の変換機能は�
         変換機能は関数が定義されていない MIME
 タイプでも利用できますが、正しい変換機能を選択したかどうかというセキュリティチェックはありませんので、出力結果がどうなるかにはご注意ください。</li>
 
-    <li>「変換オプション」フィールドは自由に入力できるテキストフィールドです。変換用の関数特有のオプションはここに入力しなければなりません。ふつう変換機能はデフォルトのオプションで動作しますが、一般的に概略を読んでどんなオプションが必要になるか知っておくと便利です。<br />
+    <li>「変換オプション」項目は自由に入力できるテキスト項目です。変換用の関数特有のオプションはここに入力しなければなりません。通常、変換機能はデフォルトのオプションで動作しますが、概略を読んでどんなオプションが必要になるか知っておいたほうがいいでしょう。<br />
 
-        ENUM/SET フィールドの場合と同じように、複数のオプションがある場合は
-'a','b','c',...（空白がないことに注意）のような形式で分割する必要があります。これは、内部的には配列に分解して、最初の要素には最初の値が入るようにするためです。<br />
+        ENUM/SET 項目の場合と同じように、複数のオプションがある場合は 'a','b','c',... (空白がないことに注意)
+のような形式で分割する必要があります。これは、内部的には配列に分解して、最初の要素には最初の値が入るようにするためです。<br />
 
         MIME 文字セットを指定したい場合は変換オプションで定義できますが、これはその MIME
 変換機能にもとから定義されているオプションとは別に、オプションの最後に置く必要があります。書式は「'; charset=XXX'」です。オプションを 2
@@ -2737,30 +2735,29 @@ href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.o
 コマンドを実行する必要があります。</p>
 
 <h4 id="faq1_42">
-    <a href="#faq1_42">1.42 How can I prevent robots from accessing
-phpMyAdmin?</a></h4>
+    <a href="#faq1_42">1.42 検索エンジンロボットから phpMyAdmin
+へのアクセスを防ぐにはどうすればいいのでしょうか？</a></h4>
 
-<p>You can add various rules to <a href="#glossary"><i>.htaccess</i></a> to
-filter access based on user agent field. This is quite easy to circumvent,
-but could prevent at least some robots accessing your installation.</p>
+<p><a href="#glossary"><i>.htaccess</i></a>
+にユーザエージェントに基づいたアクセスフィルタルールを追加することができます。防ぐ手立てとしてはきわめて簡単な方法ですが、少なくともいくつかの検索ロボットからは防ぐことが可能です。</p>
 
 <pre>
 RewriteEngine on
 
-# Allow only GET and POST verbs
+# GET と POST 動作のみを許可
 RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
 
-# Ban Typical Vulnerability Scanners and others
-# Kick out Script Kiddies
+# 特定の攻撃的な調査を行っている者などの排除
+# 幼稚なスクリプト攻撃は弾く
 RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|scan|acunetix).* [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
 
-# Ban Search Engines, Crawlers to your administrative panel
-# No reasons to access from bots
-# Ultimately Better than the useless robots.txt
-# Did google respect robots.txt?
-# Try google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
+# サーチエンジン・クローラは管理ページから排除
+# 検索ロボットというのは特に理由がないアクセスである
+# あまり効果がない robots.txt よりはまし
+# google は robots.txt を尊重していた？
+# google には 括弧内のことを試している (intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled")
 RewriteCond %{HTTP_USER_AGENT} ^.*(AdsBot-Google|ia_archiver|Scooter|Ask.Jeeves|Baiduspider|Exabot|FAST.Enterprise.Crawler|FAST-WebCrawler|www\.neomo\.de|Gigabot|Mediapartners-Google|Google.Desktop|Feedfetcher-Google|Googlebot|heise-IT-Markt-Crawler|heritrix|ibm.com\cs/crawler|ICCrawler|ichiro|MJ12bot|MetagerBot|msnbot-NewsBlogs|msnbot|msnbot-media|NG-Search|lucene.apache.org|NutchCVS|OmniExplorer_Bot|online.link.validator|psbot0|Seekbot|Sensis.Web.Crawler|SEO.search.Crawler|Seoma.\[SEO.Crawler\]|SEOsearch|Snappy|www.urltrends.com|www.tkl.iis.u-tokyo.ac.jp/~crawler|SynooBot|crawleradmin.t-info@telekom.de|TurnitinBot|voyager|W3.SiteSearch.Crawler|W3C-checklink|W3C_Validator|www.WISEnutbot.com|yacybot|Yahoo-MMCrawler|Yahoo\!.DE.Slurp|Yahoo\!.Slurp|YahooSeeker).* [NC]
 RewriteRule .* - [F]
 </pre>
@@ -3105,7 +3102,7 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 <h4 id="faq4_1">
     <a href="#faq4_1">4.1 当方は <abbr title="インターネット・サービス・プロバイダ">ISP</abbr>
 なのですが、phpMyAdmin
-はセントラルコピーを一つセットアップすればよいのでしょうか。それともお客様一人々々にインストールする必要があるのでしょうか。</a></h4>
+はセントラルコピーを一つセットアップすればよいのでしょうか。それともお客様一人一人にインストールする必要があるのでしょうか。</a></h4>
 <p>
     バージョン 2.0.3 以降、phpMyAdmin
 はユーザ全員が使えるセントラルコピーをセットアップできるようになりました。この機能の開発にあたってはありがたいことに NetCologne GmbH
@@ -3732,29 +3729,7 @@ class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt></p>
 <p> あるテーブルの「構造」ページに入ったら、自動的にそのテーブルの pmadb スタイルのカラムコメントがネイティブのカラムコメントに移行されます。</p>
 
 <h4 id="faq6_25">
-    <a href="#faq6_25">6.25 どうしたら phpMyAdmin で BLOB ストリームを機能させられますか？</a></h4>
-
-<p> MySQL での BLOB ストリームについての一般的な情報は、<a
-href="http://blobstreaming.org">blobstreaming.org</a>
-をご覧になってください。以下の機能を持ったものが必要になります。</p>
-<ul>
-    <li>MySQL 用の PBMS BLOB ストリーミングデーモン (0.5.15 以降)</li>
-    <li>ストリーミングが有効な MySQL 用の PBXT ストレージエンジン (1.0.11-6 以降)</li>
-    <li>MySQL 用の PBMS クライアントライブラリ (0.5.15 以降)</li>
-    <li>MySQL 用の PBMS PHP 拡張 (0.1.1 以降)</li>
-</ul>
-
-<p>ここに、設定と操作についての詳細を上げておきます。</p>
-
-<ol>
-    <li><tt>config.inc.php</tt> でホストを、「localhost」ではなく、完全修飾ドメイン名 (FQDN) で定義する必要があります。</li>
-    <li>対象のテーブルが、<tt>PBXT</tt> ストレージエンジンであり、<tt>LONGBLOB</tt> カラム（BLOB 参照を削除する場合は
-NULL を許容する必要があります）があることを確認してください。</li>
-    <li>このテーブルに行の挿入／更新するときは、「BLOB 格納へアップロードする」オプションにチェックを入れます。それ以外の場合は、BLOB 格納ではなく
-LONGBLOB カラムに直接アップロードされます。</li>
-    <li>最後にこのテーブルを表示する場合ですが、「イメージの表示」というふうに、ストリームデータへリンクがカラムに表示されます。正しい MIME
-タイプを含むヘッダが、きちんとブラウザに送信されます。この MIME タイプは、アップロード時に格納されたものです。</li> 
-</ol>    
+    <a href="#faq6_25">6.25 (withdrawn).</a></h4>
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 行の範囲選択はどのように行いますか？</a></h4>
@@ -3933,10 +3908,9 @@ href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳ト
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 phpMyAdmin の開発に協力したいのですが、どのように進めればよいでしょうか？</a></h4>
 
-<p>We welcome every contribution to the development of phpMyAdmin.  You can
-check out all the possibilities to contribute in the <a
-href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
-our website</a>.
+<p>phpMyAdmin 開発の貢献に関わるあらゆるものを、我々は歓迎します。ウェブサイトの <a
+href="http://www.phpmyadmin.net/home_page/improve.php">Contribute</a>
+ページをご覧ください。このページに貢献してもらいたい一覧が載せてあります。
    </p>
 
 <h3 id="faqsecurity">セキュリティ</h3>
@@ -4015,12 +3989,10 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 </p>
 
 <h4 id="faq9_2">
-    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
-tables?</a></h4>
+    <a href="#faq9_2">9.2 大きなテーブルの同期データには問題があるようですが？</a></h4>
 
 <p>
-Yes. This aspect of synchronization is currently limited to small tables,
-and they must have a primary key.
+そうです。データの同期は、現在のところ小さなテーブルに限定されています。それと主キーも付けるべきです。
 </p>
 
 
@@ -4031,9 +4003,9 @@ and they must have a primary key.
 はオープンソースですから、貢献してくださる方は歓迎します。これまでにもほかの方々が多くのすばらしい機能を書いてくださいました。みなさんにもできることはあります。phpMyAdmin
 を便利なツールにしていきましょう。</p>
 
-<p>You can check out all the possibilities to contribute in the <a
-href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
-our website</a>.
+<p>ウェブサイトの <a
+href="http://www.phpmyadmin.net/home_page/improve.php">Contribute</a>
+ページをご覧ください。このページに貢献してもらいたい一覧が載せてあります。
    </p>
 
 <h2 id="copyright">著作権</h2>
@@ -4062,9 +4034,9 @@ GNU General Public License (GPL) を参照してください。
 </p>
 
 <p>
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <a
-href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+このプログラムと共に GNU General Public License (GPL) のコピーを受け取っているはずです。もし、ない場合は <a
+href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>
+をご覧になってください。
 </p>
 
 
@@ -4276,7 +4248,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Raj Kissu Rajandran (Google Summer of Code 2008)
 <ul>
-  <li>BLOB ストリームをサポート</li>
+  <li>BLOBstreaming support (withdrawn in release 4.0)</li>
 </ul></li>
 
 <li>Piotr Przybylski (Google Summer of Code 2008, 2010 and 2011)
@@ -4330,7 +4302,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Barrie Leslie
 <ul>
-  <li>PBMS PHP 拡張による BLOB ストリームのサポート</li>
+  <li>BLOBstreaming support with PBMS PHP extension (withdrawn in release 4.0)</li>
 </ul></li>
 
 <li>Ankit Gupta (Google Summer of Code 2010)
