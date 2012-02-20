@@ -279,10 +279,11 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー
 href="#glossary"><i>.htaccess</i></a>
 ファイルを使用することができます。他のウェブサーバの場合は、各自で設定する必要があります。このような設定を行うことにより、サブフォルダの露出を防ぎ、万一、そこのコードにクロスサイドスクリプティングの脆弱性が見つかっても、利用されることはありません。</li>
     <li>
-        一般的には、インストールしている phpMyAdmin
-を公開されている場合、検索エンジンロボットに自動的に収集されないようにするために、それらからのアクセスに対してを保護することをお勧めします。そのためには、<code>robots.txt</code>
-ファイルをウェブサーバのルートに置くか、もしくは、ウェブサーバの設定によりアクセス制限を行います。アクセス制限のやり方は、<a
-href="#faq1_42"><abbr title="よくある質問">FAQ</abbr> 1.42</a>を参照してください。
+        It is generally good idea to protect public phpMyAdmin installation against
+access by robots as they usually can not do anything good there. You can do
+this using <code>robots.txt</code> file in root of your webserver or limit
+access by web server configuration, see <a href="#faq1_42"><abbr
+title="Frequently Asked Questions">FAQ</abbr> 1.42</a>.
     </li>
 </ol>
 
@@ -319,9 +320,10 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 <p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
 <tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
 
-<p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、かつ、phpMyAdmin
-環境保管領域を使用している場合、<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt> にある SQL
-スクリプトを実行する必要があります。</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the <abbr title="structured query language">SQL</abbr> script
+found in <tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
@@ -349,9 +351,11 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> と <tt><a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt> 項目には<a
 href="#controluser">管理ユーザ</a>の情報を登録しなければなりません。<br />
-        下記の例では <tt>pma</tt> を管理ユーザ、<tt>pmapass</tt>
-を管理パスワードと想定していますが、<b>これはあくまでも例です。ご自分のファイルでは設定を変えてください！</b> phpMyAdmin の SQL
-クエリウィンドウまたは mysql コマンドラインクライアントからこれらのコマンドを入力します。<br />
+        The following example assumes you want to use <tt>pma</tt> as the
+controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
+example: use something else in your file!</b> Input these statements from
+the phpMyAdmin <abbr title="structured query language">SQL </abbr> Query
+window or mysql command&#8211;line client.<br />
         当然のことながら、MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
 をウェブサーバのホストに差し替える必要があります。
 
@@ -621,15 +625,18 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
 を経由することで、あらゆる有効な MySQL ユーザでログインできます。</li>
-            <li>「サインオン」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、バージョン 2.10.0
-で導入されました。用意された PHP のセッションデータからか、もしくは PHP
-スクリプトを使用して、ログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
-(<code>examples/signon.php</code>) の中にあります。別の例として、OpenID を使うもの
-(<code>examples/openid.php</code>) や、システムソリューションに基づいたもの
-(<code>examples/signon-script.php</code>) もあります。この認証方式を使用するには、<a
-href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>か<a
-href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>、それと<a
-href="#cfg_Servers_SignonURL" class="configrule">サインオン URL</a> を設定する必要があります。</li>
+            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
+introduced in 2.10.0 allows you to log in from prepared PHP session data or
+using supplied PHP script. This is useful for implementing single signon
+from another application.  Sample way how to seed session is in signon
+example: <code>examples/signon.php</code>.  There is also alternative
+example using OpenID - <code>examples/openid.php</code> and example for
+scripts based solution - <code>examples/signon-script.php</code>.  You need
+to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
+name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
+be executed</a> and <a href="#cfg_Servers_SignonURL"
+class="configrule">signon <abbr title="Uniform Resource
+Locator">URL</abbr></a> to use this authentication method.</li>
         </ul>
 
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
@@ -1167,10 +1174,14 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
 を解除しないと、こちらは機能しません。
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span> 文字列</dt>
-    <dd>ユーザがサインオン認証方式でログインしてときにリダイレクトされる URL。プロトコルを含む完全な URL にしなければなりません。
+    <dd><abbr title="Uniform Resource Locator">URL</abbr> where user will be
+redirected to log in for signon authentication method. Should be absolute
+including protocol.
     </dd>
     <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span> 文字列</dt>
-    <dd>ユーザがログアウト後にリダイレクトされる URL（認証方式の設定には影響しません）。プロトコルを含む完全な URL にしなければなりません。
+    <dd><abbr title="Uniform Resource Locator">URL</abbr> where user will be
+redirected after logout (doesn't affect config authentication method).
+Should be absolute including protocol.
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
@@ -1195,9 +1206,12 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
     <dd>ヒントを表示するかどうか（例：テーブルのヘッダ部にマウスカーソルを重ねたときに表示される）。</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
-    <dd>SQL クエリ表示時の最大文字数。デフォルトの制限は 1000 ですが、BLOB を表現する多量の 16
-進コードの表示を回避するためには、このくらいが適切だと思われます。しかし、一部のユーザは 1000 文字よりも長い SQL
-クエリを使用します。また、クエリの長さがこの制限を超えている場合、そのクエリは履歴に保存されません。</dd>
+    <dd>The maximum number of characters when a <abbr title="structured query
+language"> SQL</abbr> query is displayed. The default limit of 1000 should
+be correct to avoid the display of tons of hexadecimal codes that represent
+BLOBs, but some users have real <abbr title="structured query
+language">SQL</abbr> queries that are longer than 1000 characters. Also, if
+a query's length exceeds this limit, this query is not saved in the history.</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] 文字列／論理型</dt>
     <dd><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 転送のスピードアップのために GZip
@@ -1251,8 +1265,11 @@ session_save_path</a>）</dd>
 にすると、「データベースの削除」のリンクは表示されませんし、「DROP DATABASE
 (自身のデータベース名)」すらも拒否されます。多くの顧客をかかえる <abbr
 title="インターネット・サービス・プロバイダ">ISP</abbr> にとってはきわめて実用的です。<br />
-        SQL クエリに対するこの制限は、MySQL の特権を使用するほど厳格ではないことに注意してください。これは SQL
-クエリの性質によるもので、非常に複雑になる可能性があります。この設定は、厳密な特権の制限というよりも、削除事故回避ためにヘルプとして表示するようなものです。</dd>
+        Please note that this limitation of <abbr title="structured query language">
+SQL</abbr> queries is not as strict as when using MySQL privileges. This is
+due to nature of <abbr title="structured query language">SQL</abbr> queries
+which might be quite complicated. So this choice should be viewed as help to
+avoid accidental dropping rather than strict privilege limitation.</dd>
 
     <dt id="cfg_Confirm">$cfg['Confirm'] 論理型</dt>
     <dd>データが消失しそうな操作をしたときに警告（「本当に〜してもよいですか」）を表示するかどうか。</dd>
@@ -1344,9 +1361,9 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] 論理型</dt>
     <dd>phpMyAdmin ロゴを左フレームの最上部に表示するかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] 文字列</dt>
-    <dd>ナビゲーションフレームのロゴが指す URL
-を入力してください。とりわけ、独自の環境を作る場合には、これを変更することになるかもしれません。これのデフォルト値は <tt>main.php</tt>
-です。</dd>
+    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
+navigation frame will point to.  For use especially with self made theme
+which changes this.  The default value for this is <tt>main.php</tt>.</dd>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] 文字列</dt>
     <dd>リンクされているページを開こうとするときメインウィンドウ (<tt>main</tt>) か新しいウィンドウ (<tt>new</tt>)
@@ -1589,8 +1606,11 @@ $cfg['TrustedProxies'] =
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] 整数</dt>
     <dd>
-    リンクの URL の長さの制限です。長さがこの制限を超えてしているとき、ボタンを使用したフォームに置き換えられます。一部のウェブサーバ (IIS)
-は長い URL に問題があるため、この設定が必要となります。デフォルトは <code>1000</code> です。
+    Limit for length of <abbr title="Uniform Resource Locator">URL</abbr> in
+links.  When length would be above this limit, it is replaced by form with
+button.  This is required as some web servers (<abbr title="Internet
+Information Services"> IIS</abbr>) have problems with long <abbr
+title="Uniform Resource Locator"> URL</abbr>s. Default is <code>1000</code>.
     </dd>
 
     <dt
@@ -2682,7 +2702,8 @@ href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout
 を無効 (デフォルトです)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
-に SQL を含めない。含めるととても遅くなります。</li>
+should not include <abbr title="structured query language">SQL</abbr>,
+otherwise you get big slowdown</li>
 </ul>
 
     <p>
@@ -2771,10 +2792,13 @@ RewriteRule .* - [F]
 already sent by
 ...（警告：ヘッダ情報を追加できません。ヘッダは送信済みです）」というエラーメッセージが表示されます。何がいけないのでしょう。</a></h4>
 
-<p> <i>config.inc.php</i> ファイルを修正して、先頭の <tt>&lt;?php</tt> タグの前や末尾の
-<tt>?&gt;</tt> の後には何も入れない（改行やスペース、文字などがない）ようにしてください。また、zip 形式の配布キットを使用している
-IIS でユーザから以下の報告を受けています。『ファイル <tt>libraries/Config.class.php</tt> の末尾に改行コード
-(0x0A) が含まれていたので、この文字を削除したらエラーがなくなりました。』</p>
+<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
+blank lines, no spaces, no characters...) neither before the
+<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
+at the end. We also got a report from a user under <abbr title="Internet
+Information Services">IIS</abbr>, that used a zipped distribution kit: the
+file <tt>libraries/Config.class.php</tt> contained an end-of-line character
+(hex 0A) at the end; removing this character cleared his errors.</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
@@ -3072,10 +3096,14 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 <!-- End: Excel import limitations -->
 <!-- Begin: CSV import limitations -->
 <h4 id="faq3_18">
-    <a href="#faq3_18">3.18 複数のテーブルを含む CSV
-ファイルをインポートすると、それらが単一のテーブルにまとめられてしまいます。</a></h4>
+    <a href="#faq3_18">3.18 When I import a <abbr title="comma separated
+values"> CSV</abbr> file that contains multiple tables, they are lumped
+together into a single table.</a></h4>
 <p>
-    CSV 形式でテーブルを区別する確実な方法はありません。当分の間は、複数のテーブルを含む CSV ファイルを分割する必要があります。
+    There is no reliable way to differentiate tables in <abbr title="comma
+separated values"> CSV</abbr> format. For the time being, you will have to
+break apart <abbr title="comma separated values">CSV</abbr> files containing
+multiple tables.
 </p>
 
 
