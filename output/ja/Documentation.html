@@ -110,8 +110,7 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
 <ul><li>データベース、テーブル、ビュー、カラム、インデックスの閲覧および削除</li>
     <li>データベース、テーブル、カラム、インデックスの作成・複製・削除・名称および定義の変更</li>
     <li>サーバ、データベース、テーブルの保守、そのためのサーバの設定を提案</li>
-    <li>任意の <abbr title="structured query language">SQL</abbr>
-文の実行、編集、ブックマーク。マルチクエリにも対応。</li>
+    <li>任意の <abbr title="データベース用の問い合わせ言語">SQL</abbr> 文の実行、編集、ブックマーク。マルチクエリにも対応。</li>
     <li>テキストファイルをテーブルに読み込み</li>
     <li>テーブルダンプの作成<a href="#footnote_1"><sup>1</sup></a>と読み込み
         </li>
@@ -279,19 +278,19 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー
 href="#glossary"><i>.htaccess</i></a>
 ファイルを使用することができます。他のウェブサーバの場合は、各自で設定する必要があります。このような設定を行うことにより、サブフォルダの露出を防ぎ、万一、そこのコードにクロスサイドスクリプティングの脆弱性が見つかっても、利用されることはありません。</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.42</a>.
+        一般的には、インストールしている phpMyAdmin
+を公開されている場合、検索エンジンロボットに自動的に収集されないようにするために、それらからのアクセスに対してを保護することをお勧めします。そのためには、<code>robots.txt</code>
+ファイルをウェブサーバのルートに置くか、もしくは、ウェブサーバの設定によりアクセス制限を行います。アクセス制限のやり方は、<a
+href="#faq1_42"><abbr title="よくある質問">FAQ</abbr> 1.42</a>を参照してください。
     </li>
 </ol>
 
 <h3 id="linked-tables">phpMyAdmin 環境保管領域</h3>
 
-<p> 一連の新機能（ブックマーク、コメント、<abbr title="structured query language">SQL</abbr>
-履歴、コマンド追跡機能、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
-生成、カラム内容の変換等）を使うには専用のテーブル群を作成する必要があります。これらのテーブル群はお使いのデータベースに格納することもできますし、マルチユーザの場合はセントラルデータベースに格納することもできます（このセントラルデータベースは管理ユーザがアクセスするものです。ほかのユーザはアクセスできないようにしてください）。</p>
+<p> 一連の新機能 (ブックマーク、コメント、<abbr title="データベース用の問い合わせ言語">SQL</abbr>
+履歴、コマンド追跡機能、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> 生成、カラム内容の変換等)
+を使うには専用のテーブル群を作成する必要があります。これらのテーブル群はお使いのデータベースに格納することもできますし、マルチユーザの場合はセントラルデータベースに格納することもできます
+(このセントラルデータベースは管理ユーザがアクセスするものです。ほかのユーザはアクセスできないようにしてください)。</p>
 
 <p> Please look at your <tt>./examples/</tt> directory, where you should find a
 file called <i>create_tables.sql</i>. (If you are using a Windows server,
@@ -320,10 +319,9 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 <p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
 <tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the <abbr title="structured query language">SQL</abbr> script
-found in <tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、かつ、phpMyAdmin
+環境保管領域を使用している場合、<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt> にある <abbr
+title="データベース用の問い合わせ言語">SQL</abbr> スクリプトを実行する必要があります。</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
@@ -351,11 +349,10 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> と <tt><a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt> 項目には<a
 href="#controluser">管理ユーザ</a>の情報を登録しなければなりません。<br />
-        The following example assumes you want to use <tt>pma</tt> as the
-controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
-example: use something else in your file!</b> Input these statements from
-the phpMyAdmin <abbr title="structured query language">SQL </abbr> Query
-window or mysql command&#8211;line client.<br />
+        下記の例では <tt>pma</tt> を管理ユーザ、<tt>pmapass</tt>
+を管理パスワードと想定していますが、<b>これはあくまでも例です。ご自分のファイルでは設定を変えてください！</b> phpMyAdmin の
+<abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリウィンドウまたは mysql
+コマンドラインクライアントからこれらのコマンドを入力します。<br />
         当然のことながら、MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
 をウェブサーバのホストに差し替える必要があります。
 
@@ -489,11 +486,10 @@ href="#setup">クイックインストール</a>の項を参照して作成し�
 ファイルを修正すれば各ページの先頭と末尾にページ固有のコードを追加できます。</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] 文字列</dt>
-    <dd>ここには、phpMyAdmin がインストールされているディレクトリの <abbr title="Uniform Resource
-Locator">URL</abbr> をフルパスで設定します
+    <dd>ここには、phpMyAdmin がインストールされているディレクトリの <abbr title="インターネットアドレス">URL</abbr>
+をフルパスで設定します
 (例：<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>)。なお、ウェブサーバによってはこの
-<abbr title="Uniform Resource Locator">URL</abbr>
-の大文字小文字を区別します。末尾のスラッシュを忘れないようにしてください。<br /><br />
+<abbr title="インターネットアドレス">URL</abbr> の大文字小文字を区別します。末尾のスラッシュを忘れないようにしてください。<br /><br />
 
         バージョン 2.3.0 からはここを空欄にすることが推奨されています。たいていの場合、phpMyAdmin
 は自動的に適切な設定を検出します。ポート転送をしているユーザは PmaAbsoluteUri を設定する必要があるでしょう（<a
@@ -625,18 +621,16 @@ class="configrule">$cfg['AllowArbitraryServer']</a></tt>
 (<tt>$auth_type&nbsp;=&nbsp;'<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
 を経由することで、あらゆる有効な MySQL ユーザでログインできます。</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
-from another application.  Sample way how to seed session is in signon
-example: <code>examples/signon.php</code>.  There is also alternative
-example using OpenID - <code>examples/openid.php</code> and example for
-scripts based solution - <code>examples/signon-script.php</code>.  You need
-to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
-name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
-be executed</a> and <a href="#cfg_Servers_SignonURL"
-class="configrule">signon <abbr title="Uniform Resource
-Locator">URL</abbr></a> to use this authentication method.</li>
+            <li>「サインオン」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、バージョン 2.10.0
+で導入されました。用意された PHP のセッションデータからか、もしくは PHP
+スクリプトを使用して、ログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
+(<code>examples/signon.php</code>) の中にあります。別の例として、OpenID を使うもの
+(<code>examples/openid.php</code>) や、システムソリューションに基づいたもの
+(<code>examples/signon-script.php</code>) もあります。この認証方式を使用するには、<a
+href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>か<a
+href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>、それと<a
+href="#cfg_Servers_SignonURL" class="configrule">サインオン <abbr
+title="インターネットアドレス">URL</abbr></a> を設定する必要があります。</li>
         </ul>
 
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
@@ -860,9 +854,8 @@ ALTER TABLE `pma_column_comments`
     <dt id="history">
         <span id="cfg_Servers_history">$cfg['Servers'][$i]['history']</span> 文字列
     </dt>
-    <dd>バージョン 2.5.0 以降、<abbr title="structured query language">SQL</abbr>
-の履歴（phpMyAdmin
-インタフェースに手入力したすべてのクエリ）を保管できるようになりました。テーブルベースの履歴は利用したくない場合、JavaScript
+    <dd>バージョン 2.5.0 以降、<abbr title="データベース用の問い合わせ言語">SQL</abbr> の履歴 (phpMyAdmin
+インタフェースに手入力したすべてのクエリ) を保管できるようになりました。テーブルベースの履歴は利用したくない場合、JavaScript
 ベースの履歴を利用することもできます。この場合、ウインドウを閉じるとすべての履歴が削除されます。<br /><br />
 
         <a href="#cfg_QueryHistoryMax"
@@ -1174,14 +1167,14 @@ href="#cfg_Servers_SignonScript" class="configrule">SignonScript</a>
 を解除しないと、こちらは機能しません。
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span> 文字列</dt>
-    <dd><abbr title="Uniform Resource Locator">URL</abbr> where user will be
-redirected to log in for signon authentication method. Should be absolute
-including protocol.
+    <dd>ユーザがサインオン認証方式でログインしてときにリダイレクトされる <abbr
+title="インターネットアドレス">URL</abbr>。プロトコルを含む完全な <abbr
+title="インターネットアドレス">URL</abbr> にしなければなりません。
     </dd>
     <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span> 文字列</dt>
-    <dd><abbr title="Uniform Resource Locator">URL</abbr> where user will be
-redirected after logout (doesn't affect config authentication method).
-Should be absolute including protocol.
+    <dd>ユーザがログアウト後にリダイレクトされる <abbr title="インターネットアドレス">URL</abbr>
+(認証方式の設定には影響しません)。プロトコルを含む完全な <abbr title="インターネットアドレス">URL</abbr>
+にしなければなりません。
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
@@ -1206,12 +1199,10 @@ Should be absolute including protocol.
     <dd>ヒントを表示するかどうか（例：テーブルのヘッダ部にマウスカーソルを重ねたときに表示される）。</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] 整数</dt>
-    <dd>The maximum number of characters when a <abbr title="structured query
-language"> SQL</abbr> query is displayed. The default limit of 1000 should
-be correct to avoid the display of tons of hexadecimal codes that represent
-BLOBs, but some users have real <abbr title="structured query
-language">SQL</abbr> queries that are longer than 1000 characters. Also, if
-a query's length exceeds this limit, this query is not saved in the history.</dd>
+    <dd><abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリ表示時の最大文字数。デフォルトの制限は 1000
+ですが、BLOB を表現する多量の 16 進コードの表示を回避するためには、このくらいが適切だと思われます。しかし、一部のユーザは 1000
+文字よりも長い <abbr title="データベース用の問い合わせ言語">SQL</abbr>
+クエリを使用します。また、クエリの長さがこの制限を超えている場合、そのクエリは履歴に保存されません。</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] 文字列／論理型</dt>
     <dd><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr> 転送のスピードアップのために GZip
@@ -1254,7 +1245,7 @@ session_save_path</a>）</dd>
     <dd>利用しているテーブルに印をつけることで、テーブルがロックされているデータベースを表示できるようにします（3.23.30 以降）。</dd>
 
     <dt id="cfg_ShowSQL">$cfg['ShowSQL'] 論理型</dt>
-    <dd>phpMyAdmin が生成する <abbr title="structured query language">SQL</abbr>
+    <dd>phpMyAdmin が生成する <abbr title="データベース用の問い合わせ言語">SQL</abbr>
 クエリを表示するかどうかを定義します。</dd>
 
     <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] 論理型</dt>
@@ -1265,11 +1256,9 @@ session_save_path</a>）</dd>
 にすると、「データベースの削除」のリンクは表示されませんし、「DROP DATABASE
 (自身のデータベース名)」すらも拒否されます。多くの顧客をかかえる <abbr
 title="インターネット・サービス・プロバイダ">ISP</abbr> にとってはきわめて実用的です。<br />
-        Please note that this limitation of <abbr title="structured query language">
-SQL</abbr> queries is not as strict as when using MySQL privileges. This is
-due to nature of <abbr title="structured query language">SQL</abbr> queries
-which might be quite complicated. So this choice should be viewed as help to
-avoid accidental dropping rather than strict privilege limitation.</dd>
+        <abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリに対するこの制限は、MySQL
+の特権を使用するほど厳格ではないことに注意してください。これは <abbr title="データベース用の問い合わせ言語">SQL</abbr>
+クエリの性質によるもので、非常に複雑になる可能性があります。この設定は、厳密な特権の制限というよりも、削除事故回避ためにヘルプとして表示するようなものです。</dd>
 
     <dt id="cfg_Confirm">$cfg['Confirm'] 論理型</dt>
     <dd>データが消失しそうな操作をしたときに警告（「本当に〜してもよいですか」）を表示するかどうか。</dd>
@@ -1301,7 +1290,7 @@ href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifet
     <dd>複数のクエリを含む文のクエリのひとつが失敗したときに処理を続けるかどうかを定義します。デフォルトでは処理を中止します。</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] 論理型</dt>
-    <dd>マルチクエリを含む文のそれぞれのクエリの結果を <abbr title="structured query language">SQL</abbr>
+    <dd>マルチクエリを含む文のそれぞれのクエリの結果を <abbr title="データベース用の問い合わせ言語">SQL</abbr>
 出力のなかにインラインコメントとして埋め込むかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span> 論理型</dt>
@@ -1361,9 +1350,9 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] 論理型</dt>
     <dd>phpMyAdmin ロゴを左フレームの最上部に表示するかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] 文字列</dt>
-    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
-navigation frame will point to.  For use especially with self made theme
-which changes this.  The default value for this is <tt>main.php</tt>.</dd>
+    <dd>ナビゲーションフレームのロゴが指す <abbr title="インターネットアドレス">URL</abbr>
+を入力してください。とりわけ、独自の環境を作る場合には、これを変更することになるかもしれません。これのデフォルト値は <tt>main.php</tt>
+です。</dd>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] 文字列</dt>
     <dd>リンクされているページを開こうとするときメインウィンドウ (<tt>main</tt>) か新しいウィンドウ (<tt>new</tt>)
@@ -1511,9 +1500,9 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
     <dd>テーブル表示の際にデフォルトで表示されるタブを定義します。可能な値は次のいずれかです。「tbl_structure.php」、「tbl_sql.php」、「tbl_select.php」、「tbl_change.php」、「sql.php」。</dd>
 
     <dt id="cfg_MySQLManualBase">$cfg['MySQLManualBase'] 文字列</dt>
-    <dd>MySQL ドキュメントの <abbr title="Uniform Resource Locator">URL</abbr>
-を設定すると（ドキュメントのタイプは <a href="#cfg_MySQLManualType"
-class="configrule">$cfg['MySQLManualType']</a> の値によります）、適切なヘルプ用のリンクが生成されます。<br />
+    <dd>MySQL ドキュメントの <abbr title="インターネットアドレス">URL</abbr> を設定すると (ドキュメントのタイプは <a
+href="#cfg_MySQLManualType" class="configrule">$cfg['MySQLManualType']</a>
+の値によります)、適切なヘルプ用のリンクが生成されます。<br />
         MySQL マニュアルとそのタイプの詳細については <a href="http://dev.mysql.com/doc/">MySQL
 ドキュメントのページ</a> をご覧ください。</dd>
 
@@ -1606,11 +1595,11 @@ $cfg['TrustedProxies'] =
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] 整数</dt>
     <dd>
-    Limit for length of <abbr title="Uniform Resource Locator">URL</abbr> in
-links.  When length would be above this limit, it is replaced by form with
-button.  This is required as some web servers (<abbr title="Internet
-Information Services"> IIS</abbr>) have problems with long <abbr
-title="Uniform Resource Locator"> URL</abbr>s. Default is <code>1000</code>.
+    リンクの <abbr title="インターネットアドレス">URL</abbr>
+の長さの制限です。長さがこの制限を超えてしているとき、ボタンを使用したフォームに置き換えられます。一部のウェブサーバ (<abbr
+title="Internet Information Services">IIS</abbr>) は長い <abbr
+title="インターネットアドレス">URL</abbr> に問題があるため、この設定が必要となります。デフォルトは
+<code>1000</code> です。
     </dd>
 
     <dt
@@ -1686,9 +1675,9 @@ title="Uniform Resource Locator"> URL</abbr>s. Default is <code>1000</code>.
         <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>整数
     </dt>
     <dd>textarea の行・列数。<br />
-        この値は <abbr title="structured query language">SQL</abbr> クエリの textarea の場合は 2
-倍に、クエリウインドウ内の <abbr title="structured query language">SQL</abbr> 用 textarea
-の場合は 1.25 倍になります。<br />
+        この値は <abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリの textarea の場合は 2
+倍に、クエリウインドウ内の <abbr title="データベース用の問い合わせ言語">SQL</abbr> 用 textarea の場合は 1.25
+倍になります。<br />
         Char のついた値は CHAR と VARCHAR を修正する際に使われます（<a
 href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定されている場合）。</dd>
 
@@ -1754,8 +1743,8 @@ href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt> もご覧になってくだ�
 
     <dt id="cfg_UploadDir">$cfg['UploadDir'] 文字列</dt>
     <dd>
-        phpMyAdmin 以外の方法（例えば ftp）でアップロードした <abbr title="structured query
-language">SQL</abbr>
+        phpMyAdmin 以外の方法 (例えば ftp) でアップロードした <abbr
+title="データベース用の問い合わせ言語">SQL</abbr>
 ファイルのあるディレクトリ名。このディレクトリにあるファイルは、インポートタブをクリックして表示されるドロップダウンボックスより利用できます。
         <br /><br />
 
@@ -1867,10 +1856,10 @@ setfacl -d -m "g:www-data:rwx" tmp
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>整数
     </dt>
     <dd>
-        これらの変数はいずれもクエリウインドウ機能に関するものです。<tt><abbr title="structured query
-language">SQL</abbr></tt> というリンクないしアイコンは常に左パネルに表示されます。ブラウザの JavaScript
-が有効になっている場合は、ここをクリックすると別のクエリウインドウが開き、<abbr title="structured query
-language">SQL</abbr> クエリを直接入力できるようになります。JavaScript
+        これらの変数はいずれもクエリウインドウ機能に関するものです。<tt><abbr
+title="データベース用の問い合わせ言語">SQL</abbr></tt> というリンクないしアイコンは常に左パネルに表示されます。ブラウザの
+JavaScript が有効になっている場合は、ここをクリックすると別のクエリウインドウが開き、<abbr
+title="データベース用の問い合わせ言語">SQL</abbr> クエリを直接入力できるようになります。JavaScript
 が無効の場合は、右パネルがクエリボックスに変わります。<br /><br />
 
         このクエリウインドウの大きさは <tt>$cfg['QueryWindowWidth']</tt> と
@@ -1878,10 +1867,10 @@ language">SQL</abbr> クエリを直接入力できるようになります。Ja
 によってカスタマイズできます。いずれもピクセル数を表す整数値が入ります。なお、これらの値は通常 <tt>layout.inc.php</tt>
 の中でお使いのテーマにあわせて修正されます。<br /><br />
 
-        <tt>$cfg['EditInWindow']</tt> が true の場合は、結果ページの [修正 (Edit)]
-（「行の表示」の表示欄のところにあります）をクリックすると、現在のクエリが入ったクエリウインドウが開きます。false
-の場合は、リンクをクリックすると右パネルのクエリボックスに <abbr title="structured query
-language">SQL</abbr> クエリが入ります。
+        <tt>$cfg['EditInWindow']</tt> が TRUE の場合は、結果ページの [ 編集 ]
+(「行の表示」の表示欄のところにあります) をクリックすると、現在のクエリが入ったクエリウインドウが開きます。FALSE
+の場合は、リンクをクリックすると右パネルのクエリボックスに <abbr title="データベース用の問い合わせ言語">SQL</abbr>
+クエリが入ります。
         <br /><br />
         JavaScript 対応ブラウザを使っているなら JavaScript
 クエリウインドウを使うことをお勧めします。やりとりする変数の数は多いですが、使っている関数は基本的なものなので、第四世代のブラウザならたいていこの機能を利用できるはずです。現在は
@@ -1894,8 +1883,7 @@ class="configrule">$cfg['Servers'][$i]['history']</a>）。FALSE
         <br /><br />
         JavaScript
 ベースのクエリウインドウを使うと、新しいテーブル／データベースをクリックして表示させるとかならず内容が更新されるようになります。また、クエリを利用したあとで「<abbr
-title="structured query language">SQL</abbr> の修正」をクリックするとフォーカスが移ります。クエリ
-textarea
+title="データベース用の問い合わせ言語">SQL</abbr> の修正」をクリックするとフォーカスが移ります。クエリ textarea
 の下にある「別ウインドウからのクエリの上書きを禁止する」というチェックボックスをチェックすると、クエリウインドウの更新を抑制することもできます。テーブル／データベースをバックグラウンドで表示でき、textarea
 の中身はなくなりません。これは、最初に別のテーブルを調べなければならないクエリを作成するときには、特に便利です。このチェックボックスは textarea
 の内容を修正すると自動的にチェックされます。内容は修正してしまったけれどもやっぱりクエリウインドウを更新させたくなった場合は、チェックを外してください。
@@ -1974,23 +1962,22 @@ href="#faq6_27">書式の拡張</a>を使用することができます。
 
     <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] 文字列 [<tt>html</tt>|<tt>none</tt>]</dt>
     <dd>
-        新しい <abbr title="structured query language">SQL</abbr> パーサの主な用途は <abbr
-title="structured query language">SQL</abbr> クエリを読みやすくすることです。デフォルトでは HTML
+        新しい <abbr title="データベース用の問い合わせ言語">SQL</abbr> パーサの主な用途は <abbr
+title="データベース用の問い合わせ言語">SQL</abbr> クエリを読みやすくすることです。デフォルトでは HTML
 を使ってクエリを整形しますが、この変数を <tt>「none」</tt> にするとこの機能を無効にできます。
     </dd>
 
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] 実数型<br />
         <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> 文字列
 [<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]</dt>
-    <dd><abbr title="structured query language">SQL</abbr>
-クエリを読みやすくするために、場合によってはブラケット（ [ ]
-）で囲まれたクエリの一部がインデントされるのですが、<tt>$cfg['SQP']['fmtInd']</tt>
+    <dd><abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリを読みやすくするために、場合によっては括弧 [ ]
+で囲まれたクエリの一部がインデントされるのですが、<tt>$cfg['SQP']['fmtInd']</tt>
 を変更することで、このインデントの量を変更することができます。
         <br />それと似た <tt>$cfg['SQP']['fmtIndUnit']</tt>
 の方は、指定したインデント量の単位を指定します。スタイルシートで利用するものです。</dd>
 
     <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] 文字列の連想配列</dt>
-    <dd><abbr title="structured query language">SQL</abbr>
+    <dd><abbr title="データベース用の問い合わせ言語">SQL</abbr>
 クエリを読みやすくするために各要素の色定義に、この配列を使用します。色を定義するペア文字列の書式は次の通りです。<br />
         <i>クラス名</i> =&gt; [<i>HTML の色コード</i> | <i>空の文字列</i>]<br />
         空の文字列を指定した場合、そのクラスの色指定は無視されてスタイルシートに反映されません。クラス名は変えないでください。変えるのは色をあらわす文字列のみです。<br />
@@ -2014,8 +2001,8 @@ title="structured query language">SQL</abbr> クエリを読みやすくする�
             <li><b>alpha_columnAttrib</b> データベース／テーブル／カラム属性に一致する識別子</li>
             <li><b>alpha_functionName</b> MySQL 関数名に一致する識別子</li>
             <li><b>alpha_reservedWord</b> その他の予約語に一致する識別子</li>
-            <li><b>alpha_variable</b> <abbr title="structured query language">SQL</abbr> 変数
-<tt>「 @foo 」</tt>に一致する識別子</li>
+            <li><b>alpha_variable</b> <abbr title="データベース用の問い合わせ言語">SQL</abbr> 変数
+<tt>「@foo」</tt>に一致する識別子</li>
             <li><b>alpha_identifier</b> その他すべての識別子</li>
             <li><b>quote</b> 引用符のクラスすべてに適用されます。</li>
             <li><b>quote_double</b> ダブルクォート <tt>"</tt></li>
@@ -2027,8 +2014,7 @@ title="structured query language">SQL</abbr> クエリを読みやすくする�
     <dt id="cfg_SQLValidator">$cfg['SQLValidator'] 論理型</dt>
     <dd><dl><dt id="cfg_SQLValidator_use">$cfg['SQLValidator']['use'] 論理型</dt>
             <dd>phpMyAdmin は <a href="http://developer.mimer.com/validator/index.htm">Mimer
-<abbr title="structured query language">SQL</abbr>
-検証</a>サービスをサポートするようになりました。これは当初 <a
+<abbr title="データベース用の問い合わせ言語">SQL</abbr> 検証</a>サービスをサポートするようになりました。これは当初 <a
 href="http://developers.slashdot.org/article.pl?sid=02/02/19/1720246">Slashdot</a>
 で公開されていたものです。
                 <br />
@@ -2365,8 +2351,8 @@ restriction）」が出ます。</a></h4>
 <p> バージョン 2.2.4 以降、phpMyAdmin はサーバの open_basedir
 制限をサポートしています。しかしながら、一時ディレクトリを作成して、<a href="#cfg_TempDir"
 class="configrule">$cfg['TempDir']</a>
-にそのディレクトリを設定する必要があります。アップロードしたファイルはそこに移され、<abbr title="structured query
-language">SQL</abbr> コマンドの実行が終わったら削除されます。</p>
+にそのディレクトリを設定する必要があります。アップロードしたファイルはそこに移され、<abbr
+title="データベース用の問い合わせ言語">SQL</abbr> コマンドの実行が終わったら削除されます。</p>
 
 <h4 id="faq1_12">
     <a href="#faq1_12">1.12 MySQL のルートパスワードをなくしてしまいました。どうしたらよいのでしょうか？</a></h4>
@@ -2504,7 +2490,7 @@ file)」フィールドが見つからないのでアップロードできませ
 
 <h4 id="faq1_25">
     <a href="#faq1_25">1.25 Windows XP で Apache に mod_gzip-1.3.26.1a
-を組み込んで稼動させているのですが、<abbr title="structured query language">SQL</abbr>
+を組み込んで稼動させているのですが、<abbr title="データベース用の問い合わせ言語">SQL</abbr>
 クエリを実行したときに変数が定義されていないといった問題が出ます。</a></h4>
 
 <p> Jose Fandos からのヒント：httpd.conf に下記の行があったら、以下のようにコメントにしてください。</p>
@@ -2607,12 +2593,11 @@ Windows 認証</tt>、有効になっている場合は<tt>ダイジェスト認
 
 <p> はい。そのままでも
 http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
-のような <abbr title="Uniform Resource Locator">URL</abbr>
-は利用できます。<tt>server</tt> パラメータには、<tt>config.inc.php</tt>
-内のサーバ項目で使われているインデックスの数字が入ります。table と script
+のような <abbr title="インターネットアドレス">URL</abbr> は利用できます。<tt>server</tt>
+パラメータには、<tt>config.inc.php</tt> 内のサーバ項目で使われているインデックスの数字が入ります。table と script
 の部分はオプションです。http://server/phpMyAdmin/database[/table][/script] のような <abbr
-title="Uniform Resource Locator">URL</abbr> を使いたい場合はいくつかの設定をする必要があります。以下の例は
-<a href="http://httpd.apache.org">Apache</a>
+title="インターネットアドレス">URL</abbr> を使いたい場合はいくつかの設定をする必要があります。以下の例は <a
+href="http://httpd.apache.org">Apache</a>
 ウェブサーバにしか適用できませんが、まずはグローバルな設定でいくつかの機能を有効にしてあるか確認してください。phpMyAdmin
 をインストールしたディレクトリについては <code>Options FollowSymLinks</code> と
 <code>AllowOverride FileInfo</code> が有効になっている必要がありますし、mod_rewrite
@@ -2702,8 +2687,7 @@ href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout
 を無効 (デフォルトです)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
-should not include <abbr title="structured query language">SQL</abbr>,
-otherwise you get big slowdown</li>
+に <abbr title="データベース用の問い合わせ言語">SQL</abbr> を含めない。含めるととても遅くなります。</li>
 </ul>
 
     <p>
@@ -2792,13 +2776,11 @@ RewriteRule .* - [F]
 already sent by
 ...（警告：ヘッダ情報を追加できません。ヘッダは送信済みです）」というエラーメッセージが表示されます。何がいけないのでしょう。</a></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under <abbr title="Internet
-Information Services">IIS</abbr>, that used a zipped distribution kit: the
-file <tt>libraries/Config.class.php</tt> contained an end-of-line character
-(hex 0A) at the end; removing this character cleared his errors.</p>
+<p> <i>config.inc.php</i> ファイルを修正して、先頭の <tt>&lt;?php</tt> タグの前や末尾の
+<tt>?&gt;</tt> の後には何も入れない (改行やスペース、文字などがない) ようにしてください。また、ZIP 形式の配布キットを使用している
+<abbr title="Internet Information Services">IIS</abbr>
+でユーザから以下の報告を受けています。『ファイル <tt>libraries/Config.class.php</tt> の末尾に改行コード
+(0x0A) が含まれていたので、この文字を削除したらエラーがなくなりました。』</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
@@ -3019,9 +3001,8 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
     <a href="#faq3_7">3.7 カラム数の多い（100 以上）テーブルがあるのですが、このテーブルを表示しようとすると「Warning:
 unable to parse url（警告：url を解析できません）」というエラーがたくさん出ます。どうすれば直るのでしょうか？</a></h4>
 <p>
-    テーブルに主キーやユニークなキーがない場合、行を特定するために長い <abbr title="Uniform Resource
-Locator">URL</abbr> を使う必要があるのですが、それが parse_url
-関数で問題を起こしているのです。解決策は、主キーやユニークキーを作成することです。
+    テーブルに主キーやユニークなキーがない場合、行を特定するために長い <abbr title="インターネットアドレス">URL</abbr>
+を使う必要があるのですが、それが parse_url 関数で問題を起こしているのです。解決策は、主キーやユニークキーを作成することです。
     <br />
 </p>
 
@@ -3038,13 +3019,13 @@ href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>を�
 <h4 id="faq3_9">
     <a href="#faq3_9">3.9 MySQL サーバに「--sql_mode=ANSI」を適用するとエラーメッセージが出ます。</a></h4>
 
-<p> MySQL が ANSI 互換モードで走っているときは <abbr title="structured query
-language">SQL</abbr> の組み立て方に大きく変わる部分があります（<a
-href="http://dev.mysql.com/doc/mysql/en/ansi-mode.html">http://dev.mysql.com/doc/mysql/en/ansi-mode.html</a>
-参照）。とりわけ重要なのが、引用符（"）が識別子をクォートする文字として解釈され、文字列をクォートする文字とはみなされなくなることです。そのため、phpMyAdmin
-内部の多くの操作が無効な <abbr title="structured query language">SQL</abbr>
+<p> MySQL が ANSI 互換モードで走っているときは <abbr title="データベース用の問い合わせ言語">SQL</abbr>
+の組み立て方に大きく変わる部分があります (<a
+href="http://dev.mysql.com/doc/mysql/ja/ansi-mode.html">http://dev.mysql.com/doc/mysql/ja/ansi-mode.html</a>
+参照)。とりわけ重要なのが、引用符「"」が識別子をクォートする文字として解釈され、文字列をクォートする文字とはみなされなくなることです。そのため、phpMyAdmin
+内部の多くの操作が無効な <abbr title="データベース用の問い合わせ言語">SQL</abbr>
 文になるのです。この動作には回避策がありません。この問題についての最新情報はバグレポートの <a
-href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;group_id=23067&amp;atid=377408">#816858</a>
+href="https://sourceforge.net/tracker/index.php?func=detail&aid=816858&group_id=23067&atid=377408">#816858</a>
 に投稿されます。
 </p>
 
@@ -3096,14 +3077,11 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
 <!-- End: Excel import limitations -->
 <!-- Begin: CSV import limitations -->
 <h4 id="faq3_18">
-    <a href="#faq3_18">3.18 When I import a <abbr title="comma separated
-values"> CSV</abbr> file that contains multiple tables, they are lumped
-together into a single table.</a></h4>
+    <a href="#faq3_18">3.18 複数のテーブルを含む <abbr title="カンマ区切り">CSV</abbr>
+ファイルをインポートすると、それらが単一のテーブルにまとめられてしまいます。</a></h4>
 <p>
-    There is no reliable way to differentiate tables in <abbr title="comma
-separated values"> CSV</abbr> format. For the time being, you will have to
-break apart <abbr title="comma separated values">CSV</abbr> files containing
-multiple tables.
+    <abbr title="カンマ区切り">CSV</abbr> 形式でテーブルを区別する確実な方法はありません。当分の間は、複数のテーブルを含む
+<abbr title="カンマ区切り">CSV</abbr> ファイルを分割する必要があります。
 </p>
 
 
@@ -3225,10 +3203,9 @@ $cfg['Servers'][$i]['AllowDeny']['rules'] = array(
 <h4 id="faq4_7">
     <a href="#faq4_7">4.7 認証ウインドウが複数回表示されます。なぜでしょうか？</a></h4>
 
-<p> これは phpMyAdmin を起動するのに使っている <abbr title="Uniform Resource
-Locator">URL</abbr> が <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> に設定されている <abbr title="Uniform
-Resource Locator">URL</abbr>
+<p> これは phpMyAdmin を起動するのに使っている <abbr title="インターネットアドレス">URL</abbr> が <a
+href="#cfg_PmaAbsoluteUri" class="configrule">$cfg['PmaAbsoluteUri']</a>
+に設定されている <abbr title="インターネットアドレス">URL</abbr>
 と異なるためです。例えば、「www」が抜けているとか、設定ファイルではドメイン名で登録してあるのに <abbr
 title="インターネット・プロトコル">IP</abbr> アドレスを入力した場合がそうです。</p>
 
@@ -3291,9 +3268,9 @@ title="インターネット・プロトコル">IP</abbr> アドレスを入力�
 でカラム数の多いテーブルや、テキストカラムがあるテーブルの行を修正しようとすると（「Page not
 found（ページが見つかりません）」のような）エラーが出ます。</a></h4>
 <p>
-    テーブルに主キーやユニークキーがないと、行を識別するために長い <abbr title="Uniform Resource
-Locator">URL</abbr> を使うことになってしまうのですが、これらのブラウザには <abbr title="Uniform
-Resource Locator">URL</abbr> の長さに制限があるため、その問題が起こります。この問題は、Netscape
+    テーブルに主キーやユニークキーがないと、行を識別するために長い <abbr title="インターネットアドレス">URL</abbr>
+を使うことになってしまうのですが、これらのブラウザには <abbr title="インターネットアドレス">URL</abbr>
+の長さに制限があるため、その問題が起こります。この問題は、Netscape
 などでは起こりません。回避するには、主キーやユニークキーを作成するか、別のブラウザを使ってください。
     <br />
 </p>
@@ -3312,7 +3289,7 @@ Resource Locator">URL</abbr> の長さに制限があるため、その問題が
 
 <h4 id="faq5_9">
     <a href="#faq5_9">5.9 Mozilla の 0.9.? 〜 1.0 と、Netscape 7.0-PR1 では <abbr
-title="structured query language">SQL</abbr>
+title="データベース用の問い合わせ言語">SQL</abbr>
 クエリの編集領域で空白をタイプできません。ページがスクロールダウンしてしまいます。</a></h4>
 <p>
     これは Mozilla のバグです (<a href="http://bugzilla.mozilla.org/">BugZilla</a> のバグ
@@ -3365,8 +3342,8 @@ denied）」という Javascript のエラーが出ます。あるいは、Windo
 
 <p> 以下の点を確認してください。</p>
     <ul><li>たぶん <tt>config.inc.php</tt> の <tt>PmaAbsoluteUri</tt> の設定を <abbr
-title="インターネット・プロトコル">IP</abbr>  アドレスに設定しているのに ドメイン名を含む <abbr title="Uniform
-Resource Locator">URL</abbr> で phpMyAdmin を起動しようとしている、あるいはその逆なのでは？</li>
+title="インターネット・プロトコル">IP</abbr> アドレスに設定しているのにドメイン名を含む <abbr
+title="インターネットアドレス">URL</abbr> で phpMyAdmin を起動しようとしている、あるいはその逆なのでは？</li>
         <li>IE や Microsoft Security Center のセキュリティ設定が高すぎるためにスクリプトが実行できなくなっているのでは？</li>
         <li>Windows Firewall が Apache と MySQL をブロックしているのでは？　「in」、「out」双方で <abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 ないし 443) と MySQL ポート (通常は 3306)
@@ -3390,10 +3367,10 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 
 <h3 id="faqusing">phpMyAdmin の使い方</h3>
 
 <h4 id="faq6_1">
-    <a href="#faq6_1">6.1 テーブルに新しい行を挿入できません／テーブルを作成できません - MySQL が <abbr
-title="structured query language">SQL</abbr> エラーを返します。</a></h4>
+    <a href="#faq6_1">6.1 テーブルに新しい行を挿入できません。もしくは、テーブルを作成できません。MySQL が <abbr
+title="データベース用の問い合わせ言語">SQL</abbr> エラーを返します。</a></h4>
 <p>
-    <abbr title="structured query language">SQL</abbr>
+    <abbr title="データベース用の問い合わせ言語">SQL</abbr>
 エラーを事細かに調べてみてください。よく問題になるのが、カラム種別の指定を間違えることです。<br />
     ありがちなエラーの例です。
 </p>
@@ -3424,9 +3401,8 @@ title="structured query language">SQL</abbr> エラーを返します。</a></h4
 <h4 id="faq6_4">
     <a href="#faq6_4">6.4 データベースやテーブルのバックアップはどうすればよいのでしょう。</a></h4>
 
-<p> 左フレームでデータベースまたはテーブル名をクリックします。プロパティが表示されますので、メニューの「エクスポート
-(Export)」をクリックします。構造、データ、あるいは構造とデータをダンプできるようになります。生成されるのは標準的な <abbr
-title="structured query language">SQL</abbr> 文ですので、データベース／テーブルを作り直すのに使えます。
+<p> 左フレームでデータベースまたはテーブル名をクリックします。プロパティが表示されますので、メニューの「エクスポート」をクリックします。構造、データ、あるいは構造とデータ両方をダンプできるようになります。生成されるのは標準的な
+<abbr title="データベース用の問い合わせ言語">SQL</abbr> 文ですので、データベース／テーブルを作り直すのに使えます。
     <br /><br />
     「ファイルに保存（Save as file）」を選択する必要も出てくることでしょう。「ファイルに保存」を選択すると、phpMyAdmin
 は生成されたダンプをパソコンなどの端末へ送信します。PHP の設定によっては、ダンプしたものを圧縮するオプションが表示されます。<a
@@ -3439,10 +3415,9 @@ href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
     <a href="#faq6_5">6.5
 どうすればダンプからデータベースやテーブルを復元（アップロード）できるのでしょう。どうすれば「.sql」ファイルを実行できるのでしょう。</a></h4>
 
-<p> 左フレームでデータベース名をクリックします。プロパティが表示されるので、右フレームのタブ一覧から「インポート (Import)」（お使いの
-phpMyAdmin のバージョンが 2.7.0 より前の場合は「<abbr title="structured query
-language">SQL</abbr>」）を選択してください。「テキストファイルの位置 (Location of the text
-file)」セクションにダンプファイル名をタイプするか、選択 (Browse) ボタンでファイルを指定して、実行する (Go) をクリックします。
+<p> 左フレームでデータベース名をクリックします。プロパティが表示されるので、右フレームのタブ一覧から「インポート」(お使いの phpMyAdmin
+のバージョンが 2.7.0 より前の場合は「<abbr title="データベース用の問い合わせ言語">SQL</abbr>」)
+を選択してください。「アップロードファイル」の欄にダンプファイル名を入力するか、「参照」ボタンでファイルを指定して、「実行」をクリックします。
     <br /><br />
     バージョン 2.7.0 以降はインポートエンジンが書き直されたため、可能であればお使いの phpMyAdmin
 を最新のバージョンにアップグレードして新しいインポート機能をご利用ください。
@@ -3581,8 +3556,8 @@ href="http://dev.mysql.com/doc/mysql/ja/drop-table.html">そのテーブルを�
 EXISTS』を追加」は、そのテーブルが存在しないときにのみテーブルを作成するようになります。そうでなく、そのテーブル名が存在しているのに構造が異なる場合はエラーになることもあります。</li>
     <li>「『AUTO_INCREMENT』値を追加」は、（あれば）AUTO_INCREMENT 値もバックアップに含めるようにします。</li>
     <li>「逆クォートでテーブルやカラムの名前を囲む」は、特殊文字を含むカラム名やテーブル名を保護します。</li>
-    <li>「コメントの追加」は、pmadb に設定されているカラムのコメント、リレーション、MIME タイプを <abbr title="structured
-query language">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>) でダンプに含めます。
+    <li>「コメントの追加」は、pmadb に設定されているカラムのコメント、リレーション、MIME タイプを <abbr
+title="データベース用の問い合わせ言語">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>) でダンプに含めます。
        </li>
 </ul>
 
@@ -3607,11 +3582,11 @@ href="http://dev.mysql.com/doc/mysql/ja/insert.html">MySQL
 の場合、ピリオド付きのデータベースでも普通に作成はできるのですが、それで作業したり、削除したりができないからです。</p>
 
 <h4 id="faqsqlvalidator">
-    <a href="#faqsqlvalidator">6.14 どうすれば <abbr title="structured query
-language">SQL</abbr> 検証をセットアップできますか。</a></h4>
+    <a href="#faqsqlvalidator">6.14 どうすれば <abbr
+title="データベース用の問い合わせ言語">SQL</abbr> 検証をセットアップできますか。</a></h4>
 
 <p> 
-    <abbr title="structured query language">SQL</abbr> 検証を利用するには、PHP が <abbr
+    <abbr title="データベース用の問い合わせ言語">SQL</abbr> 検証を利用するには、PHP が <abbr
 title="Extensible Markup Language">XML</abbr>、<abbr title="Perl Compatible
 Regular Expressions">PCRE</abbr>、<abbr title="PHP Extension and Application
 Repository">PEAR</abbr> をサポートしている必要があります。加えて、PHP 拡張モジュールもしくは PEAR
@@ -3757,7 +3732,7 @@ class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt></p>
 <p> あるテーブルの「構造」ページに入ったら、自動的にそのテーブルの pmadb スタイルのカラムコメントがネイティブのカラムコメントに移行されます。</p>
 
 <h4 id="faq6_25">
-    <a href="#faq6_25">6.25 (withdrawn).</a></h4>
+    <a href="#faq6_25">6.25 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 行の範囲選択はどのように行いますか？</a></h4>
@@ -3936,7 +3911,7 @@ href="https://sourceforge.net/tracker/?group_id=23067&amp;atid=387645">翻訳ト
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 phpMyAdmin の開発に協力したいのですが、どのように進めればよいでしょうか？</a></h4>
 
-<p>phpMyAdmin 開発の貢献に関わるあらゆるものを、我々は歓迎します。ウェブサイトの <a
+<p>phpMyAdmin 開発に貢献してくださるあらゆるものを、我々は歓迎いたします。ウェブサイトの <a
 href="http://www.phpmyadmin.net/home_page/improve.php">Contribute</a>
 ページをご覧ください。このページに貢献してもらいたい一覧が載せてあります。
    </p>
@@ -4085,7 +4060,7 @@ href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>
 <ul>
   <li>多言語版 (1998 年 12 月)</li>
   <li>修正・改善多数</li>
-  <li><abbr title="structured query language">SQL</abbr> アナライザ（の大半）</li>
+  <li><abbr title="データベース用の問い合わせ言語">SQL</abbr> アナライザ (の大半)</li>
   <li>現在のプロジェクト管理者</li>
 </ul></li>
 
@@ -4112,8 +4087,8 @@ Repository">PEAR</abbr> のコーディング基準にあわせ、XHTML1.0 と C
   <li>テーブル種別コード</li>
   <li>ホスト認証 <abbr title="インターネット・プロトコル">IP</abbr> アドレスによる許可/拒否</li>
   <li>DBベースの設定（未完）</li>
-  <li><abbr title="structured query language">SQL</abbr> パーサと書式整備機能</li>
-  <li><abbr title="structured query language">SQL</abbr> 検証機能</li>
+  <li><abbr title="データベース用の問い合わせ言語">SQL</abbr> パーサと書式整備機能</li>
+  <li><abbr title="データベース用の問い合わせ言語">SQL</abbr> 検証機能</li>
   <li>バグフィックス・改善多数</li>
 </ul></li>
 
@@ -4190,8 +4165,7 @@ Repository">PEAR</abbr> のコーディング基準にあわせ、XHTML1.0 と C
 <li>Garvin Hicking &lt;me_at_supergarv.de&gt;
 <ul>
   <li>テーブルの行を縦に表示するパッチの作成</li>
-  <li>Javascript ベースのクエリウィンドウ + <abbr title="structured query language">SQL</abbr>
-履歴の作成</li>
+  <li>Javascript ベースのクエリウィンドウ + <abbr title="データベース用の問い合わせ言語">SQL</abbr> 履歴の作成</li>
   <li>カラム／データベースコメントの改善</li>
   <li>（MIME）- カラム変換</li>
   <li>左フレームのデータベースに独自の別名を利用</li>
@@ -4228,7 +4202,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Olof Edlund &lt;olof.edlund_at_upright.se&gt;
 <ul>
-  <li><abbr title="structured query language">SQL</abbr> 検証サーバ</li>
+  <li><abbr title="データベース用の問い合わせ言語">SQL</abbr> 検証サーバ</li>
 </ul></li>
 
 <li>Ivan R. Lanin &lt;ivanlanin_at_users.sourceforge.net&gt;
@@ -4276,7 +4250,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Raj Kissu Rajandran (Google Summer of Code 2008)
 <ul>
-  <li>BLOBstreaming support (withdrawn in release 4.0)</li>
+  <li>BLOB ストリームをサポート (バージョン 4.0 からは非サポート)</li>
 </ul></li>
 
 <li>Piotr Przybylski (Google Summer of Code 2008, 2010 and 2011)
@@ -4330,7 +4304,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Barrie Leslie
 <ul>
-  <li>BLOBstreaming support with PBMS PHP extension (withdrawn in release 4.0)</li>
+  <li>PBMS PHP 拡張による BLOB ストリームのサポート (バージョン 4.0 からは非サポート)</li>
 </ul></li>
 
 <li>Ankit Gupta (Google Summer of Code 2010)
@@ -4521,8 +4495,8 @@ Extensions)</a> - 多目的インターネットメール拡張のことで、�
 href="http://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">モジュール</a>
 - Apache ウェブサーバの拡張の一種</li>
     <li><a href="http://ja.wikipedia.org/wiki/MySQL">MySQL</a> -
-マルチスレッド、マルチユーザ、<abbr title="structured query language">SQL</abbr>
-が使えるデータベース管理システム (<abbr title="Database Management System">DBMS</abbr>)</li>
+マルチスレッド、マルチユーザ、<abbr title="データベース用の問い合わせ言語">SQL</abbr> が使えるデータベース管理システム
+(<abbr title="Database Management System">DBMS</abbr>)</li>
     <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://ja.wikipedia.org/wiki/OpenDocument">OpenDocument</a> -
@@ -4580,8 +4554,7 @@ href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC
 - データベース内の特定のテーブルまたはビュー上の特定のイベントに応答して自動的に実行される手続き型のコード</li>
     <li><a href="http://www.acko.net/node/56">UFPDF</a> - FPDF 用の Unicode/UTF-8 拡張</li>
     <li><a href="http://ja.wikipedia.org/wiki/URL">URL (Uniform Resource
-Locator)</a> -
-位置を示す連続した文字。標準化された形式に準拠しており、インターネット上の文書や画像などのリソースを参照するために使用される。</li>
+Locator)</a> - インターネットアドレスのこと。標準化された形式に準拠しており、インターネット上の文書や画像などを参照するために使用される。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/Web%E3%82%B5%E3%83%BC%E3%83%90">ウェブサーバ</a>
 - クライアントからの HTTP 要求の受け入れおよびそれらに対するウェブページの提供を行っているコンピュータ（プログラム）</li>
