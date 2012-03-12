@@ -20,7 +20,7 @@ https://l10n.cihar.com/projects/pmadoc/.
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>phpMyAdmin 4.0.0-dev - Documentation</title>
+    <title>Dokumentacja phpMyAdmin 4.0.0-dev</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
 
@@ -28,7 +28,7 @@ https://l10n.cihar.com/projects/pmadoc/.
 <div id="header">
     <h1>
         <a href="http://www.phpmyadmin.net/">php<span
-class="myadmin">MyAdmin</span></a> 4.0.0-dev Documentation
+class="myadmin">MyAdmin</span></a>Dokumentacja 4.0.0-dev
     </h1>
 </div>
 
@@ -349,18 +349,21 @@ title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
 przeglądarce. Powinien wyświetlić się ekran powitalny phpMyAdmin i bazy
 danych, albo okno dialogowe logowania - jeśli używamy trybu uwierzytelnienia
 <abbr title="HyperText Transfer Protocol">HTTP</abbr> lub cookie.</li>
-    <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
-subfolders in your webserver configuration. For Apache you can use supplied
-<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
-webservers, you should configure this yourself.  Such configuration prevents
-from possible path exposure and cross side scripting vulnerabilities that
-might happen to be found in that code.</li>
+    <li>Powinno zabronić się dostępu do podkatalogów <tt>./libraries</tt> i
+<tt>./setup/lib</tt> w konfiguracji serwera WWW. Zmiany konfiguracji serwera
+Apache można dokonać za pomocą pliku .htaccess, który już znajduje się na
+serwerze. W przypadku innych typów serwerów konfigurację należy
+przeprowadzić według odrębnych zasad. Zabezpieczenie dostępu do katalogów
+chroni konfigurację przed ewentualnym, niepożądanym ujawnieniem ścieżek
+dostępu do plików instalacyjnych i przed zagrożeniami ze strony szkodliwych
+skryptów.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.42</a>.
+        Jest to generalnie dobry pomysł celu ochrony publicznej instalacji
+phpMyAdmin przed dostępem robotów, gdyż zazwyczaj nie może zrobić nic
+dobrego tam. Można to zrobić za pomocą pliku <code>robots.txt</code> w
+katalogu głównym serwera internetowego lub dostępu limitu od konfiguracji
+serwera WWW, patrz <a href="#faq1_42"><abbr title="Najczęściej zadawane
+pytania">FAQ</abbr>1,42</a>.
     </li>
 </ol>
 
@@ -377,14 +380,15 @@ użytkowników. W tym ostatnim przypadku baza powinna być dostępna za pomocą
 konta użytkownika kontrolnego - po to, aby nikt inny, oprócz danego
 użytkownika, nie miał do niej dostępu.</p>
 
-<p> Please look at your <tt>./examples/</tt> directory, where you should find a
-file called <i>create_tables.sql</i>. (If you are using a Windows server,
-pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Proszę zajrzeć do katalogu <tt>./scripts/</tt>, gdzie powinien znajdować się
+plik o nazwie <i>create_tables.sql</i>. (użytkownicy serwerów Windows
+powinni zwrócić szczególną uwagę na<a href="#faq1_23"><abbr
+title="Najczęściej zadawane pytania">FAQ</abbr>1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./examples/create_tables.sql</i>.</p>
+<p> Jeśli już masz tą infrastrukturę i zaktualizowałeś do MySQL 4.1.2 lub
+​​nowszej, należy użyć pliku
+<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>, a następnie utworzyć nowe
+tabele importując plik <i>./scripts/create_tables.sql</i></p>
 
 <p> Zwykły użytkownik może używać phpMyAdmin do tworzenia własnych baz danych i
 tabel. Czasami do tych czynności mogą być potrzebne specjalne
@@ -571,13 +575,18 @@ jest wpis, który wyjaśnia, jak zabezpieczyć plik konfiguracyjny.</li>
 hosta w oparciu o dyrektywy konfiguracyjne
 <tt>$cfg['Servers'][$i]['AllowDeny']['order']</tt> i
 <tt>$cfg['Servers'][$i]['AllowDeny']['rules']</tt>.</li>
-    <li>Unlike cookie and http, does not require a user to log in when first loading
-the phpMyAdmin site. This is by design but could allow any user to access
-your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
-disallowing incoming HTTP requests at one&#8217;s router or firewall will
-suffice (both of which are beyond the scope of this manual but easily
-searchable with Google).</li>
+    <li>Tryb uwierzytelnienia 'config', w odróżnieniu od trybów 'http' i 'cookie',
+nie wymaga od użytkownika logowania się podczas pierwszego wczytywania
+strony domowej phpMyAdmin. Jest to zgodne z ogólnymi zasadami projektu, lecz
+mniej bezpieczne, ponieważ umożliwia dowolnemu użytkownikowi dostęp do
+plików instalacyjnych i do ustawień phpMyAdmin. Zastosowanie odpowiednich
+ograniczeń dostępu, na przykład użycie dyrektywy HTTP-AUTH, umieszczonej w
+pliku <a href="#glossary">.htaccess</a> lub zablokowanie żądań HTTP,
+przychodzących do routera lub firewalla, może być dobrym
+rozwiązaniem. Bardziej szczegółowy opis tych zagadnień wykracza poza ramy
+niniejszej dokumentacji, dlatego też osoby nimi zainteresowane odsyłamy do
+innych źródeł, na przykład do wiarygodnych tekstów informatycznych
+dostępnych w sieci WWW.</li>
 </ul>
 <h4 id="swekey">Uwierzytelnianie Swekey</h4>
 <p>
@@ -722,15 +731,15 @@ href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>.
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] Ciąg znaków</dt>
     <dd>Ścieżka do gniazda, którego należy użyć. Pozostawione puste oznacza wartość
 domyślną.<br />
-        To determine the correct socket, check your MySQL configuration or, using
-the <tt>mysql</tt> command&#8211;line client, issue the <tt>status</tt>
-command.  Among the resulting information displayed will be the socket used.</dd>
+        Aby określić prawidłowe gniazda, sprawdź konfigurację MySQL lub przy użyciu
+<tt>mysql</tt> linii komend klienta wyda <tt>status</tt> polecenia. Wśród
+wynikające Wyświetlane informacje będą wykorzystywały gniazdo.</dd>
 
-    <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] boolean</dt>
+    <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] wartość logiczna</dt>
     <dd>Czy włączyć SSL dla podłączenia do serwera MySQL.
     </dd>
 
-    <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] string</dt>
+    <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] ciąg</dt>
     <dd>What type connection to use with the MySQL server. Your options are
 <tt>'socket'</tt> and <tt>'tcp'</tt>. It defaults to 'tcp' as that is nearly
 guaranteed to be available on all MySQL servers, while sockets are not
@@ -739,7 +748,7 @@ supported on some platforms.<br /><br />
         Aby użyć trybu gniazda, Twój serwer MySQL musi być na tej samej maszynie co
 serwer www.</dd>
 
-    <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] string</dt>
+    <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] ciąg</dt>
     <dd>What php MySQL extension to use for the connection. Valid options are:
         <br /><br />
 

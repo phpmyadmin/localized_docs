@@ -61,7 +61,7 @@ href="https://l10n.cihar.com/projects/pmadoc/">serveur de traduction</a>.
     <li><a href="https://sourceforge.net/projects/phpmyadmin/">Page du projet
 phpMyAdmin sur SourceForge</a></li>
     <li><a href="http://wiki.phpmyadmin.net">Wiki officiel de phpMyAdmin wiki</a></li>
-    <li><a href="https://github.com/phpmyadmin"> Git repositories on Github</a></li>
+    <li><a href="https://github.com/phpmyadmin">Dépôts Git sur Github</a></li>
     <li>Documents locaux&nbsp;:
         <ul><li>Historique de version&nbsp;: <a href="changelog.php">ChangeLog</a></li>
             <li>Licence&nbsp;: <a href="LICENSE">LICENCE</a></li>
@@ -371,18 +371,20 @@ dans votre navigateur. phpMyAdmin devrait maintenant afficher un
 &eacute;cran de bienvenue et vos bases de donn&eacute;es, ou une bo&icirc;te
 de dialogue de connexion si vous utilisez le mode <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> ou le mode authentification par cookie.</li>
-    <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
-subfolders in your webserver configuration. For Apache you can use supplied
-<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
-webservers, you should configure this yourself.  Such configuration prevents
-from possible path exposure and cross side scripting vulnerabilities that
-might happen to be found in that code.</li>
+    <li>Vous devrez interdire l'accès aux sous-répertoires <tt>./libraries</tt> et
+<tt>./setup/lib</tt> de votre serveur Web. Pour Apache, vous pouvez utiliser
+le fichier <a href="#glossary"><i>.htaccess</i></a> fourni dans ce dossier,
+pour les autres serveurs Web, vous devrez le configurer vous-même. Une telle
+configuration empêche de possibles vulnérabilités de «&nbsp;path
+exposure&nbsp;» et de «&nbsp;cross side scripting&nbsp;» qui pourraient être
+découvertes dans le code.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.42</a>.
+        Il est généralement conseillé de protéger l'installation phpMyAdmin publique
+contre les accès des robots car ils ne peuvent rien faire de bon en général
+ici. Vous pouvez faire ceci en utilisant le fichier <code>robots.txt</code>
+à la racine de votre serveur Web ou en limitant l'accès par la configuration
+de votre serveur Web, <a href="#faq1_42"><abbr title="Foire Aux
+Questions">FAQ</abbr> 1.42</a>.
     </li>
 </ol>
 
@@ -399,14 +401,15 @@ installation multi-utilisateurs (cette base de donn&eacute;es serait alors
 acc&eacute;e par le controluser, aussi, aucun autre utilisateur ne devrait
 avoir de droits sur celle-ci).</p>
 
-<p> Please look at your <tt>./examples/</tt> directory, where you should find a
-file called <i>create_tables.sql</i>. (If you are using a Windows server,
-pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Veuillez regarder dans votre répertoire <tt>./scripts/</tt>, où vous devriez
+trouver un fichier du nom de <i>create_tables.sql</i>. (Si vous utilisez un
+serveur Windows, portez une attention particulière à la partie <a
+href="#faq1_23"> <abbr title="Foire Aux Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./examples/create_tables.sql</i>.</p>
+<p> Si vous avez déjà cette infrastructure et mis à jour vers MySQL 4.1.2 ou
+ultérieur, veuillez utiliser le fichier
+<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> puis créer de nouvelles
+tables en important <i>./examples/create_tables.sql</i>.</p>
 
 <p> Vous pouvez d'ores et d&eacute;j&agrave; utiliser phpMyAdmin qui
 cr&eacute;era les tables pour vous.  S'il vous pla&icirc;t, sachez que vous
@@ -415,12 +418,14 @@ pour cr&eacute;er la base de donn&eacute;es et les tables, et que le script
 peut avoir besoin de quelques ajustements en fonction du nom de la base de
 donn&eacute;es.</p>
 
-<p> After having imported the <i>./examples/create_tables.sql</i> file, you
-should specify the table names in your <i>./config.inc.php</i> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> Apr&egrave;s avoir import&eacute; le fichier
+<i>./examples/create_tables.sql</i>, vous devrez sp&eacute;cifier le nom des
+tables dans votre fichier <i>./config.inc.php</i>.  Vous trouverez les
+directives &agrave; utiliser pour cela dans la section <a
+href="#config">Configuration</a>.  Vous aurez &eacute;galement besoin d'un
+controluser avec les droits appropri&eacute;s pour ces tables (voir la
+section <a href="#authentication_modes">Utiliser les modes
+d'authentification</a> ci-dessous).</p>
 
 <h3 id="upgrading">Mise &agrave; jour&nbsp;:</h3>
 
@@ -441,10 +446,11 @@ fin de votre fichier de configuration.</p>
 le fichier de configuration par d&eacute;faut est sp&eacute;cifique &agrave;
 chaque version.</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the <abbr title="structured query language">SQL</abbr> script
-found in <tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> Si vous avez mis &agrave; jour votre serveur MySQL d'une version plus
+ancienne que la 4.1.2 vers une version 5.x ou ult&eacute;rieure et si vous
+utilisez la configuration de stockage de phpMyAdmin, vous devez
+ex&eacute;cuter le script <abbr title="structured query language">SQL</abbr>
+suivant&nbsp;: <tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
 
 <h3 id="authentication_modes">Utiliser les modes d'authentification&nbsp;:</h3>
 
@@ -491,11 +497,12 @@ dans la section param&egrave;tre <tt><a href="#cfg_Servers_controluser"
 class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> et <tt><a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt>.<br />
-        The following example assumes you want to use <tt>pma</tt> as the
-controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
-example: use something else in your file!</b> Input these statements from
-the phpMyAdmin <abbr title="structured query language">SQL </abbr> Query
-window or mysql command&#8211;line client.<br />
+        L'exemple suivant suppose que vous voulez utiliser <tt>pma</tt> en tant que
+controluser et <tt>pmapass</tt> comme mot de passe, mais <b>il ne s'agit que
+d'un exemple&nbsp;: utilisez autre chose pour votre fichier&nbsp;!</b>
+Saisissez ces d&eacute;clarations dans une fen&ecirc;tre de requ&ecirc;te
+<abbr title="structured query language">SQL </abbr> de phpMyAdmin ou en
+ligne de commande mysql.<br />
         Bien s&ucirc;r, vous devrez remplacer <tt>localhost</tt> par le nom
 d'h&ocirc;te de votre serveur web si celui-ci n'est pas le m&ecirc;me que
 votre serveur MySQL.&nbsp;
@@ -569,10 +576,11 @@ section <a href="#faq1_32"><abbr title="Foire Aux Questions">FAQ</abbr>
 1.32</a>, pour utiliser Apache <abbr title="Common Gateway
 Interface">CGI</abbr> voir la section <a href="#faq1_35"><abbr title="Foire
 Aux Questions">FAQ</abbr> 1.35</a>.</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <a
-href="#glossary"><i>.htaccess</i></a> mechanism along with '<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
+    <li>Voir &eacute;galement la section <a href="#faq4_4"><abbr title="Foire Aux
+Questions">FAQ</abbr> 4.4</a> sur le fait de ne pas utiliser le
+m&eacute;canisme d'authentification&nbsp; <a
+href="#glossary"><i>.htaccess</i></a> en m&ecirc;me temps que le mode
+d'authentification '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'.</li>
 </ul>
 
 <h4>Mode d'authentification 'cookie'&nbsp;:</h4>
@@ -629,13 +637,16 @@ l'authentification h&ocirc;te <a href="#servers_allowdeny_order"
 class="configrule">$cfg['Servers'][$i]['AllowDeny']['order']</a> et <a
 href="#servers_allowdeny_rules"
 class="configrule">$cfg['Servers'][$i]['AllowDeny']['rules']</a>.</li>
-    <li>Unlike cookie and http, does not require a user to log in when first loading
-the phpMyAdmin site. This is by design but could allow any user to access
-your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
-disallowing incoming HTTP requests at one&#8217;s router or firewall will
-suffice (both of which are beyond the scope of this manual but easily
-searchable with Google).</li>
+    <li>Contrairement aux modes par cookie et http, il ne n&eacute;cessite pas que
+l'utilisateur s'authentifie lors du premier chargement du site
+phpMyAdmin. C'est pr&eacute;vu ainsi, mais cela pourrait permettre &agrave;
+tout utilisateur d'acc&eacute;der &agrave; votre installation.
+L'utilisation d'une m&eacute;thode de restriction est recommand&eacute;e,
+peut-&ecirc;tre avec un fichier <a href="#glossary"><i>.htaccess</i></a>
+avec la directive HTTP-AUTH directive ou en interdisant les requ&ecirc;tes
+HTTP entrantes sur le routeur ou le pare-feu suffisent (ces deux suggestions
+n'entrent pas dans les sujets abord&eacute;s dans ce manuel mais vous pouvez
+facilement trouver des informations sur ces sujets avec Google).</li>
 </ul>
 <h4 id="swekey">Authentification Swekey</h4>
 <p>
@@ -652,12 +663,12 @@ Pour l'activer, ajouter la ligne suivante au fichier
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-You then have to create the <tt>swekey.conf</tt> file that will associate
-each user with their Swekey Id. It is important to place this file outside
-of your web server's document root (in the example, it is located in
-<tt>/etc</tt>). A self documented sample file is provided in the
-<tt>examples</tt> directory. Feel free to use it with your own users'
-information.<br /><br />
+Ensuite, vous devez créer le fichier <tt>swekey.conf</tt> qui associera
+chaque utilisateur avec son identifiant Swekey. Il est important de placer
+ce fichier en dehors de la racine document de votre serveur Web (dans
+l'exemple, il est situé dans <tt>/etc</tt>). Un fichier d'exemple commenté
+est fourni dans le répertoire <tt>examples</tt>. Vous pouvez l'utiliser avec
+vos propres informations d'utilisateurs.<br /><br />
 Si vous voulez acheter une clé Swekey, veuillez visiter <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a> car
 ce lien permet de recevoir des fonds pour phpMyAdmin.
@@ -897,18 +908,19 @@ versions et peut aussi &ecirc;tre &eacute;crit 'http')
 Protocol">HTTP</abbr>'</tt>)  tel qu'introduit dans la version 1.3.0 vous
 permet de vous connecter comme n'importe utilisateur MySQL valide via
 HTTP-Auth.</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
-from another application.  Sample way how to seed session is in signon
-example: <code>examples/signon.php</code>.  There is also alternative
-example using OpenID - <code>examples/openid.php</code> and example for
-scripts based solution - <code>examples/signon-script.php</code>.  You need
-to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
-name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
-be executed</a> and <a href="#cfg_Servers_SignonURL"
-class="configrule">signon <abbr title="Uniform Resource
-Locator">URL</abbr></a> to use this authentication method.</li>
+            <li>Le mode d'authentification 'signon'
+(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  qui a été introduit dans la
+version 2.10.0 vous permet de vous connecter à partir de données de session
+préparée PHP. Ceci est utile pour la mise en &oelig;uvre d'une connexion
+unique (single signon)  &agrave; partir d'une autre application. Un exemple
+pour alimenter une session se trouve dans&nbsp;:
+<code>examples/signon.php</code>. Il existe aussi un exemple alternatif
+utilisant OpenID - <code>examples/openid.php</code> et des exemples de
+solutions basées sur des scripts -
+<code>examples/signon-script.php</code>. Vous aurez besoin de configurer <a
+href="#cfg_Servers_SignonSession" class="configrule">session name</a> et <a
+href="#cfg_Servers_SignonURL" class="configrule">signon <abbr title="Uniform
+Resource Locator">URL</abbr></a> pour utiliser ce mode d'authentification.</li>
         </ul>
 
         Veuillez consulter la section <a href="#setup">Installation</a> sur
@@ -1622,12 +1634,13 @@ dans le cadre.
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
 chaîne</dt>
-    <dd>Name of PHP script to be sourced and executed to obtain login
-credentials. This is alternative approach to session based single
-signon. The script needs to provide function
-<code>get_login_credentials</code> which returns list of username and
-password, accepting single parameter of existing username (can be empty).
-See <code>examples/signon-script.php</code> for an example.
+    <dd>Le nom du script PHP qui doit être exécuté pour obtenir les crédentiels de
+connexion. C'est une approche alternative aux session basées sur le single
+signon. Le script doit fournir la fonction
+<code>get_login_credentials</code> qui renvoie le nom d'utilisateur et le
+mot de passe, en acceptant un seul paramètre d'utilisateur existant (peut
+être vide).  Consulter <code>examples/signon-script.php</code> pour un
+exemple.
     </dd>
     <dt><span
 id="cfg_Servers_SignonSession">$cfg['Servers'][$i]['SignonSession']</span>
@@ -1640,15 +1653,17 @@ class="configrule">SignonScript</a> n'est pas configuré.
     </dd>
     <dt><span id="cfg_Servers_SignonURL">$cfg['Servers'][$i]['SignonURL']</span>
 cha&icirc;ne</dt>
-    <dd><abbr title="Uniform Resource Locator">URL</abbr> where user will be
-redirected to log in for signon authentication method. Should be absolute
-including protocol.
+    <dd><abbr title="Uniform Resource Locator">URL</abbr> o&ugrave; sera
+redirig&eacute; l'utilisateur pour se connecter avec le mode
+d'authentification 'signon'. Doit &ecirc;tre absolue et inclure le
+protocole.
     </dd>
     <dt><span id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span>
 cha&icirc;ne</dt>
-    <dd><abbr title="Uniform Resource Locator">URL</abbr> where user will be
-redirected after logout (doesn't affect config authentication method).
-Should be absolute including protocol.
+    <dd><abbr title="Uniform Resource Locator">URL</abbr> o&ugrave; sera
+redirig&eacute; l'utilisateur apr&egrave;s la d&eacute;connexion (ceci
+n'affecte pas la mode d'authentification 'config'). Doit &ecirc;tre absolue
+et inclure le protocole.
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] entier</dt>
@@ -1684,12 +1699,14 @@ de navigation en mode all&eacute;g&eacute;.</dd>
 en-têtes de tables par la souris).</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">$cfg['MaxCharactersInDisplayedSQL'] entier</dt>
-    <dd>The maximum number of characters when a <abbr title="structured query
-language"> SQL</abbr> query is displayed. The default limit of 1000 should
-be correct to avoid the display of tons of hexadecimal codes that represent
-BLOBs, but some users have real <abbr title="structured query
-language">SQL</abbr> queries that are longer than 1000 characters. Also, if
-a query's length exceeds this limit, this query is not saved in the history.</dd>
+    <dd>Le nombre maximum de caract&egrave;res d'une requ&ecirc;te <abbr
+title="structured query language">SQL</abbr> &agrave; afficher. La limite
+par d&eacute;faut de 1000 devrait &ecirc;tre correcte pour &eacute;viter
+l'affichage de tonnes de code hexad&eacute;cimal repr&eacute;sentant des
+BLOB, mais certains utilisateurs ont de vraies requ&ecirc;tes <abbr
+title="structured query language">SQL</abbr> qui d&eacute;passent 1000
+caract&egrave;res. Également, si la longueur d'une requête excède cette
+limite, la requête n'est pas conservée dans l'historique.</dd>
 
     <dt id="cfg_OBGzip">$cfg['OBGzip'] cha&icirc;ne/bool&eacute;en</dt>
     <dd>D&eacute;finit si l'on utilise la mise en cache des sorties (output
@@ -1754,9 +1771,9 @@ donn&eacute;es avec des tables verrouill&eacute;es (depuis la version MySQL
 language">SQL</abbr> g&eacute;n&eacute;r&eacute;es par phpMyAdmin doivent
 &ecirc;tre affich&eacute;es.</dd>
 
-    <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] boolean</dt>
-    <dd>Defines whether the <abbr title="structured query language">SQL</abbr> query
-box should be kept displayed after its submission.</dd>
+    <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] booléen</dt>
+    <dd>Définit si la boîte de requête <abbr title="structured query
+language">SQL</abbr> doit rester affichée après soumission de la requête.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] bool&eacute;en</dt>
     <dd>D&eacute;finit si les utilisateurs lamda (non administrateur)  sont
@@ -1766,11 +1783,13 @@ base &hellip;&nbsp;&raquo; ne sera pas visible, et m&ecirc;me la commande
 &laquo;&nbsp;DROP DATABASE ma_base_de_donnees&nbsp;&raquo; sera
 rejet&eacute;e. Tr&egrave;s pratique pour un <abbr title="Fournisseur
 d'acc&egrave;s &agrave; Internet">FAI</abbr> avec beaucoup de clients.<br />
-        Please note that this limitation of <abbr title="structured query language">
-SQL</abbr> queries is not as strict as when using MySQL privileges. This is
-due to nature of <abbr title="structured query language">SQL</abbr> queries
-which might be quite complicated. So this choice should be viewed as help to
-avoid accidental dropping rather than strict privilege limitation.</dd>
+        Veuillez noter que cette limitation des requ&ecirc;tes <abbr
+title="structured query language">SQL</abbr> n'est pas aussi stricte en
+utilisant les privil&egrave;ges MySQL. Cela est d&ucirc; &agrave; la nature
+des requ&ecirc;tes <abbr title="structured query language">SQL</abbr> qui
+peuvent &ecirc;tre tr&egrave;s compliqu&eacute;es. Aussi, ce choix doit
+&ecirc;tre vu comme une aide pour &eacute;viter une suppression accidentelle
+plut&ocirc;t qu'une limitation de privil&egrave;ges stricte.</dd>
 
     <dt id="cfg_Confirm">$cfg['Confirm'] bool&eacute;en</dt>
     <dd>D&eacute;finit si un avertissement (&laquo;&nbsp;&Ecirc;tes-vous vraiment
@@ -1916,9 +1935,10 @@ demeure le vrai nom de la table.</dd>
     <dd>D&eacute;finit si le logo de phpMyAdmin est affich&eacute; en haut, dans le
 cadre de gauche. D&eacute;fini par d&eacute;faut &agrave; <tt>TRUE</tt>.</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] cha&icirc;ne</dt>
-    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
-navigation frame will point to.  For use especially with self made theme
-which changes this.  The default value for this is <tt>main.php</tt>.</dd>
+    <dd>Saisissez l'<abbr title="Uniform Resource Locator">URL</abbr> vers laquelle
+le logo du panneau de gauche pointera. &Agrave; utiliser notamment pour les
+th&egrave;mes personnalis&eacute;s qui changent cela.  La valeur par
+d&eacute;faut pour cela est <tt>main.php</tt>.</dd>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] cha&ecirc;ne</dt>
     <dd>D&eacute;finit si la page li&eacute;e doit s'ouvrir dans la fen&ecirc;tre
@@ -2006,15 +2026,17 @@ seulement. La valeur TRUE affiche les ic&ocirc;nes, FALSE affiche seulement
 le texte et 'both' affiche le texte et les ic&ocirc;nes.</dd>
 
     <dt id="cfg_ShowAll">$cfg['ShowAll'] bool&eacute;en</dt>
-    <dd>Defines whether a user should be displayed a &quot;Show all&quot; button in
-browse mode or not in all cases.  By default it is shown only on small
-tables (less than 5 &times; <a href="#cfg_MaxRows">$cfg['MaxRows']</a> rows)
-to avoid performance issues while getting too many rows.</dd>
+    <dd>Définit si un utilisateur peut afficher un bouton «&nbsp;Afficher
+tout&nbsp;» en mode navigation ou dans tous les cas. Par défaut, il est
+affiché pour les petites tables (moins de 5 &times; <a
+href="#cfg_MaxRows">$cfg['MaxRows']</a> lignes) pour éviter les problèmes de
+performance.</dd>
 
     <dt id="cfg_MaxRows">$cfg['MaxRows'] entier</dt>
-    <dd>Number of rows displayed when browsing a result set and no LIMIT clause is
-used. If the result set contains more rows, &quot;Previous&quot; and
-&quot;Next&quot; links will be shown.</dd>
+    <dd>Nombre de colonnes affich&eacute;es lors de la navigation sur un ensemble de
+r&eacute;sultats et si aucune clause LIMIT n'est utilisée. Si le nombre des
+colonnes est sup&eacute;rieur, des liens &laquo;&nbsp;Suivant&nbsp;&raquo;
+et &laquo;&nbsp;Pr&eacute;c&eacute;dent&nbsp;&raquo; seront affich&eacute;s.</dd>
 
     <dt id="cfg_Order">$cfg['Order'] cha&icirc;ne ['<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>']</dt>
     <dd>D&eacute;finit si les colonnes sont affichées en ordre croissant
@@ -2280,11 +2302,12 @@ cas, un administrateur système voudrait définir ce paramètre à
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] entier</dt>
     <dd>
-    Limit for length of <abbr title="Uniform Resource Locator">URL</abbr> in
-links.  When length would be above this limit, it is replaced by form with
-button.  This is required as some web servers (<abbr title="Internet
-Information Services"> IIS</abbr>) have problems with long <abbr
-title="Uniform Resource Locator"> URL</abbr>s. Default is <code>1000</code>.
+    Limite de la longueur de l'<abbr title="Uniform Resource Locator">URL</abbr>
+dans les liens. Quand la longueur est supérieure à cette limite, le lien est
+remplacé par un formulaire avec un bouton. Ceci est nécessaire car certains
+serveurs Web (<abbr title="Internet Information Services"> IIS</abbr>) ont
+des problèmes avec les <abbr title="Uniform Resource Locator"> URL</abbr>
+longues. La valeur par défaut est <code>1000</code>.
     </dd>
 
     <dt
@@ -2428,7 +2451,8 @@ trie chaque enregistrement verticalement.
     </dd>
 
     <dt id="cfg_RememberSorting">$cfg['RememberSorting'] booléen</dt>
-    <dd>If enabled, remember the sorting of each table when browsing them.</dd>
+    <dd>Si activé, l'ordre de tri des tables est conservé lors de la navigation dans
+les tables.</dd>
 
     <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] chaîne</dt>
     <dd>
@@ -2708,9 +2732,10 @@ COUNT</code>. Si le compte approximatif de lignes renvoy&eacute; par
 approximative sera utilis&eacute;e.
     </dd>
     <dt id="cfg_MaxExactCountViews">$cfg['MaxExactCountViews'] entier</dt>
-    <dd>For VIEWs, since obtaining the exact count could have an impact on
-performance, this value is the maximum to be displayed, using a <code>SELECT
-COUNT ... LIMIT</code>. Setting this to 0 bypasses any row counting.
+    <dd>Pour VIEW, puisqu'obtenir le compte exact pourrait avoir un impact sur les
+performances, cette valeur est la valeur maximum &agrave; afficher, en
+utilisant un <code>SELECT COUNT ... LIMIT</code>. La valeur par
+d&eacute;faut de 0 passe outre tout comptage de lignes.
     </dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] bool&eacute;en</dt>
@@ -3363,12 +3388,14 @@ devraient plus arriver. Si possible, mettez &agrave; jour votre phpMyAdmin
 avec la derni&egrave;re version pour tirer parti des nouvelles
 fonctionnalit&eacute;s d'importation.</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that <tt>post_max_size</tt> and
-<tt>memory_limit</tt> need to be larger than <tt>upload_max_filesize</tt>.<br /> <br />
+<p> Les premi&egrave;res choses &agrave; v&eacute;rifier (ou &agrave; demander
+&agrave; votre fournisseur d'acc&egrave;s de v&eacute;rifier)  sont les
+valeurs <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> et
+<tt>post_max_size</tt> dans le fichier de configuration <i>php.ini</i>.
+L'ensemble de ces trois param&egrave;tres limitent la taille maximale des
+donn&eacute;es qui peuvent &ecirc;tre soumises par PHP. Un utilisateur a
+&eacute;galement dit que <tt>post_max_size</tt> et <tt>memory_limit</tt>
+doivent &ecirc;tre plus grandes que <tt>upload_max_filesize</tt>.<br /> <br />
 
     Il existe plusieurs moyens de contournement si votre upload est trop gros ou
 si votre h&eacute;bergeur ne souhaite pas modifier les
@@ -3650,21 +3677,26 @@ sur <tt>OK</tt>.</li>
     <a href="#faq1_34">1.34 Puis-je acc&eacute;der directement aux pages des
 bases de donn&eacute;es ou des tables&nbsp;?</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <a
-href="#glossary"><i>.htaccess</i></a> file in root folder of phpMyAdmin
-installation (don't forget to change directory name inside of it):</p>
+<p> Oui. Sans autre configuration, vous pouvez utiliser des <abbr title="Uniform
+Resource Locator">URL</abbr> de type
+http://server/phpMyAdmin/index.php?db=database&amp;table=table&amp;target=script.
+Pour <tt>server</tt>, vous utilisez le numéro du serveur qui réfère à
+l'ordre dans le paragraphe «&nbsp;server&nbsp;» dans le fichier
+<tt>config.inc.php</tt>. Les parties &laquo;&nbsp;table&nbsp;&raquo; et
+&laquo;&nbsp;script&nbsp;&raquo; sont optionnelles. Si vous voulez utiliser
+des <abbr title="Uniform Resource Locator">URL</abbr> du type
+http://server/phpMyAdmin/database[/table][/script], vous devrez faire
+quelques ajustements. Les lignes suivantes ne s'appliquent que pour un
+serveur Web <a href="http://httpd.apache.org">Apache</a>. D'abord,
+assurez-vous que vous avez activ&eacute; certaines fonctionnalit&eacute;s
+dans la configuration globale. Vous avez besoin que <code>Options
+FollowSymLinks</code> et <code>AllowOverride FileInfo</code> soient
+activ&eacute;s pour le r&eacute;pertoire o&ugrave; est install&eacute;
+phpMyAdmin et que &laquo;&nbsp;mod_rewrite&nbsp;&raquo; soit
+activ&eacute;. Alors, vous aurez seulement besoin de cr&eacute;er le fichier
+<a href="#glossary"><i>.htaccess</i></a> suivant dans le dossier racine de
+l'installation de phpMyAdmin (n'oubliez pas de changer le nom du
+r&eacute;pertoire)&nbsp;:</p>
 
 <pre>
 RewriteEngine On
@@ -3764,8 +3796,8 @@ href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout
 doit être désactivée (par défaut)</li>
     <li><a
 href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a>
-should not include <abbr title="structured query language">SQL</abbr>,
-otherwise you get big slowdown</li>
+ne doit pas inclure <abbr title="structured query language">SQL</abbr>, sans
+quoi, vous aurez un grand ralentissement</li>
 </ul>
 
     <p>
@@ -3822,30 +3854,31 @@ inconnue.</a></h4>
 exécuter la commande <tt>mysql_upgrade</tt> sur le serveur.</p>
 
 <h4 id="faq1_42">
-    <a href="#faq1_42">1.42 How can I prevent robots from accessing
-phpMyAdmin?</a></h4>
+    <a href="#faq1_42">1.42 Comment empêcher les robots d'accéder à
+phpMyAdmin&nbsp;?</a></h4>
 
-<p>You can add various rules to <a href="#glossary"><i>.htaccess</i></a> to
-filter access based on user agent field. This is quite easy to circumvent,
-but could prevent at least some robots accessing your installation.</p>
+<p>Vous pouvez ajouter diverses règles dans <a
+href="#glossary"><i>.htaccess</i></a> pour filtrer les accès en se basant
+sur le champ user agent. Ces règles sont facilement contournables, mais cela
+peut empêcher au moins quelques robots d'accéder à votre installation.</p>
 
 <pre>
 RewriteEngine on
 
-# Allow only GET and POST verbs
+# Autorise seulement les verbes GET et POST
 RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
 
-# Ban Typical Vulnerability Scanners and others
-# Kick out Script Kiddies
+# Bannit les scanners de vulnérabilités classique et les
+# Script Kiddies
 RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|scan|acunetix).* [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
 
-# Ban Search Engines, Crawlers to your administrative panel
-# No reasons to access from bots
-# Ultimately Better than the useless robots.txt
-# Did google respect robots.txt?
-# Try google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
+# Bannit les moteurs de recherche et les robots de votre panneau administratif
+# Les robots n'ont aucune raison d'accéder
+# Définitivement mieux que l'inutile robots.txt
+# Google respecte-t-il robots.txt ?
+# Essayez google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
 RewriteCond %{HTTP_USER_AGENT} ^.*(AdsBot-Google|ia_archiver|Scooter|Ask.Jeeves|Baiduspider|Exabot|FAST.Enterprise.Crawler|FAST-WebCrawler|www\.neomo\.de|Gigabot|Mediapartners-Google|Google.Desktop|Feedfetcher-Google|Googlebot|heise-IT-Markt-Crawler|heritrix|ibm.com\cs/crawler|ICCrawler|ichiro|MJ12bot|MetagerBot|msnbot-NewsBlogs|msnbot|msnbot-media|NG-Search|lucene.apache.org|NutchCVS|OmniExplorer_Bot|online.link.validator|psbot0|Seekbot|Sensis.Web.Crawler|SEO.search.Crawler|Seoma.\[SEO.Crawler\]|SEOsearch|Snappy|www.urltrends.com|www.tkl.iis.u-tokyo.ac.jp/~crawler|SynooBot|crawleradmin.t-info@telekom.de|TurnitinBot|voyager|W3.SiteSearch.Crawler|W3C-checklink|W3C_Validator|www.WISEnutbot.com|yacybot|Yahoo-MMCrawler|Yahoo\!.DE.Slurp|Yahoo\!.Slurp|YahooSeeker).* [NC]
 RewriteRule .* - [F]
 </pre>
@@ -3859,13 +3892,16 @@ RewriteRule .* - [F]
 header information - headers already sent by &hellip;&nbsp;&raquo; est
 affich&eacute;, quel est le probl&egrave;me&nbsp;?</a></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under <abbr title="Internet
-Information Services">IIS</abbr>, that used a zipped distribution kit: the
-file <tt>libraries/Config.class.php</tt> contained an end-of-line character
-(hex 0A) at the end; removing this character cleared his errors.</p>
+<p> &Eacute;ditez votre fichier <i>config.inc.php</i> et assurez-vous qu'il n'y
+a rien (c'est-&agrave;-dire pas de ligne blanche, pas d'espace, pas de
+caract&egrave;re&hellip;) ni devant la balise <tt>&lt;?php</tt> au
+d&eacute;but du fichier, ni apr&egrave;s la balise <tt>?&gt;</tt> &agrave;
+la fin du fichier. Nous avons aussi eu un rapport d'un utilisateur sous
+<abbr title="Internet Information Services">IIS</abbr>, qui utilisait un kit
+de distribution zipp&eacute;&nbsp;: le fichier
+<tt>libraries/Config.class.php</tt> contenait un caract&egrave;re de fin de
+ligne (hex 0A) en fin de fichier&nbsp;; en supprimant ce caract&egrave;re,
+les erreurs disparaissaient.</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin ne peut pas se connecter &agrave;
@@ -4269,14 +4305,14 @@ sera probablement pas r&eacute;solu &agrave; l'avenir.
 <!-- End: Excel import limitations -->
 <!-- Begin: CSV import limitations -->
 <h4 id="faq3_18">
-    <a href="#faq3_18">3.18 When I import a <abbr title="comma separated
-values"> CSV</abbr> file that contains multiple tables, they are lumped
-together into a single table.</a></h4>
+    <a href="#faq3_18">3.18 Lors de l'import d'un fichier <abbr title="comma
+separated values">CSV</abbr> qui contient plusieurs tables, elles sont
+fusionnées en une seule.</a></h4>
 <p>
-    There is no reliable way to differentiate tables in <abbr title="comma
-separated values"> CSV</abbr> format. For the time being, you will have to
-break apart <abbr title="comma separated values">CSV</abbr> files containing
-multiple tables.
+    Il n'existe pas de moyen fiable de différencier les tables en format <abbr
+title="comma separated values">CSV</abbr>. Pour le moment, vous devrez
+fractionner les fichiers <abbr title="comma separated values">CSV</abbr>
+contenant plusieurs tables.
 </p>
 
 
@@ -4328,10 +4364,11 @@ phpMyAdmin.  Voir la section <a href="#setup">Installation</a> sur
 phpMyAdmin contre les attaques malicieuses&nbsp;?</a></h4>
 <p>
     Cela d&eacute;pend de votre syst&egrave;me.<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <a href="#glossary"><i>.htaccess</i></a> files, for
-example).<br />
+    Si vous utilisez un serveur qui ne peut pas &ecirc;tre acc&eacute;d&eacute;
+par d'autres personnes, il est suffisant d'utiliser la protection de
+r&eacute;pertoire fournie avec votre serveur Web (avec Apache vous pouvez
+utiliser les fichiers <a href="#glossary"><i>.htaccess</i></a>, par
+exemple).<br />
     Si d'autres personnes ont un acc&egrave;s telnet &agrave; votre serveur,
 vous devriez utiliser la fonctionnalit&eacute; d'authentification <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> ou par cookie de phpMyAdmin.
@@ -4378,9 +4415,10 @@ class="configrule">$cfg['Servers'][$i]['controlpass']</a> sont
 erron&eacute;s.</li>
     <li>L'utilisateur/mot de passe que vous sp&eacute;cifiez dans le dialogue de
 connexion sont invalides.</li>
-    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a <a href="#glossary"><i>.htaccess</i></a> file. This would interfere
-with phpMyAdmin's authentication, so remove it.</li>
+    <li>Vous avez d&eacute;j&agrave; configur&eacute; un m&eacute;canisme de
+s&eacute;curit&eacute; pour le r&eacute;pertoire phpMyAdmin, par exemple un
+fichier <a href="#glossary"><i>.htaccess</i></a>. Cela doit
+interf&eacute;rer avec l'authentification phpMyAdmin, aussi, supprimez-le.</li>
 </ul>
 
 <h4 id="faq4_5">
@@ -4399,13 +4437,14 @@ cr&eacute;er/administrer sa(ses) base(s) de donn&eacute;es.</p>
     <a href="#faq4_6">4.6 Comment puis-je utiliser en plus l'authentification
 bas&eacute;e sur l'h&ocirc;te&nbsp;?</a></h4>
 
-<p> If you have existing rules from an old <a
-href="#glossary"><i>.htaccess</i></a> file, you can take them and add a
-username between the <tt>'deny'</tt>/<tt>'allow'</tt> and <tt>'from'</tt>
-strings. Using the username wildcard of <tt>'%'</tt> would be a major
-benefit here if your installation is suited to using it. Then you can just
-add those updated lines into the <a href="#cfg_Servers_AllowDeny_rules"
-class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+<p> Si vous avez des r&egrave;gles existantes d'un ancien fichier <a
+href="#glossary"><i>.htaccess</i></a>, vous pouvez le prendre et ajouter le
+nom d'utilisateur entre les cha&icirc;nes <tt>'deny'</tt>/<tt>'allow'</tt>
+et <tt>'from'</tt>.  Utiliser le m&eacute;ta-caract&egrave;re <tt>'%'</tt>
+pour le nom d'utilisateur est un grand avantage si votre installation est
+adapt&eacute;e pour l'utiliser. Ensuite, vous pouvez ajouter ces lignes
+mises &agrave; jour dans le tableau <a href="#cfg_Servers_AllowDeny_rules"
+class="configrule">$cfg['Servers'][$i]['AllowDeny']['rules']</a>.</p>
 
 <p> Si vous voulez un exemple pr&eacute;fabriqu&eacute;, vous pouvez essayer
 celui-ci. Il emp&ecirc;che l'utilisateur 'root' de se connecter &agrave;
@@ -4641,10 +4680,11 @@ serveur. Il semble que ce soit un problème spécifique à ce navigateur&nbsp;;
 en attendant, utilisez le mode d'authentification par <tt>cookie</tt>.</p>
 
 <h4 id="faq5_19">
-<a href="#faq5_19">5.19 I get JavaScript errors in my browser.</a></h4>
-<p> Issues have been reported with some combinations of browser extensions.  To
-troubleshoot, disable all extensions then clear your browser cache to see if
-the problem goes away.</p>
+<a href="#faq5_19">5.19 J'obtiens des erreurs JavaScript dans mon
+navigateur.</a></h4>
+<p> Des problèmes ont été rapportés avec la combinaison de plusieurs extensions
+de navigateur. Désactivez toutes les extensions et vider le cache de votre
+navigateur pour voir si le problème disparaît.</p>
 
 <h3 id="faqusing">Utiliser phpMyAdmin</h3>
 
@@ -5012,8 +5052,9 @@ l'index sur une colonne BLOB.</p>
     <a href="#faq6_16">6.16 Comment puis-je me d&eacute;placer simplement dans
 une page remplie de champs modifiables&nbsp;?</a></h4>
 
-<p> You can use Ctrl+arrows (Option+Arrows in Safari) for moving on most pages
-with many editing fields (table structure changes, row editing, etc.).</p>
+<p> Vous pouvez utiliser Ctrl+flèches (Option+flèches dans Safari) pour vous
+déplacer dans la plupart des pages ayant beaucoup de champs d'édition
+(changements de structure de tables, édition de lignes, etc.).</p>
 
 <h4 id="faq6_17">
     <a href="#faq6_17">6.17 Transformations&nbsp;: je ne peux pas entrer mon
@@ -5183,7 +5224,7 @@ table vers le format natif est effectu&eacute;e chaque fois que vous entrez
 dans la page Structure pour cette table.</p>
 
 <h4 id="faq6_25">
-    <a href="#faq6_25">6.25 (withdrawn).</a></h4>
+    <a href="#faq6_25">6.25 (retiré).</a></h4>
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 Comment puis-je sélectionner un ensemble de
@@ -5315,8 +5356,8 @@ bas&eacute; sur UNIX, vous pouvez faire ceci&nbsp;:</p>
     <a href="#faq6_31">6.31 Comment puis-je créer une relation dans le
 Designer&nbsp;?</a></h4>
 
-    <p>To select relation, click:<br />
-    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    <p>Pour sélectionner une relation, cliquez : <br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[icône de relation]" /><br />
     La colonne descriptive est montrée en rose. Pour indiquer qu'une colonne est
 ou n'est plus la colonne descriptive, cliquer l'icône «Colonne descriptive»,
 puis cliquer sur le nom de colonne approprié.</p>
@@ -5379,22 +5420,22 @@ https://sourceforge.net/projects/phpmyadmin/forums</a>.
 ou mettre &agrave; jour une langue existante, o&ugrave; dois-je
 commencer&nbsp;?</a></h4>
 
-<p> Translations are very welcome and all you need to have are the language
-skills.  The easiest way is to use our <a
-href="https://l10n.cihar.com/projects/phpmyadmin/">online translation
-service</a>.  You can check out all the possibilities to translate in the <a
-href="http://www.phpmyadmin.net/home_page/translate.php">translate section
-on our website</a>.
+<p> Les traductions sont les bienvenues et tout ce dont vous avez besoin est de
+maîtriser la langue. La manière la plus facile est d'utiliser notre <a
+href="https://l10n.cihar.com/projects/phpmyadmin/">service de traduction en
+ligne</a>. Vous pouvez consulter toutes les possibilités de traduction dans
+la <a href="http://www.phpmyadmin.net/home_page/translate.php">section
+traduction de notre site Web</a>.
     </p>
 
 <h4 id="faq7_3">
     <a href="#faq7_3">7.3 Je voudrais aider au d&eacute;veloppement de
 phpMyAdmin. Comment dois-je proc&eacute;der&nbsp;?</a></h4>
 
-<p>We welcome every contribution to the development of phpMyAdmin.  You can
-check out all the possibilities to contribute in the <a
-href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
-our website</a>.
+<p>Nous accueillons volontiers toute contribution au développement de
+phpMyAdmin. Vous pouvez consulter toutes les possibilités pour contribuer
+dans la <a href="http://www.phpmyadmin.net/home_page/improve.php">section
+contribuer de notre site Web</a>.
    </p>
 
 <h3 id="faqsecurity">S&eacute;curit&eacute;</h3>
@@ -5504,12 +5545,12 @@ grisés, ce qui signifie qu'ils vont être synchronisés.
 </p>
 
 <h4 id="faq9_2">
-    <a href="#faq9_2">9.2 Are there problems with data synchronizing large
-tables?</a></h4>
+    <a href="#faq9_2">9.2 Y a-t-il des problèmes de synchronisation de données
+avec les grandes tables&nbsp;?</a></h4>
 
 <p>
-Yes. This aspect of synchronization is currently limited to small tables,
-and they must have a primary key.
+Oui. Cet aspect de la synchronisation est actuellement limité aux petites
+tables, et elles doivent avoir une clé primaire.
 </p>
 
 
@@ -5521,16 +5562,16 @@ and they must have a primary key.
 &eacute;t&eacute; &eacute;crites par d'autres personnes et vous aussi vous
 pouvez aider &agrave; faire de phpMyAdmin un outil utile.</p>
 
-<p>You can check out all the possibilities to contribute in the <a
-href="http://www.phpmyadmin.net/home_page/improve.php">contribute section on
-our website</a>.
+<p>Vous pouvez consulter toutes les possibilités pour contribuer dans la <a
+href="http://www.phpmyadmin.net/home_page/improve.php">section contribuer de
+notre site Web</a>.
    </p>
 
 <h2 id="copyright">Copyright</h2>
 
 <pre>
-Copyright (C) 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
-Copyright (C) 2001-2012 Marc Delisle &lt;marc_at_infomarc.info&gt;
+Copyright © 1998-2000 Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;
+Copyright © 2001-2012 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Olivier Müller &lt;om_at_omnis.ch&gt;
                         Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;
                         Alexander M. Turek &lt;me_at_derrabus.de&gt;
@@ -5556,8 +5597,8 @@ de renseignements.
 </p>
 
 <p>
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <a
+Vous devriez avoir reçu une copie de la GNU General Public License avec ce
+programme&nbsp;; si ce n'est pas le cas, consulter <a
 href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 </p>
 
@@ -5777,7 +5818,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Raj Kissu Rajandran (Google Summer of Code 2008)
 <ul>
-  <li>BLOBstreaming support (withdrawn in release 4.0)</li>
+  <li>support BLOBstreaming (retiré dans la version 4.0)</li>
 </ul></li>
 
 <li>Piotr Przybylski (Google Summer of Code 2008, 2010 and 2011)
@@ -5831,7 +5872,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Barrie Leslie
 <ul>
-  <li>BLOBstreaming support with PBMS PHP extension (withdrawn in release 4.0)</li>
+  <li>support BLOBstreaming avec l'extension PBMS PHP (retiré dans la version 4.0)</li>
 </ul></li>
 
 <li>Ankit Gupta (Google Summer of Code 2010)
