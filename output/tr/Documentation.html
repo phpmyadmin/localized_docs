@@ -3,7 +3,7 @@
 <!-- 
 vim: expandtab ts=4 sw=4 sts=4 tw=78 
 -->
-<html lang="en-US" dir="ltr">
+<html lang="tr-TR" dir="ltr">
 <!--
 
 Bu dosya po4a kullanılarak oluşturulur, düzenlemeyiniz!
@@ -73,33 +73,35 @@ phpMyAdmin proje sayfası</a></li>
 <h2 id="require">Gereksinimler</h2>
 
 <ul><li><strong>PHP</strong>
-        <ul><li>You need PHP 5.2.0 or newer, with <code>session</code> support (<a
-href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
-1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
+        <ul><li><code>Oturum</code> desteği (<a href="#faq1_31"><abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 1.31'e bakın</a>), Standart PHP Kütüphanesi (SPL)
+uzantısı ve JSON desteği ile birlikte PHP 5.2.0 veya daha yenisine
+ihtiyacınız var.
                 </li>
-        <li>To support uploading of ZIP files, you need the PHP <code>zip</code>
-extension.</li>
+        <li>ZIP dosyalarıının gönderiminin desteklenmesi için PHP <code>zip</code>
+uzantısına ihtiyacınız var.</li>
         <li>Çoklu bayt dizgilerinin (örn. şu an varsayılan olan, UTF-8) uygun desteği
 için mbstring ve ctype uzantılarını kurmalısınız.
         </li>
             <li>PHP içinde JPEG'lerin (&quot;image/jpeg: inline&quot;) küçük resimlerini
 hizada görüntülemek için GD2 desteğine ihtiyacınız var.</li>
-            <li>When using the &quot;cookie&quot; <a
-href="#authentication_modes">authentication method</a>, the <a
-href="http://www.php.net/mcrypt"><code>mcrypt</code></a> extension is
-strongly suggested for most users and is <strong>required</strong> for
-64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to load pages
-significantly slower.
+            <li>&quot;Tanımlama Bilgisi&quot; <a href="#authentication_modes">kimlik
+doğrulaması yöntemi</a> kullandığınızda, <a
+href="http://www.php.net/mcrypt"><code>mcrypt</code></a> uzantısı çoğu
+kullanıcı için şiddetle önerilir ve 64&#8211;bit makineler için
+<strong>gerekir</strong>. mcrypt kullanmamak phpMyAdmin'in sayfaları önemli
+derecede yavaşça yüklemesine sebep olacaktır.
                 </li>
                 <li>Gönderme ilerleme çubukları desteği için <a href="#faq2_9"> <abbr
 title="Sıkça Sorulan Sorular">SSS</abbr> 2.9</a>'a bakın.</li>
-                <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
-or newer and the <a href="http://www.php.net/libxml"><code>libxml</code></a>
-extension.</li>
+                <li>XML ve Open Belgesi Çalışma Sayfası içe aktarma desteği için PHP 5.2.17 veya
+daha yenisine ve <a href="http://www.php.net/libxml"><code>libxml</code></a>
+uzantısına ihtiyacınız var.</li>
         </ul>
     </li>
-    <li><strong>MySQL</strong> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
-    <li><strong>Web browser</strong> with cookies enabled.</li>
+    <li><strong>MySQL</strong> 5.0 veya daha yenisi (<a
+href="#faq1_17">ayrıntılar</a>);</li>
+    <li>Tanımlama bilgileri etkinleştirilmiş <strong>web tarayıcısı</strong>.</li>
 </ul>
 
 
@@ -180,11 +182,11 @@ yoktur (bunun dışında birde MySQL kullanıcı hesap bilgisine elle müdahaley
 izin verir); tüm kullanıcılar geçerli MySQL kullanıcısı olmak zorundadır.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
-formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
-if you use PHP with Zlib support (<code>--with-zlib</code>) and/or Bzip2
-support (<code>--with-bz2</code>). Proper support may also need changes in
-<code>php.ini</code>.</p>
+    <sup>1)</sup> Eğer Zlib destekli (<code>--zlib-ile</code>) ve/veya Bzip2
+(<code>--bz2-ile</code>) destekli PHP kullanıyorsanız, phpMyAdmin dökümleri
+ve <abbr title="Comma Separated Values">CSV</abbr> dışa aktarımlarını (Zip,
+GZip -RFC 1952- veya Bzip2 biçimleri) sıkıştırabilir. Uygun destek aynı
+zamanda <code>php.ini</code> içinde değişiklik gerektirebilir.</p>
 
 
 <!-- INSTALLATION -->
@@ -210,43 +212,46 @@ sayfası bunun için kullanılabilir.
 Sistemi">OS</abbr> X'ten önceki bir <abbr title="İşletim Sistemi">OS</abbr>
 sürümündeyseniz, StuffIt <acronym title="Apple Macintosh">Mac</acronym>
 biçimleriyle doldurulmaz.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <acronym
-title="Apple Macintosh">Mac</acronym>-style end of lines character
-(&quot;<code>\r</code>&quot;).</p>
+    Bu yüzden sunucunuza bunları göndermeden önce TÜM phpMyAdmin betiklerini
+Unix stilene BBEdit olarak yeniden kaydetmelisiniz, PHP'de olduğu gibi satır
+sonu karakteri (&quot;<code>\r</code>&quot;) <acronym title="Apple
+Macintosh">Mac</acronym>-stili gibi görünmez.</p>
 
 <h3 id="quick_install">Hızlı Kur</h3>
-<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
-page. Some kits contain only the English messages, others contain all
-languages in UTF-8 format (this should be fine in most situations), others
-contain all languages and all character sets. We'll assume you chose a kit
-whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
+<ol><li>Phpmyadmin.net İndirme sayfasından uygun dağıtım aracını seçin. Bazı araçlar
+sadece İngilizce mesajları içerir, diğerleri UTF-8 biçiminde (bu pek çok
+durumda daha iyi olmalıdır) tüm dilleri içerir, diğerleri tüm dilleri ve tüm
+karakter grubunu içerir. Biz adı
+<code>phpMyAdmin-x.x.x-all-languages.tar.gz</code> gibi görüneni
+seçeceğinizi sanıyoruz.
     </li>
-    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
-<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
-webserver's document root. If you don't have direct access to your document
-root, put the files in a directory on your local machine, and, after step 4,
-transfer the directory on your web server using, for example, ftp.</li>
+    <li>Dağıtımı untar veya unzip ile çıkartın (altdizinleri çıkarttığınızdan emin
+olun): web sunucunuzun belge kök dizini içinde <code>tar -xzvf
+phpMyAdmin_x.x.x-all-languages.tar.gz</code>. Eğer belge kök dizininize
+doğrudan erişiminiz yoksa, dosyaları yerel makinanızdaki dizine koyun ve
+sonra adım 4'te, örneğin ftp kullanarak dizini web sunucunuza aktarın.</li>
     <li>Tüm betiklerin kendine özgü sahibi olduğundan emin olun (eğer PHP güvenli
 kipte çalışıyorsa, sahibi diğer betiklerin sahibinden farklı olan bazı
 betikler sorun olacaktır). Öneriler için <a href="#faq4_2"> <abbr
 title="Sıkça Sorulan Sorular">SSS</abbr> 4.2</a> ve <a href="#faq1_26"><abbr
 title="Sıkça Sorulan Sorular">SSS</abbr> 1.26</a>'ya bakın.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<code>config.inc.php</code>, but now a wizard-style setup script is provided
-for those who prefer a graphical installation. Creating a
-<code>config.inc.php</code> is still a quick way to get started and needed
-for some advanced features.
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
-to get minimal configuration file) in the main (top-level) phpMyAdmin
-directory (the one that contains <code>index.php</code>).  phpMyAdmin first
-loads <code>libraries/config.default.php</code> and then overrides those
-values with anything found in <code>config.inc.php</code>. If the default
-value is okay for a particular setting, there is no need to include it in
-<code>config.inc.php</code>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+    <li>Şimdi kurulumunuzu yapılandırmalısınız. Bunun kullanılabileceği iki yöntem
+vardır. Geleneksel olarak kullanıcılar <code>config.inc.php</code> dosyasını
+elle düzenlerler, ama artık grafiksel kurulumu tercih edenler için sihirbaz
+stilinde kur betiği sağlanmıştır. <code>Config.inc.php</code> dosyası
+oluşturmak başlamak için gereken hala hızlı bir yoldur ve bazı gelişmiş
+özellikler için gereklidir.
+        <ul><li>Elle dosya oluşturmak için basitçe ana (en üst seviyede) phpMyAdmin dizini
+(<code>index.php</code> dosyasını içeren yerde) içinde
+<code>config.inc.php</code> (küçük yapılandırma dosyasına sahip olmak için
+<code>config.sample.inc.php</code> dosyasını kopyalayabilirsiniz) dosyası
+oluşturmak için metin düzenleycinizi kullanın. phpMyAdmin ilk
+<code>libraries/config.default.php</code> dosyasını yükler ve sonra
+<code>config.inc.php</code> dosyasında bulduğu herşeyle birlikte bu
+değerleri geçersiz kılar. Eğer varsayılan değer belirli ayar için tamamsa,
+<code>config.inc.php</code> dosyası içine dahil etmeye gerek
+yoktur. İlerlemek için birkaç yönergeye ihtiyanız olacaktır, bunun gibi
+basit bir yapılandırma:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // burada seçtiğiniz bir değeri kullanın
@@ -269,10 +274,10 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
 </pre>
                 Olası yapılandırma değerlerinin tam açıklaması için bu belgenin <a
 href="#config">Yapılandırma Bölümü</a>'ne bakın.</li>
-            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
-href="setup/">Setup Script</a>. First you must manually create a folder
-<code>config</code> in the phpMyAdmin directory. This is a security
-measure. On a Linux/Unix system you can use the following commands:
+            <li id="setup_script"><code>Config.inc.php</code> dosyasını elle düzenlemek yerine <a
+href="setup/">Kur Betiği</a>'ni kullanabilirsiniz. Öncelikle phpMyAdmin
+dizini içinde elle <code>config</code> klasörü oluşturmalısınız. Bu güvenlik
+tedbiridir. Linux/Unix sisteminde aşağıdaki komutları kullanabilirsiniz:
 <pre>
 cd phpMyAdmin
 mkdir config                        # kaydetmek için dizin oluştur
@@ -287,20 +292,19 @@ chmod o+w config/config.inc.php     # herkese yazma izinlerini ver
 ve yazmaya erişimi olduğundan emin olun. <a href="#faq1_26">SSS 1.26</a>
 bununla ilgili olarak yardımcı olabilir.<br /><br />
 
-                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
-that <strong>changes are not saved to disk until explicitly choose
-<code>Save</code></strong> from the <em>Configuration</em> area of the
-screen. Normally the script saves the new config.inc.php to the
-<code>config/</code> directory, but if the webserver does not have the
-proper permissions you may see the error "Cannot load or save
-configuration." Ensure that the <code> config/</code> directory exists and
-has the proper permissions - or use the <code>Download</code> link to save
-the config file locally and upload (via FTP or some similar means) to the
-proper location.<br /><br />
+                Sonra, tarayıcınızda <code><a href="setup/">kur/'u</a></code>
+açın. Unutmayın ekranın <em>Yapılandırma</em> alanından
+<strong><code>Kaydet'i</code> açıkça seçene kadar değişiklikler diske
+kaydedilmez</strong>. Normal olarak betik <code>config/</code> dizinine yeni
+config.inc.php dosyasını kaydeder ama eğer web sunucusu doğru izinlere sahip
+değilse "Yapılandırma yüklenemiyor veya kaydedilemiyor" hatası
+görebilirsiniz. <code>Config/</code> dizininin var olduğundan ve doğru
+yetkilere sahip olduğundan emin olun ya da yerel olarak yapılandırma
+dosyasını kaydetmek için <code>İndir</code> bağlantısını kullanın ve (FTP
+yoluyla ya da buna benzer bir yolla) doğru yere gönderin.<br /><br />
 
-                Once the file has been saved, it must be moved out of the <code>
-config/</code> directory and the permissions must be reset, again as a
-security measure:
+                Dosya bir kez kaydedildimi, <code>config/</code> dizini dışına taşınmalı ve
+güvenlik önlemi olarak izinleri sıfırlanmalıdır:
 <pre>
 mv config/config.inc.php .         # dosyayı şu anki dizine taşı
 chmod o-rw config.inc.php          # herekese okuma ve yazma izinlerini kaldır
@@ -309,26 +313,27 @@ rm -rf config                      # gerekli olmayan dizini kaldır
                 Artık dosya kullanıma hazır. Eğer kur betiğinin sağlamadığı bazı gelişmiş
 seçenekleri ayarlamayı tercih ederseniz, beğendiğiniz düzenleyicinizle
 dosyayı gözden geçirebilir ya da düzenleyebilirsiniz.</li></ul></li>
-    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
-suggested that you protect the phpMyAdmin installation directory because
-using config does not require a user to enter a password to access the
-phpMyAdmin installation. Use of an alternate authentication method is
-recommended, for example with HTTP&#8211;AUTH in a <a
-href="#glossary"><em>.htaccess</em></a> file or switch to using
-<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
-multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
-Questions">FAQ</abbr> for additional information, especially <a
-href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
+    <li>Eğer <code>auth_type</code> &quot;yapılandırması&quot; kullanıyorsanız,
+phpMyAdmin kurulum dizinini korumanız önerilir çünkü kullanılan yapılandırma
+kullanıcının phpMyAdmin kurulumuna erişmesi için parola girmesini
+gerektirmez. Alternatif kimlik doğrulama yönteminin kullanılması önerilir,
+örneğin <a href="#glossary"><em>.htaccess</em></a> dosyasındaki
+HTTP&#8211;AUTH ile ya da <code>auth_type</code> tanımlama bilgisi veya http
+kullanımına geçmek. İlave bilgi için bu <abbr title="Sıkça Sorulan
+Sorular">SSS</abbr>'ın <a href="#faqmultiuser">çoklu&#8211;kullanıcı
+alt&#8211;bölümüne</a> bakın, özelliklede <a href="#faq4_4"> <abbr
+title="Sıkça Sorulan Sorular">SSS</abbr> 4.4</a>'e.</li>
     <li>Tarayıcınızda <a href="index.php">ana phpMyAdmin dizinini</a>
 açın. phpMyAdmin artık karşılama ekranını ve veritabanınızı ya da <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> veya tanımlama bilgisi
 kimlik doğrulaması kipi kullanılıyorsa oturum açma iletisi görüntülemelidir.</li>
-    <li>You should deny access to the <code>./libraries</code> and
-<code>./setup/lib</code> subfolders in your webserver configuration. For
-Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
-in that folder, for other webservers, you should configure this yourself.
-Such configuration prevents from possible path exposure and cross side
-scripting vulnerabilities that might happen to be found in that code.</li>
+    <li>Web sunucusu yapılandırmanızda <code>./libraries</code> ve
+<code>./setup/lib</code> altklasörlerine erişimi engellemelisiniz. Apache
+için bu klasörde sağlanan <a href="#glossary"><em>.htaccess</em></a>
+dosyasını kullanabilirsiniz, diğer web sunucuları için bunu kendiniz
+yapmalısınız. Bu gibi yapılandırma olası yolu açıkta bırakmaya ve bu kodda
+bulunmuş olabilecek çapraz taraflı betik yazımı savunmazsızlığına engel
+olur.</li>
     <li>
         Bu genel olarak, herkese açık phpMyAdmin kurulumunu, çoğunlukla iyi hiçbir
 şey yapamayan robotların erişimine karşı korumak için iyi bir fikirdir. Bunu
@@ -349,57 +354,61 @@ veritabanınıza veya çoklu kullanıcılı kurulumlar (bu veritabanına, deneti
 kullanıcısı tarafından erişilebilecektir bu yüzden diğer hiçbir kullanıcı bu
 hakka sahip olmamalıdır) için merkezi veritabanına yerleştirilebilir.</p>
 
-<p> Please look at your <code>./examples/</code> directory, where you should
-find a file called <em>create_tables.sql</em>. (If you are using a Windows
-server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
-Asked Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Lütfen <code>./examples/</code> dizininize bakın, <em>create_tables.sql</em>
+adındaki dosyayı burada bulmalısınız. (Eğer Windows sunucusu
+kullanıyorsanız, <a href="#faq1_23"> <abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 1.23</a>'e özellikle dikkat edin).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
-create new tables by importing <em>./examples/create_tables.sql</em>.</p>
+<p> Eğer zaten bu altyapıya sahipseniz ve MySQL 4.1.2 veya yenisine
+yükseltmişseniz, lütfen <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em>
+dosyasını kullanın ve sonra <i>./examples/create_tables.sql</i> dosyasını
+içe aktararak yeni tabloları oluşturun.</p>
 
 <p> phpMyAdmin'ninizi sizin için tablo oluşturmada kullanabilirsiniz. Lütfen
 veritabanları ve tablolar oluşturmak için özel (yönetici) yetkilere
 ihtiyacınız olduğunun farkında olun ve bu betiğin veritabanının adına bağlı
 olarak bazı ayarlamalara ihtiyacı olabilir.</p>
 
-<p> After having imported the <em>./examples/create_tables.sql</em> file, you
-should specify the table names in your <em>./config.inc.php</em> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> <em>./examples/create_tables.sql</em> dosyası içe aktarıldıktan sonra
+<em>./config.inc.php</em> dosyanız içindeki tablo adlarını
+belirlemelisiniz. Bunun için kullanılan yönergeler <a
+href="#config">Yapılandırma bölümü</a>'nde bulunabilir. Aynı zamanda bu
+tablolar için doğru haklara sahip denetim kullanıcısına ihtiyacınız
+olacaktır (aşağıdan <a href="#authentication_modes">Kimlik doğrulama
+kipleri</a> bölümüne bakın).</p>
 
 <h3 id="upgrading">Eski sürümden yükseltme</h3>
 
-<p> Simply copy <em>./config.inc.php</em> from your previous installation into
-the newly unpacked one. Configuration files from old versions may require
-some tweaking as some options have been changed or removed; in particular,
-the definition of <code>$cfg['AttributeTypes']</code> has changed so you
-better remove it from your file and just use the default one.  For
-compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
-statement that you might find near the end of your configuration file.</p>
+<p> Yeni paketi açılmış olanın içine önceki kurulumunuzdan
+<em>./config.inc.php</em> dosyasını basitçe kopyalayın. Eski sürümden alınan
+yapılandırma dosyası, bazı değişmiş veya kaldırılmış seçeneklerinden dolayı
+bazı ince ayarlar gerektirebilir; özellikle
+<code>$cfg['AttributeTypes']</code> tanımı değişmiştir bu yüzden en iyisi
+dosyanızdan bunu kaldırmak ve sadece varsayılanı kullanmaktır. PHP 6 ile
+uyumluluk için yapılandırma dosyanızın en sonunda bulabileceğiniz
+<code>set_magic_quotes_runtime(0);</code> ifadesini kaldırın.</p>
 
-<p> You should <strong>not</strong> copy
-<code>libraries/config.default.php</code> over <code>config.inc.php</code>
-because the default configuration file is version-specific.</p>
+<p> <code>Libraries/config.default.php</code> dosyasını
+<code>config.inc.php</code> üzerine <strong>kopyalamamalısınız</strong>
+çünkü varsayılan yapılandırma dosyası sürüme özgüdür.</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the <abbr title="structured query language">SQL</abbr> script
-found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
+<p> Eğer önceki 4.1.2 sürümünden 5.x veya daha yeni sürüme yükseltilmiş MySQL
+sunucunuz varsa ve phpMyAdmin yapılandırma depolaması kullanıyorsanız,
+<code>examples/upgrade_tables_mysql_4_1_2+.sql</code> içinde bulunan <abbr
+title="structured query language">SQL</abbr> betiğini çalıştırmalısınız.</p>
 
 <h3 id="authentication_modes">Kimlik doğrulama kipleri kullanımı</h3>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are recommended in a <strong>multi-user
-environment</strong> where you want to give users access to their own
-database and don't want them to play around with others.<br />
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> ve tanımlama bilgisi
+kimlik doğrulaması kipleri kullanıcılara kendi veritabanına erişim vermek
+istediğiniz ve diğerleriyle oynamalarını istemediğiniz
+<strong>çoklu-kullanıcı ortamında</strong> önerilir.<br />
         Yine de haberiniz olsun, MS Internet Explorer tanımlama bilgileri konusunda
 gerçekten hatalı görünüyor, en azından sürüm 6 hala öyle.<br />
-        Even in a <strong>single-user environment</strong>, you might prefer to use
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
-your user/password pair are not in clear in the configuration file.
+        Hatta <strong>tek-kullanıcı ortamında</strong>, kullanıcı adı/parola
+ikilinizin yapılandırma dosyasında açıkça olmamasından <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> veya tanımlama bilgileri
+kipi kullanmayı tecih edebilirsiniz.
         </li>
 
     <li><abbr title="HyperText Transfer Protocol">HTTP</abbr> ve tanımlama bilgisi
@@ -411,8 +420,8 @@ metinde yolculuk eder.<br />
         Tanımlama bilgisi kipinde parola geçici tanımlama bilgisinde saklanır,
 blowfish algoritması ile şifrelenir.</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<code>--skip-show-database</code>.<br /><br />
+    <li id="pmausr">Not: bu bölüm sadece eğer MySQL sunucunuz
+<code>--veritabanı-göstermeyi-atla</code> ile çalışıyorsa uygulanabilir.<br /><br />
 
         For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
 modes, phpMyAdmin needs a controluser that has <strong>only</strong> the
