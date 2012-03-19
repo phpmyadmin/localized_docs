@@ -1,11 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE HTML>
 
 <!-- 
 vim: expandtab ts=4 sw=4 sts=4 tw=78 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<html lang="en-US" dir="ltr">
 <!--
 
 Ce fichier a été généré en utilisant po4a, ne pas éditer&nbsp;!
@@ -17,9 +15,9 @@ https://l10n.cihar.com/projects/pmadoc/.
 
 -->
 <head>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
     <title>phpMyAdmin 4.0.0-dev - Documentation</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
@@ -73,37 +71,34 @@ phpMyAdmin sur SourceForge</a></li>
 <!-- REQUIREMENTS -->
 <h2 id="require">Pr&eacute;requis</h2>
 
-<ul><li><b>PHP</b>
-        <ul><li>Vous devez utiliser PHP 5.2.0 ou ult&eacute;rieur avec la gestion de
-<tt>session</tt> (<a href="#faq1_31"> voir la <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.31</a>) et l'extension Standard PHP Library (SPL) et
-la gestion de JSON.
+<ul><li><strong>PHP</strong>
+        <ul><li>You need PHP 5.2.0 or newer, with <code>session</code> support (<a
+href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
+1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
                 </li>
-        <li>Pour pouvoir télécharger des fichiers ZIP vers le serveur, vous avez besoin
-de l'extension PHP <tt>zip</tt>.</li>
+        <li>To support uploading of ZIP files, you need the PHP <code>zip</code>
+extension.</li>
         <li>Pour la gestion correcte des chaînes multioctets (par ex. UTF-8, qui est le
 défaut actuellement), vous devez installer les extensions mbstring et ctype.
         </li>
             <li>You need GD2 support in PHP to display inline thumbnails of JPEGs
 (&quot;image/jpeg: inline&quot;) with their original aspect ratio.</li>
-            <li>Pour utiliser la <a href="#authentication_modes">m&eacute;thode
-d'authentification</a> par &laquo;&nbsp;cookie&nbsp;&raquo;, l'extension <a
-href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a> est fortement
-recommand&eacute;e pour la plupart des utilisateurs et
-<b>n&eacute;cessaire</b> pour les machines 64&#8211;bit. Ne pas utiliser
-mcrypt provoquera un chargement des pages par phpMyAdmin sensiblement plus
-lent.
+            <li>When using the &quot;cookie&quot; <a
+href="#authentication_modes">authentication method</a>, the <a
+href="http://www.php.net/mcrypt"><code>mcrypt</code></a> extension is
+strongly suggested for most users and is <strong>required</strong> for
+64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to load pages
+significantly slower.
                 </li>
                 <li>Pour gérer les barres de progression d'upload, consulter <a href="#faq2_9">
 la <abbr title="Foire Aux Questions">FAQ</abbr> 2.9</a>.</li>
-                <li>Pour gérer l'importation de XML et de feuille de tableur Open Document, vous
-avez besoin de PHP 5.2.17 ou suivants et de l'extension <a
-href="http://www.php.net/libxml"><tt>libxml</tt></a>.</li>
+                <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
+or newer and the <a href="http://www.php.net/libxml"><code>libxml</code></a>
+extension.</li>
         </ul>
     </li>
-    <li><b>MySQL</b> 5.0 ou ult&eacute;rieur (<a
-href="#faq1_17">d&eacute;tails</a>);</li>
-    <li><b>un navigateur</b> avec les cookies activ&eacute;s.</li>
+    <li><strong>MySQL</strong> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
+    <li><strong>Web browser</strong> with cookies enabled.</li>
 </ul>
 
 
@@ -192,12 +187,11 @@ manipulation de l'information du compte utilisateur MySQL)&nbsp;; tous les
 utilisateurs doivent &ecirc;tre des utilisateurs MySQL valides.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1</sup> phpMyAdmin peut compresser des fichiers d'exportation (dumps)
-ou <abbr title="comma separated values">CSV</abbr> (aux formats Zip, GZip
--RFC 1952- ou Bzip2) si vous utilisez PHP4 version 4.0.4 ou
-ult&eacute;rieure avec l'option Zlib (<tt>--with-zlib</tt>)  et/ou Bzip2
-(<tt>--with-bz2</tt>). Un support appropri&eacute; peut aussi
-n&eacute;cessiter des changements dans le fichier <tt>php.ini</tt>.</p>
+    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
+formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
+if you use PHP with Zlib support (<code>--with-zlib</code>) and/or Bzip2
+support (<code>--with-bz2</code>). Proper support may also need changes in
+<code>php.ini</code>.</p>
 
 
 <!-- INSTALLATION -->
@@ -226,58 +220,44 @@ Macintosh">Mac</abbr>&nbsp;:<br />
 (syst&egrave;me d'exploitation)">OS</abbr> ant&eacute;rieure &agrave; la
 version <abbr title="operating system">OS</abbr> X, StuffIt se
 d&eacute;brouille avec les formats <abbr title="Apple Macintosh">Mac</abbr>.<br />
-    Vous devrez donc convertir, tout comme dans BBEdit, au format Unix TOUS les
-scripts phpMyAdmin avant de les transf&eacute;rer sur votre serveur, car PHP
-ne semble pas appr&eacute;cier les caract&egrave;res de fin de ligne au
-format <abbr title="Apple Macintosh">Mac</abbr>
-(&laquo;&nbsp;<tt>\r</tt>&nbsp;&raquo;).</p>
+    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
+before uploading them to your server, as PHP seems not to like <acronym
+title="Apple Macintosh">Mac</acronym>-style end of lines character
+(&quot;<code>\r</code>&quot;).</p>
 
 <h3 id="quick_install">Installation rapide</h3>
-<ol><li>Choisissez un kit de distribution appropri&eacute; sur la page de
-t&eacute;l&eacute;chargement de phpmyadmin.net. Certains kits ne contiennent
-que les messages en anglais, d'autres les messages pour toutes les langues
-au format UTF-8 (ce qui devrait suffire dans la plupart des cas), d'autres
-les messages pour toutes les langues et tous les jeux de
-caract&egrave;res. Nous supposerons que vous avez choisi un kit dont le nom
-est de la forme <tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.
+<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
+page. Some kits contain only the English messages, others contain all
+languages in UTF-8 format (this should be fine in most situations), others
+contain all languages and all character sets. We'll assume you chose a kit
+whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
     </li>
-    <li>&laquo;&nbsp;D&eacute;tarrez&nbsp;&raquo; (.tar) ou
-&laquo;&nbsp;d&eacute;zippez&nbsp;&raquo; (.zip) la distribution
-(assurez-vous de conserver l'arborescence des
-sous-r&eacute;pertoires). Ex&eacute;cutez ensuite la commande
-suivante&nbsp;: <tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt>
-dans le r&eacute;pertoire document racine de votre serveur web. Si vous
-n'avez pas d'acc&egrave;s direct &agrave; votre r&eacute;pertoire racine
-document, mettez les fichiers dans un r&eacute;pertoire de votre ordinateur
-local, et, apr&egrave;s l'&eacute;tape 4, transf&eacute;rez le
-r&eacute;pertoire sur votre serveur web en utilisant, par exemple, le
-protocole ftp.</li>
+    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
+<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
+webserver's document root. If you don't have direct access to your document
+root, put the files in a directory on your local machine, and, after step 4,
+transfer the directory on your web server using, for example, ftp.</li>
     <li>Assurez-vous que tous les scripts ont le propri&eacute;taire ad&eacute;quat
 (si PHP fonctionne en mode s&eacute;curis&eacute;, avoir des scripts avec un
 propri&eacute;taire diff&eacute;rent de celui des autres posera un
 probl&egrave;me).  Voir la section <a href="#faq4_2"><abbr title="Foire Aux
 Questions">FAQ</abbr> 4.2</a> et <a href="#faq1_26"><abbr title="Foire Aux
 Questions">FAQ</abbr> 1.26</a> pour des suggestions.</li>
-    <li>Maintenant vous devez configurer votre installation. Il y a deux
-m&eacute;thodes pouvant &ecirc;tre utilis&eacute;es. Traditionnellement, les
-utilisateurs ont une copie modifi&eacute;e manuellement du fichier
-<tt>config.inc.php</tt>, mais maintenant un script d'installation de type
-assistant d'installation est fourni pour ceux qui pr&eacute;f&egrave;rent
-une installation graphique.  Cr&eacute;er un fichier <tt>config.inc.php</tt>
-demeure n&eacute;anmoins un moyen rapide pour d&eacute;marrer et
-n&eacute;cessaire pour certaines fonctionnalit&eacute;s avanc&eacute;es.
-        <ul><li>Pour cr&eacute;er manuellement le fichier, utilisez un simple &eacute;diteur
-de texte pour cr&eacute;er le fichier <tt>config.inc.php</tt> (vous pouvez
-copier le fichier <tt>config.sample.inc.php</tt> pour obtenir un fichier de
-configuration minimal) dans le r&eacute;pertoire principal de phpMyAdmin
-(celui qui contient le fichier <tt>index.php</tt>). phpMyAdmin charge tout
-d'abord le fichier <tt>libraries/config.default.php</tt> puis &eacute;crase
-ces valeurs avec celles trouv&eacute;es dans le fichier
-<tt>config.inc.php</tt>. Si la valeur par d&eacute;faut vous convient pour
-un param&egrave;tre particulier, il n'est pas n&eacute;cessaire de l'inclure
-dans le fichier <tt>config.inc.php</tt>. Vous aurez besoin de quelques
-directives pour continuer.  Une configuration simple peut ressembler
-&agrave; ceci&nbsp;:
+    <li>Now you must configure your installation. There are two methods that can be
+used. Traditionally, users have hand-edited a copy of
+<code>config.inc.php</code>, but now a wizard-style setup script is provided
+for those who prefer a graphical installation. Creating a
+<code>config.inc.php</code> is still a quick way to get started and needed
+for some advanced features.
+        <ul><li>To manually create the file, simply use your text editor to create the file
+<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
+to get minimal configuration file) in the main (top-level) phpMyAdmin
+directory (the one that contains <code>index.php</code>).  phpMyAdmin first
+loads <code>libraries/config.default.php</code> and then overrides those
+values with anything found in <code>config.inc.php</code>. If the default
+value is okay for a particular setting, there is no need to include it in
+<code>config.inc.php</code>.  You'll need a few directives to get going, a
+simple configuration may look like this:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // indiquer ici une valeur de votre choix
@@ -302,12 +282,10 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
                 Pour une explication compl&egrave;te de toutes les valeurs de configuration
 possibles, veuillez consulter la section <a href="#config">Configuration</a>
 de ce document.</li>
-            <li id="setup_script">Au lieu de modifier manuellement le fichier <tt>config.inc.php</tt>, vous
-pouvez aussi utiliser le <a href="setup/">Script d'installation</a>. Tout
-d'abord vous devez cr&eacute;er manuellement un r&eacute;pertoire
-<tt>config</tt> dans le r&eacute;pertoire <tt>phpMyAdmin</tt>.  C'est une
-mesure de s&eacute;curit&eacute;. Sur un syst&egrave;me GNU/Linux ou Unix,
-vous pouvez utiliser les commandes suivantes&nbsp;:
+            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
+href="setup/">Setup Script</a>. First you must manually create a folder
+<code>config</code> in the phpMyAdmin directory. This is a security
+measure. On a Linux/Unix system you can use the following commands:
 <pre>
 cd phpMyAdmin
 mkdir config                        # cr&eacute;ez un r&eacute;pertoire pour la sauvegarde
@@ -325,24 +303,20 @@ assurez-vous que votre serveur Web a les droits d'acc&egrave; en lecture et
 &eacute;criture sur celui-ci. La section <a href="#faq1_26">FAQ 1.26</a>
 peut vous aiderour cela.<br /><br />
 
-                Ensuite, ouvrez le fichier <tt><a href="setup/">script d'installation</a>
-</tt>dans votre navigateur. Veuillez noter que <strong>les changements ne
-sont pas enregistr&eacute;s sur le disque tant que vous n'avez pas choisi
-<tt>Enregistrer</tt></strong> dans la zone <i>Configuration</i> de
-l'&eacute;cran. Normalement, le script enregistre le nouveau fichier
-<tt>config.inc.php</tt> dans le r&eacute;pertoire <tt>config/</tt>, mais si
-le serveur Web n'a pas les permissions appropri&eacute;es, vous pouvez voir
-le message d'erreur suivant&nbsp;: &laquo;&nbsp;Impossible de charger ou
-enregistrer la configuration&nbsp;&raquo;. Assurez-vous que le
-r&eacute;pertoire <tt>config/</tt> existe et qu'il a les bonnes permissions
-- ou utilisez le lien <tt>T&eacute;l&eacute;charger</tt> pour enregistrer le
-fichier de configuration localement et l'envoyer (via FTP ou un autre moyen)
-dans le bon emplacement.<br /><br />
+                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
+that <strong>changes are not saved to disk until explicitly choose
+<code>Save</code></strong> from the <em>Configuration</em> area of the
+screen. Normally the script saves the new config.inc.php to the
+<code>config/</code> directory, but if the webserver does not have the
+proper permissions you may see the error "Cannot load or save
+configuration." Ensure that the <code> config/</code> directory exists and
+has the proper permissions - or use the <code>Download</code> link to save
+the config file locally and upload (via FTP or some similar means) to the
+proper location.<br /><br />
 
-                Un fois le fichier enregistr&eacute;, il doit &ecirc;tre
-d&eacute;plac&eacute; du r&eacute;pertoire <tt>config/</tt> et les
-permissions doivent &ecirc;tre r&eacute;initialis&eacute;es, pour des
-raisons de s&eacute;curit&eacute;&nbsp;:
+                Once the file has been saved, it must be moved out of the <code>
+config/</code> directory and the permissions must be reset, again as a
+security measure:
 <pre>
 mv config/config.inc.php .         # d&eacute;placez le fichier dans le r&eacute;pertoire courant
 chmod o-rw config.inc.php          # enlevez les droits de lecture et d'&eacute;criture &agrave; tout le monde
@@ -352,30 +326,27 @@ utilis&eacute;. Vous pouvez choisir de v&eacute;rifier ou modifier le
 fichier de configuration avec votre &eacute;diteur favori, si vous
 pr&eacute;f&eacute;rez d&eacute;finir des options avanc&eacute;es que le
 script d'installation de permet pas de faire.</li></ul></li>
-    <li>Si vous utilisez la configuration <tt>auth_type</tt>, nous vous recommandons
-de prot&eacute;ger le r&eacute;pertoire dans lequel vous installez
-phpMyAdmin, car cette configuration ne n&eacute;cessite pas que
-l'utilisateur donne un mot de passe pour acc&eacute;der au r&eacute;pertoire
-d'installation de phpMyAdmin. Nous vous recommandons d'utiliser une
-m&eacute;thode d'authentification alternative comme par exemple avec
-HTTP&#8211;AUTH dans un fichier <a href="#glossary"><i>.htaccess</i></a> ou
-utilisez la m&eacute;thode d'authentification par cookie ou http.  Consultez
-la sous-section <a href="#faqmultiuser"> multi-utilisateurs</a> de cette
-<abbr title="Foire Aux Questions">FAQ</abbr> pour des informations
-suppl&eacute;mentaires et particuli&egrave;rement la partie <a
-href="#faq4_4"><abbr title="Foire Aux Questions">FAQ</abbr> 4.4</a>.</li>
+    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
+suggested that you protect the phpMyAdmin installation directory because
+using config does not require a user to enter a password to access the
+phpMyAdmin installation. Use of an alternate authentication method is
+recommended, for example with HTTP&#8211;AUTH in a <a
+href="#glossary"><em>.htaccess</em></a> file or switch to using
+<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
+multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
+Questions">FAQ</abbr> for additional information, especially <a
+href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
     <li>Ouvrir le <a href="index.php">r&eacute;pertoire principal phpMyAdmin</a>
 dans votre navigateur. phpMyAdmin devrait maintenant afficher un
 &eacute;cran de bienvenue et vos bases de donn&eacute;es, ou une bo&icirc;te
 de dialogue de connexion si vous utilisez le mode <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> ou le mode authentification par cookie.</li>
-    <li>Vous devrez interdire l'accès aux sous-répertoires <tt>./libraries</tt> et
-<tt>./setup/lib</tt> de votre serveur Web. Pour Apache, vous pouvez utiliser
-le fichier <a href="#glossary"><i>.htaccess</i></a> fourni dans ce dossier,
-pour les autres serveurs Web, vous devrez le configurer vous-même. Une telle
-configuration empêche de possibles vulnérabilités de «&nbsp;path
-exposure&nbsp;» et de «&nbsp;cross side scripting&nbsp;» qui pourraient être
-découvertes dans le code.</li>
+    <li>You should deny access to the <code>./libraries</code> and
+<code>./setup/lib</code> subfolders in your webserver configuration. For
+Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
+in that folder, for other webservers, you should configure this yourself.
+Such configuration prevents from possible path exposure and cross side
+scripting vulnerabilities that might happen to be found in that code.</li>
     <li>
         Il est généralement conseillé de protéger l'installation phpMyAdmin publique
 contre les accès des robots car ils ne peuvent rien faire de bon en général
@@ -399,15 +370,14 @@ installation multi-utilisateurs (cette base de donn&eacute;es serait alors
 acc&eacute;e par le controluser, aussi, aucun autre utilisateur ne devrait
 avoir de droits sur celle-ci).</p>
 
-<p> Veuillez regarder dans votre répertoire <tt>./scripts/</tt>, où vous devriez
-trouver un fichier du nom de <i>create_tables.sql</i>. (Si vous utilisez un
-serveur Windows, portez une attention particulière à la partie <a
-href="#faq1_23"> <abbr title="Foire Aux Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Please look at your <code>./examples/</code> directory, where you should
+find a file called <em>create_tables.sql</em>. (If you are using a Windows
+server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
+Asked Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> Si vous avez déjà cette infrastructure et mis à jour vers MySQL 4.1.2 ou
-ultérieur, veuillez utiliser le fichier
-<i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i> puis créer de nouvelles
-tables en important <i>./examples/create_tables.sql</i>.</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
+create new tables by importing <em>./examples/create_tables.sql</em>.</p>
 
 <p> Vous pouvez d'ores et d&eacute;j&agrave; utiliser phpMyAdmin qui
 cr&eacute;era les tables pour vous.  S'il vous pla&icirc;t, sachez que vous
@@ -416,55 +386,44 @@ pour cr&eacute;er la base de donn&eacute;es et les tables, et que le script
 peut avoir besoin de quelques ajustements en fonction du nom de la base de
 donn&eacute;es.</p>
 
-<p> Apr&egrave;s avoir import&eacute; le fichier
-<i>./examples/create_tables.sql</i>, vous devrez sp&eacute;cifier le nom des
-tables dans votre fichier <i>./config.inc.php</i>.  Vous trouverez les
-directives &agrave; utiliser pour cela dans la section <a
-href="#config">Configuration</a>.  Vous aurez &eacute;galement besoin d'un
-controluser avec les droits appropri&eacute;s pour ces tables (voir la
-section <a href="#authentication_modes">Utiliser les modes
-d'authentification</a> ci-dessous).</p>
+<p> After having imported the <em>./examples/create_tables.sql</em> file, you
+should specify the table names in your <em>./config.inc.php</em> file. The
+directives used for that can be found in the <a href="#config">Configuration
+section</a>. You will also need to have a controluser with the proper rights
+to those tables (see section <a href="#authentication_modes">Using
+authentication modes</a> below).</p>
 
 <h3 id="upgrading">Mise &agrave; jour&nbsp;:</h3>
 
-<p> Copiez simplement le fichier <i>config.inc.php</i> de votre installation
-pr&eacute;c&eacute;dente dans votre nouvelle installation.  Les fichiers de
-configuration de tr&egrave;s anciennes versions (2.3.0 ou
-pr&eacute;c&eacute;dentes)  peuvent n&eacute;cessiter des ajustements car
-certaines options ont &eacute;t&eacute; modifi&eacute;es ou
-supprim&eacute;es&nbsp; en particulier, la définition de
-<tt>$cfg['AttributeTypes']</tt> a changé, vous feriez donc mieux de les
-retirer de votre fichier et d'utiliser celui par défaut. Pour une
-compatibilit&eacute; avec PHP 6, supprimez une d&eacute;claration
-<tt>set_magic_quotes_runtime(0);</tt> que vous pourriez trouver &agrave; la
-fin de votre fichier de configuration.</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed; in particular,
+the definition of <code>$cfg['AttributeTypes']</code> has changed so you
+better remove it from your file and just use the default one.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
-<p> Vous ne devez <strong>pas</strong> copier
-<tt>libraries/config.default.php</tt> par dessus <tt>config.inc.php</tt> car
-le fichier de configuration par d&eacute;faut est sp&eacute;cifique &agrave;
-chaque version.</p>
+<p> You should <strong>not</strong> copy
+<code>libraries/config.default.php</code> over <code>config.inc.php</code>
+because the default configuration file is version-specific.</p>
 
-<p> Si vous avez mis &agrave; jour votre serveur MySQL d'une version plus
-ancienne que la 4.1.2 vers une version 5.x ou ult&eacute;rieure et si vous
-utilisez la configuration de stockage de phpMyAdmin, vous devez
-ex&eacute;cuter le script <abbr title="structured query language">SQL</abbr>
-suivant&nbsp;: <tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the <abbr title="structured query language">SQL</abbr> script
+found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
 
 <h3 id="authentication_modes">Utiliser les modes d'authentification&nbsp;:</h3>
 
-<ul><li>Les modes d'authentification <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> et par cookie sont conseill&eacute;s dans un
-<b>environnement multi-utilisateurs</b> o&ugrave; vous ne voulez donner
-l'acc&egrave;s aux utilisateurs qu'&agrave; leur propre base de
-donn&eacute;es et o&ugrave; vous ne voulez pas qu'ils jouent avec les autres
-bases.<br />
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
+authentication modes are recommended in a <strong>multi-user
+environment</strong> where you want to give users access to their own
+database and don't want them to play around with others.<br />
         N&eacute;anmoins, sachez que MS Internet Explorer para&icirc;t &ecirc;tre
 vraiment bogu&eacute; en ce qui concerne les cookies, au moins
 jusqu'&agrave; la version 6.<br />
-        M&ecirc;me dans un <b>environnement mono-utilisateur</b>, vous pourriez
-opter pour les modes <abbr title="HyperText Transfer Protocol">HTTP</abbr>
-ou par cookie de sorte que votre paire utilisateur/mot de passe ne soit pas
-&eacute;crite en clair dans le fichier de configuration.
+        Even in a <strong>single-user environment</strong>, you might prefer to use
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
+your user/password pair are not in clear in the configuration file.
         </li>
 
     <li>Les modes d'authentification <abbr title="HyperText Transfer
@@ -478,32 +437,27 @@ clair, &agrave; moins d'utiliser le protocole HTTPS.<br />
         En mode cookie, le mot de passe est stock&eacute; et chiffr&eacute; avec
 l'algorithme blowfish, dans un cookie temporaire.</li>
 
-    <li id="pmausr"><b>Note&nbsp;</b>: Cette section ne s'applique qu'aux serveurs MySQL
-ex&eacute;cut&eacute;s avec l'option <tt>--skip-show-database</tt>.<br /><br />
+    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+<code>--skip-show-database</code>.<br /><br />
 
-        Pour les modes <abbr title="HyperText Transfer Protocol">HTTP</abbr> et
-cookie, phpMyAdmin a besoin d'un utilisateur de contr&ocirc;le -
-&laquo;&nbsp;controluser&nbsp;&raquo; - ayant <b>seulement</b> le
-privil&egrave;ge <tt>SELECT</tt> sur les tables <i>mysql.user</i> (toutes
-les colonnes sauf &laquo;&nbsp;<i>Password</i>&nbsp;&raquo;),
-<i>mysql.db</i> (toutes les colonnes), <i>mysql.host</i> (toutes les
-colonnes)  et <i>mysql.tables_priv</i> (toutes les colonnes sauf
-&laquo;&nbsp;<i>Grantor</i>&nbsp;&raquo; et
-&laquo;&nbsp;<i>Timestamp</i>&nbsp;&raquo;).<br /> Vous devez sp&eacute;cifier les d&eacute;tails pour le <a
-href="#controluser">controluser</a> dans le fichier <tt>config.inc.php</tt>
-dans la section param&egrave;tre <tt><a href="#cfg_Servers_controluser"
-class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> et <tt><a
-href="#cfg_Servers_controlpass"
-class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt>.<br />
-        L'exemple suivant suppose que vous voulez utiliser <tt>pma</tt> en tant que
-controluser et <tt>pmapass</tt> comme mot de passe, mais <b>il ne s'agit que
-d'un exemple&nbsp;: utilisez autre chose pour votre fichier&nbsp;!</b>
-Saisissez ces d&eacute;clarations dans une fen&ecirc;tre de requ&ecirc;te
-<abbr title="structured query language">SQL </abbr> de phpMyAdmin ou en
-ligne de commande mysql.<br />
-        Bien s&ucirc;r, vous devrez remplacer <tt>localhost</tt> par le nom
-d'h&ocirc;te de votre serveur web si celui-ci n'est pas le m&ecirc;me que
-votre serveur MySQL.&nbsp;
+        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
+modes, phpMyAdmin needs a controluser that has <strong>only</strong> the
+<code>SELECT</code> privilege on the <em>`mysql`.`user` (all columns except
+`Password`)</em>, <em>`mysql`.`db` (all columns)</em>, <em>`mysql`.`host`
+(all columns)</em> and <em>`mysql`.`tables_priv` (all columns except
+`Grantor` and `Timestamp`)</em> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
+in the <code>config.inc.php</code> file under the <code><a
+href="#cfg_Servers_controluser" class="configrule">
+$cfg['Servers'][$i]['controluser']</a></code> and <code><a
+href="#cfg_Servers_controlpass" class="configrule">
+$cfg['Servers'][$i]['controlpass']</a></code> settings.<br />
+        The following example assumes you want to use <code>pma</code> as the
+controluser and <code>pmapass</code> as the controlpass, but <strong>this is
+only an example: use something else in your file!</strong> Input these
+statements from the phpMyAdmin <abbr title="structured query language">SQL
+</abbr> Query window or mysql command&#8211;line client.<br />
+        Of course you have to replace <code>localhost</code> with the webserver's
+host if it's not the same as the MySQL server's one.
 
         <pre>
     GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -537,15 +491,12 @@ href="#linked-tables">configuration de stockage phpMyAdmin</a> soit
 paramétrée).  
     <br /></li>
 
-    <li>Ensuite, un ensemble de privil&egrave;ges doit &ecirc;tre accord&eacute;
-&agrave; chaque utilisateur <i>r&eacute;el</i> sur un ensemble de bases
-d&eacute;finies. Normalement, vous ne devriez pas donner de
-privil&egrave;ges globaux &agrave; un utilisateur ordinaire, &agrave; moins
-que vous ne sachiez ce que vous faites (par exemple, si vous cr&eacute;ez un
-super-utilisateur).<br />
-        Par exemple, pour accorder &agrave; l'utilisateur
-<i>utilisateur_r&eacute;el</i> tous les privil&egrave;ges sur la base
-<i>base_utilisateur</i>&nbsp;:<br />
+    <li>Then each of the <em>true</em> users should be granted a set of privileges
+on a set of particular databases. Normally you shouldn't give global
+privileges to an ordinary user, unless you understand the impact of those
+privileges (for example, you are creating a superuser).<br />
+        For example, to grant the user <em>real_user</em> with all privileges on the
+database <em>user_base</em>:<br />
 
         <pre>
 <tt>GRANT ALL PRIVILEGES ON</tt> <tt>base_utilisateur</tt><tt>.* TO 'utilisateur_r&eacute;el'@localhost IDENTIFIED BY 'vrai_mot_de_passe';</tt>
@@ -574,11 +525,10 @@ section <a href="#faq1_32"><abbr title="Foire Aux Questions">FAQ</abbr>
 1.32</a>, pour utiliser Apache <abbr title="Common Gateway
 Interface">CGI</abbr> voir la section <a href="#faq1_35"><abbr title="Foire
 Aux Questions">FAQ</abbr> 1.35</a>.</li>
-    <li>Voir &eacute;galement la section <a href="#faq4_4"><abbr title="Foire Aux
-Questions">FAQ</abbr> 4.4</a> sur le fait de ne pas utiliser le
-m&eacute;canisme d'authentification&nbsp; <a
-href="#glossary"><i>.htaccess</i></a> en m&ecirc;me temps que le mode
-d'authentification '<abbr title="HyperText Transfer Protocol">HTTP</abbr>'.</li>
+    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.4</a> about not using the <a
+href="#glossary"><em>.htaccess</em></a> mechanism along with '<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
 </ul>
 
 <h4>Mode d'authentification 'cookie'&nbsp;:</h4>
@@ -595,10 +545,9 @@ phpMyAdmin et se reconnecter avec le m&ecirc;me nom d'utilisateur.</li>
     <li>Si vous voulez vous connecter &agrave; un serveur arbitraire, voir la
 directive <a href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a>.</li>
-    <li>Comme il est indiqu&eacute; dans la section <a
-href="#require">Pr&eacute;requis</a>, l'extension <tt>mycrypt</tt>
-acc&eacute;l&egrave;re consid&eacute;rablement l'acc&egrave;s, mais il n'est
-pas obligatoire de l'installer.</li>
+    <li>As mentioned in the <a href="#require">requirements</a> section, having the
+<code>mcrypt</code> extension will speed up access considerably, but is not
+required.</li>
 </ul>
 
 <h4>Mode d'authentification 'signon'</h4>
@@ -635,16 +584,13 @@ l'authentification h&ocirc;te <a href="#servers_allowdeny_order"
 class="configrule">$cfg['Servers'][$i]['AllowDeny']['order']</a> et <a
 href="#servers_allowdeny_rules"
 class="configrule">$cfg['Servers'][$i]['AllowDeny']['rules']</a>.</li>
-    <li>Contrairement aux modes par cookie et http, il ne n&eacute;cessite pas que
-l'utilisateur s'authentifie lors du premier chargement du site
-phpMyAdmin. C'est pr&eacute;vu ainsi, mais cela pourrait permettre &agrave;
-tout utilisateur d'acc&eacute;der &agrave; votre installation.
-L'utilisation d'une m&eacute;thode de restriction est recommand&eacute;e,
-peut-&ecirc;tre avec un fichier <a href="#glossary"><i>.htaccess</i></a>
-avec la directive HTTP-AUTH directive ou en interdisant les requ&ecirc;tes
-HTTP entrantes sur le routeur ou le pare-feu suffisent (ces deux suggestions
-n'entrent pas dans les sujets abord&eacute;s dans ce manuel mais vous pouvez
-facilement trouver des informations sur ces sujets avec Google).</li>
+    <li>Unlike cookie and http, does not require a user to log in when first loading
+the phpMyAdmin site. This is by design but could allow any user to access
+your installation. Use of some restriction method is suggested, perhaps a <a
+href="#glossary"><em>.htaccess</em></a> file with the HTTP-AUTH directive or
+disallowing incoming HTTP requests at one&#8217;s router or firewall will
+suffice (both of which are beyond the scope of this manual but easily
+searchable with Google).</li>
 </ul>
 <h4 id="swekey">Authentification Swekey</h4>
 <p>
@@ -654,19 +600,18 @@ Quand l'authentification Swekey est activée, phpMyAdmin nécessite que la clé
 Swekey de l'utilisateur soit connectée avant d'entrer sur la page de
 connexion (actuellement disponible pour le mode authentification par cookie
 seulement). L'authentification Swekey est désactivée par défaut.<br /><br />
-Pour l'activer, ajouter la ligne suivante au fichier
-<tt>config.inc.php</tt>&nbsp;:
+To enable it, add the following line to <code>config.inc.php</code>:
 </p>
 <pre>
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-Ensuite, vous devez créer le fichier <tt>swekey.conf</tt> qui associera
-chaque utilisateur avec son identifiant Swekey. Il est important de placer
-ce fichier en dehors de la racine document de votre serveur Web (dans
-l'exemple, il est situé dans <tt>/etc</tt>). Un fichier d'exemple commenté
-est fourni dans le répertoire <tt>examples</tt>. Vous pouvez l'utiliser avec
-vos propres informations d'utilisateurs.<br /><br />
+You then have to create the <code>swekey.conf</code> file that will
+associate each user with their Swekey Id. It is important to place this file
+outside of your web server's document root (in the example, it is located in
+<code>/etc</code>). A self documented sample file is provided in the
+<code>examples</code> directory. Feel free to use it with your own users'
+information.<br /><br />
 Si vous voulez acheter une clé Swekey, veuillez visiter <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a> car
 ce lien permet de recevoir des fonds pour phpMyAdmin.
@@ -675,38 +620,33 @@ ce lien permet de recevoir des fonds pour phpMyAdmin.
 <!-- CONFIGURATION -->
 <h2 id="config">Configuration</h2>
 
-<p> <span class="important">&Agrave; l'attention des utilisateurs <acronym
-title="Apple Macintosh">Mac</acronym>&nbsp;:</span> PHP ne semble pas
-appr&eacute;cier les caract&egrave;res de fin de ligne Mac
-(&laquo;&nbsp;<tt>\r</tt>&nbsp;&raquo;). Aussi, assurez-vous de choisir
-l'option qui autorise l'utilisation des caract&egrave;res de fin de ligne
-*nix (&laquo;&nbsp;<tt>\n</tt>&nbsp;&raquo;) dans votre &eacute;diteur de
-texte avant d'enregistrer un script que vous avez modifi&eacute;.</p>
+<p> <span class="important">Warning for <acronym title="Apple
+Macintosh">Mac</acronym> users:</span> PHP does not seem to like <acronym
+title="Apple Macintosh">Mac</acronym> end of lines character
+(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
+to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
+text editor before saving a script you have modified.</p>
 
-<p> <span class="important">Note sur la configuration&nbsp;:</span> Presque
-toutes les donn&eacute;es de configuration sont plac&eacute;es dans
-<i>config.inc.php</i>.  Si ce fichier n'existe pas, veuillez vous rapporter
-&agrave; la section <a href="#setup">Installation rapide</a> pour en
-cr&eacute;er un. Ce fichier ne n&eacute;cessite de contenir que les
-param&egrave;tres dont vous voudriez changer la valeur par d&eacute;faut
-dans le fichier <tt>libraries/config.default.php</tt>.</p>
+<p> <span class="important">Configuration note:</span> Almost all configurable
+data is placed in <code>config.inc.php</code>. If this file does not exist,
+please refer to the <a href="#setup">Quick install</a> section to create
+one. This file only needs to contain the parameters you want to change from
+their corresponding default value in
+<code>libraries/config.default.php</code>.</p>
 
-<p> Les param&egrave;tres relatifs &agrave; la conception (comme les couleurs),
-se trouvent dans <tt>themes/themename/layout.inc.php</tt>.  Vous pouvez
-&eacute;galement cr&eacute;er les fichiers <i>config.footer.inc.php</i> et
-<i>config.header.inc.php</i> pour ajouter &agrave; votre site du code
-sp&eacute;cifique &agrave; inclure en en-t&ecirc;te et en pied de chaque
-page.</p>
+<p> The parameters which relate to design (like colors) are placed in
+<code>themes/themename/layout.inc.php</code>. You might also want to create
+<em>config.footer.inc.php</em> and <em>config.header.inc.php</em> files to
+add your site specific code to be included on start and end of each page.</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] cha&icirc;ne</dt>
-    <dd>D&eacute;finissez ici l'<abbr title="Uniform Resource Locator">URL</abbr>
-compl&egrave;te (avec le chemin d'acc&egrave;s complet) du r&eacute;pertoire
-d'installation de votre phpMyAdmin.  C'est-&agrave;-dire
-<tt>http://www.votre_site.net/chemin_d_acces_avotre_repertoire_phpMyAdmin/</tt>.
-Veuillez noter &eacute;galement que l'<abbr title="Uniform Resource
-Locator">URL</abbr> sur certains serveurs Web est sensible &agrave; la
-casse.  N'oubliez pas le slash (&laquo;&nbsp;/&nbsp;&raquo;) final pour
-votre URL.<br /><br />
+    <dd>Sets here the complete <abbr title="Uniform Resource Locator">URL</abbr>
+(with full path) to your phpMyAdmin installation's directory.
+E.g.
+<code>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</code>.
+Note also that the <abbr title="Uniform Resource Locator">URL</abbr> on some
+web servers are case&#8211;sensitive.  Don&#8217;t forget the trailing slash
+at the end.<br /><br />
 
         &Agrave; partir de la version 2.3.0, il est conseill&eacute; d'essayer de
 laisser ce param&egrave;tre &agrave; blanc. Dans la plupart des cas,
@@ -734,29 +674,26 @@ vous, regardez la page &laquo;&nbsp;Structure&nbsp;&raquo; d'une base de
 donn&eacute;es o&ugrave; vous voudriez l'utiliser.  Vous trouverez alors un
 lien qui analysera pourquoi ces fonctionnalit&eacute;s ont &eacute;t&eacute;
 d&eacute;sactiv&eacute;es.<br />
-        Si vous ne voulez pas utiliser ces fonctionnalit&eacute;s, mettez cette
-variable &agrave; <tt>TRUE</tt> pour emp&ecirc;cher ce message
-d'appara&icirc;tre.</dd>
+        If you do not want to use those features set this variable to
+<code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] bool&eacute;en</dt>
-    <dd>Un avertissement est affiché sur la page principale si Suhosin est détecté.
-Vous pouvez définir ce paramètre à <tt>TRUE</tt> pour empêcher ce message
-d'apparaître.</dd>
+    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
+this parameter to <code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] booléen</dt>
-    <dd>Désactive l'avertissement par défaut qui est affiché si mcrypt est manquant
-pour l'authentification par cookie.  Vous pouvez définir ce paramètre à
-<tt>TRUE</tt> pour empêcher l'affichage de ce message.</dd>
+    <dd>Disable the default warning that is displayed if mcrypt is missing for
+cookie authentication.  You can set this parameter to <code>TRUE</code> to
+stop this message from appearing.</dd>
 
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] entier</dt>
     <dd>Affiche un avertissement sur les traductions incomplètes à partir d'un
 certain seuil.</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] booléen</dt>
-    <dd>En définissant ceci à <tt>true</tt>, cela permet à une page située dans un
-domaine différent d'appeler phpMyAdmin à l'intérieur d'un cadre, et cela
-représente un trou potentiel de sécurité pour les attaques de script
-inter-cadre (cross-frame).</dd>
+    <dd>Setting this to <code>true</code> allows a page located on a different
+domain to call phpMyAdmin inside a frame, and is a potential security hole
+allowing cross-frame scripting attacks.</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] cha&icirc;ne</dt>
     <dd>Le mode d'authentification par &laquo;&nbsp;cookie&nbsp;&raquo; utilise
@@ -773,20 +710,18 @@ plus, cela rend impossible de se rappeler du nom de l'utilisateur à partir
 du cookie.</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] tableau</dt>
-    <dd>Depuis la version 1.4.2, phpMyAdmin g&egrave;re l'administration de
-plusieurs serveurs MySQL. Par cons&eacute;quent, un tableau <a
-href="#cfg_Servers" class="configrule">$cfg['Servers']</a> a
-&eacute;t&eacute; ajout&eacute; qui contient les informations de connexions
-pour les diff&eacute;rents serveurs.  Le premier <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a> contient le nom
-d'h&ocirc;te du premier serveur, le second <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a> le nom d'h&ocirc;te du
-second serveur, etc.  Dans le fichier <tt>libraries/config.default.php</tt>,
-il n'y a qu'une section pour la d&eacute;finition du serveur, cependant vous
-pouvez en mettre autant que vous le voulez dans le fichier
-<tt>config.inc.php</tt>; copier ce bloc ou d'autres parties
-n&eacute;cessaires (il n'est pas utile de d&eacute;finir tous les
-param&egrave;tres, seulement ceux que vous avez besoin de changer).</dd>
+    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
+MySQL servers. Therefore, a <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>-array has been added which contains
+the login information for the different servers.  The first <a
+href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
+contains the hostname of the first server, the second <a
+href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
+the hostname of the second server, etc. In
+<code>./libraries/config.default.php</code>, there is only one section for
+server definition, however you can put as many as you need in
+<code>./config.inc.php</code>, copy that block or needed parts (you don't
+have to define all settings, just those you need to change).</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] cha&icirc;ne</dt>
     <dd>Le nom d'h&ocirc;te ou l'adresse <abbr title="Internet Protocol">IP</abbr>
@@ -807,21 +742,20 @@ class="configrule">$cfg['Servers'][$i]['host']</a>.
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] cha&icirc;ne</dt>
     <dd>Le chemin d'acc&egrave;s vers le socket &agrave; utiliser.  Laissez &agrave;
 blanc pour utiliser la valeur par d&eacute;faut.<br />
-        Pour d&eacute;terminer le bon socket, v&eacute;rifiez votre configuration
-MySQL ou, en utilisant la ligne de commande <tt>mysql</tt>, utilisez la
-commande <tt>status</tt>.  Parmi les informations affich&eacute;es se
-trouvera le socket utilis&eacute;.</dd>
+        To determine the correct socket, check your MySQL configuration or, using
+the <code>mysql</code> command&#8211;line client, issue the
+<code>status</code> command.  Among the resulting information displayed will
+be the socket used.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] bool&eacute;en</dt>
     <dd>Pour activer ou pas une connexion SSL vers le serveur MySQL.
     </dd>
 
     <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] cha&icirc;ne</dt>
-    <dd>Quel type de connexion utiliser avec le serveur MySQL. Vos choix sont
-<tt>'socket'</tt> et <tt>'tcp'</tt>. Par d&eacute;faut, c'est 'tcp' parce
-qu'il est pratiquement s&ucirc;r qu'il est disponible sur tous les serveurs
-MySQL, alors que les sockets ne sont pas g&eacute;r&eacute;s sur certaines
-plateformes.<br /><br />
+    <dd>What type connection to use with the MySQL server. Your options are
+<code>'socket'</code> and <code>'tcp'</code>. It defaults to 'tcp' as that
+is nearly guaranteed to be available on all MySQL servers, while sockets are
+not supported on some platforms.<br /><br />
 
         Pour utiliser le mode socket, votre serveur MySQL doit &ecirc;tre sur la
 m&ecirc;me machine que le serveur Web.</dd>
@@ -831,11 +765,11 @@ m&ecirc;me machine que le serveur Web.</dd>
 options autoris&eacute;es sont&nbsp;:
         <br /><br />
 
-        <tt><i>mysql</i></tt>&nbsp;: L'extension MySQL classique.<br /><br />
+        <code><em>mysql</em></code> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt>&nbsp;: L'extension MySQL améliorée.  Cette extension
-devient disponible avec PHP version 5.0.0, et recommandée pour se connecter
-sur un serveur exécutant MySQL version 4.1.x ou suivantes.</dd>
+        <code><em>mysqli</em></code> : The improved MySQL extension. This extension
+became available with PHP 5.0.0 and is the recommended way to connect to a
+server running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] bool&eacute;en</dt>
     <dd>Pour utiliser ou non un protocole compress&eacute; pour la connexion au
@@ -854,24 +788,21 @@ cha&icirc;ne<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 cha&icirc;ne
     </dt>
-    <dd>Ce compte spécial est utilisé pour deux propos distincts&nbsp;: rendre
-possible toutes les fonctionnalités relationnelles (voir <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>) et, pour un serveur
-MySQL exécuté avec l'option <tt>--skip-show-database</tt>, de permettre une
-installation multi-utilisateurs (mode d'authentification <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> ou par cookie).<br /><br />
+    <dd>This special account is used for 2 distinct purposes: to make possible all
+relational features (see <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
+server running with <code>--skip-show-database</code>, to enable a
+multi-user installation (<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> or cookie authentication mode).<br /><br />
 
-        Si vous utilisez les modes d'authentification <abbr title="HyperText
-Transfer Protocol">HTTP</abbr> ou par cookie (ou le mode d'authentification
-'config' depuis phpMyAdmin 2.2.1), vous devez fournir des informations sur
-un compte MySQL qui a un privil&egrave;ge <tt>SELECT</tt> sur les
-tables&nbsp; <i>mysql.user (toutes les colonnes sauf
-&laquo;&nbsp;Password&nbsp;&raquo;)</i>, <i>mysql.db (toutes les
-colonnes)</i> et <i>mysql.tables_priv (toutes les colonnes sauf
-&laquo;&nbsp;Grantor&nbsp;&raquo; et
-&laquo;&nbsp;Timestamp&nbsp;&raquo;)</i>. Ce compte est utilis&eacute; pour
-v&eacute;rifier quelles bases de donn&eacute;es l'utilisateur pourra voir
-&agrave; la connexion.<br />
+        When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
+authentication modes (or 'config' authentication mode since phpMyAdmin
+2.2.1), you need to supply the details of a MySQL account that has
+<code>SELECT</code> privilege on the <em>mysql.user (all columns except
+&quot;Password&quot;)</em>, <em>mysql.db (all columns)</em> and
+<em>mysql.tables_priv (all columns except &quot;Grantor&quot; and
+&quot;Timestamp&quot;) </em>tables.  This account is used to check what
+databases the user will see at login.<br />
         Veuillez consulter la section <a href="#setup">Installation</a> sur
 &laquo;&nbsp;Utiliser les modes d'authentification&nbsp;&raquo; pour plus de
 renseignements.<br /><br />
@@ -880,45 +811,38 @@ renseignements.<br /><br />
 2.2.5, ils &eacute;taient appel&eacute;s
 &laquo;&nbsp;stduser/stdpass&nbsp;&raquo;.</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] cha&icirc;ne<tt> ['<abbr title="HyperText
-Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
+    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <code>['<abbr title="HyperText
+Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</code></dt>
     <dd>D&eacute;finit le mode d'authentification config, cookie, signon ou <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> qui sera utilis&eacute; sur
 le serveur.
-        <ul><li>l'authentification 'config' (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)  est
-la bonne vieille m&eacute;thode&nbsp;: nom d'utilisateur et mot de passe
-sont stock&eacute;s dans <i>config.inc.php</i>.</li>
-            <li>le mode d'authentification 'cookie'
-(<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>)  tel qu'introduit dans la version
-2.2.3 vous permet de vous connecter comme n'importe quel utilisateur MySQL
-valide &agrave; l'aide de cookies. Les nom et mot de passe de connexion sont
-stock&eacute;s dans des cookies pendant la session et le mot de passe est
-effac&eacute; &agrave; la fin de la session. Ceci vous permet
-&eacute;galement de vous connecter &agrave; un serveur arbitraire si <tt><a
-href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a></tt> est activ&eacute;.
+        <ul><li>'config' authentication (<code>$auth_type&nbsp;=&nbsp;'config'</code>)  is
+the plain old way: username and password are stored in
+<em>config.inc.php</em>.</li>
+            <li>'cookie' authentication mode (<code>$auth_type&nbsp;=&nbsp;'cookie'</code>)
+as introduced in 2.2.3 allows you to log in as any valid MySQL user with the
+help of cookies. Username and password are stored in cookies during the
+session and password is deleted when it ends. This can also allow you to log
+in in arbitrary server if <code><a href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a></code> enabled.
             </li>
-            <li>le mode authentification '<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>' ( appel&eacute;
-&laquo;&nbsp;avanc&eacute;&nbsp;&raquo; dans les pr&eacute;c&eacute;dentes
-versions et peut aussi &ecirc;tre &eacute;crit 'http')
-(<tt>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
-Protocol">HTTP</abbr>'</tt>)  tel qu'introduit dans la version 1.3.0 vous
-permet de vous connecter comme n'importe utilisateur MySQL valide via
-HTTP-Auth.</li>
-            <li>Le mode d'authentification 'signon'
-(<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  qui a été introduit dans la
-version 2.10.0 vous permet de vous connecter à partir de données de session
-préparée PHP. Ceci est utile pour la mise en &oelig;uvre d'une connexion
-unique (single signon)  &agrave; partir d'une autre application. Un exemple
-pour alimenter une session se trouve dans&nbsp;:
-<code>examples/signon.php</code>. Il existe aussi un exemple alternatif
-utilisant OpenID - <code>examples/openid.php</code> et des exemples de
-solutions basées sur des scripts -
-<code>examples/signon-script.php</code>. Vous aurez besoin de configurer <a
-href="#cfg_Servers_SignonSession" class="configrule">session name</a> et <a
-href="#cfg_Servers_SignonURL" class="configrule">signon <abbr title="Uniform
-Resource Locator">URL</abbr></a> pour utiliser ce mode d'authentification.</li>
+            <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
+called 'advanced' in previous versions and can be written also as 'http')
+(<code>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'</code>) as introduced in 1.3.0 allows you to log in
+as any valid MySQL user via HTTP-Auth.</li>
+            <li>'signon' authentication mode (<code>$auth_type&nbsp;=&nbsp;'signon'</code>)
+as introduced in 2.10.0 allows you to log in from prepared PHP session data
+or using supplied PHP script. This is useful for implementing single signon
+from another application.  Sample way how to seed session is in signon
+example: <code>examples/signon.php</code>.  There is also alternative
+example using OpenID - <code>examples/openid.php</code> and example for
+scripts based solution - <code>examples/signon-script.php</code>.  You need
+to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
+name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
+be executed</a> and <a href="#cfg_Servers_SignonURL"
+class="configrule">signon <abbr title="Uniform Resource
+Locator">URL</abbr></a> to use this authentication method.</li>
         </ul>
 
         Veuillez consulter la section <a href="#setup">Installation</a> sur
@@ -981,15 +905,11 @@ mot de passe n'est essay&eacute;e.</dd>
 cha&icirc;ne ou tableau
     </dt>
     <dd>
-        S'il est indiqu&eacute; un nom de base de donn&eacute;es (ou un tableau de
-noms de bases de donn&eacute;es) , seule(s) cette (ces) base(s)  sera
-(seront) affich&eacute;e(s) &agrave; l'utilisateur. Depuis la version 2.2.1
-de phpMyAdmin, ce(s) nom(s) de base(s) de donn&eacute;es peuvent contenir
-des m&eacute;ta-caract&egrave;res MySQL (&laquo;&nbsp;_&nbsp;&raquo; et
-&laquo;&nbsp;%&nbsp;&raquo;)&nbsp;: si vous voulez utiliser des instances
-litt&eacute;rales de ces caract&egrave;res, utilisez des s&eacute;quences
-d'&eacute;chappement (c'est-&agrave;-dire &eacute;crivez <tt>'ma\_bdd'</tt>
-et pas <tt>'ma_bdd'</tt>).<br />
+        If set to a (an array of) database name(s), only this (these) database(s)
+will be shown to the user. Since phpMyAdmin 2.2.1, this/these database(s)
+name(s) may contain MySQL wildcards characters (&quot;_&quot; and
+&quot;%&quot;): if you want to use literal instances of these characters,
+escape them (I.E. use <code>'my\_db'</code> and not <code>'my_db'</code>).<br />
         Ce param&eacute;trage est un moyen efficace de diminuer la charge du serveur
 puisque ce dernier n'a pas besoin d'envoyer des requ&ecirc;tes MySQL pour
 construire la liste des bases de donn&eacute;es disponibles.  Mais cela ne
@@ -1001,20 +921,19 @@ mais pas que toutes les autres bases de donn&eacute;es ne pourront pas
 &ecirc;tre utilis&eacute;es.
         <br /><br />
 
-        Un exemple d'utilisation de plus d'une base de donn&eacute;es&nbsp;:
-<tt>$cfg['Servers'][$i]['only_db'] = array('bdd1', 'bdd2');</tt>
+        An example of using more that one database:
+<code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
         Comme dans phpMyAdmin 2.5.5, l'ordre &agrave; l'int&eacute;rieur du tableau
 est utilis&eacute; pour trier les bases de donn&eacute;es dans le cadre de
 gauche, de la sorte, vous pouvez ordonner vos bases de donn&eacute;es comme
 bon vous semble.<br />
-        Si vous voulez avoir certaines bases de donn&eacute;es en haut de page, et
-que peu importe l'ordre des autres bases, vous n'avez pas besoin de
-sp&eacute;cifier toutes les autres bases. Utilisez&nbsp;:
-<tt>$cfg['Servers'][$i]['only_db'] = array('bdd3', 'bdd4', '*');</tt>
-plut&ocirc;t que de dire &agrave; phpMyAdmin qu'il doit afficher bdd3 et
-bdd4 en haut, et le reste en ordre alphab&eacute;tique.</dd>
+        If you want to have certain databases at the top, but don't care about the
+others, you do not need to specify all other databases. Use:
+<code>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</code>
+instead to tell phpMyAdmin that it should display db3 and db4 on top, and
+the rest in alphabetic order.</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span>
 cha&icirc;ne
@@ -1059,13 +978,11 @@ fonctionnalité, ainsi qu'une mani&egrave;re rapide de cr&eacute;er cette
 base de donn&eacute;es et les tables n&eacute;cessaires.
         <br /><br />
 
-        Si vous êtes le seul utilisateur de cette installation phpMyAdmin, vous
-pouvez utiliser votre base de données courante pour stocker ces tables
-spéciales; dans ce cas, mettez juste le nom de votre base de données dans
-<tt>$cfg['Servers'][$i]['pmadb']</tt>.  Pour une installation
-multi-utilisateurs, renseigner ce paramètre avec le nom de votre base de
-donn&eacute;es centrale contenant la configuration de stockage de
-phpMyAdmin.</dd>
+        If you are the only user of this phpMyAdmin installation, you can use your
+current database to store those special tables; in this case, just put your
+current database name in <code>$cfg['Servers'][$i]['pmadb']</code>. For a
+multi-user installation, set this parameter to the name of your central
+database containing the phpMyAdmin configuration storage.</dd>
 
     <dt id="bookmark">
         <span
@@ -1079,7 +996,7 @@ requ&ecirc;tes que vous utilisez souvent.<br /><br />
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>saisir le nom de la table dans <tt>$cfg['Servers'][$i]['bookmarktable']</tt></li>
+            <li>enter the table name in <code>$cfg['Servers'][$i]['bookmarktable']</code></li>
         </ul>
     </dd>
 
@@ -1123,8 +1040,7 @@ alphanum&eacute;riques.<br /><br />
 
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table de relation dans
-<tt>$cfg['Servers'][$i]['relation']</tt></li>
+            <li>put the relation table name in <code>$cfg['Servers'][$i]['relation']</code></li>
             <li>puis, en tant qu'utilisateur normal, ouvrir phpMyAdmin et pour chacune de
 vos tables o&ugrave; vous voulez utiliser cette fonctionnalit&eacute;,
 cliquer sur &laquo;&nbsp;Structure/Gestion des relations/&nbsp;&raquo; et
@@ -1132,10 +1048,9 @@ choisir les colonnes &eacute;trangers.
                 </li>
         </ul>
 
-        Veuillez noter que dans la version actuelle, <tt>master_db</tt> doit
-&ecirc;tre identique &agrave; <tt>foreign_db</tt>. Ces champs ont
-&eacute;t&eacute; pr&eacute;vus pour le d&eacute;veloppement futur de
-relations inter-bases.
+        Please note that in the current version, <code>master_db</code> must be the
+same as <code>foreign_db</code>. Those columns have been put in future
+development of the cross-db relations.
     </dd>
 
     <dt id="table_info">
@@ -1151,8 +1066,8 @@ cl&eacute; correspondante.<br />
 sp&eacute;ciale.  Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['table_info']</tt>
-(par ex. 'pma_table_info').</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['table_info']</code> (e.g.
+'pma_table_info')</li>
             <li>ensuite, pour chaque table pour laquelle vous voulez utiliser cette
 fonctionnalit&eacute;, cliquer sur &laquo;&nbsp;Structure/Gestion des
 relations/Champ &agrave; afficher&nbsp;&raquo; pour choisir la colonne.</li>
@@ -1182,9 +1097,9 @@ r&eacute;alis&eacute;).<br /><br />
 
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre les noms corrects de tables dans
-<tt>$cfg['Servers'][$i]['table_coords']</tt> et
-<tt>$cfg['Servers'][$i]['pdf_pages']</tt></li>
+            <li>put the correct table names in
+<code>$cfg['Servers'][$i]['table_coords']</code> and
+<code>$cfg['Servers'][$i]['pdf_pages']</code></li>
         </ul>
 
         Astuce d'utilisation&nbsp;: <a href="#faqpdf">R&eacute;alisation de <abbr
@@ -1223,8 +1138,8 @@ table column_info doit contenir les trois nouveaux champs 'mimetype',
         Pour pouvoir utiliser cette fonctionnalit&eacute;&nbsp;:
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['column_info']</tt>
-(par ex. 'pma_column_info').</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['column_info']</code> (e.g.
+'pma_column_info')</li>
             <li>Pour mettre &agrave; jour votre table PRE-2.5.0 Column_comments, utilisez
 cette requ&ecirc;te&nbsp;:
 
@@ -1235,9 +1150,10 @@ ALTER TABLE `pma_column_comments`
     ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                et rappelez-vous que la variable dans le fichier <i>config.inc.php</i> a
-&eacute;t&eacute; renomm&eacute;e de<br />
-                $cfg['Servers'][$i]['column_comments'] en $cfg['Servers'][$i]['column_info']</li>
+                and remember that the Variable in <em>config.inc.php</em> has been renamed
+from<br />
+                <code>$cfg['Servers'][$i]['column_comments']</code> to
+<code>$cfg['Servers'][$i]['column_info']</code></li>
         </ul>
     </dd>
 
@@ -1266,8 +1182,8 @@ activ&eacute; dans votre navigateur.<br /><br />
 
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table<tt> dans $cfg['Servers'][$i]['history']</tt> (par
-ex. 'pma_history').
+            <li>put the table name in <code>$cfg['Servers'][$i]['history']</code>
+(e.g. 'pma_history')
                 </li>
         </ul>
     </dd>
@@ -1294,8 +1210,8 @@ récemment utilisées, mais elles disparaîtront après votre déconnexion.<br/>
         <ul>
             <li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['recent']</tt> (par
-ex. 'pma_recent')</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['recent']</code>
+(e.g. 'pma_recent')</li>
         </ul>
     </dd>
 
@@ -1317,8 +1233,8 @@ utilisées mais les valeurs disparaîtront après votre déconnexion.<br/><br/>
         <ul>
             <li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['table_uiprefs']</tt>
-(par ex. 'pma_table_uiprefs')</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['table_uiprefs']</code>
+(e.g. 'pma_table_uiprefs')</li>
         </ul>
     </dd>
 
@@ -1358,8 +1274,8 @@ virgules («&nbsp;,&nbsp;»).  De plus, vous pouvez exporter le rapport
         <ul>
             <li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['tracking']</tt> (par
-ex. 'pma_tracking').</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['tracking']</code>
+(e.g. 'pma_tracking')</li>
         </ul>
     </dd>
 
@@ -1458,7 +1374,7 @@ navigateur, ou, si indisponible, jusqu'à la fin de la session.
         <ul>
             <li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>mettre le nom de la table dans <tt>$cfg['Servers'][$i]['userconfig']</tt></li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['userconfig']</code></li>
         </ul>
     </dd>
 
@@ -1475,9 +1391,8 @@ permet de g&eacute;rer visuellement les relations.
 
         <ul><li>paramétrer <a href="#pmadb">pmadb</a> et la configuration de stockage de
 phpMyAdmin.</li>
-            <li>ajoutez le nom de la table dans
-<tt>$cfg['Servers'][$i]['designer_coords']</tt> (par
-ex. 'pma_designer_coords').
+            <li>put the table name in <code>$cfg['Servers'][$i]['designer_coords']</code>
+(e.g. 'pma_designer_coords')
                 </li>
         </ul>
     </dd>
@@ -1498,12 +1413,11 @@ table_uiprefs et supprimons automatiquement les anciennes.</dd>
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 booléen
     </dt>
-    <dd>La version 2.5.0 introduisant la nouvelle gestion de la conversion MIME, la
-colonne column_info recense maintenant trois nouveaux champs. Si cette
-variable est d&eacute;finie &agrave; <tt>TRUE</tt> (par d&eacute;faut)
-phpMyAdmin v&eacute;rifiera si vous disposez de la derni&egrave;re structure
-disponible de la table. Si ce n'est pas le cas, il enverra un avertissement
-au super-utilisateur.<br /><br />
+    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
+column_info table got enhanced with three new columns. If the above variable
+is set to <code>TRUE</code> (default) phpMyAdmin will check if you have the
+latest table structure available. If not, it will emit a warning to the
+superuser.<br /><br />
 
         Vous pouvez d&eacute;sactiver cette fonctionalit&eacute; en positionnant la
 variable &agrave; <tt>FALSE</tt>, ce qui devrait am&eacute;liorer les
@@ -1519,10 +1433,10 @@ d'un raccourci pour les r&egrave;gles AllowDeny ci-dessous.
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 booléen</dt>
-    <dd>Permet d'autoriser les connexions sans mot de passe. La valeur par défaut
-est <tt>false</tt> pour ce paramètre, ce qui empêche les accès non voulus à
-un serveur MySQL pour lequel le mot de passe root est vide ou pour lequel un
-utilisateur anonyme (vide) a été défini.
+    <dd>Whether to allow logins without a password. The default value of
+<code>false</code> for this parameter prevents unintended access to a MySQL
+server with was left with an empty password for root or on which an
+anonymous (blank) user is defined.
     </dd>
     <dt id="servers_allowdeny_order">
         <span
@@ -1533,32 +1447,23 @@ cha&icirc;ne
 l'autorisation <abbr title="Internet Protocol">IP</abbr> est
 d&eacute;sactiv&eacute;e.<br /><br />
 
-        Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
-&agrave; <tt>'deny,allow'</tt> alors le syst&egrave;me applique toutes les
-r&egrave;gles &laquo;&nbsp;deny&nbsp;&raquo; puis les r&egrave;gles
-&laquo;&nbsp;allow&nbsp;&raquo;.  L'acc&egrave;s est autoris&eacute; par
-d&eacute;faut. Tout client qui ne r&eacute;pondrait pas &agrave; une
-commande &laquo;&nbsp;deny&nbsp;&raquo; ou &laquo;&nbsp;allow&nbsp;&raquo;
-sera autoris&eacute; &agrave; acc&eacute;der au serveur. <br /><br />
+        If your rule order is set to <code>'deny,allow'</code> then the system
+applies all deny rules followed by allow rules. Access is allowed by
+default. Any client which does not match a Deny command or does match an
+Allow command will be allowed access to the server. <br /><br />
 
-        Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
-&agrave; <tt>'allow,deny'</tt> alors le syst&egrave;me applique toutes les
-r&egrave;gles &laquo;&nbsp;allow&nbsp;&raquo; puis les r&egrave;gles
-&laquo;&nbsp;deny&nbsp;&raquo;.  L'acc&egrave;s est refus&eacute; par
-d&eacute;faut. Tout client qui ne r&eacute;pondrait pas &agrave; une
-directive &laquo;&nbsp;allow&nbsp;&raquo; ou &laquo;&nbsp;deny&nbsp;&raquo;
-se verra refuser l'acc&egrave;s au serveur.<br /><br />
+        If your rule order is set to <code>'allow,deny'</code> then the system
+applies all allow rules followed by deny rules. Access is denied by
+default.  Any client which does not match an Allow directive or does match a
+Deny directive will be denied access to the server.<br /><br />
 
-        Si votre r&egrave;gle &laquo;&nbsp;order&nbsp;&raquo; est d&eacute;finie
-&agrave; 'explicit', l'authentification est r&eacute;alis&eacute;e de
-mani&egrave;re similaire &agrave; la r&egrave;gle 'deny,allow', avec en plus
-la restriction que la combinaison de votre h&ocirc;te/nom d'utilisateur
-<b>doit</b> &ecirc;tre pr&eacute;sente dans les r&egrave;gles
-&laquo;&nbsp;allow&nbsp;&raquo;, et pas dans les r&egrave;gles
-&laquo;&nbsp;deny&nbsp;&raquo;.  C'est le moyen le <b>plus</b> s&ucirc;r
-d'utiliser les r&egrave;gles allow/deny, et qui est employ&eacute; pour
-Apache pour sp&eacute;cifier les r&egrave;gles allow et deny sans
-d&eacute;finir d'ordre.<br /><br />
+        If your rule order is set to 'explicit', authorization is performed in a
+similar fashion to rule order 'deny,allow', with the added restriction that
+your host/username combination <strong>must</strong> be listed in the
+<em>allow</em> rules, and not listed in the <em>deny</em> rules. This is the
+<strong>most</strong> secure means of using Allow/Deny rules, and was
+available in Apache by specifying allow and deny rules without setting any
+order.<br /><br />
 
         Veuillez &eacute;galement consulter <a
 href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> pout la
@@ -1575,12 +1480,11 @@ tableau de cha&icirc;nes
 &lt;'allow' | 'deny'&gt;&lt;username&gt; ['from'] &lt;ipmask&gt;
 </pre>
 
-        Si vous voulez que cela concerne tous les utilisateurs, il est possible
-d'utiliser un symbole <tt>'%'</tt> comme m&eacute;ta-caract&egrave;re dans
-le champ <i>username</i>.<br />
-        Il y a quelques raccourcis que vous pouvez utiliser pour le champ
-<i>ipmask</i> (veuillez noter que les adressages ADDRESSE_SERVER pourraient
-ne pas &ecirc;tre disponibles sur tous les serveurs Web)&nbsp;:
+        If you wish to match all users, it is possible to use a <code>'%'</code> as
+a wildcard in the <em>username</em> field.<br />
+        There are a few shortcuts you can use in the <em>ipmask</em> field as well
+(please note that those containing SERVER_ADDRESS might not be available on
+all webservers):
         <pre>
 'Tout' -&gt; 0.0.0.0/0
 'H&ocirc;te local' -&gt; 127.0.0.1/8
@@ -1589,39 +1493,37 @@ ne pas &ecirc;tre disponibles sur tous les serveurs Web)&nbsp;:
 'R&eacute;seau local de classe C' -&gt; ADDRESSE_SERVER/24
 </pre>
 
-        Avoir une liste de r&egrave;gles vide est &eacute;quivalent &agrave;
-l'utilisation de <tt>'allow % from all'</tt> si l'ordre de votre
-r&egrave;gle est d&eacute;finie &agrave; <tt>'deny,allow'</tt> ou <tt>'deny
-% from all'</tt> si l'ordre de votre r&egrave;gle est d&eacute;finie
-&agrave; <tt>'allow,deny'</tt> ou <tt>'explicit'</tt>.<br /><br />
+        Having an empty rule list is equivalent to either using <code>'allow % from
+all'</code> if your rule order is set to <code>'deny,allow'</code> or
+<code>'deny % from all'</code> if your rule order is set to
+<code>'allow,deny'</code> or <code>'explicit'</code>.<br /><br />
 
         Pour le syst&egrave;me de concordance IP, ce qui suit fonctionne&nbsp;:<br />
-        <tt>xxx.xxx.xxx.xxx</tt> (une adresse <abbr title="Internet
-Protocol">IP</abbr> exacte)<br />
-        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (une plage d'adresses IP)<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR, adresses <abbr title="Internet
-Protocol">IP</abbr> de type Classless Inter-Domain Routing -- routage
-inter-domaine sans classe)<br />
+        <code>xxx.xxx.xxx.xxx</code> (an exact <abbr title="Internet
+Protocol">IP</abbr> address)<br />
+        <code>xxx.xxx.xxx.[yyy-zzz]</code> (an <abbr title="Internet
+Protocol">IP</abbr> address range)<br />
+        <code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing type
+<abbr title="Internet Protocol">IP</abbr> addresses)<br />
         Mais ce qui suit ne fonctionne pas&nbsp;:<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (plage partielle d'adresses <abbr
-title="Internet Protocol">IP</abbr>)<br />
+        <code>xxx.xxx.xxx.xx[yyy-zzz]</code> (partial <abbr title="Internet
+Protocol">IP</abbr> address range)<br />
         Les adresses IPv6 ne sont pas gérées non plus.
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span>
 booléen</dt>
-    <dd>Désactiver en utilisant <tt>INFORMATION_SCHEMA</tt> pour retrouver les
-informations (utiliser des commandes <tt>SHOW</tt>à la place), à cause de
-problèmes de performances quand il y a beaucoup de bases de
-données. Actuellement utilisé dans certaines parties du code, more to come.
+    <dd>Disable using <code>INFORMATION_SCHEMA</code> to retrieve information (use
+<code>SHOW</code> commands instead), because of speed issues when many
+databases are present. Currently used in some parts of the code, more to
+come.
     </dd>
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
 chaîne</dt>
-    <dd>Sur un serveur avec un très grand nombre de bases de données, la commande
-par défaut <tt>SHOW DATABASES</tt> utilisée pour récupérer le nom des bases
-de données sera probablement très lente, elle peut donc être remplacée par
-des commandes plus rapides (voir <tt>libraries/config.default.php</tt> pour
-des exemples).
+    <dd>On a server with a huge number of databases, the default <code>SHOW
+DATABASES</code> command used to fetch the name of available databases will
+probably be too slow, so it can be replaced by faster commands (see
+<code>libraries/config.default.php</code> for examples).
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 booléen</dt>
@@ -1665,13 +1567,12 @@ et inclure le protocole.
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] entier</dt>
-    <dd>Si vous avez plus d'un serveur, vous pouvez d&eacute;finir
-<tt>$cfg['ServerDefault']</tt> sur n'importe lequel d'entre eux pour
-s'auto-connecter sur celui-ci quand phpMyAdmin est d&eacute;marr&eacute;, ou
-le d&eacute;finir &agrave; 0 sur tous les serveurs pour avoir une liste de
-serveurs auxquels se connecter.<br />
-        Si vous n'avez qu'un seul serveur, <tt>$cfg['ServerDefault']</tt> DOIT
-&ecirc;tre d&eacute;fini sur ce serveur.</dd>
+    <dd>If you have more than one server configured, you can set
+<code>$cfg['ServerDefault']</code> to any one of them to autoconnect to that
+server when phpMyAdmin is started, or set it to 0 to be given a list of
+servers without logging in.<br />
+        If you have only one server configured, <code>$cfg['ServerDefault']</code>
+MUST be set to that server.</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] booléen</dt>
     <dd>Définit le rafraîchissement de parties de certaines pages en utilisant les
@@ -1798,8 +1699,8 @@ s&ucirc;r&hellip;&nbsp;&raquo;) doit &ecirc;tre affich&eacute; quand vous
     <dd>D&eacute;finit si le compte de connexion pr&eacute;c&eacute;dent doit
 &ecirc;tre rappel&eacute; en mode d'authentification par cookie.<br /><br />
 
-        Ceci est automatiquement désactivé si vous n'avez pas configuré <tt><a
-href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>.
+        This is automatically disabled if you do not have configured <code><a
+href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></code>.
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] entier ['nombre de secondes']</dt>
@@ -1834,11 +1735,10 @@ requ&ecirc;te multiple si l'une d'elles &eacute;choue. Par d&eacute;faut,
 l'ex&eacute;cution de la requ&ecirc;te multiple sera arr&ecirc;t&eacute;e.</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] bool&eacute;en</dt>
-    <dd>D&eacute;finit si phpMyAdmin affichera les r&eacute;sultats de chaque
-requ&ecirc;te d'une requ&ecirc;te multiple int&eacute;gr&eacute;s dans le
-fichier journal SQL en tant que commentaires
-ins&eacute;r&eacute;s. D&eacute;fini par d&eacute;faut &agrave;
-<tt>TRUE</tt>.</dd>
+    <dd>Define whether phpMyAdmin will output the results of each query of a
+multi-query statement embedded into the <abbr title="structured query
+language">SQL</abbr> output as inline comments. Defaults to
+<code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 bool&eacute;en</dt>
@@ -1848,11 +1748,9 @@ et permet d'indiquer les serveurs de votre choix en utilisant le dialogue
 Synchroniser.
         <br /><br />
 
-        <b>REMARQUE&nbsp;:</b> Veuillez utiliser ce param&egrave;tre avec
-pr&eacute;caution, car il peut permettre aux utilisateurs d'acc&eacute;der
-aux serveurs MySQL plac&eacute;s derri&egrave;re votre pare-feu o&ugrave;
-votre serveur <abbr title="HyperText Transfer Protocol">HTTP</abbr> est
-situ&eacute;.
+        <strong>NOTE:</strong> Please use this carefully, as this may allow users
+access to MySQL servers behind the firewall where your <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> server is placed.
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler'] ['display'] bool&eacute;en</dt>
@@ -1930,25 +1828,22 @@ dossier est appel&eacute; comme l'alias, le nom de la table elle-m&ecirc;me
 demeure le vrai nom de la table.</dd>
 
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] bool&eacute;en</dt>
-    <dd>D&eacute;finit si le logo de phpMyAdmin est affich&eacute; en haut, dans le
-cadre de gauche. D&eacute;fini par d&eacute;faut &agrave; <tt>TRUE</tt>.</dd>
+    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
+frame.  Defaults to <code>TRUE</code>.</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] cha&icirc;ne</dt>
-    <dd>Saisissez l'<abbr title="Uniform Resource Locator">URL</abbr> vers laquelle
-le logo du panneau de gauche pointera. &Agrave; utiliser notamment pour les
-th&egrave;mes personnalis&eacute;s qui changent cela.  La valeur par
-d&eacute;faut pour cela est <tt>main.php</tt>.</dd>
+    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
+navigation frame will point to.  For use especially with self made theme
+which changes this.  The default value for this is <code>main.php</code>.</dd>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] cha&ecirc;ne</dt>
-    <dd>D&eacute;finit si la page li&eacute;e doit s'ouvrir dans la fen&ecirc;tre
-principale (<tt>main</tt>)  ou dans une nouvelle fen&ecirc;tre
-(<tt>new</tt>). Note&nbsp;: utilisez <tt>new</tt> si vous &ecirc;tes
-li&eacute; &agrave; <tt>phpmyadmin.net</tt>.</dd>
+    <dd>Whether to open the linked page in the main window (<code>main</code>)  or
+in a new one (<code>new</code>). Note: use <code>new</code> if you are
+linking to <code>phpmyadmin.net</code>.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] entier</dt>
-    <dd>Définit le nombre de tables minimum pour afficher une boîte de filtre en
-JavaScript au-dessus de la liste des tables dans le panneau de gauche. Par
-défaut à <tt>30</tt>. Pour désactiver totalement le filtre, un très grand
-nombre peut-être utilisé (par ex. 9999)</dd>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
+disable the filter completely some high number can he used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] bool&eacute;en</dt>
     <dd>D&eacute;finit si un choix de serveur est propos&eacute; en haut, dans le
@@ -1984,10 +1879,9 @@ statistiques sur les bases de donn&eacute;es et les tables.<br />
 pour les tables de base de donn&eacute;es Berkeley.</dd>
 
     <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>bool&eacute;en</dt>
-    <dd>D&eacute;finit si l'affichage des informations d&eacute;taill&eacute;es sur
-le serveur doit se faire sur la page principale.  Vous pouvez aussi masquer
-plus d'informations en utilisant <tt><a
-href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
+    <dd>Defines whether to display detailed server information on main page.  You
+can additionally hide more information by using <code><a
+href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>.
         </dd>
 
     <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo']</span> bool&eacute;en<br />
@@ -2001,8 +1895,8 @@ donn&eacute;es dans le cadre principal (de droite) de d&eacute;marrage. Ce
 param&egrave;tre ne v&eacute;rifie pas les commandes MySQL entr&eacute;es
 directement.<br /><br />
 
-        Veuillez noter que pour emp&ecirc;cher l'utilisation de phpinfo() dans les
-scripts, vous devez mettre ceci dans votre fichier <i>php.ini</i>&nbsp;:
+        Please note that to block the usage of phpinfo() in scripts, you have to put
+this in your <em>php.ini</em>:
 
         <pre>disable_functions = phpinfo()</pre>
 
@@ -2036,26 +1930,24 @@ r&eacute;sultats et si aucune clause LIMIT n'est utilisée. Si le nombre des
 colonnes est sup&eacute;rieur, des liens &laquo;&nbsp;Suivant&nbsp;&raquo;
 et &laquo;&nbsp;Pr&eacute;c&eacute;dent&nbsp;&raquo; seront affich&eacute;s.</dd>
 
-    <dt id="cfg_Order">$cfg['Order'] cha&icirc;ne ['<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>']</dt>
-    <dd>D&eacute;finit si les colonnes sont affichées en ordre croissant
-(<tt>ASC</tt>), d&eacute;croissant (<tt>DESC</tt>) ou en ordre
-&laquo;&nbsp;intelligent&nbsp;&raquo; (<tt>SMART</tt>) - c'est-&agrave;-dire
-en ordre d&eacute;croissant pour les colonnes de type TIME, DATE, DATETIME
-&amp; TIMESTAMP et croissant pour les autres - par d&eacute;faut.</dd>
+    <dt id="cfg_Order">$cfg['Order'] string [<code>DESC</code>|<code>ASC</code>|<code>SMART</code>]</dt>
+    <dd>Defines whether columns are displayed in ascending (<code>ASC</code>) order,
+in descending (<code>DESC</code>) order or in a &quot;smart&quot;
+(<code>SMART</code>) order - I.E. descending order for columns of type TIME,
+DATE, DATETIME and TIMESTAMP, ascending order else- by default.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] bool&eacute;en </dt>
     <dd>Définit si l'option de navigation «&nbsp;Montrer le contenu binaire en
 hexadécimal&nbsp;» est coché par défaut.</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] bool&eacute;en ou cha&icirc;ne</dt>
-    <dd>D&eacute;finit si les colonnes <tt>BLOB</tt> ou <tt>BINARY</tt> sont
-prot&eacute;g&eacute;s lors de l'affichage du contenu d'une table. Les
-valeurs permises sont&nbsp;:
-        <ul><li><tt>FALSE</tt> pour permettre la modification de toutes les colonnes ;</li>
-            <li><tt>blob</tt> pour permettre la modification de toutes les colonnes sauf les
-colonnes <tt>BLOBS</tt>;</li>
-            <li><tt>'all'</tt> pour interdire la modification des colonnes <tt>BINARY</tt>
-ou <tt>BLOB</tt>.</li>
+    <dd>Defines whether <code>BLOB</code> or <code>BINARY</code> columns are
+protected from editing when browsing a table's content. Valid values are:
+        <ul><li><code>FALSE</code> to allow editing of all columns;</li>
+            <li><code>'blob'</code> to allow editing of all columns except
+<code>BLOBS</code>;</li>
+            <li><code>'all'</code> to disallow editing of all <code>BINARY</code> or
+<code>BLOB</code> columns.</li>
         </ul>
     </dd>
 
@@ -2107,10 +1999,10 @@ href="#cfg_ForeignKeyDropdownOrder"
 class="configrule">$cfg['ForeignKeyDropdownOrder']</a>.</dd>
 
     <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] tableau</dt>
-    <dd>Il y a plusieurs m&eacute;thodes d'affichage pour les champs du menu
-d&eacute;roulant des cl&eacute;s &eacute;trang&egrave;res, proposant la
-cl&eacute; et sa valeur. Le tableau doit contenir une ou les deux valeurs
-suivantes&nbsp;: <i>'content-id'</i>, <i>'id-content'</i>.</dd>
+    <dd>For the foreign key drop-down fields, there are several methods of display,
+offering both the key and value data. The contents of the array should be
+one or both of the following strings: <em>'content-id'</em>,
+<em>'id-content'</em>.</dd>
 
     <dt><span id="cfg_ZipDump">$cfg['ZipDump']</span> bool&eacute;en<br />
         <span id="cfg_GZipDump">$cfg['GZipDump']</span> bool&eacute;en<br />
@@ -2130,16 +2022,13 @@ d'en-t&ecirc;tes GZip/BZip2, mais tous les programmes courants les
 manipulent correctement.</dd>
 
     <dt id="cfg_LightTabs">$cfg['LightTabs'] cha&icirc;ne</dt>
-    <dd>Si d&eacute;fini &agrave; <tt>TRUE</tt>, utilise des onglets graphiquement
-moins consommateurs pour l'unit&eacute; centrale.</dd>
+    <dd>If set to <code>TRUE</code>, use less graphically intense tabs on the top of
+the mainframe.</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] cha&icirc;ne</dt>
-    <dd>Si d&eacute;fini &agrave; <tt>TRUE</tt>, affichera des ic&ocirc;nes au lieu
-d'un texte pour les liens de propri&eacute;t&eacute;s des bases de
-donn&eacute;es et des tables (comme 'Afficher', 'S&eacute;lectionner',
-'Ins&eacute;rer', &hellip;).<br /> Peut &ecirc;tre param&eacute;tr&eacute; &agrave; <tt>'both'</tt> si vous
-voulez les ic&ocirc;nes et le texte.<br />
-        Quand il est d&eacute;fini &agrave; <tt>FALSE</tt>, n'affiche que le texte.</dd>
+    <dd>If set to <code>TRUE</code>, will display icons instead of text for db and
+table properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <code>'both'</code> if you want icons AND text.<br />
+        When set to <code>FALSE</code>, will only show text.</dd>
 
     <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] entier</dt>
     <dd>D&eacute;finit le nombre de colonnes qui seront utilis&eacute;es pour
@@ -2200,8 +2089,8 @@ utilisateurs&nbsp;&raquo;</li>
     <dd>D&eacute;finit la langue par d&eacute;faut &agrave; utiliser, si ce n'est
 pas le cas, la configuration du navigateur ou celle de l'utilisateur sera
 utilis&eacute;e.<br />
-        Le fichier de langue correspondant doit être dans
-locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
+        The corresponding language file needs to be in
+locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] cha&icirc;ne</dt>
@@ -2214,8 +2103,8 @@ ignoré lors d'une connexion à un serveur Drizzle.</dd>
 
     <dt id="cfg_Lang">$cfg['Lang'] cha&icirc;ne</dt>
     <dd>Force la langue à utiliser.<br />
-        Le fichier de langue correspondant doit être dans
-locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo.
+        The corresponding language file needs to be in
+locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] cha&icirc;ne</dt>
@@ -2235,10 +2124,10 @@ test&eacute;e est iconv, puis recode),</li>
         </ul>
         Par d&eacute;faut &agrave; auto.</dd>
     <dd>
-        quand la conversion de caractères est activée, cela active un menu déroulant
-dans les pages d'export et d'import, pour choisir le jeu de carctères lors
-de l'exportation d'un fichier. La valeur par défaut dans ce menu provient de
-<tt>$cfg['Export']['charset']</tt> and <tt>$cfg['Import']['charset']</tt>.
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <code>$cfg['Export']['charset']</code> and
+<code>$cfg['Import']['charset']</code>.
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] cha&icirc;ne</dt>
@@ -2264,9 +2153,9 @@ d&eacute;faut. Vous devez renseigner des serveurs proxy de confiance si vous
 voulez utiliser des r&egrave;gles pour les adresses IP derri&egrave;re un
 proxy.<br /><br />
 
-        L'exemple suivant sp&eacute;cifie que phpMyAdmin doit faire confiance
-&agrave; un en-t&ecirc;te HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>)
-provenant du proxy 1.2.3.4&nbsp;:
+        The following example specifies that phpMyAdmin should trust a
+HTTP_X_FORWARDED_FOR (<code>X-Forwarded-For</code>) header coming from the
+proxy 1.2.3.4:
 <pre>
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
@@ -2289,13 +2178,11 @@ MIME.<br />
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] bool&eacute;en</dt>
     <dd>
-    Nous vérifions normalement les permissions sur le fichier de configuration
-pour nous assurer qu'il n'est pas accessible en écriture pour tout le
-monde. Cependant, phpMyAdmin pourrait être installé sur un système de
-fichiers NTFS monté sur un serveur non-Windows, auquel cas les permissions
-semblent erronées mais elles ne peuvent en fait pas être détectées. Dans ce
-cas, un administrateur système voudrait définir ce paramètre à
-<tt>FALSE</tt>. Par dafut, il est défini à <tt>TRUE</tt>.
+    We normally check the permissions on the configuration file to ensure it's
+not world writable. However, phpMyAdmin could be installed on a NTFS
+filesystem mounted on a non-Windows server, in which case the permissions
+seems wrong but in fact cannot be detected. In this case a sysadmin would
+set this parameter to <code>FALSE</code>. Default is <code>TRUE</code>.
     </dd>
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] entier</dt>
@@ -2319,8 +2206,8 @@ multiple. Défini par défaut à <code>false</code>
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] entier</dt>
-    <dd>Largeur du cadre de navigation en pixels. Voir
-<tt>themes/themename/layout.inc.php</tt>.
+    <dd>Navi frame width in pixels. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> chaîne [couleur
@@ -2328,37 +2215,37 @@ CSS pour l'arrière-plan]<br />
         <span id="cfg_MainBackground">$cfg['MainBackground']</span> chaîne [couleur
 CSS pour l'arrière-plan]
     </dt>
-    <dd>Les styles d'arri&egrave;re-plan utilis&eacute;s pour les deux cadres. Voir
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>The background styles used for both the frames.  See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] chaîne [couleur CSS pour l'arrière-plan]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> chaîne
 [couleur CSS]</dt>
-    <dd>Le style utilis&eacute; pour le pointeur dans le cadre de navigation.  Voir
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>The style used for the pointer in the navi frame.  See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] bool&eacute;en</dt>
-    <dd>Une valeur &agrave; <tt>TRUE</tt> active le pointeur de navigation (quand
-LeftFrameLight est &agrave; <tt>FALSE</tt>).</dd>
+    <dd>A value of <code>TRUE</code> activates the navi pointer (when LeftFrameLight
+is <code>FALSE</code>).</dd>
 
     <dt id="cfg_Border">$cfg['Border'] entier</dt>
-    <dd>Taille de la bordure d'une table. Voir
-<tt>themes/themename/layout.inc.php</tt>.
+    <dd>The size of a table's border. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_ThBackground">$cfg['ThBackground'] chaîne [couleur CSS pour l'arrière-plan]<br />
         <span id="cfg_ThColor">$cfg['ThColor']</span> chaîne [couleur CSS]</dt>
-    <dd>Le style utilis&eacute; pour les en-t&ecirc;tes de table. Voir
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>The style used for table headers. See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] chaîne [couleur CSS]</dt>
-    <dd>La couleur (HTML) num&eacute;ro 1 pour les premiers enregistrements de
-table.  Voir <tt>themes/themename/layout.inc.php</tt>.
+    <dd>The color (HTML) #1 for table rows. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] chaîne [couleur CSS]</dt>
-    <dd>La couleur (HTML) num&eacute;ro 2 pour les seconds enregistrements de
-table.  Voir <tt>themes/themename/layout.inc.php</tt>.
+    <dd>The color (HTML) #2 for table rows. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span
@@ -2378,19 +2265,18 @@ souris et la dernière vous permet de marquer/démarquer les enregistrements
 en cliquant dessus. Le surlignage / marquage d'une colonne est effectué en
 passant la souris ou en cliquant sur l'entête de colonne (en dehors du
 texte).<br />
-        Voir <tt>themes/themename/layout.inc.php</tt>.</dd>
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
 
     <dt id="cfg_FontFamily">$cfg['FontFamily'] cha&icirc;ne</dt>
-    <dd>Mettre ici la valeur pour une famille de polices valide CSS, par exemple
-<tt>arial, sans-serif</tt>.<br />
-        Voir <tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>You put here a valid CSS font family value, for example <code>arial,
+sans-serif</code>.<br />
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] cha&icirc;ne</dt>
-    <dd>Mettre ici la valeur pour une famille de polices valide CSS, par exemple
-<tt>monospace</tt>. Celle-ci est utilis&eacute;e pour les zone de texte
-(textarea).<br />
-        Voir <tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>You put here a valid CSS font family value, for example
+<code>monospace</code>. This one is used in textarea.<br />
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] bool&eacute;en</dt>
     <dd>Activation ou d&eacute;sactivation du pointeur de navigation.</dd>
@@ -2469,13 +2355,11 @@ sinon.
         <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']</span>
 bool&eacute;en
     </dt>
-    <dd>En d&eacute;finissant la variable correspondante &agrave; <tt>TRUE</tt>,
-vous pouvez afficher les commentaires de colonnes en mode Navigation ou
-Propri&eacute;t&eacute;s. En mode navigation, les commentaires sont
-affich&eacute;s &agrave; l'int&eacute;rieur de l'en-t&ecirc;te. En mode
-propri&eacute;t&eacute;s, les commentaires sont affich&eacute;s en utilisant
-une feuille de style qui met une ligne de tirets sous le nom du champ. Le
-commentaire est affiché en tant qu'info-bulle pour ce champ.
+    <dd>By setting the corresponding variable to <code>TRUE</code> you can enable
+the display of column comments in Browse or Property display. In browse
+mode, the comments are shown inside the header. In property mode, comments
+are displayed using a CSS-formatted dashed-line below the name of the
+column. The comment is shown as a tool-tip for that column.
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] bool&eacute;en</dt>
@@ -2491,9 +2375,8 @@ dans toute bo&icirc;te SQL Query.</dd>
 du code PHP dans toute bo&icirc;te SQL Query.</dd>
 
     <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] bool&eacute;en</dt>
-    <dd>D&eacute;finit l'affichage d'un lien pour valider une requ&ecirc;te dans
-toute bo&icirc;te SQL Query.  Voir &eacute;galement <tt><a
-href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt>.</dd>
+    <dd>Whether to display a link to validate a query in any SQL Query box.  See
+also <code><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>.</dd>
 
     <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] bool&eacute;en</dt>
     <dd>D&eacute;finit l'affichage d'un lien pour actualiser une requ&ecirc;te dans
@@ -2552,20 +2435,20 @@ utilisateur que le propri&eacute;taire des scripts.
 &ecirc;tre stock&eacute;s. 
         <br /><br />
 
-        Ceci est n&eacute;cessaire pour l'importation des fichiers ESRI shapefiles,
-voir la section <a href="#faq6_30"><abbr title="Foire Aux
-Questions">FAQ</abbr> 6.30</a> et pour contourner les limitations de
-<tt>open_basedir</tt> pour les fichiers téléchargés, consulter la <a
-href="#faq1_11"><abbr title="Foire aux questions">FAQ</abbr>1.11</a>.
+        This is needed for importing ESRI Shapefiles, see <a href="#faq6_30"><abbr
+title="Frequently Asked Questions">FAQ</abbr> 6.30</a> and to work around
+limitations of <code>open_basedir</code> for uploaded files, see <a
+href="#faq1_11"><abbr title="Frequently Asked Questions">FAQ</abbr>
+1.11</a>.
         <br /><br />
 
-    Si le répertoire où est installé phpMyAdmin est sujet à une restriction
-<tt>open_basedir</tt>, vous devez créer un répertoire temporaire dans un
-répertoire accessible par le serveur Web. Cependant, pour des raisons de
-sécurité, ce répertoire doit se situer en dehors de l'arbre publié par le
-serveur Web. Si vous ne pouvez pas éviter que ce répertoire soit publié par
-le serveur Web, placez-y au moins un fichier <tt>index.html</tt> vide, de
-sorte d'empêcher le listage du répertoire.
+    If the directory where phpMyAdmin is installed is subject to an
+<code>open_basedir</code> restriction, you need to create a temporary
+directory in some directory accessible by the web server. However for
+security reasons, this directory should be outside the tree published by
+webserver. If you cannot avoid having this directory published by webserver,
+place at least an empty <code>index.html</code> file there, so that
+directory listing is not possible.
         <br /><br />
 
         Ce répertoire devra avoir les permissions les plus strictes possibles car le
@@ -2609,11 +2492,10 @@ identifier ce qu'ils signifient.
         Définit le mode d'affichage du formulaire d'export lors de son
 chargement. Les valeurs permises sont&nbsp;:
         <ul>
-        <li><tt>quick</tt> pour afficher le nombre minimum d'options à configurer</li>
-        <li><tt>custom</tt> pour afficher toutes les options de configuration
-disponibles</li>
-        <li><tt>custom-no-form</tt> est identique à <tt>custom</tt> mais n'affiche pas
-l'option d'utiliser l'export rapide</li>
+        <li><code>quick</code> to display the minimum number of options to configure</li>
+        <li><code>custom</code> to display every available option to configure</li>
+        <li><code>custom-no-form</code> same as <code>custom</code> but does not display
+the option of using quick export</li>
         </ul>
     </dd>
 
@@ -2652,26 +2534,24 @@ cha&icirc;ne<br />
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span> entier
     </dt>
     <dd>
-        Toutes ces variables affectent la nouvelle fen&ecirc;tre/cadre de
-requ&ecirc;te. Quand Un lien ou une ic&ocirc;ne <tt><abbr title="Structured
-Query Language">SQL</abbr></tt> est toujours affich&eacute; dans le panneau
-de gauche.  Si JavaScript est activ&eacute; dans votre navigateur, cliquer
-dessus provoque l'ouverture&nbsp; de la bo&icirc;te de requ&ecirc;te, une
-interface directe pour saisir les requ&ecirc;tes SQL.<br /><br />
+        All those variables affect the query window feature. A <code><abbr
+title="structured query language">SQL</abbr></code> link or icon is always
+displayed on the left panel. If JavaScript is enabled in your browser, a
+click on this opens a distinct query window, which is a direct interface to
+enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
+the right panel changes to display a query box.<br /><br />
 
-        La taille de la fenêtre de requête peut être personnalisée avec
-$cfg['QueryWindowWidth'] et $cfg['QueryWindowHeight'] - les deux paramètres
-sont des entiers exprimant la taille en pixels.  Veuillez noter que
-normalement, ces paramètres seront modifiés dans <tt>layout.inc.php</tt>
-pour le thème que vous utilisez.<br /><br />
+        The size of this query window can be customized with
+<code>$cfg['QueryWindowWidth']</code> and
+<code>$cfg['QueryWindowHeight']</code> - both integers for the size in
+pixels. Note that normally, those parameters will be modified in
+<code>layout.inc.php</code> for the theme you are using.<br /><br />
 
-        Si <tt>$cfg['EditInWindows']</tt> est d&eacute;fini &agrave; <tt>TRUE</tt>,
-cliquer sur ['Modifier'] &agrave; partir de la page des r&eacute;sultats
-(dans la section &laquo;&nbsp;Affichage des enregistrements&nbsp;&raquo;)
-ouvre la fen&ecirc;tre de requ&ecirc;te et y met la requ&ecirc;te en
-cours. S'il est d&eacute;fini &agrave; <tt>FALSE</tt>, cliquer sur le lien
-met la requ&ecirc;te <abbr title="Structured Query Language">SQL</abbr> dans
-la bo&icirc;te de requ&ecirc;te du panneau droit.
+        If <code>$cfg['EditInWindow']</code> is set to true, a click on [Edit] from
+the results page (in the &quot;Showing Rows&quot; section)  opens the query
+window and puts the current query inside it.  If set to false, clicking on
+the link puts the <abbr title="structured query language">SQL</abbr> query
+in the right panel's query box.
         <br /><br />
         L'utilisation, de la fen&ecirc;tre de requ&ecirc;te JavaScript est
 recommand&eacute;e si vous avez un navigateur g&eacute;rant le
@@ -2681,13 +2561,11 @@ JavaScript. Les fonctions de bases sont utilis&eacute;es pour
 cette fonctionnalit&eacute;. Actuellement, cela a &eacute;t&eacute;
 seulement test&eacute; avec Internet Explorer 6 et Mozilla 1.x.
         <br /><br />
-        Si <tt>$cfg['QueryHistoryDB']</tt> est d&eacute;fini &agrave; <tt>TRUE</tt>,
-toutes vos requ&ecirc;tes sont journalis&eacute;es dans une table, que vous
-devez cr&eacute;er (voir <a href="#history"
-class="configrule">$cfg['Servers'][$i]['history']</a>).  Si il est
-d&eacute;fini &agrave; <tt>FALSE</tt>, toutes vos requ&ecirc;tes seront
-ajout&eacute;es au formulaire, mais elles seront sauvegard&eacute;es
-seulement tant que votre fen&ecirc;tre est ouverte.
+        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code>, all your
+Queries are logged to a table, which has to be created by you (see <a
+href="#history" class="configrule">$cfg['Servers'][$i]['history']</a>).  If
+set to FALSE, all your queries will be appended to the form, but only as
+long as your window is opened they remain saved.
         <br /><br />
         En utilisant la fen&ecirc;tre de requ&ecirc;te bas&eacute;e sur JavaScript,
 elle sera toujours mise &agrave; jour quand vous cliquez sur une nouvelle
@@ -2707,16 +2585,14 @@ zone de texte. D&eacute;cochez cette case si jamais vous vouliez que la
 fen&ecirc;tre de requ&ecirc;tes soit toujours mise &agrave; jour, m&ecirc;me
 si vous avez fait des modifications.
         <br /><br />
-        Si <tt>$cfg['QueryHistoryDB']</tt> est d&eacute;fini &agrave; <tt>TRUE</tt>,
-vous pouvez sp&eacute;cifier le nombre d'entr&eacute;es dans l'historique en
-utilisant <tt>$cfg['QueryHistoryMax']</tt>.
+        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code> you can
+specify the amount of saved history items using
+<code>$cfg['QueryHistoryMax']</code>.
         <br /><br />
-        La fen&ecirc;tre de requ&ecirc;tes a &eacute;galement des onglets pour
-regrouper les fonctionnalit&eacute;s.  En utilisant la variable
-<tt>$cfg['QueryWindowDefTab']</tt> vous pouvez sp&eacute;cifier l'onglet par
-d&eacute;faut &agrave; utiliser &agrave; l'ouverture de la fen&ecirc;tre de
-requ&ecirc;tes. Elle peut &ecirc;tre d&eacute;finie &agrave; 'sql', 'files',
-'history' ou 'full'.</dd>
+        The query window also has a custom tabbed look to group the features.  Using
+the variable <code>$cfg['QueryWindowDefTab']</code> you can specify the
+default tab to be used when opening the query window. It can be set to
+either 'sql', 'files', 'history' or 'full'.</dd>
 
     <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] bool&eacute;en</dt>
     <dd>Active les <a href="#transformations">Transformations MIME</a>.</dd>
@@ -2743,16 +2619,14 @@ all&eacute;g&eacute;)  et dans la vue Base de donn&eacute;es, pour la liste
 des tables.</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] chaîne</dt>
-    <dd>Si défini à <tt>'closed'</tt>, les cases de défilement visuel sont
-initialement dans un état fermé. Une valeur <tt>'open'</tt> fait le
-contraire. Pour désactiver complètement toutes les cases de défilement
-visuel, utiliser <tt>'disabled'</tt>.</dd>
+    <dd>If set to <code>'closed'</code>, the visual sliders are initially in a
+closed state. A value of <code>'open'</code> does the reverse. To completely
+disable all visual sliders, use <code>'disabled'</code>.</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] tableau</dt>
-    <dd>contient les noms des options de configuration (clés d'un tableau
-<tt>$cfg</tt>) que les utilisateurs ne peuvent définir via les préférences
-utilisateurs. Pour les valeurs permises, consulter
-<tt>libraries/config/user_preferences.forms.php</tt>.</dd>
+    <dd>Contains names of configuration options (keys in <code>$cfg</code> array)
+that users can't set through user preferences. For possible values, refer to
+<code>libraries/config/user_preferences.forms.php</code>.</dd>
 
     <dt id="cfg_UserprefsDeveloperTab">$cfg['UserprefsDeveloperTab'] booléen</dt>
     <dd>Active dans les préférences utilisateur un onglet contenant les options pour
@@ -2788,8 +2662,7 @@ du sous-r&eacute;pertoire contenant les tous les th&egrave;mes.</dd>
 href="#faqthemes"> <abbr title="Foire Aux Questions">FAQ</abbr> 2.7</a>.</dd>
 
     <dt id="cfg_ThemeDefault">$cfg['ThemeDefault'] string</dt>
-    <dd>Le th&egrave;me par d&eacute;faut (un sous-r&eacute;pertoire de
-<tt>cfg['ThemePath']</tt>).</dd>
+    <dd>The default theme (a subdirectory under <code>cfg['ThemePath']</code>).</dd>
 
     <dt id="cfg_ThemePerServer">$cfg['ThemePerServer'] bool&eacute;en</dt>
     <dd>Autorise ou non un th&egrave;me diff&eacute;rent pour chaque serveur.</dd>
@@ -2803,79 +2676,65 @@ l'utilisateur ne spécifie rien. Vous pouvez utiliser <a
 href="#faq6_27">l'expansion de format de chaîne</a> standard.
         </dd>
 
-    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] cha&icirc;ne ['<tt>html</tt>|<tt>none</tt>']</dt>
+    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<code>html</code>|<code>none</code>]</dt>
     <dd>
-        L'utilisation principale du nouvel analyseur syntaxique SQL est de permettre
-un affichage de requ&ecirc;tes <abbr title="Structured Query
-Language">SQL</abbr> plus clair. Par d&eacute;faut, nous utilisons HTML pour
-mettre en page la requ&ecirc;te, mais vous pouvez d&eacute;sactiver ce
-param&egrave;tre en d&eacute;finissant cette variable &agrave;
-<tt>'none'</tt>.
+        The main use of the new <abbr title="structured query language">SQL</abbr>
+Parser is to pretty-print <abbr title="structured query language">SQL</abbr>
+queries. By default we use HTML to format the query, but you can disable
+this by setting this variable to <code>'none'</code>.
     </dd>
 
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] flottant<br />
-        <span id="cfg_SQP_fmtIndUnit">$cfg['SQP']['fmtIndUnit']</span> cha&icirc;ne
-[<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]</dt>
-    <dd>Pour un affichage plus clair des requ&ecirc;tes SQL, dans certains cas, la
-partie d'une requ&ecirc;te &agrave; l'int&eacute;rieur de parenth&egrave;ses
-est indent&eacute;e. En changeant <tt>$cfg['SQP']['fmtInd']</tt> vous pouvez
-modifier l'importance de cette indentation.
-        <br />Dans le m&ecirc;me ordre d'id&eacute;e, <tt>$cfg['SQP']['fmtIndUnit']</tt>
-sp&eacute;cifie les unit&eacute;s de la valeur de l'indentation que vous
-avez sp&eacute;cifi&eacute;. Ceci est utilis&eacute; pour les feuilles de
-style.</dd>
+        <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> string
+[<code>em</code>|<code>px</code>|<code>pt</code>|<code>ex</code>]</dt>
+    <dd>For the pretty-printing of <abbr title="structured query
+language">SQL</abbr> queries, under some cases the part of a query inside a
+bracket is indented. By changing <code>$cfg['SQP']['fmtInd']</code> you can
+change the amount of this indent.
+        <br />Related in purpose is <code>$cfg['SQP']['fmtIndUnit']</code> which specifies
+the units of the indent amount that you specified. This is used via
+stylesheets.</dd>
 
     <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] tableau de tuples cha&icirc;ne</dt>
     <dd>Ce tableau est utilis&eacute; pour d&eacute;finir les couleurs pour chaque
 type d'&eacute;l&eacute;ment de requ&ecirc;tes <abbr title="Structured Query
 Language">SQL</abbr> afin de les lire plus facilement. Le format du tuple
 est&nbsp;:<br />
-        <i>classe</i> =&gt; ['<i>code couleur HTML</i> | <i>cha&icirc;ne vide</i>']<br />
+        <em>class</em> =&gt; [<em>HTML colour code</em> | <em>empty string</em>]<br />
         Si vous sp&eacute;cifiez une cha&icirc;ne vide pour la couleur d'une classe,
 elle est ignor&eacute;e lors de la cr&eacute;ation de la feuille de
 style. Vous ne devez pas modifier les noms de classes, seulement les
 cha&icirc;nes couleur.<br />
-        <b>Cl&eacute; pour le nom de classe&nbsp;:</b>
-        <ul><li><b>comment</b> s'applique &agrave; toutes les sous-classes de commentaires</li>
-            <li><b>comment_mysql</b> commentaires tels que
-&laquo;&nbsp;<tt>#&hellip;\n</tt>&nbsp;&raquo;</li>
-            <li><b>comment_ansi</b> commentaires tels que
-&laquo;&nbsp;<tt>--&hellip;\n"</tt>&nbsp;&raquo;</li>
-            <li><b>comment_c</b> commentaires tels que
-&laquo;&nbsp;<tt>/*&hellip;*/</tt>&nbsp;&raquo;</li>
-            <li><b>digit</b> s'applique &agrave; toutes les sous-classes nombre</li>
-            <li><b>digit_hex</b> nombres hexad&eacute;cimaux</li>
-            <li><b>digit_integer</b> nombres entiers</li>
-            <li><b>digit_float</b> nombres &agrave; virgule flottante</li>
-            <li><b>punct</b> s'applique &agrave; toutes les sous classes ponctuation</li>
-            <li><b>punct_bracket_open_round</b> parenth&egrave;ses ouvrantes
-&laquo;&nbsp;<tt>(</tt>&nbsp;&raquo;</li>
-            <li><b>punct_bracket_close_round</b> parenth&egrave;ses fermantes
-&laquo;&nbsp;<tt>)</tt>&nbsp;&raquo;</li>
-            <li><b>punct_listsep</b> s&eacute;parateur de liste
-&laquo;&nbsp;<tt>,</tt>&nbsp;&raquo;</li>
-            <li><b>punct_qualifier</b> qualificateur de table/colonne
-&laquo;&nbsp;<tt>.</tt>&nbsp;&raquo; </li>
-            <li><b>punct_queryend</b> marqueur de fin de requ&ecirc;te
-&laquo;&nbsp;<tt>;</tt>&nbsp;&raquo;</li>
-            <li><b>alpha</b> s'applique &agrave; toutes les sous-classes
-alphab&eacute;tiques</li>
-            <li><b>alpha_columnType</b> identifiants correspondant &agrave; un type de
-colonne</li>
-            <li><b>alpha_columnAttrib</b> identifiants correspondant &agrave; un attribut de
-base de donn&eacute;es/table/colonne</li>
-            <li><b>alpha_functionName</b> identifiants correspondant &agrave; un nom de
-fonction MySQL</li>
-            <li><b>alpha_reservedWord</b> identifiants correspondant &agrave; tout autre mot
-r&eacute;serv&eacute;</li>
-            <li><b>alpha_variable</b> identifiants correspondant &agrave; une variable SQL
-&laquo;&nbsp;<tt>@foo</tt>&nbsp;&raquo;</li>
-            <li><b>alpha_identifier</b> tout autre identifiant</li>
-            <li><b>quote</b> s'applique &agrave; toutes les sous-classes de marques de
-citation</li>
-            <li><b>quote_double</b> guillemets anglais <tt>"</tt></li>
-            <li><b>quote_single</b> apostrophes <tt>'</tt></li>
-            <li><b>quote_backtick</b> apostrophes invers&eacute;es <tt>`</tt></li>
+        <strong>Class name key:</strong>
+        <ul><li><strong>comment</strong> Applies to all comment sub-classes</li>
+            <li><strong>comment_mysql</strong> Comments as <code>"#...\n"</code></li>
+            <li><strong>comment_ansi</strong> Comments as <code>"-- ...\n"</code></li>
+            <li><strong>comment_c</strong> Comments as <code>"/*...*/"</code></li>
+            <li><strong>digit</strong> Applies to all digit sub-classes</li>
+            <li><strong>digit_hex</strong> Hexadecimal numbers</li>
+            <li><strong>digit_integer</strong> Integer numbers</li>
+            <li><strong>digit_float</strong> Floating point numbers</li>
+            <li><strong>punct</strong> Applies to all punctuation sub-classes</li>
+            <li><strong>punct_bracket_open_round</strong> Opening brackets<code>"("</code></li>
+            <li><strong>punct_bracket_close_round</strong> Closing brackets <code>")"</code></li>
+            <li><strong>punct_listsep</strong> List item Separator <code>","</code></li>
+            <li><strong>punct_qualifier</strong> Table/Column Qualifier <code>"."</code> </li>
+            <li><strong>punct_queryend</strong> End of query marker <code>";"</code></li>
+            <li><strong>alpha</strong> Applies to all alphabetic classes</li>
+            <li><strong>alpha_columnType</strong> Identifiers matching a column type</li>
+            <li><strong>alpha_columnAttrib</strong> Identifiers matching a
+database/table/column attribute</li>
+            <li><strong>alpha_functionName</strong> Identifiers matching a MySQL function
+name</li>
+            <li><strong>alpha_reservedWord</strong> Identifiers matching any other reserved
+word</li>
+            <li><strong>alpha_variable</strong> Identifiers matching a <abbr
+title="structured query language">SQL</abbr> variable <code>"@foo"</code></li>
+            <li><strong>alpha_identifier</strong> All other identifiers</li>
+            <li><strong>quote</strong> Applies to all quotation mark classes</li>
+            <li><strong>quote_double</strong> Double quotes <code>"</code></li>
+            <li><strong>quote_single</strong> Single quotes <code>'</code></li>
+            <li><strong>quote_backtick</strong> Backtick quotes <code>`</code></li>
         </ul>
     </dd>
 
@@ -2895,19 +2754,18 @@ title="Foire Aux Questions">FAQ</abbr> 6.14</a>.
             <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] cha&icirc;ne<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
 cha&icirc;ne</dt>
-            <dd>Le service SOAP vous permet de vous connecter avec <tt>anonymous</tt> et
-n'importe quel mot de passe, aussi nous les utilisons par d&eacute;faut. Par
-contre, si vous avez un compte de connexion, vous pouvez mettre ici vos
-d&eacute;tails de connexion, et ils seront utilis&eacute;s &agrave; la place
-de la connexion anonyme.</dd>
+            <dd>The SOAP service allows you to log in with <code>anonymous</code> and any
+password, so we use those by default. Instead, if you have an account with
+them, you can put your login details here, and it will be used in place of
+the anonymous login.</dd>
         </dl>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']['enable'] bool&eacute;en</dt>
-    <dd><b>D&Eacute;VELOPPEURS SEULEMENT&nbsp;!</b></dd>
+    <dd><strong>DEVELOPERS ONLY!</strong></dd>
 
     <dt id="cfg_DBG_sql">$cfg['DBG']['sql'] boolean</dt>
-    <dd><b>D&Eacute;VELOPPEURS SEULEMENT&nbsp;!</b><br />
+    <dd><strong>DEVELOPERS ONLY!</strong><br />
         Active la journalisation des requêtes et des temps d'exécution qui sont
 alors affichés au bas de la page principale (panneau de droite).</dd>
 
@@ -2956,10 +2814,9 @@ colonne d'horodatage dans une table.</dd>
 
 <h3 id="transformationsintro">1. Introduction</h3>
 
-<p> Pour permettre les transformations, vous devez param&eacute;trer la table
-<tt>column_info</tt> et les directives appropri&eacute;es. Veuillez
-consulter la section <a href="#config">Configuration</a> sur la
-mani&egrave;re de faire.</p>
+<p> To enable transformations, you have to setup the <code>column_info</code>
+table and the proper directives. Please see the <a
+href="#config">Configuration section</a> on how to do so.</p>
 
 <p> Vous pouvez appliquer diff&eacute;rentes transformations au contenu de
 chaque colonne. La transformation prendra le contenu de chaque colonne et le
@@ -2976,10 +2833,10 @@ vous pouvez &eacute;galement sp&eacute;cifier des cha&icirc;nes pour
 pr&eacute;fixer ou suffixer des cha&icirc;nes ou d'autres formats pour
 lesquels vous voulez voir le r&eacute;sultat avec ces transformations.</p>
 
-<p> Pour un aper&ccedil;u g&eacute;n&eacute;ral sur les transformations et leurs
-options, vous pouvez consulter la page
-<i>&lt;www.votre-hote.com&gt;/&lt;votre-repertoire-installation&gt;/transformations/overview.php</i>
-de votre installation.</p>
+<p> For a general overview of all available transformations and their options,
+you can consult your
+<em>&lt;www.your-host.com&gt;/&lt;your-install-dir&gt;/transformation_overview.php</em>
+installation.</p>
 
 <p> Pour un tutoriel sur la fa&ccedil;on d'utiliser efficacement les
 transformations, voir notre <a
@@ -2988,12 +2845,11 @@ page d'accueil officielle de phpMyAdmin.</p>
 
 <h3 id="transformationshowto">2. Utilisation</h3>
 
-<p> Consultez votre page <span style="font-style:
-italic;">tbl_structure.inc.php</span> (c'est-&agrave;-dire, atteindre la
-page en cliquant le lien 'Structure' d'une table). Cliquez alors sur
-&laquo;&nbsp;Modifier&nbsp;&raquo; (ou l'ic&ocirc;ne Modifier) et alors vous
-verrez trois nouveaux champs &agrave; la fin de la ligne qui sont&nbsp;:
-'Type MIME', 'Transformation' et 'Options de transformation'.</p>
+<p> Go to your <em>tbl_structure.php</em> page (i.e. reached through clicking on
+the 'Structure' link for a table). There click on &quot;Change&quot; (or
+change icon) and there you will see three new fields at the end of the
+line. They are called 'MIME-type', 'Browser transformation' and
+'Transformation options'.</p>
 
     <ul><li>Le champ 'Type MIME' est un champ d&eacute;roulant. S&eacute;lectionnez le
 type MIME qui correspond au contenu de la colonne. Veuillez noter que les
@@ -3065,15 +2921,14 @@ lesquels elles ont été construites, mais faites attention aux options
 d'utilisation tout comme à l'action qu'aura la transformation sur votre
 colonne.</p>
 
-<p> Il y a un fichier de base appel&eacute; '<i>global.inc.php</i>'. Cette
-fonction peut &ecirc;tre incluse dans n'importe quelle autre transformation
-et fournit des fonctions de base.</p>
+<p> There is a basic file called '<em>global.inc.php</em>'. This function can be
+included by any other transform function and provides some basic functions.</p>
 
 <p> Il y a cinq noms de fichiers possibles&nbsp;:</p>
 
 <ol><li>Une transformation typemime+soustype&nbsp;:<br /><br />
 
-        ['typemime']_['soustype']__['transformation'].inc.php<br /><br />
+        <code>[mimetype]_[subtype]__[transform].inc.php</code><br /><br />
 
         Veuillez noter que typemime et soustype sont s&eacute;par&eacute;s par '_',
 qui ne doit pas &ecirc;tre contenu dans leurs noms. La transformation
@@ -3081,35 +2936,35 @@ fonction/nomfichier ne doit contenir que des caract&egrave;res qui ne posent
 pas de probl&egrave;me pour le syst&egrave;me de fichier et pour la
 convention de nommage de fonction de PHP.<br /><br />
 
-        La fonction de transformation sera appel&eacute;e
-'transformation_PMA_['typemime']_['soustype']__['transformation']()'.<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>'.<br /><br />
 
-        <b>Exemple&nbsp;:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text_html__formatted.inc.php</tt><br />
-        <tt>PMA_transform_text_html__formatted()</tt></li>
+        <code>text_html__formatted.inc.php</code><br />
+        <code>PMA_transform_text_html__formatted()</code></li>
 
     <li>Une transformation de type mime (sans sous-type)&nbsp;:<br /><br />
 
-        <tt>['typemime']__['transformation'].inc.php</tt><br /><br />
+        <code>[mimetype]__[transform].inc.php</code><br /><br />
 
         Veuillez noter qu'il n'y a pas de caract&egrave;re '_' isol&eacute;. La
 transformation fonction/nomfichier doit contenir seulement des
 caract&egrave;res qui ne posent pas de probl&egrave;me pour le
 syst&egrave;me de fichier et pour la convention de nommage de PHP.<br /><br />
 
-        La fonction de transformation sera appel&eacute;e
-'<tt>transformation_PMA_['typemime']__['transformation']()</tt>'.<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_[mimetype]__[transform]()</code>'.<br /><br />
 
-        <b>Exemple&nbsp;:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text__formatted.inc.php</tt><br />
-        <tt>transformation_PMA_text__formatted()</tt></li>
+        <code>text__formatted.inc.php</code><br />
+        <code>PMA_transform_text__formatted()</code></li>
 
     <li>Une transformation typemime+soustype sans fonction de transformation
 sp&eacute;cifique<br /><br />
 
-        <tt>['typemime']_['soustype'].inc.php</tt><br /><br />
+        <code>[mimetype]_[subtype].inc.php</code><br /><br />
 
         Veuillez noter qu'il n'y a pas de caract&egrave;re '_' dans le fichier.
 N'utilisez pas de caract&egrave;res sp&eacute;ciaux dans le nom de fichier
@@ -3118,15 +2973,15 @@ posant des probl&egrave;mes avec le syst&egrave;me de fichiers.<br /><br />
         Aucune fonction de transformation n'est d&eacute;finie dans le fichier
 lui-m&ecirc;me.<br /><br />
 
-        <b>Exemple&nbsp;:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text_plain.inc.php</tt><br />
+        <code>text_plain.inc.php</code><br />
         (Pas de fonction)</li>
 
     <li>Une transformation de type mime (sans sous-type) sans fonction de
 transformation sp&eacute;cifique<br /><br />
 
-        <tt>['typemime'].inc.php</tt><br /><br />
+        <code>[mimetype].inc.php</code><br /><br />
 
         Veuillez noter qu'il n'y a pas de caract&egrave;re '_' dans le nom de
 fichier. N'utilisez pas de caract&egrave;res sp&eacute;ciaux dans le nom de
@@ -3136,22 +2991,22 @@ fichier posant des probl&egrave;mes avec le syst&egrave;me de fichiers.
         Aucune fonction de transformation n'est d&eacute;finie dans le fichier
 lui-m&ecirc;me.<br /><br />
 
-        <b>Exemple&nbsp;:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text.inc.php</tt><br />
+        <code>text.inc.php</code><br />
         (Pas de fonction)</li>
 
     <li>Une fonction de transformation globale sans type mime sp&eacute;cifique<br /><br />
 
-        <tt>global__['transform'].inc.php</tt><br /><br />
+        <code>global__[transform].inc.php</code><br /><br />
 
-        La fonction de transformation sera appel&eacute;e
-'<tt>transformation_PMA_global__['transform']()</tt>'.<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_global__[transform]()</code>'.<br /><br />
 
-        <b>Exemple&nbsp;:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>global__formatted</tt><br />
-        <tt>transformation_PMA_global__formatted()</tt></li>
+        <code>global__formatted</code><br />
+        <code>PMA_transform_global__formatted()</code></li>
 </ol>
 
 <p> Utilisez donc g&eacute;n&eacute;ralement&nbsp; '_' pour s&eacute;parer le
@@ -3165,25 +3020,24 @@ ajouter votre propre fonction de transformation. Veuillez consulter le
 fichier <i>libraries/transformations/TEMPLATE_MIMETYPE</i> pour ajouter un
 type mime sans fonction de transformation.</p>
 
-<p> Pour cr&eacute;er une nouvelle fonction de transformation, veuillez
-consulter <tt>libraries/transformations/template_generator.sh</tt>.  Pour
-cr&eacute;er un nouveau type mime vide, veuillez consulter
-<tt>libraries/transformations/template_generator_mimetype.sh.</tt></p>
+<p> To create a new transform function please see
+<code>libraries/transformations/template_generator.sh</code>.  To create a
+new, empty mimetype please see
+<code>libraries/transformations/template_generator_mimetype.sh</code>.</p>
 
 <p> Une fonction de transformation a toujours besoin de trois variables&nbsp;:</p>
 
-<ol><li><b>$buffer</b> - contient le texte de la colonne. C'est le texte que vous
-voulez transformer.</li>
-    <li><b>$options</b> - contient toutes les options pass&eacute;es par
-l'utilisateur &agrave; la fonction de transformation sous forme de tableau.</li>
-    <li><b>$meta</b> - contient un objet avec une information sur votre
-colonne. L'information est tir&eacute;e du r&eacute;sultat de la fonction <a
-href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>.  Cela
-signifie, que toutes les propri&eacute;t&eacute;s d&eacute;crites sur la <a
-href="http://www.php.net/mysql_fetch_field">page manuel</a> sont disponibles
-dans cette variable et peuvent &ecirc;tre utilis&eacute;es pour transformer
-une colonne en accord avec les propri&eacute;t&eacute;s
-unsigned/zerofill/not_null/&hellip;<br />
+<ol><li><strong>$buffer</strong> - Contains the text inside of the column. This is
+the text, you want to transform.</li>
+    <li><strong>$options</strong> - Contains any user-passed options to a transform
+function as an array.</li>
+    <li><strong>$meta</strong> - Contains an object with information about your
+column.  The data is drawn from the output of the <a
+href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
+function. This means, all object properties described on the <a
+href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
+this variable and can be used to transform a column accordingly to
+unsigned/zerofill/not_null/... properties.<br />
         La variable $meta-&gt;mimetype contient le type MIME original de la colonne
 (c'est-&agrave;-dire 'text/plain', 'image/jpeg', etc.)</li>
 </ol>
@@ -3228,11 +3082,10 @@ son interface.</p>
 spécifique est requise ou phpMyAdmin renvoie une page vide ou remplie de
 caractères cryptiques, que puis-je faire&nbsp;?</a></h4>
 
-<p> Essayez de param&eacute;trer la directive <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGzip']</a> &agrave; <tt>FALSE</tt> dans votre
-fichier <i>config.inc.php</i> et la directive
-<tt>zlib.output_compression</tt> &agrave; <tt>OFF</tt> dans votre fichier de
-configuration php.<br /></p>
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
+directive to <code>FALSE</code> in your <em>config.inc.php</em> file and the
+<code>zlib.output_compression</code> directive to <code>Off</code> in your
+php configuration file.<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 Mon serveur Apache plante en utilisant phpMyAdmin.</a></h4>
@@ -3257,10 +3110,10 @@ complet d'en-t&ecirc;tes <abbr title="HyperText Transfer
 Protocol">HTTP</abbr>&hellip;&nbsp;&raquo;.</a>
 </h4>
 
-<p> Vous avez juste oubli&eacute; de lire le fichier <i>install.txt</i> de la
-distribution PHP. Consultez le dernier message dans ce <a
-href="http://bugs.php.net/bug.php?id=12061">rapport de bogue</a> de la base
-de donn&eacute;es officielle de bogues de PHP.</p>
+<p> You just forgot to read the <em>install.txt</em> file from the PHP
+distribution.  Have a look at the last message in this <a
+href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
+PHP bug database.</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 J'utilise phpMyAdmin avec <abbr title="Internet
@@ -3278,45 +3131,40 @@ d'authentification par cookie.
     <a href="#faq1_6">1.6 Je ne peux pas utiliser phpMyAdmin avec PWS&nbsp;:
 rien ne s'affiche&nbsp;!</a></h4>
 
-<p> Cela semble &ecirc;tre un bogue de PWS. Filippo Simoncini a trouv&eacute;
-une solution de rechange (pour le moment, il n'y a pas de meilleur
-moyen)&nbsp;: supprimez ou mettez en commentaire les d&eacute;clarations
-<tt>DOCTYPE</tt> (deux lignes)  des scripts <i>libraries/header.inc.php</i>,
-<i>libraries/header_printview.inc.php</i>, <i>index.php</i>,
-<i>navigation.php</i> et <i>libraries/libraries/common.lib.php</i>.</p>
+<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
+time there is no better fix): remove or comment the <code>DOCTYPE</code>
+declarations (2 lines) from the scripts <em>libraries/header.inc.php</em>,
+<em>libraries/header_printview.inc.php</em>, <em>index.php</em>,
+<em>navigation.php</em> and <em>libraries/common.lib.php</em>.</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 Comment puis-je compresser avec GZip ou Bzip un
 fichier d'exportation ou un export <abbr title="comma seperated
 values">CSV</abbr>&nbsp;? Il semble que cela ne fonctionne pas.</a></h4>
 
-<p> Ces fonctionnalit&eacute;s sont bas&eacute;es sur les fonctions PHP
-<tt>gzencode()</tt> et <tt>bzcompress()</tt> pour &ecirc;tre plus
-ind&eacute;pendantes de la plateforme (Unix/Windows, Mode
-s&eacute;curis&eacute; ou non, et ainsi de suite). Aussi, vous devez avoir
-le support de Zlib/Bzip2 (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
+<p> These features are based on the <code>gzencode()</code> and
+<code>bzcompress()</code> PHP functions to be more independent of the
+platform (Unix/Windows, Safe Mode or not, and so on). So, you must have
+Zlib/Bzip2 support (<code>--with-zlib</code> and <code>--with-bz2</code>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 Je ne peux pas ins&eacute;rer un fichier texte dans
 une table, et j'obtiens une erreur concernant le mode s&eacute;curis&eacute;
 qui est utilis&eacute;.</a></h4>
 
-<p> Votre fichier transf&eacute;r&eacute; est sauvegard&eacute; dans votre
-&laquo;&nbsp;r&eacute;pertoire de transfert&nbsp;&raquo;, tel que
-d&eacute;fini dans le fichier <i>php.ini</i> par la variable
-<tt>upload_tmp_dir</tt> (habituellement, le r&eacute;pertoire syst&egrave;me
-par d&eacute;faut est <i>/tmp</i>).<br />
+<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
+in <em>php.ini</em> by the variable <code>upload_tmp_dir</code> (usually the
+system default is <em>/tmp</em>).<br />
     Nous vous recommandons le param&eacute;trage suivant pour les serveurs
 Apache ex&eacute;cut&eacute;s en mode s&eacute;curis&eacute;, pour activer
 les transferts de fichiers tout en &eacute;tant raisonnablement
 s&eacute;curis&eacute;s&nbsp;:</p>
 
-<ul><li>cr&eacute;er un r&eacute;pertoire s&eacute;par&eacute; pour les
-transferts&nbsp;: <tt>mkdir /tmp/php</tt></li>
-    <li>rendez propri&eacute;taire du r&eacute;pertoire le groupe et l'utilisateur
-du serveur Apache&nbsp;: <tt>chown apache:apache /tmp/php</tt></li>
-    <li>donnez les permissions appropri&eacute;es&nbsp;: <tt>chmod 600 /tmp/php</tt></li>
-    <li>mettez <tt>upload_tmp_dir = /tmp/php</tt> dans le fichier <i>php.ini</i></li>
+<ul><li>create a separate directory for uploads: <code>mkdir /tmp/php</code></li>
+    <li>give ownership to the Apache server's user.group: <code>chown apache.apache
+/tmp/php</code></li>
+    <li>give proper permission: <code>chmod 600 /tmp/php</code></li>
+    <li>put <code>upload_tmp_dir = /tmp/php</code> in <em>php.ini</em></li>
     <li>red&eacute;marrez Apache</li>
 </ul>
 
@@ -3329,9 +3177,8 @@ fichiers avec phpMyAdmin ex&eacute;cut&eacute; sur un serveur
 s&eacute;curis&eacute;. Mon navigateur est Internet Explorer et j'utilise un
 serveur Apache.</a></h4>
 
-<p> Comme l'a sugg&eacute;r&eacute; &laquo;&nbsp;Rob M&nbsp;&raquo; dans le
-forum phpWizard, ajoutez cette ligne dans votre fichier
-<i>httpd.conf</i>&nbsp;:</p>
+<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
+your <em>httpd.conf</em>:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
@@ -3365,14 +3212,14 @@ les permissions</a>.</p>
     <a href="#faq1_14">1.14 (retiré).</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 J'ai des probl&egrave;mes avec les noms de colonnes
-<i>mysql.user</i>.</a>
+    <a href="#faq1_15">1.15 I have problems with <em>mysql.user</em> column
+names.</a>
 </h4>
 
-<p> Dans les pr&eacute;c&eacute;dentes versions de MySQL, les colonnes
-<tt>User</tt> et <tt>Password</tt> &eacute;taient nomm&eacute;s
-<tt>user</tt> et <tt>password</tt>.  Veuillez modifier vos noms de colonnes
-pour qu'ils s'adaptent aux standards en vigueur.</p>
+<p> In previous MySQL versions, the <code>User</code> and
+<code>Password</code>columns were named <code>user</code> and
+<code>password</code>. Please modify your column names to align with current
+standards.</p>
 
 <h4 id="faq1_16">
     <a href="#faq1_16">1.16 Je ne peux pas transf&eacute;rer de gros fichiers
@@ -3386,14 +3233,13 @@ devraient plus arriver. Si possible, mettez &agrave; jour votre phpMyAdmin
 avec la derni&egrave;re version pour tirer parti des nouvelles
 fonctionnalit&eacute;s d'importation.</p>
 
-<p> Les premi&egrave;res choses &agrave; v&eacute;rifier (ou &agrave; demander
-&agrave; votre fournisseur d'acc&egrave;s de v&eacute;rifier)  sont les
-valeurs <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> et
-<tt>post_max_size</tt> dans le fichier de configuration <i>php.ini</i>.
-L'ensemble de ces trois param&egrave;tres limitent la taille maximale des
-donn&eacute;es qui peuvent &ecirc;tre soumises par PHP. Un utilisateur a
-&eacute;galement dit que <tt>post_max_size</tt> et <tt>memory_limit</tt>
-doivent &ecirc;tre plus grandes que <tt>upload_max_filesize</tt>.<br /> <br />
+<p> The first things to check (or ask your host provider to check) are the
+values of <code>upload_max_filesize</code>, <code>memory_limit</code> and
+<code>post_max_size</code> in the <em>php.ini</em> configuration file.  All
+of these three settings limit the maximum size of data that can be submitted
+and handled by PHP. One user also said that <code>post_max_size</code> and
+<code>memory_limit</code> need to be larger than
+<code>upload_max_filesize</code>.<br /> <br />
 
     Il existe plusieurs moyens de contournement si votre upload est trop gros ou
 si votre h&eacute;bergeur ne souhaite pas modifier les
@@ -3411,10 +3257,9 @@ href="http://www.ozerov.de/bigdump.php"> BigDump</a>) pour d&eacute;couper
 le fichier avant de l'uploader. Nous ne g&eacute;rons pas ceci ni aucune
 application tierce, mais nous savons que des utilisateurs ont r&eacute;ussi
 &agrave; le faire.</li>
-    <li>Si vous avez un acc&egrave;s au shell (ligne de commande), utilisez MySQL
-pour importer les fichiers directement. Vous pouvez faire ceci en utilisant
-la commande &laquo;&nbsp;source&nbsp;&raquo; dans MySQL&nbsp;: <tt>source
-<i>nomfichier.sql</i></tt>.</li>
+    <li>If you have shell (command line) access, use MySQL to import the files
+directly. You can do this by issuing the &quot;source&quot; command from
+within MySQL: <code>source <em>filename.sql</em></code>.</li>
 </ul>
 
 <h4 id="faq1_17">
@@ -3488,13 +3333,11 @@ manuel FPDF</a> pour construire ces fichiers.</p>
 charger l'extension MySQL, veuillez v&eacute;rifier votre configuration de
 PHP&nbsp;&raquo;.</a></h4>
 
-<p> Pour se connecter &agrave; un serveur MySQL, PHP a besoin d'un jeu de
-fonctions MySQL appel&eacute;es &laquo;&nbsp;extension
-MySQL&nbsp;&raquo;. Cette extension peut faire partie de la distribution PHP
-(int&eacute;gr&eacute;e), sinon elle doit &ecirc;tre charg&eacute;e
-dynamiquement. Son nom est vraisemblablement <i>mysql.so</i> ou
-<i>php_mysql.dll</i>.  phpMyAdmin a essay&eacute; de charger l'extension
-mais a &eacute;chou&eacute;.<br /><br />
+<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
+&quot;MySQL extension&quot;. This extension may be part of the PHP
+distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
+name is probably <em>mysql.so</em> or <em>php_mysql.dll</em>. phpMyAdmin
+tried to load the extension but failed.<br /><br />
 
     D'habitude le probl&egrave;me est r&eacute;solu en installant un paquetage
 nomm&eacute; &laquo;&nbsp;PHP-MySQL&nbsp;&raquo; ou quelque chose de
@@ -3505,29 +3348,26 @@ similaire.</p>
 Interface">CGI</abbr> de PHP sous Unix, et je ne peux pas me connecter en
 utilisant l'authentification par cookie.</a></h4>
 
-<p> Dans le fichier <i>php.ini</i>, d&eacute;finissez <tt>mysql.max_links</tt>
-&agrave; une valeur sup&eacute;rieure &agrave; 1.</p>
+<p> In <em>php.ini</em>, set <code>mysql.max_links</code> higher than 1.</p>
 
 <h4 id="faq1_22">
     <a href="#faq1_22">1.22 Je ne vois pas le champ &laquo;&nbsp;Emplacement du
 fichier texte&nbsp;&raquo;, aussi je ne peux pas transf&eacute;rer.</a></h4>
 
-<p> Ceci est d&ucirc; tr&egrave;s probablement au fait que dans votre fichier
-<i>php.ini</i>, votre param&egrave;tre <tt>file_uploads</tt> n'est pas
-d&eacute;fini &agrave; &laquo;&nbsp;on&nbsp;&raquo;.</p>
+<p> This is most likely because in <em>php.ini</em>, your
+<code>file_uploads</code> parameter is not set to &quot;on&quot;.</p>
 
 <h4 id="faq1_23">
     <a href="#faq1_23">1.23 J'ex&eacute;cute MySQL sur une machine Win32. Chaque
 fois que je cr&eacute;e une nouvelle table, les noms de la table et des
 colonnes sont convertis en lettres minuscules&nbsp;!</a></h4>
 
-<p> Ceci arrive parce que la directive MySQL <tt>lower_case_table_names</tt> est
-d&eacute;finie par d&eacute;faut &agrave; 1 (<tt>ON</tt>) dans la version
-Win32 de MySQL. vous pouvez changer ce comportement en changeant simplement
-la directive &agrave; 0 (<tt>OFF</tt>)&nbsp;:<br />
-    &Eacute;ditez votre fichier <tt>my.ini</tt> qui doit se trouver dans votre
-r&eacute;pertoire Windows et ajouter la ligne suivante au groupe
-['mysqld']&nbsp;:</p>
+<p> This happens because the MySQL directive <code>lower_case_table_names</code>
+defaults to 1 (<code>ON</code>) in the Win32 version of MySQL. You can
+change this behavior by simply changing the directive to 0
+(<code>OFF</code>):<br />
+    Just edit your <code>my.ini</code> file that should be located in your
+Windows directory and add the following line to the group [mysqld]:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
@@ -3576,25 +3416,22 @@ cela devrait fonctionner.</p>
 tr&egrave;s grosse page (par exemple, db_details_structure.php avec beaucoup
 de tables).</a></h4>
 
-<p> C'est un <a href="http://bugs.php.net/21079">bogue PHP</a> qui survient
-quand le cache de r&eacute;sultats GZIP (output buffering) est
-activ&eacute;. Si vous le d&eacute;sactivez (en d&eacute;finissant <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> dans votre
-fichier <i>config.inc.php</i>), cela devrait fonctionner. Ce bogue sera
-corrig&eacute; dans PHP version 5.0.0.</p>
+<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
+GZIP output buffering is enabled. If you turn off it (by <a
+href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
+<em>config.inc.php</em>), it should work. This bug will be fixed in
+PHP&nbsp;5.0.0.</p>
 
 <h4 id="faq1_28">
     <a href="#faq1_28">1.28 Mon serveur MySQL refuse quelquefois des
 requ&ecirc;tes et renvoie le message 'Errorcode: 13'. Qu'est-ce que cela
 signifie&nbsp;?</a></h4>
 
-<p> Cela peut arriver &agrave; cause d'un bogue de MySQL quand vous avez des
-noms de base de donn&eacute;es/tables avec des caract&egrave;res en
-majuscules bien que <tt>lower_case_table_names</tt> soit d&eacute;fini
-&agrave; 1. Pour corriger ceci, d&eacute;sactivez cette directive,
-convertissez tous les noms de vos tables et base de donn&eacute;es en
-minuscules et r&eacute;activez-la. Il y a &eacute;galement un correctif
-disponible &agrave; partir de MySQL&nbsp;3.23.56&nbsp;/&nbsp;4.0.11-gamma.</p>
+<p> This can happen due to a MySQL bug when having database / table names with
+upper case characters although <code>lower_case_table_names</code> is set to
+1.  To fix this, turn off this directive, convert all database and table
+names to lower case and turn it on again. Alternatively, there's a bug-fix
+available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
     <a href="#faq1_29">1.29 Quand je cr&eacute;e une table ou que je modifie une
@@ -3615,12 +3452,11 @@ SetInputFilter PHP
 
 <pre> AddType application/x-httpd-php .php </pre>
 
-<p> Dans le cas que nous avons constat&eacute;, un jeu de directives
-&eacute;tait dans le fichier <tt>/etc/httpd/conf/httpd.conf</tt>, alors que
-l'autre &eacute;tait dans le fichier
-<tt>/etc/httpd/conf/addon-modules/php.conf</tt>.<br />
-    La mani&egrave;re recommand&eacute;e est <tt>AddType</tt>, mettez seulement
-en commentaire le premier jeu de lignes et red&eacute;marrez Apache&nbsp;:</p>
+<p> In the case we saw, one set of directives was in
+<code>/etc/httpd/conf/httpd.conf</code>, while the other set was in
+<code>/etc/httpd/conf/addon-modules/php.conf</code>.<br />
+    The recommended way is with <code>AddType</code>, so just comment out the
+first set of lines and restart Apache:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -3654,18 +3490,14 @@ phpMyAdmin 2.6.1, PHP 4.3.9 en mode <abbr title="Internet Server Application
 Programming Interface">ISAPI</abbr> sous <abbr title="Internet Information
 Services">IIS</abbr> 5.1.</p>
 
-<ol><li>Dans votre fichier <tt>php.ini</tt>, param&eacute;trez
-<tt>cgi.rfc2616_headers = 0</tt></li>
-    <li>Dans la bo&icirc;te de dialogue <tt>Propri&eacute;t&eacute;s de site -&gt;
-S&eacute;curit&eacute; de fichier/r&eacute;pertoire -&gt; Acc&egrave;s
-anonyme</tt>, cochez la case <tt>Acc&egrave;s anonyme</tt> et
-d&eacute;cochez toutes les autres cases (c-&agrave;-d d&eacute;cochez
-<tt>Authentification de base</tt>, <tt>Authenfication int&eacute;gr&eacute;e
-Windows</tt>, et <tt>Digest</tt> si ces cases sont coch&eacute;es). Cliquez
-sur <tt>OK</tt>.</li>
-    <li>Dans <tt>Erreurs personnalis&eacute;es</tt>, s&eacute;lectionnez de
-<tt>401;1</tt> &agrave; <tt>401;5</tt> et cliquez sur le bouton
-<tt>D&eacute;finir par d&eacute;faut</tt>.</li>
+<ol><li>In your <code>php.ini</code> file, set <code>cgi.rfc2616_headers = 0</code></li>
+    <li>In <code>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
+Access</code> dialog box, check the <code>Anonymous access</code> checkbox
+and uncheck any other checkboxes (i.e. uncheck <code>Basic
+authentication</code>, <code>Integrated Windows authentication</code>, and
+<code>Digest</code> if it's enabled.) Click <code>OK</code>.</li>
+    <li>In <code>Custom Errors</code>, select the range of <code>401;1</code>
+through <code>401;5</code> and click the <code>Set to Default</code> button.</li>
 </ol>
 
 <h4 id="faq1_33">
@@ -3675,26 +3507,22 @@ sur <tt>OK</tt>.</li>
     <a href="#faq1_34">1.34 Puis-je acc&eacute;der directement aux pages des
 bases de donn&eacute;es ou des tables&nbsp;?</a></h4>
 
-<p> Oui. Sans autre configuration, vous pouvez utiliser des <abbr title="Uniform
-Resource Locator">URL</abbr> de type
-http://server/phpMyAdmin/index.php?db=database&amp;table=table&amp;target=script.
-Pour <tt>server</tt>, vous utilisez le numéro du serveur qui réfère à
-l'ordre dans le paragraphe «&nbsp;server&nbsp;» dans le fichier
-<tt>config.inc.php</tt>. Les parties &laquo;&nbsp;table&nbsp;&raquo; et
-&laquo;&nbsp;script&nbsp;&raquo; sont optionnelles. Si vous voulez utiliser
-des <abbr title="Uniform Resource Locator">URL</abbr> du type
-http://server/phpMyAdmin/database[/table][/script], vous devrez faire
-quelques ajustements. Les lignes suivantes ne s'appliquent que pour un
-serveur Web <a href="http://httpd.apache.org">Apache</a>. D'abord,
-assurez-vous que vous avez activ&eacute; certaines fonctionnalit&eacute;s
-dans la configuration globale. Vous avez besoin que <code>Options
-FollowSymLinks</code> et <code>AllowOverride FileInfo</code> soient
-activ&eacute;s pour le r&eacute;pertoire o&ugrave; est install&eacute;
-phpMyAdmin et que &laquo;&nbsp;mod_rewrite&nbsp;&raquo; soit
-activ&eacute;. Alors, vous aurez seulement besoin de cr&eacute;er le fichier
-<a href="#glossary"><i>.htaccess</i></a> suivant dans le dossier racine de
-l'installation de phpMyAdmin (n'oubliez pas de changer le nom du
-r&eacute;pertoire)&nbsp;:</p>
+<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
+Locator">URL</abbr>s like
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
+For <code>server</code> you use the server number which refers to the order
+of the server paragraph in <code>config.inc.php</code>.  Table and script
+parts are optional. If you want
+http://server/phpMyAdmin/database[/table][/script] <abbr title="Uniform
+Resource Locator">URL</abbr>s, you need to do some configuration. Following
+lines apply only for <a href="http://httpd.apache.org">Apache</a> web
+server. First make sure, that you have enabled some features within global
+configuration. You need <code>Options FollowSymLinks</code> and
+<code>AllowOverride FileInfo</code> enabled for directory where phpMyAdmin
+is installed and you need mod_rewrite to be enabled. Then you just need to
+create following <a href="#glossary"><em>.htaccess</em></a> file in root
+folder of phpMyAdmin installation (don't forget to change directory name
+inside of it):</p>
 
 <pre>
 RewriteEngine On
@@ -3799,8 +3627,9 @@ quoi, vous aurez un grand ralentissement</li>
 </ul>
 
     <p>
-        Vous pouvez aussi désactiver les avertissements en utilisant la directive <a
-href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt></a>.
+        You can also disable the warning using the <a
+href="#cfg_SuhosinDisableWarning"> <code>SuhosinDisableWarning</code>
+directive</a>.
     </p>
 
 <h4 id="faq1_39">
@@ -3808,8 +3637,8 @@ href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt></a>.
 connecter, mais ma connexion est redirigée en http. Qu'est-ce qui peut
 causer ce comportement&nbsp;?</a></h4>
 
-<p> Assurez-vous d'avoir activé <tt>SSLOptions</tt> et <tt>StdEnvVars</tt> dans
-votre configuration Apache. Consulter <a
+<p> Be sure that you have enabled <code>SSLOptions</code> and
+<code>StdEnvVars</code> in your Apache configuration. See <a
 href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
 
 <h4 id="faq1_40">
@@ -3848,17 +3677,16 @@ pour plus de détails.</p>
 à voir ses privilèges, j'obtiens une erreur à propos d'une colonne
 inconnue.</a></h4>
 
-<p> Les tables de privilèges du serveur MySQL ne sont pas à jour, vous devez
-exécuter la commande <tt>mysql_upgrade</tt> sur le serveur.</p>
+<p> The MySQL server's privilege tables are not up to date, you need to run the
+<code>mysql_upgrade</code> command on the server.</p>
 
 <h4 id="faq1_42">
     <a href="#faq1_42">1.42 Comment empêcher les robots d'accéder à
 phpMyAdmin&nbsp;?</a></h4>
 
-<p>Vous pouvez ajouter diverses règles dans <a
-href="#glossary"><i>.htaccess</i></a> pour filtrer les accès en se basant
-sur le champ user agent. Ces règles sont facilement contournables, mais cela
-peut empêcher au moins quelques robots d'accéder à votre installation.</p>
+<p>You can add various rules to <a href="#glossary"><em>.htaccess</em></a> to
+filter access based on user agent field. This is quite easy to circumvent,
+but could prevent at least some robots accessing your installation.</p>
 
 <pre>
 RewriteEngine on
@@ -3890,16 +3718,14 @@ RewriteRule .* - [F]
 header information - headers already sent by &hellip;&nbsp;&raquo; est
 affich&eacute;, quel est le probl&egrave;me&nbsp;?</a></h4>
 
-<p> &Eacute;ditez votre fichier <i>config.inc.php</i> et assurez-vous qu'il n'y
-a rien (c'est-&agrave;-dire pas de ligne blanche, pas d'espace, pas de
-caract&egrave;re&hellip;) ni devant la balise <tt>&lt;?php</tt> au
-d&eacute;but du fichier, ni apr&egrave;s la balise <tt>?&gt;</tt> &agrave;
-la fin du fichier. Nous avons aussi eu un rapport d'un utilisateur sous
-<abbr title="Internet Information Services">IIS</abbr>, qui utilisait un kit
-de distribution zipp&eacute;&nbsp;: le fichier
-<tt>libraries/Config.class.php</tt> contenait un caract&egrave;re de fin de
-ligne (hex 0A) en fin de fichier&nbsp;; en supprimant ce caract&egrave;re,
-les erreurs disparaissaient.</p>
+<p> Edit your <em>config.inc.php</em> file and ensure there is nothing (I.E. no
+blank lines, no spaces, no characters...) neither before the
+<code>&lt;?php</code> tag at the beginning, neither after the
+<code>?&gt;</code> tag at the end. We also got a report from a user under
+<abbr title="Internet Information Services">IIS</abbr>, that used a zipped
+distribution kit: the file <code>libraries/Config.class.php</code> contained
+an end-of-line character (hex 0A) at the end; removing this character
+cleared his errors.</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin ne peut pas se connecter &agrave;
@@ -3919,9 +3745,8 @@ faire&nbsp;?</a></h4>
 <p> Pour les utilisateurs RedHat, Harald Legner sugg&egrave;re ceci sur la liste
 de diffusion&nbsp;:</p>
 
-<p> Sur mon syst&egrave;me RedHat le socket de MySQL est
-<i>/var/lib/mysql/mysql.sock</i>.  Dans votre fichier <i>php.ini</i> vous
-trouverez une ligne</p>
+<p> On my RedHat-Box the socket of MySQL is <em>/var/lib/mysql/mysql.sock</em>.
+In your <em>php.ini</em> you will find a line</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
@@ -3935,14 +3760,13 @@ trouverez une ligne</p>
 
 <ul><li>D'abord, vous devez d&eacute;terminer quel socket est utilis&eacute; par
 MySQL.<br />
-        Pour cela, faites un telnet sur votre serveur et allez dans le
-r&eacute;pertoire <i>bin</i> de MySQL. Dans ce r&eacute;pertoire il devrait
-y avoir un fichier appel&eacute; <i>mysqladmin</i>. Tapez alors
-<tt>./mysqladmin variables</tt>, et cela devrait vous donner un paquet
-d'infos sur votre serveur MySQL, y compris le socket
-(<i>/tmp/mysql.sock</i>, par exemple).</li>
-    <li>Ensuite, vous devez dire &agrave; PHP d'utiliser ce socket.<br /> Pour faire cela dans phpMyAdmin, vous devez compl&eacute;ter l'information
-sur le socket dans votre fichier <i>config.inc.php</i>.<br />
+        To do this, telnet to your server and go to the MySQL bin directory. In this
+directory there should be a file named <em>mysqladmin</em>. Type
+<code>./mysqladmin variables</code>, and this should give you a bunch of
+info about your MySQL server, including the socket
+(<em>/tmp/mysql.sock</em>, for example).</li>
+    <li>Ensuite, vous devez dire &agrave; PHP d'utiliser ce socket.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
+<em>config.inc.php</em>.<br />
         Par exemple&nbsp;: <a href="#cfg_Servers_socket"
 class="configrule">$cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
@@ -3960,9 +3784,9 @@ correspondante dans la documentation MySQL</a>.</p>
     <a href="#faq2_4">2.4 Rien ne s'affiche dans mon navigateur quand j'essaie
 d'ex&eacute;cuter phpMyAdmin, que puis-je faire&nbsp;?</a></h4>
 
-<p> Essayez de d&eacute;finir la directive <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGZip']</a> &agrave; <tt>FALSE</tt> dans le
-fichier de configuration de phpMyAdmin. Cela aide parfois.<br />
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
+directive to <code>FALSE</code> in the phpMyAdmin configuration file. It
+helps sometime.<br />
     Veuillez &eacute;galement regarder le num&eacute;ro de version de PHP&nbsp;:
 s'il contient &laquo;&nbsp;b&nbsp;&raquo; ou &laquo;&nbsp;alpha&nbsp;&raquo;
 cela signifie que vous ex&eacute;cutez une version test de PHP. Ce n'est pas
@@ -4023,9 +3847,9 @@ cookie.<br /><br /></p>
 
 <p> Pour cr&eacute;er un th&egrave;me&nbsp;:</p>
 
-<ul><li>cr&eacute;ez un nouveau sous-r&eacute;pertoire (par exemple
-&laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo;) dans <a href="#cfg_ThemePath"
-class="configrule">$cfg['ThemePath']</a> (par d&eacute;faut <tt>themes</tt>)</li>
+<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
+href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
+<code>themes</code>)</li>
     <li>copiez les fichiers et les r&eacute;pertoires de
 &laquo;&nbsp;original&nbsp;&raquo; vers
 &laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo;</li>
@@ -4033,24 +3857,19 @@ class="configrule">$cfg['ThemePath']</a> (par d&eacute;faut <tt>themes</tt>)</li
 &laquo;&nbsp;votre_nom_de_theme/css&nbsp;&raquo;</li>
     <li>mettez vos nouvelles images dans
 &laquo;&nbsp;votre_nom_de_theme/img&nbsp;&raquo;</li>
-    <li>&eacute;ditez <tt>layout.inc.php</tt> dans
-&laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo;</li>
-    <li>&eacute;ditez <tt>info.inc.php</tt> dans
-&laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo; pour qu'il contienne votre nom
-de th&egrave;me, qui sera visible dans l'interface utilisateur</li>
+    <li>edit <code>layout.inc.php</code> in &quot;your_theme_name&quot;</li>
+    <li>edit <code>info.inc.php</code> in &quot;your_theme_name&quot; to contain
+your chosen theme name, that will be visible in user interface</li>
     <li>faites un nouveau clich&eacute; de votre th&egrave;me et enregistrez-le sous
 &laquo;&nbsp;votre_nom_de_theme/screen.png&nbsp;&raquo;</li>
 </ul>
 
-<p> Dans le r&eacute;pertoire &laquo;&nbsp;theme&nbsp;&raquo; il y a
-<tt>info.inc.php</tt> qui contient le nom long, la g&eacute;n&eacute;ration
-et la version du th&egrave;me. Ces versions et g&eacute;n&eacute;rations
-sont &eacute;num&eacute;r&eacute;es &agrave; partir de 1 et n'ont aucune
-d&eacute;pendances directes avec la version de phpMyAdmin. Les th&egrave;mes
-d'une m&ecirc;me g&eacute;n&eacute;ration doivent &ecirc;tre
-r&eacute;tro-compatibles - un th&egrave;me de version 2 devrait fonctionner
-avec phpMyAdmin n&eacute;cessitant une version 1.  Les th&egrave;mes de
-g&eacute;n&eacute;rations diff&eacute;rentes sont incompatibles.</p>
+<p> In theme directory there is file <code>info.inc.php</code> which contains
+theme verbose name, theme generation and theme version. These versions and
+generations are enumerated from 1 and do not have any direct dependence on
+phpMyAdmin version. Themes within same generation should be backwards
+compatible - theme with version 2 should work in phpMyAdmin requiring
+version 1. Themes with different generation are incompatible.</p>
 
 <p> Si vous ne voulez pas utiliser vos propres symboles et boutons, supprimez le
 r&eacute;pertoire &laquo;&nbsp;img&nbsp;&raquo; dans
@@ -4065,35 +3884,33 @@ parameters&nbsp;&raquo;, que puis-je faire&nbsp;?</a></h4>
 
 <p> V&eacute;rifiez les points suivants&nbsp;:</p>
 
-<ul><li>Dans le fichier <tt>config.inc.php</tt>, essayez de laisser la directive <a
+<ul><li>In <code>config.inc.php</code>, try to leave the <a
 href="#cfg_PmaAbsoluteUri" class="configrule">$cfg['PmaAbsoluteUri']</a>
-vide. Voir &eacute;galement la section <a href="#faq4_7"><abbr title="Foire
-Aux Questions">FAQ</abbr> 4.7</a>.
+directive empty. See also <a href="#faq4_7"><abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.7</a>.
     </li>
     <li>Votre installation de PHP est peut-&ecirc;tre corrompue ou vous avez besoin
 de mettre &agrave; jour votre Zend Optimizer. Voir <a
 href="http://bugs.php.net/bug.php?id=31134">
 http://bugs.php.net/bug.php?id=31134</a>.
     </li>
-    <li>Si vous utilisez Hardened PHP avec la directive ini
-<tt>varfilter.max_request_variables</tt> et la d&eacute;finissez &agrave; sa
-valeur par d&eacute;faut (200) ou une autre valeur plus basse, vous pouvez
-obtenir cette erreur si votre table a un grand nombre de colonnes. Ajustez
-ce param&egrave;tre en cons&eacute;quence. (Merci &agrave; Klaus Dorninger
-pour l'astuce).
+    <li>If you are using Hardened PHP with the ini directive
+<code>varfilter.max_request_variables</code> set to the default (200) or
+another low value, you could get this error if your table has a high number
+of columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for
+the hint).
     </li>
-    <li>Dans la directive <tt>arg_separator.input</tt> dans <tt>php.ini</tt>, une
-valeur &laquo;&nbsp;;&nbsp;&raquo; provoque cette erreur. Remplacez-la par
-&laquo;&nbsp;&amp;;&nbsp;&raquo;.
+    <li>In the <code>php.ini</code> directive <code>arg_separator.input</code>, a
+value of &quot;;&quot; will cause this error. Replace it with
+&quot;&amp;;&quot;.
     </li>
     <li>Si vous utilisez <a href="http://www.hardened-php.net/">Hardened-PHP</a>,
 vous devriez augmenter les <a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">limites de
 requ&ecirc;te</a>.
     </li>
-    <li>Le r&eacute;pertoire sp&eacute;cifi&eacute; dans la directive
-<tt>session.save_path</tt> du fichier <tt>php.ini</tt> n'existe pas ou est
-en lecture seule.
+    <li>The directory specified in the <code>php.ini</code> directive
+<code>session.save_path</code> does not exist or is read-only.
     </li>
 </ul>
 
@@ -4105,8 +3922,8 @@ serveur doit avoir soit l'extension <a
 href="http://pecl.php.net/package/APC">APC</a> soit l'extension <a
 href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>. De
 plus, l'extension JSON doit être activée dans votre installation PHP.</p>
-    <p> Si vous utilisez APC, vous devez définir le paramètre <tt>apc.rfc1867</tt> à
-<tt>on</tt> dans votre fichier php.ini.</p>
+    <p> If using APC, you must set <code>apc.rfc1867</code> to <code>on</code> in
+your php.ini.</p>
 
 <h3 id="faqlimitations">Limitations connues</h3>
 
@@ -4245,12 +4062,11 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;g
 </p>
 
 <h4 id="faq3_10">
-    <a href="#faq3_10">3.10 Homonymes et pas de cl&eacute; primaire&nbsp;: Quand
-les r&eacute;sultats d'un SELECT affiche plus d'une colonne avec la
-m&ecirc;me valeur (par exemple <tt>SELECT nom from employes where prenom
-like 'A%'</tt> et que deux valeurs &laquo;&nbsp;Smith&nbsp;&raquo; sont
-affich&eacute;es), si je clique sur Modifier, je ne peux pas &ecirc;tre
-s&ucirc;r que je modifie la bonne ligne.</a></h4>
+    <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
+SELECT display more that one column with the same value (for example
+<code>SELECT lastname from employees where firstname like 'A%'</code> and
+two &quot;Smith&quot; values are displayed), if I click Edit I cannot be
+sure that I am editing the intended row.</a></h4>
 
 <p> Veuillez vous assurer que votre table a une cl&eacute; primaire, ainsi
 phpMyAdmin peut l'utiliser pour les liens&nbsp; Modifier et Effacer.</p>
@@ -4270,8 +4086,8 @@ performances.</p>
     <a href="#faq1_12">1.12 (retiré).</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 J'obtiens une erreur en saisissant <tt>USE</tt>
-suivi du nom d'une base de donn&eacute;es contenant un trait d'union.</a></h4>
+    <a href="#faq3_13">3.13 I get an error when entering <code>USE</code>
+followed by a db name containing an hyphen.  </a></h4>
 <p>
     Les tests que j'ai effectu&eacute;s avec l'API actuelle de MySQL 5.1.49,
 montre que cette API n'accepte pas cette syntaxe pour la commande USE.
@@ -4362,11 +4178,10 @@ phpMyAdmin.  Voir la section <a href="#setup">Installation</a> sur
 phpMyAdmin contre les attaques malicieuses&nbsp;?</a></h4>
 <p>
     Cela d&eacute;pend de votre syst&egrave;me.<br />
-    Si vous utilisez un serveur qui ne peut pas &ecirc;tre acc&eacute;d&eacute;
-par d'autres personnes, il est suffisant d'utiliser la protection de
-r&eacute;pertoire fournie avec votre serveur Web (avec Apache vous pouvez
-utiliser les fichiers <a href="#glossary"><i>.htaccess</i></a>, par
-exemple).<br />
+    If you're running a server which cannot be accessed by other people, it's
+sufficient to use the directory protection bundled with your webserver (with
+Apache you can use <a href="#glossary"><em>.htaccess</em></a> files, for
+example).<br />
     Si d'autres personnes ont un acc&egrave;s telnet &agrave; votre serveur,
 vous devriez utiliser la fonctionnalit&eacute; d'authentification <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> ou par cookie de phpMyAdmin.
@@ -4375,7 +4190,7 @@ title="HyperText Transfer Protocol">HTTP</abbr> ou par cookie de phpMyAdmin.
 </p>
 <ul>
     <li>
-        Votre fichier <i>config.inc.php</i> devrait &ecirc;tre <tt>chmod 660</tt>.
+        Your <em>config.inc.php</em> file should be <code>chmod 660</code>.
     </li>
     <li>
         Tous les fichiers phpMyAdmin devraient &ecirc;tre <tt>chown -R
@@ -4389,15 +4204,13 @@ lequel Apache est ex&eacute;cut&eacute;.
 </ul>
 
 <h4 id="faq4_3">
-    <a href="#faq4_3">4.3 J'obtiens des erreurs sur l'impossibilit&eacute;
-d'inclure un fichier dans <i>/lang</i> ou dans <i>/libraries</i>.</a></h4>
+    <a href="#faq4_3">4.3 I get errors about not being able to include a file in
+<em>/lang</em> or in <em>/libraries</em>.  </a></h4>
 <p>
-    V&eacute;rifier votre fichier <i>php.ini</i>, ou demander &agrave; votre
-administrateur syst&egrave;me de le faire. <tt>include_path</tt> doit
-contenir &laquo;&nbsp;.&nbsp;&raquo; dans ses chemins et
-<tt>open_basedir</tt>, s'il est utilis&eacute;, doit contenir
-&laquo;&nbsp;.&nbsp;&raquo; et &laquo;&nbsp;<i>./lang</i>&nbsp;&raquo; pour
-permettre un fonctionnement normal de phpMyAdmin.
+    Check <em>php.ini</em>, or ask your sysadmin to check it. The
+<code>include_path</code> must contain &quot;.&quot; somewhere in it, and
+<code>open_basedir</code>, if used, must contain &quot;.&quot; and
+&quot;./lang&quot; to allow normal operation of phpMyAdmin.
 </p>
 
 <h4 id="faq4_4">
@@ -4413,36 +4226,33 @@ class="configrule">$cfg['Servers'][$i]['controlpass']</a> sont
 erron&eacute;s.</li>
     <li>L'utilisateur/mot de passe que vous sp&eacute;cifiez dans le dialogue de
 connexion sont invalides.</li>
-    <li>Vous avez d&eacute;j&agrave; configur&eacute; un m&eacute;canisme de
-s&eacute;curit&eacute; pour le r&eacute;pertoire phpMyAdmin, par exemple un
-fichier <a href="#glossary"><i>.htaccess</i></a>. Cela doit
-interf&eacute;rer avec l'authentification phpMyAdmin, aussi, supprimez-le.</li>
+    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
+eg. a <a href="#glossary"><em>.htaccess</em></a> file. This would interfere
+with phpMyAdmin's authentication, so remove it.</li>
 </ul>
 
 <h4 id="faq4_5">
     <a href="#faq4_5">4.5 Est-il possible de laisser les utilisateurs
 cr&eacute;er leurs propres bases de donn&eacute;es&nbsp;?</a></h4>
 
-<p> &Agrave; partir de la version 2.2.5, dans la page de gestion des
-utilisateurs, vous pouvez mettre un m&eacute;ta-caract&egrave;re dans le nom
-de la base de donn&eacute;es pour un utilisateur (par exemple
-&laquo;&nbsp;joe%&nbsp;&raquo;), et mettre les privil&egrave;ges que vous
-voulez.  Par exemple, en ajoutant <tt>SELECT, INSERT, UPDATE, DELETE,
-CREATE, DROP, INDEX, ALTER</tt> permettra &agrave; un utilisateur de
-cr&eacute;er/administrer sa(ses) base(s) de donn&eacute;es.</p>
+<p> Starting with 2.2.5, in the user management page, you can enter a wildcard
+database name for a user (for example &quot;joe%&quot;), and put the
+privileges you want.  For example, adding <code>SELECT, INSERT, UPDATE,
+DELETE, CREATE, DROP, INDEX, ALTER</code> would let a user create/manage
+his/her database(s).</p>
 
 <h4 id="faq4_6">
     <a href="#faq4_6">4.6 Comment puis-je utiliser en plus l'authentification
 bas&eacute;e sur l'h&ocirc;te&nbsp;?</a></h4>
 
-<p> Si vous avez des r&egrave;gles existantes d'un ancien fichier <a
-href="#glossary"><i>.htaccess</i></a>, vous pouvez le prendre et ajouter le
-nom d'utilisateur entre les cha&icirc;nes <tt>'deny'</tt>/<tt>'allow'</tt>
-et <tt>'from'</tt>.  Utiliser le m&eacute;ta-caract&egrave;re <tt>'%'</tt>
-pour le nom d'utilisateur est un grand avantage si votre installation est
-adapt&eacute;e pour l'utiliser. Ensuite, vous pouvez ajouter ces lignes
-mises &agrave; jour dans le tableau <a href="#cfg_Servers_AllowDeny_rules"
-class="configrule">$cfg['Servers'][$i]['AllowDeny']['rules']</a>.</p>
+<p> If you have existing rules from an old <a
+href="#glossary"><em>.htaccess</em></a> file, you can take them and add a
+username between the <code>'deny'</code>/<code>'allow'</code> and
+<code>'from'</code> strings. Using the username wildcard of <code>'%'</code>
+would be a major benefit here if your installation is suited to using
+it. Then you can just add those updated lines into the <a
+href="#cfg_Servers_AllowDeny_rules" class="configrule">
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
 
 <p> Si vous voulez un exemple pr&eacute;fabriqu&eacute;, vous pouvez essayer
 celui-ci. Il emp&ecirc;che l'utilisateur 'root' de se connecter &agrave;
@@ -4477,14 +4287,13 @@ domaine est d&eacute;fini dans le fichier de configuration.</p>
     <a href="#faq4_8">4.8 Quels param&egrave;tres puis-je utiliser dans l'URL de
 d&eacute;marrage de phpMyAdmin&nbsp;?</a></h4>
 
-<p>Au d&eacute;marrage de phpMyAdmin, vous pouvez utiliser les
-param&egrave;tres <tt>db</tt>, <tt>pma_username</tt>, <tt>pma_password</tt>
-et <tt>server</tt>. Ce dernier peut contenir soit l'index num&eacute;rique
-de l'h&ocirc;te (&agrave; partir de <tt>$i</tt> du fichier de
-configuration), soit un des noms d'h&ocirc;tes pr&eacute;sents dans le
-fichier de configuration. L'utilisation de <tt>pma_username</tt> et
-<tt>pma_password</tt> a &eacute;t&eacute; test&eacute;e avec
-l'authentification 'cookie' <tt>auth_type</tt>.</p>
+<p>When starting phpMyAdmin, you can use the <code>db</code>,
+<code>pma_username</code>, <code>pma_password</code> and <code>server</code>
+parameters. This last one can contain either the numeric host index (from
+<code>$i</code> of the configuration file) or one of the host names present
+in the configuration file. Using <code>pma_username</code> and
+<code>pma_password</code> has been tested along with the usage of 'cookie'
+<code>auth_type</code>.</p>
 
 <h3 id="faqbrowsers">Navigateurs et syst&egrave;me d'exploitation client</h3>
 
@@ -4649,10 +4458,10 @@ Javascript &laquo;&nbsp;Acc&egrave;s refus&eacute;&nbsp;&raquo;.  Ou je
 n'arrive pas &agrave; faire fonctionner phpMyAdmin sous Windows.</a></h4>
 
 <p> V&eacute;rifiez les points suivants&nbsp;:</p>
-    <ul><li>Vous avez peut-&ecirc;tre d&eacute;fini votre param&egrave;tre
-<tt>PmaAbsoluteUri</tt> du fichier <tt>config.inc.php</tt> avec une adresse
-<abbr title="Internet Protocol">IP</abbr> et vous d&eacute;marrez phpMyAdmin
-avec une URL contenant un nom de domaine, ou inversement.</li>
+    <ul><li>Maybe you have defined your <code>PmaAbsoluteUri</code> setting in
+<code>config.inc.php</code> to an <abbr title="Internet Protocol">IP</abbr>
+address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
+Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
         <li>Les param&egrave;tres de s&eacute;curit&eacute; de Internet Explorer et/ou
 du Centre de s&eacute;curit&eacute; Microsoft sont trop elev&eacute;s et
 emp&ecirc;chent par cons&eacute;quent l'ex&eacute;cution des scripts.</li>
@@ -4669,13 +4478,13 @@ donn&eacute;es ou une base de donn&eacute;es.</a></h4>
 Firefox est la cause de ce probl&egrave;me.</p>
 
 <h4 id="faq5_18">
-<a href="#faq5_18">5.18 Avec Konqueror 4.2.x, une clause <tt>LIMIT</tt>
-invalide est générée quand je parcoure une table.</a></h4>
-<p> Ceci survient seulement quand les deux conditions suivantes sont
-rencontrées&nbsp;: en utilisant le mode d'authentification <tt>http</tt> et
-le paramètre <tt>register_globals</tt> défini à <tt>On</tt> sur le
-serveur. Il semble que ce soit un problème spécifique à ce navigateur&nbsp;;
-en attendant, utilisez le mode d'authentification par <tt>cookie</tt>.</p>
+<a href="#faq5_18">5.18 With Konqueror 4.2.x an invalid <code>LIMIT</code>
+clause is generated when I browse a table.</a></h4>
+<p> This happens only when both of these conditions are met: using the
+<code>http</code> authentication mode and <code>register_globals</code>
+being set to <code>On</code> on the server. It seems to be a
+browser-specific problem; meanwhile use the <code>cookie</code>
+authentication mode.</p>
 
 <h4 id="faq5_19">
 <a href="#faq5_19">5.19 J'obtiens des erreurs JavaScript dans mon
@@ -4696,8 +4505,8 @@ sp&eacute;cification d'un mauvais type de colonne.<br />
     Les erreurs usuelles sont&nbsp;:
 </p>
 <ul>
-    <li>l'utilisation de <tt>VARCHAR</tt> sans l'argument de taille</li>
-    <li>l'utilisation de <tt>TEXT</tt> ou <tt>BLOB</tt> avec un argument de taille</li>
+    <li>Using <code>VARCHAR</code> without a size argument</li>
+    <li>Using <code>TEXT</code> or <code>BLOB</code> with a size argument</li>
 </ul>
 <p>
     Regardez &eacute;galement le chapitre syntaxe dans le manuel MySQL pour
@@ -4779,11 +4588,10 @@ des nouvelles fonctionnalit&eacute;s.
     <a href="#faq6_6">6.6 Comment puis-je utiliser la table relation dans
 Query-by-example&nbsp;?</a></h4>
 
-<p> Voici un exemple avec les tables personnes, villes et pays, toutes
-situ&eacute;es dans la base de donn&eacute;es mabdd. Si vous n'avez pas de
-table <tt>pma_relation</tt>, cr&eacute;ez-la comme cela est d&eacute;crit
-dans la section <a href="#config">Configuration</a>.  Ensuite, cr&eacute;ez
-les tables d'exemple&nbsp;:</p>
+<p> Here is an example with the tables persons, towns and countries, all located
+in the database mydb. If you don't have a <code>pma_relation</code> table,
+create it as explained in the configuration section. Then create the example
+tables:</p>
 
 <pre>
 CREATE TABLE REL_pays (
@@ -4946,7 +4754,7 @@ de statistiques&nbsp;?</a></h4>
     <a href="#faqexport">6.12 Je veux comprendre certaines options de
 Exporter.</a></h4>
 
-<p><b>Structure&nbsp;:</b></p>
+<p><strong>Structure:</strong></p>
 
 <ul><li>'ADD DROP TABLE' ajoutera une ligne disant &agrave; MySQL de <a
 href="http://dev.mysql.com/doc/mysql/en/drop-table.html">supprimer la
@@ -4962,14 +4770,13 @@ sauvegarde.</li>
     <li>&laquo;&nbsp;Prot&eacute;ger les noms des tables et des colonnes par
 des&nbsp;"`"&nbsp;&raquo; assure que les noms de colonnes et de tables
 contenant des caract&egrave;res sp&eacute;ciaux sont prot&eacute;g&eacute;s.</li>
-    <li>&quot;Inclure sous forme de commentaires&quot; inclut les commentaires des
-colonnes, les relations et les types MIME d&eacute;finis dans la base de
-donn&eacute;es PMA-DB dans le fichier d'exportation en tant que commentaires
-SQL (<i>/* xxx */</i>).
+    <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
+types set in the pmadb in the dump as <abbr title="structured query
+language">SQL</abbr> comments (<em>/* xxx */</em>).
        </li>
 </ul>
 
-<p><b>Donn&eacute;es&nbsp;:</b></p>
+<p><strong>Data:</strong></p>
 
 <ul><li>&laquo;&nbsp;Insertions compl&egrave;tes&nbsp;&raquo; ajoutes les noms de
 colonne sur chaque commande INSERT, pour une meilleure documentation (mais
@@ -5017,12 +4824,12 @@ comme module PEAR SOAP.
 </p>
 
 <p>
-    Pour installer le module <abbr title="PHP Extension and Application
+    To install <abbr title="PHP Extension and Application
 Repository">PEAR</abbr> <abbr title="Simple Object Access
-Protocol">SOAP</abbr>, exécutez <tt>"pear install Net_Socket Net_URL
-HTTP_Request Mail_Mime Net_DIME SOAP"</tt> pour obtenir les modules <abbr
-title="PHP Extension and Application Repository">PEAR</abbr> nécessaires à
-son utilisation.
+Protocol">SOAP</abbr> module, run <code>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</code> to get the necessary <abbr
+title="PHP Extension and Application Repository">PEAR</abbr> modules for
+usage.
 </p>
 
 <p>
@@ -5087,19 +4894,15 @@ acc&egrave;s &agrave; une liste d&eacute;roulante de signets sur chacune des
 pages sur lesquelles la bo&icirc;te de requ&ecirc;te appara&icirc;t sur
 cette base de donn&eacute;es.<br /><br />
 
-    Depuis phpMyAdmin 2.5.0, vous pouvez &eacute;galement stocker des variables
-pour les signets. Utilisez juste la cha&icirc;ne <b>/*['VARIABLE']*/</b>
-n'importe o&ugrave; dans votre requ&ecirc;te. Tout ce qui est mis dans la
-bo&icirc;te de saisie <i>valeur</i> sur la page de la bo&icirc;te de
-requ&ecirc;te remplacera la cha&icirc;ne
-&laquo;&nbsp;/*['VARIABLE']*/&nbsp;&raquo; dans votre requ&ecirc;te
-stock&eacute;e.  Notez que vous DEVEZ cr&eacute;er une requ&ecirc;te valide,
-sinon elle ne sera m&ecirc;me pas stock&eacute;e dans votre base de
-donn&eacute;es.<br />
-    Rappelez-vous &eacute;galement que tout ce qui se trouve &agrave;
-l'int&eacute;rieur de la cha&icirc;ne <b>/*['VARIABLE']*/</b> pour votre
-requ&ecirc;te restera en l'&eacute;tat, mais sera d&eacute;barass&eacute;
-des caract&egrave;res /**/ . Donc vous pouvez utiliser&nbsp;:<br /><br />
+    Since phpMyAdmin 2.5.0 you are also able to store variables for the
+bookmarks.  Just use the string <strong>/*[VARIABLE]*/</strong> anywhere in
+your query. Everything which is put into the <em>value</em> input box on the
+query box page will replace the string &quot;/*[VARIABLE]*/&quot; in your
+stored query. Just be aware of that you HAVE to create a valid query,
+otherwise your query won't be even able to be stored in the database.<br />
+    Also remember, that everything else inside the
+<strong>/*[VARIABLE]*/</strong> string for your query will remain the way it
+is, but will be stripped of the /**/ chars. So you can use:<br /><br />
 
     <code>/*, ['VARIABLE'] AS myname */</code><br /><br />
 
@@ -5125,16 +4928,12 @@ compl&egrave;te sera&nbsp;:<br /><br />
 '%phpMyAdmin%'</code>
     <br /><br />
 
-    Vous pouvez utiliser de multiples occurrences de <b>/*['VARIABLE']*/</b>
-dans une seule requ&ecirc;te (c'est-à-dire de multiples occurrences de la
-<i>même</i> variable).<br />
-    <b>REMARQUEZ L'ABSENCE D'ESPACES</b> &agrave; l'int&eacute;rieur de la
-construction &laquo;&nbsp;/**/&nbsp;&raquo;. Tout espace
-ins&eacute;r&eacute; sera plus tard &eacute;galement ins&eacute;r&eacute; en
-tant qu'espace dans votre requ&ecirc;te et peut conduire &agrave; des
-r&eacute;sultats inattendus, particuli&egrave;rement en utilisant
-l'expansion de variable dans une expression &laquo;&nbsp;LIKE
-''&nbsp;&raquo;.<br />
+    You can use multiple occurrences of <strong>/*[VARIABLE]*/</strong> in a
+single query (that is, multiple occurrences of the <em>same</em> variable).<br />
+    <strong>NOTE THE ABSENCE OF SPACES</strong> inside the &quot;/**/&quot;
+construct. Any spaces inserted there will be later also inserted as spaces
+in your query and may lead to unexpected results especially when using the
+variable expansion inside of a &quot;LIKE ''&quot; expression.<br />
     Votre requ&ecirc;te initiale que vous voulez stocker comme signet doit
 produire au moins une ligne de r&eacute;sultat pour pouvoir &ecirc;tre
 stock&eacute;e. Vous aurez peut-&ecirc;tre besoin de t&acirc;tonner pour
@@ -5188,11 +4987,10 @@ contenant la colonne &agrave; afficher et la cl&eacute;. La raison de cela
 est de permettre de saisir la premi&egrave;re lettre soit de la cl&eacute;,
 soit de la colonne &agrave; afficher.<br /><br />
 
-    Pour 100 valeurs et plus, une fen&ecirc;tre distincte appara&icirc;tra, pour
-naviguer dans les valeurs des cl&eacute;s &eacute;trang&egrave;res et en
-choisir une. Pour changer la limite de 100, consulter <tt><a
+    For 100 values or more, a distinct window will appear, to browse foreign key
+values and choose one. To change the default limit of 100, see <code><a
 href="#cfg_ForeignKeyMaxLimit"
-class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt>.</p>
+class="configrule">$cfg['ForeignKeyMaxLimit']</a></code>.</p>
 
 <h4 id="faq6_22">
     <a href="#faq6_22">6.22 Signets&nbsp;: Puis-je ex&eacute;cuter
@@ -5334,10 +5132,10 @@ class="configrule">$cfg['UploadDir']</a>, uploader les deux fichiers .shp et
         </li>
         <li>
             <p>
-            Créer une archive Zip avec les fichiers .shp et .dbf et l'importer. Pour que
-cela fonctionne, vous devez définir <a href="#cfg_TempDir"
-class="configrule">$cfg['TempDir']</a> dans un répertoire où l'utilisateur
-du serveur Web à des droits d'écriture (par exemple <tt>'./tmp'</tt>).
+            Create a Zip archive with .shp and .dbf files and import it. For this to
+work, you need to set <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> to a place where the web server user
+can write (for example <code>'./tmp'</code>).
             </p>
 
             <p> Pour cr&eacute;er un r&eacute;pertoire temporaire sur un syst&egrave;me
@@ -5536,10 +5334,10 @@ les tables de la base de données source et destination.
 </p>
 
 <p>
-Les différences sont indiquées par des boutons rouges et verts avec les
-lettres <tt>S</tt> et <tt>D</tt>, désignant respectivement que la Structure
-ou les Données ne sont pas à jour. En cliquant dessus, ils deviennent
-grisés, ce qui signifie qu'ils vont être synchronisés.
+The difference is depicted by the red and green buttons with <code>S</code>
+and <code>D</code> letters, indicating that either Structure or Data are not
+up to date. By clicking on them, they will turn grey, what means that they
+will be synchronized.
 </p>
 
 <h4 id="faq9_2">

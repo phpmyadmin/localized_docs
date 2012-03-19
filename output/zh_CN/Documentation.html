@@ -1,11 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE HTML>
 
 <!-- 
 vim: expandtab ts=4 sw=4 sts=4 tw=78 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<html lang="en-US" dir="ltr">
 <!--
 
 本文件使用 po4a 自动生成，请勿手动编辑！
@@ -16,9 +14,9 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 
 -->
 <head>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
     <title>phpMyAdmin 4.0.0-dev - 文档</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
@@ -72,29 +70,33 @@ SourceForge.net 的项目页 (英语)</a></li>
 <!-- REQUIREMENTS -->
 <h2 id="require">环境需求</h2>
 
-<ul><li><b>PHP</b>
-        <ul><li>开启 <tt>会话 (session)</tt> (<a href="#faq1_31">参见 <abbr title="常见问题
-(Frequently Asked Questions)">FAQ</abbr> 1.31</a>) 、标准 PHP 库 (SPL) 和 JSON
-扩展的 PHP 5.2.0 或更高版本。
+<ul><li><strong>PHP</strong>
+        <ul><li>You need PHP 5.2.0 or newer, with <code>session</code> support (<a
+href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
+1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
                 </li>
-        <li>要支持上传 zip 文件，需要 <tt>zip</tt> 扩展。</li>
+        <li>To support uploading of ZIP files, you need the PHP <code>zip</code>
+extension.</li>
         <li>为了更好的支持多字节字符串 (如 UTF-8 编码的文字, 当前默认编码)，你应该安装 mbstring 和 ctype 扩展。
         </li>
             <li>You need GD2 support in PHP to display inline thumbnails of JPEGs
 (&quot;image/jpeg: inline&quot;) with their original aspect ratio.</li>
-            <li>当使用 &quot;cookie&quot; <a href="#authentication_modes">认证</a>时，我们强烈建议大部分用户使用
-<a href="http://www.php.net/mcrypt"><tt>mcrypt (外链，英语)</tt></a>
-扩展，在64位计算机中，该扩展是<b>必须</b>的。不使用 mcrypt 扩展可能导致打开 phpMyAdmin 页面时变得很慢。
+            <li>When using the &quot;cookie&quot; <a
+href="#authentication_modes">authentication method</a>, the <a
+href="http://www.php.net/mcrypt"><code>mcrypt</code></a> extension is
+strongly suggested for most users and is <strong>required</strong> for
+64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to load pages
+significantly slower.
                 </li>
                 <li>要支持上传进度条，参见 <a href="#faq2_9"> <abbr title="常见问题 (Frequently Asked
 Questions)">FAQ</abbr> 2.9</a>。</li>
                 <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
-or newer and the <a href="http://www.php.net/libxml"><tt>libxml</tt></a>
+or newer and the <a href="http://www.php.net/libxml"><code>libxml</code></a>
 extension.</li>
         </ul>
     </li>
-    <li><b>MySQL</b> 5.0 或更高版本 (<a href="#faq1_17">查看详细说明</a>);</li>
-    <li>支持 cookies 的<b>浏览器</b>。</li>
+    <li><strong>MySQL</strong> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
+    <li><strong>Web browser</strong> with cookies enabled.</li>
 </ul>
 
 
@@ -156,10 +158,11 @@ Asked Questions)">FAQ</abbr> 9.1)</a>
 用户)，所有用户必须是有效的 MySQL 用户。</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1)</sup> 若 PHP 有 zlib (<tt>--with-zlib</tt>) 和/或 bzip2
-(<tt>--with-bz2</tt>) 扩展 (可能还需要修改 <tt>php.ini</tt>)。phpMyAdmin 在转储和导出 <abbr
-title="逗号分隔型取值 (comma separated values)">CSV</abbr> 时可压缩成 (zip、gzip -RFC
-1952- 或 bzip2 格式)。</p>
+    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
+formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
+if you use PHP with Zlib support (<code>--with-zlib</code>) and/or Bzip2
+support (<code>--with-bz2</code>). Proper support may also need changes in
+<code>php.ini</code>.</p>
 
 
 <!-- INSTALLATION -->
@@ -183,30 +186,42 @@ title="逗号分隔型取值 (comma separated values)">CSV</abbr> 时可压缩�
 title="操作系统 (operating system)">OS</abbr> 版本低于 <abbr title="操作系统 (operating
 system)">OS</abbr> X，StuffIt 会把文件解压成 <acronym title="苹果麦金塔 (Apple
 Macintosh)">Mac</acronym> 格式。<br />
-    因为 PHP 好像不支持 <acronym title="苹果麦金塔 (Apple Macintosh)">Mac</acronym> 式的换行符
-(&quot;<tt>\r</tt>&quot;)，所以在上传到服务器之前，你必须把所有 phpMyAdmin 脚本用 BBEdit 重新保存为
-Unix 格式。</p>
+    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
+before uploading them to your server, as PHP seems not to like <acronym
+title="Apple Macintosh">Mac</acronym>-style end of lines character
+(&quot;<code>\r</code>&quot;).</p>
 
 <h3 id="quick_install">快速安装</h3>
-<ol><li>从 phpmyadmin.net 下载页选择一个合适的版本。有些版本只有英语，有些只使用 UTF-8 编码且包含了所有语言
-(适用于大多数情况)，还有些包含了所有语言和所有编码。现在我们假设你选择的是一个像
-<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt> 这样名字的版本。
+<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
+page. Some kits contain only the English messages, others contain all
+languages in UTF-8 format (this should be fine in most situations), others
+contain all languages and all character sets. We'll assume you chose a kit
+whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
     </li>
-    <li>解开这个压缩包 (连同子目录一起解压): 在你网站服务器的文档根目录执行 <tt>tar -xzvf
-phpMyAdmin_x.x.x-all-languages.tar.gz</tt>
-。如果你没有直接的访问服务器的权限，先把这些文件解压到你自己的电脑上，等完成第 4 步之后，再通过 ftp 等方式上传到你的网站服务器上。</li>
+    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
+<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
+webserver's document root. If you don't have direct access to your document
+root, put the files in a directory on your local machine, and, after step 4,
+transfer the directory on your web server using, for example, ftp.</li>
     <li>确保所有的脚本都有正确的所有者 (如果 PHP 运行于安全模式，所有者的不同可能会导致问题)。参见 <a href="#faq4_2"><abbr
 title="常见问题 (Frequently Asked Questions)">FAQ</abbr> 4.2</a> 和 <a
 href="#faq1_26"><abbr title="常见问题 (Frequently Asked Questions)">FAQ</abbr>
 1.26</a>。</li>
-    <li>现在你需要做一些设置。通常我们会手动编辑一份 <tt>config.inc.php</tt>
-的副本，但现在我们为那些喜欢使用图形界面安装的用户提供了一个向导式的安装脚本。手动创建 <tt>config.inc.php</tt>
-仍然是一个快速安装的方法，而且一些高级功能也需要手动编辑。
-        <ul><li>要手动创建 <tt>config.inc.php</tt>，首先你要有一个文本编辑器 (你可以复制 phpMyAdmin 主目录 (顶层，包含
-<tt>index.php</tt> 的目录) 的 <tt>config.sample.inc.php</tt>
-获得包含最小配置的配置文件。phpMyAdmin 首先会加载 <tt>libraries/config.default.php</tt>
-中的默认设置，然后再用 <tt>config.inc.php</tt> 中的设置覆盖。如果默认值就是你所需要的，那就不用在
-<tt>config.inc.php</tt> 里面再写一遍了。一个简单的设置如下:
+    <li>Now you must configure your installation. There are two methods that can be
+used. Traditionally, users have hand-edited a copy of
+<code>config.inc.php</code>, but now a wizard-style setup script is provided
+for those who prefer a graphical installation. Creating a
+<code>config.inc.php</code> is still a quick way to get started and needed
+for some advanced features.
+        <ul><li>To manually create the file, simply use your text editor to create the file
+<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
+to get minimal configuration file) in the main (top-level) phpMyAdmin
+directory (the one that contains <code>index.php</code>).  phpMyAdmin first
+loads <code>libraries/config.default.php</code> and then overrides those
+values with anything found in <code>config.inc.php</code>. If the default
+value is okay for a particular setting, there is no need to include it in
+<code>config.inc.php</code>.  You'll need a few directives to get going, a
+simple configuration may look like this:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // 此值可任意修改
@@ -228,9 +243,10 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
                 完整的设置说明请参见本文档的 <a href="#config">设置</a> 一节。</li>
-            <li id="setup_script">不想手动编辑 <tt>config.inc.php</tt> 的话，你可以使用 <a href="setup/">安装脚本</a>
-来代替。为了安全，首先你要在 phpMyAdmin 目录下创建一个 <tt>config</tt> 文件夹。在 Linux/Unix
-系统上你可以使用以下命令:
+            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
+href="setup/">Setup Script</a>. First you must manually create a folder
+<code>config</code> in the phpMyAdmin directory. This is a security
+measure. On a Linux/Unix system you can use the following commands:
 <pre>
 cd phpMyAdmin
 mkdir config                        # 创建保存配置文件的目录
@@ -243,33 +259,45 @@ chmod o+w config/config.inc.php     # 授予所有人对这个文件的写入权
 </pre>
                 在其他平台上, 创建目录并确保网站服务器可以读写即可。参见 <a href="#faq1_26">FAQ 1.26</a>。<br /><br />
 
-                接下来，在浏览器中打开 <tt><a href="setup/">setup/</a></tt>。要注意的是，<strong>在点 <i>设置</i>
-区域的 <tt>保存</tt>之前，所有修改不会被保存</strong>。通常安装脚本都可以保存新的 config.inc.php 到
-<tt>config/</tt> 目录，但在有些权限不正确的服务器上你会看到 "无法加载或保存配置" 的错误提示。请确保
-<tt>config/</tt> 目录存在并有正确的权限，或使用 <tt>下载</tt> 把配置文件下载下来再通过 FTP 等方式上传到正确的位置。<br /><br />
+                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
+that <strong>changes are not saved to disk until explicitly choose
+<code>Save</code></strong> from the <em>Configuration</em> area of the
+screen. Normally the script saves the new config.inc.php to the
+<code>config/</code> directory, but if the webserver does not have the
+proper permissions you may see the error "Cannot load or save
+configuration." Ensure that the <code> config/</code> directory exists and
+has the proper permissions - or use the <code>Download</code> link to save
+the config file locally and upload (via FTP or some similar means) to the
+proper location.<br /><br />
 
-                为了安全，在保存之后，就要把配置文件移出 <tt>config/</tt> 目录并且重新设置权限:
+                Once the file has been saved, it must be moved out of the <code>
+config/</code> directory and the permissions must be reset, again as a
+security measure:
 <pre>
 mv config/config.inc.php .         # 移动配置文件到当前目录
 chmod o-rw config.inc.php          # 撤销所有人对配置文件的读写权限
 rm -rf config                      # 删除不需要的目录
 </pre>
                 现在配置文件保存好了。如果你要检查当前设置或者要设置一些安装脚本中没有提供的高级功能，你可以用你最喜欢的编辑器来编辑它。</li></ul></li>
-    <li>如果使用 &quot;config&quot; <tt>认证</tt>，你应该保护好 phpMyAdmin 的安装目录，因为 config
-认证不会要求用户输入密码。我们建议使用其他认证，如在 <a href="#glossary"><i>.htaccess</i></a> 文件中设置
-HTTP 认证或修改设置让 phpMyAdmin 使用 cookie/http <tt>认证</tt>。更多信息参见 <abbr title="常见问题
-(Frequently Asked Questions)">FAQ</abbr> 中的 <a href="#faqmultiuser">多用户</a>
-一节，特别要注意 <a href="#faq4_4"> <abbr title="常见问题 (Frequently Asked
-Questions)">FAQ</abbr> 4.4</a> 中所提到的问题。</li>
+    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
+suggested that you protect the phpMyAdmin installation directory because
+using config does not require a user to enter a password to access the
+phpMyAdmin installation. Use of an alternate authentication method is
+recommended, for example with HTTP&#8211;AUTH in a <a
+href="#glossary"><em>.htaccess</em></a> file or switch to using
+<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
+multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
+Questions">FAQ</abbr> for additional information, especially <a
+href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
     <li>在浏览器中打开 <a href="index.php">phpMyAdmin 主目录</a>。现在 phpMyAdmin
 应该显示一个欢迎页面和你的数据库，如果使用 <abbr title="超文本转移协议 (HyperText Transfer
 Protocol)">HTTP</abbr> 或 cookie 认证，则将显示一个登录对话框。</li>
-    <li>You should deny access to the <tt>./libraries</tt> and <tt>./setup/lib</tt>
-subfolders in your webserver configuration. For Apache you can use supplied
-<a href="#glossary"><i>.htaccess</i></a> file in that folder, for other
-webservers, you should configure this yourself.  Such configuration prevents
-from possible path exposure and cross side scripting vulnerabilities that
-might happen to be found in that code.</li>
+    <li>You should deny access to the <code>./libraries</code> and
+<code>./setup/lib</code> subfolders in your webserver configuration. For
+Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
+in that folder, for other webservers, you should configure this yourself.
+Such configuration prevents from possible path exposure and cross side
+scripting vulnerabilities that might happen to be found in that code.</li>
     <li>
         It is generally good idea to protect public phpMyAdmin installation against
 access by robots as they usually can not do anything good there. You can do
@@ -287,20 +315,20 @@ Format)">PDF</abbr>
 、内容转换等)，你需要创建一些特殊的数据表。这些表可以放在你自己的数据库里，也可以在一个多用户的服务器上创建一个独立的数据库
 (这个数据库将通过其对应的帐号访问，所以不应该给其他用户访问这个数据库的权限)。</p>
 
-<p> Please look at your <tt>./examples/</tt> directory, where you should find a
-file called <i>create_tables.sql</i>. (If you are using a Windows server,
-pay special attention to <a href="#faq1_23"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Please look at your <code>./examples/</code> directory, where you should
+find a file called <em>create_tables.sql</em>. (If you are using a Windows
+server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
+Asked Questions">FAQ</abbr> 1.23</a>).</p>
 
 <p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> and then create
-new tables by importing <i>./examples/create_tables.sql</i>.</p>
+please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
+create new tables by importing <em>./examples/create_tables.sql</em>.</p>
 
 <p> 你可以使用 phpMyAdmin 来创建这些数据表。但请注意，你可能需要特殊 (管理员)
 权限来创建数据库和数据表，而且可能还需要根据实际所使用的数据修改这个脚本中数据库的名字。</p>
 
-<p> After having imported the <i>./examples/create_tables.sql</i> file, you
-should specify the table names in your <i>./config.inc.php</i> file. The
+<p> After having imported the <em>./examples/create_tables.sql</em> file, you
+should specify the table names in your <em>./config.inc.php</em> file. The
 directives used for that can be found in the <a href="#config">Configuration
 section</a>. You will also need to have a controluser with the proper rights
 to those tables (see section <a href="#authentication_modes">Using
@@ -308,25 +336,33 @@ authentication modes</a> below).</p>
 
 <h3 id="upgrading">从旧版本升级</h3>
 
-<p> 只需复制旧版本的 <i>./config.inc.php</i> 到新版本即可。当某些选项被改变或取消时，也可能需要做一些修改，特别是
-<tt>$cfg['AttributeTypes']</tt> 的定义被修改了，所以你最好将它从你的配置文件中删除，使用默认值。为了兼容 PHP
-6，还需要删除可能出现在配置文件的末尾的 <tt>set_magic_quotes_runtime(0);</tt> 语句。</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed; in particular,
+the definition of <code>$cfg['AttributeTypes']</code> has changed so you
+better remove it from your file and just use the default one.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
-<p> <strong>请勿</strong>复制 <tt>libraries/config.default.php</tt> 为
-<tt>config.inc.php</tt> 因为默认配置是仅对当前版本有效的。</p>
+<p> You should <strong>not</strong> copy
+<code>libraries/config.default.php</code> over <code>config.inc.php</code>
+because the default configuration file is version-specific.</p>
 
 <p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
 version 5.x or newer and if you use the phpMyAdmin configuration storage,
 you should run the <abbr title="structured query language">SQL</abbr> script
-found in <tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt>.</p>
+found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
 
 <h3 id="authentication_modes">使用认证</h3>
 
-<ul><li>在<b>多用户环境</b>中，我们推荐使用 <abbr title="超文本转移协议 (HyperText Transfer
-Protocol)">HTTP</abbr> 和 cookie 认证，这样用户仅可以看到并管理自己的数据库。<br />
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
+authentication modes are recommended in a <strong>multi-user
+environment</strong> where you want to give users access to their own
+database and don't want them to play around with others.<br />
         目前已知微软的 IE6 (Internet Explorer，或更低版本) 在处理 cookies 上存在严重问题。<br />
-        即使在<b>单用户环境</b>中使用 <abbr title="超文本转移协议 (HyperText Transfer
-Protocol)">HTTP</abbr> 或 cookie 认证，用户名和密码也不会被保存在配置文件中。
+        Even in a <strong>single-user environment</strong>, you might prefer to use
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
+your user/password pair are not in clear in the configuration file.
         </li>
 
     <li><abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 和 cookie
@@ -335,23 +371,27 @@ Protocol)">HTTP</abbr> 或 cookie 认证，用户名和密码也不会被保存�
         不论如何，如果你不使用 HTTPS 协议，密码将总是以明文传输。<br />
         当使用 cookie 认证时，密码将经过 blowfish 算法加密并保存在一个临时 cookie 中。</li>
 
-    <li id="pmausr">注意: 本节仅适用于运行在 <tt>--skip-show-database</tt> 模式下的 MySQL 服务器。<br /><br />
+    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+<code>--skip-show-database</code>.<br /><br />
 
-        当使用 '<abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>' 和
-'cookie' 认证时，phpMyAdmin 需要一个在 <i>`mysql`.`user` (除 `Password`
-之外的所有字段)</i>、<i>`mysql`.`db` (所有字段)</i>、<i>`mysql`.`host` (所有字段)</i> 和
-<i>`mysql`.`tables_priv` (除 `Grantor` 和 `Timestamp` 之外的所有字段)</i>
-数据表中<b>仅</b>具有 <tt>SELECT</tt> 权限的控制用户。<br /> 你必须在 <tt>config.inc.php</tt> 中的 <tt><a href="#cfg_Servers_controluser"
-class="configrule"> $cfg['Servers'][$i]['controluser']</a></tt> 和 <tt><a
+        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
+modes, phpMyAdmin needs a controluser that has <strong>only</strong> the
+<code>SELECT</code> privilege on the <em>`mysql`.`user` (all columns except
+`Password`)</em>, <em>`mysql`.`db` (all columns)</em>, <em>`mysql`.`host`
+(all columns)</em> and <em>`mysql`.`tables_priv` (all columns except
+`Grantor` and `Timestamp`)</em> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
+in the <code>config.inc.php</code> file under the <code><a
+href="#cfg_Servers_controluser" class="configrule">
+$cfg['Servers'][$i]['controluser']</a></code> and <code><a
 href="#cfg_Servers_controlpass" class="configrule">
-$cfg['Servers'][$i]['controlpass']</a></tt> 设置中设置好<a
-href="#controluser">控制用户</a>。<br />
-        The following example assumes you want to use <tt>pma</tt> as the
-controluser and <tt>pmapass</tt> as the controlpass, but <b>this is only an
-example: use something else in your file!</b> Input these statements from
-the phpMyAdmin <abbr title="structured query language">SQL </abbr> Query
-window or mysql command&#8211;line client.<br />
-        如果网站服务器和 MySQL 服务器并不在同一台服务器上，你要将 <tt>localhost</tt> 换成正确的地址。
+$cfg['Servers'][$i]['controlpass']</a></code> settings.<br />
+        The following example assumes you want to use <code>pma</code> as the
+controluser and <code>pmapass</code> as the controlpass, but <strong>this is
+only an example: use something else in your file!</strong> Input these
+statements from the phpMyAdmin <abbr title="structured query language">SQL
+</abbr> Query window or mysql command&#8211;line client.<br />
+        Of course you have to replace <code>localhost</code> with the webserver's
+host if it's not the same as the MySQL server's one.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -376,9 +416,12 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
         (需要设置好 <a href="#linked-tables">phpMyAdmin 高级功能</a>)。  
     <br /></li>
 
-    <li>每一个<i>真实的</i>用户应在特定的数据库上具有一定的权限。除非你很明白这些权限的作用
-(例如，需要创建一个超级用户)，否则不应轻易授予普通用户任何全局权限。<br />
-        如，授予用户 <i>real_user</i> 对数据库 <i>user_base</i> 的所有权限:<br />
+    <li>Then each of the <em>true</em> users should be granted a set of privileges
+on a set of particular databases. Normally you shouldn't give global
+privileges to an ordinary user, unless you understand the impact of those
+privileges (for example, you are creating a superuser).<br />
+        For example, to grant the user <em>real_user</em> with all privileges on the
+database <em>user_base</em>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
@@ -404,7 +447,7 @@ href="#faq1_35"><abbr title="常见问题 (Frequently Asked Questions)">FAQ</abb
 Interface)">CGI</abbr> 方式使用的 PHP 。</li>
     <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.4</a> about not using the <a
-href="#glossary"><i>.htaccess</i></a> mechanism along with '<abbr
+href="#glossary"><em>.htaccess</em></a> mechanism along with '<abbr
 title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
 </ul>
 
@@ -417,7 +460,9 @@ title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
     <li>使用该认证时，用户可以真正的退出 phpMyAdmin 并用相同的用户名再次登录。</li>
     <li>如果想登录到任意服务器，参见 <a href="#AllowArbitraryServer" class="configrule">
 $cfg['AllowArbitraryServer']</a> 指令。</li>
-    <li>在<a href="#require">环境需求</a>一节中我们提到过，可选的 <tt>mcrypt</tt> 扩展可以显著提高访问速度。</li>
+    <li>As mentioned in the <a href="#require">requirements</a> section, having the
+<code>mcrypt</code> extension will speed up access considerably, but is not
+required.</li>
 </ul>
 
 <h4>'signon' 认证</h4>
@@ -445,7 +490,7 @@ $cfg['Servers'][$i]['AllowDeny']['rules']</a> 指令。</li>
     <li>Unlike cookie and http, does not require a user to log in when first loading
 the phpMyAdmin site. This is by design but could allow any user to access
 your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><i>.htaccess</i></a> file with the HTTP-AUTH directive or
+href="#glossary"><em>.htaccess</em></a> file with the HTTP-AUTH directive or
 disallowing incoming HTTP requests at one&#8217;s router or firewall will
 suffice (both of which are beyond the scope of this manual but easily
 searchable with Google).</li>
@@ -455,17 +500,17 @@ searchable with Google).</li>
 Swekey 是可用于网站应用程序上的廉价 USB 证书。<br /><br />
 当开启 Swekey 认证时，需要在进入 phpMyAdmin 的登录页面前插入 Swekey (目前仅支持 cookie 认证)。Swekey
 认证默认为关闭。<br /><br />
-在 <tt>config.inc.php</tt> 中添加如下内容可启用 Swekey 认证:
+To enable it, add the following line to <code>config.inc.php</code>:
 </p>
 <pre>
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-You then have to create the <tt>swekey.conf</tt> file that will associate
-each user with their Swekey Id. It is important to place this file outside
-of your web server's document root (in the example, it is located in
-<tt>/etc</tt>). A self documented sample file is provided in the
-<tt>examples</tt> directory. Feel free to use it with your own users'
+You then have to create the <code>swekey.conf</code> file that will
+associate each user with their Swekey Id. It is important to place this file
+outside of your web server's document root (in the example, it is located in
+<code>/etc</code>). A self documented sample file is provided in the
+<code>examples</code> directory. Feel free to use it with your own users'
 information.<br /><br />
 如果你想购买 Swekey 请访问 <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key
@@ -475,26 +520,33 @@ href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key
 <!-- CONFIGURATION -->
 <h2 id="config">设置</h2>
 
-<p> <span class="important"><acronym title="苹果麦金塔 (Apple
-Macintosh)">Mac</acronym> 用户注意:</span> PHP 似乎不支持 <acronym title="苹果麦金塔
-(Apple Macintosh)">Mac</acronym> 式的换行符
-(&quot;<tt>\r</tt>&quot;)。所以在保存你所修改的文件之前，请确保你的文本编辑器使用 *nix 式的换行符
-(&quot;<tt>\n</tt>&quot;)。</p>
+<p> <span class="important">Warning for <acronym title="Apple
+Macintosh">Mac</acronym> users:</span> PHP does not seem to like <acronym
+title="Apple Macintosh">Mac</acronym> end of lines character
+(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
+to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
+text editor before saving a script you have modified.</p>
 
-<p> <span class="important">注意:</span> 几乎所有设置都在 <tt>config.inc.php</tt>
-文件中定义。如果此文件不存在，请参考<a href="#setup">快速安装</a>一节创建该文件。你只需要设置不同于
-<tt>libraries/config.default.php</tt> 中所定义的默认值的设置。</p>
+<p> <span class="important">Configuration note:</span> Almost all configurable
+data is placed in <code>config.inc.php</code>. If this file does not exist,
+please refer to the <a href="#setup">Quick install</a> section to create
+one. This file only needs to contain the parameters you want to change from
+their corresponding default value in
+<code>libraries/config.default.php</code>.</p>
 
-<p> 与设计相关的参数 (如颜色) 是通过 <tt>themes/主题名/layout.inc.php</tt> 定义的。你可能还需要创建
-<i>config.footer.inc.php</i> 和 <i>config.header.inc.php</i>
-文件用来添加你的代码到每一页的页眉和页脚。</p>
+<p> The parameters which relate to design (like colors) are placed in
+<code>themes/themename/layout.inc.php</code>. You might also want to create
+<em>config.footer.inc.php</em> and <em>config.header.inc.php</em> files to
+add your site specific code to be included on start and end of each page.</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] 字符串</dt>
-    <dd>在这里设置 phpMyAdmin 安装目录的完整 <abbr title="统一资源定位符 (Uniform Resource
-Locator)">URL</abbr> 。如，
-<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>
-。注意在有些网站服务器上 <abbr title="统一资源定位符 (Uniform Resource Locator)">URL</abbr>
-是区分大小写的。不要忘了最后的斜杠。<br /><br />
+    <dd>Sets here the complete <abbr title="Uniform Resource Locator">URL</abbr>
+(with full path) to your phpMyAdmin installation's directory.
+E.g.
+<code>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</code>.
+Note also that the <abbr title="Uniform Resource Locator">URL</abbr> on some
+web servers are case&#8211;sensitive.  Don&#8217;t forget the trailing slash
+at the end.<br /><br />
 
         自 2.3.0 起，我们建议将本设置留空。大多数情况下 phpMyAdmin 能正确地自动识别。使用端口转发的用户需要设置 PmaAbsoluteUri
 (<a
@@ -507,19 +559,25 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1340187&amp;
 class="configrule">$cfg['Servers'][$i]['pmadb']</a>)。
         <br />
         如果你尝试使用这些功能但无法正常使用，请在你想使用该功能的数据库中打开&quot;结构&quot;页。你会看到一个可以告诉你为什么这些功能无法使用的链接。<br />
-        如果你不想使用那些功能，将此值设为 <tt>TRUE</tt> 即可隐藏那些提示信息。</dd>
+        If you do not want to use those features set this variable to
+<code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] 布尔</dt>
-    <dd>设为 <tt>TRUE</tt> 可在检测到 Suhosin 时不显示警告。</dd>
+    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
+this parameter to <code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] 布尔</dt>
-    <dd>设为 <tt>TRUE</tt> 可在使用 cookie 认证但没有 mcrypt 扩展时不显示警告。</dd>
+    <dd>Disable the default warning that is displayed if mcrypt is missing for
+cookie authentication.  You can set this parameter to <code>TRUE</code> to
+stop this message from appearing.</dd>
 
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
     <dd>对不到特定完成度的翻译显示警告。</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] 布尔</dt>
-    <dd>设为 <tt>true</tt> 将允许 phpMyAdmin 被不同域名的框架所调用，这个潜在的安全漏洞可能导致跨框架脚本攻击。</dd>
+    <dd>Setting this to <code>true</code> allows a page located on a different
+domain to call phpMyAdmin inside a frame, and is a potential security hole
+allowing cross-frame scripting attacks.</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] 字符串</dt>
     <dd>&quot;cookie&quot; 认证使用 blowfish 算法加密用户的密码。<br />
@@ -528,13 +586,18 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a>)。
         自 3.1.0 起 phpMyAdmin 能在线生成，但因为密钥被保存在会话中，所以安全性相对较低，并且无法显示上次登录的用户名。</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] 数组</dt>
-    <dd>自 1.4.2 起，phpMyAdmin 支持管理多个 MySQL 服务器。因此加入了 <a href="#cfg_Servers"
-class="configrule">$cfg['Servers']</a> 数组来保存不同服务器的登录信息。第一个 <a
+    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
+MySQL servers. Therefore, a <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>-array has been added which contains
+the login information for the different servers.  The first <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-包含第一个服务器的主机名，第二个 <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a> 包含第二个服务器的主机名，以此类推。在
-<tt>./libraries/config.default.php</tt> 中有一节服务器的配置，你可以将它多次复制到
-<tt>./config.inc.php</tt> 中，完全复制或仅复制需要的部分 (要修改的部分)。</dd>
+contains the hostname of the first server, the second <a
+href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
+the hostname of the second server, etc. In
+<code>./libraries/config.default.php</code>, there is only one section for
+server definition, however you can put as many as you need in
+<code>./config.inc.php</code>, copy that block or needed parts (you don't
+have to define all settings, just those you need to change).</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] 字符串</dt>
     <dd>第 $i 个 MySQL 服务器的主机名或 <abbr title="互联网协议 (Internet Protocol)">IP</abbr> 地址。如
@@ -549,15 +612,20 @@ class="configrule">$cfg['Servers'][$i]['host']</a> 设为 &quot;127.0.0.1&quot;
 
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] 字符串</dt>
     <dd>套接字的路径。留空为默认。<br />
-        要知道正确的套接字，可以查看 MySQL 的配置或者在 <tt>mysql</tt> 客户端命令行中执行 <tt>status</tt> 命令。</dd>
+        To determine the correct socket, check your MySQL configuration or, using
+the <code>mysql</code> command&#8211;line client, issue the
+<code>status</code> command.  Among the resulting information displayed will
+be the socket used.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] 布尔</dt>
     <dd>设置连接到 MySQL 服务器时是否使用 SSL 安全连接。
     </dd>
 
     <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] 字符串</dt>
-    <dd>设置怎样连接到 MySQL 服务器。可选 <tt>'socket'</tt> 和 <tt>'tcp'</tt> 。默认为 'tcp'，所有 MySQL
-服务器都可以使用，而套接字在有些平台上不可用。<br /><br />
+    <dd>What type connection to use with the MySQL server. Your options are
+<code>'socket'</code> and <code>'tcp'</code>. It defaults to 'tcp' as that
+is nearly guaranteed to be available on all MySQL servers, while sockets are
+not supported on some platforms.<br /><br />
 
         要使用套接字连接，MySQL 服务器必须和网站服务器在同一台服务器上。</dd>
 
@@ -565,11 +633,11 @@ class="configrule">$cfg['Servers'][$i]['host']</a> 设为 &quot;127.0.0.1&quot;
     <dd>设置使用什么 PHP 扩展连接到 MySQL。可供选择的有:
         <br /><br />
 
-        <tt><i>mysql</i></tt> : The classic MySQL extension.<br /><br />
+        <code><em>mysql</em></code> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt> : The improved MySQL extension. This extension became
-available with PHP 5.0.0 and is the recommended way to connect to a server
-running MySQL 4.1.x or newer.</dd>
+        <code><em>mysqli</em></code> : The improved MySQL extension. This extension
+became available with PHP 5.0.0 and is the recommended way to connect to a
+server running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] 布尔</dt>
     <dd>设置是否使用压缩协议连接到 MySQL 服务器 (试验性的)。</dd>
@@ -586,38 +654,47 @@ string<br />
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 字符串
     </dt>
-    <dd>这个特殊的帐号有两种不同的用途: 1、为 phpMyAdmin 高级功能提供支持 (参见 <a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>)。2、在运行于
-<tt>--skip-show-database</tt> 模式的 MySQL 服务器上使用多用户安装提供支持 (<abbr
-title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 或 cookie 认证)。<br /><br />
+    <dd>This special account is used for 2 distinct purposes: to make possible all
+relational features (see <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
+server running with <code>--skip-show-database</code>, to enable a
+multi-user installation (<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> or cookie authentication mode).<br /><br />
 
-        当使用 <abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr> 或 cookie
-认证时 (自 2.2.1 起也包括 'config' 认证)，你需要提供一个在 <i>mysql.user (除了
-&quot;Password&quot; 之外的所有字段)</i>、<i>mysql.db (所有字段)</i> 和
-<i>mysql.tables_priv (除了 &quot;Grantor&quot; 和 &quot;Timestamp&quot;
-之外的所有字段) </i> 表上具有 <tt>SELECT</tt> 权限的 MySQL 帐号，以便检查用户可以看到哪些数据库。<br />
+        When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
+authentication modes (or 'config' authentication mode since phpMyAdmin
+2.2.1), you need to supply the details of a MySQL account that has
+<code>SELECT</code> privilege on the <em>mysql.user (all columns except
+&quot;Password&quot;)</em>, <em>mysql.db (all columns)</em> and
+<em>mysql.tables_priv (all columns except &quot;Grantor&quot; and
+&quot;Timestamp&quot;) </em>tables.  This account is used to check what
+databases the user will see at login.<br />
         详细信息请参见<a href="#setup">安装</a>一节中的&quot;使用认证&quot;。<br /><br />
 
         在 2.2.5 前，这两个设置名分别为 &quot;stduser/stdpass&quot; 。</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] 字符串 <tt>['<abbr title="超文本转移协议 (HyperText
-Transfer Protocol)">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
+    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <code>['<abbr title="HyperText
+Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</code></dt>
     <dd>设置服务器使用 config、cookie、<abbr title="超文本转移协议 (HyperText Transfer
 Protocol)">HTTP</abbr> 还是 signon 认证。
-        <ul><li>'config' 认证 (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>) 是最经典的方法: 用户名和密码被保存在
-<i>config.inc.php</i> 中。</li>
-            <li>'cookie' 认证 (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) 自 2.2.3 起允许在 cookies
-的支持下使用任意有效的 MySQL 用户登录。会话中的用户名和密码被保存在 cookies 中，会话结束后密码将被删除。若启用 <tt><a
-href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a></tt> 则可登录到任意服务器。
+        <ul><li>'config' authentication (<code>$auth_type&nbsp;=&nbsp;'config'</code>)  is
+the plain old way: username and password are stored in
+<em>config.inc.php</em>.</li>
+            <li>'cookie' authentication mode (<code>$auth_type&nbsp;=&nbsp;'cookie'</code>)
+as introduced in 2.2.3 allows you to log in as any valid MySQL user with the
+help of cookies. Username and password are stored in cookies during the
+session and password is deleted when it ends. This can also allow you to log
+in in arbitrary server if <code><a href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a></code> enabled.
             </li>
-            <li>'<abbr title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>' 认证
-(旧版本中曾被称为 'advanced' 认证，也可写作 'http')  (<tt>$auth_type&nbsp;=&nbsp;'<abbr
-title="超文本转移协议 (HyperText Transfer Protocol)">HTTP</abbr>'</tt>) 自 1.3.0
-起允许通过任意有效的 MySQL 用户登录。</li>
-            <li>'signon' authentication mode (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>)  as
-introduced in 2.10.0 allows you to log in from prepared PHP session data or
-using supplied PHP script. This is useful for implementing single signon
+            <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
+called 'advanced' in previous versions and can be written also as 'http')
+(<code>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'</code>) as introduced in 1.3.0 allows you to log in
+as any valid MySQL user via HTTP-Auth.</li>
+            <li>'signon' authentication mode (<code>$auth_type&nbsp;=&nbsp;'signon'</code>)
+as introduced in 2.10.0 allows you to log in from prepared PHP session data
+or using supplied PHP script. This is useful for implementing single signon
 from another application.  Sample way how to seed session is in signon
 example: <code>examples/signon.php</code>.  There is also alternative
 example using OpenID - <code>examples/openid.php</code> and example for
@@ -672,22 +749,26 @@ Transfer Protocol)">HTTP</abbr> 或 cookie 认证时请留空，不需要填写�
 数组
     </dt>
     <dd>
-        设置一个 (或一组) 数据库名，用户只能看到这些数据库。自 2.2.1 起，数据库名可以包含 MySQL 通配符 (&quot;_&quot; 和
-&quot;%&quot;): 如果你想使用这些字符本身，请转义它们 (即: 要使用 <tt>'my\_db'</tt> 来表示
-<tt>'my_db'</tt>)。<br />
+        If set to a (an array of) database name(s), only this (these) database(s)
+will be shown to the user. Since phpMyAdmin 2.2.1, this/these database(s)
+name(s) may contain MySQL wildcards characters (&quot;_&quot; and
+&quot;%&quot;): if you want to use literal instances of these characters,
+escape them (I.E. use <code>'my\_db'</code> and not <code>'my_db'</code>).<br />
         此设置可有效降低服务器的负载，因为不需要向 MySQL 发送构建可用数据库列表的请求。但<span class="important">它并不能取代
 MySQL 数据库服务器的权限规则</span>。这仅意味着这些数据库被显示出来而已，而<span
 class="important">不是说没有显示出来的数据库都不能用。</span>
         <br /><br />
 
-        设置使用多个数据库的例子: <tt>$cfg['Servers'][$i]['only_db'] = array('数据库名1',
-'数据库名2');</tt>
+        An example of using more that one database:
+<code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
         自 2.5.5 起，数组中所列出数据库的顺序也被用于在左侧框架排序，所以你可以用它来设置数据库显示的顺序。<br />
-        若希望让部分数据库置顶显示，不需要列出所有数据库，用: <tt>$cfg['Servers'][$i]['only_db'] =
-array('要置顶的数据库1', '要置顶的数据库2', '*');</tt> 即可，phpMyAdmin 就会将 要置顶的数据库1 和
-要置顶的数据库2 置顶显示，而其他数据库还按字母顺序排列。</dd>
+        If you want to have certain databases at the top, but don't care about the
+others, you do not need to specify all other databases. Use:
+<code>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</code>
+instead to tell phpMyAdmin that it should display db3 and db4 on top, and
+the rest in alphabetic order.</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> 字符串
     </dt>
@@ -716,9 +797,11 @@ href="http://php.net/manual/en/reference.pcre.pattern.syntax.php">Perl
         参见 <a href="#linked-tables">phpMyAdmin 高级功能</a>一节了解其好处以及如何快速创建该数据库和需要的数据表。
         <br /><br />
 
-        如果此 phpMyAdmin 只有你自己使用，你可以用你当前的数据库来保存这些特殊的数据表，这种情况下，你可以在
-<tt>$cfg['Servers'][$i]['pmadb']</tt> 中填写当前数据库的名字。若此 phpMyAdmin
-作为多用户使用，请设为包含 phpMyAdmin 高级功能数据表的专用数据库。</dd>
+        If you are the only user of this phpMyAdmin installation, you can use your
+current database to store those special tables; in this case, just put your
+current database name in <code>$cfg['Servers'][$i]['pmadb']</code>. For a
+multi-user installation, set this parameter to the name of your central
+database containing the phpMyAdmin configuration storage.</dd>
 
     <dt id="bookmark">
         <span
@@ -729,7 +812,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
 
         要启用此功能:
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['bookmarktable']</tt> 中设置要使用的数据表名</li>
+            <li>enter the table name in <code>$cfg['Servers'][$i]['bookmarktable']</code></li>
         </ul>
     </dd>
 
@@ -757,13 +840,14 @@ Questions)">FAQ</abbr> 6.6</a>)</li>
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['relation']</tt> 中设置要使用的数据表名</li>
+            <li>put the relation table name in <code>$cfg['Servers'][$i]['relation']</code></li>
             <li>现在以普通用户登录到 phpMyAdmin 并打开每一张你想要使用这个功能的数据表，点击&quot;结构/关系查看/&quot;并设置外键字段。
                 </li>
         </ul>
 
-        请注意在当前版本中 <tt>master_db</tt> 必须和 <tt>foreign_db</tt>
-一致。这两个字段是为后期跨数据库关系开发预留的。
+        Please note that in the current version, <code>master_db</code> must be the
+same as <code>foreign_db</code>. Those columns have been put in future
+development of the cross-db relations.
     </dd>
 
     <dt id="table_info">
@@ -774,8 +858,8 @@ Questions)">FAQ</abbr> 6.6</a>)</li>
         自 2.3.0 起你可以在 'table_info' 表的支持下设置当鼠标移到对应字段时用气泡提示显示出来的相应内容。<br />
         这张表的名字将被保存在此变量中。要启用此功能:
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['table_info']</tt> 中设置要使用的数据表名
-(如：'pma_table_info')</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['table_info']</code> (e.g.
+'pma_table_info')</li>
             <li>对每一张你要使用此功能的数据表，点击&quot;结构/关系查看/选择要显示的字段&quot;设置好显示的字段。</li>
         </ul>
         使用技巧: <a href="#faqdisplay">显示字段</a>。
@@ -796,8 +880,9 @@ Format)">PDF</abbr> 大纲输出中的坐标)。<br /><br />
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['table_coords']</tt> 和
-<tt>$cfg['Servers'][$i]['pdf_pages']</tt> 中设置要使用的数据表名</li>
+            <li>put the correct table names in
+<code>$cfg['Servers'][$i]['table_coords']</code> and
+<code>$cfg['Servers'][$i]['pdf_pages']</code></li>
         </ul>
 
         使用技巧: <a href="#faqpdf"><abbr title="便携式文档格式 (Portable Document
@@ -826,8 +911,8 @@ MIME 类型转换系统，column_info 表必须有这三个新字段 'mimetype'�
 
         要启用此功能:
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['column_info']</tt> 中设置要使用的数据表名
-(如：'pma_column_info')</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['column_info']</code> (e.g.
+'pma_column_info')</li>
             <li>要从 2.5.0 之前的 Column_comments 表升级可执行:
 
                 <pre>
@@ -837,9 +922,10 @@ ALTER TABLE `pma_column_comments`
     ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                别忘了将 <i>config.inc.php</i> 中的<br />
-                <tt>$cfg['Servers'][$i]['column_comments']</tt> 改为
-<tt>$cfg['Servers'][$i]['column_info']</tt></li>
+                and remember that the Variable in <em>config.inc.php</em> has been renamed
+from<br />
+                <code>$cfg['Servers'][$i]['column_comments']</code> to
+<code>$cfg['Servers'][$i]['column_info']</code></li>
         </ul>
     </dd>
 
@@ -859,7 +945,8 @@ class="configrule">$cfg['QueryHistoryMax']</a>
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['history']</tt> 中设置要使用的数据表名 (如：'pma_history')
+            <li>put the table name in <code>$cfg['Servers'][$i]['history']</code>
+(e.g. 'pma_history')
                 </li>
         </ul>
     </dd>
@@ -884,7 +971,7 @@ tables, but it will disappear after you logout.<br/><br/>
 
         <ul>
             <li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['recent']</tt>
+            <li>put the table name in <code>$cfg['Servers'][$i]['recent']</code>
 (e.g. 'pma_recent')</li>
         </ul>
     </dd>
@@ -906,7 +993,7 @@ after you logout.<br/><br/>
 
         <ul>
             <li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>put the table name in <tt>$cfg['Servers'][$i]['table_uiprefs']</tt>
+            <li>put the table name in <code>$cfg['Servers'][$i]['table_uiprefs']</code>
 (e.g. 'pma_table_uiprefs')</li>
         </ul>
     </dd>
@@ -933,7 +1020,8 @@ after you logout.<br/><br/>
 
         <ul>
             <li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['tracking']</tt> 中设置要使用的数据表名 (如：'pma_tracking')</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['tracking']</code>
+(e.g. 'pma_tracking')</li>
         </ul>
     </dd>
 
@@ -1019,7 +1107,7 @@ browser's local storage, or, it is is unavailable, until the end of session.
 
         <ul>
             <li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['userconfig']</tt> 中设置要使用的数据表名</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['userconfig']</code></li>
         </ul>
     </dd>
 
@@ -1034,8 +1122,8 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
         要启用此功能:
 
         <ul><li>设置好 <a href="#pmadb">pmadb</a> 和 phpMyAdmin 高级功能</li>
-            <li>在 <tt>$cfg['Servers'][$i]['designer_coords']</tt> 中设置要使用的数据表名
-(如：'pma_designer_coords')
+            <li>put the table name in <code>$cfg['Servers'][$i]['designer_coords']</code>
+(e.g. 'pma_designer_coords')
                 </li>
         </ul>
     </dd>
@@ -1057,8 +1145,11 @@ delete older rows.</dd>
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 布尔
     </dt>
-    <dd>因自 2.5.0 起采用了新的 MIME 类型转换功能，使 column_info 表增加了三个字段。若上述变量设为 <tt>TRUE</tt>
-(默认值)，phpMyAdmin 将会检查你的表结构是否已更新。若没有，则会给超级用户显示警告。<br /><br />
+    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
+column_info table got enhanced with three new columns. If the above variable
+is set to <code>TRUE</code> (default) phpMyAdmin will check if you have the
+latest table structure available. If not, it will emit a warning to the
+superuser.<br /><br />
 
         你可以通过将其设为 false 来禁止此检查，从而得到性能的提升。<br /><br />
 
@@ -1069,8 +1160,10 @@ id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 布尔</dt>
-    <dd>设置是否允许使用空密码登录。为了防止可能存在空密码的 root 或者其他匿名 (空) 用户访问到 MySQL 服务器，此项默认为
-<tt>false</tt> 。
+    <dd>Whether to allow logins without a password. The default value of
+<code>false</code> for this parameter prevents unintended access to a MySQL
+server with was left with an empty password for root or on which an
+anonymous (blank) user is defined.
     </dd>
     <dt id="servers_allowdeny_order">
         <span
@@ -1079,15 +1172,23 @@ id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span
     </dt>
     <dd>若不指定规则顺序，<abbr title="互联网协议 (Internet Protocol)">IP</abbr> 认证将不可用。<br /><br />
 
-        若将规则顺序设为 <tt>'deny,allow'</tt>，系统将首先应用所有的允许 (allow) 规则，然后再应用禁止规则 (deny)
-。默认允许访问。任何没有被 Deny (禁止) 命令匹配的客户端或者被 Allow (允许) 命令匹配的客户端将被允许访问服务器。 <br /><br />
+        If your rule order is set to <code>'deny,allow'</code> then the system
+applies all deny rules followed by allow rules. Access is allowed by
+default. Any client which does not match a Deny command or does match an
+Allow command will be allowed access to the server. <br /><br />
 
-        若将规则顺序设为 <tt>'allow,deny'</tt>，系统将首先应用所有的禁止 (deny) 规则，然后再应用允许 (allow)
-规则。默认禁止访问。任何没有被 Allow (允许) 命令匹配的客户端或者被 Deny (禁止) 命令匹配的客户端将被禁止访问服务器。<br /><br />
+        If your rule order is set to <code>'allow,deny'</code> then the system
+applies all allow rules followed by deny rules. Access is denied by
+default.  Any client which does not match an Allow directive or does match a
+Deny directive will be denied access to the server.<br /><br />
 
-        若将规则顺序设为 'explicit'，认证行为与设为 'deny,allow' 相似，但同时额外要求主机/用户名组合<b>必须</b>在<i>允许
-(allow)</i> 规则中列出且不能在<i>禁止 (deny)</i> 规则中出现。这是<b>最</b>安全的方式，并且相当于在 Apache
-中使用允许 (allow)、禁止 (deny) 规则但不指定顺序时的效果。<br /><br />
+        If your rule order is set to 'explicit', authorization is performed in a
+similar fashion to rule order 'deny,allow', with the added restriction that
+your host/username combination <strong>must</strong> be listed in the
+<em>allow</em> rules, and not listed in the <em>deny</em> rules. This is the
+<strong>most</strong> secure means of using Allow/Deny rules, and was
+available in Apache by specifying allow and deny rules without setting any
+order.<br /><br />
 
         同时请参见 <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> 探测使用代理的真实 IP
 。
@@ -1103,8 +1204,11 @@ id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span
 &lt;'allow' | 'deny'&gt; &lt;用户名&gt; [from] &lt;IP 地址掩码&gt;
 </pre>
 
-        如果要匹配所有用户，请在<i>用户名</i>一栏中使用通配符 <tt>'%'</tt> 。<br />
-        有几个 <i>IP 地址掩码</i> 一栏的缩写可以使用 (请注意包含 SERVER_ADDRESS 的条目可能对某些网站服务器无效):
+        If you wish to match all users, it is possible to use a <code>'%'</code> as
+a wildcard in the <em>username</em> field.<br />
+        There are a few shortcuts you can use in the <em>ipmask</em> field as well
+(please note that those containing SERVER_ADDRESS might not be available on
+all webservers):
         <pre>
 'all' 等价于 0.0.0.0/0
 'localhost' 等价于 127.0.0.1/8
@@ -1113,32 +1217,36 @@ id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span
 'localnetC' 等价于 SERVER_ADDRESS/24
 </pre>
 
-        在规则顺序为 <tt>'deny,allow'</tt> 时，空的规则列表等价于 <tt>'allow % from all'</tt> ；规则顺序为
-<tt>'allow,deny'</tt> 或 <tt>'explicit'</tt> 时等价于 <tt>'deny % from all'</tt>
-。<br /><br />
+        Having an empty rule list is equivalent to either using <code>'allow % from
+all'</code> if your rule order is set to <code>'deny,allow'</code> or
+<code>'deny % from all'</code> if your rule order is set to
+<code>'allow,deny'</code> or <code>'explicit'</code>.<br /><br />
 
         对于 <abbr title="互联网协议 (Internet Protocol)">IP</abbr> 匹配系统来说，下列形式是有效的:<br />
-        <tt>xxx.xxx.xxx.xxx</tt> (一个具体的 <abbr title="互联网协议 (Internet
-Protocol)">IP</abbr> 地址)<br />
-        <tt>xxx.xxx.xxx.[yyy-zzz]</tt> (一段 <abbr title="互联网协议 (Internet
-Protocol)">IP</abbr> 地址范围)<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> (CIDR，无类别域间路由类型的 <abbr title="互联网协议 (Internet
-Protocol)">IP</abbr> 地址范围)<br />
+        <code>xxx.xxx.xxx.xxx</code> (an exact <abbr title="Internet
+Protocol">IP</abbr> address)<br />
+        <code>xxx.xxx.xxx.[yyy-zzz]</code> (an <abbr title="Internet
+Protocol">IP</abbr> address range)<br />
+        <code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing type
+<abbr title="Internet Protocol">IP</abbr> addresses)<br />
         而下列形式是无效的:<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt> (部分 <abbr title="互联网协议 (Internet
-Protocol)">IP</abbr> 地址范围)<br />
+        <code>xxx.xxx.xxx.xx[yyy-zzz]</code> (partial <abbr title="Internet
+Protocol">IP</abbr> address range)<br />
         也不支持互联网协议第六版 (IPv6) 的地址。
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span> 布尔</dt>
-    <dd>设置是否禁止通过 <tt>INFORMATION_SCHEMA</tt> 来获取信息 (用 <tt>SHOW</tt>
-命令代替)，若不禁止且数据库很多时可能会造成性能下降。目前仅部分代码实现此功能，持续增加中。
+    <dd>Disable using <code>INFORMATION_SCHEMA</code> to retrieve information (use
+<code>SHOW</code> commands instead), because of speed issues when many
+databases are present. Currently used in some parts of the code, more to
+come.
     </dd>
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
 字符串</dt>
-    <dd>在有相当数量数据库的服务器上，通过默认的 <tt>SHOW DATABASES</tt>
-命令来查询可用数据库的名字可能会很慢，你可以用更快的命令来代替它 (参见 <tt>libraries/config.default.php</tt>
-文件中的例子)。
+    <dd>On a server with a huge number of databases, the default <code>SHOW
+DATABASES</code> command used to fetch the name of available databases will
+probably be too slow, so it can be replaced by faster commands (see
+<code>libraries/config.default.php</code> for examples).
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 布尔</dt>
@@ -1175,9 +1283,12 @@ Should be absolute including protocol.
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
-    <dd>如果有多个服务器设置，你可以设置 <tt>$cfg['ServerDefault']</tt> 为其中之一，phpMyAdmin 将会自动连接，若设为
-0 则将在登录页面显示服务器列表。<br />
-        如果只有一个服务器设置，<tt>$cfg['ServerDefault']</tt> 必须设为那台服务器。</dd>
+    <dd>If you have more than one server configured, you can set
+<code>$cfg['ServerDefault']</code> to any one of them to autoconnect to that
+server when phpMyAdmin is started, or set it to 0 to be given a list of
+servers without logging in.<br />
+        If you have only one server configured, <code>$cfg['ServerDefault']</code>
+MUST be set to that server.</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] 布尔</dt>
     <dd>设置是否使用 Ajax 技术只刷新某些页面的部分内容。仅用于支持非 Ajax 的页面，例如，设计器功能必须使用 Ajax 所以该指令对其无效。</dd>
@@ -1264,8 +1375,8 @@ avoid accidental dropping rather than strict privilege limitation.</dd>
     <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] 布尔</dt>
     <dd>设置在 cookie 认证下是否能自动重复上次登录。<br /><br />
 
-        如果没有设置 <tt><a href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>
-该功能将自动禁用。
+        This is automatically disabled if you do not have configured <code><a
+href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></code>.
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] 整数 [单位: 秒]</dt>
@@ -1288,15 +1399,18 @@ false，当你访问多台服务器时可能会容易忘记退出其它服务器
     <dd>设置 phpMyAdmin 是否在执行多语句查询出错的时候继续执行。默认为中断执行。</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] 布尔</dt>
-    <dd>设置 phpMyAdmin 是否以注释形式输出多语句查询中每一个查询的结果到 <abbr title="结构化查询语言 (structured
-query language)">SQL</abbr> 输出中。默认值为 <tt>TRUE</tt> 。</dd>
+    <dd>Define whether phpMyAdmin will output the results of each query of a
+multi-query statement embedded into the <abbr title="structured query
+language">SQL</abbr> output as inline comments. Defaults to
+<code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span> 布尔</dt>
     <dd>若启用，将允许通过 cookie 认证登录到任意服务器并允许在同步对话框中指定服务器。
         <br /><br />
 
-        <b>注意:</b> 请谨慎使用该功能，这将可能导致用户访问到位于 <abbr title="超文本转移协议 (HyperText Transfer
-Protocol)">HTTP</abbr> 服务器防火墙后面的 MySQL 服务器。
+        <strong>NOTE:</strong> Please use this carefully, as this may allow users
+access to MySQL servers behind the firewall where your <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> server is placed.
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] 布尔</dt>
@@ -1362,20 +1476,20 @@ tablename.</dd>
 
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] boolean</dt>
     <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
-frame.  Defaults to <tt>TRUE</tt>.</dd>
+frame.  Defaults to <code>TRUE</code>.</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] string</dt>
     <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
 navigation frame will point to.  For use especially with self made theme
-which changes this.  The default value for this is <tt>main.php</tt>.</dd>
+which changes this.  The default value for this is <code>main.php</code>.</dd>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] string</dt>
-    <dd>Whether to open the linked page in the main window (<tt>main</tt>)  or in a
-new one (<tt>new</tt>). Note: use <tt>new</tt> if you are linking to
-<tt>phpmyadmin.net</tt>.</dd>
+    <dd>Whether to open the linked page in the main window (<code>main</code>)  or
+in a new one (<code>new</code>). Note: use <code>new</code> if you are
+linking to <code>phpmyadmin.net</code>.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
     <dd>Defines the minimum number of tables to display a JavaScript filter box
-above the list of tables in the left frame.  Defaults to <tt>30</tt>. To
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
 disable the filter completely some high number can he used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
@@ -1402,8 +1516,8 @@ MySQL doesn't return such information for Berkeley DB tables.</dd>
 
     <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span>boolean</dt>
     <dd>Defines whether to display detailed server information on main page.  You
-can additionally hide more information by using <tt><a
-href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
+can additionally hide more information by using <code><a
+href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>.
         </dd>
 
     <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo'] </span>布尔<br />
@@ -1413,7 +1527,8 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>.
     <dd>设置是否在主 (右侧) 框架中显示 &quot;PHP 信息&quot; 、 &quot;修改密码&quot;
 链接和创建数据库表单。此设置不检查直接输入的 MySQL 命令。<br /><br />
 
-        请注意若要限制脚本使用 phpinfo() 函数，你必须在 <i>php.ini</i> 中设置:
+        Please note that to block the usage of phpinfo() in scripts, you have to put
+this in your <em>php.ini</em>:
 
         <pre>disable_functions = phpinfo()</pre>
 
@@ -1442,23 +1557,24 @@ to avoid performance issues while getting too many rows.</dd>
 used. If the result set contains more rows, &quot;Previous&quot; and
 &quot;Next&quot; links will be shown.</dd>
 
-    <dt id="cfg_Order">$cfg['Order'] string [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
-    <dd>Defines whether columns are displayed in ascending (<tt>ASC</tt>) order, in
-descending (<tt>DESC</tt>) order or in a &quot;smart&quot; (<tt>SMART</tt>)
-order - I.E. descending order for columns of type TIME, DATE, DATETIME and
-TIMESTAMP, ascending order else- by default.</dd>
+    <dt id="cfg_Order">$cfg['Order'] string [<code>DESC</code>|<code>ASC</code>|<code>SMART</code>]</dt>
+    <dd>Defines whether columns are displayed in ascending (<code>ASC</code>) order,
+in descending (<code>DESC</code>) order or in a &quot;smart&quot;
+(<code>SMART</code>) order - I.E. descending order for columns of type TIME,
+DATE, DATETIME and TIMESTAMP, ascending order else- by default.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] boolean </dt>
     <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
 ticked by default.</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean or string</dt>
-    <dd>Defines whether <tt>BLOB</tt> or <tt>BINARY</tt> columns are protected from
-editing when browsing a table's content. Valid values are:
-        <ul><li><tt>FALSE</tt> to allow editing of all columns;</li>
-            <li><tt>'blob'</tt> to allow editing of all columns except <tt>BLOBS</tt>;</li>
-            <li><tt>'all'</tt> to disallow editing of all <tt>BINARY</tt> or <tt>BLOB</tt>
-columns.</li>
+    <dd>Defines whether <code>BLOB</code> or <code>BINARY</code> columns are
+protected from editing when browsing a table's content. Valid values are:
+        <ul><li><code>FALSE</code> to allow editing of all columns;</li>
+            <li><code>'blob'</code> to allow editing of all columns except
+<code>BLOBS</code>;</li>
+            <li><code>'all'</code> to disallow editing of all <code>BINARY</code> or
+<code>BLOB</code> columns.</li>
         </ul>
     </dd>
 
@@ -1500,8 +1616,8 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a> setting.</dd>
     <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] array</dt>
     <dd>For the foreign key drop-down fields, there are several methods of display,
 offering both the key and value data. The contents of the array should be
-one or both of the following strings: <i>'content-id'</i>,
-<i>'id-content'</i>.</dd>
+one or both of the following strings: <em>'content-id'</em>,
+<em>'id-content'</em>.</dd>
 
     <dt><span id="cfg_ZipDump">$cfg['ZipDump'] </span>布尔<br />
         <span id="cfg_GZipDump">$cfg['GZipDump'] </span>布尔<br />
@@ -1518,13 +1634,13 @@ files contain more GZip/BZip2 headers, but all normal programs handle this
 correctly.</dd>
 
     <dt id="cfg_LightTabs">$cfg['LightTabs'] boolean</dt>
-    <dd>If set to <tt>TRUE</tt>, use less graphically intense tabs on the top of the
-mainframe.</dd>
+    <dd>If set to <code>TRUE</code>, use less graphically intense tabs on the top of
+the mainframe.</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] string</dt>
-    <dd>If set to <tt>TRUE</tt>, will display icons instead of text for db and table
-properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <tt>'both'</tt> if you want icons AND text.<br />
-        When set to <tt>FALSE</tt>, will only show text.</dd>
+    <dd>If set to <code>TRUE</code>, will display icons instead of text for db and
+table properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <code>'both'</code> if you want icons AND text.<br />
+        When set to <code>FALSE</code>, will only show text.</dd>
 
     <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] integer</dt>
     <dd>How many columns will be utilized to display the tables on the database
@@ -1570,7 +1686,8 @@ more information about MySQL manuals and their types.</dd>
 
     <dt id="cfg_DefaultLang">$cfg['DefaultLang'] 字符串</dt>
     <dd>设置在没有浏览器定义或用户定义的情况下所要使用的默认语言。<br />
-        locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo 中应有相应的语言文件。
+        The corresponding language file needs to be in
+locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] 字符串</dt>
@@ -1582,7 +1699,8 @@ connected to Drizzle server.</dd>
 
     <dt id="cfg_Lang">$cfg['Lang'] 字符串</dt>
     <dd>强制使用的语言。<br />
-        locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo 中应有相应的语言文件。
+        The corresponding language file needs to be in
+locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] 字符串</dt>
@@ -1597,8 +1715,10 @@ connected to Drizzle server.</dd>
         </ul>
         默认为自动。</dd>
     <dd>
-        启用编码转换后将会在导出和导入页面显示一个用于选择导出文件字符集的下拉菜单。其默认值来自
-<tt>$cfg['Export']['charset']</tt> 和 <tt>$cfg['Import']['charset']</tt> 。
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <code>$cfg['Export']['charset']</code> and
+<code>$cfg['Import']['charset']</code>.
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] 字符串</dt>
@@ -1620,8 +1740,8 @@ empty, you need to fill in some trusted proxy servers if you want to use
 rules for IP addresses behind proxy.<br /><br />
 
         The following example specifies that phpMyAdmin should trust a
-HTTP_X_FORWARDED_FOR (<tt>X-Forwarded-For</tt>) header coming from the proxy
-1.2.3.4:
+HTTP_X_FORWARDED_FOR (<code>X-Forwarded-For</code>) header coming from the
+proxy 1.2.3.4:
 <pre>
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
@@ -1642,9 +1762,11 @@ address as usual.
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] 布尔</dt>
     <dd>
-    通常情况下我们会检查配置文件确保不是所有人都能修改它。然而 phpMyAdmin 可能被安装在非 Windows 服务器的 NTFS
-文件系统中，在这种情况下看起来权限是错误的但实际上我们无法检测。此时系统管理员应将该指令设为 <tt>FALSE</tt> 。默认为
-<tt>TRUE</tt> 。
+    We normally check the permissions on the configuration file to ensure it's
+not world writable. However, phpMyAdmin could be installed on a NTFS
+filesystem mounted on a non-Windows server, in which case the permissions
+seems wrong but in fact cannot be detected. In this case a sysadmin would
+set this parameter to <code>FALSE</code>. Default is <code>TRUE</code>.
     </dd>
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] 整数</dt>
@@ -1666,7 +1788,8 @@ multiple maintenance operation. Default is <code>false</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] 整数</dt>
-    <dd>以像素为单位的导航框架宽度。参见 <tt>themes/themename/layout.inc.php</tt> 。
+    <dd>Navi frame width in pixels. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> 字符串 [格式: CSS
@@ -1674,34 +1797,37 @@ multiple maintenance operation. Default is <code>false</code>.
         <span id="cfg_MainBackground">$cfg['MainBackground']</span> 字符串 [格式: CSS
 背景色]
     </dt>
-    <dd>所有框架的背景样式。  参见 <tt>themes/themename/layout.inc.php</tt> 。</dd>
+    <dd>The background styles used for both the frames.  See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] 字符串 [格式: CSS 背景色]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> 字符串 [格式: CSS
 颜色]</dt>
     <dd>The style used for the pointer in the navi frame.  See
-<tt>themes/themename/layout.inc.php</tt>.</dd>
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] 布尔</dt>
-    <dd>A value of <tt>TRUE</tt> activates the navi pointer (when LeftFrameLight is
-<tt>FALSE</tt>).</dd>
+    <dd>A value of <code>TRUE</code> activates the navi pointer (when LeftFrameLight
+is <code>FALSE</code>).</dd>
 
     <dt id="cfg_Border">$cfg['Border'] 整数</dt>
-    <dd>表格边框大小。参见 <tt>themes/themename/layout.inc.php</tt> 。
+    <dd>The size of a table's border. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_ThBackground">$cfg['ThBackground'] 字符串 [格式: CSS 背景色]<br />
         <span id="cfg_ThColor">$cfg['ThColor']</span> 字符串 [格式: CSS 颜色]</dt>
-    <dd>表头样式。参见 <tt>themes/themename/layout.inc.php</tt> 。</dd>
+    <dd>The style used for table headers. See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] 字符串 [格式: CSS 颜色]</dt>
     <dd>The color (HTML) #1 for table rows. See
-<tt>themes/themename/layout.inc.php</tt>.
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] 字符串 [格式: CSS 颜色]</dt>
     <dd>The color (HTML) #2 for table rows. See
-<tt>themes/themename/layout.inc.php</tt>.
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']
@@ -1718,16 +1844,18 @@ CSS 颜色]
 the latter lets you visually mark/unmark rows by clicking on
 them. Highlighting / marking a column is done by hovering over / clicking
 the column's header (outside of the text).<br />
-        See <tt>themes/themename/layout.inc.php</tt>.</dd>
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
 
     <dt id="cfg_FontFamily">$cfg['FontFamily'] 字符串</dt>
-    <dd>请设置一个有效的 CSS 字体，例如 <tt>宋体, sans-serif</tt> 。<br />
-        See <tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>You put here a valid CSS font family value, for example <code>arial,
+sans-serif</code>.<br />
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] 字符串</dt>
-    <dd>请设置一个有效的 CSS 字体，例如 <tt>monospace</tt> 。该字体用于文本框 (textarea) 。<br />
-        See <tt>themes/themename/layout.inc.php</tt>.</dd>
+    <dd>You put here a valid CSS font family value, for example
+<code>monospace</code>. This one is used in textarea.<br />
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] 布尔</dt>
     <dd>Whether to activate the browse pointer or not.</dd>
@@ -1794,10 +1922,10 @@ supports it and use PHP based one otherwise.
         <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']
 </span>boolean
     </dt>
-    <dd>By setting the corresponding variable to <tt>TRUE</tt> you can enable the
-display of column comments in Browse or Property display. In browse mode,
-the comments are shown inside the header. In property mode, comments are
-displayed using a CSS-formatted dashed-line below the name of the
+    <dd>By setting the corresponding variable to <code>TRUE</code> you can enable
+the display of column comments in Browse or Property display. In browse
+mode, the comments are shown inside the header. In property mode, comments
+are displayed using a CSS-formatted dashed-line below the name of the
 column. The comment is shown as a tool-tip for that column.
     </dd>
 
@@ -1812,7 +1940,7 @@ column. The comment is shown as a tool-tip for that column.
 
     <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] boolean</dt>
     <dd>Whether to display a link to validate a query in any SQL Query box.  See
-also <tt><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt>.</dd>
+also <code><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>.</dd>
 
     <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] boolean</dt>
     <dd>Whether to display a link to refresh a query in any SQL Query box.</dd>
@@ -1865,18 +1993,18 @@ owned by the same user as the owner of the phpMyAdmin scripts.
 
         This is needed for importing ESRI Shapefiles, see <a href="#faq6_30"><abbr
 title="Frequently Asked Questions">FAQ</abbr> 6.30</a> and to work around
-limitations of <tt>open_basedir</tt> for uploaded files, see <a
+limitations of <code>open_basedir</code> for uploaded files, see <a
 href="#faq1_11"><abbr title="Frequently Asked Questions">FAQ</abbr>
 1.11</a>.
         <br /><br />
 
     If the directory where phpMyAdmin is installed is subject to an
-<tt>open_basedir</tt> restriction, you need to create a temporary directory
-in some directory accessible by the web server. However for security
-reasons, this directory should be outside the tree published by
+<code>open_basedir</code> restriction, you need to create a temporary
+directory in some directory accessible by the web server. However for
+security reasons, this directory should be outside the tree published by
 webserver. If you cannot avoid having this directory published by webserver,
-place at least an empty <tt>index.html</tt> file there, so that directory
-listing is not possible.
+place at least an empty <code>index.html</code> file there, so that
+directory listing is not possible.
         <br /><br />
 
         This directory should have as strict permissions as possible as the only
@@ -1915,10 +2043,10 @@ mean.
     <dd>
         Defines how the export form is displayed when it loads. Valid values are:
         <ul>
-        <li><tt>quick</tt> to display the minimum number of options to configure</li>
-        <li><tt>custom</tt> to display every available option to configure</li>
-        <li><tt>custom-no-form</tt> same as <tt>custom</tt> but does not display the
-option of using quick export</li>
+        <li><code>quick</code> to display the minimum number of options to configure</li>
+        <li><code>custom</code> to display every available option to configure</li>
+        <li><code>custom-no-form</code> same as <code>custom</code> but does not display
+the option of using quick export</li>
         </ul>
     </dd>
 
@@ -1953,20 +2081,21 @@ a table.
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>integer
     </dt>
     <dd>
-        All those variables affect the query window feature. A <tt><abbr
-title="structured query language">SQL</abbr></tt> link or icon is always
+        All those variables affect the query window feature. A <code><abbr
+title="structured query language">SQL</abbr></code> link or icon is always
 displayed on the left panel. If JavaScript is enabled in your browser, a
 click on this opens a distinct query window, which is a direct interface to
 enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
 the right panel changes to display a query box.<br /><br />
 
         The size of this query window can be customized with
-<tt>$cfg['QueryWindowWidth']</tt> and <tt>$cfg['QueryWindowHeight']</tt> -
-both integers for the size in pixels. Note that normally, those parameters
-will be modified in <tt>layout.inc.php</tt> for the theme you are using.<br /><br />
+<code>$cfg['QueryWindowWidth']</code> and
+<code>$cfg['QueryWindowHeight']</code> - both integers for the size in
+pixels. Note that normally, those parameters will be modified in
+<code>layout.inc.php</code> for the theme you are using.<br /><br />
 
-        If <tt>$cfg['EditInWindow']</tt> is set to true, a click on [Edit] from the
-results page (in the &quot;Showing Rows&quot; section)  opens the query
+        If <code>$cfg['EditInWindow']</code> is set to true, a click on [Edit] from
+the results page (in the &quot;Showing Rows&quot; section)  opens the query
 window and puts the current query inside it.  If set to false, clicking on
 the link puts the <abbr title="structured query language">SQL</abbr> query
 in the right panel's query box.
@@ -1977,8 +2106,8 @@ variables, so most 4th generation browsers should be capable to use that
 feature. It currently is only tested with Internet Explorer 6 and Mozilla
 1.x.
         <br /><br />
-        If <tt>$cfg['QueryHistoryDB']</tt> is set to <tt>TRUE</tt>, all your Queries
-are logged to a table, which has to be created by you (see <a
+        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code>, all your
+Queries are logged to a table, which has to be created by you (see <a
 href="#history" class="configrule">$cfg['Servers'][$i]['history']</a>).  If
 set to FALSE, all your queries will be appended to the form, but only as
 long as your window is opened they remain saved.
@@ -1995,13 +2124,14 @@ get automatically checked whenever you change the contents of the
 textarea. Please uncheck the button whenever you definitely want the query
 window to get updated even though you have made alterations.
         <br /><br />
-        If <tt>$cfg['QueryHistoryDB']</tt> is set to <tt>TRUE</tt> you can specify
-the amount of saved history items using <tt>$cfg['QueryHistoryMax']</tt>.
+        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code> you can
+specify the amount of saved history items using
+<code>$cfg['QueryHistoryMax']</code>.
         <br /><br />
         The query window also has a custom tabbed look to group the features.  Using
-the variable <tt>$cfg['QueryWindowDefTab']</tt> you can specify the default
-tab to be used when opening the query window. It can be set to either 'sql',
-'files', 'history' or 'full'.</dd>
+the variable <code>$cfg['QueryWindowDefTab']</code> you can specify the
+default tab to be used when opening the query window. It can be set to
+either 'sql', 'files', 'history' or 'full'.</dd>
 
     <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] boolean</dt>
     <dd>Enable <a href="#transformations">MIME-transformations</a>.</dd>
@@ -2025,14 +2155,14 @@ t2, t10). Currently implemented in the left panel (Light mode)  and in
 Database view, for the table list.</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] string</dt>
-    <dd>If set to <tt>'closed'</tt>, the visual sliders are initially in a closed
-state. A value of <tt>'open'</tt> does the reverse. To completely disable
-all visual sliders, use <tt>'disabled'</tt>.</dd>
+    <dd>If set to <code>'closed'</code>, the visual sliders are initially in a
+closed state. A value of <code>'open'</code> does the reverse. To completely
+disable all visual sliders, use <code>'disabled'</code>.</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 数组</dt>
-    <dd>Contains names of configuration options (keys in <tt>$cfg</tt> array)  that
-users can't set through user preferences. For possible values, refer to
-<tt>libraries/config/user_preferences.forms.php</tt>.</dd>
+    <dd>Contains names of configuration options (keys in <code>$cfg</code> array)
+that users can't set through user preferences. For possible values, refer to
+<code>libraries/config/user_preferences.forms.php</code>.</dd>
 
     <dt id="cfg_UserprefsDeveloperTab">$cfg['UserprefsDeveloperTab'] boolean</dt>
     <dd>Activates in the user preferences a tab containing options for developers of
@@ -2065,7 +2195,7 @@ containing all the themes.</dd>
 title="Frequently Asked Questions">FAQ</abbr> 2.7</a>.</dd>
 
     <dt id="cfg_ThemeDefault">$cfg['ThemeDefault'] string</dt>
-    <dd>The default theme (a subdirectory under <tt>cfg['ThemePath']</tt>).</dd>
+    <dd>The default theme (a subdirectory under <code>cfg['ThemePath']</code>).</dd>
 
     <dt id="cfg_ThemePerServer">$cfg['ThemePerServer'] boolean</dt>
     <dd>Whether to allow different theme for each server.</dd>
@@ -2079,60 +2209,63 @@ specify any. You can use standard <a href="#faq6_27">format string
 expansion</a>.
         </dd>
 
-    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<tt>html</tt>|<tt>none</tt>]</dt>
+    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<code>html</code>|<code>none</code>]</dt>
     <dd>
         The main use of the new <abbr title="structured query language">SQL</abbr>
 Parser is to pretty-print <abbr title="structured query language">SQL</abbr>
 queries. By default we use HTML to format the query, but you can disable
-this by setting this variable to <tt>'none'</tt>.
+this by setting this variable to <code>'none'</code>.
     </dd>
 
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] float<br />
         <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> string
-[<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]</dt>
+[<code>em</code>|<code>px</code>|<code>pt</code>|<code>ex</code>]</dt>
     <dd>For the pretty-printing of <abbr title="structured query
 language">SQL</abbr> queries, under some cases the part of a query inside a
-bracket is indented. By changing <tt>$cfg['SQP']['fmtInd']</tt> you can
+bracket is indented. By changing <code>$cfg['SQP']['fmtInd']</code> you can
 change the amount of this indent.
-        <br />Related in purpose is <tt>$cfg['SQP']['fmtIndUnit']</tt> which specifies the
-units of the indent amount that you specified. This is used via stylesheets.</dd>
+        <br />Related in purpose is <code>$cfg['SQP']['fmtIndUnit']</code> which specifies
+the units of the indent amount that you specified. This is used via
+stylesheets.</dd>
 
     <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] array of string tuples</dt>
     <dd>This array is used to define the colours for each type of element of the
 pretty-printed <abbr title="structured query language">SQL</abbr>
 queries. The tuple format is<br />
-        <i>class</i> =&gt; [<i>HTML colour code</i> | <i>empty string</i>]<br />
+        <em>class</em> =&gt; [<em>HTML colour code</em> | <em>empty string</em>]<br />
         If you specify an empty string for the color of a class, it is ignored in
 creating the stylesheet.  You should not alter the class names, only the
 colour strings.<br />
-        <b>Class name key:</b>
-        <ul><li><b>comment</b> Applies to all comment sub-classes</li>
-            <li><b>comment_mysql</b> Comments as <tt>"#...\n"</tt></li>
-            <li><b>comment_ansi</b> Comments as <tt>"-- ...\n"</tt></li>
-            <li><b>comment_c</b> Comments as <tt>"/*...*/"</tt></li>
-            <li><b>digit</b> Applies to all digit sub-classes</li>
-            <li><b>digit_hex</b> Hexadecimal numbers</li>
-            <li><b>digit_integer</b> Integer numbers</li>
-            <li><b>digit_float</b> Floating point numbers</li>
-            <li><b>punct</b> Applies to all punctuation sub-classes</li>
-            <li><b>punct_bracket_open_round</b> Opening brackets<tt>"("</tt></li>
-            <li><b>punct_bracket_close_round</b> Closing brackets <tt>")"</tt></li>
-            <li><b>punct_listsep</b> List item Separator <tt>","</tt></li>
-            <li><b>punct_qualifier</b> Table/Column Qualifier <tt>"."</tt> </li>
-            <li><b>punct_queryend</b> End of query marker <tt>";"</tt></li>
-            <li><b>alpha</b> Applies to all alphabetic classes</li>
-            <li><b>alpha_columnType</b> Identifiers matching a column type</li>
-            <li><b>alpha_columnAttrib</b> Identifiers matching a database/table/column
-attribute</li>
-            <li><b>alpha_functionName</b> Identifiers matching a MySQL function name</li>
-            <li><b>alpha_reservedWord</b> Identifiers matching any other reserved word</li>
-            <li><b>alpha_variable</b> Identifiers matching a <abbr title="structured query
-language">SQL</abbr> variable <tt>"@foo"</tt></li>
-            <li><b>alpha_identifier</b> All other identifiers</li>
-            <li><b>quote</b> Applies to all quotation mark classes</li>
-            <li><b>quote_double</b> Double quotes <tt>"</tt></li>
-            <li><b>quote_single</b> Single quotes <tt>'</tt></li>
-            <li><b>quote_backtick</b> Backtick quotes <tt>`</tt></li>
+        <strong>Class name key:</strong>
+        <ul><li><strong>comment</strong> Applies to all comment sub-classes</li>
+            <li><strong>comment_mysql</strong> Comments as <code>"#...\n"</code></li>
+            <li><strong>comment_ansi</strong> Comments as <code>"-- ...\n"</code></li>
+            <li><strong>comment_c</strong> Comments as <code>"/*...*/"</code></li>
+            <li><strong>digit</strong> Applies to all digit sub-classes</li>
+            <li><strong>digit_hex</strong> Hexadecimal numbers</li>
+            <li><strong>digit_integer</strong> Integer numbers</li>
+            <li><strong>digit_float</strong> Floating point numbers</li>
+            <li><strong>punct</strong> Applies to all punctuation sub-classes</li>
+            <li><strong>punct_bracket_open_round</strong> Opening brackets<code>"("</code></li>
+            <li><strong>punct_bracket_close_round</strong> Closing brackets <code>")"</code></li>
+            <li><strong>punct_listsep</strong> List item Separator <code>","</code></li>
+            <li><strong>punct_qualifier</strong> Table/Column Qualifier <code>"."</code> </li>
+            <li><strong>punct_queryend</strong> End of query marker <code>";"</code></li>
+            <li><strong>alpha</strong> Applies to all alphabetic classes</li>
+            <li><strong>alpha_columnType</strong> Identifiers matching a column type</li>
+            <li><strong>alpha_columnAttrib</strong> Identifiers matching a
+database/table/column attribute</li>
+            <li><strong>alpha_functionName</strong> Identifiers matching a MySQL function
+name</li>
+            <li><strong>alpha_reservedWord</strong> Identifiers matching any other reserved
+word</li>
+            <li><strong>alpha_variable</strong> Identifiers matching a <abbr
+title="structured query language">SQL</abbr> variable <code>"@foo"</code></li>
+            <li><strong>alpha_identifier</strong> All other identifiers</li>
+            <li><strong>quote</strong> Applies to all quotation mark classes</li>
+            <li><strong>quote_double</strong> Double quotes <code>"</code></li>
+            <li><strong>quote_single</strong> Single quotes <code>'</code></li>
+            <li><strong>quote_backtick</strong> Backtick quotes <code>`</code></li>
         </ul>
     </dd>
 
@@ -2152,7 +2285,7 @@ href="#faqsqlvalidator"><abbr title="Frequently Asked Questions">FAQ</abbr>
             <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] string<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
 string</dt>
-            <dd>The SOAP service allows you to log in with <tt>anonymous</tt> and any
+            <dd>The SOAP service allows you to log in with <code>anonymous</code> and any
 password, so we use those by default. Instead, if you have an account with
 them, you can put your login details here, and it will be used in place of
 the anonymous login.</dd>
@@ -2160,10 +2293,10 @@ the anonymous login.</dd>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']</dt>
-    <dd><b>DEVELOPERS ONLY!</b></dd>
+    <dd><strong>DEVELOPERS ONLY!</strong></dd>
 
     <dt id="cfg_DBG_sql">$cfg['DBG']['sql'] boolean</dt>
-    <dd><b>DEVELOPERS ONLY!</b><br />
+    <dd><strong>DEVELOPERS ONLY!</strong><br />
         Enable logging queries and execution times to be displayed in the bottom of
 main page (right frame).</dd>
 
@@ -2208,16 +2341,19 @@ table.</dd>
 
 <h3 id="transformationsintro">1. 介绍</h3>
 
-<p> 要开启转换功能，你必须设置好 <tt>column_info</tt> 表以及正确的指令。具体设置请见<a
-href="#config">设置</a>一节。</p>
+<p> To enable transformations, you have to setup the <code>column_info</code>
+table and the proper directives. Please see the <a
+href="#config">Configuration section</a> on how to do so.</p>
 
 <p> 你可以对每个字段的内容使用不同的转换。每个字段中的内容将被预定义的规则所转换。</p>
 
 <p> 假设你有一个存有文件名的字段 '文件名' 。正常情况下你只能在 phpMyAdmin 中看到文件名。通过转换你可以将它们转换成一个 HTML
 链接，你就能直接在 phpMyAdmin 中点击并在浏览器的新窗口中看到这个文件。你还可以通过转换选项来设置转换所需要的参数。</p>
 
-<p> 要想查看所有可用的转换以及它们的选项，你可以在
-<i>&lt;www.你的域名.com&gt;/&lt;你的安装目录&gt;/transformation_overview.php</i> 找到。</p>
+<p> For a general overview of all available transformations and their options,
+you can consult your
+<em>&lt;www.your-host.com&gt;/&lt;your-install-dir&gt;/transformation_overview.php</em>
+installation.</p>
 
 <p> For a tutorial on how to effectively use transformations, see our <a
 href="http://www.phpmyadmin.net/home_page/docs.php">Link section</a> on the
@@ -2225,8 +2361,11 @@ official phpMyAdmin homepage.</p>
 
 <h3 id="transformationshowto">2. 使用</h3>
 
-<p> 打开到你的 <i>tbl_structure.php</i> 页面 (如: 通过点击一张表的 '结构' 链接) 。点击 &quot;修改&quot;
-(或修改图标) 后你就能看到在最下方多出三栏。它们分别叫 'MIME 类型'、'浏览器转换' 和 '转换选项' 。</p>
+<p> Go to your <em>tbl_structure.php</em> page (i.e. reached through clicking on
+the 'Structure' link for a table). There click on &quot;Change&quot; (or
+change icon) and there you will see three new fields at the end of the
+line. They are called 'MIME-type', 'Browser transformation' and
+'Transformation options'.</p>
 
     <ul><li>'MIME 类型' 是一个下拉框。选择与字段内容一致的 MIME 类型。请注意如果没有选择任何 MIME 类型转换功能是不起作用的。</li>
 
@@ -2266,73 +2405,77 @@ should work for many mimetypes. You can also use transforms on a different
 mimetype than what they where built for, but pay attention to option usage
 as well as what the transformation does to your column.</p>
 
-<p> 有一个叫 '<i>global.inc.php</i>' 的文件。它可以被任何其它转换函数包含并提供一些基本函数。</p>
+<p> There is a basic file called '<em>global.inc.php</em>'. This function can be
+included by any other transform function and provides some basic functions.</p>
 
 <p> 5 种可能的文件名:</p>
 
 <ol><li>一个类型与子类型的转换:<br /><br />
 
-        <tt>[类型]_[子类型]__[转换].inc.php</tt><br /><br />
+        <code>[mimetype]_[subtype]__[transform].inc.php</code><br /><br />
 
         请注意类型和子类型通过 '_' 分隔，且不包含它们的名字。转换函数/文件名只能使用字符，这样不会导致文件系统和 PHP 函数名转换的问题。<br /><br />
 
-        转换函数则为 '<tt>PMA_transform_[类型]_[子类型]__[转换]()</tt>' 。<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>'.<br /><br />
 
-        <b>例:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text_html__formatted.inc.php</tt><br />
-        <tt>PMA_transform_text_html__formatted()</tt></li>
+        <code>text_html__formatted.inc.php</code><br />
+        <code>PMA_transform_text_html__formatted()</code></li>
 
     <li>一个类型 (没有子类型) 转换:<br /><br />
 
-        <tt>[类型]__[转换].inc.php</tt><br /><br />
+        <code>[mimetype]__[transform].inc.php</code><br /><br />
 
         请注意是两个 '_' 符号。  转换函数/文件名只能使用字符，这样不会导致文件系统和 PHP 函数名转换的问题。<br /><br />
 
-        转换函数则为 '<tt>PMA_transform_[类型]__[转换]()</tt>' 。<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_[mimetype]__[transform]()</code>'.<br /><br />
 
-        <b>例:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text__formatted.inc.php</tt><br />
-        <tt>PMA_transform_text__formatted()</tt></li>
+        <code>text__formatted.inc.php</code><br />
+        <code>PMA_transform_text__formatted()</code></li>
 
     <li>一个类型与子类型但没有转换函数<br /><br />
 
-        <tt>[类型]_[子类型].inc.php</tt><br /><br />
+        <code>[mimetype]_[subtype].inc.php</code><br /><br />
 
         请注意文件名中没有 '__' 符号。请勿在文件名中使用可能导致文件系统问题的特殊字符。<br /><br />
 
         文件中不定义转换函数。<br /><br />
 
-        <b>例:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text_plain.inc.php</tt><br />
+        <code>text_plain.inc.php</code><br />
         (无函数)</li>
 
     <li>一个类型 (没有子类型) 但没有转换函数<br /><br />
 
-        <tt>[类型].inc.php</tt><br /><br />
+        <code>[mimetype].inc.php</code><br /><br />
 
         请注意文件名中没有 '_' 符号。请勿在文件名中使用可能导致文件系统问题的特殊字符。
         <br /><br />
 
         文件中不定义转换函数。<br /><br />
 
-        <b>例:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text.inc.php</tt><br />
+        <code>text.inc.php</code><br />
         (无函数)</li>
 
     <li>一个不带类型的全局转换函数<br /><br />
 
-        <tt>global__[转换].inc.php</tt><br /><br />
+        <code>global__[transform].inc.php</code><br /><br />
 
-        转换函数则为 '<tt>PMA_transform_global__[转换]()</tt>' 。<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_global__[transform]()</code>'.<br /><br />
 
-        <b>例:</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>global__formatted</tt><br />
-        <tt>PMA_transform_global__formatted()</tt></li>
+        <code>global__formatted</code><br />
+        <code>PMA_transform_global__formatted()</code></li>
 </ol>
 
 <p> 所以 '_' 通常用来分割类型和子类型，而 '__' 来提供转换函数。</p>
@@ -2342,15 +2485,19 @@ as well as what the transformation does to your column.</p>
 <p> 参见 libraries/transformations/TEMPLATE 文件来添加你自己的转换函数。参见
 libraries/transformations/TEMPLATE_MIMETYPE 来添加一个不带转换函数的类型。</p>
 
-<p> 参见 <tt>libraries/transformations/template_generator.sh</tt> 创建新的转换函数。参见
-<tt>libraries/transformations/template_generator_mimetype.sh</tt> 创建新的类型。</p>
+<p> To create a new transform function please see
+<code>libraries/transformations/template_generator.sh</code>.  To create a
+new, empty mimetype please see
+<code>libraries/transformations/template_generator_mimetype.sh</code>.</p>
 
 <p> 一个转换函数将被传入三个参数:</p>
 
-<ol><li><b>$buffer</b> - 包含字段中的内容。也是你将要转换的内容。</li>
-    <li><b>$options</b> - 以数组形式保存的用户输入的转换选项。</li>
-    <li><b>$meta</b> - Contains an object with information about your column.  The
-data is drawn from the output of the <a
+<ol><li><strong>$buffer</strong> - Contains the text inside of the column. This is
+the text, you want to transform.</li>
+    <li><strong>$options</strong> - Contains any user-passed options to a transform
+function as an array.</li>
+    <li><strong>$meta</strong> - Contains an object with information about your
+column.  The data is drawn from the output of the <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
 function. This means, all object properties described on the <a
 href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
@@ -2396,9 +2543,10 @@ phpMyAdmin 的特性和接口方面的信息。</p>
     <a href="#faq1_1">1.1 我的服务器不是在处理特定请求时崩溃就是 phpMyAdmin
 发送空白页面或者都是乱码的页面，我该怎么办？</a></h4>
 
-<p> 在 <i>config.inc.php</i> 文件中将 <a href="#cfg_OBGzip"
-class="configurule">$cfg['OBGzip']</a> 显式地设为 <tt>FALSE</tt>，同时将 PHP 配置文件中的
-<tt>zlib.output_compression</tt> 显式地设置为 <tt>Off</tt>。<br /></p>
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
+directive to <code>FALSE</code> in your <em>config.inc.php</em> file and the
+<code>zlib.output_compression</code> directive to <code>Off</code> in your
+php configuration file.<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 使用 phpMyAdmin 时，我的 Apache 服务器崩溃了。</a></h4>
@@ -2417,7 +2565,7 @@ Gateway Interface">CGI</abbr> 应用程序错误，返回了不完整的<abbr ti
 Protocol">HTTP</abbr> 头 ...&quot;。</a>
 </h4>
 
-<p> You just forgot to read the <i>install.txt</i> file from the PHP
+<p> You just forgot to read the <em>install.txt</em> file from the PHP
 distribution.  Have a look at the last message in this <a
 href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
 PHP bug database.</p>
@@ -2434,31 +2582,34 @@ Interface">ISAPI</abbr> 过滤器错误：PHP 的 ISAPI 过滤器不是很稳定
 <h4 id="faq1_6">
     <a href="#faq1_6">1.6 我无法在 PWS 上使用 phpMyAdmin，网页显示一片空白。</a></h4>
 
-<p> 这看上去像是 PWS 的 Bug。Filippo Simoncini 找到了一个解决方法，这是目前最好的解决方法：从
-<i>libraries/header.inc.php</i>, <i>libraries/header_printview.inc.php</i>,
-<i>index.php</i>, <i>navigation.php</i> 和 <i>libraries/common.lib.php</i>
-这几个文件中删除 <tt>DOCTYPE</tt>（共2行）。</p>
+<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
+time there is no better fix): remove or comment the <code>DOCTYPE</code>
+declarations (2 lines) from the scripts <em>libraries/header.inc.php</em>,
+<em>libraries/header_printview.inc.php</em>, <em>index.php</em>,
+<em>navigation.php</em> and <em>libraries/common.lib.php</em>.</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 如何使用 Gzip 或 Bzip 压缩 <abbr title="comma separated
 values">CSV</abbr> 和其他类型的导出文件？ 我设置了相关选项但是似乎不起作用。</a></h4>
 
-<p> These features are based on the <tt>gzencode()</tt> and
-<tt>bzcompress()</tt> PHP functions to be more independent of the platform
-(Unix/Windows, Safe Mode or not, and so on). So, you must have Zlib/Bzip2
-support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
+<p> These features are based on the <code>gzencode()</code> and
+<code>bzcompress()</code> PHP functions to be more independent of the
+platform (Unix/Windows, Safe Mode or not, and so on). So, you must have
+Zlib/Bzip2 support (<code>--with-zlib</code> and <code>--with-bz2</code>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 我无法向表中插入文本文件，并且有错误提示说这是因为在安全模式无法进行这样的操作。</a></h4>
 
-<p> 您上传的文件被保存在 &quot;上传目录&quot，这个目录可以在 <i>php.ini</i> 中设置（默认设置是 <i>/tmp</i>）。<br />
+<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
+in <em>php.ini</em> by the variable <code>upload_tmp_dir</code> (usually the
+system default is <em>/tmp</em>).<br />
     我们推荐您按照下面的步骤将 Apache 服务器配置在安全模式下运行，这可以保证安全的前提下允许上传文件（本操作仅适用于类 Unix 操作系统）：</p>
 
-<ul><li>创建一个用于临时保存上传文件的目录：<tt>mkdir /tmp/php</tt></li>
-    <li>将这个目录的所有权更改为 Apache 用户组：<tt>chown apache.apache /tmp/php</tt></li>
-    <li>设置权限：<tt>chmod 600 /tmp/php</tt></li>
-    <li>修改 <i>php.ini</i> 文件，将 <tt>upload_tmp_dir</tt> 设置为
-<tt>/tmp/php</tt>（如果没有这一行，请自行添加）</li>
+<ul><li>create a separate directory for uploads: <code>mkdir /tmp/php</code></li>
+    <li>give ownership to the Apache server's user.group: <code>chown apache.apache
+/tmp/php</code></li>
+    <li>give proper permission: <code>chmod 600 /tmp/php</code></li>
+    <li>put <code>upload_tmp_dir = /tmp/php</code> in <em>php.ini</em></li>
     <li>重新启动 Apache</li>
 </ul>
 
@@ -2469,7 +2620,8 @@ support (<tt>--with-zlib</tt> and <tt>--with-bz2</tt>).<br /></p>
     <a href="#faq1_10">1.10 我在上传文件的时候遇到了问题，phpMyAdmin 运行在安全服务器上，服务器软件是
 Apache，我使用的浏览器是 Internet Explorer。</a></h4>
 
-<p> &quot;Rob M&quot; 在 PHP 帮助论坛给出了解决方法：将下面一行加入到您的 <i>httpd.conf</i> 文件中</p>
+<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
+your <em>httpd.conf</em>:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
@@ -2498,13 +2650,14 @@ the permissions</a>.</p>
     <a href="#faq1_14">1.14 (withdrawn).</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <i>mysql.user</i> column
+    <a href="#faq1_15">1.15 I have problems with <em>mysql.user</em> column
 names.</a>
 </h4>
 
-<p> In previous MySQL versions, the <tt>User</tt> and <tt>Password</tt>columns
-were named <tt>user</tt> and <tt>password</tt>. Please modify your column
-names to align with current standards.</p>
+<p> In previous MySQL versions, the <code>User</code> and
+<code>Password</code>columns were named <code>user</code> and
+<code>password</code>. Please modify your column names to align with current
+standards.</p>
 
 <h4 id="faq1_16">
     <a href="#faq1_16">1.16 我无法上传转储文件，上传时遇到了内存、 <abbr title="HyperText Transfer
@@ -2515,11 +2668,12 @@ Protocol">HTTP</abbr> 、超时等方面的错误).</a>
 新版给您带来的新特性。</p>
 
 <p> The first things to check (or ask your host provider to check) are the
-values of <tt>upload_max_filesize</tt>, <tt>memory_limit</tt> and
-<tt>post_max_size</tt> in the <i>php.ini</i> configuration file.  All of
-these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that <tt>post_max_size</tt> and
-<tt>memory_limit</tt> need to be larger than <tt>upload_max_filesize</tt>.<br /> <br />
+values of <code>upload_max_filesize</code>, <code>memory_limit</code> and
+<code>post_max_size</code> in the <em>php.ini</em> configuration file.  All
+of these three settings limit the maximum size of data that can be submitted
+and handled by PHP. One user also said that <code>post_max_size</code> and
+<code>memory_limit</code> need to be larger than
+<code>upload_max_filesize</code>.<br /> <br />
 
     如果您上传的文件很大，或者服务器管理员或提供商不愿意修改以上几个设置，请参考下面的解决方法：</p>
 
@@ -2529,8 +2683,9 @@ class="configrule">$cfg['UploadDir']</a>。设置该值后，您可以使用 SCP
 href="#config">设置</a> 一节。</li>
     <li>使用第三方工具（如 <a href="http://www.ozerov.de/bigdump.php">
 BigDump</a>）来将上传文件分割成小文件。phpMyAdmin 能够处理分割文件。但是，我们担心用户是否知道应该如何进行文件分割操作。</li>
-    <li>如果您能够使用 MySQL 的命令行，您可以直接在命令行中导入文件。您可以使用 MySQL 的 source 命令来导入文件，例如：<tt>source
-<i>filename.sql</i></tt>。</li>
+    <li>If you have shell (command line) access, use MySQL to import the files
+directly. You can do this by issuing the &quot;source&quot; command from
+within MySQL: <code>source <em>filename.sql</em></code>.</li>
 </ul>
 
 <h4 id="faq1_17">
@@ -2585,9 +2740,11 @@ href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL 手册</a>。
     <a href="#faqmysql">1.20 我得到了这样的错误信息： &quot;无法载入 MySQL 扩展，请检查 PHP
 配置&quot;。</a></h4>
 
-<p> 要连接到 MySQL 服务器，PHP 需要使用 MySQL 扩展中相关的 MySQL 函数。这个扩展应该需要编译到 PHP
-中，或者以动态方式加载。如果是以动态方式加载，动态库的文件有可能是 <i>mysql.so</i> 或
-<i>php_mysql.dll</i>。phpMyAdmin 试图加载动态库文件，但加载失败了。<br /><br />
+<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
+&quot;MySQL extension&quot;. This extension may be part of the PHP
+distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
+name is probably <em>mysql.so</em> or <em>php_mysql.dll</em>. phpMyAdmin
+tried to load the extension but failed.<br /><br />
 
     通常情况下，安装 &quot;PHP-MySQL&quot; 或者其他类似的软件包即可解决此问题。</p>
 
@@ -2595,20 +2752,24 @@ href="http://dev.mysql.com/doc/mysql/en/old-client.html">MySQL 手册</a>。
     <a href="#faq1_21">1.21 我在 Unix 下以 <abbr title="Common Gateway
 Interface">CGI</abbr> 方式运行 PHP，但却无法使用 cookie 认证方式来登录。</a></h4>
 
-<p> 在 <i>php.ini</i> 文件中将 <tt>mysql.max_links</tt> 设为比1大的值。</p>
+<p> In <em>php.ini</em>, set <code>mysql.max_links</code> higher than 1.</p>
 
 <h4 id="faq1_22">
     <a href="#faq1_22">1.22 我找不到 &quot;选择文件&quot; 的按钮，那该怎么上传文件？</a></h4>
 
-<p> 通常这是因为您没有在 <i>php.ini</i> 中将 <tt>file_uploads</tt> 选项设置为 &quot;on&quot;。</p>
+<p> This is most likely because in <em>php.ini</em>, your
+<code>file_uploads</code> parameter is not set to &quot;on&quot;.</p>
 
 <h4 id="faq1_23">
     <a href="#faq1_23">1.23 I'm running MySQL on a Win32 machine. Each time I
 create a new table the table and column names are changed to lowercase!</a></h4>
 
-<p> 这是因为 Win32 版本的 MySQL 默认将 <tt>lower_case_table_names</tt>
-设置为1（<tt>ON</tt>）。您可以将此设置显式地设为0（也就是<tt>OFF</tt>）来解决这个问题：<br />
-    打开 <tt>my.ini</tt> 文件，这个文件应该在您的 Windows 目录下，在“[mysqld]”后一行增加：</p>
+<p> This happens because the MySQL directive <code>lower_case_table_names</code>
+defaults to 1 (<code>ON</code>) in the Win32 version of MySQL. You can
+change this behavior by simply changing the directive to 0
+(<code>OFF</code>):<br />
+    Just edit your <code>my.ini</code> file that should be located in your
+Windows directory and add the following line to the group [mysqld]:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
@@ -2646,19 +2807,21 @@ IUSR_machine 用户，赋予其权限，即可解决此问题。</p>
     <a href="#faq1_27">1.27 当我打开一个很大的页面时，页面显示空白（如 db_structure.php
 页面中显示了很多表的时候）</a></h4>
 
-<p> 这是一个 <a href="http://bugs.php.net/21079">PHP 错误</a>，该错误会在打开 GZIP
-输出的时候发生。如果您在 <i>config.inc.php</i> 中修改 <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGzip'] = false</a> 选项来关闭这个功能，就能解决此问题。这个错误将会在
-PHP&nbsp;5.0.0 版本中修复。</p>
+<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
+GZIP output buffering is enabled. If you turn off it (by <a
+href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
+<em>config.inc.php</em>), it should work. This bug will be fixed in
+PHP&nbsp;5.0.0.</p>
 
 <h4 id="faq1_28">
     <a href="#faq1_28">1.28 我的 MySQL 服务器偶尔会返回 'Errorcode: 13'
 这样的错误信息，这是神么意思？</a></h4>
 
-<p> 这个错误可能是因为 <tt>lower_case_table_names</tt> 被设为了1，而数据库中存在表名为大写的表，这是 MySQL
-的一个错误。要解决此问题，请先显示地将 <tt>lower_case_table_names</tt> 设为
-false，然后将所有表名改为小写，最后再重新将 <tt>lower_case_table_names</tt> 设为 true。MySQL
-3.23.56 / 4.0.11-gamma 版本已经修复了这个问题。</p>
+<p> This can happen due to a MySQL bug when having database / table names with
+upper case characters although <code>lower_case_table_names</code> is set to
+1.  To fix this, turn off this directive, convert all database and table
+names to lower case and turn it on again. Alternatively, there's a bug-fix
+available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
     <a href="#faq1_29">1.29 When I create a table or modify a column, I get an
@@ -2677,9 +2840,11 @@ SetInputFilter PHP
 
 <pre>AddType application/x-httpd-php .php</pre>
 
-<p> 上面两组设置，有一组位于 <tt>/etc/httpd/conf/httpd.conf</tt> 中，另一组位于
-<tt>/etc/httpd/conf/addon-modules/php.conf</tt> 中。<br />
-    推荐的设置是使用 AddType，所以，我们可以注释掉另外一组设置，就象这样：</p>
+<p> In the case we saw, one set of directives was in
+<code>/etc/httpd/conf/httpd.conf</code>, while the other set was in
+<code>/etc/httpd/conf/addon-modules/php.conf</code>.<br />
+    The recommended way is with <code>AddType</code>, so just comment out the
+first set of lines and restart Apache:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -2709,10 +2874,14 @@ Protocol">HTTP</abbr> 认证吗？</a></h4>
 <p> 可以。我们在 IIS 5.1 上以 ISAPI 方式加载 PHP 4.3.9，使用 phpMyAdmin 2.6.1 版本进行测试，结果可以正常使用
 phpMyAdmin。</p>
 
-<ol><li>请在 <tt>php.ini</tt> 文件中将 <tt>cgi.rfc2616_headers</tt> 设为0。</li>
-    <li>打开<tt>站点属性——&gt;目录安全性——&gt;匿名访问</tt>对话框，选中“启用匿名访问“，并去掉“基本身份验证“”集成 Windows
-身份验证“和“Windows 域服务器的摘要试身份验证“以及其他的复选框。</li>
-    <li>在<tt>自定义错误</tt>选项卡中，选中<tt>401;1</tt>到<tt>401;5</tt>条目，然后点击<tt>设为默认</tt>按钮。</li>
+<ol><li>In your <code>php.ini</code> file, set <code>cgi.rfc2616_headers = 0</code></li>
+    <li>In <code>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
+Access</code> dialog box, check the <code>Anonymous access</code> checkbox
+and uncheck any other checkboxes (i.e. uncheck <code>Basic
+authentication</code>, <code>Integrated Windows authentication</code>, and
+<code>Digest</code> if it's enabled.) Click <code>OK</code>.</li>
+    <li>In <code>Custom Errors</code>, select the range of <code>401;1</code>
+through <code>401;5</code> and click the <code>Set to Default</code> button.</li>
 </ol>
 
 <h4 id="faq1_33">
@@ -2724,18 +2893,19 @@ phpMyAdmin。</p>
 <p> Yes. Out of the box, you can use <abbr title="Uniform Resource
 Locator">URL</abbr>s like
 http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <tt>server</tt> you use the server number which refers to the order of
-the server paragraph in <tt>config.inc.php</tt>.  Table and script parts are
-optional. If you want http://server/phpMyAdmin/database[/table][/script]
-<abbr title="Uniform Resource Locator">URL</abbr>s, you need to do some
-configuration. Following lines apply only for <a
-href="http://httpd.apache.org">Apache</a> web server. First make sure, that
-you have enabled some features within global configuration. You need
-<code>Options FollowSymLinks</code> and <code>AllowOverride FileInfo</code>
-enabled for directory where phpMyAdmin is installed and you need mod_rewrite
-to be enabled. Then you just need to create following <a
-href="#glossary"><i>.htaccess</i></a> file in root folder of phpMyAdmin
-installation (don't forget to change directory name inside of it):</p>
+For <code>server</code> you use the server number which refers to the order
+of the server paragraph in <code>config.inc.php</code>.  Table and script
+parts are optional. If you want
+http://server/phpMyAdmin/database[/table][/script] <abbr title="Uniform
+Resource Locator">URL</abbr>s, you need to do some configuration. Following
+lines apply only for <a href="http://httpd.apache.org">Apache</a> web
+server. First make sure, that you have enabled some features within global
+configuration. You need <code>Options FollowSymLinks</code> and
+<code>AllowOverride FileInfo</code> enabled for directory where phpMyAdmin
+is installed and you need mod_rewrite to be enabled. Then you just need to
+create following <a href="#glossary"><em>.htaccess</em></a> file in root
+folder of phpMyAdmin installation (don't forget to change directory name
+inside of it):</p>
 
 <pre>
 RewriteEngine On
@@ -2827,15 +2997,16 @@ otherwise you get big slowdown</li>
 
     <p>
         You can also disable the warning using the <a
-href="#cfg_SuhosinDisableWarning"> <tt>SuhosinDisableWarning</tt>
+href="#cfg_SuhosinDisableWarning"> <code>SuhosinDisableWarning</code>
 directive</a>.
     </p>
 
 <h4 id="faq1_39">
     <a href="#faq1_39">1.39 在使用 http 时我能正常登录，但是在切换到 https 方式后却不能登录了，这是怎么回事？</a></h4>
 
-<p> 请确认您在 Apache 的配置文件中启用了 <tt>SSLOptions</tt> 和 </tt>StdEnvVars</tt>。具体请参考 <a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>。</p>
+<p> Be sure that you have enabled <code>SSLOptions</code> and
+<code>StdEnvVars</code> in your Apache configuration. See <a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
 
 <h4 id="faq1_40">
     <a href="#faq1_40">1.40 When accessing phpMyAdmin via an Apache reverse
@@ -2867,13 +3038,14 @@ href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.o
     <a href="#faq1_41">1.41 When I view a database and ask to see its
 privileges, I get an error about an unknown column.</a></h4>
 
-<p> MySQL 服务器的权限表没有更新，请运行 <tt>mysql_upgrade</tt> 命令来进行更新。</p>
+<p> The MySQL server's privilege tables are not up to date, you need to run the
+<code>mysql_upgrade</code> command on the server.</p>
 
 <h4 id="faq1_42">
     <a href="#faq1_42">1.42 How can I prevent robots from accessing
 phpMyAdmin?</a></h4>
 
-<p>You can add various rules to <a href="#glossary"><i>.htaccess</i></a> to
+<p>You can add various rules to <a href="#glossary"><em>.htaccess</em></a> to
 filter access based on user agent field. This is quite easy to circumvent,
 but could prevent at least some robots accessing your installation.</p>
 
@@ -2907,13 +3079,14 @@ RewriteRule .* - [F]
 headers already sent by ...&quot;，怎么办？</a> <!--
 这似乎是一个PHP的错误提示，鉴于PHP的错误提示还没有中文化，这里就保留错误原文——greensea译注--></h4>
 
-<p> Edit your <i>config.inc.php</i> file and ensure there is nothing (I.E. no
+<p> Edit your <em>config.inc.php</em> file and ensure there is nothing (I.E. no
 blank lines, no spaces, no characters...) neither before the
-<tt>&lt;?php</tt> tag at the beginning, neither after the <tt>?&gt;</tt> tag
-at the end. We also got a report from a user under <abbr title="Internet
-Information Services">IIS</abbr>, that used a zipped distribution kit: the
-file <tt>libraries/Config.class.php</tt> contained an end-of-line character
-(hex 0A) at the end; removing this character cleared his errors.</p>
+<code>&lt;?php</code> tag at the beginning, neither after the
+<code>?&gt;</code> tag at the end. We also got a report from a user under
+<abbr title="Internet Information Services">IIS</abbr>, that used a zipped
+distribution kit: the file <code>libraries/Config.class.php</code> contained
+an end-of-line character (hex 0A) at the end; removing this character
+cleared his errors.</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmiin 无法连接到 MySQL 服务器，这是怎么回事？</a></h4>
@@ -2928,8 +3101,8 @@ connect to local MySQL server through socket '/tmp/mysql.sock' (111)
 
 <p> Harald Legner 在邮件列表中为 RedHat 用户给出了一个解决方法：</p>
 
-<p> 在我的 RadHat 服务器上，MySQL 的 socket 是 <i>/var/lib/mysql/mysql.sock</i>，你应该能在
-<i>php.ini</i> 文件中找到这样一行：</p>
+<p> On my RedHat-Box the socket of MySQL is <em>/var/lib/mysql/mysql.sock</em>.
+In your <em>php.ini</em> you will find a line</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
@@ -2942,10 +3115,13 @@ connect to local MySQL server through socket '/tmp/mysql.sock' (111)
 <p> Brad Ummer 给出了另一种解决方案：</p>
 
 <ul><li>首先你需要确定 MySQL 使用了何种类型的 socket，请按照下面的步骤进行操作：<br />
-        用终端连接到你的 MySQL 服务器并切换到 MySQL 的 bin 目录，在这个目录下你应该能找到一个名为 <i>mysqladmin</i>
-的文件。执行 <tt>./mysqladmin variables</tt> 命令，你就能得到 MySQL 服务器的信息，其中包括了 socket
-信息（类似 <i>/tmp/mysql.sock</i>）。</li>
-    <li>接下来，设置 PHP 让它使用这个 socket。<br /> 打开 phpMyAdmin 的 <i>config.inc.php</i> 文件。<br />
+        To do this, telnet to your server and go to the MySQL bin directory. In this
+directory there should be a file named <em>mysqladmin</em>. Type
+<code>./mysqladmin variables</code>, and this should give you a bunch of
+info about your MySQL server, including the socket
+(<em>/tmp/mysql.sock</em>, for example).</li>
+    <li>接下来，设置 PHP 让它使用这个 socket。<br /> To do this in phpMyAdmin, you need to complete the socket information in the
+<em>config.inc.php</em>.<br />
         将 <a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']</a> 修改为刚才得到的 socket。
         <br /><br />
@@ -2960,8 +3136,9 @@ corresponding section of the MySQL documentation</a>.</p>
 <h4 id="faq2_4">
     <a href="#faq2_4">2.4 我运行 phpMyAdmin 的时候，浏览器什么都没有显示，怎么办？</a></h4>
 
-<p> 请在 phpMyAdmin 的配置文件中将 <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGZip']</a> 显式地设为 <tt>FALSE</tt>，也许能解决此问题。<br />
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
+directive to <code>FALSE</code> in the phpMyAdmin configuration file. It
+helps sometime.<br />
     Also have a look at your PHP version number: if it contains &quot;b&quot; or
 &quot;alpha&quot; it means you're running a testing version of PHP. That's
 not a so good idea, please upgrade to a plain revision.</p>
@@ -3005,19 +3182,24 @@ class="configrule">$cfg['ThemeManager']</a>，您就可以在 phpMyAdmin
 
 <p> 要创建一个主题，请按照下面的方法进行操作：</p>
 
-<ul><li>在 <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
-(默认值是<tt>themes</tt>) 设置的目录下创建一个新目录。</li>
+<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
+href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
+<code>themes</code>)</li>
     <li>复制 &quot;original&quot; 目录下所有的文件到您朝见的目录中。</li>
     <li>在您创建的目录下，打开 css 子目录，修改其中的层叠样式表文件。</li>
     <li>将您的图片复制到您创建的主题目录下的 img 子目录中。</li>
-    <li>在您创建的目录下有一个 <tt>layout.inc.php</tt> 文件，按您的需要编辑此文件。</li>
-    <li>在您的主题目录下还有一个 <tt>info.inc.php</tt> 文件，您可以在这个文件中设置您的主题名字。</li>
+    <li>edit <code>layout.inc.php</code> in &quot;your_theme_name&quot;</li>
+    <li>edit <code>info.inc.php</code> in &quot;your_theme_name&quot; to contain
+your chosen theme name, that will be visible in user interface</li>
     <li>为您的主题截图，并将截图保存到主题目录下，将其命名为 screen.png。</li>
 </ul>
 
-<p> 在主题目录下有一个 <tt>info.inc.php</tt> 文件，其中包含了主题全名和主题版本号。主题版本号由您自行设定，不需要符合
-phpMyAdmin 的版本号，只需要保证版本号是纯数字就行。拥有相同主版本号（generation
-number）的主题应该向下兼容。子版本号为2的主题应该能在使用子版本1主题的 phpMyAdmin 上正常显示。主版本号不相同的主题无须相互兼容。</p>
+<p> In theme directory there is file <code>info.inc.php</code> which contains
+theme verbose name, theme generation and theme version. These versions and
+generations are enumerated from 1 and do not have any direct dependence on
+phpMyAdmin version. Themes within same generation should be backwards
+compatible - theme with version 2 should work in phpMyAdmin requiring
+version 1. Themes with different generation are incompatible.</p>
 
 <p> 如果您没有自己主题的图标和按钮，请删除您的主题目录下的 img 目录。phpMyAdmin 将使用默认的图标和按钮（位于 original
 目录下的系统主题）。
@@ -3028,27 +3210,31 @@ number）的主题应该向下兼容。子版本号为2的主题应该能在使�
 
 <p> 请先检查以下几点：</p>
 
-<ul><li>在 <tt>config.inc.php</tt> 文件中，显式地将 <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> 设置为空。请参考<a
-href="#faq4_7"><abbr title="Frequently Asked Questions">常见问题</abbr> 4.7</a>.
+<ul><li>In <code>config.inc.php</code>, try to leave the <a
+href="#cfg_PmaAbsoluteUri" class="configrule">$cfg['PmaAbsoluteUri']</a>
+directive empty. See also <a href="#faq4_7"><abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.7</a>.
     </li>
     <li>可能您安装的 PHP 版本有问题，试试升级 Zend Optimizer。请参考 <a
 href="http://bugs.php.net/bug.php?id=31134">
 http://bugs.php.net/bug.php?id=31134</a>。
     </li>
-    <li>如果您使用 Hardened PHP 并在 php.ini 中将 <tt>varfilter.max_request_variables</tt>
-显式地设为了小于等于默认值（200）的值，就可能会导致此问题。如果您的表中有很多字段，请增加此设置的值（感谢 Klaus Dorninger
-提供的信息）。
+    <li>If you are using Hardened PHP with the ini directive
+<code>varfilter.max_request_variables</code> set to the default (200) or
+another low value, you could get this error if your table has a high number
+of columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for
+the hint).
     </li>
-    <li>如果在 <tt>php.ini</tt> 中的选项 <tt>arg_separator.input</tt>
-被设置为&quot;;&quot;就有可能导致此问题。请将其设置为 &quot;&amp;;&quot;。
+    <li>In the <code>php.ini</code> directive <code>arg_separator.input</code>, a
+value of &quot;;&quot; will cause this error. Replace it with
+&quot;&amp;;&quot;.
     </li>
     <li>如果您正在使用 <a href="http://www.hardened-php.net/">Hardened-PHP</a>，请增大 <a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">request
 limits</a> 的设置值。
     </li>
-    <li>如果 <tt>php.ini</tt> 中的选项 <tt>session.save_path</tt>
-设定的目录不存在或者目录权限为只读，也有可能导致此问题。
+    <li>The directory specified in the <code>php.ini</code> directive
+<code>session.save_path</code> does not exist or is read-only.
     </li>
 </ul>
 
@@ -3058,7 +3244,8 @@ limits</a> 的设置值。
 <p> 要使用此功能，请在服务器上安装 <a href="http://pecl.php.net/package/APC">APC</a>  扩展或 <a
 href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>，并启用
 JSON 扩展。</p>
-    <p> 如果使用 APC，请在 php.ini 中将 <tt>apc.rfc1867</tt> 设为 <tt>on</tt>。</p>
+    <p> If using APC, you must set <code>apc.rfc1867</code> to <code>on</code> in
+your php.ini.</p>
 
 <h3 id="faqlimitations">Known limitations</h3>
 
@@ -3169,9 +3356,9 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;g
 <h4 id="faq3_10">
     <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
 SELECT display more that one column with the same value (for example
-<tt>SELECT lastname from employees where firstname like 'A%'</tt> and two
-&quot;Smith&quot; values are displayed), if I click Edit I cannot be sure
-that I am editing the intended row.</a></h4>
+<code>SELECT lastname from employees where firstname like 'A%'</code> and
+two &quot;Smith&quot; values are displayed), if I click Edit I cannot be
+sure that I am editing the intended row.</a></h4>
 
 <p> Please make sure that your table has a primary key, so that phpMyAdmin can
 use it for the Edit and Delete links.</p>
@@ -3190,8 +3377,8 @@ performance.</p>
     <a href="#faq3_12">3.12 (withdrawn).</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 I get an error when entering <tt>USE</tt> followed
-by a db name containing an hyphen.  </a></h4>
+    <a href="#faq3_13">3.13 I get an error when entering <code>USE</code>
+followed by a db name containing an hyphen.  </a></h4>
 <p>
     The tests I have made with MySQL 5.1.49 shows that the API does not accept
 this syntax for the USE command.
@@ -3280,7 +3467,7 @@ against evil access.  </a></h4>
     This depends on your system.<br />
     If you're running a server which cannot be accessed by other people, it's
 sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <a href="#glossary"><i>.htaccess</i></a> files, for
+Apache you can use <a href="#glossary"><em>.htaccess</em></a> files, for
 example).<br />
     If other people have telnet access to your server, you should use
 phpMyAdmin's <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
@@ -3290,7 +3477,7 @@ authentication features.
 </p>
 <ul>
     <li>
-        Your <i>config.inc.php</i> file should be <tt>chmod 660</tt>.
+        Your <em>config.inc.php</em> file should be <code>chmod 660</code>.
     </li>
     <li>
         All your phpMyAdmin files should be chown -R phpmy.apache, where phpmy is a
@@ -3304,11 +3491,11 @@ which Apache runs.
 
 <h4 id="faq4_3">
     <a href="#faq4_3">4.3 I get errors about not being able to include a file in
-<i>/lang</i> or in <i>/libraries</i>.  </a></h4>
+<em>/lang</em> or in <em>/libraries</em>.  </a></h4>
 <p>
-    Check <i>php.ini</i>, or ask your sysadmin to check it. The
-<tt>include_path</tt> must contain &quot;.&quot; somewhere in it, and
-<tt>open_basedir</tt>, if used, must contain &quot;.&quot; and
+    Check <em>php.ini</em>, or ask your sysadmin to check it. The
+<code>include_path</code> must contain &quot;.&quot; somewhere in it, and
+<code>open_basedir</code>, if used, must contain &quot;.&quot; and
 &quot;./lang&quot; to allow normal operation of phpMyAdmin.
 </p>
 
@@ -3325,7 +3512,7 @@ href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> are wrong.</li>
     <li>The username/password you specify in the login dialog are invalid.</li>
     <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a <a href="#glossary"><i>.htaccess</i></a> file. This would interfere
+eg. a <a href="#glossary"><em>.htaccess</em></a> file. This would interfere
 with phpMyAdmin's authentication, so remove it.</li>
 </ul>
 
@@ -3335,8 +3522,8 @@ databases?</a></h4>
 
 <p> Starting with 2.2.5, in the user management page, you can enter a wildcard
 database name for a user (for example &quot;joe%&quot;), and put the
-privileges you want.  For example, adding <tt>SELECT, INSERT, UPDATE,
-DELETE, CREATE, DROP, INDEX, ALTER</tt> would let a user create/manage
+privileges you want.  For example, adding <code>SELECT, INSERT, UPDATE,
+DELETE, CREATE, DROP, INDEX, ALTER</code> would let a user create/manage
 his/her database(s).</p>
 
 <h4 id="faq4_6">
@@ -3344,12 +3531,13 @@ his/her database(s).</p>
 additions?</a></h4>
 
 <p> If you have existing rules from an old <a
-href="#glossary"><i>.htaccess</i></a> file, you can take them and add a
-username between the <tt>'deny'</tt>/<tt>'allow'</tt> and <tt>'from'</tt>
-strings. Using the username wildcard of <tt>'%'</tt> would be a major
-benefit here if your installation is suited to using it. Then you can just
-add those updated lines into the <a href="#cfg_Servers_AllowDeny_rules"
-class="configrule"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+href="#glossary"><em>.htaccess</em></a> file, you can take them and add a
+username between the <code>'deny'</code>/<code>'allow'</code> and
+<code>'from'</code> strings. Using the username wildcard of <code>'%'</code>
+would be a major benefit here if your installation is suited to using
+it. Then you can just add those updated lines into the <a
+href="#cfg_Servers_AllowDeny_rules" class="configrule">
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
 
 <p> If you want a pre-made sample, you can try this fragment. It stops the
 'root' user from logging in from any networks other than the private network
@@ -3383,13 +3571,13 @@ file.</p>
     <a href="#faq4_8">4.8 Which parameters can I use in the URL that starts
 phpMyAdmin?</a></h4>
 
-<p>When starting phpMyAdmin, you can use the <tt>db</tt>,
-<tt>pma_username</tt>, <tt>pma_password</tt> and <tt>server</tt>
+<p>When starting phpMyAdmin, you can use the <code>db</code>,
+<code>pma_username</code>, <code>pma_password</code> and <code>server</code>
 parameters. This last one can contain either the numeric host index (from
-<tt>$i</tt> of the configuration file) or one of the host names present in
-the configuration file. Using <tt>pma_username</tt> and
-<tt>pma_password</tt> has been tested along with the usage of 'cookie'
-<tt>auth_type</tt>.</p>
+<code>$i</code> of the configuration file) or one of the host names present
+in the configuration file. Using <code>pma_username</code> and
+<code>pma_password</code> has been tested along with the usage of 'cookie'
+<code>auth_type</code>.</p>
 
 <h3 id="faqbrowsers">Browsers or client <abbr title="operating system">OS</abbr></h3>
 
@@ -3535,8 +3723,8 @@ denied&quot; Javascript errors. Or I cannot make phpMyAdmin work under
 Windows.</a></h4>
 
 <p> Please check the following points:</p>
-    <ul><li>Maybe you have defined your <tt>PmaAbsoluteUri</tt> setting in
-<tt>config.inc.php</tt> to an <abbr title="Internet Protocol">IP</abbr>
+    <ul><li>Maybe you have defined your <code>PmaAbsoluteUri</code> setting in
+<code>config.inc.php</code> to an <abbr title="Internet Protocol">IP</abbr>
 address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
 Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
         <li>Security settings in IE and/or Microsoft Security Center are too high, thus
@@ -3553,12 +3741,13 @@ database.</a></h4>
 installed in their Firefox is causing the problem.</p>
 
 <h4 id="faq5_18">
-<a href="#faq5_18">5.18 With Konqueror 4.2.x an invalid <tt>LIMIT</tt>
+<a href="#faq5_18">5.18 With Konqueror 4.2.x an invalid <code>LIMIT</code>
 clause is generated when I browse a table.</a></h4>
 <p> This happens only when both of these conditions are met: using the
-<tt>http</tt> authentication mode and <tt>register_globals</tt> being set to
-<tt>On</tt> on the server. It seems to be a browser-specific problem;
-meanwhile use the <tt>cookie</tt> authentication mode.</p>
+<code>http</code> authentication mode and <code>register_globals</code>
+being set to <code>On</code> on the server. It seems to be a
+browser-specific problem; meanwhile use the <code>cookie</code>
+authentication mode.</p>
 
 <h4 id="faq5_19">
 <a href="#faq5_19">5.19 I get JavaScript errors in my browser.</a></h4>
@@ -3577,8 +3766,8 @@ the problem goes away.</p>
     常见错误有:
 </p>
 <ul>
-    <li>不给 <tt>VARCHAR</tt> 设置大小参数</li>
-    <li>给 <tt>TEXT</tt> 或 <tt>BLOB</tt> 设置大小参数</li>
+    <li>Using <code>VARCHAR</code> without a size argument</li>
+    <li>Using <code>TEXT</code> or <code>BLOB</code> with a size argument</li>
 </ul>
 <p>
     同时，请参考 MySQL 手册中语法一章确定你的语法都正确。
@@ -3626,8 +3815,10 @@ title="结构化查询语言 (structured query language)">SQL</abbr>&quot; 如�
 <h4 id="faq6_6">
     <a href="#faq6_6">6.6 怎样在依例查询 (Query-by-example) 中使用关系表？</a></h4>
 
-<p> 下面用数据库 mydb 中的数据表 persons、towns 和 countries 来举例。如果你没有 <tt>pma_relation</tt>
-表，请先根据设置一节中的说明创建。然后创建示范表:</p>
+<p> Here is an example with the tables persons, towns and countries, all located
+in the database mydb. If you don't have a <code>pma_relation</code> table,
+create it as explained in the configuration section. Then create the example
+tables:</p>
 
 <pre>
 CREATE TABLE REL_countries (
@@ -3757,7 +3948,7 @@ statistics pages?</a></h4>
 <h4 id="faqexport">
     <a href="#faqexport">6.12 我想了解一些导出选项。</a></h4>
 
-<p><b>结构:</b></p>
+<p><strong>Structure:</strong></p>
 
 <ul><li>&quot;添加 DROP TABLE&quot; 将会添加一行告诉 MySQL，如果在导入时已存在这张表则 <a
 href="http://dev.mysql.com/doc/mysql/en/drop-table.html">删除它</a>。它不会在导出之后删除你的表，而仅作用于导入的目标。</li>
@@ -3766,11 +3957,11 @@ href="http://dev.mysql.com/doc/mysql/en/drop-table.html">删除它</a>。它不�
     <li>&quot;给表名和字段名加上反引号&quot; 保护名称中含有特殊字符或保留字的字段和表。</li>
     <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
 types set in the pmadb in the dump as <abbr title="structured query
-language">SQL</abbr> comments (<i>/* xxx */</i>).
+language">SQL</abbr> comments (<em>/* xxx */</em>).
        </li>
 </ul>
 
-<p><b>数据:</b></p>
+<p><strong>Data:</strong></p>
 
 <ul><li>&quot;Complete inserts&quot; adds the column names on every INSERT command,
 for better documentation (but resulting file is bigger).</li>
@@ -3806,11 +3997,12 @@ Application Repository)">PEAR</abbr> 扩展支持。  此外还需要 <abbr titl
 </p>
 
 <p>
-    要安装 <abbr title="PHP 扩展和应用程序库 (PHP Extension and Application
-Repository)">PEAR</abbr> <abbr title="简单对象访问协议 (Simple Object Access
-Protocol)">SOAP</abbr> 模块，请运行 <tt>"pear install Net_Socket Net_URL
-HTTP_Request Mail_Mime Net_DIME SOAP"</tt> 以获取依赖的 <abbr title="PHP 扩展和应用程序库
-(PHP Extension and Application Repository)">PEAR</abbr> 模块。
+    To install <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> <abbr title="Simple Object Access
+Protocol">SOAP</abbr> module, run <code>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</code> to get the necessary <abbr
+title="PHP Extension and Application Repository">PEAR</abbr> modules for
+usage.
 </p>
 
 <p>
@@ -3856,14 +4048,14 @@ the query on. You can now access a bookmark dropdown on each page, the query
 box appears on for that database.<br /><br />
 
     Since phpMyAdmin 2.5.0 you are also able to store variables for the
-bookmarks.  Just use the string <b>/*[VARIABLE]*/</b> anywhere in your
-query. Everything which is put into the <i>value</i> input box on the query
-box page will replace the string &quot;/*[VARIABLE]*/&quot; in your stored
-query. Just be aware of that you HAVE to create a valid query, otherwise
-your query won't be even able to be stored in the database.<br />
-    Also remember, that everything else inside the <b>/*[VARIABLE]*/</b> string
-for your query will remain the way it is, but will be stripped of the /**/
-chars. So you can use:<br /><br />
+bookmarks.  Just use the string <strong>/*[VARIABLE]*/</strong> anywhere in
+your query. Everything which is put into the <em>value</em> input box on the
+query box page will replace the string &quot;/*[VARIABLE]*/&quot; in your
+stored query. Just be aware of that you HAVE to create a valid query,
+otherwise your query won't be even able to be stored in the database.<br />
+    Also remember, that everything else inside the
+<strong>/*[VARIABLE]*/</strong> string for your query will remain the way it
+is, but will be stripped of the /**/ chars. So you can use:<br /><br />
 
     <code>/*, [VARIABLE] AS myname */</code><br /><br />
 
@@ -3883,11 +4075,12 @@ an empty string is provided, no replacements are made.<br /><br />
     <code>SELECT 名字, 地址 FROM 地址表 WHERE 1 AND 名字 LIKE '%张三%'</code>
     <br /><br />
 
-    你可以在一个查询中多次使用 <b>/*[变量]*/</b> (这表示使用<i>同一个</i>变量) 。<br />
-    <b>NOTE THE ABSENCE OF SPACES</b> inside the &quot;/**/&quot; construct. Any
-spaces inserted there will be later also inserted as spaces in your query
-and may lead to unexpected results especially when using the variable
-expansion inside of a &quot;LIKE ''&quot; expression.<br />
+    You can use multiple occurrences of <strong>/*[VARIABLE]*/</strong> in a
+single query (that is, multiple occurrences of the <em>same</em> variable).<br />
+    <strong>NOTE THE ABSENCE OF SPACES</strong> inside the &quot;/**/&quot;
+construct. Any spaces inserted there will be later also inserted as spaces
+in your query and may lead to unexpected results especially when using the
+variable expansion inside of a &quot;LIKE ''&quot; expression.<br />
     Your initial query which is going to be stored as a bookmark has to yield at
 least one result row so you can store the bookmark. You may have that to
 work around using well positioned &quot;/**/&quot; comments.</p>
@@ -3924,9 +4117,10 @@ title="常见问题 (Frequently Asked Questions)">FAQ</abbr> 6.6</a>
 中的例子。这时，如果外键表中有不超过 100 个值，就会出现一个下拉框。
 你将会看到两个列表，第一个列表包含键和显示字段，第二个列表包含显示字段和键。这么做的目的是为了可以通过按下键或显示字段的首字母来定位。<br /><br />
 
-    若超过了 100 个值，将会使用新窗口，请浏览外键并选择。要修改默认 100 个值的限制，参见 <tt><a
+    For 100 values or more, a distinct window will appear, to browse foreign key
+values and choose one. To change the default limit of 100, see <code><a
 href="#cfg_ForeignKeyMaxLimit"
-class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt> 。</p>
+class="configrule">$cfg['ForeignKeyMaxLimit']</a></code>.</p>
 
 <h4 id="faq6_22">
     <a href="#faq6_22">6.22 书签: 我能在进入一张表的浏览模式时自动执行一个书签吗？</a></h4>
@@ -4048,7 +4242,7 @@ with the same filename and chose the .shp file from the import page.
             Create a Zip archive with .shp and .dbf files and import it. For this to
 work, you need to set <a href="#cfg_TempDir"
 class="configrule">$cfg['TempDir']</a> to a place where the web server user
-can write (for example <tt>'./tmp'</tt>).
+can write (for example <code>'./tmp'</code>).
             </p>
 
             <p> 要在 UNIX 类系统下创建一个临时目录，可以通过:</p>
@@ -4200,8 +4394,10 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 </p>
 
 <p>
-红色 <tt>S</tt> 和绿色 <tt>D</tt> 按钮表示结构 (S) 或数据 (D)
-是否需要更新。当点击按钮时，它们将变成灰色，表示相应表将会被同步。
+The difference is depicted by the red and green buttons with <code>S</code>
+and <code>D</code> letters, indicating that either Structure or Data are not
+up to date. By clicking on them, they will turn grey, what means that they
+will be synchronized.
 </p>
 
 <h4 id="faq9_2">

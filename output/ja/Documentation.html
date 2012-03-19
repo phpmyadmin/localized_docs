@@ -1,11 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE HTML>
 
 <!-- 
 vim: expandtab ts=4 sw=4 sts=4 tw=78 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<html lang="shift_jis" dir="ltr">
 <!--
 
 このファイルは po4a を使用して生成されていますので、編集してはいけません！
@@ -16,9 +14,9 @@ po ファイルを編集することで、翻訳を変更することができ�
 
 -->
 <head>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
     <title>phpMyAdmin 4.0.0-dev ドキュメント</title>
     <link rel="stylesheet" type="text/css" href="docs.css" />
 </head>
@@ -71,29 +69,34 @@ phpMyAdmin プロジェクトページ</a></li>
 <!-- REQUIREMENTS -->
 <h2 id="require">必要なもの</h2>
 
-<ul><li><b>PHP</b>
-        <ul><li><tt>セッション</tt> (<a href="#faq1_31"><abbr title="よくある質問">FAQ</abbr> 1.31
-参照</a>)、Standard PHP Library (SPL)、JSON をサポートしている PHP 5.2.0 以降が必要です。
+<ul><li><strong>PHP</strong>
+        <ul><li>You need PHP 5.2.0 or newer, with <code>session</code> support (<a
+href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
+1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
                 </li>
-        <li>ZIP ファイルのアップロードをサポートするには、PHP の <tt>zip</tt> 拡張が必要です。</li>
+        <li>To support uploading of ZIP files, you need the PHP <code>zip</code>
+extension.</li>
         <li>マルチバイト文字列を適切にサポートするには (例えば、一般的なデフォルトとして使われる UTF-8)、mbstring と ctype
 拡張をインストールする必要があります。
         </li>
             <li>You need GD2 support in PHP to display inline thumbnails of JPEGs
 (&quot;image/jpeg: inline&quot;) with their original aspect ratio.</li>
-            <li>「クッキー」<a href="#authentication_modes">認証方法</a>を使用する場合、<a
-href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a>
-拡張は、ほぼ全てユーザに対して強く推奨され、また 64 ビットマシンの場合は<b>必須</b>となります。mcrypt
-を使用していないと、phpMyAdmin のページを読み込みが大幅に遅くなる原因となりえます。
+            <li>When using the &quot;cookie&quot; <a
+href="#authentication_modes">authentication method</a>, the <a
+href="http://www.php.net/mcrypt"><code>mcrypt</code></a> extension is
+strongly suggested for most users and is <strong>required</strong> for
+64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to load pages
+significantly slower.
                 </li>
                 <li>アップロード進行状況バーをサポートするには、<a href="#faq2_9"><abbr title="よくある質問">FAQ</abbr>
 2.9</a>を参照してください。</li>
-                <li>XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP 5.2.17 以降および <a
-href="http://www.php.net/libxml"><tt>libxml</tt></a> 拡張が必要です。</li>
+                <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
+or newer and the <a href="http://www.php.net/libxml"><code>libxml</code></a>
+extension.</li>
         </ul>
     </li>
-    <li><b>MySQL</b> 5.0 以降 (<a href="#faq1_17">詳細</a>)</li>
-    <li>クッキーが使用可能な<b>ウェブブラウザ</b>。</li>
+    <li><strong>MySQL</strong> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
+    <li><strong>Web browser</strong> with cookies enabled.</li>
 </ul>
 
 
@@ -157,10 +160,11 @@ title="よくある質問">FAQ</abbr> 9.1 参照)</a>
 のユーザアカウント情報を操作するために１つ許可している以外は) 行っていません。全てのユーザは、有効な MySQL ユーザである必要があります。</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1)</sup> phpMyAdmin は、Zlib (<tt>--with-zlib</tt>)／Bzip2
-(<tt>--with-bz2</tt>) をサポートした PHP を利用すると、ダンプや <abbr
-title="カンマ区切り">CSV</abbr> エクスポートを (Zip、GZip -RFC 1952-、Bzip2 形式で)
-圧縮して出力することできるようになります。これらを適切に使用するには、<tt>php.ini</tt> の変更が必要な場合もあります。</p>
+    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
+formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
+if you use PHP with Zlib support (<code>--with-zlib</code>) and/or Bzip2
+support (<code>--with-bz2</code>). Proper support may also need changes in
+<code>php.ini</code>.</p>
 
 
 <!-- INSTALLATION -->
@@ -184,32 +188,42 @@ title="カンマ区切り">CSV</abbr> エクスポートを (Zip、GZip -RFC 195
     <abbr title="オペレーティング・システム">OS</abbr> X より前のバージョンの <acronym title="Apple
 Macintosh">Mac</acronym> <abbr title="オペレーティング・システム">OS</abbr> を使うと、解凍の際に
 StuffIt が <acronym title="Apple Macintosh">Mac</acronym> 形式にしてしまいます。<br />
-    そのため、サーバにアップロードする前に BBEdit で全ての phpMyAdmin スクリプトを Unix
-風にセーブし直しておく必要があります。PHP はどうも <acronym title="Apple Macintosh">Mac</acronym>
-風の改行文字（「<tt>¥r</tt>」）と相性がよくないようです。</p>
+    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
+before uploading them to your server, as PHP seems not to like <acronym
+title="Apple Macintosh">Mac</acronym>-style end of lines character
+(&quot;<code>\r</code>&quot;).</p>
 
 <h3 id="quick_install">クイックインストール</h3>
-<ol><li>phpmyadmin.net のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、UTF-8
-形式の全言語版もあります。これには、全ての言語と全ての文字セットが含まれています（ほとんどの場合これで大丈夫なはずです）。以後、<tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>
-のような名前のキットを選んだと仮定して説明していきます。
+<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
+page. Some kits contain only the English messages, others contain all
+languages in UTF-8 format (this should be fine in most situations), others
+contain all languages and all character sets. We'll assume you chose a kit
+whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
     </li>
-    <li>ウェブサーバのドキュメントルートで <tt>tar -xzvf phpMyAdmin_x.x.x.tar.gz</tt>
-を実行して配布ファイルを解凍します（サブディレクトリを展開するように解凍してください）。ドキュメントルートに直接アクセスできない場合は、ローカルマシンのディレクトリにファイルを解凍します。ステップ
-4 まで済んだらそのディレクトリを FTP などでウェブサーバに転送してください。</li>
+    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
+<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
+webserver's document root. If you don't have direct access to your document
+root, put the files in a directory on your local machine, and, after step 4,
+transfer the directory on your web server using, for example, ftp.</li>
     <li>必ずすべてのスクリプトの所有者を適切に設定してください（PHP
 がセーフモードになっている場合、スクリプトによって所有者が異なると問題を起こすことになります）。設定例については<a href="#faq4_2">
 <abbr title="よくある質問">FAQ</abbr> 4.2</a> と <a href="#faq1_26"><abbr
 title="よくある質問">FAQ</abbr> 1.26</a> をご覧ください。</li>
-    <li>まず最初に、インストールを設定する必要があります。やり方は2つあります。1つは、ユーザが <tt>config.inc.php</tt>
-を手動で編集・コピーする伝統的な方法。一方で現在では、グラフィカルなインストールを好む人用にウィザード形式のセットアップスクリプトが提供されています。しかしながら依然として、<tt>config.inc.php</tt>
-を作成するのは、先進的な機能を必要に応じて簡単に使い始められる方法でもあります。
-        <ul><li>手動でファイルを作成するには、単純にテキストエディタを使用して <tt>config.inc.php</tt> ファイルを phpMyAdmin
-のメイン (トップレベル) ディレクトリ (ここには <tt>index.php</tt> が含まれています) に作成します
-(その際、<tt>config.sample.inc.php</tt> をコピーすることで最小限の設定ファイルを取得することもできます)。最初に
-phpMyAdmin は <tt>libraries/config.default.php</tt> を読み込み、それから
-<tt>config.inc.php</tt> 内で見つかった値でデフォルト値を上書きします。設定に問題がなければ、デフォルト値は
-<tt>config.inc.php</tt>
-に含める必要はありません。稼動させるにはいくつか設定する必要がありますが、単純な設定では以下にような感じになります。
+    <li>Now you must configure your installation. There are two methods that can be
+used. Traditionally, users have hand-edited a copy of
+<code>config.inc.php</code>, but now a wizard-style setup script is provided
+for those who prefer a graphical installation. Creating a
+<code>config.inc.php</code> is still a quick way to get started and needed
+for some advanced features.
+        <ul><li>To manually create the file, simply use your text editor to create the file
+<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
+to get minimal configuration file) in the main (top-level) phpMyAdmin
+directory (the one that contains <code>index.php</code>).  phpMyAdmin first
+loads <code>libraries/config.default.php</code> and then overrides those
+values with anything found in <code>config.inc.php</code>. If the default
+value is okay for a particular setting, there is no need to include it in
+<code>config.inc.php</code>.  You'll need a few directives to get going, a
+simple configuration may look like this:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // この値は適当に決めてください
@@ -231,10 +245,10 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
 ?&gt;
 </pre>
                 設定できる値の詳細な解説については、このドキュメントの<a href="#config">「設定」の章</a>を参照してください。</li>
-            <li id="setup_script"><tt>config.inc.php</tt> を手動で編集する代わりに、<a
-href="setup/">セットアップスクリプト</a>を使用することができます。まず、phpMyAdmin ディレクトリ内に
-<tt>config</tt> フォルダを手動で作成する必要があります。このようにするのは、セキュリティ対策のためです。Linux/Unix
-システムでは、次のコマンドを使用することができます。
+            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
+href="setup/">Setup Script</a>. First you must manually create a folder
+<code>config</code> in the phpMyAdmin directory. This is a security
+measure. On a Linux/Unix system you can use the following commands:
 <pre>
 cd phpMyAdmin
 mkdir config                        # 保存用ディレクトリの作成
@@ -248,35 +262,45 @@ chmod o+w config/config.inc.php     # 誰でも書き込める権限を与える
                 他のプラットフォームでは、単純にフォルダを作成し、ウェブサーバに対して読み書きアクセス権があるか確認します。<a href="#faq1_26">FAQ
 1.26</a> も役立つでしょう。<br /><br />
 
-                次に、ブラウザで <tt><a href="setup/">setup/</a></tt>
-開きます。画面の<i>設定</i>領域から<strong>明示的に<tt>保存する</tt>を選択するまで、変更箇所はディスクに保存されていない</strong>ことに注意してください。通常、スクリプトは、<tt>config/</tt>
-ディレクトリに新しい config.inc.php
-を保存します。しかし、ウェブサーバが適切なパーミッションを持っていない場合、「設定の読み込み・保存が出来ません」というエラーが表示されることがあります。<tt>config/</tt>
-ディレクトリが存在していて、適切なパーミッションを持っているかを確認してください。もしくは、<tt>ダウンロードする</tt>リンクを使用して、設定ファイルをローカルに保存してから、（FTP
-もしくは類似の手段を介して）適切な場所にアップロードしてください。<br /><br />
+                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
+that <strong>changes are not saved to disk until explicitly choose
+<code>Save</code></strong> from the <em>Configuration</em> area of the
+screen. Normally the script saves the new config.inc.php to the
+<code>config/</code> directory, but if the webserver does not have the
+proper permissions you may see the error "Cannot load or save
+configuration." Ensure that the <code> config/</code> directory exists and
+has the proper permissions - or use the <code>Download</code> link to save
+the config file locally and upload (via FTP or some similar means) to the
+proper location.<br /><br />
 
-                一旦ファイルを保存した後、再度セキュリティ対策として、保存した設定ファイルを <tt>config/</tt>
-ディレクトリの外に移動させ、パーミッションを戻す必要があります。
+                Once the file has been saved, it must be moved out of the <code>
+config/</code> directory and the permissions must be reset, again as a
+security measure:
 <pre>
 mv config/config.inc.php .         # カレントディレクトリにファイルを移動
 chmod o-rw config.inc.php          # 誰でも読み書きできる権限を削除
 rm -rf config                      # 必要なくなったディレクトリを削除
 </pre>
                 すぐその設定ファイルを使用しても構いませんが、設定ファイルをエディタで確認したり編集したりすることもできます。セットアップスクリプトが提供していない一部の高度なオプションの設定などが行えます。</li></ul></li>
-    <li>認証タイプ (<tt>auth_type</tt>) に「config」を使用する場合、phpMyAdmin
-をインストールしたディレクトリを保護することを提案します。なぜなら、config 認証を使用するというのは、インストールされた phpMyAdmin
-にアクセスするのに、ユーザはパスワードの入力を必要としないからです。<a href="#glossary"><i>.htaccess</i></a>
-ファイルによる HTTP 認証、もしくは、認証タイプ (<tt>auth_type</tt>) を cookie か http
-の使用に切り替えるなどといった、代替の認証方法の使用を推奨します。追加情報については、<abbr title="よくある質問">FAQ</abbr>
-の<a href="#faqmultiuser">マルチユーザの節</a>、特に <a href="#faq4_4"><abbr
-title="よくある質問">FAQ</abbr> 4.4</a> を参照してください。</li>
+    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
+suggested that you protect the phpMyAdmin installation directory because
+using config does not require a user to enter a password to access the
+phpMyAdmin installation. Use of an alternate authentication method is
+recommended, for example with HTTP&#8211;AUTH in a <a
+href="#glossary"><em>.htaccess</em></a> file or switch to using
+<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
+multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
+Questions">FAQ</abbr> for additional information, especially <a
+href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
     <li>お使いのブラウザで <a href="index.php">phpMyAdmin のメインディレクトリ</a>を開きます。<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードを使用している場合、phpMyAdmin
 は現行版では、ようこそ画面と管理データベース、もしくはログインダイアログが表示されます。</li>
-    <li>ウェブサーバの設定でサブフォルダ <tt>./libraries</tt> と <tt>./setup/lib</tt>
-へのアクセスを拒否しておいたほうがいいでしょう。Apache の場合は、該当フォルダに提供されている <a
-href="#glossary"><i>.htaccess</i></a>
-ファイルを使用することができます。他のウェブサーバの場合は、各自で設定する必要があります。このような設定を行うことにより、サブフォルダの露出を防ぎ、万一、そこのコードにクロスサイドスクリプティングの脆弱性が見つかっても、利用されることはありません。</li>
+    <li>You should deny access to the <code>./libraries</code> and
+<code>./setup/lib</code> subfolders in your webserver configuration. For
+Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
+in that folder, for other webservers, you should configure this yourself.
+Such configuration prevents from possible path exposure and cross side
+scripting vulnerabilities that might happen to be found in that code.</li>
     <li>
         一般的には、インストールしている phpMyAdmin
 を公開されている場合、検索エンジンロボットに自動的に収集されないようにするために、それらからのアクセスに対してを保護することをお勧めします。そのためには、<code>robots.txt</code>
@@ -292,44 +316,55 @@ href="#faq1_42"><abbr title="よくある質問">FAQ</abbr> 1.42</a>を参照し
 を使うには専用のテーブル群を作成する必要があります。これらのテーブル群はお使いのデータベースに格納することもできますし、マルチユーザの場合はセントラルデータベースに格納することもできます
 (このセントラルデータベースは管理ユーザがアクセスするものです。ほかのユーザはアクセスできないようにしてください)。</p>
 
-<p> <tt>./examples/</tt> ディレクトリを確認してください。<i>create_tables.sql</i> というファイルがあるはずです
-(Windows サーバをお使いの場合は <a href="#faq1_23"><abbr title="よくある質問">FAQ</abbr>
-1.23</a> をよくお読みください)。</p>
+<p> Please look at your <code>./examples/</code> directory, where you should
+find a file called <em>create_tables.sql</em>. (If you are using a Windows
+server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
+Asked Questions">FAQ</abbr> 1.23</a>).</p>
 
-<p> 既存のテーブル構造を MySQL 4.1.2
-以降にアップグレードする場合は、<i>./examples/upgrade_tables_mysql_4_1_2+.sql</i> を使ってから
-<i>./examples/create_tables.sql</i> をインポートして新しいテーブルを作成するようにしてください。</p>
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
+please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
+create new tables by importing <em>./examples/create_tables.sql</em>.</p>
 
 <p> phpMyAdmin
 を使ってテーブル群を作成することもできますが、いくつか注意することがあります。データベースやテーブルを作成する際には特別な（管理者の）特権が必要になるかもしれません。また、データベース名によってはスクリプトに多少の修正を加える必要があるかもしれません。</p>
 
-<p> <i>./examples/create_tables.sql</i> ファイルをインポートしたら、<i>./config.inc.php</i>
-ファイルでテーブル名を指定してください。このとき使う設定項目の説明は<a
-href="#config">「設定」の章</a>にあります。また、これらのテーブル群に対する適切なアクセス権を持った管理ユーザが必要になります
-(後述の<i>認証モードの使い方</i>の節をご覧ください)。</p>
+<p> After having imported the <em>./examples/create_tables.sql</em> file, you
+should specify the table names in your <em>./config.inc.php</em> file. The
+directives used for that can be found in the <a href="#config">Configuration
+section</a>. You will also need to have a controluser with the proper rights
+to those tables (see section <a href="#authentication_modes">Using
+authentication modes</a> below).</p>
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
-<p> それまで使っていた <i>./config.inc.php</i>
-を新しいインストール先にコピーしていただくだけで結構です。古いバージョンから持ってきた設定ファイルは、オプションをいくつか変更または削除するなど若干の調整が必要な場合があります。特に、<tt>$cfg['AttributeTypes']</tt>
-の定義は、設定ファイルから削除して、デフォルト値が使われるように変更するほうがいいでしょう。PHP 6
-との互換性のために、set_magic_quotes_runtime(0); 文を削除してください（たぶん、設定ファイルの終わりの方にあります）。</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed; in particular,
+the definition of <code>$cfg['AttributeTypes']</code> has changed so you
+better remove it from your file and just use the default one.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
-<p> デフォルト設定ファイルはバージョンに依存していますので、<tt>libraries/config.default.php</tt> を
-<tt>config.inc.php</tt> へコピー<strong>しない</strong>でください。</p>
+<p> You should <strong>not</strong> copy
+<code>libraries/config.default.php</code> over <code>config.inc.php</code>
+because the default configuration file is version-specific.</p>
 
-<p> MySQL サーバをバージョン 4.1.2 以前から 5.x 以降へアップグレードして、かつ、phpMyAdmin
-環境保管領域を使用している場合、<tt>examples/upgrade_tables_mysql_4_1_2+.sql</tt> にある <abbr
-title="データベース用の問い合わせ言語">SQL</abbr> スクリプトを実行する必要があります。</p>
+<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
+version 5.x or newer and if you use the phpMyAdmin configuration storage,
+you should run the <abbr title="structured query language">SQL</abbr> script
+found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
 
 <h3 id="authentication_modes">認証モードの使い方</h3>
 
-<ul><li><b>マルチユーザ環境</b>では、ユーザが自分のデータベースにアクセスできるよう、また他人のデータベースにいたずらできないよう、<abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードにするのがお勧めです。<br />
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
+authentication modes are recommended in a <strong>multi-user
+environment</strong> where you want to give users access to their own
+database and don't want them to play around with others.<br />
         ただし、マイクロソフトの Internet Explorer
 にはご注意ください。このブラウザはクッキーに関しては本当にバグが多いようです。少なくともバージョン 6 まではそうです。<br />
-        また、<b>シングルユーザ環境</b>であっても <abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキーモードの方が好ましく思えるかもしれません。ユーザ／パスワードの組を設定ファイルに明記しなくてすみますから。
+        Even in a <strong>single-user environment</strong>, you might prefer to use
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
+your user/password pair are not in clear in the configuration file.
         </li>
 
     <li><abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モードの方が安全です。MySQL のログイン情報を
@@ -338,22 +373,27 @@ href="#controluser">「管理ユーザ」</a>は別かもしれませんが)。<
         ただし、HTTPS プロトコルを使わない限り、パスワードはプレーンテキストのままやりとりされることを、忘れないでください。<br />
         また、クッキーモードでは、blowfish アルゴリズムで暗号化されてはいますが、パスワードは一時的にクッキーに保管されます。</li>
 
-    <li id="pmausr">注：この項目は、MySQL サーバが <tt>--skip-show-database</tt> を適用して稼動している場合のみ使用できます。<br /><br />
+    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+<code>--skip-show-database</code>.<br /><br />
 
-        「<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>」／「クッキー」モードでは管理ユーザが必要です。このユーザは
-<i>`mysql`.`user` (`Password` 以外の全カラム)</i>、<i>`mysql`.`db`
-(全カラム)</i>、<i>`mysql`.`host` (全カラム)</i>、<i>`mysql`.`tables_priv` (`Grantor`
-と `Timestamp` 以外の全カラム)</i> テーブルについて、<tt>SELECT</tt> 特権<b>のみ</b>を持つようにします。<br /> また、<i>config.inc.php</i> ファイルの <tt><a href="#cfg_Servers_controluser"
-class="configrule">$cfg['Servers'][$i]['controluser']</a></tt> と <tt><a
-href="#cfg_Servers_controlpass"
-class="configrule">$cfg['Servers'][$i]['controlpass']</a></tt> 項目には<a
-href="#controluser">管理ユーザ</a>の情報を登録しなければなりません。<br />
-        下記の例では <tt>pma</tt> を管理ユーザ、<tt>pmapass</tt>
-を管理パスワードと想定していますが、<b>これはあくまでも例です。ご自分のファイルでは設定を変えてください！</b> phpMyAdmin の
-<abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリウィンドウまたは mysql
-コマンドラインクライアントからこれらのコマンドを入力します。<br />
-        当然のことながら、MySQL サーバのホストがウェブサーバのホストと異なる場合は <tt>localhost</tt>
-をウェブサーバのホストに差し替える必要があります。
+        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
+modes, phpMyAdmin needs a controluser that has <strong>only</strong> the
+<code>SELECT</code> privilege on the <em>`mysql`.`user` (all columns except
+`Password`)</em>, <em>`mysql`.`db` (all columns)</em>, <em>`mysql`.`host`
+(all columns)</em> and <em>`mysql`.`tables_priv` (all columns except
+`Grantor` and `Timestamp`)</em> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
+in the <code>config.inc.php</code> file under the <code><a
+href="#cfg_Servers_controluser" class="configrule">
+$cfg['Servers'][$i]['controluser']</a></code> and <code><a
+href="#cfg_Servers_controlpass" class="configrule">
+$cfg['Servers'][$i]['controlpass']</a></code> settings.<br />
+        The following example assumes you want to use <code>pma</code> as the
+controluser and <code>pmapass</code> as the controlpass, but <strong>this is
+only an example: use something else in your file!</strong> Input these
+statements from the phpMyAdmin <abbr title="structured query language">SQL
+</abbr> Query window or mysql command&#8211;line client.<br />
+        Of course you have to replace <code>localhost</code> with the webserver's
+host if it's not the same as the MySQL server's one.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -378,10 +418,12 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
         (もちろん <a href="#linked-tables">phpMyAdmin 環境保管領域</a>を設定しておく必要があります。)  
     <br /></li>
 
-    <li>上記の作業が済みましたら、それぞれの<i>一般</i>ユーザに対して、必要なデータベースにおける必要な特権を付与していきます。なお通常は、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが
-(例えばスーパーユーザを作るときなど)。<br />
-        一例を示します。<i>real_user</i> というユーザに <i>user_base</i>
-というデータベースに関するすべての特権を付与するには、以下のようにします。<br />
+    <li>Then each of the <em>true</em> users should be granted a set of privileges
+on a set of particular databases. Normally you shouldn't give global
+privileges to an ordinary user, unless you understand the impact of those
+privileges (for example, you are creating a superuser).<br />
+        For example, to grant the user <em>real_user</em> with all privileges on the
+database <em>user_base</em>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
@@ -403,9 +445,10 @@ PHP の使用をサポートに関しては <a href="#faq1_32"><abbr title="よ�
 1.32</a> を参照してください。Apache での <abbr title="コモン・ゲートウェイ・インタフェース">CGI</abbr>
 の使用に関しては、<a href="#faq1_35"><abbr title="よくある質問">FAQ</abbr> 1.35</a>
 を参照してください。</li>
-    <li><a href="#faq4_4"><abbr title="よくある質問">FAQ</abbr> 4.4</a> もご覧ください。「<abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証モードと <a
-href="#glossary"><i>.htaccess</i></a> 機構は併用しないようにします。</li>
+    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.4</a> about not using the <a
+href="#glossary"><em>.htaccess</em></a> mechanism along with '<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
 </ul>
 
 <h4>「クッキー」認証モード</h4>
@@ -416,8 +459,9 @@ title="Internet Information Services">IIS</abbr> を稼動させている場合�
     <li>このモードでは、ユーザは phpMyAdmin のログアウトが確実に行え、同じユーザ名でログインし直すことができます。</li>
     <li>任意のサーバにログインしたい場合は、設定項目 <a href="#AllowArbitraryServer"
 class="configrule">$cfg['AllowArbitraryServer']</a> をご覧ください。</li>
-    <li><a href="#require">「必要なもの」</a>の章にも書いてある通り、<tt>mcrypt</tt>
-拡張を利用するとアクセス速度がかなり向上します。ただし、これは必須ではありません。</li>
+    <li>As mentioned in the <a href="#require">requirements</a> section, having the
+<code>mcrypt</code> extension will speed up access considerably, but is not
+required.</li>
 </ul>
 
 <h4>「サインオン」認証モード</h4>
@@ -441,27 +485,31 @@ title="インターネット・サービス・プロバイダ">ISP</abbr></a> �
 class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> と <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> の設定でホスト認証することを検討してみてください。</li>
-    <li>クッキー／HTTP 認証とは異なり、最初に phpMyAdmin
-サイトを読み込んだときに、ログインユーザを必要としません。これは仕様によるものですが、インストール先へのアクセスをどのユーザにも許可しているということです。HTTP
-認証の設定や他のルータから HTTP 要求を拒否している <a href="#glossary"><i>.htaccess</i></a>
-ファイルの設定、十分に対策したファイアウォール、といったいくつかの制限をかけること推奨します
-(これらの方法はこのマニュアルの範疇を超えていますが、Google で容易に検索できます)。</li>
+    <li>Unlike cookie and http, does not require a user to log in when first loading
+the phpMyAdmin site. This is by design but could allow any user to access
+your installation. Use of some restriction method is suggested, perhaps a <a
+href="#glossary"><em>.htaccess</em></a> file with the HTTP-AUTH directive or
+disallowing incoming HTTP requests at one&#8217;s router or firewall will
+suffice (both of which are beyond the scope of this manual but easily
+searchable with Google).</li>
 </ul>
 <h4 id="swekey">Swekey 認証</h4>
 <p>
 Swekey は、ウェブアプリケーションで使用することができる低コストの USB 認証キーです。<br /><br />
 Swekey 認証が有効にされている場合、phpMyAdmin はログインページに入る前にユーザの Swekey
 を接続しておく必要があります（現在はクッキー認証モードのみサポート）。 Swekey 認証は、デフォルトでは無効になっています。<br /><br />
-Swekey 認証を有効にするには、<tt>config.inc.php</tt> に以下の行を追加します。
+To enable it, add the following line to <code>config.inc.php</code>:
 </p>
 <pre>
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-その後、各ユーザと Swekey ID が関連付けられている <tt>swekey.conf</tt>
-ファイルを作成する必要があります。このファイルをウェブサーバのドキュメントルート外に置いておくことが重要です (上の例では、<tt>/etc</tt>
-にあります)。これのサンプルファイルが <tt>examples</tt>
-ディレクトリにあります。これらはユーザ情報ではありますが、管理者が見ても特に問題はありません。<br /><br />
+You then have to create the <code>swekey.conf</code> file that will
+associate each user with their Swekey Id. It is important to place this file
+outside of your web server's document root (in the example, it is located in
+<code>/etc</code>). A self documented sample file is provided in the
+<code>examples</code> directory. Feel free to use it with your own users'
+information.<br /><br />
 Swekey を購入したい場合は、<a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 より訪問するようお願いいたします。このリンクを通すことにより phpMyAdmin へ紹介料が提供されますので。
@@ -470,25 +518,33 @@ href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 <!-- CONFIGURATION -->
 <h2 id="config">設定</h2>
 
-<p> <span class="important"><acronym title="Apple Macintosh">Mac</acronym>
-ユーザ向けの警告：</span> PHP は <acronym title="Apple Macintosh">Mac</acronym>
-の改行文字（「<tt>¥r</tt>」）と相性がよくないようです。必ずテキストエディタで UNIX/Linux
-の改行文字（「<tt>¥n</tt>」）を使えるようにするオプションを選択してから、修正したスクリプトを保存してください。</p>
+<p> <span class="important">Warning for <acronym title="Apple
+Macintosh">Mac</acronym> users:</span> PHP does not seem to like <acronym
+title="Apple Macintosh">Mac</acronym> end of lines character
+(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
+to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
+text editor before saving a script you have modified.</p>
 
-<p> <span class="important">設定にあたっての注意：</span> 設定可能なデータはほとんどが
-<tt>config.inc.php</tt> にあります。このファイルが存在しない場合は<a
-href="#setup">クイックインストール</a>の項を参照して作成しておいてください。このファイルには、デフォルト値から変更したいパラメータのみ含めておけば結構です（デフォルト値は
-<tt>libraries/config.default.php</tt> で定義されています）。</p>
+<p> <span class="important">Configuration note:</span> Almost all configurable
+data is placed in <code>config.inc.php</code>. If this file does not exist,
+please refer to the <a href="#setup">Quick install</a> section to create
+one. This file only needs to contain the parameters you want to change from
+their corresponding default value in
+<code>libraries/config.default.php</code>.</p>
 
-<p> （色など）デザイン関係のパラメータは <tt>themes/&lt;テーマ名&gt;/layout.inc.php</tt>
-にあります。また、<i>config.footer.inc.php</i> と <i>config.header.inc.php</i>
-ファイルを修正すれば各ページの先頭と末尾にページ固有のコードを追加できます。</p>
+<p> The parameters which relate to design (like colors) are placed in
+<code>themes/themename/layout.inc.php</code>. You might also want to create
+<em>config.footer.inc.php</em> and <em>config.header.inc.php</em> files to
+add your site specific code to be included on start and end of each page.</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] 文字列</dt>
-    <dd>ここには、phpMyAdmin がインストールされているディレクトリの <abbr title="インターネットアドレス">URL</abbr>
-をフルパスで設定します
-(例：<tt>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</tt>)。なお、ウェブサーバによってはこの
-<abbr title="インターネットアドレス">URL</abbr> の大文字小文字を区別します。末尾のスラッシュを忘れないようにしてください。<br /><br />
+    <dd>Sets here the complete <abbr title="Uniform Resource Locator">URL</abbr>
+(with full path) to your phpMyAdmin installation's directory.
+E.g.
+<code>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</code>.
+Note also that the <abbr title="Uniform Resource Locator">URL</abbr> on some
+web servers are case&#8211;sensitive.  Don&#8217;t forget the trailing slash
+at the end.<br /><br />
 
         バージョン 2.3.0 からはここを空欄にすることが推奨されています。たいていの場合、phpMyAdmin
 は自動的に適切な設定を検出します。ポート転送をしているユーザは PmaAbsoluteUri を設定する必要があるでしょう（<a
@@ -501,22 +557,25 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1340187&amp;
 class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
         <br />
         そのマスタ／外部データベースをセットアップしてみてもうまくいかない場合、その機能を利用したいデータベースの「構造」ページを見れば、無効になっている理由を分析するリンクが見つかるはずです。<br />
-        そういった機能を使いたくない場合は、この変数を <tt>TRUE</tt> に設定しておけばメッセージが表示されなくなります。</dd>
+        If you do not want to use those features set this variable to
+<code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] 論理型</dt>
-    <dd>Suhosin が検出された場合、警告をメインページに表示します。<tt>TRUE</tt>
-に設定しておくことで、このメッセージは表示されなくなります。</dd>
+    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
+this parameter to <code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] 論理型</dt>
-    <dd>クッキー認証で mcrypt 拡張がなかった場合、警告を表示します。<tt>TRUE</tt>
-に設定しておくことで、このメッセージは表示されなくなります。</dd>
+    <dd>Disable the default warning that is displayed if mcrypt is missing for
+cookie authentication.  You can set this parameter to <code>TRUE</code> to
+stop this message from appearing.</dd>
 
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
     <dd>指定されたしきい値に達していない不完全な翻訳に対して警告を表示します。</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] 論理型</dt>
-    <dd>これを <tt>true</tt>
-に設定すると、フレームに対して異なるドメインに置かれているページを許可します。このことは、クロスフレームスクリプト攻撃を可能にする潜在的なセキュリティホールにもなりえます。</dd>
+    <dd>Setting this to <code>true</code> allows a page located on a different
+domain to call phpMyAdmin inside a frame, and is a potential security hole
+allowing cross-frame scripting attacks.</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] 文字列</dt>
     <dd>「クッキー」認証方式は、パスワードを暗号化するために blowfish アルゴリズムを使用しています。<br />
@@ -527,15 +586,18 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
 以降、このパスフレーズが（空の場合は）自動で生成されるようになってはいますが、これはセキュリティ上あまり強いものではありません。通常、クッキーからユーザ名を取り出すといったことは不可能ですが、自動生成された（暗号／複合に必要な）パスフレーズがセッションに格納されるからです。</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] 配列</dt>
-    <dd>バージョン 1.4.2 以降、phpMyAdmin は複数の MySQL サーバを管理できるようになっています。そのために追加されたのが <a
-href="#cfg_Servers" class="configrule">$cfg['Servers']</a>
-配列です。ここにはさまざまなサーバへのログイン情報が格納されます。例えば、最初の <a href="#cfg_Servers_host"
-class="configrule">$cfg['Servers'][$i]['host']</a> には最初のサーバのホスト名が、2 番目の <a
+    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
+MySQL servers. Therefore, a <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>-array has been added which contains
+the login information for the different servers.  The first <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-には 2 番目のサーバのホスト名が入ります。<tt>./libraries/config.default.php</tt> には 1
-つしかサーバ定義がありませんが、必要があれば <tt>./config.inc.php</tt>
-にいくつでも定義を追加できます。<tt>./libraries/config.default.php</tt>
-から該当ブロックを丸ごと、あるいは必要な部分のみコピーしてください（すべての設定を定義する必要はありません。必要な部分のみ変更してください）。</dd>
+contains the hostname of the first server, the second <a
+href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
+the hostname of the second server, etc. In
+<code>./libraries/config.default.php</code>, there is only one section for
+server definition, however you can put as many as you need in
+<code>./config.inc.php</code>, copy that block or needed parts (you don't
+have to define all settings, just those you need to change).</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] 文字列</dt>
     <dd>$i 番目の MySQL サーバのホスト名ないし <abbr title="インターネット・プロトコル">IP</abbr>
@@ -550,17 +612,20 @@ class="configrule">$cfg['Servers'][$i]['host']</a>
 
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] 文字列</dt>
     <dd>利用するソケットへのパスが入ります。空欄にするとデフォルトのソケットが使われます。<br />
-        適切にソケットを使用するには、MySQL の設定などを確認してください。<tt>mysql</tt> コマンドラインクライアントを使用して、status
-コマンドの発行します。その結果の中に、ソケットが使われているかが表示されます。</dd>
+        To determine the correct socket, check your MySQL configuration or, using
+the <code>mysql</code> command&#8211;line client, issue the
+<code>status</code> command.  Among the resulting information displayed will
+be the socket used.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] 論理型</dt>
     <dd>MySQL サーバに接続するのに SSL を有効にするかどうか。
     </dd>
 
     <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] 文字列</dt>
-    <dd>MySQL
-サーバで利用する接続タイプが入ります。選択肢は<tt>「socket」</tt>と<tt>「tcp」</tt>です。デフォルトが「tcp」になっているのは、どんな
-MySQL サーバでもほぼ確実に利用できるためです。ソケットの方はプラットフォームによってはサポートされていません。<br /><br />
+    <dd>What type connection to use with the MySQL server. Your options are
+<code>'socket'</code> and <code>'tcp'</code>. It defaults to 'tcp' as that
+is nearly guaranteed to be available on all MySQL servers, while sockets are
+not supported on some platforms.<br /><br />
 
         ソケットモードを利用する場合、MySQL サーバはウェブサーバと同じマシン上になければなりません。</dd>
 
@@ -568,10 +633,11 @@ MySQL サーバでもほぼ確実に利用できるためです。ソケット�
     <dd>接続に利用する PHP の MySQL 拡張が入ります。有効な選択肢は次の通りです。
         <br /><br />
 
-        <tt><i>mysql</i></tt> : 古典的な MySQL 拡張です。<br /><br />
+        <code><em>mysql</em></code> : The classic MySQL extension.<br /><br />
 
-        <tt><i>mysqli</i></tt> : MySQL 拡張の改良版です。この拡張は PHP 5.0.0 で利用できるようになりました。MySQL
-4.1.x 以降が稼動しているサーバに接続する場合はお勧めです。</dd>
+        <code><em>mysqli</em></code> : The improved MySQL extension. This extension
+became available with PHP 5.0.0 and is the recommended way to connect to a
+server running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] 論理型</dt>
     <dd>MySQL サーバとの接続に圧縮プロトコルを使うかどうかが入ります（実験段階です）。</dd>
@@ -588,48 +654,56 @@ MySQL サーバでもほぼ確実に利用できるためです。ソケット�
         <span id="cfg_Servers_controlpass">$cfg['Servers'][$i]['controlpass']</span>
 文字列
     </dt>
-    <dd>この特別なアカウントは２つの異なった目的で使われます。リレーション機能全般を利用できるようにするのと (<a href="#pmadb"
-class="configrule">$cfg['Servers'][$i]['pmadb']</a>
-参照)、<tt>--skip-show-database</tt> を適用して稼動している MySQL
-サーバで、マルチユーザインストールを可能にするためです (<abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モード)。<br /><br />
+    <dd>This special account is used for 2 distinct purposes: to make possible all
+relational features (see <a href="#pmadb"
+class="configrule">$cfg['Servers'][$i]['pmadb']</a>)  and, for a MySQL
+server running with <code>--skip-show-database</code>, to enable a
+multi-user installation (<abbr title="HyperText Transfer
+Protocol">HTTP</abbr> or cookie authentication mode).<br /><br />
 
-        <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー認証モード (あるいは、phpMyAdmin 2.2.1
-以降の「config」認証モード) を使う場合、<i>mysql.user (「Password」以外の全カラム)</i>、<i>mysql.db
-(全カラム)</i>、<i>mysql.tables_priv (「Grantor」、「Timestamp」以外の全カラム)</i> テーブルに
-<tt>SELECT</tt> 特権を持つ MySQL
-アカウントの情報を提供する必要があります。このアカウントはログイン時にどのデータベースを表示するかチェックするのに利用されます。<br />
+        When using <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
+authentication modes (or 'config' authentication mode since phpMyAdmin
+2.2.1), you need to supply the details of a MySQL account that has
+<code>SELECT</code> privilege on the <em>mysql.user (all columns except
+&quot;Password&quot;)</em>, <em>mysql.db (all columns)</em> and
+<em>mysql.tables_priv (all columns except &quot;Grantor&quot; and
+&quot;Timestamp&quot;) </em>tables.  This account is used to check what
+databases the user will see at login.<br />
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。<br /><br />
 
         phpMyAdmin 2.2.5 より前では「stduser/stdpass」という名前でした。</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] 文字列 <tt>['<abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</tt></dt>
+    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <code>['<abbr title="HyperText
+Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</code></dt>
     <dd>そのサーバで利用する認証方法が入ります (config／cookie／<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>／signon)。
-        <ul><li>「config」認証 (<tt>$auth_type&nbsp;=&nbsp;'config'</tt>)
-は昔ながらの簡単な方法です。ユーザ名とパスワードは <i>config.inc.php</i> に保存されます。</li>
-            <li>「クッキー」認証モード (<tt>$auth_type&nbsp;=&nbsp;'cookie'</tt>) はバージョン 2.2.3
-で導入されました。クッキーを利用することで、あらゆる有効な MySQL
-ユーザでログインできます。ユーザ名とパスワードは、セッションの間はクッキーに保管されます。セッションが終わるとパスワードは破棄されます。また、<tt><a
-href="#AllowArbitraryServer"
-class="configrule">$cfg['AllowArbitraryServer']</a></tt>
-が有効になっている場合は任意のサーバにログインできます。
+        <ul><li>'config' authentication (<code>$auth_type&nbsp;=&nbsp;'config'</code>)  is
+the plain old way: username and password are stored in
+<em>config.inc.php</em>.</li>
+            <li>'cookie' authentication mode (<code>$auth_type&nbsp;=&nbsp;'cookie'</code>)
+as introduced in 2.2.3 allows you to log in as any valid MySQL user with the
+help of cookies. Username and password are stored in cookies during the
+session and password is deleted when it ends. This can also allow you to log
+in in arbitrary server if <code><a href="#AllowArbitraryServer"
+class="configrule">$cfg['AllowArbitraryServer']</a></code> enabled.
             </li>
-            <li>「<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>」認証 (旧版の「advanced」)
-(<tt>$auth_type&nbsp;=&nbsp;'<abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr>'</tt>) はバージョン 1.3.0 で導入されました。HTTP-Auth
-を経由することで、あらゆる有効な MySQL ユーザでログインできます。</li>
-            <li>「サインオン」認証モード (<tt>$auth_type&nbsp;=&nbsp;'signon'</tt>) は、バージョン 2.10.0
-で導入されました。用意された PHP のセッションデータからか、もしくは PHP
-スクリプトを使用して、ログインすることを許可するものです。これは、別のアプリケーションからシングルサインオンを実装する場合に便利です。シードセッションのやり方のサンプルは、サインオンの例
-(<code>examples/signon.php</code>) の中にあります。別の例として、OpenID を使うもの
-(<code>examples/openid.php</code>) や、システムソリューションに基づいたもの
-(<code>examples/signon-script.php</code>) もあります。この認証方式を使用するには、<a
-href="#cfg_Servers_SignonSession" class="configrule">セッション名</a>か<a
-href="#cfg_Servers_SignonScript" class="configrule">実行されるスクリプト</a>、それと<a
-href="#cfg_Servers_SignonURL" class="configrule">サインオン <abbr
-title="インターネットアドレス">URL</abbr></a> を設定する必要があります。</li>
+            <li>'<abbr title="HyperText Transfer Protocol">HTTP</abbr>' authentication (was
+called 'advanced' in previous versions and can be written also as 'http')
+(<code>$auth_type&nbsp;=&nbsp;'<abbr title="HyperText Transfer
+Protocol">HTTP</abbr>'</code>) as introduced in 1.3.0 allows you to log in
+as any valid MySQL user via HTTP-Auth.</li>
+            <li>'signon' authentication mode (<code>$auth_type&nbsp;=&nbsp;'signon'</code>)
+as introduced in 2.10.0 allows you to log in from prepared PHP session data
+or using supplied PHP script. This is useful for implementing single signon
+from another application.  Sample way how to seed session is in signon
+example: <code>examples/signon.php</code>.  There is also alternative
+example using OpenID - <code>examples/openid.php</code> and example for
+scripts based solution - <code>examples/signon-script.php</code>.  You need
+to configure <a href="#cfg_Servers_SignonSession" class="configrule">session
+name</a> or <a href="#cfg_Servers_SignonScript" class="configrule">script to
+be executed</a> and <a href="#cfg_Servers_SignonURL"
+class="configrule">signon <abbr title="Uniform Resource
+Locator">URL</abbr></a> to use this authentication method.</li>
         </ul>
 
         詳細は<a href="#setup">インストールの章</a>の「認証モードの使い方」をご覧ください。
@@ -678,24 +752,28 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー
 文字列または配列
     </dt>
     <dd>
-        データベース名 (の配列) を設定すると、ユーザにはそのデータベースしか見えなくなります。phpMyAdmin 2.2.1 以降、このデータベース名には
-MySQL のワイルドカード文字 (「_」と「%」) を含められます。ワイルドカード文字を実際の文字として使う場合はエスケープしてください
-(<tt>'my_db'</tt> ではなく、<tt>'my\_db'</tt> のようにします)。<br />
+        If set to a (an array of) database name(s), only this (these) database(s)
+will be shown to the user. Since phpMyAdmin 2.2.1, this/these database(s)
+name(s) may contain MySQL wildcards characters (&quot;_&quot; and
+&quot;%&quot;): if you want to use literal instances of these characters,
+escape them (I.E. use <code>'my\_db'</code> and not <code>'my_db'</code>).<br />
         この設定はサーバの負荷を下げるのに効果的です。利用できるデータベースのリストを作成する際に MySQL
 にリクエストを送る必要がなくなるためです。ただし、<span class="important">これは MySQL
 データベースサーバの特権を差し替えるものではありません。</span>つまり、設定すればそのデータベースだけが表示されるようになりますが、<span
 class="important">ほかのすべてのデータベースが使えなくなるわけではないのです。</span>
         <br /><br />
 
-        複数のデータベースを利用する場合には、「<tt>$cfg['Servers'][$i]['only_db'] = array('db1',
-'db2');</tt>」などとします。
+        An example of using more that one database:
+<code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
         phpMyAdmin 2.5.5
 で、左フレームのデータベースの並び順を決める際に、配列における並び順を利用するようになったため、データベースの配置を個別に指定できるようになりました。<br />
-        いくつかのデータベースが最初に置かれていて、あとはかまわないということであれば、残りのデータベースを指定する必要はありません。「<tt>$cfg['Servers'][$i]['only_db']
-= array('db3', 'db4', '*');</tt>」とした場合、db3 と db4
-が最初に置かれ、残りのデータベースはアルファベット順に並べられます。</dd>
+        If you want to have certain databases at the top, but don't care about the
+others, you do not need to specify all other databases. Use:
+<code>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</code>
+instead to tell phpMyAdmin that it should display db3 and db4 on top, and
+the rest in alphabetic order.</dd>
 
     <dt><span id="cfg_Servers_hide_db">$cfg['Servers'][$i]['hide_db']</span> 文字列
     </dt>
@@ -725,9 +803,11 @@ href="http://php.net/manual/ja/reference.pcre.pattern.syntax.php">PCRE
 環境保管領域</a>の節をご覧ください。このテーブル構造の利点や、データベースの簡単な作成法、必要なテーブルが書かれています。
         <br /><br />
 
-        インストールした phpMyAdmin のユーザが 1 人の場合は、お使いのデータベースに専用のテーブル群を格納することもできます。その場合は
-<tt>$cfg['Servers'][$i]['pmadb']</tt> にはお使いのデータベース名を入れていただければ結構です。マルチユーザの場合は
-phpMyAdmin 環境保管領域を格納するセントラルデータベース名を設定します。</dd>
+        If you are the only user of this phpMyAdmin installation, you can use your
+current database to store those special tables; in this case, just put your
+current database name in <code>$cfg['Servers'][$i]['pmadb']</code>. For a
+multi-user installation, set this parameter to the name of your central
+database containing the phpMyAdmin configuration storage.</dd>
 
     <dt id="bookmark">
         <span
@@ -738,7 +818,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
 
         この機能を利用できるようにするには、
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['bookmarktable']</tt> にテーブル名を入力します。</li>
+            <li>enter the table name in <code>$cfg['Servers'][$i]['bookmarktable']</code></li>
         </ul>
     </dd>
 
@@ -766,14 +846,15 @@ title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
         この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['relation']</tt> にリレーションテーブル名を入れます。</li>
+            <li>put the relation table name in <code>$cfg['Servers'][$i]['relation']</code></li>
             <li>一般ユーザとして phpMyAdmin
 を開き、この機能を使いたいテーブル一つ一つに対して、「構造⇒リレーションビュー」とクリックして、外部カラムを選択します。
                 </li>
         </ul>
 
-        現在のバージョンでは、<tt>master_db</tt> は <tt>foreign_db</tt>
-と一致しなければならないことに注意してください。これらのカラムは将来クロスデータベースリレーションを開発するために用意されています。
+        Please note that in the current version, <code>master_db</code> must be the
+same as <code>foreign_db</code>. Those columns have been put in future
+development of the cross-db relations.
     </dd>
 
     <dt id="table_info">
@@ -785,7 +866,8 @@ title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
 以降、対応するキーにカーソルを動かしたときどのカラムをツールチップとして表示するか、専用の「table_info」テーブルに記述できるようになりました。<br />
         この設定変数はその専用のテーブル名を保持します。この機能を利用できるようにするには、
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li>テーブル名を <tt>$cfg['Servers'][$i]['table_info']</tt> に入れます。（例：'pma_table_info'）</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['table_info']</code> (e.g.
+'pma_table_info')</li>
             <li>それから、この機能を利用したいテーブルごとに「構造⇒リレーションビュー⇒表示するカラムの選択」をクリックして、カラムを選択します。</li>
         </ul>
         使い方のコツ：<a href="#faqdisplay">表示するカラム</a>
@@ -807,8 +889,9 @@ title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
         この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['table_coords']</tt> と
-<tt>$cfg['Servers'][$i]['pdf_pages']</tt> に正しいテーブル名を入れます。</li>
+            <li>put the correct table names in
+<code>$cfg['Servers'][$i]['table_coords']</code> and
+<code>$cfg['Servers'][$i]['pdf_pages']</code></li>
         </ul>
 
         使い方のコツ：<a href="#faqpdf"><abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> 出力</a>
@@ -833,8 +916,8 @@ href="#transformations">「変換機能」</a>をご覧ください。MIME 変�
 
         この機能を利用できるようにするには、
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['column_info']</tt>
-にテーブル名を入れます。（例：'pma_column_info'）</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['column_info']</code> (e.g.
+'pma_column_info')</li>
             <li>2.5.0 より前の Column_comments テーブルを更新するには次のようにします。
 
                 <pre>
@@ -844,9 +927,10 @@ ALTER TABLE `pma_column_comments`
     ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
 </pre>
 
-                また、忘れずに <i>config.inc.php</i> にある変数名を<br />
-                <tt>$cfg['Servers'][$i]['column_comments']</tt> から
-<tt>$cfg['Servers'][$i]['column_info']</tt> に変更します。</li>
+                and remember that the Variable in <em>config.inc.php</em> has been renamed
+from<br />
+                <code>$cfg['Servers'][$i]['column_comments']</code> to
+<code>$cfg['Servers'][$i]['column_info']</code></li>
         </ul>
     </dd>
 
@@ -866,7 +950,8 @@ class="configrule">$cfg['QueryHistoryMax']</a>
         この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['history']</tt> にテーブル名を入れます。（例：'pma_history'）
+            <li>put the table name in <code>$cfg['Servers'][$i]['history']</code>
+(e.g. 'pma_history')
                 </li>
         </ul>
     </dd>
@@ -888,7 +973,8 @@ class="configrule">$cfg['LeftDefaultTabTable']</a> 内において移動が行�
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['recent']</tt> にテーブル名を入れます。（例：'pma_recent'）</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['recent']</code>
+(e.g. 'pma_recent')</li>
         </ul>
     </dd>
 
@@ -907,8 +993,8 @@ class="configrule">$cfg['RememberSorting']</a>、カラムの表示順番、カ�
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['table_uiprefs']</tt>
-にテーブル名を入れます。（例：'pma_table_uiprefs'）</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['table_uiprefs']</code>
+(e.g. 'pma_table_uiprefs')</li>
         </ul>
     </dd>
 
@@ -935,7 +1021,8 @@ title="データベース用の問い合わせ言語">SQL</abbr>
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li>テーブル名を <tt>$cfg['Servers'][$i]['tracking']</tt> に入れます。（例：'pma_tracking'）</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['tracking']</code>
+(e.g. 'pma_tracking')</li>
         </ul>
     </dd>
 
@@ -1022,7 +1109,7 @@ id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_dr
 
         <ul>
             <li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li>テーブル名を <tt>$cfg['Servers'][$i]['userconfig']</tt> に入れます。</li>
+            <li>put the table name in <code>$cfg['Servers'][$i]['userconfig']</code></li>
         </ul>
     </dd>
 
@@ -1037,8 +1124,8 @@ id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
         この機能を利用できるようにするには、
 
         <ul><li><a href="#pmadb">pmadb</a> と phpMyAdmin 環境保管領域をセットアップします。</li>
-            <li><tt>$cfg['Servers'][$i]['designer_coords']</tt>
-にテーブル名を入れます。（例：'pma_designer_coords'）
+            <li>put the table name in <code>$cfg['Servers'][$i]['designer_coords']</code>
+(e.g. 'pma_designer_coords')
                 </li>
         </ul>
     </dd>
@@ -1059,9 +1146,11 @@ href="#cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</a>
 id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
 論理型
     </dt>
-    <dd>バージョン 2.5.0 では新しい MIME 変換機能をサポートするようになったため、column_info テーブルに新しいカラムが 3
-つ追加されました。この変数を <tt>TRUE</tt>（デフォルト）にセットしておくと、phpMyAdmin
-は最新のテーブル構造が利用できるようになっているかチェックします。利用できない場合はスーパーユーザに警告を発します。<br /><br />
+    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
+column_info table got enhanced with three new columns. If the above variable
+is set to <code>TRUE</code> (default) phpMyAdmin will check if you have the
+latest table structure available. If not, it will emit a warning to the
+superuser.<br /><br />
 
         このチェック機能はこの変数を FALSE にすることで無効にできます。無効にするとパフォーマンスが向上します。<br /><br />
 
@@ -1072,8 +1161,10 @@ id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
     <dt><span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span>
 論理型</dt>
-    <dd>パスワードなしでのログインを許可するかどうか。このパラメータがデフォルト値の <tt>false</tt> であれば、root
-または匿名（空欄）ユーザが空のパスワードのままの定義で残っていたとしても、MySQL サーバへの意図しないアクセスを防ぐことができます。
+    <dd>Whether to allow logins without a password. The default value of
+<code>false</code> for this parameter prevents unintended access to a MySQL
+server with was left with an empty password for root or on which an
+anonymous (blank) user is defined.
     </dd>
     <dt id="servers_allowdeny_order">
         <span
@@ -1082,16 +1173,23 @@ id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span
     </dt>
     <dd>規則の適用順が空の場合、<abbr title="インターネット・プロトコル">IP</abbr> 認証は無効になります。<br /><br />
 
-        規則の適用順が <tt>「deny,allow」</tt>
-の場合、システムは全ての拒否規則を適用してから許可規則を適用します。アクセスは許可がデフォルトです。拒否コマンドに一致しないクライアント、許可コマンドに一致するクライアントはすべてサーバへのアクセスが許可されます。 <br /><br />
+        If your rule order is set to <code>'deny,allow'</code> then the system
+applies all deny rules followed by allow rules. Access is allowed by
+default. Any client which does not match a Deny command or does match an
+Allow command will be allowed access to the server. <br /><br />
 
-        規則の適用順が <tt>「allow,deny」</tt>
-の場合、システムはすべての許可規則を適用してから拒否規則を適用します。アクセスは拒否がデフォルトです。許可コマンドに一致しないクライアント、拒否コマンドに一致するクライアントはすべてサーバへのアクセスが拒否されます。<br /><br />
+        If your rule order is set to <code>'allow,deny'</code> then the system
+applies all allow rules followed by deny rules. Access is denied by
+default.  Any client which does not match an Allow directive or does match a
+Deny directive will be denied access to the server.<br /><br />
 
-        規則の適用順が「explicit」の場合、認証は「deny,allow」と同様に行われますが、制限が追加されて、ホスト名／ユーザ名の組が
-<i>allow</i> 規則に含まれ、かつ、<i>deny</i>
-規則には含まれない<b>必要があります</b>。これは「Allow/Deny」規則を利用するうえでは<b>最も</b>安全な方法です。以前は
-Apache で順番を指定せずに許可・拒否規則を指定することで実現していたものです。<br /><br />
+        If your rule order is set to 'explicit', authorization is performed in a
+similar fashion to rule order 'deny,allow', with the added restriction that
+your host/username combination <strong>must</strong> be listed in the
+<em>allow</em> rules, and not listed in the <em>deny</em> rules. This is the
+<strong>most</strong> secure means of using Allow/Deny rules, and was
+available in Apache by specifying allow and deny rules without setting any
+order.<br /><br />
 
         プロキシを通しての IP アドレスの検出については <a
 href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> もご覧になってください。
@@ -1107,9 +1205,11 @@ id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span
 &lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
 </pre>
 
-        全てのユーザに一致させたいのであれば、<i>username</i> 項目にワイルドカードとして <tt>'%'</tt> を入れることもできます。<br />
-        また、<i>ipmask</i> 項目でもいくつかショートカットが利用できます (SERVER_ADDRESS
-の部分はどんなウェブサーバでも利用できるとは限りませんので注意してください)。
+        If you wish to match all users, it is possible to use a <code>'%'</code> as
+a wildcard in the <em>username</em> field.<br />
+        There are a few shortcuts you can use in the <em>ipmask</em> field as well
+(please note that those containing SERVER_ADDRESS might not be available on
+all webservers):
         <pre>
 'all' -&gt; 0.0.0.0/0
 'localhost' -&gt; 127.0.0.1/8
@@ -1118,33 +1218,36 @@ id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span
 'localnetC' -&gt; SERVER_ADDRESS/24
 </pre>
 
-        規則のリストを空にすると、規則の適用順が <tt>「deny,allow」</tt> の場合は <tt>「allow % from all」</tt>
-と、適用順が <tt>「allow,deny」</tt> ないし <tt>「explicit」</tt> の場合は <tt>「deny % from
-all」</tt> と等価になります。<br /><br />
+        Having an empty rule list is equivalent to either using <code>'allow % from
+all'</code> if your rule order is set to <code>'deny,allow'</code> or
+<code>'deny % from all'</code> if your rule order is set to
+<code>'allow,deny'</code> or <code>'explicit'</code>.<br /><br />
 
         <abbr title="インターネット・プロトコル">IP</abbr> のマッチング規則としては、下記が利用できます。<br />
-        <tt>xxx.xxx.xxx.xxx</tt> （単一の <abbr title="インターネット・プロトコル">IP</abbr>
-アドレスそのもの）<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt>（<abbr title="インターネット・プロトコル">IP</abbr>
-アドレスの範囲指定）<br />
-        <tt>xxx.xxx.xxx.xxx/nn</tt> （CIDR（Classless Inter-Domain Routing）タイプの <abbr
-title="インターネット・プロトコル">IP</abbr> アドレス）<br />
+        <code>xxx.xxx.xxx.xxx</code> (an exact <abbr title="Internet
+Protocol">IP</abbr> address)<br />
+        <code>xxx.xxx.xxx.[yyy-zzz]</code> (an <abbr title="Internet
+Protocol">IP</abbr> address range)<br />
+        <code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing type
+<abbr title="Internet Protocol">IP</abbr> addresses)<br />
         ただし、以下は利用できません。<br />
-        <tt>xxx.xxx.xxx.xx[yyy-zzz]</tt>（<abbr title="インターネット・プロトコル">IP</abbr>
-アドレスの一部範囲指定）<br />
+        <code>xxx.xxx.xxx.xx[yyy-zzz]</code> (partial <abbr title="Internet
+Protocol">IP</abbr> address range)<br />
         それと、IPv6 アドレスもサポートしていません。
     </dd>
     <dt><span id="cfg_Servers_DisableIS">$cfg['Servers'][$i]['DisableIS']</span> 論理型</dt>
-    <dd>情報を取得するための <tt>INFORMATION_SCHEMA</tt> の使用を無効にします（代わりに <tt>SHOW</tt>
-コマンドを使用します）。多くのデータベースが存在している場合に、<tt>INFORMATION_SCHEMA</tt>
-は速度的な問題があります。現在は、コードの一部でしか使われていませんが、今後増えていきます。
+    <dd>Disable using <code>INFORMATION_SCHEMA</code> to retrieve information (use
+<code>SHOW</code> commands instead), because of speed issues when many
+databases are present. Currently used in some parts of the code, more to
+come.
     </dd>
     <dt><span
 id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand']</span>
 文字列</dt>
-    <dd>膨大な数のデータベースを持つサーバ上で、使用可能なデータベース名を取得するためにデフォルトの SHOW DATABASES
-コマンドを使うと、おそらくとても遅くなります。これを回避するために、高速コマンドに置き換えることができます（サンプルは、<tt>libraries/config.default.php</tt>
-を参照してください）。
+    <dd>On a server with a huge number of databases, the default <code>SHOW
+DATABASES</code> command used to fetch the name of available databases will
+probably be too slow, so it can be replaced by faster commands (see
+<code>libraries/config.default.php</code> for examples).
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 論理型</dt>
@@ -1177,9 +1280,12 @@ title="インターネットアドレス">URL</abbr> にしなければなりま
     </dd>
 
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
-    <dd>複数のサーバが設定されている場合、<tt>$cfg['ServerDefault']</tt> にサーバ番号を設定しておくと phpMyAdmin
-を立ち上げたときに自動的にそのサーバに接続するようにできます。0 にセットするとログインしないでサーバのリストを表示します。<br />
-        サーバが１つしか設定されていない場合、<tt>$cfg['ServerDefault']</tt> はそのサーバに設定「しなければなりません」。</dd>
+    <dd>If you have more than one server configured, you can set
+<code>$cfg['ServerDefault']</code> to any one of them to autoconnect to that
+server when phpMyAdmin is started, or set it to 0 to be given a list of
+servers without logging in.<br />
+        If you have only one server configured, <code>$cfg['ServerDefault']</code>
+MUST be set to that server.</dd>
 
     <dt id="cfg_AjaxEnable">$cfg['AjaxEnable'] 論理型</dt>
     <dd>Ajax を使用して特定のページの一部分だけを更新するかどうかを定義します。Ajax
@@ -1265,8 +1371,8 @@ title="インターネット・サービス・プロバイダ">ISP</abbr> にと
     <dt id="cfg_LoginCookieRecall">$cfg['LoginCookieRecall'] 論理型</dt>
     <dd>クッキー認証モードの場合に、前回ログインしたときの状態に戻すかどうかを定義します。<br /><br />
 
-        <tt><a href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></tt>
-を設定しなかった場合、自動的に無効になります。
+        This is automatically disabled if you do not have configured <code><a
+href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></code>.
         </dd>
 
     <dt id="cfg_LoginCookieValidity">$cfg['LoginCookieValidity'] 整数 [秒数]</dt>
@@ -1289,15 +1395,18 @@ href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifet
     <dd>複数のクエリを含む文のクエリのひとつが失敗したときに処理を続けるかどうかを定義します。デフォルトでは処理を中止します。</dd>
 
     <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] 論理型</dt>
-    <dd>マルチクエリを含む文のそれぞれのクエリの結果を <abbr title="データベース用の問い合わせ言語">SQL</abbr>
-出力のなかにインラインコメントとして埋め込むかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
+    <dd>Define whether phpMyAdmin will output the results of each query of a
+multi-query statement embedded into the <abbr title="structured query
+language">SQL</abbr> output as inline comments. Defaults to
+<code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span> 論理型</dt>
     <dd>有効にすると、クッキー認証を利用して任意のサーバにログインでき、同期ダイアログで選択したサーバを指定することができます。
         <br /><br />
 
-        <b>注意：</b> この機能は慎重にご利用ください。<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
-サーバが置かれているファイアウォールの外にある MySQL サーバにアクセスできてしまうことがあります。
+        <strong>NOTE:</strong> Please use this carefully, as this may allow users
+access to MySQL servers behind the firewall where your <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> server is placed.
     </dd>
 
     <dt id ="cfg_Error_Handler_display">$cfg['Error_Handler']['display'] 論理型</dt>
@@ -1347,19 +1456,22 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
 ディレクティブによってテーブルを分割／入れ子するときにしか使われません。そのため、フォルダの方は別名に応じた名前になりますが、テーブル名そのものは本来のテーブル名のままになります。</dd>
 
     <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] 論理型</dt>
-    <dd>phpMyAdmin ロゴを左フレームの最上部に表示するかどうかを定義します。デフォルトは <tt>TRUE</tt> です。</dd>
+    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
+frame.  Defaults to <code>TRUE</code>.</dd>
     <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] 文字列</dt>
-    <dd>ナビゲーションフレームのロゴが指す <abbr title="インターネットアドレス">URL</abbr>
-を入力してください。とりわけ、独自の環境を作る場合には、これを変更することになるかもしれません。これのデフォルト値は <tt>main.php</tt>
-です。</dd>
+    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
+navigation frame will point to.  For use especially with self made theme
+which changes this.  The default value for this is <code>main.php</code>.</dd>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] 文字列</dt>
-    <dd>リンクされているページを開こうとするときメインウィンドウ (<tt>main</tt>) か新しいウィンドウ (<tt>new</tt>)
-のどちらにするか。注：<tt>phpmyadmin.net</tt> にリンクしている場合は、<tt>new</tt> が使われます。</dd>
+    <dd>Whether to open the linked page in the main window (<code>main</code>)  or
+in a new one (<code>new</code>). Note: use <code>new</code> if you are
+linking to <code>phpmyadmin.net</code>.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
-    <dd>左フレーム内のテーブルリストの上部に、JavaScript よるフィルタボックスが表示されるテーブルの最小数を定義します。デフォルトは
-<tt>30</tt> です。フィルタを無効にするには、予想されるテーブル使用数を上回るようにします（例：9999）。</dd>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
+disable the filter completely some high number can he used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] 論理型</dt>
     <dd>サーバの選択肢を左フレームの最上部に表示するかどうかを定義します。デフォルトは FALSE です。</dd>
@@ -1377,9 +1489,9 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
 テーブル向けの情報などは返しません。</dd>
 
     <dt><span id="cfg_ShowServerInfo">$cfg['ShowServerInfo']</span> 論理型</dt>
-    <dd>メインページに詳細なサーバ情報を表示するかどうかを定義します。更に、<tt><a
-href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
-を使用することにより、より多くの情報を隠すことができます。
+    <dd>Defines whether to display detailed server information on main page.  You
+can additionally hide more information by using <code><a
+href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>.
         </dd>
 
     <dt><span id="cfg_ShowPhpInfo">$cfg['ShowPhpInfo']</span> 論理型<br />
@@ -1390,8 +1502,8 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
 情報」や「パスワードを変更する」のリンクやデータベース作成フォームを表示するかどうかを定義します。この設定は、直接入力された MySQL
 コマンドに対してチェックするわけではありません。<br /><br />
 
-        phpinfo() において注意することがあります。スクリプト中でこの関数を使えなくするには、<i>php.ini</i>
-に下記の行を含める必要があります。
+        Please note that to block the usage of phpinfo() in scripts, you have to put
+this in your <em>php.ini</em>:
 
         <pre>disable_functions = phpinfo()</pre>
 
@@ -1412,20 +1524,23 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></tt>
     <dt id="cfg_MaxRows">$cfg['MaxRows'] 整数</dt>
     <dd>LIMIT 節を使用しなかった場合の結果セットの表示行数。この場合において結果セットがこの行数を上回ったときは、「前へ／次へ」のリンクが表示されます。</dd>
 
-    <dt id="cfg_Order">$cfg['Order'] 文字列 [<tt>DESC</tt>|<tt>ASC</tt>|<tt>SMART</tt>]</dt>
-    <dd>昇順 (<tt>ASC</tt>)、降順 (<tt>DESC</tt>)、スマートな順番 (<tt>SMART</tt>)
-のいずれの方法でカラムを表示するかを定義します。スマートな順番とは、TIME、DATE、DATETIME、TIMESTAMP
-の場合は降順、それ以外は昇順ことで、これがデフォルトです。</dd>
+    <dt id="cfg_Order">$cfg['Order'] string [<code>DESC</code>|<code>ASC</code>|<code>SMART</code>]</dt>
+    <dd>Defines whether columns are displayed in ascending (<code>ASC</code>) order,
+in descending (<code>DESC</code>) order or in a &quot;smart&quot;
+(<code>SMART</code>) order - I.E. descending order for columns of type TIME,
+DATE, DATETIME and TIMESTAMP, ascending order else- by default.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] 論理型 </dt>
     <dd>表示オプション「バイナリ内容を 16 進数で表示する」を表示するかどうかの定義します。デフォルトはチェックされています。</dd>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
-    <dd>テーブルの内容を表示しているときに <tt>BLOB</tt> カラムや <tt>BINARY</tt>
-カラムを保護して修正できないようにするかどうかを定義します。有効な値は次の通りです。
-        <ul><li><tt>FALSE</tt> すべてのカラムの修正を許可します。</li>
-            <li><tt>blob</tt> <tt>BLOB</tt> 以外のすべてのカラムの修正を許可します。</li>
-            <li><tt>all</tt> 全ての <tt>BINARY</tt> カラムと <tt>BLOB</tt> カラムの修正を不許可にします。</li>
+    <dd>Defines whether <code>BLOB</code> or <code>BINARY</code> columns are
+protected from editing when browsing a table's content. Valid values are:
+        <ul><li><code>FALSE</code> to allow editing of all columns;</li>
+            <li><code>'blob'</code> to allow editing of all columns except
+<code>BLOBS</code>;</li>
+            <li><code>'all'</code> to disallow editing of all <code>BINARY</code> or
+<code>BLOB</code> columns.</li>
         </ul>
     </dd>
 
@@ -1460,8 +1575,10 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 の設定にあわせたスタイルで外部キーのドロップダウンボックスが表示されます。</dd>
 
     <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] 配列</dt>
-    <dd>外部キーのドロップダウン項目には、いくつかの表示方法がありますが、キーと値データの両方が表示されます。この配列には、<i>「content-id」</i>、<i>「id-content」</i>
-のいずれか、または両方が入ります。</dd>
+    <dd>For the foreign key drop-down fields, there are several methods of display,
+offering both the key and value data. The contents of the array should be
+one or both of the following strings: <em>'content-id'</em>,
+<em>'id-content'</em>.</dd>
 
     <dt><span id="cfg_ZipDump">$cfg['ZipDump']</span> 論理型<br />
         <span id="cfg_GZipDump">$cfg['GZipDump']</span> 論理型<br />
@@ -1477,12 +1594,13 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 ヘッダが多くなってしまいますが、まともなプログラムならどれでも正しく処理してくれます。</dd>
 
     <dt id="cfg_LightTabs">$cfg['LightTabs'] 論理型</dt>
-    <dd><tt>TRUE</tt> にすると、メインフレーム上部のタブをグラフィックの少ないものになります。</dd>
+    <dd>If set to <code>TRUE</code>, use less graphically intense tabs on the top of
+the mainframe.</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] 文字列</dt>
-    <dd><tt>True</tt>
-にすると、データベースやテーブルのプロパティリンクに（「表示」、「選択」、「挿入」といった）テキストではなくアイコンを表示します。<br /> <tt>「both」</tt>にすると、アイコン「と」テキストを表示します。<br />
-        <tt>False</tt> にすると、テキストのみを表示します。</dd>
+    <dd>If set to <code>TRUE</code>, will display icons instead of text for db and
+table properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <code>'both'</code> if you want icons AND text.<br />
+        When set to <code>FALSE</code>, will only show text.</dd>
 
     <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] 整数</dt>
     <dd>データベースのプロパティを表示する際に何カラム分のテーブルを表示するか。デフォルトは 1 です。1
@@ -1517,7 +1635,8 @@ href="#cfg_MySQLManualType" class="configrule">$cfg['MySQLManualType']</a>
 
     <dt id="cfg_DefaultLang">$cfg['DefaultLang'] 文字列</dt>
     <dd>ブラウザもユーザも言語を定義していないときに利用するデフォルトの言語を定義します。<br />
-        対応する言語ファイルは、locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo に存在する必要があります。
+        The corresponding language file needs to be in
+locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] 文字列</dt>
@@ -1528,7 +1647,8 @@ href="http://dev.mysql.com/doc/mysql/ja/charset-charsets.html">MySQL
 
     <dt id="cfg_Lang">$cfg['Lang'] 文字列</dt>
     <dd>強制的に使用する言語。<br />
-        対応する言語ファイルは、locale/<i>code</i>/LC_MESSAGES/phpmyadmin.mo に存在する必要があります。
+        The corresponding language file needs to be in
+locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] 文字列</dt>
@@ -1544,9 +1664,10 @@ href="http://dev.mysql.com/doc/mysql/ja/charset-charsets.html">MySQL
         </ul>
         デフォルトは auto です。</dd>
     <dd>
-        文字セットの変換が有効の場合、ファイルをエクスポートするときに文字セットを選択できるようにするために、エクスポート／インポートページでプルダウンメニューが有効になります。このメニューのデフォルト値は
-<tt>$cfg['Export']['charset']</tt> と <tt>$cfg['Import']['charset']</tt>
-で設定されたものです。
+        Enabled charset conversion activates a pull-down menu in the Export and
+Import pages, to choose the character set when exporting a file. The default
+value in this menu comes from <code>$cfg['Export']['charset']</code> and
+<code>$cfg['Import']['charset']</code>.
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] 文字列</dt>
@@ -1564,8 +1685,9 @@ href="http://www.gnu.org/software/libiconv/documentation/libiconv/iconv_open.3.h
 ヘッダのリスト。このリストはデフォルトでは空です。プロキシを通して IP
 アドレスの規則を使用したい場合には、信頼されたプロキシサーバで埋める必要があります。<br /><br />
 
-        次の例は、phpMyAdmin は プロキシ 1.2.3.4 からきた HTTP_X_FORWARDED_FOR
-(<tt>X-Forwarded-For</tt>) ヘッダを信頼するように指定しています。
+        The following example specifies that phpMyAdmin should trust a
+HTTP_X_FORWARDED_FOR (<code>X-Forwarded-For</code>) header coming from the
+proxy 1.2.3.4:
 <pre>
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
@@ -1586,10 +1708,11 @@ $cfg['TrustedProxies'] =
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] 論理型</dt>
     <dd>
-    通常、誰でも書き込みできないように、設定ファイルのパーミッションを確認を行います。しかしながら、Windows 以外のサーバ上でマウントされた NTFS
-ファイルシステムに phpMyAdmin
-がインストールされている場合、パーミッションが間違っているようなときでも、実際には検出することができません。この場合、システム管理者はこのパラメータを
-<tt>FALSE</tt> に設定します。デフォルトは <tt>TRUE</tt> です。
+    We normally check the permissions on the configuration file to ensure it's
+not world writable. However, phpMyAdmin could be installed on a NTFS
+filesystem mounted on a non-Windows server, in which case the permissions
+seems wrong but in fact cannot be detected. In this case a sysadmin would
+set this parameter to <code>FALSE</code>. Default is <code>TRUE</code>.
     </dd>
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] 整数</dt>
@@ -1609,35 +1732,43 @@ title="インターネットアドレス">URL</abbr> に問題があるため、
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] 整数</dt>
-    <dd>ナビゲーションフレームの幅をピクセルで指定します。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
+    <dd>Navi frame width in pixels. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> 文字列 [背景用の CSS 色]<br />
         <span id="cfg_MainBackground">$cfg['MainBackground']</span> 文字列 [背景用の CSS 色]
     </dt>
-    <dd>両フレームの背景スタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
+    <dd>The background styles used for both the frames.  See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] 文字列 [背景用の CSS 色]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> 文字列 [CSS 色]</dt>
-    <dd>ナビゲーションフレームのポインタスタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
+    <dd>The style used for the pointer in the navi frame.  See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] 論理型</dt>
-    <dd><tt>TRUE</tt> の場合はナビゲーションのポインタを有効にします（LeftFrameLight が <tt>FALSE</tt> の場合）。</dd>
+    <dd>A value of <code>TRUE</code> activates the navi pointer (when LeftFrameLight
+is <code>FALSE</code>).</dd>
 
     <dt id="cfg_Border">$cfg['Border'] 整数</dt>
-    <dd>テーブルの幅のサイズ。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
+    <dd>The size of a table's border. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_ThBackground">$cfg['ThBackground'] 文字列 [背景用の CSS 色]<br />
         <span id="cfg_ThColor">$cfg['ThColor']</span> 文字列 [CSS 色]</dt>
-    <dd>テーブルのヘッダに使われるスタイル。<tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
+    <dd>The style used for table headers. See
+<code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] 文字列 [CSS 色]</dt>
-    <dd>テーブルの奇数行に使われる色 (HTML)。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
+    <dd>The color (HTML) #1 for table rows. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] 文字列 [CSS 色]</dt>
-    <dd>テーブルの偶数行に使われる色 (HTML)。<tt>themes/themename/layout.inc.php</tt> をご覧ください。
+    <dd>The color (HTML) #2 for table rows. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground']
@@ -1651,16 +1782,18 @@ title="インターネットアドレス">URL</abbr> に問題があるため、
     </dt>
     <dd>表示モードでのポインタとマーカの色 (HTML)。<br />
         前者はマウスが重なった行を強調表示するためのもの、後者はクリックした行に視覚的なマークを付けたり消したりできるようにするためのものです。カラムの強調表示とはカラムのヘッダにマウスカーソルを乗せることで、マークとはカラムヘッダ（のテキストの周辺）をクリックすることです。<br />
-        <tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
 
     <dt id="cfg_FontFamily">$cfg['FontFamily'] 文字列</dt>
-    <dd>有効な CSS フォントファミリーの値を指定します。例えば、<tt>arial, sans-serif</tt>。<br />
-        <tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
+    <dd>You put here a valid CSS font family value, for example <code>arial,
+sans-serif</code>.<br />
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] 文字列</dt>
-    <dd>有効な CSS フォントファミリーの値を指定します。例えば、<tt>monospace</tt>。この値は textarea で使われます。<br />
-        <tt>themes/themename/layout.inc.php</tt> をご覧ください。</dd>
+    <dd>You put here a valid CSS font family value, for example
+<code>monospace</code>. This one is used in textarea.<br />
+        See <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] 論理型</dt>
     <dd>表示ポインタを有効にするかどうか。</dd>
@@ -1719,9 +1852,11 @@ href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定され�
     <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] 論理型<br />
         <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']</span> 論理型
     </dt>
-    <dd>対応する変数を <tt>TRUE</tt>
-にすると、表示／プロパティ画面でカラムのコメントを表示できるようになります。表示モードの場合、コメントはヘッダのなかに表示されます。プロパティモードでは、コメントがついているカラム名の下に
-CSS による破線が表示されます。コメントはカラムのツールチップとして表示されます。
+    <dd>By setting the corresponding variable to <code>TRUE</code> you can enable
+the display of column comments in Browse or Property display. In browse
+mode, the comments are shown inside the header. In property mode, comments
+are displayed using a CSS-formatted dashed-line below the name of the
+column. The comment is shown as a tool-tip for that column.
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] 論理型</dt>
@@ -1734,8 +1869,8 @@ CSS による破線が表示されます。コメントはカラムのツール�
     <dd>SQL クエリボックスにクエリを PHP コードで形成するリンクを表示するかどうか。</dd>
 
     <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] 論理型</dt>
-    <dd>SQL クエリボックスにクエリを検証するリンクを表示するかどうか。<tt><a
-href="#cfg_SQLValidator">$cfg_SQLValidator</a></tt> もご覧になってください。</dd>
+    <dd>Whether to display a link to validate a query in any SQL Query box.  See
+also <code><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>.</dd>
 
     <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] 論理型</dt>
     <dd>SQL クエリボックスにクエリを再描画するリンクを表示するかどうか。</dd>
@@ -1779,15 +1914,20 @@ title="データベース用の問い合わせ言語">SQL</abbr>
         一時ファイルが保管可能なディレクトリの名前です。 
         <br /><br />
 
-        この設定は、ESRI シェープファイルをインポートするときに必要になります。<a href="#faq6_30"><abbr
-title="よくある質問">FAQ</abbr> 6.30</a> を参照してください。また、この設定ではファイルのアップロードに対して
-<tt>open_basedir</tt> 制限が働きます。これに関しては <a href="#faq1_11"><abbr
-title="よくある質問">FAQ</abbr> 1.11</a> をご覧になってください。
+        This is needed for importing ESRI Shapefiles, see <a href="#faq6_30"><abbr
+title="Frequently Asked Questions">FAQ</abbr> 6.30</a> and to work around
+limitations of <code>open_basedir</code> for uploaded files, see <a
+href="#faq1_11"><abbr title="Frequently Asked Questions">FAQ</abbr>
+1.11</a>.
         <br /><br />
 
-    phpMyAdmin がインストールされているディレクトリが、<tt>open_basedir</tt>
-の制限の対象とされている場合、ウェブサーバによってアクセス可能なディレクトリの中に一時ディレクトリを作成する必要があります。しかしながら、セキュリティ上の理由から、このディレクトリはウェブサーバで公開されているツリーの外に配置しなければなりません。このディレクトリをウェブサーバで公開することを避けることができない場合、せめて空の
-<tt>index.html</tt> ファイルをそこへ配置して、ディレクトリリストを取得されないようにしてください。
+    If the directory where phpMyAdmin is installed is subject to an
+<code>open_basedir</code> restriction, you need to create a temporary
+directory in some directory accessible by the web server. However for
+security reasons, this directory should be outside the tree published by
+webserver. If you cannot avoid having this directory published by webserver,
+place at least an empty <code>index.html</code> file there, so that
+directory listing is not possible.
         <br /><br />
 
         このディレクトリは、実行されているウェブサーバにおいて必要なユーザのみアクセスできるよう、可能な限り厳格な権限を有している必要があります。root
@@ -1820,10 +1960,10 @@ setfacl -d -m "g:www-data:rwx" tmp
     <dd>
         エクスポートページに表示される形式について定義します。有効な値は以下の通りです。
         <ul>
-        <li><tt>quick</tt> は、設定に必要な最小限のオプションを表示します。</li>
-        <li><tt>custom</tt> は、設定できる全てのオプションを表示します。</li>
-        <li><tt>custom-no-form</tt> は、<tt>custom</tt> と同じですが、<tt>quick</tt>
-エクスポートのオプションは表示されません。</li>
+        <li><code>quick</code> to display the minimum number of options to configure</li>
+        <li><code>custom</code> to display every available option to configure</li>
+        <li><code>custom-no-form</code> same as <code>custom</code> but does not display
+the option of using quick export</li>
         </ul>
     </dd>
 
@@ -1855,30 +1995,34 @@ setfacl -d -m "g:www-data:rwx" tmp
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>整数
     </dt>
     <dd>
-        これらの変数はいずれもクエリウインドウ機能に関するものです。<tt><abbr
-title="データベース用の問い合わせ言語">SQL</abbr></tt> というリンクないしアイコンは常に左パネルに表示されます。ブラウザの
-JavaScript が有効になっている場合は、ここをクリックすると別のクエリウインドウが開き、<abbr
-title="データベース用の問い合わせ言語">SQL</abbr> クエリを直接入力できるようになります。JavaScript
-が無効の場合は、右パネルがクエリボックスに変わります。<br /><br />
+        All those variables affect the query window feature. A <code><abbr
+title="structured query language">SQL</abbr></code> link or icon is always
+displayed on the left panel. If JavaScript is enabled in your browser, a
+click on this opens a distinct query window, which is a direct interface to
+enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
+the right panel changes to display a query box.<br /><br />
 
-        このクエリウインドウの大きさは <tt>$cfg['QueryWindowWidth']</tt> と
-<tt>$cfg['QueryWindowHeight']</tt>
-によってカスタマイズできます。いずれもピクセル数を表す整数値が入ります。なお、これらの値は通常 <tt>layout.inc.php</tt>
-の中でお使いのテーマにあわせて修正されます。<br /><br />
+        The size of this query window can be customized with
+<code>$cfg['QueryWindowWidth']</code> and
+<code>$cfg['QueryWindowHeight']</code> - both integers for the size in
+pixels. Note that normally, those parameters will be modified in
+<code>layout.inc.php</code> for the theme you are using.<br /><br />
 
-        <tt>$cfg['EditInWindow']</tt> が TRUE の場合は、結果ページの [ 編集 ]
-(「行の表示」の表示欄のところにあります) をクリックすると、現在のクエリが入ったクエリウインドウが開きます。FALSE
-の場合は、リンクをクリックすると右パネルのクエリボックスに <abbr title="データベース用の問い合わせ言語">SQL</abbr>
-クエリが入ります。
+        If <code>$cfg['EditInWindow']</code> is set to true, a click on [Edit] from
+the results page (in the &quot;Showing Rows&quot; section)  opens the query
+window and puts the current query inside it.  If set to false, clicking on
+the link puts the <abbr title="structured query language">SQL</abbr> query
+in the right panel's query box.
         <br /><br />
         JavaScript 対応ブラウザを使っているなら JavaScript
 クエリウインドウを使うことをお勧めします。やりとりする変数の数は多いですが、使っている関数は基本的なものなので、第四世代のブラウザならたいていこの機能を利用できるはずです。現在は
 Internet Explorer 6 と Mozilla 1.x のみでテストしています。
         <br /><br />
-        <tt>$cfg['QueryHistoryDB']</tt> が <tt>TRUE</tt>
-の場合、ユーザのクエリはすべてテーブルに記録されます。ただし、このテーブルはユーザが作成する必要があります（参照 <a href="#history"
-class="configrule">$cfg['Servers'][$i]['history']</a>）。FALSE
-の場合、フォームにはすべてのクエリが残りますが、保存されるのはウインドウが開いている間のみです。
+        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code>, all your
+Queries are logged to a table, which has to be created by you (see <a
+href="#history" class="configrule">$cfg['Servers'][$i]['history']</a>).  If
+set to FALSE, all your queries will be appended to the form, but only as
+long as your window is opened they remain saved.
         <br /><br />
         JavaScript
 ベースのクエリウインドウを使うと、新しいテーブル／データベースをクリックして表示させるとかならず内容が更新されるようになります。また、クエリを利用したあとで「<abbr
@@ -1887,11 +2031,14 @@ title="データベース用の問い合わせ言語">SQL</abbr> の修正」を
 の中身はなくなりません。これは、最初に別のテーブルを調べなければならないクエリを作成するときには、特に便利です。このチェックボックスは textarea
 の内容を修正すると自動的にチェックされます。内容は修正してしまったけれどもやっぱりクエリウインドウを更新させたくなった場合は、チェックを外してください。
         <br /><br />
-        <tt>$cfg['QueryHistoryDB']</tt> が <tt>TRUE</tt> の場合、保存する履歴アイテムの数は
-<tt>$cfg['QueryHistoryMax']</tt> で指定できます。
+        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code> you can
+specify the amount of saved history items using
+<code>$cfg['QueryHistoryMax']</code>.
         <br /><br />
-        また、クエリウインドウは機能をまとめるためにカスタマイズ可能なタブ形式になっています。<tt>$cfg['QueryWindowDefTab']</tt>
-変数を使うと、クエリウインドウを開いたときに表示されるデフォルトタブを指定できます。設定可能な値は「sql」、「files」、「history」、「full」です。</dd>
+        The query window also has a custom tabbed look to group the features.  Using
+the variable <code>$cfg['QueryWindowDefTab']</code> you can specify the
+default tab to be used when opening the query window. It can be set to
+either 'sql', 'files', 'history' or 'full'.</dd>
 
     <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] 論理型</dt>
     <dd><a href="#transformations">MIME 変換機能</a>を有効にします。</dd>
@@ -1911,13 +2058,14 @@ title="データベース用の問い合わせ言語">SQL</abbr> の修正」を
     <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（軽快モード）とデータベース画面のテーブル一覧に実装されています。</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
-    <dd><tt>「closed (閉じておく)」</tt>に設定した場合、折り畳みは閉じた状態で表示されます。<tt>「open
-(開いておく)」</tt>はその逆です。全ての折り畳みを完全に無効にするには、<tt>「disabled (無効)」</tt>にします。</dd>
+    <dd>If set to <code>'closed'</code>, the visual sliders are initially in a
+closed state. A value of <code>'open'</code> does the reverse. To completely
+disable all visual sliders, use <code>'disabled'</code>.</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] 配列</dt>
-    <dd>ユーザ環境設定を許可させない設定オプションの名前 (<tt>$cfg</tt> 配列のキーで指定)
-が入ります。指定できる値については、<tt>libraries/config/user_preferences.forms.php</tt>
-を参照してください。</dd>
+    <dd>Contains names of configuration options (keys in <code>$cfg</code> array)
+that users can't set through user preferences. For possible values, refer to
+<code>libraries/config/user_preferences.forms.php</code>.</dd>
 
     <dt id="cfg_UserprefsDeveloperTab">$cfg['UserprefsDeveloperTab'] 論理型</dt>
     <dd>ユーザ設定環境に phpMyAdmin 開発者向け用のオプションタブを表示させます。</dd>
@@ -1947,7 +2095,7 @@ title="データベース用の問い合わせ言語">SQL</abbr> の修正」を
 2.7</a> をご覧ください。</dd>
 
     <dt id="cfg_ThemeDefault">$cfg['ThemeDefault'] 文字列</dt>
-    <dd>デフォルトテーマ（<tt>cfg['ThemePath']</tt> の下にあるサブディレクトリの一つ）です。</dd>
+    <dd>The default theme (a subdirectory under <code>cfg['ThemePath']</code>).</dd>
 
     <dt id="cfg_ThemePerServer">$cfg['ThemePerServer'] 論理型</dt>
     <dd>サーバごとに別々のテーマを許可するかどうか。</dd>
@@ -1959,54 +2107,60 @@ title="データベース用の問い合わせ言語">SQL</abbr> の修正」を
 href="#faq6_27">書式の拡張</a>を使用することができます。
         </dd>
 
-    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] 文字列 [<tt>html</tt>|<tt>none</tt>]</dt>
+    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<code>html</code>|<code>none</code>]</dt>
     <dd>
-        新しい <abbr title="データベース用の問い合わせ言語">SQL</abbr> パーサの主な用途は <abbr
-title="データベース用の問い合わせ言語">SQL</abbr> クエリを読みやすくすることです。デフォルトでは HTML
-を使ってクエリを整形しますが、この変数を <tt>「none」</tt> にするとこの機能を無効にできます。
+        The main use of the new <abbr title="structured query language">SQL</abbr>
+Parser is to pretty-print <abbr title="structured query language">SQL</abbr>
+queries. By default we use HTML to format the query, but you can disable
+this by setting this variable to <code>'none'</code>.
     </dd>
 
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] 実数型<br />
-        <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> 文字列
-[<tt>em</tt>|<tt>px</tt>|<tt>pt</tt>|<tt>ex</tt>]</dt>
-    <dd><abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリを読みやすくするために、場合によっては括弧 [ ]
-で囲まれたクエリの一部がインデントされるのですが、<tt>$cfg['SQP']['fmtInd']</tt>
-を変更することで、このインデントの量を変更することができます。
-        <br />それと似た <tt>$cfg['SQP']['fmtIndUnit']</tt>
-の方は、指定したインデント量の単位を指定します。スタイルシートで利用するものです。</dd>
+        <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> string
+[<code>em</code>|<code>px</code>|<code>pt</code>|<code>ex</code>]</dt>
+    <dd>For the pretty-printing of <abbr title="structured query
+language">SQL</abbr> queries, under some cases the part of a query inside a
+bracket is indented. By changing <code>$cfg['SQP']['fmtInd']</code> you can
+change the amount of this indent.
+        <br />Related in purpose is <code>$cfg['SQP']['fmtIndUnit']</code> which specifies
+the units of the indent amount that you specified. This is used via
+stylesheets.</dd>
 
     <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] 文字列の連想配列</dt>
     <dd><abbr title="データベース用の問い合わせ言語">SQL</abbr>
 クエリを読みやすくするために各要素の色定義に、この配列を使用します。色を定義するペア文字列の書式は次の通りです。<br />
-        <i>クラス名</i> =&gt; [<i>HTML の色コード</i> | <i>空の文字列</i>]<br />
+        <em>class</em> =&gt; [<em>HTML colour code</em> | <em>empty string</em>]<br />
         空の文字列を指定した場合、そのクラスの色指定は無視されてスタイルシートに反映されません。クラス名は変えないでください。変えるのは色をあらわす文字列のみです。<br />
-        <b>クラス名：</b>
-        <ul><li><b>comment</b> コメントのサブクラスすべてに適用されます。</li>
-            <li><b>comment_mysql</b> <tt>「#...¥n」</tt> 形式のコメント</li>
-            <li><b>comment_ansi</b> <tt>「-- ...¥n」</tt> 形式のコメント</li>
-            <li><b>comment_c</b> <tt>「/*...*/」</tt> 形式のコメント</li>
-            <li><b>digit</b> 数値のサブクラスすべてに適用されます。</li>
-            <li><b>digit_hex</b> 16進数値</li>
-            <li><b>digit_integer</b> 整数値</li>
-            <li><b>digit_float</b> 浮動小数点表記の数値</li>
-            <li><b>punct</b> 句読点のサブクラスすべてに適用されます。</li>
-            <li><b>punct_bracket_open_round</b> 始め括弧<tt>「(」</tt></li>
-            <li><b>punct_bracket_close_round</b> 終わり括弧<tt>「)」</tt></li>
-            <li><b>punct_listsep</b> 列挙の区切り文字 <tt>「 , 」</tt></li>
-            <li><b>punct_qualifier</b> テーブル／カラムの修飾子 <tt>「 . 」</tt> </li>
-            <li><b>punct_queryend</b> クエリの終端マーク <tt>「 ; 」</tt></li>
-            <li><b>alpha</b> アルファベットのクラスすべてに適用されます。</li>
-            <li><b>alpha_columnType</b> カラム種別に一致する識別子</li>
-            <li><b>alpha_columnAttrib</b> データベース／テーブル／カラム属性に一致する識別子</li>
-            <li><b>alpha_functionName</b> MySQL 関数名に一致する識別子</li>
-            <li><b>alpha_reservedWord</b> その他の予約語に一致する識別子</li>
-            <li><b>alpha_variable</b> <abbr title="データベース用の問い合わせ言語">SQL</abbr> 変数
-<tt>「@foo」</tt>に一致する識別子</li>
-            <li><b>alpha_identifier</b> その他すべての識別子</li>
-            <li><b>quote</b> 引用符のクラスすべてに適用されます。</li>
-            <li><b>quote_double</b> ダブルクォート <tt>"</tt></li>
-            <li><b>quote_single</b> シングルクォート <tt>'</tt></li>
-            <li><b>quote_backtick</b> 逆クォート <tt>`</tt></li>
+        <strong>Class name key:</strong>
+        <ul><li><strong>comment</strong> Applies to all comment sub-classes</li>
+            <li><strong>comment_mysql</strong> Comments as <code>"#...\n"</code></li>
+            <li><strong>comment_ansi</strong> Comments as <code>"-- ...\n"</code></li>
+            <li><strong>comment_c</strong> Comments as <code>"/*...*/"</code></li>
+            <li><strong>digit</strong> Applies to all digit sub-classes</li>
+            <li><strong>digit_hex</strong> Hexadecimal numbers</li>
+            <li><strong>digit_integer</strong> Integer numbers</li>
+            <li><strong>digit_float</strong> Floating point numbers</li>
+            <li><strong>punct</strong> Applies to all punctuation sub-classes</li>
+            <li><strong>punct_bracket_open_round</strong> Opening brackets<code>"("</code></li>
+            <li><strong>punct_bracket_close_round</strong> Closing brackets <code>")"</code></li>
+            <li><strong>punct_listsep</strong> List item Separator <code>","</code></li>
+            <li><strong>punct_qualifier</strong> Table/Column Qualifier <code>"."</code> </li>
+            <li><strong>punct_queryend</strong> End of query marker <code>";"</code></li>
+            <li><strong>alpha</strong> Applies to all alphabetic classes</li>
+            <li><strong>alpha_columnType</strong> Identifiers matching a column type</li>
+            <li><strong>alpha_columnAttrib</strong> Identifiers matching a
+database/table/column attribute</li>
+            <li><strong>alpha_functionName</strong> Identifiers matching a MySQL function
+name</li>
+            <li><strong>alpha_reservedWord</strong> Identifiers matching any other reserved
+word</li>
+            <li><strong>alpha_variable</strong> Identifiers matching a <abbr
+title="structured query language">SQL</abbr> variable <code>"@foo"</code></li>
+            <li><strong>alpha_identifier</strong> All other identifiers</li>
+            <li><strong>quote</strong> Applies to all quotation mark classes</li>
+            <li><strong>quote_double</strong> Double quotes <code>"</code></li>
+            <li><strong>quote_single</strong> Single quotes <code>'</code></li>
+            <li><strong>quote_backtick</strong> Backtick quotes <code>`</code></li>
         </ul>
     </dd>
 
@@ -2024,17 +2178,18 @@ title="よくある質問">FAQ</abbr> 6.14</a> をご覧ください。
             <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] 文字列<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
 文字列</dt>
-            <dd>SOAP サービスを使うと anonymous (匿名) ユーザでパスワードによらずログインできるため、デフォルトではそのようになっています。<abbr
-title="データベース用の問い合わせ言語">SQL</abbr>
-検証のアカウントをお持ちであれば、ログイン情報をここに記入することで、匿名でログインする代わりにその情報でログインするようになります。</dd>
+            <dd>The SOAP service allows you to log in with <code>anonymous</code> and any
+password, so we use those by default. Instead, if you have an account with
+them, you can put your login details here, and it will be used in place of
+the anonymous login.</dd>
         </dl>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']</dt>
-    <dd><b>開発者限定！</b></dd>
+    <dd><strong>DEVELOPERS ONLY!</strong></dd>
 
     <dt id="cfg_DBG_sql">$cfg['DBG']['sql'] 論理型</dt>
-    <dd><b>開発者限定！</b><br />
+    <dd><strong>DEVELOPERS ONLY!</strong><br />
         メインページ（右フレーム）の下部に、クエリと実行時間の表示を有効にします。</dd>
 
     <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] 配列</dt>
@@ -2073,8 +2228,9 @@ class="configrule">$cfg['RestrictColumnTypes']</a>
 
 <h3 id="transformationsintro">1. はじめに</h3>
 
-<p> 変換機能を有効にするには、<tt>column_info</tt> テーブルと、適切な設定を行う必要があります。手順については<a
-href="#config">「設定」の章</a>をご覧ください。</p>
+<p> To enable transformations, you have to setup the <code>column_info</code>
+table and the proper directives. Please see the <a
+href="#config">Configuration section</a> on how to do so.</p>
 
 <p> カラムごとに別々の変換機能を適用できます。変換機能は各カラムの内容を取得してから、選択された機能に定義されている規則に従って変換を行うためです。</p>
 
@@ -2082,18 +2238,21 @@ href="#config">「設定」の章</a>をご覧ください。</p>
 ではこのファイル名しか表示されませんが、変換機能を使うと、このファイル名を HTML リンクに変換できます。phpMyAdmin
 システムの内部でそのカラムのリンクをクリックすると、新しいブラウザウインドウにそのファイルが表示されます。変換オプションを使えば、その文字列の前後に付け加える文字列や、出力を保存する形式も指定できます。</p>
 
-<p> 利用できるすべての変換機能とそのオプションについての概略は
-<i>&lt;お使いのホスト&gt;/&lt;インストールしたディレクトリ&gt;/transformation_overview.php</i>
-をご覧ください。</p>
+<p> For a general overview of all available transformations and their options,
+you can consult your
+<em>&lt;www.your-host.com&gt;/&lt;your-install-dir&gt;/transformation_overview.php</em>
+installation.</p>
 
 <p> 変換機能の効果的な使い方のチュートリアルについては、phpMyAdmin のオフィシャルホームページの <a
 href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a>をご覧ください。</p>
 
 <h3 id="transformationshowto">2. 使い方</h3>
 
-<p> <i>tbl_structure.php</i>
-ページに行きます（テーブルの「構造」リンクをクリックでたどり着きます）。「変更」（あるいは変更アイコン）をクリックすると、項目の最後の方に新しいフィールドが
-3 つ表示されます。それぞれ「MIME タイプ」、「ブラウザ変換」、「変換オプション」という名がついています。</p>
+<p> Go to your <em>tbl_structure.php</em> page (i.e. reached through clicking on
+the 'Structure' link for a table). There click on &quot;Change&quot; (or
+change icon) and there you will see three new fields at the end of the
+line. They are called 'MIME-type', 'Browser transformation' and
+'Transformation options'.</p>
 
     <ul><li>「MIME タイプ」項目はドロップダウンになっています。カラムの内容に対応した MIME タイプを選択してください。なお、MIME
 タイプを選択しないと変換機能は有効になりませんので注意ください。</li>
@@ -2132,76 +2291,80 @@ MIME タイプに適用しようとしても無駄です。変換関数は処理
 タイプで動作することが期待できます。本来の対象とは違う MIME
 タイプの変換機能を利用することもできますが、オプションの使い方や、その変換機能がカラムの値をどうするかにはご注意ください。</p>
 
-<p> 「<i>global.inc.php</i>」という基本ファイルは、どんな変換機能からでもインクルードできます。これはいくつかの基本的な関数を提供してくれます。</p>
+<p> There is a basic file called '<em>global.inc.php</em>'. This function can be
+included by any other transform function and provides some basic functions.</p>
 
 <p> ファイル名には 5 通りの可能性があります。</p>
 
 <ol><li>MIME タイプ＋サブタイプ変換機能：<br /><br />
 
-        <tt>[MIME タイプ]_[サブタイプ]__[機能名].inc.php</tt><br /><br />
+        <code>[mimetype]_[subtype]__[transform].inc.php</code><br /><br />
 
         MIME タイプとサブタイプが「_」で区切られていることにご注意ください（「_」はMIME
 タイプやサブタイプの名前には含まれないことになっています）。また、変換機能／ファイル名に含められる文字は、ファイルシステムや PHP
 関数の命名規約上問題を起こさない文字のみです。<br /><br />
 
-        この変換関数は「<tt>PMA_transform_[MIME タイプ]_[サブタイプ]__[機能名]()</tt>」で呼び出せます。<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>'.<br /><br />
 
-        <b>例：</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text_html__formatted.inc.php</tt><br />
-        <tt>PMA_transform_text_html__formatted()</tt></li>
+        <code>text_html__formatted.inc.php</code><br />
+        <code>PMA_transform_text_html__formatted()</code></li>
 
     <li>MIME タイプ（サブタイプなし）変換機能：<br /><br />
 
-        <tt>[MIME タイプ]__[機能名].inc.php</tt><br /><br />
+        <code>[mimetype]__[transform].inc.php</code><br /><br />
 
         1 文字の「_」がないことにご注意ください。 変換機能／ファイル名に含められる文字は、ファイルシステムや PHP
 関数の命名規約上問題を起こさない文字のみです。<br /><br />
 
-        この変換関数は「<tt>PMA_transform_[MIME タイプ]__[機能名]()</tt>」で呼び出せます。<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_[mimetype]__[transform]()</code>'.<br /><br />
 
-        <b>例：</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text__formatted.inc.php</tt><br />
-        <tt>PMA_transform_text__formatted()</tt></li>
+        <code>text__formatted.inc.php</code><br />
+        <code>PMA_transform_text__formatted()</code></li>
 
     <li>MIME タイプ＋サブタイプ。特定な変換関数はなし<br /><br />
 
-        <tt>[MIME タイプ]_[サブタイプ].inc.php</tt><br /><br />
+        <code>[mimetype]_[subtype].inc.php</code><br /><br />
 
         ファイル名に「__」が含まれないことにご注意ください。また、ファイル名にはファイルシステム上問題を起こす特殊文字は使わないでください。<br /><br />
 
         このファイルそのものには変換関数は定義しません。<br /><br />
 
-        <b>例：</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text_plain.inc.php</tt><br />
+        <code>text_plain.inc.php</code><br />
         （関数はなし）</li>
 
     <li>MIME タイプ（サブタイプなし）。特定の変換関数はなし<br /><br />
 
-        <tt>[MIME タイプ].inc.php</tt><br /><br />
+        <code>[mimetype].inc.php</code><br /><br />
 
         ファイル名に「_」の文字が含まれないことにご注意ください。また、ファイル名にはファイルシステム上問題を起こす特殊文字は使わないでください。
         <br /><br />
 
         このファイルそのものには変換関数は定義しません。<br /><br />
 
-        <b>例：</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>text.inc.php</tt><br />
+        <code>text.inc.php</code><br />
         （関数はなし）</li>
 
     <li>グローバル変換関数。特定の MIME タイプはなし<br /><br />
 
-        <tt>global__[機能名].inc.php</tt><br /><br />
+        <code>global__[transform].inc.php</code><br /><br />
 
-        変換関数は「<tt>PMA_transform_global__[機能名]()</tt>」で呼び出せます。<br /><br />
+        The transform function will the be called
+'<code>PMA_transform_global__[transform]()</code>'.<br /><br />
 
-        <b>例：</b><br /><br />
+        <strong>Example:</strong><br /><br />
 
-        <tt>global__formatted</tt><br />
-        <tt>PMA_transform_global__formatted()</tt></li>
+        <code>global__formatted</code><br />
+        <code>PMA_transform_global__formatted()</code></li>
 </ol>
 
 <p> このように、一般的に MIME タイプとサブタイプは「_」で区切り、「__」は変換関数名を示します。</p>
@@ -2211,20 +2374,24 @@ MIME タイプに適用しようとしても無駄です。変換関数は処理
 <p> 独自の変換関数を加えるには libraries/transformations/TEMPLATE ファイルを、変換関数なしで MIME
 タイプを追加するには libraries/transformations/TEMPLATE_MIMETYPE ファイルをご覧ください。</p>
 
-<p> 新しい変換関数を作成する場合は <tt>libraries/transformations/template_generator.sh</tt>
-を、新しい、空の MIME タイプを作成する場合は
-<tt>libraries/transformations/template_generator_mimetype.sh</tt> をご覧ください。</p>
+<p> To create a new transform function please see
+<code>libraries/transformations/template_generator.sh</code>.  To create a
+new, empty mimetype please see
+<code>libraries/transformations/template_generator_mimetype.sh</code>.</p>
 
 <p> 変換関数には常に 3 つの変数が渡されます。</p>
 
-<ol><li><b>$buffer</b> - カラム内のテキストが入ります。これが変換するテキストになります。</li>
-    <li><b>$options</b> - ユーザから変換関数に渡されたオプションが配列で入ります。</li>
-    <li><b>$meta</b> - カラム情報を持つオブジェクトが入ります。データは <a
+<ol><li><strong>$buffer</strong> - Contains the text inside of the column. This is
+the text, you want to transform.</li>
+    <li><strong>$options</strong> - Contains any user-passed options to a transform
+function as an array.</li>
+    <li><strong>$meta</strong> - Contains an object with information about your
+column.  The data is drawn from the output of the <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
-関数の出力から抽出されます。そのため、この関数の <a
-href="http://www.php.net/mysql_fetch_field">マニュアルページ</a>
-で説明されているオブジェクトのプロパティすべてが利用できますし、unsigned/zerofill/not_null/...
-といったプロパティによってカラムを変換できます。<br />
+function. This means, all object properties described on the <a
+href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
+this variable and can be used to transform a column accordingly to
+unsigned/zerofill/not_null/... properties.<br />
         $meta-&gt;mimetype 変数にはそのカラムの元の MIME タイプ（「text/plain」、「image/jpeg」など）が入ります。</li>
 </ol>
 
@@ -2259,9 +2426,10 @@ href="http://www.phpmyadmin.net/home_page/docs.php">Link セクション</a> を
     <a href="#faq1_1">1.1
 サーバが度々クラッシュします。その度に、特定のアクションを要求されたり、ブラウザに空白のページや暗号のような文字だらけのページが表示されます。どうしたらよいのでしょうか？</a></h4>
 
-<p> <i>config.inc.php</i> ファイルの <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGzip']</a> ディレクティブを <tt>FALSE</tt> に、PHP の設定ファイルの
-<tt>zlib.output_compression</tt> ディレクティブを <tt>Off</tt> にしてみてください。<br /></p>
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
+directive to <code>FALSE</code> in your <em>config.inc.php</em> file and the
+<code>zlib.output_compression</code> directive to <code>Off</code> in your
+php configuration file.<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 phpMyAdmin を使うと Apache サーバがクラッシュします。</a></h4>
@@ -2284,9 +2452,10 @@ headers ... (指定した <abbr title="コモン・ゲートウェイ・イン�
 ヘッダが不完全です。)」というエラーメッセージが表示されます。</a>
 </h4>
 
-<p> PHP の配布ファイルに入っている <i>install.txt</i> を読み忘れたのでしょう。こちらの<a
-href="http://bugs.php.net/bug.php?id=12061">バグレポート</a>の最後のメッセージをご覧ください。出典は
-PHP のオフィシャルバグデータベースです。</p>
+<p> You just forgot to read the <em>install.txt</em> file from the PHP
+distribution.  Have a look at the last message in this <a
+href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
+PHP bug database.</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 phpMyAdmin を <abbr title="Internet Information
@@ -2302,31 +2471,35 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証モー�
 <h4 id="faq1_6">
     <a href="#faq1_6">1.6 PWS 上で phpMyAdmin を使えません。何も表示されません！</a></h4>
 
-<p> PWS のバグのようです。Filippo Simoncini
-が次に述べる回避策を見つけています（現時点ではこれ以上の対応策はありません）。『<i>libraries/header.inc.php</i>、<i>libraries/header_printview.inc.php</i>、<i>index.php</i>、<i>navigation.php</i>、<i>libraries/common.lib.php</i>
-の <tt>DOCTYPE</tt> 宣言（2 行）を削除するかコメントにします。』</p>
+<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
+time there is no better fix): remove or comment the <code>DOCTYPE</code>
+declarations (2 lines) from the scripts <em>libraries/header.inc.php</em>,
+<em>libraries/header_printview.inc.php</em>, <em>index.php</em>,
+<em>navigation.php</em> and <em>libraries/common.lib.php</em>.</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 どうすればダンプや <abbr title="カンマ区切り">CSV</abbr> エクスポートを GZip
 ないし Bzip 圧縮できるのでしょうか？ 動いていないようなんですが。</a></h4>
 
-<p> これらの機能はプラットフォーム（Unix か Windows か、セーフモードかどうか、など）からの独立性を高めるために PHP の
-<tt>gzencode()</tt> と <tt>bzcompress()</tt> 関数をベースにしています。そのため、Zlib/Bzip2
-サポート (<tt>--with-zlib</tt> と <tt>--with-bz2</tt>) が必要です。<br /></p>
+<p> These features are based on the <code>gzencode()</code> and
+<code>bzcompress()</code> PHP functions to be more independent of the
+platform (Unix/Windows, Safe Mode or not, and so on). So, you must have
+Zlib/Bzip2 support (<code>--with-zlib</code> and <code>--with-bz2</code>).<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 テーブルにテキストファイルを挿入できません。セーフモードになっているというエラーが出ます。</a></h4>
 
-<p> アップロードしたファイルは <i>php.ini</i> の <tt>upload_tmp_dir</tt>
-変数に定義されている「アップロードディレクトリ（upload dir）」に保存されます（通常システムデフォルトは <i>/tmp</i>
-になっています）。<br />
+<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
+in <em>php.ini</em> by the variable <code>upload_tmp_dir</code> (usually the
+system default is <em>/tmp</em>).<br />
     Apache
 サーバをセーフモードで走らせる場合は次のようにセットアップすることをお勧めします。こうすると、ファイルのアップロードを可能にしながらある程度のセキュリティも確保できます。</p>
 
-<ul><li>アップロード用のディレクトリを別に作ります： <tt>mkdir /tmp/php</tt></li>
-    <li>Apache サーバのユーザ／グループを所有者します： <tt>chown apache.apache /tmp/php</tt></li>
-    <li>適切なパーミッションを設定します： <tt>chmod 600 /tmp/php</tt></li>
-    <li><i>php.ini</i> に <tt>upload_tmp_dir = /tmp/php</tt> を追加します。</li>
+<ul><li>create a separate directory for uploads: <code>mkdir /tmp/php</code></li>
+    <li>give ownership to the Apache server's user.group: <code>chown apache.apache
+/tmp/php</code></li>
+    <li>give proper permission: <code>chmod 600 /tmp/php</code></li>
+    <li>put <code>upload_tmp_dir = /tmp/php</code> in <em>php.ini</em></li>
     <li>Apache を再起動します。</li>
 </ul>
 
@@ -2337,7 +2510,8 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証モー�
     <a href="#faq1_10">1.10 セキュアサーバ上で稼動させている phpMyAdmin のファイルアップロードで困っています。ブラウザは
 Internet Explorer、サーバは Apache を使っています。</a></h4>
 
-<p> phpWizard フォーラムで「Rob M」が勧めていたように、<i>httpd.conf</i> に以下の行を追加してください。</p>
+<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
+your <em>httpd.conf</em>:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
@@ -2366,11 +2540,14 @@ href="http://dev.mysql.com/doc/mysql/ja/resetting-permissions.html">パーミッ
     <a href="#faq1_14">1.14 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 <i>mysql.user</i> というカラム名のことで困っています。</a>
+    <a href="#faq1_15">1.15 I have problems with <em>mysql.user</em> column
+names.</a>
 </h4>
 
-<p> MySQL の古いバージョンでは <tt>User</tt>／<tt>Password</tt> カラムが
-<tt>user</tt>／<tt>password</tt> という名前だったせいです。カラム名を現在の標準にあわせて修正してください。</p>
+<p> In previous MySQL versions, the <code>User</code> and
+<code>Password</code>columns were named <code>user</code> and
+<code>password</code>. Please modify your column names to align with current
+standards.</p>
 
 <h4 id="faq1_16">
     <a href="#faq1_16">1.16 (メモリ、<abbr
@@ -2380,11 +2557,13 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>、タイムア
 <p> バージョン 2.7.0 以降はインポートエンジンが書き直されたため、この問題は起こらないはずです。可能であればお使いの phpMyAdmin
 を最新のバージョンにアップグレードして新しいインポート機能をご利用ください。</p>
 
-<p> まずは <i>php.ini</i> 設定ファイルの
-<tt>upload_max_filesize</tt>、<tt>memory_limit</tt>、<tt>post_max_size</tt>
-の値を確認してください (あるいはプロバイダに確認してもらってください)。この 3 つの設定はいずれも PHP
-経由で送信／取り扱いできるデータサイズの上限を決めるものです。また、あるユーザによると、<tt>post_max_size</tt> と
-<tt>memory_limit</tt> も <tt>upload_max_filesize</tt> より大きい必要があるそうです。<br /> <br />
+<p> The first things to check (or ask your host provider to check) are the
+values of <code>upload_max_filesize</code>, <code>memory_limit</code> and
+<code>post_max_size</code> in the <em>php.ini</em> configuration file.  All
+of these three settings limit the maximum size of data that can be submitted
+and handled by PHP. One user also said that <code>post_max_size</code> and
+<code>memory_limit</code> need to be larger than
+<code>upload_max_filesize</code>.<br /> <br />
 
     アップロードファイルが大きすぎる、あるいはホスティングしてもらっているプロバイダに設定を変えていただけないのであれば、いくつかの対策があります。</p>
 
@@ -2395,8 +2574,9 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>、タイムア
 href="#config">「設定」の章</a>をご覧ください。</li>
     <li>（<a href="http://www.ozerov.de/bigdump.php">BigDump</a>
 のような）ユーティリティを利用してアップロードの前にファイルを分割する方法もあります。このユーティリティはもとより、サードパーティ製のアプリケーションは一切サポートできませんが、そういったものを利用して成功したユーザがいることは承知しています。</li>
-    <li>シェル（コマンドライン）にアクセスできるのであれば、MySQL を利用して直接ファイルをインポートする方法もあります。その場合は MySQL
-の中で「source」コマンドを使ってください：<tt>source <i>filename.sql</i></tt></li>
+    <li>If you have shell (command line) access, use MySQL to import the files
+directly. You can do this by issuing the &quot;source&quot; command from
+within MySQL: <code>source <em>filename.sql</em></code>.</li>
 </ul>
 
 <h4 id="faq1_17">
@@ -2451,10 +2631,11 @@ relations）」機能を実行できません。私が使っているフォン�
     <a href="#faqmysql">1.20 「cannot load MySQL extension, please check PHP
 Configuration（MySQL 拡張を読み込めません。PHP の設定を確認してください）」というエラーが出ます。</a></h4>
 
-<p> PHP が MySQL サーバに接続する際には「MySQL 拡張」という MySQL の関数セットを必要とします。この拡張は PHP
-の配布ファイルに含まれている（コンパイルで組み込まれている）こともありますが、そうでない場合、動的に読み込む必要があります。拡張名はたぶん
-<i>mysql.so</i> か <i>php_mysql.dll</i> のはずですが、phpMyAdmin
-はこの拡張を読み込もうとして失敗しているわけです。<br /><br />
+<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
+&quot;MySQL extension&quot;. This extension may be part of the PHP
+distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
+name is probably <em>mysql.so</em> or <em>php_mysql.dll</em>. phpMyAdmin
+tried to load the extension but failed.<br /><br />
 
     ふつう、この問題は「PHP-MySQL」とかなんとかという名前のソフトウェアパッケージをインストールすれば解決します。</p>
 
@@ -2462,21 +2643,25 @@ Configuration（MySQL 拡張を読み込めません。PHP の設定を確認し
     <a href="#faq1_21">1.21 <abbr title="コモン・ゲートウェイ・インタフェース">CGI</abbr> 版の PHP を
 Unix 環境で稼動させているのですが、クッキー認証を使ったログインができません。</a></h4>
 
-<p> <i>php.ini</i> の <tt>mysql.max_links</tt> を 1 より大きな値にしてください。</p>
+<p> In <em>php.ini</em>, set <code>mysql.max_links</code> higher than 1.</p>
 
 <h4 id="faq1_22">
     <a href="#faq1_22">1.22 「テキストファイルの場所 (Location of text
 file)」フィールドが見つからないのでアップロードできません。</a></h4>
 
-<p> いちばんありがちな理由は、<i>php.ini</i> の <tt>file_uploads</tt> パラメータが「on」になっていないことです。</p>
+<p> This is most likely because in <em>php.ini</em>, your
+<code>file_uploads</code> parameter is not set to &quot;on&quot;.</p>
 
 <h4 id="faq1_23">
     <a href="#faq1_23">1.23 MySQL を Win32
 マシンで稼動させているのですが、新規テーブルを作成するたびにテーブル名とカラム名が小文字に変わってしまいます！</a></h4>
 
-<p> これは <tt>lower_case_table_names</tt> という MySQL のディレクティブが Win32 版のデフォルトでは 1
-(<tt>ON</tt>) になっているためです。この動作はこのディレクティブを 0 (<tt>OFF</tt>) にするだけで変えられます。<br />
-    Windows ディレクトリにあるはずの <tt>my.ini</tt> ファイルを編集して、次の行を [mysqld] グループに追加してください。</p>
+<p> This happens because the MySQL directive <code>lower_case_table_names</code>
+defaults to 1 (<code>ON</code>) in the Win32 version of MySQL. You can
+change this behavior by simply changing the directive to 0
+(<code>OFF</code>):<br />
+    Just edit your <code>my.ini</code> file that should be located in your
+Windows directory and add the following line to the group [mysqld]:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
@@ -2514,18 +2699,21 @@ input file specified（入力ファイルが指定されていません）」と
     <a href="#faq1_27">1.27 巨大なページ (例えば、多くのテーブルある db_structure.php)
 を表示したいのに空白ページが表示されます。</a></h4>
 
-<p> これは <a href="http://bugs.php.net/21079">PHP のバグ</a> です。GZIP
-出力バッファリングが有効になっていると起こりますので、バッファリングを（<i>config.inc.php</i> で <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a>
-として）オフにすれば動くはずです。このバグは PHP 5.0.0 で修正されるはずです。</p>
+<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
+GZIP output buffering is enabled. If you turn off it (by <a
+href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
+<em>config.inc.php</em>), it should work. This bug will be fixed in
+PHP&nbsp;5.0.0.</p>
 
 <h4 id="faq1_28">
     <a href="#faq1_28">1.28 MySQL サーバがときどきクエリを拒否して「Errorcode:
 13」というメッセージを返してきます。どういうことでしょうか。</a></h4>
 
-<p> これは MySQL のバグです。<tt>lower_case_table_names</tt> が 1
-になっているのにデータベース／テーブル名に大文字が含まれていると起こることがあります。修正するには、このディレクティブをオフにして、すべてのデータベース／テーブル名を小文字に変換してから、再度オンにしてください。また、MySQL&nbsp;3.23.56
-/ 4.0.11-gamma からはバグフィックスも用意されています。</p>
+<p> This can happen due to a MySQL bug when having database / table names with
+upper case characters although <code>lower_case_table_names</code> is set to
+1.  To fix this, turn off this directive, convert all database and table
+names to lower case and turn it on again. Alternatively, there's a bug-fix
+available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
 
 <h4 id="faq1_29">
     <a href="#faq1_29">1.29 テーブルを作成したりカラムを修正したりすると、エラーが出てカラムが複製されてしまいます。</a></h4>
@@ -2543,9 +2731,11 @@ SetInputFilter PHP
 
 <pre>AddType application/x-httpd-php .php</pre>
 
-<p> 私たちが見た例の場合、一方のディレクティブは <tt>/etc/httpd/conf/httpd.conf</tt> に、もう一方のディレクティブは
-<tt>/etc/httpd/conf/addon-modules/php.conf</tt> に入っていました。<br />
-    <tt>AddType</tt> を使う方がお勧めですので、最初のディレクティブはコメントアウトして、Apache を再起動してください。</p>
+<p> In the case we saw, one set of directives was in
+<code>/etc/httpd/conf/httpd.conf</code>, while the other set was in
+<code>/etc/httpd/conf/addon-modules/php.conf</code>.<br />
+    The recommended way is with <code>AddType</code>, so just comment out the
+first set of lines and restart Apache:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -2575,13 +2765,14 @@ Services">IIS</abbr> でも <abbr title="ハイパーテキスト転送プロト
 Services">IIS</abbr> 5.1 の <abbr title="Internet Server Application
 Programming Interface">ISAPI</abbr> モードで動かした PHP 4.3.9 で確認しました。</p>
 
-<ol><li>お使いの <tt>php.ini</tt> ファイルに <tt>cgi.rfc2616_headers = 0</tt> という設定を加えます。</li>
-    <li><tt>ウェブサイトの「プロパティ」 -&gt; 「ディレクトリセキュリティ」タブ -&gt;
-「匿名アクセスおよび認証コントロール」の「編集」</tt>で表示されるダイアログボックスで、<tt>匿名アクセス</tt>のチェックボックスをチェック、それ以外のチェックボックスのチェックを外します（つまり、<tt>基本認証</tt>、<tt>統合
-Windows 認証</tt>、有効になっている場合は<tt>ダイジェスト認証</tt>のチェックを外します）。<tt>OK</tt>
-をクリックします。</li>
-    <li><tt>「カスタムエラー」</tt>タブで、<tt>401;1</tt> から <tt>401;5</tt>
-までを選択し、<tt>「既定値に設定」</tt>ボタンをクリックします。</li>
+<ol><li>In your <code>php.ini</code> file, set <code>cgi.rfc2616_headers = 0</code></li>
+    <li>In <code>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
+Access</code> dialog box, check the <code>Anonymous access</code> checkbox
+and uncheck any other checkboxes (i.e. uncheck <code>Basic
+authentication</code>, <code>Integrated Windows authentication</code>, and
+<code>Digest</code> if it's enabled.) Click <code>OK</code>.</li>
+    <li>In <code>Custom Errors</code>, select the range of <code>401;1</code>
+through <code>401;5</code> and click the <code>Set to Default</code> button.</li>
 </ol>
 
 <h4 id="faq1_33">
@@ -2590,18 +2781,22 @@ Windows 認証</tt>、有効になっている場合は<tt>ダイジェスト認
 <h4 id="faq1_34">
     <a href="#faq1_34">1.34 データベースやテーブルのページに直接アクセスできますか？</a></h4>
 
-<p> はい。そのままでも
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
-のような <abbr title="インターネットアドレス">URL</abbr> は利用できます。<tt>server</tt>
-パラメータには、<tt>config.inc.php</tt> 内のサーバ項目で使われているインデックスの数字が入ります。table と script
-の部分はオプションです。http://server/phpMyAdmin/database[/table][/script] のような <abbr
-title="インターネットアドレス">URL</abbr> を使いたい場合はいくつかの設定をする必要があります。以下の例は <a
-href="http://httpd.apache.org">Apache</a>
-ウェブサーバにしか適用できませんが、まずはグローバルな設定でいくつかの機能を有効にしてあるか確認してください。phpMyAdmin
-をインストールしたディレクトリについては <code>Options FollowSymLinks</code> と
-<code>AllowOverride FileInfo</code> が有効になっている必要がありますし、mod_rewrite
-を有効にしておく必要もあります。あとは、以下のような <a href="#glossary"><i>.htaccess</i></a> ファイルを
-phpMyAdmin をインストールした場所のルートフォルダに作成するだけです (以下のディレクトリ名は例ですので、これは忘れずに修正してください)。</p>
+<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
+Locator">URL</abbr>s like
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
+For <code>server</code> you use the server number which refers to the order
+of the server paragraph in <code>config.inc.php</code>.  Table and script
+parts are optional. If you want
+http://server/phpMyAdmin/database[/table][/script] <abbr title="Uniform
+Resource Locator">URL</abbr>s, you need to do some configuration. Following
+lines apply only for <a href="http://httpd.apache.org">Apache</a> web
+server. First make sure, that you have enabled some features within global
+configuration. You need <code>Options FollowSymLinks</code> and
+<code>AllowOverride FileInfo</code> enabled for directory where phpMyAdmin
+is installed and you need mod_rewrite to be enabled. Then you just need to
+create following <a href="#glossary"><em>.htaccess</em></a> file in root
+folder of phpMyAdmin installation (don't forget to change directory name
+inside of it):</p>
 
 <pre>
 RewriteEngine On
@@ -2690,18 +2885,18 @@ href="http://www.hardened-php.net/suhosin/configuration.html#logging_configurati
 </ul>
 
     <p>
-        また、<a href="#cfg_SuhosinDisableWarning"><tt>SuhosinDisableWarning</tt>
-設定</a>を使用して警告を無効にすることができます。
+        You can also disable the warning using the <a
+href="#cfg_SuhosinDisableWarning"> <code>SuhosinDisableWarning</code>
+directive</a>.
     </p>
 
 <h4 id="faq1_39">
     <a href="#faq1_39">1.39 https を経由して接続すると、ログインすることはできますが、接続が http
 にリダイレクトされてしまいます。何が原因でこの現象が発生するのですか？</a></h4>
 
-<p> Apache の設定で <tt>SSLOptions</tt> と <tt>StdEnvVars</tt>
-が有効になっていることを確認してください。<a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>
-を参照してください。</p>
+<p> Be sure that you have enabled <code>SSLOptions</code> and
+<code>StdEnvVars</code> in your Apache configuration. See <a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
 
 <h4 id="faq1_40">
     <a href="#faq1_40">1.40 Apache のリバースプロキシを介して phpMyAdmin
@@ -2735,15 +2930,16 @@ href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.o
 <h4 id="faq1_41">
     <a href="#faq1_41">1.41 データベースを表示しその特権を参照しようとすると、未知のカラムに関するエラーが表示されます。</a></h4>
 
-<p> MySQL サーバの特権テーブルが最新の状態にされていないません。サーバ上で <tt>mysql_upgrade</tt>
-コマンドを実行する必要があります。</p>
+<p> The MySQL server's privilege tables are not up to date, you need to run the
+<code>mysql_upgrade</code> command on the server.</p>
 
 <h4 id="faq1_42">
     <a href="#faq1_42">1.42 検索エンジンロボットから phpMyAdmin
 へのアクセスを防ぐにはどうすればいいのでしょうか？</a></h4>
 
-<p>ユーザエージェントに基づいたアクセスフィルタルールを <a href="#glossary"><i>.htaccess</i></a>
-に追加することができます。防ぐ手立てとしてはきわめて簡単な方法ですが、少なくともいくつかの検索ロボットからは防ぐことが可能です。</p>
+<p>You can add various rules to <a href="#glossary"><em>.htaccess</em></a> to
+filter access based on user agent field. This is quite easy to circumvent,
+but could prevent at least some robots accessing your installation.</p>
 
 <pre>
 RewriteEngine on
@@ -2775,11 +2971,14 @@ RewriteRule .* - [F]
 already sent by
 ...（警告：ヘッダ情報を追加できません。ヘッダは送信済みです）」というエラーメッセージが表示されます。何がいけないのでしょう。</a></h4>
 
-<p> <i>config.inc.php</i> ファイルを修正して、先頭の <tt>&lt;?php</tt> タグの前や末尾の
-<tt>?&gt;</tt> の後には何も入れない (改行やスペース、文字などがない) ようにしてください。また、ZIP 形式の配布キットを使用している
-<abbr title="Internet Information Services">IIS</abbr>
-でユーザから以下の報告を受けています。『ファイル <tt>libraries/Config.class.php</tt> の末尾に改行コード
-(0x0A) が含まれていたので、この文字を削除したらエラーがなくなりました。』</p>
+<p> Edit your <em>config.inc.php</em> file and ensure there is nothing (I.E. no
+blank lines, no spaces, no characters...) neither before the
+<code>&lt;?php</code> tag at the beginning, neither after the
+<code>?&gt;</code> tag at the end. We also got a report from a user under
+<abbr title="Internet Information Services">IIS</abbr>, that used a zipped
+distribution kit: the file <code>libraries/Config.class.php</code> contained
+an end-of-line character (hex 0A) at the end; removing this character
+cleared his errors.</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin が MySQL に接続できません。何が悪いのでしょう。</a></h4>
@@ -2796,8 +2995,8 @@ local MySQL server through socket '/tmp/mysql.sock' (111)...（警告：MySQL
 
 <p> RedHat ユーザの場合、Harald Legner 氏がメーリングリストで次のような提案をしています。</p>
 
-<p> 私の RedHat-Box では、MySQL のソケットは <i>/var/lib/mysql/mysql.sock</i> になっています。
-<i>php.ini</i> に次のような行がありますから</p>
+<p> On my RedHat-Box the socket of MySQL is <em>/var/lib/mysql/mysql.sock</em>.
+In your <em>php.ini</em> you will find a line</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
@@ -2810,11 +3009,13 @@ local MySQL server through socket '/tmp/mysql.sock' (111)...（警告：MySQL
 <p> こちらは Brad Ummer が提案した対策です。</p>
 
 <ul><li>まず、MySQL がどのソケットを利用しているか確認する必要があります。<br />
-        手順は次の通りです。telnet でサーバに接続して、MySQL bin ディレクトリに移動します。このディレクトリには
-<i>mysqladmin</i> というファイルがあるはずです。<tt>./mysqladmin variables</tt>
-とタイプすると、MySQL サーバの情報がたくさん表示されるはずです。そのなかに、ソケットの情報も書いてあります（例えば
-<i>/tmp/mysql.sock</i>）</li>
-    <li>次に、PHP にそのソケットを利用するよう伝える必要があります。<br /> phpMyAdmin で指定するなら、<i>config.inc.php</i> にソケットの情報をもれなく記入する必要があります。<br />
+        To do this, telnet to your server and go to the MySQL bin directory. In this
+directory there should be a file named <em>mysqladmin</em>. Type
+<code>./mysqladmin variables</code>, and this should give you a bunch of
+info about your MySQL server, including the socket
+(<em>/tmp/mysql.sock</em>, for example).</li>
+    <li>次に、PHP にそのソケットを利用するよう伝える必要があります。<br /> To do this in phpMyAdmin, you need to complete the socket information in the
+<em>config.inc.php</em>.<br />
         例：<a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
@@ -2830,9 +3031,9 @@ href="http://dev.mysql.com/doc/refman/4.1/ja/can-not-connect-to-server.html">MyS
     <a href="#faq2_4">2.4 phpMyAdmin
 を実行しようとしているのですがブラウザに何も表示されません。どうしたらよいのでしょう。</a></h4>
 
-<p> phpMyAdmin の設定ファイルで <a href="#cfg_OBGzip"
-class="configrule">$cfg['OBGZip']</a> 設定を <tt>FALSE</tt>
-にしてみてください。それでうまくいくことがあります。<br />
+<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
+directive to <code>FALSE</code> in the phpMyAdmin configuration file. It
+helps sometime.<br />
     また、PHP のバージョンを確かめてください。「b」ないし「alpha」という文字が含まれている場合はテスト版の PHP
 が稼動しているということですが、これはあまりよいことではありませんので、テスト版でないものにアップグレードしてください。</p>
 
@@ -2873,22 +3074,24 @@ href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定�
 
 <p> テーマの作り方：</p>
 
-<ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
-ディレクトリ（デフォルトでは <tt>themes</tt>）の下に新しいサブディレクトリ（例：「your_theme_name」）を作ります</li>
+<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
+href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
+<code>themes</code>)</li>
     <li>「original」から「your_theme_name」にファイルやディレクトリをコピーします</li>
     <li>「your_theme_name/css」の css ファイルを編集します。</li>
     <li>「your_theme_name/img」に新しい画像を入れます。</li>
-    <li>「your_theme_name」の <tt>layout.inc.php</tt> を編集します。</li>
-    <li>「your_theme_name」の <tt>info.inc.php</tt>
-を編集して、選択したテーマ名を入れます。このテーマ名がユーザインタフェースに表示されます。</li>
+    <li>edit <code>layout.inc.php</code> in &quot;your_theme_name&quot;</li>
+    <li>edit <code>info.inc.php</code> in &quot;your_theme_name&quot; to contain
+your chosen theme name, that will be visible in user interface</li>
     <li>テーマのスクリーンショットを新規作成して、「your_theme_name/screen.png」に保存します。</li>
 </ul>
 
-<p> テーマディレクトリの <tt>info.inc.php</tt>
-というファイルにはテーマの長い名前、テーマの世代、テーマのバージョンを入れます。このバージョンと世代は 1
-から始まる数字です。また、phpMyAdmin
-のバージョンと直接の関係はありません。同じ世代のテーマは後方互換性があるようにしてください。つまり、バージョン 2 のテーマはバージョン 1 が必要な
-phpMyAdmin でもうまくいくようにしてください。世代の異なるテーマは互換性がありません。</p>
+<p> In theme directory there is file <code>info.inc.php</code> which contains
+theme verbose name, theme generation and theme version. These versions and
+generations are enumerated from 1 and do not have any direct dependence on
+phpMyAdmin version. Themes within same generation should be backwards
+compatible - theme with version 2 should work in phpMyAdmin requiring
+version 1. Themes with different generation are incompatible.</p>
 
 <p> 独自のシンボルやボタンを使いたいのでなければ、「your_theme_name」から「img」ディレクトリを削除してください。デフォルトの（システムテーマである「original」の）アイコンやボタンが使われます。
 </p>
@@ -2899,27 +3102,30 @@ parameters（パラメータが抜けています）」というエラーが出�
 
 <p> 確認すべき点はいくつかあります。</p>
 
-<ul><li><tt>config.inc.php</tt> の設定項目 <a href="#cfg_PmaAbsoluteUri"
-class="configrule">$cfg['PmaAbsoluteUri']</a> を空にしてみてください。また <a
-href="#faq4_7"><abbr title="よくある質問">FAQ</abbr> 4.7</a> もご覧ください。
+<ul><li>In <code>config.inc.php</code>, try to leave the <a
+href="#cfg_PmaAbsoluteUri" class="configrule">$cfg['PmaAbsoluteUri']</a>
+directive empty. See also <a href="#faq4_7"><abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.7</a>.
     </li>
     <li>インストールされている PHP が壊れているか、Zend Optimizer をアップデートする必要があるのかもしれません。<a
 href="http://bugs.php.net/bug.php?id=31134">http://bugs.php.net/bug.php?id=31134</a>
 をご覧ください。
     </li>
-    <li>Hardened PHP を使っていて、ini の設定項目 <tt>varfilter.max_request_variables</tt>
-がデフォルトの値 (200)
-ないしそのような低い値になっている場合、テーブルのカラム数が多いとこのエラーが出ることがあります。適切な値に調整してください (ヒントをくれた
-Klaus Dorninger に感謝)。
+    <li>If you are using Hardened PHP with the ini directive
+<code>varfilter.max_request_variables</code> set to the default (200) or
+another low value, you could get this error if your table has a high number
+of columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for
+the hint).
     </li>
-    <li><tt>php.ini</tt> の設定項目 <tt>arg_separator.input</tt>
-の値が「;」だとこのエラーになります。「&amp;;」に差し替えてください。
+    <li>In the <code>php.ini</code> directive <code>arg_separator.input</code>, a
+value of &quot;;&quot; will cause this error. Replace it with
+&quot;&amp;;&quot;.
     </li>
     <li><a href="http://www.hardened-php.net/">Hardened-PHP</a> を使用している場合は、<a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">リクエスト制限</a>を増やすことをお勧めします。
     </li>
-    <li><tt>php.ini</tt> の設定項目 <tt>session.save_path</tt>
-で指定したディレクトリが、存在しないか読み取り専用になっている。
+    <li>The directory specified in the <code>php.ini</code> directive
+<code>session.save_path</code> does not exist or is read-only.
     </li>
 </ul>
 
@@ -2930,7 +3136,8 @@ href="http://www.hardened-php.net/hphp/troubleshooting.html">リクエスト制�
 href="http://pecl.php.net/package/APC">APC</a> 拡張あるいは <a
 href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
 拡張のいずれかを対応している必要があります。また、JSON 拡張をお使いの PHP で有効にする必要があります。</p>
-    <p> APC を使用する場合は、php.ini で <tt>apc.rfc1867</tt> を <tt>on</tt> に設定する必要があります。</p>
+    <p> If using APC, you must set <code>apc.rfc1867</code> to <code>on</code> in
+your php.ini.</p>
 
 <h3 id="faqlimitations">既知の制限</h3>
 
@@ -3029,10 +3236,11 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;g
 </p>
 
 <h4 id="faq3_10">
-    <a href="#faq3_10">3.10 主キーがないのにつづりが同じ語がある場合：SELECT
-の結果、同じ値を持つカラムが複数表示された場合（例えば <tt>SELECT lastname from employees where
-firstname like 'A%'</tt> の結果「Smith」という値が 2
-つ表示された場合）、修正をクリックしても意図した通りの行を修正しているのか分かりません。</a></h4>
+    <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
+SELECT display more that one column with the same value (for example
+<code>SELECT lastname from employees where firstname like 'A%'</code> and
+two &quot;Smith&quot; values are displayed), if I click Edit I cannot be
+sure that I am editing the intended row.</a></h4>
 
 <p> テーブルに主キーを設定するようにしてください。そうすると phpMyAdmin は修正／削除のリンクに主キーを利用するようになります。</p>
 
@@ -3047,7 +3255,8 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
     <a href="#faq3_12">3.12 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 <tt>USE</tt> の後にハイフンを含むデータベース名を入力するとエラーが出ます。</a></h4>
+    <a href="#faq3_13">3.13 I get an error when entering <code>USE</code>
+followed by a db name containing an hyphen.  </a></h4>
 <p>
     我々が MySQL 5.1.49 で行ったテストでは、API はそのような構文の USE コマンドを認めていないことを確認しています。
 </p>
@@ -3121,8 +3330,10 @@ href="#cfg_MaxExactCount" class="configrule">$cfg['MaxExactCount']</a>
     <a href="#faq4_2">4.2 phpMyAdmin を不正アクセスから守るにはどうすればよいのでしょうか？</a></h4>
 <p>
     お使いのシステムによります。<br />
-    外部の人がサーバにアクセスできないようになっているのであれば、ウェブサーバにバンドルされているディレクトリ保護機能を使えば十分です
-(例えば、Apache なら <a href="#glossary"><i>.htaccess</i></a> ファイルを利用できます)。<br />
+    If you're running a server which cannot be accessed by other people, it's
+sufficient to use the directory protection bundled with your webserver (with
+Apache you can use <a href="#glossary"><em>.htaccess</em></a> files, for
+example).<br />
     外部の人が telnet でサーバにアクセスできるのであれば、phpMyAdmin の <abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証ないしクッキー認証機能を使った方がよいでしょう。
     <br /><br />
@@ -3130,7 +3341,7 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証ない�
 </p>
 <ul>
     <li>
-        <i>config.inc.php</i> ファイルは <tt>chmod 660</tt> しておいてください。
+        Your <em>config.inc.php</em> file should be <code>chmod 660</code>.
     </li>
     <li>
         phpMyAdmin ファイルはすべて chown -R phpmy.apache しておいてください。ここでいう phpmy
@@ -3142,13 +3353,13 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証ない�
 </ul>
 
 <h4 id="faq4_3">
-    <a href="#faq4_3">4.3 <i>/lang</i> や <i>/libraries</i>
-のファイルをインクルードできないというエラーが出ます。</a></h4>
+    <a href="#faq4_3">4.3 I get errors about not being able to include a file in
+<em>/lang</em> or in <em>/libraries</em>.  </a></h4>
 <p>
-    <i>php.ini</i>
-をチェックしてください（あるいは、システム管理者にチェックしてもらってください）。<tt>include_path</tt>
-のどこかに「.」が含まれている必要があります。また、<tt>open_basedir</tt>
-を使う場合は「.」と「./lang」が含まれていないと正常に動作しません。
+    Check <em>php.ini</em>, or ask your sysadmin to check it. The
+<code>include_path</code> must contain &quot;.&quot; somewhere in it, and
+<code>open_basedir</code>, if used, must contain &quot;.&quot; and
+&quot;./lang&quot; to allow normal operation of phpMyAdmin.
 </p>
 
 <h4 id="faq4_4">
@@ -3162,27 +3373,31 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a> や <a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> が間違っている。</li>
     <li>ログインダイアログで指定したユーザ名／パスワードが無効なものだった。</li>
-    <li>phpMyAdmin ディレクトリに別のセキュリティ機構がセットアップされている (例えば <a
-href="#glossary"><i>.htaccess</i></a> ファイル)。これは phpMyAdmin
-の認証機構の邪魔になりますので除去してください。</li>
+    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
+eg. a <a href="#glossary"><em>.htaccess</em></a> file. This would interfere
+with phpMyAdmin's authentication, so remove it.</li>
 </ul>
 
 <h4 id="faq4_5">
     <a href="#faq4_5">4.5 ユーザに独自のデータベースを作成させることは可能でしょうか？</a></h4>
 
-<p> バージョン 2.2.5 以降、ユーザ管理ページでユーザのデータベース名にワイルドカードを入れたり
-(例えば「joe%」)、特権を与えることができるようになりました。例えば、<tt>SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、INDEX、ALTER</tt>
-特権を与えれば、ユーザが自分のデータベースを作成／管理できるようになります。</p>
+<p> Starting with 2.2.5, in the user management page, you can enter a wildcard
+database name for a user (for example &quot;joe%&quot;), and put the
+privileges you want.  For example, adding <code>SELECT, INSERT, UPDATE,
+DELETE, CREATE, DROP, INDEX, ALTER</code> would let a user create/manage
+his/her database(s).</p>
 
 <h4 id="faq4_6">
     <a href="#faq4_6">4.6 どうすればホストベースの認証の追加指定を利用できますか？</a></h4>
 
-<p> 古い <a href="#glossary"><i>.htaccess</i></a>
-ファイルに既存のルールがある場合は、それを取ってきて、<tt>「deny」</tt>／<tt>「allow」</tt> と
-<tt>「from」</tt> の文字列の間にユーザ名を加えてください。利用できるようにインストールしてあるなら、ユーザ名にワイルドカード
-<tt>「%」</tt> が使えるのでとても便利です。それが済んだら、あとは更新した行を <a
+<p> If you have existing rules from an old <a
+href="#glossary"><em>.htaccess</em></a> file, you can take them and add a
+username between the <code>'deny'</code>/<code>'allow'</code> and
+<code>'from'</code> strings. Using the username wildcard of <code>'%'</code>
+would be a major benefit here if your installation is suited to using
+it. Then you can just add those updated lines into the <a
 href="#cfg_Servers_AllowDeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> 配列に加えるだけです。</p>
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
 
 <p> できあいのサンプルがほしい場合は、下記をお試しください。これは「root」ユーザがプライベートネットワークの <abbr
 title="インターネット・プロトコル">IP</abbr> ブロックに含まれないネットワークからログインするのを防ぐものです。</p>
@@ -3211,10 +3426,13 @@ title="インターネット・プロトコル">IP</abbr> アドレスを入力�
 <h4 id="faq4_8">
     <a href="#faq4_8">4.8 phpMyAdmin スタートページで使うことができるパラメータはどれですか？</a></h4>
 
-<p>phpMyAdminの開始には、<tt>db</tt>、<tt>pma_username</tt>、<tt>pma_password</tt>、<tt>server</tt>のパラメータを使うことができます。<tt>server</tt>
-パラメータには、ホストインデックスの数値（設定ファイルの
-<tt>$i</tt>）か、設定ファイル内にあるホスト名のいずれかを、使用することができます。<tt>pma_username</tt> と
-<tt>pma_password</tt> は、「クッキー」認証方式として取り扱われ、常に組んで使われます。</p>
+<p>When starting phpMyAdmin, you can use the <code>db</code>,
+<code>pma_username</code>, <code>pma_password</code> and <code>server</code>
+parameters. This last one can contain either the numeric host index (from
+<code>$i</code> of the configuration file) or one of the host names present
+in the configuration file. Using <code>pma_username</code> and
+<code>pma_password</code> has been tested along with the usage of 'cookie'
+<code>auth_type</code>.</p>
 
 <h3 id="faqbrowsers">ブラウザ、クライアント <abbr title="オペレーティング・システム">OS</abbr></h3>
 
@@ -3340,9 +3558,10 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> 認証タイ�
 denied）」という Javascript のエラーが出ます。あるいは、Windows 環境で phpMyAdmin を実行できません。</a></h4>
 
 <p> 以下の点を確認してください。</p>
-    <ul><li>たぶん <tt>config.inc.php</tt> の <tt>PmaAbsoluteUri</tt> の設定を <abbr
-title="インターネット・プロトコル">IP</abbr> アドレスに設定しているのにドメイン名を含む <abbr
-title="インターネットアドレス">URL</abbr> で phpMyAdmin を起動しようとしている、あるいはその逆なのでは？</li>
+    <ul><li>Maybe you have defined your <code>PmaAbsoluteUri</code> setting in
+<code>config.inc.php</code> to an <abbr title="Internet Protocol">IP</abbr>
+address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
+Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
         <li>IE や Microsoft Security Center のセキュリティ設定が高すぎるためにスクリプトが実行できなくなっているのでは？</li>
         <li>Windows Firewall が Apache と MySQL をブロックしているのでは？　「in」、「out」双方で <abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 ないし 443) と MySQL ポート (通常は 3306)
@@ -3354,10 +3573,13 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 
 <p> 多くのユーザが、Firefox にインストールしたタブブラウザ拡張が問題を起こしていることを確認しています。</p>
 
 <h4 id="faq5_18">
-<a href="#faq5_18">5.18 Konqueror 4.2.x でテーブルを表示するとき、無効な <tt>LIMIT</tt>
-節が生成されます。</a></h4>
-<p> <tt>http</tt> 認証モードを使用しており、サーバ上で <tt>register_globals</tt> が <tt>On</tt>
-に設定されている場合にのみ発生します。これはブラウザ固有の問題と思われますので、<tt>クッキー</tt>認証モードを使用するようにしてください。</p>
+<a href="#faq5_18">5.18 With Konqueror 4.2.x an invalid <code>LIMIT</code>
+clause is generated when I browse a table.</a></h4>
+<p> This happens only when both of these conditions are met: using the
+<code>http</code> authentication mode and <code>register_globals</code>
+being set to <code>On</code> on the server. It seems to be a
+browser-specific problem; meanwhile use the <code>cookie</code>
+authentication mode.</p>
 
 <h4 id="faq5_19">
 <a href="#faq5_19">5.19 ブラウザが JavaScript エラーを発生します。</a></h4>
@@ -3374,8 +3596,8 @@ title="データベース用の問い合わせ言語">SQL</abbr> エラーを返
     ありがちなエラーの例です。
 </p>
 <ul>
-    <li><tt>VARCHAR</tt> にサイズの引数をつけない。</li>
-    <li><tt>TEXT</tt> や <tt>BLOB</tt> にサイズの引数をつける。</li>
+    <li>Using <code>VARCHAR</code> without a size argument</li>
+    <li>Using <code>TEXT</code> or <code>BLOB</code> with a size argument</li>
 </ul>
 <p>
     また、MySQL マニュアルの文法の章を見て、文法が正しいか確認してください。
@@ -3427,9 +3649,10 @@ href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
 <h4 id="faq6_6">
     <a href="#faq6_6">6.6 どうすれば Query-by-example の際にリレーションテーブルを使えるのでしょう。</a></h4>
 
-<p> 例えば、persons、towns、countries というテーブルがすべて mydb
-というデータベースのなかにあるとします。<tt>pma_relation</tt>
-テーブルがない場合は「設定」の章で説明されている通りに作ります。続いて、この例で使うテーブルを作ります。</p>
+<p> Here is an example with the tables persons, towns and countries, all located
+in the database mydb. If you don't have a <code>pma_relation</code> table,
+create it as explained in the configuration section. Then create the example
+tables:</p>
 
 <pre>
 CREATE TABLE REL_countries (
@@ -3547,7 +3770,7 @@ john1db、john2db …への特権を得ることになります。<br /><br />
 <h4 id="faqexport">
     <a href="#faqexport">6.12 エクスポートのオプションについて教えてください。</a></h4>
 
-<p><b>構造：</b></p>
+<p><strong>Structure:</strong></p>
 
 <ul><li>「『DROP TABLE』を追加」は、インポート中に既存のテーブルが存在していたら<a
 href="http://dev.mysql.com/doc/mysql/ja/drop-table.html">そのテーブルを削除する</a>よう指示する行を追加します。エクスポートしたあとでテーブルを削除するわけでは「ありません」。ファイルをインポートするときのみです。</li>
@@ -3555,12 +3778,13 @@ href="http://dev.mysql.com/doc/mysql/ja/drop-table.html">そのテーブルを�
 EXISTS』を追加」は、そのテーブルが存在しないときにのみテーブルを作成するようになります。そうでなく、そのテーブル名が存在しているのに構造が異なる場合はエラーになることもあります。</li>
     <li>「『AUTO_INCREMENT』値を追加」は、（あれば）AUTO_INCREMENT 値もバックアップに含めるようにします。</li>
     <li>「逆クォートでテーブルやカラムの名前を囲む」は、特殊文字を含むカラム名やテーブル名を保護します。</li>
-    <li>「コメントの追加」は、pmadb に設定されているカラムのコメント、リレーション、MIME タイプを <abbr
-title="データベース用の問い合わせ言語">SQL</abbr> のコメント文の形 (<i>/* xxx */</i>) でダンプに含めます。
+    <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
+types set in the pmadb in the dump as <abbr title="structured query
+language">SQL</abbr> comments (<em>/* xxx */</em>).
        </li>
 </ul>
 
-<p><b>データ：</b></p>
+<p><strong>Data:</strong></p>
 
 <ul><li>「完全な INSERT 文を作成する」は、すべての INSERT
 コマンドにカラム名を付与して、ダンプを読みやすくします（ただし、結果としてできるファイルは大きくなります）。</li>
@@ -3593,11 +3817,12 @@ Repository">PEAR</abbr> をサポートしている必要があります。加�
 </p>
 
 <p>
-    <abbr title="PHP Extension and Application Repository">PEAR</abbr> の <abbr
-title="Simple Object Access Protocol">SOAP</abbr> モジュールをインストールするには、<tt>「pear
-install Net_Socket Net_URL HTTP_Request Mail_Mime Net_DIME SOAP」</tt>
-を実行して、使用するために必要な <abbr title="PHP Extension and Application
-Repository">PEAR</abbr> を入手してください。
+    To install <abbr title="PHP Extension and Application
+Repository">PEAR</abbr> <abbr title="Simple Object Access
+Protocol">SOAP</abbr> module, run <code>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</code> to get the necessary <abbr
+title="PHP Extension and Application Repository">PEAR</abbr> modules for
+usage.
 </p>
 
 <p>
@@ -3639,11 +3864,15 @@ column '...' used in key specification without a key length（BLOB
 <p> 実行したクエリは、結果が表示されるページのブックマークとして保管できます。「このクエリをブックマークする」というボタンがページ末尾近くにあるはずです。<br />
     ブックマークを保管するとすぐにクエリを実行したデータベースに関連づけられ、そのデータベース用のクエリボックスが表示される各ページのドロップダウンからブックマークにアクセスできるようになります。<br /><br />
 
-    phpMyAdmin 2.5.0 以降、ブックマーク用の変数も保管できるようになりました。クエリのどこかに <b>/*[VARIABLE]*/</b>
-という文字列を入れてください。クエリボックスページの <i>値</i>
-という入力ボックスに入れたすべての値が、保管されているクエリの「/*[VARIABLE]*/」と置き換わります。ただし、有効なクエリを作成する「必要がある」ことにだけはご注意ください。さもないと、クエリをデータベースに保管することすらできません。<br />
-    また、<b>/*[VARIABLE]*/</b> 以外の文字列はすべてそのままクエリに残ることを忘れないようにしてください。ただし、/**/
-は削除されます。ですから、次のような使い方もできます。<br /><br />
+    Since phpMyAdmin 2.5.0 you are also able to store variables for the
+bookmarks.  Just use the string <strong>/*[VARIABLE]*/</strong> anywhere in
+your query. Everything which is put into the <em>value</em> input box on the
+query box page will replace the string &quot;/*[VARIABLE]*/&quot; in your
+stored query. Just be aware of that you HAVE to create a valid query,
+otherwise your query won't be even able to be stored in the database.<br />
+    Also remember, that everything else inside the
+<strong>/*[VARIABLE]*/</strong> string for your query will remain the way it
+is, but will be stripped of the /**/ chars. So you can use:<br /><br />
 
     <code>/*, [VARIABLE] AS myname */</code><br /><br />
 
@@ -3664,10 +3893,12 @@ column '...' used in key specification without a key length（BLOB
 '%phpMyAdmin%'</code>
     <br /><br />
 
-    １つのクエリに複数の <b>/*[VARIABLE]*/</b>
-を含めることもできます（言い換えると、<i>同じ</i>変数を複数含めることができます）。<br />
-    「/**/」構文のなかに<b>空白が含まれていないことにご注意ください</b>。ここに挿入された空白はクエリのなかでも後から空白として挿入されますので、予期せぬ結果を生むことがあります。特に「LIKE
-''」のなかで変数展開する場合はそうです。<br />
+    You can use multiple occurrences of <strong>/*[VARIABLE]*/</strong> in a
+single query (that is, multiple occurrences of the <em>same</em> variable).<br />
+    <strong>NOTE THE ABSENCE OF SPACES</strong> inside the &quot;/**/&quot;
+construct. Any spaces inserted there will be later also inserted as spaces
+in your query and may lead to unexpected results especially when using the
+variable expansion inside of a &quot;LIKE ''&quot; expression.<br />
     ブックマークとして保管しようとしているおおもとのクエリは最低でも 1
 行は結果が出ないとブックマークできませんが、適切な位置に「/**/」コメントを入れることでこの問題を回避できます。</p>
 
@@ -3705,9 +3936,10 @@ href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a>
 をご覧ください。セットアップすると、外部テーブルの値が 100 件以下の場合、値のドロップダウンリストが利用できます。値のリストは 2
 組あります。最初のリストはキーと表示するカラム、次の組は表示するカラムとキーの組み合わせです。このようにしてある理由は、キーでも表示するカラムでも、先頭の文字をタイプすれば選択できるようにするためです。<br /><br />
 
-    100 件を越えると別ウインドウが開き、外部キーの値が表示されますので、一つ選択してください。デフォルトの制限は 100
-件ですが、変更することができます。参照：<tt><a href="#cfg_ForeignKeyMaxLimit"
-class="configrule">$cfg['ForeignKeyMaxLimit']</a></tt></p>
+    For 100 values or more, a distinct window will appear, to browse foreign key
+values and choose one. To change the default limit of 100, see <code><a
+href="#cfg_ForeignKeyMaxLimit"
+class="configrule">$cfg['ForeignKeyMaxLimit']</a></code>.</p>
 
 <h4 id="faq6_22">
     <a href="#faq6_22">6.22
@@ -3812,9 +4044,10 @@ class="configrule">$cfg['UploadDir']</a> で設定し、そこへ .shp、.dbf
         </li>
         <li>
             <p>
-            .shp、.dbf ファイルを Zip ファイルにまとめ、それをインポート。この方法を行うには、ウェブサーバユーザで書き込み可能な場所
-(例：<tt>'./tmp'</tt>) を <a href="#cfg_TempDir"
-class="configrule">$cfg['TempDir']</a> に指定しておく必要があります。
+            Create a Zip archive with .shp and .dbf files and import it. For this to
+work, you need to set <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> to a place where the web server user
+can write (for example <code>'./tmp'</code>).
             </p>
 
             <p> UNIX ベースのシステムで一時ディレクトリを作成するには、以下のようにします。</p>
@@ -3954,8 +4187,10 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 </p>
 
 <p>
-差分は <tt>S</tt> と <tt>D</tt>
-の文字がある赤と緑のボタンで表されていて、構造かデータのいずれかもしくは両方が、最新ではないことを示しています。ボタンをクリックすると灰色になります。これは同期されることを意味します。
+The difference is depicted by the red and green buttons with <code>S</code>
+and <code>D</code> letters, indicating that either Structure or Data are not
+up to date. By clicking on them, they will turn grey, what means that they
+will be synchronized.
 </p>
 
 <h4 id="faq9_2">
