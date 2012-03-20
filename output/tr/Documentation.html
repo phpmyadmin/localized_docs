@@ -1851,9 +1851,9 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a> ayarıyla tanımlanan
 stilde.</dd>
 
     <dt id="cfg_ForeignKeyDropdownOrder">$cfg['ForeignKeyDropdownOrder'] dizilim</dt>
-    <dd>For the foreign key drop-down fields, there are several methods of display,
-offering both the key and value data. The contents of the array should be
-one or both of the following strings: <em>'content-id'</em>,
+    <dd>Dış anahtar aşağı açılır alanı için birçok görüntüleme, hem anahtar hem
+değer verisini sunan yöntemler vardır. Dizilimin içerikleri aşağıdaki
+dizgilerden biri veya ikisi olmalıdır: <em>'content-id'</em>,
 <em>'id-content'</em>.</dd>
 
     <dt><span id="cfg_ZipDump">$cfg['ZipDump']</span> boolean<br />
@@ -1873,13 +1873,14 @@ dosyalar daha fazla GZip/BZip2 başlıkları içerir ama tüm normal programlar
 bununla doğru bir şekilde başa çıkar.</dd>
 
     <dt id="cfg_LightTabs">$cfg['LightTabs'] boolean</dt>
-    <dd>If set to <code>TRUE</code>, use less graphically intense tabs on the top of
-the mainframe.</dd>
+    <dd>Eğer <code>TRUE</code> olarak ayarlanırsa, ana çerçevenin en üstünde daha az
+grafiksel yoğunlukta sekmeler kullanılır.</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] dizgi</dt>
-    <dd>If set to <code>TRUE</code>, will display icons instead of text for db and
-table properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <code>'both'</code> if you want icons AND text.<br />
-        When set to <code>FALSE</code>, will only show text.</dd>
+    <dd>Eğer <code>TRUE</code> olarak ayarlanırsa, vt ve tablo özellikleri
+bağlantıları ('Gözat', 'Seç', 'Ekle', gibi...) için metin yerine simgeler
+görüntülenecektir.<br /> Eğer simgeler VE metin isterseniz, <code>'both'</code> olarak ayarlanabilir.<br />
+        <code>FALSE</code> olarak ayarlandığında, sadece metin gösterilecektir.</dd>
 
     <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] tam sayı</dt>
     <dd>Veritabanı özelliği görünümünde tabloları görüntülemek için kaç tane sütun
@@ -1928,8 +1929,8 @@ sitesinde kullanılmakta</li>
     <dt id="cfg_DefaultLang">$cfg['DefaultLang'] dizgi</dt>
     <dd>Eğer tarayıcı tanımlı ya da kullanıcı tanımlı değilse, varsayılan dili
 kullanmak için tanımlanır.<br />
-        The corresponding language file needs to be in
-locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
+        Locale klasörü içinde olmasına ihtiyaç duyulan ilgili
+/<em>kod</em>/LC_MESSAGES/phpmyadmin.mo dil dosyası.
         </dd>
 
     <dt id="cfg_DefaultConnectionCollation">$cfg['DefaultConnectionCollation'] dizgi</dt>
@@ -1941,8 +1942,8 @@ belgesi</a>'ne bakın. Bu ayar Drizzle sunucusuna bağlanıldığında yoksayıl
 
     <dt id="cfg_Lang">$cfg['Lang'] dizgi</dt>
     <dd>Dili kullanmaya zorlar.<br />
-        The corresponding language file needs to be in
-locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
+        Locale klasörü içinde olmasına ihtiyaç duyulan ilgili
+/<em>kod</em>/LC_MESSAGES/phpmyadmin.mo dil dosyası.
         </dd>
 
     <dt id="cfg_FilterLanguages">$cfg['FilterLanguages'] dizgi</dt>
@@ -1961,10 +1962,11 @@ recode)</li>
         </ul>
         Varsayılan auto'dur.</dd>
     <dd>
-        Enabled charset conversion activates a pull-down menu in the Export and
-Import pages, to choose the character set when exporting a file. The default
-value in this menu comes from <code>$cfg['Export']['charset']</code> and
-<code>$cfg['Import']['charset']</code>.
+        Etkinleştirilmiş karakter grubu dönüştürmesi, bir dosyayı dışa aktarırken
+karakter grubunu seçmek için Dışa Aktar ve İçe Aktar sayfalarında aşağı
+çekilir menüyü aktif eder. Bu menüdeki varsayılan değer
+<code>$cfg['Export']['charset']</code> ve
+<code>$cfg['Import']['charset']</code>'den gelir.
         </dd>
 
     <dt id="cfg_IconvExtraParams">$cfg['IconvExtraParams'] dizgi</dt>
@@ -1987,9 +1989,8 @@ proksileri ve HTTP başlıklarını listeler. Bu liste varsayılan olarak boştu
 proksi arkasındaki IP adresleri için kuralları kullanmak isterseniz, bazı
 güvenilir proksi sunucularını doldurmanız gerekir.<br /><br />
 
-        The following example specifies that phpMyAdmin should trust a
-HTTP_X_FORWARDED_FOR (<code>X-Forwarded-For</code>) header coming from the
-proxy 1.2.3.4:
+        Aşağıdaki örnek phpMyAdmin'in güveneceği proksi 1.2.3.4'ten gelen
+HTTP_X_FORWARDED_FOR (<code>X-Forwarded-For</code>) başlığını belirler:
 <pre>
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
@@ -2011,11 +2012,12 @@ kullanılabilir.<br />
 
     <dt id="cfg_CheckConfigurationPermissions">$cfg['CheckConfigurationPermissions'] boolean</dt>
     <dd>
-    We normally check the permissions on the configuration file to ensure it's
-not world writable. However, phpMyAdmin could be installed on a NTFS
-filesystem mounted on a non-Windows server, in which case the permissions
-seems wrong but in fact cannot be detected. In this case a sysadmin would
-set this parameter to <code>FALSE</code>. Default is <code>TRUE</code>.
+    Biz normal olarak herkes tarafından yazılabilir olmadığından emin olmak için
+yapılandırma dosyasındaki izinleri kontrol ederiz. Ancak phpMyAdmin, izinler
+yanlış göründüğü ama aslında algılanamadığı durumda, Windows olmayan
+sunucuya bağlanmış NTFS dosya sistemi üzerine kurulabilir. Bu durumda
+sysadmin bu parametreyi <code>FALSE</code> olarak ayarlayacaktır. Varsayılan
+<code>TRUE</code>'dur.
     </dd>
 
     <dt id="cfg_LinkLengthLimit">$cfg['LinkLengthLimit'] tam sayı</dt>
@@ -2038,8 +2040,8 @@ nedenle bunu <code>true</code>'ya ayarlamak böyle çoklu bakım işlemlerini
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] tam sayı</dt>
-    <dd>Navi frame width in pixels. See
-<code>themes/themename/layout.inc.php</code>.
+    <dd>Piksel olarak rehber çerçeve
+genişliği. <code>themes/themename/layout.inc.php</code>'ye bakın.
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> dizgi [arkaplan
@@ -2047,37 +2049,37 @@ için CSS rengi]<br />
         <span id="cfg_MainBackground">$cfg['MainBackground']</span> dizgi [arkaplan
 için CSS rengi]
     </dt>
-    <dd>The background styles used for both the frames.  See
-<code>themes/themename/layout.inc.php</code>.</dd>
+    <dd>Her iki çerçeve için kullanılan arkaplan
+stilleri. <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
     <dt id="cfg_NaviPointerBackground">$cfg['NaviPointerBackground'] dizgi [arkaplan için CSS rengi]<br />
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> dizgi [CSS
 rengi]</dt>
-    <dd>The style used for the pointer in the navi frame.  See
-<code>themes/themename/layout.inc.php</code>.</dd>
+    <dd>Rehber çerçevedeki imleç için kulanılan
+stil. <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
     <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
-    <dd>A value of <code>TRUE</code> activates the navi pointer (when LeftFrameLight
-is <code>FALSE</code>).</dd>
+    <dd><code>TRUE</code> değeri rehber imleçi etkinleştirir (LeftFrameLight
+<code>FALSE</code> iken).</dd>
 
     <dt id="cfg_Border">$cfg['Border'] tam sayı</dt>
-    <dd>The size of a table's border. See
-<code>themes/themename/layout.inc.php</code>.
+    <dd>Tabloların kenar boyutudur. <code>themes/themename/layout.inc.php</code>'ye
+bakın.
     </dd>
 
     <dt id="cfg_ThBackground">$cfg['ThBackground'] dizgi [arkaplan için CSS rengi]<br />
         <span id="cfg_ThColor">$cfg['ThColor']</span> dizgi [CSS rengi]</dt>
-    <dd>The style used for table headers. See
-<code>themes/themename/layout.inc.php</code>.</dd>
+    <dd>Tablo başlıkları için kullanılan
+stil. <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
     <dt id="cfg_BgcolorOne">$cfg['BgOne'] dizgi [CSS rengi]</dt>
-    <dd>The color (HTML) #1 for table rows. See
-<code>themes/themename/layout.inc.php</code>.
+    <dd>Tablo satırları için renk (HTML)
+#1. <code>themes/themename/layout.inc.php</code>'ye bakın.
     </dd>
 
     <dt id="cfg_BgcolorTwo">$cfg['BgTwo'] dizgi [CSS rengi]</dt>
-    <dd>The color (HTML) #2 for table rows. See
-<code>themes/themename/layout.inc.php</code>.
+    <dd>Tablo satırları için renk (HTML)
+#2. <code>themes/themename/layout.inc.php</code>'ye bakın.
     </dd>
 
     <dt><span
@@ -2095,18 +2097,18 @@ rengi]
 sonrasında onlara tıklayarak görsel olarak işaretlemenize/işareti
 kaldırmanıza izin verir. Sütunun başlığının (metnin dışına) üzerinde kalmak
 / tıklamak, sütunun vurgulanmasını / işaretlenmesini yapar.<br />
-        See <code>themes/themename/layout.inc.php</code>.</dd>
+        <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
 
     <dt id="cfg_FontFamily">$cfg['FontFamily'] dizgi</dt>
-    <dd>You put here a valid CSS font family value, for example <code>arial,
+    <dd>Buraya geçerli bir CSS yazı tipi ailesi değeri koyun, örneğin <code>arial,
 sans-serif</code>.<br />
-        See <code>themes/themename/layout.inc.php</code>.</dd>
+        <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
     <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] dizgi</dt>
-    <dd>You put here a valid CSS font family value, for example
-<code>monospace</code>. This one is used in textarea.<br />
-        See <code>themes/themename/layout.inc.php</code>.</dd>
+    <dd>Buraya geçerli bir CSS yazı tipi ailesi değeri koyun, örneğin
+<code>monospace</code>. Bu metin alanında kullanılır.<br />
+        <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
     <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] boolean</dt>
     <dd>Gözatma imlecini etkinleştirir ya da etkinleştirmez.</dd>
@@ -2174,11 +2176,12 @@ PHP tabanlı kullanıldığında CSS dönüşümünü etkinleştirir.
         <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']</span>
 boolean
     </dt>
-    <dd>By setting the corresponding variable to <code>TRUE</code> you can enable
-the display of column comments in Browse or Property display. In browse
-mode, the comments are shown inside the header. In property mode, comments
-are displayed using a CSS-formatted dashed-line below the name of the
-column. The comment is shown as a tool-tip for that column.
+    <dd>Uyan değişkeni <code>TRUE</code> olarak ayarlayarak Gözat veya Özellik
+görüntüsündeki sütun yorumlarının görüntülenmesini
+etkinleştirebilirsiniz. Gözatma kipinde, yorumlar başlığın içinde
+gösterilir. Özellik kipinde, yorumlar sütun adının altında
+CSS-biçimlendirilmiş kesikli çizgi kullanılarak görüntülenir. Yorum bu sütun
+için araç ipucu olarak gösterilir.
     </dd>
 
     <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
@@ -2194,8 +2197,9 @@ görüntülemek gerekirse.</dd>
 görüntülemek gerekirse.</dd>
 
     <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] boolean</dt>
-    <dd>Whether to display a link to validate a query in any SQL Query box.  See
-also <code><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>.</dd>
+    <dd>Herhangi bir SQL Sorgu kutusunda sorguyu onaylamak için bağlantı
+görüntülemek gerekirse. Aynı zamanda <code><a
+href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>'a bakın.</dd>
 
     <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] boolean</dt>
     <dd>Herhangi bir SQL Sorgu kutusunda sorguyu yenilemek için bağlantı
@@ -2247,20 +2251,20 @@ phpMyAdmin betiklerinin sahibiyle aynı kullanıcı olmalıdır.
         Geçici dosyaların depolanabildiği dizinin adı. 
         <br /><br />
 
-        This is needed for importing ESRI Shapefiles, see <a href="#faq6_30"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.30</a> and to work around
-limitations of <code>open_basedir</code> for uploaded files, see <a
-href="#faq1_11"><abbr title="Frequently Asked Questions">FAQ</abbr>
-1.11</a>.
+        Bu, ESRI Shapefiles'ı içe aktarmak için gereklidir, <a href="#faq6_30"><abbr
+title="Sıkça Sorulan Sorular">SSS</abbr> 6.30</a>'a bakın ve gönderilmiş
+dosyalarda <code>open_basedir</code> kısıtlamalarına geçici bir çözüm bulmak
+için <a href="#faq1_11"><abbr title="Sıkça Sorulan Sorular">SSS</abbr>
+1.11</a>'e bakın.
         <br /><br />
 
-    If the directory where phpMyAdmin is installed is subject to an
-<code>open_basedir</code> restriction, you need to create a temporary
-directory in some directory accessible by the web server. However for
-security reasons, this directory should be outside the tree published by
-webserver. If you cannot avoid having this directory published by webserver,
-place at least an empty <code>index.html</code> file there, so that
-directory listing is not possible.
+    Eğer phpMyAdmin'in kurulduğu dizin <code>open_basedir</code> kısıtlamasına
+bağlıysa, web sunucusu tarafından erişebilir bir takım dizin içine geçici
+bir dizin oluşturmanız gerekir. Ancak güvenlik nedeniyle, bu dizin web
+sunucusu tarafından yayınlanan dizin ağacının dışında olmalıdır. Eğer bu
+dizinin web sunucusu tarafından yayınlanmasını önleyemiyorsanız, en azından
+boş bir <code>index.html</code> dosyası koyun, böylece dizini listelemek
+imkansızlaşsın.
         <br /><br />
 
         Mümkün olduğunca sadece web sunucusunu çalıştıran kullanıcının erişmesini
@@ -2300,10 +2304,10 @@ anlama geldiklerini kolayca tanımlayabilirsiniz.
         Yüklendiğinde dışa aktarma formunun nasıl görüntüleneceğini
 tanımlar. Geçerli değerler:
         <ul>
-        <li><code>quick</code> to display the minimum number of options to configure</li>
-        <li><code>custom</code> to display every available option to configure</li>
-        <li><code>custom-no-form</code> same as <code>custom</code> but does not display
-the option of using quick export</li>
+        <li><code>hızlı</code> yapılandırmak için seçenekleri en az sayıda görüntüler</li>
+        <li><code>özel</code> yapılandırmak için her kullanılabilir seçeneği görüntüler</li>
+        <li><code>özel-formsuz</code>, <code>özel</code> ile aynıdır ama kullanılan
+hızlı dışa aktar seçeneğini görüntülemez</li>
         </ul>
     </dd>
 
@@ -2339,24 +2343,24 @@ doldurulmasada gösterilmesini tanımlar.
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span> tam sayı
     </dt>
     <dd>
-        All those variables affect the query window feature. A <code><abbr
-title="structured query language">SQL</abbr></code> link or icon is always
-displayed on the left panel. If JavaScript is enabled in your browser, a
-click on this opens a distinct query window, which is a direct interface to
-enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
-the right panel changes to display a query box.<br /><br />
+        Tüm bu değişkenler sorgu penceresi özelliğini etkiler. <code><abbr
+title="structured query language">SQL</abbr></code> bağlantısı ve simgesi
+daima sol panelde görüntülenir. Eğer tarayıcınızda JavaScript etkinse, bunun
+üzerine tıklamak <abbr title="structured query language">SQL</abbr>
+sorgularını girmek için doğrudan arayüz olan ayrı sorgu penceresi
+açar. Yoksa sağ panel sorgu kutusunu görüntülemek için değişir.<br /><br />
 
-        The size of this query window can be customized with
-<code>$cfg['QueryWindowWidth']</code> and
-<code>$cfg['QueryWindowHeight']</code> - both integers for the size in
-pixels. Note that normally, those parameters will be modified in
-<code>layout.inc.php</code> for the theme you are using.<br /><br />
+        Sorgu penceresinin boyutu <code>$cfg['QueryWindowWidth']</code> ve
+<code>$cfg['QueryWindowHeight']</code> ile özelleştirilebilir - her iki tam
+sayı piksel cinsinden boyut içindir. Normalde unutmayın, bu parametreler
+kullandığınız temalar için <code>layout.inc.php</code> içinden
+değiştirilecektir.<br /><br />
 
-        If <code>$cfg['EditInWindow']</code> is set to true, a click on [Edit] from
-the results page (in the &quot;Showing Rows&quot; section)  opens the query
-window and puts the current query inside it.  If set to false, clicking on
-the link puts the <abbr title="structured query language">SQL</abbr> query
-in the right panel's query box.
+        Eğer <code>$cfg['EditInWindow']</code> true olarak ayarlanırsa, sonuçlar
+sayfasından (&quot;Gösterilen Satırlar&quot; bölümünde) [Düzenle]'ye
+tıklamak sorgu penceresini açar ve geçerli sorguyu içine koyar. Eğer false
+olarak ayarlanırsa, bağlantıya tıklamak <abbr title="structured query
+language">SQL</abbr> sorgusunu sağ panelin sorgu kutusu içine koyar.
         <br /><br />
         Eğer JavaScript etkinleştirilmiş tarayıcınız varsa JavaScript sorgu
 penceresinin kullanılması önerilir. Temel işlevler epey az değişkeni
@@ -2364,11 +2368,11 @@ değiştirmek için kullanılır, bu yüzden 4. nesil tarayıcıların çoğu bu
 özelliği kullanmak için kabiliyetli olmalıdır. Şimdilik sadece Internet
 Explorer 6 ve Mozilla 1.x ile denenmiştir.
         <br /><br />
-        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code>, all your
-Queries are logged to a table, which has to be created by you (see <a
-href="#history" class="configrule">$cfg['Servers'][$i]['history']</a>).  If
-set to FALSE, all your queries will be appended to the form, but only as
-long as your window is opened they remain saved.
+        Eğer <code>$cfg['QueryHistoryDB']</code> <code>TRUE</code> olarak ayarlıysa,
+tüm Sorgularınız sizin oluşturduğunuz tabloda günlüklenir (<a
+href="#history" class="configrule">$cfg['Servers'][$i]['history']</a>
+bakın). Eğer FALSE olarak ayarlıysa, tüm sorgularınız forma eklenecektir ama
+sadece pencereniz açık kaldığı sürece kaydedilmiş kalırlar.
         <br /><br />
         JavaScript tabanlı sorgu penceresi kullanıldığında, gözatmak için yeni
 tabloya/vt'ye tıkladığınızda her zaman güncellenmiş olacaktır ve sorguyu
@@ -2383,14 +2387,15 @@ işaretleme kutusu otomatik olarak işaretli gelir. Değişiklikler yapmış
 olsanız bile sorgu penceresinin kesinlikle güncellenmiş olanı getirmesini
 istediğinizde lütfen düğmeden işareti kaldırın.
         <br /><br />
-        If <code>$cfg['QueryHistoryDB']</code> is set to <code>TRUE</code> you can
-specify the amount of saved history items using
-<code>$cfg['QueryHistoryMax']</code>.
+        Eğer <code>$cfg['QueryHistoryDB']</code>, <code>TRUE</code> olarak
+ayarlıysa, <code>$cfg['QueryHistoryMax']</code> kullanarak kaydedilmiş
+geçmiş öğelerinin miktarını belirleyebilirsiniz.
         <br /><br />
-        The query window also has a custom tabbed look to group the features.  Using
-the variable <code>$cfg['QueryWindowDefTab']</code> you can specify the
-default tab to be used when opening the query window. It can be set to
-either 'sql', 'files', 'history' or 'full'.</dd>
+        Sorgu penceresi aynı zamanda özellikleri gruplamak için özel sekmeli
+görünüme sahiptir. <code>$cfg['QueryWindowDefTab']</code> değişkenini
+kullanarak sorgu penceresi açıldığında kullanılacak olan varsayılan sekmeyi
+belirleyebilirsiniz. Ya 'sql', 'files', 'history' ya da 'full' olarak
+ayarlanabilir.</dd>
 
     <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] boolean</dt>
     <dd><a href="#transformations">MIME-dönüşümleri</a>'ni etkinleştirir.</dd>
@@ -2415,14 +2420,16 @@ t10). Şimdilik sol panelde ve Veritabanı görünümünde uygulandı (Sade kip)
 tablo listesi için.</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] dizgi</dt>
-    <dd>If set to <code>'closed'</code>, the visual sliders are initially in a
-closed state. A value of <code>'open'</code> does the reverse. To completely
-disable all visual sliders, use <code>'disabled'</code>.</dd>
+    <dd>Eğer <code>'closed'</code> olarak ayarlanırsa, görsel kaydırıcı başlangıçta
+kapalı durumda olur. <code>'open'</code> değeri durumu tersine çevirir. Tüm
+görsel kaydırıcıları tamamen etkisizleştirmek için <code>'disabled'</code>
+kullanın.</dd>
 
     <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] dizilim</dt>
-    <dd>Contains names of configuration options (keys in <code>$cfg</code> array)
-that users can't set through user preferences. For possible values, refer to
-<code>libraries/config/user_preferences.forms.php</code>.</dd>
+    <dd>Kullanıcı tercihleri yoluyla kullanıcıların ayarlayamadığı yapılandırma
+seçenekleri adlarını içerir (<code>$cfg</code> dizilimi içindeki
+anahtarlar). Olası değerler için
+<code>libraries/config/user_preferences.forms.php</code>'ye bakın.</dd>
 
     <dt id="cfg_UserprefsDeveloperTab">$cfg['UserprefsDeveloperTab'] boolean</dt>
     <dd>phpMyAdmin'in geliştiricileri için kullanıcı tercihleri içindeki seçenekleri
@@ -2455,7 +2462,7 @@ kullanır.</dd>
 title="Sıkça Sorulan Sorular">SSS</abbr> 2.7</a>'ye bakın.</dd>
 
     <dt id="cfg_ThemeDefault">$cfg['ThemeDefault'] dizgi</dt>
-    <dd>The default theme (a subdirectory under <code>cfg['ThemePath']</code>).</dd>
+    <dd>Varsayılan tema (<code>cfg['ThemePath']</code> altında bir altdizin).</dd>
 
     <dt id="cfg_ThemePerServer">$cfg['ThemePerServer'] boolean</dt>
     <dd>Her sunucu için farklı temaya izin vermek gerekirse.</dd>
@@ -2469,63 +2476,67 @@ varsayılan sorgulardır. Standart <a href="#faq6_27">biçim dizgisi
 genişletmesi</a> kullanabilirsiniz.
         </dd>
 
-    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<code>html</code>|<code>none</code>]</dt>
+    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] dizgi [<code>html</code>|<code>none</code>]</dt>
     <dd>
-        The main use of the new <abbr title="structured query language">SQL</abbr>
-Parser is to pretty-print <abbr title="structured query language">SQL</abbr>
-queries. By default we use HTML to format the query, but you can disable
-this by setting this variable to <code>'none'</code>.
+        Yeni <abbr title="structured query language">SQL</abbr> Ayrıştırıcısı'nın
+ana kullanımı hoş yazılı <abbr title="structured query language">SQL</abbr>
+sorgularıdır. Varsayılan olarak HTML'i sorguyu biçimlendirmek için kullandık
+ama bu değişkeni <code>'none'</code> olarak ayarlayarak bunu
+etkisizleştirebilirsiniz.
     </dd>
 
     <dt id="cfg_SQP_fmtInd">$cfg['SQP']['fmtInd'] float<br />
-        <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> string
+        <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> dizgi
 [<code>em</code>|<code>px</code>|<code>pt</code>|<code>ex</code>]</dt>
-    <dd>For the pretty-printing of <abbr title="structured query
-language">SQL</abbr> queries, under some cases the part of a query inside a
-bracket is indented. By changing <code>$cfg['SQP']['fmtInd']</code> you can
-change the amount of this indent.
-        <br />Related in purpose is <code>$cfg['SQP']['fmtIndUnit']</code> which specifies
-the units of the indent amount that you specified. This is used via
-stylesheets.</dd>
+    <dd><abbr title="structured query language">SQL</abbr> sorgularının hoş
+yazdırımı için, bazı durumlar altında köşeli parantez içindeki sorgunun
+kısmı amaçlanır. <code>$cfg['SQP']['fmtInd']</code> değiştirilerek bu
+girintinin miktarını değiştirebilirsiniz.
+        <br />Belirttiğiniz girinti miktarı birimini belirlemek amacı açısından ilgili
+olan <code>$cfg['SQP']['fmtIndUnit']</code>. Bu, çalışma sayfası biçemi
+yoluyla kullanılır.</dd>
 
     <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] dizgi demeti dizilimi</dt>
     <dd>Bu dizilim hoş yazılı <abbr title="structured query language">SQL</abbr>
 sorgularının her türde öğesi için renkleri tanımlamada kullanılır. Demetin
 biçimi<br />
-        <em>class</em> =&gt; [<em>HTML colour code</em> | <em>empty string</em>]<br />
+        <em>class</em> =&gt; [<em>HTML renk kodu</em> | <em>boş dizgi</em>]<br />
         Eğer bir renk sınıfı (class) için boş dizgi belirtirseniz, çalışma sayfası
 oluşturulmasında yoksayılır. Sınıf (class) adlarını değiştirmemelisiniz,
 sadece renk dizgilerini.<br />
-        <strong>Class name key:</strong>
-        <ul><li><strong>comment</strong> Applies to all comment sub-classes</li>
-            <li><strong>comment_mysql</strong> Comments as <code>"#...\n"</code></li>
-            <li><strong>comment_ansi</strong> Comments as <code>"-- ...\n"</code></li>
-            <li><strong>comment_c</strong> Comments as <code>"/*...*/"</code></li>
-            <li><strong>digit</strong> Applies to all digit sub-classes</li>
-            <li><strong>digit_hex</strong> Hexadecimal numbers</li>
-            <li><strong>digit_integer</strong> Integer numbers</li>
-            <li><strong>digit_float</strong> Floating point numbers</li>
-            <li><strong>punct</strong> Applies to all punctuation sub-classes</li>
-            <li><strong>punct_bracket_open_round</strong> Opening brackets<code>"("</code></li>
-            <li><strong>punct_bracket_close_round</strong> Closing brackets <code>")"</code></li>
-            <li><strong>punct_listsep</strong> List item Separator <code>","</code></li>
-            <li><strong>punct_qualifier</strong> Table/Column Qualifier <code>"."</code> </li>
-            <li><strong>punct_queryend</strong> End of query marker <code>";"</code></li>
-            <li><strong>alpha</strong> Applies to all alphabetic classes</li>
-            <li><strong>alpha_columnType</strong> Identifiers matching a column type</li>
-            <li><strong>alpha_columnAttrib</strong> Identifiers matching a
-database/table/column attribute</li>
-            <li><strong>alpha_functionName</strong> Identifiers matching a MySQL function
-name</li>
-            <li><strong>alpha_reservedWord</strong> Identifiers matching any other reserved
-word</li>
-            <li><strong>alpha_variable</strong> Identifiers matching a <abbr
-title="structured query language">SQL</abbr> variable <code>"@foo"</code></li>
-            <li><strong>alpha_identifier</strong> All other identifiers</li>
-            <li><strong>quote</strong> Applies to all quotation mark classes</li>
-            <li><strong>quote_double</strong> Double quotes <code>"</code></li>
-            <li><strong>quote_single</strong> Single quotes <code>'</code></li>
-            <li><strong>quote_backtick</strong> Backtick quotes <code>`</code></li>
+        <strong>Sınıf adı anahtarı:</strong>
+        <ul><li><strong>comment</strong> Tüm yorum alt sınıflarına uygular</li>
+            <li><strong>comment_mysql</strong> <code>"#...\n"</code> gibi yorumlar</li>
+            <li><strong>comment_ansi</strong> <code>"-- ...\n"</code> gibi yorumlar</li>
+            <li><strong>comment_c</strong> <code>"/*...*/"</code> gibi yorumlar</li>
+            <li><strong>digit</strong> Tüm rakam alt sınıflarına uygular</li>
+            <li><strong>digit_hex</strong> Onaltılık sayılar</li>
+            <li><strong>digit_integer</strong> Tam sayılar</li>
+            <li><strong>digit_float</strong> Kayan noktalı sayılar</li>
+            <li><strong>punct</strong> Tüm noktalama işareti alt sınıflarına uygular</li>
+            <li><strong>punct_bracket_open_round</strong> Açılış parantezleri
+<code>"("</code></li>
+            <li><strong>punct_bracket_close_round</strong> Kapanış parantezleri
+<code>")"</code></li>
+            <li><strong>punct_listsep</strong> Liste öğesi Ayıracı <code>","</code></li>
+            <li><strong>punct_qualifier</strong> Tablo/Sütun Nitelendiricisi
+<code>"."</code> </li>
+            <li><strong>punct_queryend</strong> Sorgu sonu işaretleyicisi <code>";"</code></li>
+            <li><strong>alpha</strong> Tüm alfabetik sınıflara uygular</li>
+            <li><strong>alpha_columnType</strong> Sütun türüyle eşleşen tanımlayıcılar</li>
+            <li><strong>alpha_columnAttrib</strong> Veritabanı/tablo/sütun özniteliğiyle
+eşleşen tanımlayıcılar</li>
+            <li><strong>alpha_functionName</strong> MySQL işlev adıyla eşleşen
+tanımlayıcılar</li>
+            <li><strong>alpha_reservedWord</strong> Herhangi bir diğer ayrılmış kelimeyle
+eşleşen tanımlayıcılar</li>
+            <li><strong>alpha_variable</strong> <abbr title="structured query
+language">SQL</abbr> değişkeniyle <code>"@foo"</code> eşleşen tanımlayıcılar</li>
+            <li><strong>alpha_identifier</strong> Tüm diğer tanımlayıcılar</li>
+            <li><strong>quote</strong> Tüm tırnak işareti sınıflarına uygular</li>
+            <li><strong>quote_double</strong> Çift tırnak <code>"</code></li>
+            <li><strong>quote_single</strong> Tek tırnak <code>'</code></li>
+            <li><strong>quote_backtick</strong> Ters tırnak <code>`</code></li>
         </ul>
     </dd>
 
@@ -2546,18 +2557,18 @@ href="#faqsqlvalidator"><abbr title="Sıkça Sorulan Sorular">SSS</abbr>
             <dt id="cfg_SQLValidator_username">$cfg['SQLValidator']['username'] dizgi<br />
                 <span id="cfg_SQLValidator_password">$cfg['SQLValidator']['password']</span>
 dizgi</dt>
-            <dd>The SOAP service allows you to log in with <code>anonymous</code> and any
-password, so we use those by default. Instead, if you have an account with
-them, you can put your login details here, and it will be used in place of
-the anonymous login.</dd>
+            <dd>SOAP hizmeti <code>isimsiz</code> ve herhangi bir parolayla oturum açmanıza
+izin verir, bu yüzden biz bunları varsayılan olarak kullanırız. Onun yerine
+eğer bir hesabınız varsa, oturum açma ayrıntılarını buraya girebilirsiniz ve
+isimsiz oturum açmak yerine bu kullanılacaktır.</dd>
         </dl>
     </dd>
 
     <dt id="cfg_DBG">$cfg['DBG']</dt>
-    <dd><strong>DEVELOPERS ONLY!</strong></dd>
+    <dd><strong>SADECE GELİŞTİRİCİLER!</strong></dd>
 
     <dt id="cfg_DBG_sql">$cfg['DBG']['sql'] boolean</dt>
-    <dd><strong>DEVELOPERS ONLY!</strong><br />
+    <dd><strong>SADECE GELİŞTİRİCİLER!</strong><br />
         Sorguları ve çalıştırma zamanlarını ana sayfanın en altında (sağ çerçeve)
 görüntülemek için günlükleme etkin.</dd>
 
@@ -2603,9 +2614,9 @@ tanımlanan işlevler.</dd>
 
 <h3 id="transformationsintro">1. Giriş</h3>
 
-<p> To enable transformations, you have to setup the <code>column_info</code>
-table and the proper directives. Please see the <a
-href="#config">Configuration section</a> on how to do so.</p>
+<p> Dönüşümleri etkinleştirmek için <code>column_info</code> tablosunu ve doğru
+yönergeleri ayarlamalısınız. Lütfen bunun nasıl yapılacağına <a
+href="#config">Yapılandırma bölümünden</a> bakın.</p>
 
 <p> Her bir sütunun içeriklerine farklı dönüşümleri uygulayabilirsiniz. Dönüşüm
 her bir sütunun içeriğini alacaktır ve seçili dönüşümler içinde tanımlanmış
@@ -2619,10 +2630,9 @@ tarayıcı penceresinde görüntülendiğini göreceksiniz. Dönüştürme
 seçeneklerini kullanarak aynı zamanda bir dizgiye eklemek/başına eklemek
 için dizgileri ya da istediğiniz depolanan çıktı biçimini belirtebilirsiniz.</p>
 
-<p> For a general overview of all available transformations and their options,
-you can consult your
-<em>&lt;www.your-host.com&gt;/&lt;your-install-dir&gt;/transformation_overview.php</em>
-installation.</p>
+<p> Tüm kullanılabilir dönüşümlere genel bir bakış ve seçenekleri için
+<em>&lt;www.anamakineniz.com&gt;/&lt;kurulum-dizininiz&gt;/transformation_overview.php</em>
+kurulumuna başvurabilirsiniz.</p>
 
 <p> Dönüşümleri nasıl etkili olarak kullanabileceğinizle ilgili eğitim için
 resmi phpMyAdmin ana sayfamazdaki bizim <a
@@ -2631,11 +2641,11 @@ bakın.</p>
 
 <h3 id="transformationshowto">2. Kullanım</h3>
 
-<p> Go to your <em>tbl_structure.php</em> page (i.e. reached through clicking on
-the 'Structure' link for a table). There click on &quot;Change&quot; (or
-change icon) and there you will see three new fields at the end of the
-line. They are called 'MIME-type', 'Browser transformation' and
-'Transformation options'.</p>
+<p> <em>tbl_structure.php</em> sayfasına gidin (yani bir tablo için 'Yapı'
+bağlatısına tıklayarak ulaşın). Oradaki &quot;Değiştir&quot;'e (veya
+değiştir simgesine) tıklayın ve satırın sonunda üç yeni alanın olduğunu
+göreceksiniz. Onlara 'MIME-türü', 'Tarayıcı dönüştürme' ve 'Dönüştürme
+seçenekleri' denir.</p>
 
     <ul><li>'MIME-türü' alanı aşağı açılır menü alanıdır. Sütunun içeriklerine karşı
 gelen MIME-türünü seçin. Lütfen unutmayın dönüşümler MIME-türü seçilmediği
@@ -2696,8 +2706,9 @@ dönüştürmeleri kullanabilir. Ne için yapıldıklarından farklı olarak ayr
 mime türlerinde dönüşümleri kullanabilirsiniz, ancak dönüştürmenin
 sütununuza ne yaptığının yanısıra seçeneğin kullanımına dikkat edin.</p>
 
-<p> There is a basic file called '<em>global.inc.php</em>'. This function can be
-included by any other transform function and provides some basic functions.</p>
+<p> '<em>global.inc.php</em>' adında temel bir dosya vardır. Bu işlev herhangi
+bir diğer dönüştürme işlevi tarafından dahil edilebilir ve bazı temel
+işlevler sağlar.</p>
 
 <p> 5 dosya adı olasılığı vardır:</p>
 
@@ -2709,10 +2720,11 @@ included by any other transform function and provides some basic functions.</p>
 ayrılır. Dönüştürme işlevi/dosya adı sadece dosya sisteminde soruna sebep
 olmayacak karakterlerin yanısıra PHP işlevi adlandırma kuralını içerebilir.<br /><br />
 
-        The transform function will the be called
-'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>'.<br /><br />
+        Dönüştürme işlevi
+'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>' olarak
+adlandırılacaktır.<br /><br />
 
-        <strong>Example:</strong><br /><br />
+        <strong>Örnek:</strong><br /><br />
 
         <code>text_html__formatted.inc.php</code><br />
         <code>PMA_transform_text_html__formatted()</code></li>
@@ -2725,10 +2737,10 @@ olmayacak karakterlerin yanısıra PHP işlevi adlandırma kuralını içerebili
 sadece dosya sisteminde soruna sebep olmayacak karakterlerin yanısıra PHP
 işlevi adlandırma kuralını içerebilir.<br /><br />
 
-        The transform function will the be called
-'<code>PMA_transform_[mimetype]__[transform]()</code>'.<br /><br />
+        Dönüştürme işlevi '<code>PMA_transform_[mimetype]__[transform]()</code>'
+olarak adlandırılacaktır.<br /><br />
 
-        <strong>Example:</strong><br /><br />
+        <strong>Örnek:</strong><br /><br />
 
         <code>text__formatted.inc.php</code><br />
         <code>PMA_transform_text__formatted()</code></li>
@@ -2742,7 +2754,7 @@ sistemiyle sorunlara sebep olan özel karakterler kullanmayın.<br /><br />
 
         Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
 
-        <strong>Example:</strong><br /><br />
+        <strong>Örnek:</strong><br /><br />
 
         <code>text_plain.inc.php</code><br />
         (İşlevi yok)</li>
@@ -2757,7 +2769,7 @@ sistemiyle sorunlara sebep olan özel karakterler kullanmayın.
 
         Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
 
-        <strong>Example:</strong><br /><br />
+        <strong>Örnek:</strong><br /><br />
 
         <code>text.inc.php</code><br />
         (İşlevi yok)</li>
@@ -2766,10 +2778,10 @@ sistemiyle sorunlara sebep olan özel karakterler kullanmayın.
 
         <code>global__[transform].inc.php</code><br /><br />
 
-        The transform function will the be called
-'<code>PMA_transform_global__[transform]()</code>'.<br /><br />
+        Dönüştürme işlevi '<code>PMA_transform_global__[transform]()</code>' olarak
+adlandırılacaktır.<br /><br />
 
-        <strong>Example:</strong><br /><br />
+        <strong>Örnek:</strong><br /><br />
 
         <code>global__formatted</code><br />
         <code>PMA_transform_global__formatted()</code></li>
@@ -2786,24 +2798,26 @@ libraries/transformations/TEMPLATE dosyasına bakın. Dönüştürme işlevi
 olmadan mime türü eklemek için libraries/transformations/TEMPLATE_MIMETYPE
 içine bakın.</p>
 
-<p> To create a new transform function please see
-<code>libraries/transformations/template_generator.sh</code>.  To create a
-new, empty mimetype please see
-<code>libraries/transformations/template_generator_mimetype.sh</code>.</p>
+<p> Yeni dönüştürme işlevi için lütfen
+<code>libraries/transformations/template_generator.sh</code> içine
+bakın. Yeni bir, boş mime türü oluşturmak için lütfen
+<code>libraries/transformations/template_generator_mimetype.sh</code> içine
+bakın.</p>
 
 <p> Dönüştürme işlevi her zaman üç değişkene iletilir:</p>
 
-<ol><li><strong>$buffer</strong> - Contains the text inside of the column. This is
-the text, you want to transform.</li>
-    <li><strong>$options</strong> - Contains any user-passed options to a transform
-function as an array.</li>
-    <li><strong>$meta</strong> - Contains an object with information about your
-column.  The data is drawn from the output of the <a
+<ol><li><strong>$buffer</strong> - Sütunun içindeki metni içerir. Bu dönüştürmek
+istediğiniz metindir.</li>
+    <li><strong>$options</strong> - Dizilim olarak herhangi bir kullanıcı geçişli
+seçenekten bir dönüştürme işlevine kadar olanı içerir.</li>
+    <li><strong>$meta</strong> - Sütununuz hakkındaki bilgiye sahip bir nesne
+içerir. Veri <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
-function. This means, all object properties described on the <a
-href="http://www.php.net/mysql_fetch_field">manual page</a> are available in
-this variable and can be used to transform a column accordingly to
-unsigned/zerofill/not_null/... properties.<br />
+işlevinin çıktısından çizilir. Bunun anlamı, <a
+href="http://www.php.net/mysql_fetch_field">rehber sayfasında</a>
+tanımlanmış tüm nesne tercihleri bu değişken içinde mevcuttur ve
+unsigned/zerofill/not_null/... tercihlerine göre sütunu dönüştürmek için
+kullanılabilir.<br />
         $meta-&gt;Mime türü değişkeni sütunun orijinal MIME-türünü içerir (yani
 'text/plain', 'image/jpeg' v.s.)</li>
 </ol>
@@ -2847,10 +2861,10 @@ bir göz atın.</p>
 arızalanıyor ya da phpMyAdmin boş sayfa gönderiyor veya tarayıcımda sayfa
 şifreli karakterlerle doluyor, ne yapabilirim?</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGzip']</a>
-directive to <code>FALSE</code> in your <em>config.inc.php</em> file and the
-<code>zlib.output_compression</code> directive to <code>Off</code> in your
-php configuration file.<br /></p>
+<p> <em>config.inc.php</em> dosyasındaki <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip']</a> yönergesini <code>FALSE</code> ve php
+yapılandırma dosyanızdaki <code>zlib.output_compression</code> yönergesini
+<code>Off</code> olarak ayarlamayı deneyin.<br /></p>
 
 <h4 id="faq1_2">
     <a href="#faq1_2">1.2 phpMyAdmin kullandığımda Apache sunucum
@@ -2874,10 +2888,10 @@ title="HyperText Transfer Protocol">HTTP</abbr> başlıkları ...&quot; grubu
 döndürmeyerek uygunsuz davrandı.</a>
 </h4>
 
-<p> You just forgot to read the <em>install.txt</em> file from the PHP
-distribution.  Have a look at the last message in this <a
-href="http://bugs.php.net/bug.php?id=12061">bug report</a> from the official
-PHP bug database.</p>
+<p> Şimdi PHP dağıtımından <em>install.txt</em> dosyasını okumayı bırakın. Resmi
+PHP hata veritabanından bu <a
+href="http://bugs.php.net/bug.php?id=12061">hata raporu</a> içindeki son
+mesaja bir bakın.</p>
 
 <h4 id="faq1_5">
     <a href="#faq1_5">1.5 <abbr title="Internet Information Services">IIS</abbr>
@@ -2895,37 +2909,39 @@ kipi kullanın.
     <a href="#faq1_6">1.6 PWS'de phpMyAdmin kullanamıyorum: hiçbir şey
 görüntülenmiyor!</a></h4>
 
-<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
-time there is no better fix): remove or comment the <code>DOCTYPE</code>
-declarations (2 lines) from the scripts <em>libraries/header.inc.php</em>,
+<p> Bu bir PWS hatası görünüyor. Filippo Simoncini geçici bir çözüm buldu (bu
+sefer daha iyi bir onarımı yok): <em>libraries/header.inc.php</em>,
 <em>libraries/header_printview.inc.php</em>, <em>index.php</em>,
-<em>navigation.php</em> and <em>libraries/common.lib.php</em>.</p>
+<em>navigation.php</em> ve <em>libraries/common.lib.php</em> betiklerinden
+<code>DOCTYPE</code> bildirimlerini (2 satır) yorumlayın ya da kaldırın.</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 Nasıl GZip veya Bzip dökümü alabilirim ya da <abbr
 title="comma separated values">CSV</abbr> dışa aktarabilirim? Bu çalışmıyor
 gibi görünüyor.</a></h4>
 
-<p> These features are based on the <code>gzencode()</code> and
-<code>bzcompress()</code> PHP functions to be more independent of the
-platform (Unix/Windows, Safe Mode or not, and so on). So, you must have
-Zlib/Bzip2 support (<code>--with-zlib</code> and <code>--with-bz2</code>).<br /></p>
+<p> Bu özellikler platformların (Unix/Windows, Güvenli Kip veya değil, ve
+benzeri) daha bağımsız olması için <code>gzencode()</code> ve
+<code>bzcompress()</code> PHP işlevleri tabanlıdır. Bu yüzden Zlib/Bzip2
+desteğine (<code>--with-zlib</code> ve <code>--with-bz2</code>) sahip olmak
+zorundasınız.<br /></p>
 
 <h4 id="faq1_8">
     <a href="#faq1_8">1.8 Tabloya metin dosyası ekleyemiyorum ve güvenli kipin
 etkili olmasıyla ilgili bir hata alıyorum.</a></h4>
 
-<p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
-in <em>php.ini</em> by the variable <code>upload_tmp_dir</code> (usually the
-system default is <em>/tmp</em>).<br />
+<p> Gönderdiğiniz dosya <em>php.ini</em> dosyasında tanımlı
+<code>upload_tmp_dir</code> (genellikle sistem varsayılanı
+<em>/tmp</em>'dir) değişkeninden dolayı PHP tarafından &quot;gönderme
+dizinine&quot; kaydedilir.<br />
     Aşağıdaki ayarlamayı güvenli kipte çalışan Apache sunucuları için öneririz,
 dosyaların gönderilmesini oldukça güvenli yaparak etkinleştirmek için:</p>
 
-<ul><li>create a separate directory for uploads: <code>mkdir /tmp/php</code></li>
-    <li>give ownership to the Apache server's user.group: <code>chown apache.apache
-/tmp/php</code></li>
-    <li>give proper permission: <code>chmod 600 /tmp/php</code></li>
-    <li>put <code>upload_tmp_dir = /tmp/php</code> in <em>php.ini</em></li>
+<ul><li>göndermeler için ayrı dizin oluşturun: <code>mkdir /tmp/php</code></li>
+    <li>Apache sunucusunun kullanıcı grubuna sahiplik verin: <code>chown
+apache.apache /tmp/php</code></li>
+    <li>tam izin verin: <code>chmod 600 /tmp/php</code></li>
+    <li><em>php.ini</em> içine <code>upload_tmp_dir = /tmp/php</code> koyun</li>
     <li>Apache'yi yeniden başlatın</li>
 </ul>
 
@@ -2937,8 +2953,8 @@ dosyaların gönderilmesini oldukça güvenli yaparak etkinleştirmek için:</p>
 dosyaları gönderirken sorun yaşıyorum. Tarayıcım Internet Explorer ve Apache
 sunucusu kullanıyorum.</a></h4>
 
-<p> As suggested by &quot;Rob M&quot; in the phpWizard forum, add this line to
-your <em>httpd.conf</em>:</p>
+<p> phpWizard forumunda &quot;Rob M&quot;in önerdiğine göre bu satırı
+<em>httpd.conf</em> dosyanızın içine ekleyin:</p>
 
     <pre>SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown</pre>
 
@@ -2969,14 +2985,14 @@ nasıl sıfırlayacağınızı</a> anlatır.</p>
     <a href="#faq1_14">1.14 (kaldırıldı).</a></h4>
 
 <h4 id="faq1_15">
-    <a href="#faq1_15">1.15 I have problems with <em>mysql.user</em> column
-names.</a>
+    <a href="#faq1_15">1.15 <em>mysql.user</em> sütun adlarıyla sorunlarım
+var.</a>
 </h4>
 
-<p> In previous MySQL versions, the <code>User</code> and
-<code>Password</code>columns were named <code>user</code> and
-<code>password</code>. Please modify your column names to align with current
-standards.</p>
+<p> Önceki MySQL sürümlerinde, <code>User</code> ve <code>Password</code>
+sütunları <code>user</code> ve <code>password</code>olarak
+adlandırılırdı. Lütfen sütun adlarınızı şu anki standartlarla hizalamak için
+değiştirin.</p>
 
 <h4 id="faq1_16">
     <a href="#faq1_16">1.16 Büyük döküm dosyalarını gönderemiyorum (bellek,
@@ -2989,13 +3005,14 @@ sorunlar meydana gelmemelidir. Eğer mümkünse, yeni içe aktarma
 özelliklerinin avantajından yararlanmak için phpMyAdmin'inizi en son sürüme
 yükseltin.</p>
 
-<p> The first things to check (or ask your host provider to check) are the
-values of <code>upload_max_filesize</code>, <code>memory_limit</code> and
-<code>post_max_size</code> in the <em>php.ini</em> configuration file.  All
-of these three settings limit the maximum size of data that can be submitted
-and handled by PHP. One user also said that <code>post_max_size</code> and
-<code>memory_limit</code> need to be larger than
-<code>upload_max_filesize</code>.<br /> <br />
+<p> Kontrol edilecek (veya kontrol etmesi için anamakine sağlayacısına
+sorulacak) ilk şeyler <em>php.ini</em> yapılandırma dosyası içindeki
+<code>upload_max_filesize</code>, <code>memory_limit</code> ve
+<code>post_max_size</code> değerleridir. Tüm bu üç ayar PHP tarafından
+işlenen ve gönderilebilen en fazla veri boyutunu sınırlandırır. Aynı zamanda
+bir kullanıcı <code>post_max_size</code> ve <code>memory_limit</code>
+değerlerinin <code>upload_max_filesize</code> değerinden daha büyük olması
+gerektiğini söylemiştir.<br /> <br />
 
     Eğer göndermeniz çok büyükse ye da barındırma sağlayıcınız ayarları
 değiştirmeye yanaşmıyorsa birkaç geçici çözüm mevcuttur:</p>
@@ -3009,9 +3026,9 @@ href="#config">Yapılandırma bölümü</a> içinde mevcuttur.</li>
 href="http://www.ozerov.de/bigdump.php"> BigDump</a> gibi) kullanmak. Bunu
 ya da üçüncü parti uygulamaları destekleyemiyoruz ama kullanıcıların bununla
 başarılı olduğunun farkındayız.</li>
-    <li>If you have shell (command line) access, use MySQL to import the files
-directly. You can do this by issuing the &quot;source&quot; command from
-within MySQL: <code>source <em>filename.sql</em></code>.</li>
+    <li>Eğer kabuk (komut satırı) erişiminiz varsa, doğrudan dosyaları içe aktarmak
+için MySQL kullanın. Bunu MySQL içinden &quot;source&quot; komutunu vererek
+yapabilirsiniz: <code>source <em>dosyaadı.sql</em></code>.</li>
 </ul>
 
 <h4 id="faq1_17">
@@ -3075,11 +3092,12 @@ kılavuzuna</a> başvurun.</p>
     <a href="#faqmysql">1.20 &quot;MySQL uzantısı yüklenemiyor, lütfen PHP
 Yapılandırmasını kontrol edin&quot; hatası alıyorum.</a></h4>
 
-<p> To connect to a MySQL server, PHP needs a set of MySQL functions called
-&quot;MySQL extension&quot;. This extension may be part of the PHP
-distribution (compiled-in), otherwise it needs to be loaded dynamically. Its
-name is probably <em>mysql.so</em> or <em>php_mysql.dll</em>. phpMyAdmin
-tried to load the extension but failed.<br /><br />
+<p> Bir MySQL sunucusuna bağlanmak için PHP'nin &quot;MySQL uzantısı&quot;
+olarak adlandırılan MySQL işlevleri grubuna ihtiyacı vardır. Bu uzantı PHP
+dağıtımının parçası (birlikte derlenmiş) olabilir, ayrıca dinamik olarak
+yüklenmesi gerekebilir. Adı büyük olasılıkla <em>mysql.so</em> veya
+<em>php_mysql.dll</em> dir. phpMyAdmin uzantıyı yüklemeyi denemiştir ama
+başarısız olmuştur.<br /><br />
 
     Genellikle sorun &quot;PHP-MySQL&quot; veya benzer bir şey denilen paketin
 kurulumuyla çözülür.</p>
@@ -3089,26 +3107,27 @@ kurulumuyla çözülür.</p>
 Interface">CGI</abbr> sürümünü çalıştırıyorum ve kimlik doğ. kullanarak
 oturum açamıyorum.</a></h4>
 
-<p> In <em>php.ini</em>, set <code>mysql.max_links</code> higher than 1.</p>
+<p> <em>php.ini</em> içinde <code>mysql.max_links</code> değerini 1'den büyüğe
+ayarlayın.</p>
 
 <h4 id="faq1_22">
     <a href="#faq1_22">1.22 &quot;Metin dosyası yeri&quot; alanını göremiyorum
 bu yüzden gönderemiyorum.</a></h4>
 
-<p> This is most likely because in <em>php.ini</em>, your
-<code>file_uploads</code> parameter is not set to &quot;on&quot;.</p>
+<p> Bu büyük ihtimalle <em>php.ini</em> içinden kaynaklanıyor,
+<code>file_uploads</code> parametreniz &quot;on&quot; olarak ayarlı değil.</p>
 
 <h4 id="faq1_23">
     <a href="#faq1_23">1.23 Win32 makinede MySQL çalıştırıyorum. Her defasında
 yeni bir tablo oluşturduğumda tablo ve sütun adları küçük harfe
 değiştiriliyor!</a></h4>
 
-<p> This happens because the MySQL directive <code>lower_case_table_names</code>
-defaults to 1 (<code>ON</code>) in the Win32 version of MySQL. You can
-change this behavior by simply changing the directive to 0
-(<code>OFF</code>):<br />
-    Just edit your <code>my.ini</code> file that should be located in your
-Windows directory and add the following line to the group [mysqld]:</p>
+<p> Bu oluyor çünkü MySQL'in Win32 sürümü içinde
+<code>lower_case_table_names</code> yönergesi varsayılanı 1
+(<code>AÇIK</code>). Yönergeyi basitçe 0'a (<code>KAPALI</code>)
+değiştirerek bu davranışı değiştirebilirsiniz:<br />
+    Sadece Windows dizininiz içinde bulunan <code>my.ini</code> dosyanızı
+düzenleyin ve aşağıdaki satırı [mysqld] grubuna ekleyin:</p>
 
 <pre>set-variable = lower_case_table_names=0</pre>
 
@@ -3152,21 +3171,22 @@ izinlerini ayarlayın ve bu çalışmalıdır.</p>
     <a href="#faq1_27">1.27 Çok büyük bir sayfa görüntülemek istediğimde boş bir
 sayfa alıyorum (örn. bir yığın tablolu db_structure.php).</a></h4>
 
-<p> This is a <a href="http://bugs.php.net/21079">PHP bug</a> that occur when
-GZIP output buffering is enabled. If you turn off it (by <a
-href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> in
-<em>config.inc.php</em>), it should work. This bug will be fixed in
-PHP&nbsp;5.0.0.</p>
+<p> Bu, GZIP çıktı arabelleklemesi etkin olduğunda meydana gelen <a
+href="http://bugs.php.net/21079">PHP hatasıdır</a>. Eğer kapatırsanız
+(<em>config.inc.php</em> içinde <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGzip'] = false</a> olarak ayarlayarak),
+çalışmalıdır. Bu hata PHP&nbsp;5.0.0'da düzeltilecektir.</p>
 
 <h4 id="faq1_28">
     <a href="#faq1_28">1.28 MySQL sunucum bazen sorguları reddediyor ve
 'Errorcode: 13' mesajını döndürüyor. Bu ne anlama geliyor?</a></h4>
 
-<p> This can happen due to a MySQL bug when having database / table names with
-upper case characters although <code>lower_case_table_names</code> is set to
-1.  To fix this, turn off this directive, convert all database and table
-names to lower case and turn it on again. Alternatively, there's a bug-fix
-available starting with MySQL&nbsp;3.23.56 / 4.0.11-gamma.</p>
+<p> <code>lower_case_table_names</code> değeri 1'e ayarlı omasına rağmen
+veritabanı / tablo adlarında büyük harfli karakterler olduğunda bir MySQL
+hatasından dolayı bu olabiliyor. Bunu düzeltmek için bu yönergeyi kapatın,
+tüm veritabanı ve tablo adlarını küçük harfe dönüştürün ve tekrar
+açın. Alternatif olarak MySQL&nbsp;3.23.56 / 4.0.11-gamma ile başlayan
+mevcut bir hata düzeltmesi vardır.</p>
 
 <h4 id="faq1_29">
     <a href="#faq1_29">1.29 Bir tablo oluşturduğumda ya da sütun
@@ -3187,11 +3207,11 @@ SetInputFilter PHP
 
 <pre>AddType application/x-httpd-php .php</pre>
 
-<p> In the case we saw, one set of directives was in
-<code>/etc/httpd/conf/httpd.conf</code>, while the other set was in
-<code>/etc/httpd/conf/addon-modules/php.conf</code>.<br />
-    The recommended way is with <code>AddType</code>, so just comment out the
-first set of lines and restart Apache:</p>
+<p> Gördüğümüz durumda, <code>/etc/httpd/conf/addon-modules/php.conf</code>
+içinde diğer grup varken, bir grup yönerge
+<code>/etc/httpd/conf/httpd.conf</code> içindeydi.<br />
+    Önerilen yol <code>AddType</code> ile, bu yüzden sadece satırların ilk
+grubunu yorum dışı bırakın ve Apache'yi yeniden başlatın:</p>
 
 <pre>
 #SetOutputFilter PHP
@@ -3223,14 +3243,17 @@ Protocol">HTTP</abbr> kimlik doğrulaması kullanabiliyor muyum?</a></h4>
 altında <abbr title="Internet Server Application Programming
 Interface">ISAPI</abbr> kipinde PHP 4.3.9, phpMyAdmin 2.6.1 ile denendi.</p>
 
-<ol><li>In your <code>php.ini</code> file, set <code>cgi.rfc2616_headers = 0</code></li>
-    <li>In <code>Web Site Properties -&gt; File/Directory Security -&gt; Anonymous
-Access</code> dialog box, check the <code>Anonymous access</code> checkbox
-and uncheck any other checkboxes (i.e. uncheck <code>Basic
-authentication</code>, <code>Integrated Windows authentication</code>, and
-<code>Digest</code> if it's enabled.) Click <code>OK</code>.</li>
-    <li>In <code>Custom Errors</code>, select the range of <code>401;1</code>
-through <code>401;5</code> and click the <code>Set to Default</code> button.</li>
+<ol><li><code>php.ini</code> dosyanız içinde <code>cgi.rfc2616_headers = 0</code>
+olarak ayarlayın</li>
+    <li><code>Web Sitesi Özellikleri -&gt; Dizin Güvenliği -&gt; Adsız Erişim</code>
+ileti kutusunda, <code>Adsız erişim</code> işaretleme kutusunu işaretleyin
+ve herhangi bir diğer işaretleme kutularından işaretleri kaldırın (yani eğer
+etkinleştirilmişse, <code>Basit kimlik doğrulaması</code>, <code>Tümleşik
+Windows kimlik doğrulaması</code> ve <code>Özet kimlik doğrulaması</code>
+seçeneklerinden işaretleri kaldırın.) <code>Tamam</code>'a tıklayın.</li>
+    <li><code>Özel Hatalar</code> içinde <code>401;1</code>'den <code>401;5</code>'e
+kadar olan aralığı seçin ve <code>Varsayılana Ayarla</code> düğmesine
+tıklayın.</li>
 </ol>
 
 <h4 id="faq1_33">
@@ -3240,22 +3263,24 @@ through <code>401;5</code> and click the <code>Set to Default</code> button.</li
     <a href="#faq1_34">1.34 Doğrudan veritabanı veya tablo sayfalarına
 erişebilir miyim?</a></h4>
 
-<p> Yes. Out of the box, you can use <abbr title="Uniform Resource
-Locator">URL</abbr>s like
-http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script.
-For <code>server</code> you use the server number which refers to the order
-of the server paragraph in <code>config.inc.php</code>.  Table and script
-parts are optional. If you want
-http://server/phpMyAdmin/database[/table][/script] <abbr title="Uniform
-Resource Locator">URL</abbr>s, you need to do some configuration. Following
-lines apply only for <a href="http://httpd.apache.org">Apache</a> web
-server. First make sure, that you have enabled some features within global
-configuration. You need <code>Options FollowSymLinks</code> and
-<code>AllowOverride FileInfo</code> enabled for directory where phpMyAdmin
-is installed and you need mod_rewrite to be enabled. Then you just need to
-create following <a href="#glossary"><em>.htaccess</em></a> file in root
-folder of phpMyAdmin installation (don't forget to change directory name
-inside of it):</p>
+<p> Evet. Kutudan çıkar çıkmaz,
+http://server/phpMyAdmin/index.php?server=X&amp;db=database&amp;table=table&amp;target=script
+gibi <abbr title="Uniform Resource Locator">URL</abbr>'leri
+kullanabilirsiniz. <code>Sunucu</code> için <code>config.inc.php</code>
+içindeki sunucu paragrafı sırasını ifade eden sunucu sayısını
+kullanın. Tablo ve betik kısımları isteğe bağlıdır. Eğer
+http://sunucu/phpMyAdmin/veritabanı[/table][/script] <abbr title="Uniform
+Resource Locator">URL</abbr>'leri istiyorsanız, bazı yapılandırmalar
+yapmanız gerekir. Aşağıdaki satırlar sadece <a
+href="http://httpd.apache.org">Apache</a> web sunucusu için uygulanır. Önce
+genel yapılandırmayla birlikte bazı özellikleri etkinleştirdiğinizden emin
+olun. phpMyAdmin'nin kurulu olduğu dizin için <code>Options
+FollowSymLinks</code> ve <code>AllowOverride FileInfo</code> etkinleştirmiş
+olmanız gerekir ve mod_rewrite'ın etkinleştirilmiş olmasına ihtiyacınız
+vardır. Sonra sadece phpMyAdmin kurulumunun (içinde bulunduğu dizin adını
+değiştirmeyi unutmayın) kök klasöründe aşağıdaki <a
+href="#glossary"><em>.htaccess</em></a> dosyasını oluşturmaya ihtiyacınız
+var:</p>
 
 <pre>
 RewriteEngine On
@@ -3356,9 +3381,9 @@ büyük yavaşlama yaşarsınız</li>
 </ul>
 
     <p>
-        You can also disable the warning using the <a
-href="#cfg_SuhosinDisableWarning"> <code>SuhosinDisableWarning</code>
-directive</a>.
+        Aynı zamanda <a
+href="#cfg_SuhosinDisableWarning"><code>SuhosinDisableWarning</code>
+yönergesini</a> kullanarak uyarıyı etkisizleştirebilirsiniz.
     </p>
 
 <h4 id="faq1_39">
@@ -3366,9 +3391,10 @@ directive</a>.
 açabiliyorum ama sonra bağlantım http'ye yeniden geri yönlendiriliyor. Bu
 davranışa ne neden olabilir?</a></h4>
 
-<p> Be sure that you have enabled <code>SSLOptions</code> and
-<code>StdEnvVars</code> in your Apache configuration. See <a
-href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>.</p>
+<p> Apache yapılandırmanızda  <code>SSLOptions</code> ve <code>StdEnvVars</code>
+ayarlarını etkinleştirdiğinizden emin olun. <a
+href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions</a>'a
+bakın.</p>
 
 <h4 id="faq1_40">
     <a href="#faq1_40">1.40 Apache ters proksi yoluyla phpMyAdmin'e eriştiğimde,
@@ -3405,16 +3431,17 @@ adresine bakın.</p>
     <a href="#faq1_41">1.41 Veritabanını görüntülediğimde ve yetkilerini görmek
 için sorduğumda, bilinmeyen bir sütunla ilgili hata alıyorum.</a></h4>
 
-<p> The MySQL server's privilege tables are not up to date, you need to run the
-<code>mysql_upgrade</code> command on the server.</p>
+<p> MySQL sunucusunun yetki tabloları güncel değil, sunucuda
+<code>mysql_upgrade</code> komutunu çalıştırmanız gerekir.</p>
 
 <h4 id="faq1_42">
     <a href="#faq1_42">1.42 Robot'ları phpMyAdmin'e erişimini nasıl
 önleyebilirim?</a></h4>
 
-<p>You can add various rules to <a href="#glossary"><em>.htaccess</em></a> to
-filter access based on user agent field. This is quite easy to circumvent,
-but could prevent at least some robots accessing your installation.</p>
+<p>Kullanıcı tanıtıcı alanı tabanlı erişimi süzmek için <a
+href="#glossary"><em>.htaccess</em></a> dosyasına çeşitli kuralları
+ekleyebilirsiniz. Bu kurtulmak için oldukça kolaydır ama en azından bazı
+robot'ların kurulumunuza erişimini önleyebilir.</p>
 
 <pre>
 RewriteEngine on
@@ -3446,14 +3473,14 @@ RewriteRule .* - [F]
 ... tarafından başlıklar zaten gönderildi&quot; hata mesajı görüntüleniyor,
 sorun nedir?</a></h4>
 
-<p> Edit your <em>config.inc.php</em> file and ensure there is nothing (I.E. no
-blank lines, no spaces, no characters...) neither before the
-<code>&lt;?php</code> tag at the beginning, neither after the
-<code>?&gt;</code> tag at the end. We also got a report from a user under
-<abbr title="Internet Information Services">IIS</abbr>, that used a zipped
-distribution kit: the file <code>libraries/Config.class.php</code> contained
-an end-of-line character (hex 0A) at the end; removing this character
-cleared his errors.</p>
+<p> <em>config.inc.php</em> dosyanızı düzenleyin ve <code>&lt;?php</code>
+etiketinden önce ne başında ve <code>?&gt;</code> etiketinden sonra ne de
+sonunda hiçbir şey (örn. boş satırlar, boşluklar, karakterler olmasın...)
+olmadığından emin olun. Ayrıca <abbr title="Internet Information
+Services">IIS</abbr> altında zip'li dağıtım paketi kullanan kullanıcılardan
+raporlar alıyoruz: <code>libraries/Config.class.php</code> dosyasının
+sonundaki en son satır karakter (hex 0A) içermekte, bu karakteri kaldırmak
+hatalarını ortadan kaldırıyor.</p>
 
 <h4 id="faq2_2">
     <a href="#faq2_2">2.2 phpMyAdmin, MySQL'e bağlanamıyor. Yanlış olan
@@ -3471,8 +3498,9 @@ bağlanılamıyor...&quot; hata mesajı görüntüleniyor. Ne yapabilirim?</a></
 
 <p> RedHat kullanıcıları için Harald Legner posta listesinde şunu öneriyor:</p>
 
-<p> On my RedHat-Box the socket of MySQL is <em>/var/lib/mysql/mysql.sock</em>.
-In your <em>php.ini</em> you will find a line</p>
+<p> RedHat-Box'ımda MySQL soketi
+<em>/var/lib/mysql/mysql.sock</em>. <em>php.ini</em> dosyanızın içinde bir
+satır bulacaksınız</p>
 
 <pre>mysql.default_socket = /tmp/mysql.sock</pre>
 
@@ -3485,13 +3513,13 @@ In your <em>php.ini</em> you will find a line</p>
 <p> İşte Brad Ummer tarafından önerilen düzeltme:</p>
 
 <ul><li>Önce, MySQL tarafından kullanılan sokete karar vermeniz gerekli.<br />
-        To do this, telnet to your server and go to the MySQL bin directory. In this
-directory there should be a file named <em>mysqladmin</em>. Type
-<code>./mysqladmin variables</code>, and this should give you a bunch of
-info about your MySQL server, including the socket
-(<em>/tmp/mysql.sock</em>, for example).</li>
-    <li>Sonra PHP'ye bu soketi kullanmasını söylemeniz gerekli.<br /> To do this in phpMyAdmin, you need to complete the socket information in the
-<em>config.inc.php</em>.<br />
+        Bunu yapmak için sunucunuza telnet ile bağlanın ve MySQL bin dizinine
+gidin. Bu dizinde <em>mysqladmin</em> adında bir dosya
+olmalı. <code>./mysqladmin variables</code> yazın ve bu size MySQL sunucunuz
+hakkında bir takım bilgi vermeli, soket dahil (<em>/tmp/mysql.sock</em>,
+örneğin).</li>
+    <li>Sonra PHP'ye bu soketi kullanmasını söylemeniz gerekli.<br /> Bunu phpMyAdmin içinde yapmanız için <em>config.inc.php</em> içindeki soket
+bilgisini tamamlamanız gerekli.<br />
         Örneğin: <a href="#cfg_Servers_socket" class="configrule">
 $cfg['Servers'][$i]['socket']&nbsp;=&nbsp;'/tmp/mysql.sock';</a>
         <br /><br />
@@ -3508,9 +3536,9 @@ belgelemesinin ilgili bölümüne</a> bir gözatın.</p>
     <a href="#faq2_4">2.4 phpMyAdmin'i çalıştırmayı denediğimde tarayıcımda
 hiçbir şey görüntülenmiyor, ne yapabilirim?</a></h4>
 
-<p> Try to set the <a href="#cfg_OBGzip" class="configrule">$cfg['OBGZip']</a>
-directive to <code>FALSE</code> in the phpMyAdmin configuration file. It
-helps sometime.<br />
+<p> phpMyAdmin yapılandırma dosyasındaki <a href="#cfg_OBGzip"
+class="configrule">$cfg['OBGZip']</a> yönergesini <code>FALSE</code> olarak
+ayarlamayı deneyin. Bazen yardımı olur.<br />
     Aynı zamanda PHP sürüm numarasına bir göz atın: eğer &quot;b&quot; veya
 &quot;alpha&quot; içeriyorsa, PHP'nin deneme sürümünü çalıştırıyorsunuz
 anlamına gelir. Bu o kadar iyi bir fikir değildir, lütfen düz revizyonuna
@@ -3564,26 +3592,28 @@ tema tanımlama bilgisinde saklanacaktır.<br /><br /></p>
 
 <p> Tema oluşturmak için:</p>
 
-<ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
-href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
-<code>themes</code>)</li>
+<ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
+(varsayılan olarak <code>themes</code>) altında yeni bir alt dizin yapın
+(örneğin &quot;temanızın_adı&quot; )</li>
     <li>&quot;original&quot; dizininden &quot;temanızın_adı&quot; dizinine dosyaları
 ve dizinleri kopyalayın</li>
     <li>&quot;temanızın_adı/css&quot; dizinindeki css dosyalarını düzenleyin</li>
     <li>yeni resimlerinizi &quot;temanızın_adı/img&quot; dizinine koyun</li>
-    <li>edit <code>layout.inc.php</code> in &quot;your_theme_name&quot;</li>
-    <li>edit <code>info.inc.php</code> in &quot;your_theme_name&quot; to contain
-your chosen theme name, that will be visible in user interface</li>
+    <li>&quot;temanızın_adı&quot; dizinindeki <code>layout.inc.php</code> dosyasını
+düzenleyin</li>
+    <li>&quot;temanızın_adı&quot; dizinindeki <code>info.inc.php</code> dosyasını,
+seçtiğiniz tema adınızı içermesi için düzenleyin, böylece kullanıcı
+arayüzünde görülebilecek</li>
     <li>temanızın yeni bir ekran görüntüsünü yapın ve
 &quot;temanızın_adı/screen.png&quot; adı altında kaydedin</li>
 </ul>
 
-<p> In theme directory there is file <code>info.inc.php</code> which contains
-theme verbose name, theme generation and theme version. These versions and
-generations are enumerated from 1 and do not have any direct dependence on
-phpMyAdmin version. Themes within same generation should be backwards
-compatible - theme with version 2 should work in phpMyAdmin requiring
-version 1. Themes with different generation are incompatible.</p>
+<p> Tema dizininde ayrıntılı tema adını, tema üretimini ve tema sürümünü içeren
+<code>info.inc.php</code> dosyası vardır. Bu sürümler ve üretimler 1'den
+başlayarak numaralandırılır ve phpMyAdmin sürümüne herhangi bir doğrudan
+bağlılığı yoktur. Aynı üretimde temalar geriye dönük uyumlu olmalıdır -
+sürüm 2 ile tema, sürüm 1 gerektiren phpMyAdmin'de çalışmalıdır. Farklı
+üretimli temalar uyumsuzdur.</p>
 
 <p> Eğer kendi simgelerinizi ve düğmelerinizi kullanmak istemiyorsanız,
 &quot;temanızın_adı&quot; içindeki &quot;img&quot; dizinini
@@ -3597,33 +3627,33 @@ alıyorum, ne yapabilirim?</a></h4>
 
 <p> İşte kontrol etmeniz için birkaç nokta:</p>
 
-<ul><li>In <code>config.inc.php</code>, try to leave the <a
-href="#cfg_PmaAbsoluteUri" class="configrule">$cfg['PmaAbsoluteUri']</a>
-directive empty. See also <a href="#faq4_7"><abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.7</a>.
+<ul><li><code>config.inc.php</code> içinde <a href="#cfg_PmaAbsoluteUri"
+class="configrule">$cfg['PmaAbsoluteUri']</a> yönergesini boş bırakmayı
+deneyin. Aynı zamanda <a href="#faq4_7"><abbr title="Sıkça Sorulan
+Sorular">SSS</abbr> 4.7</a>'ye bakın.
     </li>
     <li>Belki bozuk PHP kurulumuna sahipsiniz ya da Zend Optimizer'ınızı
 yükseltmeniz gerekli. <a
 href="http://bugs.php.net/bug.php?id=31134">http://bugs.php.net/bug.php?id=31134</a>
 adresine bakın.
     </li>
-    <li>If you are using Hardened PHP with the ini directive
-<code>varfilter.max_request_variables</code> set to the default (200) or
-another low value, you could get this error if your table has a high number
-of columns. Adjust this setting accordingly. (Thanks to Klaus Dorninger for
-the hint).
+    <li>Eğer ini yönergesi <code>varfilter.max_request_variables</code> ile Hardened
+PHP kullanıyorsanız, varsayılana (200) ayarlayın ya da başka bir düşük
+değere, eğer tablonuz yüksek sayıda sütuna sahipse, bu hatayı
+alabilirsiniz. Ona göre bu ayarı ayarlayın. (Klaus Dorninger'e ipucu için
+teşekkürler).
     </li>
-    <li>In the <code>php.ini</code> directive <code>arg_separator.input</code>, a
-value of &quot;;&quot; will cause this error. Replace it with
-&quot;&amp;;&quot;.
+    <li><code>php.ini</code> yönergesi <code>arg_separator.input</code> içindeki
+&quot;;&quot; değeri bu hataya neden olacaktır. &quot;&amp;;&quot; ile
+değiştirin.
     </li>
     <li>Eğer <a href="http://www.hardened-php.net/">Hardened-PHP</a>
 kullanıyorsanız, <a
 href="http://www.hardened-php.net/hphp/troubleshooting.html">istenen
 sınırları</a> arttırmak isteyebilirsiniz.
     </li>
-    <li>The directory specified in the <code>php.ini</code> directive
-<code>session.save_path</code> does not exist or is read-only.
+    <li><code>php.ini</code> yönergesi <code>session.save_path</code> içinde
+belirtilmiş dizin mevcut değil ya da salt okunur.
     </li>
 </ul>
 
@@ -3635,8 +3665,8 @@ sınırları</a> arttırmak isteyebilirsiniz.
 href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>'in
 birine sahip olmalıdır. Dahası PHP'nizde JSON uzantısı etkinleştirilmiş
 olmalıdır.</p>
-    <p> If using APC, you must set <code>apc.rfc1867</code> to <code>on</code> in
-your php.ini.</p>
+    <p> Eğer APC kullanılıyorsa, php.ini dosyanız içindeki
+<code>apc.rfc1867</code>'yi, <code>on</code> olarak ayarlamalısınız.</p>
 
 <h3 id="faqlimitations">Bilinen kısıtlamalar</h3>
 
@@ -3762,11 +3792,11 @@ içinde bildirilecektir
 </p>
 
 <h4 id="faq3_10">
-    <a href="#faq3_10">3.10 Homonyms and no primary key: When the results of a
-SELECT display more that one column with the same value (for example
-<code>SELECT lastname from employees where firstname like 'A%'</code> and
-two &quot;Smith&quot; values are displayed), if I click Edit I cannot be
-sure that I am editing the intended row.</a></h4>
+    <a href="#faq3_10">3.10 Eşadlı ve birincil anahtar yok: SELECT'in sonuçları
+aynı değer ile bir sütundan daha fazlasını görüntülediğinde (örneğin
+<code>SELECT soyadi from calisanlar where ilkadi like 'A%'</code> ve iki
+&quot;Yavuz&quot; değeri görüntülenir), Düzenle'ye tıklarsam istenilen
+satırı düzenlediğimden emin olamıyorum.</a></h4>
 
 <p> Lütfen tablonuzun birincil anahtara sahip olduğundan emin olun, böylece
 phpMyAdmin Düzenle ve Sil bağlantıları için bunu kullanabilsin.</p>
@@ -3784,8 +3814,8 @@ ciddi etkisi vardır.</p>
     <a href="#faq3_12">3.12 (kaldırıldı).</a></h4>
 
 <h4 id="faq3_13">
-    <a href="#faq3_13">3.13 I get an error when entering <code>USE</code>
-followed by a db name containing an hyphen.  </a></h4>
+    <a href="#faq3_13">3.13 Bir tire içeren vt adını takiben <code>USE</code>
+girdiğimde bir hata alıyorum.</a></h4>
 <p>
     MySQL 5.1.49 ile yaptığım denemeler gösterdiki API, USE komutu için bu
 sözdizimini kabul etmiyor.
@@ -3873,10 +3903,10 @@ kimlik doğrulaması kullanımında&quot; kurma bölümüne bakın.
 yapmanın tercih edilen yolu nedir?</a></h4>
 <p>
     Bu sisteminize bağlıdır.<br />
-    If you're running a server which cannot be accessed by other people, it's
-sufficient to use the directory protection bundled with your webserver (with
-Apache you can use <a href="#glossary"><em>.htaccess</em></a> files, for
-example).<br />
+    Eğer diğer insanlar tarafından erişilemeyen bir sunucu çalıştırıyorsanız,
+web sunucunuz ile paketlenmiş dizin koruması kullanmak yeterlidir (Apache
+ile <a href="#glossary"><em>.htaccess</em></a> dosyaları kullanabilirsiniz,
+örneğin).<br />
     Eğer diğer insanların sunucunuza telnet erişimi varsa, phpMyAdmin'nin <abbr
 title="HyperText Transfer Protocol">HTTP</abbr> ya da tanımlama bilgisi
 kimlik doğrulaması özelliklerini kullanmalısınız.
@@ -3885,7 +3915,7 @@ kimlik doğrulaması özelliklerini kullanmalısınız.
 </p>
 <ul>
     <li>
-        Your <em>config.inc.php</em> file should be <code>chmod 660</code>.
+        <em>Config.inc.php</em> dosyanız <code>chmod 660</code> yapılmalı.
     </li>
     <li>
         Tüm phpMyAdmin dosyalarınız chown -R phpmy.apache yapılmış olmalı, phpmy,
@@ -3898,13 +3928,14 @@ kimlik doğrulaması özelliklerini kullanmalısınız.
 </ul>
 
 <h4 id="faq4_3">
-    <a href="#faq4_3">4.3 I get errors about not being able to include a file in
-<em>/lang</em> or in <em>/libraries</em>.  </a></h4>
+    <a href="#faq4_3">4.3 <em>/lang</em> veya <em>/libraries</em> içinde dosya
+olmamasıyla ilgili hatalar alıyorum.</a></h4>
 <p>
-    Check <em>php.ini</em>, or ask your sysadmin to check it. The
-<code>include_path</code> must contain &quot;.&quot; somewhere in it, and
-<code>open_basedir</code>, if used, must contain &quot;.&quot; and
-&quot;./lang&quot; to allow normal operation of phpMyAdmin.
+    <em>php.ini</em> dosyasını kontrol edin ya da sistem yöneticinize kontrol
+etmesi için sorun. İçinde bir yerdeki <code>include_path</code>
+&quot;.&quot; içermelidir ve <code>open_basedir</code>, eğer kullanılmışsa,
+phpMyAdmin'nin normal işlemine izin vermek için &quot;./lang&quot; ve
+&quot;.&quot; içermelidir.
 </p>
 
 <h4 id="faq4_4">
@@ -3919,33 +3950,34 @@ class="configrule">$cfg['Servers'][$i]['controluser']</a> ve/veya <a
 href="#cfg_Servers_controlpass"
 class="configrule">$cfg['Servers'][$i]['controlpass']</a> yanlıştır.</li>
     <li>Oturum açma iletisinde belirttiğiniz kullanıcı adı/parola geçersizdir.</li>
-    <li>You have already setup a security mechanism for the phpMyAdmin-directory,
-eg. a <a href="#glossary"><em>.htaccess</em></a> file. This would interfere
-with phpMyAdmin's authentication, so remove it.</li>
+    <li>phpMyAdmin dizini için zaten güvenlik mekanizması kurmuşsunuzdur, örn. <a
+href="#glossary"><em>.htaccess</em></a> dosyası. Bu phpMyAdmin'nin kimlik
+doğrulamasına engel olacaktır, o yüzden kaldırın.</li>
 </ul>
 
 <h4 id="faq4_5">
     <a href="#faq4_5">4.5 Kullanıcıların kendi veritabanlarını oluşturmasına
 izin vermek mümkün mü?</a></h4>
 
-<p> Starting with 2.2.5, in the user management page, you can enter a wildcard
-database name for a user (for example &quot;joe%&quot;), and put the
-privileges you want.  For example, adding <code>SELECT, INSERT, UPDATE,
-DELETE, CREATE, DROP, INDEX, ALTER</code> would let a user create/manage
-his/her database(s).</p>
+<p> 2.2.5'ten başlayarak, kullanıcı yönetimi sayfasında, kullanıcı için joker
+karakterli veritabanı adı girebilir (örneğin &quot;joe%&quot;) ve
+istediğiniz yetkileri verebilirsiniz. Örneğin, <code>SELECT, INSERT, UPDATE,
+DELETE, CREATE, DROP, INDEX, ALTER</code> eklemek kullanıcıya kendi
+veritabanını(larını) oluşturmasına/yönetmesine izin verecektir.</p>
 
 <h4 id="faq4_6">
     <a href="#faq4_6">4.6 Anamakine tabanlı kimlik doğrulaması ilavelerini nasıl
 kullanabilirim?</a></h4>
 
-<p> If you have existing rules from an old <a
-href="#glossary"><em>.htaccess</em></a> file, you can take them and add a
-username between the <code>'deny'</code>/<code>'allow'</code> and
-<code>'from'</code> strings. Using the username wildcard of <code>'%'</code>
-would be a major benefit here if your installation is suited to using
-it. Then you can just add those updated lines into the <a
+<p> Eğer eski <a href="#glossary"><em>.htaccess</em></a> dosyasından mevcut
+kurallarınız varsa, onları alabilir ve
+<code>'deny'</code>/<code>'allow'</code> ve <code>'from'</code> dizgileri
+arasına kullanıcı adı ekleyebilirsiniz. Eğer kurulumunuz bunu kullanmak için
+uygunsa, <code>'%'</code> kullanıcı adı jokerini burada kullanmak başlıca
+bir yararı olacaktır. Sonrasında sadece bu güncellenmiş satırları <a
 href="#cfg_Servers_AllowDeny_rules" class="configrule">
-$cfg['Servers'][$i]['AllowDeny']['rules']</a> array.</p>
+$cfg['Servers'][$i]['AllowDeny']['rules']</a> dizilimi içerisine
+ekleyebilirisiniz.</p>
 
 <p> Eğer önceden yaplmış örnek isterseniz, bu kısmı deneyebilirisiniz. Özel ağ
 <abbr title="Internet Protocol">IP</abbr> bloklarından başka herhangi bir
@@ -3978,13 +4010,13 @@ title="Internet Protocol">IP</abbr> adresiyle girmek.</p>
     <a href="#faq4_8">4.8 phpMyAdmin'i başlatan hangi parametreleri URL'de
 kullanabilirim?</a></h4>
 
-<p>When starting phpMyAdmin, you can use the <code>db</code>,
-<code>pma_username</code>, <code>pma_password</code> and <code>server</code>
-parameters. This last one can contain either the numeric host index (from
-<code>$i</code> of the configuration file) or one of the host names present
-in the configuration file. Using <code>pma_username</code> and
-<code>pma_password</code> has been tested along with the usage of 'cookie'
-<code>auth_type</code>.</p>
+<p>phpMyAdmin'i başlatırken, <code>db</code>, <code>pma_username</code>,
+<code>pma_password</code> ve <code>server</code> parametrelerini
+kullanabilirisiniz. Bu son olan ya sayısal anamakine indeksini (yapılandırma
+dosyasındaki <code>$i</code>) ya da yapılandırma dosyasında bulunan
+anamakine adlarından birini içerebilir. <code>pma_username</code> ve
+<code>pma_password</code> kullanımı 'cookie' <code>auth_type</code>
+kullanımıyla birlikte denenmiştir.</p>
 
 <h3 id="faqbrowsers">Tarayıcılar veya <abbr title="işletim sistemi">İS</abbr> istemcisi</h3>
 
@@ -4132,10 +4164,10 @@ Javascript hataları alıyorum. Ya da phpMyAdmin'i Windows altında çalışır
 hale getiremiyorum.</a></h4>
 
 <p> Lütfen aşağıdaki noktaları kontrol edin:</p>
-    <ul><li>Maybe you have defined your <code>PmaAbsoluteUri</code> setting in
-<code>config.inc.php</code> to an <abbr title="Internet Protocol">IP</abbr>
-address and you are starting phpMyAdmin with a <abbr title="Uniform Resource
-Locator">URL</abbr> containing a domain name, or the reverse situation.</li>
+    <ul><li>Belki <abbr title="Internet Protocol">IP</abbr> adresi için
+<code>config.inc.php</code> içindeki <code>PmaAbsoluteUri</code> ayarınızı
+tanımladınız ve phpMyAdmin'i alan adını içeren <abbr title="Uniform Resource
+Locator">URL</abbr> ya da tersi durum ile başlatıyorsunuz.</li>
         <li>IE ve/veya Microsoft Güvenlik Merkezi içindeki güvenlik ayarları çok yüksek,
 bu nedenle betiklerin çalıştırılmasını engelliyor.</li>
         <li>Windows Güvenlik Duvarı Apache ve MySQL'i engelliyor. &quot;Gelen&quot; ve
@@ -4151,13 +4183,13 @@ veritabanını kaldıramıyorum.</a></h4>
 eklentisini kurmak neden oluyor.</p>
 
 <h4 id="faq5_18">
-<a href="#faq5_18">5.18 With Konqueror 4.2.x an invalid <code>LIMIT</code>
-clause is generated when I browse a table.</a></h4>
-<p> This happens only when both of these conditions are met: using the
-<code>http</code> authentication mode and <code>register_globals</code>
-being set to <code>On</code> on the server. It seems to be a
-browser-specific problem; meanwhile use the <code>cookie</code>
-authentication mode.</p>
+<a href="#faq5_18">5.18 Konqueror 4.2.x ile bir tabloya gözattığımda
+geçersiz bir <code>LIMIT</code> yantümcesi oluşturuluyor.</a></h4>
+<p> Bu sadece şu şartların her ikisi birden yerine geldiğinde olur: sunucuda
+<code>http</code> kimlik doğrulaması kullanıldığında ve
+<code>register_globals</code> <code>On</code> olarak ayarlandığında. Belli
+bir tarayıcı sorunu gibi görünüyor; bu arada <code>tanımlama bigisi</code>
+kimlik doğrulaması kipi kullanın.</p>
 
 <h4 id="faq5_19">
 <a href="#faq5_19">5.19 Tarayıcımda JavaScript hataları alıyorum.</a></h4>
@@ -4178,8 +4210,9 @@ olur.<br />
     Genel hatalar:
 </p>
 <ul>
-    <li>Using <code>VARCHAR</code> without a size argument</li>
-    <li>Using <code>TEXT</code> or <code>BLOB</code> with a size argument</li>
+    <li>Bağımsız boyut değişkeni olmadan <code>VARCHAR</code> kullanmak</li>
+    <li>Bağımsız boyut değişkeni olmadan <code>TEXT</code> veya <code>BLOB</code>
+kullanmak</li>
 </ul>
 <p>
     Aynı zamanda sözdiziminizin doğru olduğunu onaylamak için MySQL
@@ -4248,10 +4281,10 @@ arayın.
     <a href="#faq6_6">6.6 Örnekle sorgulamada bağlantı tablosunu nasıl
 kullanabilirim?</a></h4>
 
-<p> Here is an example with the tables persons, towns and countries, all located
-in the database mydb. If you don't have a <code>pma_relation</code> table,
-create it as explained in the configuration section. Then create the example
-tables:</p>
+<p> İşte persons, towns ve countries tabloları ile bir örnek, mydb veritabanında
+bulunanların tümü. Eğer <code>pma_relation</code> tablosuna sahip
+değilseniz, yapılandırma bölümünde açıklandığı gibi oluşturun. Sonrada örnek
+tabloları oluşturun:</p>
 
 <pre>
 CREATE TABLE REL_countries (
@@ -4396,7 +4429,7 @@ nedir?</a></h4>
     <a href="#faqexport">6.12 Bazı Dışa Aktarma seçeneklerini anlamak
 istiyorum.</a></h4>
 
-<p><strong>Structure:</strong></p>
+<p><strong>Yapı:</strong></p>
 
 <ul><li>Eğer içe aktarma sırasında zaten varsa, &quot;DROP TABLE ekle&quot; MySQL'e
 <a href="http://dev.mysql.com/doc/mysql/en/drop-table.html">tabloyu
@@ -4409,13 +4442,13 @@ hata alabilirsiniz.</li>
 varsa) yedeklemeye dahil edileceğini garanti eder.</li>
     <li>&quot;Tablo ve sütun adlarını ters tırnaklarla kapattır&quot;, sütun ve
 tablo adlarının özel karakterlerle biçimlenmiş korunmasını garanti eder.</li>
-    <li>&quot;Add into comments&quot; includes column comments, relations, and MIME
-types set in the pmadb in the dump as <abbr title="structured query
-language">SQL</abbr> comments (<em>/* xxx */</em>).
+    <li>&quot;Yorumlara ekle&quot;, sütun yorumlarını, bağlantılarını ve MIME
+türleri grubunu <abbr title="structured query language">SQL</abbr> yorumları
+(<em>/* xxx */</em>) olarak döküm içindeki pmadb içine dahil eder.
        </li>
 </ul>
 
-<p><strong>Data:</strong></p>
+<p><strong>Veri:</strong></p>
 
 <ul><li>&quot;Tam eklemeler&quot; her INSERT komutunda sütun adlarını ekler, daha
 iyi belgeleme için (ama sonucu daha büyük bir dosyadır).</li>
@@ -4455,12 +4488,11 @@ uzantısına ya da PEAR SOAP modülüne ihtiyacınız var.
 </p>
 
 <p>
-    To install <abbr title="PHP Extension and Application
-Repository">PEAR</abbr> <abbr title="Simple Object Access
-Protocol">SOAP</abbr> module, run <code>"pear install Net_Socket Net_URL
-HTTP_Request Mail_Mime Net_DIME SOAP"</code> to get the necessary <abbr
-title="PHP Extension and Application Repository">PEAR</abbr> modules for
-usage.
+    <abbr title="PHP Extension and Application Repository">PEAR</abbr> <abbr
+title="Simple Object Access Protocol">SOAP</abbr> modülünü kurmak için,
+gereken <abbr title="PHP Extension and Application Repository">PEAR</abbr>
+modülünü kullanıma almak için <code>"pear install Net_Socket Net_URL
+HTTP_Request Mail_Mime Net_DIME SOAP"</code> çalıştırın.
 </p>
 
 <p>
@@ -4517,15 +4549,17 @@ etiketli bir düğme bulacaksınız.<br />
 ilgilidir. Her sayfada aşağı açılır yer imine artık erişebilirsiniz, sorgu
 kutusu bu veritabanı için görünür.<br /><br />
 
-    Since phpMyAdmin 2.5.0 you are also able to store variables for the
-bookmarks.  Just use the string <strong>/*[VARIABLE]*/</strong> anywhere in
-your query. Everything which is put into the <em>value</em> input box on the
-query box page will replace the string &quot;/*[VARIABLE]*/&quot; in your
-stored query. Just be aware of that you HAVE to create a valid query,
-otherwise your query won't be even able to be stored in the database.<br />
-    Also remember, that everything else inside the
-<strong>/*[VARIABLE]*/</strong> string for your query will remain the way it
-is, but will be stripped of the /**/ chars. So you can use:<br /><br />
+    phpMyAdmin 2.5.0'dan bu yana yer imleri için değişkenleri
+saklayabiliyorsunuz. Sadece <strong>/*[DEĞİŞKEN]*/</strong> dizgisini
+sorgunuzun herhangi bir yerinde kullanın.  Sorgu kutusu sayfasındaki
+<em>değer</em> girdi kutusu içine koyulan her şey saklanan sorgunuzdaki
+&quot;/*[DEĞİŞKEN]*/&quot; dizgisi ile değiştirilecektir. Sadece geçerli bir
+sorgu oluşturmak zorunda olduğunuzun farkında olun, yoksa sorgunuz bile
+veritabanında saklanamayacaktır.<br />
+    Ayrıca, sorgunuz için <strong>/*[DEĞİŞKEN]*/</strong> dizgisi içerisindeki
+her şeyin bu şekilde kalacağını ama /**/ karakterlerinin çıkarılacağını
+hatırlayın. Bu yüzden girdi kutusunda DEĞİŞKEN'nin dizgi olduğu sorgunuz
+içinde:<br /><br />
 
     <code>, VARIABLE as ismim</code><br /><br />
 
@@ -4547,12 +4581,13 @@ girdiniz, tam sorgu:<br /><br />
 '%phpMyAdmin%'</code> olacaktır
     <br /><br />
 
-    You can use multiple occurrences of <strong>/*[VARIABLE]*/</strong> in a
-single query (that is, multiple occurrences of the <em>same</em> variable).<br />
-    <strong>NOTE THE ABSENCE OF SPACES</strong> inside the &quot;/**/&quot;
-construct. Any spaces inserted there will be later also inserted as spaces
-in your query and may lead to unexpected results especially when using the
-variable expansion inside of a &quot;LIKE ''&quot; expression.<br />
+    Tek bir sorgu içinde <strong>/*[DEĞİŞKEN]*/</strong>'in çoklu oluşumlarını
+kullanabilirsiniz (yani, <em>aynı</em> değişkenin çoklu oluşumları).<br />
+    &quot;/**/&quot; yapısının içerisinde <strong>BOŞLUKLARIN OLMAYACAĞINI
+UNUTMAYIN</strong>. Buraya girilen herhangi bir boşluk sorgunuza daha sonra
+üstelik boşluk olarak eklenecektir ve özellikle &quot;LIKE ''&quot; ifadesi
+içerisinde değişken genişletmesi kullanıldığında beklenmedik sonuçlara yol
+açabilir.<br />
     Yer imi olarak saklanacak başlangıçtaki sorgunuz en az bir sonuç satırı
 vermelidir böylece yer imini saklayabilirsiniz. İyi konumlandırılmış
 &quot;/**/&quot; yorumlarını kullanarak çözüm bulabilmelisiniz.</p>
@@ -4598,10 +4633,10 @@ listesini göreceksiniz, birinci liste anahtarı ve görüntüleme sütununu
 içerir, ikinci liste görüntüleme sütununu ve anahtarı içerir. Bunun nedeni
 ya anahtarın ya da görüntüleme sütununun ilk harfinin yazılabilmesidir.<br /><br />
 
-    For 100 values or more, a distinct window will appear, to browse foreign key
-values and choose one. To change the default limit of 100, see <code><a
-href="#cfg_ForeignKeyMaxLimit"
-class="configrule">$cfg['ForeignKeyMaxLimit']</a></code>.</p>
+    100 değer veya daha fazlası için, farklı bir pencere gözükecektir, dış
+anahtar değerlerine gözatmak ve birini seçmek için. Varsayılan 100 sınırını
+değiştirmek için, <code><a href="#cfg_ForeignKeyMaxLimit"
+class="configrule">$cfg['ForeignKeyMaxLimit']</a></code>'e bakın.</p>
 
 <h4 id="faq6_22">
     <a href="#faq6_22">6.22 Yer İmleri: Tablo için Gözatma kipine girildiğinde
@@ -4736,10 +4771,10 @@ dosyasını seçin.
         </li>
         <li>
             <p>
-            Create a Zip archive with .shp and .dbf files and import it. For this to
-work, you need to set <a href="#cfg_TempDir"
-class="configrule">$cfg['TempDir']</a> to a place where the web server user
-can write (for example <code>'./tmp'</code>).
+            .shp ve .dbf dosyalarıyla bir Zip arşivi oluşturun ve içe aktarın. Bunun
+çalışması için, kullanıcının yazabileceği (örneğin <code>'./tmp'</code>) web
+sunucusunun olduğu yerde <a href="#cfg_TempDir"
+class="configrule">$cfg['TempDir']</a> dizgisini ayarlamanız gerekir.
             </p>
 
             <p> UNIX-tabanlı sistemde geçici dizin oluşturmak için yapabileceğiniz:</p>
@@ -4929,10 +4964,10 @@ tablolar arasındaki farkı gösterir.
 </p>
 
 <p>
-The difference is depicted by the red and green buttons with <code>S</code>
-and <code>D</code> letters, indicating that either Structure or Data are not
-up to date. By clicking on them, they will turn grey, what means that they
-will be synchronized.
+Fark <code>S</code> ve <code>D</code> harfleri ile kırmızı ve yeşil
+düğmelerle gösterilir, ya yapının ya da verinin güncel olmadığını işaret
+eder. Bunlara tıklayarak, eşitlenecekleri anlamına gelen yeşile
+döneceklerdir.
 </p>
 
 <h4 id="faq9_2">
