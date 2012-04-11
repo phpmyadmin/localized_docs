@@ -2024,6 +2024,18 @@ finaux ne sont pas autoris&eacute;s &agrave; changer leur mot de passe.</dd>
 sugg&eacute;r&eacute; dans le formulaire &laquo;&nbsp;Cr&eacute;er une base
 de donn&eacute;es&nbsp;&raquo; ou si le champ est laiss&eacute; vide.</dd>
 
+    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a
+&quot;Creation&quot; column that displays when each table was created.</dd>
+
+    <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a &quot;Last
+update&quot; column that displays when each table was last updated.</dd>
+
+    <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a &quot;Last
+check&quot; column that displays when each table was last checked.</dd>
+
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] cha&icirc;ne</dt>
     <dd>D&eacute;finit si les boutons de la barre de navigation et le menu
 sup&eacute;rieur du panneau de droite affichent le texte ou les ic&ocirc;nes
@@ -4122,13 +4134,18 @@ ou est en lecture seule.
 <h4 id="faq2_9">
     <a href="#faq2_9">2.9 Afficher les barres de progression d'upload</a></h4>
 
-<p> Pour pouvoir voir une barre de progression pendant vos uploads, votre
-serveur doit avoir soit l'extension <a
-href="http://pecl.php.net/package/APC">APC</a> soit l'extension <a
-href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>. De
-plus, l'extension JSON doit être activée dans votre installation PHP.</p>
+<p> To be able to see a progress bar during your uploads, your server must have
+the <a href="http://pecl.php.net/package/APC">APC</a> extension, the <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a> one, or
+you must be running PHP 5.4.0 or higher.  Moreover, the JSON extension has
+to be enabled in your PHP.</p>
+
     <p> Si vous utilisez APC, vous devez définir le paramètre
 <code>apc.rfc1867</code> à <code>on</code> dans votre fichier php.ini.</p>
+
+    <p> If using PHP 5.4.0 or higher, you must set
+<code>session.upload_progress.enabled</code> to <code>1</code> in your
+php.ini.</p>
 
 <h3 id="faqlimitations">Limitations connues</h3>
 
@@ -5422,6 +5439,19 @@ pouvez éditer ces valeurs si nécessaire et cliquer sur Soumettre pour créer
 une requête de mise à jour. Des instructions basiques sur la façon
 d'utiliser cette fonctionnalité peuvent être affichées en cliquant sur le
 lien 'Comment utiliser&nbsp;?' situé au-dessus du diagramme.</p>
+
+<h4 id="faq6_33">
+    <a href="#faq6_33">6.33 When browsing a table, how can I copy a column
+name?</a></h4>
+
+    <p>Selecting the name of the column within the browse table header cell for
+copying is difficult, as the columns support reordering by dragging the
+header cells as well as sorting by clicking on the linked column name.<br/><br/>
+
+    To copy a column name, double-click on the empty area next to the column
+name, when the tooltip tells you to do so. This will show you an input box
+with the column name.  You may right-click the column name within this input
+box to copy it to your clipboard.</p>
 
 <h3 id="faqproject">Projet phpMyAdmin</h3>
 

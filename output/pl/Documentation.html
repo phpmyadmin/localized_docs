@@ -1742,6 +1742,18 @@ zmianę.</dd>
     <dd>Określa, czy sugerować nazwę bazy danych w formularzu "Utworzenie bazy
 danych", czy też pozostawić pole tekstowe puste.</dd>
 
+    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a
+&quot;Creation&quot; column that displays when each table was created.</dd>
+
+    <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a &quot;Last
+update&quot; column that displays when each table was last updated.</dd>
+
+    <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a &quot;Last
+check&quot; column that displays when each table was last checked.</dd>
+
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] string</dt>
     <dd>Defines whether navigation bar buttons and the right panel top menu contain
 text or symbols only. A value of TRUE displays icons, FALSE displays text
@@ -3563,11 +3575,17 @@ limits</a>.
     <a href="#faq2_9">2.9 Seeing an upload progress bar</a></h4>
 
 <p> To be able to see a progress bar during your uploads, your server must have
-either the <a href="http://pecl.php.net/package/APC">APC</a> extension or
-the <a href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-one. Moreover, the JSON extension has to be enabled in your PHP.</p>
+the <a href="http://pecl.php.net/package/APC">APC</a> extension, the <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a> one, or
+you must be running PHP 5.4.0 or higher.  Moreover, the JSON extension has
+to be enabled in your PHP.</p>
+
     <p> If using APC, you must set <code>apc.rfc1867</code> to <code>on</code> in
 your php.ini.</p>
+
+    <p> If using PHP 5.4.0 or higher, you must set
+<code>session.upload_progress.enabled</code> to <code>1</code> in your
+php.ini.</p>
 
 <h3 id="faqlimitations">Known limitations</h3>
 
@@ -4699,6 +4717,19 @@ displaying field values of the data row represented by the point.  You can
 edit the values if required and click on submit to issue an update
 query. Basic instructions on how to use can be viewed by clicking the 'How
 to use?' link located just above the plot.</p>
+
+<h4 id="faq6_33">
+    <a href="#faq6_33">6.33 When browsing a table, how can I copy a column
+name?</a></h4>
+
+    <p>Selecting the name of the column within the browse table header cell for
+copying is difficult, as the columns support reordering by dragging the
+header cells as well as sorting by clicking on the linked column name.<br/><br/>
+
+    To copy a column name, double-click on the empty area next to the column
+name, when the tooltip tells you to do so. This will show you an input box
+with the column name.  You may right-click the column name within this input
+box to copy it to your clipboard.</p>
 
 <h3 id="faqproject">phpMyAdmin project</h3>
 

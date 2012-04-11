@@ -112,14 +112,13 @@ MySQL ユーザを適切にセットアップしてお望みのデータベー�
     <li>テキストファイルをテーブルに読み込み</li>
     <li>テーブルダンプの作成<a href="#footnote_1"><sup>1</sup></a>と読み込み
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, and L<sup>A</sup>T<sub><em class="big">E</em></sub>X
-formats
+    <li>さまざまなフォーマットでデータをエクスポート<a href="#footnote_1"><sup>1</sup></a>：<abbr
+title="カンマ区切り">CSV</abbr>、<abbr title="Extensible Markup
+Language">XML</abbr>、<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>、<abbr
+title="国際標準化機構">ISO</abbr>/<abbr title="International Electrotechnical
+Commission">IEC</abbr> 26300 (OpenDocument テキストおよびスプレッドシート)、<abbr
+title="Microsoft Word 2000">Word</abbr>、L<sup>A</sup>T<sub><em
+class="big">E</em></sub>X
         </li>
     <li>さまざまファイルよりデータおよび構造のインポートが行えます。OpenDocument スプレッドシートにとどまらず、<abbr
 title="Extensible Markup Language">XML</abbr>、<abbr
@@ -179,15 +178,13 @@ title="カンマ区切り">CSV</abbr> エクスポートを (Zip、GZip -RFC 195
 </p>
 
 <p class="important">
-    Warning for <abbr title="Apple Macintosh">Mac</abbr> users:<br />
-    if you are on a <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> version before <abbr title="operating
-system">OS</abbr> X, StuffIt unstuffs with <abbr title="Apple
-Macintosh">Mac</abbr> formats.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <abbr
-title="Apple Macintosh">Mac</abbr>-style end of lines character
-(&quot;<code>\r</code>&quot;).</p>
+    <abbr title="Apple Macintosh">Mac</abbr> ユーザ向けの注意:<br />
+    <abbr title="オペレーティング・システム">OS</abbr> X より前のバージョンの <abbr title="Apple
+Macintosh">Mac</abbr> <abbr title="オペレーティング・システム">OS</abbr> を使うと、解凍の際に
+StuffIt が <abbr title="Apple Macintosh">Mac</abbr> 形式にしてしまいます。<br />
+    そのため、サーバにアップロードする前に BBEdit ですべての phpMyAdmin スクリプトを Unix
+風にセーブし直しておく必要があります。PHP はどうも <abbr title="Apple Macintosh">Mac</abbr> 風の改行文字
+(「<code>\r</code>」) と相性がよくないようです。</p>
 
 <h3 id="quick_install">クイックインストール</h3>
 <ol><li>phpmyadmin.net のダウンロードページから適切な配布キットを選択してください。いくつかのキットは英語版のみですが、UTF-8
@@ -475,12 +472,10 @@ href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 <!-- CONFIGURATION -->
 <h2 id="config">設定</h2>
 
-<p> <span class="important">Warning for <abbr title="Apple Macintosh">Mac</abbr>
-users:</span> PHP does not seem to like <abbr title="Apple
-Macintosh">Mac</abbr> end of lines character
-(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
-to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
-text editor before saving a script you have modified.</p>
+<p> <span class="important"><abbr title="Apple Macintosh">Mac</abbr>
+ユーザ向けの警告：</span> PHP は <abbr title="Apple Macintosh">Mac</abbr> の改行文字
+(「<code>\r</code>」) と相性がよくないようです。必ずテキストエディタで UNIX/Linux の改行文字
+(「<code>\n</code>」) を使えるようにするオプションを選択してから、修正したスクリプトを保存してください。</p>
 
 <p> <span class="important">設定にあたっての注意：</span> 設定可能なデータはほとんどが
 <code>config.inc.php</code> にあります。このファイルが存在しない場合は<a
@@ -1414,6 +1409,18 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
     <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] 論理型</dt>
     <dd>「データベースを作成する」フォームでデータベース名を提案するかテキスト入力項目を空欄にしておくかを定義します。</dd>
 
+    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a
+&quot;Creation&quot; column that displays when each table was created.</dd>
+
+    <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a &quot;Last
+update&quot; column that displays when each table was last updated.</dd>
+
+    <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] boolean</dt>
+    <dd>Defines whether the database structure page (tables list) has a &quot;Last
+check&quot; column that displays when each table was last checked.</dd>
+
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] 文字列</dt>
     <dd>ナビゲーションバーのボタンと、右パネルのトップメニューにテキストを含めるか、シンボルのみにするかを定義します。値が TRUE
 のときはアイコンを、FALSE のときはテキストを、「both (両方)」のときはアイコンとテキストの双方を表示します。</dd>
@@ -1496,7 +1503,7 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] 文字列</dt>
     <dd><code>TRUE</code> にすると、データベースやテーブルのプロパティリンクに (「表示」、「選択」、「挿入」といった)
-テキストではなくアイコンを表示します。<br /> <code>「both」</code>にすると、アイコンとテキストの<strong>両方<strong>を表示します。<br />
+テキストではなくアイコンを表示します。<br /> <code>「both」</code>にすると、アイコンとテキストの<strong>両方</strong>を表示します。<br />
         <code>FALSE</code> にすると、テキストのみを表示します。</dd>
 
     <dt id="cfg_PropertiesNumColumns">$cfg['PropertiesNumColumns'] 整数</dt>
@@ -2150,8 +2157,7 @@ MIME タイプに適用しようとしても無駄です。変換関数は処理
 タイプで動作することが期待できます。本来の対象とは違う MIME
 タイプの変換機能を利用することもできますが、オプションの使い方や、その変換機能がカラムの値をどうするかにはご注意ください。</p>
 
-<p> There is a file called '<em>transformations.lib.php</em>' that provides some
-basic functions which can be included by any other transform function.</p>
+<p> いくつかの基本的な関数を提供している「<em>transformations.lib.php</em>」というファイルがあります。このファイルはどんな変換機能からでもインクルードすることができます。</p>
 
 <p> ファイル名には 5 通りの可能性があります。</p>
 
@@ -2951,12 +2957,18 @@ href="http://www.hardened-php.net/hphp/troubleshooting.html">リクエスト制�
 <h4 id="faq2_9">
     <a href="#faq2_9">2.9 アップロード進行状況バーを見えるようにしたいです。</a></h4>
 
-<p> アップロード中に進行状況バーを表示できるようにするには、ご使用のサーバが <a
-href="http://pecl.php.net/package/APC">APC</a> 拡張あるいは <a
-href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
-拡張のいずれかを対応している必要があります。また、JSON 拡張をお使いの PHP で有効にする必要があります。</p>
+<p> To be able to see a progress bar during your uploads, your server must have
+the <a href="http://pecl.php.net/package/APC">APC</a> extension, the <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a> one, or
+you must be running PHP 5.4.0 or higher.  Moreover, the JSON extension has
+to be enabled in your PHP.</p>
+
     <p> APC を使用する場合は、php.ini で <code>apc.rfc1867</code> を <code>on</code>
 に設定する必要があります。</p>
+
+    <p> If using PHP 5.4.0 or higher, you must set
+<code>session.upload_progress.enabled</code> to <code>1</code> in your
+php.ini.</p>
 
 <h3 id="faqlimitations">既知の制限</h3>
 
@@ -3335,8 +3347,7 @@ title="データベース用の問い合わせ言語">SQL</abbr>
 
 <h4 id="faq5_12">
     <a href="#faq5_12">5.12 <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> X: Safari browser changes special
-characters to &quot;?&quot;.</a></h4>
+title="オペレーティング・システム">OS</abbr> X：Safari ブラウザでは特殊文字が「?」になってしまいます。</a></h4>
 
 <p> この問題を報告してくれた <abbr title="オペレーティング・システム">OS</abbr> X
 ユーザによると、Chimera、Netscape、Mozilla ではこの問題は起こらないそうです。</p>
@@ -3697,13 +3708,12 @@ column '...' used in key specification without a key length（BLOB
 行は結果が出ないとブックマークできませんが、適切な位置に「/**/」コメントを入れることでこの問題を回避できます。</p>
 
 <h4 id="faq6_19">
-    <a href="#faq6_19">6.19 How can I create simple L<sup>A</sup>T<sub><em
-class="big">E</em></sub>X document to include exported table?</a></h4>
+    <a href="#faq6_19">6.19 エクスポートしたテーブルをインクルードする簡単な L<sup>A</sup>T<sub><em
+class="big">E</em></sub>X 文書の作り方は？</a></h4>
 
-<p> You can simply include table in your L<sup>A</sup>T<sub><em
-class="big">E</em></sub>X documents, minimal sample document should look
-like following one (assuming you have table exported in file
-<code>table.tex</code>):</p>
+<p> L<sup>A</sup>T<sub><em class="big">E</em></sub>X
+文書にテーブルをインクルードすれば簡単にできます。最低限のサンプル文書は次のようになります (エクスポートしたテーブルは
+<code>table.tex</code> というファイルに入っているとします)。</p>
 
 <pre>
 ¥documentclass{article} % お望みのクラス
@@ -3875,6 +3885,19 @@ title="よくある質問">FAQ</abbr> 6.7</a> 参照)
 
     作成された散布図は、マウスホイールでズームの調整が行えます。また、散布図を通じて各点の評価が行えます。細部が判別できる程度まで拡大して、配置されている点の中から評価したいものを探します。点をクリックするとダイアログが開き、描画されている点に対応する行のデータ値が表示されます。必要であればこれらのデータ値は編集することが可能で、「実行する」をクリックすると
 UPDATE クエリによって内容が変更されます。簡単な使用方法が、散布図の上にある「使い方」リンクをクリックすることにより表示されます。</p>
+
+<h4 id="faq6_33">
+    <a href="#faq6_33">6.33 When browsing a table, how can I copy a column
+name?</a></h4>
+
+    <p>Selecting the name of the column within the browse table header cell for
+copying is difficult, as the columns support reordering by dragging the
+header cells as well as sorting by clicking on the linked column name.<br/><br/>
+
+    To copy a column name, double-click on the empty area next to the column
+name, when the tooltip tells you to do so. This will show you an input box
+with the column name.  You may right-click the column name within this input
+box to copy it to your clipboard.</p>
 
 <h3 id="faqproject">phpMyAdmin プロジェクト</h3>
 
@@ -4313,8 +4336,8 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>）にも感�
 
 <li>Dieter Adriaenssens
 <ul>
-  <li>Various bugfixes</li>
-  <li>Dutch translation updates</li>
+  <li>バグフィックス多数</li>
+  <li>オランダ語の翻訳更新</li>
 </ul></li>
 
 </ul>
@@ -4477,15 +4500,14 @@ Application Programming Interface)</a> - Internet Information Services (IIS)
 写真画像の非可逆圧縮に使われる最も一般的で標準的な方法</li>
     <li>JPG - → <a href="#jpeg">JPEG</a></li>
     <li>キー - →<a href="#glossar_index">インデックス</a></li>
-    <li><a href="http://www.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><em
-class="big">E</em></sub>X</a> - a document preparation system for the
-T<sub>E</sub>X typesetting program.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><em
+class="big">E</em></sub>X</a> - T<sub>E</sub>X 組版プログラムのためのドキュメント処理システム。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Macintosh">Mac (Apple Macintosh)</a> -
 Apple Computer が設計、開発、製造、販売しているパソコンの一製品</li>
-    <li><a id="glossar_mac_os_x" href="http://www.wikipedia.org/wiki/Mac_OS_X"><abbr
-title="Apple Macintosh">Mac</abbr> <abbr title="operating system">OS</abbr>
-X</a> - the operating system which is included with all currently shipping
-Apple Macintosh computers in the consumer and professional markets.</li>
+    <li><a id="glossar_mac_os_x" href="http://ja.wikipedia.org/wiki/Mac_OS_X"><abbr
+title="Apple Macintosh">Mac</abbr> <abbr title="オペレーティング・システム">OS</abbr>
+X</a> - 一般消費者および専門家の市場向けに現在出荷されている全ての Apple Macintosh
+コンピュータに含まれているオペレーティングシステム。</li>
     <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - 暗号ライブラリ</li>
     <li><a href="http://php.net/mcrypt">mcrypt</a> - MCrypt の PHP 拡張</li>
     <li><a href="http://ja.wikipedia.org/wiki/MIME">MIME (Multipurpose Internet Mail
@@ -4500,10 +4522,10 @@ href="http://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB
     <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール</li>
     <li><a href="http://ja.wikipedia.org/wiki/OpenDocument">OpenDocument</a> -
 オフィススイート用のオープンフォーマット</li>
-    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating
-system">OS</abbr> X</a> - look at <a href="#glossar_mac_os_x"><abbr
-title="Apple Macintosh">Mac</abbr> <abbr title="operating system">OS</abbr>
-X</a>.</li>
+    <li><a href="http://ja.wikipedia.org/wiki/OS_X"><abbr
+title="オペレーティング・システム">OS</abbr> X</a> - → <a href="#glossar_mac_os_x"><abbr
+title="Apple Macintosh">Mac</abbr> <abbr title="オペレーティング・システム">OS</abbr>
+X</a>。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Portable_Document_Format">PDF
 (ポータブル・ドキュメント・フォーマット)</a> - デバイスや解像度に依存しない形式で二次元ドキュメントを表現するために Adobe Systems
 よって開発されたファイル形式</li>
