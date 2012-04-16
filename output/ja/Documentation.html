@@ -3,7 +3,7 @@
 <!-- 
 vim: expandtab ts=4 sw=4 sts=4 tw=78 
 -->
-<html lang="shift_jis" dir="ltr">
+<html lang="ja" dir="ltr">
 <!--
 
 このファイルは po4a を使用して生成されていますので、編集してはいけません！
@@ -1061,17 +1061,6 @@ href="#cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</a>
 に無効なデータ（既に存在しないテーブルへの参照）が含まれる場合もあります。<br />
         最大行数を超えた場合は、自動的に table_uiprefs 内の古い行から削除されます。</dd>
 
-    <dt><span
-id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
-論理型
-    </dt>
-    <dd>バージョン 2.5.0 では新しい MIME 変換機能をサポートするようになったため、column_info テーブルに新しいカラムが 3
-つ追加されました。この変数を <code>TRUE</code> (デフォルト) に設定しておくと、phpMyAdmin
-は最新のテーブル構造が利用できるようになっているかチェックします。利用できない場合はスーパーユーザに警告を発します。<br /><br />
-
-        このチェック機能はこの変数を FALSE にすることで無効にできます。無効にするとパフォーマンスが向上します。<br /><br />
-
-        確実にテーブル構造が最新になっているときは FALSE にするのがお勧めです。</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span> 論理型</dt>
     <dd>ルートのアクセスを許可するかどうか。これは下記の規則を簡略化しただけのものです。
     </dd>
@@ -1257,6 +1246,12 @@ session_save_path</a>）</dd>
     <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] 論理型</dt>
     <dd>送信後もそのまま <abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリボックスを表示させておくかどうかを定義します。</dd>
 
+    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] boolean</dt>
+    <dd>Defines whether to use a Javascript code editor for SQL query boxes.
+CodeMirror provides syntax highlighting and line numbers. <br />
+        However, middle-clicking for pasting the clipboard contents in some Linux
+distributions (such as Ubuntu) is not supported by all browsers.</dd>
+
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] 論理型</dt>
     <dd>通常ユーザ（administrator 以外のユーザ）に自分自身のデータベースの削除を許可するかどうかを定義します。FALSE
 にすると、「データベースの削除」のリンクは表示されませんし、「DROP DATABASE
@@ -1363,7 +1358,7 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
 
     <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] 文字列</dt>
     <dd>リンクされているページを開こうとするときメインウィンドウ (<code>main</code>) か新しいウィンドウ
-(<code>new</code>) のどちらにするか。注：<tt>phpmyadmin.net</tt>
+(<code>new</code>) のどちらにするか。注：<code>phpmyadmin.net</code>
 にリンクしている場合は、<code>new</code> が使われます。</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
@@ -1410,16 +1405,13 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
     <dd>「データベースを作成する」フォームでデータベース名を提案するかテキスト入力項目を空欄にしておくかを定義します。</dd>
 
     <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] 論理型</dt>
-    <dd>Defines whether the database structure page (tables list) has a
-&quot;Creation&quot; column that displays when each table was created.</dd>
+    <dd>データベース構造ページ (テーブル一覧) において、「作成日時」の列を表示させるかどうかを定義します。</dd>
 
     <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] 論理型</dt>
-    <dd>Defines whether the database structure page (tables list) has a &quot;Last
-update&quot; column that displays when each table was last updated.</dd>
+    <dd>データベース構造ページ (テーブル一覧) において、「最終更新」の列を表示させるかどうかを定義します。</dd>
 
     <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] 論理型</dt>
-    <dd>Defines whether the database structure page (tables list) has a &quot;Last
-check&quot; column that displays when each table was last checked.</dd>
+    <dd>データベース構造ページ (テーブル一覧) において、「最終検査」の列を表示させるかどうかを定義します。</dd>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] 文字列</dt>
     <dd>ナビゲーションバーのボタンと、右パネルのトップメニューにテキストを含めるか、シンボルのみにするかを定義します。値が TRUE
@@ -1497,9 +1489,6 @@ class="configrule">$cfg['ForeignKeyDropdownOrder']</a>
 でエクスポートを圧縮する際、逐次圧縮を許可するかどうかを定義します。比較的小さなダンプの場合は関係ありませんが、許可すると、圧縮しない限り PHP
 のメモリ制限にひっかかるような大きなダンプも作成できるようになります。こうして生成したファイルは GZip/BZip2
 ヘッダが多くなってしまいますが、まともなプログラムならどれでも正しく処理してくれます。</dd>
-
-    <dt id="cfg_LightTabs">$cfg['LightTabs'] 論理型</dt>
-    <dd><code>TRUE</code> にすると、メインフレーム上部のタブをグラフィックの少ないものになります。</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] 文字列</dt>
     <dd><code>TRUE</code> にすると、データベースやテーブルのプロパティリンクに (「表示」、「選択」、「挿入」といった)
@@ -3860,7 +3849,7 @@ chmod o+rwx tmp
     <a href="#faq6_31">6.31 デザイナでリレーションを作成するには、どのようにすればいいのでしょうか？</a></h4>
 
     <p>下図に示すようにリレーションをクリックし選択します。<br />
-    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[リレーションの画像]" /><br />
     表示するカラムはピンク色で表示されます。表示非表示を切り替える場合は「表示するカラムを選択する」というアイコンをクリックしてから適切なカラム名をクリックください。</p>
 
 <h4 id="faq6_32">
@@ -3881,8 +3870,7 @@ title="よくある質問">FAQ</abbr> 6.7</a> 参照)
 UPDATE クエリによって内容が変更されます。簡単な使用方法が、散布図の上にある「使い方」リンクをクリックすることにより表示されます。</p>
 
 <h4 id="faq6_33">
-    <a href="#faq6_33">6.33 When browsing a table, how can I copy a column
-name?</a></h4>
+    <a href="#faq6_33">6.33 テーブル閲覧時に、カラム名をコピーするにはどうしたらいいのでしょう？</a></h4>
 
     <p>Selecting the name of the column within the browse table header cell for
 copying is difficult, as the columns support reordering by dragging the
@@ -3910,12 +3898,10 @@ href="https://sourceforge.net/projects/phpmyadmin/forums">https://sourceforge.ne
 <h4 id="faq7_2">
     <a href="#faq7_2">7.2 メッセージを別の言語に翻訳したい／既存の翻訳を修正したいのですが、まずはどうすればよいでしょうか？</a></h4>
 
-<p> Translations are very welcome and all you need to have are the language
-skills.  The easiest way is to use our <a
-href="https://l10n.cihar.com/projects/phpmyadmin/">online translation
-service</a>.  You can check out all the possibilities to translate in the <a
-href="http://www.phpmyadmin.net/home_page/translate.php">translate section
-on our website</a>.
+<p> 翻訳は非常に歓迎いたしますし、また、あなたの言語スキルは常に必要とされています。翻訳を行うのに最も簡単な方法は、<a
+href="https://l10n.cihar.com/projects/phpmyadmin/">オンライン翻訳システム</a>を使うことです。<a
+href="http://www.phpmyadmin.net/home_page/translate.php">ウェブサイト上の translate
+ページ</a>で、翻訳の方法などに関することを確認することができます。
     </p>
 
 <h4 id="faq7_3">
@@ -4416,115 +4402,116 @@ href="https://l10n.cihar.com/projects/pmadoc/">翻訳サーバ</a>を通じて�
 
 <ul>
     <li><a href="http://ja.wikipedia.org/wiki/.htaccess">.htaccess</a> -  Apache
-のディレクトリ単位での設定ファイルのデフォルトの名前</li>
+のディレクトリ単位での設定ファイルのデフォルトの名前。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Blowfish">Blowfish</a> - Bruce
-Schneier 氏によって 1993 年に設計された対称ブロック暗号およびそのキー</li>
+Schneier 氏によって 1993 年に設計された対称ブロック暗号およびそのキー。</li>
     <li><a
-href="http://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6">ブラウザ（ウェブブラウザ）</a>
-- World Wide Web
-上のウェブサイトでウェブページに一般的に置かれているテキスト、画像、その他の情報をユーザに対して表示や双方向通信することができるアプリケーション</li>
+href="http://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6">ブラウザ
+(ウェブブラウザ)</a> - World Wide Web
+上のウェブサイトでウェブページに一般的に置かれているテキスト、画像、その他の情報をユーザに対して表示や双方向通信することができるアプリケーション。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Bzip2">bzip2</a> - Julian Seward
-氏により開発されたフリーソフトウェアでオープンソースのデータ圧縮アルゴリズムおよびプログラム</li>
+氏により開発されたフリーソフトウェアでオープンソースのデータ圧縮アルゴリズムおよびプログラム。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Common_Gateway_Interface">CGI
 (コモン・ゲートウェイ・インタフェース)</a> -
-ウェブサーバー上で実行されるプログラムでクライアントのウェブブラウザのデータを要求に応えることができる重要な World Wide Web 技術</li>
+ウェブサーバー上で実行されるプログラムでクライアントのウェブブラウザのデータを要求に応えることができる重要な World Wide Web 技術。</li>
     <li><a href="http://www.wikipedia.org/wiki/Changelog">変更履歴</a> -
-プロジェクトに加えられた変更の記録</li>
+プロジェクトに加えられた変更の記録。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88_%28%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%29">クライアント</a>
-- 幾重かのネットワークを介して他のコンピュータ上の（リモート）サービスにアクセスするコンピュータシステムのこと</li>
+- 幾重かのネットワークを介して他のコンピュータ上の (リモート) サービスにアクセスするコンピュータシステムのこと。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E5%B1%9E%E6%80%A7_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">カラム</a>
 - 列のこと。特定の単一の型のデータ値の集まり。テーブルの各行に対しての一要素でもある。</li>
     <li><a href="http://ja.wikipedia.org/wiki/HTTP_cookie">クッキー</a> -
-サーバにアクセスするたびにサーバから送信され World Wide Web ブラウザから送り返される情報のパケット</li>
+サーバにアクセスするたびにサーバから送信され World Wide Web ブラウザから送り返される情報のパケット。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Comma-Separated_Values">CSV</a> -
 カンマ区切り (Comma-separated values)</li>
     <li>DB - →<a href="#database">データベース (Database)</a></li>
     <li><a id="database"
 href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
-- 系統だったデータの集まり</li>
+- 系統だったデータの集まり。</li>
     <li>エンジン - →<a href="#glossar_storage_engine">ストレージエンジン</a>.</li>
     <li><a
-href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%B3">拡張（エクステンション）</a>
-- 追加機能を PHP に拡張する PHP モジュール</li>
-    <li><a href="http://ja.wikipedia.org/wiki/FAQ">FAQ（よくある質問）</a> -
-よく訊かれる質問とその答えの一覧</li>
+href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%B3">拡張
+(エクステンション)</a> - 追加機能を PHP に拡張する PHP モジュール。</li>
+    <li><a href="http://ja.wikipedia.org/wiki/FAQ">FAQ (よくある質問)</a> -
+よく訊かれる質問とその答えの一覧。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89_%28%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%A6%29">フィールド</a>
-- 分割されたデータ／カラムの１つ</li>
+- 分割されたデータ／カラムの１つ。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E5%A4%96%E9%83%A8%E3%82%AD%E3%83%BC">外部キー</a>
--
-データベースの行のカラムまたはグループカラムの１つ。これらは、（通常は異なる）テーブル内における別のデータベースの行のキーを形成しているカラムキーまたはグループカラムキーを指している。</li>
+- データベースの行のカラムまたはグループカラムの１つ。これらは、(通常は異なる)
+テーブル内における別のデータベースの行のキーを形成しているカラムキーまたはグループカラムキーを指している。</li>
     <li><a href="http://www.fpdf.org/">FPDF (FreePDF)</a> - フリーの PDF ライブラリ</li>
     <li><a id="gd" href="http://ja.wikipedia.org/wiki/GD_Graphics_Library">GD
-グラフィックライブラリ</a> - Thomas Boutell 氏他によって開発された動的に画像を操作するためのライブラリ</li>
+グラフィックライブラリ</a> - Thomas Boutell 氏他によって開発された動的に画像を操作するためのライブラリ。</li>
     <li>GD2 - → <a href="#gd">GD グラフィックライブラリ</a></li>
     <li><a href="http://ja.wikipedia.org/wiki/Gzip">gzip</a> - GNU zip の略称で、GNU
-フリーソフトウェアファイル圧縮プログラムのこと</li>
+フリーソフトウェアファイル圧縮プログラムのこと。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF">ホスト</a>
 - コンピュータネットワークに接続された任意のマシンのこと。ホスト名を持っているノード。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%B9%E3%83%88%E5%90%8D">ホスト名</a>
-- 接続されたデバイスのネットワーク上における一意の名前</li>
+- 接続されたデバイスのネットワーク上における一意の名前。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP
-(ハイパーテキスト転送プロトコル)</a> - World Wide Web 上で情報を転送したり伝えたりするために使用される主な方法</li>
+(ハイパーテキスト転送プロトコル)</a> - World Wide Web 上で情報を転送したり伝えたりするために使用される主な方法。</li>
     <li><a href="http://ja.wikipedia.org/wiki/HTTPS">https</a> - セキュリティ対策を付加した <abbr
-title="ハイパーテキスト転送プロトコル">HTTP</abbr> 接続</li>
+title="ハイパーテキスト転送プロトコル">HTTP</abbr> 接続。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Internet_Information_Services">IIS
 (Internet Information Services)</a> - Microsoft Windows
-を使用しているサーバ用のインターネット基礎サービスのセット</li>
+を使用しているサーバ用のインターネット基礎サービスのセット。</li>
     <li><a id="glossar_index"
 href="http://ja.wikipedia.org/wiki/%E7%B4%A2%E5%BC%95_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">インデックス</a>
-- テーブル内の行への迅速なアクセスを可能にする機能</li>
-    <li><a
-href="http://ja.wikipedia.org/wiki/Internet_Protocol">IP（インターネット・プロトコル）</a>
-- パケット交換コンピュータネットワーク間でデータを通信するための、送信元と宛先のホストで使用されるデータ形式の規定</li>
+- テーブル内の行への迅速なアクセスを可能にする機能。</li>
+    <li><a href="http://ja.wikipedia.org/wiki/Internet_Protocol">IP
+(インターネット・プロトコル)</a> -
+パケット交換コンピュータネットワーク間でデータを通信するための、送信元と宛先のホストで使用されるデータ形式の規定。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/IP%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9">IP
-アドレス</a> - 標準的なインターネット・プロトコルを利用して、ネットワーク上で相互に識別し通信するデバイスに使用される一意な番号</li>
+アドレス</a> - 標準的なインターネット・プロトコルを利用して、ネットワーク上で相互に識別し通信するデバイスに使用される一意な番号。</li>
     <li><a href="http://ja.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
 Application Programming Interface)</a> - Internet Information Services (IIS)
-の API</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP（インターネット・サービス・プロバイダ）</a> -
-インターネット関連サービスへのユーザアクセスを提供している企業や組織</li>
+の API。</li>
+    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (インターネット・サービス・プロバイダ)</a> -
+インターネット関連サービスへのユーザアクセスを提供している企業や組織。</li>
     <li><a id="jpeg" href="http://ja.wikipedia.org/wiki/JPEG">JPEG</a> -
-写真画像の非可逆圧縮に使われる最も一般的で標準的な方法</li>
+写真画像の非可逆圧縮に使われる最も一般的で標準的な方法。</li>
     <li>JPG - → <a href="#jpeg">JPEG</a></li>
     <li>キー - →<a href="#glossar_index">インデックス</a></li>
     <li><a href="http://ja.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><em
 class="big">E</em></sub>X</a> - T<sub>E</sub>X 組版プログラムのためのドキュメント処理システム。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Macintosh">Mac (Apple Macintosh)</a> -
-Apple Computer が設計、開発、製造、販売しているパソコンの一製品</li>
+Apple Computer が設計、開発、製造、販売しているパソコンの一製品。</li>
     <li><a id="glossar_mac_os_x" href="http://ja.wikipedia.org/wiki/Mac_OS_X"><abbr
 title="Apple Macintosh">Mac</abbr> <abbr title="オペレーティング・システム">OS</abbr>
 X</a> - 一般消費者および専門家の市場向けに現在出荷されている全ての Apple Macintosh
 コンピュータに含まれているオペレーティングシステム。</li>
-    <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - 暗号ライブラリ</li>
-    <li><a href="http://php.net/mcrypt">mcrypt</a> - MCrypt の PHP 拡張</li>
+    <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a> - 暗号ライブラリ。</li>
+    <li><a href="http://php.net/mcrypt">mcrypt</a> - MCrypt の PHP 拡張。</li>
     <li><a href="http://ja.wikipedia.org/wiki/MIME">MIME (Multipurpose Internet Mail
-Extensions)</a> - 多目的インターネットメール拡張のことで、電子メールフォーマット（書式）におけるインターネット標準。</li>
+Extensions)</a> - 多目的インターネットメール拡張のことで、電子メールフォーマット (書式) におけるインターネット標準。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">モジュール</a>
-- Apache ウェブサーバの拡張の一種</li>
+- Apache ウェブサーバの拡張の一種。</li>
     <li><a href="http://ja.wikipedia.org/wiki/MySQL">MySQL</a> -
 マルチスレッド、マルチユーザ、<abbr title="データベース用の問い合わせ言語">SQL</abbr> が使えるデータベース管理システム
-(<abbr title="Database Management System">DBMS</abbr>)</li>
-    <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP 拡張モジュール</li>
-    <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール</li>
+(<abbr title="Database Management System">DBMS</abbr>)。</li>
+    <li><a href="http://php.net/mysqli">mysqli</a> - 改良された MySQL クライアントの PHP
+拡張モジュール。</li>
+    <li><a href="http://php.net/mysql">mysql</a> - MySQL クライアントの PHP 拡張モジュール。</li>
     <li><a href="http://ja.wikipedia.org/wiki/OpenDocument">OpenDocument</a> -
-オフィススイート用のオープンフォーマット</li>
+オフィススイート用のオープンフォーマット。</li>
     <li><a href="http://ja.wikipedia.org/wiki/OS_X"><abbr
 title="オペレーティング・システム">OS</abbr> X</a> - → <a href="#glossar_mac_os_x"><abbr
 title="Apple Macintosh">Mac</abbr> <abbr title="オペレーティング・システム">OS</abbr>
 X</a>。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Portable_Document_Format">PDF
 (ポータブル・ドキュメント・フォーマット)</a> - デバイスや解像度に依存しない形式で二次元ドキュメントを表現するために Adobe Systems
-よって開発されたファイル形式</li>
+よって開発されたファイル形式。</li>
     <li><a href="http://pear.php.net/">PEAR</a> - PHP の拡張とアプリケーションのパッケージ (PHP
-Extension and Application Repository)</li>
+Extension and Application Repository)。</li>
     <li><a href="http://php.net/pcre">PCRE (Perl Compatible Regular Expressions)</a>
 - Perl 互換の PHP 正規表現関数</li>
     <li><a href="http://ja.wikipedia.org/wiki/PHP:_Hypertext_Preprocessor">PHP</a> -
@@ -4532,38 +4519,38 @@ Extension and Application Repository)</li>
 Preprocessor」の略称。オープンソース。主にサーバ側のアプリケーション開発と動的なウェブコンテンツのために使用されるリフレクションプログラミング言語。最近では、ソフトウェアアプリケーションの広い範囲で使われている。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%88#port">ポート</a>
-- これを介してデータが送受信される</li>
+- これを介してデータが送受信される。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Request_for_Comments">RFC (Request for
 Comments)</a> - インターネット技術に適用される新しい研究、技術革新、方法論を書き連ねた文章。</li>
     <li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a> - GZIP
 ファイル形式の仕様バージョン 4.3</li>
     <li><a
-href="http://ja.wikipedia.org/wiki/%E7%B5%84_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">行（レコード、組)</a>
-- テーブル内において単一の、暗黙的に構造化されたデータ項目を表している</li>
+href="http://ja.wikipedia.org/wiki/%E7%B5%84_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">行
+(レコード、組)</a> - テーブル内において単一の、暗黙的に構造化されたデータ項目を表している。</li>
     <li><a href="http://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%BC%E3%83%90">サーバ</a> -
-他のコンピュータシステムにネットワークを介してサービスを提供しているコンピュータシステムのこと</li>
+他のコンピュータシステムにネットワークを介してサービスを提供しているコンピュータシステムのこと。</li>
     <li><a id="glossar_storage_engine"
 href="http://dev.mysql.com/doc/refman/5.1/ja/storage-engines.html">ストレージエンジン</a>
 - 異なるテーブルタイプのハンドラ</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88_%28BSD%29">ソケット</a>
-- プロセス間の通信形式</li>
+- プロセス間の通信形式。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Transport_Layer_Security">SSL (Secure
-Sockets Layer)</a> - インターネット上のセキュアな通信を提供する暗号プロトコル</li>
+Sockets Layer)</a> - インターネット上のセキュアな通信を提供する暗号プロトコル。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%88%E3%82%A2%E3%83%89%E3%83%97%E3%83%AD%E3%82%B7%E3%83%BC%E3%82%B8%E3%83%A3">ストアドプロシージャ</a>
 - リレーショナルデータベースシステムにアクセスするアプリケーションで使用可能なサブルーチン</li>
     <li><a href="http://ja.wikipedia.org/wiki/SQL">SQL</a> - リレーショナルデータベース用の問い合わせ言語
 (Structured Query Language)</li>
     <li><a
-href="http://ja.wikipedia.org/wiki/%E8%A1%A8_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">テーブル（表）</a>
--
-横方向の行と縦方向のカラム（列）で構成、定義、保存されているデータ要素（セル）の組み合わせ。各項目は、ラベルかキーによって、もしくは他の項目との関係における位置によって、一意に識別することができる。</li>
+href="http://ja.wikipedia.org/wiki/%E8%A1%A8_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">テーブル
+(表)</a> - 横方向の行と縦方向のカラム (列)で構成、定義、保存されているデータ要素 (セル)
+の組み合わせ。各項目は、ラベルかキーによって、もしくは他の項目との関係における位置によって、一意に識別することができる。</li>
     <li>テーブルタイプ</li>
     <li><a href="http://ja.wikipedia.org/wiki/Tar">tar</a> - アーカイブファイル形式の一種で Tape
-ARchive format の略</li>
+ARchive format の略。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Transmission_Control_Protocol">TCP
-(伝送制御プロトコル)</a> - インターネット・プロトコル群の中核となる通信規約の一つ</li>
+(伝送制御プロトコル)</a> - インターネット・プロトコル群の中核となる通信規約の一つ。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%83%88%E3%83%AA%E3%82%AC">トリガ</a>
 - データベース内の特定のテーブルまたはビュー上の特定のイベントに応答して自動的に実行される手続き型のコード</li>
@@ -4572,15 +4559,15 @@ href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC
 Locator)</a> - インターネットアドレスのこと。標準化された形式に準拠しており、インターネット上の文書や画像などを参照するために使用される。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/Web%E3%82%B5%E3%83%BC%E3%83%90">ウェブサーバ</a>
-- クライアントからの HTTP 要求の受け入れおよびそれらに対するウェブページの提供を行っているコンピュータ（プログラム）</li>
+- クライアントからの HTTP 要求の受け入れおよびそれらに対するウェブページの提供を行っているコンピュータ (プログラム)。</li>
     <li><a href="http://ja.wikipedia.org/wiki/XML">XML (Extensible Markup
 Language)</a> - 個別の目的に応じたマークアップ言語作成のための、W3C
 勧告の汎用マークアップ言語。多くの異なる種類のデータを記述することが可能。</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/ZIP_%28%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%29">ZIP</a>
-- 一般的なデータ圧縮とアーカイブ形式</li>
+- 一般的なデータ圧縮とアーカイブ形式。</li>
     <li><a href="http://ja.wikipedia.org/wiki/Zlib">zlib</a> - Jean-loup Gailly、Mark
-Adler 両氏によるオープンソースでクロスプラットフォームのデータ圧縮ライブラリ</li>
+Adler 両氏によるオープンソースでクロスプラットフォームのデータ圧縮ライブラリ。</li>
 </ul>
 </div>
 

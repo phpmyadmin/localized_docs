@@ -1337,20 +1337,6 @@ puede contener datos inválidos (aplicables a tablas que ya no existen).<br />
 «table_uiprefs» y los registros anteriores sean eliminados automáticamente.</dd>
 
     <dt>booleano <span
-id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
-    </dt>
-    <dd>Como la versión 2.5.0 introdujo soporte para tranformación MIME, la tabla
-«column_info» fue expandida con tres nuevas columnas. Si la variable
-anterior está configurada como <code>TRUE</code> (el valor predeterminado),
-phpMyAdmin verificará que la tabla tenga la última estructura disponible. De
-lo contrario, generará una advertencia al super-usuario.<br /><br />
-
-        Puedes desactivar este comportamiento de chequeo configurando la variable a
-'false', lo que debería resultar en una mejora de performance.<br /><br />
-
-        Es recomendable definirlo como 'FALSE' una vez que se esté seguro que la
-estructura de la tabla está actualizada.</dd>
-    <dt>booleano <span
 id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span></dt>
     <dd>Si permitir acceso como root. Esto es un atajo para las reglas AllowDeny a
 continuación.
@@ -1581,6 +1567,12 @@ language">SQL</abbr> generadas por phpMyAdmin.</dd>
     <dt id="cfg_RetainQueryBox">booleano $cfg['RetainQueryBox']</dt>
     <dd>Define si la caja de texto con la consulta <abbr title="structured query
 language">SQL</abbr> será mostrada aún luego de enviado el formulario.</dd>
+
+    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] boolean</dt>
+    <dd>Defines whether to use a Javascript code editor for SQL query boxes.
+CodeMirror provides syntax highlighting and line numbers. <br />
+        However, middle-clicking for pasting the clipboard contents in some Linux
+distributions (such as Ubuntu) is not supported by all browsers.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">booleano $cfg['AllowUserDropDatabase']</dt>
     <dd>Define si se permite a los usuarios normales (no administradores) borrar sus
@@ -1906,10 +1898,6 @@ GZip/BZip2. Esto no afecta volcados más pequeños y permite a los usuarios
 crear volcados más grandes que no entrarían en memoria debido al límite de
 memoria de PHP. Los archivos producidos contienen más cabeceras GZip/BZip2,
 pero todos los programas normales lo manejan correctamente.</dd>
-
-    <dt id="cfg_LightTabs">booleano $cfg['LightTabs']</dt>
-    <dd>Si está definido como <code>TRUE</code>, utiliza pestañas menos intensivas
-gráficamente en la parte superior del marco principal.</dd>
 
     <dt id="cfg_PropertiesIconic">cadena $cfg['PropertiesIconic']</dt>
     <dd>Si está definido como <code>TRUE</code> se mostrarán iconos en lugar de

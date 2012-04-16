@@ -1141,19 +1141,6 @@ table.<br /><br />
         We only keep this number of newest rows in table_uiprefs and automatically
 delete older rows.</dd>
 
-    <dt><span
-id="cfg_Servers_verbose_check">$cfg['Servers'][$i]['verbose_check']</span>
-布尔
-    </dt>
-    <dd>Because release 2.5.0 introduced the new MIME-transformation support, the
-column_info table got enhanced with three new columns. If the above variable
-is set to <code>TRUE</code> (default) phpMyAdmin will check if you have the
-latest table structure available. If not, it will emit a warning to the
-superuser.<br /><br />
-
-        你可以通过将其设为 false 来禁止此检查，从而得到性能的提升。<br /><br />
-
-        当你确定你的表结构是最新的时，我们建议将其设为 FALSE 。</dd>
     <dt><span id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span> 布尔</dt>
     <dd>设置是否允许 root 用户访问。此为以下 AllowDeny rules 的快速设置。
     </dd>
@@ -1358,6 +1345,12 @@ language)">SQL</abbr> 查询语句。</dd>
     <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] boolean</dt>
     <dd>Defines whether the <abbr title="structured query language">SQL</abbr> query
 box should be kept displayed after its submission.</dd>
+
+    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] boolean</dt>
+    <dd>Defines whether to use a Javascript code editor for SQL query boxes.
+CodeMirror provides syntax highlighting and line numbers. <br />
+        However, middle-clicking for pasting the clipboard contents in some Linux
+distributions (such as Ubuntu) is not supported by all browsers.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] 布尔</dt>
     <dd>设置普通用户 (非管理员) 是否可以删除他们自己的数据库。若设为 FALSE，链接 &quot;删除数据库&quot;
@@ -1644,10 +1637,6 @@ exports. This doesn't affect smaller dumps and allows users to create larger
 dumps that won't otherwise fit in memory due to php memory limit. Produced
 files contain more GZip/BZip2 headers, but all normal programs handle this
 correctly.</dd>
-
-    <dt id="cfg_LightTabs">$cfg['LightTabs'] boolean</dt>
-    <dd>If set to <code>TRUE</code>, use less graphically intense tabs on the top of
-the mainframe.</dd>
 
     <dt id="cfg_PropertiesIconic">$cfg['PropertiesIconic'] string</dt>
     <dd>If set to <code>TRUE</code>, will display icons instead of text for db and
