@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!-- 
-vim: expandtab ts=4 sw=4 sts=4 tw=78 
+<!--
+vim: expandtab ts=4 sw=4 sts=4 tw=78
 -->
 <html lang="ja" dir="ltr">
 <!--
@@ -377,7 +377,7 @@ GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (もちろん <a href="#linked-tables">phpMyAdmin 環境保管領域</a>を設定しておく必要があります。)  
+        (もちろん <a href="#linked-tables">phpMyAdmin 環境保管領域</a>を設定しておく必要があります。)
     <br /></li>
 
     <li>上記の作業が済みましたら、それぞれの<em>一般</em>ユーザに対して、必要なデータベースにおける必要な特権を付与していきます。なお通常は、一般ユーザにはグローバルな特権を与えるべきではありません。そういった特権の破壊力を理解したうえでのことなら話は別ですが
@@ -524,7 +524,7 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
     <dd>「クッキー」認証方式は、パスワードを暗号化するために blowfish アルゴリズムを使用しています。<br />
         「クッキー」認証方式を利用する場合は、ここにお好みのランダムなパスフレーズを入力してください。このパスフレーズは blowfish
 アルゴリズムが内部的に利用するものです。ユーザがパスフレーズを入力するよう求められることはありません。このパラメータの文字数の上限はありません。<br /><br />
-        
+
         バージョン 3.1.0
 以降、このパスフレーズが（空の場合は）自動で生成されるようになってはいますが、これはセキュリティ上あまり強いものではありません。通常、クッキーからユーザ名を取り出すといったことは不可能ですが、自動生成された（暗号／複合に必要な）パスフレーズがセッションに格納されるからです。</dd>
 
@@ -936,7 +936,7 @@ title="データベース用の問い合わせ言語">SQL</abbr>
         もちろん、変更履歴を表示することもできます。「コマンド追跡」ページに全ての世代に対しての詳細なレポートがあります。レポートではフィルタを使用することができ、例えば、日付範囲内のコマンドリストを取得などが行えます。ユーザ名をフィルタする場合は、全ての名前が対象であれば「*」を入力、名前のリストに対しては「,」で区切って入力してください。更に、(フィルタした)
 レポートをファイルまたは一時的なデータベースへエクスポートすることができます。
         <br/><br/>
-        
+
         この機能を利用できるようにするには、以下のようにします。
 
         <ul>
@@ -960,7 +960,7 @@ id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_vers
             <li>CREATE VIEW ...</li>
         </ul>
 
-        かつ、テーブルやビューに対しての世代が存在しなかった場合、追跡機能は自動的に世代を作成します。        
+        かつ、テーブルやビューに対しての世代が存在しなかった場合、追跡機能は自動的に世代を作成します。
     </dd>
 
     <dt id="tracking3">
@@ -986,7 +986,7 @@ id="cfg_Servers_tracking_add_drop_view">$cfg['Servers'][$i]['tracking_add_drop_v
     </dt>
     <dd>
         ビューを作成するときに、ログに最初の行に DROP VIEW IF EXISTS 文を追加するかどうか。デフォルト値は true です。
-        <br/><br/>       
+        <br/><br/>
     </dd>
 
 
@@ -1247,10 +1247,10 @@ session_save_path</a>）</dd>
     <dd>送信後もそのまま <abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリボックスを表示させておくかどうかを定義します。</dd>
 
     <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] 論理型</dt>
-    <dd>Defines whether to use a Javascript code editor for SQL query boxes.
-CodeMirror provides syntax highlighting and line numbers. <br />
-        However, middle-clicking for pasting the clipboard contents in some Linux
-distributions (such as Ubuntu) is not supported by all browsers.</dd>
+    <dd>SQL クエリボックスに対して Javascript コードエディタを使用するかどうかを定義します。このエディタ CodeMirror
+は、構文の色分けや行番号の付加といった機能を提供します。 <br />
+        けれども、いくつかの Linux ディストリビューション (Ubuntu など)
+で提供されている真ん中ボタンによる貼り付けは、すべてのブラウザではサポートされていません。</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] 論理型</dt>
     <dd>通常ユーザ（administrator 以外のユーザ）に自分自身のデータベースの削除を許可するかどうかを定義します。FALSE
@@ -1375,9 +1375,8 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
     <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] 文字列</dt>
     <dd>各テーブル名の隣にある小さなアイコンをクリックしたときにデフォルトで表示されるタブを定義します。可能な値は次のいずれかです。「tbl_structure.php」、「tbl_sql.php」、「tbl_select.php」、「tbl_change.php」、「sql.php」。</dd>
 
-    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] boolean</dt>
-    <dd>Defines whether the table structure actions are hidden under a
-&quot;More&quot; drop-down.</dd>
+    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] 論理型</dt>
+    <dd>テーブル構造の操作の欄において、「その他」ドロップダウンによる折り畳みをやめるかどうか。</dd>
 
     <dt id="cfg_ShowStats">$cfg['ShowStats'] 論理型</dt>
     <dd>データベースやテーブルの使用量などの統計情報を表示するかどうかを定義します。<br />
@@ -1404,9 +1403,6 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
         <pre>disable_functions = phpinfo()</pre>
 
         なお、「config」認証モードでは、たとえ設定が有効であっても「パスワードを変更する」リンクは無効になります。なぜなら、設定ファイルに直接書き込まれたパスワードは、ログインユーザによって書き換えることができないからです。</dd>
-
-    <dt id="cfg_SuggestDBName">$cfg['SuggestDBName'] 論理型</dt>
-    <dd>「データベースを作成する」フォームでデータベース名を提案するかテキスト入力項目を空欄にしておくかを定義します。</dd>
 
     <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] 論理型</dt>
     <dd>データベース構造ページ (テーブル一覧) において、「作成日時」の列を表示させるかどうかを定義します。</dd>
@@ -1450,12 +1446,12 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
     </dd>
 
     <dt id="cfg_ShowFunctionFields">$cfg['ShowFunctionFields'] 論理型</dt>
-    <dd>挿入／編集モードで、MySQL 関数のフィールドが最初から表示されるかどうかを定義します。バージョン 2.10
+    <dd>挿入／編集モードで、MySQL 関数の項目が最初から表示されるかどうかを定義します。バージョン 2.10
 以降、この設定はユーザインターフェイスで切り替えることができます。
     </dd>
-    
+
     <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] 論理型</dt>
-    <dd>編集／挿入モードで、タイプフィールドが最初から表示されるかどうかを定義します。この設定はユーザインターフェイスで切り替えることができます。
+    <dd>編集／挿入モードで、種別の項目が最初から表示されるかどうかを定義します。この設定はユーザインターフェイスで切り替えることができます。
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] 文字列</dt>
@@ -1795,7 +1791,7 @@ title="データベース用の問い合わせ言語">SQL</abbr>
 
     <dt id="cfg_TempDir">$cfg['TempDir'] 文字列</dt>
     <dd>
-        一時ファイルが保管可能なディレクトリの名前です。 
+        一時ファイルが保管可能なディレクトリの名前です。
         <br /><br />
 
         この設定は、ESRI シェープファイルをインポートするときに必要になります。<a href="#faq6_30"><abbr
@@ -2732,8 +2728,8 @@ href="http://httpd.apache.org/docs/2.0/mod/mod_ssl.html#ssloptions">http://httpd
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
-ProxyPassReverseCookieDomain backend.example.com public.example.com 
-ProxyPassReverseCookiePath / /mirror/foo/ 
+ProxyPassReverseCookieDomain backend.example.com public.example.com
+ProxyPassReverseCookiePath / /mirror/foo/
 </pre>
 
 <p>注：バックエンド URL が http://host/~user/phpmyadmin のように見える場合、チルダ (~) は
@@ -3609,7 +3605,7 @@ href="http://dev.mysql.com/doc/mysql/ja/insert.html">MySQL
     <a href="#faqsqlvalidator">6.14 どうすれば <abbr
 title="データベース用の問い合わせ言語">SQL</abbr> 検証をセットアップできますか。</a></h4>
 
-<p> 
+<p>
     <abbr title="データベース用の問い合わせ言語">SQL</abbr> 検証を利用するには、PHP が <abbr
 title="Extensible Markup Language">XML</abbr>、<abbr title="Perl Compatible
 Regular Expressions">PCRE</abbr>、<abbr title="PHP Extension and Application
@@ -3634,9 +3630,9 @@ Database Technology です。私達はフリーの SOAP サービスとして利
 </p>
 
 <h4 id="faq6_15">
-    <a href="#faq6_15">6.15 BLOB フィールドを追加して、それにインデックスをつけたいのですが、MySQL に「BLOB
-column '...' used in key specification without a key length（BLOB
-カラム「…」をキーにしようとしましたが、キーの長さが指定されていません）」と言われてしまいます。</a></h4>
+    <a href="#faq6_15">6.15 BLOB カラムを追加して、それにインデックスをつけたいのですが、MySQL に「BLOB column
+'...' used in key specification without a key length (BLOB
+カラム「…」をキーにしようとしましたが、キーの長さが指定されていません)」と言われてしまいます。</a></h4>
 
 <p> 正しくは、BLOB カラムをインデックスなしで作成したあと、テーブルの構造を表示し「インデックスを作成」ダイアログを使用します。このページ上で、BLOB
 カラムを選択して、インデックスにサイズを指定できます。このサイズが BLOB カラムにインデックスを作るときの条件なのです。</p>
@@ -3794,7 +3790,7 @@ href="http://php.net/strftime">strftime</a>
 <h4 id="wysiwyg">
     <a href="#wysiwyg">6.28 どのようにしたら、エクスポート用のリレーショナルスキーマを簡単に編集することができますか？</a></h4>
 
-    <p> 
+    <p>
         要素の x/y
 座標を修正するページで「スクラッチボードを切り替える」ボタンをクリックすると、スクラッチボードが有効になります。このスクラッチボードにはすべての要素が配置されています。要素をクリックすると、あらかじめ定義されている領域のなかを移動でき、x/y
 座標は動的に更新されます。同様に、入力フィールドに直接新しい座標を入力しておくと、入力フィールドからカーソルが移動したときにスクラッチボード内の要素も新しい位置に移動します。
@@ -3819,7 +3815,7 @@ href="http://wiki.phpmyadmin.net/pma/Charts#Data_formats_for_query_results_chart
 <h4 id="faq6_30">
     <a href="#faq6_30">6.30 インポート：ESRI シェープファイルのインポートはどのようにしたらできますか？</a></h4>
 
-    <p> 
+    <p>
         ESRI シェープファイルは、実際には単独ファイルではなくいくつかの集合ファイルです。空間データが含まれている .shp
 ファイルと、その空間データに関連するデータが含まれている .dbf ファイルから構成されています。.dbf
 ファイルから関連するデータを読み込むには、PHP に dBase 拡張 (--enable-dbase)
@@ -3973,13 +3969,13 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \
 </p>
 
 <p>
-正常に認証フェーズを通過した後、同期元および対象先のデータベースのテーブル名が表示されます。これは、表形式で表示されます。 
+正常に認証フェーズを通過した後、同期元および対象先のデータベースのテーブル名が表示されます。これは、表形式で表示されます。
 </p>
 
 <p>
 左側には、同期元データベースのテーブル名を記載されています。名前の前にプラス記号 <code>+</code>
 が付いているテーブルがあります。この記号は、同期元のデータベースにだけテーブルが存在しており、同期させるためには対象先のデータベースに追加する必要があることを示しています。名前の前に
-<code>+</code> 記号が付いていないテーブルは、すでに対象先のデータベースに存在しています。 
+<code>+</code> 記号が付いていないテーブルは、すでに対象先のデータベースに存在しています。
 </p>
 
 <p>
@@ -4480,8 +4476,9 @@ href="http://ja.wikipedia.org/wiki/IP%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9">IP
     <li><a href="http://ja.wikipedia.org/wiki/ISAPI">ISAPI (Internet Server
 Application Programming Interface)</a> - Internet Information Services (IIS)
 の API。</li>
-    <li><a href="http://www.wikipedia.org/wiki/ISP">ISP (インターネット・サービス・プロバイダ)</a> -
-インターネット関連サービスへのユーザアクセスを提供している企業や組織。</li>
+    <li><a
+href="http://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80">ISP
+(インターネット・サービス・プロバイダ)</a> - インターネット関連サービスへのユーザアクセスを提供している企業や組織。</li>
     <li><a id="jpeg" href="http://ja.wikipedia.org/wiki/JPEG">JPEG</a> -
 写真画像の非可逆圧縮に使われる最も一般的で標準的な方法。</li>
     <li>JPG - → <a href="#jpeg">JPEG</a></li>
@@ -4550,7 +4547,7 @@ href="http://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%88%E3%82%A2%E3%83%89%E3%83%97
 (Structured Query Language)</li>
     <li><a
 href="http://ja.wikipedia.org/wiki/%E8%A1%A8_%28%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%29">テーブル
-(表)</a> - 横方向の行と縦方向のカラム (列)で構成、定義、保存されているデータ要素 (セル)
+(表)</a> - 横方向の行と縦方向のカラム (列) で構成、定義、保存されているデータ要素 (セル)
 の組み合わせ。各項目は、ラベルかキーによって、もしくは他の項目との関係における位置によって、一意に識別することができる。</li>
     <li>テーブルタイプ</li>
     <li><a href="http://ja.wikipedia.org/wiki/Tar">tar</a> - アーカイブファイル形式の一種で Tape
