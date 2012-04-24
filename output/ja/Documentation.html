@@ -127,7 +127,7 @@ Language">SQL</abbr> ファイルも。</li>
     <li>複数サーバの管理</li>
     <li>MySQL ユーザ・特権の管理</li>
     <li>MyISAM テーブルにおける参照完全性のチェック</li>
-    <li>Query-by-example（QBE）を利用して必要なテーブルを自動的に結合する複雑なクエリの作成</li>
+    <li>定型問い合わせを使うことによるテーブル結合を伴う複雑なクエリの生成</li>
     <li>データベースレイアウトの <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> 画像の作成</li>
     <li>データベースないしそのサブセットのグローバル検索</li>
     <li>あらかじめ定義された関数一式を使用して格納されているデータを任意のフォーマットに変換します。BLOB
@@ -760,8 +760,8 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
                 (<a href="#faq6_21"><abbr title="よくある質問">FAQ</abbr> 6.21</a>参照)</li>
             <li>テーブルのプロパティページでは、記載されているキーごとに参照の整合性をチェックする（リンクの切れた外部キーを表示する）リンクを表示します。
             </li>
-            <li>query-by-example では、自動結合を作成します（<a href="#faq6_6"><abbr
-title="よくある質問">FAQ</abbr> 6.6</a> 参照）</li>
+            <li>定型問い合わせでは、自動結合を作成します (<a href="#faq6_6"><abbr title="よくある質問">FAQ</abbr>
+6.6</a> 参照)。</li>
             <li>データベースの <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr>
 スキーマを取得できるようにします（table_coords テーブルも使用されます）。</li>
         </ul>
@@ -3015,8 +3015,8 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
 <h4 id="faq3_6">
     <a href="#faq3_6">3.6 InnoDB では現在サポートされていない機能はありますか。</a></h4>
 
-<p> リレーション表示では、別のデータベースのテーブルを選択することや、複数のインデックスカラムを外部キーにすることがそうです。<br /><br/>
-    Query-by-example（Query）では、外部テーブルから LEFT JOIN されたクエリの自動生成がそうです。<br /><br/>
+<p> リレーションビューでは、別のデータベースのテーブルを選択することや、複数のインデックスカラムを外部キーにすることがサポートされていません。<br /><br/>
+    また、定型問い合わせでは、外部テーブルから LEFT JOIN されたクエリの自動生成がサポートされていません。<br /><br/>
 </p>
 
 <h4 id="faq3_7">
@@ -3446,7 +3446,7 @@ href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
 </p>
 
 <h4 id="faq6_6">
-    <a href="#faq6_6">6.6 どうすれば Query-by-example の際にリレーションテーブルを使えるのでしょう。</a></h4>
+    <a href="#faq6_6">6.6 どうすれば定型問い合わせの際にリレーションテーブルを使えるのでしょうか？</a></h4>
 
 <p> 例えば、persons、towns、countries というテーブルがすべて mydb
 というデータベースのなかにあるとします。<code>pma_relation</code>
@@ -3484,10 +3484,10 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 
 <p> 適切なリンクと表示情報をセットアップは、以下のようにします。</p>
 
-<ul><li>「REL_persons」テーブルで構造（Structure）、リレーション表示の順にクリックします。</li>
+<ul><li>「REL_persons」テーブルの「構造」、次にそのページにある「リレーションビュー」をクリックします。</li>
     <li>リンク（Links）欄の「town_code」に「REL_towns-&gt;code」を選択します。</li>
     <li>リンク（Links）欄の「country_code」に「REL_countries-&gt;country_code」を選択します。</li>
-    <li>「REL_towns」テーブルで、構造（Structure）、リレーション表示の順にクリックします。</li>
+    <li>「REL_towns」テーブルの「構造」、次に「リレーションビュー」をクリックします。</li>
     <li>「表示するカラムを選択 (Choose column to display)」欄に「description」を選択します。</li>
     <li>「REL_countries」テーブルについても上記の手順を繰り返します。</li>
 </ul>
@@ -4371,7 +4371,7 @@ MySQL
 を提供してくださいました。これはテーブルのいくつかのフィールドのみを表示する機能です。
   </li>
   <li>Chris Jackson &lt;chrisj_at_ctel.net&gt;。tbl_change.php3 に MySQL
-関数のサポートを追加してくださいました。2.0 では「Query by Example」機能も追加してくださっています。
+関数のサポートを追加してくださいました。2.0 では「定型問い合わせ」機能も追加してくださっています。
   </li>
   <li>Dave Walton
 &lt;walton_at_nordicdms.com&gt;。複数サーバサポートを追加してくださいました。バグフィックスをくださる常連でもあります。
