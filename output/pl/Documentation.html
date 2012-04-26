@@ -88,18 +88,19 @@ i <tt>ctype</tt>.
         </li>
             <li>Potrzebujesz wsparcie GD2 w PHP do wyświetlania wbudowanych miniaturki JPEG
 (&quot;image/jpeg: inline&quot;), w oryginalnych proporcjach.</li>
-            <li>When using the &quot;cookie&quot; <a
-href="#authentication_modes">authentication method</a>, the <a
-href="http://www.php.net/mcrypt"><code>mcrypt</code></a> extension is
-strongly suggested for most users and is <strong>required</strong> for
-64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to load pages
-significantly slower.
+            <li>Używanie <a href="#authentication_modes">metody uwierzytelniania
+&quot;cookie&quot;</a>, zakłada również stosowanie rozszerzenia <a
+href="http://www.php.net/mcrypt"><code>mcrypt</code></a>. Jest to stanowcze
+zalecenie dla większości użytkowników; w przypadku komputerów
+64&#8211;bitowych zalecenie to ma charakter <b>obowiązkowy</b>. Brak użycia
+mcrypt spowoduje, że phpMyAdmin będzie wczytywać strony WWW znacznie
+wolniej, niż zwykle.
                 </li>
                 <li>Aby obsługiwać paski postępu wczytywania stron, zobacz <a href="#faq2_9">
 <abbr title="Frequently Asked Questions">FAQ</abbr> 2.9</a>.</li>
-                <li>To support XML and Open Document Spreadsheet importing, you need PHP 5.2.17
-or newer and the <a href="http://www.php.net/libxml"><code>libxml</code></a>
-extension.</li>
+                <li>Do obsługi XML oraz importu arkuszy Open Document potrzebny jest PHP, w
+wersji 5.2.17 lub nowszej, a także rozszerzenie <a
+href="http://www.php.net/libxml"><code>libxml</code></a>.</li>
         </ul>
     </li>
     <li><b>serwer MySQL</b> 5.0 lub nowszy (<a href="#faq1_17">szczegóły</a>);</li>
@@ -131,14 +132,13 @@ wsadowych,</li>
     <li>wczytywać pliki tekstowe do tabel,</li>
     <li>tworzyć<a href="#footnote_1"><sup>1</sup></a> i odczytywać zrzuty tabel,
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, and L<sup>A</sup>T<sub><em class="big">E</em></sub>X
-formats
+    <li>eksportować dane do różnych formatów: <a href="#footnote_1"><sup>1</sup></a>
+<abbr title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible
+Markup Language">XML</abbr>, <abbr title="Portable Document
+Format">PDF</abbr>, <abbr title="International Standards
+Organisation">ISO</abbr>/<abbr title="International Electrotechnical
+Commission">IEC</abbr> 26300 - OpenDocument (pliki tekstowe i arkusze
+kalkulacyjne), <abbr title="Microsoft Word 2000">Word</abbr>, LaTeX
         </li>
     <li>importować dane i struktury MySQL z arkuszy kalkulacyjnych OpenDocument, jak
 również <abbr title="Extensible Markup Language">XML</abbr>, <abbr
@@ -186,11 +186,12 @@ użytkownikami w phpMyAdmin może odbywać się <strong> wyłącznie</strong> na
 zasadzie przetwarzania i/lub modyfikacji informacji o kontach użytkownika.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
-formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
-if you use PHP with Zlib support (<code>--with-zlib</code>) and/or Bzip2
-support (<code>--with-bz2</code>). Proper support may also need changes in
-<code>php.ini</code>.</p>
+    <sup>1)</sup> phpMyAdmin może kompresować kopie zapasowe w formatach: Zip,
+GZip -RFC 1952- lub Bzip2, i eksportować te kopie  w formacie <abbr
+title="comma separated values">CSV</abbr>, jeśli użyje się do tego PHP z
+obsługą Zlib (<tt>--with-zlib</tt>) i/lub obsługą Bzip2
+(<tt>--with-bz2</tt>). Właściwa obsługa kompresji może wiązać się także ze
+zmianami w pliku <tt>php.ini</tt>.</p>
 
 
 <!-- INSTALLATION -->
@@ -211,49 +212,57 @@ interfejsu phpMyAdmin.
 </p>
 
 <p class="important">
-    Warning for <abbr title="Apple Macintosh">Mac</abbr> users:<br />
-    if you are on a <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> version before <abbr title="operating
-system">OS</abbr> X, StuffIt unstuffs with <abbr title="Apple
-Macintosh">Mac</abbr> formats.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <abbr
-title="Apple Macintosh">Mac</abbr>-style end of lines character
-(&quot;<code>\r</code>&quot;).</p>
+    Ostrzeżenie dla użytkowników <abbr title="Apple Macintosh">systemów
+Mac</abbr>:<br />
+    jeśli pracujesz w wersji <abbr title="Apple Macintosh">Mac</abbr> <abbr
+title="operating system">OS</abbr>, która poprzedza wersję <abbr
+title="operating system">OS</abbr> X, archiwa trzeba rozpakować do formatów
+<abbr title="Apple Macintosh">Mac</abbr>.<br />
+    Trzeba ponownie zapisać, w programie BBEdit, WSZYSTKIE skrypty phpMyAdmin
+napisane w stylu Unix przed wysłaniem ich na serwer. Język PHP wydaje się
+&quot;nie lubić&quot; znaków końca linii w stylu <abbr title="Apple
+Macintosh">Mac</abbr> (&quot;<tt>\r</tt>&quot;).</p>
 
 <h3 id="quick_install">Szybka instalacja</h3>
-<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
-page. Some kits contain only the English messages, others contain all
-languages in UTF-8 format (this should be fine in most situations), others
-contain all languages and all character sets. We'll assume you chose a kit
-whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
+<ol><li>Wybrać odpowiedni zestaw dystrybucyjny ze strony pobierania phpmyadmin.net
+<strong>Uwaga:</strong> niektóre zestawy zawierają wiadomości tylko w języku
+angielskim, inne - wszystkie języki w formacie UTF-8 (w większości
+przypadków jest to wystarczające), jeszcze inne -wszystkie języki z pełnym
+zestawem kodowania znaków. Zakładamy, że wybrany będzie zestaw podobny do
+tego: <tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.
     </li>
-    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
-<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
-webserver's document root. If you don't have direct access to your document
-root, put the files in a directory on your local machine, and, after step 4,
-transfer the directory on your web server using, for example, ftp.</li>
+    <li>Rozpakować zestaw za pomocą programów <tt>untar</tt> lub <tt>unzip</tt>
+(upewnić się, że zostały rozpakowane również wszystkie podkatalogi) do
+katalogu głównego serwera zdalnego: <tt>tar -xzvf
+phpMyAdmin_x.x.x-all-languages.tar.gz</tt> Jeżeli brak bezpośredniego
+dostępu do tego katalogu - umieścić pliki w jakimś katalogu na maszynie
+lokalnej, a po wykonaniu kroku 4, przesłać katalog na serwer za pomocą, na
+przykład, klienta FTP.</li>
     <li>Upewnić się, że wszystkie skrypty mają odpowiedniego właściciela (jeśli PHP
 pracuje w trybie bezpiecznym, posiadanie skryptów, mających innego
 właściciela niż właściciel podstawowy, będzie powodować problemy). Zobacz
 sugestie w: <a href="#faq4_2"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 4.2</a> i <a href="#faq1_26"><abbr title="Frequently
 Asked Questions">FAQ</abbr> 1.26</a>.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<code>config.inc.php</code>, but now a wizard-style setup script is provided
-for those who prefer a graphical installation. Creating a
-<code>config.inc.php</code> is still a quick way to get started and needed
-for some advanced features.
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
-to get minimal configuration file) in the main (top-level) phpMyAdmin
-directory (the one that contains <code>index.php</code>).  phpMyAdmin first
-loads <code>libraries/config.default.php</code> and then overrides those
-values with anything found in <code>config.inc.php</code>. If the default
-value is okay for a particular setting, there is no need to include it in
-<code>config.inc.php</code>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+    <li>Teraz musisz skonfigurować swoją instalację. Istnieją dwie metody, które
+można użyć w tym celu: 1. metoda tradycyjna - ręczna edycja kopii pliku
+<tt>config.inc.php</tt>, (szybki sposób na rozpoczęcie instalacji w trybie
+tekstowym dla użytkowników zaawansowanych), 2. chociaż obecnie jest możliwa
+instalacja za pomocą kreatora graficznego dla preferujących graficzną
+instalację.
+        <ul><li>Aby ręcznie utworzyć plik <tt>config.inc.php</tt>, trzeba w dowolnym
+edytorze tekstowym utworzyć nowy plik o tej właśnie nazwie, a następnie
+umieścić w nim odpowiednie wpisy (dyrektywy konfiguracyjne). Można też
+skopiować do niego zawartość pliku <tt>config.sample.inc.php</tt>, który
+zawiera minimalny zestaw konfiguracyjny; w tym przypadku plik z nową
+zawartością należy skopiować do głównego katalogu phpMyAdmin (do katalogu, w
+którym znajduje się plik <tt>index.php</tt>). phpMyAdmin wczytuje najpierw
+plik <tt>libraries/config.default.php</tt>, a następnie nakłada/nadpisuje
+umieszczoną w nim treścią z pliku <tt>config.inc.php</tt>. O ile
+konfiguracja domyślna jest już dobra dla większości ustawień, nie ma
+potrzeby załączać jej do pliku <tt>config.inc.php</tt>, trzeba natomiast
+zastosować kilka dodatkowych dyrektyw; prosta konfiguracja może wyglądać
+następująco:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // użyć dowolnej wartości
@@ -277,10 +286,11 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
 </pre>
                 Pełne wyjaśnienie możliwych wartości konfiguracyjnych dostępne jest w sekcji
 <a href="#config">Konfiguracja</a> tego dokumentu.</li>
-            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
-href="setup/">Setup Script</a>. First you must manually create a folder
-<code>config</code> in the phpMyAdmin directory. This is a security
-measure. On a Linux/Unix system you can use the following commands:
+            <li id="setup_script">Zamiast ręcznej edycji pliku <tt>config.inc.php</tt>, można użyć <a
+href="setup/">Skryptu instalacyjnego</a>. W tym celu trzeba ręcznie utworzyć
+katalog <tt>config</tt> w katalogu głównym phpMyAdmin. Jest to podyktowane
+koniecznymi środkami bezpieczeństwa. W systemie Linux/Unix można użyć
+następujących poleceń:
 <pre>
 cd phpMyAdmin
 mkdir config                        # utworzyć katalog do zapisu
@@ -295,20 +305,21 @@ chmod o+w config/config.inc.php            # nadaj uprawnienia do zapisu
 <tt>config</tt> i sprawdzić, czy serwer WWW ma ustawiony dostęp do odczytu i
 zapisu. <a href="#faq1_26">Zobacz: FAQ 1.26</a>.<br /><br />
 
-                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
-that <strong>changes are not saved to disk until explicitly choose
-<code>Save</code></strong> from the <em>Configuration</em> area of the
-screen. Normally the script saves the new config.inc.php to the
-<code>config/</code> directory, but if the webserver does not have the
-proper permissions you may see the error "Cannot load or save
-configuration." Ensure that the <code> config/</code> directory exists and
-has the proper permissions - or use the <code>Download</code> link to save
-the config file locally and upload (via FTP or some similar means) to the
-proper location.<br /><br />
+                Następnie, otwórz <tt><a href="setup/">skrypt instalacyjny</a></tt> w
+przeglądarce. Tu uwaga, że <strong>zmiany nie zostaną zapisane na dysku
+jeśli nie wybierzemy przycisk <tt>Zachowaj</tt> w sekcji
+<em>Konfiguracja</em>. Normalnie skrypt zapisze nowy config.inc.php do
+katalogu <tt>config/</tt>, lecz gdy serwer webowy nie posiada
+wystarczających uprawnień, możesz ujrzeć błąd o treści: "Nie udało się
+załadować lub zapisać konfiguracji". Sprawdź wtedy czy katalog
+<tt>config/</tt> istnieje oraz czy ma właściwe uprawnienia zezwalające na
+zapis. Alternatywnie możesz skorzystać z opcji <tt>Pobierz</tt> aby zapisać
+plik konfiguracyjny na swój komputer i potem przesłać go na serwer do
+właściwej lokalizacji (np. przez FTP).<br /><br />
 
-                Once the file has been saved, it must be moved out of the <code>
-config/</code> directory and the permissions must be reset, again as a
-security measure:
+                Jak tylko nasz plik zostanie zapisany, musimy go usunąć z katalogu
+<tt>config/</tt>; trzeba także <strong>ponownie zresetować
+uprawnienia</strong>, jest to podyktowane względami bezpieczeństwa:
 <pre>
 mv config/config.inc.php .         # przenieść plik do bieżacego katalogu
 chmod o-rw config.inc.php          # usunać uprawnienia odczytu i zapisu dla innych
@@ -317,26 +328,30 @@ rm -rf config                      # usunąć zbędny katalog
                 Teraz plik jest gotowy do użytku. Możemy go przeglądać lub edytować w
 dowolnym edytorze tekstowym, jeśli chcemy ustawić opcje, których brak w
 skrypcie instalacyjnym.</li></ul></li>
-    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
-suggested that you protect the phpMyAdmin installation directory because
-using config does not require a user to enter a password to access the
-phpMyAdmin installation. Use of an alternate authentication method is
-recommended, for example with HTTP&#8211;AUTH in a <a
-href="#glossary"><em>.htaccess</em></a> file or switch to using
-<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
-multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
-Questions">FAQ</abbr> for additional information, especially <a
-href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
+    <li>W przypadku użycia dla zmiennej <tt>auth_type</tt> wartości
+&quot;config&quot; sugerujemy, aby zabezpieczyć katalog instalacyjny
+phpMyAdmin, gdyż użycie trybu <tt>'config'</tt> nie nakłada na użytkownika
+obowiązku wprowadzenia hasła podczas dostępu do instalacji
+phpMyAdmin. Zalecane jest użycie jednej z alternatywnych metod
+uwierzytelnienia, na przykład za pomocą HTTP&#8211;AUTH w pliku <a
+href="#glossary"><i>.htaccess</i></a> lub przełączenie się na używanie pliku
+<ttt>cookie</tt> lub uwierzytelnienie za pomocą http
+<tt>auth_type</tt>. Zobacz podsekcję <a href="#faqmultiuser">&#8211;tryb
+wielu użytkowników&#8211;</a> <abbr title="Frequently Asked
+Questions">FAQ</abbr>, a szczególnie: <a href="#faq4_4"> <abbr
+title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
     <li>Otworzyć <a href="index.php">główny katalog phpMyAdmin</a> w
 przeglądarce. Powinien wyświetlić się ekran powitalny phpMyAdmin i bazy
 danych, albo okno dialogowe logowania - jeśli używamy trybu uwierzytelnienia
 <abbr title="HyperText Transfer Protocol">HTTP</abbr> lub cookie.</li>
-    <li>You should deny access to the <code>./libraries</code> and
-<code>./setup/lib</code> subfolders in your webserver configuration. For
-Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
-in that folder, for other webservers, you should configure this yourself.
-Such configuration prevents from possible path exposure and cross side
-scripting vulnerabilities that might happen to be found in that code.</li>
+    <li>Powinno zabronić się dostępu do podkatalogów <tt>./libraries</tt> i
+<tt>./setup/lib</tt> w konfiguracji serwera WWW. Zmiany konfiguracji serwera
+Apache można dokonać w pliku <a href="#glossary"><em>.htaccess</em></a>
+znajdującym się w tychże katalogach. W przypadku innych typów serwerów
+konfigurację należy przeprowadzić we własnym zakresie. Zabezpieczenie
+dostępu do tych katalogów chroni konfigurację przed ewentualnym,
+niepożądanym ujawnieniem ścieżek dostępu do plików instalacyjnych i przed
+zagrożeniami ze strony szkodliwych skryptów.</li>
     <li>
         Jest to generalnie dobry pomysł celu ochrony publicznej instalacji
 phpMyAdmin przed dostępem robotów, gdyż zazwyczaj nie może zrobić nic
@@ -360,57 +375,63 @@ użytkowników. W tym ostatnim przypadku baza powinna być dostępna za pomocą
 konta użytkownika kontrolnego - po to, aby nikt inny, oprócz danego
 użytkownika, nie miał do niej dostępu.</p>
 
-<p> Please look at your <code>./examples/</code> directory, where you should
-find a file called <em>create_tables.sql</em>. (If you are using a Windows
-server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
-Asked Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Proszę zajrzeć do katalogu <code>./examples/</code>, gdzie powinien
+znajdować się plik o nazwie <em>create_tables.sql</em>. (użytkownicy
+serwerów Windows powinni zwrócić szczególną uwagę na <a
+href="#faq1_23"><abbr title="Najczęściej zadawane
+pytania">FAQ</abbr>1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
-create new tables by importing <em>./examples/create_tables.sql</em>.</p>
+<p> Jeśli już masz taką strukturę i zaktualizowałeś do MySQL 4.1.2 lub
+​​nowszej, należy użyć pliku
+<em>./examples/upgrade_tables_mysql_4_1_2+.sql</em>, a następnie utworzyć
+nowe tabele importując plik <em>./examples/create_tables.sql</em>.</p>
 
 <p> Zwykły użytkownik może używać phpMyAdmin do tworzenia własnych baz danych i
 tabel. Czasami do tych czynności mogą być potrzebne specjalne
 (administracyjne) uprawnienia; wspomniany wcześniej skrypt może wymagać
 odpowiedniego dostosowania, zależnie od nazwy bazy danych.</p>
 
-<p> After having imported the <em>./examples/create_tables.sql</em> file, you
-should specify the table names in your <em>./config.inc.php</em> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> Mając zaimportowany plik <em>./examples/create_tables.sql</em> trzeba
+określić nazwy tabel w twoim pliku <em>./config.inc.php</em> Dyrektywy,
+używane w tym celu, można znaleźć w sekcji <a
+href="#config">Konfiguracja</a>. W tabelach trzeba ustawić uprawnienia dla
+użytkownika kontrolnego (controluser) (zobacz sekcję <a
+href="#authentication_modes">Używanie trybów uwierzytelnienia</a> poniżej).</p>
 
 <h3 id="upgrading">Aktualizacja ze starszej wersji</h3>
 
-<p> Simply copy <em>./config.inc.php</em> from your previous installation into
-the newly unpacked one. Configuration files from old versions may require
-some tweaking as some options have been changed or removed; in particular,
-the definition of <code>$cfg['AttributeTypes']</code> has changed so you
-better remove it from your file and just use the default one.  For
-compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
-statement that you might find near the end of your configuration file.</p>
+<p> Zwyczajnie skopiuj plik <em>./config.inc.php</em> z poprzedniej instalacji
+do instalacji świeżo rozpakowanej. Pliki konfiguracyjne ze starszych wersji
+mogą wymagać dostosowania, ponieważ pewne opcje zostały zmienione lub
+usunięte; w szczególności, zmieniono definicję
+<code>$cfg['AttributeTypes']</code>, a więc lepiej usunąć ją z pliku
+konfiguracyjnego zastępując definicją domyślną. Aby konfiguracja była zgodna
+z PHP 6 należy też usunąć zdanie
+<code>set_magic_quotes_runtime(0);</code>. Zdanie to może znajdować się
+blisko końca pliku konfiguracyjnego.</p>
 
-<p> You should <strong>not</strong> copy
-<code>libraries/config.default.php</code> over <code>config.inc.php</code>
-because the default configuration file is version-specific.</p>
+<p> <strong>Nie powinno się</strong> kopiować pliku
+<code>libraries/config.default.php</code> na plik
+<code>config.inc.php</code> ponieważ plik domyślnej konfiguracji jest
+specyficzny dla wersji phpMyAdmin.</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the <abbr title="structured query language">SQL</abbr> script
-found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
+<p> Jeśli aktualizowałeś serwer MySQL z wersji 4.1.2 do wersji 5.x lub wyższej,
+i kiedy używasz przechowywanie konfiguracji phpMyAdmin, powinieneś uruchomić
+skrypt języka <abbr title="structured query language">SQL</abbr> znajdujący
+się w pliku <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
 
 <h3 id="authentication_modes">Używanie trybów uwierzytelniania</h3>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are recommended in a <strong>multi-user
-environment</strong> where you want to give users access to their own
-database and don't want them to play around with others.<br />
+<ul><li>Tryby uwierzytelniania <abbr title="HyperText Transfer Protocol">HTTP</abbr>
+i "cookie" są zalecane w <strong>środowisku wielu użytkowników</strong>,
+gdzie użytkownicy korzystają z przydzielonych dla nich baz danych i nie
+chcemy aby mieli dostęp do nieswoich baz danych.<br />
         Warto przy tym wiedzieć, że przeglądarka Internet Explorer wydaje się być
 bardzo "dziurawa" pod względem "ciasteczek", przynajmniej do wersji 6.0.<br />
-        Even in a <strong>single-user environment</strong>, you might prefer to use
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
-your user/password pair are not in clear in the configuration file.
+        Nawet w <strong>środowisku jednego użytkownika</strong> zastosowanie trybu
+<abbr title="HyperText Transfer Protocol">HTTP</abbr> lub "cookie" wydaje
+się być podejściem rozsądnym, gdyż w ten sposób nazwa użytkownika /hasło nie
+są przechowywane w sposób jawny w pliku konfiguracyjnym.
         </li>
 
     <li>Tryby uwierzytelnienia <abbr title="HyperText Transfer Protocol">HTTP</abbr>
@@ -423,27 +444,29 @@ protokołu HTTPS uwaga ta nie ma zastosowania.<br />
         W trybie 'cookie' hasło, zakodowane za pomocą algorytmu blowfish, jest
 przechowywane w ciasteczku tymczasowym.</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<code>--skip-show-database</code>.<br /><br />
+    <li id="pmausr">Uwaga: ta sekcja ma zastosowanie tylko wtedy, gdy serwer MySQL jest
+uruchamiany z opcją <code>--skip-show-database</code>.<br /><br />
 
-        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
-modes, phpMyAdmin needs a controluser that has <strong>only</strong> the
-<code>SELECT</code> privilege on the <em>`mysql`.`user` (all columns except
-`Password`)</em>, <em>`mysql`.`db` (all columns)</em>, <em>`mysql`.`host`
-(all columns)</em> and <em>`mysql`.`tables_priv` (all columns except
-`Grantor` and `Timestamp`)</em> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
-in the <code>config.inc.php</code> file under the <code><a
-href="#cfg_Servers_controluser" class="configrule">
-$cfg['Servers'][$i]['controluser']</a></code> and <code><a
+        Dla trybów <abbr title="HyperText Transfer Protocol">'HTTP'</abbr> i
+'cookie', phpMyAdmin potrzebuje użytkownika kontrolnego (controluser), który
+ma tylko uprawnienie do rozkazu <b><code>SELECT</code></b> dla tabel:
+<em>`mysql.user` (wszystkie kolumny z wyjątkiem `Password`)</em>,
+<em>`mysql.db` (wszystkie kolumny)</em>, <em>`mysql.host` (wszystkie
+kolumny)</em> i <em>`mysql.tables_priv` (wszystkie kolumny z wyjątkiem tabel
+`Grantor` i `Timestamp`)</em>.<br /> Należy określić szczegóły dla <a href="#controluser">użytkownika kontrolnego
+(controluser)</a> w pliku <code>config.inc.php</code>, w ustawieniach
+<code><a href="#cfg_Servers_controluser" class="configrule">
+$cfg['Servers'][$i]['controluser']</a></code> i <code><a
 href="#cfg_Servers_controlpass" class="configrule">
-$cfg['Servers'][$i]['controlpass']</a></code> settings.<br />
-        The following example assumes you want to use <code>pma</code> as the
-controluser and <code>pmapass</code> as the controlpass, but <strong>this is
-only an example: use something else in your file!</strong> Input these
-statements from the phpMyAdmin <abbr title="structured query language">SQL
-</abbr> Query window or mysql command&#8211;line client.<br />
-        Of course you have to replace <code>localhost</code> with the webserver's
-host if it's not the same as the MySQL server's one.
+$cfg['Servers'][$i]['controlpass']</a></code>.<br />
+        Następujący przykład zakłada, że chcesz użyć <code>pma</code> jako
+użytkownika kontrolnego (controluser) i <code>pmapass</code> jako jego
+hasło, <strong>ale to wyłącznie jako przykład: zaleca się użycie innej
+nazwy/hasła w tym pliku!</strong>. Instrukcje te można wprowadzić z okna
+<abbr title="structured query language">SQL </abbr> Zapytania w phpMyAdmin
+lub z linii poleceń klienta mysql.<br />
+        Jeśli nazwa serwera MySQL jest inna, trzeba ją zamienić z
+<code>localhost</code> na odpowiednią sobie nazwę hosta serwera WWW.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';↵
@@ -470,12 +493,12 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 phpMyAdmin</a>).
     <br /></li>
 
-    <li>Then each of the <em>true</em> users should be granted a set of privileges
-on a set of particular databases. Normally you shouldn't give global
-privileges to an ordinary user, unless you understand the impact of those
-privileges (for example, you are creating a superuser).<br />
-        For example, to grant the user <em>real_user</em> with all privileges on the
-database <em>user_base</em>:<br />
+    <li>Każdy z <em>faktycznych</em> użytkowników powinien uzyskać uprawnienia do
+poszczególnych przydzielonych mu baz danych. Zwykle nie powinno nadawać się
+uprawnień globalnych zwykłemu użytkownikowi, chyba że administrator bazy
+danych działa celowo (np. tworzy superużytkownika).<br />
+        Na przykład, aby nadać wszystkie uprawnienia użytkownikowi
+<em>prawdziwy_uzytkownik</em> do bazy danych <em>baza_uzytkownika</em>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
@@ -503,10 +526,10 @@ który używa <abbr title="Common Gateway Interface">CGI</abbr> PHP, zobacz:
 1.32</a>, do używania z serwerem Apache <abbr title="Common Gateway
 Interface">CGI</abbr>, zobacz: <a href="#faq1_35"><abbr title="Frequently
 Asked Questions">FAQ</abbr> 1.35</a>.</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <a
-href="#glossary"><em>.htaccess</em></a> mechanism along with '<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
+    <li>Zobacz także: <a href="#faq4_4"> <abbr title="Frequently Asked
+Questions">FAQ</abbr> 4.4</a> na temat nieużywania mechanizmu
+<em>.htaccess</em> razem z trybem uwierzytelniania <abbr title="HyperText
+Transfer Protocol">'HTTP'</abbr>.</li>
 </ul>
 
 <h4>tryb uwierzytelniania 'cookie'</h4>
@@ -521,9 +544,9 @@ ponownie mając tę samą nazwę użytkownika.</li>
     <li>Jeśli użytkownik chce zalogować się do dowolnego serwera, zobacz dyrektywę
 <a href="#AllowArbitraryServer" class="configrule">
 $cfg['AllowArbitraryServer']</a>.</li>
-    <li>As mentioned in the <a href="#require">requirements</a> section, having the
-<code>mcrypt</code> extension will speed up access considerably, but is not
-required.</li>
+    <li>Jak już wspomniano w sekcji <a href="#require">wymagania</a>, posiadanie
+rozszerzenia <code>mcrypt</code> znacznie przyspiesza dostęp do serwera
+(choć nie jest to bezwzględnie wymagane).</li>
 </ul>
 
 <h4>tryb uwierzytelniania 'signon'</h4>
@@ -551,13 +574,18 @@ jest wpis, który wyjaśnia, jak zabezpieczyć plik konfiguracyjny.</li>
 hosta w oparciu o dyrektywy konfiguracyjne
 <tt>$cfg['Servers'][$i]['AllowDeny']['order']</tt> i
 <tt>$cfg['Servers'][$i]['AllowDeny']['rules']</tt>.</li>
-    <li>Unlike cookie and http, does not require a user to log in when first loading
-the phpMyAdmin site. This is by design but could allow any user to access
-your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><em>.htaccess</em></a> file with the HTTP-AUTH directive or
-disallowing incoming HTTP requests at one&#8217;s router or firewall will
-suffice (both of which are beyond the scope of this manual but easily
-searchable with Google).</li>
+    <li>Tryb uwierzytelnienia 'config', w odróżnieniu od trybów 'http' i 'cookie',
+nie wymaga od użytkownika logowania się podczas pierwszego wczytywania
+strony domowej phpMyAdmin. Jest to zgodne z ogólnymi zasadami projektu, lecz
+mniej bezpieczne, ponieważ umożliwia dowolnemu użytkownikowi dostęp do
+plików instalacyjnych i do ustawień phpMyAdmin. Zastosowanie odpowiednich
+ograniczeń dostępu, na przykład użycie dyrektywy HTTP-AUTH, umieszczonej w
+pliku <a href="#glossary">.htaccess</a> lub zablokowanie żądań HTTP,
+przychodzących do routera lub firewalla, może być dobrym
+rozwiązaniem. Bardziej szczegółowy opis tych zagadnień wykracza poza ramy
+niniejszej dokumentacji, dlatego też osoby nimi zainteresowane odsyłamy do
+innych źródeł, na przykład do wiarygodnych tekstów informatycznych
+dostępnych w sieci WWW.</li>
 </ul>
 <h4 id="swekey">Uwierzytelnianie Swekey</h4>
 <p>
@@ -568,18 +596,20 @@ Aktywacja tego trybu wymaga od użytkownika podłączenia klucza USB Swekey do
 maszyny lokalnej - przed wejściem na stronę logowania (obecnie, tryb
 'Swekey' jest obsługiwany wyłącznie przez tryb 'cookie'). Tryb ten jest
 domyślnie nieaktywny.<br /><br />
-To enable it, add the following line to <code>config.inc.php</code>:
+Aby go włączyć, trzeba dodać następującą linię do pliku
+<code>config.inc.php</code>:
 </p>
 <pre>
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';↵
 </pre>
 <p>
-You then have to create the <code>swekey.conf</code> file that will
-associate each user with their Swekey Id. It is important to place this file
-outside of your web server's document root (in the example, it is located in
-<code>/etc</code>). A self documented sample file is provided in the
-<code>examples</code> directory. Feel free to use it with your own users'
-information.<br /><br />
+Następnie, należy utworzyć plik <code>swekey.conf</code>, który skojarzy
+każdego użytkownika z jego Swekey Id. Ważne jest, aby plik ten umieścić
+<b>na zewnątrz</b> głównego katalogu serwera, w którym umieszczane są pliki
+stron WWW, na przykład w katalogu <code>/etc</code>. W katalogu
+<code>examples</code> znajduje się przykładowy plik, zawierający dodatkową
+dokumentację. Można go swobodnie wykorzystywać, umieszczając w nim dowolne,
+własne informacje.<br /><br />
 Użytkowników, którzy chcieliby kupić Swekey, zapraszamy na stronę <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>.
 ponieważ rozwój phpMyAdmin jest możliwy, między innymi, ze sprzedaży właśnie
@@ -589,24 +619,27 @@ tych kluczy.
 <!-- CONFIGURATION -->
 <h2 id="config">Konfiguracja</h2>
 
-<p> <span class="important">Warning for <abbr title="Apple Macintosh">Mac</abbr>
-users:</span> PHP does not seem to like <abbr title="Apple
-Macintosh">Mac</abbr> end of lines character
-(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
-to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
-text editor before saving a script you have modified.</p>
+<p> <span class="important">Ostrzeżenie dla użytkowników komputerów <abbr
+title="Apple Macintosh">Mac</abbr>:</span> PHP wydaje się &quot;nie
+lubić&quot; znaków końca linii w stylu <abbr title="Apple
+Macintosh">Mac</abbr> (&quot;<code>\r</code>&quot;). Należy się więc
+upewnić, przed zapisaniem skryptu w edytorze tekstu, czy została wybrana
+opcja dopuszczająca stosowanie znaków końca linii w stylu *nix
+(&quot;<code>\n</code>&quot;).</p>
 
-<p> <span class="important">Configuration note:</span> Almost all configurable
-data is placed in <code>config.inc.php</code>. If this file does not exist,
-please refer to the <a href="#setup">Quick install</a> section to create
-one. This file only needs to contain the parameters you want to change from
-their corresponding default value in
+<p> <span class="important">Uwaga konfiguracyjna:</span> Prawie wszystkie dane
+konfiguracyjne umieszczone są w pliku <code>config.inc.php</code>. Jeśli ten
+plik nie istnieje, można go utworzyć według wskazówek, zawartych w sekcji <a
+href="#setup">Szybka instalacja</a>. W pliku tym można umieścić własne
+parametry konfiguracyjne, różne od tych, które znajdują się w pliku
 <code>libraries/config.default.php</code>.</p>
 
-<p> The parameters which relate to design (like colors) are placed in
-<code>themes/themename/layout.inc.php</code>. You might also want to create
-<em>config.footer.inc.php</em> and <em>config.header.inc.php</em> files to
-add your site specific code to be included on start and end of each page.</p>
+<p> Parametry, odnoszące się do wyglądu strony, na przykład, do użytego motywu
+kolorystycznego, znajdują się w pliku
+<code>themes/nazwa_motywu/layout.inc.php</code>. Strukturę nagłówka oraz
+stopki można zmienić za pomocą własnego kodu, który trzeba umieścić w
+utworzonych wcześniej plikach, odpowiednio w:
+<code>config.header.inc.php</code> oraz <code>config.footer.inc.php</code>.</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">Ciąg znaków $cfg['PmaAbsoluteUri']</dt>
     <dd>Sets here the complete <abbr title="Uniform Resource Locator">URL</abbr>
