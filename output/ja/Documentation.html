@@ -610,9 +610,8 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr>／クッキー
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</code></dt>
     <dd>そのサーバで利用する認証方法が入ります (config／cookie／<abbr
 title="ハイパーテキスト転送プロトコル">HTTP</abbr>／signon)。
-        <ul><li>'config' authentication (<code>$auth_type&nbsp;=&nbsp;'config'</code>)  is
-the plain old way: username and password are stored in
-<em>config.inc.php</em>.</li>
+        <ul><li>「config」認証 (<code>$auth_type&nbsp;=&nbsp;'config'</code>)
+は従来からの方法です。ユーザ名とパスワードは <em>config.inc.php</em> に保存されます。</li>
             <li>「クッキー」認証モード (<code>$auth_type&nbsp;=&nbsp;'cookie'</code>) はバージョン 2.2.3
 で導入されました。クッキーを利用することで、あらゆる有効な MySQL
 ユーザでログインできます。ユーザ名とパスワードは、セッションの間はクッキーに保管されます。セッションが終わるとパスワードは破棄されます。また、<code><a
@@ -1436,12 +1435,12 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
     <dd>テーブルの内容を表示しているときに <code>BLOB</code> カラムや <code>BINARY</code>
 カラムを保護して修正できないようにするかどうかを定義します。有効な値は次の通りです。
-        <ul><li><code>FALSE</code> すべてのカラムの修正を許可します。</li>
-            <li><code>blob</code> <code>BLOB</code> 以外のすべてのカラムの修正を許可します。</li>
-            <li><code>'noblob'</code> to disallow editing of all columns except
-<code>BLOBS</code> (the opposite of <code>'blob'</code>);</li>
-            <li><code>all</code> すべての <code>BINARY</code> カラムと <code>BLOB</code>
-カラムの修正を不許可にします。</li>
+        <ul><li><code>FALSE</code> - すべてのカラムの編集を許可します。</li>
+            <li><code>'blob'</code> - <code>BLOB</code> 以外のすべてのカラムの編集を許可します。</li>
+            <li><code>'noblob'</code> - <code>BLOB</code> 以外のすべてのカラムの編集を禁止します
+(<code>'blob'</code> の 逆)。</li>
+            <li><code>'all'</code> - すべての <code>BINARY</code> カラムと <code>BLOB</code>
+カラムの編集を禁止します。</li>
         </ul>
     </dd>
 
@@ -2942,18 +2941,17 @@ href="http://www.hardened-php.net/hphp/troubleshooting.html">リクエスト制�
 <h4 id="faq2_9">
     <a href="#faq2_9">2.9 アップロード進行状況バーを見えるようにしたいです。</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-the <a href="http://pecl.php.net/package/APC">APC</a> extension, the <a
-href="http://pecl.php.net/package/uploadprogress">uploadprogress</a> one, or
-you must be running PHP 5.4.0 or higher.  Moreover, the JSON extension has
-to be enabled in your PHP.</p>
+<p> アップロード中に進行状況バーを表示できるようにするには、ご使用のサーバが、<a
+href="http://pecl.php.net/package/APC">APC</a> 拡張か <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a>
+拡張を対応している、もしくは PHP 5.4.0 以降である必要があります。それに加えて、PHP において JSON
+拡張が有効になっていなければなりません。</p>
 
     <p> APC を使用する場合は、php.ini で <code>apc.rfc1867</code> を <code>on</code>
 に設定する必要があります。</p>
 
-    <p> If using PHP 5.4.0 or higher, you must set
-<code>session.upload_progress.enabled</code> to <code>1</code> in your
-php.ini.</p>
+    <p> PHP 5.4.0 以降を使用している場合は、php.ini において
+<code>session.upload_progress.enabled</code> に <code>1</code> を設定する必要があります。</p>
 
 <h3 id="faqlimitations">既知の制限</h3>
 
