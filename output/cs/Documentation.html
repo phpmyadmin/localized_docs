@@ -366,9 +366,7 @@ authentication modes</a> below).</p>
 
 <p> Simply copy <em>./config.inc.php</em> from your previous installation into
 the newly unpacked one. Configuration files from old versions may require
-some tweaking as some options have been changed or removed; in particular,
-the definition of <code>$cfg['AttributeTypes']</code> has changed so you
-better remove it from your file and just use the default one.  For
+some tweaking as some options have been changed or removed.  For
 compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
 statement that you might find near the end of your configuration file.</p>
 
@@ -1551,11 +1549,6 @@ from other server, when you are using more of them.</dd>
     <dd>Define whether phpMyAdmin will continue executing a multi-query statement if
 one of the queries fails. Default is to abort execution.</dd>
 
-    <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] boolean</dt>
-    <dd>Define whether phpMyAdmin will output the results of each query of a
-multi-query statement embedded into the <abbr title="structured query
-language">SQL</abbr> output as inline comments. Defaults to
-<code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 boolean</dt>
@@ -1645,7 +1638,7 @@ linking to <code>phpmyadmin.net</code>.</dd>
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] číslo</dt>
     <dd>Defines the minimum number of tables to display a JavaScript filter box
 above the list of tables in the left frame.  Defaults to <code>30</code>. To
-disable the filter completely some high number can he used (e.g. 9999)</dd>
+disable the filter completely some high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
     <dd>Defines whether or not to display a server choice at the top of the left
@@ -2353,10 +2346,6 @@ phpMyAdmin.</dd>
 href="#faq6_27">format string expansion</a>.
     </dd>
 
-    <dt id="cfg_ReplaceHelpImg">$cfg['ReplaceHelpImg'] boolean</dt>
-    <dd>Shows a help button instead of the &quot;Documentation&quot; message.
-    </dd>
-
     <dt id="cfg_ThemePath">$cfg['ThemePath'] text</dt>
     <dd>If theme manager is active, use this as the path of the subdirectory
 containing all the themes.</dd>
@@ -2470,33 +2459,11 @@ the anonymous login.</dd>
         Enable logging queries and execution times to be displayed in the bottom of
 main page (right frame).</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] pole</dt>
-    <dd>All possible types of a MySQL column. In most cases you don't need to edit
-this.</dd>
-
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] pole</dt>
-    <dd>Possible attributes for columns. In most cases you don't need to edit this.</dd>
-
-    <dt id="cfg_Functions">$cfg['Functions'] pole</dt>
-    <dd>A list of functions MySQL supports. In most cases you don't need to edit
-this.</dd>
-
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] pole</dt>
-    <dd>Mapping of column types to meta types used for preferring displayed
-functions. In most cases you don't need to edit this.</dd>
-
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] pole</dt>
-    <dd>Functions preferred for column meta types as defined in <a
-href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>. In most cases you don't
-need to edit this.</dd>
-
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] pole</dt>
     <dd>Functions selected by default when inserting/changing row, Functions are
-defined for meta types from <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> and for
-<code>first_timestamp</code>, which is used for first timestamp column in
-table.</dd>
+defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
+FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
+timestamp column in table.</dd>
 
 </dl>
 

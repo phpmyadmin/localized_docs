@@ -174,7 +174,7 @@ bakın)</a>
 
 </ul>
 
-<h4>Kullanıcıların söyledikleri:</h4>
+<h4>Kullanıcılar hakkında tek söz:</h4>
 <p> İş phpMyAdmin'e gelince birçok insan kullanıcı yönetimi kavramını anlamakta
 zorluk çeker. Kullanıcı phpMyAdmin'e oturum açtığında, kullanıcı adı ve
 parola doğrudan MySQL'e geçer. phpMyAdmin'in kendi başına hesap yönetimi
@@ -379,14 +379,11 @@ kipleri</a> bölümüne bakın).</p>
 
 <h3 id="upgrading">Eski sürümden yükseltme</h3>
 
-<p> Yeni paketi açılmış olanın içine önceki kurulumunuzdan
-<em>./config.inc.php</em> dosyasını basitçe kopyalayın. Eski sürümden alınan
-yapılandırma dosyası, bazı değişmiş veya kaldırılmış seçeneklerinden dolayı
-bazı ince ayarlar gerektirebilir; özellikle
-<code>$cfg['AttributeTypes']</code> tanımı değişmiştir bu yüzden en iyisi
-dosyanızdan bunu kaldırmak ve sadece varsayılanı kullanmaktır. PHP 6 ile
-uyumluluk için yapılandırma dosyanızın en sonunda bulabileceğiniz
-<code>set_magic_quotes_runtime(0);</code> ifadesini kaldırın.</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
 <p> <code>Libraries/config.default.php</code> dosyasını
 <code>config.inc.php</code> üzerine <strong>kopyalamamalısınız</strong>
@@ -1609,11 +1606,6 @@ bunlardan çok fazla kullandığınzda.</dd>
     <dd>Eğer sorgulardan biri başarısız olursa, phpMyAdmin'in çoklu sorgu ifadesini
 çalıştırmaya devam edecekse tanımlar. Varsayılan çalıştırmayı durdurmadır.</dd>
 
-    <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] boolean</dt>
-    <dd>phpMyAdminin, <abbr title="structured query language">SQL</abbr> çıktısı
-içinde satır içi yorum olarak gömülü çoklu sorgu ifadesinin her bir
-sorgusunun sonuçlarını çıkartacaksa tanımlar. Varsayılanları
-<code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 boolean</dt>
@@ -1703,10 +1695,9 @@ pencerede (<code>new</code>) açmak gerekirse. Not: eğer
 <code>phpmyadmin.net</code>'e bağlıyorsanız, <code>new</code> kullanın.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] tam sayı</dt>
-    <dd>Sol çerçeve içinde tablo listesinin altında JavaScript süzgeç kutusunu
-görüntülemek için en az tablo sayısını tanımlar. Varsayılanı
-<code>30</code>. Süzgeçi tamamen görüntülemek için bazı yüksek sayılar
-kullanılabilir (örn. 9999)</dd>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
+disable the filter completely some high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
     <dd>Sol çerçevenin en üstünde sunucu seçiminin görüntülenip görüntülenmeyeceğini
@@ -2447,10 +2438,6 @@ içeren bir sekmeyi etkinleştirir.</dd>
 href="#faq6_27">Biçim dizgisi genişletmesi</a> kullanabilirsiniz.
     </dd>
 
-    <dt id="cfg_ReplaceHelpImg">$cfg['ReplaceHelpImg'] boolean</dt>
-    <dd>&quot;Belgeleme&quot; mesajı yerine yardım düğmesi gösterir.
-    </dd>
-
     <dt id="cfg_ThemePath">$cfg['ThemePath'] dizgi</dt>
     <dd>Eğer tema yöneticisi etkinse, bunu tüm temaları içeren altdizin yolu olarak
 kullanır.</dd>
@@ -2570,34 +2557,11 @@ isimsiz oturum açmak yerine bu kullanılacaktır.</dd>
         Sorguları ve çalıştırma zamanlarını ana sayfanın en altında (sağ çerçeve)
 görüntülemek için günlükleme etkin.</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] dizilim</dt>
-    <dd>Tüm olası MySQL sütunu türleri. Çoğu durumda bunu düzenlemenize gerek
-yoktur.</dd>
-
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] dizilim</dt>
-    <dd>Sütunlar için olası öznitelikler. Çoğu durumda bunu düzenlemenize gerek
-yoktur.</dd>
-
-    <dt id="cfg_Functions">$cfg['Functions'] dizilim</dt>
-    <dd>MySQL'in desteklediği işlevler listesi. Çoğu durumda bunu düzenlemenize
-gerek yoktur.</dd>
-
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] dizilim</dt>
-    <dd>Tercih edilen görüntüleme işlevlerini kullanmak için meta türlerini sütun
-türlerine eşlenmesi. Çoğu durumda bunu düzenlemenize gerek yoktur.</dd>
-
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] dizilim</dt>
-    <dd><a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> içinde tanımlandığı gibi
-sütun meta türleri için tercik edilen işlevler. Çoğu durumda bunu
-düzenlemenize gerek yoktur.</dd>
-
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] dizilim</dt>
-    <dd>Satır eklendiğinde/değiştirildiğinde varsayılan olarak seçili
-işlevler. Tabloda ilk zaman damgası sütunu için kullanılan
-<code>first_timestamp</code> için ve <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>'tan meta türleri için
-tanımlanan işlevler.</dd>
+    <dd>Functions selected by default when inserting/changing row, Functions are
+defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
+FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
+timestamp column in table.</dd>
 
 </dl>
 

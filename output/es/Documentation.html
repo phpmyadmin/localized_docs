@@ -381,15 +381,11 @@ modos de autenticación</a> más abajo).</p>
 
 <h3 id="upgrading">Actualizando desde una versión más antigua</h3>
 
-<p> Copie directamente el archivo <em>./config.inc.php</em> de su antigua
-instalación en la nueva recién descomprimida. Los archivos de configuración
-antiguos pueden necesitar algunas modificaciones ya que algunas opciones
-pueden haber sido cambiadas o eliminadas. Más específicamente, la definición
-de <code>$cfg['AttributeTypes']</code> ha cambiado, así que es más sencillo
-eliminarla de su archivo y emplear directamente los valores
-predeterminados. Por motivos de compatibilidad con PHP 6, elimime todas las
-sentencias <code>set_magic_quotes_runtime(0);</code> que pueda encontrar al
-final de su archivo de configuración.</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
 <p> <strong>No</strong> copie <code>libraries/config.default.php</code>
 sobreescribiendo <code>config.inc.php</coode>, ya que la configuración
@@ -1630,11 +1626,6 @@ datos" está activada o no.</dd>
 consultas si una de las consultas falla. El valor predeterminado es abortar
 la ejecución.</dd>
 
-    <dt id="cfg_VerboseMultiSubmit">booleano $cfg['VerboseMultiSubmit']</dt>
-    <dd>Define si phpMyAdmin mostrará los resultados de cada consulta en una
-sentencia con múltiples consultas embebido en la salida <abbr
-title="structured query language">SQL</abbr> como comentarios entre
-líneas. El valor predeterminado es <code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         booleano <span
 id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span></dt>
@@ -1727,10 +1718,9 @@ en una neva ventana (<code>new</code>). Nota: usar <code>new</code> si se
 está enlazando a <code>phpmyadmin.net</code>.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">entero $cfg['LeftDisplayTableFilterMinimum']</dt>
-    <dd>Define el mínimo nombre de tablas a mostrar en la caja de filtro JavaScript
-sobre la lista de tablas en el marco izquierdo. El valor predeterminador es
-<code>30</code>. Para desactivar este filtro completamente se puede utilizar
-un número alto (por ejemplo: 9999)</dd>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
+disable the filter completely some high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">booleano $cfg['LeftDisplayServers']</dt>
     <dd>Define si se muestra una elección de servidor en la parte superior del marco
@@ -2497,10 +2487,6 @@ desarrolladores de phpMyAdmin.</dd>
 href="#faq6_27">expansión de formato de cadenas</a>.
     </dd>
 
-    <dt id="cfg_ReplaceHelpImg">booleano $cfg['ReplaceHelpImg']</dt>
-    <dd>Muestra un botón de ayuda en lugar del mensaje &quot;Documentación&quot;.
-    </dd>
-
     <dt id="cfg_ThemePath">cadena $cfg['ThemePath']</dt>
     <dd>Si está activo el gestor de temas, utilizarlo como ruta al subdirectorio que
 contiene todos los temas.</dd>
@@ -2626,36 +2612,11 @@ de la sesión anónima.</dd>
         Activar el registro de consultas y tiempos de ejecución a mostrarse al pie
 de la página principal (marco derecho).</dd>
 
-    <dt id="cfg_ColumnTypes">array $cfg['ColumnTypes']</dt>
-    <dd>Todos los posibles tipos de una columna MySQL. En la mayoría de los casos no
-es necesario modificar esto.</dd>
-
-    <dt id="cfg_AttributeTypes">array $cfg['AttributeTypes']</dt>
-    <dd>Posibles atributos para las columnas. En la mayoría de los casos no es
-necesario modificar esto.</dd>
-
-    <dt id="cfg_Functions">array $cfg['Functions']</dt>
-    <dd>Una lista de las funciones soportadas por MySQL. En la mayoría de los casos
-no es necesario modificar esto.</dd>
-
-    <dt id="cfg_RestrictColumnTypes">array $cfg['RestrictColumnTypes']</dt>
-    <dd>El mapeo de los tipos de columnas a los meta-tipos utilizados para las
-funciones de visualización preferidas. En la mayoría de los casos no es
-necesario modificar esto.</dd>
-
-    <dt id="cfg_RestrictFunctions">array $cfg['RestrictFunctions']</dt>
-    <dd>Funciones preferidas para los meta-tipos de columnas según están definidos
-en <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>. En la mayoría de los
-casos no es necesario modificar esto.</dd>
-
     <dt id="cfg_DefaultFunctions">array $cfg['DefaultFunctions']</dt>
-    <dd>Las funciones seleccionadas predeterminadamente al insertar/editar una
-fila. Las funciones están definidas para los meta-tipos en <a
-href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> y para
-<code>first_timestamp</code>, utilizada para la primer columna de una tabla
-conteniendo marcas temporales.</dd>
+    <dd>Functions selected by default when inserting/changing row, Functions are
+defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
+FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
+timestamp column in table.</dd>
 
 </dl>
 

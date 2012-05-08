@@ -8,9 +8,9 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 
 このファイルは po4a を使用して生成されていますので、編集してはいけません！
 
-po ファイルを編集することで、翻訳を変更することができます。
+翻訳を変更するには po ファイルを編集してください。
 
-もしくは、https://l10n.cihar.com/projects/pmadoc/ にてオンライン編集を行うこともできます。
+また、https://l10n.cihar.com/projects/pmadoc/ にてオンライン上で編集することもできます。
 
 -->
 <head>
@@ -310,10 +310,11 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
-<p> それまで使っていた <em>./config.inc.php</em>
-を新しいインストール先にコピーしていただくだけで結構です。古いバージョンから持ってきた設定ファイルは、オプションをいくつか変更または削除するなど若干の調整が必要な場合があります。特に、<code>$cfg['AttributeTypes']</code>
-の定義は、設定ファイルから削除して、デフォルト値が使われるように変更するほうがいいでしょう。PHP 6
-との互換性のために、set_magic_quotes_runtime(0); 文を削除してください (たぶん、設定ファイルの終わりの方にあります)。</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
 <p> デフォルト設定ファイルはバージョンに依存していますので、<code>libraries/config.default.php</code> を
 <code>config.inc.php</code> へコピー<strong>しない</strong>でください。</p>
@@ -1289,9 +1290,6 @@ href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifet
     <dt id="cfg_IgnoreMultiSubmitErrors">$cfg['IgnoreMultiSubmitErrors'] 論理型</dt>
     <dd>複数のクエリを含む文のクエリのひとつが失敗したときに処理を続けるかどうかを定義します。デフォルトでは処理を中止します。</dd>
 
-    <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] 論理型</dt>
-    <dd>マルチクエリを含む文のそれぞれのクエリの結果を <abbr title="データベース用の問い合わせ言語">SQL</abbr>
-出力のなかにインラインコメントとして埋め込むかどうかを定義します。デフォルトは <code>TRUE</code> です。</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span> 論理型</dt>
     <dd>有効にすると、クッキー認証を利用して任意のサーバにログインでき、同期ダイアログで選択したサーバを指定することができます。
@@ -1361,8 +1359,9 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
 にリンクしている場合は、<code>new</code> が使われます。</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
-    <dd>左フレーム内のテーブルリストの上部に、JavaScript よるフィルタボックスが表示されるテーブルの最小数を定義します。デフォルトは
-<code>30</code> です。フィルタを無効にするには、予想されるテーブル使用数を上回るようにします (例：9999)。</dd>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
+disable the filter completely some high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] 論理型</dt>
     <dd>サーバの選択肢を左フレームの最上部に表示するかどうかを定義します。デフォルトは FALSE です。</dd>
@@ -1943,10 +1942,6 @@ title="データベース用の問い合わせ言語">SQL</abbr> の修正」を
     <dd>ウィンドウのタイトルバーを指定することができます。<a href="#faq6_27">書式の拡張</a>が使用できます。
     </dd>
 
-    <dt id="cfg_ReplaceHelpImg">$cfg['ReplaceHelpImg'] 論理型</dt>
-    <dd>「ドキュメント」メッセージの代わりにヘルプボタンを表示します。
-    </dd>
-
     <dt id="cfg_ThemePath">$cfg['ThemePath'] 文字列</dt>
     <dd>テーママネージャが有効な場合、すべてのテーマが収録されているサブディレクトリのパスとして利用します。</dd>
 
@@ -2046,28 +2041,11 @@ title="データベース用の問い合わせ言語">SQL</abbr>
     <dd><strong>開発者限定！</strong><br />
         メインページ（右フレーム）の下部に、クエリと実行時間の表示を有効にします。</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] 配列</dt>
-    <dd>MySQL のカラム種別としてとりうるすべての値が入ります。ほとんどの場合、この値を修正する必要はありません。</dd>
-
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] 配列</dt>
-    <dd>カラム属性としてとりうる値が入ります。ほとんどの場合、この値を修正する必要はありません。</dd>
-
-    <dt id="cfg_Functions">$cfg['Functions'] 配列</dt>
-    <dd>MySQL がサポートする関数のリストです。ほとんどの場合、この値を修正する必要はありません。</dd>
-
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] 配列</dt>
-    <dd>カラム種別と、カラムの内容の表示方法を変えるための関数を結びつけるメタ種別との対応表です。ほとんどの場合、この値を修正する必要はありません。</dd>
-
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] 配列</dt>
-    <dd><a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>
-で定義されたカラムのメタ種別が利用する関数一覧です。ほとんどの場合、この値を修正する必要はありません。</dd>
-
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] 配列</dt>
-    <dd>行を挿入／修正するときにデフォルトで選択される関数です。この関数は <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>
-のメタ種別ごとに定義します。<code>first_timestamp</code> については、テーブル内の最初の timestamp
-カラムに適用されます。</dd>
+    <dd>Functions selected by default when inserting/changing row, Functions are
+defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
+FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
+timestamp column in table.</dd>
 
 </dl>
 

@@ -132,14 +132,15 @@ structur&eacute;e)">SQL</abbr>, m&ecirc;me les requ&ecirc;tes par lot;</li>
     <li>cr&eacute;er<a href="#footnote_1"><sup>1</sup></a> et lire des fichiers
 d'exportation (dumps) de tables;
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, and L<sup>A</sup>T<sub><em class="big">E</em></sub>X
-formats
+    <li>exporter<a href="#footnote_1"><sup>1</sup></a> des données dans divers
+formats&nbsp;: <abbr title="Comma Separated Values (valeurs séparées par des
+virgules)">CSV</abbr>, <abbr title="Extensible Markup Language (langage de
+balises extensible)">XML</abbr>, <abbr title="Portable Document Format
+(format de document portable)">PDF</abbr>, <abbr title="International
+Standards Organisation">ISO</abbr>/<abbr title="International
+Electrotechnical Commission">IEC</abbr> 26300 - texte et feuille de calcul
+OpenDocument, <abbr title="Microsoft Word 2000">Word</abbr> et
+L<sup>A</sup>T<sub><em class="big">E</em></sub>X&nbsp;;
         </li>
     <li>importer des données et des structures MySQL à partir de feuilles de tableur
 OpenDocument, ou encore des fichiers <abbr title="Extensible Markup
@@ -218,15 +219,18 @@ utilis&eacute;e pour cela.
 </p>
 
 <p class="important">
-    Warning for <abbr title="Apple Macintosh">Mac</abbr> users:<br />
-    if you are on a <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> version before <abbr title="operating
-system">OS</abbr> X, StuffIt unstuffs with <abbr title="Apple
-Macintosh">Mac</abbr> formats.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <abbr
-title="Apple Macintosh">Mac</abbr>-style end of lines character
-(&quot;<code>\r</code>&quot;).</p>
+    &Agrave; l'attention des utilisateurs <abbr title="Apple
+Macintosh">Mac</abbr>&nbsp;:<br />
+    Si vous utilisez une version <abbr title="Apple Macintosh">Mac</abbr> <abbr
+title="operating system (syst&egrave;me d'exploitation)">OS</abbr>
+ant&eacute;rieure &agrave; la version <abbr title="operating
+system">OS</abbr> X, StuffIt se débrouille avec les formats <abbr
+title="Apple Macintosh">Mac</abbr>.<br />
+    Vous devrez donc convertir, tout comme dans BBEdit, au format Unix TOUS les
+scripts phpMyAdmin avant de les transférer sur votre serveur, car PHP ne
+semble pas apprécier les caractères de fin de ligne au format <abbr
+title="Apple Macintosh">Mac</abbr>
+(&laquo;&nbsp;<code>\r</code>&nbsp;&raquo;).</p>
 
 <h3 id="quick_install">Installation rapide</h3>
 <ol><li>Choisissez un kit de distribution appropri&eacute; sur la page de
@@ -425,17 +429,11 @@ d'authentification</a> ci-dessous).</p>
 
 <h3 id="upgrading">Mise &agrave; jour&nbsp;:</h3>
 
-<p> Copiez simplement le fichier <em>config.inc.php</em> de votre installation
-pr&eacute;c&eacute;dente dans votre nouvelle installation. Les fichiers de
-configuration de tr&egrave;s anciennes versions (2.3.0 ou
-pr&eacute;c&eacute;dentes)  peuvent n&eacute;cessiter des ajustements car
-certaines options ont &eacute;t&eacute; modifi&eacute;es ou
-supprim&eacute;es&nbsp; en particulier, la définition de
-<code>$cfg['AttributeTypes']</code> a changé, vous feriez donc mieux de les
-retirer de votre fichier et d'utiliser celui par défaut. Pour une
-compatibilit&eacute; avec PHP 6, supprimez une d&eacute;claration
-<code>set_magic_quotes_runtime(0);</code> que vous pourriez trouver &agrave;
-la fin de votre fichier de configuration.</p>
+<p> Simply copy <em>./config.inc.php</em> from your previous installation into
+the newly unpacked one. Configuration files from old versions may require
+some tweaking as some options have been changed or removed.  For
+compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
+statement that you might find near the end of your configuration file.</p>
 
 <p> Vous ne devez <strong>pas</strong> copier
 <code>libraries/config.default.php</code> par dessus
@@ -674,12 +672,13 @@ ce lien permet de recevoir des fonds pour phpMyAdmin.
 <!-- CONFIGURATION -->
 <h2 id="config">Configuration</h2>
 
-<p> <span class="important">Warning for <abbr title="Apple Macintosh">Mac</abbr>
-users:</span> PHP does not seem to like <abbr title="Apple
-Macintosh">Mac</abbr> end of lines character
-(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
-to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
-text editor before saving a script you have modified.</p>
+<p> <span class="important">&Agrave; l'attention des utilisateurs <acronym
+title="Apple Macintosh">Mac</acronym>&nbsp;:</span> PHP ne semble pas
+apprécier les caract&ères de fin de ligne <abbr title="Apple
+Macintosh">Mac</abbr> (&laquo;&nbsp;<code>\r</code>&nbsp;&raquo;). Aussi,
+assurez-vous de choisir l'option qui autorise l'utilisation des caracères de
+fin de ligne *nix (&laquo;&nbsp;<code>\n</code>&nbsp;&raquo;) dans votre
+éditeur de texte avant d'enregistrer un script que vous avez modifié.</p>
 
 <p> <span class="important">Note sur la configuration&nbsp;:</span> Presque
 toutes les donn&eacute;es de configuration sont plac&eacute;es dans
@@ -1761,11 +1760,13 @@ language">SQL</abbr> g&eacute;n&eacute;r&eacute;es par phpMyAdmin doivent
     <dd>Définit si la boîte de requête <abbr title="structured query
 language">SQL</abbr> doit rester affichée après soumission de la requête.</dd>
 
-    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] boolean</dt>
-    <dd>Defines whether to use a Javascript code editor for SQL query boxes.
-CodeMirror provides syntax highlighting and line numbers. <br />
-        However, middle-clicking for pasting the clipboard contents in some Linux
-distributions (such as Ubuntu) is not supported by all browsers.</dd>
+    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] booléen</dt>
+    <dd>Définit s'il faut utiliser un éditeur de code JavaScript pour les boîtes de
+requêtes SQL. CodeMirror propose la coloration syntaxique et les numéros de
+ligne. <br />
+        Cependant, un double clic pour copier des contenus dans le presse-papiers
+dans certaines distributions GNU/Linux (comme Ubuntu) n'est pas supporté
+dans tous les navigateurs.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">$cfg['AllowUserDropDatabase'] bool&eacute;en</dt>
     <dd>D&eacute;finit si les utilisateurs lamda (non administrateur)  sont
@@ -1828,12 +1829,6 @@ donn&eacute;es&nbsp;&raquo; est activ&eacute;.</dd>
 requ&ecirc;te multiple si l'une d'elles &eacute;choue. Par d&eacute;faut,
 l'ex&eacute;cution de la requ&ecirc;te multiple sera arr&ecirc;t&eacute;e.</dd>
 
-    <dt id="cfg_VerboseMultiSubmit">$cfg['VerboseMultiSubmit'] bool&eacute;en</dt>
-    <dd>D&eacute;finit si phpMyAdmin affichera les r&eacute;sultats de chaque
-requ&ecirc;te d'une requ&ecirc;te multiple int&eacute;gr&eacute;s dans le
-fichier journal SQL en tant que commentaires
-ins&eacute;r&eacute;s. D&eacute;fini par d&eacute;faut &agrave;
-<code>TRUE</code>.</dd>
     <dt id="AllowArbitraryServer">
         <span id="cfg_AllowArbitraryServer">$cfg['AllowArbitraryServer']</span>
 bool&eacute;en</dt>
@@ -1940,10 +1935,9 @@ principale (<code>main</code>)  ou dans une nouvelle fen&ecirc;tre
 li&eacute; &agrave; <code>phpmyadmin.net</code>.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] entier</dt>
-    <dd>Définit le nombre de tables minimum pour afficher une boîte de filtre en
-JavaScript au-dessus de la liste des tables dans le panneau de gauche. Par
-défaut à <code>30</code>. Pour désactiver totalement le filtre, un très
-grand nombre peut-être utilisé (par ex. 9999)</dd>
+    <dd>Defines the minimum number of tables to display a JavaScript filter box
+above the list of tables in the left frame.  Defaults to <code>30</code>. To
+disable the filter completely some high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] bool&eacute;en</dt>
     <dd>D&eacute;finit si un choix de serveur est propos&eacute; en haut, dans le
@@ -1972,9 +1966,9 @@ affich&eacute;e la liste, quand la base de donn&eacute;es est
 s&eacute;lectionn&eacute;e, seule la liste d&eacute;roulante est
 affich&eacute;e.</dd>
 
-    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] boolean</dt>
-    <dd>Defines whether the table structure actions are hidden under a
-&quot;More&quot; drop-down.</dd>
+    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] booléen</dt>
+    <dd>Définit si les actions sur la structure des tables doivent être masquées
+dans une liste déroulante «&nbsp;Plus&nbsp;».</dd>
 
     <dt id="cfg_ShowStats">$cfg['ShowStats'] bool&eacute;en</dt>
     <dd>D&eacute;finit&nbsp; si on affiche l'espace disque utilis&eacute; et les
@@ -2012,17 +2006,19 @@ d'authentification &laquo;&nbsp;config&nbsp;&raquo;: parce que le mot de
 passe est cod&eacute; dans le fichier de configuration, les utilisateurs
 finaux ne sont pas autoris&eacute;s &agrave; changer leur mot de passe.</dd>
 
-    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] boolean</dt>
-    <dd>Defines whether the database structure page (tables list) has a
-&quot;Creation&quot; column that displays when each table was created.</dd>
+    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] booléen</dt>
+    <dd>Définit si la page de structure de base de données (liste des tables) a une
+colonne «&nbsp;Création&nbsp;» qui s'affiche lorsque chaque table est créée.</dd>
 
-    <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] boolean</dt>
-    <dd>Defines whether the database structure page (tables list) has a &quot;Last
-update&quot; column that displays when each table was last updated.</dd>
+    <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] booléen</dt>
+    <dd>Définit si la page de structure de base de données (liste des tables) a une
+colonne «&nbsp;Dernière mise à jour&nbsp;» qui s'affiche pour la dernière
+date de mise à jour de la table.</dd>
 
-    <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] boolean</dt>
-    <dd>Defines whether the database structure page (tables list) has a &quot;Last
-check&quot; column that displays when each table was last checked.</dd>
+    <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] booléen</dt>
+    <dd>Définit si la page de structure de base de données (liste des tables) a une
+colonne «&nbsp;Dernière vérification&nbsp;» pour la dernière vérification de
+la table.</dd>
 
     <dt id="cfg_NavigationBarIconic">$cfg['NavigationBarIconic'] cha&icirc;ne</dt>
     <dd>D&eacute;finit si les boutons de la barre de navigation et le menu
@@ -2063,8 +2059,9 @@ valeurs permises sont&nbsp;:
         <ul><li><code>FALSE</code> pour permettre la modification de toutes les colonnes ;</li>
             <li><code>blob</code> pour permettre la modification de toutes les colonnes sauf
 les colonnes <code>BLOBS</code>;</li>
-            <li><code>'noblob'</code> to disallow editing of all columns except
-<code>BLOBS</code> (the opposite of <code>'blob'</code>);</li>
+            <li><code>'noblob'</code> pour désactiver la modification de toutes les colonnes
+sauf les colonnes <code>BLOBS</code> (le contraire de
+<code>'blob'</code>)&nbsp;;</li>
             <li><code>'all'</code> pour interdire la modification des colonnes
 <code>BINARY</code> ou <code>BLOB</code>.</li>
         </ul>
@@ -2776,11 +2773,6 @@ les développeurs de phpMyAdmin.</dd>
 href="#faq6_27">l'expansion de format de chaîne</a>
     </dd>
 
-    <dt id="cfg_ReplaceHelpImg">$cfg['ReplaceHelpImg'] bool&eacute;en</dt>
-    <dd>Affiche un bouton d'aide plut&ocirc;t que le message
-&laquo;&nbsp;Documentation&nbsp;&raquo;.
-    </dd>
-
     <dt id="cfg_ThemePath">$cfg['ThemePath'] cha&icirc;ne</dt>
     <dd>Si le gestionnaire de th&egrave;mes est actif, utilise ceci comme le chemin
 du sous-r&eacute;pertoire contenant les tous les th&egrave;mes.</dd>
@@ -2916,37 +2908,11 @@ de la connexion anonyme.</dd>
         Active la journalisation des requêtes et des temps d'exécution qui sont
 alors affichés au bas de la page principale (panneau de droite).</dd>
 
-    <dt id="cfg_ColumnTypes">$cfg['ColumnTypes'] tableau</dt>
-    <dd>Tous les types possibles de colonnes MySQL. Dans la plupart des cas, vous
-n'avez pas besoin de modifier ce param&egrave;tre.</dd>
-
-    <dt id="cfg_AttributeTypes">$cfg['AttributeTypes'] tableau</dt>
-    <dd>Attributs possibles pour les colonnes. Dans la plupart des cas, vous n'avez
-pas besoin de modifier ceci.</dd>
-
-    <dt id="cfg_Functions">$cfg['Functions'] tableau</dt>
-    <dd>Une liste de fonctions que g&egrave;re MySQL. Dans la plupart des cas, vous
-n'avez pas besoin de modifier ce param&egrave;tre.</dd>
-
-    <dt id="cfg_RestrictColumnTypes">$cfg['RestrictColumnTypes'] tableau</dt>
-    <dd>Mappage de types de colonnes utilis&eacute;es pour l'affichage des fonctions
-favorites. Dans la plupart des cas, vous n'avez pas besoin de modifier ce
-param&egrave;tre.</dd>
-
-    <dt id="cfg_RestrictFunctions">$cfg['RestrictFunctions'] tableau</dt>
-    <dd>Les fonctions favorites pour la colonne m&eacute;ta-types comme
-d&eacute;finies dans <a href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a>.  Dans la plupart des
-cas, vous n'avez pas besoin de modifier ce param&egrave;tre.</dd>
-
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] tableau</dt>
-    <dd>Fonctions s&eacute;lectionn&eacute;es par d&eacute;faut pour
-ins&eacute;rer/modifier un enregistrement.  Les fonctions sont
-d&eacute;finies pour les m&eacute;ta-types de <a
-href="#cfg_RestrictColumnTypes"
-class="configrule">$cfg['RestrictColumnTypes']</a> et pour
-<code>first_timestamp</code>, qui est utilis&eacute; pour la premi&egrave;re
-colonne d'horodatage dans une table.</dd>
+    <dd>Functions selected by default when inserting/changing row, Functions are
+defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
+FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
+timestamp column in table.</dd>
 
 </dl>
 
@@ -3069,8 +3035,9 @@ lesquels elles ont été construites, mais faites attention aux options
 d'utilisation tout comme à l'action qu'aura la transformation sur votre
 colonne.</p>
 
-<p> There is a file called '<em>transformations.lib.php</em>' that provides some
-basic functions which can be included by any other transform function.</p>
+<p> Il y a un fichier de base appelé '<em>transformations.lib.php</em>' qui
+fournit des fonctions de base qui peuvent être incluses dans une autre
+fonction de transformation.</p>
 
 <p> Il y a cinq noms de fichiers possibles&nbsp;:</p>
 
@@ -3832,8 +3799,8 @@ doit ré-écrire les en-têtes set-cookie.<br />
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
-ProxyPassReverseCookieDomain backend.example.com public.example.com
-ProxyPassReverseCookiePath / /mirror/foo/
+ProxyPassReverseCookieDomain backend.example.com public.example.com 
+ProxyPassReverseCookiePath / /mirror/foo/ 
 </pre>
 
 <p>Note&nbsp;: si l'URL de backend ressemble à http://host/~user/phpmyadmin, le
@@ -4112,18 +4079,19 @@ ou est en lecture seule.
 <h4 id="faq2_9">
     <a href="#faq2_9">2.9 Afficher les barres de progression d'upload</a></h4>
 
-<p> To be able to see a progress bar during your uploads, your server must have
-the <a href="http://pecl.php.net/package/APC">APC</a> extension, the <a
-href="http://pecl.php.net/package/uploadprogress">uploadprogress</a> one, or
-you must be running PHP 5.4.0 or higher.  Moreover, the JSON extension has
-to be enabled in your PHP.</p>
+<p> Pour pouvoir voir une barre de progression pendant vos uploads, votre
+serveur doit avoir soit l'extension <a
+href="http://pecl.php.net/package/APC">APC</a> soit l'extension <a
+href="http://pecl.php.net/package/uploadprogress">uploadprogress</a> ou vous
+devez utiliser PHP 5.4.0 ou supérieure. De plus, l'extension JSON doit être
+activée dans votre installation PHP.</p>
 
     <p> Si vous utilisez APC, vous devez définir le paramètre
 <code>apc.rfc1867</code> à <code>on</code> dans votre fichier php.ini.</p>
 
-    <p> If using PHP 5.4.0 or higher, you must set
-<code>session.upload_progress.enabled</code> to <code>1</code> in your
-php.ini.</p>
+    <p> Si vous utilisez PHP 5.4.0 ou supérieur, vous devez définir le paramètre
+<code>session.upload_progress.enabled</code> à <code>1</code> dans votre
+fichier php.ini.</p>
 
 <h3 id="faqlimitations">Limitations connues</h3>
 
@@ -4632,8 +4600,8 @@ navigateurs.</p>
 
 <h4 id="faq5_12">
     <a href="#faq5_12">5.12 <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> X: Safari browser changes special
-characters to &quot;?&quot;.</a></h4>
+title="operating system">OS</abbr> X&nbsp;: le navigateur Safari change les
+caractères spéciaux en «&nbsp;?&nbsp;».</a></h4>
 
 <p> Ce probl&egrave;me a &eacute;t&eacute; rapport&eacute; par un utilisateur de
 <abbr title="operating system">OS</abbr> X, qui ajoute que Chimera, Netscape
@@ -5163,13 +5131,14 @@ stock&eacute;e. Vous aurez peut-&ecirc;tre besoin de t&acirc;tonner pour
 bien positionner les commentaires &laquo;&nbsp;/**/&nbsp;&raquo;.</p>
 
 <h4 id="faq6_19">
-    <a href="#faq6_19">6.19 How can I create simple L<sup>A</sup>T<sub><em
-class="big">E</em></sub>X document to include exported table?</a></h4>
+    <a href="#faq6_19">6.19 Comment puis-je créer simplement un document
+L<sup>A</sup>T<sub><em class="big">E</em></sub>X pour y inclure une table
+exportée&nbsp;?</a></h4>
 
-<p> You can simply include table in your L<sup>A</sup>T<sub><em
-class="big">E</em></sub>X documents, minimal sample document should look
-like following one (assuming you have table exported in file
-<code>table.tex</code>):</p>
+<p> Vous pouvez inclure simplement une table dans vos documents
+L<sup>A</sup>T<sub><em class="big">E</em></sub>X, un exemple de document
+minimaliste devrait ressembler à celui qui suit (en supposant que vous avez
+une table exportée dans le fichier <code>table.tex</code>)&nbsp;:</p>
 
 <pre>
 \documentclass{article} % ou toute classe que vous d&eacute;sirez
@@ -5419,17 +5388,17 @@ d'utiliser cette fonctionnalité peuvent être affichées en cliquant sur le
 lien 'Comment utiliser&nbsp;?' situé au-dessus du diagramme.</p>
 
 <h4 id="faq6_33">
-    <a href="#faq6_33">6.33 When browsing a table, how can I copy a column
-name?</a></h4>
+    <a href="#faq6_33">6.33 Lors de la navigation dans une table, comment
+puis-je copier un nom de colonne&nbsp;?</a></h4>
 
-    <p>Selecting the name of the column within the browse table header cell for
-copying is difficult, as the columns support reordering by dragging the
-header cells as well as sorting by clicking on the linked column name.<br/><br/>
+    <p>La sélection d'un nom de colonne pendant le parcours d'une table est
+difficile car les en-têtes de colonnes peuvent être ré-agencés en faisant
+glisser les cellules, ou en faisant un tri en cliquant sur le lien.<br/><br/>
 
-    To copy a column name, double-click on the empty area next to the column
-name, when the tooltip tells you to do so. This will show you an input box
-with the column name.  You may right-click the column name within this input
-box to copy it to your clipboard.</p>
+    Pour copier un nom de colonne, faites un double clic dans une zone vide à
+côté du nom de la colonne quand une infobulle vous le propose. Cela
+affichera une boîte de saisie avec le nom de la colonne. Vous pourrez alors
+copier dans le presse-papiers le nom de la colonne à partir de cette boîte.</p>
 
 <h3 id="faqproject">Projet phpMyAdmin</h3>
 
@@ -5921,8 +5890,8 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Dieter Adriaenssens
 <ul>
-  <li>Various bugfixes</li>
-  <li>Dutch translation updates</li>
+  <li>diverses corrections de bogues</li>
+  <li>mises à jour de la traduction néerlandaise</li>
 </ul></li>
 
 </ul>
@@ -6167,18 +6136,22 @@ l'image. Ce comit&eacute; a donn&eacute; son nom &agrave; la norme ouverte
 de compression d'images num&eacute;riques JPEG.</li>
     <li>JPG - Voir <a href="#jpeg">JPEG</a>.</li>
     <li>Key - look at <a href="#glossar_index">index</a>.</li>
-    <li><a href="http://www.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><em
-class="big">E</em></sub>X</a> - a document preparation system for the
-T<sub>E</sub>X typesetting program.</li>
+    <li><a href="http://fr.wikipedia.org/wiki/LaTeX">L<sup>A</sup>T<sub><em
+class="big">E</em></sub>X</a> - LaTeX (Lamport T<sub>E</sub>X) est un
+système logiciel de composition de documents, ou plus exactement&nbsp;: une
+collection de macro-commandes destinées à faciliter l'utilisation du
+«&nbsp;processeur de texte&nbsp;» T<sub>E</sub>X.</li>
     <li><a href="http://fr.wikipedia.org/wiki/Macintosh">Mac (Apple Macintosh)</a> -
 Les Macintosh, ou Mac, sont des ordinateurs personnels fabriqu&eacute;s et
 commercialis&eacute;s par la soci&eacute;t&eacute; Apple Computer depuis
 janvier 1984. Ils cohabitent sur le march&eacute; des ordinateurs personnels
 avec les PC.</li>
-    <li><a id="glossar_mac_os_x" href="http://www.wikipedia.org/wiki/Mac_OS_X"><abbr
-title="Apple Macintosh">Mac</abbr> <abbr title="operating system">OS</abbr>
-X</a> - the operating system which is included with all currently shipping
-Apple Macintosh computers in the consumer and professional markets.</li>
+    <li><a id="glossar_mac_os_x"
+href="http://fr.wikipedia.org/wiki/Mac_OS_X"><acronym title="Apple
+Macintosh">Mac</acronym> <abbr title="operating system">OS</abbr> X</a> -
+Mac OS X est le système d'exploitation propriétaire fourni avec l'ordinateur
+Macintosh d'Apple Computer, depuis 2001 et distribué également séparément
+pour des modèles antérieurs.</li>
     <li><a href="http://www.wikipedia.org/wiki/MCrypt">MCrypt</a><sup>en</sup> - Une
 biblioth&egrave;que cryptographique.</li>
     <li><a href="http://php.net/mcrypt">mcrypt</a> - the MCrypt PHP extension.</li>
@@ -6199,10 +6172,11 @@ am&eacute;lior&eacute;e.</li>
 OpenDocument est un format ouvert de donn&eacute;es pour les applications
 bureautiques&nbsp;: traitements de texte, tableurs, pr&eacute;sentations,
 diagrammes, dessins et base de donn&eacute;es bureautique.</li>
-    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating
-system">OS</abbr> X</a> - look at <a href="#glossar_mac_os_x"><abbr
-title="Apple Macintosh">Mac</abbr> <abbr title="operating system">OS</abbr>
-X</a>.</li>
+    <li><a href="http://fr.wikipedia.org/wiki/Mac_OS_X"><abbr title="operating
+system">OS</abbr> X</a> - Mac OS X est une ligne de systèmes d’exploitation
+propriétaires développés et commercialisés par Apple, dont la version la
+plus récente (Mac OS X 10.7, dit Lion) est installée sur tous les Macintosh
+vendus actuellement.</li>
     <li><a href="http://www.wikipedia.org/wiki/Portable Document Format">PDF</a> -
 Portable Document Format, un format de fichier informatique universel
 cr&eacute;&eacute; par la soci&eacute;t&eacute; Adobe Systems pour la
