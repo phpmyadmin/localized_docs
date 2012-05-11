@@ -310,11 +310,9 @@ href="#config">「設定」の章</a>にあります。また、これらのテ�
 
 <h3 id="upgrading">旧版からのアップグレード</h3>
 
-<p> Simply copy <em>./config.inc.php</em> from your previous installation into
-the newly unpacked one. Configuration files from old versions may require
-some tweaking as some options have been changed or removed.  For
-compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
-statement that you might find near the end of your configuration file.</p>
+<p> それまで使っていた <em>./config.inc.php</em>
+を新しいインストール先にコピーしていただくだけで結構です。古いバージョンから持ってきた設定ファイルは、オプションをいくつか変更または削除するなど若干の調整が必要な場合があります。また、PHP
+6 との互換性のために、set_magic_quotes_runtime(0); 文を削除してください (たぶん、設定ファイルの終わりの方にあります)。</p>
 
 <p> デフォルト設定ファイルはバージョンに依存していますので、<code>libraries/config.default.php</code> を
 <code>config.inc.php</code> へコピー<strong>しない</strong>でください。</p>
@@ -756,7 +754,7 @@ id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
         <ul><li>マスタテーブルを閲覧しているときに、外部テーブルを指し示すデータ値をクリックできるようにします。</li>
             <li>マスタテーブルを閲覧しているときにマウスを外部キーが含まれるカラムに移動すると、「表示するカラム」というオプションで指定されたツールチップを表示します（「table_info」テーブルも使用されます）。<br />
                 (<a href="#faqdisplay"><abbr title="よくある質問">FAQ</abbr> 6.7</a>参照)</li>
-            <li>修正／挿入モードでは、使用できる外部キーをドロップダウンリストで表示します（キーの値と「表示するカラム」が表示されます）。<br />
+            <li>編集／挿入モードでは、使用できる外部キーをドロップダウンリストで表示します (キーの値と「表示するカラム」が表示されます)。<br />
                 (<a href="#faq6_21"><abbr title="よくある質問">FAQ</abbr> 6.21</a>参照)</li>
             <li>テーブルのプロパティページでは、記載されているキーごとに参照の整合性をチェックする（リンクの切れた外部キーを表示する）リンクを表示します。
             </li>
@@ -1359,9 +1357,8 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
 にリンクしている場合は、<code>new</code> が使われます。</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
-    <dd>Defines the minimum number of tables to display a JavaScript filter box
-above the list of tables in the left frame.  Defaults to <code>30</code>. To
-disable the filter completely some high number can be used (e.g. 9999)</dd>
+    <dd>左フレーム内のテーブルリストの上部に、JavaScript よるフィルタボックスが表示されるテーブルの最小数を定義します。デフォルトは
+<code>30</code> です。フィルタを無効にするには、予想されるテーブル使用数を上回るようにします (例：9999)。</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] 論理型</dt>
     <dd>サーバの選択肢を左フレームの最上部に表示するかどうかを定義します。デフォルトは FALSE です。</dd>
@@ -1433,7 +1430,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
 
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
     <dd>テーブルの内容を表示しているときに <code>BLOB</code> カラムや <code>BINARY</code>
-カラムを保護して修正できないようにするかどうかを定義します。有効な値は次の通りです。
+カラムを保護して編集できないようにするかどうかを定義します。有効な値は次の通りです。
         <ul><li><code>FALSE</code> - すべてのカラムの編集を許可します。</li>
             <li><code>'blob'</code> - <code>BLOB</code> 以外のすべてのカラムの編集を許可します。</li>
             <li><code>'noblob'</code> - <code>BLOB</code> 以外のすべてのカラムの編集を禁止します
@@ -1449,7 +1446,7 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
     </dd>
 
     <dt id="cfg_ShowFieldTypesInDataEditView">$cfg['ShowFieldTypesInDataEditView'] 論理型</dt>
-    <dd>編集／挿入モードで、種別の項目が最初から表示されるかどうかを定義します。この設定はユーザインターフェイスで切り替えることができます。
+    <dd>編集／挿入モードで、データ型の項目が最初から表示されるかどうかを定義します。この設定はユーザインターフェイスで切り替えることができます。
     </dd>
 
     <dt id="cfg_CharEditing">$cfg['CharEditing'] 文字列</dt>
@@ -1690,8 +1687,8 @@ title="インターネットアドレス">URL</abbr> に問題があるため、
         この値は <abbr title="データベース用の問い合わせ言語">SQL</abbr> クエリの textarea の場合は 2
 倍に、クエリウインドウ内の <abbr title="データベース用の問い合わせ言語">SQL</abbr> 用 textarea の場合は 1.25
 倍になります。<br />
-        Char のついた値は CHAR と VARCHAR を修正する際に使われます（<a
-href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定されている場合）。</dd>
+        Char のついた値は CHAR と VARCHAR を編集する際に使われます (<a
+href="#cfg_CharEditing">$cfg['CharEditing']</a> でそのように設定されている場合)。</dd>
 
     <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']</span>
 論理型
@@ -1999,7 +1996,7 @@ title="データベース用の問い合わせ言語">SQL</abbr> クエリを読
             <li><strong>punct_qualifier</strong> テーブル／カラムの修飾子<code>「.」</code> </li>
             <li><strong>punct_queryend</strong> クエリの終端マーク<code>「;」</code></li>
             <li><strong>alpha</strong> アルファベットのクラスすべてに適用されます。</li>
-            <li><strong>alpha_columnType</strong> カラム種別に一致する識別子</li>
+            <li><strong>alpha_columnType</strong> カラムのデータ型に一致する識別子</li>
             <li><strong>alpha_columnAttrib</strong> データベース／テーブル／カラム属性に一致する識別子</li>
             <li><strong>alpha_functionName</strong> MySQL 関数名に一致する識別子</li>
             <li><strong>alpha_reservedWord</strong> その他の予約語に一致する識別子</li>
@@ -2042,10 +2039,10 @@ title="データベース用の問い合わせ言語">SQL</abbr>
         メインページ（右フレーム）の下部に、クエリと実行時間の表示を有効にします。</dd>
 
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] 配列</dt>
-    <dd>Functions selected by default when inserting/changing row, Functions are
-defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
-FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
-timestamp column in table.</dd>
+    <dd>行を挿入／編集するときにデフォルトで選択される関数で、以下に述べる大別のデータ型ごとに定義します。FUNC_NUMBER は数値系、FUNC_DATE
+は日時系、FUNC_CHAR は文字列系、FUNC_SPATIAL は空間データ系、FUNC_UUID
+はユニーク系のキーがある、それぞれのカラムに対して関数のデフォルトが設定されるようになります。なお、<code>first_timestamp</code>
+というのも設定できますが、これはテーブル内の最初の timestamp カラムに適用されます。</dd>
 
 </dl>
 
@@ -2519,7 +2516,7 @@ href="#cfg_OBGzip" class="configrule">$cfg['OBGzip'] = false</a> として)
 / 4.0.11-gamma からはバグフィックスも用意されています。</p>
 
 <h4 id="faq1_29">
-    <a href="#faq1_29">1.29 テーブルを作成したりカラムを修正したりすると、エラーが出てカラムが複製されてしまいます。</a></h4>
+    <a href="#faq1_29">1.29 テーブルを作成したりカラムを編集したりすると、エラーが出てカラムが複製されてしまいます。</a></h4>
 
 <p> Apache の設定によっては PHP が .php ファイルの解釈を間違ってしまうことがあります。</p>
 
@@ -2830,9 +2827,9 @@ class="configrule">$cfg['OBGZip']</a> 設定を <code>FALSE</code>
 が稼動しているということですが、これはあまりよいことではありませんので、テスト版でないものにアップグレードしてください。</p>
 
 <h4 id="faq2_5">
-    <a href="#faq2_5">2.5 行を挿入／修正しようとしたり、データベースやテーブルを削除しようとするたびに404
+    <a href="#faq2_5">2.5 行を挿入／編集しようとしたり、データベースやテーブルを削除しようとするたびに 404
 (ページが見つかりません) エラーが表示されます。また、<abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
-ないしクッキー認証をしているときはログインしなおすように求められます。何が悪いのでしょうか？</a></h4>
+ないしクッキー認証をしているときはログインし直すように求められます。何が悪いのでしょうか？</a></h4>
 
 <p> phpMyAdmin 設定ファイルにある <a href="#cfg_PmaAbsoluteUri"
 class="configrule">$cfg['PmaAbsoluteUri']</a> 設定の値を確認してください。</p>
@@ -3030,9 +3027,9 @@ href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=816858&amp;g
 <h4 id="faq3_10">
     <a href="#faq3_10">3.10 主キーがないのにつづりが同じ語がある場合：SELECT の結果、同じ値を持つカラムが複数表示された場合
 (例えば <code>SELECT lastname from employees where firstname like 'A%'</code>
-の結果「Smith」という値が 2 つ表示された場合)、修正をクリックしても意図した通りの行を修正しているのか分かりません。</a></h4>
+の結果「Smith」という値が 2 つ表示された場合)、編集をクリックしても意図した通りの行を編集しているのか分かりません。</a></h4>
 
-<p> テーブルに主キーを設定するようにしてください。そうすると phpMyAdmin は修正／削除のリンクに主キーを利用するようになります。</p>
+<p> テーブルに主キーを設定するようにしてください。そうすると phpMyAdmin は編集／削除のリンクに主キーを利用するようになります。</p>
 
 <h4 id="faq3_11">
     <a href="#faq3_11">3.11 InnoDB テーブルの行数が正しくありません。</a></h4>
@@ -3260,8 +3257,8 @@ title="インターネット・プロトコル">IP</abbr> アドレスを入力�
 
 <h4 id="faq5_6">
     <a href="#faq5_6">5.6 Internet Explorer 5.0、5.5、6.0
-でカラム数の多いテーブルや、テキストカラムがあるテーブルの行を修正しようとすると（「Page not
-found（ページが見つかりません）」のような）エラーが出ます。</a></h4>
+でカラム数の多いテーブルや、テキストカラムがあるテーブルの行を編集しようとすると (「Page not found
+(ページが見つかりません)」のような) エラーが出ます。</a></h4>
 <p>
     テーブルに主キーやユニークキーがないと、行を識別するために長い <abbr title="インターネットアドレス">URL</abbr>
 を使うことになってしまうのですが、これらのブラウザには <abbr title="インターネットアドレス">URL</abbr>
@@ -3367,7 +3364,7 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> ポート (80 
 title="データベース用の問い合わせ言語">SQL</abbr> エラーを返します。</a></h4>
 <p>
     <abbr title="データベース用の問い合わせ言語">SQL</abbr>
-エラーを事細かに調べてみてください。よく問題になるのが、カラム種別の指定を間違えることです。<br />
+エラーを事細かに調べてみてください。よく問題になるのが、カラムのデータ型の指定を間違えることです。<br />
     ありがちなエラーの例です。
 </p>
 <ul>
@@ -3523,7 +3520,7 @@ title="ポータブル・ドキュメント・フォーマット">PDF</abbr> を
 </ul>
 
 <h4 id="faq6_9">
-    <a href="#faq6_9">6.9 phpMyAdmin がカラムの種別を変えてしまいます！</a></h4>
+    <a href="#faq6_9">6.9 phpMyAdmin がカラムのデータ型を変えてしまいます！</a></h4>
 
 <p> phpMyAdmin ではありません。MySQL が<a
 href="http://dev.mysql.com/doc/refman/5.1/ja/silent-column-changes.html">カラムの暗黙的な変更</a>を行っているのです。</p>
@@ -3695,7 +3692,7 @@ href="http://bugs.mysql.com/179">バグレポート</a>もご覧ください。<
 
 <h4 id="faq6_21">
     <a href="#faq6_21">6.21
-どうすれば修正／挿入モードで外部テーブルにもとづいたカラムに入れられる値のリストを見られるようになるのでしょうか？</a></h4>
+どうすれば編集／挿入モードで外部テーブルにもとづいたカラムに入れられる値のリストを見られるようになるのでしょうか？</a></h4>
 
 <p> テーブル間に適切なリンクをセットアップする必要があります。また、外部テーブルの「表示するカラム」をセットアップする必要もあります。例については <a
 href="#faq6_6"><abbr title="よくある質問">FAQ</abbr> 6.6</a>
