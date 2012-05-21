@@ -666,12 +666,13 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a>).
         Jeśli próbowano ustawiać ten parametr i nadal nie działa, trzeba przejejść
 na stronę &quot;Struktura&quot; bazy danych. Będzie tam odsyłacz, który
 przeanalizuje, dlaczego funkcje są wyłączone.<br />
-        If you do not want to use those features set this variable to
-<code>TRUE</code> to stop this message from appearing.</dd>
+        Jeśli nie chcesz używać określone funkcje tej zmiennej do <code>TRUE</code>
+aby przerwać wyświetlanie tego komunikatu.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] Wartość logiczna</dt>
-    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
-this parameter to <code>TRUE</code> to stop this message from appearing.</dd>
+    <dd>Po wykryciu Suhosin na stronie głównej jest wyświetlane ostrzeżenie.  Ten
+parametr jest ustawiony na <code>wartość TRUE</code> dla przerwać
+wyświetlanie tego komunikatu.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] Wartość logiczna</dt>
     <dd>Disable the default warning that is displayed if mcrypt is missing for
@@ -748,24 +749,24 @@ not supported on some platforms.<br /><br />
 serwer www.</dd>
 
     <dt id="cfg_Servers_extension">$cfg['Servers'][$i]['extension'] ciąg</dt>
-    <dd>What php MySQL extension to use for the connection. Valid options are:
+    <dd>Jakie php rozszerzenie MySQL dla połączenia. Prawidłowe opcje to:
         <br /><br />
 
-        <code><em>mysql</em></code> : The classic MySQL extension.<br /><br />
+        <code><em>MySQL</em></code>: Klasyczne rozszerzenie MySQL.<br /><br />
 
-        <code><em>mysqli</em></code> : The improved MySQL extension. This extension
-became available with PHP 5.0.0 and is the recommended way to connect to a
-server running MySQL 4.1.x or newer.</dd>
+        <code><em>mysqli</em></code>: Ulepszone rozszerzenie MySQL. To rozszerzenie
+stało się dostępne z PHP od wersji 5.0.0 i jest zalecanym sposobem łączenia
+się z serwerem z systemem MySQL 4.1.x lub nowszej.</dd>
 
     <dt id="cfg_Servers_compress">$cfg['Servers'][$i]['compress'] boolean</dt>
     <dd>Czy używać protokołu kompresji dla połączeń z serwerem MySQL, czy też nie
 (opcja eksperymentalna).</dd>
 
     <dt id="controlhost">
-        <span id="cfg_Servers_controlhost">$cfg['Servers'][$i]['controlhost']</span>
-string<br />
+        <span id="cfg_Servers_controlhost">$cfg[Servers][$i][controlhost]</span>ciąg<br />
     </dt>
-    <dd>Permits to use an alternate host to hold the configuration storage data.</dd>
+    <dd>Zezwala, aby używać hosta zastępcę do przechowywania danych magazynu
+konfiguracji.</dd>
 
     <dt id="controluser">
         <span id="cfg_Servers_controluser">$cfg['Servers'][$i]['controluser']</span>
@@ -1464,7 +1465,25 @@ string</dt>
 redirected after logout (doesn't affect config authentication method).
 Should be absolute including protocol.
     </dd>
-
+    <dt><span
+id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span>
+array of strings</dt>
+    <dd>Enables caching of <code>TABLE STATUS</code> outputs for specific databases
+on this server (in some cases <code>TABLE STATUS</code> can be very slow, so
+you may want to cache it). APC is used (if the PHP extension is available,
+if not, this setting is ignored silently). You have to provide <a
+href="#cfg_Servers_StatusCacheLifetime"
+class="configrule">StatusCacheLifetime</a>.<br />
+    Takes effect only if <a href="#cfg_Servers_DisableIS"
+class="configrule">DisableIS</a> is <code>true</code>.
+    </dd>
+    <dt><span
+id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span>
+integer</dt>
+    <dd>Lifetime in seconds of the <code>TABLE STATUS</code> cache if <a
+href="#cfg_Servers_StatusCacheDatabases"
+class="configrule">StatusCacheDatabases</a> is used.
+    </dd>
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] integer</dt>
     <dd>If you have more than one server configured, you can set
 <code>$cfg['ServerDefault']</code> to any one of them to autoconnect to that

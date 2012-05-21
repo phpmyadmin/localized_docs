@@ -429,11 +429,13 @@ d'authentification</a> ci-dessous).</p>
 
 <h3 id="upgrading">Mise &agrave; jour&nbsp;:</h3>
 
-<p> Simply copy <em>./config.inc.php</em> from your previous installation into
-the newly unpacked one. Configuration files from old versions may require
-some tweaking as some options have been changed or removed.  For
-compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
-statement that you might find near the end of your configuration file.</p>
+<p> Copiez simplement le fichier <em>config.inc.php</em> de votre installation
+précédente dans votre nouvelle installation. Les fichiers de configuration
+de très anciennes versions (2.3.0 ou précédentes) peuvent nécessiter des
+ajustements car certaines options ont été modifiées ou supprimés. Pour une
+compatibilité avec PHP 6, supprimez une déclaration
+<code>set_magic_quotes_runtime(0);</code> que vous pourriez trouver à la fin
+de votre fichier de configuration.</p>
 
 <p> Vous ne devez <strong>pas</strong> copier
 <code>libraries/config.default.php</code> par dessus
@@ -1650,7 +1652,25 @@ redirig&eacute; l'utilisateur apr&egrave;s la d&eacute;connexion (ceci
 n'affecte pas la mode d'authentification 'config'). Doit &ecirc;tre absolue
 et inclure le protocole.
     </dd>
-
+    <dt><span
+id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span>
+array of strings</dt>
+    <dd>Enables caching of <code>TABLE STATUS</code> outputs for specific databases
+on this server (in some cases <code>TABLE STATUS</code> can be very slow, so
+you may want to cache it). APC is used (if the PHP extension is available,
+if not, this setting is ignored silently). You have to provide <a
+href="#cfg_Servers_StatusCacheLifetime"
+class="configrule">StatusCacheLifetime</a>.<br />
+    Takes effect only if <a href="#cfg_Servers_DisableIS"
+class="configrule">DisableIS</a> is <code>true</code>.
+    </dd>
+    <dt><span
+id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span>
+integer</dt>
+    <dd>Lifetime in seconds of the <code>TABLE STATUS</code> cache if <a
+href="#cfg_Servers_StatusCacheDatabases"
+class="configrule">StatusCacheDatabases</a> is used.
+    </dd>
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] entier</dt>
     <dd>Si vous avez plus d'un serveur, vous pouvez d&eacute;finir
 <code>$cfg['ServerDefault']</code> sur n'importe lequel d'entre eux pour
@@ -1935,9 +1955,10 @@ principale (<code>main</code>)  ou dans une nouvelle fen&ecirc;tre
 li&eacute; &agrave; <code>phpmyadmin.net</code>.</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] entier</dt>
-    <dd>Defines the minimum number of tables to display a JavaScript filter box
-above the list of tables in the left frame.  Defaults to <code>30</code>. To
-disable the filter completely some high number can be used (e.g. 9999)</dd>
+    <dd>Définit le nombre de tables minimum pour afficher une boîte de filtre en
+JavaScript au-dessus de la liste des tables dans le panneau de gauche. Par
+défaut à <code>30</code>. Pour désactiver totalement le filtre, un très
+grand nombre peut-être utilisé (par ex. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] bool&eacute;en</dt>
     <dd>D&eacute;finit si un choix de serveur est propos&eacute; en haut, dans le
@@ -2909,10 +2930,11 @@ de la connexion anonyme.</dd>
 alors affichés au bas de la page principale (panneau de droite).</dd>
 
     <dt id="cfg_DefaultFunctions">$cfg['DefaultFunctions'] tableau</dt>
-    <dd>Functions selected by default when inserting/changing row, Functions are
-defined for meta types as (FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL,
-FUNC_UUID) and for <code>first_timestamp</code>, which is used for first
-timestamp column in table.</dd>
+    <dd>Fonctions sélectionnées par défaut pour insérer/modifier un
+enregistrement. Les fonctions sont définies pour les méta-types comme
+(FUNC_NUMBER, FUNC_DATE, FUNC_CHAR, FUNC_SPATIAL, FUNC_UUID) et pour
+<code>first_timestamp</code>, qui est utilisé pour la première colonne
+d'horodatage dans une table.</dd>
 
 </dl>
 

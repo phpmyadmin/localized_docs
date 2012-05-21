@@ -1168,7 +1168,25 @@ title="インターネットアドレス">URL</abbr> にしなければなりま
 (認証方式の設定には影響しません)。プロトコルを含む完全な <abbr title="インターネットアドレス">URL</abbr>
 にしなければなりません。
     </dd>
-
+    <dt><span
+id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span>
+array of strings</dt>
+    <dd>Enables caching of <code>TABLE STATUS</code> outputs for specific databases
+on this server (in some cases <code>TABLE STATUS</code> can be very slow, so
+you may want to cache it). APC is used (if the PHP extension is available,
+if not, this setting is ignored silently). You have to provide <a
+href="#cfg_Servers_StatusCacheLifetime"
+class="configrule">StatusCacheLifetime</a>.<br />
+    Takes effect only if <a href="#cfg_Servers_DisableIS"
+class="configrule">DisableIS</a> is <code>true</code>.
+    </dd>
+    <dt><span
+id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span>
+integer</dt>
+    <dd>Lifetime in seconds of the <code>TABLE STATUS</code> cache if <a
+href="#cfg_Servers_StatusCacheDatabases"
+class="configrule">StatusCacheDatabases</a> is used.
+    </dd>
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
     <dd>複数のサーバが設定されている場合、<code>$cfg['ServerDefault']</code> にサーバ番号を設定しておくと
 phpMyAdmin を立ち上げたときに自動的にそのサーバに接続するようにできます。0 に設定するとログインしないでサーバのリストを表示します。<br />
