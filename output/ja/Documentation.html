@@ -1170,22 +1170,21 @@ title="インターネットアドレス">URL</abbr> にしなければなりま
     </dd>
     <dt><span
 id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span>
-array of strings</dt>
-    <dd>Enables caching of <code>TABLE STATUS</code> outputs for specific databases
-on this server (in some cases <code>TABLE STATUS</code> can be very slow, so
-you may want to cache it). APC is used (if the PHP extension is available,
-if not, this setting is ignored silently). You have to provide <a
+文字列の配列</dt>
+    <dd>このサーバにおける特定のデータベースに対して、<code>TABLE STATUS</code> 出力のキャッシュを有効にします (状況によって
+<code>TABLE STATUS</code> はとても遅くなることがありますので、キャッシュの必要性を感じると思います)。この設定は APC
+を利用します (PHP 拡張で利用できる場合。利用できない場合は、特に警告もなくこの設定は無効になります。)。<a
 href="#cfg_Servers_StatusCacheLifetime"
-class="configrule">StatusCacheLifetime</a>.<br />
-    Takes effect only if <a href="#cfg_Servers_DisableIS"
-class="configrule">DisableIS</a> is <code>true</code>.
+class="configrule">StatusCacheLifetime</a> も設定する必要があります。<br />
+    <a href="#cfg_Servers_DisableIS" class="configrule">DisableIS</a> が
+<code>TRUE</code> の場合だけ、この設定は機能します。
     </dd>
     <dt><span
 id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span>
-integer</dt>
-    <dd>Lifetime in seconds of the <code>TABLE STATUS</code> cache if <a
-href="#cfg_Servers_StatusCacheDatabases"
-class="configrule">StatusCacheDatabases</a> is used.
+整数</dt>
+    <dd><a href="#cfg_Servers_StatusCacheDatabases"
+class="configrule">StatusCacheDatabases</a> が使用されているときの <code>TABLE
+STATUS</code> キャッシュの有効秒数。
     </dd>
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] 整数</dt>
     <dd>複数のサーバが設定されている場合、<code>$cfg['ServerDefault']</code> にサーバ番号を設定しておくと
@@ -1777,7 +1776,8 @@ title="データベース用の問い合わせ言語">SQL</abbr>
 
         ユーザごとにディレクトリを変えたい場合は、%u を使うとユーザ名に置換されます。<br /><br />
 
-        拡張子に注意してください。ファイル名の末尾は必ず「.sql」（圧縮形式のサポートが有効になっている場合は「.sql.bz2」や「.sql.gz」）でなければなりません。<br /><br />
+        なお、拡張子には注意するようにしてください。ファイル名の末尾は必ず「.sql」(圧縮形式のサポートが有効になっている場合は「.sql.bz2」や「.sql.gz」)
+でなければなりません。<br /><br />
 
         この機能は <abbr title="ハイパーテキスト転送プロトコル">HTTP</abbr>
 でアップロードするには大きすぎるファイルがあるときや、PHP のファイルアップロード機能が無効になっている場合に便利です。<br /><br />
