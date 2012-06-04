@@ -3153,9 +3153,11 @@ Protocol">TCP</abbr> 链接，就可以正常登录了。</p>
 <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a> 以及
 <a href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a>。<br />
     <br />
-    请不要修改 <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
-选项设置的目录下的文件结构，更不要删除这个目录。这个目录是 phpMyAdmin 的系统主题，如果一些主题缺少某些文件，phpMyAdmin
-就会使用系统主题的文件替代之。
+    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
+should not delete the directory &quot;pmahomme&quot; or its underlying
+structure, because this is the system theme used by phpMyAdmin.
+&quot;pmahomme&quot; contains all images and styles, for backwards
+compatibility and for all themes that would not include images or css-files.
     <br /><br />
 
     如果设置了 <a href="#cfg_ThemeManager"
@@ -3167,7 +3169,8 @@ class="configrule">$cfg['ThemeManager']</a>，您就可以在 phpMyAdmin
 <ul><li>make a new subdirectory (for example &quot;your_theme_name&quot;) under <a
 href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> (by default
 <code>themes</code>)</li>
-    <li>复制 &quot;original&quot; 目录下所有的文件到您朝见的目录中。</li>
+    <li>copy the files and directories from &quot;pmahomme&quot; to
+&quot;your_theme_name&quot;</li>
     <li>在您创建的目录下，打开 css 子目录，修改其中的层叠样式表文件。</li>
     <li>将您的图片复制到您创建的主题目录下的 img 子目录中。</li>
     <li>edit <code>layout.inc.php</code> in &quot;your_theme_name&quot;</li>
@@ -3183,8 +3186,9 @@ phpMyAdmin version. Themes within same generation should be backwards
 compatible - theme with version 2 should work in phpMyAdmin requiring
 version 1. Themes with different generation are incompatible.</p>
 
-<p> 如果您没有自己主题的图标和按钮，请删除您的主题目录下的 img 目录。phpMyAdmin 将使用默认的图标和按钮（位于 original
-目录下的系统主题）。
+<p> If you do not want to use your own symbols and buttons, remove the directory
+&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the
+default icons and buttons (from the system-theme &quot;pmahomme&quot;).
 </p>
 
 <h4 id="faqmissingparameters">
@@ -4249,7 +4253,7 @@ chmod o+rwx tmp
     <a href="#faq6_31">6.31 How do I create a relation in designer?</a></h4>
 
     <p>To select relation, click:<br />
-    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    <img src="themes/pmahomme/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
     显示的字段为粉红色。要设置/取消显示的字段，点击“选择显示字段”图标，然后选择需要的字段名。</p>
 
 <h4 id="faq6_32">

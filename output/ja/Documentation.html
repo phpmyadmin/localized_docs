@@ -85,7 +85,7 @@ href="http://www.php.net/mcrypt"><code>mcrypt</code></a>
 を使用していないと、phpMyAdmin のページを読み込みが大幅に遅くなる原因となりえます。
                 </li>
                 <li>アップロード進行状況バーをサポートするには、<a href="#faq2_9"><abbr title="よくある質問">FAQ</abbr>
-2.9</a>を参照してください。</li>
+2.9</a> を参照してください。</li>
                 <li>XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP 5.2.17 以降および <a
 href="http://www.php.net/libxml"><code>libxml</code></a> 拡張が必要です。</li>
         </ul>
@@ -931,7 +931,7 @@ title="データベース用の問い合わせ言語">SQL</abbr>
             <li>テーブルの構造もしくはデータの変更を行う全てのコマンドをログに記録し、これらのコマンドと世代番号とを結び付けています。</li>
         </ul>
 
-        もちろん、変更履歴を表示することもできます。「コマンド追跡」ページに全ての世代に対しての詳細なレポートがあります。レポートではフィルタを使用することができ、例えば、日付範囲内のコマンドリストを取得などが行えます。ユーザ名をフィルタする場合は、全ての名前が対象であれば「*」を入力、名前のリストに対しては「,」で区切って入力してください。更に、(フィルタした)
+        もちろん、変更履歴を表示することもできます。「コマンド追跡」ページにすべての世代に対しての詳細なレポートがあります。レポートは表示件数を絞ることができます。例えば、日付範囲などを指定することで条件内のコマンドリストを取得が行えます。ユーザ名で絞る場合は、すべての名前が対象であれば「*」を入力、名前のリストに対しては「,」で区切って入力してください。更に、(絞り込んだ)
 レポートをファイルまたは一時的なデータベースへエクスポートすることができます。
         <br/><br/>
 
@@ -1374,8 +1374,8 @@ class="configrule">$cfg['LeftFrameTableSeparator']</a>
 にリンクしている場合は、<code>new</code> が使われます。</dd>
 
     <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
-    <dd>左フレーム内のテーブルリストの上部に、JavaScript よるフィルタボックスが表示されるテーブルの最小数を定義します。デフォルトは
-<code>30</code> です。フィルタを無効にするには、予想されるテーブル使用数を上回るようにします (例：9999)。</dd>
+    <dd>左フレーム内のテーブルリストの上部に、JavaScript よる表示数を絞るための入力欄を表示させるテーブルの最小数を定義します。デフォルトは
+<code>30</code> です。絞り込みを無効にするには、予想されるテーブル使用数を上回るようにします (例：9999)。</dd>
 
     <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] 論理型</dt>
     <dd>サーバの選択肢を左フレームの最上部に表示するかどうかを定義します。デフォルトは FALSE です。</dd>
@@ -2445,8 +2445,7 @@ href="http://dev.mysql.com/doc/mysql/ja/old-client.html">MySQL
     <a href="#faq1_18">1.18 (該当しなくなったため取り下げ)。</a></h4>
 
 <h4 id="faq1_19">
-    <a href="#faq1_19">1.19 「リレーション表示（display
-relations）」機能を実行できません。私が使っているフォントを認識してくれないようです。</a></h4>
+    <a href="#faq1_19">1.19 「リレーション表示」機能を実行できません。使っているフォントを認識してくれないようです。</a></h4>
 
 <p> 私たちがこの機能を実現するのに利用している「FPDF」ライブラリは、いくつかの特別なファイルがないとフォントを利用できません。<br />
     その特別なファイルの作り方は <a href="http://www.fpdf.org/">FPDF マニュアル</a> をご覧ください。</p>
@@ -2505,8 +2504,8 @@ file)」フィールドが見つからないのでアップロードできませ
 # mod_gzip_item_include mime "application/x-httpd-php.*"
 </pre>
 
-<p> このバージョンの mod_gzip on Apache（Windows）には PHP スクリプトの扱いに問題があるのです。もちろん Apache
-を再起動する必要があります。</p>
+<p> このバージョンの Apache (Windows) の mod_gzip には、PHP
+スクリプトの扱いに問題があるのです。当然ながら、上記の変更を行ったら Apache を再起動する必要があります。</p>
 
 <h4 id="faq1_26">
     <a href="#faq1_26">1.26 phpMyAdmin を <abbr title="Internet Information
@@ -2870,10 +2869,11 @@ YES）（'root@localhost'ユーザのアクセスは拒否されました。パ�
 href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>、<a
 href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定します。<br />
     <br />
-    <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>
-の下の「original」ディレクトリやその下位構造は削除しないでください。これは phpMyAdmin
-が利用するシステムテーマです。「original」にはすべての画像やスタイルが格納されています。これは後方互換性のためと、画像や css
-ファイルが含まれていないすべてのテーマのためです。
+    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
+should not delete the directory &quot;pmahomme&quot; or its underlying
+structure, because this is the system theme used by phpMyAdmin.
+&quot;pmahomme&quot; contains all images and styles, for backwards
+compatibility and for all themes that would not include images or css-files.
     <br /><br />
 
     <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
@@ -2883,7 +2883,8 @@ href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定�
 
 <ul><li><a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a> ディレクトリ
 (デフォルトでは <code>themes</code>) の下に新しいサブディレクトリ (例：「your_theme_name」) を作ります。</li>
-    <li>「original」から「your_theme_name」にファイルやディレクトリをコピーします</li>
+    <li>copy the files and directories from &quot;pmahomme&quot; to
+&quot;your_theme_name&quot;</li>
     <li>「your_theme_name/css」の css ファイルを編集します。</li>
     <li>「your_theme_name/img」に新しい画像を入れます。</li>
     <li>「your_theme_name」の <code>layout.inc.php</code> を編集します。</li>
@@ -2898,7 +2899,9 @@ href="#cfg_ThemeDefault" class="configrule">$cfg['ThemeDefault']</a> で設定�
 のバージョンと直接の関係はありません。同じ世代のテーマは後方互換性があるようにしてください。つまり、バージョン 2 のテーマはバージョン 1 が必要な
 phpMyAdmin でもうまくいくようにしてください。世代の異なるテーマは互換性がありません。</p>
 
-<p> 独自のシンボルやボタンを使いたいのでなければ、「your_theme_name」から「img」ディレクトリを削除してください。デフォルトの（システムテーマである「original」の）アイコンやボタンが使われます。
+<p> If you do not want to use your own symbols and buttons, remove the directory
+&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the
+default icons and buttons (from the system-theme &quot;pmahomme&quot;).
 </p>
 
 <h4 id="faqmissingparameters">
@@ -3842,7 +3845,7 @@ chmod o+rwx tmp
     <a href="#faq6_31">6.31 デザイナでリレーションを作成するには、どのようにすればいいのでしょうか？</a></h4>
 
     <p>下図に示すようにリレーションをクリックし選択します。<br />
-    <img src="themes/original/img/pmd/help_relation.png" width="100" height="100" alt="[リレーションの画像]" /><br />
+    <img src="themes/pmahomme/img/pmd/help_relation.png" width="100" height="100" alt="[リレーションの画像]" /><br />
     表示するカラムはピンク色で表示されます。表示非表示を切り替える場合は「表示するカラムを選択する」というアイコンをクリックしてから適切なカラム名をクリックください。</p>
 
 <h4 id="faq6_32">
