@@ -1,8 +1,7 @@
 PO4A-HEADER:mode=before;position=<h2 id="glossary">
 <p>
-To tłumaczenie jest <b>wspólną</b> pracą <b>różnych</b> tłumaczy, którzy
-pracowali nad tłumaczeniem, z języka angielskiego, dokumentacji phpMyAdmin
--- wersja 3.5.0-dev, na <a
-href="https://l10n.cihar.com/projects/pmadoc/">serwerze tłumaczeń
-(Pootle)</a>. Właśnie tutaj powinni się oni podpisać: - Stanisław Krukowski.
+To tłumaczenie jest wspólną pracą różnych tłumaczy, którzy pracowali, jako
+ochotnicy, nad tłumaczeniem dokumentacji phpMyAdmin na <a
+href="https://l10n.cihar.com/projects/pmadoc/">serwerze tłumaczeń</a>. Tutaj
+powinni się oni podpisać: 1. Jan Kowalski, Polska, <pst3qga@tormail.org>.
 </p>
