@@ -1731,10 +1731,11 @@ benutzten Tabellen zu deaktivieren.</dd>
 werden soll oder nicht.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] Boolescher Wert</dt>
-    <dd>Wenn Tool-Tips aktiviert sind und ein DB Kommentar gesetzt ist, wird das den
-Kommentar und realen Namen wechseln. Das heißt, dass wenn Sie eine Tabelle
-'user0001' und einen Kommentar 'MyName' darafu haben, werden Sie 'MyName' im
-linken Frame sehen und als Tool-Tip wird der reale Name der DB angezeigt.</dd>
+    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
+and the real name. That means that if you have a database called 'user0001'
+and add the comment 'MyName' on it, you will see the name 'MyName' used
+consequently in the left frame and the tool-tip shows the real name of the
+DB.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] Boolescher Wert/String</dt>
     <dd>Gleich wie <a href="#cfg_ShowTooltipAliasDB"
@@ -2689,8 +2690,10 @@ defaults for the parameters: "'','','charset=us-ascii'".</li>
 
 <h3 id="transformationsfiles">3. File structure</h3>
 
-<p> All mimetypes and their transformations are defined through single files in
-the directory 'libraries/transformations/'.</p>
+<p> All specific transformations for mimetypes are defined through class files
+in the directory 'libraries/plugins/transformations/'. Each of them extends
+a certain transformation abstract class declared in
+libraries/plugins/transformations/abstract.</p>
 
 <p> They are stored in files to ease up customization and easy adding of new
 transformations.</p>
@@ -2699,112 +2702,36 @@ transformations.</p>
 transformations always work. It makes no sense to apply a transformation to
 a mimetype the transform-function doesn't know to handle.</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype than what they where built for, but pay attention to option usage
-as well as what the transformation does to your column.</p>
-
 <p> There is a file called '<em>transformations.lib.php</em>' that provides some
 basic functions which can be included by any other transform function.</p>
 
-<p> Es gibt 5 mögliche Dateinamen:</p>
+<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
+Name].class.php</code>,<br />
+    while the abtract class that it extends has the name <code>[Transformation
+Name]TransformationsPlugin</code>.<br /><br />
+    All of the methods that have to be implemented by a transformations plug-in
+are: <Br />
+    <ol>
+        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
+        <li>getName(), getInfo() and applyTransformation() in the abstract class it
+extends.</li>
+    </ol>
+    </p>
+    
+<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
+the MIME type, MIME Subtype and transformation accordingly. getInfo()
+returns the transformation's description and possible options it may receive
+and applyTransformation() is the method that does the actual work of the
+transformation plug-in.</p>   
 
-<ol><li>Eine mimetype+subtype Transformierung:<br /><br />
+<p> Please see the libraries/plugins/transformations/TEMPLATE and
+libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
+own transformation plug-in. You can also generate a new transformation
+plug-in (with or without the abstract transformation class), by using
+<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+    <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-        <code>[mimetype]_[subtype]__[transform].inc.php</code><br /><br />
-
-        Bitte beachten Sie, dass mimetype und subtype durch  '_' getrennt sind und
-deshalb dieses Zeichen nicht in deren Namen vorkommen darf. Die
-Transformierungsfunktion/der Dateiname darf nur Zeichen enthalten, welche
-keine Probleme im Dateisystem oder in der PHP
-Funktionsbezeichnungskonvention verursachen.<br /><br />
-
-        The transform function will the be called
-'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>'.<br /><br />
-
-        <strong>Beispiel:</strong><br /><br />
-
-        <code>text_html__formatted.inc.php</code><br />
-        <code>PMA_transform_text_html__formatted()</code></li>
-
-    <li>Eine mimetype Transformation (ohne subtype):<br /><br />
-
-        <code>[mimetype]__[transform].inc.php</code><br /><br />
-
-        Bitte beachten Sie, dass keine einzelnen '_' Zeichen vorkommen. Die
-Transformierungsfunktion/der Dateiname darf nur Zeichen enthalten, welche
-keine Probleme im Dateisystem oder in der PHP
-Funktionsbezeichnungskonvention verursachen.<br /><br />
-
-        Die Transformierungsfunktion wird
-'<code>PMA_transform_[mimetype]__[transform]()</code>' heißen.<br /><br />
-
-        <strong>Beispiel:</strong><br /><br />
-
-        <code>text__formatted.inc.php</code><br />
-        <code>PMA_transform_text__formatted()</code></li>
-
-    <li>Eine mimetype+subtype Funktion ohne spezielle Transformation<br /><br />
-
-        <code>[mimetype]_[subtype].inc.php</code><br /><br />
-
-        Bitte beachten Sie, dass keine  '__' Zeichen im Dateinamen
-vorkommen. Benutzen Sie keine Sonderzeichen im Dateinamen, die Probleme mit
-dem Dateisystem verursachen.<br /><br />
-
-        In der Datei ist keine Transformationsfunktion definiert.<br /><br />
-
-        <strong>Beispiel:</strong><br /><br />
-
-        <code>text_plain.inc.php</code><br />
-        (Keine Funktion)</li>
-
-    <li>Eine mimetype (ohne subtype) Funktion ohne spezielle Transformation<br /><br />
-
-        <code>[mimetype].inc.php</code><br /><br />
-
-        Bitte beachten Sie, dass keine '_' Zeichen im Dateinamen vorkommen. Benutzen
-Sie keine Sonderzeichen im Dateinamen, die Probleme mit dem Dateisystem
-verursachen.
-        <br /><br />
-
-        In der Datei ist keine Transformationsfunktion definiert.<br /><br />
-
-        <strong>Beispiel:</strong><br /><br />
-
-        <code>text.inc.php</code><br />
-        (Keine Funktion)</li>
-
-    <li>Eine globale Transformationsfunktion ohne speziellen mimetype<br /><br />
-
-        <code>global__[transform].inc.php</code><br /><br />
-
-        Die Transformationsfunktion wird
-'<code>PMA_transform_global__[transform]()</code>' heißen.<br /><br />
-
-        <strong>Beispiel:</strong><br /><br />
-
-        <code>global__formatted</code><br />
-        <code>PMA_transform_global__formatted()</code></li>
-</ol>
-
-<p> Generell benutzen Sie '_' um mimetype und subtype zu trennen und '__' um
-eine Transformationsfunktion anzugeben.</p>
-
-<p> Alle Dateinamen ohne '__' werden als nicht als gültige
-Tranformationfunktionen in der Dropdown-Liste angezeigt.</p>
-
-<p> Bitte sehen Sie die libraries/transformations/TEMPLATE Date um eigene
-Transformationsfunktionen hinzuzufügen. Sehen Sie
-libraries/transformations/TEMPLATE_MIMETYPE um eine mimetype ohne
-Transformation hinzuzufügen.</p>
-
-<p> Um eine neue Transformationsfunktion zu erstellen sehen Sie sich
-<code>libraries/transformations/template_generator.sh</code> an. Um ein
-neues, leeres mimetype zu erstellen, sehen sie sich
-<code>libraries/transformations/template_generator_mimetype.sh</code> an.</p>
-
-<p> Eine Transformationsfunktion erhält immer drei Variablen übergeben:</p>
+<p> The applyTransformation() method always gets passed three variables:</p>
 
 <ol><li><strong>$buffer</strong> - Enthält den text in der Tabellenspalte. Das ist
 der Text den Sie verändern wollen.</li>
@@ -2820,18 +2747,6 @@ entsprechend in unsigned/zerofill/not_null/... Felder zu transformieren.<br />
         Die $meta-&gt;mimetype-Variable enthält die originale MIME-type der Spalte
 (z.B. 'text/plain', 'image/jpeg', etc.)</li>
 </ol>
-
-<p> Zusätzlich sollten Sie auch eine weitere Funktion zur Verfügung stellen die
-den Benutzer über die Transformation informiert. Diese Funktion sollte den
-gleichen Namen wie die Funktionstransformation erweitert durch den Suffix
-<code>_info</code> haben. Diese Funktion akzeptiert keine Parameter und gibt
-einen Array mit Informationen über die Transformationen zurück. Derzeit
-werden die folgenden Schlüsselwerte akzeptiert:
-</p>
-<dl>
-    <dt><code>info</code></dt>
-    <dd>Langbeschreibung der Transformation</dd>
-</dl>
 
 
 <!-- FAQ -->

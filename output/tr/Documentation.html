@@ -1686,10 +1686,11 @@ tabloların listelenmesini etkisizleştirmek için bunu 0'a (sıfır) ayarlayın
 görüntülenmeyeceğini tanımlar.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
-    <dd>Eğer araç ipucu etkinse ve VT yorumu ayarlıysa, bu, yorumu ve gerçek adı
-çevirecek. Bunun anlamı eğer 'kullanici0001' adında bir tablonuz varsa ve
-'BenimAdım' olarakta yorum ekliyse, sol çerçevede dolayısıyla kullanılan
-'BenimAdım' adını göreceksiniz ve araç ipucu VT'nin gerçek adını gösterecek.</dd>
+    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
+and the real name. That means that if you have a database called 'user0001'
+and add the comment 'MyName' on it, you will see the name 'MyName' used
+consequently in the left frame and the tool-tip shows the real name of the
+DB.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] boolean/dizgi</dt>
     <dd>Tablo adlarında işe yaraması hariç, <a href="#cfg_ShowTooltipAliasDB"
@@ -2673,8 +2674,10 @@ girin. Ancak varsayılanları kullanabileceğiniz parametreler:
 
 <h3 id="transformationsfiles">3. Dosya yapısı</h3>
 
-<p> Tüm mime türleri ve dönüşümleri 'libraries/transformations/' dizinindeki tek
-dosya üzerinden tanımlanır.</p>
+<p> All specific transformations for mimetypes are defined through class files
+in the directory 'libraries/plugins/transformations/'. Each of them extends
+a certain transformation abstract class declared in
+libraries/plugins/transformations/abstract.</p>
 
 <p> Özelleştirmeyi genişletmek ve yeni dönüşümlerin kolay eklenmesi için
 dosyalarda saklanır.</p>
@@ -2683,110 +2686,37 @@ dosyalarda saklanır.</p>
 çalıştığından emin olunmasını sağlar. Mime türüne dönüşümün uygulanmasını
 mantıksız yapar, dönüştürme işlevi başa çıkmayı bilmez.</p>
 
-<p> Ancak biri birçok mime türü için çalışan boş mime türlerini ve genel
-dönüştürmeleri kullanabilir. Ne için yapıldıklarından farklı olarak ayrıca
-mime türlerinde dönüşümleri kullanabilirsiniz, ancak dönüştürmenin
-sütununuza ne yaptığının yanısıra seçeneğin kullanımına dikkat edin.</p>
-
 <p> Herhangi bir diğer dönüştürme işlevi tarafından dahil edilebilir bazı temel
 işlevleri sağlayan '<em>transformations.lib.php</em>' adında bir dosya
 vardır.</p>
 
-<p> 5 dosya adı olasılığı vardır:</p>
+<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
+Name].class.php</code>,<br />
+    while the abtract class that it extends has the name <code>[Transformation
+Name]TransformationsPlugin</code>.<br /><br />
+    All of the methods that have to be implemented by a transformations plug-in
+are: <Br />
+    <ol>
+        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
+        <li>getName(), getInfo() and applyTransformation() in the abstract class it
+extends.</li>
+    </ol>
+    </p>
+    
+<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
+the MIME type, MIME Subtype and transformation accordingly. getInfo()
+returns the transformation's description and possible options it may receive
+and applyTransformation() is the method that does the actual work of the
+transformation plug-in.</p>   
 
-<ol><li>Mime türü+alt tür dönüşümü:<br /><br />
+<p> Please see the libraries/plugins/transformations/TEMPLATE and
+libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
+own transformation plug-in. You can also generate a new transformation
+plug-in (with or without the abstract transformation class), by using
+<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+    <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-        <code>[mimetype]_[subtype]__[transform].inc.php</code><br /><br />
-
-        Lütfen unutmayın mime türü ve alt tür, adları içinde içermeyecek '_' ile
-ayrılır. Dönüştürme işlevi/dosya adı sadece dosya sisteminde soruna sebep
-olmayacak karakterlerin yanısıra PHP işlevi adlandırma kuralını içerebilir.<br /><br />
-
-        Dönüştürme işlevi
-'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>' olarak
-adlandırılacaktır.<br /><br />
-
-        <strong>Örnek:</strong><br /><br />
-
-        <code>text_html__formatted.inc.php</code><br />
-        <code>PMA_transform_text_html__formatted()</code></li>
-
-    <li>Mime türü (alt tür ile/ile değil) dönüşümü:<br /><br />
-
-        <code>[mimetype]__[transform].inc.php</code><br /><br />
-
-        Lütfen unutmayın tek '_' karakteri yoktur. Dönüştürme işlevi/dosya adı
-sadece dosya sisteminde soruna sebep olmayacak karakterlerin yanısıra PHP
-işlevi adlandırma kuralını içerebilir.<br /><br />
-
-        Dönüştürme işlevi '<code>PMA_transform_[mimetype]__[transform]()</code>'
-olarak adlandırılacaktır.<br /><br />
-
-        <strong>Örnek:</strong><br /><br />
-
-        <code>text__formatted.inc.php</code><br />
-        <code>PMA_transform_text__formatted()</code></li>
-
-    <li>Belirli dönüştürme işlevsiz, mime türü+alt tür<br /><br />
-
-        <code>[mimetype]_[subtype].inc.php</code><br /><br />
-
-        Lütfen unutmayın dosya adında '__' karakterleri yoktur. Dosya adında dosya
-sistemiyle sorunlara sebep olan özel karakterler kullanmayın.<br /><br />
-
-        Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
-
-        <strong>Örnek:</strong><br /><br />
-
-        <code>text_plain.inc.php</code><br />
-        (İşlevi yok)</li>
-
-    <li>Belirli dönüştürme işlevsiz, mime türü (alt tür ile/ile değil)<br /><br />
-
-        <code>[mimetype].inc.php</code><br /><br />
-
-        Lütfen unutmayın dosya adında '_' karakterleri yoktur. Dosya adında dosya
-sistemiyle sorunlara sebep olan özel karakterler kullanmayın.
-        <br /><br />
-
-        Dosyada kendiliğinden tanımlanan dönüşüm işlevi yok.<br /><br />
-
-        <strong>Örnek:</strong><br /><br />
-
-        <code>text.inc.php</code><br />
-        (İşlevi yok)</li>
-
-    <li>Belirli mime türü olmayan genel dönüştürme işlevi<br /><br />
-
-        <code>global__[transform].inc.php</code><br /><br />
-
-        Dönüştürme işlevi '<code>PMA_transform_global__[transform]()</code>' olarak
-adlandırılacaktır.<br /><br />
-
-        <strong>Örnek:</strong><br /><br />
-
-        <code>global__formatted</code><br />
-        <code>PMA_transform_global__formatted()</code></li>
-</ol>
-
-<p> Mime türü ve alt türü bölmek için genel olarak '_' ve dönüştürme işlevi
-sağlamak için '__' çok kullanılır.</p>
-
-<p> Tüm dosya adlarının kendilerinde '__' içermemesi aşağı açılır menüde geçerli
-dönüştürme işlevleri olarak gösterilmez.</p>
-
-<p> Lütfen kendi dönüştürme işlevinizi eklemek için
-libraries/transformations/TEMPLATE dosyasına bakın. Dönüştürme işlevi
-olmadan mime türü eklemek için libraries/transformations/TEMPLATE_MIMETYPE
-içine bakın.</p>
-
-<p> Yeni dönüştürme işlevi için lütfen
-<code>libraries/transformations/template_generator.sh</code> içine
-bakın. Yeni bir, boş mime türü oluşturmak için lütfen
-<code>libraries/transformations/template_generator_mimetype.sh</code> içine
-bakın.</p>
-
-<p> Dönüştürme işlevi her zaman üç değişkene iletilir:</p>
+<p> The applyTransformation() method always gets passed three variables:</p>
 
 <ol><li><strong>$buffer</strong> - Sütunun içindeki metni içerir. Bu dönüştürmek
 istediğiniz metindir.</li>
@@ -2803,17 +2733,6 @@ kullanılabilir.<br />
         $meta-&gt;Mime türü değişkeni sütunun orijinal MIME-türünü içerir (yani
 'text/plain', 'image/jpeg' v.s.)</li>
 </ol>
-
-<p> İlave olarak ayrıca kullanıcıya dönüşümler hakkında bilgi sağlamak için
-ilave işlev sağlamalısınız. Bu işlev <code>_info</code> son eki eklenmiş
-dönüştürme işlevi adıyla aynı isimde olmalıdır. Bu işlev parametreleri kabul
-etmez ve dönüştürme hakkında bilgiyle dizilimi geri döndürür. Şimdilik
-aşağıdaki anahtarlar kullanılabilir:
-</p>
-<dl>
-    <dt><code>info</code></dt>
-    <dd>Uzun dönüşüm açıklaması.</dd>
-</dl>
 
 
 <!-- FAQ -->

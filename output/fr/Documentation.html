@@ -1922,12 +1922,11 @@ liste des tables.</dd>
 info-bulle dans le cadre de gauche.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] bool&eacute;en</dt>
-    <dd>Si les info-bulles sont activ&eacute;es et qu'un commentaire de base de
-donn&eacute;es est d&eacute;fini, cela affichera le commentaire et le nom
-r&eacute;el de la table. Cela signifie que si vous avez une table
-appel&eacute;e 'user0001' et que vous y ajoutiez le commentaire 'MonNom',
-vous verrez donc le nom 'MonNom' utilis&eacute; dans le cadre de gauche et
-l'info-bulle affichera le vrai nom de la base de donn&eacute;es.</dd>
+    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
+and the real name. That means that if you have a database called 'user0001'
+and add the comment 'MyName' on it, you will see the name 'MyName' used
+consequently in the left frame and the tool-tip shows the real name of the
+DB.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] bool&eacute;en</dt>
     <dd>Identique &agrave; <a href="#cfg_ShowTooltipAliasDB"
@@ -3039,8 +3038,10 @@ utiliser les param&egrave;tres par d&eacute;faut :
 
 <h3 id="transformationsfiles">3. Structure de fichier</h3>
 
-<p> Tous les types mime et leurs transformations sont d&eacute;finis dans des
-fichiers dans le r&eacute;pertoire 'libraries/transformations/'.</p>
+<p> All specific transformations for mimetypes are defined through class files
+in the directory 'libraries/plugins/transformations/'. Each of them extends
+a certain transformation abstract class declared in
+libraries/plugins/transformations/abstract.</p>
 
 <p> Ils sont emmagasin&eacute;s dans des fichiers pour faciliter la
 personnalisation et l'ajout ais&eacute; de nouvelles transformations.</p>
@@ -3050,119 +3051,37 @@ l'assurance que les transformations fonctionnent toujours.  Cela n'a pas de
 sens d'appliquer une transformation à un type mime, que la fonction de
 transformation ne sait pas manipuler.</p>
 
-<p> On peut, cependant, utiliser des types mime vides et des transformations
-globales qui fonctionnent pour beaucoup de types mime. Vous pouvez aussi
-utiliser des transformations sur des types mime différents de ceux pour
-lesquels elles ont été construites, mais faites attention aux options
-d'utilisation tout comme à l'action qu'aura la transformation sur votre
-colonne.</p>
-
 <p> Il y a un fichier de base appelé '<em>transformations.lib.php</em>' qui
 fournit des fonctions de base qui peuvent être incluses dans une autre
 fonction de transformation.</p>
 
-<p> Il y a cinq noms de fichiers possibles&nbsp;:</p>
+<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
+Name].class.php</code>,<br />
+    while the abtract class that it extends has the name <code>[Transformation
+Name]TransformationsPlugin</code>.<br /><br />
+    All of the methods that have to be implemented by a transformations plug-in
+are: <Br />
+    <ol>
+        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
+        <li>getName(), getInfo() and applyTransformation() in the abstract class it
+extends.</li>
+    </ol>
+    </p>
+    
+<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
+the MIME type, MIME Subtype and transformation accordingly. getInfo()
+returns the transformation's description and possible options it may receive
+and applyTransformation() is the method that does the actual work of the
+transformation plug-in.</p>   
 
-<ol><li>Une transformation typemime+soustype&nbsp;:<br /><br />
+<p> Please see the libraries/plugins/transformations/TEMPLATE and
+libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
+own transformation plug-in. You can also generate a new transformation
+plug-in (with or without the abstract transformation class), by using
+<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+    <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-        <code>['typemime']_['soustype']__['transformation'].inc.php</code><br /><br />
-
-        Veuillez noter que typemime et soustype sont s&eacute;par&eacute;s par '_',
-qui ne doit pas &ecirc;tre contenu dans leurs noms. La transformation
-fonction/nomfichier ne doit contenir que des caract&egrave;res qui ne posent
-pas de probl&egrave;me pour le syst&egrave;me de fichier et pour la
-convention de nommage de fonction de PHP.<br /><br />
-
-        La fonction de transformation sera appel&eacute;e
-'<code>PMA_transform_['typemime']_['soustype']__['transformation']()</code>'.<br /><br />
-
-        <strong>Exemple</strong>&nbsp;:<br /><br />
-
-        <code>text_html__formatted.inc.php</code><br />
-        <code>PMA_transform_text_html__formatted()</code></li>
-
-    <li>Une transformation de type mime (sans sous-type)&nbsp;:<br /><br />
-
-        <code>['typemime']__['transformation'].inc.php</code><br /><br />
-
-        Veuillez noter qu'il n'y a pas de caract&egrave;re '_' isol&eacute;. La
-transformation fonction/nomfichier doit contenir seulement des
-caract&egrave;res qui ne posent pas de probl&egrave;me pour le
-syst&egrave;me de fichier et pour la convention de nommage de PHP.<br /><br />
-
-        La fonction de transformation sera appel&eacute;e
-'<code>transformation_PMA_['typemime']__['transformation']()</code>'.<br /><br />
-
-        <strong>Exemple</strong>&nbsp;:<br /><br />
-
-        <code>text__formatted.inc.php</code><br />
-        <code>transformation_PMA_text__formatted()</code></li>
-
-    <li>Une transformation typemime+soustype sans fonction de transformation
-sp&eacute;cifique<br /><br />
-
-        <code>['typemime']_['soustype'].inc.php</code><br /><br />
-
-        Veuillez noter qu'il n'y a pas de caract&egrave;re '_' dans le fichier.
-N'utilisez pas de caract&egrave;res sp&eacute;ciaux dans le nom de fichier
-posant des probl&egrave;mes avec le syst&egrave;me de fichiers.<br /><br />
-
-        Aucune fonction de transformation n'est d&eacute;finie dans le fichier
-lui-m&ecirc;me.<br /><br />
-
-        <strong>Exemple</strong>&nbsp;:<br /><br />
-
-        <code>text_plain.inc.php</code><br />
-        (Pas de fonction)</li>
-
-    <li>Une transformation de type mime (sans sous-type) sans fonction de
-transformation sp&eacute;cifique<br /><br />
-
-        <code>['typemime'].inc.php</code><br /><br />
-
-        Veuillez noter qu'il n'y a pas de caract&egrave;re '_' dans le nom de
-fichier. N'utilisez pas de caract&egrave;res sp&eacute;ciaux dans le nom de
-fichier posant des probl&egrave;mes avec le syst&egrave;me de fichiers.
-        <br /><br />
-
-        Aucune fonction de transformation n'est d&eacute;finie dans le fichier
-lui-m&ecirc;me.<br /><br />
-
-        <strong>Exemple</strong>&nbsp;:<br /><br />
-
-        <code>text.inc.php</code><br />
-        (Pas de fonction)</li>
-
-    <li>Une fonction de transformation globale sans type mime sp&eacute;cifique<br /><br />
-
-        <code>global__['transform'].inc.php</code><br /><br />
-
-        La fonction de transformation sera appel&eacute;e
-'<code>transformation_PMA_global__['transform']()</code>'.<br /><br />
-
-        <strong>Exemple</strong>&nbsp;:<br /><br />
-
-        <code>global__formatted</code><br />
-        <code>transformation_PMA_global__formatted()</code></li>
-</ol>
-
-<p> Utilisez donc g&eacute;n&eacute;ralement&nbsp; '_' pour s&eacute;parer le
-type mime du sous-type, et '__' pour annoncer la fonction de transformation.</p>
-
-<p> Tous les fichiers ne contenant pas '__' ne sont pas affich&eacute;s en tant
-que fonctions de transformation valides dans la liste d&eacute;roulante.</p>
-
-<p> Veuillez consulter le fichier <em>libraries/transformations/TEMPLATE</em>
-pour ajouter votre propre fonction de transformation. Veuillez consulter le
-fichier <em>libraries/transformations/TEMPLATE_MIMETYPE</em> pour ajouter un
-type mime sans fonction de transformation.</p>
-
-<p> Pour cr&eacute;er une nouvelle fonction de transformation, veuillez
-consulter <code>libraries/transformations/template_generator.sh</code>. Pour
-cr&eacute;er un nouveau type mime vide, veuillez consulter
-<code>libraries/transformations/template_generator_mimetype.sh</code>.</p>
-
-<p> Une fonction de transformation a toujours besoin de trois variables&nbsp;:</p>
+<p> The applyTransformation() method always gets passed three variables:</p>
 
 <ol><li><strong>$buffer</strong> - contient le texte de la colonne. C'est le texte
 que vous voulez transformer.</li>
@@ -3179,18 +3098,6 @@ unsigned/zerofill/not_null/&hellip;<br />
         La variable $meta-&gt;mimetype contient le type MIME original de la colonne
 (c'est-&agrave;-dire 'text/plain', 'image/jpeg', etc.)</li>
 </ol>
-
-<p> Vous pouvez aussi fournir une fonction additionnelle pour fournir des
-informations sur la transformation à l'utilisateur. Cette fonction doit
-avoir le même nom que la fonction de transformation suffixé par
-<code>_info</code>. Cette fonction n'accepte pas de paramètre et renvoie un
-tableau avec des informations sur la transformation. Actuellement, les clés
-suivantes peuvent être utilisée&nbsp;:
-</p>
-<dl>
-    <dt><code>info</code></dt>
-    <dd>Description longue de la transformation.</dd>
-</dl>
 
 
 <!-- FAQ -->

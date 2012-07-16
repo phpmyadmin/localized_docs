@@ -1352,7 +1352,11 @@ class="configrule">$cfg['LeftFrameDBSeparator']</a> もご覧ください。
     <dd>テーブルのコメントをツールチップとして左フレームに表示するかどうかを定義します。</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] 論理型</dt>
-    <dd>ツールチップが有効になっておりデータベースのコメントが設定されている場合、コメントと本来の名前を入れ替わります。実際にどうになるのかというと、「user0001」というデータベースを使用していて、そのデータベースのコメントを「MyName」としていた場合、左フレーム内では名前が「MyName」となり、ツールチップはデータベース本来の名前である「user0001」が表示されるということです。</dd>
+    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
+and the real name. That means that if you have a database called 'user0001'
+and add the comment 'MyName' on it, you will see the name 'MyName' used
+consequently in the left frame and the tool-tip shows the real name of the
+DB.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] 論理型／文字列</dt>
     <dd><a href="#cfg_ShowTooltipAliasDB"
@@ -2123,103 +2127,45 @@ MIME タイプも考慮します）。MIME タイプに固有の変換機能は�
 
 <h3 id="transformationsfiles">3. ファイル構造</h3>
 
-<p> 各 MIME
-タイプ用の変換機能の定義はすべて「libraries/transformations/」ディレクトリのそれぞれのファイルにまとめられています。</p>
+<p> All specific transformations for mimetypes are defined through class files
+in the directory 'libraries/plugins/transformations/'. Each of them extends
+a certain transformation abstract class declared in
+libraries/plugins/transformations/abstract.</p>
 
 <p> 変換機能がファイルに保管されているのは、カスタマイズや新しい変換機能の追加を容易にするためです。</p>
 
 <p> ユーザが独自の MIME タイプを入力することはできませんが、そのおかげで変換機能はいつでも確実に動作することができるのです。ある変換機能を未知の
 MIME タイプに適用しようとしても無駄です。変換関数は処理の方法を知らないためです。</p>
 
-<p> ただし、MIME タイプを空欄にしてグローバルな変換機能を利用することはできます。グローバルな変換機能は多くの MIME
-タイプで動作することが期待できます。本来の対象とは違う MIME
-タイプの変換機能を利用することもできますが、オプションの使い方や、その変換機能がカラムの値をどうするかにはご注意ください。</p>
-
 <p> いくつかの基本的な関数を提供している「<em>transformations.lib.php</em>」というファイルがあります。このファイルはどんな変換機能からでもインクルードすることができます。</p>
 
-<p> ファイル名には 5 通りの可能性があります。</p>
+<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
+Name].class.php</code>,<br />
+    while the abtract class that it extends has the name <code>[Transformation
+Name]TransformationsPlugin</code>.<br /><br />
+    All of the methods that have to be implemented by a transformations plug-in
+are: <Br />
+    <ol>
+        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
+        <li>getName(), getInfo() and applyTransformation() in the abstract class it
+extends.</li>
+    </ol>
+    </p>
+    
+<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
+the MIME type, MIME Subtype and transformation accordingly. getInfo()
+returns the transformation's description and possible options it may receive
+and applyTransformation() is the method that does the actual work of the
+transformation plug-in.</p>   
 
-<ol><li>MIME タイプ＋サブタイプ変換機能：<br /><br />
+<p> Please see the libraries/plugins/transformations/TEMPLATE and
+libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
+own transformation plug-in. You can also generate a new transformation
+plug-in (with or without the abstract transformation class), by using
+<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+    <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-        <code>[MIME タイプ]_[サブタイプ]__[機能名].inc.php</code><br /><br />
-
-        MIME タイプとサブタイプが「_」で区切られていることにご注意ください（「_」はMIME
-タイプやサブタイプの名前には含まれないことになっています）。また、変換機能／ファイル名に含められる文字は、ファイルシステムや PHP
-関数の命名規約上問題を起こさない文字のみです。<br /><br />
-
-        この変換関数は「<code>PMA_transform_[MIME タイプ]_[サブタイプ]__[機能名]()</code>」で呼び出せます。<br /><br />
-
-        <strong>例：</strong><br /><br />
-
-        <code>text_html__formatted.inc.php</code><br />
-        <code>PMA_transform_text_html__formatted()</code></li>
-
-    <li>MIME タイプ（サブタイプなし）変換機能：<br /><br />
-
-        <code>[MIME タイプ]__[機能名].inc.php</code><br /><br />
-
-        1 文字の「_」がないことにご注意ください。 変換機能／ファイル名に含められる文字は、ファイルシステムや PHP
-関数の命名規約上問題を起こさない文字のみです。<br /><br />
-
-        この変換関数は「<code>PMA_transform_[MIME タイプ]__[機能名]()</code>」で呼び出せます。<br /><br />
-
-        <strong>例：</strong><br /><br />
-
-        <code>text__formatted.inc.php</code><br />
-        <code>PMA_transform_text__formatted()</code></li>
-
-    <li>MIME タイプ＋サブタイプ。特定な変換関数はなし<br /><br />
-
-        <code>[MIME タイプ]_[サブタイプ].inc.php</code><br /><br />
-
-        ファイル名に「__」が含まれないことにご注意ください。また、ファイル名にはファイルシステム上問題を起こす特殊文字は使わないでください。<br /><br />
-
-        このファイルそのものには変換関数は定義しません。<br /><br />
-
-        <strong>例：</strong><br /><br />
-
-        <code>text_plain.inc.php</code><br />
-        （関数はなし）</li>
-
-    <li>MIME タイプ（サブタイプなし）。特定の変換関数はなし<br /><br />
-
-        <code>[MIME タイプ].inc.php</code><br /><br />
-
-        ファイル名に「_」の文字が含まれないことにご注意ください。また、ファイル名にはファイルシステム上問題を起こす特殊文字は使わないでください。
-        <br /><br />
-
-        このファイルそのものには変換関数は定義しません。<br /><br />
-
-        <strong>例：</strong><br /><br />
-
-        <code>text.inc.php</code><br />
-        （関数はなし）</li>
-
-    <li>グローバル変換関数。特定の MIME タイプはなし<br /><br />
-
-        <code>global__[機能名].inc.php</code><br /><br />
-
-        変換関数は「<code>PMA_transform_global__[機能名]()</code>」で呼び出せます。<br /><br />
-
-        <strong>例：</strong><br /><br />
-
-        <code>global__formatted</code><br />
-        <code>PMA_transform_global__formatted()</code></li>
-</ol>
-
-<p> このように、一般的に MIME タイプとサブタイプは「_」で区切り、「__」は変換関数名を示します。</p>
-
-<p> ファイル名に「__」を含まないものはいずれも有効な変換関数としてドロップダウンに表示されることはありません。</p>
-
-<p> 独自の変換関数を加えるには libraries/transformations/TEMPLATE ファイルを、変換関数なしで MIME
-タイプを追加するには libraries/transformations/TEMPLATE_MIMETYPE ファイルをご覧ください。</p>
-
-<p> 新しい変換関数を作成する場合は <code>libraries/transformations/template_generator.sh</code>
-を、新しい、空の MIME タイプを作成する場合は
-<code>libraries/transformations/template_generator_mimetype.sh</code>
-をご覧ください。</p>
-
-<p> 変換関数には常に 3 つの変数が渡されます。</p>
+<p> The applyTransformation() method always gets passed three variables:</p>
 
 <ol><li><strong>$buffer</strong> - カラム内のテキストが入ります。これが変換するテキストになります。</li>
     <li><strong>$options</strong> - ユーザから変換関数に渡されたオプションが配列で入ります。</li>
@@ -2231,13 +2177,6 @@ href="http://www.php.net/mysql_fetch_field">マニュアルページ</a>
 といったプロパティによってカラムを変換できます。<br />
         $meta-&gt;mimetype 変数にはそのカラムの元の MIME タイプ（「text/plain」、「image/jpeg」など）が入ります。</li>
 </ol>
-
-<p> 更に、変換に対しての情報を提供している追加関数を、ユーザへ提供する必要があります。この関数は、<code>_info</code>の接尾辞を持つ変換関数と同じ名前を持つ必要があります。この関数は引数なしで、変換に関する情報配列を返します。戻り値の配列キーは以下の通りです。
-</p>
-<dl>
-    <dt><code>info</code></dt>
-    <dd>変換に関する長めの説明。</dd>
-</dl>
 
 
 <!-- FAQ -->

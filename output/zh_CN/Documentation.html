@@ -1463,8 +1463,8 @@ frame. Set this to 0 (zero) to disable the listing of recent tables.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
     <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a table called 'user0001' and
-add the comment 'MyName' on it, you will see the name 'MyName' used
+and the real name. That means that if you have a database called 'user0001'
+and add the comment 'MyName' on it, you will see the name 'MyName' used
 consequently in the left frame and the tool-tip shows the real name of the
 DB.</dd>
 
@@ -2376,103 +2376,45 @@ defaults for the parameters: "'','','charset=us-ascii'".</li>
 
 <h3 id="transformationsfiles">3. 文件结构</h3>
 
-<p> 所有类型和转换是都通过 'libraries/transformations/' 中的文件定义的。</p>
+<p> All specific transformations for mimetypes are defined through class files
+in the directory 'libraries/plugins/transformations/'. Each of them extends
+a certain transformation abstract class declared in
+libraries/plugins/transformations/abstract.</p>
 
 <p> 用文件保存易于定制和添加新的转换。</p>
 
 <p> 因为用户不能输入他们的类型，这将保证转换可以正常工作。但这不能避免设置一个转换函数无法处理的类型的问题。</p>
 
-<p> One can, however, use empty mime-types and global transformations which
-should work for many mimetypes. You can also use transforms on a different
-mimetype than what they where built for, but pay attention to option usage
-as well as what the transformation does to your column.</p>
-
 <p> There is a file called '<em>transformations.lib.php</em>' that provides some
 basic functions which can be included by any other transform function.</p>
 
-<p> 5 种可能的文件名:</p>
+<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
+Name].class.php</code>,<br />
+    while the abtract class that it extends has the name <code>[Transformation
+Name]TransformationsPlugin</code>.<br /><br />
+    All of the methods that have to be implemented by a transformations plug-in
+are: <Br />
+    <ol>
+        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
+        <li>getName(), getInfo() and applyTransformation() in the abstract class it
+extends.</li>
+    </ol>
+    </p>
+    
+<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
+the MIME type, MIME Subtype and transformation accordingly. getInfo()
+returns the transformation's description and possible options it may receive
+and applyTransformation() is the method that does the actual work of the
+transformation plug-in.</p>   
 
-<ol><li>一个类型与子类型的转换:<br /><br />
+<p> Please see the libraries/plugins/transformations/TEMPLATE and
+libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
+own transformation plug-in. You can also generate a new transformation
+plug-in (with or without the abstract transformation class), by using
+<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+    <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-        <code>[mimetype]_[subtype]__[transform].inc.php</code><br /><br />
-
-        请注意类型和子类型通过 '_' 分隔，且不包含它们的名字。转换函数/文件名只能使用字符，这样不会导致文件系统和 PHP 函数名转换的问题。<br /><br />
-
-        The transform function will the be called
-'<code>PMA_transform_[mimetype]_[subtype]__[transform]()</code>'.<br /><br />
-
-        <strong>Example:</strong><br /><br />
-
-        <code>text_html__formatted.inc.php</code><br />
-        <code>PMA_transform_text_html__formatted()</code></li>
-
-    <li>一个类型 (没有子类型) 转换:<br /><br />
-
-        <code>[mimetype]__[transform].inc.php</code><br /><br />
-
-        请注意是两个 '_' 符号。  转换函数/文件名只能使用字符，这样不会导致文件系统和 PHP 函数名转换的问题。<br /><br />
-
-        The transform function will the be called
-'<code>PMA_transform_[mimetype]__[transform]()</code>'.<br /><br />
-
-        <strong>Example:</strong><br /><br />
-
-        <code>text__formatted.inc.php</code><br />
-        <code>PMA_transform_text__formatted()</code></li>
-
-    <li>一个类型与子类型但没有转换函数<br /><br />
-
-        <code>[mimetype]_[subtype].inc.php</code><br /><br />
-
-        请注意文件名中没有 '__' 符号。请勿在文件名中使用可能导致文件系统问题的特殊字符。<br /><br />
-
-        文件中不定义转换函数。<br /><br />
-
-        <strong>Example:</strong><br /><br />
-
-        <code>text_plain.inc.php</code><br />
-        (无函数)</li>
-
-    <li>一个类型 (没有子类型) 但没有转换函数<br /><br />
-
-        <code>[mimetype].inc.php</code><br /><br />
-
-        请注意文件名中没有 '_' 符号。请勿在文件名中使用可能导致文件系统问题的特殊字符。
-        <br /><br />
-
-        文件中不定义转换函数。<br /><br />
-
-        <strong>Example:</strong><br /><br />
-
-        <code>text.inc.php</code><br />
-        (无函数)</li>
-
-    <li>一个不带类型的全局转换函数<br /><br />
-
-        <code>global__[transform].inc.php</code><br /><br />
-
-        The transform function will the be called
-'<code>PMA_transform_global__[transform]()</code>'.<br /><br />
-
-        <strong>Example:</strong><br /><br />
-
-        <code>global__formatted</code><br />
-        <code>PMA_transform_global__formatted()</code></li>
-</ol>
-
-<p> 所以 '_' 通常用来分割类型和子类型，而 '__' 来提供转换函数。</p>
-
-<p> 所有文件名中不包含 '__' 的文件将被认为是无效的转换函数而不显示在下拉框中。</p>
-
-<p> 参见 libraries/transformations/TEMPLATE 文件来添加你自己的转换函数。参见
-libraries/transformations/TEMPLATE_MIMETYPE 来添加一个不带转换函数的类型。</p>
-
-<p> To create a new transform function please see
-<code>libraries/transformations/template_generator.sh</code>.  To create a
-new, empty mimetype please see
-<code>libraries/transformations/template_generator_mimetype.sh</code>.</p>
-
-<p> 一个转换函数将被传入三个参数:</p>
+<p> The applyTransformation() method always gets passed three variables:</p>
 
 <ol><li><strong>$buffer</strong> - Contains the text inside of the column. This is
 the text, you want to transform.</li>
@@ -2488,17 +2430,6 @@ unsigned/zerofill/not_null/... properties.<br />
         The $meta-&gt;mimetype variable contains the original MIME-type of the
 column (i.e. 'text/plain', 'image/jpeg' etc.)</li>
 </ol>
-
-<p> Additionally you should also provide additional function to provide
-information about the transformation to the user. This function should have
-same name as transformation function just with appended <code>_info</code>
-suffix. This function accepts no parameters and returns array with
-information about the transformation. Currently following keys can be used:
-</p>
-<dl>
-    <dt><code>info</code></dt>
-    <dd>Long description of the transformation.</dd>
-</dl>
 
 
 <!-- FAQ -->
