@@ -1704,11 +1704,12 @@ recientes.</dd>
     <dd>Define si mostrar el comentario de la tabla como texto suplementario o no.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">booleano $cfg['ShowTooltipAliasDB']</dt>
-    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a database called 'user0001'
-and add the comment 'MyName' on it, you will see the name 'MyName' used
-consequently in the left frame and the tool-tip shows the real name of the
-DB.</dd>
+    <dd>Si los textos suplementarions están habilitados y hay un comentario definido
+en la base de datos, esta configuración intercambiará el comentario y el
+nombre real. Esto significa que si se tiene una tabla llamada 'usuario0001'
+con el comentario 'MiNombre' en ella, se verá la base de datos con el nombre
+'MiNombre' en el marco izquierdo y el texto suplementario mostrará el nombre
+real de la base de datos.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">booleano o cadena $cfg['ShowTooltipAliasTB']</dt>
     <dd>Igual que <a href="#cfg_ShowTooltipAliasDB"
@@ -2729,9 +2730,9 @@ pueden utilizar los valores predeterminados para los parámetros utilizando:
 
 <h3 id="transformationsfiles">3. Estructura de archivos</h3>
 
-<p> All specific transformations for mimetypes are defined through class files
-in the directory 'libraries/plugins/transformations/'. Each of them extends
-a certain transformation abstract class declared in
+<p> Todas las transformaciones específicas a tipos MIME son definidas en
+archivos de clase en la carpeta 'libraries/plugins/transformations/'. Cada
+uno extiende una clase abstracta particular de transformaciones definida en
 libraries/plugins/transformations/abstract.</p>
 
 <p> Están almacenados en archivos para facilitar la personalización y hacer
@@ -2746,33 +2747,33 @@ sabe manejar.</p>
 puede ser incluído por cualquier otra función de transformación y provee
 cierta funcionalidad básica.</p>
 
-<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
-Name].class.php</code>,<br />
-    while the abtract class that it extends has the name <code>[Transformation
-Name]TransformationsPlugin</code>.<br /><br />
-    All of the methods that have to be implemented by a transformations plug-in
-are: <Br />
+<p> la convención para nombres de archivo es <code>[tipo
+MIME]_[sub-tipo]__[transformación].class.php</code>,<br />
+    y la clase abstracta que extiende tiene el nombre
+<code>[nombre-de-transformacion]TransformationsPlugin</code>.<br /><br />
+    Los métodos que tienen que ser implementados por un agregado de
+transformación son: <Br />
     <ol>
-        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
-        <li>getName(), getInfo() and applyTransformation() in the abstract class it
-extends.</li>
+        <li>getMIMEType() y getMIMESubtype() en la clase principal;</li>
+        <li>getName(), getInfo() y applyTransformation() en la clase abstracta que
+extiende.</li>
     </ol>
     </p>
     
-<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
-the MIME type, MIME Subtype and transformation accordingly. getInfo()
-returns the transformation's description and possible options it may receive
-and applyTransformation() is the method that does the actual work of the
-transformation plug-in.</p>   
+<p>Los métodos getMIMEType(), getMIMESubtype() y getName() devuelven el nombre
+del tipo MIME, del sub-tipo MIME y de la transformación
+respectivamente. getInfo() devuelve la descripción de la transformación y
+las opciones que puede recibir y applyTransformation() es el método que hace
+el trabajo real del plugin de transformación.</p>   
 
-<p> Please see the libraries/plugins/transformations/TEMPLATE and
-libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
-own transformation plug-in. You can also generate a new transformation
-plug-in (with or without the abstract transformation class), by using
-<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+<p> Revise los archivos libraries/plugins/transformations/TEMPLATE y
+libraries/plugins/transformations/TEMPLATE_ABSTRACT para agregar su propio
+plugin de transformación. Puede también generar un nuevo plugin de
+transformación (con o sin la clase abstracta de transformación) utilizando
+<code>libraries/plugins/transformations/generator_plugin.sh</code> o<br />
     <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-<p> The applyTransformation() method always gets passed three variables:</p>
+<p> El método applyTransformation() siempre recibirá tres variables:</p>
 
 <ol><li><strong>$buffer</strong> - Contiene el texto de la columna. Este es el texto
 que se desea transformar.</li>

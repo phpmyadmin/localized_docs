@@ -1686,11 +1686,11 @@ tabloların listelenmesini etkisizleştirmek için bunu 0'a (sıfır) ayarlayın
 görüntülenmeyeceğini tanımlar.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
-    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a database called 'user0001'
-and add the comment 'MyName' on it, you will see the name 'MyName' used
-consequently in the left frame and the tool-tip shows the real name of the
-DB.</dd>
+    <dd>Eğer araç ipucu etkinse ve VT yorumu ayarlıysa, bu, yorumu ve gerçek adı
+çevirecek. Bunun anlamı eğer 'kullanici0001' adında bir veritabanına
+sahipseniz ve 'BenimAdım' olarakta yorum ekliyse, sol çerçevede dolayısıyla
+kullanılan 'BenimAdım' adını göreceksiniz ve araç ipucu VT'nin gerçek adını
+gösterir.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] boolean/dizgi</dt>
     <dd>Tablo adlarında işe yaraması hariç, <a href="#cfg_ShowTooltipAliasDB"
@@ -2674,10 +2674,11 @@ girin. Ancak varsayılanları kullanabileceğiniz parametreler:
 
 <h3 id="transformationsfiles">3. Dosya yapısı</h3>
 
-<p> All specific transformations for mimetypes are defined through class files
-in the directory 'libraries/plugins/transformations/'. Each of them extends
-a certain transformation abstract class declared in
-libraries/plugins/transformations/abstract.</p>
+<p> Mime türleri için tüm belirli dönüşümler
+'libraries/plugins/transformations/' dizini içindeki sınıf (class) dosyaları
+aracılığıyla tanımlanır. Her biri libraries/plugins/transformations/abstract
+içinde tanımlanmış belirli bir dönüşüm soyut sınıfını (abstract class)
+genişletir.</p>
 
 <p> Özelleştirmeyi genişletmek ve yeni dönüşümlerin kolay eklenmesi için
 dosyalarda saklanır.</p>
@@ -2690,33 +2691,33 @@ mantıksız yapar, dönüştürme işlevi başa çıkmayı bilmez.</p>
 işlevleri sağlayan '<em>transformations.lib.php</em>' adında bir dosya
 vardır.</p>
 
-<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
-Name].class.php</code>,<br />
-    while the abtract class that it extends has the name <code>[Transformation
-Name]TransformationsPlugin</code>.<br /><br />
-    All of the methods that have to be implemented by a transformations plug-in
-are: <Br />
+<p> Dosya adı düzeni <code>[Mimetürü]_[Alttür]_[Dönüştürme
+Adı].class.php</code>'dir,<br />
+    genişletirken soyut sınıf (abstract class) <code>[Transformation
+Name]TransformationsPlugin</code> adına sahiptir.<br /><br />
+    Yöntemlerin tümünü uygulamak zorunda olan dönüşüm eklentileri: <Br />
     <ol>
-        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
-        <li>getName(), getInfo() and applyTransformation() in the abstract class it
-extends.</li>
+        <li>ana sınıf (class) içindeki getMIMEType() ve getMIMESubtype();</li>
+        <li>genişletilen soyut sınıf (abstract class) içindeki getName(), getInfo() ve
+applyTransformation().</li>
     </ol>
     </p>
     
-<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
-the MIME type, MIME Subtype and transformation accordingly. getInfo()
-returns the transformation's description and possible options it may receive
-and applyTransformation() is the method that does the actual work of the
-transformation plug-in.</p>   
+<p>getMIMEType(), getMIMESubtype() ve getName() yöntemleri MIME türünün adını,
+MIME Alt türünü ve buna göre de dönüşümü döndürür. getInfo() dönüşümlerin
+açıklamasını ve alabileceği olası seçenekleri döndürür ve
+applyTransformation() dönüşüm eklentisinin asıl çalışma yöntemidir.</p>   
 
-<p> Please see the libraries/plugins/transformations/TEMPLATE and
-libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
-own transformation plug-in. You can also generate a new transformation
-plug-in (with or without the abstract transformation class), by using
-<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
-    <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
+<p> Kendi dönüşüm eklentinizi eklemek için lütfen
+libraries/plugins/transformations/TEMPLATE ve
+libraries/plugins/transformations/TEMPLATE_ABSTRACT dosyalarına
+bakın. Ayrıca
+<code>libraries/plugins/transformations/generator_plugin.sh</code> veya<br />
+    <code>libraries/plugins/transformations/generator_main_class.sh</code>
+kullanarak yeni bir dönüşüm eklentisi (soyut dönüşüm sınıfı ile veya onsuz)
+oluşturabilirsiniz.</p>
 
-<p> The applyTransformation() method always gets passed three variables:</p>
+<p> applyTransformation() yöntemi her zaman üç değişkenle iletilir:</p>
 
 <ol><li><strong>$buffer</strong> - Sütunun içindeki metni içerir. Bu dönüştürmek
 istediğiniz metindir.</li>
