@@ -3,7 +3,7 @@
 <!--
 vim: expandtab ts=4 sw=4 sts=4 tw=78
 -->
-<html lang="en-US" dir="ltr">
+<html lang="el-GR" dir="ltr">
 <!--
 
 Το αρχείο δημιουργείται με χρήση το po4a, μην το επεξεργαστείτε!
@@ -128,14 +128,14 @@ title="structured query language">SQL</abbr>, καθώς και δέσμες ε�
     <li>να δημιουργήσει<a href="#footnote_1"><sup>1</sup></a> και να διαβάζει
 απορρίμματα πινάκων
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, and L<sup>A</sup>T<sub><em class="big">E</em></sub>X
-formats
+    <li>εξαγωγή<a href="#footnote_1"><sup>1</sup></a> δεδομένων σε διάφορες μορφές:
+μορφές <abbr title="Τιμές χωρισμένες με κόμμα (CSV)">CSV</abbr>, <abbr
+title="Επεκτάσιμη Γλώσσα Σήμανσης (XML)">XML</abbr>, <abbr title="Μορφή
+Φορητού Εγγράφου (PDF)">PDF</abbr>, <abbr title="Διεθνής Οργανισμός
+Τυποποίησης (ISO)">ISO</abbr>/<abbr title="Διεθνής Ηλεκτροτεχνική Επιτροπή
+(IEC)">IEC</abbr> 26300 - Κείμενο OpenDocument και Λογιστικό Φύλλο, <abbr
+title="Microsoft Word 2000">Word</abbr>, L<sup>A</sup>T<sub><em
+class="big">E</em></sub>X
         </li>
     <li>να εισάγει δεδομένα και δομές MySQL από λογιστικά φύλλα OpenDocument καθώς
 και αρχεία <abbr title="Extensible Markup Language">XML</abbr>, <abbr
@@ -209,49 +209,55 @@ values">CSV</abbr> αν χρησιμοποιείτε PHP με υποστήριξ
 </p>
 
 <p class="important">
-    Warning for <abbr title="Apple Macintosh">Mac</abbr> users:<br />
-    if you are on a <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> version before <abbr title="operating
-system">OS</abbr> X, StuffIt unstuffs with <abbr title="Apple
-Macintosh">Mac</abbr> formats.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <abbr
-title="Apple Macintosh">Mac</abbr>-style end of lines character
-(&quot;<code>\r</code>&quot;).</p>
+    Προειδοποίηση για χρήστες <abbr title="Apple Macintosh">Mac</abbr>:<br />
+    αν έχετε <abbr title="Apple Macintosh">Mac</abbr> <abbr title="λειτουργικό
+σύστημα">OS</abbr> με έκδοση πριν τη <abbr title="λειτουργικό
+σύστημα">OS</abbr> X, StuffIt unstuffs με μορφές <abbr title="Apple
+Macintosh">Mac</abbr>.<br />
+    Έτσι θα πρέπει να αποθηκεύσετε ξανά σε BBEdit με στυλ Unix ΌΛΟΥΣ τους
+κώδικες του phpMyAdmin πριν από την αποστολή τους στο διακομιστή σας, καθώς
+η PHP δεν φαίνεται να αρέσει την αλλαγή γραμμής του <abbr title="Apple
+Macintosh"> Mac</abbr> (&quot;<code>\r</code>&quot;).</p>
 
 <h3 id="quick_install">Γρήγορη Εγκατάσταση</h3>
-<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
-page. Some kits contain only the English messages, others contain all
-languages in UTF-8 format (this should be fine in most situations), others
-contain all languages and all character sets. We'll assume you chose a kit
-whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
+<ol><li>Επιλέξτε μια κατάλληλη διανομή από τη σελίδα λήψεων του
+phpmyadmin.net. Ορισμένα πακέτα περιέχουν μόνο την αγγλική γλώσσα, άλλα
+περιέχουν όλες τις γλώσσες σε μορφή UTF-8 (αυτό θα πρέπει να είναι εντάξει
+για τις περισσότερες περιπτώσεις), άλλες περιέχουν όλες τις γλώσσες και όλα
+τα σύνολα χαρακτήρων. Υποθέτουμε ότι έχετε επιλέξει ένα πακέτο με όνομα που
+μοιάζει με το <code>phpMyAdmin-x.x.x-όλες-languages.tar.gz</code>.
     </li>
-    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
-<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
-webserver's document root. If you don't have direct access to your document
-root, put the files in a directory on your local machine, and, after step 4,
-transfer the directory on your web server using, for example, ftp.</li>
-    <li>Ensure that all the scripts have the appropriate owner (if PHP is running in
-safe mode, having some scripts with an owner different from the owner of
-other scripts will be a problem). See <a href="#faq4_2"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 4.2</a> and <a
-href="#faq1_26"><abbr title="Frequently Asked Questions">FAQ</abbr> 1.26</a>
-for suggestions.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<code>config.inc.php</code>, but now a wizard-style setup script is provided
-for those who prefer a graphical installation. Creating a
-<code>config.inc.php</code> is still a quick way to get started and needed
-for some advanced features.
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
-to get minimal configuration file) in the main (top-level) phpMyAdmin
-directory (the one that contains <code>index.php</code>).  phpMyAdmin first
-loads <code>libraries/config.default.php</code> and then overrides those
-values with anything found in <code>config.inc.php</code>. If the default
-value is okay for a particular setting, there is no need to include it in
-<code>config.inc.php</code>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+    <li>Αποσυμπιέστε (tar ή zip) αρχεία διανομής (φροντίστε να αποσυμπιέσετε αρχεία
+των υποκαταλόγων): <code>tar -xzvf
+phpMyAdmin_x.x.x-all-languages.tar.gz</code> στο ριζικό φάκελο εγγράφων του
+διακομιστή σας. Εάν δεν έχετε άμεση πρόσβαση στο ριζικό φάκελο εγγράφων,
+τοποθετήστε τα αρχεία σε έναν κατάλογο στον τοπικό υπολογιστή σας, και, μετά
+από το βήμα 4, μεταφέρετε τον κατάλογο στο διακομιστή ιστού,
+χρησιμοποιώντας, για παράδειγμα, ftp.</li>
+    <li>Σιγουρευτείτε ότι όλοι οι κώδικες έχουν κατάλληλα δικαιώματα (αν η PHP είναι
+σε ασφαλή λειτουργία, οι κώδικες με διαφορετικό ιδιοκτήτη θα έχουν
+πρόβλημα). Δείτε τις <a href="#faq4_2"> <abbr title="Συχνά Απαντημένες
+Ερωτήσεις">ΣΑΕ</abbr> 4.2</a> και <a href="#faq1_26"><abbr title="Συχνά
+Απαντημένες Ερωτήσεις">ΣΑΕ</abbr> 1.26</a> για προτάσεις.</li>
+    <li>Τώρα θα πρέπει να ρυθμίσετε την εγκατάστασή σας. Υπάρχουν δύο μέθοδοι που
+μπορούν να χρησιμοποιηθούν. Παραδοσιακά, οι χρήστες έχουν επεξεργαστεί
+χειροκίνητα ένα αντίγραφο του <code>config.inc.php</code>, αλλά τώρα ένας
+οδηγός εγκατάστασης παρέχεται για όσους προτιμούν μια εγκατάσταση σε γραφικό
+περιβάλλον. Η δημιουργία ενός <code>config.inc.php</code>, εξακολουθεί να
+είναι ένας γρήγορος τρόπος για να ξεκίνησετε και απαιτούνται για ορισμένες
+δυνατότητες για προχωρημένους.
+        <ul><li>Για να δημιουργήσετε με μη αυτόματο τρόπο το αρχείο, απλά χρησιμοποιήστε ένα
+πρόγραμμα επεξεργασίας κειμένου για να δημιουργήσετε το αρχείο
+<code>config.inc.php</code> (μπορείτε να αντιγράψετε το
+<code>config.sample.inc.php</code> να αποκτήσετε το αρχείο με τις ελάχιστες
+παραμέτρους) στον ριζικό φάκελο (ανώτατου επιπέδου) του phpMyAdmin (αυτό που
+περιέχει το <code>index.php</code>). Το phpMyAdmin πρώτα φορτώνει το
+<code>libraries/config.default.php</code> και στη συνέχεια παρακάμπτει αυτές
+τις τιμές με οτιδήποτε βρίσκεται στο <code>config.inc.php</code>. Εάν η
+προεπιλεγμένη τιμή είναι εντάξει για μια συγκεκριμένη ρύθμιση, δεν υπάρχει
+ανάγκη να τη συμπεριλάβετε στο <code>config.inc.php</code>. Θα χρειαστείτε
+μερικές οδηγίες, για να ξεκινήσετε, μια απλή ρύθμιση παραμέτρων μπορεί να
+μοιάζει κάπως έτσι:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003'; // χρησιμοποιείστε εδώ μια τιμή της επιλογής σας
@@ -272,12 +278,13 @@ $cfg['Servers'][$i]['password'] = 'cbb74bc'; // χρησιμοποιήστε ε�
 $cfg['Servers'][$i]['auth_type'] = 'config';
 ?&gt;
 </pre>
-                For a full explanation of possible configuration values, see the <a
-href="#config">Configuration Section</a> of this document.</li>
-            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
-href="setup/">Setup Script</a>. First you must manually create a folder
-<code>config</code> in the phpMyAdmin directory. This is a security
-measure. On a Linux/Unix system you can use the following commands:
+                Για μια πλήρη επεξήγηση των πιθανών τιμών ρυθμίσεων, δείτε το <a
+href="#config">Κεφάλαιο Ρυθμίσεων</a> αυτού του εγγράφου.</li>
+            <li id="setup_script">Αντί να επεξεργαστείτε χειροκίνητα το <code>config.inc.php</code>, μπορείτε
+να χρησιμοποιήσετε τον <a href="setup/">Κώδικα εγκατάστασης</a>. Πρώτα
+χειροκίνητα πρέπει να δημιουργήσετε ένα φάκελο <code>config</code> στον
+κατάλογο phpMyAdmin. Αυτό είναι ένα μέτρο ασφαλείας. Σε ένα σύστημα
+Linux/Unix, μπορείτε να χρησιμοποιήσετε τις ακόλουθες εντολές:
 <pre>
 cd phpMyAdmin
 mkdir config # δημιουργεί το φάκελο αποθήκευσης
@@ -288,46 +295,49 @@ chmod o+rw config # του δίνει καθολικά δικαιώματα εγ
 cp config.inc.php config/           # αντιγράφει τις τρέχουσες ρυθμίσεις για επεξεργασία
 chmod o+w config/config.inc.php     # παραχωρεί δικαιώματα εγγραφής
 </pre>
-                On other platforms, simply create the folder and ensure that your web server
-has read and write access to it. <a href="#faq1_26">FAQ 1.26</a> can help
-with this.<br /><br />
+                Σε άλλες πλατφόρμες, απλά δημιουργήστε τον φάκελο και σιγουρευτείτε ότι ο
+διακομιστής ιστού σας έχει δικαιώματα πρόσβασης σε αυτό. Η <a
+href="#faq1_26">ΣΑΕ 1.26</a> μπορεί να σας βοηθήσει με αυτό.<br /><br />
 
-                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
-that <strong>changes are not saved to disk until explicitly choose
-<code>Save</code></strong> from the <em>Configuration</em> area of the
-screen. Normally the script saves the new config.inc.php to the
-<code>config/</code> directory, but if the webserver does not have the
-proper permissions you may see the error "Cannot load or save
-configuration." Ensure that the <code> config/</code> directory exists and
-has the proper permissions - or use the <code>Download</code> link to save
-the config file locally and upload (via FTP or some similar means) to the
-proper location.<br /><br />
+                Στη συνέχεια, ανοίξετε το <code><a href="setup/">setup/</a></code> στο
+φυλλομετρητή σας. Σημειώστε ότι οι <strong>αλλαγές δεν αποθηκεύονται στο
+δίσκο μέχρι να επιλέξτε <code>Αποθήκευση</code></strong> από την καρτέλα
+<em>Ρυθμίσεις</em> της οθόνης. Κανονικά ο κώδικας αποθηκεύει το νέο
+config.inc.php στο φάκελο <code>config/</code>, αλλά εάν ο διακομιστής ιστού
+σας δεν έχει τα κατάλληλα δικαιώματα μπορεί να εμφανιστεί το σφάλμα «Δεν
+είναι δυνατή η φόρτωση ή αποθήκευση των ρυθμίσεων.» Εξασφαλίζουν ότι ο
+φάκελος <code>config/</code> υπάρχει και διαθέτει τα κατάλληλα δικαιώματα -
+ή χρησιμοποιήστε το σύνδεσμο <code>Λήψη</code>, για να αποθηκεύσετε το
+αρχείο ρυθμίσεων τοπικά και αποστείλτε το (μέσω FTP ή με κάποια παρόμοια
+μέσα) στην κατάλληλη θέση.<br /><br />
 
-                Once the file has been saved, it must be moved out of the <code>
-config/</code> directory and the permissions must be reset, again as a
-security measure:
+                Μόλις το αρχείο έχει αποθηκευτεί, πρέπει να μετακινηθεί από το φάκελο
+<code>config/</code> και τα δικαιώματα πρέπει να επαναφερθούν και πάλι ως
+μέτρο ασφαλείας:
 <pre>
 mv config/config.inc.php . # μετακινεί το αρχείο στον τρέχοντα φάκελο
 chmod o-rw config.inc.php # απομακρύνει τα δικαιώματα ανάγνωσης και εγγραφής
 rm -rf config # απομακρύνει το φάκελο που δεν χρειάζεται πλέον
 </pre>
-                Now the file is ready to be used. You can choose to review or edit the file
-with your favorite editor, if you prefer to set some advanced options which
-the setup script does not provide.</li></ul></li>
-    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
-suggested that you protect the phpMyAdmin installation directory because
-using config does not require a user to enter a password to access the
-phpMyAdmin installation. Use of an alternate authentication method is
-recommended, for example with HTTP&#8211;AUTH in a <a
-href="#glossary"><em>.htaccess</em></a> file or switch to using
-<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
-multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
-Questions">FAQ</abbr> for additional information, especially <a
-href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
-    <li>Open the <a href="index.php">main phpMyAdmin directory</a> in your
-browser. phpMyAdmin should now display a welcome screen and your databases,
-or a login dialog if using <abbr title="HyperText Transfer
-Protocol">HTTP</abbr> or cookie authentication mode.</li>
+                Το αρχείο είναι τώρα έτοιμο να χρησιμοποιηθεί. Μπορείτε να επιλέξετε να
+επιθεωρήσετε ή να επεξεργαστείτε το αρχείο με το αγαπημένο σας πρόγραμμα
+επεξεργασίας, αν προτιμάτε να ορίσετε ορισμένες επιλογές για προχωρημένους,
+που δεν παρέχονται στον κώδικα εγκατάστασης (Setup).</li></ul></li>
+    <li>Αν χρησιμοποιείτε ως <code>auth_type</code> το «config», προτείνεται να
+προστατέψετε τον φάκελο εγκατάστασης του phpMyAdmin γιατί η χρήση του config
+δεν απαιτεί ο χρήστης να εισάγει κωδικό πρόσβασης για να έχει πρόσβαση στην
+εγκατάσταση του phpMyAdmin. Η χρήση μια εναλλακτικής μεθόδου πιστοποίησης
+προτείνεται, για παράδειγμα με HTTP&#8211;AUTH σε ένα αρχείο <a
+href="#glossary"><em>.htaccess</em></a> ή αλλάξτε το <code>auth_type</code>
+σε cookie ή http. Δείτε το  <a href="#faqmultiuser">υποκεφάλαιο πολλαπλών
+χρηστών</a> αυτής της <abbr title="Συχνά Απαντημένες Ερωτήσεις">ΣΑΕ</abbr>
+για πρόσθετες πληροφορίες, ειδικά την <a href="#faq4_4"> <abbr title="Συχνά
+Απαντημένες Ερωτήσεις">ΣΑΕ</abbr> 4.4</a>.</li>
+    <li>Ανοίξτε το <a href="index.php">ριζικό φάκελο του phpMyAdmin</a> στο
+φυλλομετρητή σας. το phpMyAdmin τώρα θα πρέπει να εμφανίζει την οθόνη
+υποδοχής και τις βάσεις δεδομένων σας ή ένα παράθυρο διαλόγου σύνδεσης, εάν
+η χρήση της λειτουργίας ελέγχου ταυτότητας είναι <abbr title="HyperText
+Transfer Protocol">HTTP</abbr> ή cookie.</li>
     <li>You should deny access to the <code>./libraries</code> and
 <code>./setup/lib</code> subfolders in your webserver configuration. For
 Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
@@ -397,8 +407,9 @@ found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
 authentication modes are recommended in a <strong>multi-user
 environment</strong> where you want to give users access to their own
 database and don't want them to play around with others.<br />
-        Nevertheless be aware that MS Internet Explorer seems to be really buggy
-about cookies, at least till version 6.<br />
+        Παρόλα αυτά να γνωρίζετε ότι ο MS Internet Explorer φαίνεται να είναι
+πραγματικά ελαττωματικούς σχετικά με τα cookies, τουλάχιστον μέχρι την
+έκδοση 6.<br />
         Even in a <strong>single-user environment</strong>, you might prefer to use
 <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
 your user/password pair are not in clear in the configuration file.
@@ -408,12 +419,12 @@ your user/password pair are not in clear in the configuration file.
 authentication modes are more secure: the MySQL login information does not
 need to be set in the phpMyAdmin configuration file (except possibly for the
 <a href="#controluser">controluser</a>).<br />
-        However, keep in mind that the password travels in plain text, unless you
-are using the HTTPS protocol.<br />
-        In cookie mode, the password is stored, encrypted with the blowfish
-algorithm, in a temporary cookie.</li>
+        Ωστόσο, έχετε υπόψη σας ότι ο κωδικός πρόσβασης ταξιδεύει σε μορφή απλού
+κειμένου, εκτός εάν χρησιμοποιείτε το πρωτόκολλο HTTPS.<br />
+        Σε λειτουργία cookie, ο κωδικός πρόσβασης αποθηκεύεται, κρυπτογραφείται με
+τον αλγόριθμο blowfish, σε ένα προσωρινό cookie.</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
+    <li id="pmausr">Σημείωση: αυτή η ενότητα ισχύει μόνο αν ο διακομιστής MySQL εκτελείται με
 <code>--skip-show-database</code>.<br /><br />
 
         For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
@@ -432,8 +443,8 @@ controluser and <code>pmapass</code> as the controlpass, but <strong>this is
 only an example: use something else in your file!</strong> Input these
 statements from the phpMyAdmin <abbr title="structured query language">SQL
 </abbr> Query window or mysql command&#8211;line client.<br />
-        Of course you have to replace <code>localhost</code> with the webserver's
-host if it's not the same as the MySQL server's one.
+        Φυσικά πρέπει να αντικαταστήσετε το <code>localhost</code> με το φιλοξενητή
+του διακομιστή ιστού, αν δεν είναι το ίδιο με του διακομιστή MySQL.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -449,29 +460,30 @@ GRANT SELECT ON mysql.host TO 'pma'@'localhost';
 GRANT SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)
 ON mysql.tables_priv TO 'pma'@'localhost';</pre>
 
-        If you want to use the many new relation and bookmark features:
+        Εάν θέλετε να χρησιμοποιήσετε τα πολλά νέα χαρακτηριστικά συσχέτισης και
+σελιδοδείκτη:
 
         <pre>
 GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 </pre>
 
-        (this of course requires that your <a href="#linked-tables">phpMyAdmin
-configuration storage</a> be set up).
+        (αυτό φυσικά απαιτεί ότι η <a href="#linked-tables">αποθήκευση ρυθμίσεων του
+phpMyAdmin</a> μπορεί να οριστεί).
     <br /></li>
 
     <li>Then each of the <em>true</em> users should be granted a set of privileges
 on a set of particular databases. Normally you shouldn't give global
 privileges to an ordinary user, unless you understand the impact of those
 privileges (for example, you are creating a superuser).<br />
-        For example, to grant the user <em>real_user</em> with all privileges on the
-database <em>user_base</em>:<br />
+        Για παράδειγμα, να χορηγήθούν στο χρήστη <em>real_user</em> όλα τα
+δικαιώματα για τη βάση δεδομένων <em>user_base</em>:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
 </pre>
 
-        What the user may now do is controlled entirely by the MySQL user management
-system.<br />
+        Αυτό που ο χρήστης μπορεί τώρα να κάνει ελέγχεται πλήρως από το σύστημα
+διαχείρισης χρήστη της MySQL.<br />
         With <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
 authentication mode, you don't need to fill the user/password fields inside
 the <a href="#cfg_Servers" class="configrule">$cfg['Servers']</a> array.</li>
@@ -501,13 +513,13 @@ title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
 <ul><li>You can use this method as a replacement for the <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> authentication (for example, if you're
 running <abbr title="Internet Information Services">IIS</abbr>).</li>
-    <li>Obviously, the user must enable cookies in the browser, but this is now a
-requirement for all authentication modes.</li>
-    <li>With this mode, the user can truly log out of phpMyAdmin and log in back
-with the same username.</li>
-    <li>If you want to log in to arbitrary server see <a
+    <li>Προφανώς, ο χρήστης πρέπει να ενεργοποιήσει τα cookies στον φυλλομετρητή,
+αλλά τώρα είναι μια απαίτηση για όλους τους τρόπους πιστοποίησης.</li>
+    <li>Με αυτή τη λειτουργία, ο χρήστης μπορεί πραγματικά να αποσυνδεθεί από το
+phpMyAdmin και να συνδεθεί πάλι με το ίδιο όνομα χρήστη.</li>
+    <li>Αν θέλετε να συνδεθείτε σε αυθαίρετο διακομιστή δείτε την οδηγία <a
 href="#AllowArbitraryServer" class="configrule">
-$cfg['AllowArbitraryServer']</a> directive.</li>
+$cfg['AllowArbitraryServer']</a>.</li>
     <li>As mentioned in the <a href="#require">requirements</a> section, having the
 <code>mcrypt</code> extension will speed up access considerably, but is not
 required.</li>
@@ -515,8 +527,8 @@ required.</li>
 
 <h4>Μέθοδος πιστοποίησης «signon»</h4>
 
-<ul><li>This mode is a convenient way of using credentials from another application
-to authenticate to phpMyAdmin.</li>
+<ul><li>Αυτή η λειτουργία είναι ένας βολικός τρόπος χρησιμοποίησης διαπιστευτήρια
+από άλλη εφαρμογή για την πιστοποίηση του phpMyAdmin.</li>
     <li>Η άλλη εφαρμογή πρέπει να αποθηκεύσει τις πληροφορίες σύνδεσης στα δεδομένα
 συνεδρίας.</li>
     <li>Περισσότερες πληροφορίες στον τομέα <a
@@ -552,8 +564,8 @@ searchable with Google).</li>
 </ul>
 <h4 id="swekey">Πιστοποίηση Swekey</h4>
 <p>
-The Swekey is a low cost authentication USB key that can be used in web
-applications.<br /><br />
+Το Swekey είναι ένα κλειδί USB χαμηλού κόστους πιστοποήσης που μπορεί να
+χρησιμοποιηθεί σε εφαρμογές ιστού.<br /><br />
 When Swekey authentication is activated, phpMyAdmin requires the users's
 Swekey to be plugged before entering the login page (currently supported for
 cookie authentication mode only). Swekey Authentication is disabled by
@@ -626,8 +638,9 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a>).
 &quot;Structure&quot; page of one database where you would like to use
 it. You will find a link that will analyze why those features have been
 disabled.<br />
-        If you do not want to use those features set this variable to
-<code>TRUE</code> to stop this message from appearing.</dd>
+        Εάν δεν θέλετε να χρησιμοποιήσετε αυτά τα χαρακτηριστικά, ορίστε αυτή τη
+μεταβλητή σε <code>TRUE</code> για να διακόψετε την εμφάνιση αυτού του
+μηνύματος.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">Αληθές/Ψευδές $cfg['SuhosinDisableWarning']</dt>
     <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
@@ -640,7 +653,8 @@ mcrypt λείπει για την πιστοποίηση cookie. Μπορείτ�
 μηνύματος.</dd>
 
     <dt id="cfg_TranslationWarningThreshold">ακέραιος $cfg['TranslationWarningThreshold']</dt>
-    <dd>Show warning about incomplete translations on certain threshold.</dd>
+    <dd>Εμφάνιση προειδοποίησης σχετικά με τις ημιτελής μεταφράσεις για ορισμένο
+κατώτατο όριο.</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">Αληθές/Ψευδές $cfg['AllowThirdPartyFraming']</dt>
     <dd>Ορίζοντάς το σε <code>true</code> σας επιτρέπει μια σελίδα που βρίσκεται σε
@@ -648,8 +662,8 @@ mcrypt λείπει για την πιστοποίηση cookie. Μπορείτ�
 τρύπα ασφαλείας που επιτρέπει εισβολές στον κώδικα μέσω frames.</dd>
 
     <dt id="cfg_blowfish_secret">κείμενο $cfg['blowfish_secret']</dt>
-    <dd>The &quot;cookie&quot; auth_type uses blowfish algorithm to encrypt the
-password.<br />
+    <dd>Το auth_type ως «cookie» χρσησιμοποιεί τον αλγόριθμο blowfish για
+κρυπτογράφηση του κωδικού.<br />
         If you are using the &quot;cookie&quot; auth_type, enter here a random
 passphrase of your choice. It will be used internally by the blowfish
 algorithm: you won&#8217;t be prompted for this passphrase. There is no
@@ -674,8 +688,8 @@ server definition, however you can put as many as you need in
 have to define all settings, just those you need to change).</dd>
 
     <dt id="cfg_Servers_host">κείμενο $cfg['Servers'][$i]['host']</dt>
-    <dd>The hostname or <abbr title="Internet Protocol">IP</abbr> address of your
-$i-th MySQL-server. E.g. localhost.</dd>
+    <dd>Το όνομα φιλοξενητή ή η διεύθυνση <abbr title="Πρωτόκολλο Διαδικτύου
+(IP)">IP</abbr> του $iστού διακομιστή MySQL. Π.χ. localhost.</dd>
 
     <dt id="cfg_Servers_port">κείμενο $cfg['Servers'][$i]['port']</dt>
     <dd>The port-number of your $i-th MySQL-server. Default is 3306 (leave
@@ -687,7 +701,7 @@ class="configrule">$cfg['Servers'][$i]['host']</a>.
     </dd>
 
     <dt id="cfg_Servers_socket">κείμενο $cfg['Servers'][$i]['socket']</dt>
-    <dd>The path to the socket to use. Leave blank for default.<br />
+    <dd>Η διαδρομή της υποδοχής για χρήση. Αφήστε το κενό για προεπιλογή.<br />
         To determine the correct socket, check your MySQL configuration or, using
 the <code>mysql</code> command&#8211;line client, issue the
 <code>status</code> command.  Among the resulting information displayed will
@@ -703,28 +717,30 @@ be the socket used.</dd>
 is nearly guaranteed to be available on all MySQL servers, while sockets are
 not supported on some platforms.<br /><br />
 
-        To use the socket mode, your MySQL server must be on the same machine as the
-Web server.</dd>
+        Για να χρησιμοποιήσετε την κατάσταση λειτουργίας υποδοχής, ο διακομιστής
+MySQL πρέπει να είναι στον ίδιο υπολογιστή με το διακομιστή ιστού.</dd>
 
     <dt id="cfg_Servers_extension">κείμενο $cfg['Servers'][$i]['extension']</dt>
-    <dd>What php MySQL extension to use for the connection. Valid options are:
+    <dd>Τι επέκταση php της MySQL να χρησιμοποιήσετε για τη σύνδεση. Έγκυρες
+επιλογές είναι:
         <br /><br />
 
-        <code><em>mysql</em></code> : The classic MySQL extension.<br /><br />
+        <code><em>mysql</em></code>: Η κλασική επέκταση MySQL.<br /><br />
 
         <code><em>mysqli</em></code> : The improved MySQL extension. This extension
 became available with PHP 5.0.0 and is the recommended way to connect to a
 server running MySQL 4.1.x or newer.</dd>
 
     <dt id="cfg_Servers_compress">Αληθές/Ψευδές $cfg['Servers'][$i]['compress']</dt>
-    <dd>Whether to use a compressed protocol for the MySQL server connection or not
-(experimental).</dd>
+    <dd>Αν θα χρησιμοποιήσετε ένα συμπιεσμένο πρωτόκολλο για τη σύνδεση του
+διακομιστή MySQL, ή όχι (πειραματική).</dd>
 
     <dt id="controlhost">
         κείμενο <span
 id="cfg_Servers_controlhost">$cfg['Servers'][$i]['controlhost']</span><br />
     </dt>
-    <dd>Permits to use an alternate host to hold the configuration storage data.</dd>
+    <dd>Επιτρέπει να χρησιμοποιήσετε ένα εναλλακτικό φιλοξενητή για να κρατήσετε τα
+δεδομένα αποθήκευσης ρυθμίσεων.</dd>
 
     <dt id="controluser">
         κείμενο <span
@@ -747,13 +763,12 @@ authentication modes (or 'config' authentication mode since phpMyAdmin
 <em>mysql.tables_priv (all columns except &quot;Grantor&quot; and
 &quot;Timestamp&quot;) </em>tables.  This account is used to check what
 databases the user will see at login.<br />
-        Please see the <a href="#setup">install section</a> on &quot;Using
-authentication modes&quot; for more information.<br /><br />
+        Δείτε το <a href="#setup">κεφάλαιο εγκατάστασης</a> στο «Χρήση των
+λειτουργιών πιστοποίησης» για περισσότερες πληροφορίες.<br /><br />
 
-        In phpMyAdmin versions before 2.2.5, those were called
-&quot;stduser/stdpass&quot;.</dd>
+        Στις εκδόσεις phpMyAdmin πριν τη 2.2.5, αυτά ονομάζόταν «stduser/stdpass».</dd>
 
-    <dt id="cfg_Servers_auth_type">$cfg['Servers'][$i]['auth_type'] string <code>['<abbr title="HyperText
+    <dt id="cfg_Servers_auth_type">κείμενο $cfg['Servers'][$i]['auth_type'] <code>['<abbr title="HyperText
 Transfer Protocol">HTTP</abbr>'|'http'|'cookie'|'config'|'signon']</code></dt>
     <dd>Whether config or cookie or <abbr title="HyperText Transfer
 Protocol">HTTP</abbr> or signon authentication should be used for this
@@ -787,8 +802,8 @@ class="configrule">signon <abbr title="Uniform Resource
 Locator">URL</abbr></a> to use this authentication method.</li>
         </ul>
 
-        Please see the <a href="#setup">install section</a> on &quot;Using
-authentication modes&quot; for more information.
+        Δείτε το <a href="#setup">κεφάλαιο εγκατάστασης</a> στο «Χρήση των
+λειτουργιών πιστοποίησης» για περισσότερες πληροφορίες.
     </dd>
     <dt id="servers_auth_http_realm">
     κείμενο <span
@@ -850,7 +865,7 @@ databases will be displayed but <span class="important">not that all other
 databases can't be used.</span>
         <br /><br />
 
-        An example of using more that one database:
+        Ένα παράδειγμα χρήσης περισσότερων από μια βάση δεδομένων:
 <code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
@@ -890,7 +905,8 @@ be stripped.</dd>
     <dt id="pmadb">
         κείμενο <span id="cfg_Servers_pmadb">$cfg['Servers'][$i]['pmadb']</span>
     </dt>
-    <dd>The name of the database containing the phpMyAdmin configuration storage.
+    <dd>Το όνομα της βάσης δεδομένων που περιέχει την αποθήκευση ρυθμίσεων του
+phpMyAdmin.
         <br /><br />
 
         See the <a href="#linked-tables">phpMyAdmin configuration storage</a>
@@ -908,11 +924,13 @@ database containing the phpMyAdmin configuration storage.</dd>
         κείμενο <span
 id="cfg_Servers_bookmarktable">$cfg['Servers'][$i]['bookmarktable']</span>
     </dt>
-    <dd>Since release 2.2.0 phpMyAdmin allows users to bookmark queries. This can be
-useful for queries you often run.<br /><br />
+    <dd>Από την έκδοση 2.2.0 το phpMyAdmin επιτρέπει στους χρήστες να σελιδοδεικτούν
+τα ερωτήματα. Αυτό μπορεί να είναι χρήσιμα για ερωτήματα που εκτελείτε
+συχνά.<br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα πίνακα στο
 <code>$cfg['Servers'][$i]['bookmarktable']</code></li>
         </ul>
@@ -925,31 +943,36 @@ id="cfg_Servers_relation">$cfg['Servers'][$i]['relation']</span>
     <dd>Since release 2.2.4 you can describe, in a special 'relation' table, which
 column is a key in another table (a foreign key). phpMyAdmin currently uses
 this to
-        <ul><li>make clickable, when you browse the master table, the data values that point
-to the foreign table;</li>
+        <ul><li>νά κάνετε σύνδεσμο, όταν πραγματοποιείτε περιήγηση στον κύριο πίνακα, τις
+τιμές δεδομένων που συνδέονται με ξένο πίνακα·</li>
             <li>display in an optional tool-tip the &quot;display column&quot; when browsing
 the master table, if you move the mouse to a column containing a foreign key
 (use also the 'table_info' table);<br />
                 (δείτε τη <a href="#faqdisplay"><abbr title="Συχνά Απαντημένες Ερωτήσεις">
 ΣΑΕ</abbr> 6.7</a>)</li>
-            <li>in edit/insert mode, display a drop-down list of possible foreign keys (key
-value and &quot;display column&quot; are shown)<br />
+            <li>στην κατάσταση λειτουργίας επεξεργασίας/εισαγωγής, εμφανίστε μια
+αναπτυσσόμενη λίστα των πιθανών μη διακριτών κλειδιών (τιμή κλειδιού και
+«προβολή στήλης» εμφανίζονται)<br />
                 (δείτε τη <a href="#faq6_21"><abbr title="Συχνά Απαντημένες
 Ερωτήσεις">ΣΑΕ</abbr> 6.21</a>)</li>
-            <li>display links on the table properties page, to check referential integrity
-(display missing foreign keys) for each described key;
+            <li>εμφανίζονται συνδεσμοι της σελίδας ιδιότητων του πίνακα, για να ελέγξετε την
+ακεραιότητα αναφορών (εμφάνιση απολεσθέντων μη διακριτών κλειδιών) για κάθε
+κλειδί που περιγράφεται·
             </li>
-            <li>in query-by-example, create automatic joins (see <a href="#faq6_6"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 6.6</a>)</li>
-            <li>enable you to get a <abbr title="Portable Document Format">PDF</abbr> schema
-of your database (also uses the table_coords table).</li>
+            <li>στο ερώτημα με παράδειγμα, δημιουργεί ενώσεις αυτόματα (δείτε τη <a
+href="#faq6_6"> <abbr title="Συχνά Απαντημένες Ερωτήσεις">ΣΑΕ</abbr>
+6.6</a>)</li>
+            <li>δίνει τη δυνατότητα να λάβετε ένα σχήμα <abbr title="Portable Document
+Format">PDF</abbr> της βάσης δεδομένων σας (επίσης χρησιμοποιείται ο πίνακας
+table_coords).</li>
         </ul>
 
         Τα κλειδιά μπορεί να είναι αριθμοί ή χαρακτήρες.<br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα συσχετίσεων στο
 <code>$cfg['Servers'][$i]['relation']</code></li>
             <li>now as normal user open phpMyAdmin and for each one of your tables where you
@@ -971,9 +994,10 @@ id="cfg_Servers_table_info">$cfg['Servers'][$i]['table_info']</span>
         Since release 2.3.0 you can describe, in a special 'table_info' table, which
 column is to be displayed as a tool-tip when moving the cursor over the
 corresponding key.<br />
-        This configuration variable will hold the name of this special table. To
-allow the usage of this functionality:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        Αυτή η μεταβλητή ρυθμίσεων θα κρατήσει το όνομα αοτού του ειδικού
+πίνακα. Για να επιτρέψετε τη χρήση αυτής της λειτουργίας:
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα πίνακα στο
 <code>$cfg['Servers'][$i]['table_info']</code>(π.χ. 'pma_table_info')</li>
             <li>then for each table where you want to use this feature, click
@@ -1000,14 +1024,15 @@ Format">PDF</abbr> schema output).<br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε τα σωστά ονόματα πίνακα στα
 <code>$cfg['Servers'][$i]['table_coords']</code> και
 <code>$cfg['Servers'][$i]['pdf_pages']</code></li>
         </ul>
 
-        Usage tips: <a href="#faqpdf"><abbr title="Portable Document
-Format">PDF</abbr> output</a>.
+        Οδηγίες χρήσης: <a href="#faqpdf">προϊόν <abbr title="Portable Document
+Format">PDF</abbr></a>.
     </dd>
 
     <dt id="col_com">
@@ -1034,10 +1059,12 @@ system, your column_info table has to have the three new columns 'mimetype',
         <br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα στο
 <code>$cfg['Servers'][$i]['column_info']</code> (π.χ. 'pma_column_info')</li>
-            <li>to update your PRE-2.5.0 Column_comments Table use this:
+            <li>για να ενημερώσετε τον πίνακα Column_comments προ της έκδοσης 2.5.0
+χρησιμοποιείστε αυτό:
 
                 <pre>
 ALTER TABLE `pma_column_comments`
@@ -1067,12 +1094,13 @@ class="configrule">$cfg['QueryHistoryMax']</a> you can specify an amount of
 history items you want to have on hold. On every login, this list gets cut
 to the maximum amount.<br /><br />
 
-        The query history is only available if JavaScript is enabled in your
-browser.<br /><br />
+        Το ιστορικό ερωτήματος είναι διαθέσιμό μόνο αν είναι ενεργοποιημένή η
+JavaScript στο φυλλομετρητή σας.<br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα στο <code>$cfg['Servers'][$i]['history']</code>
 (π.χ. 'pma_history')
                 </li>
@@ -1092,13 +1120,14 @@ a table from the list, it will jump to the page specified in <a
 href="#cfg_LeftDefaultTabTable"
 class="configrule">$cfg['LeftDefaultTabTable']</a>.<br/><br/>
 
-        Without configuring the storage, you can still access the recently used
-tables, but it will disappear after you logout.<br/><br/>
+        Χωρίς τη ρύθμιση αποθήκευσης, μπορείτε να έχετε πρόσβαση στους πίνακες που
+χρησιμοποιήθηκαν πρόσφατα, αλλά θα εξαφανιστεί μετά την αποσύνδεσή σας.<br/><br/>
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας μόνιμα:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα στο <code>$cfg['Servers'][$i]['recent']</code>
 (π.χ. 'pma_recent')</li>
         </ul>
@@ -1119,7 +1148,8 @@ after you logout.<br/><br/>
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας μόνιμα:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα πίνακα στο
 <code>$cfg['Servers'][$i]['table_uiprefs']</code> (π.χ. 'pma_table_uiprefs')</li>
         </ul>
@@ -1139,7 +1169,8 @@ create versions of tables.
         Η δημιουργία μιας έκδοσης έχει δύο επιπτώσεις:
 
         <ul>
-            <li>phpMyAdmin saves a snapshot of the table, including structure and indexes.</li>
+            <li>το phpMyAdmin αποθηκεύει ένα στιγμιότυπο του πίνακα, συμπεριλαμβανομένης της
+δομής και των ευρετηρίων.</li>
             <li>phpMyAdmin logs all commands which change the structure and/or data of the
 table and links these commands with the version number.</li>
         </ul>
@@ -1155,7 +1186,8 @@ report to a file or to a temporary database.
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα στο
 <code>$cfg['Servers'][$i]['tracking']</code> (π.χ. 'pma_tracking')</li>
         </ul>
@@ -1166,8 +1198,8 @@ report to a file or to a temporary database.
 id="cfg_Servers_tracking_version_auto_create">$cfg['Servers'][$i]['tracking_version_auto_create']</span>
     </dt>
     <dd>
-        Whether the tracking mechanism creates versions for tables and views
-automatically. Default value is false.
+        Αν ο μηχανισμός καταγραφής δημιουργεί εκδόσεις για πίνακες και προβολές
+αυτόματα. Προεπιλεγμένη τιμή είναι FALSE (ψευδές).
         <br/><br/>
         Αν αυτό οριστεί ως true και δημιουργήσετε έναν πίνακα ή μια προβολή με
 
@@ -1176,8 +1208,8 @@ automatically. Default value is false.
             <li>ΔΗΜΙΟΥΡΓΙΑ ΠΡΟΒΟΛΗΣ (CREATE VIEW) ...</li>
         </ul>
 
-        and no version exists for it, the mechanism will create a version for you
-automatically.
+        και δεν υπάρχει καμία έκδοση για αυτό, ο μηχανισμός θα δημιουργήσει μια
+έκδοση για εσάς αυτόματα.
     </dd>
 
     <dt id="tracking3">
@@ -1185,8 +1217,8 @@ automatically.
 id="cfg_Servers_tracking_default_statements">$cfg['Servers'][$i]['tracking_default_statements']</span>
     </dt>
     <dd>
-        Defines the list of statements the auto-creation uses for new
-versions. Default value is
+        Ορίζει τη λίστα των δηλώσεων που χρησιμοποιεί η αυτόματη δημιουργία για νέες
+εκδόσεις. Η προεπιλεγμένη τιμή είναι
         <br/>
 
 <pre>CREATE TABLE,ALTER TABLE,DROP TABLE,RENAME TABLE,
@@ -1201,8 +1233,9 @@ CREATE DATABASE,ALTER DATABASE,DROP DATABASE</pre>
 id="cfg_Servers_tracking_add_drop_view">$cfg['Servers'][$i]['tracking_add_drop_view']</span>
     </dt>
     <dd>
-        Whether a DROP VIEW IF EXISTS statement will be added as first line to the
-log when creating a view. Default value is true.
+        Αν μια δήλωση DROP VIEW IF EXISTS θα προστεθεί ως πρώτη γραμμή στο αρχείο
+καταγραφής κατά τη δημιουργία μιας προβολής. Η προεπιλεγμένη τιμή είναι true
+(Αληθές).
         <br/><br/>
     </dd>
 
@@ -1212,8 +1245,9 @@ log when creating a view. Default value is true.
 id="cfg_Servers_tracking_add_drop_table">$cfg['Servers'][$i]['tracking_add_drop_table']</span>
     </dt>
     <dd>
-        Whether a DROP TABLE IF EXISTS statement will be added as first line to the
-log when creating a table. Default value is true.
+        Αν μια δήλωση DROP TABLE IF EXISTS θα προστεθεί ως πρώτη γραμμή στο αρχείο
+καταγραφής κατά τη δημιουργία ενός πίνακα. Η προεπιλεγμένη τιμή είναι true
+(Αληθές).
         <br/><br/>
     </dd>
 
@@ -1222,8 +1256,9 @@ log when creating a table. Default value is true.
 id="cfg_Servers_tracking_add_drop_database">$cfg['Servers'][$i]['tracking_add_drop_database']</span>
     </dt>
     <dd>
-        Whether a DROP DATABASE IF EXISTS statement will be added as first line to
-the log when creating a database. Default value is true.
+        Αν μια δήλωση DROP DATABASE IF EXISTS θα προστεθεί ως πρώτη γραμμή στο
+αρχείο καταγραφής κατά τη δημιουργία μιας βάσης δεδομένων. Η προεπιλεγμένη
+τιμή είναι true (Αληθές).
         <br/><br/>
     </dd>
 
@@ -1232,8 +1267,9 @@ the log when creating a database. Default value is true.
 id="cfg_Servers_userconfig">$cfg['Servers'][$i]['userconfig']</span>
     </dt>
     <dd>
-        Since release 3.4.x phpMyAdmin allows users to set most preferences by
-themselves and store them in the database.
+        Από την έκδοση 3.4.x το phpMyAdmin επιτρέπει στους χρήστες να ορίσουν
+περισσότερες προτιμήσεις από μονοι τους και να τις αποθηκεύσουν στη βάση
+δεδομένων.
         <br /><br />
 
         If you don't allow for storing preferences in <a href="#pmadb">pmadb</a>,
@@ -1244,7 +1280,8 @@ browser's local storage, or, it is is unavailable, until the end of session.
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
 
         <ul>
-            <li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+            <li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα στο
 <code>$cfg['Servers'][$i]['userconfig']</code></li>
         </ul>
@@ -1254,13 +1291,14 @@ browser's local storage, or, it is is unavailable, until the end of session.
         κείμενο <span
 id="cfg_Servers_designer_coords">$cfg['Servers'][$i]['designer_coords']</span>
     </dt>
-    <dd>Since release 2.10.0 a Designer interface is available; it permits to
-visually manage the relations.
+    <dd>Από την έκδοση 2.10.0 είναι διαθέσιμη ένα περιβάλλον Σχεδιαστή· επιτρέπει να
+διαχειριστείτε οπτικά τις συσχετίσεις.
         <br /><br />
 
         Για να επιτρέπεται η χρήση αυτής της λειτουργίας:
 
-        <ul><li>set up <a href="#pmadb">pmadb</a> and the phpMyAdmin configuration storage</li>
+        <ul><li>ορίστε το <a href="#pmadb">pmadb</a> και η αποθήκευση ρυθμίσεων του
+phpMyAdmin</li>
             <li>εισάγετε το όνομα του πίνακα στο
 <code>$cfg['Servers'][$i]['designer_coords']</code>
 (π.χ. 'pma_designer_coords')
@@ -1274,15 +1312,15 @@ id="cfg_Servers_MaxTableUiprefs">$cfg['Servers'][$i]['MaxTableUiprefs']</span>
     <dd>Μέγιστος αριθμός εγγραφών αποθηκευμένων στον πίνακα <a
 href="#cfg_Servers_table_uiprefs">$cfg['Servers'][$i]['table_uiprefs']</a>.<br /><br />
 
-        When tables are dropped or renamed, table_uiprefs may contain invalid data
-(referring to tables which no longer exist).<br />
-        We only keep this number of newest rows in table_uiprefs and automatically
-delete older rows.</dd>
+        Όταν οι πίνακες διαγράφονται ή μετονομαζονται, το table_uiprefs μπορεί να
+περιέχει μη έγκυρα δεδομένα (αναφερά σε πίνακες που δεν υφίστανται πλέον).<br />
+        Διατηρούμε μόνο αυτό τον αριθμό των νέων εγγραφών στον table_uiprefs και
+διαγράφουμε αυτόματα τις παλαιές εγγραφές.</dd>
 
     <dt>Αληθές/Ψευδές <span
 id="cfg_Servers_AllowRoot">$cfg['Servers'][$i]['AllowRoot']</span></dt>
-    <dd>Whether to allow root access. This is just a shortcut for the AllowDeny
-rules below.
+    <dd>Εάν θέλετε να επιτρέψετε τη ριζική πρόσβαση. Αυτό είναι απλώς μια συντόμευση
+για τους παρακάτω κανόνες AllowDeny.
     </dd>
     <dt>Αληθές/Ψευδές <span
 id="cfg_Servers_AllowNoPassword">$cfg['Servers'][$i]['AllowNoPassword']</span></dt>
@@ -1295,8 +1333,8 @@ anonymous (blank) user is defined.
         κείμενο <span
 id="cfg_Servers_AllowDeny_order">$cfg['Servers'][$i]['AllowDeny']['order']</span>
     </dt>
-    <dd>If your rule order is empty, then <abbr title="Internet Protocol">IP</abbr>
-authorization is disabled.<br /><br />
+    <dd>Εάν η ταξινόμηση κανόνα είναι κενή, τότε η πιστοποίηση <abbr title="Internet
+Protocol">IP</abbr> είναι απενεργοποιημένη.<br /><br />
 
         If your rule order is set to <code>'deny,allow'</code> then the system
 applies all deny rules followed by allow rules. Access is allowed by
@@ -1316,8 +1354,8 @@ your host/username combination <strong>must</strong> be listed in the
 available in Apache by specifying allow and deny rules without setting any
 order.<br /><br />
 
-        Please also see <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> for
-detecting IP address behind proxies.
+        Δείτε επίσης το <a href="#cfg_TrustedProxies">$cfg['TrustedProxies']</a> για
+την αναγνώριση διεύθυνσης IP πίσω από proxies.
     </dd>
     <dt id="servers_allowdeny_rules">
         σειρά ή κείμενα <span
@@ -1329,8 +1367,8 @@ id="cfg_Servers_AllowDeny_rules">$cfg['Servers'][$i]['AllowDeny']['rules']</span
 &lt;'allow' | 'deny'&gt; &lt;username&gt; [from] &lt;ipmask&gt;
 </pre>
 
-        If you wish to match all users, it is possible to use a <code>'%'</code> as
-a wildcard in the <em>username</em> field.<br />
+        Εάν θέλετε να ταιριάξετε όλους τους χρήστες, είναι δυνατό να χρησιμοποιήσετε
+ένα <code>«%»</code>, ως χαρακτήρα μπαλαντέρ στο πεδίο <em>username</em>.<br />
         There are a few shortcuts you can use in the <em>ipmask</em> field as well
 (please note that those containing SERVER_ADDRESS might not be available on
 all webservers):
@@ -1347,17 +1385,17 @@ all'</code> if your rule order is set to <code>'deny,allow'</code> or
 <code>'deny % from all'</code> if your rule order is set to
 <code>'allow,deny'</code> or <code>'explicit'</code>.<br /><br />
 
-        For the <abbr title="Internet Protocol">IP</abbr> matching system, the
-following work:<br />
+        Για το αντίστοιχο σύστημα <abbr title="Internet Protocol">IP</abbr>, το
+ακόλουθο λειτουργεί:<br />
         <code>xxx.xxx.xxx.xxx</code> (μια ακριβής διεύθυνση <abbr title="Internet
 Protocol">IP</abbr>)<br />
-        <code>xxx.xxx.xxx.[yyy-zzz]</code> (an <abbr title="Internet
-Protocol">IP</abbr> address range)<br />
-        <code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing type
-<abbr title="Internet Protocol">IP</abbr> addresses)<br />
+        <code>xxx.xxx.xxx.[yyy-zzz]</code> (ένα εύρος διευθύνσεων <abbr
+title="Internet Protocol">IP</abbr>)<br />
+        <code>xxx.xxx.xxx.xxx/nn</code> (CIDR, διευθύνσεις τύπου CIDR <abbr
+title="Internet Protocol">IP</abbr>)<br />
         Αλλά το παρακάτω δεν λειτουργεί:<br />
-        <code>xxx.xxx.xxx.xx[yyy-zzz]</code> (partial <abbr title="Internet
-Protocol">IP</abbr> address range)<br />
+        <code>xxx.xxx.xxx.xx [yyy-zzz]</code> (μερικό εύρος διευθύνσεων <abbr
+title="Internet Protocol">IP</abbr>)<br />
         Επίσης οι διευθύνσεις IPv6 δεν υποστηρίζονται.
     </dd>
     <dt>Αληθές/Ψευδές <span
@@ -1376,8 +1414,9 @@ probably be too slow, so it can be replaced by faster commands (see
     </dd>
     <dt>Αληθές/Ψευδές <span
 id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation frame.
+    <dd>Αν θέλετε να μετράται ο αριθμός των πινάκων για κάθε βάση δεδομένων, κατά
+την προετοιμασία του καταλόγου των βάσεων δεδομένων για το πλαίσιο
+πλοήγησης.
     </dd>
     <dt>κείμενο <span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span></dt>
@@ -1408,21 +1447,19 @@ id="cfg_Servers_LogoutURL">$cfg['Servers'][$i]['LogoutURL']</span></dt>
 redirected after logout (doesn't affect config authentication method).
 Should be absolute including protocol.
     </dd>
-    <dt><span
-id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span>
-array of strings</dt>
+    <dt>σειρά κειμένων <span
+id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span></dt>
     <dd>Enables caching of <code>TABLE STATUS</code> outputs for specific databases
 on this server (in some cases <code>TABLE STATUS</code> can be very slow, so
 you may want to cache it). APC is used (if the PHP extension is available,
 if not, this setting is ignored silently). You have to provide <a
 href="#cfg_Servers_StatusCacheLifetime"
 class="configrule">StatusCacheLifetime</a>.<br />
-    Takes effect only if <a href="#cfg_Servers_DisableIS"
-class="configrule">DisableIS</a> is <code>true</code>.
+    Επιδρά μόνο αν το <a href="#cfg_Servers_DisableIS"
+class="configrule">DisableIS</a> είναι <code>true</code>.
     </dd>
-    <dt><span
-id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span>
-integer</dt>
+    <dt>ακέραιος <span
+id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span></dt>
     <dd>Lifetime in seconds of the <code>TABLE STATUS</code> cache if <a
 href="#cfg_Servers_StatusCacheDatabases"
 class="configrule">StatusCacheDatabases</a> is used.
@@ -1432,8 +1469,8 @@ class="configrule">StatusCacheDatabases</a> is used.
 <code>$cfg['ServerDefault']</code> to any one of them to autoconnect to that
 server when phpMyAdmin is started, or set it to 0 to be given a list of
 servers without logging in.<br />
-        If you have only one server configured, <code>$cfg['ServerDefault']</code>
-MUST be set to that server.</dd>
+        Εάν έχετε μόνο σε ένα διακομιστή που έχει ρυθμιστεί, το <code>$cfg
+['ServerDefault']</code> πρέπει να οριστεί σε αυτόν το διακομιστή.</dd>
 
     <dt id="cfg_AjaxEnable">Αληθές/Ψευδές $cfg['AjaxEnable']</dt>
     <dd>Defines whether to refresh only parts of certain pages using Ajax
@@ -1441,11 +1478,12 @@ techniques. Applies only where a non-Ajax behavior is possible; for example,
 the Designer feature is Ajax-only so this directive does not apply to it.</dd>
 
     <dt id="cfg_VersionCheck">Αληθές/Ψευδές $cfg['VersionCheck']</dt>
-    <dd>Enables check for latest versions using javascript on main phpMyAdmin page.</dd>
+    <dd>Ενεργοποιεί τον έλεγχο για τις πιο πρόσφατες εκδόσεις χρησιμοποιώντας
+javascript στη βασική σελίδα του phpMyAdmin.</dd>
 
     <dt id="cfg_MaxDbList">ακέραιος $cfg['MaxDbList']</dt>
-    <dd>The maximum number of database names to be displayed in the navigation frame
-and the database list.</dd>
+    <dd>Ο μέγιστος αριθμός ονομάτων των βάσεων δεδομένων που θα εμφαίζεται στο
+πλαίσιο πλοήγησης και στη λίστα των βάσεων δεδομένων.</dd>
 
     <dt id="cfg_MaxTableList">ακέραιος $cfg['MaxTableList']</dt>
     <dd>The maximum number of table names to be displayed in the main panel's list
@@ -1453,8 +1491,8 @@ and the database list.</dd>
 panel when in Light mode.</dd>
 
     <dt id="cfg_ShowHint">Αληθές/Ψευδές $cfg['ShowHint']</dt>
-    <dd>Whether or not to show hints (for example, hints when hovering over table
-headers).</dd>
+    <dd>Αν θα εμφανίζονται ή όχι συμβουλές (για παράδειγμα, συμβουλές όταν περνάτε
+πάνω από τις κεφαλίδες πίνακα).</dd>
 
     <dt id="cfg_MaxCharactersInDisplayedSQL">ακέραιος $cfg['MaxCharactersInDisplayedSQL']</dt>
     <dd>The maximum number of characters when a <abbr title="structured query
@@ -1465,8 +1503,8 @@ language">SQL</abbr> queries that are longer than 1000 characters. Also, if
 a query's length exceeds this limit, this query is not saved in the history.</dd>
 
     <dt id="cfg_OBGzip">κείμενο-Αληθές/Ψευδές $cfg['OBGzip']</dt>
-    <dd>Defines whether to use GZip output buffering for increased speed in <abbr
-title="HyperText Transfer Protocol">HTTP</abbr> transfers.<br />
+    <dd>Ορίζει αν να χρησιμοποιήσετε buffering εξόδου GZip για αυξημένη ταχύτητα
+στις μεταφορές <abbr title="HyperText Transfer Protocol">HTTP</abbr>.<br />
         Set to true/false for enabling/disabling. When set to 'auto' (string),
 phpMyAdmin tries to enable output buffering and will automatically disable
 it if your browser has some problems with buffering. IE6 with a certain
@@ -1477,53 +1515,56 @@ patch is known to cause data corruption when having enabled buffering.</dd>
 href="http://php.net/manual/en/features.persistent-connections.php">persistent
 connections</a> should be used or not. Works with following extensions:
         <ul>
-            <li>mysql (<a
-href="http://php.net/manual/en/function.mysql-pconnect.php">mysql_pconnect</a>),</li>
-            <li>mysqli (requires PHP 5.3.0 or newer, <a
-href="http://php.net/manual/en/mysqli.persistconns.php">more
-information</a>).</li>
+            <li>mysql (<a href="http://php.net/manual/en/function.mysql-pconnect.php">
+mysql_pconnect</a>),</li>
+            <li>mysqli (απαιτεί PHP 5.3.0 ή νεότερη, <a
+href="http://php.net/manual/en/mysqli.persistconns.php">περισσότερες
+πληροφορίες</a>).</li>
         </ul></dd>
 
     <dt id="cfg_ForceSSL">Αληθές/Ψευδές $cfg['ForceSSL']</dt>
-    <dd>Whether to force using https while accessing phpMyAdmin.</dd>
+    <dd>Αν θέλετε να επιβάλετε τη χρήση του https κατά την πρόσβαση στο phpMyAdmin.</dd>
 
     <dt id="cfg_ExecTimeLimit">ακέραιος $cfg['ExecTimeLimit'] [αριθμός δευτερολέπτων]</dt>
-    <dd>Set the number of seconds a script is allowed to run. If seconds is set to
-zero, no time limit is imposed.<br />
+    <dd>Ορίστε τον αριθμό των δευτερολέπτων που επιτρέπεται να εκτελεστεί ένας
+κώδικας. Εάν τα δευτερόλεπτα οριστούν σε μηδέν, δεν επιβάλλεται κανένα όριο.<br />
         This setting is used while importing/exporting dump files and in the
 Synchronize feature but has no effect when PHP is running in safe mode.</dd>
 
     <dt id="cfg_SessionSavePath">κείμενο $cfg['SessionSavePath']</dt>
-    <dd>Path for storing session data (<a
-href="http://php.net/session_save_path">session_save_path PHP
-parameter</a>).</dd>
+    <dd>Διαδρομή για την αποθήκευση δεδομένα συνεδρίας (<a
+href="http://php.net/session_save_path">παράμετρος PHP
+session_save_path</a>).</dd>
 
     <dt id="cfg_MemoryLimit">κείμενο $cfg['MemoryLimit'] [αριθμός των bytes]</dt>
-    <dd>Set the number of bytes a script is allowed to allocate. If set to zero, no
-limit is imposed.<br />
+    <dd>Ορίστε τον αριθμό των bytes που επιτρέπεται ένας κώδικας να δεσμεύει. Εάν
+οριστεί σε μηδέν, κανένα όριο δεν επιβάλεται.<br />
         This setting is used while importing/exporting dump files and at some other
 places in phpMyAdmin so you definitely don't want to put here a too low
 value. It has no effect when PHP is running in safe mode.<br />
-        You can also use any string as in php.ini, eg. '16M'. Ensure you don't omit
-the suffix (16 means 16 bytes!)</dd>
+        Μπορείτε επίσης να χρησιμοποιήσετε οποιαδήποτε κείμενο στο php.ini,
+π.χ. «16M». Σιγουρευτεί ότι δεν παραλείψατε το επίθεμα (16 σημαίνει 16
+bytes!)</dd>
 
     <dt id="cfg_SkipLockedTables">Αληθές/Ψευδές $cfg['SkipLockedTables']</dt>
-    <dd>Mark used tables and make it possible to show databases with locked tables
-(since MySQL 3.23.30).</dd>
+    <dd>Επισημαίνει τους χρησιμοποιημένους πίνακες και καθιστούν δυνατή την εμφάνιση
+βάσεων δεδομένων με κλειδωμένους πίνακες (από την MySQL 3.23.30).</dd>
 
     <dt id="cfg_ShowSQL">Αληθές/Ψευδές $cfg['ShowSQL']</dt>
-    <dd>Defines whether <abbr title="structured query language">SQL</abbr> queries
-generated by phpMyAdmin should be displayed or not.</dd>
+    <dd>Ορίζει αν τα ερωτήματα <abbr title="structured query language">SQL</abbr>
+που δημιουργούνται από το phpMyAdmin πρέπει να εμφανίζονται ή όχι.</dd>
 
     <dt id="cfg_RetainQueryBox">Αληθές/Ψευδές $cfg['RetainQueryBox']</dt>
     <dd>Ορίζει αν το παράθυρο ερωτήματος <abbr title="structured query
 language">SQL</abbr> θα συνεχίσει να εμφανίζεται μετά την υποβολή του.</dd>
 
-    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] boolean</dt>
-    <dd>Defines whether to use a Javascript code editor for SQL query boxes.
-CodeMirror provides syntax highlighting and line numbers. <br />
-        However, middle-clicking for pasting the clipboard contents in some Linux
-distributions (such as Ubuntu) is not supported by all browsers.</dd>
+    <dt id="cfg_CodemirrorEnable">Αληθές/Ψευδές $cfg['CodemirrorEnable']</dt>
+    <dd>Καθορίζει αν θα χρησιμοποιήσετε ένα πρόγραμμα επεξεργασίας κώδικα Javascript
+για πλαίσια ερωτήματος SQL. Το CodeMirror παρέχει επισήμανση σύνταξης και
+αριθμούς γραμμής. <br />
+        Ωστόσο, πατώντας μέσο κλικ για επικόλληση των περιεχόμενων του Προχείρου σε
+κάποιες διανομές Linux (όπως την Ubuntu) δεν υποστηρίζεται από όλα τους
+φυλλομετρητές.</dd>
 
     <dt id="cfg_AllowUserDropDatabase">Αληθές/Ψευδές $cfg['AllowUserDropDatabase']</dt>
     <dd>Defines whether normal users (non-administrator) are allowed to delete their
@@ -1538,14 +1579,14 @@ which might be quite complicated. So this choice should be viewed as help to
 avoid accidental dropping rather than strict privilege limitation.</dd>
 
     <dt id="cfg_Confirm">Αληθές/Ψευδές $cfg['Confirm']</dt>
-    <dd>Whether a warning (&quot;Are your really sure...&quot;) should be displayed
-when you're about to lose data.</dd>
+    <dd>Εάν μια προειδοποίηση («Είστε σίγουρος/η...») πρέπει να εμφανίζεται όταν
+προκειται να χάσετε δεδομένα.</dd>
 
     <dt id="cfg_LoginCookieRecall">Αληθές/Ψευδές $cfg['LoginCookieRecall']</dt>
-    <dd>Define whether the previous login should be recalled or not in cookie
-authentication mode.<br /><br />
+    <dd>Ορίζει αν πρέπει η προηγούμενη σύνδεση να ανακαλείται σε λειτουργία
+πιστοποίησης cookie.<br /><br />
 
-        This is automatically disabled if you do not have configured <code><a
+        Αυτό είναι αυτόματα απενεργοποιημένο αν δεν έχετε ρυθμίσει το <code><a
 href="#cfg_blowfish_secret">$cfg['blowfish_secret']</a></code>.
         </dd>
 
@@ -1568,11 +1609,13 @@ for current one. Setting this to false makes it easy to forget to log out
 from other server, when you are using more of them.</dd>
 
     <dt id="cfg_UseDbSearch">Αληθές/Ψευδές $cfg['UseDbSearch']</dt>
-    <dd>Define whether the "search string inside database" is enabled or not.</dd>
+    <dd>Ορίζει αν η «Αναζήτηση κειμένου μέσα σε βάση δεδομένων» είναι ενεργοποιημένη
+ή όχι.</dd>
 
     <dt id="cfg_IgnoreMultiSubmitErrors">Αληθές/Ψευδές $cfg['IgnoreMultiSubmitErrors']</dt>
-    <dd>Define whether phpMyAdmin will continue executing a multi-query statement if
-one of the queries fails. Default is to abort execution.</dd>
+    <dd>Ορίζει αν το phpMyAdmin θα συνεχίζει την εκτέλεση δήλωσης πολλαπλών
+ερωτημάτων, εάν αποτύχει ένα από τα ερωτήματα. Η προεπιλογή είναι να
+ματαιώνεται την εκτέλεση.</dd>
 
     <dt id="AllowArbitraryServer">
         Αληθές/Ψευδές <span
@@ -1587,10 +1630,10 @@ title="HyperText Transfer Protocol">HTTP</abbr> server is placed.
     </dd>
 
     <dt id ="cfg_Error_Handler_display">Αληθές/Ψευδές $cfg['Error_Handler']['display']</dt>
-    <dd>Whether to display errors from PHP or not.</dd>
+    <dd>Αν θα εμφανίζονται σφάλματα από την PHP ή όχι.</dd>
 
     <dt id ="cfg_Error_Handler_gather">Αληθές/Ψευδές $cfg['Error_Handler']['gather']</dt>
-    <dd>Whether to gather errors from PHP or not.</dd>
+    <dd>Αν θέλετε να συγκεντρώνετε σφάλματα από την PHP ή όχι.</dd>
 
     <dt id="cfg_LeftFrameLight">Αληθές/Ψευδές $cfg['LeftFrameLight']</dt>
     <dd>Defines whether to use a select-based menu and display only the current
@@ -1620,15 +1663,17 @@ at the beginning or end of a table name or multiple times after another
 without any other characters in between.</dd>
 
     <dt id="cfg_LeftFrameTableLevel">κείμενο $cfg['LeftFrameTableLevel']</dt>
-    <dd>Defines how many sublevels should be displayed when splitting up tables by
-the above separator.</dd>
+    <dd>Ορίζει πόσα υποεπίπεδα πρέπει να εμφανίζονται όταν διασπόνται πινάκες από το
+παραπάνω διαχωριστικό.</dd>
 
     <dt id="cfg_LeftRecentTable">ακέραιος $cfg['LeftRecentTable']</dt>
-    <dd>The maximum number of recently used tables shown in the left navigation
-frame. Set this to 0 (zero) to disable the listing of recent tables.</dd>
+    <dd>Ο μέγιστος αριθμός των πρόσφατα χρησιμοποιημένων πινάκων που εμφανίζονται
+στο αριστερό πλαίσιο περιοχής περιήγησης. Ορίστε το σε 0 (μηδέν) για να
+απενεργοποιήσετε τη λίστα των πρόσφατων πίνακων.</dd>
 
     <dt id="cfg_ShowTooltip">Αληθές/Ψευδές $cfg['ShowTooltip']</dt>
-    <dd>Defines whether to display table comment as tool-tip in left frame or not.</dd>
+    <dd>Ορίζει εάν θα εμφανιστεί το σχόλιο του πίνακα ως εξεξήγηση στο αριστερό
+πλαίσιο ή όχι.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">Αληθές/Ψευδές $cfg['ShowTooltipAliasDB']</dt>
     <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
@@ -1648,8 +1693,8 @@ the folder is called like the Alias, the tablename itself stays the real
 tablename.</dd>
 
     <dt id="cfg_LeftDisplayLogo">Αληθές/Ψευδές $cfg['LeftDisplayLogo']</dt>
-    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the left
-frame.  Defaults to <code>TRUE</code>.</dd>
+    <dd>Ορίζει αν πρέπει ή όχι να εμφανίστει το λογότυπο του phpMyAdmin στην κορυφή
+του αριστερού πλαισίου. Η προεπιλογή είναι <code>TRUE</code>.</dd>
     <dt id="cfg_LeftLogoLink">κείμενο $cfg['LeftLogoLink']</dt>
     <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
 navigation frame will point to.  For use especially with self made theme
@@ -1666,11 +1711,11 @@ above the list of tables in the left frame.  Defaults to <code>30</code>. To
 disable the filter completely some high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_LeftDisplayServers">Αληθές/Ψευδές $cfg['LeftDisplayServers']</dt>
-    <dd>Defines whether or not to display a server choice at the top of the left
-frame.  Defaults to FALSE.</dd>
+    <dd>Ορίζει αν θα εμφανιστεί μια επιλογή διακομιστή στην κορυφή του αριστερού
+πλαισίου ή όχι. Η προεπιλογή είναι FALSE (ψευδές).</dd>
     <dt id="cfg_DisplayServersList">Αληθές/Ψευδές $cfg['DisplayServersList']</dt>
-    <dd>Defines whether to display this server choice as links instead of in a
-drop-down.  Defaults to FALSE (drop-down).</dd>
+    <dd>Ορίζει αν θα εμφανίζεται αυτή η επιλογή διακομιστή ως σύνδεσμοι αντί σε ένα
+αναδυόμενο μενού. Η προεπιλογή είναι FALSE (αναδυόμενο μενού).</dd>
     <dt id="cfg_DisplayDatabasesList">Αληθές/Ψευδές ή κείμενο $cfg['DisplayDatabasesList']</dt>
     <dd>Defines whether to display database choice in light navigation frame as
 links instead of in a drop-down. Defaults to 'auto' - on main page list is
@@ -1683,15 +1728,16 @@ each table name in the navigation panel. Possible values:
 &quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
 &quot;sql.php&quot;.</dd>
 
-    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] boolean</dt>
-    <dd>Defines whether the table structure actions are hidden under a
-&quot;More&quot; drop-down.</dd>
+    <dt id="cfg_HideStructureActions">Αληθές/Ψευδές $cfg['HideStructureActions']</dt>
+    <dd>Ορίζει αν οι ενέργειες δομής πίνακα αποκρύπτονται στο πλαίσιο ενός
+αναδυόμενου μενού «Περισσότερα».</dd>
 
     <dt id="cfg_ShowStats">Αληθές/Ψευδές $cfg['ShowStats']</dt>
-    <dd>Defines whether or not to display space usage and statistics about databases
-and tables.<br />
-        Note that statistics requires at least MySQL 3.23.3 and that, at this date,
-MySQL doesn't return such information for Berkeley DB tables.</dd>
+    <dd>Ορίζει αν πρέπει ή όχι να εμφανίζετε η χρήση χώρου και στατιστικά στοιχεία
+σχετικά με τις βάσεις δεδομένων και τους πίνακες.<br />
+        Σημειώστε ότι οι στατιστικές απαιτούν τουλάχιστον MySQL 3.23.3 και ότι, κατά
+την ημερομηνία αυτή, η MySQL δεν επιστρέφει τέτοιες πληροφορίες για πίνακες
+βάσης δεδομένων Berkeley.</dd>
 
     <dt>Αληθές/Ψευδές <span id="cfg_ShowServerInfo">$cfg['ShowServerInfo'] </span></dt>
     <dd>Defines whether to display detailed server information on main page.  You
@@ -1708,8 +1754,8 @@ password &quot; links and form for creating database or not at the starting
 main (right) frame. This setting does not check MySQL commands entered
 directly.<br /><br />
 
-        Please note that to block the usage of phpinfo() in scripts, you have to put
-this in your <em>php.ini</em>:
+        Σημειώστε ότι για να αποκλείσετε την χρήση του phpinfo() σε κώδικα, πρέπει
+βάλετε αυτό στο αρχείο <em>php.ini</em> σας:
 
         <pre>disable_functions = phpinfo()</pre>
 
@@ -1718,15 +1764,15 @@ with &quot;config&quot; authentication mode: because of the hard coded
 password value in the configuration file, end users can't be allowed to
 change their passwords.</dd>
 
-    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] boolean</dt>
+    <dt id="cfg_ShowDbStructureCreation">Αληθές/Ψευδές $cfg['ShowDbStructureCreation']</dt>
     <dd>Defines whether the database structure page (tables list) has a
 &quot;Creation&quot; column that displays when each table was created.</dd>
 
-    <dt id="cfg_ShowDbStructureLastUpdate">$cfg['ShowDbStructureLastUpdate'] boolean</dt>
+    <dt id="cfg_ShowDbStructureLastUpdate">Αληθές/Ψευδές $cfg['ShowDbStructureLastUpdate']</dt>
     <dd>Defines whether the database structure page (tables list) has a &quot;Last
 update&quot; column that displays when each table was last updated.</dd>
 
-    <dt id="cfg_ShowDbStructureLastCheck">$cfg['cfg_ShowDbStructureLastCheck'] boolean</dt>
+    <dt id="cfg_ShowDbStructureLastCheck">Αληθές/Ψευδές  	$cfg['cfg_ShowDbStructureLastCheck']</dt>
     <dd>Defines whether the database structure page (tables list) has a &quot;Last
 check&quot; column that displays when each table was last checked.</dd>
 
@@ -1754,19 +1800,19 @@ in descending (<code>DESC</code>) order or in a &quot;smart&quot;
 DATE, DATETIME and TIMESTAMP, ascending order else- by default.</dd>
 
     <dt id="cfg_DisplayBinaryAsHex">Αληθές/Ψευδές $cfg['DisplayBinaryAsHex'] </dt>
-    <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
-ticked by default.</dd>
+    <dd>Ορίζει αν η επιλογή πλοήγησης «Προβολή δυαδικών περιεχομένων ως ΔΕΚΑΕΞΑΔΙΚΗ»
+είναι επιλεγμένη ως προεπιλογή.</dd>
 
     <dt id="cfg_ProtectBinary">Αληθές/Ψευδές ή κείμενο $cfg['ProtectBinary']</dt>
     <dd>Defines whether <code>BLOB</code> or <code>BINARY</code> columns are
 protected from editing when browsing a table's content. Valid values are:
-        <ul><li><code>FALSE</code> to allow editing of all columns;</li>
-            <li><code>'blob'</code> to allow editing of all columns except
-<code>BLOBS</code>;</li>
-            <li><code>'noblob'</code> to disallow editing of all columns except
-<code>BLOBS</code> (the opposite of <code>'blob'</code>);</li>
-            <li><code>'all'</code> to disallow editing of all <code>BINARY</code> or
-<code>BLOB</code> columns.</li>
+        <ul><li><code>False (ψευδές)</code> για δικαίωμα επεξεργασίας όλων των στηλών;</li>
+            <li><code>«blob»</code> για δικαίωμα επεξεργασίας όλων των στηλών εκτός των
+<code>BLOBS</code>·</li>
+            <li><code>«noblob»</code> για ακύρωση δικαιώματος επεξεργασίας όλων των στηλών
+εκτός από τα <code>BLOBS</code> (το αντίθετο το <code>«blob»</code>)·</li>
+            <li><code>«all»</code> για να απαγορεύσετε την επεξεργασία όλων των στηλών
+<code>BINARY</code> ή των <code>BLOB</code>.</li>
         </ul>
     </dd>
 
@@ -1777,30 +1823,32 @@ from the interface.
     </dd>
 
     <dt id="cfg_ShowFieldTypesInDataEditView">Αληθές/Ψευδές $cfg['ShowFieldTypesInDataEditView']</dt>
-    <dd>Defines whether or not type fields should be initially displayed in
-edit/insert mode. The user can toggle this setting from the interface.
+    <dd>Ορίζει κατά πόσον πεδίου τύπου πρέπει να εμφανίζονται αρχικά σε κατάσταση
+λειτουργίας επεξεργασίας/εισαγωγή. Ο χρήστης μπορεί να εναλλάσσεται σε αυτήν
+τη ρύθμιση από το περιβάλλον εργασίας.
     </dd>
 
     <dt id="cfg_CharEditing">κείμενο $cfg['CharEditing']</dt>
-    <dd>Defines which type of editing controls should be used for CHAR and VARCHAR
-columns. Possible values are:
-        <ul><li>input - this allows to limit size of text to size of columns in MySQL, but
-has problems with newlines in columns</li>
-            <li>textarea - no problems with newlines in columns, but also no length
-limitations</li>
+    <dd>Ορίζει τον τύπο των στοχείων ελέγχου επεξεργασίας που πρέπει να
+χρησιμοποιείτε για τις στήλες CHAR και VARCHAR. Οι πιθανές τιμές είναι:
+        <ul><li>input - αυτό σας επιτρέπει να περιορίσετε το μέγεθος του κειμένου με το
+μέγεθος των στηλών της MySQL, αλλά έχει προβλήματα με αλλαγές γραμμής σε
+στήλες</li>
+            <li>textarea - κανένα πρόβλημα με αλλαγές γραμμής σε στήλες, αλλά επίσης χωρίς
+περιορισμούς στο μήκος</li>
         </ul>
         Ως προεπιλογή είναι η παλαιά συμπεριφορά δηλαδή το input.</dd>
 
     <dt id="cfg_MinSizeForInputField">ακέραιος $cfg['MinSizeForInputField']</dt>
-    <dd>Defines the minimum size for input fields generated for CHAR and VARCHAR
-columns.</dd>
+    <dd>Καθορίζει το ελάχιστο μέγεθος για τα πεδία εισόδου που δημιουργούνται για
+τις στήλες CHAR και VARCHAR.</dd>
 
     <dt id="cfg_MaxSizeForInputField">ακέραιος $cfg['MaxSizeForInputField']</dt>
-    <dd>Defines the maximum size for input fields generated for CHAR and VARCHAR
-columns.</dd>
+    <dd>Ορίζει το μέγιστο μέγεθος για τα πεδία εισόδου που δημιουργούνται για τις
+στήλες CHAR και VARCHAR.</dd>
 
     <dt id="cfg_InsertRows">ακέραιος $cfg['InsertRows']</dt>
-    <dd>Defines the maximum number of concurrent entries for the Insert page.</dd>
+    <dd>Ορίζει το μέγιστο αριθμό ταυτόχρονων καταχωρήσεων για τη σελίδα «Προσθήκη».</dd>
 
     <dt id="cfg_ForeignKeyMaxLimit">ακέραιος $cfg['ForeignKeyMaxLimit']</dt>
     <dd>If there are fewer items than this in the set of foreign keys, then a
@@ -1818,8 +1866,8 @@ one or both of the following strings: <em>'content-id'</em>,
         Αληθές/Ψευδές <span id="cfg_GZipDump">$cfg['GZipDump'] </span><br />
         Αληθές/Ψευδές <span id="cfg_BZipDump">$cfg['BZipDump'] </span>
     </dt>
-    <dd>Defines whether to allow the use of zip/GZip/BZip2 compression when creating
-a dump file</dd>
+    <dd>Καθορίζει εάν θα επιτρέπεται η χρήση συμπίεσης zip/GZip/BZip2 κατά τη
+δημιουργία ενός αρχείου ένδειξης σφαλμάτων</dd>
 
     <dt>Αληθές/Ψευδές <span id="cfg_CompressOnFly">$cfg['CompressOnFly'] </span><br />
     </dt>
@@ -1830,9 +1878,10 @@ files contain more GZip/BZip2 headers, but all normal programs handle this
 correctly.</dd>
 
     <dt id="cfg_PropertiesIconic">κείμενο $cfg['PropertiesIconic']</dt>
-    <dd>If set to <code>TRUE</code>, will display icons instead of text for db and
-table properties links (like 'Browse', 'Select', 'Insert', ...).<br /> Can be set to <code>'both'</code> if you want icons AND text.<br />
-        When set to <code>FALSE</code>, will only show text.</dd>
+    <dd>Εάν οριστεί σε <code>TRUE</code>, θα εμφανίζονται εικονίδια αντί για κείμενο
+για τη βάση δεδομένων και τις ιδιότητες πινακα (όπως η «Αναζήτηση«,
+«Επιλογή», «Προσθήκη»,...).<br /> Μπορεί να οριστεί σε <code>«both»</code>, εάν θέλετε εικονίδια ΚΑΙ κείμενο.<br />
+        Όταν οριστεί σε <code>FALSE</code>, θα εμφανίζεται μόνο κείμενο.</dd>
 
     <dt id="cfg_PropertiesNumColumns">ακέραιος $cfg['PropertiesNumColumns']</dt>
     <dd>How many columns will be utilized to display the tables on the database
@@ -1863,35 +1912,39 @@ property view? Default is 1 column. When setting this to a value larger than
 to the MySQL documentation (type depends on <a href="#cfg_MySQLManualType"
 class="configrule">$cfg['MySQLManualType']</a>), appropriate help links are
 generated.<br />
-        See <a href="http://dev.mysql.com/doc/">MySQL Documentation page</a> for
-more information about MySQL manuals and their types.</dd>
+        Βλέπε τη <a href="http://dev.mysql.com/doc/">σελίδα τεκμηρίωσης της
+MySQL</a> για περισσότερες πληροφορίες σχετικά με την τα εγχειρίδια της
+MySQL και τους τύπους τους.</dd>
 
     <dt id="cfg_MySQLManualType">κείμενο $cfg['MySQLManualType']</dt>
     <dd>Τύπος της τεκμηρίωσης MySQL:
-        <ul><li>viewable - &quot;viewable online&quot;, current one used on MySQL website</li>
-            <li>searchable - &quot;Searchable, with user comments&quot;</li>
-            <li>chapters - &quot;HTML, one page per chapter&quot;</li>
-            <li>big - &quot;HTML, all on one page&quot;</li>
-            <li>none - do not show documentation links</li>
+        <ul><li>viewable - «προβαλόμενη διαδικτυακά» η τρέχουσα χρησιμοποιείτε στην
+ιστσσελίδα της MySQL</li>
+            <li>searchable - «Αναζήτηση με σχόλια χρήστη»</li>
+            <li>chapters - «HTML, μια σελίδα ανά κεφάλαιο»</li>
+            <li>big - «HTML, όλα σε μια σελίδα»</li>
+            <li>none - χωρίς εμφάνιση συνδέσμων τεκμηρίωσης</li>
         </ul>
     </dd>
 
     <dt id="cfg_DefaultLang">κείμενο $cfg['DefaultLang']</dt>
-    <dd>Defines the default language to use, if not browser-defined or user-defined.<br />
-        The corresponding language file needs to be in
+    <dd>Ορίζει την προεπιλεγμένη γλώσσα για χρήση, εάν δεν έχει οριστεί από τον
+φυλλομετρητή ή το χρήστη.<br />
+        Το αντίστοιχο αρχείο γλώσσας πρέπει να βρίσκεται στο
 locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
     <dt id="cfg_DefaultConnectionCollation">κείμενο $cfg['DefaultConnectionCollation']</dt>
-    <dd>Defines the default connection collation to use, if not user-defined.<br />
+    <dd>Ορίζει την προεπιλεγμένη σύνθεση σύνδεσης για χρήση, εάν δεν ορίζεται από το
+χρήστη.<br />
         Δείτε την <a
 href="http://dev.mysql.com/doc/mysql/en/charset-charsets.html">τεκμηρίωση
 MySQL</a> για τη λίστα των πιθανών τιμών. Αυτή η ρύθμιση αγνοείται όταν
 συνδέεται στο διακομιστή Drizzle.</dd>
 
     <dt id="cfg_Lang">κείμενο $cfg['Lang']</dt>
-    <dd>Force language to use.<br />
-        The corresponding language file needs to be in
+    <dd>Επιβολή γλώσσας που θα χρησιμοποιηθεί.<br />
+        Το αντίστοιχο αρχείο γλώσσας πρέπει να βρίσκεται στο
 locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.
         </dd>
 
@@ -1901,12 +1954,13 @@ expression. For example if you want only Czech and English, you should set
 filter to <code>'^(cs|en)'</code>.</dd>
 
     <dt id="cfg_RecodingEngine">κείμενο $cfg['RecodingEngine']</dt>
-    <dd>You can select here which functions will be used for character set
-conversion. Possible values are:
-        <ul><li>auto - automatically use available one (first is tested iconv, then recode)</li>
-            <li>iconv - use iconv or libiconv functions</li>
-            <li>recode - use recode_string function</li>
-            <li>none - disable encoding conversion</li>
+    <dd>Μπορείτε να επιλέξετε εδώ ποιες λειτουργίες θα χρησιμοποιηθεί για τη
+μετατροπή συνόλου χαρακτήρων. Οι πιθανές τιμές είναι:
+        <ul><li>auto - χρησιμοποιείται αυτόματα το διαθέσιμο (πρώτα δοκιμάζεται το iconv,
+μετά το recode)</li>
+            <li>iconv - χρήση της συνάρτησης iconv ή της libiconv</li>
+            <li>recode - χρήση της συνάρτησης recode_string</li>
+            <li>none - απενεργοποίηση της μετατροπής κωδικοποίησης</li>
         </ul>
         Η προεπιλογή είναι το αυτόματο.</dd>
     <dd>
@@ -1941,17 +1995,17 @@ rules for IP addresses behind proxy.<br /><br />
 $cfg['TrustedProxies'] =
      array('1.2.3.4' =&gt; 'HTTP_X_FORWARDED_FOR');
 </pre>
-        The $cfg['Servers'][$i]['AllowDeny']['rules'] directive uses the client's IP
-address as usual.
+        Η οδηγία $cfg['Servers'][$i]['AllowDeny']['rules'] χρησιμοποιεί τη διεύθυνση
+IP ως συνήθως.
     </dd>
 
     <dt id="cfg_GD2Available">κείμενο $cfg['GD2Available']</dt>
-    <dd>Specifies whether GD &gt;= 2 is available. If yes it can be used for MIME
-transformations.<br />
+    <dd>Καθορίζει κατά πόσον το GD &gt;= 2 είναι διαθέσιμο. Αν ναι, μπορεί να
+χρησιμοποιηθεί για μετατροπές MIME.<br />
         Πιθανές τιμές είναι:
-        <ul><li>auto - automatically detect</li>
-            <li>yes - GD 2 functions can be used</li>
-            <li>no - GD 2 function cannot be used</li>
+        <ul><li>auto - αυτόματη αναγνώριση</li>
+            <li>yes - οι συναρτήσεις GD 2 μπορούν να χρησιμοποιηθούν</li>
+            <li>no - οι συναρτήσεις GD 2 δεν μπορούν να χρησιμοποιηθούν</li>
         </ul>
         Η προεπιλογή είναι το αυτόματο.
     </dd>
@@ -1984,7 +2038,7 @@ multiple maintenance operation. Default is <code>false</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">ακέραιος $cfg['NaviWidth']</dt>
-    <dd>Navi frame width in pixels. See
+    <dd>Το πλάτος του πλαισίου NAVI σε εικονοστοιχεία (pixels). Δείτε to
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
@@ -1993,36 +2047,36 @@ CSS για υπόβαθρο]<br />
         κείμενο <span id="cfg_MainBackground">$cfg['MainBackground']</span> string
 [χρώμα CSS για υπόβαθρο]
     </dt>
-    <dd>The background styles used for both the frames.  See
+    <dd>Τα στυλ υποβάθρου που χρησιμοποιούνται και για τα δύο πλαίσια.  Δείτε το
 <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_NaviPointerBackground">κείμενο $cfg['NaviPointerBackground'] [χρώμα CSS για υπόβαθρο]<br />
         κείμενο <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span>
 [χρώμα CSS]</dt>
-    <dd>The style used for the pointer in the navi frame.  See
-<code>themes/themename/layout.inc.php</code>.</dd>
+    <dd>Το στυλ που χρησιμοποιείται για το δείκτη του ποντικιού στο πλαίσιο
+navi. Δείτε το <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_LeftPointerEnable">Αληθές/Ψευδές $cfg['LeftPointerEnable']</dt>
-    <dd>A value of <code>TRUE</code> activates the navi pointer (when LeftFrameLight
-is <code>FALSE</code>).</dd>
+    <dd>Μια τιμή <code>TRUE</code> ενεργοποιεί το δείκτη navi (όταν το
+LeftFrameLight έχει τιμή <code>FALSE</code>).</dd>
 
     <dt id="cfg_Border">ακέραιος $cfg['Border']</dt>
-    <dd>The size of a table's border. See
+    <dd>Το μέγεθος του περιγράμματος ενός πίνακα. Δείτε το
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_ThBackground">κείμενο $cfg['ThBackground'] [χρώμα CSS για το υπόβαθρο]<br />
         κείμενο <span id="cfg_ThColor">$cfg['ThColor']</span> [χρώμα CSS]</dt>
-    <dd>The style used for table headers. See
+    <dd>Το στυλ που χρησιμοποιείται για τις κεφαλίδες πίνακα. Δείτε το
 <code>themes/themename/layout.inc.php</code>.</dd>
 
     <dt id="cfg_BgcolorOne">κείμενο $cfg['BgOne'] [χρώμα CSS]</dt>
-    <dd>The color (HTML) #1 for table rows. See
+    <dd>Το χρώμα (HTML) #1 για τις γραμμές του πίνακα. Δείτε το
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt id="cfg_BgcolorTwo">κείμενο $cfg['BgTwo'] [χρώμα CSS]</dt>
-    <dd>The color (HTML) #2 for table rows. See
+    <dd>Το χρώμα (HTML) #2 για τις γραμμές του πίνακα. Δείτε το
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
@@ -2037,52 +2091,54 @@ id="cfg_BrowsePointerBackground">$cfg['BrowsePointerBackground'] </span>
         κείμενο <span id="cfg_BrowsePointerColor">$cfg['BrowsePointerColor'] </span>
 [χρώμα CSS]
     </dt>
-    <dd>The colors (HTML) uses for the pointer and the marker in browse mode.<br />
+    <dd>Τα χρώματα (HTML) που χρησιμοποιεί για το δείκτη του ποντικιού και το δείκτη
+σε κατάσταση περιήγησης.<br />
         The former feature highlights the row over which your mouse is passing and
 the latter lets you visually mark/unmark rows by clicking on
 them. Highlighting / marking a column is done by hovering over / clicking
 the column's header (outside of the text).<br />
-        See <code>themes/themename/layout.inc.php</code>.</dd>
+        Δείτε το <code>themes/themename/layout.inc.php</code>.</dd>
 
 
-    <dt id="cfg_FontFamily">$cfg['FontFamily'] string</dt>
-    <dd>You put here a valid CSS font family value, for example <code>arial,
-sans-serif</code>.<br />
-        See <code>themes/themename/layout.inc.php</code>.</dd>
+    <dt id="cfg_FontFamily">κείμενο $cfg['FontFamily']</dt>
+    <dd>Τοποθετείτε εδώ μια έγκυρη τιμή οικογένειας γραμματοσειρών CSS, για
+παράδειγμα <code>arial, sans-serif</code>.<br />
+        Δείτε το <code>themes/themename/layout.inc.php</code>.</dd>
 
-    <dt id="cfg_FontFamilyFixed">$cfg['FontFamilyFixed'] string</dt>
-    <dd>You put here a valid CSS font family value, for example
-<code>monospace</code>. This one is used in textarea.<br />
-        See <code>themes/themename/layout.inc.php</code>.</dd>
+    <dt id="cfg_FontFamilyFixed">κείμενο $cfg['FontFamilyFixed']</dt>
+    <dd>Τοποθετείτε εδώ μια έγκυρη τιμή οικογένειας γραμματοσειρών CSS, για
+παράδειγμα <code>monospace</code>. Αυτή χρησιμοποιείται στα textarea.<br />
+        Δείτε το <code>themes/themename/layout.inc.php</code>.</dd>
 
-    <dt id="cfg_BrowsePointerEnable">$cfg['BrowsePointerEnable'] boolean</dt>
-    <dd>Whether to activate the browse pointer or not.</dd>
+    <dt id="cfg_BrowsePointerEnable">Αληθές/Ψευδές $cfg['BrowsePointerEnable']</dt>
+    <dd>Αν θέλετε να ενεργοποιήσετε το δείκτη πλοήγησης ή όχι.</dd>
 
-    <dt id="cfg_BrowseMarkerEnable">$cfg['BrowseMarkerEnable'] boolean</dt>
-    <dd>Whether to activate the browse marker or not.</dd>
+    <dt id="cfg_BrowseMarkerEnable">Αληθές/Ψευδές $cfg['BrowseMarkerEnable']</dt>
+    <dd>Αν θέλετε να ενεργοποιήσετε το επισημαντή πλοήγησης ή όχι.</dd>
 
-    <dt><span id="cfg_TextareaCols">$cfg['TextareaCols'] </span>integer<br />
-        <span id="cfg_TextareaRows">$cfg['TextareaRows'] </span>integer<br />
-        <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols'] </span>integer<br />
-        <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows'] </span>integer
+    <dt>ακέραιος <span id="cfg_TextareaCols">$cfg['TextareaCols']</span><br />
+        ακέραιος <span id="cfg_TextareaRows">$cfg['TextareaRows']</span><br />
+        ακέραιος <span id="cfg_CharTextareaCols">$cfg['CharTextareaCols']</span><br />
+        ακέραιος <span id="cfg_CharTextareaRows">$cfg['CharTextareaRows']</span>
     </dt>
-    <dd>Number of columns and rows for the textareas.<br />
+    <dd>Αριθμός στηλών και γραμμών για τα textareas.<br />
         This value will be emphasized (*2) for <abbr title="structured query
 language">SQL</abbr> query textareas and (*1.25) for <abbr title="structured
 query language">SQL</abbr> textareas inside the query window.<br />
-        The Char* values are used for CHAR and VARCHAR editing (if configured via <a
-href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
+        Οι τιμές Char* χρησιμοποιούνται για επεξεργασία των CHAR και VARCHAR (αν
+ρυθμιστούν μέσω του <a href="#cfg_CharEditing">$cfg['CharEditing']</a>).</dd>
 
-    <dt><span id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']
-</span>boolean
+    <dt>Αληθές/Ψευδές <span
+id="cfg_LongtextDoubleTextarea">$cfg['LongtextDoubleTextarea']</span>
     </dt>
-    <dd>Defines whether textarea for LONGTEXT columns should have double size.</dd>
+    <dd>Ορίζει αν το textarea για στήλες LONGTEXT πρέπει να έχει διπλό μέγεθος.</dd>
 
-    <dt><span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect'] </span>boolean
+    <dt>Αληθές/Ψευδές <span id="cfg_TextareaAutoSelect">$cfg['TextareaAutoSelect']
+</span>
     </dt>
-    <dd>Defines if the whole textarea of the query box will be selected on click.</dd>
+    <dd>Ορίζει αν το όλο textarea στο παράθυρο ερωτήματος θα επιλέγονται με κλικ.</dd>
 
-    <dt id="cfg_LimitChars">$cfg['LimitChars'] integer</dt>
+    <dt id="cfg_LimitChars">ακέραιος $cfg['LimitChars']</dt>
     <dd>Maximum number of characters shown in any non-numeric field on browse view.
 Can be turned off by a toggle button on the browse page.</dd>
 
@@ -2094,7 +2150,7 @@ side, right side, both sides or nowhere).  &quot;left&quot; and
 &quot;right&quot; are parsed as &quot;top&quot; and &quot;bottom&quot; with
 vertical display mode.</dd>
 
-    <dt id="cfg_DefaultDisplay">$cfg['DefaultDisplay'] string</dt>
+    <dt id="cfg_DefaultDisplay">κείμενο $cfg['DefaultDisplay']</dt>
     <dd>There are 3 display modes: horizontal, horizontalflipped and vertical.
 Define which one is displayed by default. The first mode displays each row
 on a horizontal line, the second rotates the headers by 90 degrees, so you
@@ -2104,9 +2160,10 @@ lineup.
     </dd>
 
     <dt id="cfg_RememberSorting">Αληθές/Ψευδές $cfg['RememberSorting']</dt>
-    <dd>If enabled, remember the sorting of each table when browsing them.</dd>
+    <dd>Εάν ενεργοποιηθεί, θα απομνημονευτεί η ταξινόμηση κάθε πίνακα κατά την
+περιήγηση τους.</dd>
 
-    <dt id="cfg_HeaderFlipType">$cfg['HeaderFlipType'] string</dt>
+    <dt id="cfg_HeaderFlipType">κείμενο $cfg['HeaderFlipType']</dt>
     <dd>
         The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css'
 the rotation of the header for horizontalflipped is done via CSS. The CSS
@@ -2116,9 +2173,9 @@ good as CSS. The 'auto' option enables CSS transformation when browser
 supports it and use PHP based one otherwise.
     </dd>
 
-    <dt id="cfg_ShowBrowseComments">$cfg['ShowBrowseComments'] boolean<br />
-        <span id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']
-</span>boolean
+    <dt id="cfg_ShowBrowseComments">Αληθές/Ψευδές $cfg['ShowBrowseComments']<br />
+        Αληθές/Ψευδές <span
+id="cfg_ShowPropertyComments">$cfg['ShowPropertyComments']</span>
     </dt>
     <dd>By setting the corresponding variable to <code>TRUE</code> you can enable
 the display of column comments in Browse or Property display. In browse
@@ -2127,23 +2184,28 @@ are displayed using a CSS-formatted dashed-line below the name of the
 column. The comment is shown as a tool-tip for that column.
     </dd>
 
-    <dt id ="cfg_SQLQuery_Edit">$cfg['SQLQuery']['Edit'] boolean</dt>
-    <dd>Whether to display an edit link to change a query in any SQL Query box.</dd>
+    <dt id ="cfg_SQLQuery_Edit">Αληθές/Ψευδές $cfg['SQLQuery']['Edit']</dt>
+    <dd>Αν θα εμφανίζεται ένας σύνδεσμος επεξεργασίας για να αλλάξετε ένα ερώτημα σε
+κάθε πλαίσιο ερώτηματος SQL.</dd>
 
-    <dt id ="cfg_SQLQuery_Explain">$cfg['SQLQuery']['Explain'] boolean</dt>
-    <dd>Whether to display a link to explain a SELECT query in any SQL Query box.</dd>
+    <dt id ="cfg_SQLQuery_Explain">Αληθές/Ψευδές $cfg['SQLQuery']['Explain']</dt>
+    <dd>Αν θα εμφανίζεται ένας σύνδεσμος για να εξηγήσει ένα ερώτημα SELECT σε
+οποιοδήποτε πλαίσιο ερώτηματος SQL.</dd>
 
-    <dt id ="cfg_SQLQuery_ShowAsPHP">$cfg['SQLQuery']['ShowAsPHP'] boolean</dt>
-    <dd>Whether to display a link to wrap a query in PHP code in any SQL Query box.</dd>
+    <dt id ="cfg_SQLQuery_ShowAsPHP">Αληθές/Ψευδές $cfg['SQLQuery']['ShowAsPHP']</dt>
+    <dd>Αν θα εμφανίζεται ένας σύνδεσμος για να αναδιπλώσετε ένα ερώτημα σε κώδικα
+PHP σε οποιοδήποτε πλαίσιο ερώτηματος SQL.</dd>
 
-    <dt id ="cfg_SQLQuery_Validate">$cfg['SQLQuery']['Validate'] boolean</dt>
-    <dd>Whether to display a link to validate a query in any SQL Query box.  See
-also <code><a href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>.</dd>
+    <dt id ="cfg_SQLQuery_Validate">Αληθές/Ψευδές $cfg['SQLQuery']['Validate']</dt>
+    <dd>Αν θα εμφανίζεται ένας σύνδεσμος για επιβεβαίωση του ερωτήματος σε
+οποιοδήποτε πλαίσιο ερώτηματος SQL. Δείτε επίσης το <code><a
+href="#cfg_SQLValidator">$cfg_SQLValidator</a></code>.</dd>
 
-    <dt id ="cfg_SQLQuery_Refresh">$cfg['SQLQuery']['Refresh'] boolean</dt>
-    <dd>Whether to display a link to refresh a query in any SQL Query box.</dd>
+    <dt id ="cfg_SQLQuery_Refresh">Αληθές/Ψευδές $cfg['SQLQuery']['Refresh']</dt>
+    <dd>Αν θα εμφανίζεται ένας σύνδεσμος για να ανανεώσετε ένα ερώτημα σε
+οποιοδήποτε πλαίσιο ερώτηματος SQL.</dd>
 
-    <dt id="cfg_UploadDir">$cfg['UploadDir'] string</dt>
+    <dt id="cfg_UploadDir">κείμενο $cfg['UploadDir']</dt>
     <dd>
         The name of the directory where <abbr title="structured query
 language">SQL</abbr> files have been uploaded by other means than phpMyAdmin
@@ -2151,8 +2213,8 @@ language">SQL</abbr> files have been uploaded by other means than phpMyAdmin
 you click the database or table name, then the Import tab.
         <br /><br />
 
-        If you want different directory for each user, %u will be replaced with
-username.<br /><br />
+        Εάν θέλετε διαφορετικό φάκελο για κάθε χρήστη, το %u σας θα αντικατασταθεί
+με το όνομα χρήστη.<br /><br />
 
         Please note that the file names must have the suffix &quot;.sql&quot; (or
 &quot;.sql.bz2&quot; or &quot;.sql.gz&quot; if support for compressed
@@ -2166,27 +2228,27 @@ disabled in PHP.<br /><br />
 owned by the same user as the owner of the phpMyAdmin scripts.
         <br /><br />
 
-        See also <a href="#faq1_16"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 1.16</a> for alternatives.
+        Δείτε επίσης τη <a href="#faq1_16"> <abbr title="Συχνά Απαντημένες
+Ερωτήσεις">ΣΑΕ</abbr> 1.16</a> για εναλλακτικές.
     </dd>
 
-    <dt id="cfg_SaveDir">$cfg['SaveDir'] string</dt>
+    <dt id="cfg_SaveDir">κείμενο $cfg['SaveDir']</dt>
     <dd>
-        The name of the directory where dumps can be saved.<br /><br />
+        Το όνομα του καταλόγου όπου μπορούν να αποθηκευτούν αρχεία σφαλμάτων.<br /><br />
 
-        If you want different directory for each user, %u will be replaced with
-username.<br /><br />
+        Εάν θέλετε διαφορετικό φάκελο για κάθε χρήστη, το %u σας θα αντικατασταθεί
+με το όνομα χρήστη.<br /><br />
 
-    Please note that the directory must exist and has to be writable for the
-user running webserver.<br /><br />
+    Σημειώστε ότι ο φάκελος πρέπει να υπάρχει και πρέπει να υπάρχει δυνατότητα
+εγγραφής για τον χρήστη που λειτουργεί στον διακομιστή ιστού.<br /><br />
 
         Please note that if PHP is running in safe mode, this directory must be
 owned by the same user as the owner of the phpMyAdmin scripts.
     </dd>
 
-    <dt id="cfg_TempDir">$cfg['TempDir'] string</dt>
+    <dt id="cfg_TempDir">κείμενο $cfg['TempDir']</dt>
     <dd>
-        The name of the directory where temporary files can be stored.
+        Το όνομα του καταλόγου όπου μπορούν να αποθηκευτούν προσωρινά αρχεία.
         <br /><br />
 
         This is needed for importing ESRI Shapefiles, see <a href="#faq6_30"><abbr
@@ -2216,8 +2278,9 @@ chown www-data:www-data tmp
 chmod 700 tmp
 </pre>
 
-        If you cannot change owner of the directory, you can achieve a similar setup
-using <abbr title="Access Control List">ACL</abbr>:
+        Εάν δεν μπορείτε να αλλάξετε τον ιδιοκτήτη του φακέλου, μπορείτε να
+επιτύχετε ένα παρόμοιο πρόγραμμα εγκατάστασης χρησιμοποιώντας την <abbr
+title="Λίστα Ελέγχου Πρόσβασης">ΛΕΠ</abbr>:
 
 <pre>
 chmod 700 tmp
@@ -2230,25 +2293,26 @@ setfacl -d -m "g:www-data:rwx" tmp
 reading and writing data in this directory.
     </dd>
 
-    <dt id="cfg_Export">$cfg['Export'] array</dt>
+    <dt id="cfg_Export">σειρά $cfg['Export']</dt>
     <dd>
         In this array are defined default parameters for export, names of items are
 similar to texts seen on export page, so you can easily identify what they
 mean.
     </dd>
 
-    <dt id="cfg_Export_method">$cfg['Export']['method'] string</dt>
+    <dt id="cfg_Export_method">κείμενο $cfg['Export']['method']</dt>
     <dd>
-        Defines how the export form is displayed when it loads. Valid values are:
+        Καθορίζει τον τρόπο εμφάνισης της φόρμας εξαγωγής όταν φορτώνεται. Οι
+έγκυρες τιμές είναι:
         <ul>
         <li><code>γρήγορο</code> για προβολή μονό των ελάχιστων επιλογών για ρύθμιση</li>
         <li><code>Προσαρμοσμένο</code> για προβολή όλων των πιθανών επιλογών για ρύθμιση</li>
-        <li><code>custom-no-form</code> same as <code>custom</code> but does not display
-the option of using quick export</li>
+        <li><code>custom-no-form</code> όμοιο με το <code>custom</code> αλλά δεν
+εμφανίζει την επιλογή γρήγορης εξαγωγής</li>
         </ul>
     </dd>
 
-    <dt id="cfg_Import">$cfg['Import'] array</dt>
+    <dt id="cfg_Import">σειρά $cfg['Import']</dt>
     <dd>
         In this array are defined default parameters for import, names of items are
 similar to texts seen on import page, so you can easily identify what they
@@ -2267,17 +2331,17 @@ mean.
 περιήγηση σε πίνακα.
     </dd>
 
-    <dt id="cfg_RepeatCells">$cfg['RepeatCells'] integer</dt>
+    <dt id="cfg_RepeatCells">ακέραιος $cfg['RepeatCells']</dt>
     <dd>
-        Repeat the headers every X cells, or 0 to deactivate.
+        Επανάληψη των κεφαλίδων κάθε Χ κελιά ή 0 για να την απενεργοποιήσετε.
     </dd>
 
-    <dt id="cfg_EditInWindow">$cfg['EditInWindow'] boolean<br />
-        <span id="cfg_QueryWindowWidth">$cfg['QueryWindowWidth'] </span>integer<br />
-        <span id="cfg_QueryWindowHeight">$cfg['QueryWindowHeight'] </span>integer<br />
-        <span id="cfg_QueryHistoryDB">$cfg['QueryHistoryDB'] </span>boolean<br />
-        <span id="cfg_QueryWindowDefTab">$cfg['QueryWindowDefTab'] </span>string<br />
-        <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>integer
+    <dt id="cfg_EditInWindow">Αληθές/Ψευδές $cfg['EditInWindow']<br />
+        ακέραιος <span id="cfg_QueryWindowWidth">$cfg['QueryWindowWidth']</span><br />
+        ακέραιος <span id="cfg_QueryWindowHeight">$cfg['QueryWindowHeight']</span><br />
+        Αληθές/Ψευδές <span id="cfg_QueryHistoryDB">$cfg['QueryHistoryDB']</span><br />
+        κείμενο <span id="cfg_QueryWindowDefTab">$cfg['QueryWindowDefTab']</span><br />
+        ακέραιος <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span>
     </dt>
     <dd>
         All those variables affect the query window feature. A <code><abbr
@@ -2332,73 +2396,75 @@ the variable <code>$cfg['QueryWindowDefTab']</code> you can specify the
 default tab to be used when opening the query window. It can be set to
 either 'sql', 'files', 'history' or 'full'.</dd>
 
-    <dt id="cfg_BrowseMIME">$cfg['BrowseMIME'] boolean</dt>
-    <dd>Enable <a href="#transformations">MIME-transformations</a>.</dd>
+    <dt id="cfg_BrowseMIME">Αληθές/Ψευδές $cfg['BrowseMIME']</dt>
+    <dd>Ενεργοποιεί τις <a href="#transformations">μετατροπές MIME</a>.</dd>
 
-    <dt id="cfg_MaxExactCount">$cfg['MaxExactCount'] integer</dt>
+    <dt id="cfg_MaxExactCount">ακέραιος $cfg['MaxExactCount']</dt>
     <dd>For InnoDB tables, determines for how large tables phpMyAdmin should get the
 exact row count using <code>SELECT COUNT</code>.  If the approximate row
 count as returned by <code>SHOW TABLE STATUS</code> is smaller than this
 value, <code>SELECT COUNT</code> will be used, otherwise the approximate
 count will be used.
     </dd>
-    <dt id="cfg_MaxExactCountViews">$cfg['MaxExactCountViews'] integer</dt>
+    <dt id="cfg_MaxExactCountViews">ακέραιος $cfg['MaxExactCountViews']</dt>
     <dd>For VIEWs, since obtaining the exact count could have an impact on
 performance, this value is the maximum to be displayed, using a <code>SELECT
 COUNT ... LIMIT</code>. Setting this to 0 bypasses any row counting.
     </dd>
 
-    <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] boolean</dt>
+    <dt id="cfg_NaturalOrder">Αληθές/Ψευδές $cfg['NaturalOrder']</dt>
     <dd>Sorts database and table names according to natural order (for example, t1,
 t2, t10). Currently implemented in the left panel (Light mode)  and in
 Database view, for the table list.</dd>
 
-    <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] string</dt>
+    <dt id="cfg_InitialSlidersState">κείμενο $cfg['InitialSlidersState']</dt>
     <dd>If set to <code>'closed'</code>, the visual sliders are initially in a
 closed state. A value of <code>'open'</code> does the reverse. To completely
 disable all visual sliders, use <code>'disabled'</code>.</dd>
 
-    <dt id="cfg_UserprefsDisallow">$cfg['UserprefsDisallow'] array</dt>
+    <dt id="cfg_UserprefsDisallow">σειρά $cfg['UserprefsDisallow']</dt>
     <dd>Contains names of configuration options (keys in <code>$cfg</code> array)
 that users can't set through user preferences. For possible values, refer to
 <code>libraries/config/user_preferences.forms.php</code>.</dd>
 
     <dt id="cfg_UserprefsDeveloperTab">Αληθές/Ψευδές $cfg['UserprefsDeveloperTab']</dt>
-    <dd>Activates in the user preferences a tab containing options for developers of
-phpMyAdmin.</dd>
+    <dd>Ενεργοποιεί στις προτιμήσεις χρήστη μια καρτέλα που περιέχει επιλογές για
+προγραμματιστές του phpMyAdmin.</dd>
 
-    <dt id="cfg_TitleTable">$cfg['TitleTable'] string</dt>
-    <dt id="cfg_TitleDatabase">$cfg['TitleDatabase'] string</dt>
-    <dt id="cfg_TitleServer">$cfg['TitleServer'] string</dt>
-    <dt id="cfg_TitleDefault">$cfg['TitleDefault'] string</dt>
-    <dd>Allows you to specify window's title bar. You can use <a
-href="#faq6_27">format string expansion</a>.
+    <dt id="cfg_TitleTable">κείμενο $cfg['TitleTable']</dt>
+    <dt id="cfg_TitleDatabase">κείμενο $cfg['TitleDatabase']</dt>
+    <dt id="cfg_TitleServer">κείμενο $cfg['TitleServer']</dt>
+    <dt id="cfg_TitleDefault">κείμενο $cfg['TitleDefault']</dt>
+    <dd>Σας επιτρέπει να ορίσετε γραμμή τίτλου παραθύρου. Μπορείτε να
+χρησιμοποιήσετε την <a href="#faq6_27">επέκταση μορφοποίησης κειμένου</a>.
     </dd>
 
-    <dt id="cfg_ThemePath">$cfg['ThemePath'] string</dt>
-    <dd>If theme manager is active, use this as the path of the subdirectory
-containing all the themes.</dd>
+    <dt id="cfg_ThemePath">κείμενο $cfg['ThemePath']</dt>
+    <dd>Εάν η διαχείριση θεμάτων είναι ενεργό, χρησιμοποιήστε αυτό ως τη διαδρομή
+του φακέλου, που περιέχει όλα τα θέματα.</dd>
 
-    <dt id="cfg_ThemeManager">$cfg['ThemeManager'] boolean</dt>
-    <dd>Enables user-selectable themes. See <a href="#faqthemes"> <abbr
-title="Frequently Asked Questions">FAQ</abbr> 2.7</a>.</dd>
+    <dt id="cfg_ThemeManager">Αληθές/Ψευδές $cfg['ThemeManager']</dt>
+    <dd>Ενεργοποιεί τα επιλεγμένα από το χρήστη θέματα. Δείτε τη <a
+href="#faqthemes"><abbr title="Συχνά Απαντημένες Ερωτήσεις">ΣΑΕ</abbr>
+2.7</a>.</dd>
 
-    <dt id="cfg_ThemeDefault">$cfg['ThemeDefault'] string</dt>
-    <dd>The default theme (a subdirectory under <code>cfg['ThemePath']</code>).</dd>
+    <dt id="cfg_ThemeDefault">κείμενο $cfg['ThemeDefault']</dt>
+    <dd>Το προεπιλεγμένο θέμα (ένας υποφάκελος κάτω από το <code>cfg
+['ThemePath']</code>).</dd>
 
-    <dt id="cfg_ThemePerServer">$cfg['ThemePerServer'] boolean</dt>
-    <dd>Whether to allow different theme for each server.</dd>
+    <dt id="cfg_ThemePerServer">Αληθές/Ψευδές $cfg['ThemePerServer']</dt>
+    <dd>Αν θέλετε να επιτρέψετε διαφορετικό θέμα για κάθε διακομιστή.</dd>
 
-    <dt id="cfg_DefaultQueryTable">$cfg['DefaultQueryTable'] string<br />
-        <span id="cfg_DefaultQueryDatabase">$cfg['DefaultQueryDatabase']</span>
-string
+    <dt id="cfg_DefaultQueryTable">κείμενο $cfg['DefaultQueryTable']<br />
+        κείμενο <span
+id="cfg_DefaultQueryDatabase">$cfg['DefaultQueryDatabase']</span>
     </dt>
     <dd>Default queries that will be displayed in query boxes when user didn't
 specify any. You can use standard <a href="#faq6_27">format string
 expansion</a>.
         </dd>
 
-    <dt id="cfg_SQP_fmtType">$cfg['SQP']['fmtType'] string [<code>html</code>|<code>none</code>]</dt>
+    <dt id="cfg_SQP_fmtType">κείμενο $cfg['SQP']['fmtType'] [<code>html</code>|<code>none</code>]</dt>
     <dd>
         The main use of the new <abbr title="structured query language">SQL</abbr>
 Parser is to pretty-print <abbr title="structured query language">SQL</abbr>
@@ -2407,7 +2473,7 @@ this by setting this variable to <code>'none'</code>.
     </dd>
 
     <dt id="cfg_SQP_fmtInd">Αριθμός κινητής υποδιαστολής $cfg['SQP']['fmtInd']<br />
-        <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span> string
+        κείμενο <span id="cfg_SQP">$cfg['SQP']['fmtIndUnit']</span>
 [<code>em</code>|<code>px</code>|<code>pt</code>|<code>ex</code>]</dt>
     <dd>For the pretty-printing of <abbr title="structured query
 language">SQL</abbr> queries, under some cases the part of a query inside a
@@ -2417,7 +2483,7 @@ change the amount of this indent.
 the units of the indent amount that you specified. This is used via
 stylesheets.</dd>
 
-    <dt id="cfg_SQP_fmtColor">$cfg['SQP']['fmtColor'] array of string tuples</dt>
+    <dt id="cfg_SQP_fmtColor">σειρά από πλειάδες κειμένων $cfg['SQP']['fmtColor']</dt>
     <dd>This array is used to define the colours for each type of element of the
 pretty-printed <abbr title="structured query language">SQL</abbr>
 queries. The tuple format is<br />
@@ -2427,35 +2493,39 @@ queries. The tuple format is<br />
 creating the stylesheet.  You should not alter the class names, only the
 colour strings.<br />
         <strong>Κλειδί ονόματος κλάσης:</strong>
-        <ul><li><strong>comment</strong> Applies to all comment sub-classes</li>
-            <li><strong>comment_mysql</strong> Comments as <code>"#...\n"</code></li>
-            <li><strong>comment_ansi</strong> Comments as <code>"-- ...\n"</code></li>
-            <li><strong>comment_c</strong> Comments as <code>"/*...*/"</code></li>
-            <li><strong>digit</strong> Applies to all digit sub-classes</li>
-            <li><strong>digit_hex</strong> Hexadecimal numbers</li>
-            <li><strong>digit_integer</strong> Integer numbers</li>
-            <li><strong>digit_float</strong> Floating point numbers</li>
-            <li><strong>punct</strong> Applies to all punctuation sub-classes</li>
-            <li><strong>punct_bracket_open_round</strong> Opening brackets<code>"("</code></li>
-            <li><strong>punct_bracket_close_round</strong> Closing brackets <code>")"</code></li>
+        <ul><li><strong>comment</strong> Ισχύει για όλα τις υποκλάσεις σχολίου</li>
+            <li><strong>comment_mysql</strong> Σχόλια όπως <code>"#...\n"</code></li>
+            <li><strong>comment_ansi</strong> Σχόλια όπως <code>"-- ...\n"</code></li>
+            <li><strong>comment_c</strong> Σχόλια όπως <code>"/*...*/"</code></li>
+            <li><strong>digit</strong> Εφαρμόζεται σε όλες τις υποκλάσεις ψηφίων</li>
+            <li><strong>digit_hex</strong> Δεκαεξαδικοί αριθμοί</li>
+            <li><strong>digit_integer</strong> Ακέραιοι αριθμοί</li>
+            <li><strong>digit_float</strong> Αριθμοί κινητής υποδιαστολής</li>
+            <li><strong>punct</strong> Εφαρμόζεται σε όλες τις υποκλάσεις στίξης</li>
+            <li><strong>punct_bracket_open_round</strong> Άνοιγμα παρένθεσης
+<code>«(»</code></li>
+            <li><strong>punct_bracket_close_round</strong> Κλείσιμο παρένθεσης
+<code>«)»</code></li>
             <li><strong>punct_listsep</strong> List item Separator <code>","</code></li>
-            <li><strong>punct_qualifier</strong> Table/Column Qualifier <code>"."</code> </li>
-            <li><strong>punct_queryend</strong> End of query marker <code>";"</code></li>
-            <li><strong>alpha</strong> Applies to all alphabetic classes</li>
-            <li><strong>alpha_columnType</strong> Identifiers matching a column type</li>
-            <li><strong>alpha_columnAttrib</strong> Identifiers matching a
-database/table/column attribute</li>
-            <li><strong>alpha_functionName</strong> Identifiers matching a MySQL function
-name</li>
-            <li><strong>alpha_reservedWord</strong> Identifiers matching any other reserved
-word</li>
-            <li><strong>alpha_variable</strong> Identifiers matching a <abbr
-title="structured query language">SQL</abbr> variable <code>"@foo"</code></li>
-            <li><strong>alpha_identifier</strong> All other identifiers</li>
-            <li><strong>quote</strong> Applies to all quotation mark classes</li>
-            <li><strong>quote_double</strong> Double quotes <code>"</code></li>
-            <li><strong>quote_single</strong> Single quotes <code>'</code></li>
-            <li><strong>quote_backtick</strong> Backtick quotes <code>`</code></li>
+            <li><strong>punct_qualifier</strong> Το Συνδετικό πίνακα/στήλης <code>«.»</code> </li>
+            <li><strong>punct_queryend</strong> Τέλος δείκτη ερωτήματος <code>«;»</code></li>
+            <li><strong>alpha</strong> Εφαρμόζεται σε όλες τις αλφαβητικές κλάσεις</li>
+            <li><strong>alpha_columnType</strong> Αναγνωριστικά που ταιριάζουν με ένα τύπο
+στήλης</li>
+            <li><strong>alpha_columnAttrib</strong> Αναγνωριστικά που ταιριάζουν με ένα
+χαρακτηριστικό βάσης δεδομένων/πίνακα/στήλης</li>
+            <li><strong>alpha_functionName</strong> Αναγνωριστικά που ταιριάζει με ένα όνομα
+συνάρτησης MySQL</li>
+            <li><strong>alpha_reservedWord</strong> Αναγνωριστικά που ταιριάζουν με
+οποιαδήποτε άλλη δεσμευμένη λέξη</li>
+            <li><strong>alpha_variable</strong> Αναγνωριστικά που ταιριάζουν με μια
+μεταβλητή <abbr title="structured query language"> SQL</abbr> <code>"@
+foo"</code></li>
+            <li><strong>alpha_identifier</strong> Όλα τα άλλα αναγνωριστικά</li>
+            <li><strong>προσφορά</strong> Ισχύει για όλες τις κατηγορίες εισαγωγικών</li>
+            <li><strong>quote_double</strong> Διπλά εισαγωγικά <code>"</code></li>
+            <li><strong>quote_single</strong> Μονά εισαγωγικά <code>'</code></li>
+            <li><strong>quote_backtick</strong> Πίσω εισαγωγικά <code>`</code></li>
         </ul>
     </dd>
 
@@ -2487,8 +2557,8 @@ the anonymous login.</dd>
 
     <dt id="cfg_DBG_sql">Αληθές/Ψευδές $cfg['DBG']['sql']</dt>
     <dd><strong>ΜΟΝΟ ΓΙΑ ΔΗΜΙΟΥΡΓΟΥΣ!</strong><br />
-        Enable logging queries and execution times to be displayed in the bottom of
-main page (right frame).</dd>
+        Ενεργοποίηση καταγραφής ερωτημάτων και χρόνων εκτέλεσης που θα εμφανίζεται
+στο κάτω μέρος της κύριας σελίδας (δεξιό πλαίσιο).</dd>
 
     <dt id="cfg_DefaultFunctions">Σειρά $cfg['DefaultFunctions']</dt>
     <dd>Functions selected by default when inserting/changing row, Functions are
@@ -2588,8 +2658,8 @@ in the directory 'libraries/plugins/transformations/'. Each of them extends
 a certain transformation abstract class declared in
 libraries/plugins/transformations/abstract.</p>
 
-<p> They are stored in files to ease up customization and easy adding of new
-transformations.</p>
+<p> Είναι αποθηκευμένα σε αρχεία για να διευκολύνουν την προσαρμογή και την
+εύκολη προσθήκη νέων μετασχηματισμών.</p>
 
 <p> Because the user cannot enter own mimetypes, it is kept sure that
 transformations always work. It makes no sense to apply a transformation to
@@ -2598,7 +2668,7 @@ a mimetype the transform-function doesn't know to handle.</p>
 <p> There is a file called '<em>transformations.lib.php</em>' that provides some
 basic functions which can be included by any other transform function.</p>
 
-<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
+<p> Η μορφή ονόματος αρχείου είναι <code>[Mimetype]_[Subtype]_[Transformation
 Name].class.php</code>,<br />
     while the abtract class that it extends has the name <code>[Transformation
 Name]TransformationsPlugin</code>.<br /><br />
@@ -2624,12 +2694,12 @@ plug-in (with or without the abstract transformation class), by using
 <code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
     <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-<p> The applyTransformation() method always gets passed three variables:</p>
+<p> Η μέθοδος applyTransformation() πάντα περνάει τρεις μεταβλητές:</p>
 
-<ol><li><strong>$buffer</strong> - Contains the text inside of the column. This is
-the text, you want to transform.</li>
-    <li><strong>$options</strong> - Contains any user-passed options to a transform
-function as an array.</li>
+<ol><li><strong>$buffer</strong> - Περιέχει το κείμενο μέσα στη στήλη. Αυτό είναι το
+κείμενο, που θέλετε να μετασχηματίσετε.</li>
+    <li><strong>$options</strong> - Περιέχει οποιεσδήποτε επιλογές διαβιβασμένες από
+το χρήστη σε μια λειτουργία του μετασχηματισμού ως σειρά.</li>
     <li><strong>$meta</strong> - Contains an object with information about your
 column.  The data is drawn from the output of the <a
 href="http://www.php.net/mysql_fetch_field">mysql_fetch_field()</a>
@@ -2675,9 +2745,11 @@ directive to <code>FALSE</code> in your <em>config.inc.php</em> file and the
 php configuration file.<br /></p>
 
 <h4 id="faq1_2">
-    <a href="#faq1_2">1.2 My Apache server crashes when using phpMyAdmin.</a></h4>
+    <a href="#faq1_2">1.2 Ο διακομιστής Apache τίθεται εκτός λειτουργίας όταν
+χρησιμοποιείται το phpMyAdmin.</a></h4>
 
-<p> You should first try the latest versions of Apache (and possibly MySQL).<br />
+<p> Πρέπει πρώτα να χρησιμοποιήσετε τις πιο πρόσφατες εκδόσεις του Apache (και
+πιθανώς και της MySQL).<br />
     See also the <a href="#faq1_1"><abbr title="Frequently Asked
 Questions">FAQ</abbr> 1.1</a> entry about PHP bugs with output buffering.<br />
     If your server keeps crashing, please ask for help in the various Apache
@@ -2710,8 +2782,8 @@ stable. Please use instead the cookie authentication mode.
 </p>
 
 <h4 id="faq1_6">
-    <a href="#faq1_6">1.6 I can't use phpMyAdmin on PWS: nothing is
-displayed!</a></h4>
+    <a href="#faq1_6">1.6 Δεν μπορεί να χρησιμοποιηθεί το phpMyAdmin στο PWS:
+τίποτα δεν εμφανίζεται!</a></h4>
 
 <p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
 time there is no better fix): remove or comment the <code>DOCTYPE</code>
@@ -2728,8 +2800,9 @@ platform (Unix/Windows, Safe Mode or not, and so on). So, you must have
 Zlib/Bzip2 support (<code>--with-zlib</code> and <code>--with-bz2</code>).<br /></p>
 
 <h4 id="faq1_8">
-    <a href="#faq1_8">1.8 I cannot insert a text file in a table, and I get an
-error about safe mode being in effect.</a></h4>
+    <a href="#faq1_8">1.8 Δεν είναι δυνατή η προσθήκη ενός αρχείου κειμένου σε
+ένα πίνακα και λαμβάνεται ένα σφάλμα ότι είναι ενεργή η ασφαλής
+λειτουργία.</a></h4>
 
 <p> Your uploaded file is saved by PHP in the &quot;upload dir&quot;, as defined
 in <em>php.ini</em> by the variable <code>upload_tmp_dir</code> (usually the
@@ -2829,8 +2902,8 @@ within MySQL: <code>source <em>filename.sql</em></code>.</li>
 </ul>
 
 <h4 id="faq1_17">
-    <a id="faqmysqlversions" href="#faq1_17">1.17 Which MySQL versions does
-phpMyAdmin support?</a></h4>
+    <a id="faqmysqlversions" href="#faq1_17">1.17 Ποιες εκδόσεις MySQL
+υποστηρίζει το phpMyAdmin;</a></h4>
 
 <p> Since phpMyAdmin 3.0.x, only MySQL 5.0.1 and newer are supported. For older
 MySQL versions, you need to use the latest 2.x branch. phpMyAdmin can
@@ -2844,8 +2917,8 @@ extension of your choice to a MySQL client library of at least the same
 minor version since the one that is bundled with some PHP distributions is
 rather old and might cause problems <a href="#faq1_17a"> (see <abbr
 title="Frequently Asked Questions">FAQ</abbr> 1.17a)</a>.<br /><br />
-    <a href="http://mariadb.org/">MariaDB</a> is also supported (versions 5.1
-and 5.2 were tested).<br /><br />
+    Η <a href="http://mariadb.org/"> MariaDB</a> επίσης υποστηρίζεται (οι
+εκδόσεις 5.1 και 5.2 δοκιμάστηκαν).<br /><br />
     Since phpMyAdmin 3.5 <a href="http://www.drizzle.org/">Drizzle</a> is
 supported.
     </p>
@@ -3016,7 +3089,7 @@ hash&quot;.</a></h4>
 upgrading MMCache to version 2.3.21 solves the problem.</p>
 
 <h4 id="faq1_31">
-    <a href="#faq1_31">1.31 Does phpMyAdmin support php5?</a></h4>
+    <a href="#faq1_31">1.31 Το phpMyAdmin υποστηρίζει php5;</a></h4>
 
 <p>Ναι.</p>
 <p>
@@ -3182,7 +3255,7 @@ proxy, cookie login does not work.</a></h4>
 
 <p>To be able to use cookie auth Apache must know that it has to rewrite the
 set-cookie headers.<br />
-    Example from the Apache 2.2 documentation:</p>
+    Παράδειγμα από την τεκμηρίωση Apache 2.2:</p>
 <pre>
 ProxyPass /mirror/foo/ http://backend.example.com/
 ProxyPassReverse /mirror/foo/ http://backend.example.com/
@@ -3202,9 +3275,9 @@ http://backend.example.com/%7Euser/phpmyadmin
 ProxyPassReverseCookiePath /%7Euser/phpmyadmin /mirror/foo
 </pre>
 
-    <p>See <a
+    <p>Δείτε το <a
 href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy.html</a>
-for more details.</p>
+για περισσότερες λεπτομέρειες.</p>
 
 <h4 id="faq1_41">
     <a href="#faq1_41">1.41 When I view a database and ask to see its
@@ -3344,7 +3417,7 @@ configuration with port forwarding.<br />
     If you enter "127.0.0.1" as hostname, everything is right and MySQL uses the
 <abbr title="Transmission Control Protocol">TCP</abbr> connection.</p>
 
-<h4 id="faqthemes"><a href="#faqthemes">2.7 Using and creating themes</a></h4>
+<h4 id="faqthemes"><a href="#faqthemes">2.7 Χρήση και δημιουργία θεμάτων</a></h4>
 
 <p> Themes are configured with <a href="#cfg_ThemePath"
 class="configrule">$cfg['ThemePath']</a>, <a href="#cfg_ThemeManager"
@@ -3834,7 +3907,7 @@ version 6.
     <a href="#faq5_5">5.5 In Internet Explorer 5.0, I get JavaScript errors when
 browsing my rows.  </a></h4>
 <p>
-    Upgrade to at least Internet Explorer 5.5 SP2.<br />
+    Αναβάμιση τουλάχιστον σε Internet Explorer 5.5 SP2.<br />
 </p>
 
 <h4 id="faq5_6">
@@ -3909,18 +3982,19 @@ title="HyperText Transfer Protocol">HTTP</abbr> authentication type, I
 cannot manage two servers: I log in to the first one, then the other one,
 but if I switch back to the first, I have to log in on each operation.</a></h4>
 
-<p> This is a bug in Internet Explorer, other browsers do not behave this way.</p>
+<p> Αυτό είναι ένα σφάλμα στον Internet Explorer, οι άλλοι φυλλομετρητές δεν
+συμπεριφέρονται έτσι.</p>
 
 <h4 id="faq5_14">
     <a href="#faq5_14">5.14 Using Opera6, I can manage to get to the
 authentication, but nothing happens after that, only a blank screen.</a></h4>
 
-<p> Please upgrade to Opera7 at least.</p>
+<p> Αναβαθμίστε σε Opera7 τουλάχιστον.</p>
 
 <h4 id="faq5_15">
-    <a href="#faq5_15">5.15 I have display problems with Safari.</a></h4>
+    <a href="#faq5_15">5.15 Υπάρχουν προβλήματα εμφάνισης με τον Safari.</a></h4>
 
-<p> Please upgrade to at least version 1.2.3.</p>
+<p> Αναβαθμίστε τουλάχιστον σε έκδοση 1.2.3.</p>
 
 <h4 id="faq5_16">
     <a href="#faq5_16">5.16 With Internet Explorer, I get &quot;Access is
@@ -4089,16 +4163,16 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 <p> Μετά ελέγξτε κάπως έτσι:</p>
 
 <ul><li>Click on your db name in the left frame</li>
-    <li>Choose &quot;Query&quot;</li>
-    <li>Use tables: persons, towns, countries</li>
-    <li>Click &quot;Update query&quot;</li>
+    <li>Επιλέξτε «Ερώτημα»</li>
+    <li>Χρήση πινάκων, ατόμων, πόλεων, χωρών</li>
+    <li>Πατήστε την «Ενημέρωση ερωτήματος»</li>
     <li>In the columns row, choose persons.person_name and click the
 &quot;Show&quot; tickbox </li>
     <li>Do the same for towns.description and countries.descriptions in the other 2
 columns</li>
     <li>Click &quot;Update query&quot; and you will see in the query box that the
 correct joins have been generated</li>
-    <li>Click &quot;Submit query&quot;</li>
+    <li>Πατήστε «Υποβολή ερωτήματος»</li>
 </ul>
 
 <h4 id="faqdisplay">
@@ -4125,7 +4199,7 @@ Format">PDF</abbr> schema of my database?</a></h4>
 which pages?
 </p>
 <ul>
-    <li>Select your database in the left frame.</li>
+    <li>Επιλέξτε τη βάση δεδομένων σας στο αριστερό πλαίσιο.</li>
     <li>Choose &quot;Operations&quot; in the navigation bar at the top.</li>
     <li>Choose &quot;Edit <abbr title="Portable Document Format">PDF</abbr>
 Pages&quot; near the bottom of the page.</li>
@@ -4176,7 +4250,7 @@ name will have a real underscore.</p>
     <a href="#faq6_11">6.11 What is the curious symbol &oslash; in the
 statistics pages?</a></h4>
 
-<p> It means &quot;average&quot;.</p>
+<p> Σημαίνει «μέσος όρος».</p>
 
 <h4 id="faqexport">
     <a href="#faqexport">6.12 I want to understand some Export options.</a></h4>
@@ -4200,7 +4274,7 @@ language">SQL</abbr> comments (<em>/* xxx */</em>).
        </li>
 </ul>
 
-<p><strong>Data:</strong></p>
+<p><strong>Δεδομένα:</strong></p>
 
 <ul><li>&quot;Complete inserts&quot; adds the column names on every INSERT command,
 for better documentation (but resulting file is bigger).</li>
@@ -4312,7 +4386,7 @@ is, but will be stripped of the /**/ chars. So you can use:<br /><br />
 
     <code>/*, [VARIABLE] AS myname */</code><br /><br />
 
-    which will be expanded to<br /><br />
+    το οποίο μπορεί να επεκταθεί στο<br /><br />
 
     <code>, VARIABLE as myname</code><br /><br />
 
@@ -4351,11 +4425,11 @@ like following one (assuming you have table exported in file
 <code>table.tex</code>):</p>
 
 <pre>
-\documentclass{article} % or any class you want
-\usepackage{longtable}  % for displaying table
-\begin{document}        % start of document
-\include{table}         % including exported table
-\end{document}          % end of document
+\documentclass{article} % ή οποιαδήποτε κλάση θέλετε
+\usepackage{longtable}  % για προβολή πίνακα
+\begin{document}        % αρχή του εγγράφου
+\include{table}         % περιλαμβάνει εξαγόμενο πίνακα
+\end{document}          % τέλος του εγγράφου
 </pre>
 
 <h4 id="faq6_20">
@@ -4575,8 +4649,8 @@ query. Basic instructions on how to use can be viewed by clicking the 'How
 to use?' link located just above the plot.</p>
 
 <h4 id="faq6_33">
-    <a href="#faq6_33">6.33 When browsing a table, how can I copy a column
-name?</a></h4>
+    <a href="#faq6_27">6.33 Όταν περιηγήστε σε ένα πίνακα, πως να αντιγράψετε
+ένα όνομα στήλης;</a></h4>
 
     <p>Selecting the name of the column within the browse table header cell for
 copying is difficult, as the columns support reordering by dragging the
@@ -4902,7 +4976,7 @@ MySQL</li>
   <li>Ενημερώσεις αρχείου Τσεχικής γλώσσας</li>
 </ul></li>
 
-<li>Christophe Gesch&eacute; from the &quot;MySQL Form Generator for
+<li>Christophe Gesch&eacute; από το &quot;MySQL Form Generator για
 PHPMyAdmin&quot; (http://sf.net/projects/phpmysqlformgen/)
 <ul>
   <li>πρότεινε την προσθήκη για προβολές εκτύπωσης πολλών πινάκων</li>
@@ -4973,7 +5047,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Nicola Asuni (Tecnick.com)
 <ul>
-    <li>TCPDF library (<a href="http://www.tcpdf.org">http://www.tcpdf.org</a>)</li>
+    <li>Βιβλιοθήκη TCPDF (<a href="http://www.tcpdf.org">http://www.tcpdf.org</a>)</li>
 </ul></li>
 
 <li>Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
@@ -5071,8 +5145,8 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Dieter Adriaenssens
 <ul>
-  <li>Various bugfixes</li>
-  <li>Dutch translation updates</li>
+  <li>Διάφορες διορθώσεις σφαλμάτων</li>
+  <li>Ενημερώσεις Ολλανδικής μετάφρασης</li>
 </ul></li>
 
 </ul>
