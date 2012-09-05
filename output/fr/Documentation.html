@@ -6,7 +6,7 @@ vim: expandtab ts=4 sw=4 sts=4 tw=78
 <html lang="fr-FR" dir="ltr">
 <!--
 
-Ce fichier a été généré en utilisant po4a, ne pas éditer&nbsp; !
+Ce fichier a été généré en utilisant po4a, ne pas éditer&nbsp;!
 
 Vous pouvez éditer les fichiers .po pour modifier une traduction.
 
@@ -121,7 +121,8 @@ la section appropri&eacute;e dans le manuel de MySQL.
 
 <ul><li>parcourir et supprimer bases de donn&eacute;es, tables, vues, champs et
 index</li>
-    <li>display multiple results sets through stored procedures or queries</li>
+    <li>affiche des ensembles de résultats au moyen de procédures stockées ou de
+requêtes</li>
     <li>cr&eacute;er, copier, supprimer, renommer et modifier bases de
 donn&eacute;es, tables, , vues, champs et index</li>
     <li>maintenir serveur, bases de donn&eacute;es et tables en proposant une
@@ -1655,22 +1656,23 @@ et inclure le protocole.
     </dd>
     <dt><span
 id="cfg_Servers_StatusCacheDatabases">$cfg['Servers'][$i]['StatusCacheDatabases']</span>
-array of strings</dt>
-    <dd>Enables caching of <code>TABLE STATUS</code> outputs for specific databases
-on this server (in some cases <code>TABLE STATUS</code> can be very slow, so
-you may want to cache it). APC is used (if the PHP extension is available,
-if not, this setting is ignored silently). You have to provide <a
+tableau de chaînes</dt>
+    <dd>Active la mise en cache des résultats de <code>TABLE STATUS</code> pour des
+bases de données spécifiques de ce serveur (dans certains cas <code>TABLE
+STATUS</code> peut être très lent, donc vous ne voudrez pas le mettre en
+cache). APC est utilisé (si l'extension PHP est disponible, sinon, ce
+paramètre est ignoré silencieusement). Vous devez fournir <a
 href="#cfg_Servers_StatusCacheLifetime"
 class="configrule">StatusCacheLifetime</a>.<br />
-    Takes effect only if <a href="#cfg_Servers_DisableIS"
-class="configrule">DisableIS</a> is <code>true</code>.
+    Ne prend effet que si <a href="#cfg_Servers_DisableIS"
+class="configrule">DisableIS</a> est défini à <code>true</code>.
     </dd>
     <dt><span
 id="cfg_Servers_StatusCacheLifetime">$cfg['Servers'][$i]['StatusCacheLifetime']</span>
-integer</dt>
-    <dd>Lifetime in seconds of the <code>TABLE STATUS</code> cache if <a
+entier</dt>
+    <dd>Durée de vie en secondes du cache <code>TABLE STATUS</code> si <a
 href="#cfg_Servers_StatusCacheDatabases"
-class="configrule">StatusCacheDatabases</a> is used.
+class="configrule">StatusCacheDatabases</a> est utilisé.
     </dd>
     <dt id="cfg_ServerDefault">$cfg['ServerDefault'] entier</dt>
     <dd>Si vous avez plus d'un serveur, vous pouvez d&eacute;finir
@@ -1923,11 +1925,12 @@ liste des tables.</dd>
 info-bulle dans le cadre de gauche.</dd>
 
     <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] bool&eacute;en</dt>
-    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a database called 'user0001'
-and add the comment 'MyName' on it, you will see the name 'MyName' used
-consequently in the left frame and the tool-tip shows the real name of the
-DB.</dd>
+    <dd>Si les info-bulles sont activées et qu'un commentaire de base de données est
+défini, cela affichera le commentaire et le nom réel. Cela signifie que si
+vous avez une base appelé «&nbsp;user0001&nbsp;» et que vous y ajoutiez le
+commentaire «&nbsp;MonNom&nbsp;», vous verrez donc le nom
+«&nbsp;MonNom&nbsp;» utilisé dans le cadre de gauche et l'info-bulle
+affichera le vrai nom de la base de données.</dd>
 
     <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] bool&eacute;en</dt>
     <dd>Identique &agrave; <a href="#cfg_ShowTooltipAliasDB"
@@ -3039,9 +3042,10 @@ utiliser les param&egrave;tres par d&eacute;faut :
 
 <h3 id="transformationsfiles">3. Structure de fichier</h3>
 
-<p> All specific transformations for mimetypes are defined through class files
-in the directory 'libraries/plugins/transformations/'. Each of them extends
-a certain transformation abstract class declared in
+<p> Toutes les transformations des types MIME sont définies dans des fichiers de
+classes dans le répertoire
+«&nbsp;libraries/plugins/transformations/&nbsp;». Chacun d'eux étendent
+certaines transformation de classes abstraites déclarées dans
 libraries/plugins/transformations/abstract.</p>
 
 <p> Ils sont emmagasin&eacute;s dans des fichiers pour faciliter la
@@ -3056,33 +3060,34 @@ transformation ne sait pas manipuler.</p>
 fournit des fonctions de base qui peuvent être incluses dans une autre
 fonction de transformation.</p>
 
-<p> The file name convention is <code>[Mimetype]_[Subtype]_[Transformation
-Name].class.php</code>,<br />
-    while the abtract class that it extends has the name <code>[Transformation
+<p> La convention de nommage de fichier est
+<code>[Mimetype]_[Subtype]_[Transformation Name].class.php</code>,<br />
+    alors que la classe abstraite qui l'étend a le nom <code>[Transformation
 Name]TransformationsPlugin</code>.<br /><br />
-    All of the methods that have to be implemented by a transformations plug-in
-are: <Br />
+    Toutes les méthodes qui doivent être implémentées par un plugin de
+transformation sont&nbsp;: <Br />
     <ol>
-        <li>getMIMEType() and getMIMESubtype() in the main class;</li>
-        <li>getName(), getInfo() and applyTransformation() in the abstract class it
-extends.</li>
+        <li>getMIMEType() et getMIMESubtype() dans la classe principale&nbsp;;</li>
+        <li>getName(), getInfo() et applyTransformation() dans la classe abstraite qui
+l'étend.</li>
     </ol>
     </p>
     
-<p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
-the MIME type, MIME Subtype and transformation accordingly. getInfo()
-returns the transformation's description and possible options it may receive
-and applyTransformation() is the method that does the actual work of the
-transformation plug-in.</p>   
+<p>Les méthodes getMIMEType(), getMIMESubtype() et getName() renvoient le nom
+du type MIME, les sous-type MIME et la transformation
+respectivement. getInfo() renvoie la description de la transformation et les
+options éventuelles qu'il peut recevoir et applyTransformation() est la
+méthode qui effectue en fait le travail de transformation du plugin.</p>   
 
-<p> Please see the libraries/plugins/transformations/TEMPLATE and
-libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
-own transformation plug-in. You can also generate a new transformation
-plug-in (with or without the abstract transformation class), by using
-<code>libraries/plugins/transformations/generator_plugin.sh</code> or<br />
+<p> Veuillez consulter les fichiers libraries/plugins/transformations/TEMPLATE
+and libraries/plugins/transformations/TEMPLATE_ABSTRACT pour ajouter votre
+propre plugin de transformation. Vous pouvez aussi générer un nouveau plugin
+de transformation (avec ou sans la classe abstraite de transformation), en
+utilisant <code>libraries/plugins/transformations/generator_plugin.sh</code>
+ou<br />
     <code>libraries/plugins/transformations/generator_main_class.sh</code>.</p>
 
-<p> The applyTransformation() method always gets passed three variables:</p>
+<p> La méthode applyTransformation() a toujours besoin de trois variables&nbsp;:</p>
 
 <ol><li><strong>$buffer</strong> - contient le texte de la colonne. C'est le texte
 que vous voulez transformer.</li>
@@ -3178,10 +3183,11 @@ d'authentification par cookie.
     <a href="#faq1_6">1.6 Je ne peux pas utiliser phpMyAdmin avec PWS&nbsp;:
 rien ne s'affiche&nbsp;!</a></h4>
 
-<p> This seems to be a PWS bug. Filippo Simoncini found a workaround (at this
-time there is no better fix): remove or comment the <code>DOCTYPE</code>
-declarations (2 lines) from the scripts <em>libraries/Header.class.php</em>
-and <em>index.php</em>.</p>
+<p> Cela semble être un bogue de PWS. Filippo Simoncini a trouvé une solution de
+rechange (pour le moment, il n'y a pas de meilleur moyen)&nbsp;: supprimez
+ou mettez en commentaire les déclarations de <code>DOCTYPE</code> (deux
+lignes) des scripts <em>libraries/Header.class.php</em> et
+<em>index.php</em>.</p>
 
 <h4 id="faq1_7">
     <a href="#faq1_7">1.7 Comment puis-je compresser avec GZip ou Bzip un
@@ -3910,11 +3916,12 @@ class="configrule">$cfg['ThemePath']</a>, <a href="#cfg_ThemeManager"
 class="configrule">$cfg['ThemeManager']</a> et <a href="#cfg_ThemeDefault"
 class="configrule">$cfg['ThemeDefault']</a>.<br />
     <br />
-    Under <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, you
-should not delete the directory &quot;pmahomme&quot; or its underlying
-structure, because this is the system theme used by phpMyAdmin.
-&quot;pmahomme&quot; contains all images and styles, for backwards
-compatibility and for all themes that would not include images or css-files.
+    Sous <a href="#cfg_ThemePath" class="configrule">$cfg['ThemePath']</a>, vous
+ne devez pas supprimer le répertoire &laquo;&nbsp;pmahomme&nbsp;&raquo; ou
+ses sous-répertoires, car c'est le thème système utilisé par
+phpMyAdmin. &laquo;&nbsp;pmahomme&nbsp;&raquo; contient tous les styles et
+images, pour des raisons de compatibilité descendante et pour tous les
+thèmes qui ne comportent pas d'images ou de fichiers css.
     <br /><br />
 
     Si <a href="#cfg_ThemeManager" class="configrule">$cfg['ThemeManager']</a>
@@ -3929,8 +3936,8 @@ cookie.<br /><br /></p>
 &laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo;) dans <a href="#cfg_ThemePath"
 class="configrule">$cfg['ThemePath']</a> (par d&eacute;faut
 <code>themes</code>)</li>
-    <li>copy the files and directories from &quot;pmahomme&quot; to
-&quot;your_theme_name&quot;</li>
+    <li>copiez les fichiers et les répertoires de &laquo;&nbsp;pmahomme&nbsp;&raquo;
+vers &laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo;</li>
     <li>&eacute;ditez vos fichiers css dans
 &laquo;&nbsp;votre_nom_de_theme/css&nbsp;&raquo;</li>
     <li>mettez vos nouvelles images dans
@@ -3955,9 +3962,11 @@ devrait fonctionner avec phpMyAdmin n&eacute;cessitant une version 1.  Les
 th&egrave;mes de g&eacute;n&eacute;rations diff&eacute;rentes sont
 incompatibles.</p>
 
-<p> If you do not want to use your own symbols and buttons, remove the directory
-&quot;img&quot; in &quot;your_theme_name&quot;. phpMyAdmin will use the
-default icons and buttons (from the system-theme &quot;pmahomme&quot;).
+<p> Si vous ne voulez pas utiliser vos propres symboles et boutons, supprimez le
+répertoire &laquo;&nbsp;img&nbsp;&raquo; dans
+&laquo;&nbsp;votre_nom_de_theme&nbsp;&raquo;. phpMyAdmin utilisera les
+icônes et boutons par d&eacute;faut (du th&egrave;me syst&egrave;me
+&laquo;&nbsp;pmahomme&nbsp;&raquo;).
 </p>
 
 <h4 id="faqmissingparameters">
