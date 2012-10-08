@@ -118,7 +118,8 @@ href="http://www.php.net/libxml"><code>libxml</code></a>.</li>
 
 <ul><li>να περιηγηθεί και να διαγράψει βάσεις δεδομένων, πίνακες, προβολές στήλες
 και ευρετήρια</li>
-    <li>display multiple results sets through stored procedures or queries</li>
+    <li>να προβάλει σύνολα πολλαπλών αποτελεσμάτων μέσω αποθηκευμένων διεργασιών ή
+ερωτημάτων</li>
     <li>να δημιουργήσει, αντιγράψει, διαγράψει, μετονομάσει και αλλάξει βάσεις
 δεδομένων, πίνακες, στήλες και ευρετήρια</li>
     <li>να συντηρεί το διακομιστή, τις βάσεις δεδομένων και τους πίνακες με
@@ -339,51 +340,59 @@ href="#glossary"><em>.htaccess</em></a> ή αλλάξτε το <code>auth_type</
 υποδοχής και τις βάσεις δεδομένων σας ή ένα παράθυρο διαλόγου σύνδεσης, εάν
 η χρήση της λειτουργίας ελέγχου ταυτότητας είναι <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> ή cookie.</li>
-    <li>You should deny access to the <code>./libraries</code> and
-<code>./setup/lib</code> subfolders in your webserver configuration. For
-Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
-in that folder, for other webservers, you should configure this yourself.
-Such configuration prevents from possible path exposure and cross side
-scripting vulnerabilities that might happen to be found in that code.</li>
+    <li>Πρέπει να απαγορεύσετε την πρόσβαση στους υποφακέλους
+<code>./libraries</code> και <code>./setup/lib</code> στις ρυθμίσεις του
+διακομιστή ιστού σας. Για τον Apache μπορείτε να χρησιμοποιήσετε το δοθέν
+αρχείο <a href="#glossary"><em>.htaccess</em></a> σε εκείνο το φάκελο, για
+άλλους διακομιστές ιστού, πρέπει να το ρυθμίσετε μόνοι σας. Μια τέτοια
+ρύθμιση αποτρέπει από ευπάθειες πιθανής έκθεσης διαδρομών και κώδικες
+απέναντι πλευράς που μπορεί να συμβεί να βρεθούν σε εκείνο τον κώδικα.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.42</a>.
+        Είναι γενικώς καλή ιδέα να προστετέψετε τη δημόσια εγκατάσταση του
+phpMyAdmin από εισβολή από ρομπότ καθώς δεν θα κάνουν κάτι καλό
+εκεί. Μπορείτε να το κάνετε αυτό, χρησιμοποιώντας ένα αρχείο
+<code>robots.txt</code> στο ριζικό φάκελο του διακομιστή ιστού σας ή να
+περιορίσετε την πρόσβαση από τις ρυθμίσεις του διακομιστή ιστού, δείτε τη <a
+href="#faq1_42"><abbr title="Συχνά Απαντημένες Ερωτήσεις">ΣΑΕ</abbr>
+1.42</a>.
     </li>
 </ol>
 
 <h3 id="linked-tables">Χώρος αποθήκευσης ρυθμίσεων της phpMyAdmin</h3>
 
-<p> For a whole set of new features (bookmarks, comments, <abbr
-title="structured query language">SQL</abbr>-history, tracking mechanism,
-<abbr title="Portable Document Format">PDF</abbr>-generation, column
-contents transformation, etc.) you need to create a set of special
-tables. Those tables can be located in your own database, or in a central
-database for a multi-user installation (this database would then be accessed
-by the controluser, so no other user should have rights to it).</p>
+<p> Για μια σειρά από νέα χαρακτηριστικά (σελιδοδείκτες, σχόλια, ιστορικό <abbr
+title="structured query language">SQL</abbr>, μηχανισμός παρακολούθησης,
+δημιουργία <abbr title="Portable Document Format">PDF</abbr>,
+μετασχηματισμός περιεχομένων στηλών, κλπ.) χρειάζεται να δημιουργήσετε ένα
+σύνολο ειδικών πινάκων. Αυτοί οι πίνακες μπορούν να βρίσκονται στη δική σας
+βάση δεδομένων, ή σε μια κεντρική βάση δεδομένων για εγκατάσταση πολλών
+χρηστών (αυτή η βάση δεδομένων θα είναι προσβάσιμη από τον controluser, έτσι
+ώστε κανένας άλλος χρήστης να μην έχει δικαιώματα σε αυτή).</p>
 
-<p> Please look at your <code>./examples/</code> directory, where you should
-find a file called <em>create_tables.sql</em>. (If you are using a Windows
-server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
-Asked Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Δείτε στο φάκελο <code>./examples/</code>, όπου πρέπει να βρείτε ένα αρχείο
+<em>create_tables.sql</em>. (Αν χρησιμοποιείτε διακομιστή Windows, δώστε
+προσοχή στη <a href="#faq1_23"><abbr title="Συχνά Απαντημένες
+Ερωτήσεις">ΣΑΕ</abbr> 1.23</a>).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
-create new tables by importing <em>./examples/create_tables.sql</em>.</p>
+<p> Εάν έχετε ήδη είχε αυτή την υποδομή και αναβαθμισατε σε MySQL 4.1.2 ή
+νεότερη έκδοση, χρησιμοποιήστε το
+<em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> και στη συνέχεια
+δημιουργήστε νέους πίνακες με την εισαγωγή του
+<em>./examples/create_tables.sql</em>.</p>
 
-<p> You can use your phpMyAdmin to create the tables for you. Please be aware
-that you may need special (administrator) privileges to create the database
-and tables, and that the script may need some tuning, depending on the
-database name.</p>
+<p> Μπορείτε να χρησιμοποιήσετε το phpMyAdmin σας να δημιουργήσετε τους πίνακες
+για σας. Προσέξτε ότι μπορεί να χρειαστεί ειδικά προνόμια (διαχειριστή) για
+τη δημιουργία της βάσης δεδομένων και των πινάκων, και ότι ο κώδικας
+ενδέχεται να χρειάζεται κάποια ρύθμιση, ανάλογα με το όνομα της βάσης
+δεδομένων.</p>
 
-<p> After having imported the <em>./examples/create_tables.sql</em> file, you
-should specify the table names in your <em>./config.inc.php</em> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> Αφού εισάγετε το αρχείο <em>./examples/create_tables.sql</em>, πρέπει να
+ορίσετε τα ονόματα των πινάκων στο αρχείο <em>./config.inc.php</em>. Οι
+οδηγίες που χρησιμοποιούνται για αυτό μπορούν να βρεθούν στον <a
+href="#config">τομέα Ρυθμίσεων</a>. Θα πρέπε, επίσης, να έχετε έναν
+controluser με τα κατάλληλα δικαιώματα για αυτούς τους πίνακες (δείτε τον
+τομέα <a href="#authentication_modes">Χρήση μεθόδων πιστοποίησης</a>
+παρακάτω).</p>
 
 <h3 id="upgrading">Αναβάθμιση από μια παλαιότερο έκδοση</h3>
 
@@ -393,9 +402,10 @@ some tweaking as some options have been changed or removed.  For
 compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
 statement that you might find near the end of your configuration file.</p>
 
-<p> You should <strong>not</strong> copy
-<code>libraries/config.default.php</code> over <code>config.inc.php</code>
-because the default configuration file is version-specific.</p>
+<p> Πρέπει να <strong>μην</strong> αντιγράψετε το
+<code>libraries/config.default.php</code> στο <code>config.inc.php</code>
+επειδή το προεπιλεγμένο αρχείο ρύθμισης παραμέτρων είναι για συγκεκριμένη
+έκδοση.</p>
 
 <p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
 version 5.x or newer and if you use the phpMyAdmin configuration storage,
@@ -404,16 +414,17 @@ found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
 
 <h3 id="authentication_modes">Χρήση μεθόδων πιστοποίησης</h3>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are recommended in a <strong>multi-user
-environment</strong> where you want to give users access to their own
-database and don't want them to play around with others.<br />
+<ul><li>Οι μέθοδοι πιστοποίησης <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> και cookie συνιστώνται σε ένα <strong>περιβάλλον
+πολλών χρηστών</strong> όπου θέλετε να χορηγήσετε στους χρήστες πρόσβαση σε
+δική τους βάση δεδομένων και δεν θέλετε να περιηγούνται σε άλλες.<br />
         Παρόλα αυτά να γνωρίζετε ότι ο MS Internet Explorer φαίνεται να είναι
 πραγματικά ελαττωματικούς σχετικά με τα cookies, τουλάχιστον μέχρι την
 έκδοση 6.<br />
-        Even in a <strong>single-user environment</strong>, you might prefer to use
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
-your user/password pair are not in clear in the configuration file.
+        Ακόμη και σε ένα <strong>περιβάλλον ενός χρήστη</strong>, ίσως προτιμάτε να
+χρησιμοποιήσετε την μέθοδο <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> ή cookie έτσι ώστε το ζεύγος χρήστη/κωδικού πρόσβασης
+δεν είναι σαφές στο αρχείο ρύθμισης παραμέτρων.
         </li>
 
     <li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
@@ -485,16 +496,18 @@ GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real
 
         Αυτό που ο χρήστης μπορεί τώρα να κάνει ελέγχεται πλήρως από το σύστημα
 διαχείρισης χρήστη της MySQL.<br />
-        With <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
-authentication mode, you don't need to fill the user/password fields inside
-the <a href="#cfg_Servers" class="configrule">$cfg['Servers']</a> array.</li>
+        Με τη μέθοδο πιστοποίησης <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> ή cookie, δεν χρειάζεται να συμπληρώσετε τα πεδία
+χρήστη/κωδικού πρόσβασης μέσα στη σειρά <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a>.</li>
 </ul>
 
 <h4>'Μέθοδος πιστοποίησης «<abbr title="Πρωτόκολλο Μεταφοράς
 ΥπερΚειμένου">HTTP</abbr>»</h4>
 
-<ul><li>Uses <abbr title="HyperText Transfer Protocol">HTTP</abbr> Basic
-authentication method and allows you to log in as any valid MySQL user.</li>
+<ul><li>Χρησιμοποιεί τη μέθοδο Βασικής πιστοποίησης <abbr title="HyperText Transfer
+Protocol">HTTP</abbr> και σας επιτρέπει να συνδεθείτε ως έγκυρος χρήστης
+MySQL.</li>
     <li>Is supported with most PHP configurations. For <abbr title="Internet
 Information Services">IIS</abbr> (<abbr title="Internet Server Application
 Programming Interface">ISAPI</abbr>)  support using <abbr title="Common
