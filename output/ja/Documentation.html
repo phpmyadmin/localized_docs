@@ -513,6 +513,11 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a> 参照）。
     <dd>クッキー認証で mcrypt 拡張がなかった場合、警告を表示します。<code>TRUE</code>
 に設定しておくことで、このメッセージは表示されなくなります。</dd>
 
+    <dt id="cfg_ServerLibraryDifference_DisableWarning">$cfg['ServerLibraryDifference_DisableWarning'] boolean</dt>
+    <dd>A warning is displayed on the main page if there is a difference between the
+MySQL library and server version.  You can set this parameter to
+<code>TRUE</code> to stop this message from appearing.</dd>
+
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
     <dd>指定されたしきい値に達していない不完全な翻訳に対して警告を表示します。</dd>
 
@@ -1451,6 +1456,18 @@ href="#cfg_Servers_verbose">$cfg['Servers'][$i]['verbose']</a></code>
     <dt id="cfg_DisplayBinaryAsHex">$cfg['DisplayBinaryAsHex'] 論理型 </dt>
     <dd>表示オプション「バイナリ内容を 16 進数で表示する」を表示するかどうかの定義します。デフォルトはチェックされています。</dd>
 
+    <dt id="cfg_GridEditing">$cfg['GridEditing'] string</dt>
+    <dd>
+    Defines which action (<code>double-click</code> or <code>click</code>)
+triggers grid editing. Can be deactived with the <code>disabled</code>
+value. 
+    </dd>
+
+    <dt id="cfg_SaveCellsAtOnce">$cfg['SaveCellsAtOnce'] 論理型</dt>
+    <dd>
+        Defines whether or not to save all edited cells at once for grid editing.
+    </dd>
+
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] 論理型または文字列</dt>
     <dd>テーブルの内容を表示しているときに <code>BLOB</code> カラムや <code>BINARY</code>
 カラムを保護して編集できないようにするかどうかを定義します。有効な値は次の通りです。
@@ -1864,11 +1881,6 @@ setfacl -d -m "g:www-data:rwx" tmp
     <dt id="cfg_Import">$cfg['Import'] 配列</dt>
     <dd>
         この配列はインポートの際のデフォルトパラメータを定義します。項目名はインポートページに表示されるテキストとほとんど同じですので、意味は簡単にわかるでしょう。
-    </dd>
-
-    <dt id="cfg_SaveCellsAtOnce">$cfg['SaveCellsAtOnce'] 論理型</dt>
-    <dd>
-        表示モードにおいて、変更したセルのデータを一度にまとめて保存するかどうかを定義します。
     </dd>
 
     <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] 論理型</dt>

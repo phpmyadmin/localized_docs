@@ -61,7 +61,7 @@ keresztül.
     <li><a href="https://sourceforge.net/projects/phpmyadmin/"> SourceForge
 phpMyAdmin projekt oldal</a></li>
     <li><a href="http://wiki.phpmyadmin.net"> Hivatalos phpMyAdmin wiki</a></li>
-    <li><a href="https://github.com/phpmyadmin"> Git repositories on Github</a></li>
+    <li><a href="https://github.com/phpmyadmin"> Git tárolók a Githubon</a></li>
     <li>Helyi dokumentumok:
         <ul><li>Verziótörténet: <a href="changelog.php">Változások listája</a></li>
             <li>Licenc: <a href="license.php">LICENC</a></li>
@@ -74,24 +74,24 @@ phpMyAdmin projekt oldal</a></li>
 <h2 id="require">Követelmények</h2>
 
 <ul><li><strong>PHP</strong>
-        <ul><li>You need PHP 5.2.0 or newer, with <code>session</code> support (<a
-href="#faq1_31">see <abbr title="Frequently Asked Questions">FAQ</abbr>
-1.31</a>)  , the Standard PHP Library (SPL) extension and JSON support.
+        <ul><li>Szükséges a PHP 5.2.0 vagy újabb <code>session</code> támogatással (<a
+href="#faq1_31">lásd <abbr title="Gyakran ismételt kérdések">GyIK</abbr>
+1.31</a>), a Szabványos PHP könyvtár (SPL) kiterjesztés és JSON támogatás.
                 </li>
-        <li>To support uploading of ZIP files, you need the PHP <code>zip</code>
-extension.</li>
+        <li>ZIP fájlok feltöltésének támogatásához szükséges a PHP <code>zip</code>
+kiterjesztés.</li>
         <li>A több bájtos karakterláncok (pl. UTF-8, amely jelenleg az alapértelmezett)
 megfelelő támogatásához telepítenie kell az mbstring és a ctype
 kiterjesztéseket.
         </li>
-            <li>You need GD2 support in PHP to display inline thumbnails of JPEGs
-(&quot;image/jpeg: inline&quot;) with their original aspect ratio.</li>
-            <li>When using the &quot;cookie&quot; <a
-href="#authentication_modes">authentication method</a>, the <a
-href="http://www.php.net/mcrypt"><code>mcrypt</code></a> extension is
-strongly suggested for most users and is <strong>required</strong> for
-64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to load pages
-significantly slower.
+            <li>Szükséges a PHP-ban GD2 támogatás a JPEG fájlok (&quot;image/jpeg:
+inline&quot;) bélyegképeinek eredeti méretarányban való  megjelenítéséhez.</li>
+            <li>A &quot;cookie&quot; <a href="#authentication_modes">hitelesítési
+eljárás</a> használatakor az <a
+href="http://www.php.net/mcrypt"><code>mcrypt</code></a> kiterjesztés erősen
+ajánlott a legtöbb felhasználónak és <strong>szükséges</strong>
+64&#8211;bites gépeken. Az mcrypt használata nélkül a phpMyAdmin jelentősen
+lassabban tölti be az oldalakat.
                 </li>
                 <li>A feltöltési folyamatjelzők támogatásához nézze meg a <a href="#faq2_9">
 <abbr title="Gyakran ismételt kérdések">GyIK</abbr> 2.9</a> pontját.</li>
@@ -100,8 +100,8 @@ or newer and the <a href="http://www.php.net/libxml"><code>libxml</code></a>
 extension.</li>
         </ul>
     </li>
-    <li><strong>MySQL</strong> 5.0 or newer (<a href="#faq1_17">details</a>);</li>
-    <li><strong>Web browser</strong> with cookies enabled.</li>
+    <li><strong>MySQL</strong> 5.0 vagy újabb (<a href="#faq1_17">részletek</a>);</li>
+    <li><strong>Webböngésző</strong> engedélyezett sütivel.</li>
 </ul>
 
 
@@ -129,14 +129,14 @@ is</li>
     <li>szövegfájlok betöltése a táblákba</li>
     <li>táblakiírások készítése<a href="#footnote_1"><sup>1</sup></a> és beolvasása
         </li>
-    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats: <abbr
-title="Comma Separated Values">CSV</abbr>, <abbr title="Extensible Markup
-Language">XML</abbr>, <abbr title="Portable Document Format">PDF</abbr>,
-<abbr title="International Standards Organisation">ISO</abbr>/<abbr
-title="International Electrotechnical Commission">IEC</abbr> 26300 -
-OpenDocument Text and Spreadsheet, <abbr title="Microsoft Word
-2000">Word</abbr>, and L<sup>A</sup>T<sub><em class="big">E</em></sub>X
-formats
+    <li>adatok exportálása<a href="#footnote_1"><sup>1</sup></a> különféle
+formátumokba: <abbr title="Comma Separated Values">CSV</abbr>, <abbr
+title="Extensible Markup Language">XML</abbr>, <abbr title="Portable
+Document Format">PDF</abbr>, <abbr title="International Standards
+Organisation">ISO</abbr>/<abbr title="International Electrotechnical
+Commission">IEC</abbr> 26300 - OpenDocument szöveg és munkafüzet, <abbr
+title="Microsoft Word 2000">Word</abbr> és L<sup>A</sup>T<sub><em
+class="big">E</em></sub>X formátum
         </li>
     <li>adat és MySQL szerkezet importálása OpenDocument munkafüzetekből, valamint
 <abbr title="Extensible Markup Language">XML</abbr>, <abbr title="Comma
@@ -181,11 +181,11 @@ MySQL felhasználói fiók információjának kezelését); minden felhasználó
 érvényes MySQL felhasználónak kell lennie.</p>
 
 <p class="footnote" id="footnote_1">
-    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2
-formats)  dumps and <abbr title="comma separated values">CSV</abbr> exports
-if you use PHP with Zlib support (<code>--with-zlib</code>) and/or Bzip2
-support (<code>--with-bz2</code>). Proper support may also need changes in
-<code>php.ini</code>.</p>
+    <sup>1)</sup> A phpMyAdmin képes tömöríteni (Zip, GZip -RFC 1952- vagy Bzip2
+formátumokba), kiírni és <abbr title="comma separated values">CSV</abbr>-be
+exportálni, ha a PHP-t a Zlib támogatással (<code>--with-zlib</code>)
+és/vagy Bzip2 támogatással (<code>--with-bz2</code>) használja. A megfelelő
+támogatást a <code>php.ini</code> fájlban szükséges megváltoztatni.</p>
 
 
 <!-- INSTALLATION -->
@@ -206,49 +206,53 @@ hogy a MySQL adatbázis jogosultságait megfelelően állítsa be. A phpMyAdmin
 </p>
 
 <p class="important">
-    Warning for <abbr title="Apple Macintosh">Mac</abbr> users:<br />
-    if you are on a <abbr title="Apple Macintosh">Mac</abbr> <abbr
-title="operating system">OS</abbr> version before <abbr title="operating
-system">OS</abbr> X, StuffIt unstuffs with <abbr title="Apple
-Macintosh">Mac</abbr> formats.<br />
-    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
-before uploading them to your server, as PHP seems not to like <abbr
-title="Apple Macintosh">Mac</abbr>-style end of lines character
+    Figyelmeztetés <abbr title="Apple Macintosh">Mac</abbr> felhasználóknak:<br />
+    Ha az <abbr title="operating system">OS</abbr> X-nél korábbi verziójú <abbr
+title="Apple Macintosh">Mac</abbr> <abbr title="operating
+system">OS</abbr>-t használ, a StuffIt nincs feltöltve <abbr title="Apple
+Macintosh">Mac</abbr> formátumokkal.<br />
+    Ezért újra el kell mentenie a BBEdit programban MINDEN phpMyAdmin
+parancsfájlt Unix stílusban, mielőtt feltöltené azokat a kiszolgálójára,
+ugyanis úgy tűnik, a PHP nem szereti a <abbr title="Apple
+Macintosh">Mac</abbr> stílusú sor vége karaktert
 (&quot;<code>\r</code>&quot;).</p>
 
 <h3 id="quick_install">Gyors telepítés</h3>
-<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net Downloads
-page. Some kits contain only the English messages, others contain all
-languages in UTF-8 format (this should be fine in most situations), others
-contain all languages and all character sets. We'll assume you chose a kit
-whose name looks like <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
+<ol><li>Válassza ki a megfelelő disztribúciós készletet a phpmyadmin.net Letöltések
+(Downloads) oldaláról. Néhány készlet csak angol üzeneteket tartalmaz, mások
+tartalmazzák az összes nyelvet UTF-8 formátumban (ennek jónak kell lennie a
+legtöbb helyzetben), a többi tartalmazza az összes nyelvet és minden
+karakterkészletet. Feltételezzük, hogy olyan készletet választott, amelynek
+a neve ehhez hasonló: <code>phpMyAdmin-x.x.x-all-languages.tar.gz</code>.
     </li>
-    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
-<code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code> in your
-webserver's document root. If you don't have direct access to your document
-root, put the files in a directory on your local machine, and, after step 4,
-transfer the directory on your web server using, for example, ftp.</li>
+    <li>Csomagolja ki a disztribúciót (győződjön meg róla, hogy az alkönyvtárakat is
+kicsomagolja): <code>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</code>
+a webszervere dokumentum gyökerébe. Ha nincs közvetlen hozzáférése a
+dokumentum gyökeréhez, tegye a fájlokat egy könyvtárba a helyi gépén, majd a
+4. lépés után másolja át a könyvtárat a webszerverére, például FTP
+használatával.</li>
     <li>Gondoskodjon róla, hogy minden parancsfájlnak megfelelő tulajdonosa legyen
 (ha a PHP-t biztonságos módban futtatja, néhány parancsfájlnak más
 tulajdonosa lehet, mint a többi parancsfájlnak és ez probléma). Lásd a <a
 href="#faq4_2"> <abbr title="Gyakran ismételt kérdések">GyIK</abbr> 4.2</a>
 és a <a href="#faq1_26"><abbr title="Gyakran ismételt kérdések">GyIK</abbr>
 1.26</a> pontokat javaslatokért.</li>
-    <li>Now you must configure your installation. There are two methods that can be
-used. Traditionally, users have hand-edited a copy of
-<code>config.inc.php</code>, but now a wizard-style setup script is provided
-for those who prefer a graphical installation. Creating a
-<code>config.inc.php</code> is still a quick way to get started and needed
-for some advanced features.
-        <ul><li>To manually create the file, simply use your text editor to create the file
-<code>config.inc.php</code> (you can copy <code>config.sample.inc.php</code>
-to get minimal configuration file) in the main (top-level) phpMyAdmin
-directory (the one that contains <code>index.php</code>).  phpMyAdmin first
-loads <code>libraries/config.default.php</code> and then overrides those
-values with anything found in <code>config.inc.php</code>. If the default
-value is okay for a particular setting, there is no need to include it in
-<code>config.inc.php</code>.  You'll need a few directives to get going, a
-simple configuration may look like this:
+    <li>Most be kell állítania a telepítést. Két módszer használata
+lehetséges. Hagyományosan a felhasználóknak kézzel kell szerkesztenie a
+<code>config.inc.php</code> másolatát, de most egy varázslószerű beállító
+parancsfájl áll rendelkezésre azok számára, akik a grafikus telepítést
+részesítik előnyben. A <code>config.inc.php</code> létrehozása még egy gyors
+módszer az elinduláshoz és szükséges néhány speciális funkcióhoz.
+        <ul><li>A kézi fájl létrehozáshoz egyszerűen használja a szövegszerkesztőjét és
+hozza létre a <code>config.inc.php</code> fájlt (átmásolhatja a
+<code>config.sample.inc.php</code> fájlt minimális beállítófájlként) a fő
+(felső szintű) phpMyAdmin könyvtárban (abban, amelyik az
+<code>index.php</code>-t tartalmazza). A phpMyAdmin először betölti a
+<code>libraries/config.default.php</code> fájlt, majd felülírja azokat az
+értékeket, amelyeket a <code>config.inc.php</code> fájlban talált. Ha az
+alapértelmezett érték megfelelő az egyéni beállításhoz, akkor nem szükséges
+azt a <code>config.inc.php</code> fájlnak tartalmaznia. Szüksége lesz néhány
+irányelvre a kezdéshez, egy egyszerű beállítás így néz ki:
 <pre>
 &lt;?php
 $cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // használja itt a választásának megfelelő értéket
@@ -272,10 +276,10 @@ $cfg['Servers'][$i]['auth_type']     = 'config';
 </pre>
                 A lehetséges beállítási értékek teljes magyarázatát megtalálja ennek a
 dokumentumnak a <a href="#config">Beállítás részében</a>.</li>
-            <li id="setup_script">Instead of manually editing <code>config.inc.php</code>, you can use the <a
-href="setup/">Setup Script</a>. First you must manually create a folder
-<code>config</code> in the phpMyAdmin directory. This is a security
-measure. On a Linux/Unix system you can use the following commands:
+            <li id="setup_script">A <code>config.inc.php</code> kézi szerkesztése helyett használhatja a <a
+href="setup/">Beállító parancsfájlt</a>. Először kézzel készítenie kell egy
+<code>config</code> mappát a phpMyAdmin könyvtárban. Ez egy biztonsági
+intézkedés. Linux/Unix rendszereken használja a következő parancsokat:
 <pre>
 cd phpMyAdmin
 mkdir config                        # könyvtár létrehozása a mentéshez
@@ -290,20 +294,19 @@ chmod o+w config/config.inc.php     # írási jog beállítása mindenkinek
 hogy a webszerver írási és olvasási joggal rendelkezzen rá. <a
 href="#faq1_26">GyIK 1.26</a> segít ebben.<br /><br />
 
-                Next, open <code><a href="setup/">setup/</a> </code>in your browser. Note
-that <strong>changes are not saved to disk until explicitly choose
-<code>Save</code></strong> from the <em>Configuration</em> area of the
-screen. Normally the script saves the new config.inc.php to the
-<code>config/</code> directory, but if the webserver does not have the
-proper permissions you may see the error "Cannot load or save
-configuration." Ensure that the <code> config/</code> directory exists and
-has the proper permissions - or use the <code>Download</code> link to save
-the config file locally and upload (via FTP or some similar means) to the
-proper location.<br /><br />
+                Ezután nyissa meg a <code><a href="setup/">setup/</a></code> oldalt a
+böngészőben. Ne feledje, hogy <strong>a változások nem lesznek elmentve a
+lemezre, amíg ki nem választja a <code>Mentést</code></strong> a képernyő
+<em>Beállítások</em> területéről. Normális esetben a parancsfájl elmenti az
+új config.inc.php fájlt a <code>config/</code> mappába, de ha a
+webszervernek nincs megfelelő jogosultsága, akkor a „Nem tölthető be vagy
+menthető el a beállítás” hibaüzenetet fogja látni. Gondoskodjon róla, hogy a
+<code>config/</code> mappa létezzen és megfelelő jogosultsága legyen – vagy
+a <code>Letöltés</code> hivatkozás használatával mentse a beállító fájlt
+helyileg és töltse fel (FTP-vel, vagy hasonló módon) a megfelelő helyre.<br /><br />
 
-                Once the file has been saved, it must be moved out of the <code>
-config/</code> directory and the permissions must be reset, again as a
-security measure:
+                Ha a fájl elmentésre került, ki kell venni a <code>config/</code> mappából
+és a jogosultságot vissza kell állítani, ismét biztonsági okokból:
 <pre>
 mv config/config.inc.php .         # a fájl áthelyezése a jelenlegi mappába
 chmod o-rw config.inc.php          # a bárki számára írási-olvasási jog törlése
@@ -312,32 +315,36 @@ rm -rf config                      # a nem szükséges mappa törlése
                 Most a fájl használatra kész. Újra megnézheti vagy szerkesztheti a fájlt a
 kedvenc szerkesztőjével, ha szeretne olyan haladó lehetőségeket beállítani,
 amelyről a beállító parancsfájl nem gondoskodott.</li></ul></li>
-    <li>If you are using the <code>auth_type</code> &quot;config&quot;, it is
-suggested that you protect the phpMyAdmin installation directory because
-using config does not require a user to enter a password to access the
-phpMyAdmin installation. Use of an alternate authentication method is
-recommended, for example with HTTP&#8211;AUTH in a <a
-href="#glossary"><em>.htaccess</em></a> file or switch to using
-<code>auth_type</code> cookie or http. See the <a href="#faqmultiuser">
-multi&#8211;user sub&#8211;section</a> of this <abbr title="Frequently Asked
-Questions">FAQ</abbr> for additional information, especially <a
-href="#faq4_4"> <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
+    <li>Az <code>auth_type</code> &quot;beállítás&quot; használata esetén ajánlott a
+phpMyAdmin telepítési mappájának védelme, mert a beállítás használatakor a
+felhasználónak nem szükséges megadni jelszót a phpMyAdmin telepítésnek
+eléréséhez. Ajánlott az alternatív hitelesítési mód használata, például
+HTTP&#8211;AUTH a <a href="#glossary"><em>.htaccess</em></a> fájlban, vagy
+állítsa át az <code>auth_type</code> értékét süti (cookie) vagy http
+használatára. További információért nézze meg a <a href="#faqmultiuser">több
+felhasználó alfejezetet</a> ebben a <abbr title="Gyakran ismételt
+kérdések">GyIK</abbr>-ban, különösen a <a href="#faq4_4"> <abbr
+title="Gyakran ismételt kérdések">GyIK</abbr> 4.4</a> pontját.</li>
     <li>Nyissa meg a <a href="index.php">phpMyAdmin fő mappáját</a> a
 böngészőjében. A phpMyAdminnak meg kellene jelenítenie az üdvözlő oldalt és
 az adatbázisait vagy a belépés párbeszédablakot <abbr title="HyperText
 Transfer Protocol">HTTP</abbr> vagy süti hitelesítési mód használata esetén.</li>
-    <li>You should deny access to the <code>./libraries</code> and
-<code>./setup/lib</code> subfolders in your webserver configuration. For
-Apache you can use supplied <a href="#glossary"><em>.htaccess</em></a> file
-in that folder, for other webservers, you should configure this yourself.
-Such configuration prevents from possible path exposure and cross side
-scripting vulnerabilities that might happen to be found in that code.</li>
+    <li>Le kell tiltania a hozzáférést a <code>./libraries</code> és a
+<code>./setup/lib</code> almappákhoz a webszerver beállításában. Apache
+esetén használja a támogatott <a href="#glossary"><em>.htaccess</em></a>
+fájlt abban a mappában, más webszerverek esetén ezt önnek kell
+beállítania. Ez a beállítás megakadályozza a lehetséges utak felfedését és a
+webhelyközi parancsfájl sebezhetőségeket, amelyek esetleg a kódban
+találhatók.</li>
     <li>
-        It is generally good idea to protect public phpMyAdmin installation against
-access by robots as they usually can not do anything good there. You can do
-this using <code>robots.txt</code> file in root of your webserver or limit
-access by web server configuration, see <a href="#faq1_42"><abbr
-title="Frequently Asked Questions">FAQ</abbr> 1.42</a>.
+        Általában jó ötlet a nyilvános phpMyAdmin telepítést megvédeni a robotok
+általi hozzáférés ellen, amelyek rendszerint nem sok jót csinálnak itt. Ezt
+megteheti a <code>robots.txt</code> fájl használatával a webszerver
+gyökerében vagy korlátozza a hozzáférést a webszerver
+beállításában. Található példa <code>.htaccess</code> fájl a phpMyAdmin
+<code>contrib</code> mappájában, amely segít önnek ebben a
+beállításban. Lásd: <a href="#faq1_42"><abbr title="Gyakran ismételet
+kérdések">GyIK</abbr> 1.42</a>.
     </li>
 </ol>
 
@@ -351,55 +358,58 @@ saját adatbázisába kerülnek elhelyezésre, vagy egy központi adatbázisban
 több felhasználós telepítés esetén (ehhez az adatbázishoz csak a kezelő
 felhasználó férhet hozzá, más egyéb felhasználónak nem lehet hozzá joga).</p>
 
-<p> Please look at your <code>./examples/</code> directory, where you should
-find a file called <em>create_tables.sql</em>. (If you are using a Windows
-server, pay special attention to <a href="#faq1_23"> <abbr title="Frequently
-Asked Questions">FAQ</abbr> 1.23</a>).</p>
+<p> Nézzen bele az <code>./examples/</code> mappába, ahol található egy
+<em>create_tables.sql</em> nevű fájl. (Ha Windows szervert használt, nagyon
+figyeljen a <a href="#faq1_23"> <abbr title="Gyakran ismételt
+kérdések">GyIK</abbr> 1.23</a> pontjában leírtakra).</p>
 
-<p> If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer,
-please use <em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> and then
-create new tables by importing <em>./examples/create_tables.sql</em>.</p>
+<p> Ha már megvan önnek ez az infrastruktúra és frissítette a MySQL-t 4.1.2 vagy
+újabbra, kérjük használja a
+<em>./examples/upgrade_tables_mysql_4_1_2+.sql</em> fájlt és ezután hozza
+létre az új táblát a <em>./examples/create_tables.sql</em> importálásával.</p>
 
 <p> Használhatja a phpMyAdmint a táblák létrehozásához. Kérjük legyen tisztában
 azzal, hogy speciális (adminisztrátori) jogosultság szükséges az adatbázisok
 és táblák létrehozásához és a parancsfájlt esetleg módosítani kell az
 adatbázis nevének függvényében.</p>
 
-<p> After having imported the <em>./examples/create_tables.sql</em> file, you
-should specify the table names in your <em>./config.inc.php</em> file. The
-directives used for that can be found in the <a href="#config">Configuration
-section</a>. You will also need to have a controluser with the proper rights
-to those tables (see section <a href="#authentication_modes">Using
-authentication modes</a> below).</p>
+<p> A <em>./examples/create_tables.sql</em> fájl importálása után meg kell adni
+a táblaneveket a <em>./config.inc.php</em> fájlban. Az ehhez használt
+irányelveket megtalálja a <a href="#config">Beállítás részben</a>. Szüksége
+lesz továbbá egy megfelelő jogosultsággal rendelkező irányító felhasználóra
+ezekhez a táblákhoz (lásd a lenti <a
+href="#authentication_modes">Hitelesítési módok használata</a> fejezetet).</p>
 
 <h3 id="upgrading">Frissítés egy korábbi verzióról</h3>
 
-<p> Simply copy <em>./config.inc.php</em> from your previous installation into
-the newly unpacked one. Configuration files from old versions may require
-some tweaking as some options have been changed or removed.  For
-compatibility with PHP 6, remove a <code>set_magic_quotes_runtime(0);</code>
-statement that you might find near the end of your configuration file.</p>
+<p> Egyszerűen másolja át a <em>./config.inc.php</em> fájlt a korábbi
+telepítésből az újonnan kicsomagoltba. A korábbi verziókban lévő
+beállítófájlok finomhangolásra szorulhatnak, ugyanis néhány lehetőség
+megváltozhat vagy eltávolításra kerülhet. A PHP 6-tal való kompatibilitás
+miatt távolítsa el a <code>set_magic_quotes_runtime(0);</code> állítást,
+amely a beállítófájl vége felé található.</p>
 
-<p> You should <strong>not</strong> copy
-<code>libraries/config.default.php</code> over <code>config.inc.php</code>
-because the default configuration file is version-specific.</p>
+<p> <strong>Ne</strong> másolja át a <code>libraries/config.default.php</code>
+fájlt a <code>config.inc.php</code> fájlon kívül, mert a alapértelmezett
+beállítófájl verzió-specifikus.</p>
 
-<p> If you have upgraded your MySQL server from a version previous to 4.1.2 to
-version 5.x or newer and if you use the phpMyAdmin configuration storage,
-you should run the <abbr title="structured query language">SQL</abbr> script
-found in <code>examples/upgrade_tables_mysql_4_1_2+.sql</code>.</p>
+<p> Ha frissítette a MySQL szervert a korábbi 4.1.2 verzióról az 5.x vagy újabb
+verzióra és ha használja a phpMyAdmin beállítás tárolását, le kell futtatnia
+az <code>examples/upgrade_tables_mysql_4_1_2+.sql</code> <abbr
+title="strukturált lekérdező nyelv">SQL</abbr> parancsfájlt.</p>
 
 <h3 id="authentication_modes">Hitelesítési módok használata</h3>
 
-<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> and cookie
-authentication modes are recommended in a <strong>multi-user
-environment</strong> where you want to give users access to their own
-database and don't want them to play around with others.<br />
+<ul><li><abbr title="HyperText Transfer Protocol">HTTP</abbr> és süti hitelesítési
+módok javasoltak <strong>több felhasználós környezetben</strong>, ahol
+minden felhasználónak a saját adatbázisához kell hozzáférést adni és nem
+szeretnénk, ha másokéval játszanának.<br />
         Azonban ne feledje, hogy a MS Internet Explorer valóban hibásnak tűnik a
 sütiket illetően, legalábbis a 6-os verziója.<br />
-        Even in a <strong>single-user environment</strong>, you might prefer to use
-<abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie mode so that
-your user/password pair are not in clear in the configuration file.
+        Még <strong>egy felhasználós környezetben</strong> is előnyösebb a <abbr
+title="HyperText Transfer Protocol">HTTP</abbr> vagy süti mód abból a
+célból, hogy a felhasználónév/jelszó páros így nem szerepel olvashatóan a
+beállítófájlban.
         </li>
 
     <li>A <abbr title="HyperText Transfer Protocol">HTTP</abbr> és a süti
@@ -411,27 +421,28 @@ hacsak nem HTTPS protokollt használ.<br />
         Süti módban a jelszó tárolva van a blowfish algoritmussal titkosítottan egy
 ideiglenes sütiben.</li>
 
-    <li id="pmausr">Note: this section is only applicable if your MySQL server is running with
-<code>--skip-show-database</code>.<br /><br />
+    <li id="pmausr">Megjegyzés: ez a rész csak akkor alkalmazható, ha a MySQL szerver a
+<code>--skip-show-database</code> kapcsolóval fut.<br /><br />
 
-        For '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' and 'cookie'
-modes, phpMyAdmin needs a controluser that has <strong>only</strong> the
-<code>SELECT</code> privilege on the <em>`mysql`.`user` (all columns except
-`Password`)</em>, <em>`mysql`.`db` (all columns)</em>, <em>`mysql`.`host`
-(all columns)</em> and <em>`mysql`.`tables_priv` (all columns except
-`Grantor` and `Timestamp`)</em> tables.<br /> You must specify the details for the <a href="#controluser">controluser</a>
-in the <code>config.inc.php</code> file under the <code><a
+        A '<abbr title="HyperText Transfer Protocol">HTTP</abbr>' és 'süti' módokhoz
+a phpMyAdminnak szüksége van egy irányító felhasználóra, akinek
+<strong>csak</strong> <code>SELECT</code> jogosultsága van a
+<em>`mysql`.`user` (minden oszlopára, kivéve `Password`)</em>, a
+<em>`mysql`.`db` (minden oszlopára)</em>, a <em>`mysql`.`host` (minden
+oszlopára)</em> és a <em>`mysql`.`tables_priv` (minden oszlopára, kivéve
+`Grantor` és `Timestamp`)</em> táblákra.<br /> Meg kell határoznia az <a href="#controluser">irányító felhasználó</a>
+számára a részleteket a <code>config.inc.php</code> fájlban a <code><a
 href="#cfg_Servers_controluser" class="configrule">
-$cfg['Servers'][$i]['controluser']</a></code> and <code><a
+$cfg['Servers'][$i]['controluser']</a></code> és a <code><a
 href="#cfg_Servers_controlpass" class="configrule">
-$cfg['Servers'][$i]['controlpass']</a></code> settings.<br />
-        The following example assumes you want to use <code>pma</code> as the
-controluser and <code>pmapass</code> as the controlpass, but <strong>this is
-only an example: use something else in your file!</strong> Input these
-statements from the phpMyAdmin <abbr title="structured query language">SQL
-</abbr> Query window or mysql command&#8211;line client.<br />
-        Of course you have to replace <code>localhost</code> with the webserver's
-host if it's not the same as the MySQL server's one.
+$cfg['Servers'][$i]['controlpass']</a></code> beállítások alatt.<br />
+        A következő példa feltételezi, hogy az irányító felhasználó a
+<code>pma</code>, a jelszava pedig <code>pmapass</code>, de <strong>ez csak
+egy példa: használjon mást a saját fájljában!</strong> Adja meg ezeket az
+utasításokat bemenetként a phpMyAdmin <abbr title="strukturált lekérdező
+nyelv">SQL</abbr> kérés ablakában vagy a mysql parancssoros kliensében.<br />
+        Természetesen ki kell cserélnie a <code>localhost</code> címet a webszerver
+címére, ha az nem azonos a MySQL kiszolgálóéval.
 
         <pre>
 GRANT USAGE ON mysql.* TO 'pma'@'localhost' IDENTIFIED BY 'pmapass';
@@ -457,12 +468,12 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON &lt;pma_db&gt;.* TO 'pma'@'localhost';
 beállítás tárolás</a> be legyen állítva).
     <br /></li>
 
-    <li>Then each of the <em>true</em> users should be granted a set of privileges
-on a set of particular databases. Normally you shouldn't give global
-privileges to an ordinary user, unless you understand the impact of those
-privileges (for example, you are creating a superuser).<br />
-        For example, to grant the user <em>real_user</em> with all privileges on the
-database <em>user_base</em>:<br />
+    <li>Ezután minden egyes <em>valódi</em> felhasználónak be kell állítani a
+jogosultságokat a megfelelő adatbázisokra. Normális esetben nem kell
+globális jogosultságot adni egy átlagos felhasználónak, hacsak nem ismeri
+azon kiváltságok hatását (például rendszergazdát hoz létre).<br />
+        Például a <em>real_user</em> felhasználónak minden jog megadása a
+<em>user_base</em> adatbázisra:<br />
 
         <pre>
 GRANT ALL PRIVILEGES ON user_base.* TO 'real_user'@localhost IDENTIFIED BY 'real_password';
@@ -488,10 +499,10 @@ title="Gyakran ismételt kérdések">GyIK</abbr> 1.32</a> pontját, Apache <abbr
 title="Common Gateway Interface">CGI</abbr> használatához nézze meg a <a
 href="#faq1_35"><abbr title="Gyakran ismételt kérdések">GyIK</abbr> 1.35</a>
 pontját.</li>
-    <li>See also <a href="#faq4_4"> <abbr title="Frequently Asked
-Questions">FAQ</abbr> 4.4</a> about not using the <a
-href="#glossary"><em>.htaccess</em></a> mechanism along with '<abbr
-title="HyperText Transfer Protocol">HTTP</abbr>' authentication mode.</li>
+    <li>Lásd még a <a href="#faq4_4"> <abbr title="Gyakran ismételt
+kérdések">GyIK</abbr> 4.4</a> pontját arról, hogy ne használja a <a
+href="#glossary"><em>.htaccess</em></a> mechanizmust a '<abbr
+title="HyperText Transfer Protocol">HTTP</abbr>' hitelesítési mód mellett.</li>
 </ul>
 
 <h4>'süti' hitelesítési mód</h4>
@@ -506,9 +517,9 @@ böngészőben, de ez most követelmény minden hitelesítési mód esetén.</li
     <li>Ha szeretne bejelentkezni tetszőleges kiszolgálóra, nézze meg a <a
 href="#AllowArbitraryServer" class="configrule">
 $cfg['AllowArbitraryServer']</a> irányelvet.</li>
-    <li>As mentioned in the <a href="#require">requirements</a> section, having the
-<code>mcrypt</code> extension will speed up access considerably, but is not
-required.</li>
+    <li>Mint a <a href="#require">követelmények</a> részben említettük, az
+<code>mcrypt</code> kiterjesztéssel jelentősen gyorsítható a hozzáférés, de
+ez nem szükséges.</li>
 </ul>
 
 <h4>'signon' hitelesítési mód</h4>
@@ -541,13 +552,14 @@ kiszolgáló hitelesítés <a href="#servers_allowdeny_order"
 class="configrule"> $cfg['Servers'][$i]['AllowDeny']['order']</a> és <a
 href="#servers_allowdeny_rules" class="configrule">
 $cfg['Servers'][$i]['AllowDeny']['rules']</a> beállítás irányelveit.</li>
-    <li>Unlike cookie and http, does not require a user to log in when first loading
-the phpMyAdmin site. This is by design but could allow any user to access
-your installation. Use of some restriction method is suggested, perhaps a <a
-href="#glossary"><em>.htaccess</em></a> file with the HTTP-AUTH directive or
-disallowing incoming HTTP requests at one&#8217;s router or firewall will
-suffice (both of which are beyond the scope of this manual but easily
-searchable with Google).</li>
+    <li>A süti és http módokkal ellentétben nem igényli a felhasználótól a
+bejelentkezést a phpMyAdmin oldal első betöltődésekor. Ez szándékosan van
+így, de lehetővé teszi bármely felhasználónak a telepítéshez való
+hozzáférést. Néhány korlátozási módszer használata ajánlott, különösen a <a
+href="#glossary"><em>.htaccess</em></a> fájl a HTTP-AUTH irányelvvel vagy a
+bejövő HTTP kérések tiltása, amelyhez egy router vagy egy tűzfal elegendő
+(mindkettő túlmutat ezen a kézikönyvön, de könnyen rákereshető a Google
+segítségével).</li>
 </ul>
 <h4 id="swekey">Swekey hitelesítés</h4>
 <p>
@@ -557,18 +569,19 @@ Amikor a Swekey hitelesítés aktiválva van, a phpMyAdmin megköveteli, hogy a
 felhasználó Swekey-e be legyen dugva a belépő oldal megnyitása előtt
 (jelenleg csak a süti hitelesítési módnál támogatott). A Swekey hitelesítés
 alapértelmezetten le van tiltva.<br /><br />
-To enable it, add the following line to <code>config.inc.php</code>:
+Az engedélyezéséhez adja hozzá az alábbi sort a <code>config.inc.php</code>
+fájlhoz:
 </p>
 <pre>
 $cfg['Servers'][$i]['auth_swekey_config'] = '/etc/swekey.conf';
 </pre>
 <p>
-You then have to create the <code>swekey.conf</code> file that will
-associate each user with their Swekey Id. It is important to place this file
-outside of your web server's document root (in the example, it is located in
-<code>/etc</code>). A self documented sample file is provided in the
-<code>examples</code> directory. Feel free to use it with your own users'
-information.<br /><br />
+Ezután létre kell hoznia a <code>swekey.conf</code> fájlt, amely társítani
+fogja minden felhasználóhoz a saját Swekey azonosítóját. Fontos, hogy ezt a
+fájlt a webszerver dokumentum gyökerén kívül helyezze el (a példában a
+<code>/etc</code> mappában van). Egy saját magában dokumentált minta fájl
+megtalálható az <code>examples</code> mappában. Nyugodtan használja a saját
+felhasználói információival.<br /><br />
 Ha szeretne egy Swekey-t vásárolni, kérjük látogassa meg a <a
 href="http://phpmyadmin.net/auth_key">http://phpmyadmin.net/auth_key</a>
 oldalt, mivel ez a hivatkozás finanszírozást biztosít a phpMyAdmin számára.
@@ -577,33 +590,37 @@ oldalt, mivel ez a hivatkozás finanszírozást biztosít a phpMyAdmin számára
 <!-- CONFIGURATION -->
 <h2 id="config">Beállítás</h2>
 
-<p> <span class="important">Warning for <abbr title="Apple Macintosh">Mac</abbr>
-users:</span> PHP does not seem to like <abbr title="Apple
-Macintosh">Mac</abbr> end of lines character
-(&quot;<code>\r</code>&quot;). So ensure you choose the option that allows
-to use the *nix end of line character (&quot;<code>\n</code>&quot;) in your
-text editor before saving a script you have modified.</p>
+<p> <span class="important">Figyelmeztetés <acronym title="Apple
+Macintosh">Mac</acronym> felhasználóknak:</span> úgy tűnik, hogy a PHP nem
+szereti a <acronym title="Apple Macintosh">Mac</acronym> sorvége karakterét
+(&quot;<code>\r</code>&quot;). Ezért győződjön meg arról, hogy kiválasztotta
+azt a lehetőséget, amely lehetővé teszi a *nix sorvége karakter
+(&quot;<code>\n</code>&quot;) használatát a szövegszerkesztőjében, mielőtt
+elmentené a módosított parancsfájlt.</p>
 
-<p> <span class="important">Configuration note:</span> Almost all configurable
-data is placed in <code>config.inc.php</code>. If this file does not exist,
-please refer to the <a href="#setup">Quick install</a> section to create
-one. This file only needs to contain the parameters you want to change from
-their corresponding default value in
-<code>libraries/config.default.php</code>.</p>
+<p> <span class="important">Beállítás megjegyzés:</span> Majdnem minden
+beállítható adat a <code>config.inc.php</code> fájlban található. Ha ez a
+fájl nem létezik,  a létrehozásához olvassa el a <a href="#setup">Gyors
+telepítés</a> részt. Ennek a fájlnak csak azokat a paramétereket szükséges
+tartalmaznia, amelyeket meg szeretne változtatni a
+<code>libraries/config.default.php</code> fájlban megadott alapértelmezett
+értékétől.</p>
 
-<p> The parameters which relate to design (like colors) are placed in
-<code>themes/themename/layout.inc.php</code>. You might also want to create
-<em>config.footer.inc.php</em> and <em>config.header.inc.php</em> files to
-add your site specific code to be included on start and end of each page.</p>
+<p> A megjelenéssel kapcsolatos paraméterek (mint például a színek) a
+<code>themes/themename/layout.inc.php</code> fájlban találhatóak. Ha
+szeretné, létrehozhatja a <em>config.footer.inc.php</em> és a
+<em>config.header.inc.php</em> fájlokat, amelyekben olyan oldal-specifikus
+kódokat adhat meg, amelyeket minden oldal eleje és vége tartalmazni fog.</p>
 
 <dl><dt id="cfg_PmaAbsoluteUri">$cfg['PmaAbsoluteUri'] karakterlánc</dt>
-    <dd>Sets here the complete <abbr title="Uniform Resource Locator">URL</abbr>
-(with full path) to your phpMyAdmin installation's directory.
-E.g.
-<code>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</code>.
-Note also that the <abbr title="Uniform Resource Locator">URL</abbr> on some
-web servers are case&#8211;sensitive.  Don&#8217;t forget the trailing slash
-at the end.<br /><br />
+    <dd>Itt állíthatja be a phpMyAdmin telepítési mappájának teljes <abbr
+title="Uniform Resource Locator">URL</abbr>-jét (teljes elérési
+úttal).
+Pl.
+<code>http://www.your_web.net/path_to_your_phpMyAdmin_directory/</code>.  Ne
+feledje, hogy az <abbr title="Uniform Resource Locator">URL</abbr> egyes
+webkiszolgálókon érzékeny a kis- és nagybetűkre. Ne felejtse le a záró
+perjelet a végéről.<br /><br />
 
         A 2.3.0-ás verziótól kezdve érdemes megpróbálni üresen hagyni. A legtöbb
 esetben a phpMyAdmin automatikusan felismeri a megfelelő beállítást. A port
@@ -626,26 +643,33 @@ class="configrule">$cfg['Servers'][$i]['pmadb']</a>).
 az adatbázisnak a &quot;Struktúra&quot; oldalára, ahol ezt használni
 szeretné. Találni fog egy hivatkozást, amely elemezni fogja, hogy miért
 vannak letiltva azok a szolgáltatások.<br />
-        If you do not want to use those features set this variable to
-<code>TRUE</code> to stop this message from appearing.</dd>
+        Ha nem szeretné használni azokat a szolgáltatásokat, állítsa ezt a változót
+<code>TRUE</code> értékre az üzenet megjelenésének leállításához.</dd>
 
     <dt id="cfg_SuhosinDisableWarning">$cfg['SuhosinDisableWarning'] logikai</dt>
-    <dd>A warning is displayed on the main page if Suhosin is detected.  You can set
-this parameter to <code>TRUE</code> to stop this message from appearing.</dd>
+    <dd>Egy figyelmeztetés jelenik meg a főoldalon, ha Suhosin
+észlelhető. Beállíthatja ezt a paramétert <code>TRUE</code> értékre az
+üzenet megjelenésének leállításához.</dd>
 
     <dt id="cfg_McryptDisableWarning">$cfg['McryptDisableWarning'] logikai</dt>
-    <dd>Disable the default warning that is displayed if mcrypt is missing for
-cookie authentication.  You can set this parameter to <code>TRUE</code> to
-stop this message from appearing.</dd>
+    <dd>Letiltja az alapértelmezett figyelmeztetést, amely akkor jelenik meg, ha a
+mcrypt hiányzik a süti hitelesítéshez. Beállíthatja ezt a paramétert
+<code>TRUE</code> értékre az üzenet megjelenésének leállításához.</dd>
+
+    <dt id="cfg_ServerLibraryDifference_DisableWarning">$cfg['ServerLibraryDifference_DisableWarning'] boolean</dt>
+    <dd>A warning is displayed on the main page if there is a difference between the
+MySQL library and server version.  You can set this parameter to
+<code>TRUE</code> to stop this message from appearing.</dd>
 
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] egész szám</dt>
     <dd>Figyelmeztetést jelenít meg egy bizonyos küszöbnél lévő hiányos
 fordításokról.</dd>
 
     <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] logikai</dt>
-    <dd>Setting this to <code>true</code> allows a page located on a different
-domain to call phpMyAdmin inside a frame, and is a potential security hole
-allowing cross-frame scripting attacks.</dd>
+    <dd>Ennek <code>true</code> értékre állításával megengedi egy másik tartományon
+lévő oldalnak, hogy meghívja a phpMyAdmint egy kereten belül, ugyanakkor egy
+lehetséges biztonsági rés, amely lehetővé teszi a keretek közötti
+parancsfájl támadásokat.</dd>
 
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] karakterlánc</dt>
     <dd>A &quot;cookie&quot; auth_type a blowfish algoritmust használja a jelszó
@@ -661,18 +685,19 @@ munkamenet-változóban tárolódik, továbbá lehetővé teszi a felhasználón
 visszanyerését a sütiből.</dd>
 
     <dt id="cfg_Servers">$cfg['Servers'] tömb</dt>
-    <dd>Since version 1.4.2, phpMyAdmin supports the administration of multiple
-MySQL servers. Therefore, a <a href="#cfg_Servers"
-class="configrule">$cfg['Servers']</a>-array has been added which contains
-the login information for the different servers.  The first <a
+    <dd>Az 1.4.2-es verzió óta a phpMyAdmin támogatja több MySQL kiszolgáló
+adminisztrálását. Emiatt lett hozzáadva a <a href="#cfg_Servers"
+class="configrule">$cfg['Servers']</a> tömb, amely különböző kiszolgálók
+számára tartalmazza a belépési információkat. Az első <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-contains the hostname of the first server, the second <a
+tartalmazza az első kiszolgáló gépnevét, a második <a
 href="#cfg_Servers_host" class="configrule">$cfg['Servers'][$i]['host']</a>
-the hostname of the second server, etc. In
-<code>./libraries/config.default.php</code>, there is only one section for
-server definition, however you can put as many as you need in
-<code>./config.inc.php</code>, copy that block or needed parts (you don't
-have to define all settings, just those you need to change).</dd>
+a második kiszolgáló gépnevét, és így tovább. A
+<code>./libraries/config.default.php</code> fájlban csak egyetlen rész van a
+kiszolgáló definiálására, azonban annyit tehet a
+<code>./config.inc.php</code> fájlba, amennyit csak akar, annak a blokknak
+vagy a szükséges részek a másolásával (nem kell minden beállítást
+definiálnia, csak azokat, amelyeket változtatnia szükséges).</dd>
 
     <dt id="cfg_Servers_host">$cfg['Servers'][$i]['host'] karakterlánc</dt>
     <dd>A $i-edik MySQL-kiszolgáló gépneve vagy <abbr title="Internet
@@ -691,20 +716,20 @@ elemben.
     <dt id="cfg_Servers_socket">$cfg['Servers'][$i]['socket'] karakterlánc</dt>
     <dd>A használni kívánt socket elérési útja. Hagyja üresen az alapértelmezett
 értékhez.<br />
-        To determine the correct socket, check your MySQL configuration or, using
-the <code>mysql</code> command&#8211;line client, issue the
-<code>status</code> command.  Among the resulting information displayed will
-be the socket used.</dd>
+        A helyes socket meghatározásához ellenőrizze a MySQL beállításait, vagy
+használja a <code>mysql</code> parancssoros kliensét a <code>status</code>
+parancs kiadásához. Az eredményül kapott információk között megjelenik a
+használt socket.</dd>
 
     <dt id="cfg_Servers_ssl">$cfg['Servers'][$i]['ssl'] logikai</dt>
     <dd>Engedélyezve van-e az SSL a MySQL kiszolgálóhoz való csatlakozáshoz.
     </dd>
 
     <dt id="cfg_Servers_connect_type">$cfg['Servers'][$i]['connect_type'] karakterlánc</dt>
-    <dd>What type connection to use with the MySQL server. Your options are
-<code>'socket'</code> and <code>'tcp'</code>. It defaults to 'tcp' as that
-is nearly guaranteed to be available on all MySQL servers, while sockets are
-not supported on some platforms.<br /><br />
+    <dd>Milyen típusú kapcsolatot használjon a MySQL kiszolgáló. A lehetőségei a
+<code>„socket”</code> és a <code>„tcp”</code>. A „tcp” az alapértelmezett,
+mert szinte garantált, hogy minden MySQL kiszolgálón elérhető, amíg a
+soketek néhány platformon nem támogatottak.<br /><br />
 
         A socket mód használatához a MySQL kiszolgálónak ugyanazon a gépen kell
 lennie, mint a Webkiszolgálónak.</dd>
@@ -1363,8 +1388,8 @@ all'</code> if your rule order is set to <code>'deny,allow'</code> or
 
         For the <abbr title="Internet Protocol">IP</abbr> matching system, the
 following work:<br />
-        <code>xxx.xxx.xxx.xxx</code> (an exact <abbr title="Internet
-Protocol">IP</abbr> address)<br />
+        <code>xxx.xxx.xxx.xxx</code> (egy pontos <abbr title="Internet
+Protocol">IP</abbr>-cím)<br />
         <code>xxx.xxx.xxx.[yyy-zzz]</code> (an <abbr title="Internet
 Protocol">IP</abbr> address range)<br />
         <code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing type
@@ -1532,11 +1557,11 @@ the suffix (16 means 16 bytes!)</dd>
     <dd>Defines whether <abbr title="structured query language">SQL</abbr> queries
 generated by phpMyAdmin should be displayed or not.</dd>
 
-    <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] boolean</dt>
+    <dt id="cfg_RetainQueryBox">$cfg['RetainQueryBox'] logikai</dt>
     <dd>Defines whether the <abbr title="structured query language">SQL</abbr> query
 box should be kept displayed after its submission.</dd>
 
-    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] boolean</dt>
+    <dt id="cfg_CodemirrorEnable">$cfg['CodemirrorEnable'] logikai</dt>
     <dd>Defines whether to use a Javascript code editor for SQL query boxes.
 CodeMirror provides syntax highlighting and line numbers. <br />
         However, middle-clicking for pasting the clipboard contents in some Linux
@@ -1700,7 +1725,7 @@ each table name in the navigation panel. Possible values:
 &quot;tbl_select.php&quot;, &quot;tbl_change.php&quot; or
 &quot;sql.php&quot;.</dd>
 
-    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] boolean</dt>
+    <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] logikai</dt>
     <dd>Defines whether the table structure actions are hidden under a
 &quot;More&quot; drop-down.</dd>
 
@@ -1735,7 +1760,7 @@ with &quot;config&quot; authentication mode: because of the hard coded
 password value in the configuration file, end users can't be allowed to
 change their passwords.</dd>
 
-    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] boolean</dt>
+    <dt id="cfg_ShowDbStructureCreation">$cfg['ShowDbStructureCreation'] logikai</dt>
     <dd>Defines whether the database structure page (tables list) has a
 &quot;Creation&quot; column that displays when each table was created.</dd>
 
@@ -1773,6 +1798,18 @@ DATE, DATETIME and TIMESTAMP, ascending order else- by default.</dd>
     <dd>Defines whether the &quot;Show binary contents as HEX&quot; browse option is
 ticked by default.</dd>
 
+    <dt id="cfg_GridEditing">$cfg['GridEditing'] string</dt>
+    <dd>
+    Defines which action (<code>double-click</code> or <code>click</code>)
+triggers grid editing. Can be deactived with the <code>disabled</code>
+value. 
+    </dd>
+
+    <dt id="cfg_SaveCellsAtOnce">$cfg['SaveCellsAtOnce'] boolean</dt>
+    <dd>
+        Defines whether or not to save all edited cells at once for grid editing.
+    </dd>
+
     <dt id="cfg_ProtectBinary">$cfg['ProtectBinary'] boolean or string</dt>
     <dd>Defines whether <code>BLOB</code> or <code>BINARY</code> columns are
 protected from editing when browsing a table's content. Valid values are:
@@ -1807,11 +1844,11 @@ limitations</li>
         </ul>
         Default is old behavior so input.</dd>
 
-    <dt id="cfg_MinSizeForInputField">$cfg['MinSizeForInputField'] integer</dt>
+    <dt id="cfg_MinSizeForInputField">$cfg['MinSizeForInputField'] egész szám</dt>
     <dd>Defines the minimum size for input fields generated for CHAR and VARCHAR
 columns.</dd>
 
-    <dt id="cfg_MaxSizeForInputField">$cfg['MaxSizeForInputField'] integer</dt>
+    <dt id="cfg_MaxSizeForInputField">$cfg['MaxSizeForInputField'] egész szám</dt>
     <dd>Defines the maximum size for input fields generated for CHAR and VARCHAR
 columns.</dd>
 
@@ -2255,8 +2292,8 @@ mean.
     <dd>
         Defines how the export form is displayed when it loads. Valid values are:
         <ul>
-        <li><code>quick</code> to display the minimum number of options to configure</li>
-        <li><code>custom</code> to display every available option to configure</li>
+        <li><code>gyors</code> - csak a minimális beállítási lehetőségeket mutatja</li>
+        <li><code>egyéni</code> - az összes beállítási lehetőséget mutatja</li>
         <li><code>custom-no-form</code> same as <code>custom</code> but does not display
 the option of using quick export</li>
         </ul>
@@ -2267,11 +2304,6 @@ the option of using quick export</li>
         In this array are defined default parameters for import, names of items are
 similar to texts seen on import page, so you can easily identify what they
 mean.
-    </dd>
-
-    <dt id="cfg_SaveCellsAtOnce">$cfg['SaveCellsAtOnce'] boolean</dt>
-    <dd>
-        Defines whether or not to save all edited cells at once in browse-mode.
     </dd>
 
     <dt id="cfg_ShowDisplayDirection">$cfg['ShowDisplayDirection'] boolean</dt>
@@ -4426,7 +4458,7 @@ column comments, what happens to my column comments stored in pmadb?</a></h4>
 ones is done whenever you enter Structure page for this table.</p>
 
 <h4 id="faq6_25">
-    <a href="#faq6_25">6.25 (withdrawn).</a></h4>
+    <a href="#faq6_25">6.25 (visszavonva).</a></h4>
 
 <h4 id="faq6_26">
     <a href="#faq6_26">6.26 How can I select a range of rows?</a></h4>
@@ -4545,8 +4577,8 @@ chmod o+rwx tmp
 <h4 id="faq6_31">
     <a href="#faq6_31">6.31 How do I create a relation in designer?</a></h4>
 
-    <p>To select relation, click:<br />
-    <img src="themes/pmahomme/img/pmd/help_relation.png" width="100" height="100" alt="[relation icon]" /><br />
+    <p>A kapcsolat kiválasztásához, kattintson:<br />
+    <img src="themes/pmahomme/img/pmd/help_relation.png" width="100" height="100" alt="[kapcsolat ikon]" /><br />
     A megjelenítendő mező rózsaszínben látható. Egy mező megjelenítendő mezőként
 történő beállításához/eltávolításához kattintson a "Válassza ki a
 megjelenítendő mezőt" ikonra, majd kattintson a megfelelő mező nevére.</p>
@@ -4768,7 +4800,7 @@ Copyright (C) 2001-2012 Marc Delisle &lt;marc_at_infomarc.info&gt;
                         Garvin Hicking &lt;me_at_supergarv.de&gt;
                         Michael Keck &lt;mkkeck_at_users.sourceforge.net&gt;
                         Sebastian Mendel &lt;cybot_tm_at_users.sourceforge.net&gt;
-                        [check <a href="#credits">credits</a> for more details]
+                        [nézze meg a <a href="#credits">köszönetet</a> további részletekért]
 </pre>
 
 <p>
@@ -4785,9 +4817,10 @@ részleteket a GNU General Public License tartalmaz.
 </p>
 
 <p>
-You should have received a copy of the GNU General Public License along with
-this program.  If not, see <a
-href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+A felhasználónak a programmal együtt meg kell kapnia a GNU General Public
+License egy példányát. Ha mégsem kapta meg, nézze meg a <a
+href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>
+oldalon.
 </p>
 
 
@@ -4806,7 +4839,7 @@ href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 
 <li>Marc Delisle &lt;marc_at_infomarc.info&gt;
 <ul>
-  <li>multi-language version in December 1998</li>
+  <li>többnyelvű változat 1998. decemberében</li>
   <li>különféle javítások és fejlesztések</li>
   <li><abbr title="structured query language">SQL</abbr> elemző (legnagyobb
 részben)</li>
@@ -4898,7 +4931,7 @@ oldalon</li>
 <ul>
   <li>automatikus kapcsolás QBE-ben</li>
   <li>oszlopok kapcsolása nyomtatási nézetben</li>
-  <li>Kapcsolat nézete</li>
+  <li>Reláció nézet</li>
 </ul></li>
 
 <li>Michal &#268;iha&#345; &lt;michal_at_cihar.com&gt;
@@ -5007,7 +5040,7 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Raj Kissu Rajandran (Google Summer of Code 2008)
 <ul>
-  <li>BLOBstreaming support (withdrawn in release 4.0)</li>
+  <li>BLOBstreaming támogatás (visszavonva a 4.0 kiadásban)</li>
 </ul></li>
 
 <li>Piotr Przybylski (Google Summer of Code 2008, 2010 and 2011)
@@ -5061,7 +5094,8 @@ href="http://www.acko.net/node/56">http://www.acko.net/node/56</a>).</li>
 
 <li>Barrie Leslie
 <ul>
-  <li>BLOBstreaming support with PBMS PHP extension (withdrawn in release 4.0)</li>
+  <li>BLOBstreaming támogatás a PBMS PHP kiterjesztéssel (visszavonva a 4.0
+kiadásban)</li>
 </ul></li>
 
 <li>Ankit Gupta (Google Summer of Code 2010)
@@ -5078,8 +5112,8 @@ eseményekhez</li>
 
 <li>Dieter Adriaenssens
 <ul>
-  <li>Various bugfixes</li>
-  <li>Dutch translation updates</li>
+  <li>Különféle hibajavítások</li>
+  <li>Holland fordítás frissítés</li>
 </ul></li>
 
 </ul>
@@ -5282,10 +5316,10 @@ kliens PHP kiterjesztés.</li>
     <li><a href="http://php.net/mysql">mysql</a> - a MySQL kliens PHP kiterjesztés.</li>
     <li><a href="http://www.wikipedia.org/wiki/OpenDocument">OpenDocument</a> - az
 irodai dokumentumok nyílt szabványa.</li>
-    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operating
-system">OS</abbr> X</a> - look at <a href="#glossar_mac_os_x"><abbr
-title="Apple Macintosh">Mac</abbr> <abbr title="operating system">OS</abbr>
-X</a>.</li>
+    <li><a href="http://www.wikipedia.org/wiki/OS_X"><abbr title="operációs
+rendszer">OS</abbr> X</a> - lásd <a href="#glossar_mac_os_x"><abbr
+title="Apple Macintosh">Mac</abbr> <abbr title="operációs
+rendszer">OS</abbr> X</a>.</li>
     <li><a href="http://www.wikipedia.org/wiki/Portable_Document_Format">PDF
 (Portable Document Format)</a> - a file format developed by Adobe Systems
 for representing two dimensional documents in a device independent and
