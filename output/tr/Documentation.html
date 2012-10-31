@@ -659,11 +659,6 @@ uyarı görüntülenir. Bu mesajın görünmesini durdurmak için bu parametreyi
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] tam sayı</dt>
     <dd>Belli uç noktalarda tamamlanmamış çevirilerle ilgili uyarı gösterir.</dd>
 
-    <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] boolean</dt>
-    <dd>Bunu <code>true</code> olarak ayarlamak phpMyAdmin'i çerçeve içinde çağırmak
-için farklı alan adlarında bulunan sayfaya izin verir ve çerçeveler arası
-betik saldırılarına izin veren olası güvenlik açığıdır.</dd>
-
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] dizgi</dt>
     <dd>&quot;Tanımlama bilgisi&quot; auth_type, parolayı şifrelemek için blowfish
 algoritması kullanır.<br />
@@ -884,9 +879,9 @@ gelmez.</span>
 <code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
-        phpMyAdmin 2.5.5'ten itibaren sol çerçevede sıralı dizilim, veritabanlarının
-sıralanması için kullanılıyor bu yüzden veritabanlarınızı ayrı ayrı
-düzenleyebilirsiniz.<br />
+        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
+databases in the navigation panel, so that you can individually arrange your
+databases.<br />
         Belirli veritabanlarını en üstte istiyorsanız ama diğerlerini
 umursamıyorsanız, tüm diğer veritabanlarını belirlemeniz
 gerekmez. phpMyAdmin'e, en üstte db3 ve db4'ü ve kalanını alfabetik sırada
@@ -1116,14 +1111,14 @@ kullanılabilirdir.<br /><br />
         <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span> dizgi
     </dt>
     <dd>
-        3.5.0 yayımından bu yana sol rehber çerçevede en son kullanılan tabloları
-gösterebilirsiniz. Doğrudan tablolar üstünde, veritabanını seçmeye gerek
-kalmadan, atlama yapmanıza yardımcı olur ve sonradan tablo seçersiniz. <a
-href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
-gösterilen en fazla son tablo sayısını yapılandırabilirsiniz. Listeden bir
-tablo seçtiğinizde, <a href="#cfg_LeftDefaultTabTable"
-class="configrule">$cfg['LeftDefaultTabTable']</a> içinde belirtilen sayfaya
-atlayacaktır.<br/><br/>
+        Since release 3.5.0 you can show recently used tables in the navigation
+panel.  It helps you to jump across table directly, without the need to
+select the database, and then select the table. Using <a
+href="#cfg_NumRecentTables" class="configrule">$cfg['NumRecentTables']</a>
+you can configure the maximum number of recent tables shown. When you select
+a table from the list, it will jump to the page specified in <a
+href="#cfg_NavigationTreeDefaultTabTable"
+class="configrule">$cfg['NavigationTreeDefaultTabTable']</a>.<br/><br/>
 
         Depolamayı yapılandırmadan, hala son kullanılan tablolara erişebilirsiniz,
 ama oturumunuzu kapattıktan sonra kaybolacaktır.<br/><br/>
@@ -1422,8 +1417,8 @@ bakın).
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 boolean</dt>
-    <dd>Rehber çerçeve için veritabanları listesi hazırlanırken her veritabanı için
-tablo sayılarını saymak gerekirse.
+    <dd>Whether to count the number of tables for each database when preparing the
+list of databases for the navigation panel.
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span>
@@ -1496,8 +1491,11 @@ yönerge ona uygulanmaz.</dd>
 etkinleştirir.</dd>
 
     <dt id="cfg_MaxDbList">$cfg['MaxDbList'] tam sayı</dt>
-    <dd>Veritabanı listesinde ve rehber çerçevede görüntülenmesi için en fazla
-veritabanı adı sayısı.</dd>
+    <dd>The maximum number of database names to be displayed in the database list.</dd>
+
+    <dt id="cfg_MaxNavigationItems">$cfg['MaxNavigationItems'] integer</dt>
+    <dd>The number of items that can be displayed on each page of the navigation
+tree.</dd>
 
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] tam sayı</dt>
     <dd>Ana panelin listesinde (Dışa Aktar sayfasındaki hariç) görüntülenmesi için
@@ -1652,26 +1650,18 @@ izin verebilir.
     <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] boolean</dt>
     <dd>PHP hatalarını toplamak ya da toplamamak gerekirse.</dd>
 
-    <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] boolean</dt>
-    <dd>Seçim tabanlı menü kullanıp kullanmamayı ve sol çerçevede (daha küçük olan
-sayfa) sadece şu anki tabloları görüntülemek gerekirse tanımlar. Sadece Sade
-Olmayan kipte <a href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a> kullanarak içiçe
-klasörleri görüntülemek için özelliği kullanabilirsiniz
+    <dt id="cfg_NavigationTreeEnableGrouping">$cfg['NavigationTreeEnableGrouping'] boolean</dt>
+    <dd>Defines whether to group the databases based on a common prefix prefix in
+their name <a href="#cfg_NavigationTreeDbSeparator"
+class="configrule">$cfg['NavigationTreeDbSeparator']</a>.
     </dd>
 
-    <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] boolean</dt>
-    <dd>Ağaç görünümü kullanarak veritabanı adlarını (seçicide) görüntülemek
-gerekirse tanımlar, aynı zamanda <a href="#cfg_LeftFrameDBSeparator"
-class="configrule">$cfg['LeftFrameDBSeparator']</a>'e bakın.
-    </dd>
-
-    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] dizgi veya dizilim</dt>
+    <dt id="cfg_NavigationTreeDbSeparator">$cfg['NavigationTreeDbSeparator'] string or array</dt>
     <dd>Dizgi, veritabanı adı parçalarını ağaç içinde gösteriliyorken ayırmak için
 kullanılır. Alternatif olarak bir dizilim içinde daha fazla dizgi
 belirtebilirsiniz ve hepsi ayıraç olarak kullanılacaktır.</dd>
 
-    <dt id="cfg_LeftFrameTableSeparator">$cfg['LeftFrameTableSeparator'] dizgi</dt>
+    <dt id="cfg_NavigationTreeTableSeparator">$cfg['NavigationTreeTableSeparator'] string or array</dt>
     <dd>İç içe tablo alanlarında kullanılmak üzere dizgileri tanımlar. Varsayılanı
 '__'. Eğer 'birinci_ikinci_üçüncü' şeklinde tablolara sahipseniz, bu,
 birinci &gt; ikinci &gt; üçüncü gibi üç seviyeli hiyerarşi olarak
@@ -1680,66 +1670,52 @@ etkisizleştirilir. NOT: Tablo adlarının başında veya sonunda ayıraç ya da
 arasında hiç diğer karakterlerin olmadığı başka bir karakterden sonra çok
 kez kullanmamalısınız.</dd>
 
-    <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] dizgi</dt>
+    <dt id="cfg_NavigationTreeTableLevel">$cfg['NavigationTreeTableLevel'] integer</dt>
     <dd>Yukarıdaki ayıraçla tablolar ayrıldığında kaç tane alt seviyenin
 görüntüleneceğini tanımlar.</dd>
 
-    <dt id="cfg_LeftRecentTable">$cfg['LeftRecentTable'] tam sayı</dt>
-    <dd>Sol rehber çerçevede gösterilen en fazla son kullanılan tablo sayısıdır. Son
-tabloların listelenmesini etkisizleştirmek için bunu 0'a (sıfır) ayarlayın.</dd>
+    <dt id="cfg_NumRecentTables">$cfg['NumRecentTables'] integer</dt>
+    <dd>The maximum number of recently used tables shown in the navigation
+panel. Set this to 0 (zero) to disable the listing of recent tables.</dd>
 
     <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] boolean</dt>
-    <dd>Sol çerçevede tablo yorumunun araç ipucu olarak görüntülenip
-görüntülenmeyeceğini tanımlar.</dd>
+    <dd>Defines whether to display item comments as tooltips in navigation panel or
+not.</dd>
 
-    <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] boolean</dt>
-    <dd>Eğer araç ipucu etkinse ve VT yorumu ayarlıysa, bu, yorumu ve gerçek adı
-çevirecek. Bunun anlamı eğer 'kullanici0001' adında bir veritabanına
-sahipseniz ve 'BenimAdım' olarakta yorum ekliyse, sol çerçevede dolayısıyla
-kullanılan 'BenimAdım' adını göreceksiniz ve araç ipucu VT'nin gerçek adını
-gösterir.</dd>
+    <dt id="cfg_NavigationDisplayLogo">$cfg['NavigationDisplayLogo'] boolean</dt>
+    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the
+navigation panel. Defaults to <code>TRUE</code>.</dd>
+    <dt id="cfg_NavigationLogoLink">$cfg['NavigationLogoLink'] string</dt>
+    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
+navigation panel will point to.  For use especially with self made theme
+which changes this.  The default value for this is <code>main.php</code>.</dd>
 
-    <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] boolean/dizgi</dt>
-    <dd>Tablo adlarında işe yaraması hariç, <a href="#cfg_ShowTooltipAliasDB"
-class="configrule">$cfg['ShowTooltipAliasDB']</a> ile aynıdır. Bu 'nested'
-olarak ayarlandığında, Tablo Adı Kod Adı sadece <a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a> yönergesine göre
-tablolaro ayırmak/iç içe koymak için kullanılır. Bu yüzden klasör sadece Kod
-Adı gibi çağırılır, tablo adı kendi gerçek tablo adında kalır.</dd>
-
-    <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] boolean</dt>
-    <dd>Sol çerçevenin en üstünde phpMyAdmin logosunun görüntülenip
-görüntülenmeyeceğini tanımlar. Varsayılanı <code>TRUE</code>.</dd>
-    <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] dizgi</dt>
-    <dd>Rehber çerçevedeki logoyu işaret edecek <abbr title="Uniform Resource
-Locator">URL</abbr>'yi girin. Özellikle bunu değiştirecek el yapımı
-temalarla kullanmak için. Bunun için varsayılan değer <code>main.php</code>.</dd>
-
-    <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] dizgi</dt>
+    <dt id="cfg_NavigationLogoLinkWindow">$cfg['NavigationLogoLinkWindow'] string</dt>
     <dd>Bağlantılı sayfayı ana pencerede (<code>main</code>) ya da yeni bir
 pencerede (<code>new</code>) açmak gerekirse. Not: eğer
 <code>phpmyadmin.net</code>'e bağlıyorsanız, <code>new</code> kullanın.</dd>
 
-    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] tam sayı</dt>
-    <dd>Sol çerçeve içinde tablo listesinin altında JavaScript süzgeç kutusunu
-görüntülemek için en az tablo sayısını tanımlar. Varsayılanı
-<code>30</code>. Süzgeçi tamamen etkisizleştirmek için bazı yüksek sayılar
-kullanılabilir (örn. 9999)</dd>
+    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">$cfg['NavigationTreeDisplayItemFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of items (tables, views, routines and events)  to
+display a JavaScript filter box above the list of items in the navigation
+tree.  Defaults to <code>30</code>. To disable the filter completely some
+high number can be used (e.g. 9999)</dd>
 
-    <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] boolean</dt>
-    <dd>Sol çerçevenin en üstünde sunucu seçiminin görüntülenip görüntülenmeyeceğini
-tanımlar. Varsayılanı FALSE.</dd>
+    <dt id="cfg_NavigationTreeDisplayDatabaseFilterMinimum">
+    $cfg['NavigationTreeDisplayDatabaseFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of databases to display a JavaScript filter box
+above the list of databases in the navigation tree.  Defaults to
+<code>30</code>. To disable the filter completely some high number can be
+used (e.g. 9999)</dd>
+
+    <dt id="cfg_NavigationDisplayServers">$cfg['NavigationDisplayServers'] boolean</dt>
+    <dd>Defines whether or not to display a server choice at the top of the
+navigation panel. Defaults to FALSE.</dd>
     <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] boolean</dt>
     <dd>Bu sunucu seçimini aşağı açılır menü yerine bağlantı olarak görüntülemek
 gerekirse tanımlar. Varsayılanı FALSE (aşağı açılır menü).</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] boolean veya metin</dt>
-    <dd>Sade rehber çerçevesi içinde veritabanı seçiminin aşağı açılır menü yerine
-bağlantı olarak görüntülemek gerekirse tanımlar. Varsayılanı 'auto' - ana
-sayfa listesinde gösterilir, veritabanı seçildiğinde sadece aşağı açılır
-menü görüntülenir.</dd>
 
-    <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] dizgi</dt>
+    <dt id="cfg_NavigationTreeDefaultTabTable">$cfg['NavigationTreeDefaultTabTable'] string</dt>
     <dd>Rehber panelde her tablo adının yanındaki küçük simgeye tıklandığında
 varsayılan olarak sekme görüntülenmesini tanımlar. Olası değerler:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
@@ -2076,8 +2052,8 @@ nedenle bunu <code>true</code>'ya ayarlamak böyle çoklu bakım işlemlerini
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] tam sayı</dt>
-    <dd>Piksel olarak rehber çerçeve
-genişliği. <code>themes/themename/layout.inc.php</code>'ye bakın.
+    <dd>Navigation panel width in pixels. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> dizgi [arkaplan
@@ -2094,9 +2070,8 @@ rengi]</dt>
     <dd>Rehber çerçevedeki imleç için kulanılan
 stil. <code>themes/themename/layout.inc.php</code>'ye bakın.</dd>
 
-    <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] boolean</dt>
-    <dd><code>TRUE</code> değeri rehber imleçi etkinleştirir (LeftFrameLight
-<code>FALSE</code> iken).</dd>
+    <dt id="cfg_NavigationTreePointerEnable">$cfg['NavigationTreePointerEnable'] boolean</dt>
+    <dd>A value of <code>TRUE</code> activates the navi pointer.</dd>
 
     <dt id="cfg_Border">$cfg['Border'] tam sayı</dt>
     <dd>Tabloların kenar boyutudur. <code>themes/themename/layout.inc.php</code>'ye
@@ -2373,12 +2348,12 @@ doldurulmasada gösterilmesini tanımlar.
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span> tam sayı
     </dt>
     <dd>
-        Tüm bu değişkenler sorgu penceresi özelliğini etkiler. <code><abbr
-title="structured query language">SQL</abbr></code> bağlantısı ve simgesi
-daima sol panelde görüntülenir. Eğer tarayıcınızda JavaScript etkinse, bunun
-üzerine tıklamak <abbr title="structured query language">SQL</abbr>
-sorgularını girmek için doğrudan arayüz olan ayrı sorgu penceresi
-açar. Yoksa sağ panel sorgu kutusunu görüntülemek için değişir.<br /><br />
+        All those variables affect the query window feature. A <code> <abbr
+title="structured query language">SQL</abbr></code> link or icon is always
+displayed in the navigation panel. If JavaScript is enabled in your browser,
+a click on this opens a distinct query window, which is a direct interface
+to enter <abbr title="structured query language">SQL</abbr> queries.
+Otherwise, the right panel changes to display a query box.<br /><br />
 
         Sorgu penceresinin boyutu <code>$cfg['QueryWindowWidth']</code> ve
 <code>$cfg['QueryWindowHeight']</code> ile özelleştirilebilir - her iki tam
@@ -2445,9 +2420,9 @@ atlatır.
     </dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] boolean</dt>
-    <dd>Veritabanı ve tablo adlarını doğal sırasına göre sıralar (örneğin, t1, t2,
-t10). Şimdilik sol panelde ve Veritabanı görünümünde uygulandı (Sade kip),
-tablo listesi için.</dd>
+    <dd>Sorts database and table names according to natural order (for example, t1,
+t2, t10). Currently implemented in the navigation panel and in Database
+view, for the table list.</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] dizgi</dt>
     <dd>Eğer <code>'closed'</code> olarak ayarlanırsa, görsel kaydırıcı başlangıçta
@@ -2716,11 +2691,11 @@ Name]TransformationsPlugin</code> adına sahiptir.<br /><br />
 applyTransformation().</li>
     </ol>
     </p>
-    
+
 <p>getMIMEType(), getMIMESubtype() ve getName() yöntemleri MIME türünün adını,
 MIME Alt türünü ve buna göre de dönüşümü döndürür. getInfo() dönüşümlerin
 açıklamasını ve alabileceği olası seçenekleri döndürür ve
-applyTransformation() dönüşüm eklentisinin asıl çalışma yöntemidir.</p>   
+applyTransformation() dönüşüm eklentisinin asıl çalışma yöntemidir.</p>
 
 <p> Kendi dönüşüm eklentinizi eklemek için lütfen
 libraries/plugins/transformations/TEMPLATE ve
@@ -3646,10 +3621,10 @@ istiyorsanız, geçerli MySQL içerisine döndürmek zorundasınız. Bu, ilk iki
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 İç içe klasörler kullanıldığında yanlış biçimde
-görüntülenmiş çoklu hiyerarşiler oluyor?!</a> (<a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
+    <a href="#faq3_5">3.5 When using nested folders there are some multiple
+hierarchies displayed in a wrong manner?!</a> (<a
+href="#cfg_NavigationTreeTableSeparator"
+class="configrule">$cfg['NavigationTreeTableSeparator']</a>)</h4>
 
 <p> Lütfen unutmayın aralarında herhangi bir karakter olmadan çok kez ayırma
 dizgisi kullanmamalısınız ya da tablo adınızın başında/sonunda. Eğer
@@ -4162,11 +4137,11 @@ anlamına gelir ve NULL değeri değil (bu PHP4'te çalışır).
 <h4 id="faq6_4">
     <a href="#faq6_4">6.4 Veritabanımı veya tablomu nasıl yedekleyebilirim?</a></h4>
 
-<p> Sol çerçevedeki veritabanı ve tablo adına tıklayın, özellikleri
-görüntülenecektir. Sonra menüde, &quot;Dışa Aktar&quot;a tıklayın, yapıyı,
-veriyi ya da her ikisinide dökümleyebilirsiniz. Bu, veritabanınızı/tablonuzu
-yeniden oluşturmak için kullanılabilecek standart <abbr title="structured
-query language">SQL</abbr> ifadelerini oluşturacaktır.
+<p> Click on a database or table name in the navigation panel, the properties
+will be displayed.  Then on the menu, click &quot;Export&quot;, you can dump
+the structure, the data, or both. This will generate standard <abbr
+title="structured query language">SQL</abbr> statements that can be used to
+recreate your database/table.
     <br /><br />
     &quot;Dosya olarak kaydet&quot;i seçmeniz gerekecek, böylece phpMyAdmin
 bilgisayarınıza dökümün sonucunu gönderebilir. PHP yapılandırmanıza bağlı
@@ -4182,13 +4157,12 @@ arayın.</p>
 yüklerim (gönderirim)? &quot;.sql&quot; dosyasını nasıl
 çalıştırabilirim?</a></h4>
 
-<p> Sol çerçevede veritabanı adına tıklayın, özellikleri
-görüntülenecektir. Sağ&#8211;taraftaki çerçeveden (veya phpMyAdmin sürümünüz
-2.7.0'dan öncesiyse, &quot;<abbr title="structured query
-language">SQL</abbr>&quot;den) sekmeler listesinden &quot;İçe Aktar&quot;ı
-seçin. &quot;İçe Aktarmak için Dosya&quot;  bölümünde, &quot;Bilgisayarınıza
-gözat&quot; kısmında döküm dosya adınızın yolu için Dosya Seçin düğmesini
-kullanın. Sonrada Git'e tıklayın.
+<p> Click on a database name in the navigation panel, the properties will be
+displayed. Select &quot;Import&quot; from the list of tabs in the
+right&#8211;hand frame (or &quot;<abbr title="structured query
+language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
+2.7.0). In the &quot;Location of the text file&quot; section, type in the
+path to your dump filename, or use the Browse button. Then click Go.
     <br /><br />
     2.7.0 sürümü ile içe aktarma motoru yeniden yazıldı, eğer mümkünse yeni
 özelliklerin avantajına sahip olmak için yükseltmeniz önerilir.
@@ -4253,7 +4227,7 @@ seçin</li>
 
 <p> Sonrada bunun gibi deneyin:</p>
 
-<ul><li>Sol çerçevede vt adınıza tıklayın</li>
+<ul><li>Click on your db name in the navigation panel</li>
     <li>&quot;Sorgu&quot;yu seçin</li>
     <li>Tabloları kullanın: persons, towns, countries</li>
     <li>&quot;Sorguyu güncelle&quot;ye tıklayın</li>
@@ -4290,7 +4264,7 @@ yapılandırma değişkenleri doldurulmalı.
 sayfalarda olacak?
 </p>
 <ul>
-    <li>Sol çerçeveden veritabanınızı seçin.</li>
+    <li>Select your database in the navigation panel.</li>
     <li>En üstte rehber çubuğundan &quot;İşlemler&quot;i seçin.</li>
     <li>Sayfanın en altında yanında &quot;<abbr title="Portable Document
 Format">PDF</abbr> Sayfaları Düzenle&quot;yi seçin.</li>

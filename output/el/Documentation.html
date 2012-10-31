@@ -677,11 +677,6 @@ mcrypt λείπει για την πιστοποίηση cookie. Μπορείτ�
     <dd>Εμφάνιση προειδοποίησης σχετικά με τις ημιτελής μεταφράσεις για ορισμένο
 κατώτατο όριο.</dd>
 
-    <dt id="cfg_AllowThirdPartyFraming">Αληθές/Ψευδές $cfg['AllowThirdPartyFraming']</dt>
-    <dd>Ορίζοντάς το σε <code>true</code> σας επιτρέπει μια σελίδα που βρίσκεται σε
-άλλο διακομιστή να καλεί το phpMyAdmin μέσα σε ένα frame, κάτι που είναι
-τρύπα ασφαλείας που επιτρέπει εισβολές στον κώδικα μέσω frames.</dd>
-
     <dt id="cfg_blowfish_secret">κείμενο $cfg['blowfish_secret']</dt>
     <dd>Το auth_type ως «cookie» χρσησιμοποιεί τον αλγόριθμο blowfish για
 κρυπτογράφηση του κωδικού.<br />
@@ -891,9 +886,9 @@ databases can't be used.</span>
 <code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
-        Από την έκδοση 2.5.5 του phpMyAdmin η ταξινόμηση εντός της σειράς
-χρησιμοποιείται για την ταξινόμηση των βάσεων δεδομένων στο αριστερό πλαίσιο
-για να μπορείτε να τακτοποιείτε τις βάσεις δεδομένων σας.<br />
+        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
+databases in the navigation panel, so that you can individually arrange your
+databases.<br />
         If you want to have certain databases at the top, but don't care about the
 others, you do not need to specify all other databases. Use:
 <code>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</code>
@@ -1135,14 +1130,14 @@ phpMyAdmin</li>
         κείμενο <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span>
     </dt>
     <dd>
-        Since release 3.5.0 you can show recently used tables in the left navigation
-frame.  It helps you to jump across table directly, without the need to
+        Since release 3.5.0 you can show recently used tables in the navigation
+panel.  It helps you to jump across table directly, without the need to
 select the database, and then select the table. Using <a
-href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
+href="#cfg_NumRecentTables" class="configrule">$cfg['NumRecentTables']</a>
 you can configure the maximum number of recent tables shown. When you select
 a table from the list, it will jump to the page specified in <a
-href="#cfg_LeftDefaultTabTable"
-class="configrule">$cfg['LeftDefaultTabTable']</a>.<br/><br/>
+href="#cfg_NavigationTreeDefaultTabTable"
+class="configrule">$cfg['NavigationTreeDefaultTabTable']</a>.<br/><br/>
 
         Χωρίς τη ρύθμιση αποθήκευσης, μπορείτε να έχετε πρόσβαση στους πίνακες που
 χρησιμοποιήθηκαν πρόσφατα, αλλά θα εξαφανιστεί μετά την αποσύνδεσή σας.<br/><br/>
@@ -1438,9 +1433,8 @@ probably be too slow, so it can be replaced by faster commands (see
     </dd>
     <dt>Αληθές/Ψευδές <span
 id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
-    <dd>Αν θέλετε να μετράται ο αριθμός των πινάκων για κάθε βάση δεδομένων, κατά
-την προετοιμασία του καταλόγου των βάσεων δεδομένων για το πλαίσιο
-πλοήγησης.
+    <dd>Whether to count the number of tables for each database when preparing the
+list of databases for the navigation panel.
     </dd>
     <dt>κείμενο <span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span></dt>
@@ -1506,8 +1500,11 @@ the Designer feature is Ajax-only so this directive does not apply to it.</dd>
 javascript στη βασική σελίδα του phpMyAdmin.</dd>
 
     <dt id="cfg_MaxDbList">ακέραιος $cfg['MaxDbList']</dt>
-    <dd>Ο μέγιστος αριθμός ονομάτων των βάσεων δεδομένων που θα εμφαίζεται στο
-πλαίσιο πλοήγησης και στη λίστα των βάσεων δεδομένων.</dd>
+    <dd>The maximum number of database names to be displayed in the database list.</dd>
+
+    <dt id="cfg_MaxNavigationItems">$cfg['MaxNavigationItems'] integer</dt>
+    <dd>The number of items that can be displayed on each page of the navigation
+tree.</dd>
 
     <dt id="cfg_MaxTableList">ακέραιος $cfg['MaxTableList']</dt>
     <dd>The maximum number of table names to be displayed in the main panel's list
@@ -1659,26 +1656,18 @@ title="HyperText Transfer Protocol">HTTP</abbr> server is placed.
     <dt id ="cfg_Error_Handler_gather">Αληθές/Ψευδές $cfg['Error_Handler']['gather']</dt>
     <dd>Αν θέλετε να συγκεντρώνετε σφάλματα από την PHP ή όχι.</dd>
 
-    <dt id="cfg_LeftFrameLight">Αληθές/Ψευδές $cfg['LeftFrameLight']</dt>
-    <dd>Defines whether to use a select-based menu and display only the current
-tables in the left frame (smaller page). Only in Non-Lightmode you can use
-the feature to display nested folders using <a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>
+    <dt id="cfg_NavigationTreeEnableGrouping">$cfg['NavigationTreeEnableGrouping'] boolean</dt>
+    <dd>Defines whether to group the databases based on a common prefix prefix in
+their name <a href="#cfg_NavigationTreeDbSeparator"
+class="configrule">$cfg['NavigationTreeDbSeparator']</a>.
     </dd>
 
-    <dt id="cfg_LeftFrameDBTree">Αληθές/Ψευδές $cfg['LeftFrameDBTree']</dt>
-    <dd>Defines whether to display the names of databases (in the selector) using a
-tree, see also <a href="#cfg_LeftFrameDBSeparator"
-class="configrule">$cfg['LeftFrameDBSeparator']</a>.
-    </dd>
-
-    <dt id="cfg_LeftFrameDBSeparator">κείμενο ή σειρά $cfg['LeftFrameDBSeparator']</dt>
+    <dt id="cfg_NavigationTreeDbSeparator">$cfg['NavigationTreeDbSeparator'] string or array</dt>
     <dd>The string used to separate the parts of the database name when showing them
 in a tree. Alternatively you can specify more strings in an array and all of
 them will be used as a separator.</dd>
 
-    <dt id="cfg_LeftFrameTableSeparator">κείμενο $cfg['LeftFrameTableSeparator']</dt>
+    <dt id="cfg_NavigationTreeTableSeparator">$cfg['NavigationTreeTableSeparator'] string or array</dt>
     <dd>Defines a string to be used to nest table spaces. Defaults to '__'.  This
 means if you have tables like 'first__second__third' this will be shown as a
 three-level hierarchy like: first &gt; second &gt; third.  If set to FALSE
@@ -1686,66 +1675,52 @@ or empty, the feature is disabled.  NOTE: You should not use this separator
 at the beginning or end of a table name or multiple times after another
 without any other characters in between.</dd>
 
-    <dt id="cfg_LeftFrameTableLevel">κείμενο $cfg['LeftFrameTableLevel']</dt>
+    <dt id="cfg_NavigationTreeTableLevel">$cfg['NavigationTreeTableLevel'] integer</dt>
     <dd>Ορίζει πόσα υποεπίπεδα πρέπει να εμφανίζονται όταν διασπόνται πινάκες από το
 παραπάνω διαχωριστικό.</dd>
 
-    <dt id="cfg_LeftRecentTable">ακέραιος $cfg['LeftRecentTable']</dt>
-    <dd>Ο μέγιστος αριθμός των πρόσφατα χρησιμοποιημένων πινάκων που εμφανίζονται
-στο αριστερό πλαίσιο περιοχής περιήγησης. Ορίστε το σε 0 (μηδέν) για να
-απενεργοποιήσετε τη λίστα των πρόσφατων πίνακων.</dd>
+    <dt id="cfg_NumRecentTables">$cfg['NumRecentTables'] integer</dt>
+    <dd>The maximum number of recently used tables shown in the navigation
+panel. Set this to 0 (zero) to disable the listing of recent tables.</dd>
 
     <dt id="cfg_ShowTooltip">Αληθές/Ψευδές $cfg['ShowTooltip']</dt>
-    <dd>Ορίζει εάν θα εμφανιστεί το σχόλιο του πίνακα ως εξεξήγηση στο αριστερό
-πλαίσιο ή όχι.</dd>
+    <dd>Defines whether to display item comments as tooltips in navigation panel or
+not.</dd>
 
-    <dt id="cfg_ShowTooltipAliasDB">Αληθές/Ψευδές $cfg['ShowTooltipAliasDB']</dt>
-    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a database called 'user0001'
-and add the comment 'MyName' on it, you will see the name 'MyName' used
-consequently in the left frame and the tool-tip shows the real name of the
-DB.</dd>
-
-    <dt id="cfg_ShowTooltipAliasTB">Αληθές/Ψευδές-κείμενο $cfg['ShowTooltipAliasTB']</dt>
-    <dd>Same as <a href="#cfg_ShowTooltipAliasDB"
-class="configrule">$cfg['ShowTooltipAliasDB']</a>, except this works for
-table names.  When setting this to 'nested', the Alias of the Tablename is
-only used to split/nest the tables according to the <a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a> directive. So only
-the folder is called like the Alias, the tablename itself stays the real
-tablename.</dd>
-
-    <dt id="cfg_LeftDisplayLogo">Αληθές/Ψευδές $cfg['LeftDisplayLogo']</dt>
-    <dd>Ορίζει αν πρέπει ή όχι να εμφανίστει το λογότυπο του phpMyAdmin στην κορυφή
-του αριστερού πλαισίου. Η προεπιλογή είναι <code>TRUE</code>.</dd>
-    <dt id="cfg_LeftLogoLink">κείμενο $cfg['LeftLogoLink']</dt>
+    <dt id="cfg_NavigationDisplayLogo">$cfg['NavigationDisplayLogo'] boolean</dt>
+    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the
+navigation panel. Defaults to <code>TRUE</code>.</dd>
+    <dt id="cfg_NavigationLogoLink">$cfg['NavigationLogoLink'] string</dt>
     <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
-navigation frame will point to.  For use especially with self made theme
+navigation panel will point to.  For use especially with self made theme
 which changes this.  The default value for this is <code>main.php</code>.</dd>
 
-    <dt id="cfg_LeftLogoLinkWindow">κείμενο $cfg['LeftLogoLinkWindow']</dt>
+    <dt id="cfg_NavigationLogoLinkWindow">$cfg['NavigationLogoLinkWindow'] string</dt>
     <dd>Whether to open the linked page in the main window (<code>main</code>)  or
 in a new one (<code>new</code>). Note: use <code>new</code> if you are
 linking to <code>phpmyadmin.net</code>.</dd>
 
-    <dt id="cfg_LeftDisplayTableFilterMinimum">ακέραιος $cfg['LeftDisplayTableFilter']</dt>
-    <dd>Defines the minimum number of tables to display a JavaScript filter box
-above the list of tables in the left frame.  Defaults to <code>30</code>. To
-disable the filter completely some high number can be used (e.g. 9999)</dd>
+    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">$cfg['NavigationTreeDisplayItemFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of items (tables, views, routines and events)  to
+display a JavaScript filter box above the list of items in the navigation
+tree.  Defaults to <code>30</code>. To disable the filter completely some
+high number can be used (e.g. 9999)</dd>
 
-    <dt id="cfg_LeftDisplayServers">Αληθές/Ψευδές $cfg['LeftDisplayServers']</dt>
-    <dd>Ορίζει αν θα εμφανιστεί μια επιλογή διακομιστή στην κορυφή του αριστερού
-πλαισίου ή όχι. Η προεπιλογή είναι FALSE (ψευδές).</dd>
+    <dt id="cfg_NavigationTreeDisplayDatabaseFilterMinimum">
+    $cfg['NavigationTreeDisplayDatabaseFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of databases to display a JavaScript filter box
+above the list of databases in the navigation tree.  Defaults to
+<code>30</code>. To disable the filter completely some high number can be
+used (e.g. 9999)</dd>
+
+    <dt id="cfg_NavigationDisplayServers">$cfg['NavigationDisplayServers'] boolean</dt>
+    <dd>Defines whether or not to display a server choice at the top of the
+navigation panel. Defaults to FALSE.</dd>
     <dt id="cfg_DisplayServersList">Αληθές/Ψευδές $cfg['DisplayServersList']</dt>
     <dd>Ορίζει αν θα εμφανίζεται αυτή η επιλογή διακομιστή ως σύνδεσμοι αντί σε ένα
 αναδυόμενο μενού. Η προεπιλογή είναι FALSE (αναδυόμενο μενού).</dd>
-    <dt id="cfg_DisplayDatabasesList">Αληθές/Ψευδές ή κείμενο $cfg['DisplayDatabasesList']</dt>
-    <dd>Defines whether to display database choice in light navigation frame as
-links instead of in a drop-down. Defaults to 'auto' - on main page list is
-shown, when database is selected, only drop down is displayed.</dd>
 
-    <dt id="cfg_LeftDefaultTabTable">κείμενο $cfg['LeftDefaultTabTable']</dt>
+    <dt id="cfg_NavigationTreeDefaultTabTable">$cfg['NavigationTreeDefaultTabTable'] string</dt>
     <dd>Defines the tab displayed by default when clicking the small icon next to
 each table name in the navigation panel. Possible values:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
@@ -2075,7 +2050,7 @@ multiple maintenance operation. Default is <code>false</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">ακέραιος $cfg['NaviWidth']</dt>
-    <dd>Το πλάτος του πλαισίου NAVI σε εικονοστοιχεία (pixels). Δείτε to
+    <dd>Navigation panel width in pixels. See
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
@@ -2093,9 +2068,8 @@ CSS για υπόβαθρο]<br />
     <dd>Το στυλ που χρησιμοποιείται για το δείκτη του ποντικιού στο πλαίσιο
 navi. Δείτε το <code>themes/themename/layout.inc.php</code>.</dd>
 
-    <dt id="cfg_LeftPointerEnable">Αληθές/Ψευδές $cfg['LeftPointerEnable']</dt>
-    <dd>Μια τιμή <code>TRUE</code> ενεργοποιεί το δείκτη navi (όταν το
-LeftFrameLight έχει τιμή <code>FALSE</code>).</dd>
+    <dt id="cfg_NavigationTreePointerEnable">$cfg['NavigationTreePointerEnable'] boolean</dt>
+    <dd>A value of <code>TRUE</code> activates the navi pointer.</dd>
 
     <dt id="cfg_Border">ακέραιος $cfg['Border']</dt>
     <dd>Το μέγεθος του περιγράμματος ενός πίνακα. Δείτε το
@@ -2375,12 +2349,12 @@ mean.
         ακέραιος <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span>
     </dt>
     <dd>
-        All those variables affect the query window feature. A <code><abbr
+        All those variables affect the query window feature. A <code> <abbr
 title="structured query language">SQL</abbr></code> link or icon is always
-displayed on the left panel. If JavaScript is enabled in your browser, a
-click on this opens a distinct query window, which is a direct interface to
-enter <abbr title="structured query language">SQL</abbr> queries. Otherwise,
-the right panel changes to display a query box.<br /><br />
+displayed in the navigation panel. If JavaScript is enabled in your browser,
+a click on this opens a distinct query window, which is a direct interface
+to enter <abbr title="structured query language">SQL</abbr> queries.
+Otherwise, the right panel changes to display a query box.<br /><br />
 
         The size of this query window can be customized with
 <code>$cfg['QueryWindowWidth']</code> and
@@ -2445,8 +2419,8 @@ COUNT ... LIMIT</code>. Setting this to 0 bypasses any row counting.
 
     <dt id="cfg_NaturalOrder">Αληθές/Ψευδές $cfg['NaturalOrder']</dt>
     <dd>Sorts database and table names according to natural order (for example, t1,
-t2, t10). Currently implemented in the left panel (Light mode)  and in
-Database view, for the table list.</dd>
+t2, t10). Currently implemented in the navigation panel and in Database
+view, for the table list.</dd>
 
     <dt id="cfg_InitialSlidersState">κείμενο $cfg['InitialSlidersState']</dt>
     <dd>If set to <code>'closed'</code>, the visual sliders are initially in a
@@ -2711,12 +2685,12 @@ are: <Br />
 extends.</li>
     </ol>
     </p>
-    
+
 <p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
 the MIME type, MIME Subtype and transformation accordingly. getInfo()
 returns the transformation's description and possible options it may receive
 and applyTransformation() is the method that does the actual work of the
-transformation plug-in.</p>   
+transformation plug-in.</p>
 
 <p> Please see the libraries/plugins/transformations/TEMPLATE and
 libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
@@ -3602,8 +3576,8 @@ whitespace after the first two dashes of the line or add a # before it:
 <h4 id="faq3_5">
     <a href="#faq3_5">3.5 When using nested folders there are some multiple
 hierarchies displayed in a wrong manner?!</a> (<a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
+href="#cfg_NavigationTreeTableSeparator"
+class="configrule">$cfg['NavigationTreeTableSeparator']</a>)</h4>
 
 <p> Please note that you should not use the separating string multiple times
 without any characters between them, or at the beginning/end of your table
@@ -4108,9 +4082,9 @@ literal NULL in the column, and not a NULL value (this works in PHP4).
 <h4 id="faq6_4">
     <a href="#faq6_4">6.4 How can I backup my database or table?</a></h4>
 
-<p> Click on a database or table name in the left frame, the properties will be
-displayed.  Then on the menu, click &quot;Export&quot;, you can dump the
-structure, the data, or both. This will generate standard <abbr
+<p> Click on a database or table name in the navigation panel, the properties
+will be displayed.  Then on the menu, click &quot;Export&quot;, you can dump
+the structure, the data, or both. This will generate standard <abbr
 title="structured query language">SQL</abbr> statements that can be used to
 recreate your database/table.
     <br /><br />
@@ -4127,7 +4101,7 @@ this document.</p>
     <a href="#faq6_5">6.5 How can I restore (upload) my database or table using
 a dump? How can I run a &quot;.sql&quot; file? </a></h4>
 
-<p> Click on a database name in the left frame, the properties will be
+<p> Click on a database name in the navigation panel, the properties will be
 displayed. Select &quot;Import&quot; from the list of tabs in the
 right&#8211;hand frame (or &quot;<abbr title="structured query
 language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
@@ -4193,7 +4167,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 
 <p> Μετά ελέγξτε κάπως έτσι:</p>
 
-<ul><li>Click on your db name in the left frame</li>
+<ul><li>Click on your db name in the navigation panel</li>
     <li>Επιλέξτε «Ερώτημα»</li>
     <li>Χρήση πινάκων, ατόμων, πόλεων, χωρών</li>
     <li>Πατήστε την «Ενημέρωση ερωτήματος»</li>
@@ -4230,7 +4204,7 @@ Format">PDF</abbr> schema of my database?</a></h4>
 which pages?
 </p>
 <ul>
-    <li>Επιλέξτε τη βάση δεδομένων σας στο αριστερό πλαίσιο.</li>
+    <li>Select your database in the navigation panel.</li>
     <li>Choose &quot;Operations&quot; in the navigation bar at the top.</li>
     <li>Choose &quot;Edit <abbr title="Portable Document Format">PDF</abbr>
 Pages&quot; near the bottom of the page.</li>

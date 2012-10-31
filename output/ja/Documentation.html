@@ -521,10 +521,6 @@ MySQL library and server version.  You can set this parameter to
     <dt id="cfg_TranslationWarningThreshold">$cfg['TranslationWarningThreshold'] 整数</dt>
     <dd>指定されたしきい値に達していない不完全な翻訳に対して警告を表示します。</dd>
 
-    <dt id="cfg_AllowThirdPartyFraming">$cfg['AllowThirdPartyFraming'] 論理型</dt>
-    <dd>これを <code>TRUE</code>
-に設定すると、フレームに対して異なるドメインに置かれているページを許可します。このことは、クロスフレームスクリプト攻撃を可能にする潜在的なセキュリティホールにもなりえます。</dd>
-
     <dt id="cfg_blowfish_secret">$cfg['blowfish_secret'] 文字列</dt>
     <dd>「クッキー」認証方式は、パスワードを暗号化するために blowfish アルゴリズムを使用しています。<br />
         「クッキー」認証方式を利用する場合は、ここにお好みのランダムなパスフレーズを入力してください。このパスフレーズは blowfish
@@ -699,8 +695,9 @@ class="important">ほかのすべてのデータベースが使えなくなる�
 'db2');</code>」などとします。
         <br /><br />
 
-        phpMyAdmin 2.5.5
-で、左フレームのデータベースの並び順を決める際に、配列における並び順を利用するようになったため、データベースの配置を個別に指定できるようになりました。<br />
+        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
+databases in the navigation panel, so that you can individually arrange your
+databases.<br />
         いくつかのデータベースが最初に置かれていて、あとは構わないということであれば、残りのデータベースを指定する必要はありません。「<code>$cfg['Servers'][$i]['only_db']
 = array('db3', 'db4', '*');</code>」とした場合、db3 と db4
 が最初に置かれ、残りのデータベースはアルファベット順に並べられます。</dd>
@@ -886,12 +883,14 @@ class="configrule">$cfg['QueryHistoryMax']</a>
         <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span> 文字列
     </dt>
     <dd>
-        バージョン 3.5.0
-以降、左側のナビゲーションフレームで最近使用されたテーブルを表示することができます。データベースを選択することなく、直接テーブルへ移動することができます。<a
-href="#cfg_LeftRecentTable" class="configrule">$cfg['LeftRecentTable']</a>
-で最近使用したテーブルの表示できる最大数が設定できます。リストからテーブルを選択すると、指定されたページに <a
-href="#cfg_LeftDefaultTabTable"
-class="configrule">$cfg['LeftDefaultTabTable']</a> 内において移動が行われます。<br/><br/>
+        Since release 3.5.0 you can show recently used tables in the navigation
+panel.  It helps you to jump across table directly, without the need to
+select the database, and then select the table. Using <a
+href="#cfg_NumRecentTables" class="configrule">$cfg['NumRecentTables']</a>
+you can configure the maximum number of recent tables shown. When you select
+a table from the list, it will jump to the page specified in <a
+href="#cfg_NavigationTreeDefaultTabTable"
+class="configrule">$cfg['NavigationTreeDefaultTabTable']</a>.<br/><br/>
 
         phpMyAdmin 環境保管領域がなくても、最近使用されたテーブルにアクセスすることができますが、ログアウトすると記録は失われてしまいます。<br/><br/>
 
@@ -1148,7 +1147,8 @@ id="cfg_Servers_ShowDatabasesCommand">$cfg['Servers'][$i]['ShowDatabasesCommand'
     </dd>
     <dt><span id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span>
 論理型</dt>
-    <dd>ナビゲーションフレームにデータベースのリストを作成したときに、各データベースのテーブル数も表示するかどうか。
+    <dd>Whether to count the number of tables for each database when preparing the
+list of databases for the navigation panel.
     </dd>
     <dt><span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span> 文字列</dt>
@@ -1207,7 +1207,11 @@ phpMyAdmin を立ち上げたときに自動的にそのサーバに接続する
     <dd>javascript を使用した phpMyAdmin メインページ上の最新バージョンの確認を有効にします。</dd>
 
     <dt id="cfg_MaxDbList">$cfg['MaxDbList'] 整数</dt>
-    <dd>ナビゲーションフレームおよびデータベース一覧に表示されるデータベース名の最大数。</dd>
+    <dd>The maximum number of database names to be displayed in the database list.</dd>
+
+    <dt id="cfg_MaxNavigationItems">$cfg['MaxNavigationItems'] integer</dt>
+    <dd>The number of items that can be displayed on each page of the navigation
+tree.</dd>
 
     <dt id="cfg_MaxTableList">$cfg['MaxTableList'] 整数</dt>
     <dd>（エクスポートページを除く）メインパネルのリストに表示されるテーブル名の最大数。この制限は、軽快モード時のナビゲーションパネルにも適用されます。</dd>
@@ -1328,74 +1332,64 @@ title="ハイパーテキスト転送プロトコル">HTTP</abbr> サーバが�
     <dt id ="cfg_Error_Handler_gather">$cfg['Error_Handler']['gather'] 論理型</dt>
     <dd>PHP からのエラーを収集するかどうか。</dd>
 
-    <dt id="cfg_LeftFrameLight">$cfg['LeftFrameLight'] 論理型</dt>
-    <dd>select ベースのメニューを利用して現在利用できるテーブルのみを左フレーム（小さい方のページ）に表示するかどうかを定義します。<a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>
-を利用したフォルダの入れ子表示は、軽快モードではない場合のみ利用できます。
+    <dt id="cfg_NavigationTreeEnableGrouping">$cfg['NavigationTreeEnableGrouping'] boolean</dt>
+    <dd>Defines whether to group the databases based on a common prefix prefix in
+their name <a href="#cfg_NavigationTreeDbSeparator"
+class="configrule">$cfg['NavigationTreeDbSeparator']</a>.
     </dd>
 
-    <dt id="cfg_LeftFrameDBTree">$cfg['LeftFrameDBTree'] 論理型</dt>
-    <dd>(セレクターの) データベース名をツリー表示するかどうかを定義します。<a href="#cfg_LeftFrameDBSeparator"
-class="configrule">$cfg['LeftFrameDBSeparator']</a> もご覧ください。
-    </dd>
-
-    <dt id="cfg_LeftFrameDBSeparator">$cfg['LeftFrameDBSeparator'] 文字列または配列</dt>
+    <dt id="cfg_NavigationTreeDbSeparator">$cfg['NavigationTreeDbSeparator'] string or array</dt>
     <dd>データベース名をツリー表示するときに、分離する部分に使われる文字列。また、配列を使用して複数の文字列を指定することができます。その場合、それらは全て区切り文字として使用されます。</dd>
 
-    <dt id="cfg_LeftFrameTableSeparator">$cfg['LeftFrameTableSeparator'] 文字列</dt>
+    <dt id="cfg_NavigationTreeTableSeparator">$cfg['NavigationTreeTableSeparator'] string or array</dt>
     <dd>テーブルを入れ子表示するときの区切りとなる文字列を定義します。デフォルトは「__」です。つまり、「first__second__third」のようなテーブルがあったら、first
 &gt; second &gt; third のように三階層あるものとして表示されます。FALSE
 を指定するか、空欄になっている場合は、この機能は無効になります。注：この区切り文字をテーブル名の先頭ないし末尾にしたり、間にほかの文字を含めずに複数連続させてはなりません。</dd>
 
-    <dt id="cfg_LeftFrameTableLevel">$cfg['LeftFrameTableLevel'] 文字列</dt>
+    <dt id="cfg_NavigationTreeTableLevel">$cfg['NavigationTreeTableLevel'] integer</dt>
     <dd>テーブルを上記の区切り文字で分割表示する際に何層まで表示するかを定義します。</dd>
 
-    <dt id="cfg_LeftRecentTable">$cfg['LeftRecentTable'] 整数</dt>
-    <dd>左側のナビゲーションフレームで表示される最近使用したテーブルの最大数。この値を 0 に設定すると最近使用したテーブルのリストは無効になります。</dd>
+    <dt id="cfg_NumRecentTables">$cfg['NumRecentTables'] integer</dt>
+    <dd>The maximum number of recently used tables shown in the navigation
+panel. Set this to 0 (zero) to disable the listing of recent tables.</dd>
 
     <dt id="cfg_ShowTooltip">$cfg['ShowTooltip'] 論理型</dt>
-    <dd>テーブルのコメントをツールチップとして左フレームに表示するかどうかを定義します。</dd>
+    <dd>Defines whether to display item comments as tooltips in navigation panel or
+not.</dd>
 
-    <dt id="cfg_ShowTooltipAliasDB">$cfg['ShowTooltipAliasDB'] 論理型</dt>
-    <dd>If tool-tips are enabled and a DB comment is set, this will flip the comment
-and the real name. That means that if you have a database called 'user0001'
-and add the comment 'MyName' on it, you will see the name 'MyName' used
-consequently in the left frame and the tool-tip shows the real name of the
-DB.</dd>
+    <dt id="cfg_NavigationDisplayLogo">$cfg['NavigationDisplayLogo'] boolean</dt>
+    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the
+navigation panel. Defaults to <code>TRUE</code>.</dd>
+    <dt id="cfg_NavigationLogoLink">$cfg['NavigationLogoLink'] string</dt>
+    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
+navigation panel will point to.  For use especially with self made theme
+which changes this.  The default value for this is <code>main.php</code>.</dd>
 
-    <dt id="cfg_ShowTooltipAliasTB">$cfg['ShowTooltipAliasTB'] 論理型／文字列</dt>
-    <dd><a href="#cfg_ShowTooltipAliasDB"
-class="configrule">$cfg['ShowTooltipAliasDB']</a>
-と同じですが、こちらはテーブル名に対して働きます。「nested」に設定すると、テーブルの別名は <a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>
-ディレクティブによってテーブルを分割／入れ子するときにしか使われません。そのため、フォルダの方は別名に応じた名前になりますが、テーブル名そのものは本来のテーブル名のままになります。</dd>
-
-    <dt id="cfg_LeftDisplayLogo">$cfg['LeftDisplayLogo'] 論理型</dt>
-    <dd>phpMyAdmin ロゴを左フレームの最上部に表示するかどうかを定義します。デフォルトは <code>TRUE</code> です。</dd>
-    <dt id="cfg_LeftLogoLink">$cfg['LeftLogoLink'] 文字列</dt>
-    <dd>ナビゲーションフレームのロゴが指す <abbr title="インターネットアドレス">URL</abbr>
-を入力してください。とりわけ、独自の環境を作る場合には、これを変更することになるかもしれません。これのデフォルト値は
-<code>main.php</code> です。</dd>
-
-    <dt id="cfg_LeftLogoLinkWindow">$cfg['LeftLogoLinkWindow'] 文字列</dt>
+    <dt id="cfg_NavigationLogoLinkWindow">$cfg['NavigationLogoLinkWindow'] string</dt>
     <dd>リンクされているページを開こうとするときメインウィンドウ (<code>main</code>) か新しいウィンドウ
 (<code>new</code>) のどちらにするか。注：<code>phpmyadmin.net</code>
 にリンクしている場合は、<code>new</code> が使われます。</dd>
 
-    <dt id="cfg_LeftDisplayTableFilterMinimum">$cfg['LeftDisplayTableFilterMinimum'] 整数</dt>
-    <dd>左フレーム内のテーブルリストの上部に、JavaScript よる表示数を絞るための入力欄を表示させるテーブルの最小数を定義します。デフォルトは
-<code>30</code> です。絞り込みを無効にするには、予想されるテーブル使用数を上回るようにします (例：9999)。</dd>
+    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">$cfg['NavigationTreeDisplayItemFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of items (tables, views, routines and events)  to
+display a JavaScript filter box above the list of items in the navigation
+tree.  Defaults to <code>30</code>. To disable the filter completely some
+high number can be used (e.g. 9999)</dd>
 
-    <dt id="cfg_LeftDisplayServers">$cfg['LeftDisplayServers'] 論理型</dt>
-    <dd>サーバの選択肢を左フレームの最上部に表示するかどうかを定義します。デフォルトは FALSE です。</dd>
+    <dt id="cfg_NavigationTreeDisplayDatabaseFilterMinimum">
+    $cfg['NavigationTreeDisplayDatabaseFilterMinimum'] integer</dt>
+    <dd>Defines the minimum number of databases to display a JavaScript filter box
+above the list of databases in the navigation tree.  Defaults to
+<code>30</code>. To disable the filter completely some high number can be
+used (e.g. 9999)</dd>
+
+    <dt id="cfg_NavigationDisplayServers">$cfg['NavigationDisplayServers'] boolean</dt>
+    <dd>Defines whether or not to display a server choice at the top of the
+navigation panel. Defaults to FALSE.</dd>
     <dt id="cfg_DisplayServersList">$cfg['DisplayServersList'] 論理型</dt>
     <dd>そのサーバの選択肢をドロップダウンではなくリンクとして表示するかどうかを定義します。デフォルトは FALSE（ドロップダウン）です。</dd>
-    <dt id="cfg_DisplayDatabasesList">$cfg['DisplayDatabasesList'] 論理型または text</dt>
-    <dd>軽快モードのナビゲーションフレームのデータベースの選択において、ドロップダウンの代わりにリンク一覧を表示するかどうかを定義します。デフォルトの「auto」は、メインページではリストで、データベースが選択されているときのみドロップダウンで表示されます。</dd>
 
-    <dt id="cfg_LeftDefaultTabTable">$cfg['LeftDefaultTabTable'] 文字列</dt>
+    <dt id="cfg_NavigationTreeDefaultTabTable">$cfg['NavigationTreeDefaultTabTable'] string</dt>
     <dd>各テーブル名の隣にある小さなアイコンをクリックしたときにデフォルトで表示されるタブを定義します。可能な値は次のいずれかです。「tbl_structure.php」、「tbl_sql.php」、「tbl_select.php」、「tbl_change.php」、「sql.php」。</dd>
 
     <dt id="cfg_HideStructureActions">$cfg['HideStructureActions'] 論理型</dt>
@@ -1657,8 +1651,8 @@ title="インターネットアドレス">URL</abbr> に問題があるため、
     </dd>
 
     <dt id="cfg_NaviWidth">$cfg['NaviWidth'] 整数</dt>
-    <dd>ナビゲーションフレームの幅をピクセルで指定します。<code>themes/themename/layout.inc.php</code>
-をご覧ください。
+    <dd>Navigation panel width in pixels. See
+<code>themes/themename/layout.inc.php</code>.
     </dd>
 
     <dt><span id="cfg_NaviBackground">$cfg['NaviBackground']</span> 文字列 [背景用の CSS 色]<br />
@@ -1670,9 +1664,8 @@ title="インターネットアドレス">URL</abbr> に問題があるため、
         <span id="cfg_NaviPointerColor">$cfg['NaviPointerColor']</span> 文字列 [CSS 色]</dt>
     <dd>ナビゲーションフレームのポインタスタイル。<code>themes/themename/layout.inc.php</code> をご覧ください。</dd>
 
-    <dt id="cfg_LeftPointerEnable">$cfg['LeftPointerEnable'] 論理型</dt>
-    <dd><code>TRUE</code> の場合はナビゲーションのポインタを有効にします (LeftFrameLight が
-<code>FALSE</code> の場合)。</dd>
+    <dt id="cfg_NavigationTreePointerEnable">$cfg['NavigationTreePointerEnable'] boolean</dt>
+    <dd>A value of <code>TRUE</code> activates the navi pointer.</dd>
 
     <dt id="cfg_Border">$cfg['Border'] 整数</dt>
     <dd>テーブルの幅のサイズ。<code>themes/themename/layout.inc.php</code> をご覧ください。
@@ -1901,11 +1894,12 @@ setfacl -d -m "g:www-data:rwx" tmp
         <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax'] </span>整数
     </dt>
     <dd>
-        これらの変数はいずれもクエリウインドウ機能に関するものです。<code><abbr
-title="データベース用の問い合わせ言語">SQL</abbr></code> というリンクないしアイコンは常に左パネルに表示されます。ブラウザの
-JavaScript が有効になっている場合は、ここをクリックすると別のクエリウインドウが開き、<abbr
-title="データベース用の問い合わせ言語">SQL</abbr> クエリを直接入力できるようになります。JavaScript
-が無効の場合は、右パネルがクエリボックスに変わります。<br /><br />
+        All those variables affect the query window feature. A <code> <abbr
+title="structured query language">SQL</abbr></code> link or icon is always
+displayed in the navigation panel. If JavaScript is enabled in your browser,
+a click on this opens a distinct query window, which is a direct interface
+to enter <abbr title="structured query language">SQL</abbr> queries.
+Otherwise, the right panel changes to display a query box.<br /><br />
 
         このクエリウインドウの大きさは <code>$cfg['QueryWindowWidth']</code> と
 <code>$cfg['QueryWindowHeight']</code>
@@ -1954,7 +1948,9 @@ title="データベース用の問い合わせ言語">SQL</abbr> の修正」を
     </dd>
 
     <dt id="cfg_NaturalOrder">$cfg['NaturalOrder'] 論理型</dt>
-    <dd>データベースやテーブルの名前を自然な順番でソートします（たとえば、t1、t2、t10）。いまのところ左パネル（軽快モード）とデータベース画面のテーブル一覧に実装されています。</dd>
+    <dd>Sorts database and table names according to natural order (for example, t1,
+t2, t10). Currently implemented in the navigation panel and in Database
+view, for the table list.</dd>
 
     <dt id="cfg_InitialSlidersState">$cfg['InitialSlidersState'] 文字列</dt>
     <dd><code>「closed (閉じておく)」</code>に設定した場合、折り畳みは閉じた状態で表示されます。<code>「open
@@ -2164,12 +2160,12 @@ are: <Br />
 extends.</li>
     </ol>
     </p>
-    
+
 <p>The getMIMEType(), getMIMESubtype() and getName() methods return the name of
 the MIME type, MIME Subtype and transformation accordingly. getInfo()
 returns the transformation's description and possible options it may receive
 and applyTransformation() is the method that does the actual work of the
-transformation plug-in.</p>   
+transformation plug-in.</p>
 
 <p> Please see the libraries/plugins/transformations/TEMPLATE and
 libraries/plugins/transformations/TEMPLATE_ABSTRACT files for adding your
@@ -2951,9 +2947,10 @@ href="http://bugs.mysql.com/bug.php?id=21704">http://bugs.mysql.com/bug.php?id=2
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 入れ子のフォルダを使うと、複数の階層を持つものがおかしな表示になることがあります？！</a>(<a
-href="#cfg_LeftFrameTableSeparator"
-class="configrule">$cfg['LeftFrameTableSeparator']</a>)</h4>
+    <a href="#faq3_5">3.5 When using nested folders there are some multiple
+hierarchies displayed in a wrong manner?!</a> (<a
+href="#cfg_NavigationTreeTableSeparator"
+class="configrule">$cfg['NavigationTreeTableSeparator']</a>)</h4>
 
 <p> 区切り文字の使い方に注意ください。間に文字をはさまずに区切り文字を連続して使ったり、テーブル名の前後に区切り文字を使ってはいけないのです。どうしてもそうする必要があるなら、テーブル区切り文字に別のものを使用するか、この機能を無効にすることを検討してください。</p>
 
@@ -3366,8 +3363,11 @@ title="データベース用の問い合わせ言語">SQL</abbr> エラーを返
 <h4 id="faq6_4">
     <a href="#faq6_4">6.4 データベースやテーブルのバックアップはどうすればよいのでしょう。</a></h4>
 
-<p> 左フレームでデータベースまたはテーブル名をクリックします。プロパティが表示されますので、メニューの「エクスポート」をクリックします。構造、データ、あるいは構造とデータ両方をダンプできるようになります。生成されるのは標準的な
-<abbr title="データベース用の問い合わせ言語">SQL</abbr> 文ですので、データベース／テーブルを作り直すのに使えます。
+<p> Click on a database or table name in the navigation panel, the properties
+will be displayed.  Then on the menu, click &quot;Export&quot;, you can dump
+the structure, the data, or both. This will generate standard <abbr
+title="structured query language">SQL</abbr> statements that can be used to
+recreate your database/table.
     <br /><br />
     「ファイルに保存（Save as file）」を選択する必要も出てくることでしょう。「ファイルに保存」を選択すると、phpMyAdmin
 は生成されたダンプをパソコンなどの端末へ送信します。PHP の設定によっては、ダンプしたものを圧縮するオプションが表示されます。<a
@@ -3380,9 +3380,12 @@ href="#cfg_ExecTimeLimit" class="configrule">$cfg['ExecTimeLimit']</a>
     <a href="#faq6_5">6.5
 どうすればダンプからデータベースやテーブルを復元（アップロード）できるのでしょう。どうすれば「.sql」ファイルを実行できるのでしょう。</a></h4>
 
-<p> 左フレームでデータベース名をクリックします。プロパティが表示されるので、右フレームのタブ一覧から「インポート」(お使いの phpMyAdmin
-のバージョンが 2.7.0 より前の場合は「<abbr title="データベース用の問い合わせ言語">SQL</abbr>」)
-を選択してください。「アップロードファイル」の欄にダンプファイル名を入力するか、「参照」ボタンでファイルを指定して、「実行」をクリックします。
+<p> Click on a database name in the navigation panel, the properties will be
+displayed. Select &quot;Import&quot; from the list of tabs in the
+right&#8211;hand frame (or &quot;<abbr title="structured query
+language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
+2.7.0). In the &quot;Location of the text file&quot; section, type in the
+path to your dump filename, or use the Browse button. Then click Go.
     <br /><br />
     バージョン 2.7.0 以降はインポートエンジンが書き直されたため、可能であればお使いの phpMyAdmin
 を最新のバージョンにアップグレードして新しいインポート機能をご利用ください。
@@ -3439,7 +3442,7 @@ INSERT INTO REL_towns VALUES ('M', 'Montr&eacute;al');
 
 <p> それが済んだら、以下のようなテストをします。</p>
 
-<ul><li>左フレームでデータベース名をクリックします。</li>
+<ul><li>Click on your db name in the navigation panel</li>
     <li>「クエリ（Query）」を選択します。</li>
     <li>persons、towns、countries テーブルを選択します。</li>
     <li>「クエリの更新（Update query）」をクリックします</li>
@@ -3468,7 +3471,7 @@ title="ポータブル・ドキュメント・フォーマット">PDF</abbr> ス
     次に、スキーマのレイアウト、つまり、どのテーブルをどのページに入れるかを検討する必要があります。
 </p>
 <ul>
-    <li>左フレームのデータベース名を選択します。</li>
+    <li>Select your database in the navigation panel.</li>
     <li>上部のナビゲーションバーで「操作」を選択します。</li>
     <li>ページの底辺近くに表示される「<abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> のページを編集 (Edit
 <abbr title="ポータブル・ドキュメント・フォーマット">PDF</abbr> Pages)」を選択します。</li>
