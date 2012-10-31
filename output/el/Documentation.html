@@ -886,9 +886,9 @@ databases can't be used.</span>
 <code>$cfg['Servers'][$i]['only_db'] = array('db1', 'db2');</code>
         <br /><br />
 
-        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
-databases in the navigation panel, so that you can individually arrange your
-databases.<br />
+        Από την έκδοση 2.5.5 του phpMyAdmin, η ταξινόμηση εντός της σειράς
+χρησιμοποιείται για την ταξινόμηση των βάσεων δεδομένων στον πίνακα
+πλοήγησης, για να μπορείτε να τακτοποιείτε τις βάσεις δεδομένων σας.<br />
         If you want to have certain databases at the top, but don't care about the
 others, you do not need to specify all other databases. Use:
 <code>$cfg['Servers'][$i]['only_db'] = array('db3', 'db4', '*');</code>
@@ -1433,8 +1433,8 @@ probably be too slow, so it can be replaced by faster commands (see
     </dd>
     <dt>Αληθές/Ψευδές <span
 id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation panel.
+    <dd>Αν θέλετε να μετράται ο αριθμός των πινάκων για κάθε βάση δεδομένων, κατά
+την προετοιμασία της λίστας των βάσεων δεδομένων για τον πίνακα πλοήγησης.
     </dd>
     <dt>κείμενο <span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span></dt>
@@ -1500,11 +1500,12 @@ the Designer feature is Ajax-only so this directive does not apply to it.</dd>
 javascript στη βασική σελίδα του phpMyAdmin.</dd>
 
     <dt id="cfg_MaxDbList">ακέραιος $cfg['MaxDbList']</dt>
-    <dd>The maximum number of database names to be displayed in the database list.</dd>
+    <dd>Ο μέγιστος αριθμός ονομάτων των βάσεων δεδομένων που θα εμφαίζεται στη λίστα
+των βάσεων δεδομένων.</dd>
 
-    <dt id="cfg_MaxNavigationItems">$cfg['MaxNavigationItems'] integer</dt>
-    <dd>The number of items that can be displayed on each page of the navigation
-tree.</dd>
+    <dt id="cfg_MaxNavigationItems">ακέραιος $cfg['MaxNavigationItems']</dt>
+    <dd>Ο αριθμός των αντικειμένων που μπορούν να εμφανίζονται σε κάθε σελίδα του
+δέντρου πλοήγησης.</dd>
 
     <dt id="cfg_MaxTableList">ακέραιος $cfg['MaxTableList']</dt>
     <dd>The maximum number of table names to be displayed in the main panel's list
@@ -1656,18 +1657,18 @@ title="HyperText Transfer Protocol">HTTP</abbr> server is placed.
     <dt id ="cfg_Error_Handler_gather">Αληθές/Ψευδές $cfg['Error_Handler']['gather']</dt>
     <dd>Αν θέλετε να συγκεντρώνετε σφάλματα από την PHP ή όχι.</dd>
 
-    <dt id="cfg_NavigationTreeEnableGrouping">$cfg['NavigationTreeEnableGrouping'] boolean</dt>
+    <dt id="cfg_NavigationTreeEnableGrouping">Αληθές/Ψευδές $cfg['NavigationTreeEnableGrouping']</dt>
     <dd>Defines whether to group the databases based on a common prefix prefix in
 their name <a href="#cfg_NavigationTreeDbSeparator"
 class="configrule">$cfg['NavigationTreeDbSeparator']</a>.
     </dd>
 
-    <dt id="cfg_NavigationTreeDbSeparator">$cfg['NavigationTreeDbSeparator'] string or array</dt>
+    <dt id="cfg_NavigationTreeDbSeparator">κείμενο ή σειρά $cfg['NavigationTreeDbSeparator']</dt>
     <dd>The string used to separate the parts of the database name when showing them
 in a tree. Alternatively you can specify more strings in an array and all of
 them will be used as a separator.</dd>
 
-    <dt id="cfg_NavigationTreeTableSeparator">$cfg['NavigationTreeTableSeparator'] string or array</dt>
+    <dt id="cfg_NavigationTreeTableSeparator">κείμενο ή σειρά $cfg['NavigationTreeTableSeparator']</dt>
     <dd>Defines a string to be used to nest table spaces. Defaults to '__'.  This
 means if you have tables like 'first__second__third' this will be shown as a
 three-level hierarchy like: first &gt; second &gt; third.  If set to FALSE
@@ -1675,52 +1676,53 @@ or empty, the feature is disabled.  NOTE: You should not use this separator
 at the beginning or end of a table name or multiple times after another
 without any other characters in between.</dd>
 
-    <dt id="cfg_NavigationTreeTableLevel">$cfg['NavigationTreeTableLevel'] integer</dt>
+    <dt id="cfg_NavigationTreeTableLevel">ακέραιος $cfg['NavigationTreeTableLevel']</dt>
     <dd>Ορίζει πόσα υποεπίπεδα πρέπει να εμφανίζονται όταν διασπόνται πινάκες από το
 παραπάνω διαχωριστικό.</dd>
 
-    <dt id="cfg_NumRecentTables">$cfg['NumRecentTables'] integer</dt>
-    <dd>The maximum number of recently used tables shown in the navigation
-panel. Set this to 0 (zero) to disable the listing of recent tables.</dd>
+    <dt id="cfg_NumRecentTables">ακέραιος $cfg['NumRecentTables']</dt>
+    <dd>Ο μέγιστος αριθμός των πρόσφατα χρησιμοποιημένων πινάκων που εμφανίζονται
+στον πίνακα πλοήγησης. Ορίστε το σε 0 (μηδέν) για να απενεργοποιήσετε τη
+λίστα των πρόσφατων πίνακων.</dd>
 
     <dt id="cfg_ShowTooltip">Αληθές/Ψευδές $cfg['ShowTooltip']</dt>
-    <dd>Defines whether to display item comments as tooltips in navigation panel or
-not.</dd>
+    <dd>Ορίζει εάν θα εμφανιστεί το σχόλιο του αντικειμένου ως εξεξήγηση στον πίνακα
+πλοήγησης ή όχι.</dd>
 
-    <dt id="cfg_NavigationDisplayLogo">$cfg['NavigationDisplayLogo'] boolean</dt>
-    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the
-navigation panel. Defaults to <code>TRUE</code>.</dd>
-    <dt id="cfg_NavigationLogoLink">$cfg['NavigationLogoLink'] string</dt>
+    <dt id="cfg_NavigationDisplayLogo">Αληθές/Ψευδές $cfg['NavigationDisplayLogo']</dt>
+    <dd>Ορίζει αν πρέπει ή όχι να εμφανίστει το λογότυπο του phpMyAdmin στην κορυφή
+του πίνακα πλοήγησης. Η προεπιλογή είναι <code>TRUE</code>.</dd>
+    <dt id="cfg_NavigationLogoLink">κείμενο $cfg['NavigationLogoLink']</dt>
     <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
 navigation panel will point to.  For use especially with self made theme
 which changes this.  The default value for this is <code>main.php</code>.</dd>
 
-    <dt id="cfg_NavigationLogoLinkWindow">$cfg['NavigationLogoLinkWindow'] string</dt>
+    <dt id="cfg_NavigationLogoLinkWindow">κείμενο $cfg['NavigationLogoLinkWindow']</dt>
     <dd>Whether to open the linked page in the main window (<code>main</code>)  or
 in a new one (<code>new</code>). Note: use <code>new</code> if you are
 linking to <code>phpmyadmin.net</code>.</dd>
 
-    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">$cfg['NavigationTreeDisplayItemFilterMinimum'] integer</dt>
+    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">ακέραιος $cfg['NavigationTreeDisplayItemFilterMinimum']</dt>
     <dd>Defines the minimum number of items (tables, views, routines and events)  to
 display a JavaScript filter box above the list of items in the navigation
 tree.  Defaults to <code>30</code>. To disable the filter completely some
 high number can be used (e.g. 9999)</dd>
 
     <dt id="cfg_NavigationTreeDisplayDatabaseFilterMinimum">
-    $cfg['NavigationTreeDisplayDatabaseFilterMinimum'] integer</dt>
+    ακέραιος $cfg['NavigationTreeDisplayDatabaseFilterMinimum']</dt>
     <dd>Defines the minimum number of databases to display a JavaScript filter box
 above the list of databases in the navigation tree.  Defaults to
 <code>30</code>. To disable the filter completely some high number can be
 used (e.g. 9999)</dd>
 
-    <dt id="cfg_NavigationDisplayServers">$cfg['NavigationDisplayServers'] boolean</dt>
-    <dd>Defines whether or not to display a server choice at the top of the
-navigation panel. Defaults to FALSE.</dd>
+    <dt id="cfg_NavigationDisplayServers">Αληθές/Ψευδές $cfg['NavigationDisplayServers']</dt>
+    <dd>Ορίζει αν θα εμφανιστεί μια επιλογή διακομιστή στην κορυφή του πίνκαα
+πλοήγησης ή όχι. Η προεπιλογή είναι FALSE (ψευδές).</dd>
     <dt id="cfg_DisplayServersList">Αληθές/Ψευδές $cfg['DisplayServersList']</dt>
     <dd>Ορίζει αν θα εμφανίζεται αυτή η επιλογή διακομιστή ως σύνδεσμοι αντί σε ένα
 αναδυόμενο μενού. Η προεπιλογή είναι FALSE (αναδυόμενο μενού).</dd>
 
-    <dt id="cfg_NavigationTreeDefaultTabTable">$cfg['NavigationTreeDefaultTabTable'] string</dt>
+    <dt id="cfg_NavigationTreeDefaultTabTable">κείμενο $cfg['NavigationTreeDefaultTabTable']</dt>
     <dd>Defines the tab displayed by default when clicking the small icon next to
 each table name in the navigation panel. Possible values:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
@@ -2050,7 +2052,7 @@ multiple maintenance operation. Default is <code>false</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">ακέραιος $cfg['NaviWidth']</dt>
-    <dd>Navigation panel width in pixels. See
+    <dd>Το πλάτος του πίνακα πλοήγηησς σε εικονοστοιχεία (pixels). Δείτε to
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
@@ -2068,8 +2070,8 @@ CSS για υπόβαθρο]<br />
     <dd>Το στυλ που χρησιμοποιείται για το δείκτη του ποντικιού στο πλαίσιο
 navi. Δείτε το <code>themes/themename/layout.inc.php</code>.</dd>
 
-    <dt id="cfg_NavigationTreePointerEnable">$cfg['NavigationTreePointerEnable'] boolean</dt>
-    <dd>A value of <code>TRUE</code> activates the navi pointer.</dd>
+    <dt id="cfg_NavigationTreePointerEnable">Αληθές/Ψευδές $cfg['NavigationTreePointerEnable']</dt>
+    <dd>Μια τιμή <code>TRUE</code> ενεργοποιεί το δείκτη πλοήγησης.</dd>
 
     <dt id="cfg_Border">ακέραιος $cfg['Border']</dt>
     <dd>Το μέγεθος του περιγράμματος ενός πίνακα. Δείτε το
@@ -4204,7 +4206,7 @@ Format">PDF</abbr> schema of my database?</a></h4>
 which pages?
 </p>
 <ul>
-    <li>Select your database in the navigation panel.</li>
+    <li>Επιλέξτε τη βάση δεδομένων σας στον πίνακα πλοήγησης.</li>
     <li>Choose &quot;Operations&quot; in the navigation bar at the top.</li>
     <li>Choose &quot;Edit <abbr title="Portable Document Format">PDF</abbr>
 Pages&quot; near the bottom of the page.</li>
