@@ -881,9 +881,9 @@ class="important">otras bases de datos aún pueden ser utilizadas</span>.
 <code>$cfg['Servers'][$i]['only_db'] = array('base1', 'base2');</code>
         <br /><br />
 
-        As of phpMyAdmin 2.5.5 the order inside the array is used for sorting the
-databases in the navigation panel, so that you can individually arrange your
-databases.<br />
+        Desde phpMyAdmin 2.5.5 el orden del array es el utilizado para ordenar las
+bases de datos en el panel de navegación para que pueda ordenar sus bases de
+datos como prefiera.<br />
         Si se desea tener ciertas bases de datos al principio pero ver todas las
 otras no es necesario especificarlas una por una. Utilice algo como
 <code>$cfg['Servers'][$i]['only_db'] = array('base3', 'base4', '*');</code>
@@ -1127,12 +1127,13 @@ phpMyAdmin</li>
         cadena <span id="cfg_Servers_recent">$cfg['Servers'][$i]['recent']</span>
     </dt>
     <dd>
-        Since release 3.5.0 you can show recently used tables in the navigation
-panel.  It helps you to jump across table directly, without the need to
-select the database, and then select the table. Using <a
-href="#cfg_NumRecentTables" class="configrule">$cfg['NumRecentTables']</a>
-you can configure the maximum number of recent tables shown. When you select
-a table from the list, it will jump to the page specified in <a
+        Desde la versión 3.5.0 se pueden mostrar las tablas recientemente utilizadas
+en el panel de navegación. Facilita el saltar entre tablas directamente sin
+tener que seleccionar la base de datos y luego seleccionar la
+tabla. Utilizando <a href="#cfg_NumRecentTables"
+class="configrule">$cfg['NumRecentTable']</a> puede configurar la máxima
+cantidad de tablas recientes a mostrar. Al seleccionar una tabla de la
+lista, saltará a la página especificada en <a
 href="#cfg_NavigationTreeDefaultTabTable"
 class="configrule">$cfg['NavigationTreeDefaultTabTable']</a>.<br/><br/>
 
@@ -1435,8 +1436,8 @@ ser reemplazado por órdenes más rápidas (revisa los ejemplos en
     </dd>
     <dt>booleano <span
 id="cfg_Servers_CountTables">$cfg['Servers'][$i]['CountTables']</span></dt>
-    <dd>Whether to count the number of tables for each database when preparing the
-list of databases for the navigation panel.
+    <dd>Si contar el número de tablas en cada base de datos al preparar la lista de
+bases de datos para el panel navegación.
     </dd>
     <dt>cadena <span
 id="cfg_Servers_SignonScript">$cfg['Servers'][$i]['SignonScript']</span></dt>
@@ -1504,11 +1505,12 @@ esta directiva no le aplica.</dd>
 página principal de phpMyAdmin.</dd>
 
     <dt id="cfg_MaxDbList">entero $cfg['MaxDbList']</dt>
-    <dd>The maximum number of database names to be displayed in the database list.</dd>
+    <dd>La cantidad máxima de nombres de bases de datos a mostrar en la lista de
+bases de datos.</dd>
 
-    <dt id="cfg_MaxNavigationItems">$cfg['MaxNavigationItems'] integer</dt>
-    <dd>The number of items that can be displayed on each page of the navigation
-tree.</dd>
+    <dt id="cfg_MaxNavigationItems">entero $cfg['MaxNavigationItems']</dt>
+    <dd>El número de elementos que pueden ser mostrados en cada página del árbol de
+navegación.</dd>
 
     <dt id="cfg_MaxTableList">entero $cfg['MaxTableList']</dt>
     <dd>La cantidad máxima de nombres de tablas a mostrar en la lista del panel
@@ -1667,18 +1669,18 @@ los usuarios acceso a servidores MySQL detrás del firewall del servidor
     <dt id ="cfg_Error_Handler_gather">booleano $cfg['Error_Handler']['gather']</dt>
     <dd>Si recolectar los errores de PHP o no.</dd>
 
-    <dt id="cfg_NavigationTreeEnableGrouping">$cfg['NavigationTreeEnableGrouping'] boolean</dt>
-    <dd>Defines whether to group the databases based on a common prefix prefix in
-their name <a href="#cfg_NavigationTreeDbSeparator"
+    <dt id="cfg_NavigationTreeEnableGrouping">booleano $cfg['NavigationTreeEnableGrouping']</dt>
+    <dd>Define si se agruparán las bases de datos según el prefijo común en su
+nombre <a href="#cfg_NavigationTreeDbSeparator"
 class="configrule">$cfg['NavigationTreeDbSeparator']</a>.
     </dd>
 
-    <dt id="cfg_NavigationTreeDbSeparator">$cfg['NavigationTreeDbSeparator'] string or array</dt>
+    <dt id="cfg_NavigationTreeDbSeparator">cadena o array $cfg['NavigationTreeDbSeparator']</dt>
     <dd>La cadena a utilizar para separar las partes del nombre de la base de datos
 al mostrarlas en un árbol. Alternativamente se pueden especificar más
 cadenas en un array y todas ellas van a ser utilizadas como separadores.</dd>
 
-    <dt id="cfg_NavigationTreeTableSeparator">$cfg['NavigationTreeTableSeparator'] string or array</dt>
+    <dt id="cfg_NavigationTreeTableSeparator">cadena o array $cfg['NavigationTreeTableSeparator']</dt>
     <dd>Define la cadena a utilizar para anidar espacios de tablas. El valor
 predeterminado es '__'. Esto significa que si tienes tablas como
 'primero__segundo__tercer' van a ser mostrados como una jerarquía de tres
@@ -1687,53 +1689,56 @@ vacía, la funcionalidad estará desactivada. NOTA: no se debe utilizar este
 separador al principio o al final del nombre de una tabla o más de una vez
 seguida sin caracteres intermedios.</dd>
 
-    <dt id="cfg_NavigationTreeTableLevel">$cfg['NavigationTreeTableLevel'] integer</dt>
+    <dt id="cfg_NavigationTreeTableLevel">entero $cfg['NavigationTreeTableLevel']</dt>
     <dd>Define la cantidad de sub-niveles a mostrar cuando se separen nombres de
 tabla con el separador anterior.</dd>
 
-    <dt id="cfg_NumRecentTables">$cfg['NumRecentTables'] integer</dt>
-    <dd>The maximum number of recently used tables shown in the navigation
-panel. Set this to 0 (zero) to disable the listing of recent tables.</dd>
+    <dt id="cfg_NumRecentTables">entero $cfg['NumRecentTable']</dt>
+    <dd>El número máximo de tablas utilizadas recientemente a mostrar en el panel de
+navegación. Configure como 0 (cero) para deshabilitar la lista de tablas
+recientes.</dd>
 
     <dt id="cfg_ShowTooltip">booleano $cfg['ShowTooltip']</dt>
-    <dd>Defines whether to display item comments as tooltips in navigation panel or
-not.</dd>
+    <dd>Define si mostrar comentarios de los elementos como texto suplementario en
+el panel de navegación o no.</dd>
 
-    <dt id="cfg_NavigationDisplayLogo">$cfg['NavigationDisplayLogo'] boolean</dt>
-    <dd>Defines whether or not to display the phpMyAdmin logo at the top of the
-navigation panel. Defaults to <code>TRUE</code>.</dd>
-    <dt id="cfg_NavigationLogoLink">$cfg['NavigationLogoLink'] string</dt>
-    <dd>Enter <abbr title="Uniform Resource Locator">URL</abbr> where logo in the
-navigation panel will point to.  For use especially with self made theme
-which changes this.  The default value for this is <code>main.php</code>.</dd>
+    <dt id="cfg_NavigationDisplayLogo">booleano $cfg['NavigationDisplayLogo']</dt>
+    <dd>Define si mostrar o no el logo de phpMyAdmin en la porción superior del
+panel de navegación. El valor predeterminado es <code>TRUE</code>.</dd>
+    <dt id="cfg_NavigationLogoLink">cadena $cfg['NavigationLogoLink']</dt>
+    <dd>Define la <abbr title="Uniform Resource Locator">URL</abbr> a la que
+apuntará el logo del panel de navegación. Para usar especialmente en temas
+personalizados que cambian esto. El valor predeterminado es
+<code>main.php</code>.</dd>
 
-    <dt id="cfg_NavigationLogoLinkWindow">$cfg['NavigationLogoLinkWindow'] string</dt>
+    <dt id="cfg_NavigationLogoLinkWindow">cadena $cfg['NavigationLogoLinkWindow']</dt>
     <dd>Si se abre la página enlazada en la ventana principal (<code>main</code>) o
 en una neva ventana (<code>new</code>). Nota: usar <code>new</code> si se
 está enlazando a <code>phpmyadmin.net</code>.</dd>
 
-    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">$cfg['NavigationTreeDisplayItemFilterMinimum'] integer</dt>
-    <dd>Defines the minimum number of items (tables, views, routines and events)  to
-display a JavaScript filter box above the list of items in the navigation
-tree.  Defaults to <code>30</code>. To disable the filter completely some
-high number can be used (e.g. 9999)</dd>
+    <dt id="cfg_NavigationTreeDisplayItemFilterMinimum">entero $cfg['NavigationTreeDisplayItemFilterMinimum']</dt>
+    <dd>Define la cantidad mínima de elementos (tablas, vistas, rutinas y eventos)
+con los que se mostrará una caja de filtro JavaScript sobre la lista de
+elementos en el árbol de navegación. El valor predeterminador es
+<code>30</code>. Para desactivar este filtro completamente se puede utilizar
+un número alto (por ejemplo: 9999)</dd>
 
     <dt id="cfg_NavigationTreeDisplayDatabaseFilterMinimum">
-    $cfg['NavigationTreeDisplayDatabaseFilterMinimum'] integer</dt>
-    <dd>Defines the minimum number of databases to display a JavaScript filter box
-above the list of databases in the navigation tree.  Defaults to
-<code>30</code>. To disable the filter completely some high number can be
-used (e.g. 9999)</dd>
+    entero $cfg['NavigationTreeDisplayTableFilterMinimum']</dt>
+    <dd>Define la cantidad mínima de bases de datos para mostrar un filtro
+JavaScript sobre la lista en árbol de navegación. El valor predeterminador
+es <code>30</code>. Para desactivar este filtro completamente se puede
+utilizar un número alto (por ejemplo: 9999)</dd>
 
-    <dt id="cfg_NavigationDisplayServers">$cfg['NavigationDisplayServers'] boolean</dt>
-    <dd>Defines whether or not to display a server choice at the top of the
-navigation panel. Defaults to FALSE.</dd>
+    <dt id="cfg_NavigationDisplayServers">booleano $cfg['NavigationDisplayServers']</dt>
+    <dd>Define si se muestra una elección de servidor en la parte superior del panel
+de navegación. El valor predeterminado es FALSE.</dd>
     <dt id="cfg_DisplayServersList">booleano $cfg['DisplayServersList']</dt>
     <dd>Define si se muestra la elección de servidores como enlaces en lugar de una
 lista deplegable. El valor predeterminado es FALSE (muestra una lista
 desplegable).</dd>
 
-    <dt id="cfg_NavigationTreeDefaultTabTable">$cfg['NavigationTreeDefaultTabTable'] string</dt>
+    <dt id="cfg_NavigationTreeDefaultTabTable">cadena $cfg['NavigationTreeDefaultTabTable']</dt>
     <dd>Define la pestaña mostrada al pulsar sobre el pequeño icono junto a cada
 nombre de tabla en el panel de navegación. Valores posibles:
 &quot;tbl_structure.php&quot;, &quot;tbl_sql.php&quot;,
@@ -2073,7 +2078,7 @@ sobre múltiples tablas. El valor predeterminado es <code>false</code>.
     </dd>
 
     <dt id="cfg_NaviWidth">entero $cfg['NaviWidth']</dt>
-    <dd>Navigation panel width in pixels. See
+    <dd>Ancho del panel de navegación en píxeles. Revise
 <code>themes/themename/layout.inc.php</code>.
     </dd>
 
@@ -2091,8 +2096,8 @@ CSS para el fondo)
     <dd>El estilo a utilizar para el señalador en el marco de navegación. Revise
 <code>themes/themename/layout.inc.php</code>.</dd>
 
-    <dt id="cfg_NavigationTreePointerEnable">$cfg['NavigationTreePointerEnable'] boolean</dt>
-    <dd>A value of <code>TRUE</code> activates the navi pointer.</dd>
+    <dt id="cfg_NavigationTreePointerEnable">booleano $cfg['NavigationTreePointerEnable']</dt>
+    <dd>El valor <code>TRUE</code> activa el señalador en la navegación.</dd>
 
     <dt id="cfg_Border">entero $cfg['Border']</dt>
     <dd>El tamaño del borde las tablas. Revise
@@ -2127,10 +2132,10 @@ CSS)<br />
     </dt>
     <dd>Los colores (HTML) utilizados para el selector y marcador en el modo de
 exploración.<br />
-        La funcionalidad anterior reslata la fila sobre la que el mouse está pasando
-y luego permite marcar/desmarcar visualmente al pulsar en ellas. El
-resaltado/marcado de una columna es realizado al pasar sobre/pulsar la
-cabecera de la columna (fuera del texto).<br />
+        The former feature highlights the row over which your mouse is passing and
+the latter lets you visually mark/unmark rows by clicking on the
+corresponding checkbox. Highlighting / marking a column is done by hovering
+over / clicking the column's header (outside of the text).<br />
         Revise <code>themes/themename/layout.inc.php</code>.</dd>
 
 
@@ -2386,12 +2391,13 @@ visualización al examinar una tabla.
         entero <span id="cfg_QueryHistoryMax">$cfg['QueryHistoryMax']</span>
     </dt>
     <dd>
-        All those variables affect the query window feature. A <code> <abbr
-title="structured query language">SQL</abbr></code> link or icon is always
-displayed in the navigation panel. If JavaScript is enabled in your browser,
-a click on this opens a distinct query window, which is a direct interface
-to enter <abbr title="structured query language">SQL</abbr> queries.
-Otherwise, the right panel changes to display a query box.<br /><br />
+        Todas estas variables afectan la funcionalidad de la ventana de
+consultas. Un enlace o ícono <code><abbr title="structured query
+language">SQL</abbr></code> se muestra siempre en el panel de navegación. Si
+JavaScript está activado en el navegador, pulsarlo abre una ventana de
+consulta distinta que es una interfaz directa para ingresar consultas <abbr
+title="structured query language">SQL</abbr>. De lo contrario, el panel
+derecho cambiará para mostrar una caja de texto para consulta.<br /><br />
 
         El tamaño de esta ventana de consultas puede ser personalizado con
 <code>$cfg['QueryWindowWidth']</code> y
@@ -2461,9 +2467,9 @@ COUNT ... LIMIT</code>. Definirlo como 0 desactiva el recuento de filas.
     </dd>
 
     <dt id="cfg_NaturalOrder">booleano $cfg['NaturalOrder']</dt>
-    <dd>Sorts database and table names according to natural order (for example, t1,
-t2, t10). Currently implemented in the navigation panel and in Database
-view, for the table list.</dd>
+    <dd>Ordena los nombres de bases de datos y tablas según el orden natural (por
+ejemplo: t1, t2, t10). Actualmente implementado en el panel de navegación y
+en la exploración de bases de datos para la lista de tablas.</dd>
 
     <dt id="cfg_InitialSlidersState">cadena $cfg['InitialSlidersState']</dt>
     <dd>Si está configurado a <code>«closed»</code>, los deslizadores visuales
@@ -3665,8 +3671,8 @@ comienzo:
 </p>
 
 <h4 id="faq3_5">
-    <a href="#faq3_5">3.5 When using nested folders there are some multiple
-hierarchies displayed in a wrong manner?!</a> (<a
+    <a href="#faq3_5">3.5 ¡Al utilizar carpetas anidadas algunas jerarquías
+múltiples se muestran incorrectamente!</a> (<a
 href="#cfg_NavigationTreeTableSeparator"
 class="configrule">$cfg['NavigationTreeTableSeparator']</a>)</h4>
 
@@ -4186,11 +4192,11 @@ valor NULL (esto funciona en PHP4).
 <h4 id="faq6_4">
     <a href="#faq6_4">6.4 ¿Cómo puedo respaldar mi base de datos o tabla?</a></h4>
 
-<p> Click on a database or table name in the navigation panel, the properties
-will be displayed.  Then on the menu, click &quot;Export&quot;, you can dump
-the structure, the data, or both. This will generate standard <abbr
-title="structured query language">SQL</abbr> statements that can be used to
-recreate your database/table.
+<p> Pulsa en el nombre de la base de datos o tabla en el panel de navegación
+para ver las propiedades. Luego, en el menú, pulsa &quot;Export&quot;, se
+puede volcar la estructura, los datos o ambos. Esto generará consultas <abbr
+title="structured query language">SQL</abbr> estándar que pueden ser
+utilizadas para crear la base de datos o tabla nuevamente.
     <br /><br />
     Necesitas elegir &quot;Guardar como archivo&quot;, para que phpMyAdmin pueda
 transmitir el volcado resultante a tu máquina. Dependiendo de la
@@ -4205,12 +4211,13 @@ documento.</p>
     <a href="#faq6_5">6.5 ¿Cómo puedo restaurar (subir) mi base de datos o tabla
 usando un volcado? ¿Cómo puedo ejecutar un archivo &quot;.sql&quot;?</a></h4>
 
-<p> Click on a database name in the navigation panel, the properties will be
-displayed. Select &quot;Import&quot; from the list of tabs in the
-right&#8211;hand frame (or &quot;<abbr title="structured query
-language">SQL</abbr>&quot; if your phpMyAdmin version is previous to
-2.7.0). In the &quot;Location of the text file&quot; section, type in the
-path to your dump filename, or use the Browse button. Then click Go.
+<p> Pulsa en el nombre de una base de datos en el panel de navegación para que
+se muestren las propiedades. Selecciona &quot;Importar&quot; de la lista de
+pestañas en el marco de la derecha (o &quot;<abbr title="structured query
+language">SQL</abbr>&quot; si es una version de phpMyAdmin anterior a
+2.7.0). En la sección de &quot;Ubicación del archivo de texto&quot; ingrese
+la ruta al archivo del volcado o utiliza el botón de examinación. Luego
+pulsa en Continuar.
     <br /><br />
     Con la versión 2.7.0, el motor de importación fue re-escrito, si es posible
 es sugerido que actualice para aprovechar las nuevas funcionalidades.
@@ -4273,7 +4280,7 @@ relaciones</li>
 
 <p> Luego prueba de la siguiente forma:</p>
 
-<ul><li>Click on your db name in the navigation panel</li>
+<ul><li>Pulsa en el nombre de la base de datos en el panel de navegación</li>
     <li>Elige &quot;Consulta&quot;</li>
     <li>Utiliza las tablas: persons, towns, countries</li>
     <li>Pulsa en &quot;Actualizar consulta&quot;</li>
@@ -4310,7 +4317,7 @@ Document Format">PDF</abbr> de mi base de datos?</a></h4>
 tienen que ir en qué páginas?
 </p>
 <ul>
-    <li>Select your database in the navigation panel.</li>
+    <li>Selecciona la base de datos en el panel de navegación.</li>
     <li>Selecciona &quot;Operaciones&quot; en la barra de navegación en la parte
 superior.</li>
     <li>Selecciona &quot;Editar páginas <abbr title="Portable Document
