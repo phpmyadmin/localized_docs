@@ -27,15 +27,18 @@ FAKE_MOFILES=$(foreach lang,$(LANGUAGES),$(addsuffix .mo, $(addprefix translated
 
 MOFILES=$(addsuffix .mo, $(addprefix po/,$(LANGUAGES)))
 
-CONFIGS=$(addsuffix .py, $(addprefix source/conf-,$(LANGUAGES)))
+CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
 
 all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 
 $(OUR_SOURCES) source/conf.py:
-	@rsync -a --delete --exclude 'conf-*.py' ../phpmyadmin/doc/ source/
+	@rsync -a --delete --exclude 'html' --exclude doctrees --exclude locale ../phpmyadmin/doc/ source/
 
-source/conf-%.py: source/conf.py Makefile
-	@sed 's/#language = None/language = "$*"\nlocale_dirs = ["..\/translated\/"]/' $< > $@
+docs/%/conf.py: source/conf.py Makefile
+	@mkdir -p docs/$*
+	@cd docs/$* && ln -sf ../../source/* .
+	@rm -f $@
+	@sed 's/#language = None/language = "$*"\nlocale_dirs = ["..\/..\/translated\/"]/' $< > $@
 
 locale/%.pot: $(OUR_SOURCES)
 	@make -C source/ gettext BUILDDIR=`pwd`
