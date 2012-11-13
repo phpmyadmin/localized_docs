@@ -7,14 +7,11 @@ LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN z
 # directory where phpMyAdmin sources are placed
 PMA_DIR=../phpmyadmin
 
-# phpMyAdmin version
-PMA_VERSION=$(shell sed -n "s/.*'PMA_VERSION', '\(.*\)'.*/\1/p" $(PMA_DIR)/libraries/Config.class.php)
-
 # Source documents
-SOURCES=$(wildcard ../phpmyadmin/doc/*.rst)
+SOURCES=$(wildcard $(PMA_DIR)/doc/*.rst)
 
 # Names of pages
-PAGES=$(subst .rst,,$(subst ../phpmyadmin/doc/,,$(SOURCES)))
+PAGES=$(subst .rst,,$(subst $(PMA_DIR)/doc/,,$(SOURCES)))
 
 # Copied sources
 OUR_SOURCES=$(addprefix source/, $(addsuffix .rst, $(PAGES)))
@@ -32,7 +29,7 @@ CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
 all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 
 $(OUR_SOURCES) source/conf.py:
-	@rsync -a --delete --exclude 'html' --exclude doctrees --exclude locale ../phpmyadmin/doc/ source/
+	@rsync -a --delete --exclude 'html' --exclude doctrees --exclude locale $(PMA_DIR)/doc/ source/
 
 docs/%/conf.py: source/conf.py Makefile
 	@mkdir -p docs/$*
