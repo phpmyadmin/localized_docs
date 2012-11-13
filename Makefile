@@ -28,7 +28,9 @@ CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
 
 all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 
-$(OUR_SOURCES) source/conf.py:
+FORCE:
+
+$(OUR_SOURCES) source/conf.py: FORCE
 	@rsync -a --delete --exclude 'html' --exclude doctrees --exclude locale $(PMA_DIR)/doc/ source/
 
 docs/%/conf.py: source/conf.py Makefile
