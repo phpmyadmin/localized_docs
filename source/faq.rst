@@ -233,7 +233,7 @@ Documentation <http://dev.mysql.com/doc/mysql/en/old-client.html>`_.
 1.19 I can't run the "display relations" feature because the script seems not to know the font face I'm using!
 --------------------------------------------------------------------------------------------------------------
 
-The "TCPDF" library we're using for this feature requires some special
+The :term:`TCPDF` library we're using for this feature requires some special
 files to use font faces. Please refers to the `TCPDF manual
 <http://www.tcpdf.org/>`_ to build these files.
 
@@ -324,10 +324,10 @@ should work.
 1.27 I get empty page when I want to view huge page (eg. db\_structure.php with plenty of tables).
 --------------------------------------------------------------------------------------------------
 
-This is a `PHP bug <http://bugs.php.net/21079>`_ that occur when GZIP
-output buffering is enabled. If you turn off it (by :config:option:`$cfg['OBGzip']` in
-:file:`config.inc.php`), it should work. This bug will be fixed in PHP
-5.0.0.
+This was caused by a `PHP bug <http://bugs.php.net/21079>`_ that occur when
+GZIP output buffering is enabled. If you turn off it (by
+:config:option:`$cfg['OBGzip']` in :file:`config.inc.php`), it should work.
+This bug will has been fixed in PHP 5.0.0.
 
 .. _faq1_28:
 
@@ -847,8 +847,7 @@ The invalid part of the code is the horizontal line made of dashes
 that appears once in every dump created with mysqldump. If you want to
 run your dump you have to turn it into valid MySQL. This means, you
 have to add a whitespace after the first two dashes of the line or add
-a # before it:  ``--
--------------------------------------------------------`` or
+a # before it:  ``-- -------------------------------------------------------`` or
 ``#---------------------------------------------------------``
 
 .. _faq3_5:
