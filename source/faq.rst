@@ -386,13 +386,13 @@ MMCache but upgrading MMCache to version 2.3.21 solves the problem.
 
 .. _faq1_31:
 
-1.31 Does phpMyAdmin support php5?
-----------------------------------
+1.31 Does phpMyAdmin support PHP 5?
+-----------------------------------
 
 Yes.
 
-Since release 3.0 only PHP 5.2 and newer. For older PHP versions 2.9
-branch is still maintained.
+Since release 3.0 only PHP 5.2 and newer. For older PHP versions, use
+phpMyAdmin 2.11.x.
 
 .. _faq1_32:
 
@@ -609,6 +609,13 @@ some robots accessing your installation.
     # Try google: intitle:phpMyAdmin intext:"Welcome to phpMyAdmin *.*.*" intext:"Log in" -wiki -forum -forums -questions intext:"Cookies must be enabled"
     RewriteCond %{HTTP_USER_AGENT} ^.*(AdsBot-Google|ia_archiver|Scooter|Ask.Jeeves|Baiduspider|Exabot|FAST.Enterprise.Crawler|FAST-WebCrawler|www\.neomo\.de|Gigabot|Mediapartners-Google|Google.Desktop|Feedfetcher-Google|Googlebot|heise-IT-Markt-Crawler|heritrix|ibm.com\cs/crawler|ICCrawler|ichiro|MJ12bot|MetagerBot|msnbot-NewsBlogs|msnbot|msnbot-media|NG-Search|lucene.apache.org|NutchCVS|OmniExplorer_Bot|online.link.validator|psbot0|Seekbot|Sensis.Web.Crawler|SEO.search.Crawler|Seoma.\[SEO.Crawler\]|SEOsearch|Snappy|www.urltrends.com|www.tkl.iis.u-tokyo.ac.jp/~crawler|SynooBot|crawleradmin.t-info@telekom.de|TurnitinBot|voyager|W3.SiteSearch.Crawler|W3C-checklink|W3C_Validator|www.WISEnutbot.com|yacybot|Yahoo-MMCrawler|Yahoo\!.DE.Slurp|Yahoo\!.Slurp|YahooSeeker).* [NC]
     RewriteRule .* - [F]
+
+.. _faq1_43:
+
+1.43 Why can't I display the structure of my table containing hundreds of columns? 
+----------------------------------------------------------------------------------
+
+Because your PHP's ``memory_limit`` is too low; adjust it in :file:`php.ini`.
 
 .. _faqconfig:
 
@@ -1605,12 +1612,15 @@ stored a bookmark, it is related to the database you run the query on.
 You can now access a bookmark dropdown on each page, the query box
 appears on for that database.
 
-Since phpMyAdmin 2.5.0 you are also able to store variables for the bookmarks.
-Just use the string ``/*[VARIABLE]*/`` anywhere in your query. Everything
-which is put into the *value* input box on the query box page will replace the
-string ``/*[VARIABLE]*/`` in your stored query. Just be aware of that you
-HAVE to create a valid query, otherwise your query won't be even able to be
-stored in the database. 
+You can also have, inside the query, a placeholder for a variable.
+This is done by inserting into the query a SQL comment between ``/*`` and 
+``*/``. Inside the comment, the special string ``[VARIABLE]`` is used. 
+Be aware that the whole query minus the SQL comment must be
+valid by itself, otherwise you won't be able to store it as a bookmark.
+
+When you execute the bookmark, everything typed into the *value* 
+input box on the query box page will replace the string ``/*[VARIABLE]*/`` in 
+your stored query.
 
 Also remember, that everything else inside the ``/*[VARIABLE]*/`` string for
 your query will remain the way it is, but will be stripped of the ``/**/``
@@ -1978,60 +1988,11 @@ Synchronization
 
 .. _faq9_1:
 
-9.1 How can I synchronize two databases/tables in phpMyAdmin?
--------------------------------------------------------------
-
-You can now synchronize databases/tables in phpMyAdmin using the
-Synchronize feature. It allows you to connect to local as well as
-remote servers. This requires you to enter server host name, username,
-password, port and the name of the database. Therefore you can now
-synchronize your databases placed on the same server or some remote
-server.
-
-This feature is helpful for developers who need to replicate their
-database’s structure as well as data. Moreover, this feature not only
-helps replication but also facilitates the user to keep his/her
-database in sync with another database. Other than the full database,
-certain tables of the databases can also be synchronized.
-
-You need to fill in the host name of the server, the username and
-password of an user account already there in MySQL. Port is by default
-populated with 3306 (MySQL default port). Then the name of the
-database should be mentioned at the end. All the information other
-than the port needs to be filled explicitly for the source as well as
-target servers.
-
-After successfully passing through the authentication phase, the
-source and target database table names will be displayed. It will be a
-tabular representation.
-
-On the left, are listed the source database table names. Some of the
-names have a ``+`` plus sign preceding them. This shows that these
-tables are only present in source database and they need to be added
-to the target database in order to synchronize the target database.
-The tables whose names are not preceded by a ``+`` sign are already
-present in the target database.
-
-On the right, are listed the target database table names. There are
-few table names that have ``(not present)`` appended after their
-names. This means that these tables are to be created in target
-database in order to synchronize target database with source database.
-Some table names have a ``-`` minus sign preceding them. This shows
-that these tables are only present in target database and they will
-remain unchanged in the target database. The column in the middle
-shows the difference between the source and target corresponding
-tables.
-
-The difference is depicted by the red and green buttons with ``S`` and
-``D`` letters, indicating that either Structure or Data are not up to
-date. By clicking on them, they will turn grey, what means that they
-will be synchronized.
+9.1 (withdrawn). 
+----------------
 
 .. _faq9_2:
 
-9.2 Are there problems with data synchronizing large tables?
-------------------------------------------------------------
-
-Yes. This aspect of synchronization is currently limited to small
-tables, and they must have a primary key.
+9.2 (withdrawn). 
+----------------
 
