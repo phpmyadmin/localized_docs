@@ -18,11 +18,12 @@ your site specific code to be included on start and end of each page.
 .. note::
 
     Some distributions (eg. Debian or Ubuntu) store :file:`config.inc.php` in
-    ``/etc/phpmyadmin`` instead of withing phpMyAdmin sources.
+    ``/etc/phpmyadmin`` instead of within phpMyAdmin sources.
 
 .. warning::
 
-    :term:`Mac` users should note that PHP does not seem to
+    :term:`Mac` users should note that if you are on a version before
+    :term:`Mac OS X`, PHP does not seem to
     like :term:`Mac` end of lines character (``\r``). So
     ensure you choose the option that allows to use the \*nix end of line
     character (``\n``) in your text editor before saving a script you have
@@ -1085,7 +1086,7 @@ Generic settings
 
     Set the number of seconds a script is allowed to run. If seconds is
     set to zero, no time limit is imposed. This setting is used while
-    importing/exporting dump files and in the Synchronize feature but has
+    importing/exporting dump files but has
     no effect when PHP is running in safe mode.
 
 .. config:option:: $cfg['SessionSavePath']
@@ -1255,8 +1256,7 @@ Cookie authentication options
     :default: false
 
     If enabled, allows you to log in to arbitrary servers using cookie
-    authentication and permits to specify servers of your choice in the
-    Synchronize dialog.  
+    authentication.
 
     .. note::
        

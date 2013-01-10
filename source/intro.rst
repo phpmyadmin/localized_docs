@@ -35,7 +35,7 @@ Currently phpMyAdmin can:
 * using Query-by-example (QBE), create complex queries automatically
   connecting required tables
 * create :term:`PDF` graphics of your
-  Database layout
+  database layout
 * search globally in a database or a subset of it
 * transform stored data into any format using a set of predefined
   functions, like displaying BLOB-data as image or download-link
@@ -46,8 +46,6 @@ Currently phpMyAdmin can:
 * create, edit, export and drop events and triggers
 * communicate in `62 different languages
   <http://www.phpmyadmin.net/home_page/translations.php>`_
-* synchronize two databases residing on the same as well as remote
-  servers see :ref:`faq9_1`
 
 
 A word about users
