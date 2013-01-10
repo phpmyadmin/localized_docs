@@ -45,7 +45,7 @@ po/documentation.pot: $(TEMPLATES)
 
 po/%.po: po/documentation.pot
 	@echo "UPDATE $@"
-	@msgmerge -U $@ $< 
+	@msgmerge --previous -U $@ $< 
 
 po/%.mo: po/%.po
 	@echo "GEN $@"
