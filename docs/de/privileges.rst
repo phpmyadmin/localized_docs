@@ -1,0 +1,1 @@
+../../source/privileges.rst
