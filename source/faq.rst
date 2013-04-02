@@ -859,8 +859,8 @@ a # before it:  ``-- -------------------------------------------------------`` o
 
 .. _faq3_5:
 
-3.5 When using nested folders there are some multiple hierarchies displayed in a wrong manner?
-----------------------------------------------------------------------------------------------
+3.5 When using nested folders, multiple hierarchies are displayed in a wrong manner.
+------------------------------------------------------------------------------------
 
 Please note that you should not use the separating string multiple
 times without any characters between them, or at the beginning/end of
@@ -907,8 +907,8 @@ official phpMyAdmin-homepage.
 
 .. _faq3_9:
 
-3.9 I get error messages when using "--sql\_mode=ANSI" for the MySQL server
----------------------------------------------------------------------------
+3.9 I get error messages when using "--sql\_mode=ANSI" for the MySQL server.
+----------------------------------------------------------------------------
 
 When MySQL is running in ANSI-compatibility mode, there are some major
 differences in how :term:`SQL` is structured (see
@@ -917,7 +917,7 @@ quote-character (") is interpreted as an identifier quote character and not as
 a string quote character, which makes many internal phpMyAdmin operations into
 invalid :term:`SQL` statements. There is no
 workaround to this behaviour.  News to this item will be posted in `Bug report
-#1013 <https://sourceforge.net/p/phpmyadmin/bugs/1013/>`_
+#1013 <https://sourceforge.net/p/phpmyadmin/bugs/1013/>`_.
 
 .. _faq3_10:
 
@@ -1003,7 +1003,7 @@ ISPs, multi-user installations
 
 .. _faq4_1:
 
-4.1 I'm an ISP. Can I setup one central copy of phpMyAdmin or do I need to install it for each customer.
+4.1 I'm an ISP. Can I setup one central copy of phpMyAdmin or do I need to install it for each customer?
 --------------------------------------------------------------------------------------------------------
 
 Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your
@@ -1015,7 +1015,7 @@ This requires a properly setup MySQL user management and phpMyAdmin
 
 .. _faq4_2:
 
-4.2 What's the preferred way of making phpMyAdmin secure against evil access.
+4.2 What's the preferred way of making phpMyAdmin secure against evil access?
 -----------------------------------------------------------------------------
 
 This depends on your system. If you're running a server which cannot be
@@ -1171,8 +1171,8 @@ Upgrade to at least Internet Explorer 5.5 SP2.
 
 .. _faq5_6:
 
-5.6 In Internet Explorer 5.0, 5.5 or 6.0, I get an error (like "Page not found") when trying to modify a row in a table with many columns, or with a text column
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+5.6 In Internet Explorer 5.0, 5.5 or 6.0, I get an error (like "Page not found") when trying to modify a row in a table with many columns, or with a text column.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Your table neither have a primary key nor an unique one, so we must use a long
 :term:`URL` to identify this row. There is a limit on the length of the
