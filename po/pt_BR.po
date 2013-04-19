@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2013-04-02 17:23\n"
-"PO-Revision-Date: 2013-04-10 20:27+0200\n"
+"PO-Revision-Date: 2013-04-19 23:29+0200\n"
 "Last-Translator: Rodrigo Souza <rodrigo.chrome@live.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://l10n.cihar.com/projects/phpmyadmin/documentation/pt_BR/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.5-dev\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: ../source/index.rst:7
 msgid "Welcome to phpMyAdmin's documentation!"
@@ -6503,6 +6503,8 @@ msgid ""
 "2.4 Nothing is displayed by my browser when I try to run phpMyAdmin, what "
 "can I do?"
 msgstr ""
+"2.4 Nada é exibido pelo meu navegador quando eu tento rodar o phpMyAdmin, o "
+"que eu posso fazer?"
 
 # 8c520bca218b40af8bb44793abf78c81
 #: ../source/faq.rst:693
@@ -6513,6 +6515,11 @@ msgid ""
 "running a testing version of PHP. That's not a so good idea, please upgrade "
 "to a plain revision."
 msgstr ""
+"Tente definir a diretiva :config:option:`$cfg['OBGzip']` para \"false\" no "
+"arquivo de configuração do phpMyAdmin. Isso ajuda às vezes. Dê uma olhada "
+"também no número de versão do seu PHP: se ele contém \"b\" ou \"alpha\" isso "
+"significa que você está rodando uma versão de testes do PHP. Isso não é uma "
+"ideia muito boa, favor atualize para uma revisão estável."
 
 # 4cc318346479477e85a33c577b53ec4a
 #: ../source/faq.rst:702
@@ -6521,6 +6528,10 @@ msgid ""
 "table, an error 404 (page not found) is displayed or, with HTTP or cookie "
 "authentication, I'm asked to log in again. What's wrong?"
 msgstr ""
+"2.5 Cada vez que eu tento inserir ou mudar um registro ou eliminar um banco "
+"de dados ou tabela, um erro 404 (página não encontrada) é mostrado ou, com a "
+"autenticação por cookie ou HTTP, é pedido para que eu entre novamente. Qual "
+"o problema?"
 
 # 2a22c7667dbd4809ac5a487326a3e221
 #: ../source/faq.rst:704
@@ -6528,6 +6539,9 @@ msgid ""
 "Check the value you set for the :config:option:`$cfg['PmaAbsoluteUri']` "
 "directive in the phpMyAdmin configuration file."
 msgstr ""
+"Verifique o valor que você definiu para a diretiva "
+":config:option:`$cfg['PmaAbsoluteUri']` no arquivo de configurações do "
+"phpMyAdmin."
 
 # 974dc07cbc09437fa95239c21669c07b
 #: ../source/faq.rst:710
@@ -6536,6 +6550,9 @@ msgid ""
 "YES)\"-error when trying to access a MySQL-Server on a host which is port-"
 "forwarded for my localhost."
 msgstr ""
+"2.6 Eu recebo um erro \"Acesso negado para o usuário: 'root@localhost' "
+"(Usando senha: SIM)\" quando tento acessar o MySQL Server em um host que tem "
+"port-forward para o meu localhost."
 
 # 830adcc855cb452ca54adf138c21d369
 #: ../source/faq.rst:712
@@ -6548,11 +6565,17 @@ msgid ""
 "this configuration with port forwarding. If you enter \"127.0.0.1\" as "
 "hostname, everything is right and MySQL uses the :term:`TCP` connection."
 msgstr ""
+"Quando você usa uma porta no seu localhost, que você redireciona via port-"
+"forward para outro host, o MySQL não resolve o localhost como esperado. Erik "
+"Wasser explica: a solução é: se seu host for \"localhost\", o MySQL (a "
+"ferramenta de linha de comando :command:`mysql` também) sempre tenta usar o "
+"socket de conexão para acelerar as coisas. E isso parece não funcionar nessa "
+"configuração com redirecionamento de porta. Se você entrar \"127.0.0.1\" como "
+"hostname, tudo fica certo e o MySQL usa a conexão por :term:`TCP`."
 
 #: ../source/faq.rst:724
-#, fuzzy
 msgid "2.7 Using and creating themes"
-msgstr "Usando os modos de autenticação"
+msgstr "2.7 Usando e criando temas"
 
 # 25a9a044c041433ea85696a846c3f5e9
 #: ../source/faq.rst:726
@@ -6567,10 +6590,20 @@ msgid ""
 "enabled, you can select your favorite theme on the main page. Your selected "
 "theme will be stored in a cookie."
 msgstr ""
+"Os temas são configurados com :config:option:`$cfg['ThemePath']`, "
+":config:option:`$cfg['ThemeManager']` e "
+":config:option:`$cfg['ThemeDefault']`. Dentro de "
+":config:option:`$cfg['ThemePath']`, você não deve deletar o diretório "
+"\"pmahomme\" ou sua estrutura interna, porque isso é o tema de sistema usado "
+"pelo phpMyAdmin. \"pmahomme\" contém todas as imagens e estilos, para a retro-"
+"compatibilidade e para todos os temas que não incluem imagens ou arquivos "
+"CSS. Se :config:option:`$cfg['ThemeManager']` está ativado, você pode "
+"selecionar seu tema favorito na página principal. Seu tema selecionado será "
+"armazenado em um cookie."
 
 #: ../source/faq.rst:736
 msgid "To create a theme:"
-msgstr ""
+msgstr "Para criar um tema:"
 
 # 0eae586479a74db0abab129f3e9197e9
 #: ../source/faq.rst:738
@@ -6578,27 +6611,29 @@ msgid ""
 "make a new subdirectory (for example \"your\\_theme\\_name\") under :config:"
 "option:`$cfg['ThemePath']` (by default ``themes``)"
 msgstr ""
+"crie um novo subdiretório (por exemplo \"nome_do_seu_tema\") dentro do "
+":config:option:`$cfg['ThemePath']` (por padrão \"themes\")"
 
 # ff53602b0f5d490a9ed36aa1995390ad
 #: ../source/faq.rst:740
 msgid ""
 "copy the files and directories from ``pmahomme`` to \"your\\_theme\\_name\""
-msgstr ""
+msgstr "copie os arquivos e diretórios do \"pmahomme\" para \"nome_do_seu_tema\""
 
 # baa7f82a0a5640438fdfc937ee4ed44b
 #: ../source/faq.rst:741
 msgid "edit the css-files in \"your\\_theme\\_name/css\""
-msgstr ""
+msgstr "edite os arquivos CSS em \"nome_do_seu_tema/css\""
 
 # 50d97e26af764067a61675c558c2944d
 #: ../source/faq.rst:742
 msgid "put your new images in \"your\\_theme\\_name/img\""
-msgstr ""
+msgstr "coloque suas imagens novas em \"nome_do_seu_tema/img\""
 
 # 8bf929629297456b8330256bb168e2a2
 #: ../source/faq.rst:743
 msgid "edit :file:`layout.inc.php` in \"your\\_theme\\_name\""
-msgstr ""
+msgstr "edite :file:`layout.inc.php` em \"nome_do_seu_tema\""
 
 # 0e210c2aa9654f76abb8baf0a14861ca
 #: ../source/faq.rst:744
@@ -6606,6 +6641,8 @@ msgid ""
 "edit :file:`info.inc.php` in \"your\\_theme\\_name\" to contain your chosen "
 "theme name, that will be visible in user interface"
 msgstr ""
+"edite :file:`info.inc.php` em \"nome_do_seu_tema\" para conter o nome do seu "
+"tema escolhido, que será visível na interface do usuário"
 
 # 69066adc7ba945e28a8b774767168ea0
 #: ../source/faq.rst:746
@@ -6613,6 +6650,8 @@ msgid ""
 "make a new screenshot of your theme and save it under \"your\\_theme\\_name/"
 "screen.png\""
 msgstr ""
+"crie um novo retrato do seu tema e salve dentro de "
+"\"nome_do_seu_tema/screen.png\""
 
 # a144476997ba465bad1bf6a334c95a0b
 #: ../source/faq.rst:749
@@ -6624,6 +6663,12 @@ msgid ""
 "compatible - theme with version 2 should work in phpMyAdmin requiring "
 "version 1. Themes with different generation are incompatible."
 msgstr ""
+"No diretório de temas há o arquivo :file:`info.inc.php` que contém o nome "
+"extenso do tema, a geração do tema e a versão do tema. Essas versões e "
+"gerações são enumeradas a partir de 1 e não tem qualquer dependência direta "
+"com a versão do phpMyAdmin. Os temas dentro da mesma geração devem ser "
+"retro-compatíveis - tema com versão 2 deve funcionar no phpMyAdmin exigindo "
+"a versão 1. Os temas de gerações diferentes são incompatíveis."
 
 # bd716b191f4f4ed284f2a0f9342212bc
 #: ../source/faq.rst:757
@@ -6632,15 +6677,18 @@ msgid ""
 "\"img\" in \"your\\_theme\\_name\". phpMyAdmin will use the default icons "
 "and buttons (from the system-theme ``pmahomme``)."
 msgstr ""
+"Se você não quiser usar seus próprios símbolos e botões, remova o diretório "
+"\"img\" em \"nome_do_seu_tema\". O phpMyAdmin usará os ícones e botões padrão "
+"(do tema de sistema \"pmahomme\")."
 
 # 98d99c55a7d44fd9ad29af2cf69370df
 #: ../source/faq.rst:764
 msgid "2.8 I get \"Missing parameters\" errors, what can I do?"
-msgstr ""
+msgstr "2.8 Eu recebo erros \"Faltando parâmetros\", o que eu posso fazer?"
 
 #: ../source/faq.rst:766
 msgid "Here are a few points to check:"
-msgstr ""
+msgstr "Aqui estão alguns pontos a verificar:"
 
 # 32dbf2ebbcad463ea6a14a945d8d9c36
 #: ../source/faq.rst:768
@@ -6648,6 +6696,8 @@ msgid ""
 "In :file:`config.inc.php`, try to leave the :config:option:`$cfg"
 "['PmaAbsoluteUri']` directive empty. See also :ref:`faq4_7`."
 msgstr ""
+"Em :file:`config.inc.php`, tente deixar a diretiva "
+":config:option:`$cfg['PmaAbsoluteUri']` vazia. Veja também a :ref:`faq4_7`."
 
 # 00b7aa944c5544b486e3dd234b499ce3
 #: ../source/faq.rst:770
@@ -6655,6 +6705,9 @@ msgid ""
 "Maybe you have a broken PHP installation or you need to upgrade your Zend "
 "Optimizer. See <http://bugs.php.net/bug.php?id=31134>."
 msgstr ""
+"Talvez você tenha uma instalação quebrada do PHP ou você precisa atualizar "
+"seu Zend Optimizer. Veja este <a "
+"href=\"http://bugs.php.net/bug.php?id=31134\">documento</a>."
 
 # 71068a26f74e4a8896debfb1a37142a6
 #: ../source/faq.rst:772
@@ -6664,6 +6717,11 @@ msgid ""
 "could get this error if your table has a high number of columns. Adjust this "
 "setting accordingly. (Thanks to Klaus Dorninger for the hint)."
 msgstr ""
+"Se você está usando o Hardened PHP com a diretiva ini "
+"\"varfilter.max_request_variables\", defina para o padrão (200) ou outro valor "
+"baixo, você pode receber este erro se sua tabela tiver um alto número de "
+"campos. Ajuste essa configuração de acordo. (Agradeça a Klaus Dorninger pela "
+"dica)."
 
 # 7e6f94afca6349ecbdae3a32f264a9a3
 #: ../source/faq.rst:777
@@ -6671,6 +6729,8 @@ msgid ""
 "In the :file:`php.ini` directive ``arg_separator.input``, a value of \";\" "
 "will cause this error. Replace it with \"&;\"."
 msgstr ""
+"Na diretiva do :file:`php.ini` \"arg_separator.input\", um valor de \";\" irá "
+"causar este erro. Substitua ela por \"&;\"."
 
 # 537fc25cdc6c4bc8bbc62b83da50f8d2
 #: ../source/faq.rst:779
@@ -6679,6 +6739,9 @@ msgid ""
 "want to increase `request limits <http://www.hardened- php.net/hphp/"
 "troubleshooting.html>`_."
 msgstr ""
+"Se você está usando o `Hardened-PHP <http://www.hardened-php.net/>`_, você "
+"pode querer aumentar seus `limites de request <http://www.hardened- "
+"php.net/hphp/troubleshooting.html>`_."
 
 # b402e21454c547bcbea959a833f78ec3
 #: ../source/faq.rst:782
@@ -6686,11 +6749,13 @@ msgid ""
 "The directory specified in the :file:`php.ini` directive ``session."
 "save_path`` does not exist or is read-only."
 msgstr ""
+"O diretório especificado na diretiva \"session.save_path\" do :file:`php.ini` "
+"não existe ou está em modo somente leitura."
 
 # d4fcadeceffb40a98a9ae062f0c563e6
 #: ../source/faq.rst:788
 msgid "2.9 Seeing an upload progress bar"
-msgstr ""
+msgstr "2.9 Vendo uma barra de progresso de upload"
 
 # 901943a9a1f94c16aabeb8c7e6eb814a
 #: ../source/faq.rst:790
@@ -6701,12 +6766,19 @@ msgid ""
 "PHP 5.4.0 or higher. Moreover, the JSON extension has to be enabled in your "
 "PHP."
 msgstr ""
+"Para ser capaz de ver uma barra de progresso durante seus uploads, seu "
+"servidor deve ter a extensão `APC <http://pecl.php.net/package/APC>`_, a "
+"`uploadprogress <http://pecl.php.net/package/uploadprogress>`_, ou você deve "
+"está rodando o PHP 5.4.0 ou superior. Além disso, a extensão JSON tem que "
+"estar ativada no seu PHP."
 
 # 698e3684399a48d0899569245bc1c356
 #: ../source/faq.rst:796
 msgid ""
 "If using APC, you must set ``apc.rfc1867`` to ``on`` in your :file:`php.ini`."
 msgstr ""
+"Se usar a APC, você deve definir \"apc.rfc1867\" para \"on\" no seu arquivo "
+":file:`php.ini`."
 
 # b1ae4b98ac8f47e4a1931021a04c864a
 #: ../source/faq.rst:798
@@ -6714,10 +6786,12 @@ msgid ""
 "If using PHP 5.4.0 or higher, you must set ``session.upload_progress."
 "enabled`` to ``1`` in your :file:`php.ini`."
 msgstr ""
+"Se usar o PHP 5.4.0 ou superior, você deve definir "
+"\"session.upload_progress.enabled\" para \"1\" no seu arquivo  :file:`php.ini`."
 
 #: ../source/faq.rst:806
 msgid "Known limitations"
-msgstr ""
+msgstr "Limitações conhecidas"
 
 # a0542fd67265430c9684541df5cca78d
 #: ../source/faq.rst:811
@@ -6725,6 +6799,8 @@ msgid ""
 "3.1 When using HTTP authentication, a user who logged out can not log in "
 "again in with the same nick."
 msgstr ""
+"3.1 Quando usar a autenticação por HTTP, um usuário que sair não poderá "
+"entrar novamente com o mesmo apelido."
 
 #: ../source/faq.rst:813
 msgid ""
@@ -6732,6 +6808,10 @@ msgid ""
 "phpMyAdmin. To bypass this problem: just close all the opened browser "
 "windows and then go back to phpMyAdmin. You should be able to log in again."
 msgstr ""
+"Isso está relacionado ao mecanismo de autenticação (protocolo) usado pelo "
+"phpMyAdmin. Para contornar este problema: apenas feche todas as janelas "
+"abertas do navegador e então volte ao phpMyAdmin. Você deverá ser capaz de "
+"entrar novamente."
 
 # e87d789915264c068f2a429050283a52
 #: ../source/faq.rst:821
@@ -6739,6 +6819,8 @@ msgid ""
 "3.2 When dumping a large table in compressed mode, I get a memory limit "
 "error or a time limit error."
 msgstr ""
+"3.2 Quando despejo uma tabela grande em modo comprimido, eu recebo um erro "
+"de limite de memória ou um erro de tempo limite."
 
 # e8d258a6098846dcbffc0756d14a60cd
 #: ../source/faq.rst:823
@@ -6749,6 +6831,12 @@ msgid ""
 "exports can not be handled this way, so if you need Zip files for larger "
 "dump, you have to use another way."
 msgstr ""
+"Despejos comprimidos são criados em memória e por causa disso são limitados "
+"ao limite de memória do PHP. Para exportações GZip/BZip2 isso pode ser "
+"superado desde a versão 2.5.4 usando :config:option:`$cfg['CompressOnFly']` "
+"(ativada por padrão). Exportações Zip não podem ser manipuladas desse jeito, "
+"então se você precisar de arquivos Zip para despejos maiores, você terá que "
+"usar outro meio."
 
 # ed19e3f4ddcf4f0a82b65b7f8ab850e6
 #: ../source/faq.rst:832
@@ -6756,11 +6844,13 @@ msgid ""
 "3.3 With InnoDB tables, I lose foreign key relationships when I rename a "
 "table or a column."
 msgstr ""
+"3.3 Com tabelas InnoDB, eu perco os relacionamentos de chave estrangeira "
+"quando eu renomeio uma tabela ou uma coluna."
 
 # a0a257e64a7d475d894fbc33b9586665
 #: ../source/faq.rst:834
 msgid "This is an InnoDB bug, see <http://bugs.mysql.com/bug.php?id=21704>."
-msgstr ""
+msgstr "Isso é um bug do InnoDB, veja <http://bugs.mysql.com/bug.php?id=21704>."
 
 # 5c8a00736a64494c95b775a825513520
 #: ../source/faq.rst:839
@@ -6768,6 +6858,8 @@ msgid ""
 "3.4 I am unable to import dumps I created with the mysqldump tool bundled "
 "with the MySQL server distribution."
 msgstr ""
+"3.4 Eu estou incapaz de importar despejos que eu criei com a ferramenta "
+"mysqldump embutida na distribuição do MySQL Server."
 
 # 5f9219c6f6154c79990f27d887121832
 #: ../source/faq.rst:841
@@ -6775,6 +6867,8 @@ msgid ""
 "The problem is that older versions of ``mysqldump`` created invalid comments "
 "like this:"
 msgstr ""
+"O problema é que versões mais antigas do \"mysqldump\" criam comentários "
+"inválidos assim:"
 
 # 6f9ae1b217ad4c6f9b411c69c78a5fc2
 #: ../source/faq.rst:853
@@ -6786,6 +6880,13 @@ msgid ""
 "``-- -------------------------------------------------------`` or "
 "``#---------------------------------------------------------``"
 msgstr ""
+"A parte inválida do código é a linha horizontal feita de traços que aparecem "
+"uma vez a cada dump criado com o mysqldump. Se você quiser rodar seu dump "
+"você terá que convertê-lo para MySQL válido. Isso quer dizer, você tem que "
+"adicionar um espaço em branco após os primeiros dois traços da linha ou "
+"adicionar um # antes dela: \"-- "
+"-------------------------------------------------------\" ou "
+"\"#---------------------------------------------------------\""
 
 # 7b880d9a514f4dfe98c5837af4e78342
 #: ../source/faq.rst:863
@@ -6793,6 +6894,8 @@ msgid ""
 "3.5 When using nested folders, multiple hierarchies are displayed in a wrong "
 "manner."
 msgstr ""
+"3.5 Quando uso pastas aninhadas, múltiplas hierarquias são exibidas de um "
+"jeito errado."
 
 # 217d617638e5453b8fff25fea076252c
 #: ../source/faq.rst:865
@@ -6802,11 +6905,14 @@ msgid ""
 "name. If you have to, think about using another TableSeparator or disabling "
 "that feature."
 msgstr ""
+"Favor observe que você não deve usar strings de separação múltiplas vezes "
+"sem nenhum caractere entre elas, ou no começo/fim do nome da sua tabela. Se "
+"você precisar, considere usar outro TableSeparator ou desative esta função."
 
 # c046b8f1f12847f6beba70f127f999c1
 #: ../source/faq.rst:875
 msgid "3.6 What is currently not supported in phpMyAdmin about InnoDB?"
-msgstr ""
+msgstr "3.6 O que não é suportado atualmente pelo phpMyAdmin sem InnoDB?"
 
 # 38e87ae1e0304ec19a2b024b26386d6c
 #: ../source/faq.rst:877
@@ -6815,6 +6921,10 @@ msgid ""
 "having more than one index column in the foreign key. In Query-by- example "
 "(Query), automatic generation of the query LEFT JOIN from the foreign table."
 msgstr ""
+"Na view de Relacionamentos, ser capaz de escolher uma tabela em outro banco "
+"de dados, ou ter mais de uma coluna de índice na chave estrangeira. Na "
+"Query-por-exemplo (Query), geração automática da query LEFT JOIN na tabela "
+"estrangeira."
 
 # 188fa85551074a9c98d32b32ffaf689b
 #: ../source/faq.rst:885
@@ -6823,6 +6933,9 @@ msgid ""
 "get series of errors like \"Warning: unable to parse url\". How can this be "
 "fixed?"
 msgstr ""
+"3.7 Eu tenho tabelas com muitos campos (100+) e quando eu tento navegar "
+"nelas eu recebo uma série de erros como \"Aviso: incapaz de converter url\". "
+"Como isso pode ser consertado?"
 
 # feabce8c7a69452caa8f318047a1be8f
 #: ../source/faq.rst:887
@@ -6831,6 +6944,9 @@ msgid ""
 "long expression to identify this row. This causes problems to parse\\_url "
 "function. The workaround is to create a primary or unique key."
 msgstr ""
+"Sua tabela não tem uma chave primária nem uma única, então nós temos que "
+"usar uma expressão long para identifcar este registro. Isso causa problemas "
+"para a função parse_url. A solução é criar uma chave primária ou única."
 
 # adbe0fe4ef81409e8a83fe4640608870
 #: ../source/faq.rst:895
@@ -6838,6 +6954,8 @@ msgid ""
 "3.8 I cannot use (clickable) HTML-forms in columns where I put a MIME-"
 "Transformation onto!"
 msgstr ""
+"3.8 Eu não consigo usar os formulários HTML (clicáveis) nos campos onde eu "
+"coloco a Transformação MIME!"
 
 # 943b91cac94c4da8ae4973bb5344df78
 #: ../source/faq.rst:897
@@ -6852,6 +6970,17 @@ msgid ""
 "effectively use transformations, see our `Link section <http://www."
 "phpmyadmin.net/home_page/docs.php>`_ on the official phpMyAdmin-homepage."
 msgstr ""
+"Devido a containers ao redor (para checkboxes de apagar multi-registros), "
+"nenhum formulário aninhado pode ser colocado dentro da tabela onde o "
+"phpMyAdmin mostra os resultados. Você pode, no entanto, usar qualquer "
+"formulário dentro de uma tabela se manter o container pai com o alvo para "
+"tbl_row_delete.php e apenas colocar seus próprios elementos input dentro. Se "
+"você usar um campo de submit personalizado, o formulário irá enviar a si "
+"próprio para a página de exibição novamente, onde você pode validar a "
+"$HTTP_POST_VARS em uma transformação. Para um tutorial em como usar "
+"efetivamente as transformações, veja nossa `seção de links "
+"<http://www.phpmyadmin.net/home_page/docs.php>`_ na página oficial do "
+"phpMyAdmin."
 
 # 27a37f3353424d1caeff9e7aff9fc442
 #: ../source/faq.rst:911
@@ -6859,6 +6988,8 @@ msgid ""
 "3.9 I get error messages when using \"--sql\\_mode=ANSI\" for the MySQL "
 "server."
 msgstr ""
+"3.9 Eu recebo mensagens de erro quando uso \"--sql_mode=ANSI\" no servidor "
+"MySQL."
 
 # 69ba7ae275984942b3915737647634a1
 #: ../source/faq.rst:913
@@ -6872,6 +7003,14 @@ msgid ""
 "this item will be posted in `Bug report #1013 <https://sourceforge.net/p/"
 "phpmyadmin/bugs/1013/>`_."
 msgstr ""
+"Quando o MySQL estiver rodando em modo de compatibilidade com ANSI, existem "
+"diferenças grandes em como o :term:`SQL` é estruturado (veja "
+"<http://dev.mysql.com/doc/mysql/en/ansi-mode.html>). Acima de tudo, o "
+"caractere de citação (\") é interpretado como um caractere identificador de "
+"citação e não como um caractere de citação de string, o que torna muitas "
+"operações internas do phpMyAdmin em instruções :term:`SQL` inválidas. Não há "
+"solução para este comportamento. Notícias para este item serão postadas no "
+"`Bug report #1013 <https://sourceforge.net/p/phpmyadmin/bugs/1013/>`_."
 
 # db213da7edc84a4e9dd464b7a279342b
 #: ../source/faq.rst:925
@@ -6882,17 +7021,24 @@ msgid ""
 "displayed), if I click Edit I cannot be sure that I am editing the intended "
 "row."
 msgstr ""
+"3.10 Homônimos e nenhuma chave primária: quando os resultados de um SELECT "
+"mostram mais de um registro com o mesmo valor (por exemplo \"SELECT lastname "
+"FROM employees WHERE firstname LIKE 'A%'\" e dois valores \"Smith\" são "
+"exibidos), se eu clico em Editar eu não posso ter certeza que eu estou "
+"editando o campo desejado."
 
 #: ../source/faq.rst:927
 msgid ""
 "Please make sure that your table has a primary key, so that phpMyAdmin can "
 "use it for the Edit and Delete links."
 msgstr ""
+"Favor garanta que sua tabela tem uma chave primária, para que o phpMyAdmin "
+"possa usá-la para os links Editar e Deletar."
 
 # 9edcf9a427f44a2787707387545ab6d5
 #: ../source/faq.rst:933
 msgid "3.11 The number of rows for InnoDB tables is not correct."
-msgstr ""
+msgstr "3.11 O número de registros para as tabelas InnoDB não está correto."
 
 # a0e0408dd5f9472a91e8a18ba63439a5
 #: ../source/faq.rst:935
@@ -6902,11 +7048,16 @@ msgid ""
 "option:`$cfg['MaxExactCount']` for a way to modify those results, but this "
 "could have a serious impact on performance."
 msgstr ""
+"O phpMyAdmin usa um método rápido para chegar a contagem de registros, e "
+"este método somente retorna uma contagem aproximada no caso de tabelas "
+"InnoDB. Veja a :config:option:`$cfg['MaxExactCount']` para um jeito de "
+"modificar estes resultados, mas isso pode ter um impacto sério no "
+"desempenho."
 
 # b976431bccf94601b00f80e2186de34f
 #: ../source/faq.rst:943
 msgid "3.12 (withdrawn)."
-msgstr ""
+msgstr "3.12 (removido)."
 
 # e4e7309fe8e9427cb32d564002bb22da
 #: ../source/faq.rst:948
@@ -6914,12 +7065,16 @@ msgid ""
 "3.13 I get an error when entering ``USE`` followed by a db name containing "
 "an hyphen."
 msgstr ""
+"3.13 Eu recebo um erro quando entro \"USE\" seguido de um nome de banco de "
+"dados contendo um hífen."
 
 #: ../source/faq.rst:950
 msgid ""
 "The tests I have made with MySQL 5.1.49 shows that the API does not accept "
 "this syntax for the USE command."
 msgstr ""
+"Os testes que eu fiz com o MySQL 5.1.49 mostram que a API não aceita esta "
+"sintaxe para o comando USE."
 
 # 05957b2b707640ed884bd5a460403da5
 #: ../source/faq.rst:956
@@ -6927,27 +7082,31 @@ msgid ""
 "3.14 I am not able to browse a table when I don't have the right to SELECT "
 "one of the columns."
 msgstr ""
+"3.14 Eu não estou sendo capaz de navegar na tabela quando eu não tenho o "
+"direito de fazer SELECT em uma das colunas."
 
 #: ../source/faq.rst:958
 msgid ""
 "This has been a known limitation of phpMyAdmin since the beginning and it's "
 "not likely to be solved in the future."
 msgstr ""
+"Esta tem sido uma limitação conhecida do phpMyAdmin desde o começo e não é "
+"provável que será resolvida no futuro."
 
 # bda95c2fc6654806a407b6b6a4ce54bd
 #: ../source/faq.rst:964
 msgid "3.15 (withdrawn)."
-msgstr ""
+msgstr "3.15 (removido)."
 
 # 461511cb1ead4fd9b18af0d4a937aa3f
 #: ../source/faq.rst:969
 msgid "3.16 (withdrawn)."
-msgstr ""
+msgstr "3.16 (removido)."
 
 # c1613c8d992846eabe233fe2c5594277
 #: ../source/faq.rst:974
 msgid "3.17 (withdrawn)."
-msgstr ""
+msgstr "3.17 (removido)."
 
 # c928e3b5c47946c492ef4d4b5ed85d52
 #: ../source/faq.rst:979
@@ -6955,6 +7114,8 @@ msgid ""
 "3.18 When I import a CSV file that contains multiple tables, they are lumped "
 "together into a single table."
 msgstr ""
+"3.18 Quando eu importo um arquivo CSV que contém múltiplas tabelas, elas são "
+"aglomeradas em uma única tabela."
 
 # fd7fe9e4be4a4cfc8ade3e81bbbeb1ce
 #: ../source/faq.rst:981
@@ -6963,6 +7124,9 @@ msgid ""
 "the time being, you will have to break apart :term:`CSV` files containing "
 "multiple tables."
 msgstr ""
+"Não há um meio confiável de diferenciar tabelas no formato :term:`CSV`. Por "
+"enquanto, você terá que quebrar os arquivos :term:`CSV` que contém múltiplas "
+"tabelas em arquivos menores."
 
 # d967653796314f3382d2e5ee5ce53338
 #: ../source/faq.rst:988
@@ -6970,6 +7134,8 @@ msgid ""
 "3.19 When I import a file and have phpMyAdmin determine the appropriate data "
 "structure it only uses int, decimal, and varchar types."
 msgstr ""
+"3.19 Quando eu importo um arquivo e faço o phpMyAdmin determinar a estrutura "
+"de dados apropriada ele usa somente os tipos int, decimal e varchar."
 
 # 4177fb53940b4db5acb95215439a7ecc
 #: ../source/faq.rst:990
@@ -6982,11 +7148,19 @@ msgid ""
 "know you will be adding larger items to that column then you should manually "
 "adjust the column sizes accordingly. This is done for the sake of efficiency."
 msgstr ""
+"Atualmente, o sistema de detecção de tipos de importação só consegue "
+"determinar estes tipos MySQL para colunas. No futuro, o mais provável é que "
+"serão adicionados, mas por enquanto você terá que editar a estrutura dada "
+"para suas preferências após a importação. Além disso, saiba que o phpMyAdmin "
+"usará o tamanho do maior item em qualquer dada coluna como o tamanho da "
+"coluna para o tipo apropriado. Se você sabe que adicionará itens maiores "
+"para aquela coluna então você deverá ajustar manualmente o tamanho das "
+"colunas de acordo. Isso é feito pelo bem da eficiência."
 
 # bc00024405fb4a0e8cc97bd910cb7489
 #: ../source/faq.rst:1002
 msgid "ISPs, multi-user installations"
-msgstr ""
+msgstr "ISPs, instalações multi-usuário"
 
 # d720a6862a114734857e2886b3da6101
 #: ../source/faq.rst:1007
@@ -6994,6 +7168,8 @@ msgid ""
 "4.1 I'm an ISP. Can I setup one central copy of phpMyAdmin or do I need to "
 "install it for each customer?"
 msgstr ""
+"4.1 Eu sou um ISP (Internet Service Provider). Eu posso instalar uma cópia "
+"central do phpMyAdmin ou eu preciso instalar ela para cada cliente?"
 
 # acef26c7bd454de7b82f0f371c51b579
 #: ../source/faq.rst:1009
@@ -7003,12 +7179,19 @@ msgid ""
 "GmbH. This requires a properly setup MySQL user management and phpMyAdmin :"
 "term:`HTTP` or cookie authentication."
 msgstr ""
+"Desde a versão 2.0.3, você pode instalar uma cópia central do phpMyAdmin "
+"para todos os usuários. O desenvolvimento dessa função foi gentilmente "
+"patrocinado pela NetCologne GmbH. Isso exige uma instação apropriada do "
+"gerenciamento de usuários do MySQL e a autenticação por cookie ou "
+":term:`HTTP` do phpMyAdmin."
 
 # 8378f8b8b304467bb80d269f6223680c
 #: ../source/faq.rst:1019
 msgid ""
 "4.2 What's the preferred way of making phpMyAdmin secure against evil access?"
 msgstr ""
+"4.2 Qual o meio preferido de tornar o phpMyAdmin seguro contra acessos "
+"maliciosos?"
 
 # 4af8f2218b6c49c19b6b33163735c3f4
 #: ../source/faq.rst:1021
@@ -7019,16 +7202,22 @@ msgid ""
 "files, for example). If other people have telnet access to your server, you "
 "should use phpMyAdmin's :term:`HTTP` or cookie authentication features."
 msgstr ""
+"Isso depende do seu sistema. Se você estiver rodando um servidor que não "
+"pode ser acessado por outras pessoas, é suficiente usar o diretório de "
+"proteção embutido com seu servidor web (com Apache você pode usar os "
+"arquivos :term:`.htaccess`, por exemplo). Se outras pessoas tem acesso via "
+"telnet ao seu servidor, você deveria usar as funções de autenticação por "
+":term:`HTTP` ou cookie do phpMyAdmin."
 
 # edba88d73e4a46e0a11c3572d1877d1d
 #: ../source/faq.rst:1027
 msgid "Suggestions:"
-msgstr ""
+msgstr "Sugestões:"
 
 # bbad81ed12bc4849b61d82772f9951a5
 #: ../source/faq.rst:1029
 msgid "Your :file:`config.inc.php` file should be ``chmod 660``."
-msgstr ""
+msgstr "Seu arquivo :file:`config.inc.php` deve ser definido como \"chmod 660\"."
 
 #: ../source/faq.rst:1030
 msgid ""
@@ -7036,10 +7225,13 @@ msgid ""
 "user whose password is only known to you, and apache is the group under "
 "which Apache runs."
 msgstr ""
+"Todos seus arquivos do phpMyAdmin devem ser definidos por chown -R "
+"phpmy.apche, onde phpmy é um usuário cuja senha é conhecida somente por "
+"você, e apache é o grupo dentro do qual o Apache roda."
 
 #: ../source/faq.rst:1033
 msgid "Follow security recommendations for PHP and your webserver."
-msgstr ""
+msgstr "Siga as recomendações de segurança para o PHP e seu servidor web."
 
 # 96c456703dbf464b99afd7bdd4e727e5
 #: ../source/faq.rst:1038
@@ -7047,6 +7239,8 @@ msgid ""
 "4.3 I get errors about not being able to include a file in */lang* or in */"
 "libraries*."
 msgstr ""
+"4.3 Eu recebo erros quanto a não ser capaz de incluir um arquivo em */lang* "
+"ou */libraries*."
 
 # 8436ef33f60f45e4bcc2d553ef18bc34
 #: ../source/faq.rst:1040
@@ -7056,16 +7250,22 @@ msgid ""
 "if used, must contain \".\" and \"./lang\" to allow normal operation of "
 "phpMyAdmin."
 msgstr ""
+"Verifique o :file:`php.ini`, ou peça ao administrador do seu sistema "
+"verificar. O \"include_path\" deve contém \".\" em algum lugar dele, e "
+"\"open_basedir\", se usada, deve conter \".\" e \"./lang\" para permitir operação "
+"normal do phpMyAdmin."
 
 # 62772ab67034404ab0497c5b56bcafc7
 #: ../source/faq.rst:1048
 msgid ""
 "4.4 phpMyAdmin always gives \"Access denied\" when using HTTP authentication."
 msgstr ""
+"4.4 O phpMyAdmin sempre dá um \"Acesso negado\" quando uso a autenticação por "
+"HTTP."
 
 #: ../source/faq.rst:1050
 msgid "This could happen for several reasons:"
-msgstr ""
+msgstr "Isso pode acontecer por vários motivos:"
 
 # 7992f5f57e824ab79e06cc7b3e77c33a
 #: ../source/faq.rst:1052
@@ -7073,10 +7273,13 @@ msgid ""
 ":config:option:`$cfg['Servers'][$i]['controluser']` and/or :config:option:`"
 "$cfg['Servers'][$i]['controlpass']`  are wrong."
 msgstr ""
+":config:option:`$cfg['Servers'][$i]['controluser']` e/ou "
+":config:option:`$cfg['Servers'][$i]['controlpass']` estão errados."
 
 #: ../source/faq.rst:1053
 msgid "The username/password you specify in the login dialog are invalid."
 msgstr ""
+"O usuário/senha que você especificou no diálogo de login estão inválidos."
 
 # 9898f4d3da3c40a59c60d0c89ff8f894
 #: ../source/faq.rst:1054
@@ -7085,11 +7288,14 @@ msgid ""
 "eg. a :term:`.htaccess` file. This would interfere with phpMyAdmin's "
 "authentication, so remove it."
 msgstr ""
+"Você já instalou um mecanismo de segurança no diretório do phpMyAdmin, ex: "
+"um arquivo :term:`.htaccess`. Isso iria interferir com a autenticação do "
+"phpMyAdmin, então remova-o."
 
 # e5ee4cf255d743cd9ed3ce5c524ffd46
 #: ../source/faq.rst:1061
 msgid "4.5 Is it possible to let users create their own databases?"
-msgstr ""
+msgstr "4.5 É possível deixar os usuários criar seus próprios bancos de dados?"
 
 # 4db15d61084b45b09a5aac536ef21946
 #: ../source/faq.rst:1063
@@ -7099,11 +7305,16 @@ msgid ""
 "want. For example, adding ``SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, "
 "INDEX, ALTER`` would let a user create/manage his/her database(s)."
 msgstr ""
+"A partir da versão 2.2.5, na página de gerenciamento de usuários, você pode "
+"inserir um nome coringa de banco de dados para um usuário (por exemplo \"joe%"
+"\"), e colocar os privilégios que você quiser. Por exemplo, adicionar "
+"\"SELECT, INSERT, UPDATE, DELETE, CREATE, INDEX, ALTER\" iria permitir um "
+"usuário criar/gerenciar o(s) banco(s) de dados dele(a)."
 
 # df1e2842ebfd40d69a0f73457d61cd89
 #: ../source/faq.rst:1072
 msgid "4.6 How can I use the Host-based authentication additions?"
-msgstr ""
+msgstr "4.6 Como eu posso usar as adições de autenticação baseada em host?"
 
 # 91c36a70f7394147a6080a3fa881373a
 #: ../source/faq.rst:1074
@@ -7115,6 +7326,12 @@ msgid ""
 "updated lines into the :config:option:`$cfg['Servers'][$i]['AllowDeny']"
 "['rules']` array."
 msgstr ""
+"Se você possui regras existentes em um arquivo :term:`.htaccess` antigo, "
+"você pode pegá-las e adicionar um nome de usuário entre as strings "
+"\"deny/allow\" e \"from\". Usar o coringa de nome de usuário \"%\" pode ser um "
+"grande benefício aqui se sua instalação está adaptada para isso. Depois você "
+"pode simplesmente adicionar aquelas linhas atualizadas no array do "
+":config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']`."
 
 # bf11d4f8dac84326848f86eec68b373c
 #: ../source/faq.rst:1081
@@ -7123,11 +7340,14 @@ msgid ""
 "'root' user from logging in from any networks other than the private "
 "network :term:`IP` blocks."
 msgstr ""
+"Se você quer uma amostra pré-pronta, você pode experimentar este fragmento. "
+"Ele impede o usuário \"root\" de logar a partir de qualquer rede diferente dos "
+"blocos de :term:`IP` de redes privadas."
 
 # 94be40d9c88c441a83164a6d31ded22b
 #: ../source/faq.rst:1101
 msgid "4.7 Authentication window is displayed more than once, why?"
-msgstr ""
+msgstr "4.7 A janela de autenticação é mostrada mais de uma vez, porque?"
 
 # 2a2b632ba2a04f12b92591ad7e0e50da
 #: ../source/faq.rst:1103
@@ -7137,11 +7357,15 @@ msgid ""
 "For example, a missing \"www\", or entering with an :term:`IP` address while "
 "a domain name is defined in the config file."
 msgstr ""
+"Isso acontece se você está usando a :term:`URL` para iniciar o phpMyAdmin, o "
+"que é diferente da definida na sua :config:option:`$cfg['PmaAbsoluteUri']`. "
+"Por exemplo, um \"www\" faltando, ou entrar com um endereço :term:`IP` quando "
+"um nome de domínio é definido no arquivo de configuração."
 
 # 8e59ed892d6447c5a2de73dec9507f96
 #: ../source/faq.rst:1111
 msgid "4.8 Which parameters can I use in the URL that starts phpMyAdmin?"
-msgstr ""
+msgstr "4.8 Quais parâmetros podem ser usados na URL que inicia o phpMyAdmin?"
 
 # b55a7cc948584f4aa71d92f71cfd2b1d
 #: ../source/faq.rst:1113
@@ -7153,11 +7377,17 @@ msgid ""
 "``pma_password`` has been tested along with the usage of 'cookie' "
 "``auth_type``."
 msgstr ""
+"Quando iniciar o phpMyAdmin, você pode usar os parâmetros \"db\", "
+"\"pma_username\", \"pma_password\" e \"server\". Este último pode conter ou um "
+"índice numérico de host (da \"$i\" do arquivo de configuração) ou um dos nomes "
+"de host presentes no arquivo de configuração. Usar o \"pma_username\" e "
+"\"pma_password\" foram testados junto com o uso do tipo de autenticação por "
+"cookie."
 
 # 97217b6452d948f8aac9f480afd3c2d9
 #: ../source/faq.rst:1123
 msgid "Browsers or client OS"
-msgstr ""
+msgstr "Navegadores ou SO cliente"
 
 # 0a34d7f001a745df886abbb48895e4b8
 #: ../source/faq.rst:1128
@@ -7165,6 +7395,8 @@ msgid ""
 "5.1 I get an out of memory error, and my controls are non-functional, when "
 "trying to create a table with more than 14 columns."
 msgstr ""
+"5.1 Eu recebo um erro falta de memória, e meus controles estão "
+"não-funcionais, quando tento criar uma tabela com mais de 14 colunas."
 
 # 38d76a6194584413a8a8212072f1399f
 #: ../source/faq.rst:1130
@@ -7174,11 +7406,15 @@ msgid ""
 "create a smaller number of columns, then come back to your table properties "
 "and add the other columns."
 msgstr ""
+"Nós podemos reproduzir este problema somente no Win98/98SE. Testando no "
+"WinNT4 ou Win2K, nós podemos criar facilmente mais de 60 colunas. Uma "
+"solução é criar um número menor de colunas, então voltar às propriedades da "
+"sua tabela e adicionar as outras colunas."
 
 # 2bced78484344a939d1d149beba25073
 #: ../source/faq.rst:1138
 msgid "5.2 With Xitami 2.5b4, phpMyAdmin won't process form fields."
-msgstr ""
+msgstr "5.2 Com o Xitami 2.5b4, o phpMyAdmin não processa campos de formulário."
 
 # 3a57e4cde0c14df6a23ac146c7ba39d5
 #: ../source/faq.rst:1140
@@ -7186,11 +7422,16 @@ msgid ""
 "This is not a phpMyAdmin problem but a Xitami known bug: you'll face it with "
 "each script/website that use forms. Upgrade or downgrade your Xitami server."
 msgstr ""
+"Este não é um problema do phpMyAdmin, mas um bug conhecido do Xitami: você "
+"encontrará ele com cada script/site que usar formulários. Atualize ou use "
+"uma versão mais antiga do seu servidor Xitami."
 
 # 5ba078ce89e7462498c092737d4bbd65
 #: ../source/faq.rst:1147
 msgid "5.3 I have problems dumping tables with Konqueror (phpMyAdmin 2.2.2)."
 msgstr ""
+"5.3 Eu tenho problemas quando despejo tabelas com o Konqueror (phpMyAdmin "
+"2.2.2)."
 
 # 77110c403e9a4521ab50522bcae13cf5
 #: ../source/faq.rst:1149
@@ -7202,6 +7443,13 @@ msgid ""
 "closing Konqueror, or else they disappear. GZip dumps give an error message. "
 "Testing needs to be done for Konqueror 2.2.2."
 msgstr ""
+"Com o Konqueror 2.1.1: despejos simples, dumps zip e GZip funcionam ok, "
+"exceto que o nome de arquivo proposto para o dump sempre é \"tbl_dump.php\". "
+"Os despejos Bzip2 não parecem funcionar. Com o Konqueror 2.2.1: despejos "
+"simples funcionam; despejoz zip são colocados no diretório temporário do "
+"usuário, então eles devem ser movidos antes de fechar o Konqueror, senão "
+"eles desaparecerão. Despejos GZip dão uma mensagem de erro. Testes precisam "
+"ser feitos no Konqueror 2.2.2."
 
 # 4b6e1784e4c246ceb9626276d50ea062
 #: ../source/faq.rst:1160
@@ -7209,26 +7457,28 @@ msgid ""
 "5.4 I can't use the cookie authentication mode because Internet Explorer "
 "never stores the cookies."
 msgstr ""
+"5.4 Eu não consigo usar o modo de autenticação por cookie porque o Internet "
+"Explorer nunca armazena os cookies."
 
 #: ../source/faq.rst:1162
-#, fuzzy
 msgid ""
 "MS Internet Explorer seems to be really buggy about cookies, at least till "
 "version 6."
 msgstr ""
-"Não obstante estar ciente de que o MS Internet Explorer parece realmente ser "
-"um bugador de cookies, pelo menos até a versão 6, e PHP 4.1.1 também é um "
-"pouco bugador nesta área!"
+"O MS Internet Explorer parece ser muito problemático quanto a cookies, pelo "
+"menos até a versão 6."
 
 # 25423716851542b8995ce74a2fe12e77
 #: ../source/faq.rst:1168
 msgid ""
 "5.5 In Internet Explorer 5.0, I get JavaScript errors when browsing my rows."
 msgstr ""
+"5.5 No Internet Explorer 5.0, eu recebo erros de JavaScript quando navedo "
+"pelos registros."
 
 #: ../source/faq.rst:1170
 msgid "Upgrade to at least Internet Explorer 5.5 SP2."
-msgstr ""
+msgstr "Atualize pelo menos para a versão 5.5 SP2 do Internet Explorer."
 
 # 27313dc907e848b4b493e87f4e0ac90d
 #: ../source/faq.rst:1175
@@ -7237,6 +7487,9 @@ msgid ""
 "found\") when trying to modify a row in a table with many columns, or with a "
 "text column."
 msgstr ""
+"5.6 No Internet Explorer 5.0, 5.5 ou 6.0, eu recebo um erro (como \"Página "
+"não encontrada\") quando tento modificar um registro em uma tabela com muitas "
+"colunas, ou com um coluna de texto."
 
 # 4ba8c7b0ca8c414ba80f989c3d004227
 #: ../source/faq.rst:1177
@@ -7247,17 +7500,25 @@ msgid ""
 "example. The workaround is to create a primary or unique key, or use another "
 "browser."
 msgstr ""
+"Sua tabela não tem uma chave primária nem uma única, então você deve usar "
+"uma :term:`URL` longa para identificar este registro. Há um limite no "
+"comprimento da :term:`URL` nestes navegadores, e isso não acontece no "
+"Netscape, por exemplo. A solução é criar uma chave primária ou única, ou "
+"usar outro navegador."
 
 # 08c10cea7508409ba1c5158a5b4ca8fc
 #: ../source/faq.rst:1185
 msgid "5.7 I refresh (reload) my browser, and come back to the welcome page."
 msgstr ""
+"5.7 Eu atualizo (recarrego) meu navegador, e volto para a página inicial."
 
 #: ../source/faq.rst:1187
 msgid ""
 "Some browsers support right-clicking into the frame you want to refresh, "
 "just do this in the right frame."
 msgstr ""
+"Alguns navegadores suportam clique direito no frame que você quer atualizar, "
+"apenas faça isso no frame certo."
 
 # 7c994f97bd8b47b49e903704b49ecad4
 #: ../source/faq.rst:1193
@@ -7265,12 +7526,16 @@ msgid ""
 "5.8 With Mozilla 0.9.7 I have problems sending a query modified in the query "
 "box."
 msgstr ""
+"5.8 Com o Mozilla 0.9.7 eu tenho problemas em enviar uma query modificada "
+"para a caixa de query."
 
 #: ../source/faq.rst:1195
 msgid ""
 "Looks like a Mozilla bug: 0.9.6 was OK. We will keep an eye on future "
 "Mozilla versions."
 msgstr ""
+"Parece um bug do Mozilla: 0.9.6 estava ok. Nós ficaremos de olho em futuras "
+"versões do Mozilla."
 
 # a3bc5413c7ac4bcdb88348a96b326374
 #: ../source/faq.rst:1201
@@ -7278,6 +7543,8 @@ msgid ""
 "5.9 With Mozilla 0.9.? to 1.0 and Netscape 7.0-PR1 I can't type a whitespace "
 "in the SQL-Query edit area: the page scrolls down."
 msgstr ""
+"5.9 Com o Mozilla 0.9.? ao 1.0 e Netscape 7.0-PR1 eu não consigo inserir um "
+"espaço em branco na área de edição de query SQL: a página vai para baixo."
 
 # 82ec8b6e41fd44a6b5c5b4a34bf64281
 #: ../source/faq.rst:1203
@@ -7285,6 +7552,8 @@ msgid ""
 "This is a Mozilla bug (see bug #26882 at `BugZilla <http://bugzilla.mozilla."
 "org/>`_)."
 msgstr ""
+"Este é um bug do Mozilla (veja bug nº26882 em `BugZilla "
+"<http://bugzilla.mozilla.org/>`_)."
 
 # 04b16575ce304df7b03c0b892b325624
 #: ../source/faq.rst:1209
@@ -7292,6 +7561,8 @@ msgid ""
 "5.10 With Netscape 4.75 I get empty rows between each row of data in a CSV "
 "exported file."
 msgstr ""
+"5.10 Com o Netscape 4.75 eu recebo registros vazios entre cada registro de "
+"dados em um arquivo CSV exportado."
 
 #: ../source/faq.rst:1211
 msgid ""
@@ -7299,11 +7570,15 @@ msgid ""
 "data in octet-stream mode. Since we can't detect the specific Netscape "
 "version, we cannot workaround this bug."
 msgstr ""
+"Este é um bug conhecido do Netscape 4.75: ele adiciona alguns pulos de linha "
+"quando exporta dados em modo octet-stream. Já que não podemos detectar a "
+"versão específica do Netscape, nós não podemos solucionar este bug."
 
 # 1866aee16cd340e5b0ec67bc8b348797
 #: ../source/faq.rst:1218
 msgid "5.11 Extended-ASCII characters like German umlauts are displayed wrong."
 msgstr ""
+"5.11 Caracteres ASCII extendidos como metafonias alemãs são exibidos errado."
 
 # 5d29e4bec62546669fb333751e0aefe5
 #: ../source/faq.rst:1220
@@ -7313,11 +7588,16 @@ msgid ""
 "Alternatively, you can try the auto detection mode that is supported by the "
 "recent versions of the most browsers."
 msgstr ""
+"Favor garanta que você definiu o conjunto de caracteres do navegador para o "
+"arquivo de linguagem que você selecionou na página inicial do phpMyAdmin. "
+"Alternativamente, você pode tentar o modo de auto detecção que é suportado "
+"pelas versões recentes da maioria dos navegadores."
 
 # 9205950ba76c40998997da7be593679c
 #: ../source/faq.rst:1228
 msgid "5.12 Mac OS X Safari browser changes special characters to \"?\"."
 msgstr ""
+"5.12 O navegador Safari do Mac OS X muda os caracteres especiais para \"?\"."
 
 # 1a1c8fb2e0e04e409ac30bbadf2f6168
 #: ../source/faq.rst:1230
@@ -7325,6 +7605,8 @@ msgid ""
 "This issue has been reported by a :term:`Mac OS X` user, who adds that "
 "Chimera, Netscape and Mozilla do not have this problem."
 msgstr ""
+"Este problema foi relatado por um usuário do :term:`Mac OS X`, que adicionou "
+"que o Chimera, Netscape e Mozilla não tem este problema."
 
 # f5884695416d4dd18feb41e2182c4fa2
 #: ../source/faq.rst:1236
@@ -7333,11 +7615,16 @@ msgid ""
 "manage two servers: I log in to the first one, then the other one, but if I "
 "switch back to the first, I have to log in on each operation."
 msgstr ""
+"5.13 Com o Internet Explorer 5.5 ou 6, e tipo de autenticação por HTTP, eu "
+"não consigo gerenciar dois servidores: eu logo no primeiro, então no "
+"segundo, mas se eu voltar ao primeiro, eu tenho que logar em cada operação."
 
 #: ../source/faq.rst:1238
 msgid ""
 "This is a bug in Internet Explorer, other browsers do not behave this way."
 msgstr ""
+"Este é um bug no Internet Explorer, outros navegadores não se comportam "
+"desta maneira."
 
 # e6d0b05e269146ab938ff07314831b39
 #: ../source/faq.rst:1244
@@ -7345,19 +7632,21 @@ msgid ""
 "5.14 Using Opera6, I can manage to get to the authentication, but nothing "
 "happens after that, only a blank screen."
 msgstr ""
+"5.14 Usando o Opera 6, eu consigo dar um jeito de chegar na autenticação, "
+"mas nada acontece após isso, somente uma tela branca."
 
 #: ../source/faq.rst:1246
 msgid "Please upgrade to Opera7 at least."
-msgstr ""
+msgstr "Favor atualize para o Opera 7 pelo menos."
 
 # 2aa9f2b678a947b79ed558f1e5b65d05
 #: ../source/faq.rst:1251
 msgid "5.15 I have display problems with Safari."
-msgstr ""
+msgstr "5.15 Eu tenho problemas de exibição com o Safari."
 
 #: ../source/faq.rst:1253
 msgid "Please upgrade to at least version 1.2.3."
-msgstr ""
+msgstr "Favor atualize pelos menos para a versão 1.2.3."
 
 # af66ba00f09649e2a3e22cb007affb4e
 #: ../source/faq.rst:1258
@@ -7365,10 +7654,12 @@ msgid ""
 "5.16 With Internet Explorer, I get \"Access is denied\" Javascript errors. "
 "Or I cannot make phpMyAdmin work under Windows."
 msgstr ""
+"5.16 Com o Internet Explorer, eu recebo erros de JavaScript \"Acesso negado\". "
+"Ou eu não consigo fazer o phpMyAdmin funcionar dentro do Windows."
 
 #: ../source/faq.rst:1260
 msgid "Please check the following points:"
-msgstr ""
+msgstr "Favor verifique os pontos a seguir:"
 
 # a50b3814c7f5487caa0453349e1aaf70
 #: ../source/faq.rst:1262
@@ -7378,12 +7669,18 @@ msgid ""
 "phpMyAdmin with a :term:`URL` containing a domain name, or the reverse "
 "situation."
 msgstr ""
+"Talvez você tenha definido sua configuração "
+":config:option:`$cfg['PmaAbsoluteUri']` no arquivo :file:`config.inc.php` "
+"para um endereço :term:`IP` e você está iniciando o phpMyAdmin com uma "
+":term:`URL` contendo um nome de domínio, ou a situação inversa."
 
 #: ../source/faq.rst:1265
 msgid ""
 "Security settings in IE and/or Microsoft Security Center are too high, thus "
 "blocking scripts execution."
 msgstr ""
+"Configurações de segurança no IE e/ou Microsoft Security Center estão altas "
+"demais, bloqueando assim a execução dos scripts."
 
 # 5f761490912244cc9f1cef7529b54f42
 #: ../source/faq.rst:1267
@@ -7392,17 +7689,24 @@ msgid ""
 "`HTTP` ports (80 or 443) and MySQL port (usually 3306) in the \"in\" and "
 "\"out\" directions."
 msgstr ""
+"O Firewall do Windows está bloqueando o Apache e o MySQL. Você deve permitir "
+"as portas :term:`HTTP` (80 ou 443) e a porta do MySQL (normalmente 3306) "
+"nas direções \"entrada\" e \"saída\"."
 
 # 8117c4feb4a0425299def34398424fcf
 #: ../source/faq.rst:1274
 msgid "5.17 With Firefox, I cannot delete rows of data or drop a database."
 msgstr ""
+"5.17 Com o Firefox, eu não consigo deletar registros de dados ou eliminar um "
+"banco de dados."
 
 #: ../source/faq.rst:1276
 msgid ""
 "Many users have confirmed that the Tabbrowser Extensions plugin they "
 "installed in their Firefox is causing the problem."
 msgstr ""
+"Muitos usuários tem confirmado que o plugin Tabbrowser Extensions que eles "
+"instalaram no Firefox estão causando o problema."
 
 # 2afe81aacc6247a6a905db47f212832f
 #: ../source/faq.rst:1282
@@ -7410,6 +7714,8 @@ msgid ""
 "5.18 With Konqueror 4.2.x an invalid ``LIMIT`` clause is generated when I "
 "browse a table."
 msgstr ""
+"5.18 Com o Konqueror 4.2.x uma cláusula \"LIMIT\" inválida é gerada quando eu "
+"navego em uma tabela."
 
 # e807a4893f954adab788bee40c25cda3
 #: ../source/faq.rst:1284
@@ -7419,11 +7725,15 @@ msgid ""
 "server. It seems to be a browser-specific problem; meanwhile use the "
 "``cookie`` authentication mode."
 msgstr ""
+"Isso acontece somente quando ambas dessas condições estão presentes: usando "
+"o modo de autenticação por \"HTTP\" e \"register_globals\" sendo definida para "
+"\"on\" no servidor. Isso parece ser um problema específico de navegador; "
+"enquanto isso, use o modo de autenticação por \"cookie\"."
 
 # 3db01f635c2b4d18be1262bc5b4e2beb
 #: ../source/faq.rst:1292
 msgid "5.19 I get JavaScript errors in my browser."
-msgstr ""
+msgstr "5.19 Eu recebo erros de JavaScript no meu navegador."
 
 # c1ef6592dc1d4cddaf8ac2e98f212725
 #: ../source/faq.rst:1294
@@ -7432,10 +7742,13 @@ msgid ""
 "troubleshoot, disable all extensions then clear your browser cache to see if "
 "the problem goes away."
 msgstr ""
+"Problemas foram relatados com algumas combinações de extensões de navegador. "
+"Para soluções, desativa todas as extensões então limpe o cache do seu "
+"navegador para ver se o problema desaparece."
 
 #: ../source/faq.rst:1301
 msgid "Using phpMyAdmin"
-msgstr ""
+msgstr "Usando o phpMyAdmin"
 
 # f9310a389ec04496b46c478647c239f4
 #: ../source/faq.rst:1306
@@ -7443,6 +7756,8 @@ msgid ""
 "6.1 I can't insert new rows into a table / I can't create a table - MySQL "
 "brings up a SQL error."
 msgstr ""
+"6.1 Eu não consigo inserir novos registros em uma tabela / Eu não consigo "
+"criar uma tabela - o MySQL traz um erro SQL."
 
 # 740035b9f4f74bfda8cd43a8aa447ceb
 #: ../source/faq.rst:1308
@@ -7450,22 +7765,26 @@ msgid ""
 "Examine the :term:`SQL` error with care. Often the problem is caused by "
 "specifying a wrong column-type. Common errors include:"
 msgstr ""
+"examine o erro :term:`SQL` com cuidado. Frequentemente o problema é causado "
+"pela especificação de um tipo de coluna errado. Erros comuns incluem:"
 
 # d4926686a23f4c0198b303cbd0b0571c
 #: ../source/faq.rst:1312
 msgid "Using ``VARCHAR`` without a size argument"
-msgstr ""
+msgstr "Usar \"VARCHAR\" sem um argumento de tamanho"
 
 # 3f3fc299608c4dcaa9dd9d968c51865b
 #: ../source/faq.rst:1313
 msgid "Using ``TEXT`` or ``BLOB`` with a size argument"
-msgstr ""
+msgstr "Usar \"TEXT\" ou \"BLOB\" sem um argumento de tamanho"
 
 #: ../source/faq.rst:1315
 msgid ""
 "Also, look at the syntax chapter in the MySQL manual to confirm that your "
 "syntax is correct."
 msgstr ""
+"Além disso, olhe o capítulo de sintaxe no manual MySQL para confirmar que "
+"sua sintaxe está correta."
 
 # 5f1c5b4535514cac9c1b3132e8e8605e
 #: ../source/faq.rst:1321
@@ -7473,6 +7792,8 @@ msgid ""
 "6.2 When I create a table, I set an index for two columns and phpMyAdmin "
 "generates only one index with those two columns."
 msgstr ""
+"6.2 Quando eu crio uma tabela, eu defino um índice para duas colunas e o "
+"phpMyAdmin gera somente um índice com essas duas colunas."
 
 #: ../source/faq.rst:1323
 msgid ""
@@ -7480,11 +7801,14 @@ msgid ""
 "create the first one when creating the table, save, then display the table "
 "properties and click the Index link to create the other index."
 msgstr ""
+"Este é o jeito de criar índices multi-coluna. Se você quer dois índices, "
+"crie o primeiro quando criar a tabela, salve, então exiba as propriedades da "
+"tabela e clica no link Índice para criar o outro índice."
 
 # 38d095aa29024c0bb301f42c468e9605
 #: ../source/faq.rst:1331
 msgid "6.3 How can I insert a null value into my table?"
-msgstr ""
+msgstr "6.3 Como eu posso interir um valor null na minha tabela?"
 
 # b153f7a505644fcfb6966c2529943ac0
 #: ../source/faq.rst:1333
@@ -7495,11 +7819,17 @@ msgid ""
 "value, so if you enter \"NULL\" this means you want a literal NULL in the "
 "column, and not a NULL value (this works in PHP4)."
 msgstr ""
+"Desde a versão 2.2.3, você tem um checkbox para cada coluna que pode ser "
+"nula. Antes da 2.2.3, você tinha que colocar \"null\", sem aspas, como um "
+"valor de coluna. Desde a versão 2.5.5, você tem que usar o checkbox para "
+"usar um valor NULL real, então se você entrar \"NULL\", isso significará que "
+"você quer um valor literal NULL no campo, e não um valor NULL (isso funciona "
+"no PHP4)."
 
 # 3180fcc6bc454e8399acafa1ef0b5a88
 #: ../source/faq.rst:1342
 msgid "6.4 How can I backup my database or table?"
-msgstr ""
+msgstr "6.4 Como eu posso fazer backup do meu banco de dados ou tabela?"
 
 # aac0b62de5734b72b985812d1ea972ff
 #: ../source/faq.rst:1344
@@ -7514,6 +7844,15 @@ msgid ""
 "['ExecTimeLimit']` configuration variable. For additional help on this "
 "subject, look for the word \"dump\" in this document."
 msgstr ""
+"Clique no nome de um banco de dados ou tabela no painel de navegação, as "
+"propriedades serão exibidas. Entao no menu, clique em \"Exportar\", você pode "
+"despejar a estrutura, os dados, ou ambos. Isso irá gerar instruções "
+":term:`SQL` que podem ser usadas para recriar seu banco de dados/tabela. "
+"Você irá precisar escolher \"Salvar como arquivo\", para que o phpMyAdmin "
+"possa transmitir o despejo resultante para sua estação. Dependendo da sua "
+"configuração PHP, você verá opções para comprimir o despejo. Veja também a "
+"variável de configuração :config:option:`$cfg['ExecTimeLimit']`. Para ajuda "
+"adicional neste assunto, procure pela palavra \"despejo\" neste documento."
 
 # 68fd43813a5a467d9bd407b0e5f9a812
 #: ../source/faq.rst:1356
@@ -7521,6 +7860,8 @@ msgid ""
 "6.5 How can I restore (upload) my database or table using a dump? How can I "
 "run a \".sql\" file?"
 msgstr ""
+"6.5 Como eu posso restaurar (upload) meu banco de dados ou tabela usando um "
+"despejo? Como eu posso rodar um arquivo \".sql\"?"
 
 # 590e0b9063f741ebb6b4662976c6e9fd
 #: ../source/faq.rst:1358
@@ -7534,11 +7875,19 @@ msgid ""
 "upgrade to take advantage of the new features.  For additional help on this "
 "subject, look for the word \"upload\" in this document."
 msgstr ""
+"Clique no nome de um banco de dados no painel de navegação, as propriedades "
+"serão exibidas. Selecione \"Importar\" da lista de abas no frame direito (ou "
+"\":term:`SQL`\" se sua versão do phpMyAdmin for anterior a 2.7.0). Na seção "
+"\"Localização do arquivo de texto\", digite o caminho do nome do seu arquivo "
+"de despejo, ou use o botão Buscar. Então clique em Ir. Com a versão 2.7.0, o "
+"motor de importação foi re-escrito, se possível é sugerido que você "
+"atualize para tirar vantagem das nova funções. Para ajuda adicional neste "
+"assunto, procure pela palavra \"upload\" neste documento."
 
 # 51e30f2dca5346078de17f5ea18ded0d
 #: ../source/faq.rst:1371
 msgid "6.6 How can I use the relation table in Query-by-example?"
-msgstr ""
+msgstr "6.6 Como eu posso usar a tabela de relações em query-por-exemplo?"
 
 # 1ad8d2ae8c0045b6acaace05be75aac0
 #: ../source/faq.rst:1373
@@ -7547,63 +7896,67 @@ msgid ""
 "in the database mydb. If you don't have a ``pma__relation`` table, create it "
 "as explained in the configuration section. Then create the example tables:"
 msgstr ""
+"Aqui está um exemplo com as tabelas pessoas, cidades e países, todas "
+"localizadas no banco de dados mydb. Se você não tem uma tabela "
+"\"pma_relation\", crie-a conforme explicado na seção de configuração. Entao "
+"crie as tabelas de exemplo:"
 
 #: ../source/faq.rst:1409
 msgid "To setup appropriate links and display information:"
-msgstr ""
+msgstr "Para configurar apropriadamente os links e exibição de informações:"
 
 # 31b447425ae84dd0b2a6d1a2f281d8db
 #: ../source/faq.rst:1411
 msgid "on table \"REL\\_persons\" click Structure, then Relation view"
-msgstr ""
+msgstr "na tabela \"REL_persons\" clique em Estrutura, depois Ver relações"
 
 # a7572c504e9246d4b0bd1fa9e7e403cc
 #: ../source/faq.rst:1412
 msgid "in Links, for \"town\\_code\" choose \"REL\\_towns->code\""
-msgstr ""
+msgstr "em Links, para \"town_code\" escolha \"REL_towns->code\""
 
 # 972ee803b6b24ffd9a88714d3644367d
 #: ../source/faq.rst:1413
 msgid ""
 "in Links, for \"country\\_code\" choose \"REL\\_countries->country\\_code\""
-msgstr ""
+msgstr "em Links, para \"country_code\" escolha \"REL_countries->country_code\""
 
 # 05f66ee4950f487eb131b1d9940b8567
 #: ../source/faq.rst:1414
 msgid "on table \"REL\\_towns\" click Structure, then Relation view"
-msgstr ""
+msgstr "na tabela \"REL_towns\" clique em Estrutura, então Ver relações"
 
 # 192787cf0e9a4d6abfbd9fccb64f42af
 #: ../source/faq.rst:1415
 msgid "in \"Choose column to display\", choose \"description\""
-msgstr ""
+msgstr "em \"Escolha coluna a exibir\", escolha \"descrição\""
 
 # fb7c9c57b16249dd9323164913c32778
 #: ../source/faq.rst:1416
 msgid "repeat the two previous steps for table \"REL\\_countries\""
-msgstr ""
+msgstr "repita os dois passos anteriores para a tabela \"REL_countries\""
 
 #: ../source/faq.rst:1418
 msgid "Then test like this:"
-msgstr ""
+msgstr "Então teste desse jeito:"
 
 #: ../source/faq.rst:1420
 msgid "Click on your db name in the navigation panel"
-msgstr ""
+msgstr "Clique no nome do seu banco de dados no painel de navegação"
 
 # b06f708e05e542c3a1caf7ad1c88872e
 #: ../source/faq.rst:1421
 msgid "Choose \"Query\""
-msgstr ""
+msgstr "Escolha \"SQL\""
 
 #: ../source/faq.rst:1422
 msgid "Use tables: persons, towns, countries"
-msgstr ""
+msgstr "Use as tabelas: pessoas, cidades, países"
 
 # 35296419573e4797959da1de45e344cd
 #: ../source/faq.rst:1423
 msgid "Click \"Update query\""
-msgstr ""
+msgstr "Clique em \"Executar\""
 
 # fd9767819f6e49628bc1081ca1681b2c
 #: ../source/faq.rst:1424
@@ -7611,12 +7964,16 @@ msgid ""
 "In the columns row, choose persons.person\\_name and click the \"Show\" "
 "tickbox"
 msgstr ""
+"Nos campos do registro, escolha persons.person_name e clique na tickbox "
+"\"Exibir\""
 
 #: ../source/faq.rst:1426
 msgid ""
 "Do the same for towns.description and countries.descriptions in the other 2 "
 "columns"
 msgstr ""
+"Faça o mesmo para towns.description e countries.descript nas outras 2 "
+"colunas"
 
 # 7e64fc7811194e3f8a1220b374fb7fc5
 #: ../source/faq.rst:1428
@@ -7624,16 +7981,18 @@ msgid ""
 "Click \"Update query\" and you will see in the query box that the correct "
 "joins have been generated"
 msgstr ""
+"Clique em \"Executar\" e você verá na caixa de query que as junções corretas "
+"foram geradas"
 
 # 46ff5ffb203044f89b3b407741b7f779
 #: ../source/faq.rst:1430
 msgid "Click \"Submit query\""
-msgstr ""
+msgstr "Clique em \"Submit query\""
 
 # 510d895fb09249e68a0e80f9aa25f3f4
 #: ../source/faq.rst:1435
 msgid "6.7 How can I use the \"display column\" feature?"
-msgstr ""
+msgstr "6.7 Como eu posso usar a função \"exibir coluna\"?"
 
 # c2da8b56ff704958a9b8399460e06c3c
 #: ../source/faq.rst:1437
@@ -7644,11 +8003,16 @@ msgid ""
 "for an additional feature that \"display column\" enables: drop-down list of "
 "possible values."
 msgstr ""
+"A partir do exemplo anterior, crie a \"pma_table_info\" como explicado na "
+"seção de configuração, então navegue na sua tabela de pessoas, e mova o "
+"mouse sobre o código de uma cidade ou país. Veja também :ref:`faq6_21` para "
+"uma função adicional que \"exibir coluna\" habilita: lista drop-down dos "
+"valores disponívels."
 
 # e9c1bf1875854df98ef9c9f46051649c
 #: ../source/faq.rst:1446
 msgid "6.8 How can I produce a PDF schema of my database?"
-msgstr ""
+msgstr "6.8 Como eu posso produzir um esquema PDF do meu banco de dados?"
 
 # 7528d33ef65b42dfb7ae4b4d10b8ec4e
 #: ../source/faq.rst:1448
@@ -7657,20 +8021,23 @@ msgid ""
 "\\_pages\" have to be filled in.  Then you need to think about your schema "
 "layout. Which tables will go on which pages?"
 msgstr ""
+"Primeiro as variáveis de configuração \"relation\", \"table_coords\" e "
+"\"pdf_pages\" tem que ser preenchidas. Então você precisa pensar sobre o "
+"layout do seu esquema. Quais tabelas irão para quais páginas?"
 
 #: ../source/faq.rst:1452
 msgid "Select your database in the navigation panel."
-msgstr ""
+msgstr "Selecione seu banco de dados no painel de navegação."
 
 # 7862b59b10464af69e5ef3bd209d6ac2
 #: ../source/faq.rst:1453
 msgid "Choose \"Operations\" in the navigation bar at the top."
-msgstr ""
+msgstr "Escolha \"Operações\" na barra de navegação no topo."
 
 # dd1a2cb51426438491a501f5a0277e08
 #: ../source/faq.rst:1454
 msgid "Choose \"Edit :term:`PDF` Pages\" near the bottom of the page."
-msgstr ""
+msgstr "Escolha \"Editar Páginas :term:`PDF`\" próximo do fim da página."
 
 # 4c81e051d2d14d47998713dedaa47fdc
 #: ../source/faq.rst:1456
@@ -7679,12 +8046,17 @@ msgid ""
 "can use the \"automatic layout,\" which will put all your linked tables onto "
 "the new page."
 msgstr ""
+"Insira um nome para a primeira página :term:`PDF` e clique em Ir. Se você "
+"quiser, você pode usar o \"layout automático\", que colocará todas os links "
+"das suas tabelas na próxima página."
 
 #: ../source/faq.rst:1459
 msgid ""
 "Select the name of the new page (making sure the Edit radio button is "
 "selected) and click Go."
 msgstr ""
+"Selecione o nome da nova página (garantindo que o botão do Editar está "
+"selecionado) então clique em Ir."
 
 # 9088a50148394a1d86bdc0b7a6ecfdf3
 #: ../source/faq.rst:1461
@@ -7695,6 +8067,12 @@ msgid ""
 "coordinates -- say, 50x50. After clicking Save, you can then use the :ref:"
 "`wysiwyg` to position the element correctly."
 msgstr ""
+"Selecione uma tabela da lista, coloque suas coordenadas e clique em Salvar. "
+"As coordenadas são relativas; seu driagrama será automaticamente ajustado "
+"para caber na página. Quando colocar inicialmente as tabelas na página, "
+"apenas pegue quaisquer coordenadas - digamos, 50x50. Após clicar em Salvar, "
+"você pode então usar o :ref:`wysiwyg` para posicionar o elemento "
+"corretamente."
 
 # 05c80a5403fb4999ba1692fcc01279c0
 #: ../source/faq.rst:1466
@@ -7704,6 +8082,10 @@ msgid ""
 "made there. Then scroll all the way down, select the :term:`PDF` options you "
 "want, and click Go."
 msgstr ""
+"Quando você quiser olhar seu :term:`PDF`, primeiro tenha certeza de clicar "
+"no botão Salvar abaixo da lista de tabelas e cordenadas, para salvar "
+"quaisquer mudanças que você fez. Então role até o final, selecione as opções "
+":term:`PDF` que você quiser, e clique em Ir."
 
 # 2a62e3c152ca4446bef0b332944e8576
 #: ../source/faq.rst:1470
@@ -7714,11 +8096,16 @@ msgid ""
 "Browsers on other operating systems, and other browsers on Windows, do not "
 "have this problem."
 msgstr ""
+"O Internet Explorer para Windows pode sugerir um nome de arquivo incorreto "
+"quando você tentar salvar um :term:`PDF` gerado. Quando salvar um "
+":term:`PDF`, garanta que o nome do arquivo termine em \".pdf\", por exemplo "
+"\"esquema.pdf\". Os navegadores em outros sistemas operacionais, e outros "
+"navegadores no Windows não tem este problema."
 
 # 2ba37bd4ce904343bc45a99bfdc44a53
 #: ../source/faq.rst:1480
 msgid "6.9 phpMyAdmin is changing the type of one of my columns!"
-msgstr ""
+msgstr "6.9 O phpMyAdmin está mudando o tipo de uma das minhas colunas!"
 
 # 0f16cca1f2d7442397b18000de070fbe
 #: ../source/faq.rst:1482
@@ -7726,6 +8113,8 @@ msgid ""
 "No, it's MySQL that is doing `silent column type changing <http://dev.mysql."
 "com/doc/en/silent-column-changes.html>`_."
 msgstr ""
+"Não, é o MySQL que está fazendo uma `mudança silenciosa de tipo de coluna "
+"<http://dev.mysql.com/doc/en/silent-column-changes.html>`_."
 
 # a2909fe4d0524d25860bb0b23dd41cb6
 #: ../source/faq.rst:1488
@@ -7733,6 +8122,8 @@ msgid ""
 "6.10 When creating a privilege, what happens with underscores in the "
 "database name?"
 msgstr ""
+"6.10 Quando criar um privilégio, o que acontece com os sublinhados no nome "
+"do banco de dados?"
 
 # 3b00cde0892e429da7aa683fda08ef86
 #: ../source/faq.rst:1490
@@ -7743,26 +8134,31 @@ msgid ""
 "put a backslash before the underscore, it means that the database name will "
 "have a real underscore."
 msgstr ""
+"Se você não colocar uma barra antes do sublinhado, isso é uma concessão de "
+"coringa, e o sublinhado significa \"qualquer caractere\". Então, se o nome do "
+"banco de dados é \"john_db\", o usuário irá ganhar os direitos para john1db, "
+"john2db ... Se você colocar uma barra antes do sublinhado, isso significa "
+"que o nome do banco de dados terá um sublinhado real."
 
 # 43ac259bc89e4be28868ce3082a57960
 #: ../source/faq.rst:1499
 msgid "6.11 What is the curious symbol ø in the statistics pages?"
-msgstr ""
+msgstr "6.11 O que é o curioso símbolo ø nas páginas das estatísticas?"
 
 # 2e890a7f5cc94a1a9310fa57ce597292
 #: ../source/faq.rst:1501
 msgid "It means \"average\"."
-msgstr ""
+msgstr "Ele significa \"média\"."
 
 # d32a2d624f5c431b8214910da9f33175
 #: ../source/faq.rst:1506
 msgid "6.12 I want to understand some Export options."
-msgstr ""
+msgstr "6.12 Eu quero entender algumas opções de Exportação."
 
 # 30560ed931c6468599704fa78806093b
 #: ../source/faq.rst:1508
 msgid "**Structure:**"
-msgstr ""
+msgstr "**Estrutura:**"
 
 # 14c558abd1c943eda507c40302f39a7c
 #: ../source/faq.rst:1510
@@ -7772,6 +8168,10 @@ msgid ""
 "the import. It does NOT drop the table after your export, it only affects "
 "the import file."
 msgstr ""
+"\"Adicionar DROP TABLE\" irá adicionar uma linha dizendo ao MySQL para "
+"`eliminar a tabela <http://dev.mysql.com/doc/mysql/en/drop-table.html>`_, se "
+"ela já existe durante a importação. Ele NÃO elimina a tabela após você "
+"exportar, ele afeta somente o arquivo de importação."
 
 # bb113063817046989b968409d9767ebe
 #: ../source/faq.rst:1514
@@ -7779,6 +8179,9 @@ msgid ""
 "\"If Not Exists\" will only create the table if it doesn't exist. Otherwise, "
 "you may get an error if the table name exists but has a different structure."
 msgstr ""
+"\"Se Não Existe\" irá criar a tabela somente se ela não existir. Caso "
+"contrário, você pode receber um erro se o nome da tabela existe mas tem uma "
+"estrutura diferente."
 
 # f9b2cb1b190441359901be61c1181e22
 #: ../source/faq.rst:1517
@@ -7786,6 +8189,8 @@ msgid ""
 "\"Add AUTO\\_INCREMENT value\" ensures that AUTO\\_INCREMENT value (if any) "
 "will be included in backup."
 msgstr ""
+"\"Adicionar valor AUTO\\_INCREMENT\" garante que o valor AUTO\\_INCREMENT (se "
+"houver algum) será incluído no backup."
 
 # 3a99908829184c258bbc9768c57d4116
 #: ../source/faq.rst:1519
@@ -7793,6 +8198,8 @@ msgid ""
 "\"Enclose table and column names with backquotes\" ensures that column and "
 "table names formed with special characters are protected."
 msgstr ""
+"\"Envolver nomes de tabela e coluna com aspas\" garante que os nomes de tabela "
+"e de coluna formados com caracteres especiais sejam protegidos."
 
 # 04b4dc2894d3495081534d9e54a3c0b6
 #: ../source/faq.rst:1521
@@ -7800,11 +8207,14 @@ msgid ""
 "\"Add into comments\" includes column comments, relations, and MIME types "
 "set in the pmadb in the dump as :term:`SQL` comments (*/\\* xxx \\*/*)."
 msgstr ""
+"\"Adicionar nos comentários\" inclui comentários de coluna, relações, e tipos "
+"MIME definidos no pmadb no despejo como comentários :term:`SQL` (*/\\* xxx "
+"\\*/*)."
 
 # cd9edd06af9148d48697163318c04f8b
 #: ../source/faq.rst:1525
 msgid "**Data:**"
-msgstr ""
+msgstr "<b>Dados:</b>"
 
 # 12ef5019f2ae4d4baa093d2b7db1742e
 #: ../source/faq.rst:1527
@@ -7812,6 +8222,8 @@ msgid ""
 "\"Complete inserts\" adds the column names on every INSERT command, for "
 "better documentation (but resulting file is bigger)."
 msgstr ""
+"\"Insert completo\" adiciona os nomes de colunas em cada comando INSERT, para "
+"melhor documentação (mas com arquivo gerado maior)."
 
 # 742c1ba15d77401398995516e0c1d6e9
 #: ../source/faq.rst:1529
@@ -7819,6 +8231,8 @@ msgid ""
 "\"Extended inserts\" provides a shorter dump file by using only once the "
 "INSERT verb and the table name."
 msgstr ""
+"\"Insert extendido\" provê um arquivo de despejo menor usando somente uma vez "
+"o verbo INSERT e o nome da tabela."
 
 # 97fd4d27ee054891a510fc6dd56a7145
 #: ../source/faq.rst:1531
@@ -7826,6 +8240,8 @@ msgid ""
 "\"Delayed inserts\" are best explained in the `MySQL manual - INSERT DELAYED "
 "Syntax <http://dev.mysql.com/doc/mysql/en/insert-delayed.html>`_."
 msgstr ""
+"\"Insert atrasado\" são explicados melhor no `manual MySQL - Sintaxe do INSERT "
+"DELAYED  <http://dev.mysql.com/doc/mysql/en/insert-delayed.html>`_."
 
 # 3451a11ac8b840df833f4b16baceddf1
 #: ../source/faq.rst:1533
@@ -7835,11 +8251,16 @@ msgid ""
 "mysql/en/insert.html>`_, but basically with this selected, invalid values "
 "are adjusted and inserted rather than causing the entire statement to fail."
 msgstr ""
+"\"Insert ignorado\" trata erros como um aviso em vez disso. Novamente, mais "
+"informação é providenciada no `manual MySQL - Sintaxe do INSERT "
+"<http://dev.mysql.com/doc/mysql/en/insert.html>`_, mas basicamente com isso "
+"selecionado, valores inválidos são ajustados e inseridos em vez de levar uma "
+"instrução inteira a falhar."
 
 # 73484d6aa9254dca89deb6821417db7e
 #: ../source/faq.rst:1542
 msgid "6.13 I would like to create a database with a dot in its name."
-msgstr ""
+msgstr "6.13 Eu gostaria de criar um banco de dados com um ponto no nome dele."
 
 # 971311d88c96480ab520e9dadc0adc23
 #: ../source/faq.rst:1544
@@ -7849,11 +8270,15 @@ msgid ""
 "let you create a database with a dot, but then you cannot work with it, nor "
 "delete it."
 msgstr ""
+"Isso é uma má ideia, porque no MySQL a sintaxe \"banco_de_dados.tabela\" é o "
+"jeito normal de referenciar o nome de um banco de dados e de uma tabela. "
+"Pior, o MySQL normalmente deixará você criar um banco de dados com um ponto, "
+"mas então você não conseguirá usá-lo, nem deletá-lo."
 
 # de36aaeeffec4285a5e3e8462aa8dbfe
 #: ../source/faq.rst:1552
 msgid "6.14 How do I set up the SQL Validator?"
-msgstr ""
+msgstr "6.14 Como eu configuro o Validador SQL?"
 
 # e34355599f7344ae9148f6c15d4cb12a
 #: ../source/faq.rst:1554
@@ -7862,6 +8287,9 @@ msgid ""
 "`PEAR` support. In addition you need a :term:`SOAP` support, either as a PHP "
 "extension or as a PEAR SOAP module."
 msgstr ""
+"Para usar o Validador SQL, você precisa do PHP com suporte a :term:`XML`, "
+":term:`PCRE` e :term:`PEAR`. Além disso você precisa de suporte a "
+":term:`SOAP`, ou como uma extensão PHP ou como um módulo PEAR SOAP."
 
 # 01d85fe8950c4f9d8aa493a09608ee95
 #: ../source/faq.rst:1558
@@ -7870,6 +8298,9 @@ msgid ""
 "Net_Socket Net_URL HTTP_Request Mail_Mime Net_DIME SOAP` to get the "
 "necessary :term:`PEAR` modules for usage."
 msgstr ""
+"Para instalar o módulo :term:`PEAR` :term:`SOAP`, rode o comando "
+":command:`pear install Net_Socket Net_URL HTTP_Request Mail_Mime Net_DIME "
+"SOAP` para conseguir os módulos :term:`PEAR` necessários para uso."
 
 # 5171164814b741eabeeea86e925988ae
 #: ../source/faq.rst:1562
@@ -7880,6 +8311,11 @@ msgid ""
 "itself, is © 2001 Upright Database Technology. We utilize it as free SOAP "
 "service."
 msgstr ""
+"Se você usar o Validador, você deveria saber que qualquer instrução "
+":term:`SQL` que você enviar será armazenada anonimamente (nomes de bancos de "
+"dados/tabelas/colunas, strings, números substituídos por valores "
+"genéricos). O próprio Mimer :term:`SQL` Validator, é © 2001 Upright Database "
+"Technology. Nós utilizamos ele como um serviço SOAP grátis."
 
 # bf4c9fcdadcb4b2abb4a43b600a6eed0
 #: ../source/faq.rst:1570
@@ -7887,6 +8323,9 @@ msgid ""
 "6.15 I want to add a BLOB column and put an index on it, but MySQL says "
 "\"BLOB column '...' used in key specification without a key length\"."
 msgstr ""
+"6.15 Eu quero adicionar uma coluna BLOB e colocar um índice nela, mas o "
+"MySQL diz \"Coluna BLOB '...' usada na especificação da chave sem um "
+"comprimento de chave\"."
 
 # 0718d52eda124b0baf23a3e19448b44a
 #: ../source/faq.rst:1572
@@ -7896,11 +8335,17 @@ msgid ""
 "page, you will be able to choose your BLOB column, and set a size to the "
 "index, which is the condition to create an index on a BLOB column."
 msgstr ""
+"O jeito certo de fazer isso, é criar uma coluna sem qualquer índice, então "
+"exibir a estrutura da tabela e usar o diálogo \"Criar um índice\". Nesta "
+"página, você será capaz de escolher sua coluna BLOB e definir um tamanho "
+"para o índice, o que é a condição para criar um índice numa coluna BLOB."
 
 # 5a431898cd7144cc9c015a83a83e1e05
 #: ../source/faq.rst:1581
 msgid "6.16 How can I simply move in page with plenty editing fields?"
 msgstr ""
+"6.16 Como eu posso simplesmente percorrer a página com muitos campos "
+"editáveis?"
 
 # 9b421b19c3364ab99044e3dd124d955f
 #: ../source/faq.rst:1583
@@ -7909,6 +8354,9 @@ msgid ""
 "on most pages with many editing fields (table structure changes, row "
 "editing, etc.)."
 msgstr ""
+"Você pode usar :kbd:`Ctrl+arrows` (:kbd:`Option+Arrows` no Safari) para "
+"mover na maioria das páginas com muitos campos editáveis (mudanças de "
+"estrutura de tabela, edição de campos, etc.)."
 
 # 0f0a7ad69c8e4dd2aaea5d2a92a60e4c
 #: ../source/faq.rst:1590
@@ -7916,6 +8364,8 @@ msgid ""
 "6.17 Transformations: I can't enter my own mimetype! WTF is this feature "
 "then useful for?"
 msgstr ""
+"6.17 Transformações: eu não consigo inserir meu próprio tipo de mime! Pra "
+"que diabos esta função funciona?"
 
 # 1b98fc7a9c45416c84a04876003a6457
 #: ../source/faq.rst:1592
@@ -7927,12 +8377,21 @@ msgid ""
 "input situation. Instead you have to initialize mimetypes using functions or "
 "empty mimetype definitions."
 msgstr ""
+"Acalme-se :). Definir os tipos de mime não adianta se você não puder colocar "
+"transformações neles. Caso contrário você poderia simplesmente colocar um "
+"comentário na coluna. Isso é por causa que inserir seu próprio tipo de mime "
+"irá causar sérios problemas de verificação de sintaxe e validação, e isso "
+"apresenta uma situação de alto risco de input de usuário falso. Em vez disso "
+"vocẽ tem que inicializar as funções de  tipos de mime ou esvaziar as "
+"definições de tipos de mime."
 
 #: ../source/faq.rst:1599
 msgid ""
 "Plus, you have a whole overview of available mimetypes. Who knows all those "
 "mimetypes by heart so he/she can enter it at will?"
 msgstr ""
+"Além disso, você tem uma visão completa dos tipos de mime disponíveis. Quem "
+"sabe todos os tipos de mime de cor para poder inseri-los à vontade?"
 
 # bfc1855d47ed403eba26ee5ce56d545a
 #: ../source/faq.rst:1605
@@ -7940,6 +8399,8 @@ msgid ""
 "6.18 Bookmarks: Where can I store bookmarks? Why can't I see any bookmarks "
 "below the query box? What is this variable for?"
 msgstr ""
+"6.18 Marcações: onde eu posso armazenar marcações? Porque eu não consigo ver "
+"nenhuma marcação abaixo da caixa de query? Para que esta variável serve?"
 
 # 40cc5636ff88448e9847bfde0e9ca005
 #: ../source/faq.rst:1607
@@ -7950,6 +8411,12 @@ msgid ""
 "it is related to the database you run the query on. You can now access a "
 "bookmark dropdown on each page, the query box appears on for that database."
 msgstr ""
+"Qualquer query que você executou pode ser armazenada como uma marcação na "
+"página onde os resultados são exibidos. Você encontrará um botão chamado "
+"\"Marque esta query\" logo no fim da página. Assim que você armazenar uma "
+"marcação, ela ficará relacionada ao banco de dados em que você rodou a "
+"query. Agora você pode acessar um dropdown de marcações em cada página, a "
+"caixa de query aparece para aquele banco de dados."
 
 # 1fb9a2ce40484fcbb400c5ee93e2392a
 #: ../source/faq.rst:1614
@@ -7960,6 +8427,11 @@ msgid ""
 "the whole query minus the SQL comment must be valid by itself, otherwise you "
 "won't be able to store it as a bookmark."
 msgstr ""
+"Você também pode ter, dentro da query, um espaço reservado para uma "
+"variável. Isso é feito pelo inserimento dentro de um comentário SQL entre "
+"\"/*\" e \"*/\". Dentro do comentário, a string especial \"[VARIABLE]\" é usada. "
+"Saiba que a query inteira menor o comentário SQL deve ser válida, caso "
+"contrário você não será capaz de armazená-la como uma marcação."
 
 # dfca260e52d8466c982bf1b98d02decd
 #: ../source/faq.rst:1620
@@ -7968,6 +8440,9 @@ msgid ""
 "on the query box page will replace the string ``/*[VARIABLE]*/`` in your "
 "stored query."
 msgstr ""
+"Quando você executar a marcação, tudo que for digitado na caixa de input "
+"<i>value</i> na página da caixa de query irá substituir a string \"/* "
+"[VARIABLE]*/\" na sua query armazenada."
 
 # 74a08528857248fea1bffb60ff288f02
 #: ../source/faq.rst:1624
@@ -7976,20 +8451,25 @@ msgid ""
 "your query will remain the way it is, but will be stripped of the ``/**/`` "
 "chars. So you can use:"
 msgstr ""
+"Lembre também que todo o resto dentro da string \"/*[VARIABLE]*/\" para a sua "
+"query irá permanecer do jeito que está, mas será removido dos caracteres "
+"\"/**/\". Então você pode usar:"
 
 #: ../source/faq.rst:1632
 msgid "which will be expanded to"
-msgstr ""
+msgstr "qual será expandido"
 
 #: ../source/faq.rst:1638
 msgid ""
 "in your query, where VARIABLE is the string you entered in the input box. If "
 "an empty string is provided, no replacements are made."
 msgstr ""
+"em sua query, onde VARIABLE for a string que você inseriu na caixa de input. "
+"Se uma string vazia for fornecida, nenhuma substituição será feita."
 
 #: ../source/faq.rst:1641
 msgid "A more complex example. Say you have stored this query:"
-msgstr ""
+msgstr "Um exemplo mais complexo. Digamos que você armazenou esta query:"
 
 # 8dcf175f3f274e5191a6e6b050f4bf75
 #: ../source/faq.rst:1648
@@ -7997,6 +8477,8 @@ msgid ""
 "Say, you now enter \"phpMyAdmin\" as the variable for the stored query, the "
 "full query will be:"
 msgstr ""
+"Digamos, que agora você insira \"phpMyAdmin\" como a variável para a query "
+"armazenada, a query completa será:"
 
 # ae48cbc2fa5648fa9e07d52c2b7f793d
 #: ../source/faq.rst:1655
@@ -8004,6 +8486,8 @@ msgid ""
 "You can use multiple occurrences of ``/*[VARIABLE]*/`` in a single query "
 "(that is, multiple occurrences of the *same* variable)."
 msgstr ""
+"Você pode usar múltiplas ocorrências de \"/*[VARIABLE]*/\" em uma única query "
+"(isto é, múltiplas ocorrências da <i>mesma</i> variável)."
 
 # 5ab91bbab5ea4c629eeb7f9714eb4cfe
 #: ../source/faq.rst:1658
@@ -8013,6 +8497,10 @@ msgid ""
 "lead to unexpected results especially when using the variable expansion "
 "inside of a \"LIKE ''\" expression."
 msgstr ""
+"<b>OBSERVE A AUSÊNCIA DE ESPAÇOS</b> dentro do trecho \"/**/\". Qualquer "
+"espaço inserido lá irá mais tarde ser inserido também como espaço na sua "
+"query e isso pode levar a resultados inesperados, especialmente quando usada "
+"a expansão de variável dentro de uma expressão \"LIKE\"."
 
 # b4a1438a1c5b480c91c16cb921e81ffc
 #: ../source/faq.rst:1663
@@ -8021,11 +8509,17 @@ msgid ""
 "least one result row so you can store the bookmark. You may have that to "
 "work around using well positioned ``/**/`` comments."
 msgstr ""
+"Sua query inicial que será armazenada como uma marcação ainda tem que "
+"produzir pelo menos uma linha de resultado para você poder armazenar a "
+"marcação. Você pode ter que dar um jeito de usar comentários \"/**/\" bem "
+"posicionados."
 
 # faaf3c04aeea4b2e8813b6cfa9d5d1bb
 #: ../source/faq.rst:1670
 msgid "6.19 How can I create simple LATEX document to include exported table?"
 msgstr ""
+"6.19 Como eu posso criar um documento LATEX simples para incluir tabelas "
+"exportadas?"
 
 # 013e203592fc460ca06efa62726ed4ee
 #: ../source/faq.rst:1672
@@ -8034,12 +8528,17 @@ msgid ""
 "document should look like following one (assuming you have table exported in "
 "file :file:`table.tex`):"
 msgstr ""
+"Você pode simplesmente incluir a tabela no seu documento LATEX; o documento "
+"de amostra mínima deve se parecer com o seguinte (assumindo que você "
+"exportou a tabela no arquivo :file:`table.tex`):"
 
 # 4fb5d58e2c084fffaf565fbfe00b7179
 #: ../source/faq.rst:1688
 msgid ""
 "6.20 I see a lot of databases which are not mine, and cannot access them."
 msgstr ""
+"6.20 Eu vejo muitos bancos de dados que não são meus, e não posso "
+"acessá-los."
 
 # 1c1bc9c6e7c344ee8aa5e8919b89959b
 #: ../source/faq.rst:1690
@@ -8049,6 +8548,11 @@ msgid ""
 "database names. So if your users do not need those privileges, you can "
 "remove them and their databases list will shorten."
 msgstr ""
+"Você tem um desses privilégios globais: CREATE TEMPORARY TABLES, SHOW "
+"DATABASES, LOCK TABLES. Estes privilégios também permitem os usuários ver "
+"todos os nomes de bancos de dados. Então se seus usuários não precisam "
+"destes privilégios, você pode removê-los e sua lista de bancos de dados irá "
+"encurtar."
 
 # fc2bdaf05bdb4d6db28daf8d2e5fa3f4
 #: ../source/faq.rst:1700
@@ -8056,6 +8560,8 @@ msgid ""
 "6.21 In edit/insert mode, how can I see a list of possible values for a "
 "column, based on some foreign table?"
 msgstr ""
+"6.21 Em modo de edição/inserimento, como eu posso ver uma lista dos valores "
+"disponíveis para uma coluna, baseado em alguma tabela estrangeira?"
 
 # b4e154369d564c7a90e8cb0aa34f2c9e
 #: ../source/faq.rst:1702
@@ -8071,6 +8577,17 @@ msgid ""
 "one. To change the default limit of 100, see :config:option:`$cfg"
 "['ForeignKeyMaxLimit']`."
 msgstr ""
+"Você tem que configurar links apropriados entre as tabelas, e também "
+"configurar a \"coluna exibida\" na tabela estrangeira. Veja a :ref:`faq6_6` "
+"para um exemplo. Então, se houver 100 valores ou menos na tabela "
+"estrangeira, uma lista drop-down de valores estará disponível. Você verá "
+"duas listas de valores, a primeira lista contendo a chave e a coluna "
+"exibida, a segunda lista contendo a coluna exibida e a chave. O motivo para "
+"isso é ser capaz de digitar a primeira letra de uma das chaves ou a chave de "
+"uma das colunas exibidas. Para 100 valores ou mais, uma janela distinta "
+"aparecerá, para navegar pelos valores de chaves estangeiras e escolher um. "
+"Para mudar o limite padrão de 100, veja a configuração "
+":config:option:`$cfg['ForeignKeyMaxLimit']`."
 
 # dedb751b4bcd446ea1568fa99c979d09
 #: ../source/faq.rst:1717
@@ -8078,23 +8595,30 @@ msgid ""
 "6.22 Bookmarks: Can I execute a default bookmark automatically when entering "
 "Browse mode for a table?"
 msgstr ""
+"6.22 Marcações: eu posso executar uma marcação padrão automaticamente quando "
+"entrar no modo Procurar para uma tabela?"
 
 #: ../source/faq.rst:1719
 msgid ""
 "Yes. If a bookmark has the same label as a table name and it's not a public "
 "bookmark, it will be executed."
 msgstr ""
+"Sim. Se uma marcação tiver o mesmo rótulo que o nome da tabela e não for uma "
+"marcação pública, ela será executada."
 
 # 42676a1f99684ff5b091f23f9c7200a4
 #: ../source/faq.rst:1725
 msgid "6.23 Export: I heard phpMyAdmin can export Microsoft Excel files?"
 msgstr ""
+"6.23 Exportar: eu ouvi falar que o phpMyAdmin pode exportar arquivos do MS "
+"Excel?"
 
 # 2d4881e3b23f4b73bbbb8bb3d92f3fee
 #: ../source/faq.rst:1727
 msgid ""
 "You can use :term:`CSV` for Microsoft Excel, which works out of the box."
 msgstr ""
+"Você pode usar o :term:`CSV` para o MS Excel, que funciona fora da caixa."
 
 # 6104171116d042bf8fb420135aea4d37
 #: ../source/faq.rst:1737
@@ -8102,22 +8626,28 @@ msgid ""
 "6.24 Now that phpMyAdmin supports native MySQL 4.1.x column comments, what "
 "happens to my column comments stored in pmadb?"
 msgstr ""
+"6.24 Agora que o phpMyAdmin suporta comentários nativos de coluna MySQL "
+"4.1.x, o que acontece com os comentários das minhas colunas armazenados no "
+"pmadb?"
 
 #: ../source/faq.rst:1739
 msgid ""
 "Automatic migration of a table's pmadb-style column comments to the native "
 "ones is done whenever you enter Structure page for this table."
 msgstr ""
+"Migração automática de comentários de coluna de tabela estilo pmadb para os "
+"nativos é feita sempre que você entrar na página da Estrutura para esta "
+"tabela."
 
 # 08aac63787154907b47170d57723ccd8
 #: ../source/faq.rst:1745
 msgid "6.25 (withdrawn)."
-msgstr ""
+msgstr "6.25 (removido)."
 
 # 6d64198ee1c246c3bac789fb53e17f65
 #: ../source/faq.rst:1750
 msgid "6.26 How can I select a range of rows?"
-msgstr ""
+msgstr "6.26 Como eu posso selecionar um conjunto de registros?"
 
 #: ../source/faq.rst:1752
 msgid ""
@@ -8125,11 +8655,14 @@ msgid ""
 "of the range. This works everywhere you see rows, for example in Browse mode "
 "or on the Structure page."
 msgstr ""
+"Clique no primeiro registro do conjunto, segure a tecla Shift e clique no "
+"último registro do conjunto. Isso funciona em todos os lugares que você ver "
+"registros, por exemplo, no modo Procurar ou na página Estrutura."
 
 # 1223d4e3c60c48ef883d800da5d87cd4
 #: ../source/faq.rst:1759
 msgid "6.27 What format strings can I use?"
-msgstr ""
+msgstr "6.27 Quais strings de formatação eu posso usar?"
 
 # df468beb0db74a118e004253b533d245
 #: ../source/faq.rst:1761
@@ -8140,10 +8673,15 @@ msgid ""
 "haven't chosen a table, you can not get the table name), but the following "
 "variables can be used:"
 msgstr ""
+"Em todos os lugares onde o phpMyAdmin aceita strings de formatação, você "
+"pode usar a expansão \"@VARIABLE@\" e strings de formatação `strftime "
+"<http://php.net/strftime>`_. As variáveis expandidas dependem de um contexto "
+"(por exemplo, se você não tiver uma tabela escolhida, você não pode receber "
+"o nome da tabela), mas as variáveis a seguir podem ser usadas:"
 
 #: ../source/faq.rst:1768
 msgid "HTTP host that runs phpMyAdmin"
-msgstr ""
+msgstr "Host HTTP que roda o phpMyAdmin"
 
 #: ../source/faq.rst:1770
 msgid "MySQL server name"
@@ -8155,22 +8693,24 @@ msgid ""
 "Verbose MySQL server name as defined in :config:option:`$cfg['Servers'][$i]"
 "['verbose']`"
 msgstr ""
+"Nome extenso do servidor MySQL como definido em "
+":config:option:`$cfg['Servers'][$i]['verbose']`"
 
 #: ../source/faq.rst:1774
 msgid "Verbose MySQL server name if set, otherwise normal"
-msgstr ""
+msgstr "Nome extenso do servidor MySQL se definido, normal caso o contrário"
 
 #: ../source/faq.rst:1776
 msgid "Currently opened database"
-msgstr ""
+msgstr "Banco de dados atualmente aberto"
 
 #: ../source/faq.rst:1778
 msgid "Currently opened table"
-msgstr ""
+msgstr "Tabela atualmente aberta"
 
 #: ../source/faq.rst:1780
 msgid "Columns of the currently opened table"
-msgstr ""
+msgstr "Colunas da tabela atualmente aberta"
 
 #: ../source/faq.rst:1782
 msgid "phpMyAdmin with version"
@@ -8180,6 +8720,7 @@ msgstr "phpMyAdmin com a versão"
 #: ../source/faq.rst:1787
 msgid "6.28 How can I easily edit relational schema for export?"
 msgstr ""
+"6.28 Como eu posso editar facilmente o esquema relacional para a exportação?"
 
 #: ../source/faq.rst:1789
 msgid ""
@@ -8191,6 +8732,13 @@ msgid ""
 "field, the new position in the scratchboard changes after your cursor leaves "
 "the input field."
 msgstr ""
+"Clicando no botão \"toggle scratchboard\" na página onde você edita as "
+"coordenadas x/y destes elementos que você pode ativar um scratchboard onde "
+"todos os elementos estão localizados. Clicando em um elemento, você pode "
+"movê-los de lugar na área pré-definida e as coordenadas x/y irão ser "
+"atualizadas dinamicamente. Igualmente, quando inserir uma nova posição "
+"diretamente no campo input, a nova posição no scratchboard mudará após seu "
+"cursor deixar o campo input."
 
 # dd487bf66ea447d091bcf771d49dcf80
 #: ../source/faq.rst:1797
@@ -8199,6 +8747,9 @@ msgid ""
 "positions. If you want to place a new element, first add it to the table of "
 "elements and then you can drag the new element around."
 msgstr ""
+"Você tem que clicar no botão \"OK\" abaixo das tabelas para salvar suas novas "
+"posições. Se você quiser posicionar um novo elemento, primeiro adicione-o a "
+"tabela de elementos e depois você poderá arrastá-lo."
 
 #: ../source/faq.rst:1801
 msgid ""
@@ -8207,17 +8758,26 @@ msgid ""
 "below, and the scratchboard will resize automatically, without interfering "
 "with the current placement of the elements."
 msgstr ""
+"Mudar o tamanho e a orientação do papel permite você mudar o tamanho do "
+"scratchboard também. Você pode fazer isso simplesmente mudando o campo "
+"dropdown abaixo, e o scratchboard irá reajustar automaticamente, sem "
+"interferir com a posição atual dos elementos."
 
 #: ../source/faq.rst:1806
 msgid ""
 "If ever an element gets out of range you can either enlarge the paper size "
 "or click on the 'reset' button to place all elements below each other."
 msgstr ""
+"Se um elemento sair do alcance alguma vez você poderá ou aumentar o tamanho "
+"do papel ou clicar no botão \"reset\" para posicionar todos os elementos um "
+"abaixo do outro."
 
 # cdcdd16f8f854594997d6fec4968d842
 #: ../source/faq.rst:1813
 msgid "6.29 Why can't I get a chart from my query result table?"
 msgstr ""
+"6.29 Porque eu não consigo gerar um gráfico da tabela de resultados da minha "
+"query?"
 
 # 99da2c36da614e278ec7ebb8f5b5b5bc
 #: ../source/faq.rst:1815
@@ -8228,11 +8788,17 @@ msgid ""
 "formats can be found in the `wiki <http://wiki.phpmyadmin.ne t/pma/"
 "Charts#Data_formats_for_query_results_chart>`_."
 msgstr ""
+"Nem toda tabela pode ser colocada em gráfico. Somente tabelas com uma, duas "
+"ou três colunas podem ser visualizadas em gráfico. Além disso, a tabela deve "
+"estar em um formato especial para o script de gráfico entendê-la. Formatos "
+"atualmente suportados podem ser encontrados nesta `wiki "
+"<http://wiki.phpmyadmin.ne "
+"t/pma/Charts#Data_formats_for_query_results_chart>`_."
 
 # 3089fd77b1f94810ad8e139466f0ea01
 #: ../source/faq.rst:1824
 msgid "6.30 Import: How can I import ESRI Shapefiles"
-msgstr ""
+msgstr "6.30 Importar: como eu posso importar arquivos de formas ESRI"
 
 # 6816a5dd51c241099d0dcf2e20929b25
 #: ../source/faq.rst:1826
@@ -8243,11 +8809,18 @@ msgid ""
 "dBase extension (--enable-dbase). Otherwise only geometry data will be "
 "imported."
 msgstr ""
+"Um arquivo de formas ESRI é atualmente um conjunto de vários arquivos, onde "
+"o arquivo .shp contém dados geométricos e o arquivo .dbf contém dados "
+"relacionados a estes dados geométricos. Para ler dados do arquivo .dbf você "
+"tem que compilar o PHP com a extensão dBase (--enable-dbase). Caso "
+"contrário, somente os dados geométricos serão importados."
 
 #: ../source/faq.rst:1832
 msgid ""
 "To upload these set of files you can use either of the following methods:"
 msgstr ""
+"Para subir estes conjuntos de arquivos você pode usar um dos seguintes "
+"métodos:"
 
 # a4db4cadae7a492d96fe7b0858c5e348
 #: ../source/faq.rst:1835
@@ -8256,6 +8829,9 @@ msgid ""
 "both .shp and .dbf files with the same filename and chose the .shp file from "
 "the import page."
 msgstr ""
+"Configurar o diretório de upload com a configuração "
+":config:option:`$cfg['UploadDir']`, suba ambos arquivos .shp e .dbf com o "
+"mesmo nome de arquivo e escolha o arquivo .shp da página de importação."
 
 # 5ed8467037f54883b7b141844cb1232a
 #: ../source/faq.rst:1838
@@ -8264,31 +8840,35 @@ msgid ""
 "work, you need to set :config:option:`$cfg['TempDir']` to a place where the "
 "web server user can write (for example ``'./tmp'``)."
 msgstr ""
+"Criar um arquivo Zip com os arquivos .shp e .dbf e importá-lo. Para isto "
+"funcionar, você precisa definir a opção :config:option:`$cfg['TempDir']` em "
+"um lugar onde o usuário do servidor web possa escrever (por exemplo \".tmp\")."
 
 #: ../source/faq.rst:1842
 msgid "To create the temporary directory on a UNIX-based system, you can do:"
 msgstr ""
+"Para criar um diretório temporário em um sistema baseado em UNIX, você pode "
+"fazer:"
 
 # f802fcaac5e54c82904d1065fbbd0bdb
 #: ../source/faq.rst:1853
 msgid "6.31 How do I create a relation in designer?"
-msgstr ""
+msgstr "6.31 Como eu posso criar uma relação no Designer?"
 
 #: ../source/faq.rst:1855
-#, fuzzy
 msgid ""
 "To select relation, click:  The display column is shown in pink. To set/"
 "unset a column as the display column, click the \"Choose column to display\" "
 "icon, then click on the appropriate column name."
 msgstr ""
-"O campo de exibição está em rosa. Para ajustar/desajustar um campo como "
-"campo de exibição, clique no ícone \"Escolher campo para exibição\", então "
-"clique no nome do campo apropriado."
+"Para selecionar a relação, clique na coluna exibida em rosa. Para "
+"marcar/desmarcar uma coluna como a coluna exibida, clique no ícone \"Escolher "
+"coluna a exibir\", então clique no nome da coluna apropriada."
 
 # 08699143390842eeb99b4179b72c5d90
 #: ../source/faq.rst:1862
 msgid "6.32 How can I use the zoom search feature?"
-msgstr ""
+msgstr "6.32 Como eu posso usar a função de zoom de pesquisa?"
 
 # 3161fcf36ddb4bb5a924d5481e6df7d8
 #: ../source/faq.rst:1864
@@ -8299,6 +8879,11 @@ msgid ""
 "tab. One of the sub-tabs in the :guilabel:`Table Search` page is :guilabel:"
 "`Zoom Search`."
 msgstr ""
+"A função de zoom de pesquisa é uma alternativa para a função de pesquisa de "
+"tabela. Ela permite você explorar uma tabela representando seus dados em um "
+"scatter plot. Você pode localizar esta função selecionando uma tabela e "
+"clicando na aba :guilabel:`Pesquisar`. Uma das sub-abas na página "
+":guilabel:`Pesquisar Tabela` é a :guilabel:`Zoom Search`."
 
 # 672e408ee7804417bf93d951f392774f
 #: ../source/faq.rst:1870
@@ -8310,6 +8895,12 @@ msgid ""
 "scatter plot based on its id and town\\_code. You can include two additional "
 "search criteria apart from the two fields to display."
 msgstr ""
+"Considere a tabela REL_persons na :ref:`faq6_6` para um exemplo. Para usar a "
+"zoom search, duas colunas precisam ser selecionadas, por exemplo, id e "
+"town_code. Os valores da id irão ser representados em um eixo e os valores "
+"town_code no outro eixo. Cada registro será representado como um ponto em um "
+"gráfico cartesiano baseado em sua id e town_code. Você pode incluir dois "
+"critérios de pesquisa adicionais além dos dois campos a exibir."
 
 # 4ac17dae87e5458e880476e2be4bd42c
 #: ../source/faq.rst:1878
@@ -8321,6 +8912,13 @@ msgid ""
 "in the 'Max rows to plot' field. Once you have decided over your criteria, "
 "click 'Go' to display the plot."
 msgstr ""
+"Você pode escolher qual campo deve ser mostrado como rótulo para cada ponto. "
+"Se uma coluna exibida foi definida para a tabela (veja a "
+":ref:`faqdisplay`), ela será considerada como o rótulo a não ser que você "
+"especifique o contrário. Você também pode selecionar o número máximo de "
+"registros que você quer exibir no gráfico especificando ele no campo \"Limite "
+"de registros a usar\". Assim que você escolher seus critérios, clique em "
+"\"Ir\" para mostrar o gráfico."
 
 # 33be265b8d7f43e982ffdd89b145ec27
 #: ../source/faq.rst:1886
@@ -8334,11 +8932,21 @@ msgid ""
 "instructions on how to use can be viewed by clicking the 'How to use?' link "
 "located just above the plot."
 msgstr ""
+"Depois que o gráfico for gerado, você pode usar a roda do mouse para "
+"aumentar e diminui o zoom do gráfico. Além disso, a função de enquadramento "
+"está ativada para navegar através do gráfico. Você pode aumentar o zoom em "
+"um certo nível de detalhe e usar o enquadramento para localizar sua área de "
+"interesse. Clicar em um ponto abre uma caixa de diálogo, mostrando os "
+"valores de campo dos dados do registro representado pelo ponto. Você pode "
+"editar os valores se exigido e clicar em enviar para lançar uma query de "
+"update. Instruções básicas de como usar podem ser vistas clicando no link "
+"\"Como usar?\" localizado logo acima do gráfico."
 
 # 124b7d5f3ca04aaeb077aa4dba6b2fb7
 #: ../source/faq.rst:1899
 msgid "6.33 When browsing a table, how can I copy a column name?"
 msgstr ""
+"6.33 Quando navego por uma tabela, como posso copiar o nome de uma coluna?"
 
 # d95c04246ffa49578001dac72857125f
 #: ../source/faq.rst:1901
@@ -8351,25 +8959,33 @@ msgid ""
 "the column name. You may right-click the column name within this input box "
 "to copy it to your clipboard."
 msgstr ""
+"Selecionando o nome da coluna dentro do cabeçalho da navegação de tabela "
+"para copiar é difícil, já que as colunas suportam reordenamento pelo "
+"arrastar das células do cabeçalho assim como como a ordenação de campos "
+"clicando no link do nome da coluna. Para copiar um nome de coluna, dê um "
+"clique duplo na área vazia próxima ao nome da coluna quando a tooltip te "
+"aconselhar a fazer isso. Isso irá lhe mostrar uma caixa de input com o nome "
+"da coluna. Você pode dar um clique direito no nome da coluna dentro desta "
+"caixa de input para copiá-lo para sua área de transferência."
 
 #: ../source/faq.rst:1912
 msgid "phpMyAdmin project"
-msgstr "O projeto phpMyAdmin"
+msgstr "Projeto phpMyAdmin"
 
 # 5405efb60e934acdb63634ec2aaf507f
 #: ../source/faq.rst:1917
 msgid "7.1 I have found a bug. How do I inform developers?"
-msgstr ""
+msgstr "7.1 Eu encontrei um bug. Como eu informo ele aos desenvolvedores?"
 
 #: ../source/faq.rst:1919
-#, fuzzy
 msgid ""
 "Our Bug Tracker is located at <http://sf.net/projects/phpmyadmin/> under the "
 "Bugs section. But please first discuss your bug with other users: <https://"
 "sourceforge.net/projects/phpmyadmin/forums>."
 msgstr ""
-"<a href=\"https://sourceforge.net/projects/phpmyadmin/forums\"> https://"
-"sourceforge.net/projects/phpmyadmin/forums</a>."
+"Nosso Rastreador de Bugs está localizado dentro da seção de Bugs em "
+"<http://sf.net/projects/phpmyadmin/>. Mas favor discuta este bug primeiro "
+"com outros usuários: <https://sourceforge.net/projects/phpmyadmin/forums>."
 
 # 98c5559ce3144bac9ea2a8c765bc06a8
 #: ../source/faq.rst:1926
@@ -8377,6 +8993,8 @@ msgid ""
 "7.2 I want to translate the messages to a new language or upgrade an "
 "existing language, where do I start?"
 msgstr ""
+"7.2 Eu quero traduzir as mensagens para uma nova língua ou atualizar uma "
+"língua existente, onde eu começo?"
 
 # b06b03b7c74b4d8cb06b2730ddc5f135
 #: ../source/faq.rst:1928
@@ -8387,6 +9005,11 @@ msgid ""
 "possibilities to translate in the `translate section on our website <http://"
 "www.phpmyadmin.net/home_page/translate.php>`_."
 msgstr ""
+"As traduções são muito bem-vindas e tudo o que você precisa ter é a "
+"habilidade da tradução. O meio mais fácil é usar nosso `serviço de tradução "
+"online <https://l10n.cihar.com/projects/phpmyadmin/>`_. Você pode querer "
+"olhar todas as possibilidades de tradução na `seção traduzir no nosso site "
+"<http://www.phpmyadmin.net/home_page/translate.php>`_."
 
 # 6598a28b7b9d4e828c4b1023bd8e1d3d
 #: ../source/faq.rst:1937
@@ -8394,6 +9017,8 @@ msgid ""
 "7.3 I would like to help out with the development of phpMyAdmin. How should "
 "I proceed?"
 msgstr ""
+"7.3 Eu gostaria de ajudar com o desenvolvimento do phpMyAdmin. O que eu devo "
+"fazer?"
 
 # 18450e4d529f4bc5b1667e536e50c579
 #: ../source/faq.rst:1939
@@ -8402,29 +9027,32 @@ msgid ""
 "check out all the possibilities to contribute in the `contribute section on "
 "our website <http://www.phpmyadmin.net/home_page/improve.php>`_."
 msgstr ""
+"Nós agradecemos toda a contribuição para o desenvolvimento do phpMyAdmin. "
+"Você pode olhar todas as possibilidades de contribuição na `seção de "
+"contribuições no nosso site "
+"<http://www.phpmyadmin.net/home_page/improve.php>`_."
 
 #: ../source/faq.rst:1949
 msgid "Security"
 msgstr "Segurança"
 
 #: ../source/faq.rst:1954
-#, fuzzy
 msgid ""
 "8.1 Where can I get information about the security alerts issued for "
 "phpMyAdmin?"
 msgstr ""
-"<a href=\"#faq8_1\">8.1 Onde posso obter informações sobre os alertas de "
-"segurança emitidos ao phpMyAdmin?</a>"
+"8.1 Onde eu posso conseguir informações quando a alertas de segurança "
+"emitidos para o phpMyAdmin?"
 
 #: ../source/faq.rst:1956
-#, fuzzy
 msgid "Please refer to <http://www.phpmyadmin.net/home_page/security.php>."
-msgstr "<a href=\"http://www.phpmyadmin.net/home_page/donate.php\">Doações</a>"
+msgstr ""
+"Favor verifique a página <http://www.phpmyadmin.net/home_page/security.php>."
 
 # f2d914cc965f4ffca77d1cc0e65461b0
 #: ../source/faq.rst:1961
 msgid "8.2 How can I protect phpMyAdmin against brute force attacks?"
-msgstr ""
+msgstr "8.2 Como eu posso proteger o phpMyAdmin contra ataques de força bruta?"
 
 # 7d242075c7f2431486243f8902956518
 #: ../source/faq.rst:1963
@@ -8433,10 +9061,14 @@ msgid ""
 "authentication to the Apache environment and it can be used in Apache logs. "
 "Currently there are two variables available:"
 msgstr ""
+"Se você usa o servidor web Apache, o phpMyAdmin exporta informações sobre "
+"autenticação para o ambiente Apache e isso pode ser usado nos logs do "
+"Apache. Atualmente existem duas variáveis disponíveis:"
 
 #: ../source/faq.rst:1969
 msgid "User name of currently active user (he does not have to be logged in)."
 msgstr ""
+"Nome de usuário do usuário atualmente ativo (ele não precisa estar logado)."
 
 # 3aed5824b3f44d2fa010457895a48297
 #: ../source/faq.rst:1971
@@ -8446,17 +9078,23 @@ msgid ""
 "deny rules), ``root-denied`` (root is denied in configuration), ``empty-"
 "denied`` (empty password is denied)."
 msgstr ""
+"Status do usuário atualmente ativo, um destes: \"ok\" (usuário está logado), "
+"\"mysql-denied\" (o MySQL negou o login do usuário), \"allow-denied\" (usuário "
+"negado por regras allow/deny), \"root-denied\" (root negado na configuração), "
+"\"empty-denied\" (senha vazia é negada)."
 
 # e88014364c704ca6a2b3c283e13c1530
 #: ../source/faq.rst:1976
 msgid "``LogFormat`` directive for Apache can look like following:"
-msgstr ""
+msgstr "Diretiva \"LogFormat\" para o Apache pode parecer com o seguinte:"
 
 #: ../source/faq.rst:1982
 msgid ""
 "You can then use any log analyzing tools to detect possible break-in "
 "attempts."
 msgstr ""
+"Você pode usar depois qualquer ferramenta de análise de log para detectar "
+"possíveis tentativas de invasão."
 
 #: ../source/faq.rst:1988
 msgid "Synchronization"
@@ -8465,12 +9103,12 @@ msgstr "Sincronização"
 # 30092401ac9c499681ecbdce44a90c2d
 #: ../source/faq.rst:1993
 msgid "9.1 (withdrawn)."
-msgstr ""
+msgstr "9.1 (removido)."
 
 # ba292e3a6d8345b99ab7f2b0a95a3612
 #: ../source/faq.rst:1998
 msgid "9.2 (withdrawn)."
-msgstr ""
+msgstr "9.2 (removido)."
 
 #: ../source/developers.rst:4
 msgid "Developers Information"
@@ -8482,6 +9120,9 @@ msgid ""
 "features have been written by other people and you too can help to make "
 "phpMyAdmin a useful tool."
 msgstr ""
+"O phpMyAdmin é Open Source, então você é convidado a contribuir com ele. "
+"Muitas ótimas funções foram escritas por outras pessoas e você também pode "
+"ajudar a tornar o phpMyAdmin uma ferramenta útil."
 
 # ffd8b1da492b41c8a3b966e89ca128cc
 #: ../source/developers.rst:10
@@ -8489,11 +9130,14 @@ msgid ""
 "You can check out all the possibilities to contribute in the `contribute "
 "section on our website <http://www.phpmyadmin.net/home_page/improve.php>`_."
 msgstr ""
+"Você pode olhar todas as possibilidades de contribuição na `seção de "
+"contribuições no nosso site "
+"<http://www.phpmyadmin.net/home_page/improve.php>`_."
 
 # a3e9132f20ed4165b9a7345bd1721ad8
 #: ../source/vendors.rst:2
 msgid "Distributing and packaging phpMyAdmin"
-msgstr ""
+msgstr "Distribuição e empacotamento do phpMyAdmin"
 
 # 40b28429507847499a740e997bbe19c8
 #: ../source/vendors.rst:4
@@ -8502,6 +9146,9 @@ msgid ""
 "phpMyAdmin inside other software package such as Linux distribution or some "
 "all in one package including web server and MySQL server."
 msgstr ""
+"Este documento é feito para dar conselhos às pessoas que querem redistribuir "
+"o phpMyAdmin dentro de outros pacotes de software, como distribuições Linux "
+"ou algum pacote tudo-em-um incluindo servidor web e servidor MySQL."
 
 # 599ec697aeea4bd58b1afcf0c27bc4b9
 #: ../source/vendors.rst:9
@@ -8509,6 +9156,9 @@ msgid ""
 "Generally you can customize some basic aspects (paths to some files and "
 "behavior) in :file:`libraries/vendor_config.php`."
 msgstr ""
+"Geralmente você pode customizar alguns aspectos básicos (caminhos para "
+"alguns arquivos e comportamento) no arquivo "
+":file:`libraries/vendor_config.php`."
 
 # 1a65127ca49b4e949f6f03118b4c142c
 #: ../source/vendors.rst:12
@@ -8518,11 +9168,16 @@ msgid ""
 "will also probably want to skip directory writable check, so set "
 "``SETUP_DIR_WRITABLE`` to false."
 msgstr ""
+"Por exemplo, você pode querer configurar um script para gerar o arquivo "
+"config em variável, mudar o \"SETUP_CONFIG_FILE\" para "
+":file:`/var/lib/phpmyadmin/config.inc.php` e você também irá provavelmente "
+"querer pular a verificação de escrita de diretório, então defina "
+"\"SETUP_DIR_WRITABLE\" para false."
 
 # 53673946f75e4b7a92ece3fa572d847a
 #: ../source/vendors.rst:18
 msgid "External libraries"
-msgstr ""
+msgstr "Bibliotecas externas"
 
 # 59b931fef17641528aa469c8effc2d46
 #: ../source/vendors.rst:20
@@ -8531,26 +9186,29 @@ msgid ""
 "them with system ones if they are available, but please note that you should "
 "test whether version you provide is compatible with the one we ship."
 msgstr ""
+"O phpMyAdmin inclui várias bibliotecas externas, você pode querer substitui-"
+"las com as de sistema se elas estiverem disponíveis, mas saiba que você deve "
+"testar se a versão que você quer fornecer é compatível com a que enviamos."
 
 # 507b3c0061014746974b4316f118ea60
 #: ../source/vendors.rst:25
 msgid "Currently known list of external libraries:"
-msgstr ""
+msgstr "Lista de bibliotecas externas atualmente conhecidas:"
 
 # 6a40e330433b4582bbb7d9c345a5eca5
 #: ../source/vendors.rst:28
 msgid "jQuery js framework and various jQuery based libraries."
-msgstr ""
+msgstr "jQuery js framework e várias bibliotecas baseadas em jQuery."
 
 # 26a53f8e9a484f0a8b91beca63a317a4
 #: ../source/vendors.rst:31
 msgid "php-gettext library"
-msgstr ""
+msgstr "biblioteca php-gettext"
 
 # 6a7a9d7aedf74618b588182f84843ef2
 #: ../source/vendors.rst:33
 msgid "tcpdf library, stripped down of not needed files"
-msgstr ""
+msgstr "biblioteca tcpdf, privada de arquivos não necessários"
 
 #: ../source/copyright.rst:4
 msgid "Copyright"
@@ -8567,7 +9225,6 @@ msgstr ""
 "pela Free Software Foundation."
 
 #: ../source/copyright.rst:23
-#, fuzzy
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -8580,15 +9237,14 @@ msgstr ""
 "detalhes."
 
 #: ../source/copyright.rst:28
-#, fuzzy
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program. If not, see `http://www.gnu.org/licenses/ <http://www.gnu.org/"
 "licenses/>`_."
 msgstr ""
 "Você deve ter recebido uma cópia da GNU General Public License junto com "
-"este programa; se não, escreva para a Free Software Foundation, Inc., 51 "
-"Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"
+"este programa. Caso contrário, veja a página `http://www.gnu.org/licenses/ "
+"<http://www.gnu.org/licenses/>`_."
 
 #: ../source/credits.rst:4
 msgid "Credits"
@@ -8599,9 +9255,8 @@ msgid "Credits, in chronological order"
 msgstr "Créditos, em ordem cronológica"
 
 #: ../source/credits.rst:10
-#, fuzzy
 msgid "Tobias Ratschiller <tobias\\_at\\_ratschiller.com>"
-msgstr "Tobias Ratschiller &lt;tobias_at_ratschiller.com&gt;"
+msgstr "Tobias Ratschiller <tobias\\_at\\_ratschiller.com>"
 
 #: ../source/credits.rst:12
 msgid "creator of the phpmyadmin project"
@@ -8609,35 +9264,31 @@ msgstr "criador do projeto phpmyadmin"
 
 #: ../source/credits.rst:14
 msgid "maintainer from 1998 to summer 2000"
-msgstr "mantedor de 1998 até o verão de 2000"
+msgstr "mantedor desde 1998 até o verão de 2000"
 
 #: ../source/credits.rst:16 ../source/credits.rst:409
-#, fuzzy
 msgid "Marc Delisle <marc\\_at\\_infomarc.info>"
-msgstr "Marc Delisle &lt;marc_at_infomarc.info&gt;"
+msgstr "Marc Delisle <marc\\_at\\_infomarc.info>"
 
 #: ../source/credits.rst:18
-#, fuzzy
 msgid "multi-language version in December 1998"
-msgstr "versão multi-idiomas"
+msgstr "versão multi-idiomas em dezembro de 1998"
 
 #: ../source/credits.rst:20
 msgid "various fixes and improvements"
 msgstr "várias correções e melhorias"
 
 #: ../source/credits.rst:22
-#, fuzzy
 msgid ":term:`SQL` analyser (most of it)"
-msgstr "analisador de SQL (a maior parte dele)"
+msgstr "analisador de :term:`SQL` (a maior parte dele)"
 
 #: ../source/credits.rst:24
 msgid "current project maintainer"
 msgstr "mantedor atual do projeto"
 
 #: ../source/credits.rst:26
-#, fuzzy
 msgid "Olivier Müller <om\\_at\\_omnis.ch>"
-msgstr "Olivier M&uuml;ller &lt;om_at_omnis.ch&gt;"
+msgstr "Olivier Müller <om\\_at\\_omnis.ch>"
 
 #: ../source/credits.rst:28
 msgid "started SourceForge phpMyAdmin project in March 2001"
@@ -8646,24 +9297,25 @@ msgstr "iniciou o projeto phpMyAdmin no SourceForge em março de 2001"
 #: ../source/credits.rst:30
 msgid "sync'ed different existing CVS trees with new features and bugfixes"
 msgstr ""
+"sincronizou diferentes árvores existentes do CVS com novas funções e "
+"correções de bugs"
 
 #: ../source/credits.rst:32
 msgid "multi-language improvements, dynamic language selection"
-msgstr ""
+msgstr "melhorias multi-idioma, seleção dinâmica de linguagem"
 
 #: ../source/credits.rst:34 ../source/credits.rst:45 ../source/credits.rst:61
 #: ../source/credits.rst:200
 msgid "many bugfixes and improvements"
-msgstr ""
+msgstr "muitas correções de bugs e melhorias"
 
 #: ../source/credits.rst:36
-#, fuzzy
 msgid "Loïc Chapeaux <lolo\\_at\\_phpheaven.net>"
-msgstr "Lo&iuml;c Chapeaux &lt;lolo_at_phpheaven.net&gt;"
+msgstr "Loïc Chapeaux <lolo\\_at\\_phpheaven.net>"
 
 #: ../source/credits.rst:38
 msgid "rewrote and optimized javascript, DHTML and DOM stuff"
-msgstr ""
+msgstr "reescreveu e otimizou conteúdo javascript, DHTML e DOM"
 
 # 6fea9ccaf8274f169cfa3feabc820443
 #: ../source/credits.rst:40
@@ -8671,15 +9323,16 @@ msgid ""
 "rewrote the scripts so they fit the :term:`PEAR` coding standards and "
 "generate XHTML1.0 and CSS2 compliant codes"
 msgstr ""
+"reescreveu os scripts para seguir os padrões de codificação :term:`PEAR` e "
+"gerou códigos compatíveis com XHTML1.0 e CSS2"
 
 #: ../source/credits.rst:43
 msgid "improved the language detection system"
 msgstr "melhorou o sistema de detecção de idioma"
 
 #: ../source/credits.rst:47
-#, fuzzy
 msgid "Robin Johnson <robbat2\\_at\\_users.sourceforge.net>"
-msgstr "Robin Johnson &lt;robbat2_at_users.sourceforge.net&gt;"
+msgstr "Robin Johnson <robbat2\\_at\\_users.sourceforge.net>"
 
 #: ../source/credits.rst:49
 msgid "database maintenance controls"
@@ -8687,52 +9340,49 @@ msgstr "controles para manutenção de banco de dados"
 
 #: ../source/credits.rst:51
 msgid "table type code"
-msgstr ""
+msgstr "código de tipos de tabela"
 
 #: ../source/credits.rst:53
-#, fuzzy
 msgid "Host authentication :term:`IP` Allow/Deny"
-msgstr "Usando os modos de autenticação"
+msgstr "Autenticação de :term:`IP` de host Allow/Deny"
 
 #: ../source/credits.rst:55
 msgid "DB-based configuration (Not completed)"
-msgstr ""
+msgstr "Configuração baseada em banco de dados (não completada)"
 
 # 39e226b675124e95aac8f36d4511b098
 #: ../source/credits.rst:57
 msgid ":term:`SQL` parser and pretty-printer"
-msgstr ""
+msgstr "interpretador e formatador de :term:`SQL`"
 
 # c80778d93a1845fd933f9e48efdd1419
 #: ../source/credits.rst:59
 msgid ":term:`SQL` validator"
-msgstr ""
+msgstr "validador :term:`SQL`"
 
 #: ../source/credits.rst:63
-#, fuzzy
 msgid "Armel Fauveau <armel.fauveau\\_at\\_globalis-ms.com>"
-msgstr "Armel Fauveau &lt;armel.fauveau_at_globalis-ms.com&gt;"
+msgstr "Armel Fauveau <armel.fauveau\\_at\\_globalis-ms.com>"
 
 #: ../source/credits.rst:65
 msgid "bookmarks feature"
-msgstr ""
+msgstr "função de marcações"
 
 #: ../source/credits.rst:67
 msgid "multiple dump feature"
-msgstr ""
+msgstr "função de múltiplos despejos"
 
 #: ../source/credits.rst:69
 msgid "gzip dump feature"
-msgstr ""
+msgstr "função de despejo gzip"
 
 #: ../source/credits.rst:71
 msgid "zip dump feature"
-msgstr ""
+msgstr "função de despejo zip"
 
 #: ../source/credits.rst:73
-#, fuzzy
 msgid "Geert Lund <glund\\_at\\_silversoft.dk>"
-msgstr "Geert Lund &lt;glund_at_silversoft.dk&gt;"
+msgstr "Geert Lund <glund\\_at\\_silversoft.dk>"
 
 #: ../source/credits.rst:75
 msgid "various fixes"
@@ -8740,57 +9390,52 @@ msgstr "várias correções"
 
 #: ../source/credits.rst:77
 msgid "moderator of the phpMyAdmin former users forum at phpwizard.net"
-msgstr ""
+msgstr "moderador do antigo fórum de usuários do phpMyAdmin phpwizard.net"
 
 #: ../source/credits.rst:79
-#, fuzzy
 msgid "Korakot Chaovavanich <korakot\\_at\\_iname.com>"
-msgstr "Korakot Chaovavanich &lt;korakot_at_iname.com&gt;"
+msgstr "Korakot Chaovavanich <korakot\\_at\\_iname.com>"
 
 # 682ab81a26044038b1c807b8a36f30a3
 #: ../source/credits.rst:81
 msgid "\"insert as new row\" feature"
-msgstr ""
+msgstr "função \"inserir como novo registro\""
 
 #: ../source/credits.rst:83
-#, fuzzy
 msgid "Pete Kelly <webmaster\\_at\\_trafficg.com>"
-msgstr "Pete Kelly &lt;webmaster_at_trafficg.com&gt;"
+msgstr "Pete Kelly <webmaster\\_at\\_trafficg.com>"
 
 #: ../source/credits.rst:85
 msgid "rewrote and fix dump code"
-msgstr ""
+msgstr "reescreveu e consertou o código de despejo"
 
 #: ../source/credits.rst:87 ../source/credits.rst:95 ../source/credits.rst:101
 msgid "bugfixes"
 msgstr "correções de bugs"
 
 #: ../source/credits.rst:89
-#, fuzzy
 msgid "Steve Alberty <alberty\\_at\\_neptunlabs.de>"
-msgstr "Steve Alberty &lt;alberty_at_neptunlabs.de&gt;"
+msgstr "Steve Alberty <alberty_at_neptunlabs.de>"
 
 #: ../source/credits.rst:91
 msgid "rewrote dump code for PHP4"
-msgstr ""
+msgstr "reescreveu o código de despejo para o PHP4"
 
 #: ../source/credits.rst:93
 msgid "mySQL table statistics"
 msgstr "estatísticas de tabelas do MySQL"
 
 #: ../source/credits.rst:97
-#, fuzzy
 msgid "Benjamin Gandon <gandon\\_at\\_isia.cma.fr>"
-msgstr "Benjamin Gandon &lt;gandon_at_isia.cma.fr&gt;"
+msgstr "Benjamin Gandon <gandon_at_isia.cma.fr>"
 
 #: ../source/credits.rst:99
 msgid "main author of the version 2.1.0.1"
 msgstr "autor principal da versão 2.1.0.1"
 
 #: ../source/credits.rst:103
-#, fuzzy
 msgid "Alexander M. Turek <me\\_at\\_derrabus.de>"
-msgstr "Alexander M. Turek &lt;me_at_derrabus.de&gt;"
+msgstr "Alexander M. Turek <me_at_derrabus.de>"
 
 #: ../source/credits.rst:105
 msgid "MySQL 4.0 / 4.1 / 5.0 compatibility"
@@ -8799,7 +9444,7 @@ msgstr "compatibilidade com o MySQL 4.0 / 4.1 / 5.0"
 # dd13011249cf4c0188fc6960e063562f
 #: ../source/credits.rst:107
 msgid "abstract database interface (PMA\\_DBI) with MySQLi support"
-msgstr ""
+msgstr "interface abstrata de banco dados (PMA_DBI) com suporta a MySQLi"
 
 #: ../source/credits.rst:109
 msgid "privileges administration"
@@ -8808,7 +9453,7 @@ msgstr "administração de privilégios"
 # be13d5ae05824d72a9d9c9def3b8372b
 #: ../source/credits.rst:111
 msgid ":term:`XML` exports"
-msgstr ""
+msgstr "exportações :term:`XML`"
 
 #: ../source/credits.rst:113 ../source/credits.rst:133
 msgid "various features and fixes"
@@ -8816,46 +9461,44 @@ msgstr "vários recursos e correções"
 
 #: ../source/credits.rst:115
 msgid "German language file updates"
-msgstr "atualizações no arquivo do idioma Alemão"
+msgstr "atualizações de arquivo da língua alemã"
 
 #: ../source/credits.rst:117
-#, fuzzy
 msgid "Mike Beck <mike.beck\\_at\\_web.de>"
-msgstr "Mike Beck &lt;mike.beck_at_web.de&gt;"
+msgstr "Mike Beck <mike.beck_at_web.de>"
 
 #: ../source/credits.rst:119
 msgid "automatic joins in QBE"
-msgstr ""
+msgstr "junções automáticas em QBE"
 
 #: ../source/credits.rst:121
 msgid "links column in printview"
-msgstr ""
+msgstr "links de coluna na visualização de impressão"
 
 #: ../source/credits.rst:123
 msgid "Relation view"
-msgstr "Ver relações"
+msgstr "View de relações"
 
 #: ../source/credits.rst:125 ../source/credits.rst:380
 #: ../source/credits.rst:523
-#, fuzzy
 msgid "Michal Čihař <michal\\_at\\_cihar.com>"
-msgstr "Michal Čihař (michal@cihar.com)"
+msgstr "Michal Čihař <michal_at_cihar.com>"
 
 #: ../source/credits.rst:127
 msgid "enhanced index creation/display feature"
-msgstr ""
+msgstr "função de criação/exibição de índices melhorada"
 
 #: ../source/credits.rst:129
 msgid "feature to use a different charset for HTML than for MySQL"
-msgstr ""
+msgstr "função de uso de conjunto de caracteres para HTML diferente do MySQL"
 
 #: ../source/credits.rst:131
 msgid "improvements of export feature"
-msgstr "melhorias do recurso de exportação"
+msgstr "melhorias da função de exportação"
 
 #: ../source/credits.rst:135
 msgid "Czech language file updates"
-msgstr "atualizações no arquivo do idioma Tcheco"
+msgstr "atualizações de arquivo da língua tcheca"
 
 # 5f92c4f72db84e8c90376282558bf32b
 #: ../source/credits.rst:137
@@ -8863,46 +9506,51 @@ msgid ""
 "Christophe Gesché from the \"MySQL Form Generator for PHPMyAdmin\" (http://"
 "sf.net/projects/phpmysqlformgen/)"
 msgstr ""
+"Christophe Gesché do \"Gerador de Formulário MySQL para PHPMyAdmin\" "
+"(http://sf.net/projects/phpmysqlformgen/)"
 
 #: ../source/credits.rst:140
 msgid "suggested the patch for multiple table printviews"
-msgstr ""
+msgstr "sugeriu o patch para visualização de impressão de múltiplas tabelas"
 
 #: ../source/credits.rst:142
-#, fuzzy
 msgid "Garvin Hicking <me\\_at\\_supergarv.de>"
-msgstr "Garvin Hicking &lt;me_at_supergarv.de&gt;"
+msgstr "Garvin Hicking <me_at_supergarv.de>"
 
 #: ../source/credits.rst:144
 msgid "built the patch for vertical display of table rows"
-msgstr ""
+msgstr "construiu o patch para exibição vertical dos registros de tabela"
 
 # f0a35732f68e4c08832ec7261f6aad0e
 #: ../source/credits.rst:146
 msgid "built the Javascript based Query window + :term:`SQL` history"
 msgstr ""
+"construiu a janela de query baseada em JavaScript + histórico :term:`SQL`"
 
 #: ../source/credits.rst:148
 msgid "Improvement of column/db comments"
-msgstr ""
+msgstr "Melhoria dos comentários de coluna/banco de dados"
 
 #: ../source/credits.rst:150
 msgid "(MIME)-Transformations for columns"
-msgstr ""
+msgstr "(MIME) - Transformações para campos"
 
 #: ../source/credits.rst:152
 msgid "Use custom alias names for Databases in left frame"
 msgstr ""
+"Uso de nomes personalizados de alias para bancos de dados no frame esquerdo"
 
 #: ../source/credits.rst:154
 msgid "hierarchical/nested table display"
-msgstr ""
+msgstr "exibição de tabela hierárquica/aninhada"
 
 # 48e29048fac74cc2bc4bf82badfe001f
 #: ../source/credits.rst:156
 msgid ""
 ":term:`PDF`-scratchboard for WYSIWYG- distribution of :term:`PDF` relations"
 msgstr ""
+"scratchboard :term:`PDF` para WYSIWYG - distribuição das relações "
+":term:`PDF`"
 
 #: ../source/credits.rst:159
 msgid "new icon sets"
