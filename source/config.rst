@@ -237,6 +237,15 @@ Server connection settings
     Permits to use an alternate host to hold the configuration storage
     data.
 
+.. _controlport:
+.. config:option:: $cfg['Servers'][$i]['controlport']
+
+    :type: string
+    :default: ``''``
+
+    Permits to use an alternate port to connect to the host that 
+    holds the configuration storage.
+
 .. _controluser:
 .. config:option:: $cfg['Servers'][$i]['controluser']
 
@@ -456,7 +465,7 @@ Server connection settings
 
     Since release 2.2.4 you can describe, in a special 'relation' table,
     which column is a key in another table (a foreign key). phpMyAdmin
-    currently uses this to
+    currently uses this to:
 
     * make clickable, when you browse the master table, the data values that
       point to the foreign table;
@@ -915,14 +924,6 @@ Server connection settings
     * ``'SELECT SCHEMA_NAME FROM information_schema.SCHEMATA'``
     * ``false``
 
-.. config:option:: $cfg['Servers'][$i]['CountTables']
-
-    :type: boolean
-    :default: false
-
-    Whether to count the number of tables for each database when preparing
-    the list of databases for the navigation panel.
-
 .. config:option:: $cfg['Servers'][$i]['SignonScript']
 
     :type: string
@@ -1012,6 +1013,33 @@ Generic settings
     .. note::
 
         This setting can be adjusted by your vendor.
+
+.. config:option:: $cfg['VersionCheckProxyUrl']
+
+    :type: string
+    :default: ""
+
+    The url of the proxy to be used when retrieving the information about
+    the latest version of phpMyAdmin. You need this if the server where
+    phpMyAdmin is installed does not have direct access to the internet.
+    The format is: "hostname:portnumber"
+
+.. config:option:: $cfg['VersionCheckProxyUser']
+
+    :type: string
+    :default: ""
+
+    The username for authenticating with the proxy. By default, no
+    authentication is performed. If a username is supplied, Basic
+    Authentication will be performed. No other types of authentication
+    are currently supported.
+
+.. config:option:: $cfg['VersionCheckProxyPass']
+
+    :type: string
+    :default: ""
+
+    The password for authenticating with the proxy.
 
 .. config:option:: $cfg['MaxDbList']
 
