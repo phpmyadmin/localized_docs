@@ -56,7 +56,7 @@ okay for a particular setting, there is no need to include it in
 :file:`config.inc.php`. You'll need a few directives to get going, a
 simple configuration may look like this:
 
-.. code-block:: php
+.. code-block:: xml+php
 
     
     <?php
@@ -69,7 +69,7 @@ simple configuration may look like this:
 
 Or, if you prefer to not be prompted every time you log in:
 
-.. code-block:: php
+.. code-block:: xml+php
 
     
     <?php
@@ -418,3 +418,6 @@ are always ways to make your installation more secure:
   phpMyAdmin, you can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit them
 * consider hiding phpMyAdmin behind authentication proxy, so that 
   MySQL credentials are not all users need to login
+* if you are afraid of automated attacks, enabling Captcha by 
+  :config:option:`$cfg['CaptchaLoginPublicKey']` and
+  :config:option:`$cfg['CaptchaLoginPrivateKey']` might be an option.

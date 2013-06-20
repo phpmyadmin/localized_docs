@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 4.1-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-21 14:39\n"
+"POT-Creation-Date: 2013-06-20 08:28\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,132 +17,132 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../source/transformations.rst:4
-# 9825f35e5c8b4ce1abf37a945416249f
+# a724e737c5764ba09b8df739cc6e4e97
 msgid "Transformations"
 msgstr ""
 
 #: ../source/transformations.rst:9
-# fc5c94dc985d49638c448267aa793fc3
+# 23bcd8a3e8d646c09667fab282e3c08c
 msgid "Introduction"
 msgstr ""
 
 #: ../source/transformations.rst:11
-# 5548105b946047ea9ccad8d667cbddb1
+# 7b1d3898223e40b785b3681ce5896afb
 msgid "To enable transformations, you have to setup the ``column_info`` table and the proper directives. Please see the :ref:`config` on how to do so."
 msgstr ""
 
 #: ../source/transformations.rst:14
-# ffe3fdfe41ca4653af9d72d7c459cdf3
+# 626b056c4fdb466782b43b30f383d7f9
 msgid "You can apply different transformations to the contents of each column. The transformation will take the content of each column and transform it with certain rules defined in the selected transformation."
 msgstr ""
 
 #: ../source/transformations.rst:19
-# 7d3e6026fb2640dba63bea246a308307
+# 5a09eb7f01be4ca8bfd7c6cc48ee159a
 msgid "Say you have a column 'filename' which contains a filename. Normally you would see in phpMyAdmin only this filename. Using transformations you can transform that filename into a HTML link, so you can click inside of the phpMyAdmin structure on the column's link and will see the file displayed in a new browser window. Using transformation options you can also specify strings to append/prepend to a string or the format you want the output stored in."
 msgstr ""
 
 #: ../source/transformations.rst:27
-# 81fd87690a9a453fa13c4b51588e9f92
+# 0b3dd6af790f41df8ec33ff8b4e0f757
 msgid "For a general overview of all available transformations and their options, you can consult your *<www.your-host.com>/<your-install- dir>/transformation\\_overview.php* installation."
 msgstr ""
 
 #: ../source/transformations.rst:31
-# 1f4ab12caf2b4daeadda1f6c030b09d3
+# 0dca835ff6e841019845e22b88b78205
 msgid "For a tutorial on how to effectively use transformations, see our `Link section <http://www.phpmyadmin.net/home_page/docs.php>`_ on the official phpMyAdmin homepage."
 msgstr ""
 
 #: ../source/transformations.rst:38
-# 6eb831508c8d4ca789912537576b9ed3
+# 8aa039f4dbce4a268f2c6cb5342056c2
 msgid "Usage"
 msgstr ""
 
 #: ../source/transformations.rst:40
-# c491f2bf07ee40bb8dd2fc82a551cb1d
+# 8268c06452c74e2cbe0d8e759eb17fa8
 msgid "Go to your *tbl\\_structure.php* page (i.e. reached through clicking on the 'Structure' link for a table). There click on \"Change\" (or change icon) and there you will see three new fields at the end of the line. They are called 'MIME-type', 'Browser transformation' and 'Transformation options'."
 msgstr ""
 
 #: ../source/transformations.rst:46
-# b354cdb552ec462385cc64e17d8493a7
+# 1e12557bfc1049f984dd6a42db7a3915
 msgid "The field 'MIME-type' is a drop-down field. Select the MIME-type that corresponds to the column's contents. Please note that transformations are inactive as long as no MIME-type is selected."
 msgstr ""
 
 #: ../source/transformations.rst:49
-# 48a1f6bcac544a44a1f8ca1f00867e25
+# 7f768ea7b3e44869ac9b18e6c071f1f2
 msgid "The field 'Browser transformation' is a drop-down field. You can choose from a hopefully growing amount of pre-defined transformations. See below for information on how to build your own transformation. There are global transformations and mimetype-bound transformations. Global transformations can be used for any mimetype. They will take the mimetype, if necessary, into regard. Mimetype-bound transformations usually only operate on a certain mimetype. There are transformations which operate on the main mimetype (like 'image'), which will most likely take the subtype into regard, and those who only operate on a specific subtype (like 'image/jpeg'). You can use transformations on mimetypes for which the function was not defined for. There is no security check for you selected the right transformation, so take care of what the output will be like."
 msgstr ""
 
 #: ../source/transformations.rst:62
-# 3630cb5e3e164786b5a45706198694cb
+# e727d26a28174d41bca98ddcbf9afbc0
 msgid "The field 'Transformation options' is a free-type textfield. You have to enter transform-function specific options here. Usually the transforms can operate with default options, but it is generally a good idea to look up the overview to see which options are necessary. Much like the ENUM/SET-Fields, you have to split up several options using the format 'a','b','c',...(NOTE THE MISSING BLANKS). This is because internally the options will be parsed as an array, leaving the first value the first element in the array, and so forth. If you want to specify a MIME character set you can define it in the transformation\\_options. You have to put that outside of the pre- defined options of the specific mime-transform, as the last value of the set. Use the format \"'; charset=XXX'\". If you use a transform, for which you can specify 2 options and you want to append a character set, enter \"'first parameter','second parameter','charset=us-ascii'\". You can, however use the defaults for the parameters: \"'','','charset =us-ascii'\"."
 msgstr ""
 
 #: ../source/transformations.rst:82
-# 679f258e466f4f30822bc590cfcc9a24
+# aca44db56d024673b0c81d5fcaadcadc
 msgid "File structure"
 msgstr ""
 
 #: ../source/transformations.rst:84
-# 67322548051d40c98b3395e79f7042e2
+# 5849b65301f84e679eb14353c7a87c8a
 msgid "All specific transformations for mimetypes are defined through class files in the directory 'libraries/plugins/transformations/'. Each of them extends a certain transformation abstract class declared in libraries/plugins/transformations/abstract."
 msgstr ""
 
 #: ../source/transformations.rst:89
-# 07997662b75a4a52b2ae63f070f20dc9
+# b014dd69ed884dd1bef85cfce8cfde2f
 msgid "They are stored in files to ease up customization and easy adding of new transformations."
 msgstr ""
 
 #: ../source/transformations.rst:92
-# 49fdad8c6c994a0d90ac546be222e189
+# 07f8c075f4a8486fbc612e2496b62626
 msgid "Because the user cannot enter own mimetypes, it is kept sure that transformations always work. It makes no sense to apply a transformation to a mimetype the transform-function doesn't know to handle."
 msgstr ""
 
 #: ../source/transformations.rst:97
-# ab0a12c1a35243b0a644542a677cf28d
+# 31c7d936ffde4942be04dd2796b138cf
 msgid "There is a file called '*transformations.lib.php*' that provides some basic functions which can be included by any other transform function."
 msgstr ""
 
 #: ../source/transformations.rst:100
-# 5f571f374d2d4463959f67edca832a5e
+# 996a0ebabf204a46adc65e7628b04cf9
 msgid "The file name convention is ``[Mimetype]_[Subtype]_[Transformation Name].class.php``, while the abtract class that it extends has the name ``[Transformation Name]TransformationsPlugin``. All of the methods that have to be implemented by a transformations plug-in are:"
 msgstr ""
 
 #: ../source/transformations.rst:105
-# 4d29c49341a848bab4c83442cd1c4961
+# 10501ffc06004c66a97fcbe27a7becf6
 msgid "getMIMEType() and getMIMESubtype() in the main class;"
 msgstr ""
 
 #: ../source/transformations.rst:106
-# 5a3e0f3c6824499c87a46f8ea2186537
+# c51c4612a10742c28de4b35d40ed50ed
 msgid "getName(), getInfo() and applyTransformation() in the abstract class it extends."
 msgstr ""
 
 #: ../source/transformations.rst:109
-# ebe26bbd45e84e0fa6f65339030e55f6
+# 616eec5d128b440faae48e396bb66494
 msgid "The getMIMEType(), getMIMESubtype() and getName() methods return the name of the MIME type, MIME Subtype and transformation accordingly. getInfo() returns the transformation's description and possible options it may receive and applyTransformation() is the method that does the actual work of the transformation plug-in."
 msgstr ""
 
 #: ../source/transformations.rst:115
-# c42c11789d3d4a4da30d71afab65c09a
+# 2e48e17af6ab42e4b545b966d33e38c3
 msgid "Please see the libraries/plugins/transformations/TEMPLATE and libraries/plugins/transformations/TEMPLATE\\_ABSTRACT files for adding your own transformation plug-in. You can also generate a new transformation plug-in (with or without the abstract transformation class), by using :file:`libraries/plugins/transformations/generator_plugin.sh` or :file:`libraries/plugins/transformations/generator_main_class.sh`."
 msgstr ""
 
 #: ../source/transformations.rst:123
-# 0b80d6f6aeef4c49adfc62f0fa692ee3
+# 9d60baab31284cfc9b8793170ca4154f
 msgid "The applyTransformation() method always gets passed three variables:"
 msgstr ""
 
 #: ../source/transformations.rst:125
-# 4e28f9f454c54ca0802ff3cab365aa1c
+# c8c28157621a4be9879d5cb182654703
 msgid "**$buffer** - Contains the text inside of the column. This is the text, you want to transform."
 msgstr ""
 
 #: ../source/transformations.rst:127
-# 7ed611d6f8fd4226b408c4bcb625adc4
+# f115c1cdc7134b62a545c3e296cc3029
 msgid "**$options** - Contains any user-passed options to a transform function as an array."
 msgstr ""
 
 #: ../source/transformations.rst:129
-# 4d4b5d1e697d40d78d1903c7224839ee
+# e5c6307b3e0d421e94c0977b7a8a459c
 msgid "**$meta** - Contains an object with information about your column. The data is drawn from the output of the `mysql\\_fetch\\_field() <http://www.php.net/mysql_fetch_field>`_ function. This means, all object properties described on the `manual page <http://www.php.net/mysql_fetch_field>`_ are available in this variable and can be used to transform a column accordingly to unsigned/zerofill/not\\_null/... properties. The $meta->mimetype variable contains the original MIME-type of the column (i.e. 'text/plain', 'image/jpeg' etc.)"
 msgstr ""
 
