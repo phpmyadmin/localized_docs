@@ -110,7 +110,7 @@ Basic settings
     column names match with words which are MySQL reserved.
 
     If you want to turn off this warning, you can set it to ``true`` and
-    warning will not longer be displayed
+    warning will no longer be displayed.
 
 .. config:option:: $cfg['TranslationWarningThreshold']
 
@@ -118,6 +118,15 @@ Basic settings
     :default: 80
 
     Show warning about incomplete translations on certain threshold.
+
+.. config:option:: $cfg['AllowThirdPartyFraming']
+
+    :type: boolean
+    :default: false
+    
+    Setting this to ``true`` allows phpMyAdmin to be included inside a frame,
+    and is a potential security hole allowing cross-frame scripting attacks or
+    clickjacking.
 
 Server connection settings
 --------------------------
@@ -192,7 +201,54 @@ Server connection settings
     :type: boolean
     :default: false
 
-    Whether to enable SSL for connection to MySQL server.
+    Whether to enable SSL for the connection between phpMyAdmin and the MySQL server.
+
+    When using :config:option:`$cfg['Servers'][$i]['extension']` = ``'mysql'``,
+    none of the remaining ``'ssl...'`` configuration options apply.
+
+    We strongly recommend using :config:option:`$cfg['Servers'][$i]['extension']` = ``'mysqli'``
+    when using this option.
+
+.. config:option:: $cfg['Servers'][$i]['ssl_key']
+
+    :type: string
+    :default: NULL
+
+    Path to the key file when using SSL for connecting to the MySQL server.
+
+    For example:
+
+    .. code-block:: php
+
+        $cfg['Servers'][$i]['ssl_key'] = '/etc/mysql/server-key.pem';
+
+.. config:option:: $cfg['Servers'][$i]['ssl_cert']
+
+    :type: string
+    :default: NULL
+
+    Path to the cert file when using SSL for connecting to the MySQL server.
+
+.. config:option:: $cfg['Servers'][$i]['ssl_ca']
+
+    :type: string
+    :default: NULL
+
+    Path to the CA file when using SSL for connecting to the MySQL server.
+
+.. config:option:: $cfg['Servers'][$i]['ssl_ca_path']
+
+    :type: string
+    :default: NULL
+
+    Directory containing trusted SSL CA certificates in PEM format.
+
+.. config:option:: $cfg['Servers'][$i]['ssl_ciphers']
+
+    :type: string
+    :default: NULL
+
+    List of allowable ciphers for SSL connections to the MySQL server.
 
 .. config:option:: $cfg['Servers'][$i]['connect_type']
 
@@ -649,6 +705,43 @@ Server connection settings
     * put the table name in :config:option:`$cfg['Servers'][$i]['table\_uiprefs']` (e.g.
       ``pma__table_uiprefs``)
 
+.. _configurablemenus:
+.. config:option:: $cfg['Servers'][$i]['users']
+
+    :type: string
+    :default: ``''``
+
+.. config:option:: $cfg['Servers'][$i]['usergroups']
+
+    :type: string
+    :default: ``''``
+
+    Since release 4.1.0 you can create different user groups with menu items
+    attached to them. Users can be assigned to these groups and the logged in
+    user would only see menu items configured to the usergroup he is assigned to.
+    To do this it needs two tables "usergroups" (storing allowed menu items for each
+    user group) and "users" (storing users and their assignments to user groups).
+
+    To allow the usage of this functionality:
+
+    * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
+    * put the correct table names in
+      :config:option:`$cfg['Servers'][$i]['users']` (e.g. ``pma__users``) and
+      :config:option:`$cfg['Servers'][$i]['usergroups']` (e.g. ``pma__usergroups``)
+
+.. _navigationhiding:
+.. config:option:: $cfg['Servers'][$i]['navigationhiding']
+
+    :type: string
+    :default: ``''``
+
+    Since release 4.1.0 you can hide/show items in the navigation tree.
+
+    To allow the usage of this functionality:
+
+    * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
+    * put the table name in :config:option:`$cfg['Servers'][$i]['navigationhiding']` (e.g.
+      ``pma__navigationhiding``)
 
 .. _tracking:
 .. config:option:: $cfg['Servers'][$i]['tracking']
@@ -1127,10 +1220,10 @@ Generic settings
 .. config:option:: $cfg['MemoryLimit']
 
     :type: string [number of bytes]
-    :default: ``'0'``
+    :default: ``'-1'``
 
     Set the number of bytes a script is allowed to allocate. If set to
-    zero, no limit is imposed.
+    ``'-1'``, no limit is imposed.
 
     This setting is used while importing/exporting dump files and at some other
     places in phpMyAdmin so you definitely don't want to put here a too low
@@ -1550,10 +1643,9 @@ Browse mode
     :type: boolean
     :default: false
 
-    Defines whether a user should be displayed a "Show all" button in
-    browse mode or not in all cases. By default it is shown only on small
-    tables (less than 5 × :config:option:`$cfg['MaxRows']` rows) to avoid
-    performance issues while getting too many rows.
+    Defines whether a user should be displayed a "Show all" button in browse
+    mode or not in all cases. By default it is shown only on small tables (less
+    than 500 rows) to avoid performance issues while getting too many rows.
 
 .. config:option:: $cfg['MaxRows']
 
@@ -1791,35 +1883,6 @@ Tabs display settings
     * ``tbl_change.php``
     * ``sql.php``
 
-Documentation
--------------
-
-.. config:option:: $cfg['MySQLManualBase']
-
-    :type: string
-    :default: ``'http://dev.mysql.com/doc/refman'``
-
-    If set to an :term:`URL` which points to
-    the MySQL documentation (type depends on
-    :config:option:`$cfg['MySQLManualType']`), appropriate help links are
-    generated.
-
-    See `MySQL Documentation page <http://dev.mysql.com/doc/>`_ for more
-    information about MySQL manuals and their types.
-
-.. config:option:: $cfg['MySQLManualType']
-
-    :type: string
-    :default: ``'viewable'``
-
-    Type of MySQL documentation:
-
-    * viewable - "viewable online", current one used on MySQL website
-    * searchable - "Searchable, with user comments"
-    * chapters - "HTML, one page per chapter"
-    * big - "HTML, all on one page"
-    * none - do not show documentation links
-
 Languages
 ---------
 
@@ -1871,6 +1934,7 @@ Languages
       recode)
     * iconv - use iconv or libiconv functions
     * recode - use recode\_string function
+    * mb - use mbstring extension
     * none - disable encoding conversion
 
     Enabled charset conversion activates a pull-down menu in the Export
@@ -1980,7 +2044,7 @@ Web server settings
     in :file:`config.footer.inc.php` or :file:`config.header.inc.php`, which
     would be normally not allowed by Content Security Policy.
 
-    To allow some sites, just list them wihin the string:
+    To allow some sites, just list them within the string:
 
     .. code-block:: php
 
@@ -2647,118 +2711,6 @@ Default queries
     Default queries that will be displayed in query boxes when user didn't
     specify any. You can use standard :ref:`faq6_27`.
 
-SQL parser settings
--------------------
-
-.. config:option:: $cfg['SQP']['fmtType']
-
-    :type: string
-    :default: ``'html'``
-
-    The main use of the :term:`SQL` Parser
-    is to format and analyze :term:`SQL` queries. By
-    default we use text to format the query, but you can disable this by
-    setting this variable to ``'none'``.
-
-    Available options:
-
-    * ``'text'``
-    * ``'none'``
-
-.. _cfg_SQP:
-.. config:option:: $cfg['SQP']['fmtInd']
-
-    :type: float
-    :default: ``'1'``
-
-.. config:option:: $cfg['SQP']['fmtIndUnit']
-
-    :type: string
-    :default: ``'em'``
-
-    For the pretty-printing of :term:`SQL` queries,
-    under some cases the part of a query inside a bracket is indented. By
-    changing :config:option:`$cfg['SQP']['fmtInd']` you can change the amount
-    of this indent.
-
-    Related in purpose is :config:option:`$cfg['SQP']['fmtIndUnit']` which
-    specifies the units of the indent amount that you specified. This is used
-    via stylesheets.
-
-    You can use any HTML unit, for example:
-
-    * ``'em'``
-    * ``'ex'``
-    * ``'pt'``
-    * ``'px'``
-
-.. config:option:: $cfg['SQP']['fmtColor']
-
-    :type: array of string tuples
-    :default:
-
-    This array is used to define the colours for each type of element of
-    the pretty-printed :term:`SQL` queries.
-    The tuple format is *class* => [*HTML colour code* | *empty string*]
-
-
-    If you specify an empty string for the color of a class, it is ignored
-    in creating the stylesheet. You should not alter the class names, only
-    the colour strings.
-
-    **Class name key:**
-
-    comment
-        Applies to all comment sub-classes
-    comment\_mysql
-        Comments as ``"#...\n"``
-    comment\_ansi
-        Comments as ``"-- ...\n"``
-    comment\_c
-        Comments as ``"/*...*/"``
-    digit
-        Applies to all digit sub-classes
-    digit\_hex
-        Hexadecimal numbers
-    digit\_integer
-        Integer numbers
-    digit\_float
-        Floating point numbers
-    punct
-        Applies to all punctuation sub-classes
-    punct\_bracket\_open\_round
-        Opening brackets ``"("``
-    punct\_bracket\_close\_round
-        Closing brackets ``")"``
-    punct\_listsep
-        List item Separator ``","``
-    punct\_qualifier
-        Table/Column Qualifier ``"."``
-    punct\_queryend
-        End of query marker ``";"``
-    alpha
-        Applies to all alphabetic classes
-    alpha\_columnType
-        Identifiers matching a column type
-    alpha\_columnAttrib
-        Identifiers matching a database/table/column attribute
-    alpha\_functionName
-        Identifiers matching a MySQL function name
-    alpha\_reservedWord
-        Identifiers matching any other reserved word
-    alpha\_variable
-        Identifiers matching a :term:`SQL` variable ``"@foo"``
-    alpha\_identifier
-        All other identifiers
-    quote
-        Applies to all quotation mark classes
-    quote\_double
-        Double quotes ``"``
-    quote\_single
-        Single quotes ``'``
-    quote\_backtick
-        Backtick quotes `````
-
 SQL validator settings
 ----------------------
 
@@ -2829,6 +2781,14 @@ Developer
 
     Enable logging queries and execution times to be
     displayed in the bottom of main page (right frame).
+
+.. config:option:: $cfg['DBG']['demo']
+
+    :type: boolean
+    :default: false
+
+    Enable to let server present itself as demo server.
+    This is used for <http://demo.phpmyadmin.net/>.
 
 .. config:option:: $cfg['Error_Handler']['display']
 
