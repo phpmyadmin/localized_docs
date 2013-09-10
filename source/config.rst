@@ -1145,7 +1145,7 @@ Generic settings
 .. config:option:: $cfg['MaxNavigationItems']
 
     :type: integer
-    :default: 25
+    :default: 250
 
     The number of items that can be displayed on each page of the
     navigation tree.
@@ -1198,6 +1198,12 @@ Generic settings
     :default: false
 
     Whether to force using https while accessing phpMyAdmin.
+    
+    .. note::
+
+        In some setups (like separate SSL proxy or loadballancer) you might
+        have to set :config:option:`$cfg['PmaAbsoluteUri']` for correct
+        redirection.
 
 .. config:option:: $cfg['ExecTimeLimit']
 
@@ -1451,14 +1457,6 @@ Navigation panel setup
 
     The maximum number of recently used tables shown in the navigation
     panel. Set this to 0 (zero) to disable the listing of recent tables.
-
-.. config:option:: $cfg['ShowTooltip']
-
-    :type: boolean
-    :default: true
-
-    Defines whether to display item comments as tooltips in navigation
-    panel or not.
 
 .. config:option:: $cfg['NavigationDisplayLogo']
 
@@ -1882,6 +1880,26 @@ Tabs display settings
     * ``tbl_select.php``
     * ``tbl_change.php``
     * ``sql.php``
+
+PDF Options
+-----------
+
+.. config:option:: $cfg['PDFPageSizes']
+
+    :type: array
+    :default: ``array('A3', 'A4', 'A5', 'letter', 'legal')``
+
+    Array of possible paper sizes for creating PDF pages.
+
+    You should never need to change this.
+
+.. config:option:: $cfg['PDFDefaultPageSize']
+
+    :type: string
+    :default: ``'A4'``
+
+    Default page size to use when creating PDF pages. Valid values are any
+    listed in :config:option:`$cfg['PDFPageSizes']`.
 
 Languages
 ---------
