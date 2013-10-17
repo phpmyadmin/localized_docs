@@ -10,6 +10,10 @@ does not exist, please refer to the :ref:`setup` section to create one. This
 file only needs to contain the parameters you want to change from their
 corresponding default value in :file:`libraries/config.default.php`.
 
+If a directive is missing from your file, you can just add another line with
+the file. This file is for over-writing the defaults; if you wish to use the
+default value there's no need to add a line here.
+
 The parameters which relate to design (like colors) are placed in
 :file:`themes/themename/layout.inc.php`. You might also want to create
 :file:`config.footer.inc.php` and :file:`config.header.inc.php` files to add
@@ -40,8 +44,8 @@ Basic settings
     Sets here the complete :term:`URL` (with full path) to your phpMyAdmin
     installation's directory. E.g.
     ``http://www.example.net/path_to_your_phpMyAdmin_directory/``.  Note also
-    that the :term:`URL` on some web servers are case–sensitive. Don’t forget
-    the trailing slash at the end.
+    that the :term:`URL` on most of web servers are case–sensitive. Don’t
+    forget the trailing slash at the end.
 
     Starting with version 2.3.0, it is advisable to try leaving this blank. In
     most cases phpMyAdmin automatically detects the proper setting. Users of
@@ -118,6 +122,29 @@ Basic settings
     :default: 80
 
     Show warning about incomplete translations on certain threshold.
+
+.. config:option:: $cfg['ErrorReporting']
+
+    :type: boolean
+    :default: true
+
+    Whenever an error is detected in the javascript execution. A an error report
+    may be sent to phpmyadmin if user agrees.
+
+    You can set this parameter to ``false`` to never send error reports.
+
+.. config:option:: $cfg['SendErrorReports']
+
+    :type: string
+    :default: ``'ask'``
+
+    Whenever an error is detected in the javascript execution. A an error report
+    may be sent to phpmyadmin. This setting sets the default behavior.
+
+    The default setting of ``'ask'`` will ask the user everytime there is a new
+    error report. However you can set this parameter to ``'always'`` to send error
+    reports without asking for confirmation or you can set it to ``'never'`` to
+    never send error reports.
 
 .. config:option:: $cfg['AllowThirdPartyFraming']
 
@@ -1107,17 +1134,18 @@ Generic settings
 
         This setting can be adjusted by your vendor.
 
-.. config:option:: $cfg['VersionCheckProxyUrl']
+.. config:option:: $cfg['ProxyUrl']
 
     :type: string
     :default: ""
 
-    The url of the proxy to be used when retrieving the information about
-    the latest version of phpMyAdmin. You need this if the server where
-    phpMyAdmin is installed does not have direct access to the internet.
+    The url of the proxy to be used when phpmyadmin needs to access the outside
+    intenet such as when retrieving the latest version info or submitting error
+    reports.  You need this if the server where phpMyAdmin is installed does not
+    have direct access to the internet.
     The format is: "hostname:portnumber"
 
-.. config:option:: $cfg['VersionCheckProxyUser']
+.. config:option:: $cfg['ProxyUser']
 
     :type: string
     :default: ""
@@ -1127,7 +1155,7 @@ Generic settings
     Authentication will be performed. No other types of authentication
     are currently supported.
 
-.. config:option:: $cfg['VersionCheckProxyPass']
+.. config:option:: $cfg['ProxyPass']
 
     :type: string
     :default: ""
@@ -1201,7 +1229,7 @@ Generic settings
     
     .. note::
 
-        In some setups (like separate SSL proxy or loadballancer) you might
+        In some setups (like separate SSL proxy or load balancer) you might
         have to set :config:option:`$cfg['PmaAbsoluteUri']` for correct
         redirection.
 

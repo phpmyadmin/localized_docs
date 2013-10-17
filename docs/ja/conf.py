@@ -49,7 +49,7 @@ copyright = u'2012 - 2013, The phpMyAdmin devel team'
 # built documents.
 #
 # The short X.Y version.
-version = '4.1-dev'
+version = '4.1.0-beta1'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -285,3 +285,9 @@ epub_copyright = copyright
 
 # Allow duplicate toc entries.
 #epub_tocdup = True
+
+# Highlight PHP without starting <?php tag
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+
+lexers['php'] = PhpLexer(startinline=True)
