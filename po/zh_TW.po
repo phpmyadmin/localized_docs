@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2013-10-17 16:17\n"
-"PO-Revision-Date: 2013-10-23 12:32+0200\n"
+"PO-Revision-Date: 2013-10-26 13:34+0200\n"
 "Last-Translator: Chien Wei Lin <cwlin0416@gmail.com>\n"
 "Language-Team: Traditional Chinese "
 "<http://l10n.cihar.com/projects/phpmyadmin/documentation/zh_TW/>\n"
@@ -609,17 +609,19 @@ msgid ""
 "phpMyAdmin directory. This is a security measure. On a Linux/Unix system you "
 "can use the following commands:"
 msgstr ""
+"除了手動編輯 :file:`config.inc.php` 之外，您可以使用 `安裝程式 <setup/>`_。您必須先在 phpMyAdmin "
+"的資料夾中手動建立一個新資料夾 ``config``，這個動作是用來避免發生安全性的問題。在 Linux/Unix 作業系統下您可以使用以下指令:"
 
 #: ../source/setup.rst:177
 msgid "And to edit an existing configuration, copy it over first:"
-msgstr ""
+msgstr "然後根據現有的範本設定檔進行編輯，先從範本複製設定檔:"
 
 # e98a1008d36f4c248f9242c5f9c097bf
 #: ../source/setup.rst:185
 msgid ""
 "On other platforms, simply create the folder and ensure that your web server "
 "has read and write access to it. :ref:`faq1_26` can help with this."
-msgstr ""
+msgstr "若在其他的作業系統，您可以直接建立資料夾並確認網頁伺服器擁有該資料夾的讀取與寫入權。 請參考 :ref:`faq1_26` 的說明 。"
 
 # 2acdc0fb4ff34afda2ee89d5573edd17
 #: ../source/setup.rst:189
@@ -633,20 +635,25 @@ msgid ""
 "- or use the ``Download`` link to save the config file locally and upload "
 "(via FTP or some similar means) to the proper location."
 msgstr ""
+"接著，在您的瀏覽器開啟 phpMyAdmin 並在網址後輸入 ``setup/`` 進入安裝程式，請注意 **所有修改的設定在尚未點選  *設定項目* "
+"區域中的 ``儲存`` 按鈕之前不會儲存至磁碟**。安裝程式會將新的 :file:`config.inc.php` 儲存至 ``config/`` "
+"資料夾，但若您的網頁伺服器未開啟適當的存取權限會出現 \"無法讀取或儲存設定檔。\" 的錯誤訊息。 因此您需要確認  ``config/`` "
+"資料夾是否已建立並且擁有適當的存取權限 - 或者使用 ``下載`` 連結將設定檔下載至您的個人電腦，再上傳 (透過 FTP 或類似的程式) "
+"至伺服器中適當的位置。"
 
 # cffeffdcae2a4236af2d7f372363fe04
 #: ../source/setup.rst:199
 msgid ""
 "Once the file has been saved, it must be moved out of the ``config/`` "
 "directory and the permissions must be reset, again as a security measure:"
-msgstr ""
+msgstr "當設定檔已儲存完成，您必須將設定檔移出 ``config/`` 資料夾，並且將該資料夾的權限還原，這個動作同樣是要避免產生安全性問題:"
 
 #: ../source/setup.rst:210
 msgid ""
 "Now the file is ready to be used. You can choose to review or edit the file "
 "with your favorite editor, if you prefer to set some advanced options which "
 "the setup script does not provide."
-msgstr ""
+msgstr "現在您的設定檔已經可以使用。 若您需要額外設定安裝程式未提供的進階選項，您可以再使用你喜好的文字編輯器檢查並編輯設定檔。"
 
 # 9285ae56cb7349b095666f5377d384f5
 #: ../source/setup.rst:214
@@ -659,6 +666,10 @@ msgid ""
 "cookie or http. See the :ref:`faqmultiuser` for additional information, "
 "especially :ref:`faq4_4`."
 msgstr ""
+"如果您使用的認証模式 ``auth_type`` 為 \"config\"，建議您要妥善管理 phpMyAdmin 資料夾權限，因為使用 config "
+"模式並不需要輸入使用者帳號及密碼即可存取 phpMyAdmin。建議您可以使用替代的認証方法管理，例如在 :term:`.htaccess` 檔案中設定 "
+"HTTP–AUTH 認証或者將認証模式 ``auth_type`` 更改為 cookie 或者 http。 您可以參考 "
+":ref:`faqmultiuser` 說明文件以取得更多的資訊，特別是 :ref:`faq4_4`。"
 
 # 0320a036c1d54947a2e610c89565a554
 #: ../source/setup.rst:221
@@ -667,6 +678,8 @@ msgid ""
 "phpMyAdmin should now display a welcome screen and your databases, or a "
 "login dialog if using :term:`HTTP` or cookie authentication mode."
 msgstr ""
+"在您的瀏覽器開啟 `phpMyAdmin 主資料夾 <index.php>`_，phpMyAdmin 應該會顯示歡迎畫面以及您所擁有的資料庫，若您使用 "
+":term:`HTTP` 或 cookie 認証模式則會出現登入視窗。"
 
 # 896008336ff54469835b303df2383feb
 #: ../source/setup.rst:225
@@ -678,6 +691,9 @@ msgid ""
 "cross side scripting vulnerabilities that might happen to be found in that "
 "code."
 msgstr ""
+"您應該透過網頁伺服器的設定避免 ``./libraries`` 與``./setup/lib`` 兩個子資料夾被存取。以 Apache "
+"為例，您可以在該資料夾放置 :term:`.htaccess` 檔案，若為其他的網頁伺服器則您必須自行設定。 "
+"這樣的設定可以避免暴露程式碼的問題並遭人跨網域入侵若您的程式碼被人找到並且發現問題。"
 
 # a593dff60e104fb7b4fc423436750d97
 #: ../source/setup.rst:231
@@ -687,13 +703,14 @@ msgid ""
 "this using ``robots.txt`` file in root of your webserver or limit access by "
 "web server configuration, see :ref:`faq1_42`."
 msgstr ""
+"最好避免 phpMyAdmin 被搜尋引擎的機器人存取，讓搜尋引擎可以查詢到這個網站通常不會有什麼好事情，您可以在網頁伺服器的根目錄放置 "
+"``robots.txt`` 或者透過網頁伺服器的設定限制存取，請參考 :ref:`faq1_42`。"
 
 #: ../source/setup.rst:245
 msgid "phpMyAdmin configuration storage"
-msgstr "phpMyAdmin 設定儲存功能"
+msgstr "phpMyAdmin 設定資訊儲存庫"
 
 #: ../source/setup.rst:247
-#, fuzzy
 msgid ""
 "For a whole set of new features (bookmarks, comments, :term:`SQL`-history, "
 "tracking mechanism, :term:`PDF`-generation, column contents transformation, "
@@ -702,34 +719,28 @@ msgid ""
 "installation (this database would then be accessed by the controluser, so no "
 "other user should have rights to it)."
 msgstr ""
-"設定完整的新功能(書籤, 回應, <abbr title=\"查詢結構語言\">SQL</abbr>-"
-"history, 追蹤機制, <abbr title=\"可攜式文件格式\">PDF</abbr>-generation, "
-"column contents transformation, etc.) 你必須建立一個特殊的表格. 這個表格位於"
-"你的資料系統內, 或在一個多使用者安裝的中央資料庫內(這個資料庫能夠被管理者"
-"(controluser)存取, 所以沒有其他使用者能夠存取他)."
+"要使用 phpMyAdmin 一系列的新功能 (書籤、說明、:term:`SQL`-歷史記錄，追蹤機制，:term:`PDF` "
+"產生，欄位內容轉換...等) 您需要建立一些專用的資料表，這些資料表可以儲存在於您的資料庫當中，或是在多使用者環境下可以儲存至一個集中的資料庫 "
+"(此資料庫只會允許 controluser 存取，其他使用者並沒有權力存)。"
 
 #: ../source/setup.rst:254
-#, fuzzy
 msgid ""
 "Please look at your ``./examples/`` directory, where you should find a file "
 "called *create\\_tables.sql*. (If you are using a Windows server, pay "
 "special attention to :ref:`faq1_23`)."
 msgstr ""
-"請觀看你的安裝目錄下的 <code>./examples/</code> 目錄, 你會找到一個檔名為 "
-"<em>create_tables.sql</em> 的檔案. (如果你使用 Windows 伺服器, 你應該注意 <a "
-"href=\"#faq1_23\"> <abbr title=\"Frequently Asked Questions\">FAQ</abbr> "
-"1.23</a>)的說明."
+"請在打開您的 phpMyAdmin 資料夾內的 ``./examples/`` 資料夾，您可以在裡面找到檔名為 *create\\_tables.sql* "
+"的檔案。 (若您是使用 Windows 伺服器請注意此 :ref:`faq1_23`)。"
 
 #: ../source/setup.rst:258
-#, fuzzy
 msgid ""
 "If you already had this infrastructure and upgraded to MySQL 4.1.2 or newer, "
 "please use :file:`examples/upgrade_tables_mysql_4_1_2+.sql` and then create "
 "new tables by importing :file:`examples/create_tables.sql`."
 msgstr ""
-"如果你已經有這個基礎建設把它更新到 MySQL 4.1.2 或更新的版本, 請使用 <em>./"
-"examples/upgrade_tables_mysql_4_1_2+.sql</em> 且建立新的表格(重要) <em>./"
-"examples/create_tables.sql</em>."
+"若您曾經安裝過 phpMyAdmin，且資料庫伺服器版本已經升級至 MySQL 4.1.2 或更新的版本，請先匯入  "
+":file:`examples/upgrade_tables_mysql_4_1_2+.sql` 檔案再匯入 "
+":file:`examples/create_tables.sql` 檔案建立新的資料表。"
 
 #: ../source/setup.rst:263
 msgid ""
@@ -738,10 +749,9 @@ msgid ""
 "and tables, and that the script may need some tuning, depending on the "
 "database name."
 msgstr ""
-"你能使用你的 phpMyAdmin 建立這表格. 請使用你知道的特權(管理者)來建立這個資料庫表格, 然後這個腳本必須做一些調整在你的資料庫名稱上面."
+"您可以使用 phpMyAdmin 來建立這些資料表，請注意，建立這些資料庫與資料表，您須要有管理者的權限，且必須依據資料庫的名稱做額外的設定調整。"
 
 #: ../source/setup.rst:268
-#, fuzzy
 msgid ""
 "After having imported the :file:`examples/create_tables.sql` file, you "
 "should specify the table names in your :file:`config.inc.php` file. The "
@@ -749,11 +759,9 @@ msgid ""
 "need to have a controluser with the proper rights to those tables (see "
 "section :ref:`authentication_modes` below)."
 msgstr ""
-"當你匯入 <em>./examples/create_tables.sql</em> 檔案後, 你必須將匯入的表格名稱"
-"放在你的 <em>./config.inc.php</em> 檔案內. 你可以找到在這個檔案的 <a href="
-"\"#config\">Configuration section</a>. 你將需要有個 controluser with the "
-"proper rights to those tables (see section <a href=\"#authentication_modes"
-"\">Using authentication modes</a> below)."
+"當您已將 :file:`examples/create_tables.sql` 檔案匯入完成之後，您需要在您的 "
+":file:`config.inc.php` 檔案中設定資料表名稱，這個設定項目可以在 :ref:`config` 中找到。您同時需要有一個 "
+"controluser 擁有適當的權限來存取這些資料表 (請參考以下章節 :ref:`authentication_modes`)。"
 
 #: ../source/setup.rst:277
 msgid "Upgrading from an older version"
@@ -768,6 +776,9 @@ msgid ""
 "with PHP 6, remove a ``set_magic_quotes_runtime(0);`` statement that you "
 "might find near the end of your configuration file."
 msgstr ""
+"直接從您先前安裝的版本複製 :file:`config.inc.php` "
+"檔案到新版本的資料夾中，舊版本的設定檔可能需要做一些設定項目修改或移除的調整。若要相容 PHP 6 版本需要移除 "
+"``set_magic_quotes_runtime(0);`` 敘述句，在您的設定檔案底部可以找的到。"
 
 # db5babdc56de4ad6ae5c73a6d82bc718
 #: ../source/setup.rst:286
@@ -775,6 +786,8 @@ msgid ""
 "You should **not** copy :file:`libraries/config.default.php` over :file:"
 "`config.inc.php` because the default configuration file is version- specific."
 msgstr ""
+"您**不可**直接複製 :file:`libraries/config.default.php` 到 "
+":file:`config.inc.php`，由於預設的設定檔會依每個版本而有所不同。"
 
 # c3cadcccd75a4e0883806af1e671c8f0
 #: ../source/setup.rst:290
@@ -784,6 +797,8 @@ msgid ""
 "you should run the :term:`SQL` script found in :file:`examples/"
 "upgrade_tables_mysql_4_1_2+.sql`."
 msgstr ""
+"如果您的 MySQL 伺服器已從 4.1.2 之前的版本升級至 5.x 或者更新的版本，並且您要使用 phpMyAdmin 設定資訊儲存庫，您需要執行 "
+":file:`examples/upgrade_tables_mysql_4_1_2+.sql` 中的 :term:`SQL` 指令。"
 
 #: ../source/setup.rst:300
 msgid "Using authentication modes"
@@ -800,6 +815,10 @@ msgid ""
 "term:`HTTP` or cookie mode so that your user/password pair are not in clear "
 "in the configuration file."
 msgstr ""
+":term:`HTTP` 與 cookie 兩種認証模式建議使用者 **多人環境** "
+"下使用，您希望每個使用者可以自行存取自己的資料，並且不希望共用到其他人的資料庫。 請注意 MS Internet Explorer 瀏覽器至少到版本 6 "
+"以前對 cookie 認証模式有許多的問題。 若您是在 **單人環境**，您也可以使用 :term:`HTTP` 或 cookie "
+"認証模式，這樣您的使用者帳號/密碼就不需要儲存在設定檔當中。"
 
 # e8f68de4d2b143fe8d45f21bfe12227a
 #: ../source/setup.rst:310
@@ -811,6 +830,10 @@ msgid ""
 "text, unless you are using the HTTPS protocol. In cookie mode, the password "
 "is stored, encrypted with the blowfish algorithm, in a temporary cookie."
 msgstr ""
+":term:`HTTP` 與 cookie 認証模式較具安全性: 因為 MySQL 的登入資訊不需要儲存在 phpMyAdmin 的設定檔當中 (除了 "
+" :config:option:`$cfg['Servers'][$i]['controluser']`)。 "
+"不論如何，您需要了解密碼是使用純文字傳送，除非您使用 HTTPS 協定。 在 cookie 模式中密碼會使用 blowfish 演算法加密後儲存在暫存的 "
+"cookie 空間內。"
 
 # 74f6e5b419e84bd3bd1c4ec29a7bb9a4
 #: ../source/setup.rst:323
@@ -829,15 +852,24 @@ msgid ""
 "you have to replace ``localhost`` with the webserver's host if it's not the "
 "same as the MySQL server's one."
 msgstr ""
+"使用 ':term:`HTTP`' 與 'cookie' 模式 phpMyAdmin 需要一個控制使用者 controluser 擁有對 "
+"*`mysql`.`user` (所有欄位，除了 `Password` 密碼欄位)*, *`mysql`.`db` (所有欄位)*, "
+"*`mysql`.`host` (所有欄位)* 及*`mysql`.`tables\\_priv` (所有欄位除了 `Grantor` 與 "
+"`Timestamp`)*，以上資料表**唯讀**的 ``SELECT`` 權限。 您必須在 :file:`config.inc.php` 設定檔案中的 "
+":config:option:`$cfg['Servers'][$i]['controluser']` 與 "
+":config:option:`$cfg['Servers'][$i]['controlpass']` 項目設定控制使用者的詳細資訊。 "
+"以下範例假設您要使用 ``pma`` 做為控制使用者 controluser，``pmapass`` 做為控制使用者的密碼 controlpass。 "
+"**以上資訊僅功範例，實際請使用其他的設定值**，在您 phpMyAdmin 中的 :term:`SQL` 查詢視窗或使用 MySQL "
+"命令列程式輸入這些指令。當然，若您的 MySQL 資料庫與網頁伺服器存在於不同主機，您必須將 ``localhost`` 替換為網頁伺服器的實際位置。"
 
 #: ../source/setup.rst:351
 msgid "If you want to use the many new relation and bookmark features:"
-msgstr ""
+msgstr "如果您想要使用許多新的 關聯資料表 與 書籤 功能，需要執行:"
 
 # 5aeb9a6206034e1789172755a34f1473
 #: ../source/setup.rst:357
 msgid "(this of course requires that your :ref:`linked-tables` be set up)."
-msgstr ""
+msgstr "(此步驟必須要先設定 :ref:`linked-tables`)。"
 
 # 61788df374114ac7bef8ee1b77d63a04
 #: ../source/setup.rst:359
@@ -848,6 +880,8 @@ msgid ""
 "example, you are creating a superuser). For example, to grant the user "
 "*real_user* with all privileges on the database *user_base*:"
 msgstr ""
+"每一位 *實際* 的使用者都被授權被特定的權限在特定的資料庫，一般的情況下您不應該將全域的權限授權給一般的使用者，除非您了解開啟這些權限對系統管理的影響 "
+"(例如您真的要建立一個管理者)。以下範例將授權使用者 *real_user* 所有在資料庫 *user_base* 上的權限:"
 
 # d7be7d43ee83485d87e5853d981ae6a8
 #: ../source/setup.rst:371
@@ -856,6 +890,8 @@ msgid ""
 "system. With HTTP or cookie authentication mode, you don't need to fill the "
 "user/password fields inside the :config:option:`$cfg['Servers']`."
 msgstr ""
+"使用者擁有的權限完全由 MySQL 的使用者管理系統所控制，使用 HTTP 或 cookie 認証模式您不需要在  "
+":config:option:`$cfg['Servers']` 設定項目中填寫使用者帳號/密碼欄位。"
 
 # ff8ccec96b1740168749b23a09bda9d4
 #: ../source/setup.rst:378
@@ -867,7 +903,7 @@ msgstr "HTTP 認証模式"
 msgid ""
 "Uses :term:`HTTP` Basic authentication method and allows you to log in as "
 "any valid MySQL user."
-msgstr ""
+msgstr "使用 :term:`HTTP` 基本認証的方式，並且允許直接使用 MySQL 中的使用者登入。"
 
 # bc3c041938424ebeaa55672712ee1d0a
 #: ../source/setup.rst:382
@@ -876,13 +912,15 @@ msgid ""
 "support using :term:`CGI` PHP see :ref:`faq1_32`, for using with Apache :"
 "term:`CGI` see :ref:`faq1_35`."
 msgstr ""
+"支援最多種的 PHP 的執行方式。使用 :term:`IIS` (:term:`ISAPI`) 可支援 :term:`CGI` PHP 請參考 "
+":ref:`faq1_32`，使用 Apache :term:`CGI` 請參考 :ref:`faq1_35`。"
 
 # 335def80b1cd41259df0a0e16466ec4a
 #: ../source/setup.rst:385
 msgid ""
 "See also :ref:`faq4_4` about not using the :term:`.htaccess` mechanism along "
 "with ':term:`HTTP`' authentication mode."
-msgstr ""
+msgstr "請參考 :ref:`faq4_4` 避免 :term:`.htaccess` 機制與 ':term:`HTTP`' 認証模式同時使用。"
 
 # 91d825b06251451c92a9c9c9fb738a7e
 #: ../source/setup.rst:393
@@ -894,33 +932,33 @@ msgstr "Cookie 認証模式"
 msgid ""
 "You can use this method as a replacement for the :term:`HTTP` authentication "
 "(for example, if you're running :term:`IIS`)."
-msgstr ""
+msgstr "您可以使用此模式替代 :term:`HTTP` 認証模式 (例: 如果您使用 :term:`IIS`)。"
 
 #: ../source/setup.rst:397
 msgid ""
 "Obviously, the user must enable cookies in the browser, but this is now a "
 "requirement for all authentication modes."
-msgstr ""
+msgstr "故名思義，使用者必須開啟瀏覽器的 Cookie 功能，但目前所有的認証模式也都需要使用 Cookie。"
 
 #: ../source/setup.rst:399
 msgid ""
 "With this mode, the user can truly log out of phpMyAdmin and log in back "
 "with the same username."
-msgstr ""
+msgstr "使用此模式使用者可以在 phpMyAdmin 真的登出/登入使用相同的使用者名稱。"
 
 # 60eb8e59c09e44de96201105c6e54cde
 #: ../source/setup.rst:401
 msgid ""
 "If you want to log in to arbitrary server see :config:option:`"
 "$cfg['AllowArbitraryServer']` directive."
-msgstr ""
+msgstr "如果您想要登入至自行指定的伺服器請參考 :config:option:`$cfg['AllowArbitraryServer']` 設定項目。"
 
 # c07e4c9375f94e34bc99b055c4c0dccb
 #: ../source/setup.rst:402
 msgid ""
 "As mentioned in the :ref:`require` section, having the ``mcrypt`` extension "
 "will speed up access considerably, but is not required."
-msgstr ""
+msgstr "如同 :ref:`require` 所提到，使用 ``mcrypt`` 擴充套件可以加快網頁存取的速度相當多，但這並不是必要的項目。"
 
 # 36351386ff60415ca3bfd18f5b5603b8
 #: ../source/setup.rst:408
@@ -931,11 +969,11 @@ msgstr "Signon 認証模式"
 msgid ""
 "This mode is a convenient way of using credentials from another application "
 "to authenticate to phpMyAdmin."
-msgstr ""
+msgstr "此模式可以直接使用其他系統的帳號密碼証認進入 phpMyAdmin。"
 
 #: ../source/setup.rst:412
 msgid "The other application has to store login information into session data."
-msgstr ""
+msgstr "其他系統必須儲存登入的資訊在 SESSION 資料中。"
 
 # 63bc3161298d4381877c1e1128a9503a
 #: ../source/setup.rst:425
@@ -952,13 +990,17 @@ msgid ""
 "need to setup a \"controluser\" here: using the :config:option:`"
 "$cfg['Servers'][$i]['only_db']` might be enough."
 msgstr ""
+"此模式最不安全，由於此模式需要填寫 :config:option:`$cfg['Servers'][$i]['user']` 與 "
+":config:option:`$cfg['Servers'][$i]['password']` 設定項目 (會讓所有可以讀取 "
+":file:`config.inc.php` 的人看到您的使用者帳號/密碼)，但在此模式您不需要設定 \"controluser\"：使用 "
+":config:option:`$cfg['Servers'][$i]['only_db']` 即可。"
 
 # ca8c40c2978d45a1a3530b10eaccfb3f
 #: ../source/setup.rst:433
 msgid ""
 "In the :ref:`faqmultiuser` section, there is an entry explaining how to "
 "protect your configuration file."
-msgstr ""
+msgstr "在 :ref:`faqmultiuser` 章節有說明如何確保您的設定檔安全。"
 
 # 2c5c5fad714b4433a1059343968b8c8e
 #: ../source/setup.rst:435
@@ -968,6 +1010,9 @@ msgid ""
 "and :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` configuration "
 "directives."
 msgstr ""
+"要增加此模式的安全性您可以設定透過主機認証 "
+":config:option:`$cfg['Servers'][$i]['AllowDeny']['order']` 及 "
+":config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` 設定項目。"
 
 # 332e26e3344348dcb4a5e172d199b98f
 #: ../source/setup.rst:438
@@ -979,6 +1024,9 @@ msgid ""
 "HTTP requests at one’s router or firewall will suffice (both of which are "
 "beyond the scope of this manual but easily searchable with Google)."
 msgstr ""
+"不同於 cookie 與 http，此模式不需要使用者登入系統，此模式的設計可讓所有使用者存取您的系統。 建議您可以透過一些方法限制存取，如: "
+":term:`.htaccess` 檔案設定 HTTP-AUTH 設定項目或者不允許 HTTP 請求來自於地方的路由器或者允許某個防火牆 "
+"(這兩種方法已超出本說明文件的範圍，但您可以簡單的透過 Google 搜尋取得資訊)。"
 
 # f059ec319c794a13bc5cfa80bb5f6958
 #: ../source/setup.rst:451
@@ -995,6 +1043,9 @@ msgid ""
 "disabled by default. To enable it, add the following line to :file:`config."
 "inc.php`:"
 msgstr ""
+"Swekey 是低成本且可以用在網頁應用的 USB 鑰匙認証方式，當 Swekey 認証模式開啟，phpMyAdmin 會要求使用者插入 Swekey "
+"在進入登入頁面時 (目前僅支援 cookie 認証模式)。 Swekey 認証模式預設是關閉的，要啟動需要在 "
+":file:`config.inc.php` 設定以下資訊:"
 
 # 00b9cbccb29c49d0bece16d0ec07ad5a
 #: ../source/setup.rst:464
@@ -1007,6 +1058,10 @@ msgid ""
 "purchase a Swekey please visit `http://phpmyadmin.net/auth\\_key <http://"
 "phpmyadmin.net/auth_key>`_ since this link provides funding for phpMyAdmin."
 msgstr ""
+"接著您需要建立 ``swekey.conf`` 檔案，裡面包含了使用者與其 Swekey Id 的對應。 "
+"很重要的一點是要將這個檔案放置於網頁伺服器根目錄以外的地方 (範例是放置於 ``/etc``)，範本檔案在 ``examples`` 的資料夾中有提供。 "
+"使用它您可以很自在的存取您的個人檔案。 如果您需要購買 Swekey 請至網站 `http://phpmyadmin.net/auth\\_key "
+"<http://phpmyadmin.net/auth_key>`_ 自此網站提供資金給 phpMyAdmin 開始。"
 
 #: ../source/setup.rst:477
 msgid "Securing your phpMyAdmin installation"
@@ -1017,21 +1072,21 @@ msgstr "確保 phpMyAdmin 的安全"
 msgid ""
 "The phpMyAdmin team tries hardly to make the application secure, however "
 "there are always ways to make your installation more secure:"
-msgstr ""
+msgstr "phpMyAdmin 開發團隊努力嘗試讓此系統安全，但不論如何有些基本的方式可以讓您安裝的系統更安全:"
 
 # f5b19f5b13854a66a0961cb28e73a893
 #: ../source/setup.rst:482
 msgid ""
 "remove ``setup`` directory from phpMyAdmin, you will probably not use it "
 "after initial setup"
-msgstr ""
+msgstr "當您安裝完系統之後自 phpMyAdmin 中把 ``setup`` 資料夾移除，在您安裝完之後您就不太需要使用"
 
 # e6684ab82ea1407a90394dadf77aeb25
 #: ../source/setup.rst:484
 msgid ""
 "properly choose authentication method - :ref:`cookie` is probably the best "
 "choice for shared hosting"
-msgstr ""
+msgstr "正確的選擇認証模式 - :ref:`cookie` 在多人共用主機的情況下 :ref:`cookie` 是較佳的選擇"
 
 # 59ca6fb90e8041abab93ccb35329d792
 #: ../source/setup.rst:486
@@ -1040,13 +1095,15 @@ msgid ""
 "can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit "
 "them"
 msgstr ""
+"萬一您不想要讓使用 MySQL 使用者可以存取 phpMyAdmin，您可以使用 "
+":config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` 限制使用者存取"
 
 # e1b1bd218e6f41e08d4b1dbb5cfed36a
 #: ../source/setup.rst:488
 msgid ""
 "consider hiding phpMyAdmin behind authentication proxy, so that MySQL "
 "credentials are not all users need to login"
-msgstr ""
+msgstr "請考慮將 phpMyAdmin 放置在認證代理伺服器之後，如此一來不須要所有使用者都實際登入 MySQL"
 
 # 2b8fc8b9693c4ff69746070cd17a17db
 #: ../source/setup.rst:490
@@ -1055,6 +1112,8 @@ msgid ""
 "$cfg['CaptchaLoginPublicKey']` and :config:option:`"
 "$cfg['CaptchaLoginPrivateKey']` might be an option."
 msgstr ""
+"如果您擔心被程式自動攻擊，可以啟用 Captche 使用 :config:option:`$cfg['CaptchaLoginPublicKey']` "
+"及 :config:option:`$cfg['CaptchaLoginPrivateKey']` 是一種解決方法。"
 
 #: ../source/config.rst:6 ../source/faq.rst:628
 msgid "Configuration"
