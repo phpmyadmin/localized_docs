@@ -68,13 +68,13 @@ and :file:`index.php`.
 
 .. _faq1_7:
 
-1.7 How can I GZip or Bzip a dump or a CSV export? It does not seem to work.
-----------------------------------------------------------------------------
+1.7 How can I GZip a dump or a CSV export? It does not seem to work.
+--------------------------------------------------------------------
 
-These features are based on the ``gzencode()`` and ``bzcompress()``
-PHP functions to be more independent of the platform (Unix/Windows,
-Safe Mode or not, and so on). So, you must have Zlib/Bzip2 support
-(``--with-zlib`` and ``--with-bz2``).
+This feature is based on the ``gzencode()``
+PHP function to be more independent of the platform (Unix/Windows,
+Safe Mode or not, and so on). So, you must have Zlib support
+(``--with-zlib``).
 
 .. _faq1_8:
 
@@ -218,8 +218,7 @@ generally caused by using MySQL version 4.1 or newer. MySQL changed
 the authentication hash and your PHP is trying to use the old method.
 The proper solution is to use the `mysqli extension
 <http://www.php.net/mysqli>`_ with the proper client library to match
-your MySQL installation. Your chosen extension is specified in 
-:config:option:`$cfg['Servers'][$i]['extension']`. More
+your MySQL installation. More
 information (and several workarounds) are located in the `MySQL
 Documentation <http://dev.mysql.com/doc/mysql/en/old-client.html>`_.
 
@@ -239,20 +238,19 @@ files to use font faces. Please refers to the `TCPDF manual
 
 .. _faqmysql:
 
-1.20 I receive the error "cannot load MySQL extension, please check PHP Configuration".
----------------------------------------------------------------------------------------
+1.20 I receive an error about missing mysqli and mysql extensions.
+------------------------------------------------------------------
 
 To connect to a MySQL server, PHP needs a set of MySQL functions
 called "MySQL extension". This extension may be part of the PHP
 distribution (compiled-in), otherwise it needs to be loaded
-dynamically. Its name is probably *mysql.so* or *php\_mysql.dll*.
+dynamically. Its name is probably *mysqli.so* or *php\_mysqli.dll*.
 phpMyAdmin tried to load the extension but failed. Usually, the
 problem is solved by installing a software package called "PHP-MySQL"
 or something similar.
 
 There are currently two interfaces PHP provides as MySQL extensions - ``mysql``
-and ``mysqli`` and you can change which of then is being used by
-:config:option:`$cfg['Servers'][$i]['extension']`.
+and ``mysqli``. The ``mysqli`` is tried first, because it's the best one.
 
 .. _faq1_21:
 
@@ -1001,6 +999,14 @@ the size of the largest item in any given column as the column size
 for the appropriate type. If you know you will be adding larger items
 to that column then you should manually adjust the column sizes
 accordingly. This is done for the sake of efficiency.
+
+.. _faq3_20:
+
+3.20 After upgrading, some bookmarks are gone or their content cannot be shown.
+-------------------------------------------------------------------------------
+
+At some point, the character set used to store bookmark content has changed.
+It's better to recreate your bookmark from the newer phpMyAdmin version.
 
 .. _faqmultiuser:
 
