@@ -2,7 +2,7 @@
 # Makefile to build translations
 
 # Languages which we translate
-LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk sl el da ar
+LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk sl el da ar bs
 
 # directory where phpMyAdmin sources are placed
 PMA_DIR=../phpmyadmin
@@ -45,7 +45,7 @@ po/documentation.pot: $(TEMPLATES)
 
 po/%.po: po/documentation.pot
 	@echo "UPDATE $@"
-	@msgmerge --previous -U $@ $< 
+	@if [ ! -f $@ ] ; then msginit --no-translator -i $< -o $@ ; else msgmerge --previous -U $@ $< ; fi
 
 po/%.mo: po/%.po
 	@echo "GEN $@"
