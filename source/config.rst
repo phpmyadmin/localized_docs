@@ -142,13 +142,13 @@ Basic settings
     preferences. If the person in charge of a multi-user installation prefers
     to disable this feature for all users, a value of ``'never'`` should be
     set, and the :config:option:`$cfg['UserprefsDisallow']` directive should
-    contain ``'SendErrorReports'`` in one of its array values. 
+    contain ``'SendErrorReports'`` in one of its array values.
 
 .. config:option:: $cfg['AllowThirdPartyFraming']
 
     :type: boolean
     :default: false
-    
+
     Setting this to ``true`` allows phpMyAdmin to be included inside a frame,
     and is a potential security hole allowing cross-frame scripting attacks or
     clickjacking.
@@ -328,23 +328,12 @@ Server connection settings
     :default: ``''``
 
     This special account is used for 2 distinct purposes: to make possible all
-    relational features (see :config:option:`$cfg['Servers'][$i]['pmadb']`) and,
-    for a MySQL server running with ``--skip-show-database``, to enable a
-    multi-user installation (:term:`HTTP` or cookie
-    authentication mode).
-
-    When using :term:`HTTP` or
-    cookie authentication modes (or 'config' authentication mode since phpMyAdmin
-    2.2.1), you need to supply the details of a MySQL account that has ``SELECT``
-    privilege on the *mysql.user (all columns except "Password")*, *mysql.db (all
-    columns)* and *mysql.tables\_priv (all columns except "Grantor" and
-    "Timestamp")* tables. This account is used to check what databases the user
-    will see at login.
+    relational features (see :config:option:`$cfg['Servers'][$i]['pmadb']`).
 
     .. versionchanged:: 2.2.5
         those were called ``stduser`` and ``stdpass``
 
-    .. seealso:: :ref:`setup`, :ref:`authentication_modes`
+    .. seealso:: :ref:`setup`, :ref:`authentication_modes`, :ref:`linked-tables`
 
 .. config:option:: $cfg['Servers'][$i]['auth_type']
 
@@ -356,26 +345,12 @@ Server connection settings
 
     * 'config' authentication (``$auth_type = 'config'``) is the plain old
       way: username and password are stored in :file:`config.inc.php`.
-    * 'cookie' authentication mode (``$auth_type = 'cookie'``) as
-      introduced in 2.2.3 allows you to log in as any valid MySQL user with
-      the help of cookies. Username and password are stored in cookies
-      during the session and password is deleted when it ends. This can also
-      allow you to log in in arbitrary server if :config:option:`$cfg['AllowArbitraryServer']` enabled.
-    * 'http' authentication (was
-      called 'advanced' in previous versions and can be written also as
-      'http') (``$auth_type = 'http';'``) as introduced in 1.3.0 allows you to log in as any
+    * 'cookie' authentication mode (``$auth_type = 'cookie'``) allows you to 
+      log in as any valid MySQL user with the help of cookies. 
+    * 'http' authentication allows you to log in as any
       valid MySQL user via HTTP-Auth.
-    * 'signon' authentication mode (``$auth_type = 'signon'``) as
-      introduced in 2.10.0 allows you to log in from prepared PHP session
-      data or using supplied PHP script. This is useful for implementing
-      single signon from another application. Sample way how to seed session
-      is in signon example: :file:`examples/signon.php`. There is also
-      alternative example using OpenID - :file:`examples/openid.php` and example
-      for scripts based solution - :file:`examples/signon-script.php`. You need
-      to configure :config:option:`$cfg['Servers'][$i]['SignonSession']` or
-      :config:option:`$cfg['Servers'][$i]['SignonScript']` and
-      :config:option:`$cfg['Servers'][$i]['SignonURL']` to use this authentication
-      method.
+    * 'signon' authentication mode (``$auth_type = 'signon'``) allows you to
+      log in from prepared PHP session data or using supplied PHP script.
 
     .. seealso:: :ref:`authentication_modes`
 
@@ -1006,10 +981,15 @@ Server connection settings
 
     Name of PHP script to be sourced and executed to obtain login
     credentials. This is alternative approach to session based single
-    signon. The script needs to provide function
+    signon. The script has to provide a function called
     ``get_login_credentials`` which returns list of username and
     password, accepting single parameter of existing username (can be
-    empty). See :file:`examples/signon-script.php` for an example.
+    empty). See :file:`examples/signon-script.php` for an example:
+
+    .. literalinclude:: ../examples/signon-script.php
+        :language: php
+
+    .. seealso:: :ref:`auth_signon`
 
 .. config:option:: $cfg['Servers'][$i]['SignonSession']
 
@@ -1021,6 +1001,8 @@ Server connection settings
     is session which phpMyAdmin uses internally. Takes effect only if
     :config:option:`$cfg['Servers'][$i]['SignonScript']` is not configured.
 
+    .. seealso:: :ref:`auth_signon`
+
 .. config:option:: $cfg['Servers'][$i]['SignonURL']
 
     :type: string
@@ -1029,6 +1011,8 @@ Server connection settings
     :term:`URL` where user will be redirected
     to log in for signon authentication method. Should be absolute
     including protocol.
+
+    .. seealso:: :ref:`auth_signon`
 
 .. config:option:: $cfg['Servers'][$i]['LogoutURL']
 
@@ -1170,7 +1154,7 @@ Generic settings
     :default: false
 
     Whether to force using https while accessing phpMyAdmin.
-    
+
     .. note::
 
         In some setups (like separate SSL proxy or load balancer) you might
@@ -1385,13 +1369,21 @@ Cookie authentication options
 Navigation panel setup
 ----------------------
 
-.. config:option:: $cfg['MaxNavigationItems']
+.. config:option:: $cfg['FirstLevelNavigationItems']
 
     :type: integer
     :default: 250
 
-    The number of items that can be displayed on each page of the
-    navigation tree.
+    The number of first level databases that can be displayed on each page
+    of navigation tree.
+
+.. config:option:: $cfg['MaxNavigationItems']
+
+    :type: integer
+    :default: 50
+
+    The number of items (tables, columns, indexes) that can be displayed on each
+    page of the navigation tree.
 
 .. config:option:: $cfg['NavigationTreeEnableGrouping']
 
@@ -1516,6 +1508,13 @@ Navigation panel setup
     * ``tbl_change.php``
     * ``sql.php``
 
+.. config:option:: $cfg['NavigationTreeDisableDatabaseExpansion']
+
+    :type: boolean
+    :default: false
+
+    Whether or not to disable the possibility of databases expansion in the navigation panel
+
 Main panel
 ----------
 
@@ -1613,8 +1612,8 @@ Browse mode
     :type: string
     :default: ``'icons'``
 
-    Defines whether the table navigation links contain ``'icons'``, ``'text'`` 
-    or ``'both'``. 
+    Defines whether the table navigation links contain ``'icons'``, ``'text'``
+    or ``'both'``.
 
 .. config:option:: $cfg['ShowAll']
 
@@ -1802,7 +1801,7 @@ Tabs display settings
     :type: string
     :default: ``'both'``
 
-    Defines whether the menu tabs contain ``'icons'``, ``'text'`` or ``'both'``. 
+    Defines whether the menu tabs contain ``'icons'``, ``'text'`` or ``'both'``.
 
 .. config:option:: $cfg['ActionLinksMode']
 
@@ -1811,7 +1810,7 @@ Tabs display settings
 
     If set to ``icons``, will display icons instead of text for db and table
     properties links (like :guilabel:`Browse`, :guilabel:`Select`,
-    :guilabel:`Insert`, ...). Can be set to ``'both'`` 
+    :guilabel:`Insert`, ...). Can be set to ``'both'``
     if you want icons AND text. When set to ``text``, will only show text.
 
 .. config:option:: $cfg['PropertiesNumColumns']
@@ -2029,7 +2028,7 @@ Web server settings
     Limit for length of :term:`URL` in links.  When length would be above this
     limit, it is replaced by form with button. This is required as some web
     servers (:term:`IIS`) have problems with long :term:`URL` .
- 
+
 .. config:option:: $cfg['CSPAllow']
 
     :type: string
@@ -2278,7 +2277,8 @@ Text fields
     :default: ``'input'``
 
     Defines which type of editing controls should be used for CHAR and
-    VARCHAR columns. Possible values are:
+    VARCHAR columns. Applies to data editing and also to the default values
+    in structure editing. Possible values are:
 
     * input - this allows to limit size of text to size of columns in MySQL,
       but has problems with newlines in columns
@@ -2371,15 +2371,6 @@ SQL query box settings
 
     Whether to display a link to wrap a query in PHP code in any SQL Query
     box.
-
-.. config:option:: $cfg['SQLQuery']['Validate']
-
-    :type: boolean
-    :default: false
-
-    Whether to display a link to validate a query in any SQL Query box.
-
-    .. seealso:: :config:option:`$cfg['SQLValidator']`
 
 .. config:option:: $cfg['SQLQuery']['Refresh']
 
@@ -2709,42 +2700,6 @@ Default queries
     Default queries that will be displayed in query boxes when user didn't
     specify any. You can use standard :ref:`faq6_27`.
 
-SQL validator settings
-----------------------
-
-.. config:option:: $cfg['SQLValidator']
-
-    :type: array
-    :default: array(...)
-
-
-
-.. config:option:: $cfg['SQLValidator']['use']
-
-    :type: boolean
-    :default: false
-
-    phpMyAdmin now supports use of the `Mimer SQL Validator
-    <http://developer.mimer.com/validator/index.htm>`_ service, as originally
-    published on `Slashdot
-    <http://developers.slashdot.org/article.pl?sid=02/02/19/1720246>`_. For
-    help in setting up your system to use the service, see the
-    :ref:`faqsqlvalidator`.
-
-.. config:option:: $cfg['SQLValidator']['username']
-
-    :type: string
-    :default: ``''``
-
-.. config:option:: $cfg['SQLValidator']['password']
-
-    :type: string
-    :default: ``''``
-
-    The SOAP service allows you to log in with ``anonymous`` and any password,
-    so we use those by default. Instead, if you have an account with them, you
-    can put your login details here, and it will be used in place of the
-    anonymous login.
 
 MySQL settings
 --------------

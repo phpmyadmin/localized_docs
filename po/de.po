@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
-"Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-02-16 13:11+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-10 14:38+0200\n"
 "PO-Revision-Date: 2014-02-18 13:45+0200\n"
 "Last-Translator: Michal Čihař <michal@cihar.com>\n"
-"Language-Team: German "
-"<https://l10n.cihar.com/projects/phpmyadmin/documentation/de/>\n"
+"Language-Team: German <https://l10n.cihar.com/projects/phpmyadmin/"
+"documentation/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -869,9 +869,7 @@ msgstr ""
 msgid ""
 "After having imported the :file:`examples/create_tables.sql` file, you "
 "should specify the table names in your :file:`config.inc.php` file. The "
-"directives used for that can be found in the :ref:`config`. You will also "
-"need to have a controluser with the proper rights to those tables (see "
-"section :ref:`authentication_modes` below)."
+"directives used for that can be found in the :ref:`config`."
 msgstr ""
 "Nachdem sie die <i>./scripts/create_tables.sql</i> Datei importiert haben, "
 "sollten Sie die Tabellennamen in Ihrer <i>./config.inc.php</i> Datei "
@@ -880,11 +878,20 @@ msgstr ""
 "einen Kontrollbenutzer mit entsprechenden Rechten für diese Tabellen (siehe "
 "<a href=\"#authentication_modes\">Authentifizierungsmethoden</a>)."
 
-#: ../source/setup.rst:278
+# e713736b93b548f3b89c8c59aa0aa5b2
+#: ../source/setup.rst:273
+msgid ""
+"You will also need to have a controluser (:config:option:`$cfg['Servers'][$i]"
+"['controluser']` and :config:option:`$cfg['Servers'][$i]['controlpass']` "
+"settings) with the proper rights to those tables. For example you can create "
+"it using following statement:"
+msgstr ""
+
+#: ../source/setup.rst:286
 msgid "Upgrading from an older version"
 msgstr "Aktualisieren von einer älteren Version"
 
-#: ../source/setup.rst:280
+#: ../source/setup.rst:288
 #, fuzzy
 msgid ""
 "Simply copy :file:`config.inc.php` from your previous installation into the "
@@ -902,7 +909,7 @@ msgstr ""
 "PHP6, entfernen Sie die <tt>set_magic_quotes_runtime(0);</tt> Anweisung, die "
 "Sie ziemlich am Ende der Konfigurationsdatei finden sollten."
 
-#: ../source/setup.rst:287
+#: ../source/setup.rst:295
 #, fuzzy
 msgid ""
 "You should **not** copy :file:`libraries/config.default.php` over :file:"
@@ -912,7 +919,7 @@ msgstr ""
 "Datei auf <tt>config.inc.php</tt> kopieren, weil die Standardkonfiguration "
 "versionsspezifisch ist."
 
-#: ../source/setup.rst:291
+#: ../source/setup.rst:299
 #, fuzzy
 msgid ""
 "If you have upgraded your MySQL server from a version previous to 4.1.2 to "
@@ -925,12 +932,12 @@ msgstr ""
 "Konfigurationsspeicher nutzen, sollten Sie das SQL Skript <tt>scripts/"
 "upgrade_tables_mysql_4_1_2+.sql</tt> ausführen."
 
-#: ../source/setup.rst:301
+#: ../source/setup.rst:309
 msgid "Using authentication modes"
 msgstr "Benutzung von Authentifizierungsmethoden"
 
 # 07928341023648d3af6e13958292e57f
-#: ../source/setup.rst:303
+#: ../source/setup.rst:311
 msgid ""
 ":term:`HTTP` and cookie authentication modes are recommended in a **multi-"
 "user environment** where you want to give users access to their own database "
@@ -941,7 +948,7 @@ msgid ""
 "in the configuration file."
 msgstr ""
 
-#: ../source/setup.rst:311
+#: ../source/setup.rst:319
 #, fuzzy
 msgid ""
 ":term:`HTTP` and cookie authentication modes are more secure: the MySQL "
@@ -956,38 +963,7 @@ msgstr ""
 "in der phpMyAdmin Konfigurationsdatei gesetzt werden (außer eventuell für "
 "den <a href=\"#controluser\">Kontrollbenutzer</a>)."
 
-# 74f6e5b419e84bd3bd1c4ec29a7bb9a4
-#: ../source/setup.rst:324
-msgid ""
-"For ':term:`HTTP`' and 'cookie' modes, phpMyAdmin needs a controluser that "
-"has **only** the ``SELECT`` privilege on the *`mysql`.`user` (all columns "
-"except `Password`)*, *`mysql`.`db` (all columns)*, *`mysql`.`host` (all "
-"columns)* and *`mysql`.`tables\\_priv` (all columns except `Grantor` and "
-"`Timestamp`)* tables. You must specify the details for the controluser in "
-"the :file:`config.inc.php` file under the :config:option:`$cfg['Servers'][$i]"
-"['controluser']` and :config:option:`$cfg['Servers'][$i]['controlpass']` "
-"settings. The following example assumes you want to use ``pma`` as the "
-"controluser and ``pmapass`` as the controlpass, but **this is only an "
-"example: use something else in your file!** Input these statements from the "
-"phpMyAdmin :term:`SQL` Query window or mysql command–line client. Of course "
-"you have to replace ``localhost`` with the webserver's host if it's not the "
-"same as the MySQL server's one."
-msgstr ""
-
-#: ../source/setup.rst:352
-msgid "If you want to use the many new relation and bookmark features:"
-msgstr ""
-"Wenn Sie die vielen neuen Beziehungs- und Lesezeichenfunktionen benutzen "
-"wollen:"
-
-#: ../source/setup.rst:358
-#, fuzzy
-msgid "(this of course requires that your :ref:`linked-tables` be set up)."
-msgstr ""
-"(dies setzt natürlich voraus, dass Ihr <a href=\"#linked-tables\">phpMyAdmin-"
-"Konfigurationsspeicher</a> eingerichtet ist)."
-
-#: ../source/setup.rst:360
+#: ../source/setup.rst:327
 #, fuzzy
 msgid ""
 "Then each of the *true* users should be granted a set of privileges on a set "
@@ -1002,7 +978,7 @@ msgstr ""
 "Sie verstehen die Bedeutung dieser Berechtigungen (zum Beispiel wenn Sie "
 "einen Administratorbenutzer erstellen)."
 
-#: ../source/setup.rst:372
+#: ../source/setup.rst:339
 #, fuzzy
 msgid ""
 "What the user may now do is controlled entirely by the MySQL user management "
@@ -1014,12 +990,12 @@ msgstr ""
 "<a href=\"#cfg_Servers\" class=\"configrule\">$cfg['Servers']</a> Feld "
 "eintragen."
 
-#: ../source/setup.rst:379
+#: ../source/setup.rst:346
 #, fuzzy
 msgid "HTTP authentication mode"
 msgstr "Benutzung von Authentifizierungsmethoden"
 
-#: ../source/setup.rst:381
+#: ../source/setup.rst:348
 #, fuzzy
 msgid ""
 "Uses :term:`HTTP` Basic authentication method and allows you to log in as "
@@ -1029,7 +1005,7 @@ msgstr ""
 "Authentication Methode und erlaubt Ihnen, sich als jeder gültige MySQL "
 "Benutzer einzuloggen."
 
-#: ../source/setup.rst:383
+#: ../source/setup.rst:350
 #, fuzzy
 msgid ""
 "Is supported with most PHP configurations. For :term:`IIS` (:term:`ISAPI`) "
@@ -1045,7 +1021,7 @@ msgstr ""
 "Gateway Interface\">CGI</abbr> beachten Sie <a href=\"#faq1_35\"><abbr title="
 "\"Häufig gestellte Fragen\">FAQ</abbr> 1.35</a>."
 
-#: ../source/setup.rst:386
+#: ../source/setup.rst:353
 #, fuzzy
 msgid ""
 "See also :ref:`faq4_4` about not using the :term:`.htaccess` mechanism along "
@@ -1056,31 +1032,19 @@ msgstr ""
 "der '<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' "
 "Authentifizierungsmethode zu verwenden."
 
-#: ../source/setup.rst:394
+#: ../source/setup.rst:361
 #, fuzzy
 msgid "Cookie authentication mode"
 msgstr "'Cookie' Authentifizierungsmethode"
 
-#: ../source/setup.rst:396
-#, fuzzy
+# da19af09203342c6ba0cf96b217b6223
+#: ../source/setup.rst:363
 msgid ""
-"You can use this method as a replacement for the :term:`HTTP` authentication "
-"(for example, if you're running :term:`IIS`)."
+"Username and password are stored in cookies during the session and password "
+"is deleted when it ends."
 msgstr ""
-"Sie können diese Methode als Alternative für die <abbr title=\"HyperText "
-"Transfer Protocol\">HTTP</abbr> Authentifizierung benutzen (z.B. wenn Sie "
-"einen <abbr title=\"Internet Information Services\">IIS</abbr> benutzen)."
 
-#: ../source/setup.rst:398
-msgid ""
-"Obviously, the user must enable cookies in the browser, but this is now a "
-"requirement for all authentication modes."
-msgstr ""
-"Offenbar muss der Benutzer Cookies in seinem Webbrowser aktiviert haben, "
-"aber dies ist inzwischen eine Voraussetzung für alle "
-"Authentifizierungsmethoden."
-
-#: ../source/setup.rst:400
+#: ../source/setup.rst:365
 #, fuzzy
 #| msgid ""
 #| "With this mode, the user can truly log out of phpMyAdmin and log in back "
@@ -1092,7 +1056,7 @@ msgstr ""
 "Mit dieser Methode kann sich der Benutzer richtig aus phpMyAdmin ausloggen "
 "und mit dem gleichen Benutzernamen wieder einloggen."
 
-#: ../source/setup.rst:402
+#: ../source/setup.rst:367
 #, fuzzy
 msgid ""
 "If you want to allow users to enter any hostname to connect (rather than "
@@ -1103,7 +1067,7 @@ msgstr ""
 "<a href=\"#AllowArbitraryServer\" class=\"configrule\"> "
 "$cfg['AllowArbitraryServer']</a> Einstellung."
 
-#: ../source/setup.rst:405
+#: ../source/setup.rst:370
 #, fuzzy
 msgid ""
 "As mentioned in the :ref:`require` section, having the ``mcrypt`` extension "
@@ -1113,38 +1077,77 @@ msgstr ""
 "beschleunigt die <tt>mcrypt</tt> Erweiterung den Zugriff deutlich, ist aber "
 "nicht erforderlich."
 
-#: ../source/setup.rst:411
+#: ../source/setup.rst:378
 #, fuzzy
 msgid "Signon authentication mode"
 msgstr "'Signon' Authentifizierungsmethode"
 
-#: ../source/setup.rst:413
+#: ../source/setup.rst:380
+#, fuzzy
+#| msgid ""
+#| "This mode is a convenient way of using credentials from another "
+#| "application to authenticate to phpMyAdmin."
 msgid ""
 "This mode is a convenient way of using credentials from another application "
-"to authenticate to phpMyAdmin."
+"to authenticate to phpMyAdmin to implement signle signon solution."
 msgstr ""
 "Diese Methode ist ein bequemer Weg, die Login-Daten einer anderen Anwendung "
 "zu benutzen, um sich bei phpMyAdmin zu authentifizieren."
 
-#: ../source/setup.rst:415
-msgid "The other application has to store login information into session data."
+# 82e95387fe434510a8cabebfce92aaf7
+#: ../source/setup.rst:383
+msgid ""
+"The other application has to store login information into session data (see :"
+"config:option:`$cfg['Servers'][$i]['SignonSession']`) or you need to "
+"implement script to return the credentials (see :config:option:`"
+"$cfg['Servers'][$i]['SignonScript']`)."
 msgstr ""
-"Die andere Anwendung muss die Login-Informationen in Session-Daten speichern."
+
+# dbd12854ee2b43f9a46a8c13de7ac369
+#: ../source/setup.rst:387
+msgid ""
+"When no credentials are available, the user is being redirected to :config:"
+"option:`$cfg['Servers'][$i]['SignonURL']`, where you should handle the login "
+"process."
+msgstr ""
+
+# e80c63b8073b4facab8a7c44c44240c7
+#: ../source/setup.rst:391
+msgid ""
+"The very basic example of saving credentials in a session is available as :"
+"file:`examples/signon.php`:"
+msgstr ""
+
+# d64dc59ee10549769961c1eb7bd7ea35
+#: ../source/setup.rst:397
+msgid ""
+"Alternatively you can also use this way to integrate with OpenID as shown "
+"in :file:`examples/openid.php`:"
+msgstr ""
+
+# a89ba5c5c9f847d38d85e6a9d037fd5c
+#: ../source/setup.rst:403
+msgid ""
+"If you intend to pass the credentials using some other means than, you have "
+"to implement wrapper in PHP to get that data and set it to :config:option:`"
+"$cfg['Servers'][$i]['SignonScript']`. There is very minimal example in :file:"
+"`examples/signon-script.php`:"
+msgstr ""
 
 # e36cac0e80d24bcca85c185dba0d64ca
-#: ../source/setup.rst:419
+#: ../source/setup.rst:412
 msgid ""
 ":config:option:`$cfg['Servers'][$i]['auth_type']`, :config:option:`"
 "$cfg['Servers'][$i]['SignonSession']`, :config:option:`$cfg['Servers'][$i]"
 "['SignonScript']`, :config:option:`$cfg['Servers'][$i]['SignonURL']`"
 msgstr ""
 
-#: ../source/setup.rst:428
+#: ../source/setup.rst:421
 #, fuzzy
 msgid "Config authentication mode"
 msgstr "'Config' Authentifizierungsmethode"
 
-#: ../source/setup.rst:430
+#: ../source/setup.rst:423
 #, fuzzy
 msgid ""
 "This mode is sometimes the less secure one because it requires you to fill "
@@ -1158,7 +1161,7 @@ msgstr ""
 "['password']</a> Felder ausgefüllt werden müssen (und deshalb jeder, der "
 "Ihre config.inc.php lesen kann, Ihren Benutzernamen und Passwort sehen kann)."
 
-#: ../source/setup.rst:435
+#: ../source/setup.rst:428
 #, fuzzy
 msgid ""
 "In the :ref:`faqmultiuser` section, there is an entry explaining how to "
@@ -1169,7 +1172,7 @@ msgstr ""
 "befindet sich ein Eintrag, der erklärt, wie Sie Ihre Konfigurationsdatei "
 "absichern können."
 
-#: ../source/setup.rst:437
+#: ../source/setup.rst:430
 #, fuzzy
 msgid ""
 "For additional security in this mode, you may wish to consider the Host "
@@ -1183,7 +1186,7 @@ msgstr ""
 "['AllowDeny']['order']</a> und <a href=\"#servers_allowdeny_rules\" class="
 "\"configrule\"> $cfg['Servers'][$i]['AllowDeny']['rules']</a> einzusetzen."
 
-#: ../source/setup.rst:440
+#: ../source/setup.rst:433
 #, fuzzy
 msgid ""
 "Unlike cookie and http, does not require a user to log in when first loading "
@@ -1202,12 +1205,12 @@ msgstr ""
 "Router oder Firewall aus (beide Möglichkeiten sind außerhalb des Rahmens "
 "dieses Handbuchs, aber leicht zu finden per Google)."
 
-#: ../source/setup.rst:453
+#: ../source/setup.rst:446
 #, fuzzy
 msgid "Swekey authentication mode"
 msgstr "Swekey Authentifizierung"
 
-#: ../source/setup.rst:455
+#: ../source/setup.rst:448
 #, fuzzy
 msgid ""
 "The Swekey is a low cost authentication USB key that can be used in web "
@@ -1222,7 +1225,7 @@ msgstr ""
 "die Cookie-Authentifizierungsmethode unterstützt). Swekey Authentifizierung "
 "ist standardmäßig deaktiviert."
 
-#: ../source/setup.rst:466
+#: ../source/setup.rst:459
 #, fuzzy
 msgid ""
 "You then have to create the ``swekey.conf`` file that will associate each "
@@ -1240,41 +1243,41 @@ msgstr ""
 "Verzeichnis gefunden werden. Sie können sie gerne mit den Informationen "
 "Ihrer eigenen Benutzer verwenden."
 
-#: ../source/setup.rst:475
+#: ../source/setup.rst:468
 #, fuzzy
 msgid ":config:option:`$cfg['Servers'][$i]['auth_swekey_config']`"
 msgstr ""
 "setzen Sie den Beziehungstabellennamen in<tt>$cfg['Servers'][$i]"
 "['relation']</tt>  ein"
 
-#: ../source/setup.rst:479
+#: ../source/setup.rst:472
 #, fuzzy
 msgid "Securing your phpMyAdmin installation"
 msgstr "phpMyAdmin-Dokumentation"
 
 # bb6fb4f95b9b46529a83929873a9668a
-#: ../source/setup.rst:481
+#: ../source/setup.rst:474
 msgid ""
 "The phpMyAdmin team tries hard to make the application secure, however there "
 "are always ways to make your installation more secure:"
 msgstr ""
 
 # f5b19f5b13854a66a0961cb28e73a893
-#: ../source/setup.rst:484
+#: ../source/setup.rst:477
 msgid ""
 "remove ``setup`` directory from phpMyAdmin, you will probably not use it "
 "after initial setup"
 msgstr ""
 
 # e6684ab82ea1407a90394dadf77aeb25
-#: ../source/setup.rst:486
+#: ../source/setup.rst:479
 msgid ""
 "properly choose authentication method - :ref:`cookie` is probably the best "
 "choice for shared hosting"
 msgstr ""
 
 # 59ca6fb90e8041abab93ccb35329d792
-#: ../source/setup.rst:488
+#: ../source/setup.rst:481
 msgid ""
 "in case you don't want all MySQL users to be able to access phpMyAdmin, you "
 "can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit "
@@ -1282,14 +1285,14 @@ msgid ""
 msgstr ""
 
 # e1b1bd218e6f41e08d4b1dbb5cfed36a
-#: ../source/setup.rst:490
+#: ../source/setup.rst:483
 msgid ""
 "consider hiding phpMyAdmin behind authentication proxy, so that MySQL "
 "credentials are not all users need to login"
 msgstr ""
 
 # 2b8fc8b9693c4ff69746070cd17a17db
-#: ../source/setup.rst:492
+#: ../source/setup.rst:485
 msgid ""
 "if you are afraid of automated attacks, enabling Captcha by :config:option:`"
 "$cfg['CaptchaLoginPublicKey']` and :config:option:`"
@@ -1302,7 +1305,6 @@ msgid "Setup script"
 msgstr ""
 
 #: ../source/setup.rst:238
-#| msgid "Configuration"
 msgid "Configuration storage"
 msgstr "Konfigurationsspeicher"
 
@@ -1311,8 +1313,8 @@ msgstr "Konfigurationsspeicher"
 msgid "pmadb"
 msgstr ""
 
-#: ../source/setup.rst:296 ../source/setup.rst:376 ../source/setup.rst:389
-#: ../source/setup.rst:408 ../source/setup.rst:425 ../source/setup.rst:448
+#: ../source/setup.rst:304 ../source/setup.rst:343 ../source/setup.rst:356
+#: ../source/setup.rst:373 ../source/setup.rst:418 ../source/setup.rst:441
 #, fuzzy
 msgid "Authentication mode"
 msgstr "Benutzung von Authentifizierungsmethoden"
@@ -1321,7 +1323,7 @@ msgstr "Benutzung von Authentifizierungsmethoden"
 # 5a0cfc841b8e4516922fae2572a05e44
 # #-#-#-#-#  glossary.pot (phpMyAdmin 4.2.0-dev)  #-#-#-#-#
 # 2688090a99ee4bed987612a3f1eb03ca
-#: ../source/setup.rst:376 ../source/glossary.rst:126
+#: ../source/setup.rst:343 ../source/glossary.rst:126
 msgid "HTTP"
 msgstr ""
 
@@ -1329,23 +1331,23 @@ msgstr ""
 # aea76c8e58b247b390b960b5ac40a6f0
 # #-#-#-#-#  glossary.pot (phpMyAdmin 4.2.0-dev)  #-#-#-#-#
 # 4732722450444381a64404e86e155e91
-#: ../source/setup.rst:389 ../source/glossary.rst:54
+#: ../source/setup.rst:356 ../source/glossary.rst:54
 msgid "Cookie"
 msgstr ""
 
 # 9b2f58e09c5348cdbbe1505ae1f473ba
-#: ../source/setup.rst:408
+#: ../source/setup.rst:373
 msgid "Signon"
 msgstr ""
 
-#: ../source/setup.rst:425
+#: ../source/setup.rst:418
 #, fuzzy
 #| msgid "Configuration"
 msgid "Config"
 msgstr "Konfiguration"
 
 # b4d6f97afd264f1da81a6c96e710d438
-#: ../source/setup.rst:448
+#: ../source/setup.rst:441
 msgid "Swekey"
 msgstr ""
 
@@ -1517,42 +1519,40 @@ msgstr "Grundeinstellungen"
 #: ../source/config.rst:256 ../source/config.rst:263 ../source/config.rst:270
 #: ../source/config.rst:277 ../source/config.rst:284 ../source/config.rst:304
 #: ../source/config.rst:313 ../source/config.rst:322 ../source/config.rst:327
-#: ../source/config.rst:351 ../source/config.rst:385 ../source/config.rst:397
-#: ../source/config.rst:406 ../source/config.rst:411 ../source/config.rst:463
-#: ../source/config.rst:489 ../source/config.rst:500 ../source/config.rst:519
-#: ../source/config.rst:533 ../source/config.rst:572 ../source/config.rst:593
-#: ../source/config.rst:598 ../source/config.rst:619 ../source/config.rst:659
-#: ../source/config.rst:684 ../source/config.rst:707 ../source/config.rst:725
-#: ../source/config.rst:730 ../source/config.rst:749 ../source/config.rst:763
-#: ../source/config.rst:813 ../source/config.rst:849 ../source/config.rst:870
-#: ../source/config.rst:919 ../source/config.rst:1004
-#: ../source/config.rst:1016 ../source/config.rst:1026
-#: ../source/config.rst:1035 ../source/config.rst:1091
-#: ../source/config.rst:1102 ../source/config.rst:1112
-#: ../source/config.rst:1192 ../source/config.rst:1293
-#: ../source/config.rst:1367 ../source/config.rst:1377
-#: ../source/config.rst:1451 ../source/config.rst:1460
-#: ../source/config.rst:1507 ../source/config.rst:1613
-#: ../source/config.rst:1639 ../source/config.rst:1657
-#: ../source/config.rst:1774 ../source/config.rst:1802
-#: ../source/config.rst:1809 ../source/config.rst:1828
-#: ../source/config.rst:1841 ../source/config.rst:1853
-#: ../source/config.rst:1878 ../source/config.rst:1889
-#: ../source/config.rst:1898 ../source/config.rst:1908
-#: ../source/config.rst:1916 ../source/config.rst:1925
-#: ../source/config.rst:1945 ../source/config.rst:2003
-#: ../source/config.rst:2035 ../source/config.rst:2167
-#: ../source/config.rst:2175 ../source/config.rst:2215
-#: ../source/config.rst:2225 ../source/config.rst:2244
-#: ../source/config.rst:2277 ../source/config.rst:2396
-#: ../source/config.rst:2424 ../source/config.rst:2442
-#: ../source/config.rst:2523 ../source/config.rst:2615
-#: ../source/config.rst:2644 ../source/config.rst:2649
-#: ../source/config.rst:2654 ../source/config.rst:2659
-#: ../source/config.rst:2669 ../source/config.rst:2684
-#: ../source/config.rst:2701 ../source/config.rst:2706
-#: ../source/config.rst:2736 ../source/config.rst:2741
-#: ../source/config.rst:2800
+#: ../source/config.rst:340 ../source/config.rst:360 ../source/config.rst:372
+#: ../source/config.rst:381 ../source/config.rst:386 ../source/config.rst:438
+#: ../source/config.rst:464 ../source/config.rst:475 ../source/config.rst:494
+#: ../source/config.rst:508 ../source/config.rst:547 ../source/config.rst:568
+#: ../source/config.rst:573 ../source/config.rst:594 ../source/config.rst:634
+#: ../source/config.rst:659 ../source/config.rst:682 ../source/config.rst:700
+#: ../source/config.rst:705 ../source/config.rst:724 ../source/config.rst:738
+#: ../source/config.rst:788 ../source/config.rst:824 ../source/config.rst:845
+#: ../source/config.rst:894 ../source/config.rst:979 ../source/config.rst:996
+#: ../source/config.rst:1008 ../source/config.rst:1019
+#: ../source/config.rst:1075 ../source/config.rst:1086
+#: ../source/config.rst:1096 ../source/config.rst:1176
+#: ../source/config.rst:1277 ../source/config.rst:1351
+#: ../source/config.rst:1361 ../source/config.rst:1443
+#: ../source/config.rst:1452 ../source/config.rst:1499
+#: ../source/config.rst:1612 ../source/config.rst:1638
+#: ../source/config.rst:1656 ../source/config.rst:1773
+#: ../source/config.rst:1801 ../source/config.rst:1808
+#: ../source/config.rst:1827 ../source/config.rst:1840
+#: ../source/config.rst:1852 ../source/config.rst:1877
+#: ../source/config.rst:1888 ../source/config.rst:1897
+#: ../source/config.rst:1907 ../source/config.rst:1915
+#: ../source/config.rst:1924 ../source/config.rst:1944
+#: ../source/config.rst:2002 ../source/config.rst:2034
+#: ../source/config.rst:2166 ../source/config.rst:2174
+#: ../source/config.rst:2214 ../source/config.rst:2224
+#: ../source/config.rst:2243 ../source/config.rst:2276
+#: ../source/config.rst:2387 ../source/config.rst:2415
+#: ../source/config.rst:2433 ../source/config.rst:2514
+#: ../source/config.rst:2606 ../source/config.rst:2635
+#: ../source/config.rst:2640 ../source/config.rst:2645
+#: ../source/config.rst:2650 ../source/config.rst:2660
+#: ../source/config.rst:2675 ../source/config.rst:2692
+#: ../source/config.rst:2697 ../source/config.rst:2755
 msgid "string"
 msgstr ""
 
@@ -1604,22 +1604,21 @@ msgstr ""
 # 097c5f7ce50c4988862f3196ce4d99df
 #: ../source/config.rst:42 ../source/config.rst:207 ../source/config.rst:222
 #: ../source/config.rst:305 ../source/config.rst:314 ../source/config.rst:323
-#: ../source/config.rst:328 ../source/config.rst:386 ../source/config.rst:398
-#: ../source/config.rst:412 ../source/config.rst:437 ../source/config.rst:464
-#: ../source/config.rst:490 ../source/config.rst:501 ../source/config.rst:520
-#: ../source/config.rst:534 ../source/config.rst:573 ../source/config.rst:594
-#: ../source/config.rst:599 ../source/config.rst:620 ../source/config.rst:660
-#: ../source/config.rst:685 ../source/config.rst:708 ../source/config.rst:726
-#: ../source/config.rst:731 ../source/config.rst:750 ../source/config.rst:764
-#: ../source/config.rst:850 ../source/config.rst:871 ../source/config.rst:920
-#: ../source/config.rst:1005 ../source/config.rst:1017
-#: ../source/config.rst:1027 ../source/config.rst:1036
-#: ../source/config.rst:1193 ../source/config.rst:1294
-#: ../source/config.rst:1368 ../source/config.rst:1378
-#: ../source/config.rst:1917 ../source/config.rst:2036
-#: ../source/config.rst:2397 ../source/config.rst:2425
-#: ../source/config.rst:2443 ../source/config.rst:2707
-#: ../source/config.rst:2737 ../source/config.rst:2742
+#: ../source/config.rst:328 ../source/config.rst:361 ../source/config.rst:373
+#: ../source/config.rst:387 ../source/config.rst:412 ../source/config.rst:439
+#: ../source/config.rst:465 ../source/config.rst:476 ../source/config.rst:495
+#: ../source/config.rst:509 ../source/config.rst:548 ../source/config.rst:569
+#: ../source/config.rst:574 ../source/config.rst:595 ../source/config.rst:635
+#: ../source/config.rst:660 ../source/config.rst:683 ../source/config.rst:701
+#: ../source/config.rst:706 ../source/config.rst:725 ../source/config.rst:739
+#: ../source/config.rst:825 ../source/config.rst:846 ../source/config.rst:895
+#: ../source/config.rst:980 ../source/config.rst:997 ../source/config.rst:1009
+#: ../source/config.rst:1020 ../source/config.rst:1177
+#: ../source/config.rst:1278 ../source/config.rst:1352
+#: ../source/config.rst:1362 ../source/config.rst:1916
+#: ../source/config.rst:2035 ../source/config.rst:2388
+#: ../source/config.rst:2416 ../source/config.rst:2434
+#: ../source/config.rst:2698
 msgid "``''``"
 msgstr ""
 
@@ -1769,41 +1768,41 @@ msgstr ""
 # cbc95cbb905646fd8fec1fa4f323ec8c
 #: ../source/config.rst:65 ../source/config.rst:81 ../source/config.rst:90
 #: ../source/config.rst:100 ../source/config.rst:110 ../source/config.rst:149
-#: ../source/config.rst:231 ../source/config.rst:295 ../source/config.rst:423
-#: ../source/config.rst:796 ../source/config.rst:822 ../source/config.rst:831
-#: ../source/config.rst:840 ../source/config.rst:900 ../source/config.rst:908
-#: ../source/config.rst:1079 ../source/config.rst:1136
-#: ../source/config.rst:1155 ../source/config.rst:1169
+#: ../source/config.rst:231 ../source/config.rst:295 ../source/config.rst:398
+#: ../source/config.rst:771 ../source/config.rst:797 ../source/config.rst:806
+#: ../source/config.rst:815 ../source/config.rst:875 ../source/config.rst:883
+#: ../source/config.rst:1063 ../source/config.rst:1120
+#: ../source/config.rst:1139 ../source/config.rst:1153
+#: ../source/config.rst:1199 ../source/config.rst:1207
 #: ../source/config.rst:1215 ../source/config.rst:1223
-#: ../source/config.rst:1231 ../source/config.rst:1239
-#: ../source/config.rst:1249 ../source/config.rst:1267
-#: ../source/config.rst:1275 ../source/config.rst:1282
-#: ../source/config.rst:1310 ../source/config.rst:1343
-#: ../source/config.rst:1353 ../source/config.rst:1398
-#: ../source/config.rst:1443 ../source/config.rst:1491
-#: ../source/config.rst:1499 ../source/config.rst:1524
-#: ../source/config.rst:1534 ../source/config.rst:1543
-#: ../source/config.rst:1548 ../source/config.rst:1553
-#: ../source/config.rst:1578 ../source/config.rst:1586
-#: ../source/config.rst:1594 ../source/config.rst:1602
-#: ../source/config.rst:1621 ../source/config.rst:1649
-#: ../source/config.rst:1665 ../source/config.rst:1690
-#: ../source/config.rst:1699 ../source/config.rst:1736
-#: ../source/config.rst:1741 ../source/config.rst:1746
-#: ../source/config.rst:1754 ../source/config.rst:2015
-#: ../source/config.rst:2055 ../source/config.rst:2186
-#: ../source/config.rst:2193 ../source/config.rst:2200
-#: ../source/config.rst:2237 ../source/config.rst:2257
-#: ../source/config.rst:2262 ../source/config.rst:2334
-#: ../source/config.rst:2341 ../source/config.rst:2353
-#: ../source/config.rst:2361 ../source/config.rst:2369
-#: ../source/config.rst:2377 ../source/config.rst:2386
-#: ../source/config.rst:2488 ../source/config.rst:2503
-#: ../source/config.rst:2518 ../source/config.rst:2578
-#: ../source/config.rst:2606 ../source/config.rst:2633
-#: ../source/config.rst:2677 ../source/config.rst:2691
-#: ../source/config.rst:2724 ../source/config.rst:2777
-#: ../source/config.rst:2785 ../source/config.rst:2793
+#: ../source/config.rst:1233 ../source/config.rst:1251
+#: ../source/config.rst:1259 ../source/config.rst:1266
+#: ../source/config.rst:1294 ../source/config.rst:1327
+#: ../source/config.rst:1337 ../source/config.rst:1390
+#: ../source/config.rst:1435 ../source/config.rst:1483
+#: ../source/config.rst:1491 ../source/config.rst:1513
+#: ../source/config.rst:1523 ../source/config.rst:1533
+#: ../source/config.rst:1542 ../source/config.rst:1547
+#: ../source/config.rst:1552 ../source/config.rst:1577
+#: ../source/config.rst:1585 ../source/config.rst:1593
+#: ../source/config.rst:1601 ../source/config.rst:1620
+#: ../source/config.rst:1648 ../source/config.rst:1664
+#: ../source/config.rst:1689 ../source/config.rst:1698
+#: ../source/config.rst:1735 ../source/config.rst:1740
+#: ../source/config.rst:1745 ../source/config.rst:1753
+#: ../source/config.rst:2014 ../source/config.rst:2054
+#: ../source/config.rst:2185 ../source/config.rst:2192
+#: ../source/config.rst:2199 ../source/config.rst:2236
+#: ../source/config.rst:2256 ../source/config.rst:2261
+#: ../source/config.rst:2334 ../source/config.rst:2341
+#: ../source/config.rst:2353 ../source/config.rst:2361
+#: ../source/config.rst:2369 ../source/config.rst:2377
+#: ../source/config.rst:2479 ../source/config.rst:2494
+#: ../source/config.rst:2509 ../source/config.rst:2569
+#: ../source/config.rst:2597 ../source/config.rst:2624
+#: ../source/config.rst:2668 ../source/config.rst:2682
+#: ../source/config.rst:2732 ../source/config.rst:2740
+#: ../source/config.rst:2748
 msgid "boolean"
 msgstr ""
 
@@ -1845,20 +1844,20 @@ msgstr ""
 # c0d43bc776494beeba105303ca730efb
 #: ../source/config.rst:66 ../source/config.rst:82 ../source/config.rst:91
 #: ../source/config.rst:101 ../source/config.rst:111 ../source/config.rst:150
-#: ../source/config.rst:232 ../source/config.rst:296 ../source/config.rst:424
-#: ../source/config.rst:797 ../source/config.rst:909 ../source/config.rst:1156
-#: ../source/config.rst:1170 ../source/config.rst:1216
-#: ../source/config.rst:1232 ../source/config.rst:1250
-#: ../source/config.rst:1283 ../source/config.rst:1354
-#: ../source/config.rst:1500 ../source/config.rst:1544
-#: ../source/config.rst:1579 ../source/config.rst:1587
-#: ../source/config.rst:1595 ../source/config.rst:1622
-#: ../source/config.rst:1666 ../source/config.rst:2056
-#: ../source/config.rst:2342 ../source/config.rst:2378
-#: ../source/config.rst:2489 ../source/config.rst:2519
-#: ../source/config.rst:2634 ../source/config.rst:2692
-#: ../source/config.rst:2725 ../source/config.rst:2778
-#: ../source/config.rst:2786 ../source/config.rst:2794
+#: ../source/config.rst:232 ../source/config.rst:296 ../source/config.rst:399
+#: ../source/config.rst:772 ../source/config.rst:884 ../source/config.rst:1140
+#: ../source/config.rst:1154 ../source/config.rst:1200
+#: ../source/config.rst:1216 ../source/config.rst:1234
+#: ../source/config.rst:1267 ../source/config.rst:1338
+#: ../source/config.rst:1492 ../source/config.rst:1514
+#: ../source/config.rst:1543 ../source/config.rst:1578
+#: ../source/config.rst:1586 ../source/config.rst:1594
+#: ../source/config.rst:1621 ../source/config.rst:1665
+#: ../source/config.rst:2055 ../source/config.rst:2342
+#: ../source/config.rst:2480 ../source/config.rst:2510
+#: ../source/config.rst:2625 ../source/config.rst:2683
+#: ../source/config.rst:2733 ../source/config.rst:2741
+#: ../source/config.rst:2749
 msgid "false"
 msgstr ""
 
@@ -1977,22 +1976,22 @@ msgstr ""
 # a40ce8ceb78f47209c6842bea862a77e
 # af1d4b87e0a74cbaacb1b934b471e5ee
 # 2ce5c8099cd74d74be74a5e84bdd544b
-#: ../source/config.rst:121 ../source/config.rst:886 ../source/config.rst:1055
-#: ../source/config.rst:1066 ../source/config.rst:1119
-#: ../source/config.rst:1127 ../source/config.rst:1144
-#: ../source/config.rst:1390 ../source/config.rst:1427
-#: ../source/config.rst:1435 ../source/config.rst:1469
-#: ../source/config.rst:1480 ../source/config.rst:1630
-#: ../source/config.rst:1707 ../source/config.rst:1714
-#: ../source/config.rst:1819 ../source/config.rst:2026
-#: ../source/config.rst:2068 ../source/config.rst:2102
-#: ../source/config.rst:2207 ../source/config.rst:2290
-#: ../source/config.rst:2298 ../source/config.rst:2306
-#: ../source/config.rst:2311 ../source/config.rst:2316
-#: ../source/config.rst:2321 ../source/config.rst:2496
-#: ../source/config.rst:2508 ../source/config.rst:2513
-#: ../source/config.rst:2528 ../source/config.rst:2585
-#: ../source/config.rst:2596
+#: ../source/config.rst:121 ../source/config.rst:861 ../source/config.rst:1039
+#: ../source/config.rst:1050 ../source/config.rst:1103
+#: ../source/config.rst:1111 ../source/config.rst:1128
+#: ../source/config.rst:1374 ../source/config.rst:1382
+#: ../source/config.rst:1419 ../source/config.rst:1427
+#: ../source/config.rst:1461 ../source/config.rst:1472
+#: ../source/config.rst:1629 ../source/config.rst:1706
+#: ../source/config.rst:1713 ../source/config.rst:1818
+#: ../source/config.rst:2025 ../source/config.rst:2067
+#: ../source/config.rst:2101 ../source/config.rst:2206
+#: ../source/config.rst:2290 ../source/config.rst:2298
+#: ../source/config.rst:2306 ../source/config.rst:2311
+#: ../source/config.rst:2316 ../source/config.rst:2321
+#: ../source/config.rst:2487 ../source/config.rst:2499
+#: ../source/config.rst:2504 ../source/config.rst:2519
+#: ../source/config.rst:2576 ../source/config.rst:2587
 msgid "integer"
 msgstr ""
 
@@ -2069,12 +2068,11 @@ msgstr ""
 # 602938df41f54375a112a77bbb190647
 # e7619556b69c442384263ca5b2705bcd
 # 20fb74d9b1fc410eb61037f9e1075b6c
-#: ../source/config.rst:161 ../source/config.rst:1723
-#: ../source/config.rst:1765 ../source/config.rst:1789
-#: ../source/config.rst:1869 ../source/config.rst:1956
-#: ../source/config.rst:1982 ../source/config.rst:2624
-#: ../source/config.rst:2717 ../source/config.rst:2754
-#: ../source/config.rst:2772
+#: ../source/config.rst:161 ../source/config.rst:1722
+#: ../source/config.rst:1764 ../source/config.rst:1788
+#: ../source/config.rst:1868 ../source/config.rst:1955
+#: ../source/config.rst:1981 ../source/config.rst:2615
+#: ../source/config.rst:2709 ../source/config.rst:2727
 msgid "array"
 msgstr ""
 
@@ -2323,9 +2321,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "This special account is used for 2 distinct purposes: to make possible all "
-"relational features (see :config:option:`$cfg['Servers'][$i]['pmadb']`) and, "
-"for a MySQL server running with ``--skip-show-database``, to enable a multi-"
-"user installation (:term:`HTTP` or cookie authentication mode)."
+"relational features (see :config:option:`$cfg['Servers'][$i]['pmadb']`)."
 msgstr ""
 "Dieses besondere Konto wird für genau 2 Zwecke verwendet: um alle "
 "Beziehungsfunktionen möglich zu machen (siehe <a href=\"#pmadb\" class="
@@ -2334,40 +2330,23 @@ msgstr ""
 "mehreren Benutzern zu aktivieren (<abbr title=\"HyperText Transfer Protocol"
 "\">HTTP-</abbr> or Cookie-Authentifizierungsmodus)."
 
-#: ../source/config.rst:336
-#, fuzzy
-msgid ""
-"When using :term:`HTTP` or cookie authentication modes (or 'config' "
-"authentication mode since phpMyAdmin 2.2.1), you need to supply the details "
-"of a MySQL account that has ``SELECT`` privilege on the *mysql.user (all "
-"columns except \"Password\")*, *mysql.db (all columns)* and *mysql.tables"
-"\\_priv (all columns except \"Grantor\" and \"Timestamp\")* tables. This "
-"account is used to check what databases the user will see at login."
-msgstr ""
-"Für '<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' und 'Cookie' "
-"Methoden braucht phpMyAdmin einen Kontrollbenutzer, der <b>nur</b> die "
-"<tt>SELECT</tt> Berechtigung auf <i>`mysql`.`user` (alle Spalten außer "
-"`Password`)</i>, <i>`mysql`.`db` (alle Spalten)</i>, <i>`mysql`.`host` (alle "
-"Spalten)</i> und <i>`mysql`.`tables_priv` (alle Spalten außer `Grantor` und "
-"`Timestamp`)</i> Tabellen."
-
 # 6ac5daadb29548a3874c3217914c2fb4
-#: ../source/config.rst:344
+#: ../source/config.rst:333
 msgid "those were called ``stduser`` and ``stdpass``"
 msgstr ""
 
-#: ../source/config.rst:347
+#: ../source/config.rst:336
 #, fuzzy
 #| msgid "Using authentication modes"
-msgid ":ref:`setup`, :ref:`authentication_modes`"
+msgid ":ref:`setup`, :ref:`authentication_modes`, :ref:`linked-tables`"
 msgstr "Benutzung von Authentifizierungsmethoden"
 
 # 12d6588fbd344d8d9f656b4b38e34895
-#: ../source/config.rst:352
+#: ../source/config.rst:341
 msgid "``'cookie'``"
 msgstr ""
 
-#: ../source/config.rst:354
+#: ../source/config.rst:343
 #, fuzzy
 msgid ""
 "Whether config or cookie or :term:`HTTP` or signon authentication should be "
@@ -2377,7 +2356,7 @@ msgstr ""
 "Protocol\">HTTP</abbr> oder Anmeldeauthentifizierung auf diesem Server "
 "genutzt werden. "
 
-#: ../source/config.rst:357
+#: ../source/config.rst:346
 #, fuzzy
 msgid ""
 "'config' authentication (``$auth_type = 'config'``) is the plain old way: "
@@ -2387,72 +2366,40 @@ msgstr ""
 "is die unschöne alte Methode: Benutzername und Passwort sind in der "
 "<i>config.inc.php</i> gespeichert."
 
-#: ../source/config.rst:359
+#: ../source/config.rst:348
 #, fuzzy
 msgid ""
-"'cookie' authentication mode (``$auth_type = 'cookie'``) as introduced in "
-"2.2.3 allows you to log in as any valid MySQL user with the help of cookies. "
-"Username and password are stored in cookies during the session and password "
-"is deleted when it ends. This can also allow you to log in in arbitrary "
-"server if :config:option:`$cfg['AllowArbitraryServer']` enabled."
+"'cookie' authentication mode (``$auth_type = 'cookie'``) allows you to log "
+"in as any valid MySQL user with the help of cookies."
 msgstr ""
-"Die \"Cookie\"-Authentifizierungmethode(<tt>$auth_type&nbsp;=&nbsp;'cookie'</"
-"tt>), wie in 2.2.3 beschrieben, erlaubt es dir dich als irgendein gültiger "
-"MySQL-Nutzer mit Hilfe von Cookies anzumelden. Benutzername und Passwort "
-"sind während der Sitzung in einem Cookie gespeichert, das Passwort wird am "
-"Ende gelöscht. Dies ermöglicht dir auch das einloggen in einen willkürlichen "
-"(arbiträren) Server falls <tt><a href=\"#AllowArbitraryServer\" class="
-"\"configrule\">$cfg['AllowArbitraryServer']</a></tt> angeschaltet ist."
+"Benutzt die <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> Basic "
+"Authentication Methode und erlaubt Ihnen, sich als jeder gültige MySQL "
+"Benutzer einzuloggen."
 
-#: ../source/config.rst:364
+#: ../source/config.rst:350
 #, fuzzy
 msgid ""
-"'http' authentication (was called 'advanced' in previous versions and can be "
-"written also as 'http') (``$auth_type = 'http';'``) as introduced in 1.3.0 "
-"allows you to log in as any valid MySQL user via HTTP-Auth."
+"'http' authentication allows you to log in as any valid MySQL user via HTTP-"
+"Auth."
 msgstr ""
-"'<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' Authentifizierung "
-"('Erweitert' in vorigen Versionen und kann auch als 'http' bezeichnet "
-"werden) (<code>$auth_type&nbsp;=&nbsp;'<abbr title=\"HyperText Transfer "
-"Protocol\">HTTP</abbr>'</code>) wie in Version 1.3.0 eingeführt erlaubt "
-"Ihnen den Login als gültiger MySQL Benutzer mittels HTTP-Auth."
+"Benutzt die <abbr title=\"HyperText Transfer Protocol\">HTTP</abbr> Basic "
+"Authentication Methode und erlaubt Ihnen, sich als jeder gültige MySQL "
+"Benutzer einzuloggen."
 
-#: ../source/config.rst:368
-#, fuzzy
+# ac3948748c154272a27fd506f28d46f5
+#: ../source/config.rst:352
 msgid ""
-"'signon' authentication mode (``$auth_type = 'signon'``) as introduced in "
-"2.10.0 allows you to log in from prepared PHP session data or using supplied "
-"PHP script. This is useful for implementing single signon from another "
-"application. Sample way how to seed session is in signon example: :file:"
-"`examples/signon.php`. There is also alternative example using OpenID - :"
-"file:`examples/openid.php` and example for scripts based solution - :file:"
-"`examples/signon-script.php`. You need to configure :config:option:`"
-"$cfg['Servers'][$i]['SignonSession']` or :config:option:`$cfg['Servers'][$i]"
-"['SignonScript']` and :config:option:`$cfg['Servers'][$i]['SignonURL']` to "
-"use this authentication method."
+"'signon' authentication mode (``$auth_type = 'signon'``) allows you to log "
+"in from prepared PHP session data or using supplied PHP script."
 msgstr ""
-"'Signon' Authentifizierungsmodus (<code>$auth_type&nbsp;=&nbsp;'signon'</"
-"code>)  wurde in Version 2.10.0 eingeführt und erlaubt das Einloggen von "
-"vorbereiteten PHP Sitzungsdaten oder durch ein zur Verfügung gestelltes PHP "
-"Script. Dies kann für 'Single-Signon' mit anderen Anwendungen nützlich sein. "
-"Ein Beispiel, wie die Sitzung benutzt werden kann finden Sie im Signon-"
-"Beispiel: <code>examples/signon.php</code>. Es gibt auch ein "
-"Alternativbeispiel, welches OpenID benutzt - <code>examples/openid.php</"
-"code> sowie Beispiel-Scripts für eine scriptbasierte Lösungen - "
-"<code>examples/signon-script.php</code>. Sie müssen <a href="
-"\"#cfg_Servers_SignonSession\" class=\"configrule\">Sitzungsname</a> oder <a "
-"href=\"#cfg_Servers_SignonScript\" class=\"configrule\">Auszuführendes "
-"Script</a> und <a href=\"#cfg_Servers_SignonURL\" class=\"configrule"
-"\">Signon <abbr title=\"Uniform Resource Locator\">URL</abbr></a>  "
-"definieren um diese Authentifizierungsmethode zu verwenden."
 
-#: ../source/config.rst:380 ../source/faq.rst:1026
+#: ../source/config.rst:355 ../source/faq.rst:1026
 #, fuzzy
 #| msgid "Using authentication modes"
 msgid ":ref:`authentication_modes`"
 msgstr "Benutzung von Authentifizierungsmethoden"
 
-#: ../source/config.rst:388
+#: ../source/config.rst:363
 #, fuzzy
 msgid ""
 "When using auth\\_type = ``http``, this field allows to define a custom :"
@@ -2470,7 +2417,7 @@ msgstr ""
 "['verbose']</a> oder <a href=\"#cfg_Servers_host\" class=\"configrule\">"
 "$cfg['Servers'][$i]['host']</a> benutzt."
 
-#: ../source/config.rst:400
+#: ../source/config.rst:375
 #, fuzzy
 msgid ""
 "The name of the file containing :ref:`swekey` ids and login names for "
@@ -2481,11 +2428,11 @@ msgstr ""
 "um diese Funktion zu deaktivieren."
 
 # 5f4c5a894a194c068ec9e7931012d372
-#: ../source/config.rst:407
+#: ../source/config.rst:382
 msgid "``'root'``"
 msgstr ""
 
-#: ../source/config.rst:414
+#: ../source/config.rst:389
 #, fuzzy
 msgid ""
 "When using :config:option:`$cfg['Servers'][$i]['auth_type']` set to "
@@ -2499,7 +2446,7 @@ msgstr ""
 "Protocol\">HTTP</abbr> oder Cookie Authentifizierung benützt wird und sollte "
 "daher leer bleiben."
 
-#: ../source/config.rst:426
+#: ../source/config.rst:401
 msgid ""
 "Allow attempt to log in without password when a login with password fails. "
 "This can be used together with http authentication, when authentication is "
@@ -2517,12 +2464,12 @@ msgstr ""
 # 88bbab0259984a998288b280fa4bc79d
 # 457059de28644a3b9c328b890ca044e4
 # 6fc10084dff146878a697ebdad9733ee
-#: ../source/config.rst:436 ../source/config.rst:1406
-#: ../source/config.rst:1415
+#: ../source/config.rst:411 ../source/config.rst:1398
+#: ../source/config.rst:1407
 msgid "string or array"
 msgstr ""
 
-#: ../source/config.rst:439
+#: ../source/config.rst:414
 #, fuzzy
 msgid ""
 "If set to a (an array of) database name(s), only this (these) database(s) "
@@ -2538,7 +2485,7 @@ msgstr ""
 "diese Zeichen buchstäblich verwenden wollen, müssen sie diese entwerten (z."
 "B. <code>'my\\_db'</code> anstatt von <code>'my_db'</code> benutzen )"
 
-#: ../source/config.rst:445
+#: ../source/config.rst:420
 #, fuzzy
 msgid ""
 "This setting is an efficient way to lower the server load since the latter "
@@ -2556,18 +2503,18 @@ msgstr ""
 "Datenbanken nicht benutzt werden können.</span>"
 
 # a7cec7edf8b241aaa1357526e10c708f
-#: ../source/config.rst:451
+#: ../source/config.rst:426
 msgid "An example of using more that one database:"
 msgstr ""
 
 # 244584fc6d4b40fabf243c344668afe0
-#: ../source/config.rst:457
+#: ../source/config.rst:432
 msgid ""
 "Previous versions permitted to specify the display order of the database "
 "names via this directive."
 msgstr ""
 
-#: ../source/config.rst:466
+#: ../source/config.rst:441
 #, fuzzy
 msgid ""
 "Regular expression for hiding some databases from unprivileged users. This "
@@ -2581,12 +2528,12 @@ msgstr ""
 "trotzdem darauf zugreifen (z.B. über den SQL Abfragebereich). Um den Zugriff "
 "einzuschränken benutzen Sie das MySQL Rechte System."
 
-#: ../source/config.rst:476
+#: ../source/config.rst:451
 #, fuzzy
 msgid "and to hide both \"db1\" and \"db2\" use"
 msgstr "und um &#34;db1&#34; und &#34;db2&#34; zu verstecken, benützen Sie"
 
-#: ../source/config.rst:482
+#: ../source/config.rst:457
 #, fuzzy
 msgid ""
 "More information on regular expressions can be found in the `PCRE pattern "
@@ -2597,7 +2544,7 @@ msgstr ""
 "net/manual/de/reference.pcre.pattern.syntax.php\">PCRE Ausdruckssyntax</a>-"
 "Kapitel der PHP-Dokumentation gefunden werden."
 
-#: ../source/config.rst:492
+#: ../source/config.rst:467
 msgid ""
 "Only useful when using phpMyAdmin with multiple server entries. If set, this "
 "string will be displayed instead of the hostname in the pull-down menu on "
@@ -2611,13 +2558,13 @@ msgstr ""
 "bestimmte Datenbanken anzeigen möchten. Für HTTP auth werden alle non-US-"
 "ASCII Zeichen weggeschnitten."
 
-#: ../source/config.rst:503
+#: ../source/config.rst:478
 msgid ""
 "The name of the database containing the phpMyAdmin configuration storage."
 msgstr ""
 "Der Name der Datenbank, die den phpMyAdmin-Konfigurationsspeicher enthält."
 
-#: ../source/config.rst:506
+#: ../source/config.rst:481
 #, fuzzy
 msgid ""
 "See the :ref:`linked-tables`  section in this document to see the benefits "
@@ -2629,7 +2576,7 @@ msgstr ""
 "erfahren und um einen schnellen Weg kennenzulernen um diese Datenbank und "
 "die nötigen Tabellen zu erstellen."
 
-#: ../source/config.rst:510
+#: ../source/config.rst:485
 #, fuzzy
 msgid ""
 "If you are the only user of this phpMyAdmin installation, you can use your "
@@ -2645,7 +2592,7 @@ msgstr ""
 "Benutzern, setzen sie den Wert dieses Parameter auf den Namen der Datenbank, "
 "welche den phpMyAdmin Konfigurationsspeicher enthält"
 
-#: ../source/config.rst:522
+#: ../source/config.rst:497
 #, fuzzy
 msgid ""
 "Since release 2.2.0 phpMyAdmin allows users to bookmark queries. This can be "
@@ -2655,11 +2602,11 @@ msgstr ""
 "Abfragen. Dies kann nützlich sein, wenn Sie eine Abfrage öfters ausführen "
 "wollen."
 
-#: ../source/config.rst:526 ../source/config.rst:557 ../source/config.rst:581
-#: ../source/config.rst:609 ../source/config.rst:641 ../source/config.rst:677
-#: ../source/config.rst:700 ../source/config.rst:718 ../source/config.rst:741
-#: ../source/config.rst:756 ../source/config.rst:788 ../source/config.rst:862
-#: ../source/config.rst:878
+#: ../source/config.rst:501 ../source/config.rst:532 ../source/config.rst:556
+#: ../source/config.rst:584 ../source/config.rst:616 ../source/config.rst:652
+#: ../source/config.rst:675 ../source/config.rst:693 ../source/config.rst:716
+#: ../source/config.rst:731 ../source/config.rst:763 ../source/config.rst:837
+#: ../source/config.rst:853
 #, fuzzy
 msgid ""
 "set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin "
@@ -2668,7 +2615,7 @@ msgstr ""
 "richten Sie <a href=\"#pmadb\">pmadb</a> und den phpMyAdmin-"
 "Konfigurationsspeicher ein"
 
-#: ../source/config.rst:527
+#: ../source/config.rst:502
 #, fuzzy
 msgid ""
 "enter the table name in :config:option:`$cfg['Servers'][$i]['bookmarktable']`"
@@ -2676,7 +2623,7 @@ msgstr ""
 "geben Sie den Tabellennamen in <tt>$cfg['Servers'][$i]['bookmarktable']</tt> "
 "ein"
 
-#: ../source/config.rst:536
+#: ../source/config.rst:511
 #, fuzzy
 #| msgid ""
 #| "Since release 2.2.4 you can describe, in a special 'relation' table, "
@@ -2691,7 +2638,7 @@ msgstr ""
 "beschreiben, welche Spalte der Schlüssel einer anderen Tabelle ist (ein "
 "Fremtschlüssel). phpMyAdmin benützt dies derzeit um"
 
-#: ../source/config.rst:540
+#: ../source/config.rst:515
 msgid ""
 "make clickable, when you browse the master table, the data values that point "
 "to the foreign table;"
@@ -2699,7 +2646,7 @@ msgstr ""
 "klickbar machen, wenn Sie die Haupttabelle ansehen, die Datenwerte welche zu "
 "der Fremdtabelle zeigen;"
 
-#: ../source/config.rst:542
+#: ../source/config.rst:517
 #, fuzzy
 msgid ""
 "display in an optional tool-tip the \"display column\" when browsing the "
@@ -2710,7 +2657,7 @@ msgstr ""
 "ansehen der Haupttabelle, falls Sie mit dem Cursor über eine Spalte fahren, "
 "welche einen Fremtschlüssel enthält (benutze auch die 'table_info' Tabelle);"
 
-#: ../source/config.rst:545
+#: ../source/config.rst:520
 #, fuzzy
 msgid ""
 "in edit/insert mode, display a drop-down list of possible foreign keys (key "
@@ -2720,7 +2667,7 @@ msgstr ""
 "Fremdschlüsseln anzeigen (Schlüsselwert und &quot;Anzeigespalte&quot; werden "
 "angezeigt)"
 
-#: ../source/config.rst:547
+#: ../source/config.rst:522
 msgid ""
 "display links on the table properties page, to check referential integrity "
 "(display missing foreign keys) for each described key;"
@@ -2729,14 +2676,14 @@ msgstr ""
 "beschriebenen Schlüssel die Referenz-Richtigkeit zu überprüfen (fehlende "
 "Fremdschlüssel anzeigen)"
 
-#: ../source/config.rst:549
+#: ../source/config.rst:524
 #, fuzzy
 msgid "in query-by-example, create automatic joins (see :ref:`faq6_6`)"
 msgstr ""
 "in Abfrage-durch-Beispiel, automatisch Beziehungen erstellen (sehen Sie <a "
 "href=\"#faq6_6\"> <abbr title=\"Häufig gestellte Fragen\">FAQ</abbr> 6.6</a>)"
 
-#: ../source/config.rst:550
+#: ../source/config.rst:525
 #, fuzzy
 msgid ""
 "enable you to get a :term:`PDF` schema of your database (also uses the table"
@@ -2745,17 +2692,17 @@ msgstr ""
 "ermöglicht Ihnen ein <abbr title=\"Portable Document Format\">PDF</abbr> "
 "Schema Ihrer Datenbank zu erhalten (benutzt auch die table_coords Tabelle)."
 
-#: ../source/config.rst:553
+#: ../source/config.rst:528
 msgid "The keys can be numeric or character."
 msgstr "Die Schlüssel können numerisch oder Buchstaben sein."
 
-#: ../source/config.rst:555 ../source/config.rst:607 ../source/config.rst:639
-#: ../source/config.rst:675 ../source/config.rst:739 ../source/config.rst:754
-#: ../source/config.rst:786 ../source/config.rst:860 ../source/config.rst:876
+#: ../source/config.rst:530 ../source/config.rst:582 ../source/config.rst:614
+#: ../source/config.rst:650 ../source/config.rst:714 ../source/config.rst:729
+#: ../source/config.rst:761 ../source/config.rst:835 ../source/config.rst:851
 msgid "To allow the usage of this functionality:"
 msgstr "Um diese Funktion zu nutzen:"
 
-#: ../source/config.rst:558
+#: ../source/config.rst:533
 #, fuzzy
 msgid ""
 "put the relation table name in :config:option:`$cfg['Servers'][$i]"
@@ -2764,7 +2711,7 @@ msgstr ""
 "setzen Sie den Beziehungstabellennamen in<tt>$cfg['Servers'][$i]"
 "['relation']</tt>  ein"
 
-#: ../source/config.rst:559
+#: ../source/config.rst:534
 #, fuzzy
 msgid ""
 "now as normal user open phpMyAdmin and for each one of your tables where you "
@@ -2775,7 +2722,7 @@ msgstr ""
 "Struktur/Beziehungen Ansicht/&quot; und wählen Fremdspalten für jede Ihrer "
 "Tabellen wo Sie diese Funktion benutzen wollen."
 
-#: ../source/config.rst:565
+#: ../source/config.rst:540
 #, fuzzy
 msgid ""
 "In the current version, ``master_db`` must be the same as ``foreign_db``. "
@@ -2785,7 +2732,7 @@ msgstr ""
 "sein muss wie <code>foreign_db</code>. Diese Spalten wurden in "
 "Zukunftsentwicklungen der Cross-DB Beziehungen gestellt."
 
-#: ../source/config.rst:575
+#: ../source/config.rst:550
 #, fuzzy
 msgid ""
 "Since release 2.3.0 you can describe, in a special 'table\\_info' table, "
@@ -2797,7 +2744,7 @@ msgstr ""
 "beschreiben, welche Spalte als Tool-Tip angezeigt wird, wenn Sie den Zeiger "
 "über den entsprechenden Schlüssel bewegen."
 
-#: ../source/config.rst:582
+#: ../source/config.rst:557
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['table\\_info']` "
@@ -2806,7 +2753,7 @@ msgstr ""
 "setzen Sie den Tabellennamen in <tt>$cfg['Servers'][$i]['table_info']</tt> "
 "ein (z.B. 'pma_table_info')"
 
-#: ../source/config.rst:584
+#: ../source/config.rst:559
 #, fuzzy
 msgid ""
 "then for each table where you want to use this feature, click \"Structure/"
@@ -2816,13 +2763,13 @@ msgstr ""
 "&quot;Struktur/Beziehungsanzeige/Anzeigespalte wählen&quot; um die Spalte "
 "auzuwählen."
 
-#: ../source/config.rst:588
+#: ../source/config.rst:563
 #, fuzzy
 #| msgid ":ref:`glossary`"
 msgid ":ref:`faqdisplay`"
 msgstr ":ref:`glossary`"
 
-#: ../source/config.rst:601
+#: ../source/config.rst:576
 #, fuzzy
 msgid ""
 "Since release 2.3.0 you can have phpMyAdmin create :term:`PDF` pages showing "
@@ -2839,7 +2786,7 @@ msgstr ""
 "(speichert die Koordinaten, wo jede Tabelle in der <abbr title=\"Portable "
 "Document Format\">PDF</abbr> Schema Ausgabe platziert wird)."
 
-#: ../source/config.rst:610
+#: ../source/config.rst:585
 #, fuzzy
 msgid ""
 "put the correct table names in :config:option:`$cfg['Servers'][$i]['table"
@@ -2849,11 +2796,11 @@ msgstr ""
 "ein (z.B. 'pma_table_info')"
 
 # 0e1f2d26b3874d0db8b91e784779b4cc
-#: ../source/config.rst:614
+#: ../source/config.rst:589
 msgid ":ref:`faqpdf`."
 msgstr ""
 
-#: ../source/config.rst:622
+#: ../source/config.rst:597
 #, fuzzy
 msgid ""
 "This part requires a content update!  Since release 2.3.0 you can store "
@@ -2863,7 +2810,7 @@ msgstr ""
 "Seit Version 2.3.0 können Sie Kommentare speichern, welche jede Spalte jeder "
 "Tabelle beschreiben. Diese werden in der &quot;Druckanzeige&quot; angezeigt."
 
-#: ../source/config.rst:626
+#: ../source/config.rst:601
 msgid ""
 "Starting with release 2.5.0, comments are consequently used on the table "
 "property pages and table browse view, showing up as tool-tips above the "
@@ -2877,7 +2824,7 @@ msgstr ""
 "Ansichtseite anzeigen. Sie werden auch in Tabellenauszügen angezeigt. Bitte "
 "sehen Sie auch die relevanten Konfigurationsanweisungen an."
 
-#: ../source/config.rst:632
+#: ../source/config.rst:607
 #, fuzzy
 msgid ""
 "Also new in release 2.5.0 is a MIME- transformation system which is also "
@@ -2893,7 +2840,7 @@ msgstr ""
 "drei Spalten 'mimetype', 'transformation', 'transformation_options' "
 "beinhalten."
 
-#: ../source/config.rst:642
+#: ../source/config.rst:617
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['column\\_info']` "
@@ -2903,7 +2850,7 @@ msgstr ""
 "ein (z.B. 'pma_table_info')"
 
 # ed4ec79072d0417390db10dc861ad0ed
-#: ../source/config.rst:644
+#: ../source/config.rst:619
 msgid ""
 "to update your PRE-2.5.0 Column\\_comments Table use this:  and remember "
 "that the Variable in :file:`config.inc.php` has been renamed from :config:"
@@ -2911,7 +2858,7 @@ msgid ""
 "$cfg['Servers'][$i]['column\\_info']`"
 msgstr ""
 
-#: ../source/config.rst:662
+#: ../source/config.rst:637
 #, fuzzy
 msgid ""
 "Since release 2.5.0 you can store your :term:`SQL` history, which means all "
@@ -2925,7 +2872,7 @@ msgstr ""
 "benutzen. Wenn sie letzteres benutzen, werden alle Verlaufselemente gelöscht "
 "wenn Sie das Fenster schließen."
 
-#: ../source/config.rst:667
+#: ../source/config.rst:642
 #, fuzzy
 msgid ""
 "Using that, all your history items are deleted when closing the window. "
@@ -2938,14 +2885,14 @@ msgstr ""
 "Sie behalten wollen, spezifizieren. Bei jedem Login wird diese Liste auf das "
 "Maximum gekürzt."
 
-#: ../source/config.rst:672
+#: ../source/config.rst:647
 msgid ""
 "The query history is only available if JavaScript is enabled in your browser."
 msgstr ""
 "Der Abfrageverlauf ist nur verfügbar, wenn Sie JavaScript in Ihrem Browser "
 "aktiviert haben."
 
-#: ../source/config.rst:678
+#: ../source/config.rst:653
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['history']` (e.g. "
@@ -2954,7 +2901,7 @@ msgstr ""
 "setzen Sie den Tabellennamen in <tt>$cfg['Servers'][$i]['table_info']</tt> "
 "ein (z.B. 'pma_table_info')"
 
-#: ../source/config.rst:687
+#: ../source/config.rst:662
 #, fuzzy
 msgid ""
 "Since release 3.5.0 you can show recently used tables in the navigation "
@@ -2973,7 +2920,7 @@ msgstr ""
 "zu der Seite die in <a href=\"#cfg_LeftDefaultTabTable\" class=\"configrule"
 "\">$cfg['LeftDefaultTabTable']</a> definiert wurde."
 
-#: ../source/config.rst:695
+#: ../source/config.rst:670
 msgid ""
 "Without configuring the storage, you can still access the recently used "
 "tables, but it will disappear after you logout."
@@ -2981,12 +2928,12 @@ msgstr ""
 "Ohne den Speicher zu konfigurieren, können Sie noch immer auf die zuletzt "
 "benutzten Tabellen zugreifen, aber sie verschwinden nach dem Ausloggen."
 
-#: ../source/config.rst:698
+#: ../source/config.rst:673
 #, fuzzy
 msgid "To allow the usage of this functionality persistently:"
 msgstr "Um diese Funktion zu nutzen:"
 
-#: ../source/config.rst:701
+#: ../source/config.rst:676
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['recent']` (e.g. "
@@ -2995,7 +2942,7 @@ msgstr ""
 "setzen Sie den Tabellennamen in <tt>$cfg['Servers'][$i]['table_info']</tt> "
 "ein (z.B. 'pma_table_info')"
 
-#: ../source/config.rst:710
+#: ../source/config.rst:685
 #, fuzzy
 msgid ""
 "Since release 3.5.0 phpMyAdmin can be configured to remember several things "
@@ -3011,12 +2958,12 @@ msgstr ""
 "den Speicher zu konfigurieren, können diese Funktionen zwar benutzt werden, "
 "die Einträge verschwinden aber wenn Sie sich ausloggen."
 
-#: ../source/config.rst:716
+#: ../source/config.rst:691
 #, fuzzy
 msgid "To allow the usage of these functionality persistently:"
 msgstr "Um diese Funktion zu nutzen:"
 
-#: ../source/config.rst:719
+#: ../source/config.rst:694
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['table"
@@ -3026,7 +2973,7 @@ msgstr ""
 "ein (z.B. 'pma_table_info')"
 
 # 61daea41d09b4aec860ac419f9f931e9
-#: ../source/config.rst:733
+#: ../source/config.rst:708
 msgid ""
 "Since release 4.1.0 you can create different user groups with menu items "
 "attached to them. Users can be assigned to these groups and the logged in "
@@ -3036,7 +2983,7 @@ msgid ""
 "assignments to user groups)."
 msgstr ""
 
-#: ../source/config.rst:742
+#: ../source/config.rst:717
 #, fuzzy
 msgid ""
 "put the correct table names in :config:option:`$cfg['Servers'][$i]['users']` "
@@ -3047,11 +2994,11 @@ msgstr ""
 "ein (z.B. 'pma_table_info')"
 
 # 7ef9b6f530b44dfba964dd84d851d02c
-#: ../source/config.rst:752
+#: ../source/config.rst:727
 msgid "Since release 4.1.0 you can hide/show items in the navigation tree."
 msgstr ""
 
-#: ../source/config.rst:757
+#: ../source/config.rst:732
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]"
@@ -3060,7 +3007,7 @@ msgstr ""
 "setzen Sie den Tabellennamen in <tt>$cfg['Servers'][$i]['table_info']</tt> "
 "ein (z.B. 'pma_table_info')"
 
-#: ../source/config.rst:766
+#: ../source/config.rst:741
 #, fuzzy
 msgid ""
 "Since release 3.3.x a tracking mechanism is available. It helps you to track "
@@ -3075,18 +3022,18 @@ msgstr ""
 "Anweisungen. Nach der Aktivierung können Sie Versionen von Tabellen "
 "erstellen."
 
-#: ../source/config.rst:772
+#: ../source/config.rst:747
 msgid "The creation of a version has two effects:"
 msgstr "Die Erstellung von Versionen hat zwei Effekte:"
 
-#: ../source/config.rst:774
+#: ../source/config.rst:749
 msgid ""
 "phpMyAdmin saves a snapshot of the table, including structure and indexes."
 msgstr ""
 "phpMyAdmin speichert eine Momentaufnahme der Tabelle, inklusive Struktur und "
 "Indizes."
 
-#: ../source/config.rst:776
+#: ../source/config.rst:751
 msgid ""
 "phpMyAdmin logs all commands which change the structure and/or data of the "
 "table and links these commands with the version number."
@@ -3094,7 +3041,7 @@ msgstr ""
 "phpMyAdmin zeichnet alle Befehle auf, welche die Struktur und/oder Daten der "
 "Tabelle ändern und verlinkt diese Befehle mit der Versionsnummer."
 
-#: ../source/config.rst:779
+#: ../source/config.rst:754
 #, fuzzy
 msgid ""
 "Of course you can view the tracked changes. On the :guilabel:`Tracking` page "
@@ -3112,7 +3059,7 @@ msgstr ""
 "Liste von Namen, getrennt durch ',' eingeben. Zusätzlich können Sie den "
 "(gefilterte) Bericht in eine Date oder eine temporäre Datenbank extrahieren."
 
-#: ../source/config.rst:789
+#: ../source/config.rst:764
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['tracking']` (e.g. "
@@ -3121,7 +3068,7 @@ msgstr ""
 "setzen Sie den Tabellennamen in <tt>$cfg['Servers'][$i]['table_info']</tt> "
 "ein (z.B. 'pma_table_info')"
 
-#: ../source/config.rst:799
+#: ../source/config.rst:774
 msgid ""
 "Whether the tracking mechanism creates versions for tables and views "
 "automatically."
@@ -3129,19 +3076,19 @@ msgstr ""
 "Automatische Versionserstellung für Tabellen und Ansichten durch den "
 "Verlaufs-Mechanismus."
 
-#: ../source/config.rst:802
+#: ../source/config.rst:777
 msgid "If this is set to true and you create a table or view with"
 msgstr "Wenn das \"True\" ist und Sie erstellen eine Tabelle oder Ansicht mit"
 
-#: ../source/config.rst:804
+#: ../source/config.rst:779
 msgid "CREATE TABLE ..."
 msgstr "CREATE TABLE ..."
 
-#: ../source/config.rst:805
+#: ../source/config.rst:780
 msgid "CREATE VIEW ..."
 msgstr "CREATE VIEW ..."
 
-#: ../source/config.rst:807
+#: ../source/config.rst:782
 msgid ""
 "and no version exists for it, the mechanism will create a version for you "
 "automatically."
@@ -3149,7 +3096,7 @@ msgstr ""
 "und es existiert keine Version, wird der Mechanismus für Sie automatisch "
 "eine Version erstellen."
 
-#: ../source/config.rst:814
+#: ../source/config.rst:789
 #, fuzzy
 #| msgid ""
 #| "CREATE TABLE,ALTER TABLE,DROP TABLE,RENAME TABLE,\n"
@@ -3168,7 +3115,7 @@ msgstr ""
 "CREATE VIEW,ALTER VIEW,DROP VIEW,\\n\n"
 "CREATE DATABASE,ALTER DATABASE,DROP DATABASE"
 
-#: ../source/config.rst:816
+#: ../source/config.rst:791
 msgid "Defines the list of statements the auto-creation uses for new versions."
 msgstr ""
 "Legt die Liste der Statements fest, welche die automatische "
@@ -3217,31 +3164,31 @@ msgstr ""
 # f9c01190d645423fa5193221844ae880
 # fc29dcea14274ab59700cf1b3735b69e
 # e2db1018f5514dcdbe306a8ad55e8c06
-#: ../source/config.rst:823 ../source/config.rst:832 ../source/config.rst:841
-#: ../source/config.rst:901 ../source/config.rst:1080
-#: ../source/config.rst:1137 ../source/config.rst:1224
-#: ../source/config.rst:1240 ../source/config.rst:1268
-#: ../source/config.rst:1276 ../source/config.rst:1311
-#: ../source/config.rst:1344 ../source/config.rst:1399
-#: ../source/config.rst:1444 ../source/config.rst:1492
-#: ../source/config.rst:1525 ../source/config.rst:1535
-#: ../source/config.rst:1549 ../source/config.rst:1554
-#: ../source/config.rst:1603 ../source/config.rst:1650
-#: ../source/config.rst:1691 ../source/config.rst:1700
-#: ../source/config.rst:1737 ../source/config.rst:1742
-#: ../source/config.rst:1747 ../source/config.rst:1755
-#: ../source/config.rst:2016 ../source/config.rst:2187
-#: ../source/config.rst:2194 ../source/config.rst:2201
-#: ../source/config.rst:2238 ../source/config.rst:2258
-#: ../source/config.rst:2263 ../source/config.rst:2335
+#: ../source/config.rst:798 ../source/config.rst:807 ../source/config.rst:816
+#: ../source/config.rst:876 ../source/config.rst:1064
+#: ../source/config.rst:1121 ../source/config.rst:1208
+#: ../source/config.rst:1224 ../source/config.rst:1252
+#: ../source/config.rst:1260 ../source/config.rst:1295
+#: ../source/config.rst:1328 ../source/config.rst:1391
+#: ../source/config.rst:1436 ../source/config.rst:1484
+#: ../source/config.rst:1524 ../source/config.rst:1534
+#: ../source/config.rst:1548 ../source/config.rst:1553
+#: ../source/config.rst:1602 ../source/config.rst:1649
+#: ../source/config.rst:1690 ../source/config.rst:1699
+#: ../source/config.rst:1736 ../source/config.rst:1741
+#: ../source/config.rst:1746 ../source/config.rst:1754
+#: ../source/config.rst:2015 ../source/config.rst:2186
+#: ../source/config.rst:2193 ../source/config.rst:2200
+#: ../source/config.rst:2237 ../source/config.rst:2257
+#: ../source/config.rst:2262 ../source/config.rst:2335
 #: ../source/config.rst:2354 ../source/config.rst:2362
-#: ../source/config.rst:2370 ../source/config.rst:2387
-#: ../source/config.rst:2504 ../source/config.rst:2579
-#: ../source/config.rst:2607 ../source/config.rst:2678
+#: ../source/config.rst:2370 ../source/config.rst:2378
+#: ../source/config.rst:2495 ../source/config.rst:2570
+#: ../source/config.rst:2598 ../source/config.rst:2669
 msgid "true"
 msgstr ""
 
-#: ../source/config.rst:825
+#: ../source/config.rst:800
 msgid ""
 "Whether a DROP VIEW IF EXISTS statement will be added as first line to the "
 "log when creating a view."
@@ -3249,7 +3196,7 @@ msgstr ""
 "DROP VIEW IF EXISTS statement beim Erstellen einer neuen Ansicht als erste "
 "Zeile loggen."
 
-#: ../source/config.rst:834
+#: ../source/config.rst:809
 msgid ""
 "Whether a DROP TABLE IF EXISTS statement will be added as first line to the "
 "log when creating a table."
@@ -3257,7 +3204,7 @@ msgstr ""
 "DROP TABLE IF EXISTS statement beim Erstellen einer neuen Ansicht als erste "
 "Zeile loggen."
 
-#: ../source/config.rst:843
+#: ../source/config.rst:818
 msgid ""
 "Whether a DROP DATABASE IF EXISTS statement will be added as first line to "
 "the log when creating a database."
@@ -3265,7 +3212,7 @@ msgstr ""
 "DROP DATABASE IF EXISTS statement beim Erstellen einer neuen Datenbank als "
 "erste Zeile loggen."
 
-#: ../source/config.rst:852
+#: ../source/config.rst:827
 msgid ""
 "Since release 3.4.x phpMyAdmin allows users to set most preferences by "
 "themselves and store them in the database."
@@ -3273,7 +3220,7 @@ msgstr ""
 "Seit Version 3.4.x erlaubt phpMyAdmin den Benutzern die meisten "
 "Einstellungen selbst zu setzen und in der Datenbank zu speichern."
 
-#: ../source/config.rst:855
+#: ../source/config.rst:830
 #, fuzzy
 msgid ""
 "If you don't allow for storing preferences in :config:option:`$cfg['Servers']"
@@ -3286,7 +3233,7 @@ msgstr ""
 "Einstellungen werden im lokalen Speicherbereich Ihres Webbrowsers "
 "gespeichert, oder, falls das nicht möglich ist, bis zum Ende der Sitzung."
 
-#: ../source/config.rst:863
+#: ../source/config.rst:838
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['userconfig']`"
@@ -3294,7 +3241,7 @@ msgstr ""
 "setzen Sie den Beziehungstabellennamen in<tt>$cfg['Servers'][$i]"
 "['relation']</tt>  ein"
 
-#: ../source/config.rst:873
+#: ../source/config.rst:848
 msgid ""
 "Since release 2.10.0 a Designer interface is available; it permits to "
 "visually manage the relations."
@@ -3302,7 +3249,7 @@ msgstr ""
 "Seit Version 2.10.0 ist eine Designerschnittstelle verfügbar; sie erlaubt "
 "die visuelle Verwaltung der Beziehungen."
 
-#: ../source/config.rst:879
+#: ../source/config.rst:854
 #, fuzzy
 msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['designer"
@@ -3315,12 +3262,12 @@ msgstr ""
 # da18bfdad8f94ad085df62521853001f
 # 035cca13e59042fa90c16292482cca00
 # 123fbf845c8e48e588f21701d150616e
-#: ../source/config.rst:887 ../source/config.rst:1120
-#: ../source/config.rst:1715 ../source/config.rst:2497
+#: ../source/config.rst:862 ../source/config.rst:1104
+#: ../source/config.rst:1714 ../source/config.rst:2488
 msgid "100"
 msgstr ""
 
-#: ../source/config.rst:889
+#: ../source/config.rst:864
 #, fuzzy
 msgid ""
 "Maximum number of rows saved in :config:option:`$cfg['Servers'][$i]"
@@ -3330,7 +3277,7 @@ msgstr ""
 "Zeichenkette"
 
 # 91ebd083e4604e5dba7508528470d93e
-#: ../source/config.rst:892
+#: ../source/config.rst:867
 msgid ""
 "When tables are dropped or renamed, :config:option:`$cfg['Servers'][$i]"
 "['table_uiprefs']` may contain invalid data (referring to tables which no "
@@ -3338,7 +3285,7 @@ msgid ""
 "$cfg['Servers'][$i]['table_uiprefs']` and automatically delete older rows."
 msgstr ""
 
-#: ../source/config.rst:903
+#: ../source/config.rst:878
 #, fuzzy
 msgid ""
 "Whether to allow root access. This is just a shortcut for the :config:option:"
@@ -3347,7 +3294,7 @@ msgstr ""
 "Ob Root-Zugang erlaubt wird. Das ist nur eine Abkürzung für die AllowDeny-"
 "Regeln unten."
 
-#: ../source/config.rst:911
+#: ../source/config.rst:886
 #, fuzzy
 msgid ""
 "Whether to allow logins without a password. The default value of ``false`` "
@@ -3360,14 +3307,14 @@ msgstr ""
 "welchem ein leeres Passwort für root gesetzt ist oder welcher anonymen "
 "(leeren) Login erlaubt."
 
-#: ../source/config.rst:922
+#: ../source/config.rst:897
 #, fuzzy
 msgid "If your rule order is empty, then :term:`IP` authorization is disabled."
 msgstr ""
 "Wenn die Regel-Reihenfolge leer ist, ist <abbr title=\"Internet Protocol"
 "\">IP</abbr> Authorisierung deaktiviert."
 
-#: ../source/config.rst:925
+#: ../source/config.rst:900
 #, fuzzy
 msgid ""
 "If your rule order is set to ``'deny,allow'`` then the system applies all "
@@ -3381,7 +3328,7 @@ msgstr ""
 "Befehl nicht entspricht oder einem Erlauben-Befehl entspricht wird Zugang "
 "zum Server gewährt."
 
-#: ../source/config.rst:931
+#: ../source/config.rst:906
 #, fuzzy
 msgid ""
 "If your rule order is set to ``'allow,deny'`` then the system applies all "
@@ -3395,7 +3342,7 @@ msgstr ""
 "Befehl nicht entspricht oder einem Ablehnen-Befehl entspricht wird Zugang "
 "zum Server verwehrt."
 
-#: ../source/config.rst:937
+#: ../source/config.rst:912
 #, fuzzy
 msgid ""
 "If your rule order is set to ``'explicit'``, authorization is performed in a "
@@ -3414,7 +3361,7 @@ msgstr ""
 "Apache durch Spezifizierung von erlauben und ablehnen Regeln ohne "
 "Reihenfolge verfügbar."
 
-#: ../source/config.rst:945
+#: ../source/config.rst:920
 #, fuzzy
 msgid ""
 "Please also see :config:option:`$cfg['TrustedProxies']` for detecting IP "
@@ -3425,7 +3372,7 @@ msgstr ""
 
 # 4915cab5ba444107a42677149fc8e7bf
 # cab43866eb264546aed93130527e0ff1
-#: ../source/config.rst:951 ../source/config.rst:1044
+#: ../source/config.rst:926 ../source/config.rst:1028
 msgid "array of strings"
 msgstr ""
 
@@ -3433,16 +3380,16 @@ msgstr ""
 # 8afee849c9d64fac9288715af10e38fc
 # 6d341f52eb0547518bf5f32b0ee0df76
 # f9b72e06c8694c639f252cf701625b27
-#: ../source/config.rst:952 ../source/config.rst:1045
-#: ../source/config.rst:1983 ../source/config.rst:2625
+#: ../source/config.rst:927 ../source/config.rst:1029
+#: ../source/config.rst:1982 ../source/config.rst:2616
 msgid "array()"
 msgstr ""
 
-#: ../source/config.rst:954
+#: ../source/config.rst:929
 msgid "The general format for the rules is as such:"
 msgstr "Das generelle Aussehen dieser Regeln ist wie folgt:"
 
-#: ../source/config.rst:960
+#: ../source/config.rst:935
 #, fuzzy
 msgid ""
 "If you wish to match all users, it is possible to use a ``'%'`` as a "
@@ -3451,7 +3398,7 @@ msgstr ""
 "Um alle Benutzer auszuwählen, benützen sie <code>'%'</code> als Platzhalter "
 "im Feld <em>Benutzername</em>."
 
-#: ../source/config.rst:963
+#: ../source/config.rst:938
 #, fuzzy
 msgid ""
 "There are a few shortcuts you can use in the *ipmask* field as well (please "
@@ -3462,7 +3409,7 @@ msgstr ""
 "können (beachten Sie, dass diejenigen welche SERVER_ADDRESS enthalten nicht "
 "auf allen Webservern zur Verfügung stehen):"
 
-#: ../source/config.rst:976
+#: ../source/config.rst:951
 #, fuzzy
 msgid ""
 "Having an empty rule list is equivalent to either using ``'allow % from "
@@ -3474,28 +3421,28 @@ msgstr ""
 "<code>'deny % from all'</code>, wenn Ihre Regelanweisung auf <code>'allow,"
 "deny'</code> oder <code>'explicit'</code> gesetzt wurde."
 
-#: ../source/config.rst:981
+#: ../source/config.rst:956
 #, fuzzy
 msgid "For the :term:`IP address` matching system, the following work:"
 msgstr ""
 "Für das <abbr title=\"Internet Protocol\">IP</abbr> Vergleichssystem "
 "funktionieren die folgenden:"
 
-#: ../source/config.rst:984
+#: ../source/config.rst:959
 #, fuzzy
 msgid "``xxx.xxx.xxx.xxx`` (an exact :term:`IP address`)"
 msgstr ""
 "<code>xxx.xxx.xxx.xxx</code> (eine exakte <abbr title=\"Internet Protocol"
 "\">IP</abbr> Adresse)"
 
-#: ../source/config.rst:985
+#: ../source/config.rst:960
 #, fuzzy
 msgid "``xxx.xxx.xxx.[yyy-zzz]`` (an :term:`IP address` range)"
 msgstr ""
 "<code>xxx.xxx.xxx.xxx</code> (eine <abbr title=\"Internet Protocol\">IP</"
 "abbr> Adressbereich)"
 
-#: ../source/config.rst:986
+#: ../source/config.rst:961
 #, fuzzy
 msgid ""
 "``xxx.xxx.xxx.xxx/nn`` (CIDR, Classless Inter-Domain Routing type :term:`IP` "
@@ -3504,25 +3451,25 @@ msgstr ""
 "<code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing Typ "
 "<abbr title=\"Internet Protocol\">IP</abbr> Adressen)"
 
-#: ../source/config.rst:988 ../source/config.rst:998
+#: ../source/config.rst:963 ../source/config.rst:973
 msgid "But the following does not work:"
 msgstr "Die folgenden Beispiele funktionieren nicht:"
 
-#: ../source/config.rst:990
+#: ../source/config.rst:965
 #, fuzzy
 msgid "``xxx.xxx.xxx.xx[yyy-zzz]`` (partial :term:`IP` address range)"
 msgstr ""
 "<code>xxx.xxx.xxx.xx[yyy-zzz]</code> (teilweiser <abbr title=\"Internet "
 "Protocol\">IP</abbr> Adressbereich)"
 
-#: ../source/config.rst:992
+#: ../source/config.rst:967
 #, fuzzy
 msgid "For :term:`IPv6` addresses, the following work:"
 msgstr ""
 "Für das <abbr title=\"Internet Protocol\">IP</abbr> Vergleichssystem "
 "funktionieren die folgenden:"
 
-#: ../source/config.rst:994
+#: ../source/config.rst:969
 #, fuzzy
 msgid ""
 "``xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx`` (an exact :term:`IPv6` address)"
@@ -3530,7 +3477,7 @@ msgstr ""
 "<code>xxx.xxx.xxx.xxx</code> (eine exakte <abbr title=\"Internet Protocol"
 "\">IP</abbr> Adresse)"
 
-#: ../source/config.rst:995
+#: ../source/config.rst:970
 #, fuzzy
 msgid ""
 "``xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:[yyyy-zzzz]`` (an :term:`IPv6` address "
@@ -3539,7 +3486,7 @@ msgstr ""
 "<code>xxx.xxx.xxx.xxx</code> (eine <abbr title=\"Internet Protocol\">IP</"
 "abbr> Adressbereich)"
 
-#: ../source/config.rst:996
+#: ../source/config.rst:971
 #, fuzzy
 msgid ""
 "``xxxx:xxxx:xxxx:xxxx/nn`` (CIDR, Classless Inter-Domain Routing type :term:"
@@ -3548,7 +3495,7 @@ msgstr ""
 "<code>xxx.xxx.xxx.xxx/nn</code> (CIDR, Classless Inter-Domain Routing Typ "
 "<abbr title=\"Internet Protocol\">IP</abbr> Adressen)"
 
-#: ../source/config.rst:1000
+#: ../source/config.rst:975
 #, fuzzy
 msgid ""
 "``xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xx[yyy-zzz]`` (partial :term:`IPv6` "
@@ -3557,14 +3504,14 @@ msgstr ""
 "<code>xxx.xxx.xxx.xx[yyy-zzz]</code> (teilweiser <abbr title=\"Internet "
 "Protocol\">IP</abbr> Adressbereich)"
 
-#: ../source/config.rst:1007
+#: ../source/config.rst:982
 #, fuzzy
 msgid ""
 "Name of PHP script to be sourced and executed to obtain login credentials. "
-"This is alternative approach to session based single signon. The script "
-"needs to provide function ``get_login_credentials`` which returns list of "
+"This is alternative approach to session based single signon. The script has "
+"to provide a function called ``get_login_credentials`` which returns list of "
 "username and password, accepting single parameter of existing username (can "
-"be empty). See :file:`examples/signon-script.php` for an example."
+"be empty). See :file:`examples/signon-script.php` for an example:"
 msgstr ""
 "Der Name des PHP Scripts welches ausgeführt wird um die Anmeldeinformationen "
 "zu holen. Das ist eine Alternative zum sitzungsbasierten Single-Signon. Das "
@@ -3574,7 +3521,14 @@ msgstr ""
 "sein) akzeptiert. Sehen Sie <code>examples/signon-script.php</code> um ein "
 "Beispiel zu erhalten."
 
-#: ../source/config.rst:1019
+#: ../source/config.rst:992 ../source/config.rst:1004
+#: ../source/config.rst:1015
+#, fuzzy
+#| msgid "Using authentication modes"
+msgid ":ref:`auth_signon`"
+msgstr "Benutzung von Authentifizierungsmethoden"
+
+#: ../source/config.rst:999
 #, fuzzy
 msgid ""
 "Name of session which will be used for signon authentication method. You "
@@ -3589,21 +3543,21 @@ msgstr ""
 "nicht konfiguriert ist."
 
 # 781f4940aee342e39781ee60a4edf306
-#: ../source/config.rst:1029
+#: ../source/config.rst:1011
 msgid ""
 ":term:`URL` where user will be redirected to log in for signon "
 "authentication method. Should be absolute including protocol."
 msgstr ""
 
 # 631486cb986e465682085a4959a74b7a
-#: ../source/config.rst:1038
+#: ../source/config.rst:1022
 msgid ""
 ":term:`URL` where user will be redirected after logout (doesn't affect "
 "config authentication method). Should be absolute including protocol."
 msgstr ""
 
 # eff5cc2df57f412caee869f8cb41ccd2
-#: ../source/config.rst:1047
+#: ../source/config.rst:1031
 msgid ""
 "Enables caching of ``TABLE STATUS`` outputs for specific databases on this "
 "server (in some cases ``TABLE STATUS`` can be very slow, so you may want to "
@@ -3616,32 +3570,32 @@ msgstr ""
 # c011b5d7cce34c5c909c77c12e52de5e
 # b06eeb099a1f4ef2aeb9af8dbb6f5ce4
 # cce373055fff49138ceb85cb622e7b36
-#: ../source/config.rst:1056 ../source/config.rst:1335
-#: ../source/config.rst:2586 ../source/config.rst:2597
+#: ../source/config.rst:1040 ../source/config.rst:1319
+#: ../source/config.rst:2577 ../source/config.rst:2588
 msgid "0"
 msgstr ""
 
 # fc418e3728eb40a79e6da195b730c19d
-#: ../source/config.rst:1058
+#: ../source/config.rst:1042
 msgid ""
 "Lifetime in seconds of the ``TABLE STATUS`` cache if :config:option:`"
 "$cfg['Servers'][$i]['StatusCacheDatabases']` is used."
 msgstr ""
 
 # bd3481320ba7431eb4e560a9df3a9f52
-#: ../source/config.rst:1062
+#: ../source/config.rst:1046
 msgid "Generic settings"
 msgstr ""
 
 # d47f13aa76114b248340dce26de9ea0f
 # e5447271025c4cfcad5c5fd11395fe56
 # bd79aa9353ab46788aa5d6051feeaa05
-#: ../source/config.rst:1067 ../source/config.rst:1428
-#: ../source/config.rst:1820
+#: ../source/config.rst:1051 ../source/config.rst:1420
+#: ../source/config.rst:1819
 msgid "1"
 msgstr ""
 
-#: ../source/config.rst:1069
+#: ../source/config.rst:1053
 #, fuzzy
 msgid ""
 "If you have more than one server configured, you can set :config:option:`"
@@ -3654,7 +3608,7 @@ msgstr ""
 "diesem zu verbinden, wenn phpMyAdmin gestartet wird, oder setzen Sie auf 0 "
 "um eine List von Servern zu bekommen ohne einzuloggen."
 
-#: ../source/config.rst:1074
+#: ../source/config.rst:1058
 #, fuzzy
 msgid ""
 "If you have only one server configured, :config:option:`"
@@ -3663,7 +3617,7 @@ msgstr ""
 "Falls Sie genau einen Server konfiguriert haben, MUSS <tt>"
 "$cfg['ServerDefault']</tt> auf diesen gesetzt werden."
 
-#: ../source/config.rst:1082
+#: ../source/config.rst:1066
 msgid ""
 "Enables check for latest versions using javascript on main phpMyAdmin page."
 msgstr ""
@@ -3671,20 +3625,20 @@ msgstr ""
 "installiert ist."
 
 # 6775d10eef324b82a91fa123c3ddb589
-#: ../source/config.rst:1087
+#: ../source/config.rst:1071
 msgid "This setting can be adjusted by your vendor."
 msgstr ""
 
 # 1dba45846ceb4179b1ee5fcf656bc2aa
 # 4f0aa7e86bf14818b1e3d62e74e79974
 # e57cd5b815d1448c8621ac46b776c365
-#: ../source/config.rst:1092 ../source/config.rst:1103
-#: ../source/config.rst:1113
+#: ../source/config.rst:1076 ../source/config.rst:1087
+#: ../source/config.rst:1097
 msgid "\"\""
 msgstr ""
 
 # 36515abed31e4ce68d993b8b7dfbcbb6
-#: ../source/config.rst:1094
+#: ../source/config.rst:1078
 msgid ""
 "The url of the proxy to be used when phpmyadmin needs to access the outside "
 "intenet such as when retrieving the latest version info or submitting error "
@@ -3693,7 +3647,7 @@ msgid ""
 msgstr ""
 
 # a0943c912abc4a62ab4f73b1f97b040a
-#: ../source/config.rst:1105
+#: ../source/config.rst:1089
 msgid ""
 "The username for authenticating with the proxy. By default, no "
 "authentication is performed. If a username is supplied, Basic Authentication "
@@ -3705,11 +3659,11 @@ msgstr ""
 "Authentifizierung nicht unterstützt."
 
 # 57bac62ff66942f79396dc8130009069
-#: ../source/config.rst:1115
+#: ../source/config.rst:1099
 msgid "The password for authenticating with the proxy."
 msgstr ""
 
-#: ../source/config.rst:1122
+#: ../source/config.rst:1106
 #, fuzzy
 msgid ""
 "The maximum number of database names to be displayed in the main panel's "
@@ -3720,11 +3674,11 @@ msgstr ""
 
 # bf651107d9e74782bc20fe6936bf16ed
 # 0fbe44ca307a4f92beb8adaa7341b89d
-#: ../source/config.rst:1128 ../source/config.rst:1391
+#: ../source/config.rst:1112 ../source/config.rst:1375
 msgid "250"
 msgstr ""
 
-#: ../source/config.rst:1130
+#: ../source/config.rst:1114
 msgid ""
 "The maximum number of table names to be displayed in the main panel's list "
 "(except on the Export page). This limit is also enforced in the navigation "
@@ -3734,7 +3688,7 @@ msgstr ""
 "angezeigt werden (außer auf der Export-Seite). Diese Grenze wird auch auf "
 "den Navigationsbereich im Light-Modus angewandt."
 
-#: ../source/config.rst:1139
+#: ../source/config.rst:1123
 msgid ""
 "Whether or not to show hints (for example, hints when hovering over table "
 "headers)."
@@ -3744,11 +3698,11 @@ msgstr ""
 
 # 9f538731a50b46c982188a58827cbc4c
 # 05dadaeed09d4a98bce97608c0b7fb57
-#: ../source/config.rst:1145 ../source/config.rst:2027
+#: ../source/config.rst:1129 ../source/config.rst:2026
 msgid "1000"
 msgstr ""
 
-#: ../source/config.rst:1147
+#: ../source/config.rst:1131
 #, fuzzy
 msgid ""
 "The maximum number of characters when a :term:`SQL` query is displayed. The "
@@ -3765,7 +3719,7 @@ msgstr ""
 "1000 Zeigen sind. Außerdem wird, wenn die Abfrage das Limit übersteigt, "
 "diese nicht im Verlauf gespeichert."
 
-#: ../source/config.rst:1158
+#: ../source/config.rst:1142
 #, fuzzy
 msgid ""
 "Whether `persistent connections <http://php.net/manual/en/features ."
@@ -3776,7 +3730,7 @@ msgstr ""
 "\">persistente Verbindungen</a> benutzt werden sollen oder nicht. "
 "Funktioniert mit folgenden Erweiterungen:"
 
-#: ../source/config.rst:1162
+#: ../source/config.rst:1146
 #, fuzzy
 msgid ""
 "mysql (`mysql\\_pconnect <http://php.net/manual/en/function.mysql- pconnect."
@@ -3785,7 +3739,7 @@ msgstr ""
 "mysql (<a href=\"http://php.net/manual/en/function.mysql-pconnect.php"
 "\">mysql_pconnect</a>),"
 
-#: ../source/config.rst:1164
+#: ../source/config.rst:1148
 #, fuzzy
 msgid ""
 "mysqli (requires PHP 5.3.0 or newer, `more information <http://php.net/"
@@ -3794,31 +3748,31 @@ msgstr ""
 "mysqli (benötigt PHP 5.3.0 oder neuer, <a href=\"http://php.net/manual/en/"
 "mysqli.persistconns.php\">mehr Informationen</a>)."
 
-#: ../source/config.rst:1172
+#: ../source/config.rst:1156
 #, fuzzy
 msgid "Whether to force using https while accessing phpMyAdmin."
 msgstr "Erzwinge die Benutzung von https für phpMyAdmin."
 
 # 3fc28a19dc7b4437bd8a89e570278eba
-#: ../source/config.rst:1176
+#: ../source/config.rst:1160
 msgid ""
 "In some setups (like separate SSL proxy or load balancer) you might have to "
 "set :config:option:`$cfg['PmaAbsoluteUri']` for correct redirection."
 msgstr ""
 
-#: ../source/config.rst:1182 ../source/config.rst:1321
-#: ../source/config.rst:1334
+#: ../source/config.rst:1166 ../source/config.rst:1305
+#: ../source/config.rst:1318
 #, fuzzy
 #| msgid "$cfg['ExecTimeLimit'] integer [number of seconds]"
 msgid "integer [number of seconds]"
 msgstr "$cfg['ExecTimeLimit'] integer [number of seconds]"
 
 # fd9f5445a67a47cb82ede4e979ab6493
-#: ../source/config.rst:1183
+#: ../source/config.rst:1167
 msgid "300"
 msgstr ""
 
-#: ../source/config.rst:1185
+#: ../source/config.rst:1169
 #, fuzzy
 msgid ""
 "Set the number of seconds a script is allowed to run. If seconds is set to "
@@ -3829,7 +3783,7 @@ msgstr ""
 "exportiert werden und in der Synchronisationsfunktion, hat aber keine "
 "Auswirkung wenn PHP im sicheren Modus ausgeführt wird."
 
-#: ../source/config.rst:1195
+#: ../source/config.rst:1179
 #, fuzzy
 msgid ""
 "Path for storing session data (`session\\_save\\_path PHP parameter <http://"
@@ -3838,17 +3792,17 @@ msgstr ""
 "Pfad für die Speicherung von Sitzungsdaten (<a href=\"http://php.net/"
 "session_save_path\">session_save_path PHP Parameter</a>)."
 
-#: ../source/config.rst:1200
+#: ../source/config.rst:1184
 #, fuzzy
 msgid "string [number of bytes]"
 msgstr "$cfg['MemoryLimit'] string [in Bytes]"
 
 # 21e4d0c727904abe893cabe0b5a56e47
-#: ../source/config.rst:1201
+#: ../source/config.rst:1185
 msgid "``'-1'``"
 msgstr ""
 
-#: ../source/config.rst:1203
+#: ../source/config.rst:1187
 #, fuzzy
 #| msgid ""
 #| "Set the number of seconds a script is allowed to run. If seconds is set "
@@ -3861,7 +3815,7 @@ msgstr ""
 "darf. Wenn die Sekunden auf Null gesetzt werden, wird keine Zeitschranke "
 "benutzt."
 
-#: ../source/config.rst:1206
+#: ../source/config.rst:1190
 msgid ""
 "This setting is used while importing/exporting dump files and at some other "
 "places in phpMyAdmin so you definitely don't want to put here a too low "
@@ -3872,7 +3826,7 @@ msgstr ""
 "keinesfalls zu klein  wählen sollten. Wenn PHP im Sicherheitsmodus läuft hat "
 "diese Einstellung keine Auswirkung."
 
-#: ../source/config.rst:1210
+#: ../source/config.rst:1194
 #, fuzzy
 msgid ""
 "You can also use any string as in :file:`php.ini`, eg. '16M'. Ensure you "
@@ -3881,7 +3835,7 @@ msgstr ""
 "Sie können auch Strings wie in php.ini benützen, z.B. '16M'. Vergessen Sie "
 "nicht auf die Endung (16 bedeutet 16 Byte!)"
 
-#: ../source/config.rst:1218
+#: ../source/config.rst:1202
 msgid ""
 "Mark used tables and make it possible to show databases with locked tables "
 "(since MySQL 3.23.30)."
@@ -3889,7 +3843,7 @@ msgstr ""
 "Benutzte Tabellen markieren und die Anzeige von Datenbanken mit gesperrten "
 "Tabellen ermöglichen (seit MySQL 3.23.30)."
 
-#: ../source/config.rst:1226
+#: ../source/config.rst:1210
 #, fuzzy
 msgid ""
 "Defines whether :term:`SQL` queries generated by phpMyAdmin should be "
@@ -3898,7 +3852,7 @@ msgstr ""
 "Definiert ob die von phpMyAdmin generierten <abbr title=\"structured query "
 "language\">SQL</abbr> Abfragen angezeigt werden sollen oder nicht."
 
-#: ../source/config.rst:1234
+#: ../source/config.rst:1218
 #, fuzzy
 msgid ""
 "Defines whether the :term:`SQL` query box should be kept displayed after its "
@@ -3908,7 +3862,7 @@ msgstr ""
 "Abfragebox nach dem Absenden weiter angezeigt werden soll."
 
 # 0195668737a945d59046bf053345bc21
-#: ../source/config.rst:1242
+#: ../source/config.rst:1226
 msgid ""
 "Defines whether to use a Javascript code editor for SQL query boxes. "
 "CodeMirror provides syntax highlighting and line numbers.  However, middle-"
@@ -3916,7 +3870,7 @@ msgid ""
 "(such as Ubuntu) is not supported by all browsers."
 msgstr ""
 
-#: ../source/config.rst:1252
+#: ../source/config.rst:1236
 #, fuzzy
 msgid ""
 "Defines whether normal users (non-administrator) are allowed to delete their "
@@ -3930,7 +3884,7 @@ msgstr ""
 "mydatabase&quot; wird zurückgewiesen. Das ist für <abbr title=\"Internet "
 "service provider\">ISP</abbr>s mit vielen Kunden praktisch."
 
-#: ../source/config.rst:1259
+#: ../source/config.rst:1243
 #, fuzzy
 msgid ""
 "This limitation of :term:`SQL` queries is not as strict as when using MySQL "
@@ -3945,7 +3899,7 @@ msgstr ""
 "Wahl als Hilfe angesehen werden, um versehentliches Löschen zu verhindern, "
 "anstatt einer strengen Rechte-Einschränkung."
 
-#: ../source/config.rst:1270
+#: ../source/config.rst:1254
 #, fuzzy
 msgid ""
 "Whether a warning (\"Are your really sure...\") should be displayed when "
@@ -3954,13 +3908,13 @@ msgstr ""
 "Ob eine Warnung (&quot;Sind Sie sicher, dass...&quot;) angezeigt werden soll "
 "wenn Sie dabei sind Daten zu verlieren."
 
-#: ../source/config.rst:1278
+#: ../source/config.rst:1262
 msgid "Define whether the \"search string inside database\" is enabled or not."
 msgstr ""
 "Definiert ob \"Suche String innerhalb der Datenbank\" aktiviert ist oder "
 "nicht."
 
-#: ../source/config.rst:1285
+#: ../source/config.rst:1269
 msgid ""
 "Define whether phpMyAdmin will continue executing a multi-query statement if "
 "one of the queries fails. Default is to abort execution."
@@ -3969,12 +3923,12 @@ msgstr ""
 "fortsetzt, wenn eine von ihnen fehlschlägt. Standardwert ist der Abbruch der "
 "Ausführung."
 
-#: ../source/config.rst:1289
+#: ../source/config.rst:1273
 #, fuzzy
 msgid "Cookie authentication options"
 msgstr "'Cookie' Authentifizierungsmethode"
 
-#: ../source/config.rst:1296
+#: ../source/config.rst:1280
 #, fuzzy
 msgid ""
 "The \"cookie\" auth\\_type uses blowfish algorithm to encrypt the password. "
@@ -3988,7 +3942,7 @@ msgstr ""
 "Blowfish-Algorithmus verwendet: Sie werden also niemals danach gefragt. Es "
 "gibt keine maximale Länge für diesen Geheimcode."
 
-#: ../source/config.rst:1302
+#: ../source/config.rst:1286
 msgid ""
 "Since version 3.1.0 phpMyAdmin can generate this on the fly, but it makes a "
 "bit weaker security as this generated secret is stored in session and "
@@ -3999,7 +3953,7 @@ msgstr ""
 "Session gespeichert wird und macht es außerdem unmöglich, den Benutzernamen "
 "an Hand des Cookies zu behalten."
 
-#: ../source/config.rst:1313
+#: ../source/config.rst:1297
 msgid ""
 "Define whether the previous login should be recalled or not in cookie "
 "authentication mode."
@@ -4007,7 +3961,7 @@ msgstr ""
 "Definiert ob im Cookie Authentifizierungsmodus der vorherige Login wieder "
 "aufgerufen werden soll oder nicht."
 
-#: ../source/config.rst:1316
+#: ../source/config.rst:1300
 #, fuzzy
 msgid ""
 "This is automatically disabled if you do not have configured :config:option:`"
@@ -4017,11 +3971,11 @@ msgstr ""
 "\">$cfg['blowfish_secret']</a></code> nicht konfiguriert haben."
 
 # 5489c0bb4fc54b10849fa4c2ffbc12d9
-#: ../source/config.rst:1322
+#: ../source/config.rst:1306
 msgid "1440"
 msgstr ""
 
-#: ../source/config.rst:1324
+#: ../source/config.rst:1308
 #, fuzzy
 msgid ""
 "Define how long a login cookie is valid. Please note that php configuration "
@@ -4039,7 +3993,7 @@ msgstr ""
 "<code>session.gc_maxlifetime</code> nicht geringer als "
 "$cfg['LoginCookieValidity'] zu setzen."
 
-#: ../source/config.rst:1337
+#: ../source/config.rst:1321
 #, fuzzy
 msgid ""
 "Define how long login cookie should be stored in browser. Default 0 means "
@@ -4051,7 +4005,7 @@ msgstr ""
 "Sitzung gespeichert wird und beim Schließen des Browserfensters sofort "
 "gelöscht wird. Dies wird für nicht vertrauenswürdige Umgebungen empfohlen."
 
-#: ../source/config.rst:1346
+#: ../source/config.rst:1330
 msgid ""
 "If enabled (default), logout deletes cookies for all servers, otherwise only "
 "for current one. Setting this to false makes it easy to forget to log out "
@@ -4062,7 +4016,7 @@ msgstr ""
 "um zu Vergessen sich aus einem andern Server auszuloggen, falls Sie mehrere "
 "benutzen."
 
-#: ../source/config.rst:1356
+#: ../source/config.rst:1340
 #, fuzzy
 msgid ""
 "If enabled, allows you to log in to arbitrary servers using cookie "
@@ -4072,7 +4026,7 @@ msgstr ""
 "einloggen und erlaubt die Spezifizierung von Servern Ihrer Wahl im "
 "Synchronisationsdialog."
 
-#: ../source/config.rst:1361
+#: ../source/config.rst:1345
 #, fuzzy
 msgid ""
 "Please use this carefully, as this may allow users access to MySQL servers "
@@ -4084,7 +4038,7 @@ msgstr ""
 "kann."
 
 # 3a47a66050ef4f11bc1851eb92e7dcb6
-#: ../source/config.rst:1370
+#: ../source/config.rst:1354
 msgid ""
 "The public key for the reCaptcha service that can be obtain from http://www."
 "google.com/recaptcha."
@@ -4092,30 +4046,42 @@ msgstr ""
 
 # 56d53923eecc4db183e1a55a5555fa16
 # 1f7b6293fc8f4d219d954562565436d2
-#: ../source/config.rst:1373 ../source/config.rst:1383
+#: ../source/config.rst:1357 ../source/config.rst:1367
 msgid "reCaptcha will be then used in :ref:`cookie`."
 msgstr ""
 
 # f69e7cb1e51149cbbda7b92d2b828e46
-#: ../source/config.rst:1380
+#: ../source/config.rst:1364
 msgid ""
 "The private key for the reCaptcha service that can be obtain from http://www."
 "google.com/recaptcha."
 msgstr ""
 
 # 79371aa48c444de8b1e78677eafcd5ab
-#: ../source/config.rst:1386
+#: ../source/config.rst:1370
 msgid "Navigation panel setup"
 msgstr ""
 
-#: ../source/config.rst:1393
+#: ../source/config.rst:1377
 #, fuzzy
 msgid ""
-"The number of items that can be displayed on each page of the navigation "
-"tree."
+"The number of first level databases that can be displayed on each page of "
+"navigation tree."
 msgstr "Anzahl der Joins, bei denen die erste Tabelle gescannt wurde."
 
-#: ../source/config.rst:1401
+# 7cc0e44aabb3434b9fa95ef5813bd45c
+#: ../source/config.rst:1383 ../source/config.rst:2207
+msgid "50"
+msgstr ""
+
+#: ../source/config.rst:1385
+#, fuzzy
+msgid ""
+"The number of items (tables, columns, indexes) that can be displayed on each "
+"page of the navigation tree."
+msgstr "Anzahl der Joins, bei denen die erste Tabelle gescannt wurde."
+
+#: ../source/config.rst:1393
 #, fuzzy
 msgid ""
 "Defines whether to group the databases based on a common prefix in their "
@@ -4126,11 +4092,11 @@ msgstr ""
 "\"configrule\">$cfg['LeftFrameDBSeparator']</a>."
 
 # 433e78035ac9400c926c2601bc898844
-#: ../source/config.rst:1407
+#: ../source/config.rst:1399
 msgid "``'_'``"
 msgstr ""
 
-#: ../source/config.rst:1409
+#: ../source/config.rst:1401
 msgid ""
 "The string used to separate the parts of the database name when showing them "
 "in a tree. Alternatively you can specify more strings in an array and all of "
@@ -4141,11 +4107,11 @@ msgstr ""
 "Array spezifizieren, die alle als Trennzeichen benutzt weden."
 
 # 045c65882c6541479101978ff96d8610
-#: ../source/config.rst:1416
+#: ../source/config.rst:1408
 msgid "``'__'``"
 msgstr ""
 
-#: ../source/config.rst:1418
+#: ../source/config.rst:1410
 #, fuzzy
 msgid ""
 "Defines a string to be used to nest table spaces. This means if you have "
@@ -4163,7 +4129,7 @@ msgstr ""
 "Trennzeichen nicht am Anfang oder Ende eines Tabellennamens oder mehrfach "
 "ohne ein andere Zeichen dazwischen verwenden."
 
-#: ../source/config.rst:1430
+#: ../source/config.rst:1422
 msgid ""
 "Defines how many sublevels should be displayed when splitting up tables by "
 "the above separator."
@@ -4172,11 +4138,11 @@ msgstr ""
 "durch das Trennzeichen oben gespalten werden."
 
 # a8a6c4c29ffd4e42804e8fea5f388466
-#: ../source/config.rst:1436
+#: ../source/config.rst:1428
 msgid "10"
 msgstr ""
 
-#: ../source/config.rst:1438
+#: ../source/config.rst:1430
 #, fuzzy
 msgid ""
 "The maximum number of recently used tables shown in the navigation panel. "
@@ -4186,7 +4152,7 @@ msgstr ""
 "angezeigt werden sollen. Auf 0 (Null) setzen um die Auflistung der zuletzt "
 "benutzten Tabellen zu deaktivieren."
 
-#: ../source/config.rst:1446
+#: ../source/config.rst:1438
 #, fuzzy
 msgid ""
 "Defines whether or not to display the phpMyAdmin logo at the top of the "
@@ -4197,11 +4163,11 @@ msgstr ""
 
 # 513c470777e34e7ca4060e93a6c5e779
 # 701b699f4d1746628ef564da0648bd19
-#: ../source/config.rst:1452 ../source/config.rst:1829
+#: ../source/config.rst:1444 ../source/config.rst:1828
 msgid "``'index.php'``"
 msgstr ""
 
-#: ../source/config.rst:1454
+#: ../source/config.rst:1446
 #, fuzzy
 msgid ""
 "Enter :term:`URL` where logo in the navigation panel will point to. For use "
@@ -4212,11 +4178,11 @@ msgstr ""
 "dieses ändern. Der Standardwert ist <code>main.php</code>."
 
 # 12d2da21424c4c708396c2d30cdf0e34
-#: ../source/config.rst:1461
+#: ../source/config.rst:1453
 msgid "``'main'``"
 msgstr ""
 
-#: ../source/config.rst:1463
+#: ../source/config.rst:1455
 #, fuzzy
 msgid ""
 "Whether to open the linked page in the main window (``main``) or in a new "
@@ -4228,11 +4194,11 @@ msgstr ""
 
 # 23492455a4aa4dc684371fdb3afba80e
 # f4172d331b414be09c17032c3c574189
-#: ../source/config.rst:1470 ../source/config.rst:1481
+#: ../source/config.rst:1462 ../source/config.rst:1473
 msgid "30"
 msgstr ""
 
-#: ../source/config.rst:1472
+#: ../source/config.rst:1464
 #, fuzzy
 msgid ""
 "Defines the minimum number of items (tables, views, routines and events) to "
@@ -4246,12 +4212,12 @@ msgstr ""
 
 # e9c76d1e1849402ea55ee54eb7543652
 # 3268cfd8e139479c8f5cefc574a7e519
-#: ../source/config.rst:1476 ../source/config.rst:1486
+#: ../source/config.rst:1468 ../source/config.rst:1478
 msgid ""
 "To disable the filter completely some high number can be used (e.g. 9999)"
 msgstr ""
 
-#: ../source/config.rst:1483
+#: ../source/config.rst:1475
 #, fuzzy
 msgid ""
 "Defines the minimum number of databases to display a JavaScript filter box "
@@ -4262,7 +4228,7 @@ msgstr ""
 "<code>30</code>. Um den Filter ganz zu deaktivieren kann eine hohe Zahl "
 "benutzt werden (z.B. 9999) "
 
-#: ../source/config.rst:1494
+#: ../source/config.rst:1486
 #, fuzzy
 msgid ""
 "Defines whether or not to display a server choice at the top of the "
@@ -4271,7 +4237,7 @@ msgstr ""
 "Definiert ob eine Auswahl an Servern oben im linken Frame angezeigt werden "
 "soll oder nicht. Standard ist FALSE."
 
-#: ../source/config.rst:1502
+#: ../source/config.rst:1494
 #, fuzzy
 msgid ""
 "Defines whether to display this server choice as links instead of in a drop-"
@@ -4281,11 +4247,11 @@ msgstr ""
 "Drop-down Liste angezeigt wird. Standard ist FALSE (Drop-down)."
 
 # 9551a5c3e0d44ee38978dd2db20f724e
-#: ../source/config.rst:1508
+#: ../source/config.rst:1500
 msgid "``'tbl_structure.php'``"
 msgstr ""
 
-#: ../source/config.rst:1510
+#: ../source/config.rst:1502
 #, fuzzy
 msgid ""
 "Defines the tab displayed by default when clicking the small icon next to "
@@ -4299,40 +4265,49 @@ msgstr ""
 
 # 1d355556f11e4ee2a088eeaeb65ad599
 # 6d3b2cf1cf3e4134ad3d28c11723772a
-#: ../source/config.rst:1513 ../source/config.rst:1858
+#: ../source/config.rst:1505 ../source/config.rst:1857
 msgid "``tbl_structure.php``"
 msgstr ""
 
 # 02bd932c750648d5bf39539b1a95d234
 # acb99e5faebb48aeb8c0e020c73ef511
-#: ../source/config.rst:1514 ../source/config.rst:1859
+#: ../source/config.rst:1506 ../source/config.rst:1858
 msgid "``tbl_sql.php``"
 msgstr ""
 
 # ab1ebdde47a0493d97ba3a3444e3c5fd
 # f72897e64f9843b2aa998ab597b80497
-#: ../source/config.rst:1515 ../source/config.rst:1860
+#: ../source/config.rst:1507 ../source/config.rst:1859
 msgid "``tbl_select.php``"
 msgstr ""
 
 # dddeb26616c548afbb60b99a94406282
 # 87070c06befb40e0aa94efaab2b1547b
-#: ../source/config.rst:1516 ../source/config.rst:1861
+#: ../source/config.rst:1508 ../source/config.rst:1860
 msgid "``tbl_change.php``"
 msgstr ""
 
 # b56b75bd16a6422db6f56759cbf86a58
 # c603a8ecd6864ff9990af8d644547890
-#: ../source/config.rst:1517 ../source/config.rst:1862
+#: ../source/config.rst:1509 ../source/config.rst:1861
 msgid "``sql.php``"
 msgstr ""
 
+#: ../source/config.rst:1516
+#, fuzzy
+msgid ""
+"Whether or not to disable the possibility of databases expansion in the "
+"navigation panel"
+msgstr ""
+"Definiert ob das phpMyAdmin Logo in oben im linken Frame angezeigt wird oder "
+"nicht. Standard ist <code>TRUE</code>."
+
 # 3eca6e2309d6436390c48ef2550230f2
-#: ../source/config.rst:1520
+#: ../source/config.rst:1519
 msgid "Main panel"
 msgstr "Hauptpanel"
 
-#: ../source/config.rst:1527
+#: ../source/config.rst:1526
 #, fuzzy
 msgid ""
 "Defines whether or not to display space usage and statistics about databases "
@@ -4342,7 +4317,7 @@ msgstr ""
 "Beachten Sie, dass Statistiken mindestens MySQL 3.23.3 benötigen und dass, "
 "bis jetzt, MySQL keine Informationen über Berkeley DB Tabellen liefert."
 
-#: ../source/config.rst:1537
+#: ../source/config.rst:1536
 #, fuzzy
 msgid ""
 "Defines whether to display detailed server information on main page. You can "
@@ -4354,7 +4329,7 @@ msgstr ""
 "<code><a href=\"#cfg_Servers_verbose\">$cfg['Servers'][$i]['verbose']</a></"
 "code> verstecken."
 
-#: ../source/config.rst:1556
+#: ../source/config.rst:1555
 #, fuzzy
 msgid ""
 "Defines whether to display the :guilabel:`PHP information` and :guilabel:"
@@ -4367,7 +4342,7 @@ msgstr ""
 "Hauptbereich (rechts) angezeigt werden sollen oder nicht. Diese Einstellung "
 "prüft keine direkt eingetragenen MySQL Answeisungen."
 
-#: ../source/config.rst:1561
+#: ../source/config.rst:1560
 #, fuzzy
 msgid ""
 "Please note that to block the usage of ``phpinfo()`` in scripts, you have to "
@@ -4376,7 +4351,7 @@ msgstr ""
 "Bitte beachten Sie, dass Sie es in Ihrere <em>php.ini</em> eintragen müssen, "
 "um phpinfo() in Scripts zu blockieren:"
 
-#: ../source/config.rst:1568
+#: ../source/config.rst:1567
 #, fuzzy
 msgid ""
 "Also note that enabling the :guilabel:`Change password` link has no effect "
@@ -4388,32 +4363,32 @@ msgstr ""
 "weil das Passwort im Code der Konfigurationsdatei eingetragen ist, können "
 "Endbenutzer Ihre Passwörter nicht ändern."
 
-#: ../source/config.rst:1574
+#: ../source/config.rst:1573
 msgid "Database structure"
 msgstr "Datenbank-Struktur"
 
 # 23c670b09c35465fb0c7edc6e6324667
-#: ../source/config.rst:1581
+#: ../source/config.rst:1580
 msgid ""
 "Defines whether the database structure page (tables list) has a \"Creation\" "
 "column that displays when each table was created."
 msgstr ""
 
 # df823ee707094585b808bc347e7f9df1
-#: ../source/config.rst:1589
+#: ../source/config.rst:1588
 msgid ""
 "Defines whether the database structure page (tables list) has a \"Last update"
 "\" column that displays when each table was last updated."
 msgstr ""
 
 # acc93ea959fa4d179ee3b98bae18611b
-#: ../source/config.rst:1597
+#: ../source/config.rst:1596
 msgid ""
 "Defines whether the database structure page (tables list) has a \"Last check"
 "\" column that displays when each table was last checked."
 msgstr ""
 
-#: ../source/config.rst:1605
+#: ../source/config.rst:1604
 #, fuzzy
 msgid ""
 "Defines whether the table structure actions are hidden under a \"More\" drop-"
@@ -4421,23 +4396,23 @@ msgid ""
 msgstr "Sollen die Tabellenstrukturaktionen verborgen werden"
 
 # f273952d8c88417bb78d2c02b2e5d0c0
-#: ../source/config.rst:1609
+#: ../source/config.rst:1608
 msgid "Browse mode"
 msgstr "Anzeigemodus"
 
 # 158cfee28e904cfa9382df472781f8c0
-#: ../source/config.rst:1614
+#: ../source/config.rst:1613
 msgid "``'icons'``"
 msgstr ""
 
 # c89d88c2164949769d60c494561bd199
-#: ../source/config.rst:1616
+#: ../source/config.rst:1615
 msgid ""
 "Defines whether the table navigation links contain ``'icons'``, ``'text'`` "
 "or ``'both'``."
 msgstr ""
 
-#: ../source/config.rst:1624
+#: ../source/config.rst:1623
 #, fuzzy
 msgid ""
 "Defines whether a user should be displayed a \"Show all\" button in browse "
@@ -4452,11 +4427,11 @@ msgstr ""
 
 # 6cac5bf37cac4e05b7abca23d05c3d3b
 # a60e9582205e47b2b1efbc3952710550
-#: ../source/config.rst:1631 ../source/config.rst:2529
+#: ../source/config.rst:1630 ../source/config.rst:2520
 msgid "25"
 msgstr ""
 
-#: ../source/config.rst:1633
+#: ../source/config.rst:1632
 #, fuzzy
 msgid ""
 "Number of rows displayed when browsing a result set and no LIMIT clause is "
@@ -4468,11 +4443,11 @@ msgstr ""
 "angezeigt."
 
 # 0f736edd8b1c4ba892eba0351364ce5f
-#: ../source/config.rst:1640
+#: ../source/config.rst:1639
 msgid "``'SMART'``"
 msgstr ""
 
-#: ../source/config.rst:1642
+#: ../source/config.rst:1641
 #, fuzzy
 msgid ""
 "Defines whether columns are displayed in ascending (``ASC``) order, in "
@@ -4486,7 +4461,7 @@ msgstr ""
 "Spaltentypen TIME, DATE, DATETIME und TIMESTAMP, aufsteigende Reihnfolge für "
 "andere Typen."
 
-#: ../source/config.rst:1652
+#: ../source/config.rst:1651
 #, fuzzy
 msgid ""
 "Defines whether the \"Show binary contents as HEX\" browse option is ticked "
@@ -4496,18 +4471,18 @@ msgstr ""
 "standardmäßig angekreuzt ist."
 
 # 34596c12e3344f2ea5b7903ad635600e
-#: ../source/config.rst:1658
+#: ../source/config.rst:1657
 msgid "``'double-click'``"
 msgstr ""
 
 # 885565bb1de0457193deec1f05763167
-#: ../source/config.rst:1660
+#: ../source/config.rst:1659
 msgid ""
 "Defines which action (``double-click`` or ``click``) triggers grid editing. "
 "Can be deactived with the ``disabled`` value."
 msgstr ""
 
-#: ../source/config.rst:1668
+#: ../source/config.rst:1667
 #, fuzzy
 msgid ""
 "Defines whether or not to save all edited cells at once for grid editing."
@@ -4516,22 +4491,22 @@ msgstr ""
 "durchsuchen einer Tabelle"
 
 # 13af5c973a4c481a9bbf43208e5d98fc
-#: ../source/config.rst:1672
+#: ../source/config.rst:1671
 msgid "Editing mode"
 msgstr ""
 
-#: ../source/config.rst:1676
+#: ../source/config.rst:1675
 #, fuzzy
 #| msgid "$cfg['ProtectBinary'] boolean or string"
 msgid "boolean or string"
 msgstr "$cfg['ProtectBinary'] Boolescher Wert oder String"
 
 # e9883ebdd95447ed8f8e131ea61d9b7e
-#: ../source/config.rst:1677
+#: ../source/config.rst:1676
 msgid "``'blob'``"
 msgstr ""
 
-#: ../source/config.rst:1679
+#: ../source/config.rst:1678
 #, fuzzy
 msgid ""
 "Defines whether ``BLOB`` or ``BINARY`` columns are protected from editing "
@@ -4541,19 +4516,19 @@ msgstr ""
 "Bearbeitung geschützt sind beim Ansehen des Tabelleninhalts. Gültige Werte "
 "sind:"
 
-#: ../source/config.rst:1682
+#: ../source/config.rst:1681
 #, fuzzy
 msgid "``false`` to allow editing of all columns;"
 msgstr "<code>FALSE</code> um Bearbeiten aller Spalten zu erlauben;"
 
-#: ../source/config.rst:1683
+#: ../source/config.rst:1682
 #, fuzzy
 msgid "``'blob'`` to allow editing of all columns except ``BLOBS``;"
 msgstr ""
 "<code>'blob'</code> um die Bearbeitung aller Spalten außer <code>BLOBS</"
 "code> zu erlauben;"
 
-#: ../source/config.rst:1684
+#: ../source/config.rst:1683
 #, fuzzy
 msgid ""
 "``'noblob'`` to disallow editing of all columns except ``BLOBS`` (the "
@@ -4562,14 +4537,14 @@ msgstr ""
 "<code>'blob'</code> um die Bearbeitung aller Spalten außer <code>BLOBS</"
 "code> zu erlauben;"
 
-#: ../source/config.rst:1686
+#: ../source/config.rst:1685
 #, fuzzy
 msgid "``'all'`` to disallow editing of all ``BINARY`` or ``BLOB`` columns."
 msgstr ""
 "<code>'all'</code> um die Bearbeitung aller <code>BINARY</code> oder "
 "<code>BLOB</code> Spalten zu verhindern."
 
-#: ../source/config.rst:1693
+#: ../source/config.rst:1692
 msgid ""
 "Defines whether or not MySQL functions fields should be initially displayed "
 "in edit/insert mode. Since version 2.10, the user can toggle this setting "
@@ -4579,7 +4554,7 @@ msgstr ""
 "an angezeigt werden sollen. Seit Version 2.10, kann der Benutzer diese "
 "Einstellung aus dem Interface umschalten."
 
-#: ../source/config.rst:1702
+#: ../source/config.rst:1701
 msgid ""
 "Defines whether or not type fields should be initially displayed in edit/"
 "insert mode. The user can toggle this setting from the interface."
@@ -4590,17 +4565,17 @@ msgstr ""
 
 # efcf84e82b614a8582662b7d2edb990e
 # a133868232a548328530859477089222
-#: ../source/config.rst:1708 ../source/config.rst:2322
+#: ../source/config.rst:1707 ../source/config.rst:2322
 msgid "2"
 msgstr ""
 
-#: ../source/config.rst:1710
+#: ../source/config.rst:1709
 msgid "Defines the maximum number of concurrent entries for the Insert page."
 msgstr ""
 "Definiert die maximale Anzahl an gleichzeitigen Einträgen auf der Einfügen-"
 "Seite."
 
-#: ../source/config.rst:1717
+#: ../source/config.rst:1716
 #, fuzzy
 msgid ""
 "If there are fewer items than this in the set of foreign keys, then a drop-"
@@ -4612,11 +4587,11 @@ msgstr ""
 "\"configrule\">$cfg['ForeignKeyDropdownOrder']</a> Einstellung angezeigt."
 
 # 5307e9a7873140beb4d3426950b0d93f
-#: ../source/config.rst:1724
+#: ../source/config.rst:1723
 msgid "array('content-id', 'id-content')"
 msgstr ""
 
-#: ../source/config.rst:1726
+#: ../source/config.rst:1725
 #, fuzzy
 msgid ""
 "For the foreign key drop-down fields, there are several methods of display, "
@@ -4628,11 +4603,11 @@ msgstr ""
 "Inhalte des Arrays sollten einer oder beide der folgenden Strings sein:"
 
 # 0ae5a43a51034ef1b31efbf3db26f76c
-#: ../source/config.rst:1732
+#: ../source/config.rst:1731
 msgid "Export and import settings"
 msgstr ""
 
-#: ../source/config.rst:1749
+#: ../source/config.rst:1748
 #, fuzzy
 msgid ""
 "Defines whether to allow the use of zip/GZip/BZip2 compression when creating "
@@ -4641,7 +4616,7 @@ msgstr ""
 "Definiert, ob die Benutzung von zip/GZip/BZip2 Kompression beim Erstellen "
 "von Auszugsdateien erlaubt ist."
 
-#: ../source/config.rst:1757
+#: ../source/config.rst:1756
 msgid ""
 "Defines whether to allow on the fly compression for GZip/BZip2 compressed "
 "exports. This doesn't affect smaller dumps and allows users to create larger "
@@ -4661,13 +4636,12 @@ msgstr ""
 # c73f77e5ac23486f8727f3582698498a
 # 398bfc508b504e5eafd121006ff24725
 # c79a2152127149b29cc119cc9952a55c
-#: ../source/config.rst:1766 ../source/config.rst:1790
-#: ../source/config.rst:2718 ../source/config.rst:2755
-#: ../source/config.rst:2773
+#: ../source/config.rst:1765 ../source/config.rst:1789
+#: ../source/config.rst:2710 ../source/config.rst:2728
 msgid "array(...)"
 msgstr ""
 
-#: ../source/config.rst:1768
+#: ../source/config.rst:1767
 msgid ""
 "In this array are defined default parameters for export, names of items are "
 "similar to texts seen on export page, so you can easily identify what they "
@@ -4675,33 +4649,33 @@ msgid ""
 msgstr ""
 
 # 2185e9d466b34c3381c17dbb2b795f05
-#: ../source/config.rst:1775
+#: ../source/config.rst:1774
 msgid "``'quick'``"
 msgstr ""
 
-#: ../source/config.rst:1777
+#: ../source/config.rst:1776
 msgid ""
 "Defines how the export form is displayed when it loads. Valid values are:"
 msgstr ""
 
-#: ../source/config.rst:1780
+#: ../source/config.rst:1779
 #, fuzzy
 msgid "``quick`` to display the minimum number of options to configure"
 msgstr "Schnell – Zeige nur die minimalen Konfigurationsoptionen"
 
-#: ../source/config.rst:1781
+#: ../source/config.rst:1780
 #, fuzzy
 msgid "``custom`` to display every available option to configure"
 msgstr "Angepasst – Zeige alle möglichen Konfigurationsoptionen"
 
 # eb84b6874b6b47dd9c43b64ce85075b3
-#: ../source/config.rst:1782
+#: ../source/config.rst:1781
 msgid ""
 "``custom-no-form`` same as ``custom`` but does not display the option of "
 "using quick export"
 msgstr ""
 
-#: ../source/config.rst:1792
+#: ../source/config.rst:1791
 msgid ""
 "In this array are defined default parameters for import, names of items are "
 "similar to texts seen on import page, so you can easily identify what they "
@@ -4709,26 +4683,26 @@ msgid ""
 msgstr ""
 
 # 6a8d6d895c3545fea7612e02c8f28190
-#: ../source/config.rst:1798
+#: ../source/config.rst:1797
 msgid "Tabs display settings"
 msgstr ""
 
 # fff6ae6e3a5046079470b07995a6c60b
 # b02a80e1ff804bde8211b5e94c0e9bee
 # 594efe80af1c45138a2204c7f45b1797
-#: ../source/config.rst:1803 ../source/config.rst:1810
-#: ../source/config.rst:2801
+#: ../source/config.rst:1802 ../source/config.rst:1809
+#: ../source/config.rst:2756
 msgid "``'both'``"
 msgstr ""
 
 # a1a7ce5406174a3bad3ce4566cf0de13
-#: ../source/config.rst:1805
+#: ../source/config.rst:1804
 msgid ""
 "Defines whether the menu tabs contain ``'icons'``, ``'text'`` or ``'both'``."
 msgstr ""
 
 # d84df901978d4ee28910b85cf8933292
-#: ../source/config.rst:1812
+#: ../source/config.rst:1811
 msgid ""
 "If set to ``icons``, will display icons instead of text for db and table "
 "properties links (like :guilabel:`Browse`, :guilabel:`Select`, :guilabel:"
@@ -4737,7 +4711,7 @@ msgid ""
 msgstr ""
 
 # a3dc2eec6c2e4e9e90fcae1154c60c13
-#: ../source/config.rst:1822
+#: ../source/config.rst:1821
 msgid ""
 "How many columns will be utilized to display the tables on the database "
 "property view? When setting this to a value larger than 1, the type of the "
@@ -4745,114 +4719,114 @@ msgid ""
 msgstr ""
 
 # b0ad38257f0040bebc619eb0de116f0e
-#: ../source/config.rst:1831
+#: ../source/config.rst:1830
 msgid "Defines the tab displayed by default on server view. Possible values:"
 msgstr ""
 
 # 1acb1093f8ed423597c0639986d71625
-#: ../source/config.rst:1833
+#: ../source/config.rst:1832
 msgid "``main.php`` (recommended for multi-user setups)"
 msgstr ""
 
 # 8a301d75e7394732a98a3acc8196f66d
-#: ../source/config.rst:1834
+#: ../source/config.rst:1833
 msgid "``server_databases.php``,"
 msgstr ""
 
 # ed676a1bc224484099ac3ea0f7256107
-#: ../source/config.rst:1835
+#: ../source/config.rst:1834
 msgid "``server_status.php``"
 msgstr ""
 
 # 34b6f5360bb741f599fb042d15ef208f
-#: ../source/config.rst:1836
+#: ../source/config.rst:1835
 msgid "``server_variables.php``"
 msgstr ""
 
 # b56f5a46bc0848239357abb3a06a8f0f
-#: ../source/config.rst:1837
+#: ../source/config.rst:1836
 msgid "``server_privileges.php``"
 msgstr ""
 
 # 19ffbe41095a4f93947887357ade7c8f
-#: ../source/config.rst:1842
+#: ../source/config.rst:1841
 msgid "``'db_structure.php'``"
 msgstr ""
 
 # eac05d0e43cc45158082ecda17897fea
-#: ../source/config.rst:1844
+#: ../source/config.rst:1843
 msgid "Defines the tab displayed by default on database view. Possible values:"
 msgstr ""
 
 # f8745630a3174d3aacc40ae3a948b857
-#: ../source/config.rst:1847
+#: ../source/config.rst:1846
 msgid "``db_structure.php``"
 msgstr ""
 
 # 49fdc959f01547e1a602e3f84c3716ac
-#: ../source/config.rst:1848
+#: ../source/config.rst:1847
 msgid "``db_sql.php``"
 msgstr ""
 
 # 9ed855897d704ef7af1f5da3a13c1409
-#: ../source/config.rst:1849
+#: ../source/config.rst:1848
 msgid "``db_search.php``."
 msgstr ""
 
 # 516b6d8fbf214a85b4ff14b363fb8807
-#: ../source/config.rst:1854
+#: ../source/config.rst:1853
 msgid "``'sql.php'``"
 msgstr ""
 
 # a15c8664d8554532a4404cd0c64cdb8e
-#: ../source/config.rst:1856
+#: ../source/config.rst:1855
 msgid "Defines the tab displayed by default on table view. Possible values:"
 msgstr ""
 
 # 531423297a754e72b215542912c8c1ba
-#: ../source/config.rst:1865
+#: ../source/config.rst:1864
 msgid "PDF Options"
 msgstr ""
 
 # fd4ed10941304050b5e29c91877e9866
-#: ../source/config.rst:1870
+#: ../source/config.rst:1869
 msgid "``array('A3', 'A4', 'A5', 'letter', 'legal')``"
 msgstr ""
 
 # 692bf01b59d5467f9695b4911c3a0ca2
-#: ../source/config.rst:1872
+#: ../source/config.rst:1871
 msgid "Array of possible paper sizes for creating PDF pages."
 msgstr ""
 
 # 4f6149744e084a938276d0153e2cdbba
-#: ../source/config.rst:1874
+#: ../source/config.rst:1873
 msgid "You should never need to change this."
 msgstr ""
 
 # beadab4127a94ccf87dfa7f9585189e9
-#: ../source/config.rst:1879
+#: ../source/config.rst:1878
 msgid "``'A4'``"
 msgstr ""
 
 # 47386fd96a8e4ce8988e70b7b326bb96
-#: ../source/config.rst:1881
+#: ../source/config.rst:1880
 msgid ""
 "Default page size to use when creating PDF pages. Valid values are any "
 "listed in :config:option:`$cfg['PDFPageSizes']`."
 msgstr ""
 
-#: ../source/config.rst:1885
+#: ../source/config.rst:1884
 #, fuzzy
 msgid "Languages"
 msgstr "Sprache"
 
 # 84867b76dce94bc1b5bfd3e57afd77a9
-#: ../source/config.rst:1890
+#: ../source/config.rst:1889
 msgid "``'en'``"
 msgstr ""
 
 # a4165b7a583d427c820de83cae1e1771
-#: ../source/config.rst:1892
+#: ../source/config.rst:1891
 msgid ""
 "Defines the default language to use, if not browser-defined or user- "
 "defined. The corresponding language file needs to be in locale/*code*/LC"
@@ -4860,12 +4834,12 @@ msgid ""
 msgstr ""
 
 # 92edbf4819074033bfc3da5d488defc7
-#: ../source/config.rst:1899
+#: ../source/config.rst:1898
 msgid "``'utf8_general_ci'``"
 msgstr ""
 
 # f7369a1684004d2b84ce1d66fdca59b6
-#: ../source/config.rst:1901
+#: ../source/config.rst:1900
 msgid ""
 "Defines the default connection collation to use, if not user-defined. See "
 "the `MySQL documentation <http://dev.mysql.com/doc/mysql/en /charset-"
@@ -4874,19 +4848,19 @@ msgid ""
 msgstr ""
 
 # 2f40a4027e9a458aa031b8ad93bcd69a
-#: ../source/config.rst:1909
+#: ../source/config.rst:1908
 msgid "not set"
 msgstr ""
 
 # 61b51ef971134a82b04121566dbc63d4
-#: ../source/config.rst:1911
+#: ../source/config.rst:1910
 msgid ""
 "Force language to use. The corresponding language file needs to be in locale/"
 "*code*/LC\\_MESSAGES/phpmyadmin.mo."
 msgstr ""
 
 # 52ccab1cb85246ce843594b9ebf49fec
-#: ../source/config.rst:1919
+#: ../source/config.rst:1918
 msgid ""
 "Limit list of available languages to those matching the given regular "
 "expression. For example if you want only Czech and English, you should set "
@@ -4897,43 +4871,43 @@ msgstr ""
 # d07dc3fe07e94a8992a478775b63aa5f
 # dcaf3ffc9a154bd2b3f7520e233ececc
 # 5368d3a625d54507934731895f2d6c59
-#: ../source/config.rst:1926 ../source/config.rst:1970
-#: ../source/config.rst:2004 ../source/config.rst:2245
+#: ../source/config.rst:1925 ../source/config.rst:1969
+#: ../source/config.rst:2003 ../source/config.rst:2244
 msgid "``'auto'``"
 msgstr ""
 
-#: ../source/config.rst:1928
+#: ../source/config.rst:1927
 msgid ""
 "You can select here which functions will be used for character set "
 "conversion. Possible values are:"
 msgstr ""
 
-#: ../source/config.rst:1931
+#: ../source/config.rst:1930
 msgid ""
 "auto - automatically use available one (first is tested iconv, then recode)"
 msgstr ""
 
-#: ../source/config.rst:1933
+#: ../source/config.rst:1932
 msgid "iconv - use iconv or libiconv functions"
 msgstr ""
 
 # 6aa10b0f19b64a51ba1dc042266d6dca
-#: ../source/config.rst:1934
+#: ../source/config.rst:1933
 msgid "recode - use recode\\_string function"
 msgstr ""
 
 # 4b44aadc58114ec1ab25b30eaf3b9747
-#: ../source/config.rst:1935
+#: ../source/config.rst:1934
 msgid "mb - use mbstring extension"
 msgstr ""
 
-#: ../source/config.rst:1936
+#: ../source/config.rst:1935
 #, fuzzy
 msgid "none - disable encoding conversion"
 msgstr "Zeichensatz Umwandlung"
 
 # aee4d6b991e84fb283e86b5418fc86ee
-#: ../source/config.rst:1938
+#: ../source/config.rst:1937
 msgid ""
 "Enabled charset conversion activates a pull-down menu in the Export and "
 "Import pages, to choose the character set when exporting a file. The default "
@@ -4942,12 +4916,12 @@ msgid ""
 msgstr ""
 
 # f0fe08bc53bc463fbf7b04da1824846c
-#: ../source/config.rst:1946
+#: ../source/config.rst:1945
 msgid "``'//TRANSLIT'``"
 msgstr ""
 
 # 54ccfb62b9c8418a90e3b8f09a0d2c76
-#: ../source/config.rst:1948
+#: ../source/config.rst:1947
 msgid ""
 "Specify some parameters for iconv used in charset conversion. See `iconv "
 "documentation <http://www.gnu.org/software/libiconv/documentati on/libiconv/"
@@ -4956,12 +4930,12 @@ msgid ""
 msgstr ""
 
 # a043ecfb86cd4a49a59fa5d546796836
-#: ../source/config.rst:1957
+#: ../source/config.rst:1956
 msgid "array(..._"
 msgstr ""
 
 # 146e9b1003354c99b0c07b9badfb1113
-#: ../source/config.rst:1959
+#: ../source/config.rst:1958
 msgid ""
 "Available character sets for MySQL conversion. You can add your own (any of "
 "supported by recode/iconv) or remove these which you don't use. Character "
@@ -4970,17 +4944,17 @@ msgid ""
 msgstr ""
 
 # 9023682f9c6a4d64b56a0ac6828f8009
-#: ../source/config.rst:1965
+#: ../source/config.rst:1964
 msgid "Web server settings"
 msgstr ""
 
-#: ../source/config.rst:1969
+#: ../source/config.rst:1968
 #, fuzzy
 #| msgid "$cfg['OBGzip'] string/boolean"
 msgid "string/boolean"
 msgstr "$cfg['OBGzip'] string/boolean"
 
-#: ../source/config.rst:1972
+#: ../source/config.rst:1971
 #, fuzzy
 msgid ""
 "Defines whether to use GZip output buffering for increased speed in :term:"
@@ -4998,7 +4972,7 @@ msgstr ""
 "aktiviertem Zwischenspeicher zu verursachen."
 
 # b31d88e309f647099b308689d2e926e4
-#: ../source/config.rst:1985
+#: ../source/config.rst:1984
 msgid ""
 "Lists proxies and HTTP headers which are trusted for :config:option:`"
 "$cfg['Servers'][$i]['AllowDeny']['order']`. This list is by default empty, "
@@ -5006,7 +4980,7 @@ msgid ""
 "IP addresses behind proxy."
 msgstr ""
 
-#: ../source/config.rst:1990
+#: ../source/config.rst:1989
 #, fuzzy
 msgid ""
 "The following example specifies that phpMyAdmin should trust a HTTP\\_X"
@@ -5019,33 +4993,33 @@ msgstr ""
 "HTTP_X_FORWARDED_FOR[/kbd] kommt, vertrauen soll"
 
 # 631a15095b4f4dbfaac26e1df5d617c3
-#: ../source/config.rst:1998
+#: ../source/config.rst:1997
 msgid ""
 "The :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` directive "
 "uses the client's IP address as usual."
 msgstr ""
 
 # d195f39faf8b46478743fed48a89c0b9
-#: ../source/config.rst:2006
+#: ../source/config.rst:2005
 msgid ""
 "Specifies whether GD >= 2 is available. If yes it can be used for MIME "
 "transformations. Possible values are:"
 msgstr ""
 
-#: ../source/config.rst:2009
+#: ../source/config.rst:2008
 msgid "auto - automatically detect"
 msgstr ""
 
-#: ../source/config.rst:2010
+#: ../source/config.rst:2009
 msgid "yes - GD 2 functions can be used"
 msgstr ""
 
-#: ../source/config.rst:2011
+#: ../source/config.rst:2010
 msgid "no - GD 2 function cannot be used"
 msgstr ""
 
 # dfeed36a68c24019a37e2fb7943e15de
-#: ../source/config.rst:2018
+#: ../source/config.rst:2017
 msgid ""
 "We normally check the permissions on the configuration file to ensure it's "
 "not world writable. However, phpMyAdmin could be installed on a NTFS "
@@ -5055,7 +5029,7 @@ msgid ""
 msgstr ""
 
 # 5dd26b3047844d3c9639fbc186002b06
-#: ../source/config.rst:2029
+#: ../source/config.rst:2028
 msgid ""
 "Limit for length of :term:`URL` in links.  When length would be above this "
 "limit, it is replaced by form with button. This is required as some web "
@@ -5063,14 +5037,14 @@ msgid ""
 msgstr ""
 
 # 6cc56ba2fdae47a1953e0e57c3cd5dc7
-#: ../source/config.rst:2038
+#: ../source/config.rst:2037
 msgid ""
 "Additional string to include in allowed script and image sources in Content "
 "Security Policy header."
 msgstr ""
 
 # fc9cccbb88214782bc91ea79d2af16cd
-#: ../source/config.rst:2041
+#: ../source/config.rst:2040
 msgid ""
 "This can be useful when you want to include some external javascript files "
 "in :file:`config.footer.inc.php` or :file:`config.header.inc.php`, which "
@@ -5078,12 +5052,12 @@ msgid ""
 msgstr ""
 
 # aca0b133c9254820b1a9708036af1389
-#: ../source/config.rst:2045
+#: ../source/config.rst:2044
 msgid "To allow some sites, just list them within the string:"
 msgstr ""
 
 # 09a72a1501fd41538720fba52b3f754c
-#: ../source/config.rst:2058
+#: ../source/config.rst:2057
 msgid ""
 "In the database Structure page, it's possible to mark some tables then "
 "choose an operation like optimizing for many tables. This can slow down a "
@@ -5092,25 +5066,25 @@ msgid ""
 msgstr ""
 
 # fce31b4fac444c6b8369ecd7ceb56de8
-#: ../source/config.rst:2064
+#: ../source/config.rst:2063
 msgid "Theme settings"
 msgstr ""
 
-#: ../source/config.rst:2071
+#: ../source/config.rst:2070
 #, fuzzy
 msgid ""
 "Navigation panel width in pixels. See :file:`themes/themename/layout.inc."
 "php`."
 msgstr "Sehen Sie <code>themes/themename/layout.inc.php</code>."
 
-#: ../source/config.rst:2076 ../source/config.rst:2081
-#: ../source/config.rst:2089 ../source/config.rst:2109
+#: ../source/config.rst:2075 ../source/config.rst:2080
+#: ../source/config.rst:2088 ../source/config.rst:2108
 #, fuzzy
 #| msgid "$cfg['NaviPointerBackground'] string [CSS color for background]"
 msgid "string [CSS color for background]"
 msgstr "$cfg['NaviPointerBackground'] String [CSS Farbe für Hintergrund]"
 
-#: ../source/config.rst:2084
+#: ../source/config.rst:2083
 #, fuzzy
 msgid ""
 "The background styles used for both the frames. See :file:`themes/themename/"
@@ -5127,14 +5101,14 @@ msgstr ""
 # 7131cc2170ef4536a12a3861147e64fa
 # 29d5ea965caa44ab94a9634a17401452
 # 4107b7380b3d450c8c5a412dc2d17e4c
-#: ../source/config.rst:2094 ../source/config.rst:2114
-#: ../source/config.rst:2123 ../source/config.rst:2132
-#: ../source/config.rst:2140 ../source/config.rst:2145
-#: ../source/config.rst:2150 ../source/config.rst:2155
+#: ../source/config.rst:2093 ../source/config.rst:2113
+#: ../source/config.rst:2122 ../source/config.rst:2131
+#: ../source/config.rst:2139 ../source/config.rst:2144
+#: ../source/config.rst:2149 ../source/config.rst:2154
 msgid "string [CSS color]"
 msgstr ""
 
-#: ../source/config.rst:2097
+#: ../source/config.rst:2096
 #, fuzzy
 msgid ""
 "The style used for the pointer in the navigation panel. See :file:`themes/"
@@ -5143,7 +5117,7 @@ msgstr ""
 "Das Aussehen des Zeigers im Navigations Frame. Sehen Sie <code>themes/"
 "themename/layout.inc.php</code>."
 
-#: ../source/config.rst:2105
+#: ../source/config.rst:2104
 #, fuzzy
 msgid ""
 "The size of a table's border. See :file:`themes/themename/layout.inc.php`."
@@ -5151,7 +5125,7 @@ msgstr ""
 "Die Dicke des Tabellenrahmens. Sehen Sie <code>themes/themename/layout.inc."
 "php</code>."
 
-#: ../source/config.rst:2117
+#: ../source/config.rst:2116
 #, fuzzy
 msgid ""
 "The style used for table headers. See :file:`themes/themename/layout.inc."
@@ -5160,7 +5134,7 @@ msgstr ""
 "Das Aussehen der Tabellenüberschriften. Sehen Sie <code>themes/themename/"
 "layout.inc.php</code>."
 
-#: ../source/config.rst:2126
+#: ../source/config.rst:2125
 #, fuzzy
 msgid ""
 "The color (HTML) #1 for table rows. See :file:`themes/themename/layout.inc."
@@ -5169,7 +5143,7 @@ msgstr ""
 "Das Aussehen der Tabellenüberschriften. Sehen Sie <code>themes/themename/"
 "layout.inc.php</code>."
 
-#: ../source/config.rst:2135
+#: ../source/config.rst:2134
 #, fuzzy
 msgid ""
 "The color (HTML) #2 for table rows. See :file:`themes/themename/layout.inc."
@@ -5179,7 +5153,7 @@ msgstr ""
 "layout.inc.php</code>."
 
 # ead0422e7dc94143aa49bcfe5618e36a
-#: ../source/config.rst:2158
+#: ../source/config.rst:2157
 msgid ""
 "The colors (HTML) uses for the pointer and the marker in browse mode. The "
 "former feature highlights the row over which your mouse is passing and the "
@@ -5189,7 +5163,7 @@ msgid ""
 "themename/layout.inc.php`."
 msgstr ""
 
-#: ../source/config.rst:2170
+#: ../source/config.rst:2169
 #, fuzzy
 msgid ""
 "You put here a valid CSS font family value, for example ``arial, sans- "
@@ -5198,7 +5172,7 @@ msgstr ""
 "Setzen Sie hier einen gültige CSS Schriftfamilie, zum Beispiel <code>arial, "
 "sans-serif</code>."
 
-#: ../source/config.rst:2178
+#: ../source/config.rst:2177
 #, fuzzy
 msgid ""
 "You put here a valid CSS font family value, for example ``monospace``. This "
@@ -5208,44 +5182,39 @@ msgstr ""
 "<code>monospace</code>. Dieser wird in Textbereichen benützt."
 
 # f1de05ef52fb47c8bf398113e858ff8b
-#: ../source/config.rst:2182
+#: ../source/config.rst:2181
 msgid "Design customization"
 msgstr ""
 
-#: ../source/config.rst:2189
+#: ../source/config.rst:2188
 #, fuzzy
 msgid "A value of ``true`` activates the navi pointer."
 msgstr ""
 "Der Wert <code>TRUE</code> aktiviert den Navigationszeiger (wenn "
 "LeftFrameLight <code>FALSE</code> ist)."
 
-#: ../source/config.rst:2196
+#: ../source/config.rst:2195
 msgid "Whether to activate the browse pointer or not."
 msgstr ""
 
-#: ../source/config.rst:2203
+#: ../source/config.rst:2202
 msgid "Whether to activate the browse marker or not."
 msgstr ""
 
-# 7cc0e44aabb3434b9fa95ef5813bd45c
-#: ../source/config.rst:2208
-msgid "50"
-msgstr ""
-
 # 6d9c2c722dce45a39b9912062ea88ec9
-#: ../source/config.rst:2210
+#: ../source/config.rst:2209
 msgid ""
 "Maximum number of characters shown in any non-numeric field on browse view. "
 "Can be turned off by a toggle button on the browse page."
 msgstr ""
 
 # 8b2e7fe452e3401991f009d754c80e5f
-#: ../source/config.rst:2216
+#: ../source/config.rst:2215
 msgid "``'left'``"
 msgstr ""
 
 # 7e244ef379074f1497a327f603362842
-#: ../source/config.rst:2218
+#: ../source/config.rst:2217
 msgid ""
 "Defines the place where table row links (Edit, Copy, Delete) would be put "
 "when tables contents are displayed (you may have them displayed at the left "
@@ -5254,12 +5223,12 @@ msgid ""
 msgstr ""
 
 # 5f61225339364a948631341286a12a23
-#: ../source/config.rst:2226
+#: ../source/config.rst:2225
 msgid "``'horizonta'``"
 msgstr ""
 
 # c5543e0175144e2ea03cbd0fe77f71f1
-#: ../source/config.rst:2228
+#: ../source/config.rst:2227
 msgid ""
 "There are 3 display modes: horizontal, horizontalflipped and vertical. "
 "Define which one is displayed by default. The first mode displays each row "
@@ -5269,11 +5238,11 @@ msgid ""
 "lineup."
 msgstr ""
 
-#: ../source/config.rst:2240
+#: ../source/config.rst:2239
 msgid "If enabled, remember the sorting of each table when browsing them."
 msgstr ""
 
-#: ../source/config.rst:2247
+#: ../source/config.rst:2246
 msgid ""
 "The HeaderFlipType can be set to 'auto', 'css' or 'fake'. When using 'css' "
 "the rotation of the header for horizontalflipped is done via CSS. The CSS "
@@ -5284,7 +5253,7 @@ msgid ""
 msgstr ""
 
 # d40d7782ea5047379ea85405debef352
-#: ../source/config.rst:2265
+#: ../source/config.rst:2264
 msgid ""
 "By setting the corresponding variable to ``true`` you can enable the display "
 "of column comments in Browse or Property display. In browse mode, the "
@@ -5294,20 +5263,21 @@ msgid ""
 msgstr ""
 
 # f8aacfeb1b1242a18a07a105eb5ab87c
-#: ../source/config.rst:2273
+#: ../source/config.rst:2272
 msgid "Text fields"
 msgstr "Textfelder"
 
 # 2520d74506e0421eb0459f96db4e2a6d
-#: ../source/config.rst:2278
+#: ../source/config.rst:2277
 msgid "``'input'``"
 msgstr ""
 
-#: ../source/config.rst:2280
+#: ../source/config.rst:2279
 #, fuzzy
 msgid ""
 "Defines which type of editing controls should be used for CHAR and VARCHAR "
-"columns. Possible values are:"
+"columns. Applies to data editing and also to the default values in structure "
+"editing. Possible values are:"
 msgstr ""
 "Definiert welcher Widgettyp zum Editieren von CHAR und VARCHAR-Feldern "
 "verwendet werden soll. [kbd]input[/kbd] - erlaubt das limitieren der "
@@ -5407,28 +5377,17 @@ msgid ""
 "Whether to display a link to wrap a query in PHP code in any SQL Query box."
 msgstr ""
 
-# 730365da3ae54dad951cde9e45daf2b9
 #: ../source/config.rst:2380
-msgid "Whether to display a link to validate a query in any SQL Query box."
-msgstr ""
-
-#: ../source/config.rst:2382
-#, fuzzy
-#| msgid "$cfg['SQLValidator'] boolean"
-msgid ":config:option:`$cfg['SQLValidator']`"
-msgstr "$cfg['SQLValidator'] Boolescher Wert"
-
-#: ../source/config.rst:2389
 msgid "Whether to display a link to refresh a query in any SQL Query box."
 msgstr ""
 
 # e6c5aa8a1c97414f8e524a17178ab3af
-#: ../source/config.rst:2392
+#: ../source/config.rst:2383
 msgid "Web server upload/save/import directories"
 msgstr ""
 
 # a429fad6ce91410a8b012be24502fac3
-#: ../source/config.rst:2399
+#: ../source/config.rst:2390
 msgid ""
 "The name of the directory where :term:`SQL` files have been uploaded by "
 "other means than phpMyAdmin (for example, ftp). Those files are available "
@@ -5436,57 +5395,57 @@ msgid ""
 "Import tab."
 msgstr ""
 
-#: ../source/config.rst:2404 ../source/config.rst:2429
+#: ../source/config.rst:2395 ../source/config.rst:2420
 msgid ""
 "If you want different directory for each user, %u will be replaced with "
 "username."
 msgstr ""
 
 # 69a09f446a7d4ba687d4d9bb8bc16cc0
-#: ../source/config.rst:2408
+#: ../source/config.rst:2399
 msgid ""
 "Please note that the file names must have the suffix \".sql\" (or \".sql."
 "bz2\" or \".sql.gz\" if support for compressed formats is enabled)."
 msgstr ""
 
 # c76a6fdffdb54531b06dc95d64e40ab3
-#: ../source/config.rst:2412
+#: ../source/config.rst:2403
 msgid ""
 "This feature is useful when your file is too big to be uploaded via :term:"
 "`HTTP`, or when file uploads are disabled in PHP."
 msgstr ""
 
 # 75f430d7460e4867b5029804868a5396
-#: ../source/config.rst:2418
+#: ../source/config.rst:2409
 msgid ""
 "If PHP is running in safe mode, this directory must be owned by the same "
 "user as the owner of the phpMyAdmin scripts.  See also :ref:`faq1_16` for "
 "alternatives."
 msgstr ""
 
-#: ../source/config.rst:2427
+#: ../source/config.rst:2418
 msgid "The name of the directory where dumps can be saved."
 msgstr ""
 
-#: ../source/config.rst:2432
+#: ../source/config.rst:2423
 msgid ""
 "Please note that the directory must exist and has to be writable for the "
 "user running webserver."
 msgstr ""
 
 # 39fffb00ea9342f484d5ce889e43d427
-#: ../source/config.rst:2437
+#: ../source/config.rst:2428
 msgid ""
 "If PHP is running in safe mode, this directory must be owned by the same "
 "user as the owner of the phpMyAdmin scripts."
 msgstr ""
 
-#: ../source/config.rst:2445
+#: ../source/config.rst:2436
 msgid "The name of the directory where temporary files can be stored."
 msgstr ""
 
 # a675da170a8648aeb80e56b638ea4ce5
-#: ../source/config.rst:2447
+#: ../source/config.rst:2438
 msgid ""
 "This is needed for importing ESRI Shapefiles, see :ref:`faq6_30` and to work "
 "around limitations of ``open_basedir`` for uploaded files, see :ref:"
@@ -5494,7 +5453,7 @@ msgid ""
 msgstr ""
 
 # 0c9cd2b464884737be7706eb46a20029
-#: ../source/config.rst:2451
+#: ../source/config.rst:2442
 msgid ""
 "If the directory where phpMyAdmin is installed is subject to an "
 "``open_basedir`` restriction, you need to create a temporary directory in "
@@ -5505,7 +5464,7 @@ msgid ""
 "possible."
 msgstr ""
 
-#: ../source/config.rst:2459
+#: ../source/config.rst:2450
 msgid ""
 "This directory should have as strict permissions as possible as the only "
 "user required to access this directory is the one who runs the webserver. If "
@@ -5514,14 +5473,14 @@ msgid ""
 msgstr ""
 
 # 58ba0d0f718145a1a0b12e2054fffb9a
-#: ../source/config.rst:2470
+#: ../source/config.rst:2461
 msgid ""
 "If you cannot change owner of the directory, you can achieve a similar setup "
 "using :term:`ACL`:"
 msgstr ""
 
 # 372006e9371f4a0c90330bc055eca531
-#: ../source/config.rst:2479
+#: ../source/config.rst:2470
 msgid ""
 "If neither of above works for you, you can still make the directory :command:"
 "`chmod 777`, but it might impose risk of other users on system reading and "
@@ -5529,11 +5488,11 @@ msgid ""
 msgstr ""
 
 # 83f115e0768c47f09e704d4ce06a4622
-#: ../source/config.rst:2484
+#: ../source/config.rst:2475
 msgid "Various display setting"
 msgstr ""
 
-#: ../source/config.rst:2491
+#: ../source/config.rst:2482
 #, fuzzy
 msgid ""
 "Defines whether or not type display direction option is shown when browsing "
@@ -5542,27 +5501,27 @@ msgstr ""
 "Legt fest, ob die Typen-Anzeige-Richtungs-Option gezeigt wird, beim "
 "durchsuchen einer Tabelle"
 
-#: ../source/config.rst:2499
+#: ../source/config.rst:2490
 msgid "Repeat the headers every X cells, or 0 to deactivate."
 msgstr ""
 
 # 9d9e21215006459ba9433b1eae46a298
-#: ../source/config.rst:2509
+#: ../source/config.rst:2500
 msgid "550"
 msgstr ""
 
 # 118e0d9d8fb7436d88e404ff48f1a83a
-#: ../source/config.rst:2514
+#: ../source/config.rst:2505
 msgid "310"
 msgstr ""
 
 # aa2222e0383f47a6b1475b306a4918fd
-#: ../source/config.rst:2524
+#: ../source/config.rst:2515
 msgid "``'sql'``"
 msgstr ""
 
 # e531aa774b3c404c9f95b8fcfa108b64
-#: ../source/config.rst:2531
+#: ../source/config.rst:2522
 msgid ""
 "All those variables affect the query window feature. A :term:`SQL` link or "
 "icon is always displayed in the navigation panel. If JavaScript is enabled "
@@ -5572,7 +5531,7 @@ msgid ""
 msgstr ""
 
 # ed3d2a353451427fa9b4078ed95674f7
-#: ../source/config.rst:2537
+#: ../source/config.rst:2528
 msgid ""
 "The size of this query window can be customized with :config:option:`"
 "$cfg['QueryWindowWidth']` and :config:option:`$cfg['QueryWindowHeight']` - "
@@ -5581,7 +5540,7 @@ msgid ""
 msgstr ""
 
 # 7c82ffddeb1449098e1b8d9b4629abe5
-#: ../source/config.rst:2543
+#: ../source/config.rst:2534
 msgid ""
 "If :config:option:`$cfg['EditInWindow']` is set to true, a click on [Edit] "
 "from the results page (in the :guilabel:`Showing Rows` section) opens the "
@@ -5590,7 +5549,7 @@ msgid ""
 msgstr ""
 
 # 8638637cff694db3950d2ef0e39680a1
-#: ../source/config.rst:2549
+#: ../source/config.rst:2540
 msgid ""
 "If :config:option:`$cfg['QueryHistoryDB']` is set to ``true``, all your "
 "Queries are logged to a table, which has to be created by you (see :config:"
@@ -5600,7 +5559,7 @@ msgid ""
 msgstr ""
 
 # ec803978f879469fb7987ff27387f4a5
-#: ../source/config.rst:2555
+#: ../source/config.rst:2546
 msgid ""
 "When using the JavaScript based query window, it will always get updated "
 "when you click on a new table/db to browse and will focus if you click on :"
@@ -5616,7 +5575,7 @@ msgid ""
 msgstr ""
 
 # c3ef37301e4f4e26af100c1dc302d204
-#: ../source/config.rst:2567
+#: ../source/config.rst:2558
 msgid ""
 "If :config:option:`$cfg['QueryHistoryDB']` is set to ``true`` you can "
 "specify the amount of saved history items using :config:option:`"
@@ -5624,7 +5583,7 @@ msgid ""
 msgstr ""
 
 # d5c2762d8d364d66bfc21db12b0d3ce5
-#: ../source/config.rst:2571
+#: ../source/config.rst:2562
 msgid ""
 "The query window also has a custom tabbed look to group the features. Using "
 "the variable :config:option:`$cfg['QueryWindowDefTab']` you can specify the "
@@ -5633,12 +5592,12 @@ msgid ""
 msgstr ""
 
 # 4131351fbb374d5f897b07c0625c03d3
-#: ../source/config.rst:2581
+#: ../source/config.rst:2572
 msgid "Enable :ref:`transformations`."
 msgstr ""
 
 # a0cc6a226f0347f892a4e9db0d82821b
-#: ../source/config.rst:2588
+#: ../source/config.rst:2579
 msgid ""
 "For InnoDB tables, determines for how large tables phpMyAdmin should get the "
 "exact row count using ``SELECT COUNT``. If the approximate row count as "
@@ -5647,14 +5606,14 @@ msgid ""
 msgstr ""
 
 # 5130bd2f27f843eca66d37ab7c7c3389
-#: ../source/config.rst:2599
+#: ../source/config.rst:2590
 msgid ""
 "For VIEWs, since obtaining the exact count could have an impact on "
 "performance, this value is the maximum to be displayed, using a ``SELECT "
 "COUNT ... LIMIT``. Setting this to 0 bypasses any row counting."
 msgstr ""
 
-#: ../source/config.rst:2609
+#: ../source/config.rst:2600
 msgid ""
 "Sorts database and table names according to natural order (for example, t1, "
 "t2, t10). Currently implemented in the navigation panel and in Database "
@@ -5662,12 +5621,12 @@ msgid ""
 msgstr ""
 
 # 346ab3e9db7544919bb5edc2850c122f
-#: ../source/config.rst:2616
+#: ../source/config.rst:2607
 msgid "``'closed'``"
 msgstr ""
 
 # b01f33d9f882461094a1808ee830d5f9
-#: ../source/config.rst:2618
+#: ../source/config.rst:2609
 msgid ""
 "If set to ``'closed'``, the visual sliders are initially in a closed state. "
 "A value of ``'open'`` does the reverse. To completely disable all visual "
@@ -5675,133 +5634,109 @@ msgid ""
 msgstr ""
 
 # 4eda5e39365448e68368e74605ec2352
-#: ../source/config.rst:2627
+#: ../source/config.rst:2618
 msgid ""
 "Contains names of configuration options (keys in ``$cfg`` array) that users "
 "can't set through user preferences. For possible values, refer to :file:"
 "`libraries/config/user_preferences.forms.php`."
 msgstr ""
 
-#: ../source/config.rst:2636
+#: ../source/config.rst:2627
 msgid ""
 "Activates in the user preferences a tab containing options for developers of "
 "phpMyAdmin."
 msgstr ""
 
 # 99fec2eca5cd429382bb4709ca73a1c5
-#: ../source/config.rst:2640
+#: ../source/config.rst:2631
 msgid "Page titles"
 msgstr "Seitentitel"
 
 # 57a99cf5b2894f0983f6fde78d1de89b
-#: ../source/config.rst:2645
+#: ../source/config.rst:2636
 msgid "``'@HTTP_HOST@ / @VSERVER@ / @DATABASE@ / @TABLE@ | @PHPMYADMIN@'``"
 msgstr ""
 
 # 323f5cc4cd1944449c9357812064ec5f
-#: ../source/config.rst:2650
+#: ../source/config.rst:2641
 msgid "``'@HTTP_HOST@ / @VSERVER@ / @DATABASE@ | @PHPMYADMIN@'``"
 msgstr ""
 
 # 7ebd5b14551d4c32b0206f0f17723842
-#: ../source/config.rst:2655
+#: ../source/config.rst:2646
 msgid "``'@HTTP_HOST@ / @VSERVER@ | @PHPMYADMIN@'``"
 msgstr ""
 
 # 33d0221b40a84cedacb6c53651b8e64c
-#: ../source/config.rst:2660
+#: ../source/config.rst:2651
 msgid "``'@HTTP_HOST@ | @PHPMYADMIN@'``"
 msgstr ""
 
 # 506996fc962547eba0b3243312ed70af
-#: ../source/config.rst:2662
+#: ../source/config.rst:2653
 msgid "Allows you to specify window's title bar. You can use :ref:`faq6_27`."
 msgstr ""
 
 # 5c34618c6e124207b1cea0fdced1112d
-#: ../source/config.rst:2665
+#: ../source/config.rst:2656
 msgid "Theme manager settings"
 msgstr ""
 
 # 2d742f45cd664549a7f688045369a9c9
-#: ../source/config.rst:2670
+#: ../source/config.rst:2661
 msgid "``'./themes'``"
 msgstr ""
 
-#: ../source/config.rst:2672
+#: ../source/config.rst:2663
 msgid ""
 "If theme manager is active, use this as the path of the subdirectory "
 "containing all the themes."
 msgstr ""
 
 # 99a3bb85d6554378a71627720f744375
-#: ../source/config.rst:2680
+#: ../source/config.rst:2671
 msgid "Enables user-selectable themes. See :ref:`faqthemes`."
 msgstr ""
 
 # 7bc1587ea5bb46a2a874bb579440cbf6
-#: ../source/config.rst:2685
+#: ../source/config.rst:2676
 msgid "``'pmahomme'``"
 msgstr ""
 
 # ef7868751f92417d8ec32ec7adf9bffc
-#: ../source/config.rst:2687
+#: ../source/config.rst:2678
 msgid ""
 "The default theme (a subdirectory under :config:option:`$cfg['ThemePath']`)."
 msgstr ""
 
-#: ../source/config.rst:2694
+#: ../source/config.rst:2685
 msgid "Whether to allow different theme for each server."
 msgstr ""
 
 # 5b76b7917beb4082bf911c071b4a72ae
-#: ../source/config.rst:2697
+#: ../source/config.rst:2688
 msgid "Default queries"
 msgstr ""
 
 # a1215044ec734e28ad43ad3064faea98
-#: ../source/config.rst:2702
+#: ../source/config.rst:2693
 msgid "``'SELECT * FROM @TABLE@ WHERE 1'``"
 msgstr ""
 
 # e28d9ce542d540f4a84c4b005995a746
-#: ../source/config.rst:2709
+#: ../source/config.rst:2700
 msgid ""
 "Default queries that will be displayed in query boxes when user didn't "
 "specify any. You can use standard :ref:`faq6_27`."
 msgstr ""
 
-# 5ba01d5de4734ff4a84bb154c8fb942b
-#: ../source/config.rst:2713
-msgid "SQL validator settings"
-msgstr ""
-
-# b3c6bcfc370f4131a42eb7d648f0e63a
-#: ../source/config.rst:2727
-msgid ""
-"phpMyAdmin now supports use of the `Mimer SQL Validator <http://developer."
-"mimer.com/validator/index.htm>`_ service, as originally published on "
-"`Slashdot <http://developers.slashdot.org/article.pl?"
-"sid=02/02/19/1720246>`_. For help in setting up your system to use the "
-"service, see the :ref:`faqsqlvalidator`."
-msgstr ""
-
-# 99b06e384faa478ea7a090793a4476be
-#: ../source/config.rst:2744
-msgid ""
-"The SOAP service allows you to log in with ``anonymous`` and any password, "
-"so we use those by default. Instead, if you have an account with them, you "
-"can put your login details here, and it will be used in place of the "
-"anonymous login."
-msgstr ""
-
 # 5c046e28870c4d46b248c879bdfb2bed
-#: ../source/config.rst:2750
+#: ../source/config.rst:2705
 msgid "MySQL settings"
 msgstr ""
 
 # 7ef86f26b3474b69b7c2539344c36339
-#: ../source/config.rst:2757
+#: ../source/config.rst:2712
 msgid ""
 "Functions selected by default when inserting/changing row, Functions are "
 "defined for meta types as (FUNC\\_NUMBER, FUNC\\_DATE, FUNC\\_CHAR, FUNC"
@@ -5810,34 +5745,34 @@ msgid ""
 msgstr ""
 
 # d1d91acf7ee548628655b1fe8958d1aa
-#: ../source/config.rst:2764
+#: ../source/config.rst:2719
 msgid "Developer"
 msgstr "Entwickler"
 
 # ecbe50ad2d994ddf900c5dbb31d79615
-#: ../source/config.rst:2768
+#: ../source/config.rst:2723
 msgid "These settings might have huge effect on performance or security."
 msgstr ""
 
-#: ../source/config.rst:2780
+#: ../source/config.rst:2735
 msgid ""
 "Enable logging queries and execution times to be displayed in the bottom of "
 "main page (right frame)."
 msgstr ""
 
 # 28d156ca4754431a963ff790127abcda
-#: ../source/config.rst:2788
+#: ../source/config.rst:2743
 msgid ""
 "Enable to let server present itself as demo server. This is used for <http://"
 "demo.phpmyadmin.net/>."
 msgstr ""
 
-#: ../source/config.rst:2796
+#: ../source/config.rst:2751
 msgid "Whether to display errors from PHP or not."
 msgstr "Ob PHP Fehler angezeigt werden sollen oder nicht."
 
 # 0bf3cde5f63941f6a48df4a4754716de
-#: ../source/config.rst:2803
+#: ../source/config.rst:2758
 msgid ""
 "Whether to display icons or text or both icons and text in table row action "
 "segment. Value can be either of ``'icons'``, ``'text'`` or ``'both'``."
@@ -8411,46 +8346,20 @@ msgid ""
 "delete it."
 msgstr ""
 
-# de36aaeeffec4285a5e3e8462aa8dbfe
+# 7da4f51d3cb74a69af34e80e9cf466b7
 #: ../source/faq.rst:1566
-msgid "6.14 How do I set up the SQL Validator?"
-msgstr ""
-
-# e34355599f7344ae9148f6c15d4cb12a
-#: ../source/faq.rst:1568
-msgid ""
-"To use SQL Validator, you need PHP with :term:`XML`, :term:`PCRE` and :term:"
-"`PEAR` support. In addition you need a :term:`SOAP` support, either as a PHP "
-"extension or as a PEAR SOAP module."
-msgstr ""
-
-# 01d85fe8950c4f9d8aa493a09608ee95
-#: ../source/faq.rst:1572
-msgid ""
-"To install :term:`PEAR` :term:`SOAP` module, run :command:`pear install "
-"Net_Socket Net_URL HTTP_Request Mail_Mime Net_DIME SOAP` to get the "
-"necessary :term:`PEAR` modules for usage."
-msgstr ""
-
-# 5171164814b741eabeeea86e925988ae
-#: ../source/faq.rst:1576
-msgid ""
-"If you use the Validator, you should be aware that any :term:`SQL` statement "
-"you submit will be stored anonymously (database/table/column names, strings, "
-"numbers replaced with generic values). The Mimer :term:`SQL` Validator "
-"itself, is © 2001 Upright Database Technology. We utilize it as free SOAP "
-"service."
+msgid "6.14 (withdrawn)."
 msgstr ""
 
 # bf4c9fcdadcb4b2abb4a43b600a6eed0
-#: ../source/faq.rst:1584
+#: ../source/faq.rst:1571
 msgid ""
 "6.15 I want to add a BLOB column and put an index on it, but MySQL says "
 "\"BLOB column '...' used in key specification without a key length\"."
 msgstr ""
 
 # 0718d52eda124b0baf23a3e19448b44a
-#: ../source/faq.rst:1586
+#: ../source/faq.rst:1573
 msgid ""
 "The right way to do this, is to create the column without any indexes, then "
 "display the table structure and use the \"Create an index\" dialog. On this "
@@ -8459,12 +8368,12 @@ msgid ""
 msgstr ""
 
 # 5a431898cd7144cc9c015a83a83e1e05
-#: ../source/faq.rst:1595
+#: ../source/faq.rst:1582
 msgid "6.16 How can I simply move in page with plenty editing fields?"
 msgstr ""
 
 # 9b421b19c3364ab99044e3dd124d955f
-#: ../source/faq.rst:1597
+#: ../source/faq.rst:1584
 msgid ""
 "You can use :kbd:`Ctrl+arrows` (:kbd:`Option+Arrows` in Safari) for moving "
 "on most pages with many editing fields (table structure changes, row "
@@ -8472,14 +8381,14 @@ msgid ""
 msgstr ""
 
 # 0f0a7ad69c8e4dd2aaea5d2a92a60e4c
-#: ../source/faq.rst:1604
+#: ../source/faq.rst:1591
 msgid ""
 "6.17 Transformations: I can't enter my own mimetype! WTF is this feature "
 "then useful for?"
 msgstr ""
 
 # 1b98fc7a9c45416c84a04876003a6457
-#: ../source/faq.rst:1606
+#: ../source/faq.rst:1593
 msgid ""
 "Slow down :). Defining mimetypes is of no use, if you can't put "
 "transformations on them. Otherwise you could just put a comment on the "
@@ -8489,21 +8398,21 @@ msgid ""
 "empty mimetype definitions."
 msgstr ""
 
-#: ../source/faq.rst:1613
+#: ../source/faq.rst:1600
 msgid ""
 "Plus, you have a whole overview of available mimetypes. Who knows all those "
 "mimetypes by heart so he/she can enter it at will?"
 msgstr ""
 
 # bfc1855d47ed403eba26ee5ce56d545a
-#: ../source/faq.rst:1619
+#: ../source/faq.rst:1606
 msgid ""
 "6.18 Bookmarks: Where can I store bookmarks? Why can't I see any bookmarks "
 "below the query box? What is this variable for?"
 msgstr ""
 
 # 40cc5636ff88448e9847bfde0e9ca005
-#: ../source/faq.rst:1621
+#: ../source/faq.rst:1608
 msgid ""
 "Any query you have executed can be stored as a bookmark on the page where "
 "the results are displayed. You will find a button labeled 'Bookmark this "
@@ -8513,7 +8422,7 @@ msgid ""
 msgstr ""
 
 # 1fb9a2ce40484fcbb400c5ee93e2392a
-#: ../source/faq.rst:1628
+#: ../source/faq.rst:1615
 msgid ""
 "You can also have, inside the query, a placeholder for a variable. This is "
 "done by inserting into the query a SQL comment between ``/*`` and ``*/``. "
@@ -8523,7 +8432,7 @@ msgid ""
 msgstr ""
 
 # dfca260e52d8466c982bf1b98d02decd
-#: ../source/faq.rst:1634
+#: ../source/faq.rst:1621
 msgid ""
 "When you execute the bookmark, everything typed into the *value* input box "
 "on the query box page will replace the string ``/*[VARIABLE]*/`` in your "
@@ -8531,43 +8440,43 @@ msgid ""
 msgstr ""
 
 # 74a08528857248fea1bffb60ff288f02
-#: ../source/faq.rst:1638
+#: ../source/faq.rst:1625
 msgid ""
 "Also remember, that everything else inside the ``/*[VARIABLE]*/`` string for "
 "your query will remain the way it is, but will be stripped of the ``/**/`` "
 "chars. So you can use:"
 msgstr ""
 
-#: ../source/faq.rst:1646
+#: ../source/faq.rst:1633
 msgid "which will be expanded to"
 msgstr ""
 
-#: ../source/faq.rst:1652
+#: ../source/faq.rst:1639
 msgid ""
 "in your query, where VARIABLE is the string you entered in the input box. If "
 "an empty string is provided, no replacements are made."
 msgstr ""
 
-#: ../source/faq.rst:1655
+#: ../source/faq.rst:1642
 msgid "A more complex example. Say you have stored this query:"
 msgstr ""
 
 # 8dcf175f3f274e5191a6e6b050f4bf75
-#: ../source/faq.rst:1662
+#: ../source/faq.rst:1649
 msgid ""
 "Say, you now enter \"phpMyAdmin\" as the variable for the stored query, the "
 "full query will be:"
 msgstr ""
 
 # ae48cbc2fa5648fa9e07d52c2b7f793d
-#: ../source/faq.rst:1669
+#: ../source/faq.rst:1656
 msgid ""
 "You can use multiple occurrences of ``/*[VARIABLE]*/`` in a single query "
 "(that is, multiple occurrences of the *same* variable)."
 msgstr ""
 
 # 5ab91bbab5ea4c629eeb7f9714eb4cfe
-#: ../source/faq.rst:1672
+#: ../source/faq.rst:1659
 msgid ""
 "**NOTE THE ABSENCE OF SPACES** inside the ``/**/`` construct. Any spaces "
 "inserted there will be later also inserted as spaces in your query and may "
@@ -8576,7 +8485,7 @@ msgid ""
 msgstr ""
 
 # b4a1438a1c5b480c91c16cb921e81ffc
-#: ../source/faq.rst:1677
+#: ../source/faq.rst:1664
 msgid ""
 "Your initial query which is going to be stored as a bookmark has to yield at "
 "least one result row so you can store the bookmark. You may have that to "
@@ -8584,12 +8493,12 @@ msgid ""
 msgstr ""
 
 # faaf3c04aeea4b2e8813b6cfa9d5d1bb
-#: ../source/faq.rst:1684
+#: ../source/faq.rst:1671
 msgid "6.19 How can I create simple LATEX document to include exported table?"
 msgstr ""
 
 # 013e203592fc460ca06efa62726ed4ee
-#: ../source/faq.rst:1686
+#: ../source/faq.rst:1673
 msgid ""
 "You can simply include table in your LATEX documents, minimal sample "
 "document should look like following one (assuming you have table exported in "
@@ -8597,13 +8506,13 @@ msgid ""
 msgstr ""
 
 # 4fb5d58e2c084fffaf565fbfe00b7179
-#: ../source/faq.rst:1702
+#: ../source/faq.rst:1689
 msgid ""
 "6.20 I see a lot of databases which are not mine, and cannot access them."
 msgstr ""
 
 # 1c1bc9c6e7c344ee8aa5e8919b89959b
-#: ../source/faq.rst:1704
+#: ../source/faq.rst:1691
 msgid ""
 "You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW "
 "DATABASES, LOCK TABLES. Those privileges also enable users to see all the "
@@ -8612,19 +8521,19 @@ msgid ""
 msgstr ""
 
 # 35a0be791c5a471a9efab097679e83b4
-#: ../source/faq.rst:1709
+#: ../source/faq.rst:1696
 msgid "<http://bugs.mysql.com/179>"
 msgstr ""
 
 # fc2bdaf05bdb4d6db28daf8d2e5fa3f4
-#: ../source/faq.rst:1714
+#: ../source/faq.rst:1701
 msgid ""
 "6.21 In edit/insert mode, how can I see a list of possible values for a "
 "column, based on some foreign table?"
 msgstr ""
 
 # b4e154369d564c7a90e8cb0aa34f2c9e
-#: ../source/faq.rst:1716
+#: ../source/faq.rst:1703
 msgid ""
 "You have to setup appropriate links between the tables, and also setup the "
 "\"display column\" in the foreign table. See :ref:`faq6_6` for an example. "
@@ -8639,60 +8548,60 @@ msgid ""
 msgstr ""
 
 # dedb751b4bcd446ea1568fa99c979d09
-#: ../source/faq.rst:1731
+#: ../source/faq.rst:1718
 msgid ""
 "6.22 Bookmarks: Can I execute a default bookmark automatically when entering "
 "Browse mode for a table?"
 msgstr ""
 
-#: ../source/faq.rst:1733
+#: ../source/faq.rst:1720
 msgid ""
 "Yes. If a bookmark has the same label as a table name and it's not a public "
 "bookmark, it will be executed."
 msgstr ""
 
 # 42676a1f99684ff5b091f23f9c7200a4
-#: ../source/faq.rst:1739
+#: ../source/faq.rst:1726
 msgid "6.23 Export: I heard phpMyAdmin can export Microsoft Excel files?"
 msgstr ""
 
 # 2d4881e3b23f4b73bbbb8bb3d92f3fee
-#: ../source/faq.rst:1741
+#: ../source/faq.rst:1728
 msgid ""
 "You can use :term:`CSV` for Microsoft Excel, which works out of the box."
 msgstr ""
 
 # 28317a1f25814f6dae47af366e9bdc5d
-#: ../source/faq.rst:1744
+#: ../source/faq.rst:1731
 msgid ""
 "Since phpMyAdmin 3.4.5 support for direct export to Microsoft Excel version "
 "97 and newer was dropped."
 msgstr ""
 
 # 6104171116d042bf8fb420135aea4d37
-#: ../source/faq.rst:1751
+#: ../source/faq.rst:1738
 msgid ""
 "6.24 Now that phpMyAdmin supports native MySQL 4.1.x column comments, what "
 "happens to my column comments stored in pmadb?"
 msgstr ""
 
-#: ../source/faq.rst:1753
+#: ../source/faq.rst:1740
 msgid ""
 "Automatic migration of a table's pmadb-style column comments to the native "
 "ones is done whenever you enter Structure page for this table."
 msgstr ""
 
 # 08aac63787154907b47170d57723ccd8
-#: ../source/faq.rst:1759
+#: ../source/faq.rst:1746
 msgid "6.25 (withdrawn)."
 msgstr ""
 
 # 6d64198ee1c246c3bac789fb53e17f65
-#: ../source/faq.rst:1764
+#: ../source/faq.rst:1751
 msgid "6.26 How can I select a range of rows?"
 msgstr ""
 
-#: ../source/faq.rst:1766
+#: ../source/faq.rst:1753
 msgid ""
 "Click the first row of the range, hold the shift key and click the last row "
 "of the range. This works everywhere you see rows, for example in Browse mode "
@@ -8700,12 +8609,12 @@ msgid ""
 msgstr ""
 
 # 1223d4e3c60c48ef883d800da5d87cd4
-#: ../source/faq.rst:1773
+#: ../source/faq.rst:1760
 msgid "6.27 What format strings can I use?"
 msgstr ""
 
 # df468beb0db74a118e004253b533d245
-#: ../source/faq.rst:1775
+#: ../source/faq.rst:1762
 msgid ""
 "In all places where phpMyAdmin accepts format strings, you can use "
 "``@VARIABLE@`` expansion and `strftime <http://php.net/strftime>`_ format "
@@ -8715,86 +8624,86 @@ msgid ""
 msgstr ""
 
 # 8129fd65c18349d3bf7765b57406f240
-#: ../source/faq.rst:1781
+#: ../source/faq.rst:1768
 msgid "``@HTTP_HOST@``"
 msgstr ""
 
-#: ../source/faq.rst:1782
+#: ../source/faq.rst:1769
 msgid "HTTP host that runs phpMyAdmin"
 msgstr ""
 
 # d00d43a4dc7949aeaf63b0fa3405ecda
-#: ../source/faq.rst:1783
+#: ../source/faq.rst:1770
 msgid "``@SERVER@``"
 msgstr ""
 
-#: ../source/faq.rst:1784
+#: ../source/faq.rst:1771
 msgid "MySQL server name"
 msgstr ""
 
 # 57d5ddf4abff4953835ab60f3e5cbb11
-#: ../source/faq.rst:1785
+#: ../source/faq.rst:1772
 msgid "``@VERBOSE@``"
 msgstr ""
 
 # 92eea29159f34bdca5c3f4acf6fcfaa7
-#: ../source/faq.rst:1786
+#: ../source/faq.rst:1773
 msgid ""
 "Verbose MySQL server name as defined in :config:option:`$cfg['Servers'][$i]"
 "['verbose']`"
 msgstr ""
 
 # a9dc2236fabc494383342f87254cc7ce
-#: ../source/faq.rst:1787
+#: ../source/faq.rst:1774
 msgid "``@VSERVER@``"
 msgstr ""
 
-#: ../source/faq.rst:1788
+#: ../source/faq.rst:1775
 msgid "Verbose MySQL server name if set, otherwise normal"
 msgstr ""
 
 # 7b9148029445410f9e705ffbc1d7b6f2
-#: ../source/faq.rst:1789
+#: ../source/faq.rst:1776
 msgid "``@DATABASE@``"
 msgstr ""
 
-#: ../source/faq.rst:1790
+#: ../source/faq.rst:1777
 msgid "Currently opened database"
 msgstr ""
 
 # 7ff75a9c920f4b41ab582c10d7bdbb03
-#: ../source/faq.rst:1791
+#: ../source/faq.rst:1778
 msgid "``@TABLE@``"
 msgstr ""
 
-#: ../source/faq.rst:1792
+#: ../source/faq.rst:1779
 msgid "Currently opened table"
 msgstr ""
 
 # 22514cddf91a4dd59ad0b28b5dedf51a
-#: ../source/faq.rst:1793
+#: ../source/faq.rst:1780
 msgid "``@COLUMNS@``"
 msgstr ""
 
-#: ../source/faq.rst:1794
+#: ../source/faq.rst:1781
 msgid "Columns of the currently opened table"
 msgstr ""
 
 # f065b252f1bb4c7e93588536d8149598
-#: ../source/faq.rst:1796
+#: ../source/faq.rst:1783
 msgid "``@PHPMYADMIN@``"
 msgstr ""
 
-#: ../source/faq.rst:1796
+#: ../source/faq.rst:1783
 msgid "phpMyAdmin with version"
 msgstr ""
 
 # 9f94dce9974a4ffc86f2583bb394f2cf
-#: ../source/faq.rst:1801
+#: ../source/faq.rst:1788
 msgid "6.28 How can I easily edit relational schema for export?"
 msgstr ""
 
-#: ../source/faq.rst:1803
+#: ../source/faq.rst:1790
 msgid ""
 "By clicking on the button 'toggle scratchboard' on the page where you edit x/"
 "y coordinates of those elements you can activate a scratchboard where all "
@@ -8806,14 +8715,14 @@ msgid ""
 msgstr ""
 
 # dd487bf66ea447d091bcf771d49dcf80
-#: ../source/faq.rst:1811
+#: ../source/faq.rst:1798
 msgid ""
 "You have to click on the 'OK'-button below the tables to save the new "
 "positions. If you want to place a new element, first add it to the table of "
 "elements and then you can drag the new element around."
 msgstr ""
 
-#: ../source/faq.rst:1815
+#: ../source/faq.rst:1802
 msgid ""
 "By changing the paper size and the orientation you can change the size of "
 "the scratchboard as well. You can do so by just changing the dropdown field "
@@ -8821,19 +8730,19 @@ msgid ""
 "with the current placement of the elements."
 msgstr ""
 
-#: ../source/faq.rst:1820
+#: ../source/faq.rst:1807
 msgid ""
 "If ever an element gets out of range you can either enlarge the paper size "
 "or click on the 'reset' button to place all elements below each other."
 msgstr ""
 
 # cdcdd16f8f854594997d6fec4968d842
-#: ../source/faq.rst:1827
+#: ../source/faq.rst:1814
 msgid "6.29 Why can't I get a chart from my query result table?"
 msgstr ""
 
 # 99da2c36da614e278ec7ebb8f5b5b5bc
-#: ../source/faq.rst:1829
+#: ../source/faq.rst:1816
 msgid ""
 "Not every table can be put to the chart. Only tables with one, two or three "
 "columns can be visualised as a chart. Moreover the table must be in a "
@@ -8843,12 +8752,12 @@ msgid ""
 msgstr ""
 
 # 3ed97eb14b164f118896d580ed5be2ea
-#: ../source/faq.rst:1838
+#: ../source/faq.rst:1825
 msgid "6.30 Import: How can I import ESRI Shapefiles?"
 msgstr ""
 
 # 6816a5dd51c241099d0dcf2e20929b25
-#: ../source/faq.rst:1840
+#: ../source/faq.rst:1827
 msgid ""
 "An ESRI Shapefile is actually a set of several files, where .shp file "
 "contains geometry data and .dbf file contains data related to those geometry "
@@ -8857,13 +8766,13 @@ msgid ""
 "imported."
 msgstr ""
 
-#: ../source/faq.rst:1846
+#: ../source/faq.rst:1833
 msgid ""
 "To upload these set of files you can use either of the following methods:"
 msgstr ""
 
 # a4db4cadae7a492d96fe7b0858c5e348
-#: ../source/faq.rst:1849
+#: ../source/faq.rst:1836
 msgid ""
 "Configure upload directory with :config:option:`$cfg['UploadDir']`, upload "
 "both .shp and .dbf files with the same filename and chose the .shp file from "
@@ -8871,23 +8780,23 @@ msgid ""
 msgstr ""
 
 # 5ed8467037f54883b7b141844cb1232a
-#: ../source/faq.rst:1852
+#: ../source/faq.rst:1839
 msgid ""
 "Create a Zip archive with .shp and .dbf files and import it. For this to "
 "work, you need to set :config:option:`$cfg['TempDir']` to a place where the "
 "web server user can write (for example ``'./tmp'``)."
 msgstr ""
 
-#: ../source/faq.rst:1856
+#: ../source/faq.rst:1843
 msgid "To create the temporary directory on a UNIX-based system, you can do:"
 msgstr ""
 
 # f802fcaac5e54c82904d1065fbbd0bdb
-#: ../source/faq.rst:1867
+#: ../source/faq.rst:1854
 msgid "6.31 How do I create a relation in designer?"
 msgstr ""
 
-#: ../source/faq.rst:1869
+#: ../source/faq.rst:1856
 #, fuzzy
 msgid ""
 "To select relation, click:  The display column is shown in pink. To set/"
@@ -8899,12 +8808,12 @@ msgstr ""
 "wählen\", dann auf den passenden Spaltennamen."
 
 # 08699143390842eeb99b4179b72c5d90
-#: ../source/faq.rst:1876
+#: ../source/faq.rst:1863
 msgid "6.32 How can I use the zoom search feature?"
 msgstr ""
 
 # 3161fcf36ddb4bb5a924d5481e6df7d8
-#: ../source/faq.rst:1878
+#: ../source/faq.rst:1865
 msgid ""
 "The Zoom search feature is an alternative to table search feature. It allows "
 "you to explore a table by representing its data in a scatter plot. You can "
@@ -8914,7 +8823,7 @@ msgid ""
 msgstr ""
 
 # 672e408ee7804417bf93d951f392774f
-#: ../source/faq.rst:1884
+#: ../source/faq.rst:1871
 msgid ""
 "Consider the table REL\\_persons in :ref:`faq6_6` for an example. To use "
 "zoom search, two columns need to be selected, for example, id and town"
@@ -8925,7 +8834,7 @@ msgid ""
 msgstr ""
 
 # 4ac17dae87e5458e880476e2be4bd42c
-#: ../source/faq.rst:1892
+#: ../source/faq.rst:1879
 msgid ""
 "You can choose which field should be displayed as label for each point. If a "
 "display column has been set for the table (see :ref:`faqdisplay`), it is "
@@ -8936,7 +8845,7 @@ msgid ""
 msgstr ""
 
 # 33be265b8d7f43e982ffdd89b145ec27
-#: ../source/faq.rst:1900
+#: ../source/faq.rst:1887
 msgid ""
 "After the plot is generated, you can use the mousewheel to zoom in and out "
 "of the plot. In addition, panning feature is enabled to navigate through the "
@@ -8949,12 +8858,12 @@ msgid ""
 msgstr ""
 
 # 124b7d5f3ca04aaeb077aa4dba6b2fb7
-#: ../source/faq.rst:1913
+#: ../source/faq.rst:1900
 msgid "6.33 When browsing a table, how can I copy a column name?"
 msgstr ""
 
 # d95c04246ffa49578001dac72857125f
-#: ../source/faq.rst:1915
+#: ../source/faq.rst:1902
 msgid ""
 "Selecting the name of the column within the browse table header cell for "
 "copying is difficult, as the columns support reordering by dragging the "
@@ -8965,16 +8874,58 @@ msgid ""
 "to copy it to your clipboard."
 msgstr ""
 
-#: ../source/faq.rst:1926
+# f2617577f4fa460bac410f5955932a4a
+#: ../source/faq.rst:1913
+msgid "6.34 How can I use the Favorite Tables feature?"
+msgstr ""
+
+# 5a895266335042bdbe66c7e9f0a6485b
+#: ../source/faq.rst:1915
+msgid ""
+"Favorite Tables feature is very much similar to Recent Tables feature. It "
+"allows you to add a shortcut for the frequently used tables of any database "
+"in the navigation panel . You can easily navigate to any table in the list "
+"by simply choosing it from the list. These tables are stored in your "
+"browser's local storage if you have not configured your `phpMyAdmin "
+"Configuration Storage`. Otherwise these entries are stored in `phpMyAdmin "
+"Configuration Storage`."
+msgstr ""
+
+# 3180692e17f1421cb2fefac5a59585b0
+#: ../source/faq.rst:1923
+msgid ""
+"IMPORTANT: In absence of `phpMyAdmin Configuration Storage`, your Favorite "
+"tables may be different in different browsers based on your different "
+"selections in them."
+msgstr ""
+
+# a92e54e484f6484688afca8bdbaaae50
+#: ../source/faq.rst:1927
+msgid ""
+"To add a table to Favorite list simply click on the `Gray` star in front of "
+"a table name in the list of tables of a Database and wait until it turns to "
+"`Yellow`. To remove a table from list, simply click on the `Yellow` star and "
+"wait until it turns `Gray` again."
+msgstr ""
+
+# 23159d2c68cf4e1b9e6d81731424af5f
+#: ../source/faq.rst:1933
+msgid ""
+"Using :config:option:`$cfg['NumFavoriteTables']` in your :file:`config.inc."
+"php` file, you can define the  maximum number of favorite tables shown in "
+"the navigation panel. Its default value is `10`."
+msgstr ""
+
+#: ../source/faq.rst:1940
 msgid "phpMyAdmin project"
 msgstr ""
 
 # 5405efb60e934acdb63634ec2aaf507f
-#: ../source/faq.rst:1931
+#: ../source/faq.rst:1945
 msgid "7.1 I have found a bug. How do I inform developers?"
 msgstr ""
 
-#: ../source/faq.rst:1933
+#: ../source/faq.rst:1947
 #, fuzzy
 msgid ""
 "Our Bug Tracker is located at <http://sf.net/projects/phpmyadmin/> under the "
@@ -8985,14 +8936,14 @@ msgstr ""
 "phpMyAdmin Projektseite</a>"
 
 # 98c5559ce3144bac9ea2a8c765bc06a8
-#: ../source/faq.rst:1940
+#: ../source/faq.rst:1954
 msgid ""
 "7.2 I want to translate the messages to a new language or upgrade an "
 "existing language, where do I start?"
 msgstr ""
 
 # b06b03b7c74b4d8cb06b2730ddc5f135
-#: ../source/faq.rst:1942
+#: ../source/faq.rst:1956
 msgid ""
 "Translations are very welcome and all you need to have are the language "
 "skills. The easiest way is to use our `online translation service <https://"
@@ -9002,49 +8953,49 @@ msgid ""
 msgstr ""
 
 # 6598a28b7b9d4e828c4b1023bd8e1d3d
-#: ../source/faq.rst:1951
+#: ../source/faq.rst:1965
 msgid ""
 "7.3 I would like to help out with the development of phpMyAdmin. How should "
 "I proceed?"
 msgstr ""
 
 # 18450e4d529f4bc5b1667e536e50c579
-#: ../source/faq.rst:1953
+#: ../source/faq.rst:1967
 msgid ""
 "We welcome every contribution to the development of phpMyAdmin. You can "
 "check out all the possibilities to contribute in the `contribute section on "
 "our website <http://www.phpmyadmin.net/home_page/improve.php>`_."
 msgstr ""
 
-#: ../source/faq.rst:1958
+#: ../source/faq.rst:1972
 #, fuzzy
 #| msgid ":ref:`glossary`"
 msgid ":ref:`developers`"
 msgstr ":ref:`glossary`"
 
-#: ../source/faq.rst:1963
+#: ../source/faq.rst:1977
 msgid "Security"
 msgstr "Sicherheit"
 
 # e6911419e8a5498696f98df4069b27dd
-#: ../source/faq.rst:1968
+#: ../source/faq.rst:1982
 msgid ""
 "8.1 Where can I get information about the security alerts issued for "
 "phpMyAdmin?"
 msgstr ""
 
-#: ../source/faq.rst:1970
+#: ../source/faq.rst:1984
 #, fuzzy
 msgid "Please refer to <http://www.phpmyadmin.net/home_page/security.php>."
 msgstr "<a href=\"http://www.phpmyadmin.net/home_page/donate.php\">Spende</a>"
 
 # f2d914cc965f4ffca77d1cc0e65461b0
-#: ../source/faq.rst:1975
+#: ../source/faq.rst:1989
 msgid "8.2 How can I protect phpMyAdmin against brute force attacks?"
 msgstr ""
 
 # 7d242075c7f2431486243f8902956518
-#: ../source/faq.rst:1977
+#: ../source/faq.rst:1991
 msgid ""
 "If you use Apache web server, phpMyAdmin exports information about "
 "authentication to the Apache environment and it can be used in Apache logs. "
@@ -9052,21 +9003,21 @@ msgid ""
 msgstr ""
 
 # 412eb84aedcc4b89ab6364a53a2c8f13
-#: ../source/faq.rst:1982
+#: ../source/faq.rst:1996
 msgid "``userID``"
 msgstr ""
 
-#: ../source/faq.rst:1983
+#: ../source/faq.rst:1997
 msgid "User name of currently active user (he does not have to be logged in)."
 msgstr ""
 
 # 6ae9a177ddbc454e854a9433e5a1a43e
-#: ../source/faq.rst:1988
+#: ../source/faq.rst:2002
 msgid "``userStatus``"
 msgstr ""
 
 # 3aed5824b3f44d2fa010457895a48297
-#: ../source/faq.rst:1985
+#: ../source/faq.rst:1999
 msgid ""
 "Status of currently active user, one of ``ok`` (user is logged in), ``mysql-"
 "denied`` (MySQL denied user login), ``allow-denied`` (user denied by allow/"
@@ -9075,27 +9026,27 @@ msgid ""
 msgstr ""
 
 # e88014364c704ca6a2b3c283e13c1530
-#: ../source/faq.rst:1990
+#: ../source/faq.rst:2004
 msgid "``LogFormat`` directive for Apache can look like following:"
 msgstr ""
 
-#: ../source/faq.rst:1996
+#: ../source/faq.rst:2010
 msgid ""
 "You can then use any log analyzing tools to detect possible break-in "
 "attempts."
 msgstr ""
 
-#: ../source/faq.rst:2002
+#: ../source/faq.rst:2016
 msgid "Synchronization"
 msgstr ""
 
 # 30092401ac9c499681ecbdce44a90c2d
-#: ../source/faq.rst:2007
+#: ../source/faq.rst:2021
 msgid "9.1 (withdrawn)."
 msgstr ""
 
 # ba292e3a6d8345b99ab7f2b0a95a3612
-#: ../source/faq.rst:2012
+#: ../source/faq.rst:2026
 msgid "9.2 (withdrawn)."
 msgstr ""
 
@@ -9244,7 +9195,7 @@ msgid "maintainer from 1998 to summer 2000"
 msgstr ""
 
 # c64f87eceb344991a4eac83c2e69b06b
-#: ../source/credits.rst:16 ../source/credits.rst:438
+#: ../source/credits.rst:16 ../source/credits.rst:442
 msgid "Marc Delisle <marc\\_at\\_infomarc.info>"
 msgstr ""
 
@@ -9472,8 +9423,8 @@ msgid "Relation view"
 msgstr "Beziehungsübersicht"
 
 # df137d1426c74d10a8c7a43e26e83029
-#: ../source/credits.rst:127 ../source/credits.rst:409
-#: ../source/credits.rst:552
+#: ../source/credits.rst:127 ../source/credits.rst:413
+#: ../source/credits.rst:556
 msgid "Michal Čihař <michal\\_at\\_cihar.com>"
 msgstr ""
 
@@ -9987,14 +9938,24 @@ msgstr ""
 msgid "Interface improvements"
 msgstr ""
 
-#: ../source/credits.rst:374
+# 920c43e794454c3983b45524f9582b41
+#: ../source/credits.rst:373
+msgid "Hugues Peccatte"
+msgstr ""
+
+# 01581c1c0c8b4a2a8848fc60ef76a5d8
+#: ../source/credits.rst:375
+msgid "Load/save query by example (database search bookmarks)"
+msgstr ""
+
+#: ../source/credits.rst:378
 msgid ""
 "And also to the following people who have contributed minor changes, "
 "enhancements, bugfixes or support for a new language since version 2.1.0:"
 msgstr ""
 
 # f0a42bc8b57e4f41a67e1dd5a83d251e
-#: ../source/credits.rst:378
+#: ../source/credits.rst:382
 msgid ""
 "Bora Alioglu, Ricardo ?, Sven-Erik Andersen, Alessandro Astarita, Péter "
 "Bakondy, Borges Botelho, Olivier Bussier, Neil Darlow, Mats Engstrom, Ian "
@@ -10008,425 +9969,425 @@ msgid ""
 msgstr ""
 
 # 8868f3e6283344e7b3433ac1c60b09b4
-#: ../source/credits.rst:391
+#: ../source/credits.rst:395
 msgid "Translators"
 msgstr ""
 
 # e1575a6197b742b3806f1f387f3413e2
-#: ../source/credits.rst:393
+#: ../source/credits.rst:397
 msgid "Following people have contributed to translation of phpMyAdmin:"
 msgstr ""
 
-#: ../source/credits.rst:395
+#: ../source/credits.rst:399
 msgid "Arabic"
 msgstr "Arabisch"
 
 # 2c64ff57dec84a0da079612a3c2e743f
-#: ../source/credits.rst:397
+#: ../source/credits.rst:401
 msgid "Abdullah Al-Saedi <abdullah.10\\_at\\_windowslive.com>"
 msgstr ""
 
-#: ../source/credits.rst:399
+#: ../source/credits.rst:403
 msgid "Bulgarian"
 msgstr "Bulgarisch"
 
 # 0165d0dabcc0407399b4b5d24e2777d4
-#: ../source/credits.rst:401
+#: ../source/credits.rst:405
 msgid "stoyanster <stoyanster\\_at\\_gmail.com>"
 msgstr ""
 
 # e6f83370704c4e2397aa144cd22b0fbc
-#: ../source/credits.rst:403
+#: ../source/credits.rst:407
 msgid "Catalan"
 msgstr ""
 
 # 4c4c8b974bc94e369ded77650f715a64
-#: ../source/credits.rst:405
+#: ../source/credits.rst:409
 msgid "Xavier Navarro <xvnavarro\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:407 ../source/credits.rst:550
+#: ../source/credits.rst:411 ../source/credits.rst:554
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: ../source/credits.rst:411
+#: ../source/credits.rst:415
 msgid "Danish"
 msgstr "Dänisch"
 
 # b0d8b07d467d485280863cae3f0bea74
-#: ../source/credits.rst:413
+#: ../source/credits.rst:417
 msgid "opensource <opensource\\_at\\_jth.net>"
 msgstr ""
 
 # e8b03f48f1884d3eaca93c17f518d77e
-#: ../source/credits.rst:414
+#: ../source/credits.rst:418
 msgid "Jørgen Thomsen <opensource\\_at\\_jth.net>"
 msgstr ""
 
-#: ../source/credits.rst:416
+#: ../source/credits.rst:420
 msgid "German"
 msgstr "Deutsch"
 
 # d0f5afc590fd4d12b9ad0e89187f480a
-#: ../source/credits.rst:418
+#: ../source/credits.rst:422
 msgid "mrbendig <mrbendig\\_at\\_mrbendig.com>"
 msgstr ""
 
 # b84056b0187945c3a3821e68a412cfe8
-#: ../source/credits.rst:419
+#: ../source/credits.rst:423
 msgid "torsten.funck <torsten.funck\\_at\\_googlemail.com>"
 msgstr ""
 
 # bbab925ed58148e5a5954e63277d56e3
-#: ../source/credits.rst:420
+#: ../source/credits.rst:424
 msgid "Sven Strickroth <email\\_at\\_cs-ware.de>"
 msgstr ""
 
 # 0b5f5953da0f46deb247e0364909dae6
-#: ../source/credits.rst:421
+#: ../source/credits.rst:425
 msgid "typo3 <typo3\\_at\\_dirk-weise.de>"
 msgstr ""
 
 # 75b48421d38c415ba042a133f4139b15
-#: ../source/credits.rst:422
+#: ../source/credits.rst:426
 msgid "Jo Michael <me\\_at\\_mynetx.net>"
 msgstr ""
 
-#: ../source/credits.rst:424 ../source/credits.rst:554
+#: ../source/credits.rst:428 ../source/credits.rst:558
 msgid "Greek"
 msgstr "Griechisch"
 
 # 2317cf5fc12a46b6b63a5aaa35365849
 # c7bcfb32ff4240daaa4ee72f16dc70f6
-#: ../source/credits.rst:426 ../source/credits.rst:556
+#: ../source/credits.rst:430 ../source/credits.rst:560
 msgid "Panagiotis Papazoglou <papaz_p\\_at\\_yahoo.com>"
 msgstr ""
 
 # 86affc0ccc1d42c0867da397d2c6023c
 # 39992e8639ae4a0a8a5e12953cf2c02a
-#: ../source/credits.rst:428 ../source/credits.rst:558
+#: ../source/credits.rst:432 ../source/credits.rst:562
 msgid "English (United Kingdom)"
 msgstr ""
 
 # 714b3a26e29c4e109ad634290764170e
 # 232bf830a1ff4233b6ab50ca56362a85
-#: ../source/credits.rst:430 ../source/credits.rst:560
+#: ../source/credits.rst:434 ../source/credits.rst:564
 msgid "Robert Readman <robert_readman\\_at\\_hotmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:432
+#: ../source/credits.rst:436
 msgid "Spanish"
 msgstr "Spanisch"
 
 # d4fcad0b8425421589ca9ee615a9b272
-#: ../source/credits.rst:434
+#: ../source/credits.rst:438
 msgid "Matías Bellone <matiasbellone\\_at\\_gmail.com>"
 msgstr ""
 
 # b1e54e6d1dd44320b1d31a34009e1924
 # 8b41720430b243f4a82e32b7242f719d
-#: ../source/credits.rst:436 ../source/credits.rst:562
+#: ../source/credits.rst:440 ../source/credits.rst:566
 msgid "French"
 msgstr ""
 
 # 01164ecc094d4f8389aa2dece980cddf
-#: ../source/credits.rst:440
+#: ../source/credits.rst:444
 msgid "Hindi"
 msgstr ""
 
 # 9a686cf60c3b4906966bcc55f878a538
-#: ../source/credits.rst:442
+#: ../source/credits.rst:446
 msgid "u4663530 <u4663530\\_at\\_anu.edu.au>"
 msgstr ""
 
 # 93ff4a42c03749ef899cad8b120c544b
-#: ../source/credits.rst:443
+#: ../source/credits.rst:447
 msgid "rsedwardian <rsedwardian\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:445
+#: ../source/credits.rst:449
 msgid "Hungarian"
 msgstr "Ungarisch"
 
 # e215216eab9f4a20909f2dab6640f938
-#: ../source/credits.rst:447
+#: ../source/credits.rst:451
 msgid "gergo314 <gergo314\\_at\\_gmail.com>"
 msgstr ""
 
 # 9f35aa610d694f84885fe33a73afbdb0
-#: ../source/credits.rst:449
+#: ../source/credits.rst:453
 msgid "Italian"
 msgstr ""
 
 # 031e4c1c39a549aa8061e27e2adc3050
-#: ../source/credits.rst:451
+#: ../source/credits.rst:455
 msgid "Rouslan Placella <rouslan\\_at\\_placella.com>"
 msgstr ""
 
-#: ../source/credits.rst:453 ../source/credits.rst:566
+#: ../source/credits.rst:457 ../source/credits.rst:570
 msgid "Japanese"
 msgstr "Japanisch"
 
 # ac2f397d40aa47ec94d22b5f23524dd0
-#: ../source/credits.rst:455
+#: ../source/credits.rst:459
 msgid "Yuichiro <yuichiro\\_at\\_pop07.odn.ne.jp>"
 msgstr ""
 
-#: ../source/credits.rst:457
+#: ../source/credits.rst:461
 msgid "Lithuanian"
 msgstr "Litauisch"
 
 # 6a1a2ef9bb494a2799f986e5d03253fd
-#: ../source/credits.rst:459
+#: ../source/credits.rst:463
 msgid "Kęstutis <forkik\\_at\\_gmail.com>"
 msgstr ""
 
 # c154ea0520f143d6b1c90da610708411
-#: ../source/credits.rst:461
+#: ../source/credits.rst:465
 msgid "Norwegian Bokmål"
 msgstr ""
 
 # 8239f695c3f44ff4a5a3a2a341c8ea16
-#: ../source/credits.rst:463
+#: ../source/credits.rst:467
 msgid "Sven-Erik Andersen <sven.erik.andersen\\_at\\_gmail.com>"
 msgstr ""
 
 # 13c1cb8f251741fdacdcd44c52386982
-#: ../source/credits.rst:465
+#: ../source/credits.rst:469
 msgid "Dutch"
 msgstr ""
 
 # b02c7a98eacb48f0bc2b0b5f50073628
-#: ../source/credits.rst:467
+#: ../source/credits.rst:471
 msgid "Dieter Adriaenssens <ruleant\\_at\\_users.sourceforge.net>"
 msgstr ""
 
 # 04c5a5c7903e43449114a87b4c67697f
-#: ../source/credits.rst:468
+#: ../source/credits.rst:472
 msgid "Herman van Rink <rink\\_at\\_initfour.nl>"
 msgstr ""
 
-#: ../source/credits.rst:470 ../source/credits.rst:570
+#: ../source/credits.rst:474 ../source/credits.rst:574
 msgid "Polish"
 msgstr "Polnisch"
 
 # cef132682c2a4e74b1ddaa7851a0e284
 # 5baf77fb1393459381b2578d05b96ad5
-#: ../source/credits.rst:472 ../source/credits.rst:572
+#: ../source/credits.rst:476 ../source/credits.rst:576
 msgid "Stanisław Krukowski <stankruk\\_at\\_neostrada.pl>"
 msgstr ""
 
 # 9d4df5f53525487f84d2b48a237ffebc
-#: ../source/credits.rst:473
+#: ../source/credits.rst:477
 msgid "Marcin Kozioł <lord_dark\\_at\\_wp.pl>"
 msgstr ""
 
 # 72f3f3f777394a38a73ed519d9e8a855
-#: ../source/credits.rst:475
+#: ../source/credits.rst:479
 msgid "Portuguese"
 msgstr ""
 
 # b85d2a60dce148b489737b88057886bd
-#: ../source/credits.rst:477
+#: ../source/credits.rst:481
 msgid "JoaoTMDias <contacto\\_at\\_joaodias.me>"
 msgstr ""
 
 # afa80b4f7a314e17adda64b7255da943
 # 5edd62aaefd941fdbea199fb2fad9047
-#: ../source/credits.rst:479 ../source/credits.rst:574
+#: ../source/credits.rst:483 ../source/credits.rst:578
 msgid "Portuguese (Brazil)"
 msgstr ""
 
 # 5cee3298997c4592b5c63d4757261600
-#: ../source/credits.rst:481
+#: ../source/credits.rst:485
 msgid "wiltave <wiltave\\_at\\_gmail.com>"
 msgstr ""
 
 # 76165b85122a422596fb17d62f988496
-#: ../source/credits.rst:482
+#: ../source/credits.rst:486
 msgid "emerson4br <emerson4br\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:484
+#: ../source/credits.rst:488
 msgid "Romanian"
 msgstr "Rumänisch"
 
 # 9de890b960a24f09ab02acba032a744d
-#: ../source/credits.rst:486
+#: ../source/credits.rst:490
 msgid "alexukf <alex.ukf\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:488
+#: ../source/credits.rst:492
 msgid "Russian"
 msgstr "Russisch"
 
 # 25762754ed5448bdb215bdf1436df8c4
-#: ../source/credits.rst:490
+#: ../source/credits.rst:494
 msgid "Victor Volkov <hanut\\_at\\_php-myadmin.ru>"
 msgstr ""
 
 # f30e8b3281fd495a805b3c90e239dac8
-#: ../source/credits.rst:492
+#: ../source/credits.rst:496
 msgid "Sinhala"
 msgstr ""
 
 # d40e971e2f754ba793110ac15f428ddf
-#: ../source/credits.rst:494
+#: ../source/credits.rst:498
 msgid "Madhura Jayaratne <madhura.cj\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:496
+#: ../source/credits.rst:500
 msgid "Slovak"
 msgstr "Slovakisch"
 
 # bed9139167dc4e1fb74b45ece589422a
-#: ../source/credits.rst:498
+#: ../source/credits.rst:502
 msgid "Martin Lacina <martin\\_at\\_whistler.sk>"
 msgstr ""
 
-#: ../source/credits.rst:500 ../source/credits.rst:578
+#: ../source/credits.rst:504 ../source/credits.rst:582
 msgid "Slovenian"
 msgstr "Slovenisch"
 
 # d594225d6ef945358a94f79a09bc64f6
 # 8069b2767b6a4210b7652bd659758a94
-#: ../source/credits.rst:502 ../source/credits.rst:580
+#: ../source/credits.rst:506 ../source/credits.rst:584
 msgid "Domen <dbc334\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:504
+#: ../source/credits.rst:508
 msgid "Swedish"
 msgstr "Schwedisch"
 
 # dd5cfcdc38694d52baefede4dfcecb75
-#: ../source/credits.rst:506
+#: ../source/credits.rst:510
 msgid "stefan <stefan\\_at\\_inkopsforum.se>"
 msgstr ""
 
 # dc81d42cba774a2db61f7bc910323283
-#: ../source/credits.rst:508
+#: ../source/credits.rst:512
 msgid "Tamil"
 msgstr ""
 
 # b247e1ecc6774c49824a75021f521bb6
-#: ../source/credits.rst:510
+#: ../source/credits.rst:514
 msgid "ysajeepan <ysajeepan\\_at\\_live.com>"
 msgstr ""
 
 # 5f23407ed86a4768b459623f7462f154
-#: ../source/credits.rst:512
+#: ../source/credits.rst:516
 msgid "Telugu"
 msgstr ""
 
 # ba2207c1b8d649b58306e2a189ab4d74
-#: ../source/credits.rst:514
+#: ../source/credits.rst:518
 msgid "veeven <veeven\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:516
+#: ../source/credits.rst:520
 msgid "Thai"
 msgstr "Thai"
 
 # b965a5effadb4d6094760e894fc38203
-#: ../source/credits.rst:518
+#: ../source/credits.rst:522
 msgid "kanitchet <kanichet\\_at\\_hotmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:520
+#: ../source/credits.rst:524
 msgid "Turkish"
 msgstr "Türkisch"
 
 # ac38eca0999b4ae28695b7a88918a944
-#: ../source/credits.rst:522
+#: ../source/credits.rst:526
 msgid "Burak Yavuz <hitowerdigit\\_at\\_hotmail.com>"
 msgstr ""
 
 # e1c38e2520a2424aa95bfaaf4bfce799
-#: ../source/credits.rst:524
+#: ../source/credits.rst:528
 msgid "Uighur"
 msgstr ""
 
 # aab927ecc9cb4de99bbb8288a2a7f8b9
-#: ../source/credits.rst:526
+#: ../source/credits.rst:530
 msgid "gheni <gheni\\_at\\_yahoo.cn>"
 msgstr ""
 
-#: ../source/credits.rst:528
+#: ../source/credits.rst:532
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
 # b0985e10610745d2ba3a8be9155ba170
-#: ../source/credits.rst:530
+#: ../source/credits.rst:534
 msgid "typim <duke3d\\_at\\_ukr.net>"
 msgstr ""
 
 # f9a3e82b16a64067a13695d05b6be2f2
-#: ../source/credits.rst:531
+#: ../source/credits.rst:535
 msgid "oleg-ilnytskyi <ukraine.oleg\\_at\\_gmail.com>"
 msgstr ""
 
 # 54f42bf4e6dc48e79f2dfc88458d1f24
-#: ../source/credits.rst:533
+#: ../source/credits.rst:537
 msgid "Urdu"
 msgstr ""
 
 # d092b64c1a044d2595944afbc5d0b54f
-#: ../source/credits.rst:535
+#: ../source/credits.rst:539
 msgid "Mehbooob Khan <mehboobbugti\\_at\\_gmail.com>"
 msgstr ""
 
 # 98a1185d84bf4b6eb73ba1affa8f6632
-#: ../source/credits.rst:537
+#: ../source/credits.rst:541
 msgid "Simplified Chinese"
 msgstr "Vereinfachtes Chinesisch"
 
 # 2f1da616a36f4a01ab1287730b674a07
-#: ../source/credits.rst:539
+#: ../source/credits.rst:543
 msgid "shanyan baishui <Siramizu\\_at\\_gmail.com>"
 msgstr ""
 
 # 9055a9cfcbe14e5f9325a68f488302f9
-#: ../source/credits.rst:541
+#: ../source/credits.rst:545
 msgid "Traditional Chinese"
 msgstr "Traditionelles Chinesisch"
 
 # 76bba6a8454e4111a53fd91746ba0715
-#: ../source/credits.rst:543
+#: ../source/credits.rst:547
 msgid "star <star\\_at\\_origin.club.tw>"
 msgstr ""
 
-#: ../source/credits.rst:546
+#: ../source/credits.rst:550
 #, fuzzy
 #| msgid "Documentation"
 msgid "Documentation translators"
 msgstr "Dokumentation"
 
 # d8730a3e9d3248b0ad5911735ecf0542
-#: ../source/credits.rst:548
+#: ../source/credits.rst:552
 msgid ""
 "Following people have contributed to translation of phpMyAdmin documentation:"
 msgstr ""
 
 # 74709dff63f44d6c9bd88fd439cb5b64
-#: ../source/credits.rst:564
+#: ../source/credits.rst:568
 msgid "Cédric Corazza <cedric.corazza\\_at\\_wanadoo.fr>"
 msgstr ""
 
 # 920b74fa483a477798c8f4f5ccab528d
-#: ../source/credits.rst:568
+#: ../source/credits.rst:572
 msgid "Yuichiro Takahashi <yuichiro\\_at\\_pop07.odn.ne.jp>"
 msgstr ""
 
 # bac1245803cb4fcf9628b477a2942761
-#: ../source/credits.rst:576
+#: ../source/credits.rst:580
 msgid "mjaning <mjaning\\_at\\_gmail.com>"
 msgstr ""
 
-#: ../source/credits.rst:583
+#: ../source/credits.rst:587
 msgid "Original Credits of Version 2.1.0"
 msgstr ""
 
-#: ../source/credits.rst:585
+#: ../source/credits.rst:589
 msgid ""
 "This work is based on Peter Kuppelwieser's MySQL-Webadmin. It was his idea "
 "to create a web-based interface to MySQL using PHP3. Although I have not "
@@ -10435,12 +10396,12 @@ msgid ""
 "develop his (great) tool."
 msgstr ""
 
-#: ../source/credits.rst:591
+#: ../source/credits.rst:595
 msgid "Thanks go to"
 msgstr ""
 
 # aaf1c2f01a8241d787cd5adf721b7ee9
-#: ../source/credits.rst:593
+#: ../source/credits.rst:597
 msgid ""
 "Amalesh Kempf <ak-lsml\\_at\\_living-source.com> who contributed the code "
 "for the check when dropping a table or database. He also suggested that you "
@@ -10450,7 +10411,7 @@ msgid ""
 msgstr ""
 
 # 9d3e7ed721bf48c8b5bc0c45e722a4c1
-#: ../source/credits.rst:599
+#: ../source/credits.rst:603
 msgid ""
 "Jan Legenhausen <jan\\_at\\_nrw.net>: He made many of the changes that were "
 "introduced in 1.3.0 (including quite significant ones like the "
@@ -10459,7 +10420,7 @@ msgid ""
 msgstr ""
 
 # 150696740d254550a8999b594a12dbfb
-#: ../source/credits.rst:603
+#: ../source/credits.rst:607
 msgid ""
 "Marc Delisle <DelislMa\\_at\\_CollegeSherbrooke.qc.ca> made phpMyAdmin "
 "language-independent by outsourcing the strings to a separate file. He also "
@@ -10467,34 +10428,34 @@ msgid ""
 msgstr ""
 
 # 5c3383a7d81547118ebc7a7bd33a15f3
-#: ../source/credits.rst:606
+#: ../source/credits.rst:610
 msgid ""
 "Alexandr Bravo <abravo\\_at\\_hq.admiral.ru> who contributed tbl\\_select."
 "php3, a feature to display only some columns from a table."
 msgstr ""
 
 # 68fcf2d1bb2b4fb5bbf04eb6fb1ad813
-#: ../source/credits.rst:608
+#: ../source/credits.rst:612
 msgid ""
 "Chris Jackson <chrisj\\_at\\_ctel.net> added support for MySQL functions in "
 "tbl\\_change.php3. He also added the \"Query by Example\" feature in 2.0."
 msgstr ""
 
 # 7ab82ac2e0f44c12a1cc33c6935bf7e8
-#: ../source/credits.rst:611
+#: ../source/credits.rst:615
 msgid ""
 "Dave Walton <walton\\_at\\_nordicdms.com> added support for multiple servers "
 "and is a regular contributor for bug-fixes."
 msgstr ""
 
 # 053ec925771848f18b73dc11b818f87e
-#: ../source/credits.rst:613
+#: ../source/credits.rst:617
 msgid ""
 "Gabriel Ash <ga244\\_at\\_is8.nyu.edu> contributed the random access "
 "features for 2.0.6."
 msgstr ""
 
-#: ../source/credits.rst:616
+#: ../source/credits.rst:620
 msgid ""
 "The following people have contributed minor changes, enhancements, bugfixes "
 "or support for a new language:"
@@ -10502,7 +10463,7 @@ msgstr ""
 "Folgende Personen haben mit kleineren Änderungen, Verbesserungen, Bugfixes "
 "oder Unterstützung einer neuen Sprache beigetragen:"
 
-#: ../source/credits.rst:619
+#: ../source/credits.rst:623
 msgid ""
 "Jim Kraai, Jordi Bruguera, Miquel Obrador, Geert Lund, Thomas Kleemann, "
 "Alexander Leidinger, Kiko Albiol, Daniel C. Chao, Pavel Piankov, Sascha "
@@ -10514,7 +10475,7 @@ msgstr ""
 "Kettler, Joe Pruett, Renato Lins, Mark Kronsbein, Jannis Hermanns, G. "
 "Wieggers."
 
-#: ../source/credits.rst:624
+#: ../source/credits.rst:628
 #, fuzzy
 msgid ""
 "And thanks to everyone else who sent me email with suggestions, bug- reports "
@@ -11438,94 +11399,76 @@ msgstr ""
 msgid "<http://dev.mysql.com/doc/en/storage-engines.html>"
 msgstr ""
 
-# feb6abb35f7e4549b8e770395f276d68
-#: ../source/glossary.rst:314
-msgid "SOAP"
-msgstr ""
-
-# 30dc525090b644ebbfe3e3550bcb4aec
-#: ../source/glossary.rst:316
-msgid ""
-"Simple Object Access Protocol is a protocol specification for exchanging "
-"structured information in the implementation of Web Services in computer "
-"networks."
-msgstr ""
-
-# 1451bd8d20934ea88627796da1c2878c
-#: ../source/glossary.rst:320
-msgid "<http://en.wikipedia.org/wiki/SOAP>"
-msgstr ""
-
 # dcaa15dc9b214b8fb2db2612a82cb235
-#: ../source/glossary.rst:321
+#: ../source/glossary.rst:314
 msgid "socket"
 msgstr ""
 
 # 013a90d02c6a4e6397d7e29ede0de044
-#: ../source/glossary.rst:323
+#: ../source/glossary.rst:316
 msgid "a form of inter-process communication."
 msgstr ""
 
 # 1b226e3f1308485696d4eb99d862c05d
-#: ../source/glossary.rst:325
+#: ../source/glossary.rst:318
 msgid "<http://www.wikipedia.org/wiki/Socket#Computer_sockets>"
 msgstr ""
 
 # c40332c8f82a4776a58deea70db180d7
-#: ../source/glossary.rst:326
+#: ../source/glossary.rst:319
 msgid "SSL"
 msgstr ""
 
 # 8db75ad219644b1a833478f9414ad066
-#: ../source/glossary.rst:328
+#: ../source/glossary.rst:321
 msgid ""
 "Secure Sockets Layer is a cryptographic protocol which provides secure "
 "communication on the Internet."
 msgstr ""
 
 # 35e4cdca4d4943ebb537646101bdc035
-#: ../source/glossary.rst:331
+#: ../source/glossary.rst:324
 msgid "<http://www.wikipedia.org/wiki/Secure_Sockets_Layer>"
 msgstr ""
 
 # 1f99a4c5a9fe4c30bb492335421db7ee
-#: ../source/glossary.rst:332
+#: ../source/glossary.rst:325
 msgid "Stored procedure"
 msgstr ""
 
 # 7a2a20eacfe746628d518606602e4e85
-#: ../source/glossary.rst:334
+#: ../source/glossary.rst:327
 msgid ""
 "a subroutine available to applications accessing a relational database system"
 msgstr ""
 
 # a5a7f333549a4cf480e7957b4611081d
-#: ../source/glossary.rst:336
+#: ../source/glossary.rst:329
 msgid "<http://en.wikipedia.org/wiki/Stored_procedure>"
 msgstr ""
 
 # 57706b31ea9640639d9f4a5b227b8836
-#: ../source/glossary.rst:337
+#: ../source/glossary.rst:330
 msgid "SQL"
 msgstr "SQL"
 
 # 4f30ef3d1a6e46558902aff2e0b818d3
-#: ../source/glossary.rst:339
+#: ../source/glossary.rst:332
 msgid "Structured Query Language"
 msgstr ""
 
 # f0c43c3554874e5380211176ee5eb308
-#: ../source/glossary.rst:341
+#: ../source/glossary.rst:334
 msgid "<http://www.wikipedia.org/wiki/SQL>"
 msgstr ""
 
 # 9c72c78a74a5404d875462912f2f1d7b
-#: ../source/glossary.rst:342
+#: ../source/glossary.rst:335
 msgid "table"
 msgstr ""
 
 # 1fb93b0595a64dbb967241c1ad3a5d16
-#: ../source/glossary.rst:344
+#: ../source/glossary.rst:337
 msgid ""
 "a set of data elements (cells) that is organized, defined and stored as "
 "horizontal rows and vertical columns where each item can be uniquely "
@@ -11533,96 +11476,96 @@ msgid ""
 msgstr ""
 
 # 8f61fba8dee34a16abcd8172eee34daf
-#: ../source/glossary.rst:349
+#: ../source/glossary.rst:342
 msgid "<http://www.wikipedia.org/wiki/Table_(database)>"
 msgstr ""
 
 # 7d5348914072407d9ac0cd3cc4decf54
-#: ../source/glossary.rst:350
+#: ../source/glossary.rst:343
 msgid "tar"
 msgstr ""
 
 # e24e5e9981f74b6e869e8a881218ffe6
-#: ../source/glossary.rst:352
+#: ../source/glossary.rst:345
 msgid "a type of archive file format: the Tape ARchive format."
 msgstr ""
 
 # cfde546f1f4846979731669d3026d47f
-#: ../source/glossary.rst:354
+#: ../source/glossary.rst:347
 msgid "<http://www.wikipedia.org/wiki/Tar_(file_format)>"
 msgstr ""
 
 # c38e24329e684410bc215d4a814211d4
-#: ../source/glossary.rst:355
+#: ../source/glossary.rst:348
 msgid "TCP"
 msgstr ""
 
 # 53d63aedb8c24c7eae36664837732db3
-#: ../source/glossary.rst:357
+#: ../source/glossary.rst:350
 msgid ""
 "Transmission Control Protocol is one of the core protocols of the Internet "
 "protocol suite."
 msgstr ""
 
 # cb76a4301e484ea6b1f534e4d69e4dbf
-#: ../source/glossary.rst:360
+#: ../source/glossary.rst:353
 msgid "<http://www.wikipedia.org/wiki/TCP>"
 msgstr ""
 
 # f0d5744e2c3343dc9326abb7025d14b0
-#: ../source/glossary.rst:361
+#: ../source/glossary.rst:354
 msgid "TCPDF"
 msgstr ""
 
 # 1b35f5ccf64c4b7193f2d9cd7c3ead92
-#: ../source/glossary.rst:363
+#: ../source/glossary.rst:356
 msgid "Rewrite of :term:`UFPDF` with various improvements."
 msgstr ""
 
 # 9c788916bfc5411c84ba58123df49082
-#: ../source/glossary.rst:365
+#: ../source/glossary.rst:358
 msgid "<http://www.tcpdf.org/>"
 msgstr ""
 
 # 6039f7c42b0c4bd5ac33932cb3eb903b
-#: ../source/glossary.rst:366
+#: ../source/glossary.rst:359
 msgid "trigger"
 msgstr "Trigger"
 
 # d6c723467d6d485f8db85f697a81d888
-#: ../source/glossary.rst:368
+#: ../source/glossary.rst:361
 msgid ""
 "a procedural code that is automatically executed in response to certain "
 "events on a particular table or view in a database"
 msgstr ""
 
 # e7981d95bbe44403b1b16f5a7f68c708
-#: ../source/glossary.rst:370
+#: ../source/glossary.rst:363
 msgid "<http://en.wikipedia.org/wiki/Database_trigger>"
 msgstr ""
 
 # 79447c6795304fe0bf021096e544fff8
-#: ../source/glossary.rst:371
+#: ../source/glossary.rst:364
 msgid "UFPDF"
 msgstr ""
 
 # 74c5b838b0d2425594cca747037bc622
-#: ../source/glossary.rst:373
+#: ../source/glossary.rst:366
 msgid "Unicode/UTF-8 extension for :term:`FPDF`"
 msgstr ""
 
 # 58642429fc764cac8ed1cac0e8bec09b
-#: ../source/glossary.rst:375
+#: ../source/glossary.rst:368
 msgid "<http://www.acko.net/node/56>"
 msgstr ""
 
 # 87cf2b5d7adf46a4a132934551befdd5
-#: ../source/glossary.rst:376
+#: ../source/glossary.rst:369
 msgid "URL"
 msgstr ""
 
 # 96a82e8dba684255ab055757a1f4bb83
-#: ../source/glossary.rst:378
+#: ../source/glossary.rst:371
 msgid ""
 "Uniform Resource Locator is a sequence of characters, conforming to a "
 "standardized format, that is used for referring to resources, such as "
@@ -11630,35 +11573,35 @@ msgid ""
 msgstr ""
 
 # 388a425f72724840964bc330ddb3f245
-#: ../source/glossary.rst:382
+#: ../source/glossary.rst:375
 msgid "<http://www.wikipedia.org/wiki/URL>"
 msgstr ""
 
-#: ../source/glossary.rst:383
+#: ../source/glossary.rst:376
 #, fuzzy
 #| msgid "Web server"
 msgid "Webserver"
 msgstr "Webserver"
 
 # ae03c5144e994b5a8dd9666a64f0e156
-#: ../source/glossary.rst:385
+#: ../source/glossary.rst:378
 msgid ""
 "A computer (program) that is responsible for accepting HTTP requests from "
 "clients and serving them Web pages."
 msgstr ""
 
 # 5693fdb56eb24c3e8db37798b1d28229
-#: ../source/glossary.rst:387
+#: ../source/glossary.rst:380
 msgid "<http://www.wikipedia.org/wiki/Webserver>"
 msgstr ""
 
 # 6b571887905946c2beba75cbb82653fe
-#: ../source/glossary.rst:388
+#: ../source/glossary.rst:381
 msgid "XML"
 msgstr "XML"
 
 # 2762ca88f6454cd0bb06561328944114
-#: ../source/glossary.rst:390
+#: ../source/glossary.rst:383
 msgid ""
 "Extensible Markup Language is a W3C-recommended general- purpose markup "
 "language for creating special-purpose markup languages, capable of "
@@ -11666,41 +11609,156 @@ msgid ""
 msgstr ""
 
 # 78208cf50b2c43118c873c6e63885f00
-#: ../source/glossary.rst:394
+#: ../source/glossary.rst:387
 msgid "<http://www.wikipedia.org/wiki/XML>"
 msgstr ""
 
 # 74472858505f4d7686f9a8947d96d3e1
-#: ../source/glossary.rst:395
+#: ../source/glossary.rst:388
 msgid "ZIP"
 msgstr "ZIP"
 
 # 275ef320d97d49ed9b9266357b61d7ba
-#: ../source/glossary.rst:397
+#: ../source/glossary.rst:390
 msgid "a popular data compression and archival format."
 msgstr ""
 
 # 38186588a2c74a028c10034c3e65c6bd
-#: ../source/glossary.rst:399
+#: ../source/glossary.rst:392
 msgid "<http://www.wikipedia.org/wiki/ZIP_(file_format)>"
 msgstr ""
 
 # 7300b3f952c04ecb8b4b42792662e280
-#: ../source/glossary.rst:400
+#: ../source/glossary.rst:393
 msgid "zlib"
 msgstr ""
 
 # 432175f29de349b49ce15e94cc4a4175
-#: ../source/glossary.rst:402
+#: ../source/glossary.rst:395
 msgid ""
 "an open-source, cross- platform data compression library by Jean-loup Gailly "
 "and Mark Adler."
 msgstr ""
 
 # 62d3356789e0444b89dfe630c3fcd60c
-#: ../source/glossary.rst:404
+#: ../source/glossary.rst:397
 msgid "<http://www.wikipedia.org/wiki/Zlib>"
 msgstr ""
+
+#~ msgid "If you want to use the many new relation and bookmark features:"
+#~ msgstr ""
+#~ "Wenn Sie die vielen neuen Beziehungs- und Lesezeichenfunktionen benutzen "
+#~ "wollen:"
+
+#, fuzzy
+#~ msgid "(this of course requires that your :ref:`linked-tables` be set up)."
+#~ msgstr ""
+#~ "(dies setzt natürlich voraus, dass Ihr <a href=\"#linked-tables"
+#~ "\">phpMyAdmin-Konfigurationsspeicher</a> eingerichtet ist)."
+
+#, fuzzy
+#~ msgid ""
+#~ "You can use this method as a replacement for the :term:`HTTP` "
+#~ "authentication (for example, if you're running :term:`IIS`)."
+#~ msgstr ""
+#~ "Sie können diese Methode als Alternative für die <abbr title=\"HyperText "
+#~ "Transfer Protocol\">HTTP</abbr> Authentifizierung benutzen (z.B. wenn Sie "
+#~ "einen <abbr title=\"Internet Information Services\">IIS</abbr> benutzen)."
+
+#~ msgid ""
+#~ "Obviously, the user must enable cookies in the browser, but this is now a "
+#~ "requirement for all authentication modes."
+#~ msgstr ""
+#~ "Offenbar muss der Benutzer Cookies in seinem Webbrowser aktiviert haben, "
+#~ "aber dies ist inzwischen eine Voraussetzung für alle "
+#~ "Authentifizierungsmethoden."
+
+#~ msgid ""
+#~ "The other application has to store login information into session data."
+#~ msgstr ""
+#~ "Die andere Anwendung muss die Login-Informationen in Session-Daten "
+#~ "speichern."
+
+#, fuzzy
+#~ msgid ""
+#~ "When using :term:`HTTP` or cookie authentication modes (or 'config' "
+#~ "authentication mode since phpMyAdmin 2.2.1), you need to supply the "
+#~ "details of a MySQL account that has ``SELECT`` privilege on the *mysql."
+#~ "user (all columns except \"Password\")*, *mysql.db (all columns)* and "
+#~ "*mysql.tables\\_priv (all columns except \"Grantor\" and \"Timestamp\")* "
+#~ "tables. This account is used to check what databases the user will see at "
+#~ "login."
+#~ msgstr ""
+#~ "Für '<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' und "
+#~ "'Cookie' Methoden braucht phpMyAdmin einen Kontrollbenutzer, der <b>nur</"
+#~ "b> die <tt>SELECT</tt> Berechtigung auf <i>`mysql`.`user` (alle Spalten "
+#~ "außer `Password`)</i>, <i>`mysql`.`db` (alle Spalten)</i>, <i>`mysql`."
+#~ "`host` (alle Spalten)</i> und <i>`mysql`.`tables_priv` (alle Spalten "
+#~ "außer `Grantor` und `Timestamp`)</i> Tabellen."
+
+#, fuzzy
+#~ msgid ""
+#~ "'cookie' authentication mode (``$auth_type = 'cookie'``) as introduced in "
+#~ "2.2.3 allows you to log in as any valid MySQL user with the help of "
+#~ "cookies. Username and password are stored in cookies during the session "
+#~ "and password is deleted when it ends. This can also allow you to log in "
+#~ "in arbitrary server if :config:option:`$cfg['AllowArbitraryServer']` "
+#~ "enabled."
+#~ msgstr ""
+#~ "Die \"Cookie\"-Authentifizierungmethode(<tt>$auth_type&nbsp;"
+#~ "=&nbsp;'cookie'</tt>), wie in 2.2.3 beschrieben, erlaubt es dir dich als "
+#~ "irgendein gültiger MySQL-Nutzer mit Hilfe von Cookies anzumelden. "
+#~ "Benutzername und Passwort sind während der Sitzung in einem Cookie "
+#~ "gespeichert, das Passwort wird am Ende gelöscht. Dies ermöglicht dir auch "
+#~ "das einloggen in einen willkürlichen (arbiträren) Server falls <tt><a "
+#~ "href=\"#AllowArbitraryServer\" class=\"configrule\">"
+#~ "$cfg['AllowArbitraryServer']</a></tt> angeschaltet ist."
+
+#, fuzzy
+#~ msgid ""
+#~ "'http' authentication (was called 'advanced' in previous versions and can "
+#~ "be written also as 'http') (``$auth_type = 'http';'``) as introduced in "
+#~ "1.3.0 allows you to log in as any valid MySQL user via HTTP-Auth."
+#~ msgstr ""
+#~ "'<abbr title=\"HyperText Transfer Protocol\">HTTP</abbr>' "
+#~ "Authentifizierung ('Erweitert' in vorigen Versionen und kann auch als "
+#~ "'http' bezeichnet werden) (<code>$auth_type&nbsp;=&nbsp;'<abbr title="
+#~ "\"HyperText Transfer Protocol\">HTTP</abbr>'</code>) wie in Version 1.3.0 "
+#~ "eingeführt erlaubt Ihnen den Login als gültiger MySQL Benutzer mittels "
+#~ "HTTP-Auth."
+
+#, fuzzy
+#~ msgid ""
+#~ "'signon' authentication mode (``$auth_type = 'signon'``) as introduced in "
+#~ "2.10.0 allows you to log in from prepared PHP session data or using "
+#~ "supplied PHP script. This is useful for implementing single signon from "
+#~ "another application. Sample way how to seed session is in signon "
+#~ "example: :file:`examples/signon.php`. There is also alternative example "
+#~ "using OpenID - :file:`examples/openid.php` and example for scripts based "
+#~ "solution - :file:`examples/signon-script.php`. You need to configure :"
+#~ "config:option:`$cfg['Servers'][$i]['SignonSession']` or :config:option:`"
+#~ "$cfg['Servers'][$i]['SignonScript']` and :config:option:`$cfg['Servers']"
+#~ "[$i]['SignonURL']` to use this authentication method."
+#~ msgstr ""
+#~ "'Signon' Authentifizierungsmodus (<code>$auth_type&nbsp;=&nbsp;'signon'</"
+#~ "code>)  wurde in Version 2.10.0 eingeführt und erlaubt das Einloggen von "
+#~ "vorbereiteten PHP Sitzungsdaten oder durch ein zur Verfügung gestelltes "
+#~ "PHP Script. Dies kann für 'Single-Signon' mit anderen Anwendungen "
+#~ "nützlich sein. Ein Beispiel, wie die Sitzung benutzt werden kann finden "
+#~ "Sie im Signon-Beispiel: <code>examples/signon.php</code>. Es gibt auch "
+#~ "ein Alternativbeispiel, welches OpenID benutzt - <code>examples/openid."
+#~ "php</code> sowie Beispiel-Scripts für eine scriptbasierte Lösungen - "
+#~ "<code>examples/signon-script.php</code>. Sie müssen <a href="
+#~ "\"#cfg_Servers_SignonSession\" class=\"configrule\">Sitzungsname</a> oder "
+#~ "<a href=\"#cfg_Servers_SignonScript\" class=\"configrule\">Auszuführendes "
+#~ "Script</a> und <a href=\"#cfg_Servers_SignonURL\" class=\"configrule"
+#~ "\">Signon <abbr title=\"Uniform Resource Locator\">URL</abbr></a>  "
+#~ "definieren um diese Authentifizierungsmethode zu verwenden."
+
+#, fuzzy
+#~| msgid "$cfg['SQLValidator'] boolean"
+#~ msgid ":config:option:`$cfg['SQLValidator']`"
+#~ msgstr "$cfg['SQLValidator'] Boolescher Wert"
 
 #, fuzzy
 #~ msgid "You can set this parameter to ``false`` to never send error reports."
