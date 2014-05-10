@@ -13,6 +13,9 @@ PAGES=index intro require setup config transformations faq developers vendors co
 # Copied sources
 OUR_SOURCES=$(addprefix source/, $(addsuffix .rst, $(PAGES)))
 
+# Copied examples
+OUR_EXAMPLES=examples/signon-script.php examples/openid.php examples/signon.php
+
 # Name of Gettext templates
 TEMPLATES=$(addprefix locale/,$(addsuffix .pot,$(PAGES)))
 
@@ -25,10 +28,14 @@ CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
 
 all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 
+.phony:
 FORCE:
 
 $(OUR_SOURCES) source/conf.py: FORCE
 	@rsync -a --delete --exclude 'html' --exclude doctrees --exclude locale $(PMA_DIR)/doc/ source/
+
+$(OUR_EXAMPLES): FORCE
+	@rsync -a --delete $(PMA_DIR)/examples/ examples/
 
 docs/%/conf.py: source/conf.py Makefile
 	@mkdir -p docs/$*
@@ -36,7 +43,7 @@ docs/%/conf.py: source/conf.py Makefile
 	@rm -f $@
 	@sed 's/#language = None/language = "$*"\nlocale_dirs = ["..\/..\/translated\/"]/' $< > $@
 
-locale/%.pot: $(OUR_SOURCES)
+locale/%.pot: $(OUR_SOURCES) $(OUR_EXAMPLES)
 	@make -C source/ gettext BUILDDIR=`pwd`
 
 po/documentation.pot: $(TEMPLATES)
