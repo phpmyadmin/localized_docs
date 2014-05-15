@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2014-05-10 14:46+0200\n"
-"PO-Revision-Date: 2014-05-15 11:50+0200\n"
-"Last-Translator: Marc Delisle <marc@infomarc.info>\n"
+"PO-Revision-Date: 2014-05-16 01:28+0200\n"
+"Last-Translator: Cédric Corazza <cedric.corazza@wanadoo.fr>\n"
 "Language-Team: French "
 "<https://l10n.cihar.com/projects/phpmyadmin/documentation/fr/>\n"
 "Language: fr\n"
@@ -1034,6 +1034,8 @@ msgid ""
 "Username and password are stored in cookies during the session and password "
 "is deleted when it ends."
 msgstr ""
+"Le nom d'utilisateur et le mot de passe sont stockés dans des cookies "
+"pendant la session et le mot de passe est effacé quand celle-ci se termine."
 
 #: ../source/setup.rst:365
 msgid ""
@@ -1066,7 +1068,6 @@ msgid "Signon authentication mode"
 msgstr "Mode d'authentification 'signon'"
 
 #: ../source/setup.rst:380
-#, fuzzy
 #| msgid ""
 #| "This mode is a convenient way of using credentials from another "
 #| "application to authenticate to phpMyAdmin."
@@ -1075,7 +1076,8 @@ msgid ""
 "to authenticate to phpMyAdmin to implement signle signon solution."
 msgstr ""
 "Ce mode est un moyen pratique pour utiliser les crédentiels provenant d'une "
-"autre application pour s'authentifier dans phpMyAdmin."
+"autre application pour s'authentifier dans phpMyAdmin en utilisant "
+"l'authentification unique."
 
 # 82e95387fe434510a8cabebfce92aaf7
 #: ../source/setup.rst:383
@@ -1085,6 +1087,11 @@ msgid ""
 "implement script to return the credentials (see :config:option:`"
 "$cfg['Servers'][$i]['SignonScript']`)."
 msgstr ""
+"L'autre application a besoin de stocker les informations de connexion dans "
+"les données de session (consulter "
+":config:option:`$cfg['Servers'][$i]['SignonSession']`) ou vous devez mettre "
+"en œuvre un script pour renvoyer les crédentiels (consulter "
+":config:option:`$cfg['Servers'][$i]['SignonScript']`)."
 
 # dbd12854ee2b43f9a46a8c13de7ac369
 #: ../source/setup.rst:387
@@ -1093,6 +1100,9 @@ msgid ""
 "option:`$cfg['Servers'][$i]['SignonURL']`, where you should handle the login "
 "process."
 msgstr ""
+"Quand aucun identifiant de connexion n'est disponible, l'utilisateur est "
+"redirigé vers :config:option:`$cfg['Servers'][$i]['SignonURL']`, où vous "
+"pouvez traiter le processus de connexion."
 
 # e80c63b8073b4facab8a7c44c44240c7
 #: ../source/setup.rst:391
@@ -1100,6 +1110,8 @@ msgid ""
 "The very basic example of saving credentials in a session is available as :"
 "file:`examples/signon.php`:"
 msgstr ""
+"Un exemple très basique pour stocker les identifiants de connexion est "
+"disponible : :file:`examples/signon.php`:"
 
 # d64dc59ee10549769961c1eb7bd7ea35
 #: ../source/setup.rst:397
@@ -1107,6 +1119,8 @@ msgid ""
 "Alternatively you can also use this way to integrate with OpenID as shown "
 "in :file:`examples/openid.php`:"
 msgstr ""
+"Sinon, vous pouvez aussi utiliser cette solution en utilisant OpenID : "
+":file:`examples/openid.php`:"
 
 # a89ba5c5c9f847d38d85e6a9d037fd5c
 #: ../source/setup.rst:403
@@ -1116,6 +1130,11 @@ msgid ""
 "$cfg['Servers'][$i]['SignonScript']`. There is very minimal example in :file:"
 "`examples/signon-script.php`:"
 msgstr ""
+"Si vous voulez transmettre les identifiants de connexion en utilisant "
+"d'autres moyens, vous devrez mettre en œuvre une classe enveloppante "
+"(wrapper) en PHP pour obtenir les données et les définir dans "
+":config:option:`$cfg['Servers'][$i]['SignonScript']`. Voici un script "
+"minimaliste pour cela : :file:`examples/signon-script.php`:"
 
 # e36cac0e80d24bcca85c185dba0d64ca
 #: ../source/setup.rst:412
@@ -1206,7 +1225,6 @@ msgstr ""
 "file:`config.inc.php` : "
 
 #: ../source/setup.rst:459
-#, fuzzy
 #| msgid ""
 #| "You then have to create the ``swekey.conf`` file that will associate each "
 #| "user with their Swekey Id. It is important to place this file outside of "
@@ -1227,10 +1245,9 @@ msgstr ""
 "Ensuite, vous devez créer le fichier ``swekey.conf`` qui associera chaque "
 "utilisateur avec son identifiant Swekey. Il est important de placer ce "
 "fichier en dehors de la racine de votre serveur Web (dans l'exemple, il est "
-"situé dans ``/etc``). Un fichier d'exemple commenté est fourni dans le "
-"répertoire ``examples``. Vous pouvez l'utiliser avec vos propres "
-"informations d'utilisateurs. Si vous désirez acheter une Swekey, rendez vous "
-"sur `http://phpmyadmin.net/auth\\_key <http://phpmyadmin.net/auth_key>`_, ce "
+"situé dans ``/etc``). Vous pouvez l'utiliser avec vos propres informations "
+"d'utilisateurs. Si vous désirez acheter une Swekey, rendez vous sur "
+"`http://phpmyadmin.net/auth\\_key <http://phpmyadmin.net/auth_key>`_, ce "
 "lien générant des fonds pour phpMyAdmin."
 
 # c6b16eed967044eaa44b5b1491aca9ef
@@ -1239,6 +1256,7 @@ msgid ""
 "A self documented sample file is provided in the file :file:`examples/swekey."
 "sample.conf`:"
 msgstr ""
+"Un exemple est fourni dans le fichier :file:`examples/swekey.sample.conf`:"
 
 #: ../source/setup.rst:473
 msgid ":config:option:`$cfg['Servers'][$i]['auth_swekey_config']`"
@@ -2249,7 +2267,6 @@ msgstr ""
 "configuration du stockage."
 
 #: ../source/config.rst:330
-#, fuzzy
 #| msgid ""
 #| "This special account is used for 2 distinct purposes: to make possible "
 #| "all relational features (see :config:option:`$cfg['Servers'][$i]"
@@ -2261,10 +2278,8 @@ msgid ""
 "relational features (see :config:option:`$cfg['Servers'][$i]['pmadb']`)."
 msgstr ""
 "Ce compte spécial est utilisé dans deux buts distincts : rendre possible "
-"toutes les fonctionnalités relationnelles (voir :config:option:`"
-"$cfg['Servers'][$i]['pmadb']`) et, pour un serveur MySQL exécuté avec "
-"l'option ``--skip-show-database``, de permettre une installation multi-"
-"utilisateurs (mode d'authentification :term:`HTTP` ou par cookie)."
+"toutes les fonctionnalités relationnelles (voir "
+":config:option:`$cfg['Servers'][$i]['pmadb']`)."
 
 # 6ac5daadb29548a3874c3217914c2fb4
 #: ../source/config.rst:333
@@ -2272,10 +2287,9 @@ msgid "those were called ``stduser`` and ``stdpass``"
 msgstr "ceux-ci étaient appelés ``stduser`` et ``stdpass``"
 
 #: ../source/config.rst:336
-#, fuzzy
 #| msgid ":ref:`setup`, :ref:`authentication_modes`"
 msgid ":ref:`setup`, :ref:`authentication_modes`, :ref:`linked-tables`"
-msgstr ":ref:`setup`, :ref:`authentication_modes`"
+msgstr ":ref:`setup`, :ref:`authentication_modes`, :ref:`linked-tables`"
 
 # e377335c19154aff8ae9c1e8c6b5ffe0
 #: ../source/config.rst:341
@@ -2300,7 +2314,6 @@ msgstr ""
 "inc.php`."
 
 #: ../source/config.rst:348
-#, fuzzy
 #| msgid ""
 #| "Uses :term:`HTTP` Basic authentication method and allows you to log in as "
 #| "any valid MySQL user."
@@ -2308,12 +2321,10 @@ msgid ""
 "'cookie' authentication mode (``$auth_type = 'cookie'``) allows you to log "
 "in as any valid MySQL user with the help of cookies."
 msgstr ""
-"Il utilise la méthode d'authentification :term:`HTTP` basique et vous "
-"autorise à vous connecter en tant que n'importe quel utilisateur MySQL "
-"valide."
+"La méthode d'authentification par cookie (``$auth_type = 'cookie'``) permet "
+"de se connecter comme un utilisateur MySQL valide à l'aide des cookies."
 
 #: ../source/config.rst:350
-#, fuzzy
 #| msgid ""
 #| "Uses :term:`HTTP` Basic authentication method and allows you to log in as "
 #| "any valid MySQL user."
@@ -2321,9 +2332,8 @@ msgid ""
 "'http' authentication allows you to log in as any valid MySQL user via HTTP-"
 "Auth."
 msgstr ""
-"Il utilise la méthode d'authentification :term:`HTTP` basique et vous "
-"autorise à vous connecter en tant que n'importe quel utilisateur MySQL "
-"valide."
+"La méthode d'authentification 'http' permet de se connecter comme un "
+"utilisateur MySQL valide à l'aide de HTTP-Auth."
 
 # ac3948748c154272a27fd506f28d46f5
 #: ../source/config.rst:352
