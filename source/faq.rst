@@ -940,6 +940,9 @@ phpMyAdmin uses a quick method to get the row count, and this method only
 returns an approximate count in the case of InnoDB tables. See
 :config:option:`$cfg['MaxExactCount']` for a way to modify those results, but
 this could have a serious impact on performance.
+However, one can easily replace the approximate row count with exact count by
+simply clicking on the approximate count. This can also be done for all tables
+at once by clicking on the rows sum displayed at the bottom.
 
 .. _faq3_12:
 
@@ -1933,6 +1936,23 @@ wait until it turns `Gray` again.
 Using :config:option:`$cfg['NumFavoriteTables']` in your :file:`config.inc.php`
 file, you can define the  maximum number of favorite tables shown in the
 navigation panel. Its default value is `10`.
+
+.. _faq6_35:
+
+6.35 How can I use the Range search feature?
+---------------------------------------------------------
+
+With the help of range search feature, one can specify a range of values for
+particular column(s) while performing search operation on a table from the `Search`
+tab.
+
+To use this feature simply click on the `BETWEEN` or `NOT BETWEEN` operators
+from the operator select list in front of the column name. On choosing one of the
+above options, a dialog box will show up asking for the `Minimum` and `Maximum`
+value for that column. Only the specified range of values will be included
+in case of `BETWEEN` and excluded in case of `NOT BETWEEN` from the final results.
+
+Note: The Range search feature will work only `Numeric` and `Date` data type columns.
 
 .. _faqproject:
 

@@ -574,7 +574,8 @@ Server connection settings
     :default: ``''``
 
     Since release 2.3.0 you can have phpMyAdmin create :term:`PDF` pages
-    showing the relations between your tables. To do this it needs two tables
+    showing the relations between your tables. Further, the designer interface
+    permits visually managing the relations. To do this it needs two tables
     "pdf\_pages" (storing information about the available :term:`PDF` pages)
     and "table\_coords" (storing coordinates where each table will be placed on
     a :term:`PDF` schema output).  You must be using the "relation" feature.
@@ -732,6 +733,39 @@ Server connection settings
     * put the table name in :config:option:`$cfg['Servers'][$i]['navigationhiding']` (e.g.
       ``pma__navigationhiding``)
 
+.. _central_columns:
+.. config:option:: $cfg['Servers'][$i]['central_columns']
+
+    :type: string
+    :default: ``''``
+
+    Since release 4.3.0 you can have a central list of columns per database.
+    You can add/remove columns to the list as per your requirement. These columns 
+    in the central list will be available to use while you create a new column for
+    a table or create a table itself. You can select a column from central list 
+    while creating a new column, it will save you from writing the same column definition
+    over again or from writing different names for similar column.
+
+    To allow the usage of this functionality:
+
+    * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
+    * put the table name in :config:option:`$cfg['Servers'][$i]['central_columns']` (e.g.
+      ``pma__central_columns``)
+
+.. _savedsearches:
+.. config:option:: $cfg['Servers'][$i]['savedsearches']
+
+    :type: string
+    :default: ``''``
+
+    Since release 4.2.0 you can save and load query-by-example searches from the Database > Query panel. 
+
+    To allow the usage of this functionality:
+
+    * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
+    * put the table name in :config:option:`$cfg['Servers'][$i]['savedsearches']` (e.g.
+      ``pma__savedsearches``)
+
 .. _tracking:
 .. config:option:: $cfg['Servers'][$i]['tracking']
 
@@ -836,25 +870,6 @@ Server connection settings
 
     * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
     * put the table name in :config:option:`$cfg['Servers'][$i]['userconfig']`
-
-
-
-.. _designer_coords:
-.. config:option:: $cfg['Servers'][$i]['designer_coords']
-
-    :type: string
-    :default: ``''``
-
-    Since release 2.10.0 a Designer interface is available; it permits to
-    visually manage the relations.
-
-    To allow the usage of this functionality:
-
-    * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
-    * put the table name in :config:option:`$cfg['Servers'][$i]['designer\_coords']`
-      (e.g. ``pma__designer_coords``)
-
-
 
 .. config:option:: $cfg['Servers'][$i]['MaxTableUiprefs']
 
@@ -1023,25 +1038,6 @@ Server connection settings
     after logout (doesn't affect config authentication method). Should be
     absolute including protocol.
 
-.. config:option:: $cfg['Servers'][$i]['StatusCacheDatabases']
-
-    :type: array of strings
-    :default: array()
-
-    Enables caching of ``TABLE STATUS`` outputs for specific databases on
-    this server (in some cases ``TABLE STATUS`` can be very slow, so you
-    may want to cache it). APC is used (if the PHP extension is available,
-    if not, this setting is ignored silently). You have to provide
-    :config:option:`$cfg['Servers'][$i]['StatusCacheLifetime']`.
-
-.. config:option:: $cfg['Servers'][$i]['StatusCacheLifetime']
-
-    :type: integer
-    :default: 0
-
-    Lifetime in seconds of the ``TABLE STATUS`` cache if
-    :config:option:`$cfg['Servers'][$i]['StatusCacheDatabases']` is used.
-
 Generic settings
 ----------------
 
@@ -1076,7 +1072,7 @@ Generic settings
     :default: ""
 
     The url of the proxy to be used when phpmyadmin needs to access the outside
-    intenet such as when retrieving the latest version info or submitting error
+    internet such as when retrieving the latest version info or submitting error
     reports.  You need this if the server where phpMyAdmin is installed does not
     have direct access to the internet.
     The format is: "hostname:portnumber"
@@ -1277,11 +1273,15 @@ Cookie authentication options
     :type: string
     :default: ``''``
 
-    The "cookie" auth\_type uses blowfish algorithm to encrypt the
-    password. If you are using the "cookie" auth\_type, enter here a
-    random passphrase of your choice. It will be used internally by the
-    blowfish algorithm: you won’t be prompted for this passphrase. There
-    is no maximum length for this secret.
+    The "cookie" auth\_type uses AES algorithm to encrypt the password. If you
+    are using the "cookie" auth\_type, enter here a random passphrase of your
+    choice. It will be used internally by the AES algorithm: you won’t be
+    prompted for this passphrase. There is no maximum length for this secret.
+
+    .. note:: 
+
+        The configuration is called blowfish_secret for historical reasons as
+        Blowfish algorithm was originally used to do the encryption.
 
     .. versionchanged:: 3.1.0
         Since version 3.1.0 phpMyAdmin can generate this on the fly, but it
@@ -1642,14 +1642,6 @@ Browse mode
     descending (``DESC``) order or in a "smart" (``SMART``) order - I.E.
     descending order for columns of type TIME, DATE, DATETIME and
     TIMESTAMP, ascending order else- by default.
-
-.. config:option:: $cfg['DisplayBinaryAsHex']
-
-    :type: boolean
-    :default: true
-
-    Defines whether the "Show binary contents as HEX" browse option is
-    ticked by default.
 
 .. config:option:: $cfg['GridEditing']
 
@@ -2757,4 +2749,3 @@ Developer
 
     Whether to display icons or text or both icons and text in table row action
     segment. Value can be either of ``'icons'``, ``'text'`` or ``'both'``.
-
