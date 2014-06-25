@@ -6,18 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2014-06-25 09:17+0200\n"
-"PO-Revision-Date: 2014-05-10 16:06+0200\n"
+"PO-Revision-Date: 2014-06-25 16:56+0200\n"
 "Last-Translator: Matías Bellone <matiasbellone+weblate@gmail.com>\n"
-"Language-Team: Spanish <https://l10n.cihar.com/projects/phpmyadmin/"
-"documentation/es/>\n"
+"Language-Team: Spanish "
+"<https://l10n.cihar.com/projects/phpmyadmin/documentation/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: ../source/index.rst:7
 msgid "Welcome to phpMyAdmin's documentation!"
@@ -753,7 +753,6 @@ msgstr ""
 "formulario de inicio de sesión."
 
 #: ../source/setup.rst:226
-#, fuzzy
 #| msgid ""
 #| "You should deny access to the ``./libraries`` and ``./setup/lib`` "
 #| "subfolders in your webserver configuration. For Apache you can use "
@@ -768,12 +767,11 @@ msgid ""
 "be found in that code. For the Apache webserver, this is often accomplished "
 "with a :term:`.htaccess` file in those directories."
 msgstr ""
-"Debería rechazar el acceso a los subdirectorios ``./libraries`` y ``./setup/"
-"lib`` en la configuración de su servidor web. Puede utilizar el archivo :"
-"term:`.htaccess` suministrado para Apache en ese directorio. Con otros "
-"servidores web deberá implementar las configuraciones usted mismo. Esta "
-"configuración evita la exposición de las carpetas y las vulnerabilidades de "
-"los scripts que puedan existir en dicho código."
+"Debería rechazar el acceso a los subdirectorios ``./libraries`` y "
+"``./setup/lib`` en la configuración de su servidor web. Esto evita exponer "
+"rutas y vulnerabilidades entre sitios («cross side scripting») que podrían "
+"existir en este código. En el servidor web Apache, puede utilizar un archivo "
+":term:`.htaccess` en dichos directorios."
 
 #: ../source/setup.rst:232
 msgid ""
@@ -842,7 +840,6 @@ msgstr ""
 "modificaciones dependiendo del nombre de la base de datos."
 
 #: ../source/setup.rst:269
-#, fuzzy
 #| msgid ""
 #| "After having imported the :file:`examples/create_tables.sql` file, you "
 #| "should specify the table names in your :file:`config.inc.php` file. The "
@@ -856,10 +853,7 @@ msgid ""
 msgstr ""
 "Después de importar el archivo :file:`examples/create_tables.sql`, debería "
 "especificar los nombres de las tablas en su archivo :file:`config.inc.php`. "
-"Las directivas necesarias están disponibles en :ref:`config`. También "
-"necesitará tener un usuario de control con los permisos necesarios para "
-"acceder a dichas tablas (revise la sección :ref:`authentication_modes` más "
-"abajo)."
+"Las directivas necesarias están disponibles en :ref:`config`."
 
 #: ../source/setup.rst:273
 msgid ""
@@ -938,7 +932,6 @@ msgstr ""
 "configuración."
 
 #: ../source/setup.rst:319
-#, fuzzy
 #| msgid ""
 #| ":term:`HTTP` and cookie authentication modes are more secure: the MySQL "
 #| "login information does not need to be set in the phpMyAdmin configuration "
@@ -957,11 +950,11 @@ msgid ""
 msgstr ""
 "Los métodos de autenticación :term:`HTTP` y por cookie son más seguros: la "
 "información de inicio de sesión de MySQL no está expuesta en el archivo de "
-"configuración de phpMyAdmin (a excepción de :config:option:`$cfg['Servers']"
-"[$i]['controluser']`). Sin embargo, tenga en cuenta que la contraseña es "
-"transmitida en texto plano a menos que utilice el protocolo HTTPS. "
-"Utilizando autenticación por cookie, la contraseña es almacenada encriptada "
-"con el algoritmo «blowfish» en una cookie temporal."
+"configuración de phpMyAdmin (a excepción de "
+":config:option:`$cfg['Servers'][$i]['controluser']`). Sin embargo, tenga en "
+"cuenta que la contraseña es transmitida en texto plano a menos que utilice "
+"el protocolo HTTPS. Utilizando autenticación por cookie, la contraseña es "
+"almacenada encriptada con el algoritmo «AES» en una cookie temporal."
 
 #: ../source/setup.rst:327
 msgid ""
@@ -2649,7 +2642,6 @@ msgid ":ref:`faqdisplay`"
 msgstr ":ref:`faqdisplay`"
 
 #: ../source/config.rst:576
-#, fuzzy
 #| msgid ""
 #| "Since release 2.3.0 you can have phpMyAdmin create :term:`PDF` pages "
 #| "showing the relations between your tables. To do this it needs two tables "
@@ -2666,9 +2658,10 @@ msgid ""
 "`PDF` schema output).  You must be using the \"relation\" feature."
 msgstr ""
 "Desde la versión 2.3.0 phpMyAdmin puede crear páginas :term:`PDF` mostrando "
-"las relaciones entre sus tablas. Para lograrlo, necesitas dos tablas: «pdf"
-"\\_pages» (con la información sobre las páginas :term:`PDF` disponibles) y "
-"«table\\_coords» (que contiene las coordenadas en las que se ubicará cada "
+"las relaciones entre sus tablas. Lo que es más, pel diseñador le permite "
+"administrar las relaciones visualmente. Para lograrlo, necesitas dos tablas: "
+"«pdf\\_pages» (con la información sobre las páginas :term:`PDF` disponibles) "
+"y «table\\_coords» (que contiene las coordenadas en las que se ubicará cada "
 "tabla en la salida del esquema en :term:`PDF`). Debe estar utilizando la "
 "funcionalidad «relation»."
 
@@ -2899,9 +2892,15 @@ msgid ""
 "while creating a new column, it will save you from writing the same column "
 "definition over again or from writing different names for similar column."
 msgstr ""
+"Desde la versión 4.3.0 puede tener una lista central de columnas por base de "
+"datos. Puede agregar/eliminar columnas a la lista según lo necesite. Las "
+"columnas en la lista centran estarán disponibles cuando cree una nueva "
+"columna en una tabla o cuando cree una nueva tabla. Puede seleccionar una "
+"columna de una lista central mientras crea una nueva columna, le evitará "
+"tener que ingresar la misma definición de columa una y otra vez o darle "
+"diferentes nombres a columnas similares."
 
 #: ../source/config.rst:752
-#, fuzzy
 #| msgid ""
 #| "put the table name in :config:option:`$cfg['Servers'][$i]['tracking']` (e."
 #| "g. ``pma__tracking``)"
@@ -2909,8 +2908,9 @@ msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]"
 "['central_columns']` (e.g. ``pma__central_columns``)"
 msgstr ""
-"defina el nombre de la tabla en :config:option:`$cfg['Servers'][$i]"
-"['tracking']` (por ejemplo: ``pma__tracking``)"
+"defina el nombre de la tabla en "
+":config:option:`$cfg['Servers'][$i]['central_columns']` (por ejemplo: "
+"``pma__central_columns``)"
 
 # 4f703393bded44c18214ff0e976d8d7f
 #: ../source/config.rst:761
@@ -2918,9 +2918,10 @@ msgid ""
 "Since release 4.2.0 you can save and load query-by-example searches from the "
 "Database > Query panel."
 msgstr ""
+"Desde la versión 4.2.0 puede guardar y cargar búsquedas de consultas a "
+"través de ejemplos desde el panel «Base de datos > Consulta»."
 
 #: ../source/config.rst:766
-#, fuzzy
 #| msgid ""
 #| "put the table name in :config:option:`$cfg['Servers'][$i]['recent']` (e."
 #| "g. ``pma__recent``)"
@@ -2928,8 +2929,9 @@ msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['savedsearches']` "
 "(e.g. ``pma__savedsearches``)"
 msgstr ""
-"configure el nombre de la tabla :config:option:`$cfg['Servers'][$i]"
-"['recent']` (por ejemplo ``pma__recent``)"
+"configure el nombre de la tabla "
+":config:option:`$cfg['Servers'][$i]['savedsearches']` (por ejemplo "
+"``pma__savedsearches``)"
 
 #: ../source/config.rst:775
 msgid ""
@@ -3472,7 +3474,6 @@ msgstr "\"\""
 
 # 74fd09951457412baabf95bb485d8c00
 #: ../source/config.rst:1074
-#, fuzzy
 #| msgid ""
 #| "The url of the proxy to be used when phpmyadmin needs to access the "
 #| "outside intenet such as when retrieving the latest version info or "
@@ -3488,8 +3489,8 @@ msgstr ""
 "La URL del proxy a utilizar cuando phpMyAdmin necesite acceder a la red "
 "externa; por ejemplo, para obtener información sobre la última versión o "
 "enviar reportes de error. Lo necesitará si el servidor en el que está "
-"instalado phpMyAdmin no tiene acceso directo a internet. El formato es: "
-"\"servidor:puerto\""
+"instalado phpMyAdmin no tiene acceso directo a internet. El formato es: \""
+"servidor:puerto\""
 
 # a0943c912abc4a62ab4f73b1f97b040a
 #: ../source/config.rst:1085
@@ -3756,7 +3757,6 @@ msgid "Cookie authentication options"
 msgstr "Opciones de autenticación por cookie"
 
 #: ../source/config.rst:1276
-#, fuzzy
 #| msgid ""
 #| "The \"cookie\" auth\\_type uses blowfish algorithm to encrypt the "
 #| "password. If you are using the \"cookie\" auth\\_type, enter here a "
@@ -3769,11 +3769,11 @@ msgid ""
 "your choice. It will be used internally by the AES algorithm: you won’t be "
 "prompted for this passphrase. There is no maximum length for this secret."
 msgstr ""
-"El tipo de autenticación «cookie» utiliza el algoritmo «blowfish» para "
-"encriptar la contraseña. Si está utilizando este tipo de autenticación, "
-"configure aquí una frase secreta de su elección. Será utilizada internamente "
-"por el algoritmo: no le será pedida en ningún momento. No hay longitud "
-"máxima para esta frase secreta."
+"El tipo de autenticación «cookie» utiliza el algoritmo «AES» para encriptar "
+"la contraseña. Si está utilizando este tipo de autenticación, configure aquí "
+"una frase secreta de su elección. Será utilizada internamente por el "
+"algoritmo: no le será pedida en ningún momento. No hay longitud máxima para "
+"esta frase secreta."
 
 # 151321c7c2a74651b455b46f8204f04d
 #: ../source/config.rst:1283
@@ -3781,6 +3781,8 @@ msgid ""
 "The configuration is called blowfish_secret for historical reasons as "
 "Blowfish algorithm was originally used to do the encryption."
 msgstr ""
+"El nombre de la configuración es «blowfish_secret» por razones históricas, "
+"ya que el originalmente se utilizaba el algoritmo Blowfish para el cifrado."
 
 #: ../source/config.rst:1286
 msgid ""
@@ -7748,7 +7750,6 @@ msgid "3.11 The number of rows for InnoDB tables is not correct."
 msgstr "3.11 La cantidad de filas para las tablas InnoDB no es correcta."
 
 #: ../source/faq.rst:939
-#, fuzzy
 #| msgid ""
 #| "phpMyAdmin uses a quick method to get the row count, and this method only "
 #| "returns an approximate count in the case of InnoDB tables. See :config:"
@@ -7764,9 +7765,12 @@ msgid ""
 "on the rows sum displayed at the bottom."
 msgstr ""
 "phpMyAdmin utiliza un método rápido para obtener la cantidad de filas y este "
-"método sólo devuelve una cantidad aproximada para las tablas InnoDB. Revise :"
-"config:option:`$cfg['MaxExactCount']` para una forma de modificar estos "
-"resultados, pero podría tener serias consecuencias en la performance."
+"método sólo devuelve una cantidad aproximada para las tablas InnoDB. Revise "
+":config:option:`$cfg['MaxExactCount']` para una forma de modificar estos "
+"resultados, pero podría tener serias consecuencias en la performance. Sin "
+"embargo, uno puede reemplazar la cuenta aproximada de filas fácilmente "
+"pulsando en ella. También puede hacerlo para todas las tablas pulsando en la "
+"suma de filas que se muestra al pie."
 
 # b976431bccf94601b00f80e2186de34f
 #: ../source/faq.rst:950
@@ -9670,12 +9674,9 @@ msgstr ""
 "en su archivo :file:`config.inc.php`. El valor predeterminado es «10»."
 
 #: ../source/faq.rst:1943
-#, fuzzy
 #| msgid "6.32 How can I use the zoom search feature?"
 msgid "6.35 How can I use the Range search feature?"
-msgstr ""
-"6.32 ¿Cómo puedo utilizar la funcionalidad de búsqueda gráfica («zoom "
-"search»)?"
+msgstr "6.35 ¿Cómo puedo utilizar la funcionalidad de búsqueda por rango?"
 
 # a684eee3736341b6bcd393d7d6720235
 #: ../source/faq.rst:1945
@@ -9684,6 +9685,9 @@ msgid ""
 "particular column(s) while performing search operation on a table from the "
 "`Search` tab."
 msgstr ""
+"Con la ayuda de la funcionalidad de búsqueda por rango, puede especificar un "
+"rango de valores para una o más columnas al realizar una búsqueda desde la "
+"pestaña correspondiente."
 
 # cdd642d02c024e0cb4b93ab84d8a71cc
 #: ../source/faq.rst:1949
@@ -9695,6 +9699,13 @@ msgid ""
 "included in case of `BETWEEN` and excluded in case of `NOT BETWEEN` from the "
 "final results."
 msgstr ""
+"Para utilizar esta funcionalidad, simplemente pulse en los operadores "
+"«BETWEEN» o «NOT BETWEEN» de la lista de selección de operadores frente al "
+"nombre de la columna. Si selecciona una de estas opciones, aparecerá una "
+"interfaz que le pedirá el valor mínimo y máximo para dicha columna. En el "
+"resultado final sólo se mostrarán valores en dicho rango cuando utilice "
+"«BETWEEN» y sólo se mostrarán valores fuera de dicho rango si utiliza «NOT "
+"BETWEEN»."
 
 # 90f092659a7d473e8f59375ae4498bb7
 #: ../source/faq.rst:1955
@@ -9702,6 +9713,8 @@ msgid ""
 "Note: The Range search feature will work only `Numeric` and `Date` data type "
 "columns."
 msgstr ""
+"Nota: la funcionalidad de búsqueda por rango sólo funcionará en columnas de "
+"tipo «Numeric» y «Date»."
 
 #: ../source/faq.rst:1960
 msgid "phpMyAdmin project"
@@ -9963,15 +9976,14 @@ msgstr "biblioteca tcpdf, con archivos innecesarios eliminados"
 
 # 39b813200ed647f998ca81523e2dbfab
 #: ../source/vendors.rst:34
-#, fuzzy
 #| msgid "libraries/php-gettext"
 msgid "libraries/phpseclib"
-msgstr "libraries/php-gettext"
+msgstr "libraries/phpseclib"
 
 # 3e22ecb930e84c64a7919ba77ffbd68c
 #: ../source/vendors.rst:35
 msgid "portions of phpseclib library"
-msgstr ""
+msgstr "porciones de la biblioteca phpseclib"
 
 #: ../source/copyright.rst:4
 msgid "Copyright"
