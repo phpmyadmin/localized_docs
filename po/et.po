@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin 4.3.0-dev\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2014-06-25 09:17+0200\n"
-"PO-Revision-Date: 2014-07-03 17:02+0200\n"
+"PO-Revision-Date: 2014-07-17 09:01+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian "
 "<https://l10n.cihar.com/projects/phpmyadmin/documentation/et/>\n"
@@ -1106,7 +1106,7 @@ msgstr ""
 # 38ccc8a2ab254b0aa6534ef3f09f312d
 #: ../source/setup.rst:378
 msgid "Signon authentication mode"
-msgstr "Signon autentimisrežiim"
+msgstr "Sisselogimise autentimisrežiim"
 
 # 20ecf478aae14e83a91eb63f29eb8023
 #: ../source/setup.rst:380
@@ -1187,7 +1187,7 @@ msgstr ""
 # dcb5836767e648fb9b46a60767d63b03
 #: ../source/setup.rst:421
 msgid "Config authentication mode"
-msgstr ""
+msgstr "Autentimisrežiimi seaded"
 
 # fd6fe60eea8b4eab8939e455a8bb1d77
 #: ../source/setup.rst:423
@@ -1197,6 +1197,11 @@ msgid ""
 "$cfg['Servers'][$i]['password']` fields (and as a result, anyone who can "
 "read your :file:`config.inc.php` can discover your username and password)."
 msgstr ""
+"See režiim on mõnikord vähem turvaline, sest sa pead täitma "
+":config:option:`$cfg['Servers'][$i]['user']` ja "
+":config:option:`$cfg['Servers'][$i]['password']` väljad (mille tulemusel "
+"saavad kõik, kellel on lubatud lugeda faili :file:`config.inc.php` võimalus "
+"avastada su kasutajanimi ja salasõna)."
 
 # 6d0507865e234287b61a2a36e6d5ec2b
 #: ../source/setup.rst:428
@@ -1204,6 +1209,8 @@ msgid ""
 "In the :ref:`faqmultiuser` section, there is an entry explaining how to "
 "protect your configuration file."
 msgstr ""
+"KKK sektsioonis :ref:`faqmultiuser` on kirjeldatud, kuidas kaitsta "
+"seadistuste faili."
 
 # 62684d06725e48fa94f4d5b34826cf27
 #: ../source/setup.rst:430
@@ -1213,6 +1220,9 @@ msgid ""
 "and :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` configuration "
 "directives."
 msgstr ""
+"Turvalisuse tõstmiseks selles režiimis tasub kaaluda hosti põhist "
+"autentimist :config:option:`$cfg['Servers'][$i]['AllowDeny']['order']` ja "
+":config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` sätteid."
 
 # 4371ace83ddb4bbd80ce9eb50600b77d
 #: ../source/setup.rst:433
@@ -1224,11 +1234,18 @@ msgid ""
 "HTTP requests at one’s router or firewall will suffice (both of which are "
 "beyond the scope of this manual but easily searchable with Google)."
 msgstr ""
+"Erinevalt küpsiste ja HTTP režiimist ei nõua kasutajalt sisse logimist "
+"phpMyAdmin saidi esmasel laadimisel. See on nii disainitud, ja võimaldab "
+"igal külastajal su paigaldust kasutada. Soovitatav on kasutada mõnda "
+"ligipääsu piiramise meetodit, näiteks :term:`.htaccess` fail, millega "
+"lülitatakse sisse HTTP-AUTH, või sisenevate HTTP päringute keelamine "
+"marsruuteris või tulemüüris on piisavad (kuid jäävad selle juhendi ulatusest "
+"välja, ent on kergelt leitavad nt. Google abil)."
 
 # a35fdcfa980c4290bed792cea9fc5f2a
 #: ../source/setup.rst:446
 msgid "Swekey authentication mode"
-msgstr ""
+msgstr "Swekey autentimisrežiim"
 
 # ed871fc83be0433aa6fe9a2a4140dd97
 #: ../source/setup.rst:448
@@ -1240,6 +1257,12 @@ msgid ""
 "disabled by default. To enable it, add the following line to :file:`config."
 "inc.php`:"
 msgstr ""
+"Swekey on odav autentimiseks kasutatav USB võti, mida saab kasutada ka "
+"veebis. Kui Swekey autentimine on aktiveeritud, siis peab enne phpMyAdmin'i "
+"sisselogimise lehe avamist olema Swekey juba arvutiga ühendatud (hetkel on "
+"toetatud ainult küpsistega autentimise režiimis). Vaikimisi on Swekeyga "
+"autentimine keelatud. Selle lubamiseks lisa faili :file:`config.inc.php` "
+"järgmine rida:"
 
 # 611772a8c4774300b2e7e598ec08588c
 #: ../source/setup.rst:459
@@ -1251,23 +1274,29 @@ msgid ""
 "purchase a Swekey please visit `http://phpmyadmin.net/auth\\_key <http://"
 "phpmyadmin.net/auth_key>`_ since this link provides funding for phpMyAdmin."
 msgstr ""
+"Järgmisena pead sa looma faili ``swekey.conf``, milles seostatakse kõik "
+"kasutajad nende Swekey ID'ga. On oluline, et see fail asuks väljaspool su "
+"veebiserveri juurkataloogi (näites asub ta kalaoogis ``/etc``). Sina pead "
+"sinna faili lisama oma kasutajad. Kui sa soovid osta Swekey, siis kasuta "
+"linki `http://phpmyadmin.net/auth\\_key <http://phpmyadmin.net/auth_key>`_, "
+"sest sedasi toetad sa phpMyAdmin'i arendajaid."
 
 # 3ceba9ede06445378fcf07d112f1bf1b
 #: ../source/setup.rst:467
 msgid ""
 "A self documented sample file is provided in the file :file:`examples/swekey."
 "sample.conf`:"
-msgstr ""
+msgstr "Dokumenteeritud näide asub failis :file:`examples/swekey.sample.conf`:"
 
 # ea47610e56db4ce0b3ec91c1bb45cb93
 #: ../source/setup.rst:473
 msgid ":config:option:`$cfg['Servers'][$i]['auth_swekey_config']`"
-msgstr ""
+msgstr ":config:option:`$cfg['Servers'][$i]['auth_swekey_config']`"
 
 # 4df8194a7f3e459f935109fae42d1d39
 #: ../source/setup.rst:477
 msgid "Securing your phpMyAdmin installation"
-msgstr ""
+msgstr "PhpMyAdmin'i paigalduse turvamine"
 
 # c0fbfd5ec8d040cfbf0dca4e499b6277
 #: ../source/setup.rst:479
@@ -1275,6 +1304,9 @@ msgid ""
 "The phpMyAdmin team tries hard to make the application secure, however there "
 "are always ways to make your installation more secure:"
 msgstr ""
+"phpMyAdmin'i meeskond pingutab kõvasti, et programm oleks turvaline. Sellegi "
+"poolest on mitmeid võimalusi, kuidas sinu paigaldust teha veelgi "
+"turvalisemaks:"
 
 # 6ea09d7aa7744c6c90a8625d5fe15883
 #: ../source/setup.rst:482
@@ -1282,6 +1314,8 @@ msgid ""
 "remove ``setup`` directory from phpMyAdmin, you will probably not use it "
 "after initial setup"
 msgstr ""
+"kustuta phpMyAdmin'i kataloog ``setup``; ilmselt ei ole vaja sa seda vaja "
+"pärast esmast seadistust"
 
 # bcb5293047a64b26bc09c0ee431ea21e
 #: ../source/setup.rst:484
@@ -1289,6 +1323,8 @@ msgid ""
 "properly choose authentication method - :ref:`cookie` is probably the best "
 "choice for shared hosting"
 msgstr ""
+"valik korrektne autentimise meetod - :ref:`cookie` on ilmselt parim variant "
+"mitme kasutaja korral"
 
 # 4c9f18484d1140a5bee995701797aa73
 #: ../source/setup.rst:486
@@ -1297,6 +1333,9 @@ msgid ""
 "can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit "
 "them"
 msgstr ""
+"kui sa ei soovi, et kõik MySQL'i kasutajad saaksid kasutada phpMyAdmin'i, "
+"siis kasuta :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` "
+"piirangute seadmiseks"
 
 # bf5a18c538be4448b7f334f62b25fff8
 #: ../source/setup.rst:488
@@ -1304,6 +1343,8 @@ msgid ""
 "consider hiding phpMyAdmin behind authentication proxy, so that MySQL "
 "credentials are not all users need to login"
 msgstr ""
+"kaalu phpMyAdmin'i peitmist autentimisproksi taha nii, et MySQL'i konto ja "
+"salasõna ei oleks ainsad, mis on vajalikud sisse logimiseks"
 
 # b0cb01de2f604d398bd4464496c91d29
 #: ../source/setup.rst:490
@@ -1312,11 +1353,14 @@ msgid ""
 "$cfg['CaptchaLoginPublicKey']` and :config:option:`"
 "$cfg['CaptchaLoginPrivateKey']` might be an option."
 msgstr ""
+"kui sa kardad automaatrünnakuid, siis võib aidata Captcha seadistamine "
+"sätetega :config:option:`$cfg['CaptchaLoginPublicKey']` ja "
+":config:option:`$cfg['CaptchaLoginPrivateKey']`."
 
 # 55d3491c6bbf4dacb8cb973d55f257e2
 #: ../source/setup.rst:158
 msgid "Setup script"
-msgstr ""
+msgstr "Häälestusskript"
 
 # 9ee572e803524d6abdcda71106495f46
 #: ../source/setup.rst:238
@@ -1326,7 +1370,7 @@ msgstr "Seadistuse salvestuskoht"
 # 9ee572e803524d6abdcda71106495f46
 #: ../source/setup.rst:238
 msgid "pmadb"
-msgstr ""
+msgstr "pmadb"
 
 # 0cab9955854942b481c91afcbd08a220
 # ba8488686e8748058db81e3c42730e27
@@ -1337,7 +1381,7 @@ msgstr ""
 #: ../source/setup.rst:304 ../source/setup.rst:343 ../source/setup.rst:356
 #: ../source/setup.rst:373 ../source/setup.rst:418 ../source/setup.rst:441
 msgid "Authentication mode"
-msgstr ""
+msgstr "Autentimise režiim"
 
 # #-#-#-#-#  setup.pot (phpMyAdmin 4.3.0-dev)  #-#-#-#-#
 # ba8488686e8748058db81e3c42730e27
@@ -1345,7 +1389,7 @@ msgstr ""
 # 3b5f200478bb4e2ea2796a3db9114c88
 #: ../source/setup.rst:343 ../source/glossary.rst:126
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 # #-#-#-#-#  setup.pot (phpMyAdmin 4.3.0-dev)  #-#-#-#-#
 # 45d31101cfcd447193ff8edc1fa358eb
@@ -1353,22 +1397,22 @@ msgstr ""
 # 67ebf85965234ad69406a4dcb8a0cee7
 #: ../source/setup.rst:356 ../source/glossary.rst:54
 msgid "Cookie"
-msgstr ""
+msgstr "Küpsis"
 
 # 5bab5b38f4394227a7ae2028274cd8fe
 #: ../source/setup.rst:373
 msgid "Signon"
-msgstr ""
+msgstr "Sisselogimine"
 
 # ab3cb3a25e5445a18d1ef2e0e892af45
 #: ../source/setup.rst:418
 msgid "Config"
-msgstr ""
+msgstr "Seadistatud"
 
 # c0aa3562b2424b26b24616ed40295783
 #: ../source/setup.rst:441
 msgid "Swekey"
-msgstr ""
+msgstr "Swekey"
 
 # #-#-#-#-#  config.pot (phpMyAdmin 4.3.0-dev)  #-#-#-#-#
 # 1c8219d36c0343ba98e01e173e57620c
@@ -1376,7 +1420,7 @@ msgstr ""
 # 75584927131f47d6bacea76254012ebe
 #: ../source/config.rst:6 ../source/faq.rst:626
 msgid "Configuration"
-msgstr ""
+msgstr "Seadistamine"
 
 # e133765108c9436daeb2ced7f5e01a73
 #: ../source/config.rst:8
@@ -1386,6 +1430,10 @@ msgid ""
 "This file only needs to contain the parameters you want to change from their "
 "corresponding default value in :file:`libraries/config.default.php`."
 msgstr ""
+"Peaaegu kõik seadistatavad andmed on failis :file:`config.inc.php`. Kui see "
+"fail puudub, siis vaata peatükist :ref:`setup`, kuidas ta luua. NB! Selles "
+"failis on peavad olema parameetrid, mida sa soovid muuta erinevaks nende "
+"vaikeväärtustest failis :file:`libraries/config.default.php`."
 
 # 44579bd31f5e49f580934220b864ef67
 #: ../source/config.rst:13
@@ -1394,6 +1442,9 @@ msgid ""
 "the file. This file is for over-writing the defaults; if you wish to use the "
 "default value there's no need to add a line here."
 msgstr ""
+"Kui parameeter puudub sinu failist, saad ta lisada oma faili uue reana. See "
+"fail on mõeldud vaikeväärtuste ülekirjutamiseks. Kui vaikimisi antud väärtus "
+"sulle sobib, siis ei pea sa vastavat rida lisama."
 
 # abf78f25af1a44a08e06c9125fbc31e1
 #: ../source/config.rst:17
@@ -1403,6 +1454,10 @@ msgid ""
 "`config.footer.inc.php` and :file:`config.header.inc.php` files to add your "
 "site specific code to be included on start and end of each page."
 msgstr ""
+"Disaini puudutavad parameetrid (nt. värvid) on failis "
+":file:`themes/themename/layout.inc.php`. Oma saidi spetsiifilise koodi "
+"lisamiseks on vaja luua failid :file:`config.footer.inc.php` and "
+":file:`config.header.inc.php`. Need laetakse iga lehe algusesse ja lõppu."
 
 # 3e91fb33d5534e40a6dd31804559da00
 #: ../source/config.rst:24
@@ -1410,6 +1465,9 @@ msgid ""
 "Some distributions (eg. Debian or Ubuntu) store :file:`config.inc.php` in ``/"
 "etc/phpmyadmin`` instead of within phpMyAdmin sources."
 msgstr ""
+"Mõned distributsioonid (nt. Debian ja Ubuntu) hoiavad faili "
+":file:`config.inc.php` kataloogis ``/etc/phpmyadmin``, mitte phpMyAdmin'i "
+"muu koodi sees."
 
 # ea1e20da021b4eacb82c22ba3ed5f9af
 #: ../source/config.rst:29
@@ -1420,6 +1478,11 @@ msgid ""
 "line character (``\\n``) in your text editor before saving a script you have "
 "modified."
 msgstr ""
+"Klassikalise :term:`Mac` (:term:`Mac OS X` eelsed versioonid) kasutajad "
+"peavad arvestama sellega, et PHP'le ei meeldi :term:`Mac`'i realõpu sümbil "
+"(``\\r``). Seega peaksid tekstitoimetis skriptide salvestamisel valima \\*"
+"nix'i realõpu sümboli (``\\n"
+"``)."
 
 # e4ab0998d13f4f57807f17fac8a4b6f3
 #: ../source/config.rst:37
@@ -1560,7 +1623,7 @@ msgstr "Peamised sätted"
 #: ../source/config.rst:2684 ../source/config.rst:2689
 #: ../source/config.rst:2747
 msgid "string"
-msgstr ""
+msgstr "string"
 
 # e7d5ee76d5d34393936e2b574cc9dfc3
 # 3250447744054b9cb94b5ff858e10c47
@@ -1625,7 +1688,7 @@ msgstr ""
 #: ../source/config.rst:2380 ../source/config.rst:2408
 #: ../source/config.rst:2426 ../source/config.rst:2690
 msgid "``''``"
-msgstr ""
+msgstr "``''``"
 
 # 68f987b1eeb948bf853b2e424d222683
 #: ../source/config.rst:44
@@ -1636,6 +1699,10 @@ msgid ""
 "most of web servers are case–sensitive. Don’t forget the trailing slash at "
 "the end."
 msgstr ""
+"Määrab siia phpMyAdmin'i paigalduse (täieliku) :term:`URL`'i. Nt. "
+"``http://www.example.net/sinu_phpMyAdmin_kataloogi_asukoht/``.  Arvesta "
+"sellega, et enamike veebiserverite puhul on :term:`URL` tõstutundlik. Ära "
+"unusta lõpetada kaldkriipsuga."
 
 # dbba1b64fa184f0ba99aa724adc0fbb9
 #: ../source/config.rst:50
@@ -1645,6 +1712,11 @@ msgid ""
 "port forwarding will need to set :config:option:`$cfg['PmaAbsoluteUri']` "
 "(`more info <https://sourceforge.net/p/phpmyadmin/support-requests/795/>`_)."
 msgstr ""
+"Alates versioonist 2.3.0 on soovitatav jätta see tühjaks. Enamikel juhtutel "
+"suudab phpMyAdmin tuvastada sobiva väärtuse automaatselt. Pordi edastuse "
+"(DNAT) kasutajad peavad määrama  :config:option:`$cfg['PmaAbsoluteUri']` (`"
+"täiendav informatsioon <https://sourceforge.net/p/phpmyadmin/support-"
+"requests/795/>`_)."
 
 # 7c141b6ddf644ac093cb26c8726af7f5
 #: ../source/config.rst:55
@@ -1655,11 +1727,16 @@ msgid ""
 "fails to detect your path, please post a bug report on our bug tracker so we "
 "can improve the code."
 msgstr ""
+"Hea test on avada tabel lehitsemiseks, muuta seal ühte rida ja salvestada. "
+"Kui phpMyAdmin ei suutnud tuvastada sobivat väärtust, siis kuvatakse "
+"veateade. Kui veateade ütlseb, et sa pead selle ise määrama, siis tee seda; "
+"kui automaatne tuvastamine ei tööta, siis palun raporteeri sellest meie "
+"veahaldussüsteemis, et me saaksime koodi parandada."
 
 # 52492373d71a474db75f006699caab40
 #: ../source/config.rst:61
 msgid ":ref:`faq1_40`"
-msgstr ""
+msgstr ":ref:`faq1_40`"
 
 # 983b8d8d12a04efe939b087fa132d62d
 # c3634f8ec6a84467a535950e978890f3
@@ -1775,7 +1852,7 @@ msgstr ""
 #: ../source/config.rst:2674 ../source/config.rst:2724
 #: ../source/config.rst:2732 ../source/config.rst:2740
 msgid "boolean"
-msgstr ""
+msgstr "tõeväärtus"
 
 # 0efe94a3d06b49d089d7a0ff525994d9
 # b07fef64f07e4562a67910affad39912
@@ -1829,7 +1906,7 @@ msgstr ""
 #: ../source/config.rst:2725 ../source/config.rst:2733
 #: ../source/config.rst:2741
 msgid "false"
-msgstr ""
+msgstr "väär"
 
 # c8e8e122908f4b048fab48a48168160d
 #: ../source/config.rst:68
@@ -1838,6 +1915,8 @@ msgid ""
 "master / foreign – tables (see :config:option:`$cfg['Servers'][$i]"
 "['pmadb']`)."
 msgstr ""
+"Alates versioonist 2.3.0 võimaldab phpMyAdmin töötada ülem- ja "
+"välistabelitega (vaata :config:option:`$cfg['Servers'][$i]['pmadb']`)."
 
 # 28eb5ed44a8643c4a4b0c9433f742288
 #: ../source/config.rst:71
@@ -1847,6 +1926,9 @@ msgid ""
 "it. You will find a link that will analyze why those features have been "
 "disabled."
 msgstr ""
+"Kui sa proovisid seda seadistada ja ta ei tööta sulle, vaata selles "
+"andmebaasis, milles soovid seda kasutada lehekülge :guilabel:`Structure`. Sa "
+"leiad lingi, mis lubab analüüsida, miks need võimalused on keelatud."
 
 # ac0850a03d394ad8b32dc1597729990d
 #: ../source/config.rst:76
@@ -1854,6 +1936,8 @@ msgid ""
 "If you do not want to use those features set this variable to ``true`` to "
 "stop this message from appearing."
 msgstr ""
+"Kui sa ei soovi neid võimalusi kasutada, siis määra selle muutuja väärtuseks "
+"``true``, et keelata selle teate kuvamine."
 
 # e2a1f4922cde45228f38dd726a749ec0
 #: ../source/config.rst:84
@@ -1867,6 +1951,8 @@ msgstr "Kuva avalehel hoiatus, kui tuvastatakse Suhosin."
 msgid ""
 "You can set this parameter to ``true`` to stop this message from appearing."
 msgstr ""
+"Sa või määrata selle parameetri väärtuseks ``tõene``, et lõpetada selle "
+"teate kuvamine."
 
 # 556b968fdc934932a245503e46306572
 #: ../source/config.rst:93
@@ -1874,6 +1960,8 @@ msgid ""
 "Disable the default warning that is displayed if mcrypt is missing for "
 "cookie authentication."
 msgstr ""
+"Keelab vaikimisi hoiatuse, mis kuvatakse siis, kui mcrypt ei ole küpsistega "
+"autentimisel saadaval."
 
 # 0bacf0463e8046398b33de7d288fdc53
 #: ../source/config.rst:103
@@ -1881,6 +1969,8 @@ msgid ""
 "A warning is displayed on the main page if there is a difference between the "
 "MySQL library and server version."
 msgstr ""
+"Avalehel kuvatakse hoiatus, kui MySQL'i teegi ja serveri versioonide vahel "
+"on erinevus."
 
 # ccd12904760146afae703b32fc67a933
 #: ../source/config.rst:113
@@ -1888,6 +1978,8 @@ msgid ""
 "This warning is displayed on the Structure page of a table if one or more "
 "column names match with words which are MySQL reserved."
 msgstr ""
+"Seda hoiatust kuvatakse tabeli struktuuri lehel, kui vähemalt üks tabeli "
+"veergudest kannab nime, mis on MySQL's reserveeritud sõna."
 
 # 55c2f6f6baf24cd29ccf11997facfcc4
 #: ../source/config.rst:116
@@ -1895,6 +1987,8 @@ msgid ""
 "If you want to turn off this warning, you can set it to ``true`` and warning "
 "will no longer be displayed."
 msgstr ""
+"Kui sa soovid lülitada selle hoiatuse välja, siis pane ta väärtuseks "
+"``tõene`` ja hoiatust ei kuvata enam."
 
 # 9aa8e925a1ad4720ae26b58b4864a517
 # c952d54176934f15b2388cf2a28cfa67
@@ -1945,27 +2039,27 @@ msgstr ""
 #: ../source/config.rst:2511 ../source/config.rst:2568
 #: ../source/config.rst:2579
 msgid "integer"
-msgstr ""
+msgstr "täisarv"
 
 # c78bdee41de3488281f25997558f629e
 #: ../source/config.rst:122
 msgid "80"
-msgstr ""
+msgstr "80"
 
 # 17808af87df0457393cd14715f880404
 #: ../source/config.rst:124
 msgid "Show warning about incomplete translations on certain threshold."
-msgstr ""
+msgstr "Alates teatud künnisest kuva hoiatus lõpetamata transaktsioonidest."
 
 # e61c997b98d54b5382aa9be9795e5abe
 #: ../source/config.rst:129
 msgid "``'ask'``"
-msgstr ""
+msgstr "``'ask'``"
 
 # d329e0216d924c7e82dd25512d580eb2
 #: ../source/config.rst:131
 msgid "Sets the default behavior for JavaScript error reporting."
-msgstr ""
+msgstr "Määrab vaikimisi käitumise JavaScripti vigade raporteerimiseks."
 
 # 8343eb1263c548aabf788d874a645ab9
 #: ../source/config.rst:133
@@ -1973,6 +2067,8 @@ msgid ""
 "Whenever an error is detected in the JavaScript execution, an error report "
 "may be sent to the phpMyAdmin team if the user agrees."
 msgstr ""
+"Kui JavaScripti käivitamisel tuvastatakse viga, siis saadetakse kasutaja "
+"nõusolekul phpMyAdmin'i arendajatele vearaport."
 
 # c47197ca58f7458daae4725ba87bb252
 #: ../source/config.rst:136
@@ -1982,6 +2078,10 @@ msgid ""
 "error reports without asking for confirmation or you can set it to "
 "``'never'`` to never send error reports."
 msgstr ""
+"Vaikimisi säte ``'ask'`` küsib kasutaja nõusolekut iga kord, kui on uus "
+"vearaport. Sa või selle parameetri väärtuseks panna ``'always'``, et saata "
+"vearaportid nõusolekut küsimata, või sa võid ta väärtuseks panna ka "
+"``'never'``, et mitte kunagi saata vearaporteid."
 
 # 1f048476a53e49e69d5e454ea8d07090
 #: ../source/config.rst:141
@@ -1992,6 +2092,11 @@ msgid ""
 "and the :config:option:`$cfg['UserprefsDisallow']` directive should contain "
 "``'SendErrorReports'`` in one of its array values."
 msgstr ""
+"See säte on saadaval nii seadistuse failis kui ka kasutaja eelistustes. Kui "
+"mitme kasutaja paigaldust haldav isik eelistab selle omaduse keelata kõigile "
+"kasutajatele, siis tuleb sätte väärtuseks määrata ``'never'`` ja "
+":config:option:`$cfg['UserprefsDisallow']` säte peaks olema üks massiivi "
+"``'SendErrorReports'`` väärtustest."
 
 # 6aa8fff876c24c2f9656db9f8cdc36a9
 #: ../source/config.rst:152
@@ -2000,11 +2105,14 @@ msgid ""
 "and is a potential security hole allowing cross-frame scripting attacks or "
 "clickjacking."
 msgstr ""
+"Kui selle väärtus on ``tõene``, siis on lubatud phpMyAdmin'i kaasamine "
+"raami, mis on võimlik turvaauk lubades rist-raamimise skriptimise (XSS) "
+"rünnakut või klõpsuhaaret."
 
 # aa82a37e8e5845c790ce74ca1c8174a9
 #: ../source/config.rst:157
 msgid "Server connection settings"
-msgstr ""
+msgstr "Serveri ühenduse sätted"
 
 # ac8427589cf9421db8ffe29599982e78
 # 1736fb213479498d838066ee7d985f0f
@@ -2022,12 +2130,12 @@ msgstr ""
 #: ../source/config.rst:1973 ../source/config.rst:2607
 #: ../source/config.rst:2701 ../source/config.rst:2719
 msgid "array"
-msgstr ""
+msgstr "massiiv"
 
 # 8b3f199938aa421289b9e6c6a2812273
 #: ../source/config.rst:162
 msgid "one server array with settings listed bellow"
-msgstr ""
+msgstr "massiiv, milles on toodud alljärgnevad sätted ühele serverile"
 
 # cc348f544fa24b6789e387cbe1cf8844
 #: ../source/config.rst:164
@@ -2042,6 +2150,16 @@ msgid ""
 "as many as you need in :file:`config.inc.php`, copy that block or needed "
 "parts (you don't have to define all settings, just those you need to change)."
 msgstr ""
+"Alates versioonist 1.4.2 toetab phpMyAdmin mitme MySQL serveri haldamist. "
+"Seetõttu on häälestusse lisatud massiiv :config:option:`$cfg['Servers']`, "
+"mis sisaldab informatsiooni selleks, et logida sisse erinevatesse "
+"serveritesse. Esimene :config:option:`$cfg['Servers'][$i]['host']` hoiab "
+"esimse serveri hostinime, teine :config:option:`$cfg['Servers'][$i]['host']` "
+"hoiab teise serveri hostinime jne. Failis "
+":file:`libraries/config.default.php` on serveri defineerimiseks ainult üks "
+"sektsioon, kuid sa võid lisada servereid nii palju kui vajad faili "
+":file:`config.inc.php`. Kopeeri ainult need plokid või osad, mida sa vajad ("
+"sa ei pea defineerima käiki sätteid, ainult need, mida sa pead muutma)."
 
 # e7d31e6d1e324cfbbbfcb74bf89b50c0
 #: ../source/config.rst:177
@@ -2051,61 +2169,70 @@ msgid ""
 "following section (including $i incrementation) serveral times. There is no "
 "need to define full server array, just define values you need to change."
 msgstr ""
+"Massiivi :config:option:`$cfg['Servers']` indeks algab ühest "
+"($cfg['Servers'][1]). Ära kasuta $cfg['Servers'][0]. Kui sa soovid lisada "
+"rohkem kui ühe serveri, siis kopeeri ainult järgmine lõik (sh. $i "
+"suurendamine) iga serveri jaoks. Sa ei pea kirjeldama täielikku massiivi, "
+"ainult need väärtused, mida sa pead muutma."
 
 # 5c78db153d37475d8cbfbd834e81ec2f
 #: ../source/config.rst:187
 msgid "``'localhost'``"
-msgstr ""
+msgstr "``'localhost'``"
 
 # 19bf5eb448e445dda1e104b21e57fc20
 #: ../source/config.rst:189
 msgid ""
 "The hostname or :term:`IP` address of your $i-th MySQL-server. E.g. "
 "``localhost``."
-msgstr ""
+msgstr "Sinu MySQL serveri hostinimi või :term:`IP` aadress. Nt. ``localhost``."
 
 # 5903d7866dd542cf95472e620a133ae0
 #: ../source/config.rst:192
 msgid "Possible values are:"
-msgstr ""
+msgstr "Võimalikud väärtused on:"
 
 # 4764335d60454132b05bc404a67755d2
 #: ../source/config.rst:194
 msgid "hostname, e.g., ``'localhost'`` or ``'mydb.example.org'``"
-msgstr ""
+msgstr "hostinimi; nt. ``'localhost'`` või ``'mydb.example.org'``"
 
 # 77a8ff1ef0f24a1b88fd42c63d61f6db
 #: ../source/config.rst:195
 msgid "IP address, e.g., ``'127.0.0.1'`` or ``'192.168.10.1'``"
-msgstr ""
+msgstr "IP aadress; nt. ``'127.0.0.1'`` või ``'192.168.10.1'``"
 
 # 9ec40b41aaea4669822a90a7e511276d
 #: ../source/config.rst:196
 msgid "dot - ``'.'``, i.e., use named pipes on windows systems"
-msgstr ""
+msgstr "punkt - ``'.'``; s.t. kasuta Windowsis nimega toru"
 
 # 9584b813536d481d811dfea74170dcf4
 #: ../source/config.rst:197
 msgid "empty - ``''``, disables this server"
-msgstr ""
+msgstr "tühi - ``''`` keelab selle serveri"
 
 # 532c6b9306244ddb8c69cfe835fde5bc
 #: ../source/config.rst:201
 msgid ""
 "phpMyAdmin supports connecting to MySQL servers reachable via IPv6 only."
 msgstr ""
+"phpMyAdmin suudab ühenduda MySQL serveritesse, millel on ainult IPv6 aadress."
 
 # 1fb48d432fb14defbf5b2a152b164fba
 #: ../source/config.rst:202
 msgid ""
 "To connect to an IPv6 MySQL server, enter its IPv6 address in this field."
 msgstr ""
+"Sellisesse serverisse ühendumiseks sisesta siia MySQL serveri IPv6 aadress."
 
 # 77d745cb7aee431390cc88a10762f52d
 #: ../source/config.rst:209
 msgid ""
 "The port-number of your $i-th MySQL-server. Default is 3306 (leave blank)."
 msgstr ""
+"Sinu $i-nda MySQL serveri pordi number. Vaikimisi port on 3306 (jäta "
+"tühjaks)."
 
 # 1338e6a31eb84186836d744de4ba4047
 #: ../source/config.rst:214
@@ -11313,4 +11440,4 @@ msgstr ""
 # f35e251dda6e4958bed8f6f80246ea5c
 #: ../source/glossary.rst:397
 msgid "<http://www.wikipedia.org/wiki/Zlib>"
-msgstr ""
+msgstr "<http://www.wikipedia.org/wiki/Zlib>"
