@@ -26,7 +26,9 @@ MOFILES=$(addsuffix .mo, $(addprefix po/,$(LANGUAGES)))
 
 CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
 
-all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
+EXAMPLES=examples/signon.php examples/openid.php examples/signon-script.php examples/swekey.sample.conf
+
+all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS) $(EXAMPLES)
 
 .phony:
 FORCE:
@@ -61,3 +63,6 @@ po/%.mo: po/%.po
 translated/%.mo:
 	@mkdir -p $(dir $@)
 	@ln -sf ../../../po/`echo $@ | sed 's@translated/\(.*\)/LC_MESSAGES.*@\1@'`.mo $@
+
+examples/%: $(PMA_DIR)/examples/%
+	cp $< $@
