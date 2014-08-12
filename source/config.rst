@@ -85,16 +85,6 @@ Basic settings
 
     You can set this parameter to ``true`` to stop this message from appearing.
 
-.. config:option:: $cfg['McryptDisableWarning']
-
-    :type: boolean
-    :default: false
-
-    Disable the default warning that is displayed if mcrypt is missing for
-    cookie authentication.
-
-    You can set this parameter to ``true`` to stop this message from appearing.
-
 .. config:option:: $cfg['ServerLibraryDifference_DisableWarning']
 
     :type: boolean
@@ -345,8 +335,8 @@ Server connection settings
 
     * 'config' authentication (``$auth_type = 'config'``) is the plain old
       way: username and password are stored in :file:`config.inc.php`.
-    * 'cookie' authentication mode (``$auth_type = 'cookie'``) allows you to 
-      log in as any valid MySQL user with the help of cookies. 
+    * 'cookie' authentication mode (``$auth_type = 'cookie'``) allows you to
+      log in as any valid MySQL user with the help of cookies.
     * 'http' authentication allows you to log in as any
       valid MySQL user via HTTP-Auth.
     * 'signon' authentication mode (``$auth_type = 'signon'``) allows you to
@@ -611,13 +601,22 @@ Server connection settings
     column\_info table has to have the three new columns 'mimetype',
     'transformation', 'transformation\_options'.
 
+    Starting with release 4.3.0, a new input-oriented transformation system
+    has been introduced. Also, backward compatibility code used in the old
+    transformations system was removed. As a result, an update to column\_info
+    table is necessary for previous transformations and the new input-oriented
+    transformation system to work. phpMyAdmin will upgrade it automatically
+    for you by analyzing your current column\_info table structure.
+    However, if something goes wrong with the auto-upgrade then you can
+    use the SQL script found in ``./examples/upgrade_column_info_4_3_0+.sql``
+    to upgrade it manually.
 
     To allow the usage of this functionality:
 
     * set up :config:option:`$cfg['Servers'][$i]['pmadb']` and the phpMyAdmin configuration storage
     * put the table name in :config:option:`$cfg['Servers'][$i]['column\_info']` (e.g.
       ``pma__column_info``)
-    * to update your PRE-2.5.0 Column\_comments Table use this:  and
+    * to update your PRE-2.5.0 Column\_comments table use this:  and
       remember that the Variable in :file:`config.inc.php` has been renamed from
       :config:option:`$cfg['Servers'][$i]['column\_comments']` to
       :config:option:`$cfg['Servers'][$i]['column\_info']`
@@ -628,6 +627,16 @@ Server connection settings
            ADD `mimetype` VARCHAR( 255 ) NOT NULL,
            ADD `transformation` VARCHAR( 255 ) NOT NULL,
            ADD `transformation_options` VARCHAR( 255 ) NOT NULL;
+    * to update your PRE-4.3.0 Column\_info table manually use this
+      ``./examples/upgrade_column_info_4_3_0+.sql`` SQL script.
+
+    .. note::
+
+        For auto-upgrade functionality to work, your
+        ``$cfg['Servers'][$i]['controluser']`` must have ALTER privilege on
+        ``phpmyadmin`` database. See the `MySQL documentation for GRANT
+        <http://dev.mysql.com/doc/mysql/en/grant.html>`_ on how to
+        ``GRANT`` privileges to a user.
 
 .. _history:
 .. config:option:: $cfg['Servers'][$i]['history']
@@ -740,9 +749,9 @@ Server connection settings
     :default: ``''``
 
     Since release 4.3.0 you can have a central list of columns per database.
-    You can add/remove columns to the list as per your requirement. These columns 
+    You can add/remove columns to the list as per your requirement. These columns
     in the central list will be available to use while you create a new column for
-    a table or create a table itself. You can select a column from central list 
+    a table or create a table itself. You can select a column from central list
     while creating a new column, it will save you from writing the same column definition
     over again or from writing different names for similar column.
 
@@ -758,7 +767,7 @@ Server connection settings
     :type: string
     :default: ``''``
 
-    Since release 4.2.0 you can save and load query-by-example searches from the Database > Query panel. 
+    Since release 4.2.0 you can save and load query-by-example searches from the Database > Query panel.
 
     To allow the usage of this functionality:
 
@@ -1278,7 +1287,7 @@ Cookie authentication options
     choice. It will be used internally by the AES algorithm: you won’t be
     prompted for this passphrase. There is no maximum length for this secret.
 
-    .. note:: 
+    .. note::
 
         The configuration is called blowfish_secret for historical reasons as
         Blowfish algorithm was originally used to do the encryption.
@@ -1429,6 +1438,29 @@ Navigation panel setup
 
     The maximum number of recently used tables shown in the navigation
     panel. Set this to 0 (zero) to disable the listing of recent tables.
+
+.. config:option:: $cfg['ZeroConf']
+
+    :type: boolean
+    :default: true
+
+    Enables Zero Configuration mode in which the user will be offered a choice to
+    create phpMyAdmin configuration storage in the current database
+    or use the existing one, if already present.
+
+    .. note::
+
+        If there is no central configuration storage defined then you may end
+        up with different set of phpMyAdmin configuration storage tables for
+        different databases.
+
+.. config:option:: $cfg['NavigationLinkWithMainPanel']
+
+    :type: boolean
+    :default: true
+
+    Defines whether or not to link with main panel by highlighting
+    the current database or table.
 
 .. config:option:: $cfg['NavigationDisplayLogo']
 
@@ -1890,8 +1922,9 @@ Languages
     :default: ``'utf8_general_ci'``
 
     Defines the default connection collation to use, if not user-defined.
-    See the `MySQL documentation <http://dev.mysql.com/doc/mysql/en
-    /charset-charsets.html>`_ for list of possible values. This setting is
+    See the `MySQL documentation for charsets 
+    <http://dev.mysql.com/doc/mysql/en/charset-charsets.html>`_ 
+    for list of possible values. This setting is
     ignored when connected to Drizzle server.
 
 .. config:option:: $cfg['Lang']
@@ -2214,7 +2247,7 @@ Design customization
 .. config:option:: $cfg['DefaultDisplay']
 
     :type: string
-    :default: ``'horizonta'``
+    :default: ``'horizontal'``
 
     There are 3 display modes: horizontal, horizontalflipped and vertical.
     Define which one is displayed by default. The first mode displays each
@@ -2566,7 +2599,7 @@ Various display setting
 .. config:option:: $cfg['MaxExactCount']
 
     :type: integer
-    :default: 0
+    :default: 500000
 
     For InnoDB tables, determines for how large tables phpMyAdmin should
     get the exact row count using ``SELECT COUNT``. If the approximate row
