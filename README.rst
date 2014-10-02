@@ -6,12 +6,12 @@ is based on master document placed in phpmyadmin repository.
 
 To translate edit your language file in po directory, changes will be
 propagated to generated documents. You can also translate online at
-<https://l10n.cihar.com/projects/phpmyadmin/documentation/> and your changes
+<https://hosted.weblate.org/projects/phpmyadmin/documentation/> and your changes
 will be merged to Git.
 
-.. image:: http://l10n.cihar.com/widgets/phpmyadmin-status-badge.png
+.. image:: http://hosted.weblate.org/widgets/phpmyadmin-status-badge.png
     :alt: Translation status
-    :target: https://l10n.cihar.com/engage/phpmyadmin/?utm_source=widget
+    :target: https://hosted.weblate.org/engage/phpmyadmin/?utm_source=widget
 
 Requirements
 ------------
