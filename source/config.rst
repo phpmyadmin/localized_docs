@@ -904,6 +904,18 @@ Server connection settings
     rows in :config:option:`$cfg['Servers'][$i]['table_uiprefs']` and automatically
     delete older rows.
 
+.. config:option:: $cfg['Servers'][$i]['SessionTimeZone']
+
+    :type: string
+    :default: ``''``
+
+    Sets the time zone used by phpMyAdmin. Leave blank to use the time zone of your
+    database server. Possible values are explained at
+    http://dev.mysql.com/doc/refman/5.7/en/time-zone-support.html
+
+    This is useful when your database server uses a time zone which is different from the
+    time zone you want to use in phpMyAdmin.
+
 .. config:option:: $cfg['Servers'][$i]['AllowRoot']
 
     :type: boolean
@@ -1580,12 +1592,12 @@ Navigation panel setup
     * ``tbl_change.php``
     * ``sql.php``
 
-.. config:option:: $cfg['NavigationTreeDisableDatabaseExpansion']
+.. config:option:: $cfg['NavigationTreeEnableExpansion']
 
     :type: boolean
     :default: false
 
-    Whether or not to disable the possibility of databases expansion in the navigation panel
+    Whether to offer the possibility of tree expansion in the navigation panel.
 
 Main panel
 ----------
