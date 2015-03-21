@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-02-27 15:21+0100\n"
-"PO-Revision-Date: 2015-03-05 15:49+0200\n"
-"Last-Translator: Douglas Rafael Morais Kollar <douglas.kollar@pg.df.gov.br>\n"
+"PO-Revision-Date: 2015-03-21 22:33+0200\n"
+"Last-Translator: Thiago Casotti <thiago.casotti@uol.com.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/phpmyadmin/documentation/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -649,7 +649,6 @@ msgid "Using Setup script"
 msgstr "Usando o script de instalação"
 
 #: ../source/setup.rst:165
-#, fuzzy
 #| msgid ""
 #| "Instead of manually editing :file:`config.inc.php`, you can use the "
 #| "`Setup Script <setup/>`_. First you must manually create a folder "
@@ -662,9 +661,10 @@ msgid ""
 "can use the following commands:"
 msgstr ""
 "Em vez de editar manualmente o arquivo :file:`config.inc.php`, você pode "
-"usar o `Setup Script <setup/>`_. Primeiro você deve criar manualmente uma "
-"pasta chamada ``config`` no diretório do phpMyAdmin. Esta é uma medida de "
-"segurança. Em um sistema Linux/Unix, você pode usar os seguintes comandos:"
+"usar a ferramenta de configuração do phpMyAdmin. Primeiro você deve criar "
+"manualmente uma pasta chamada ``config`` no diretório do phpMyAdmin. Esta é "
+"uma medida de segurança. Em um sistema Linux/Unix, você pode usar os "
+"seguintes comandos:"
 
 #: ../source/setup.rst:177
 msgid "And to edit an existing configuration, copy it over first:"
@@ -689,7 +689,6 @@ msgstr ""
 "isso."
 
 #: ../source/setup.rst:194
-#, fuzzy
 #| msgid ""
 #| "Next, open ``setup/`` in your browser. If you have an existing "
 #| "configuration, use the ``Load`` button to bring its content inside the "
@@ -714,17 +713,18 @@ msgid ""
 "the config file locally and upload it (via FTP or some similar means) to the "
 "proper location."
 msgstr ""
-"Em seguida, abra o ``setup/`` em seu navegador. Se você tiver uma "
-"configuração existente, use o botão ``Carregar`` para trazer seu conteúdo "
-"para o painel de setup. Observe que **as alterações não serão salvas no "
-"disco até que se escolha ``Salvar``** na área *Configuração* da tela. "
-"Normalmente, o script salva o novo arquivo :file:`config.inc.php` no "
-"diretório ``config/``, mas se o servidor não tiver as permissões "
-"apropriadas, você poderá ver o erro \"Não foi possível carregar ou salvar a "
-"configuração.\" Certifique-se que o diretório ``config/`` existe e que ele "
-"tem as permissões apropriadas - ou utilize o link ``Download`` para salvar o "
-"arquivo de configuração localmente e enviá-lo (via FTP ou outros meios "
-"semelhantes) para o local correto."
+"Em seguida, abra seu navegado e visite o diretório onde você instalou o "
+"phpMyAdmin, com o sufixo ``/setup``. Se você tiver uma configuração "
+"existente, use o botão ``Carregar`` para trazer seu conteúdo para o painel "
+"de configuração. Observe que **as alterações não serão salvas no disco até "
+"que se escolha ``Salvar``** na área *Configuração* da tela. Normalmente, o "
+"script salva o novo arquivo :file:`config.inc.php` no diretório ``config/``, "
+"mas se o servidor não tiver as permissões apropriadas, você poderá ver o "
+"erro \"Não foi possível carregar ou salvar a configuração.\" Certifique-se "
+"que o diretório ``config/`` existe e que ele tem as permissões apropriadas - "
+"ou utilize o link ``Download`` para salvar o arquivo de configuração "
+"localmente e enviá-lo (via FTP ou outros meios semelhantes) para o local "
+"correto."
 
 #: ../source/setup.rst:205
 msgid ""
@@ -836,10 +836,9 @@ msgstr ""
 "nenhum outro usuário tenha direitos para isso)."
 
 #: ../source/setup.rst:266
-#, fuzzy
 #| msgid "Configuration"
 msgid "Zero configuration"
-msgstr "Configuração"
+msgstr "Configuração Zero"
 
 # 18bfb42aef5d47faae1535680a5544f7
 #: ../source/setup.rst:268
@@ -849,12 +848,18 @@ msgid ""
 "useful in shared hosting situations. “Zeroconf” mode is on by default, to "
 "disable set :config:option:`$cfg['ZeroConf']` to false."
 msgstr ""
+"Em muitos casos, esta estrutura de banco de dados pode ser automaticamente "
+"criada e configurada. Isso é chamado de modo \"Configuração Zero\" e pode "
+"ser particularmente útil em situações de hospedagem compartilhada. O modo \""
+"Zeroconf\" está no padrão, para desabilitar a configuração "
+":config:option:`$cfg[`ZeroConf`]` para falso."
 
 # 4e7857305bda497ba90c53a49764ad04
 #: ../source/setup.rst:273
 msgid ""
 "The following three scenarios are covered by the Zero Configuration mode:"
 msgstr ""
+"Os três cenários a seguir estão cobertos pelo modo de Configuração Zero:"
 
 # 85be3f36408d478aa9b29aeb133151c8
 #: ../source/setup.rst:275
@@ -862,6 +867,9 @@ msgid ""
 "When entering a database where the configuration storage tables are not "
 "present, phpMyAdmin offers to create them from the Operations tab."
 msgstr ""
+"Quando entrar no banco de dados onde as tabelas de armazenamento de "
+"configuração não estão presentes, o phpMyAdmin fornece a criação delas pela "
+"tab Operações."
 
 # 5edf74089c2d4606880526c53c0f180d
 #: ../source/setup.rst:277
@@ -873,6 +881,13 @@ msgid ""
 "shared hosting where the user is not able to edit :file:`config.inc.php` and "
 "usually the user only has access to one database."
 msgstr ""
+"Quando entrar num banco de dados onde as tabelas já existem, o programa "
+"automaticamente detecta isso e começa a usá-las. Esta é a situação mais "
+"comum: depois que as tabelas são inicialmente criadas automaticamente elas "
+"são continuamente usadas sem perturbar o usuário: isso é muito útil também "
+"em hospedagem compartilhada onde o usuário não está habilitado para editar "
+":file:`config.inc.php` e usualmente o usuário tem acesso somente para um "
+"banco de dados."
 
 # af1ff7a0f20b4925b09606bd17a75dfc
 #: ../source/setup.rst:283
@@ -882,15 +897,18 @@ msgid ""
 "another database, phpMyAdmin continues to use the tables from the first "
 "database; the user is not prompted to create more tables in the new database."
 msgstr ""
+"Quando tiver acesso a múltiplos bancos de dados, se o usuário primeiro entra "
+"num banco de dados contendo as tabelas de armazenamento de configuração "
+"então muda para outro banco de dados, o phpMyAdmin continua a usar as "
+"tabelas do primeiro banco de dados; o usuário não é sugerido a criar mais "
+"tabelas em um novo banco de dados."
 
 #: ../source/setup.rst:291
-#, fuzzy
 #| msgid "Configuration"
 msgid "Manual configuration"
-msgstr "Configuração"
+msgstr "Manual de configuração"
 
 #: ../source/setup.rst:293
-#, fuzzy
 #| msgid ""
 #| "Please look at your ``./examples/`` directory, where you should find a "
 #| "file called *create\\_tables.sql*. (If you are using a Windows server, "
@@ -900,9 +918,9 @@ msgid ""
 "called *create\\_tables.sql*. (If you are using a Windows server, pay "
 "special attention to :ref:`faq1_23`)."
 msgstr ""
-"Por favor, olhe em seu diretório ``./examples/``, onde você encontrará um "
-"arquivo chamado *create_tables.sql*. (Caso esteja utilizando um servidor "
-"Windows, dê uma atenção especial a :ref:`faq1_23`)."
+"Por favor, olhe em seu diretório ``./sql/``, onde você encontraria um "
+"arquivo chamado *create_tables.sql*. (Se você está usando um servidor "
+"Windows, preste especial atenção a :ref:`faq1_23`)."
 
 # ab298a94ced547269b5118df223a6a4e
 #: ../source/setup.rst:297
@@ -910,7 +928,6 @@ msgid "If you already had this infrastructure and:"
 msgstr "Se você já tinha esta infraestrutura e:"
 
 #: ../source/setup.rst:299
-#, fuzzy
 #| msgid ""
 #| "upgraded to MySQL 4.1.2 or newer, please use :file:`examples/"
 #| "upgrade_tables_mysql_4_1_2+.sql`."
@@ -918,12 +935,11 @@ msgid ""
 "upgraded to MySQL 4.1.2 or newer, please use :file:`sql/"
 "upgrade_tables_mysql_4_1_2+.sql`."
 msgstr ""
-"atualizou para o MySQL 4.1.2 ou mais recente, favor utilize o arquivo :file:"
-"`upgrade_tables_mysql_4_1_2+.sql`."
+"atualizou para o MySQL 4.1.2 ou mais recente, favor utilize o arquivo "
+":file:`sql/upgrade_tables_mysql_4_1_2+.sql`."
 
 # bd475ca3f46b423c836feb2e04b3991d
 #: ../source/setup.rst:301
-#, fuzzy
 #| msgid ""
 #| "upgraded to phpMyAdmin 4.3.0 or newer from 2.5.0 or newer (<= 4.2.x), "
 #| "please use :file:`examples/upgrade_column_info_4_3_0+.sql`."
@@ -932,18 +948,18 @@ msgid ""
 "use :file:`sql/upgrade_column_info_4_3_0+.sql`."
 msgstr ""
 "atualizou para o phpMyAdmin 4.3.0 ou mais recente a partir do 2.5.0 ou mais "
-"recente (<= 4.2.x), favor utilize o arquivo :file:`exemples/"
-"upgrade_column_info_4_3_0+.sql`."
+"recente (<= 4.2.x), favor utilize o arquivo "
+":file:`sql/upgrade_column_info_4_3_0+.sql`."
 
 # 5009520c824a4dba94280abf916fd934
 #: ../source/setup.rst:304
-#, fuzzy
 #| msgid ""
 #| "and then create new tables by importing :file:`examples/create_tables."
 #| "sql`."
 msgid "and then create new tables by importing :file:`sql/create_tables.sql`."
 msgstr ""
-"e então crie novas tabelas importando o arquivo :file:`create_tables.sql`."
+"e então crie novas tabelas importando o arquivo "
+":file:`sql/create_tables.sql`."
 
 #: ../source/setup.rst:306
 msgid ""
@@ -958,7 +974,6 @@ msgstr ""
 "dependendo do nome do banco de dados."
 
 #: ../source/setup.rst:311
-#, fuzzy
 #| msgid ""
 #| "After having imported the :file:`examples/create_tables.sql` file, you "
 #| "should specify the table names in your :file:`config.inc.php` file. The "
@@ -968,11 +983,9 @@ msgid ""
 "specify the table names in your :file:`config.inc.php` file. The directives "
 "used for that can be found in the :ref:`config`."
 msgstr ""
-"Depois de importar o arquivo :file:`examples/create_tables.sql`, você deverá "
+"Depois de importar o arquivo :file:`sql/create_tables.sql`, você deverá "
 "especificar os nomes de tabela em seu arquivo :file:`config.inc.php`. As "
-"diretivas utilizadas para isso podem ser encontradas na seção :ref:`config`. "
-"Você também precisa ter um usuário de controle com os direitos apropriados "
-"para as tabelas (veja a seção :ref:`authentication_modes` abaixo)."
+"diretivas utilizadas para isso podem ser encontradas na seção :ref:`config`."
 
 # 7992f5f57e824ab79e06cc7b3e77c33a
 #: ../source/setup.rst:315
@@ -997,9 +1010,10 @@ msgid ""
 "**Never** extract the new version over an existing installation of "
 "phpMyAdmin; we had evidence of problems caused by this."
 msgstr ""
+"**Nunca** extraia uma versão nova sobre uma instalação existente do "
+"phpMyAdmin; nós tivemos a evidência de problemas causados por isso."
 
 #: ../source/setup.rst:333
-#, fuzzy
 #| msgid ""
 #| "Simply copy :file:`config.inc.php` from your previous installation into "
 #| "the newly unpacked one. Configuration files from old versions may require "
@@ -1016,9 +1030,9 @@ msgstr ""
 "Basta copiar o arquivo :file:`config.inc.php` de sua instalação anterior "
 "para a instalação recém descompactada. Os arquivos de configuração de "
 "versões antigas podem requerer alguns ajustes, já que algumas opções foram "
-"alteradas ou removidas. Para a compatibilidade com o PHP 6, remova a "
-"declaração ``set_magic_quotes_runtime(0);`` que está próxima ao final de seu "
-"arquivo de configuração."
+"alteradas ou removidas. Para a compatibilidade com o PHP 5.3 e anterior, "
+"remova a declaração ``set_magic_quotes_runtime(0);`` que está próxima ao "
+"final de seu arquivo de configuração."
 
 #: ../source/setup.rst:340
 msgid ""
@@ -1030,7 +1044,6 @@ msgstr ""
 "específico desta versão."
 
 #: ../source/setup.rst:344
-#, fuzzy
 #| msgid ""
 #| "If you have upgraded your MySQL server from a version previous to 4.1.2 "
 #| "to version 5.x or newer and if you use the phpMyAdmin configuration "
@@ -1044,12 +1057,10 @@ msgid ""
 msgstr ""
 "Se você tiver atualizado o seu servidor MySQL a partir de uma versão "
 "anterior a 4.1.2 para a versão 5.x ou mais recente e se você usa a "
-"configuração de armazenamento do phpMyAdmin, você deve executar o script :"
-"term:`SQL` encontrado no arquivo :file:`examples/upgrade_tables_mysql_4_1_2+."
-"sql`."
+"configuração de armazenamento do phpMyAdmin, você deve executar o script "
+":term:`SQL` encontrado no arquivo :file:`upgrade_tables_mysql_4_1_2+.sql`."
 
 #: ../source/setup.rst:349
-#, fuzzy
 #| msgid ""
 #| "If you have upgraded your phpMyAdmin to 4.3.0 or newer from 2.5.0 or "
 #| "newer (<= 4.2.x) and if you use the phpMyAdmin configuration storage, you "
@@ -1063,8 +1074,8 @@ msgid ""
 msgstr ""
 "Se você atualizou o phpMyAdmin para a versão 4.3.0 ou mais recente a partir "
 "da 2.5.0 ou mais recente (<= 4.2.x) e usa o armazenamento de configuração do "
-"phpMyAdmin, você deve executar o script :term:`SQL` encontrado em :file:"
-"`examples/upgrade_column_info_4_3_0+.sql`."
+"phpMyAdmin, você deve executar o script :term:`SQL` encontrado em "
+":file:`sql/upgrade_column_info_4_3_0+.sql`."
 
 #: ../source/setup.rst:359
 msgid "Using authentication modes"
@@ -1417,7 +1428,6 @@ msgstr ""
 
 # 59ca6fb90e8041abab93ccb35329d792
 #: ../source/setup.rst:536
-#, fuzzy
 #| msgid ""
 #| "in case you don't want all MySQL users to be able to access phpMyAdmin, "
 #| "you can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to "
@@ -1427,9 +1437,9 @@ msgid ""
 "can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit "
 "them."
 msgstr ""
-"caso você não queira que todos os seus usuários MySQL tenham acesso ao "
-"phpMyAdmin, você pode usar a configuração :config:option:`$cfg['Servers'][$i]"
-"['AllowDeny']['rules']` para limitá-los"
+"Em caso de você não querer que todos os seus usuários MySQL tenham acesso ao "
+"phpMyAdmin, você pode usar a configuração "
+":config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` para limitá-los."
 
 # e1b1bd218e6f41e08d4b1dbb5cfed36a
 #: ../source/setup.rst:538
@@ -1442,7 +1452,6 @@ msgstr ""
 
 # 2b8fc8b9693c4ff69746070cd17a17db
 #: ../source/setup.rst:541
-#, fuzzy
 #| msgid ""
 #| "if you are afraid of automated attacks, enabling Captcha by :config:"
 #| "option:`$cfg['CaptchaLoginPublicKey']` and :config:option:`"
@@ -1452,9 +1461,9 @@ msgid ""
 "$cfg['CaptchaLoginPublicKey']` and :config:option:`"
 "$cfg['CaptchaLoginPrivateKey']` might be an option."
 msgstr ""
-"Se você tem medo de ataques automatizados, ativar o Captcha atraves das "
-"opções :config:option:`$cfg['CaptchaLoginPublicKey']` e :config:option:`"
-"$cfg['CaptchaLoginPrivateKey']`  podem ser uma opção."
+"Se você tem medo de ataques automatizados, ativar o Captcha através das "
+"opções :config:option:`$cfg['CaptchaLoginPublicKey']` e "
+":config:option:`$cfg['CaptchaLoginPrivateKey']`  podem ser uma opção."
 
 #: ../source/setup.rst:158
 msgid "Setup script"
@@ -2012,6 +2021,9 @@ msgid ""
 "A warning is displayed on the main page if the PHP parameter session."
 "gc_maxlifetime is lower than cookie validity configured in phpMyAdmin."
 msgstr ""
+"Um alerta é disparado na página principal se o parâmetro "
+"session.gc_maxlifetime do PHP estiver mais baixo do que o cookie de validade "
+"configurado no phpMyAdmin."
 
 #: ../source/config.rst:103
 msgid ""
@@ -2871,6 +2883,16 @@ msgid ""
 "something goes wrong with the auto-upgrade then you can use the SQL script "
 "found in ``./sql/upgrade_column_info_4_3_0+.sql`` to upgrade it manually."
 msgstr ""
+"Começando com a versão 4.3.0, um novo sistema de transformação de entrada-"
+"orientada tem sido introduzido. O código de compatibilidade subdesenvolvido "
+"usado em sistemas de transformações antigos foi removido também. Como "
+"resultado, uma atualização da tabela column\\_info é necessária para "
+"transformações prévias e para os novos sistemas de transformação de entrada-"
+"orientada trabalharem. phpMyAdmin atualizará isso automaticamente para você "
+"analisando sua atual estrutura da tabela column\\_info. Entretanto, se "
+"alguma coisa der errado com a auto-atualização então você pode usar o script "
+"SQL encontrado em ``./sql/upgrade_column_info_4_3_0+.sql`` para atualizar "
+"isso manualmente."
 
 #: ../source/config.rst:627
 msgid ""
@@ -2882,7 +2904,6 @@ msgstr ""
 
 # ed4ec79072d0417390db10dc861ad0ed
 #: ../source/config.rst:629
-#, fuzzy
 #| msgid ""
 #| "to update your PRE-2.5.0 Column\\_comments Table use this:  and remember "
 #| "that the Variable in :file:`config.inc.php` has been renamed from :config:"
@@ -2894,10 +2915,10 @@ msgid ""
 "option:`$cfg['Servers'][$i]['column\\_comments']` to :config:option:`"
 "$cfg['Servers'][$i]['column\\_info']`"
 msgstr ""
-"para atualizar sua tabela PRE-2.5.0 Column_comments use isso: e lembre que a "
-"variável em :file:`config.inc.php` foi renomeada de :config:option:`"
-"$cfg['Servers'][$i]['column_comments']` para :config:option:`$cfg['Servers']"
-"[$i]['column_info']`"
+"para atualizar sua tabela Column_comments PRE-2.5.0 use isso: e lembre que a "
+"variável em :file:`config.inc.php` foi renomeada de "
+":config:option:`$cfg['Servers'][$i]['column_comments']` para "
+":config:option:`$cfg['Servers'][$i]['column_info']`"
 
 # 9ba61668efdb4fd58b4f5a17821dc54a
 #: ../source/config.rst:640
@@ -2905,6 +2926,8 @@ msgid ""
 "to update your PRE-4.3.0 Column\\_info table manually use this ``./sql/"
 "upgrade_column_info_4_3_0+.sql`` SQL script."
 msgstr ""
+"para atualizar sua tabela Column\\_info PRE-4.3.0 manualmente use esse "
+"script SQL ``./sql/upgrade_column_info_4_3_0+.sql``."
 
 # 07f69bd6d99d4eb59074b5996a037e83
 #: ../source/config.rst:645
@@ -2914,6 +2937,11 @@ msgid ""
 "the `MySQL documentation for GRANT <http://dev.mysql.com/doc/mysql/en/grant."
 "html>`_ on how to ``GRANT`` privileges to a user."
 msgstr ""
+"Para funcionalidade de auto-atualização para trabalhar, seu "
+"``$cfg['Servers'][$i]['controluser']`` deve ter o privilégio ALTER no banco "
+"de dados ``phpmyadmin``. `Veja a documentação MySQL para GRANT  "
+"<http://dev.mysql.com/doc/mysql/en/grant.html>` _ em como ``CONCEDER`` "
+"privilégios ao usuário."
 
 # 533c65ef09cf4a06bcde76cae9527125
 #: ../source/config.rst:657
@@ -3072,9 +3100,15 @@ msgid ""
 "while creating a new column, it will save you from writing the same column "
 "definition over again or from writing different names for similar column."
 msgstr ""
+"Desde a versão 4.3.0 você pode ter uma lista central de colunas por banco de "
+"dados. Você pode adicionar/remover colunas para a lista de acordo com a sua "
+"exigência. Essas colunas na lista central estarão disponíveis para usar "
+"enquanto você cria uma nova coluna para a tabela ou cria-se uma tabela. Você "
+"pode selecionar uma coluna de uma lista central enquanto cria uma nova "
+"coluna, ela poupará você de escrever a mesma definição de coluna mais uma "
+"vez ou de escrever diferentes nomes para uma coluna similar."
 
 #: ../source/config.rst:771
-#, fuzzy
 #| msgid ""
 #| "put the table name in :config:option:`$cfg['Servers'][$i]['tracking']` (e."
 #| "g. ``pma__tracking``)"
@@ -3082,8 +3116,9 @@ msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]"
 "['central_columns']` (e.g. ``pma__central_columns``)"
 msgstr ""
-"coloque o nome da tabela em :config:option:`$cfg['Servers'][$i]['tracking']` "
-"(ex: ``pma_tracking``)"
+"coloque o nome da tabela em "
+":config:option:`$cfg['Servers'][$i]['central_columns']` (ex: "
+"``pma__central_columns``)"
 
 # 4f703393bded44c18214ff0e976d8d7f
 #: ../source/config.rst:780
@@ -3091,9 +3126,10 @@ msgid ""
 "Since release 4.2.0 you can save and load query-by-example searches from the "
 "Database > Query panel."
 msgstr ""
+"Desde a versão 4.2.0 você pode salvar e carregar pesquisas de exemplo-por-"
+"consulta do Banco de Dados > Painel de Consulta."
 
 #: ../source/config.rst:785
-#, fuzzy
 #| msgid ""
 #| "put the table name in :config:option:`$cfg['Servers'][$i]['recent']` (e."
 #| "g. ``pma__recent``)"
@@ -3101,8 +3137,9 @@ msgid ""
 "put the table name in :config:option:`$cfg['Servers'][$i]['savedsearches']` "
 "(e.g. ``pma__savedsearches``)"
 msgstr ""
-"coloque o nome da tabela em :config:option:`$cfg['Servers'][$i]['recent']` "
-"(ex: ``pma_recent``)"
+"coloque o nome da tabela em "
+":config:option:`$cfg['Servers'][$i]['savedsearches']` (ex: "
+"``pma__savedsearches``)"
 
 # f61607ae997345b091679ea537828f27
 #: ../source/config.rst:794
@@ -3367,6 +3404,9 @@ msgid ""
 "your database server. Possible values are explained at http://dev.mysql.com/"
 "doc/refman/5.7/en/time-zone-support.html"
 msgstr ""
+"Configure a zona de tempo usada pelo phpMyAdmin. Deixe em branco para uso a "
+"zona de tempo do seu servidor de banco de dados. Possíveis valores são "
+"explicados em http://dev.mysql.com/doc/refman/5.7/en/time-zone-support.html"
 
 # 42a2290348ad4860a310c95d513a6e57
 #: ../source/config.rst:916
@@ -3374,6 +3414,8 @@ msgid ""
 "This is useful when your database server uses a time zone which is different "
 "from the time zone you want to use in phpMyAdmin."
 msgstr ""
+"Isso é útil quando seu banco de dados usa uma zona de tempo que é diferente "
+"da zona de tempo que você quer usar no phpMyAdmin."
 
 # 92396846242e4222abf89c6359b7ae35
 #: ../source/config.rst:924
@@ -3703,7 +3745,6 @@ msgstr "\"\""
 
 # 74fd09951457412baabf95bb485d8c00
 #: ../source/config.rst:1115
-#, fuzzy
 #| msgid ""
 #| "The url of the proxy to be used when phpmyadmin needs to access the "
 #| "outside intenet such as when retrieving the latest version info or "
@@ -3995,7 +4036,6 @@ msgid "Cookie authentication options"
 msgstr "Opções de autenticação por cookie"
 
 #: ../source/config.rst:1317
-#, fuzzy
 #| msgid ""
 #| "The \"cookie\" auth\\_type uses blowfish algorithm to encrypt the "
 #| "password. If you are using the \"cookie\" auth\\_type, enter here a "
@@ -4008,10 +4048,10 @@ msgid ""
 "your choice. It will be used internally by the AES algorithm: you won’t be "
 "prompted for this passphrase. There is no maximum length for this secret."
 msgstr ""
-"O tipo de autenticação por cookie usa o algoritmo Blowfish para criptografar "
-"a senha. Se você estiver usando o tipo de autenticação por cookie, entre "
-"aqui uma senha aleatória de sua escolha. Ela será usada internamente pelo "
-"algoritmo Blowfish: não será pedido a você essa senha. Não há comprimento "
+"O tipo de autenticação por cookie usa o algoritmo AES para criptografar a "
+"senha. Se você estiver usando o tipo de autenticação por cookie, entre aqui "
+"uma senha aleatória de sua escolha. Ela será usada internamente pelo "
+"algoritmo AES: você não será instigado para essa senha. Não há tamanho "
 "máximo para esta senha."
 
 # 151321c7c2a74651b455b46f8204f04d
@@ -4020,6 +4060,8 @@ msgid ""
 "The configuration is called blowfish_secret for historical reasons as "
 "Blowfish algorithm was originally used to do the encryption."
 msgstr ""
+"A configuração é chamada blowfish_secret por razões históricas como "
+"algoritmo Blowfish foi originalmente usado para fazer o encapsulamento."
 
 #: ../source/config.rst:1327
 msgid ""
@@ -4248,6 +4290,10 @@ msgid ""
 "to create phpMyAdmin configuration storage in the current database or use "
 "the existing one, if already present."
 msgstr ""
+"Habilite o modo de Configuração Zero em que o será oferecida ao usuário uma "
+"escolha para criar o armazenamento da configuração do phpMyAdmin no banco de "
+"dados atual ou usar o armazenamento de configuração existente, se já estiver "
+"presente."
 
 # 501509a0077842bda65dd932ba431012
 #: ../source/config.rst:1490
@@ -4256,6 +4302,10 @@ msgid ""
 "is properly created and the related configuration directives (such as :"
 "config:option:`$cfg['Servers'][$i]['pmadb']` and so on) are configured."
 msgstr ""
+"Essa configuração não tem efeito se o banco de dados de armazenamento da "
+"configuração do phpMyAdmin é propriamente criado e as diretivas de "
+"configuração relatadas (como :config:option:`$cfg['Servers'][$i]['pmadb']` e "
+"assim por diante) são configuradas."
 
 # 0832b80085324c6a8ff16b8a5ab462cf
 #: ../source/config.rst:1499
@@ -4263,6 +4313,8 @@ msgid ""
 "Defines whether or not to link with main panel by highlighting the current "
 "database or table."
 msgstr ""
+"Define se ou não conecta com o painel principal pelo destaque do banco de "
+"dados ou da tabela atual."
 
 #: ../source/config.rst:1507
 msgid ""
@@ -4402,11 +4454,10 @@ msgstr "``sql.php``"
 # c07d04eaf73646149c89083c4f7ab779
 #: ../source/config.rst:1583
 msgid "null"
-msgstr ""
+msgstr "nulo"
 
 # eb54e1f81b1d4d269795bf1290ff0666
 #: ../source/config.rst:1585
-#, fuzzy
 #| msgid ""
 #| "Defines the tab displayed by default when clicking the small icon next to "
 #| "each table name in the navigation panel. Possible values:"
@@ -4414,13 +4465,13 @@ msgid ""
 "Defines the tab displayed by default when clicking the second small icon "
 "next to each table name in the navigation panel. Possible values:"
 msgstr ""
-"Define a aba mostrada por padrão quando clicado no ícone pequeno próximo a "
-"cada nome de tabela no painel de navegação. Valores possíveis:"
+"Define a aba mostrada por padrão quando clicar no segundo ícone pequeno "
+"próximo a cada nome de tabela no painel de navegação. Valores possíveis:"
 
 # 8cbe9db5f27a464e93ee0fa53d4bc11d
 #: ../source/config.rst:1588
 msgid "``(empty)``"
-msgstr ""
+msgstr "``(vazio)``"
 
 #: ../source/config.rst:1600
 #| msgid ""
@@ -4631,7 +4682,6 @@ msgstr "``'clique-duplo'``"
 
 # 885565bb1de0457193deec1f05763167
 #: ../source/config.rst:1745
-#, fuzzy
 #| msgid ""
 #| "Defines which action (``double-click`` or ``click``) triggers grid "
 #| "editing. Can be deactived with the ``disabled`` value."
@@ -4645,7 +4695,7 @@ msgstr ""
 # 866831fde400476b856d622d2c0bb633
 #: ../source/config.rst:1751
 msgid "``'K'``"
-msgstr ""
+msgstr "``'K'``"
 
 # 72b314e1661a48c7aa996da29b927f1d
 #: ../source/config.rst:1753
@@ -4653,6 +4703,8 @@ msgid ""
 "Defines the initial behavior for Options > Relational. ``K``, which is the "
 "default, displays the key while ``D`` shows the display column."
 msgstr ""
+"Define o comportamento inicial para Opções > Relacional. ``K``, que é o "
+"padrão, exibe a chave enquanto ``D`` mostra a coluna exibida."
 
 #: ../source/config.rst:1761
 msgid ""
@@ -5013,7 +5065,6 @@ msgstr "``'utf8_general_ci'``"
 
 # f7369a1684004d2b84ce1d66fdca59b6
 #: ../source/config.rst:1984
-#, fuzzy
 #| msgid ""
 #| "Defines the default connection collation to use, if not user-defined. See "
 #| "the `MySQL documentation <http://dev.mysql.com/doc/mysql/en /charset-"
@@ -5026,9 +5077,10 @@ msgid ""
 "ignored when connected to Drizzle server."
 msgstr ""
 "Define a verificação de conexão padrão a usar, se não for definida pelo "
-"usuário. Veja a `documentação do MySQL  <http://dev.mysql.com/doc/mysql/en/"
-"charset-charsets.html>`_ para a lista de valores disponíveis. Essa "
-"configuração é ignorada quando conectado ao servidor Drizzle."
+"usuário. Veja a `documentação do MySQL para caracteres  "
+"<http://dev.mysql.com/doc/mysql/en/charset-charsets.html>`_ para a lista de "
+"valores disponíveis. Essa configuração é ignorada quando conectado ao "
+"servidor Drizzle."
 
 #: ../source/config.rst:1993
 msgid "not set"
@@ -5449,7 +5501,7 @@ msgstr "Se ativado, lembra a ordenação de cada tabela quando navegar por elas.
 # d3c41ad083b341dd96be2b8aed473423
 #: ../source/config.rst:2317
 msgid "``'NONE'``"
-msgstr ""
+msgstr "``'NENHUM'``"
 
 # 4aa4d9d9d55c4865a4c3098db882b63e
 #: ../source/config.rst:2319
@@ -5458,6 +5510,9 @@ msgid ""
 "when there is no sort order defines externally. Acceptable values : ['NONE', "
 "'ASC', 'DESC']"
 msgstr ""
+"Isso define o padrão da ordem arranjada pelas tabelas, tendo uma chave "
+"primária, quando nenhuma ordem arranjada define externamente. Valores "
+"aceitáveis: ['NONE', 'ASC', 'DESC']"
 
 # d40d7782ea5047379ea85405debef352
 #: ../source/config.rst:2333
@@ -5824,7 +5879,7 @@ msgstr "Ativa :ref:`transformations`."
 # f2ce0601f2794a52b22bb82ae8147e2a
 #: ../source/config.rst:2595
 msgid "500000"
-msgstr ""
+msgstr "500000"
 
 # a0cc6a226f0347f892a4e9db0d82821b
 #: ../source/config.rst:2597
@@ -8028,10 +8083,9 @@ msgstr ":config:option:`$cfg['NavigationTreeTableSeparator']`"
 
 # 461511cb1ead4fd9b18af0d4a937aa3f
 #: ../source/faq.rst:880
-#, fuzzy
 #| msgid "3.16 (withdrawn)."
 msgid "3.6 (withdrawn)."
-msgstr "3.16 (removido)."
+msgstr "3.6 (removido)."
 
 # 188fa85551074a9c98d32b32ffaf689b
 #: ../source/faq.rst:885
@@ -8148,7 +8202,6 @@ msgstr "3.11 O número de registros para as tabelas InnoDB não está correto."
 
 # a0e0408dd5f9472a91e8a18ba63439a5
 #: ../source/faq.rst:935
-#, fuzzy
 #| msgid ""
 #| "phpMyAdmin uses a quick method to get the row count, and this method only "
 #| "returns an approximate count in the case of InnoDB tables. See :config:"
@@ -8166,7 +8219,11 @@ msgstr ""
 "O phpMyAdmin usa um método rápido para chegar a contagem de registros, e "
 "este método somente retorna uma contagem aproximada no caso de tabelas "
 "InnoDB. Veja a :config:option:`$cfg['MaxExactCount']` para um jeito de "
-"modificar estes resultados, mas isso pode ter um impacto sério no desempenho."
+"modificar estes resultados, mas isso pode ter um impacto sério no "
+"desempenho. Entretanto, pode-se facilmente trocar a contagem de linhas "
+"aproximadas pela contagem exata simplesmente clicando na contagem "
+"aproximada. Isso também pode ser feito por todas as tabelas de uma vez "
+"clicando na soma de linhas exibida na parte de baixo."
 
 # b976431bccf94601b00f80e2186de34f
 #: ../source/faq.rst:946
@@ -10188,10 +10245,9 @@ msgstr ""
 
 # 08699143390842eeb99b4179b72c5d90
 #: ../source/faq.rst:1939
-#, fuzzy
 #| msgid "6.32 How can I use the zoom search feature?"
 msgid "6.35 How can I use the Range search feature?"
-msgstr "6.32 Como eu posso usar a função de zoom de pesquisa?"
+msgstr "6.35 Como eu posso usar a ferramenta de pesquisa Range?"
 
 # a684eee3736341b6bcd393d7d6720235
 #: ../source/faq.rst:1941
@@ -10200,6 +10256,9 @@ msgid ""
 "particular column(s) while performing search operation on a table from the "
 "`Search` tab."
 msgstr ""
+"Com a ajuda da ferramenta de pesquisa de campo, pode-se especificar um "
+"alcance de valores para uma(s) coluna(s) particular enquanto executa-se uma "
+"operação de pesquisa numa tabela através da tab `Pesquisa`."
 
 # cdd642d02c024e0cb4b93ab84d8a71cc
 #: ../source/faq.rst:1945
@@ -10211,6 +10270,12 @@ msgid ""
 "included in case of `BETWEEN` and excluded in case of `NOT BETWEEN` from the "
 "final results."
 msgstr ""
+"Para usar essa ferramenta simplesmente clique nos operadores `BETWEEN` ou `"
+"NOT BETWEEN` pelo operador de lista selecionada em frente do nome da coluna. "
+"Escolhendo uma das opções acima, uma caixa de diálogo aparecerá pedindo pelo "
+"valor `Mínimo` e `Máximo` para aquela coluna. Somente o alcance especificado "
+"de valores será incluído no caso de `BETWEEN` e excluído no caso de `NOT "
+"BETWEEN` dos resultados finais."
 
 # 90f092659a7d473e8f59375ae4498bb7
 #: ../source/faq.rst:1951
@@ -10218,11 +10283,13 @@ msgid ""
 "Note: The Range search feature will work only `Numeric` and `Date` data type "
 "columns."
 msgstr ""
+"Nota: A ferramenta de pesquisa Range trabalhará somente colunas de tipo de "
+"dados `Numérico` e `Data`."
 
 # 7651fe5acc6e4c279e1f2580870b0864
 #: ../source/faq.rst:1956
 msgid "6.36 What is Central columns and How can I use this feature?"
-msgstr ""
+msgstr "6.36 O que é colunas Central e Como eu posso usar essa ferramenta?"
 
 # 12691ac7903f43c6849c6c38f6d91ac0
 #: ../source/faq.rst:1958
@@ -10234,6 +10301,12 @@ msgid ""
 "in that database which will save from writing similar column name and column "
 "definition."
 msgstr ""
+"Como o nome sugere, a ferramenta de colunas Central habilita a manter uma "
+"lista central de colunas por banco de dados para evitar nome similar para o "
+"mesmo elemento de dado e traz a consistência do tipo de dado para o mesmo "
+"elemento de dado. Você pode usar a lista central de colunas para adicionar "
+"um elemento para qualquer estrutura de tabela naquele banco de dados que "
+"gravará escrevendo um nome de coluna similar e uma definição de coluna."
 
 # 208575b6c61444d8a02836b39be5e109
 #: ../source/faq.rst:1964
@@ -10244,6 +10317,12 @@ msgid ""
 "database then go to database structure page, check the tables you want to "
 "include and then select \"Add columns to central list\"."
 msgstr ""
+"Para adicionar uma coluna para a lista central, vá para a página de "
+"estrutura de tabela, cheque as colunas que você quer incluir e então "
+"simplesmente clique em \"Adicionar para colunas centrais\". Se você quiser "
+"adicionar todas as colunas únicas de mais de uma tabela de um banco de dados "
+"então vá para a página de estrutura de dados, cheque as tabelas que você "
+"quer incluir e então selecione \"Adicionar colunas para a lista central\"."
 
 # 093af039372e4b1e8e5f69911f2abe0e
 #: ../source/faq.rst:1969
@@ -10254,6 +10333,12 @@ msgid ""
 "a database then go to database structure page, check the tables you want to "
 "include and then select \"Remove columns from central list\"."
 msgstr ""
+"Para remover uma coluna da lista central, vá para a página de estrutura de "
+"Tabela, selecione as colunas que você quer remover e então simplesmente "
+"clique em \"Remover das colunas centrais\". Se você quiser remover todas as "
+"colunas de mais de uma tabela de um banco de dados então vá para a página de "
+"estrutura do banco de dados, selecione as tabelas que você quiser incluir e "
+"então selecione \"Remover colunas da lista central\"."
 
 # 853ee14c29474f1fb7632b480c9b6b58
 #: ../source/faq.rst:1974
@@ -10263,13 +10348,17 @@ msgid ""
 "will be taken to a page where you will have options to edit, delete or add "
 "new columns to central list."
 msgstr ""
+"Para exibir e gerenciar a lista central, selecione o banco de dados em que "
+"você quiser gerenciar as colunas centrais para então clicar pelo menu em \""
+"colunas Central\". Você será levado para a página onde você terá opções para "
+"editar, deletar ou adicionar novas colunas para a lista central."
 
 # 08699143390842eeb99b4179b72c5d90
 #: ../source/faq.rst:1981
-#, fuzzy
 #| msgid "6.32 How can I use the zoom search feature?"
 msgid "6.37 How can I use Improve Table structure feature?"
-msgstr "6.32 Como eu posso usar a função de zoom de pesquisa?"
+msgstr ""
+"6.37 Como eu posso usar a ferramenta de estrutura de Tabela de Improviso?"
 
 # cd9b118fb4ff4925bac68f7c7fba1cf1
 #: ../source/faq.rst:1983
@@ -10281,6 +10370,13 @@ msgid ""
 "Normal form. On startup of the wizard, user gets to select upto what normal "
 "form they want to normalize the table structure."
 msgstr ""
+"Melhorar a ferramenta de estrutura de tabela ajuda a trazer a estrutura de "
+"tabela até o Formulário Normal Terceirizado. Uma mágica é apresentada ao "
+"usuário que formula perguntas sobre os elementos durante os vários passos "
+"para normalização e uma nova estrutura é proposta de acordo com o que traz a "
+"tabela dentro formulário Normal Primeiro/Segundo/Terceiro. Na inicialização "
+"da mágica, o usuário retorna para selecionar até o formulário normal que "
+"eles quiserem para normalizar a estrutura da tabela."
 
 # e1b709d15c694ad093cb4e8b1b627d2f
 #: ../source/faq.rst:1990
@@ -10288,6 +10384,8 @@ msgid ""
 "Here is an example table which you can use to test all of the three First, "
 "Second and Third Normal From."
 msgstr ""
+"Aqui é uma tabela de exemplo que você pode usar pata testar todos os três "
+"Formulários Normais Primeiro, Segundo e Terceiro."
 
 # ae6e0f0a5a0443859914bc694e5c794d
 #: ../source/faq.rst:2007
@@ -10297,6 +10395,11 @@ msgid ""
 "If the primary key is chosen as suggested the resultant table won't be in "
 "Second as well as Third Normal form as the following dependencies exists."
 msgstr ""
+"A tabela acima não está no Primeiro Formulário normal quando nenhuma chave "
+"primária existe. Chave primária é suposta a ser (`petName`, `ownerLastName`, "
+"`ownerFirstName`). Se a chave primária é escolhida como sugerido na tabela "
+"resultante não será no Segundo como também no Terceiro Formulário Normal "
+"quando as dependências seguintes existirem."
 
 # e18e52946d5848e6841fac0c9c58c527
 #: ../source/faq.rst:2018
@@ -10305,6 +10408,9 @@ msgid ""
 "OwnerPhone depends on OwnerLastName and OwnerFirstName. PetType depends on "
 "PetBreed."
 msgstr ""
+"Como diz, OwnerEmail depende de OwnerLastName e de OwnerFirstName. "
+"OwnerPhone depende de OwnerLastName e de OwnerFirstName. PetType depende de "
+"PetBreed."
 
 #: ../source/faq.rst:2025
 msgid "phpMyAdmin project"
@@ -10579,15 +10685,14 @@ msgstr "biblioteca tcpdf, privada de arquivos não necessários"
 
 # 39b813200ed647f998ca81523e2dbfab
 #: ../source/vendors.rst:34
-#, fuzzy
 #| msgid "libraries/php-gettext"
 msgid "libraries/phpseclib"
-msgstr "libraries/php-gettext"
+msgstr "libraries/phpseclib"
 
 # 3e22ecb930e84c64a7919ba77ffbd68c
 #: ../source/vendors.rst:35
 msgid "portions of phpseclib library"
-msgstr ""
+msgstr "porções da biblioteca phpseclib"
 
 #: ../source/copyright.rst:4
 msgid "Copyright"
@@ -10628,7 +10733,7 @@ msgstr ""
 # 4ad2db87ba4c4dbfbf10a40124817c63
 #: ../source/copyright.rst:33
 msgid "Third party licenses"
-msgstr ""
+msgstr "Licenças da terceira parte"
 
 # 38f9580319594e8dafcb7a4d5a15503a
 #: ../source/copyright.rst:35
@@ -10636,6 +10741,8 @@ msgid ""
 "phpMyAdmin includes several third party libraries which come under their "
 "respective licenses."
 msgstr ""
+"phpMyAdmin inclui várias bibliotecas da terceira parte que vêm sob as suas "
+"respectivas licenças."
 
 # a44897807f4c414698ba47d3b26b13fb
 #: ../source/copyright.rst:38
@@ -10644,6 +10751,9 @@ msgid ""
 "GPL), a copy of each license is available in this repository (GPL is "
 "available as LICENSE, MIT as js/jquery/MIT-LICENSE.txt)."
 msgstr ""
+"A licença da jQuery, que é onde nós obtemos os arquivos sob js/jquery/ é "
+"(MIT|GPL), uma cópia de cada licença é disponibilizada nesse repositório ("
+"GPL é disponibilizada como LICENÇA, MIT como  js/jquery/MIT-LICENCE.txt)."
 
 # d0ac6963c3264397a5b88d43dd042f41
 #: ../source/copyright.rst:42
@@ -10651,6 +10761,8 @@ msgid ""
 "TCPDF which is located under libraries/tcpdf is released under GPL version 3 "
 "and the license is available as libraries/tcpdf/LICENSE.TXT."
 msgstr ""
+"TCPDF que é localizado sobre libraries/tcpdf é lançada  sob GPL versão 3 e a "
+"licença está disponível como libraries/tcpdf/LICENSE.TXT."
 
 # 417de478d6b94d9ba9a602d210fc0922
 #: ../source/copyright.rst:45
@@ -10658,6 +10770,9 @@ msgid ""
 "DejaVu fonts which are located under libraries/tcpdf/fonts/ and their "
 "license is documented in libraries/tcpdf/fonts/dejavu-fonts-ttf-2.33/LICENSE."
 msgstr ""
+"Fontes DejaVu que estão localizadas sob libraries/tcpdf/fonts/ e as suas "
+"licenças estão documentadas em libraries/tcpdf/fonts/dejavu-fonts-"
+"ttf-2.33/LICENSE."
 
 # 97dd4f93a16c4b15965dbd89625d859b
 #: ../source/copyright.rst:49
@@ -10665,6 +10780,8 @@ msgid ""
 "PHP-gettext which is located under libraries/php-gettext/ is released under "
 "GPL version 2 license which is available in the LICENSE file."
 msgstr ""
+"PHP-gettext que é localizado sob libraries/php-gettext/ está lançado sob a "
+"licença da versão 2 que está disponível no arquivo LICENSE."
 
 #: ../source/credits.rst:4
 msgid "Credits"
@@ -11402,45 +11519,40 @@ msgstr ""
 "Carregar/salvar consultas por exemplo (bookmarks de busca em banco de dados)"
 
 #: ../source/credits.rst:377
-#, fuzzy
 #| msgid "Bin Zu (Google Summer of Code 2013)"
 msgid "Smita Kumari (Google Summer of Code 2014)"
-msgstr "Bin Zu (Google Summer of Code 2013)"
+msgstr "Smita Kumari (Google Summer of Code 2014)"
 
 # 63bb350f379248a2895f4789b8d196b3
 #: ../source/credits.rst:379
 msgid "Central list of columns"
-msgstr ""
+msgstr "Colunas da lista central"
 
 # 73d0d5894a73475b9244b374242986cb
 #: ../source/credits.rst:381
 msgid "Improve table structure (normalization)"
-msgstr ""
+msgstr "Melhorar a estrutura de tabela (normalização)"
 
 #: ../source/credits.rst:383
-#, fuzzy
 #| msgid "Ayush Chaudhary (Google Summer of Code 2013)"
 msgid "Ashutosh Dhundhara (Google Summer of Code 2014)"
-msgstr "Ayush Chaudhary (Google Summer of Code 2013)"
+msgstr "Ashutosh Dhundhara (Google Summer of Code 2014)"
 
 #: ../source/credits.rst:387
-#, fuzzy
 #| msgid "Chanaka Indrajith (Google Summer of Code 2012)"
 msgid "Dhananjay Nakrani (Google Summer of Code 2014)"
-msgstr "Chanaka Indrajith (Google Summer of Code 2012)"
+msgstr "Dhananjay Nakrani (Google Summer of Code 2014)"
 
 # 1f937ea9532a43fda830c3f976c788fa
 #: ../source/credits.rst:389
-#, fuzzy
 #| msgid "AJAX error reporting"
 msgid "PHP error reporting"
-msgstr "relatório de erros AJAX"
+msgstr "relatório de erros PHP"
 
 #: ../source/credits.rst:391
-#, fuzzy
 #| msgid "Adam Kang (Google Summer of Code 2013)"
 msgid "Edward Cheng (Google Summer of Code 2014)"
-msgstr "Adam Kang (Google Summer of Code 2013)"
+msgstr "Edward Cheng (Google Summer of Code 2014)"
 
 # 4418caf519c744018ce8a7452538db95
 #: ../source/credits.rst:393
@@ -11448,31 +11560,30 @@ msgid "SQL Query Console"
 msgstr "Caixa de consulta SQL"
 
 #: ../source/credits.rst:395
-#, fuzzy
 #| msgid "Ammar Yasir (Google Summer of Code 2011)"
 msgid "Kankanamge Bimal Yashodha (Google Summer of Code 2014)"
-msgstr "Ammar Yasir (Google Summer of Code 2011)"
+msgstr "Kankanamge Bimal Yashodha (Google Summer of Code 2014)"
 
 # 3e3169b3dfb04cab8116496e7a8c2d17
 #: ../source/credits.rst:397
 msgid "Refactoring: Designer/schema integration"
-msgstr ""
+msgstr "Refatorando: integração Designer/schema"
 
 #: ../source/credits.rst:399
-#, fuzzy
 #| msgid "Bin Zu (Google Summer of Code 2013)"
 msgid "Chirayu Chiripal (Google Summer of Code 2014)"
-msgstr "Bin Zu (Google Summer of Code 2013)"
+msgstr "Chirayu Chiripal (Google Summer of Code 2014)"
 
 # 7e85f8336e2c4e20ae72c2f0b6592ba9
 #: ../source/credits.rst:401
 msgid "Custom field handlers (Input based MIME transformations)"
 msgstr ""
+"Manejadores de campo customizados (entrada baseada em transformações MIME)"
 
 # 34c9f270833c41d8b931023c5367739c
 #: ../source/credits.rst:403
 msgid "Export with table/column name changes"
-msgstr ""
+msgstr "Exportar com mudança de nome de tabela/coluna"
 
 #: ../source/credits.rst:405
 msgid ""
