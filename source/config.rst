@@ -144,6 +144,17 @@ Basic settings
     set, and the :config:option:`$cfg['UserprefsDisallow']` directive should
     contain ``'SendErrorReports'`` in one of its array values.
 
+.. config:option:: $cfg['ConsoleEnterExecutes']
+
+    :type: boolean
+    :default: false
+
+    Setting this to ``true`` allows the user to execute queries by pressing Enter
+    instead of Ctrl+Enter. A new line can be inserted by pressing Shift + Enter.
+
+    The behaviour of the console can be temporary changed using console's
+    settings interface.
+
 .. config:option:: $cfg['AllowThirdPartyFraming']
 
     :type: boolean
@@ -1384,15 +1395,26 @@ Cookie authentication options
     .. note::
 
         Please use this carefully, as this may allow users access to MySQL servers
-        behind the firewall where your :term:`HTTP`
-        server is placed.
+        behind the firewall where your :term:`HTTP` server is placed.
+        See also :config:option:`$cfg['ArbitraryServerRegexp']`.
+
+.. config:option:: $cfg['ArbitraryServerRegexp']
+
+    :type: string
+    :default: ``''``
+
+    Restricts the MySQL servers to which the user can log in when
+    :config:option:`$cfg['AllowArbitraryServer']` is enabled by
+    matching the :term:`IP` or the hostname of the MySQL server
+    to the given regular expression. The regular expression must be enclosed
+    with a delimiter character.
 
 .. config:option:: $cfg['CaptchaLoginPublicKey']
 
     :type: string
     :default: ``''``
 
-    The public key for the reCaptcha service that can be obtain from
+    The public key for the reCaptcha service that can be obtained from
     http://www.google.com/recaptcha.
 
     reCaptcha will be then used in :ref:`cookie`.
@@ -1653,6 +1675,14 @@ Main panel
     in the configuration file, end users can't be allowed to change their
     passwords.
 
+.. config:option:: $cfg['ShowGitRevision']
+
+    :type: boolean
+    :default: true
+
+    Defines whether to display informations about the current Git revision (if
+    applicable) on the main panel.
+
 Database structure
 ------------------
 
@@ -1708,6 +1738,14 @@ Browse mode
     properties links (like :guilabel:`Browse`, :guilabel:`Select`,
     :guilabel:`Insert`, ...). Can be set to ``'both'``
     if you want icons AND text. When set to ``text``, will only show text.
+
+.. config:option:: $cfg['RowActionType']
+
+    :type: string
+    :default: ``'both'``
+
+    Whether to display icons or text or both icons and text in table row action
+    segment. Value can be either of ``'icons'``, ``'text'`` or ``'both'``.
 
 .. config:option:: $cfg['ShowAll']
 
@@ -2224,26 +2262,36 @@ Theme settings
     :type: string [CSS color]
     :default:
 
+    The background color used when hovering over a row in the Browse panel.
+    See :file:`themes/themename/layout.inc.php`.
+
 .. config:option:: $cfg['BrowsePointerColor']
 
     :type: string [CSS color]
     :default:
+
+    The text color used when hovering over a row in the Browse panel.
+    Used when :config:option:`$cfg['BrowsePointerEnable']` is true.
+    See :file:`themes/themename/layout.inc.php`.
 
 .. config:option:: $cfg['BrowseMarkerBackground']
 
     :type: string [CSS color]
     :default:
 
+    The background color used to highlight a row selected by checkbox in the Browse panel or
+    when a column is selected.
+    Used when :config:option:`$cfg['BrowsePointerEnable']` is true.
+    See :file:`themes/themename/layout.inc.php`.
+
 .. config:option:: $cfg['BrowseMarkerColor']
 
     :type: string [CSS color]
     :default:
 
-    The colors (HTML) uses for the pointer and the marker in browse mode.
-    The former feature highlights the row over which your mouse is passing
-    and the latter lets you visually mark/unmark rows by clicking on the
-    corresponding checkbox. Highlighting / marking a column is done by
-    hovering over / clicking the column's header (outside of the text).
+    The color used when you visually mark a row or column in the Browse panel.
+    Rows can be marked by clicking the checkbox to the left of the row and columns can be
+    marked by clicking the column's header (outside of the header text).
     See :file:`themes/themename/layout.inc.php`.
 
 .. config:option:: $cfg['FontFamily']
@@ -2270,21 +2318,24 @@ Design customization
     :type: boolean
     :default: true
 
-    A value of ``true`` activates the navi pointer.
+    When set to true, hovering over an item in the navigation panel causes that item to be marked
+    (the background is highlighted).
 
 .. config:option:: $cfg['BrowsePointerEnable']
 
     :type: boolean
     :default: true
 
-    Whether to activate the browse pointer or not.
+    When set to true, hovering over a row in the Browse page causes that row to be marked (the background
+    is highlighted).
 
 .. config:option:: $cfg['BrowseMarkerEnable']
 
     :type: boolean
     :default: true
 
-    Whether to activate the browse marker or not.
+    When set to true, a data row is marked (the background is highlighted) when the row is selected
+    with the checkbox.
 
 .. config:option:: $cfg['LimitChars']
 
@@ -2301,8 +2352,7 @@ Design customization
 
     Defines the place where table row links (Edit, Copy, Delete) would be
     put when tables contents are displayed (you may have them displayed at
-    the left side, right side, both sides or nowhere). "left" and "right"
-    are parsed as "top" and "bottom" with vertical display mode.
+    the left side, right side, both sides or nowhere).
 
 .. config:option:: $cfg['RememberSorting']
 
@@ -2412,6 +2462,14 @@ Text fields
 
     Defines if the whole textarea of the query box will be selected on
     click.
+
+.. config:option:: $cfg['EnableAutocompleteForTablesAndColumns']
+
+    :type: boolean
+    :default: true
+
+    Whether to enable autocomplete for table and column names in any
+    SQL query box.
 
 
 SQL query box settings
@@ -2761,10 +2819,3 @@ Developer
     Enable to let server present itself as demo server.
     This is used for <http://demo.phpmyadmin.net/>.
 
-.. config:option:: $cfg['RowActionType']
-
-    :type: string
-    :default: ``'both'``
-
-    Whether to display icons or text or both icons and text in table row action
-    segment. Value can be either of ``'icons'``, ``'text'`` or ``'both'``.
