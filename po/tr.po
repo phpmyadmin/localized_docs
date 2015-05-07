@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
 "Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-05-04 11:34+0200\n"
-"PO-Revision-Date: 2015-05-04 20:09+0200\n"
+"PO-Revision-Date: 2015-05-07 18:55+0200\n"
 "Last-Translator: Burak Yavuz <hitowerdigit@hotmail.com>\n"
 "Language-Team: Turkish "
 "<https://hosted.weblate.org/projects/phpmyadmin/documentation/tr/>\n"
@@ -4043,6 +4043,10 @@ msgid ""
 "hostname of the MySQL server to the given regular expression. The regular "
 "expression must be enclosed with a delimiter character."
 msgstr ""
+":config:option:`$cfg['AllowArbitraryServer']` parametresi "
+"etkinleştirildiğinde verilen düzenli ifade ile MySQL sunucusunun :term:`IP` "
+"ya da anamakine eşleşmesine göre kullanıcının oturum açabildiği MySQL "
+"sunucularını kısıtlar."
 
 # 3a47a66050ef4f11bc1851eb92e7dcb6
 #: ../source/config.rst:1417
@@ -5266,7 +5270,7 @@ msgid ""
 "The background color used when hovering over a row in the Browse panel. See :"
 "file:`themes/themename/layout.inc.php`."
 msgstr ""
-"Gözatma panelinde bir satır üzerine gelindiğinde kullanılan arka plan "
+"Gözatma panelinde bir satır üzerinde bekletince kullanılan arka plan "
 "renkleri. :file:`themes/themename/layout.inc.php`'ye bakın."
 
 #: ../source/config.rst:2273
@@ -5278,8 +5282,8 @@ msgid ""
 "config:option:`$cfg['BrowsePointerEnable']` is true. See :file:`themes/"
 "themename/layout.inc.php`."
 msgstr ""
-"Gözatma panelinde bir satır üzerine gelindiğinde kullanılan metin rengi. "
-":config:option:`$cfg['BrowsePointerEnable']` değeri true olduğunda "
+"Gözatma panelinde bir satır üzerinde bekletilince kullanılan metin rengi. "
+":config:option:`$cfg['BrowsePointerEnable']` parametresi true olduğunda "
 "kullanılır. :file:`themes/themename/layout.inc.php`'ye bakın."
 
 # 6f1c01177a50443da9a687fc0bdf29de
@@ -5290,9 +5294,12 @@ msgid ""
 "$cfg['BrowsePointerEnable']` is true. See :file:`themes/themename/layout.inc."
 "php`."
 msgstr ""
+"Gözatma panelinde işaretleme kutusu ile seçilen bir satırı ya da bir sütun "
+"seçildiğinde vurgulamak için kullanılan arka plan rengi. "
+":config:option:`$cfg['BrowsePointerEnable']` parametresi true olduğunda "
+"kullanılır. :file:`themes/themename/layout.inc.php`'ye bakın."
 
 #: ../source/config.rst:2292
-#, fuzzy
 #| msgid ""
 #| "The colors (HTML) uses for the pointer and the marker in browse mode. The "
 #| "former feature highlights the row over which your mouse is passing and "
@@ -5306,12 +5313,10 @@ msgid ""
 "columns can be marked by clicking the column's header (outside of the header "
 "text). See :file:`themes/themename/layout.inc.php`."
 msgstr ""
-"Renkler (HTML) gözatma kipinde imleç ve işaretleyici için kullanılır. "
-"Biçimlendirici özelliği, farenizle üstünden geçerken satırı vurgular ve "
-"sonrasında ilgili işaretleme kutusuna tıklayarak görsel olarak "
-"işaretlemenize/işareti kaldırmanıza izin verir. Sütunun başlığının (metnin "
-"dışına) üzerinde tutarak / tıklayarak sütunun vurgulanması / işaretlenmesi "
-"yapılır. :file:`themes/themename/layout.inc.php`'ye bakın."
+"Gözatma panelindeki satır ve sütunu görsel olarak işaretlediğinizde "
+"kullanılan renk. Sütunun başlığına (metin başlığının dışına) tıklanarak "
+"sütunlar işaretlenebilir ve satırın solundaki işaretleme kutusuna tıklanarak "
+"satırlar işaretlenebilir. :file:`themes/themename/layout.inc.php`'ye bakın."
 
 #: ../source/config.rst:2302
 msgid ""
@@ -5341,6 +5346,8 @@ msgid ""
 "When set to true, hovering over an item in the navigation panel causes that "
 "item to be marked (the background is highlighted)."
 msgstr ""
+"True olarak ayarlandığında, gezinti panelindeki bir öğe üzerinde bekletmek "
+"öğenin işaretlenmesine neden olur (arka plan işaretlenir)."
 
 # a6b203263a474bd0a4cd64959b71f4e6
 #: ../source/config.rst:2329
@@ -5348,6 +5355,8 @@ msgid ""
 "When set to true, hovering over a row in the Browse page causes that row to "
 "be marked (the background is highlighted)."
 msgstr ""
+"True olarak ayarlandığında, Gözatma sayfasındaki bir satır üzerinde "
+"bekletmek satırın işaretlenmesine neden olur (arka plan işaretlenir)."
 
 # e990587f38694a7787c12b3e3aafac03
 #: ../source/config.rst:2337
@@ -5355,6 +5364,8 @@ msgid ""
 "When set to true, a data row is marked (the background is highlighted) when "
 "the row is selected with the checkbox."
 msgstr ""
+"True olarak ayarlandığında, satır, işaretleme kutusu ile seçildiğinde veri "
+"satırı işaretlenir (arka plan işaretlenir)."
 
 #: ../source/config.rst:2345
 msgid ""
@@ -9219,23 +9230,21 @@ msgid ""
 msgstr ""
 "Ayrıca, sorgunuz için ``/*[DEĞİŞKEN{değişken-numarası}]*/`` dizgisi "
 "içerisindeki her şeyin bu şekilde kalacağını ama ``/**/`` karakterlerinin "
-"çıkarılacağını hatırlayın. Bu yüzden girdi kutusunda DEĞİŞKEN'nin dizgi "
-"olduğu sorgunuz içinde:"
+"çıkarılacağını hatırlayın. Bu yüzden, Variable 1 girdi kutusuna girdiğiniz "
+"VARIABLE1 dizgisinin olduğu sorgunuz içinde:"
 
 #: ../source/faq.rst:1632
 msgid "which will be expanded to"
-msgstr "olarak genişletilecek"
+msgstr "dizgisinin şuna genişletileceği"
 
 #: ../source/faq.rst:1638
-#, fuzzy
 #| msgid ""
 #| "in your query, where VARIABLE is the string you entered in the input box. "
 #| "If an empty string is provided, no replacements are made."
 msgid ""
 "in your query, where VARIABLE1 is the string you entered in the Variable 1 "
 "input box."
-msgstr ""
-"kullanabilirsiniz. Eğer boş bir dizgi sağlanırsa, değiştirmeler yapılmaz."
+msgstr "dizgisini kullanabilirsiniz."
 
 #: ../source/faq.rst:1640
 msgid "A more complex example. Say you have stored this query:"
@@ -9956,7 +9965,7 @@ msgstr ""
 # 78b4c1ca961a49a4b270a1e2ca92a02c
 #: ../source/faq.rst:2017
 msgid "6.38 How can I reassign auto-incremented values?"
-msgstr ""
+msgstr "6.38 Nasıl otomatik artan değerleri yeniden atayabilirim?"
 
 # d05b3d89481745c59ce903819a22442b
 #: ../source/faq.rst:2019
@@ -9964,6 +9973,8 @@ msgid ""
 "Some users prefer their AUTO_INCREMENT values to be consecutive; this is not "
 "always the case after row deletion."
 msgstr ""
+"Bazı kullanıcılar, AUTO_INCREMENT değerlerini ardışık olmasını tercih "
+"ederler; bu her zaman satır silmeden sonra böyle değildir."
 
 # eeb9a37bd155491da36db66c58816292
 #: ../source/faq.rst:2022
@@ -9971,48 +9982,53 @@ msgid ""
 "Here are the steps to accomplish this. These are manual steps because they "
 "involve a manual verification at one point."
 msgstr ""
+"Bunu gerçekleştirmek için adımlar şunlardır. Bunlar elle uygulanan "
+"adımlardır çünkü onlar bir noktada elle doğrulamayı gerektirir."
 
 # aa8f7089fc5c44d18c08f3721eed6660
 #: ../source/faq.rst:2025
 msgid "Ensure that you have exclusive access to the table to rearrange"
 msgstr ""
+"Yeniden düzenlemek için tabloya özel erişime sahip olduğunuzdan emin olun"
 
 # 5559bf0bb9c04411951fdf902375c992
 #: ../source/faq.rst:2027
 msgid "On your primary key column (i.e. id), remove the AUTO_INCREMENT setting"
 msgstr ""
+"Birincil anahtar sütununuzdaki (yani id), AUTO_INCREMENT ayarını kaldırın"
 
 # 6728d8ae054c4176b96ec316c8cfaac7
 #: ../source/faq.rst:2029
 msgid "Delete your primary key in Structure > indexes"
-msgstr ""
+msgstr "Yapı > indeksler içinde birincil anahtarınızı silin"
 
 # ff1ff664942e40f691b06aaa167340cb
 #: ../source/faq.rst:2031
 msgid "Create a new column future_id as primary key, AUTO_INCREMENT"
 msgstr ""
+"Birincil anahtar, AUTO_INCREMENT olarak yeni bir future_id sütunu oluşturun"
 
 # 3369027dc92a475cac6f2265589771ff
 #: ../source/faq.rst:2033
 msgid ""
 "Browse your table and verify that the new increments correspond to what "
 "you're expecting"
-msgstr ""
+msgstr "Tablonuza gözatın ve beklentinize denk gelen yeni artışları doğrulayın"
 
 # 0fb29e1005404e95ba1a583ba3228175
 #: ../source/faq.rst:2036
 msgid "Drop your old id column"
-msgstr ""
+msgstr "Eski id sütununuzu kaldırın"
 
 # b13f8d4ae5e24b99add84bcb360d9ed3
 #: ../source/faq.rst:2038
 msgid "Rename the future_id column to id"
-msgstr ""
+msgstr "future_id sütununu id olarak yeniden adlandırın"
 
 # 01e753444e97489c8c48d666b3a70fca
 #: ../source/faq.rst:2040
 msgid "Move the new id column via Structure > Move columns"
-msgstr ""
+msgstr "Yapı > Sütunları taşı aracılığıyla yeni id sütununu taşıyın"
 
 #: ../source/faq.rst:2045
 msgid "phpMyAdmin project"
