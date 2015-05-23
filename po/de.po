@@ -6,18 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: phpmyadmin-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-05-04 11:34+0200\n"
-"PO-Revision-Date: 2015-04-25 10:22+0200\n"
+"PO-Revision-Date: 2015-05-23 11:27+0200\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/phpmyadmin/"
-"documentation/de/>\n"
+"Language-Team: German "
+"<https://hosted.weblate.org/projects/phpmyadmin/documentation/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 
 #: ../source/index.rst:7
 msgid "Welcome to phpMyAdmin's documentation!"
@@ -247,7 +247,6 @@ msgstr "Webserver"
 
 # 6fad58728df6442997bf5096b85fa68c
 #: ../source/require.rst:9
-#, fuzzy
 #| msgid ""
 #| "Since, phpMyAdmin's interface is based entirely in your browser, you'll "
 #| "need a web server (such as Apache, :term:`IIS`) to install phpMyAdmin's "
@@ -258,8 +257,8 @@ msgid ""
 "files into."
 msgstr ""
 "Da die Oberfläche von phpMyAdmin komplett in Ihrem Browser läuft, brauchen "
-"Sie einen Webserver (wie zum Beispiel Apache, :term:`IIS`), um die Dateien "
-"von phpMyAdmin dort zu installieren."
+"Sie einen Webserver (wie zum Beispiel Apache, nginx, :term:`IIS`), um die "
+"Dateien von phpMyAdmin dort zu installieren."
 
 # 9b482a7c2e9e41ebbd2ee5b3ae834bbf
 #: ../source/require.rst:13 ../source/glossary.rst:274
@@ -696,7 +695,6 @@ msgstr ""
 "`faq1_26` kann Ihnen dabei helfen."
 
 #: ../source/setup.rst:194
-#, fuzzy
 #| msgid ""
 #| "Next, open ``setup/`` in your browser. If you have an existing "
 #| "configuration, use the ``Load`` button to bring its content inside the "
@@ -721,18 +719,19 @@ msgid ""
 "the config file locally and upload it (via FTP or some similar means) to the "
 "proper location."
 msgstr ""
-"Als nächstes öffnen Sie ``setup/`` in Ihrem Webbrowser. Wenn Sie eine "
+"Als nächstes öffnen Sie Ihren Webbrowser und besuchen die URL, unter der Sie "
+"phpMyAdmin installiert haben, mit ``/setup`` als Suffix. Wenn Sie eine "
 "bestehende Konfiguration haben, verwenden Sie die Schaltfläche ``Laden``, um "
 "ihren Inhalt in das Setup-Panel zu laden. Beachten Sie, dass **Veränderungen "
-"nicht auf die Festplatte gespeichert werden, bis Sie explizit "
-"``Speichern``** im Bereich *Konfiguration* des Bildschirms auswählen. "
-"Normalerweise speichert das Skript die neue :file:`config.inc.php` in das "
-"Verzeichnis ``config/``, aber wenn der Webserver nicht die passenden "
-"Berechtigungen hat, sehen Sie den Fehler „Kann Konfiguration nicht laden "
-"oder speichern.“ Stellen Sie sicher, dass das Verzeichnis ``config/`` "
-"existiert und passende Berechtigungen besitzt – oder benutzen Sie den "
-"``Download``-Link, um die Konfigurationsdatei lokal zu speichern und (per "
-"FTP oder Ähnlichem) an die richtige Stelle hochzuladen."
+"nicht auf die Festplatte gespeichert werden, bis Sie explizit ``Speichern``**"
+" im Bereich *Konfiguration* des Bildschirms auswählen. Normalerweise "
+"speichert das Skript die neue :file:`config.inc.php` in das Verzeichnis "
+"``config/``, aber wenn der Webserver nicht die passenden Berechtigungen hat, "
+"sehen Sie den Fehler „Kann Konfiguration nicht laden oder speichern.“ "
+"Stellen Sie sicher, dass das Verzeichnis ``config/`` existiert und passende "
+"Berechtigungen besitzt – oder benutzen Sie den ``Download``-Link, um die "
+"Konfigurationsdatei lokal zu speichern und (per FTP oder Ähnlichem) an die "
+"richtige Stelle hochzuladen."
 
 #: ../source/setup.rst:205
 msgid ""
@@ -854,12 +853,19 @@ msgid ""
 "useful in shared hosting situations. “Zeroconf” mode is on by default, to "
 "disable set :config:option:`$cfg['ZeroConf']` to false."
 msgstr ""
+"In vielen Fällen kann diese Datenbankstruktur automatisch erzeugt und "
+"konfiguriert werden. Dies wird „Zero Configuration“-Modus genannt und kann "
+"besonders nützlich in Situationen mit Shared Hosting sein. Der „Zeroconf“-"
+"Modus ist standardmäßig aktiviert, um ihn zu deaktiveren, setzen sie "
+":config:option:`$cfg['ZeroConf']` auf „false“."
 
 # 4e7857305bda497ba90c53a49764ad04
 #: ../source/setup.rst:273
 msgid ""
 "The following three scenarios are covered by the Zero Configuration mode:"
 msgstr ""
+"Die folgenden drei Szenarien werden durch den Zero-Configuration-Modus "
+"abgedeckt:"
 
 # 85be3f36408d478aa9b29aeb133151c8
 #: ../source/setup.rst:275
@@ -867,6 +873,9 @@ msgid ""
 "When entering a database where the configuration storage tables are not "
 "present, phpMyAdmin offers to create them from the Operations tab."
 msgstr ""
+"Wenn eine Datenbank geöffnet wird, zu der keine "
+"Konfigurationsspeichertabellen vorhanden sind, bietet phpMyAdmin im "
+"„Operationen“-Tab an, diese zu erstellen."
 
 # 5edf74089c2d4606880526c53c0f180d
 #: ../source/setup.rst:277
@@ -878,6 +887,13 @@ msgid ""
 "shared hosting where the user is not able to edit :file:`config.inc.php` and "
 "usually the user only has access to one database."
 msgstr ""
+"Wenn eine Datenbank geöffnet wird, zu der die Tabellen bereits existieren, "
+"erkennt die Software dies automatisch und verwendet diese. Dies ist der "
+"häufigste Fall; Nachdem die Tabellen eingangs automatisch erzeugt werden, "
+"werden diese kontinuierlich weiterverwendet ohne den Nutzer zu stören; Dies "
+"ist auch vor allem in Shared-Hosting-Umgebungen sinnvoll, wo der Benutzer "
+"nicht die :file:`config.inc.php` bearbeiten kann und er nur Zugriff auf eine "
+"Datenbank hat."
 
 # af1ff7a0f20b4925b09606bd17a75dfc
 #: ../source/setup.rst:283
