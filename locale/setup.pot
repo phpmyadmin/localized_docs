@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 4.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-05 10:50+0200\n"
+"POT-Creation-Date: 2015-08-26 11:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -201,294 +201,298 @@ msgid "Verifying phpMyAdmin releases"
 msgstr ""
 
 #: ../source/setup.rst:255
-msgid "Since July 2015 all phpMyAdmin releases are cryptographically signed by the releasing developer. You should verify that the signature matches the archive you have downloaded. This way you can be sure that you are using the same code that was released."
+msgid "Since July 2015 all phpMyAdmin releases are cryptographically signed by the releasing developer, who is currently Marc Delisle. His key id is 0x81AF644A, his PGP fingerprint is:"
 msgstr ""
 
-#: ../source/setup.rst:260
+#: ../source/setup.rst:263
+msgid "and you can get more identification information from `https://keybase.io/lem9 <https://keybase.io/lem9>`_.  You should verify that the signature matches the archive you have downloaded. This way you can be sure that you are using the same code that was released."
+msgstr ""
+
+#: ../source/setup.rst:267
 msgid "Each archive is accompanied with ``.asc`` files which contains the PGP signature for it. Once you have both of them in the same folder, you can verify the signature:"
 msgstr ""
 
-#: ../source/setup.rst:269
+#: ../source/setup.rst:276
 msgid "As you can see gpg complains that it does not know the public key. At this point you should do one of the following steps:"
 msgstr ""
 
-#: ../source/setup.rst:272
+#: ../source/setup.rst:279
 msgid "Download the keyring from `our download server <https://files.phpmyadmin.net/phpmyadmin.keyring>`_, then import it with:"
 msgstr ""
 
-#: ../source/setup.rst:278
+#: ../source/setup.rst:285
 msgid "Download and import the key from one of the key servers:"
 msgstr ""
 
-#: ../source/setup.rst:289
+#: ../source/setup.rst:296
 msgid "This will improve the situation a bit - at this point you can verify that the signature from the given key is correct but you still can not trust the name used in the key:"
 msgstr ""
 
-#: ../source/setup.rst:302
+#: ../source/setup.rst:309
 msgid "The problem here is that anybody could issue the key with this name.  You need to ensure that the key is actually owned by the mentioned person.  The GNU Privacy Handbook covers this topic in the chapter `Validating other keys on your public keyring`_. The most reliable method is to meet the developer in person and exchange key fingerprints, however you can also rely on the web of trust. This way you can trust the key transitively though signatures of others, who have met the developer in person. For example you can see how `Marc's key links to Linus's key`_."
 msgstr ""
 
-#: ../source/setup.rst:311
+#: ../source/setup.rst:318
 msgid "Once the key is trusted, the warning will not occur:"
 msgstr ""
 
-#: ../source/setup.rst:319
+#: ../source/setup.rst:326
 msgid "Should the signature be invalid (the archive has been changed), you would get a clear error regardless of the fact that the key is trusted or not:"
 msgstr ""
 
-#: ../source/setup.rst:341
+#: ../source/setup.rst:348
 msgid "phpMyAdmin configuration storage"
 msgstr ""
 
-#: ../source/setup.rst:343
+#: ../source/setup.rst:350
 msgid "For a whole set of additional features (bookmarks, comments, :term:`SQL`-history, tracking mechanism, :term:`PDF`-generation, column contents transformation, etc.) you need to create a set of special tables.  Those tables can be located in your own database, or in a central database for a multi-user installation (this database would then be accessed by the controluser, so no other user should have rights to it)."
 msgstr ""
 
-#: ../source/setup.rst:351
+#: ../source/setup.rst:358
 msgid "Zero configuration"
 msgstr ""
 
-#: ../source/setup.rst:353
+#: ../source/setup.rst:360
 msgid "In many cases, this database structure can be automatically created and configured. This is called “Zero Configuration” mode and can be particularly useful in shared hosting situations. “Zeroconf” mode is on by default, to disable set :config:option:`$cfg['ZeroConf']` to false."
 msgstr ""
 
-#: ../source/setup.rst:358
+#: ../source/setup.rst:365
 msgid "The following three scenarios are covered by the Zero Configuration mode:"
 msgstr ""
 
-#: ../source/setup.rst:360
+#: ../source/setup.rst:367
 msgid "When entering a database where the configuration storage tables are not present, phpMyAdmin offers to create them from the Operations tab."
 msgstr ""
 
-#: ../source/setup.rst:362
+#: ../source/setup.rst:369
 msgid "When entering a database where the tables do already exist, the software automatically detects this and begins using them. This is the most common situation; after the tables are initially created automatically they are continually used without disturbing the user; this is also most useful on shared hosting where the user is not able to edit :file:`config.inc.php` and usually the user only has access to one database."
 msgstr ""
 
-#: ../source/setup.rst:368
+#: ../source/setup.rst:375
 msgid "When having access to multiple databases, if the user first enters the database containing the configuration storage tables then switches to another database, phpMyAdmin continues to use the tables from the first database; the user is not prompted to create more tables in the new database."
 msgstr ""
 
-#: ../source/setup.rst:376
+#: ../source/setup.rst:383
 msgid "Manual configuration"
 msgstr ""
 
-#: ../source/setup.rst:378
+#: ../source/setup.rst:385
 msgid "Please look at your ``./sql/`` directory, where you should find a file called *create\\_tables.sql*. (If you are using a Windows server, pay special attention to :ref:`faq1_23`)."
 msgstr ""
 
-#: ../source/setup.rst:382
+#: ../source/setup.rst:389
 msgid "If you already had this infrastructure and:"
 msgstr ""
 
-#: ../source/setup.rst:384
+#: ../source/setup.rst:391
 msgid "upgraded to MySQL 4.1.2 or newer, please use :file:`sql/upgrade_tables_mysql_4_1_2+.sql`."
 msgstr ""
 
-#: ../source/setup.rst:386
+#: ../source/setup.rst:393
 msgid "upgraded to phpMyAdmin 4.3.0 or newer from 2.5.0 or newer (<= 4.2.x), please use :file:`sql/upgrade_column_info_4_3_0+.sql`."
 msgstr ""
 
-#: ../source/setup.rst:389
+#: ../source/setup.rst:396
 msgid "and then create new tables by importing :file:`sql/create_tables.sql`."
 msgstr ""
 
-#: ../source/setup.rst:391
+#: ../source/setup.rst:398
 msgid "You can use your phpMyAdmin to create the tables for you. Please be aware that you may need special (administrator) privileges to create the database and tables, and that the script may need some tuning, depending on the database name."
 msgstr ""
 
-#: ../source/setup.rst:396
+#: ../source/setup.rst:403
 msgid "After having imported the :file:`sql/create_tables.sql` file, you should specify the table names in your :file:`config.inc.php` file. The directives used for that can be found in the :ref:`config`."
 msgstr ""
 
-#: ../source/setup.rst:400
+#: ../source/setup.rst:407
 msgid "You will also need to have a controluser (:config:option:`$cfg['Servers'][$i]['controluser']` and :config:option:`$cfg['Servers'][$i]['controlpass']` settings) with the proper rights to those tables. For example you can create it using following statement:"
 msgstr ""
 
-#: ../source/setup.rst:413
+#: ../source/setup.rst:420
 msgid "Upgrading from an older version"
 msgstr ""
 
-#: ../source/setup.rst:415
+#: ../source/setup.rst:422
 msgid "**Never** extract the new version over an existing installation of phpMyAdmin; we had evidence of problems caused by this."
 msgstr ""
 
-#: ../source/setup.rst:418
+#: ../source/setup.rst:425
 msgid "Simply copy :file:`config.inc.php` from your previous installation into the newly unpacked one. Configuration files from old versions may require some tweaking as some options have been changed or removed. For compatibility with PHP 5.3 and later, remove a ``set_magic_quotes_runtime(0);`` statement that you might find near the end of your configuration file."
 msgstr ""
 
-#: ../source/setup.rst:425
+#: ../source/setup.rst:432
 msgid "You should **not** copy :file:`libraries/config.default.php` over :file:`config.inc.php` because the default configuration file is version- specific."
 msgstr ""
 
-#: ../source/setup.rst:429
+#: ../source/setup.rst:436
 msgid "If you have upgraded your MySQL server from a version previous to 4.1.2 to version 5.x or newer and if you use the phpMyAdmin configuration storage, you should run the :term:`SQL` script found in :file:`sql/upgrade_tables_mysql_4_1_2+.sql`."
 msgstr ""
 
-#: ../source/setup.rst:434
+#: ../source/setup.rst:441
 msgid "If you have upgraded your phpMyAdmin to 4.3.0 or newer from 2.5.0 or newer (<= 4.2.x) and if you use the phpMyAdmin configuration storage, you should run the :term:`SQL` script found in :file:`sql/upgrade_column_info_4_3_0+.sql`."
 msgstr ""
 
-#: ../source/setup.rst:439
+#: ../source/setup.rst:446
 msgid "Do not forget to clear the browser cache and to empty the old session by logging out and logging in again."
 msgstr ""
 
-#: ../source/setup.rst:447
+#: ../source/setup.rst:454
 msgid "Using authentication modes"
 msgstr ""
 
-#: ../source/setup.rst:449
+#: ../source/setup.rst:456
 msgid ":term:`HTTP` and cookie authentication modes are recommended in a **multi-user environment** where you want to give users access to their own database and don't want them to play around with others. Nevertheless be aware that MS Internet Explorer seems to be really buggy about cookies, at least till version 6. Even in a **single-user environment**, you might prefer to use :term:`HTTP` or cookie mode so that your user/password pair are not in clear in the configuration file."
 msgstr ""
 
-#: ../source/setup.rst:457
+#: ../source/setup.rst:464
 msgid ":term:`HTTP` and cookie authentication modes are more secure: the MySQL login information does not need to be set in the phpMyAdmin configuration file (except possibly for the :config:option:`$cfg['Servers'][$i]['controluser']`). However, keep in mind that the password travels in plain text, unless you are using the HTTPS protocol. In cookie mode, the password is stored, encrypted with the AES algorithm, in a temporary cookie."
 msgstr ""
 
-#: ../source/setup.rst:465
+#: ../source/setup.rst:472
 msgid "Then each of the *true* users should be granted a set of privileges on a set of particular databases. Normally you shouldn't give global privileges to an ordinary user, unless you understand the impact of those privileges (for example, you are creating a superuser). For example, to grant the user *real_user* with all privileges on the database *user_base*:"
 msgstr ""
 
-#: ../source/setup.rst:477
+#: ../source/setup.rst:484
 msgid "What the user may now do is controlled entirely by the MySQL user management system. With HTTP or cookie authentication mode, you don't need to fill the user/password fields inside the :config:option:`$cfg['Servers']`."
 msgstr ""
 
-#: ../source/setup.rst:484
+#: ../source/setup.rst:491
 msgid "HTTP authentication mode"
 msgstr ""
 
-#: ../source/setup.rst:486
+#: ../source/setup.rst:493
 msgid "Uses :term:`HTTP` Basic authentication method and allows you to log in as any valid MySQL user."
 msgstr ""
 
-#: ../source/setup.rst:488
+#: ../source/setup.rst:495
 msgid "Is supported with most PHP configurations. For :term:`IIS` (:term:`ISAPI`) support using :term:`CGI` PHP see :ref:`faq1_32`, for using with Apache :term:`CGI` see :ref:`faq1_35`."
 msgstr ""
 
-#: ../source/setup.rst:491
+#: ../source/setup.rst:498
 msgid "See also :ref:`faq4_4` about not using the :term:`.htaccess` mechanism along with ':term:`HTTP`' authentication mode."
 msgstr ""
 
-#: ../source/setup.rst:499
+#: ../source/setup.rst:506
 msgid "Cookie authentication mode"
 msgstr ""
 
-#: ../source/setup.rst:501
+#: ../source/setup.rst:508
 msgid "Username and password are stored in cookies during the session and password is deleted when it ends."
 msgstr ""
 
-#: ../source/setup.rst:503
+#: ../source/setup.rst:510
 msgid "With this mode, the user can truly log out of phpMyAdmin and log back in with the same username."
 msgstr ""
 
-#: ../source/setup.rst:505
+#: ../source/setup.rst:512
 msgid "If you want to allow users to enter any hostname to connect (rather than only servers that are configured in :file:`config.inc.php`), see the :config:option:`$cfg['AllowArbitraryServer']` directive."
 msgstr ""
 
-#: ../source/setup.rst:508
+#: ../source/setup.rst:515
 msgid "As mentioned in the :ref:`require` section, having the ``mcrypt`` extension will speed up access considerably, but is not required."
 msgstr ""
 
-#: ../source/setup.rst:516
+#: ../source/setup.rst:523
 msgid "Signon authentication mode"
 msgstr ""
 
-#: ../source/setup.rst:518
+#: ../source/setup.rst:525
 msgid "This mode is a convenient way of using credentials from another application to authenticate to phpMyAdmin to implement single signon solution."
 msgstr ""
 
-#: ../source/setup.rst:521
+#: ../source/setup.rst:528
 msgid "The other application has to store login information into session data (see :config:option:`$cfg['Servers'][$i]['SignonSession']`) or you need to implement script to return the credentials (see :config:option:`$cfg['Servers'][$i]['SignonScript']`)."
 msgstr ""
 
-#: ../source/setup.rst:525
+#: ../source/setup.rst:532
 msgid "When no credentials are available, the user is being redirected to :config:option:`$cfg['Servers'][$i]['SignonURL']`, where you should handle the login process."
 msgstr ""
 
-#: ../source/setup.rst:529
+#: ../source/setup.rst:536
 msgid "The very basic example of saving credentials in a session is available as :file:`examples/signon.php`:"
 msgstr ""
 
-#: ../source/setup.rst:535
+#: ../source/setup.rst:542
 msgid "Alternatively you can also use this way to integrate with OpenID as shown in :file:`examples/openid.php`:"
 msgstr ""
 
-#: ../source/setup.rst:541
+#: ../source/setup.rst:548
 msgid "If you intend to pass the credentials using some other means than, you have to implement wrapper in PHP to get that data and set it to :config:option:`$cfg['Servers'][$i]['SignonScript']`. There is very minimal example in :file:`examples/signon-script.php`:"
 msgstr ""
 
-#: ../source/setup.rst:550
+#: ../source/setup.rst:557
 msgid ":config:option:`$cfg['Servers'][$i]['auth_type']`, :config:option:`$cfg['Servers'][$i]['SignonSession']`, :config:option:`$cfg['Servers'][$i]['SignonScript']`, :config:option:`$cfg['Servers'][$i]['SignonURL']`"
 msgstr ""
 
-#: ../source/setup.rst:559
+#: ../source/setup.rst:566
 msgid "Config authentication mode"
 msgstr ""
 
-#: ../source/setup.rst:561
+#: ../source/setup.rst:568
 msgid "This mode is sometimes the less secure one because it requires you to fill the :config:option:`$cfg['Servers'][$i]['user']` and :config:option:`$cfg['Servers'][$i]['password']` fields (and as a result, anyone who can read your :file:`config.inc.php` can discover your username and password)."
 msgstr ""
 
-#: ../source/setup.rst:566
+#: ../source/setup.rst:573
 msgid "In the :ref:`faqmultiuser` section, there is an entry explaining how to protect your configuration file."
 msgstr ""
 
-#: ../source/setup.rst:568
+#: ../source/setup.rst:575
 msgid "For additional security in this mode, you may wish to consider the Host authentication :config:option:`$cfg['Servers'][$i]['AllowDeny']['order']` and :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` configuration directives."
 msgstr ""
 
-#: ../source/setup.rst:571
+#: ../source/setup.rst:578
 msgid "Unlike cookie and http, does not require a user to log in when first loading the phpMyAdmin site. This is by design but could allow any user to access your installation. Use of some restriction method is suggested, perhaps a :term:`.htaccess` file with the HTTP-AUTH directive or disallowing incoming HTTP requests at one’s router or firewall will suffice (both of which are beyond the scope of this manual but easily searchable with Google)."
 msgstr ""
 
-#: ../source/setup.rst:584
+#: ../source/setup.rst:591
 msgid "Swekey authentication mode"
 msgstr ""
 
-#: ../source/setup.rst:586
+#: ../source/setup.rst:593
 msgid "The Swekey is a low cost authentication USB key that can be used in web applications. When Swekey authentication is activated, phpMyAdmin requires the users's Swekey to be plugged before entering the login page (currently supported for cookie authentication mode only). Swekey Authentication is disabled by default. To enable it, add the following line to :file:`config.inc.php`:"
 msgstr ""
 
-#: ../source/setup.rst:597
+#: ../source/setup.rst:604
 msgid "You then have to create the ``swekey.conf`` file that will associate each user with their Swekey Id. It is important to place this file outside of your web server's document root (in the example, it is located in ``/etc``). Feel free to use it with your own users' information. If you want to purchase a Swekey please visit `https://www.phpmyadmin.net/auth\\_key/ <https://www.phpmyadmin.net/auth_key/>`_ since this link provides funding for phpMyAdmin."
 msgstr ""
 
-#: ../source/setup.rst:605
+#: ../source/setup.rst:612
 msgid "A self documented sample file is provided in the file :file:`examples/swekey.sample.conf`:"
 msgstr ""
 
-#: ../source/setup.rst:611
+#: ../source/setup.rst:618
 msgid ":config:option:`$cfg['Servers'][$i]['auth_swekey_config']`"
 msgstr ""
 
-#: ../source/setup.rst:615
+#: ../source/setup.rst:622
 msgid "Securing your phpMyAdmin installation"
 msgstr ""
 
-#: ../source/setup.rst:617
+#: ../source/setup.rst:624
 msgid "The phpMyAdmin team tries hard to make the application secure, however there are always ways to make your installation more secure:"
 msgstr ""
 
-#: ../source/setup.rst:620
+#: ../source/setup.rst:627
 msgid "Remove the ``setup`` directory from phpMyAdmin, you will probably not use it after the initial setup."
 msgstr ""
 
-#: ../source/setup.rst:622
+#: ../source/setup.rst:629
 msgid "Properly choose an authentication method - :ref:`cookie` is probably the best choice for shared hosting."
 msgstr ""
 
-#: ../source/setup.rst:624
+#: ../source/setup.rst:631
 msgid "In case you don't want all MySQL users to be able to access phpMyAdmin, you can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit them."
 msgstr ""
 
-#: ../source/setup.rst:626
+#: ../source/setup.rst:633
 msgid "Consider hiding phpMyAdmin behind an authentication proxy, so that users need to authenticate prior to providing MySQL credentials to phpMyAdmin. You can achieve this by confiuring your web server to request HTTP authentication. For exaple in Apache this can be done by:"
 msgstr ""
 
-#: ../source/setup.rst:638
+#: ../source/setup.rst:645
 msgid "Once you have changed configuration, you need to create list of users which can authenticate. This can be done using :program:`htpasswd` utility:"
 msgstr ""
 
-#: ../source/setup.rst:645
+#: ../source/setup.rst:652
 msgid "If you are afraid of automated attacks, enabling Captcha by :config:option:`$cfg['CaptchaLoginPublicKey']` and :config:option:`$cfg['CaptchaLoginPrivateKey']` might be an option."
 msgstr ""
 
