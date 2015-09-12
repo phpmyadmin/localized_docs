@@ -1263,10 +1263,12 @@ Generic settings
     :default: ``'-1'``
 
     Set the number of bytes a script is allowed to allocate. If set to
-    ``'-1'``, no limit is imposed.
+    ``'-1'``, no limit is imposed. If set to ``'0'``, no change of the
+    memory limit is attempted and the :file:`php.ini` ``memory_limit`` is
+    used.
 
-    This setting is used while importing/exporting dump files and at some other
-    places in phpMyAdmin so you definitely don't want to put here a too low
+    This setting is used while importing/exporting dump files
+    so you definitely don't want to put here a too low
     value. It has no effect when PHP is running in safe mode.
 
     You can also use any string as in :file:`php.ini`, eg. '16M'. Ensure you
@@ -1631,7 +1633,8 @@ Navigation panel setup
     :default: ``'structure'``
 
     Defines the tab displayed by default when clicking the small icon next
-    to each table name in the navigation panel. Possible values:
+    to each table name in the navigation panel. The possible values are the
+    localized equivalent of:
 
     * ``structure``
     * ``sql``
@@ -1645,7 +1648,8 @@ Navigation panel setup
     :default: null
 
     Defines the tab displayed by default when clicking the second small icon next
-    to each table name in the navigation panel. Possible values:
+    to each table name in the navigation panel. The possible values are the
+    localized equivalent of:
 
     * ``(empty)``
     * ``structure``
@@ -2108,8 +2112,7 @@ Languages
     Defines the default connection collation to use, if not user-defined.
     See the `MySQL documentation for charsets
     <http://dev.mysql.com/doc/mysql/en/charset-charsets.html>`_
-    for list of possible values. This setting is
-    ignored when connected to Drizzle server.
+    for list of possible values.
 
 .. config:option:: $cfg['Lang']
 

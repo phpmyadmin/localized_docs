@@ -195,8 +195,6 @@ For older MySQL versions, our `Downloads <https://www.phpmyadmin.net/downloads/>
 
 For `MariaDB <http://mariadb.org/>`_, versions 5.5 and newer are supported.
 
-For `Drizzle <http://www.drizzle.org>`_, versions 7.1 and newer are supported.
-
 .. _faq1_17a:
 
 1.17a I cannot connect to the MySQL server. It always returns the error message, "Client does not support authentication protocol requested by server; consider upgrading MySQL client"
@@ -2052,8 +2050,7 @@ Notes:
   to the database's new name.
 
 * Similarly, while adjusting privileges for a table, the privileges of all
-  *column-related privileges* for the columns inside the table are also adjusted
-  to the table's new name.
+  the columns inside the new table are also adjusted.
 
 * While adjusting privileges, the user performing the operation **must** have the following
   privileges:
