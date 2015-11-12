@@ -609,6 +609,25 @@ some robots accessing your installation.
 
 Because your PHP's ``memory_limit`` is too low; adjust it in :file:`php.ini`.
 
+.. _faq1:44:
+
+1.44 How can I reduce the installed size of phpMyAdmin on disk?
+---------------------------------------------------------------
+
+Some users have requested to be able to reduce the size of the phpMyAdmin installation.
+This is not recommended and could lead to confusion over missing features, but can be done.
+A list of files and corresponding functionality which degrade gracefully when removed include:
+
+* :file:`./libraries/tcpdf` folder (exporting to PDF)
+* :file:`./locale/` folder, or unused subfolders (interface translations)
+* Any unused themes in :file:`./themes/`
+* :file:`./js/jquery/src/` (included for licensing reasons)
+* :file:`./js/line_counts.php`
+* :file:`./doc/` (documentation)
+* :file:`./setup/` (setup script)
+* :file:`./examples/`
+* :file:`./sql/` (SQL scripts to configure advanced functionality)
+
 .. _faqconfig:
 
 Configuration
@@ -2082,9 +2101,7 @@ phpMyAdmin project
 7.1 I have found a bug. How do I inform developers?
 ---------------------------------------------------
 
-Our Bug Tracker is located at <http://sf.net/projects/phpmyadmin/> under the
-Bugs section. But please first discuss your bug with other users:
-<https://www.phpmyadmin.net/support/>
+Our issues tracker is located at <https://github.com/phpmyadmin/phpmyadmin/issues>.
 
 .. _faq7_2:
 
