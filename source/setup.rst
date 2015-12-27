@@ -87,6 +87,99 @@ which include phpMyAdmin together with a database and web server such as
 You can find more of such options at `Wikipedia <https://en.wikipedia.org/wiki/List_of_AMP_packages>`_.
 
 
+Installing using Composer
++++++++++++++++++++++++++
+
+You can install phpMyAdmin using `Composer <https://getcomposer.org/>`_,
+however it's currently not available in the default
+`Packagist <https://packagist.org/>`_ repository due to its technical
+limitations.
+
+The installation is possible by adding our own repository
+<https://www.phpmyadmin.net/packages.json>:
+
+.. code-block:: sh
+
+    composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json
+
+Installing using Docker
++++++++++++++++++++++++
+
+phpMyAdmin comes with an Docker image, which you can easily deploy. You can
+download it using:
+
+.. code-block:: sh
+
+    docker pull phpmyadmin/phpmyadmin
+
+The phpMyAdmin will be executed on port 8080. It supports several ways of
+configuring link to the database server, which you can configure using
+environment variables:
+
+.. envvar:: PMA_ARBITRARY
+
+    Allows you to enter database server hostname on login form (see
+    :config:option:`$cfg['AllowArbitraryServer']`).
+
+.. envvar:: PMA_HOST
+    
+    Host name or IP address of the database server to use.
+
+.. envvar:: PMA_HOSTS
+    
+    Comma separated host names or IP addresses of the database servers to use.
+
+.. envvar:: PMA_USER
+    
+    User name to use for :ref:`auth_config`.
+
+.. envvar:: PMA_PASSWORD
+    
+    Password to use for :ref:`auth_config`.
+
+.. envvar:: PMA_PORT
+    
+    Port of the databse server to use.
+
+By default, :ref:`cookie` is used, but if :envvar:`PMA_USER` and
+:envvar:`PMA_PASSWORD` are set, it is switched to :ref:`auth_config`.
+
+
+To connect phpMyAdmin to given server use:
+
+.. code-block:: sh
+
+    docker run --name myadmin -d -e PMA_HOST=dbhost -p 8080:8080 phpmyadmin/phpmyadmin
+
+To connect phpMyAdmin to more servers use:
+
+.. code-block:: sh
+
+    docker run --name myadmin -d -e PMA_HOSTS=dbhost1,dbhost2,dbhost3 -p 8080:8080 phpmyadmin/phpmyadmin
+
+To use arbitrary server option:
+
+.. code-block:: sh
+
+    docker run --name myadmin -d --link mysql_db_server:db -p 8080:8080 -e PMA_ARBITRARY=1 phpmyadmin/phpmyadmin
+
+You can also link the database container using Docker:
+
+.. code-block:: sh
+
+    docker run --name phpmyadmin -d --link mysql_db_server:db -p 8080:8080 phpmyadmin/phpmyadmin
+
+Using docker-compose
+--------------------
+
+Alternatively you can also use docker-compose with the docker-compose.yml from
+<https://github.com/phpmyadmin/docker>.  This will run phpMyAdmin with
+arbitrary server - allowing you to specify MySQL/MariaDB server on login page.
+
+.. code-block:: sh
+
+    docker-compose up -d
+
 .. _quick_install:
 
 Quick Install
@@ -561,6 +654,8 @@ in :file:`examples/signon-script.php`:
 
 
 .. index:: pair: Config; Authentication mode
+
+.. _auth_config:
 
 Config authentication mode
 --------------------------

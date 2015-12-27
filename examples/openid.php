@@ -40,7 +40,7 @@ $AUTH_MAP = array(
 function Show_page($contents)
 {
     header('Content-Type: text/html; charset=utf-8');
-    echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+    echo '<?xml version="1.0" encoding="utf-8"?>' , "\n";
     ?>
     <!DOCTYPE HTML>
     <html lang="en" dir="ltr">
@@ -53,7 +53,7 @@ function Show_page($contents)
     <body>
     <?php
     if (isset($_SESSION) && isset($_SESSION['PMA_single_signon_error_message'])) {
-        echo '<p class="error">' . $_SESSION['PMA_single_signon_message'] . '</p>';
+        echo '<p class="error">' , $_SESSION['PMA_single_signon_message'] , '</p>';
         unset($_SESSION['PMA_single_signon_message']);
     }
     echo $contents;
