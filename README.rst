@@ -21,8 +21,23 @@ For manipulating with translations, you need gettext and sphinx installed.
 Usage
 -----
 
-To start new translation just add it to Makefile.
+To start new translation just add it to the Makefile.
 
-To regenerate mofiles use script make.
+To regenerate mofiles run:
 
-To obtain statistics about current translations run locales-stats.
+.. code-block:: sh
+   
+    make
+
+To obtain statistics about current translations run:
+
+.. code-block:: sh
+
+    ./locales-stats
+
+To update documentation run:
+
+.. code-block:: sh
+
+    git submodule update --remote
+    make
