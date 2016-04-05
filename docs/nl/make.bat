@@ -1,1 +1,1 @@
-../../source/make.bat
+../../phpmyadmin/doc/make.bat

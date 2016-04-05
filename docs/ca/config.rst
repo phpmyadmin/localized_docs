@@ -1,1 +1,1 @@
-../../source/config.rst
+../../phpmyadmin/doc/config.rst

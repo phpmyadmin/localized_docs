@@ -1,1 +1,1 @@
-../../source/vendors.rst
+../../phpmyadmin/doc/vendors.rst

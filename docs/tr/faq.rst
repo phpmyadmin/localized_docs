@@ -1,1 +1,1 @@
-../../source/faq.rst
+../../phpmyadmin/doc/faq.rst

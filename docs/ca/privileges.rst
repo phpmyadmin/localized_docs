@@ -1,1 +1,1 @@
-../../source/privileges.rst
+../../phpmyadmin/doc/privileges.rst
