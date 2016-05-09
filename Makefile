@@ -2,7 +2,7 @@
 # Makefile to build translations
 
 # Languages which we translate
-LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk sl el da ar bs az et fy sq
+LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk sl el da ar bs az et fy sq eo
 
 # Names of pages, this is hardcoded to allow ordering
 PAGES=index intro require setup config transformations faq developers vendors copyright credits glossary

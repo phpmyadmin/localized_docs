@@ -1,0 +1,1 @@
+../../phpmyadmin/doc/user.rst
