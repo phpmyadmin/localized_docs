@@ -39,7 +39,13 @@ To update documentation run:
 
 .. code-block:: sh
 
+    # Force Weblate to commit changes, requires wlc to be installed
+    wlc commit
+    # Pull changes from Weblate
+    git pull
+    # Update phpMyAdmin submodule
     git submodule update --remote
+    # Update po files to match current docs
     make
 
 This automatically updates po files, generates mo files and synchronizes
