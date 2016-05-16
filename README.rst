@@ -41,3 +41,10 @@ To update documentation run:
 
     git submodule update --remote
     make
+
+This automatically updates po files, generates mo files and synchronizes
+sources of the documentation. Review changes and commit them using:
+
+.. code-block::
+
+    git commit -a -m 'Update documentation to match master'
