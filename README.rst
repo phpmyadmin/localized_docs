@@ -53,4 +53,4 @@ sources of the documentation. Review changes and commit them using:
 
 .. code-block::
 
-    git commit -a -m 'Update documentation to match master'
+    git commit -a -m 'Update documentation to match master'
