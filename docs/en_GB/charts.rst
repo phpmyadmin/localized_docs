@@ -1,0 +1,1 @@
+../../phpmyadmin/doc/charts.rst

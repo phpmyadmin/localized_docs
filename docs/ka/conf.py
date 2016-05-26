@@ -303,3 +303,5 @@ from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 
 lexers['php'] = PhpLexer(startinline=True)
+
+linkcheck_retries = 5
