@@ -37,6 +37,7 @@ locale/%.pot: $(addprefix $(SOURCE_DIR), $(addsuffix .rst, $(PAGES)))
 po/documentation.pot: $(TEMPLATES)
 	@echo "UPDATE $@"
 	@msgcat -o $@ $(TEMPLATES)
+	@sed -i 's/Report-Msgid-Bugs-To: [^"]*/Report-Msgid-Bugs-To: translators@phpmyadmin.net\\n/' $@
 
 po/%.po: po/documentation.pot
 	@echo "UPDATE $@"
