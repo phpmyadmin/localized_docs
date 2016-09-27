@@ -1,0 +1,1 @@
+../../phpmyadmin/doc/vendors.rst
