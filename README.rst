@@ -51,6 +51,14 @@ To update documentation run:
 This automatically updates po files, generates mo files and synchronizes
 sources of the documentation. Review changes and commit them using:
 
-.. code-block::
+.. code-block:: sh
 
     git commit -a -m 'Update documentation to match master'
+
+To build documentation in given language (for example Czech):
+
+.. code-block:: sh
+
+    sphinx-build docs/cs/ /target/directory/ 
+
+You can also browse translated documentation online at <https://docs.phpmyadmin.net/>.
