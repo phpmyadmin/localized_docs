@@ -59,6 +59,18 @@ To build documentation in given language (for example Czech):
 
 .. code-block:: sh
 
-    sphinx-build docs/cs/ /target/directory/ 
+    make html-cs
+
+You can also invoke sphinx-build manually:
+
+.. code-block:: sh
+
+    sphinx-build docs/cs/ output/cs/
+
+You can also build all documentation at once:
+
+.. code-block:: sh
+
+    make html
 
 You can also browse translated documentation online at <https://docs.phpmyadmin.net/>.

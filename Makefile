@@ -16,14 +16,16 @@ TEMPLATES=$(addprefix locale/,$(addsuffix .pot,$(PAGES)))
 # Symlinked fake mo files
 FAKE_MOFILES=$(foreach lang,$(LANGUAGES),$(addsuffix .mo, $(addprefix translated/$(lang)/LC_MESSAGES/, $(PAGES))))
 
+POFILES=$(addsuffix .po, $(addprefix po/,$(LANGUAGES)))
 MOFILES=$(addsuffix .mo, $(addprefix po/,$(LANGUAGES)))
+INDEXFILES=$(addsuffix /index.html, $(addprefix output/,$(LANGUAGES)))
 
-CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
+CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(languages)))
 
 all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 
-.phony:
-FORCE:
+SECONDARY: $(POFILES) $(INDEXFILES)
+.phony: all html $(addprefix html-,$(LANGUAGES))
 
 docs/%/conf.py: $(SOURCE_DIR)conf.py Makefile
 	@mkdir -p docs/$*
@@ -50,3 +52,13 @@ po/%.mo: po/%.po
 translated/%.mo:
 	@mkdir -p $(dir $@)
 	@ln -sf ../../../po/`echo $@ | sed 's@translated/\(.*\)/LC_MESSAGES.*@\1@'`.mo $@
+
+html: $(addprefix html-,$(LANGUAGES))
+
+html-%: output/%/index.html
+	@echo 
+
+output/%/index.html: po/%.mo
+	@echo "HTML $*"
+	@mkdir -p "output/$*"
+	@sphinx-build docs/$*/ output/$*
