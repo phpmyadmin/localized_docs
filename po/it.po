@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
-"POT-Creation-Date: 2016-10-18 11:27+0200\n"
+"POT-Creation-Date: 2016-10-19 13:33+0200\n"
 "PO-Revision-Date: 2016-08-17 10:18+0000\n"
 "Last-Translator: Stefano Martinelli <stefano.ste.martinelli@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/phpmyadmin/"
@@ -848,11 +848,12 @@ msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:216
 msgid ""
-"Additionally configuration can be tweaked by :file:`/config.user.inc.php`. "
-"If this file exists, it will be loaded after configuration generated from "
-"above environment variables, so you can override any configuration variable. "
-"This configuraiton can be added as a volume when invoking docker using `-v /"
-"some/local/directory/config.user.inc.php:/config.user.inc.php` parameters."
+"Additionally configuration can be tweaked by :file:`/www/config.user.inc."
+"php`. If this file exists, it will be loaded after configuration generated "
+"from above environment variables, so you can override any configuration "
+"variable. This configuraiton can be added as a volume when invoking docker "
+"using `-v /some/local/directory/config.user.inc.php:/www/config.user.inc."
+"php` parameters."
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:224
@@ -860,34 +861,61 @@ msgid "See :ref:`config` for detailed description of configuration options."
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:227
-msgid "Docker Examples"
+msgid "Docker Volumes"
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:229
-msgid "To connect phpMyAdmin to given server use:"
+msgid "You can use following volumes to customise image behavior:"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:231
+msgid ":file:`/www/config.user.inc.php`"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:233
+msgid ""
+"Can be used for additional settings, see previous chapter for more details."
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:235
-msgid "To connect phpMyAdmin to more servers use:"
+msgid ":file:`/sessions/`"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:237
+msgid ""
+"Directory where PHP sessions are stored. You might want to share this for "
+"example when uswing :ref:`auth_signon`."
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:241
+msgid "Docker Examples"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:243
+msgid "To connect phpMyAdmin to given server use:"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:249
+msgid "To connect phpMyAdmin to more servers use:"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:255
 msgid "To use arbitrary server option:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:247
+#: ../phpmyadmin/doc/setup.rst:261
 msgid "You can also link the database container using Docker:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:253
+#: ../phpmyadmin/doc/setup.rst:267
 msgid "Running with additional configration:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:260
+#: ../phpmyadmin/doc/setup.rst:274
 msgid "Using docker-compose"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:262
+#: ../phpmyadmin/doc/setup.rst:276
 msgid ""
 "Alternatively you can also use docker-compose with the docker-compose.yml "
 "from <https://github.com/phpmyadmin/docker>.  This will run phpMyAdmin with "
@@ -895,11 +923,11 @@ msgid ""
 "page."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:273
+#: ../phpmyadmin/doc/setup.rst:287
 msgid "Quick Install"
 msgstr "Installazione rapida"
 
-#: ../phpmyadmin/doc/setup.rst:275
+#: ../phpmyadmin/doc/setup.rst:289
 msgid ""
 "Choose an appropriate distribution kit from the phpmyadmin.net Downloads "
 "page. Some kits contain only the English messages, others contain all "
@@ -911,12 +939,12 @@ msgstr ""
 "inglese, altri contengono tutte le lingue. Assumeremo che tu abbia scelto un "
 "kit il cui nome sia simile a ``phpMyAdmin-x.x.x -all-languages.tar.gz``."
 
-#: ../phpmyadmin/doc/setup.rst:279
+#: ../phpmyadmin/doc/setup.rst:293
 msgid "Ensure you have downloaded a genuine archive, see :ref:`verify`."
 msgstr ""
 "Assicurati di aver scaricato un archivio originale, vedi :ref:`verify`."
 
-#: ../phpmyadmin/doc/setup.rst:280
+#: ../phpmyadmin/doc/setup.rst:294
 msgid ""
 "Untar or unzip the distribution (be sure to unzip the subdirectories): ``tar "
 "-xzvf phpMyAdmin_x.x.x-all-languages.tar.gz`` in your webserver's document "
@@ -931,7 +959,7 @@ msgstr ""
 "locale e, dopo il passo 4, trasferisci questa cartella sul tuo web server "
 "utilizzando, ad esempio, il protocollo FTP."
 
-#: ../phpmyadmin/doc/setup.rst:286
+#: ../phpmyadmin/doc/setup.rst:300
 msgid ""
 "Ensure that all the scripts have the appropriate owner (if PHP is running in "
 "safe mode, having some scripts with an owner different from the owner of "
@@ -942,7 +970,7 @@ msgstr ""
 "safe mode, e alcuni script hanno proprietari diversi tra loro ci saranno "
 "problemi). Vedi :ref:`faq4_2` and :ref:`faq1_26` per ulteriori suggerimenti."
 
-#: ../phpmyadmin/doc/setup.rst:290
+#: ../phpmyadmin/doc/setup.rst:304
 msgid ""
 "Now you must configure your installation. There are two methods that can be "
 "used. Traditionally, users have hand-edited a copy of :file:`config.inc."
@@ -958,11 +986,11 @@ msgstr ""
 "ed è necessario per accedere ad alcune funzionalità avanzate."
 
 # 8ba1ef1ee71b4c529349de07bc55f622
-#: ../phpmyadmin/doc/setup.rst:299
+#: ../phpmyadmin/doc/setup.rst:313
 msgid "Manually creating the file"
 msgstr "Creando manualmente il file"
 
-#: ../phpmyadmin/doc/setup.rst:301
+#: ../phpmyadmin/doc/setup.rst:315
 msgid ""
 "To manually create the file, simply use your text editor to create the file :"
 "file:`config.inc.php` (you can copy :file:`config.sample.inc.php` to get a "
@@ -985,19 +1013,19 @@ msgstr ""
 "Probabilmente ti serviranno solo poche direttive per iniziare; una semplice "
 "configurazione potrebbe essere simile a questa:"
 
-#: ../phpmyadmin/doc/setup.rst:325
+#: ../phpmyadmin/doc/setup.rst:339
 msgid "Or, if you prefer to not be prompted every time you log in:"
 msgstr ""
 "Oppure, se si preferisce non vengano richiesti i dati ogni volta che si "
 "accede:"
 
-#: ../phpmyadmin/doc/setup.rst:341
+#: ../phpmyadmin/doc/setup.rst:355
 msgid ""
 "Storing passwords in the configuration is insecure as anybody can then "
 "manipulate with your database."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:344
+#: ../phpmyadmin/doc/setup.rst:358
 msgid ""
 "For a full explanation of possible configuration values, see the :ref:"
 "`config` of this document."
@@ -1006,11 +1034,11 @@ msgstr ""
 "consulta la sezione  :ref:`config` di questo documento."
 
 # 0501d1fb45a94f2eae35a649a57027d9
-#: ../phpmyadmin/doc/setup.rst:352
+#: ../phpmyadmin/doc/setup.rst:366
 msgid "Using Setup script"
 msgstr "Usando uno script di Setup"
 
-#: ../phpmyadmin/doc/setup.rst:354
+#: ../phpmyadmin/doc/setup.rst:368
 msgid ""
 "Instead of manually editing :file:`config.inc.php`, you can use phpMyAdmin's "
 "setup feature. First you must manually create a folder ``config`` in the "
@@ -1022,20 +1050,20 @@ msgstr ""
 "``config` nella directory di phpMyAdmin. Si tratta di una misura di "
 "sicurezza. Su sistemi Linux/Unix puoi usare i seguenti comandi:"
 
-#: ../phpmyadmin/doc/setup.rst:368
+#: ../phpmyadmin/doc/setup.rst:382
 msgid ""
 "Following documentation covers default behavior of phpMyAdmin. Some "
 "distributions have changed this, please check following sections for "
 "information on this topic."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:372
+#: ../phpmyadmin/doc/setup.rst:386
 msgid "And to edit an existing configuration, copy it over first:"
 msgstr ""
 "E per modificare una configurazione esistente, copiare il file all'interno "
 "della directory:"
 
-#: ../phpmyadmin/doc/setup.rst:380
+#: ../phpmyadmin/doc/setup.rst:394
 msgid ""
 "On other platforms, simply create the folder and ensure that your web server "
 "has read and write access to it. :ref:`faq1_26` can help with this."
@@ -1044,7 +1072,7 @@ msgstr ""
 "server web vi abbia accesso in lettura e scrittura. :ref:`faq1_26` può "
 "essere di aiuto."
 
-#: ../phpmyadmin/doc/setup.rst:384
+#: ../phpmyadmin/doc/setup.rst:398
 msgid ""
 "Next, open your browser and visit the location where you installed "
 "phpMyAdmin, with the ``/setup`` suffix. If you have an existing "
@@ -1071,7 +1099,7 @@ msgstr ""
 "di configurazione in locale e caricarlo (tramite FTP o  strumenti analoghi) "
 "nella giusta posizione."
 
-#: ../phpmyadmin/doc/setup.rst:395
+#: ../phpmyadmin/doc/setup.rst:409
 msgid ""
 "Once the file has been saved, it must be moved out of the ``config/`` "
 "directory and the permissions must be reset, again as a security measure:"
@@ -1080,7 +1108,7 @@ msgstr ""
 "directory ``config/`` e i permessi devono essere resettati, ancora una volta "
 "come misura di sicurezza:"
 
-#: ../phpmyadmin/doc/setup.rst:407
+#: ../phpmyadmin/doc/setup.rst:421
 msgid ""
 "Now the file is ready to be used. You can choose to review or edit the file "
 "with your favorite editor, if you prefer to set some advanced options which "
@@ -1090,7 +1118,7 @@ msgstr ""
 "file con il tuo editor preferito, se preferisci impostare alcune opzioni "
 "avanzate che lo script di installazione non prevede."
 
-#: ../phpmyadmin/doc/setup.rst:411
+#: ../phpmyadmin/doc/setup.rst:425
 msgid ""
 "If you are using the ``auth_type`` \"config\", it is suggested that you "
 "protect the phpMyAdmin installation directory because using config does not "
@@ -1108,7 +1136,7 @@ msgstr ""
 "passando alla modalità ``auth_type`` tramite cookie o http. Vedi :ref:"
 "`faqmultiuser` per ulteriori informazioni, in particolare :ref:`faq4_4`."
 
-#: ../phpmyadmin/doc/setup.rst:418
+#: ../phpmyadmin/doc/setup.rst:432
 #, fuzzy
 #| msgid ""
 #| "Open the `main phpMyAdmin directory <index.php>`_ in your browser. "
@@ -1124,17 +1152,17 @@ msgstr ""
 "una finestra di login se viene utilizzata l'autenticazione :term:`HTTP` o "
 "tramite cookie."
 
-#: ../phpmyadmin/doc/setup.rst:426
+#: ../phpmyadmin/doc/setup.rst:440
 msgid "Setup script on Debian, Ubuntu and derivatives"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:428
+#: ../phpmyadmin/doc/setup.rst:442
 msgid ""
 "Debian and Ubuntu have changed way how setup is enabled and disabled, in a "
 "way that single command has to be executed for either of these."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:431
+#: ../phpmyadmin/doc/setup.rst:445
 #, fuzzy
 #| msgid "And to edit an existing configuration, copy it over first:"
 msgid "To allow editing configuration invoke:"
@@ -1142,7 +1170,7 @@ msgstr ""
 "E per modificare una configurazione esistente, copiare il file all'interno "
 "della directory:"
 
-#: ../phpmyadmin/doc/setup.rst:437
+#: ../phpmyadmin/doc/setup.rst:451
 #, fuzzy
 #| msgid "And to edit an existing configuration, copy it over first:"
 msgid "To block editing configuration invoke:"
@@ -1150,11 +1178,11 @@ msgstr ""
 "E per modificare una configurazione esistente, copiare il file all'interno "
 "della directory:"
 
-#: ../phpmyadmin/doc/setup.rst:444
+#: ../phpmyadmin/doc/setup.rst:458
 msgid "Setup script on openSUSE"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:446
+#: ../phpmyadmin/doc/setup.rst:460
 msgid ""
 "Some openSUSE releases do not include setup script in the package. In case "
 "you want to generate configuration on these you can either download original "
@@ -1162,11 +1190,11 @@ msgid ""
 "server: <https://demo.phpmyadmin.net/STABLE/setup/>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:455
+#: ../phpmyadmin/doc/setup.rst:469
 msgid "Verifying phpMyAdmin releases"
 msgstr "Verifica delle release di phpMyAdmin"
 
-#: ../phpmyadmin/doc/setup.rst:457
+#: ../phpmyadmin/doc/setup.rst:471
 #, fuzzy
 #| msgid ""
 #| "Since July 2015 all phpMyAdmin releases are cryptographically signed by "
@@ -1181,37 +1209,37 @@ msgstr ""
 "crittograficamente dallo sviluppatore che le rilascia, che al momento è Marc "
 "Delisle. L'ID della sua chiave è 0x81AF644A, mentre il fingerprint PGP è:"
 
-#: ../phpmyadmin/doc/setup.rst:465
+#: ../phpmyadmin/doc/setup.rst:479
 msgid ""
 "and you can get more identification information from <https://keybase.io/"
 "lem9>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:467
+#: ../phpmyadmin/doc/setup.rst:481
 msgid ""
 "Beginning in January 2016, the release manager is Isaac Bennetch. His key id "
 "is 0xCE752F178259BD92, and his PGP fingerprint is:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:474
+#: ../phpmyadmin/doc/setup.rst:488
 msgid ""
 "and you can get more identification information from <https://keybase.io/"
 "ibennetch>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:476
+#: ../phpmyadmin/doc/setup.rst:490
 msgid ""
 "Some additional downloads (for example themes) might be signed by Michal "
 "Čihař. His key id is 0x9C27B31342B7511D, and his PGP fingerprint is:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:483
+#: ../phpmyadmin/doc/setup.rst:497
 msgid ""
 "and you can get more identification information from <https://keybase.io/"
 "nijel>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:485
+#: ../phpmyadmin/doc/setup.rst:499
 #, fuzzy
 #| msgid ""
 #| "and you can get more identification information from `https://keybase.io/"
@@ -1229,7 +1257,7 @@ msgstr ""
 "hai scaricato. In questo modo ti assicuri di usare lo stesso software che è "
 "stato rilasciato, non modificato da eventuali malintenzionati."
 
-#: ../phpmyadmin/doc/setup.rst:490
+#: ../phpmyadmin/doc/setup.rst:504
 msgid ""
 "Each archive is accompanied with ``.asc`` files which contains the PGP "
 "signature for it. Once you have both of them in the same folder, you can "
@@ -1238,7 +1266,7 @@ msgstr ""
 "Ciascun archivio è accompagnato da un file .asc che contiene la firma PGP. "
 "Una volta che hai entrambi i file in una cartella, puoi verificare la firma:"
 
-#: ../phpmyadmin/doc/setup.rst:499
+#: ../phpmyadmin/doc/setup.rst:513
 msgid ""
 "As you can see gpg complains that it does not know the public key. At this "
 "point you should do one of the following steps:"
@@ -1246,7 +1274,7 @@ msgstr ""
 "Come puoi vedere, gpg segnala che non conosce la chiave pubblica. A questo "
 "punto dovresti seguire uno dei passi seguenti:"
 
-#: ../phpmyadmin/doc/setup.rst:502
+#: ../phpmyadmin/doc/setup.rst:516
 msgid ""
 "Download the keyring from `our download server <https://files.phpmyadmin.net/"
 "phpmyadmin.keyring>`_, then import it with:"
@@ -1254,11 +1282,11 @@ msgstr ""
 "Scarica il keyring da `il nostro server di download <https://files."
 "phpmyadmin.net/phpmyadmin.keyring>`_, quindi importalo con::"
 
-#: ../phpmyadmin/doc/setup.rst:508
+#: ../phpmyadmin/doc/setup.rst:522
 msgid "Download and import the key from one of the key servers:"
 msgstr "Scarica e importa la chiave da uno dei nostri key server:"
 
-#: ../phpmyadmin/doc/setup.rst:519
+#: ../phpmyadmin/doc/setup.rst:533
 msgid ""
 "This will improve the situation a bit - at this point you can verify that "
 "the signature from the given key is correct but you still can not trust the "
@@ -1268,7 +1296,7 @@ msgstr ""
 "la firma della specifica chiave è corretta ma non puoi ancora avere piena "
 "fiducia nel nome usato nella chiave:"
 
-#: ../phpmyadmin/doc/setup.rst:533
+#: ../phpmyadmin/doc/setup.rst:547
 #, fuzzy
 #| msgid ""
 #| "The problem here is that anybody could issue the key with this name.  You "
@@ -1300,13 +1328,13 @@ msgstr ""
 "di persona. Ad esempio, puoi vedere in che modo `la chiave di Marc è "
 "collegata, tramite le firme, alla chiave di Linus`_."
 
-#: ../phpmyadmin/doc/setup.rst:542
+#: ../phpmyadmin/doc/setup.rst:556
 msgid "Once the key is trusted, the warning will not occur:"
 msgstr ""
 "Una volta che la chiave è ritenuta affidabile, il messaggio di avviso non "
 "compare più:"
 
-#: ../phpmyadmin/doc/setup.rst:550
+#: ../phpmyadmin/doc/setup.rst:564
 msgid ""
 "Should the signature be invalid (the archive has been changed), you would "
 "get a clear error regardless of the fact that the key is trusted or not:"
@@ -1315,17 +1343,17 @@ msgstr ""
 "avviso di errore, indipendentemente dal fatto che la chiave sia fidata o "
 "meno:"
 
-#: ../phpmyadmin/doc/setup.rst:572
+#: ../phpmyadmin/doc/setup.rst:586
 msgid "phpMyAdmin configuration storage"
 msgstr "phpMyAdmin configuration storage"
 
-#: ../phpmyadmin/doc/setup.rst:576
+#: ../phpmyadmin/doc/setup.rst:590
 msgid ""
 "Prior to phpMyAdmin 3.4.0 this was called Linked Tables Infrastructure, but "
 "the name was changed due to extended scope of the storage."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:579
+#: ../phpmyadmin/doc/setup.rst:593
 #, fuzzy
 #| msgid ""
 #| "For a whole set of additional features (bookmarks, comments, :term:`SQL`-"
@@ -1350,12 +1378,12 @@ msgstr ""
 "centrale (questo database sarà accessibile dal \"control user\", in modo che "
 "nessun altro utente abbia diritti su di esso)."
 
-#: ../phpmyadmin/doc/setup.rst:587
+#: ../phpmyadmin/doc/setup.rst:601
 msgid "Zero configuration"
 msgstr "Zero Configurazione"
 
 # 18bfb42aef5d47faae1535680a5544f7
-#: ../phpmyadmin/doc/setup.rst:589
+#: ../phpmyadmin/doc/setup.rst:603
 msgid ""
 "In many cases, this database structure can be automatically created and "
 "configured. This is called “Zero Configuration” mode and can be particularly "
@@ -1369,21 +1397,21 @@ msgstr ""
 "$cfg['ZeroConf']` a \"false\"."
 
 # 4e7857305bda497ba90c53a49764ad04
-#: ../phpmyadmin/doc/setup.rst:594
+#: ../phpmyadmin/doc/setup.rst:608
 msgid ""
 "The following three scenarios are covered by the Zero Configuration mode:"
 msgstr ""
 "I tre scenari seguenti sono coperti dalla modalità \"Zero Configuration\":"
 
 # 85be3f36408d478aa9b29aeb133151c8
-#: ../phpmyadmin/doc/setup.rst:596
+#: ../phpmyadmin/doc/setup.rst:610
 msgid ""
 "When entering a database where the configuration storage tables are not "
 "present, phpMyAdmin offers to create them from the Operations tab."
 msgstr ""
 
 # 5edf74089c2d4606880526c53c0f180d
-#: ../phpmyadmin/doc/setup.rst:598
+#: ../phpmyadmin/doc/setup.rst:612
 msgid ""
 "When entering a database where the tables do already exist, the software "
 "automatically detects this and begins using them. This is the most common "
@@ -1394,7 +1422,7 @@ msgid ""
 msgstr ""
 
 # af1ff7a0f20b4925b09606bd17a75dfc
-#: ../phpmyadmin/doc/setup.rst:604
+#: ../phpmyadmin/doc/setup.rst:618
 msgid ""
 "When having access to multiple databases, if the user first enters the "
 "database containing the configuration storage tables then switches to "
@@ -1402,11 +1430,11 @@ msgid ""
 "database; the user is not prompted to create more tables in the new database."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:612
+#: ../phpmyadmin/doc/setup.rst:626
 msgid "Manual configuration"
 msgstr "Configurazione manuale"
 
-#: ../phpmyadmin/doc/setup.rst:614
+#: ../phpmyadmin/doc/setup.rst:628
 msgid ""
 "Please look at your ``./sql/`` directory, where you should find a file "
 "called *create\\_tables.sql*. (If you are using a Windows server, pay "
@@ -1417,11 +1445,11 @@ msgstr ""
 "prestate particolare attenzione a :ref:`faq1_23`)."
 
 # ab298a94ced547269b5118df223a6a4e
-#: ../phpmyadmin/doc/setup.rst:618
+#: ../phpmyadmin/doc/setup.rst:632
 msgid "If you already had this infrastructure and:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:620
+#: ../phpmyadmin/doc/setup.rst:634
 msgid ""
 "upgraded to MySQL 4.1.2 or newer, please use :file:`sql/"
 "upgrade_tables_mysql_4_1_2+.sql`."
@@ -1429,7 +1457,7 @@ msgstr ""
 "aggiornato a MySQL versione 4.1.2 o successiva, per favore usa :file:`sql/"
 "upgrade_tables_mysql_4_1_2+.sql`."
 
-#: ../phpmyadmin/doc/setup.rst:622
+#: ../phpmyadmin/doc/setup.rst:636
 msgid ""
 "upgraded to phpMyAdmin 4.3.0 or newer from 2.5.0 or newer (<= 4.2.x), please "
 "use :file:`sql/upgrade_column_info_4_3_0+.sql`."
@@ -1438,11 +1466,11 @@ msgstr ""
 "per favore usa :file:`sql/upgrade_column_info_4_3_0+.sql`."
 
 # e4b0b0bbf7b041f3b61e852480a23388
-#: ../phpmyadmin/doc/setup.rst:625
+#: ../phpmyadmin/doc/setup.rst:639
 msgid "and then create new tables by importing :file:`sql/create_tables.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:627
+#: ../phpmyadmin/doc/setup.rst:641
 msgid ""
 "You can use your phpMyAdmin to create the tables for you. Please be aware "
 "that you may need special (administrator) privileges to create the database "
@@ -1454,7 +1482,7 @@ msgstr ""
 "creare database e tabelle, e che lo script potrebbe aver bisogno di una "
 "messa a punto, in funzione del nome del database."
 
-#: ../phpmyadmin/doc/setup.rst:632
+#: ../phpmyadmin/doc/setup.rst:646
 msgid ""
 "After having imported the :file:`sql/create_tables.sql` file, you should "
 "specify the table names in your :file:`config.inc.php` file. The directives "
@@ -1464,7 +1492,7 @@ msgstr ""
 "specificare i nomi delle tabelle nel vostro file :file:`config.inc.php`. Le "
 "direttive da utilizzare si trovano in :ref:`config`."
 
-#: ../phpmyadmin/doc/setup.rst:636
+#: ../phpmyadmin/doc/setup.rst:650
 msgid ""
 "You will also need to have a controluser (:config:option:`$cfg['Servers'][$i]"
 "['controluser']` and :config:option:`$cfg['Servers'][$i]['controlpass']` "
@@ -1476,23 +1504,23 @@ msgstr ""
 "$cfg['Servers'][$i]['controlpass']`) con i diritti appropriati per quelle "
 "tabelle. Ad esempio, potete crearlo usando il seguente statement:"
 
-#: ../phpmyadmin/doc/setup.rst:649
+#: ../phpmyadmin/doc/setup.rst:663
 msgid "Upgrading from an older version"
 msgstr "Aggiornamento da una versione precedente"
 
-#: ../phpmyadmin/doc/setup.rst:653
+#: ../phpmyadmin/doc/setup.rst:667
 msgid ""
 "**Never** extract the new version over an existing installation of "
 "phpMyAdmin, always first remove the old files keeping just the configuration."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:657
+#: ../phpmyadmin/doc/setup.rst:671
 msgid ""
 "This way you will not leave old no longer working code in the directory, "
 "which can have severe security implications or can cause various breakages."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:660
+#: ../phpmyadmin/doc/setup.rst:674
 msgid ""
 "Simply copy :file:`config.inc.php` from your previous installation into the "
 "newly unpacked one. Configuration files from old versions may require some "
@@ -1507,7 +1535,7 @@ msgstr ""
 "``set_magic_quotes_runtime(0);`` che potreste trovare verso la fine del "
 "vostro file di configurazione."
 
-#: ../phpmyadmin/doc/setup.rst:667
+#: ../phpmyadmin/doc/setup.rst:681
 msgid ""
 "You should **not** copy :file:`libraries/config.default.php` over :file:"
 "`config.inc.php` because the default configuration file is version- specific."
@@ -1516,11 +1544,11 @@ msgstr ""
 "inc.php` in quanto il file di configurazione di default è specifico per ogni "
 "versione."
 
-#: ../phpmyadmin/doc/setup.rst:671
+#: ../phpmyadmin/doc/setup.rst:685
 msgid "The complete upgrade can be performed in few simple steps:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:673
+#: ../phpmyadmin/doc/setup.rst:687
 #, fuzzy
 msgid ""
 "Download the latest phpMyAdmin version from <https://www.phpmyadmin.net/"
@@ -1528,31 +1556,31 @@ msgid ""
 msgstr ""
 "<a href=\"http://www.phpmyadmin.net/\"> Pagina Principale di phpMyAdmin</a>"
 
-#: ../phpmyadmin/doc/setup.rst:674
+#: ../phpmyadmin/doc/setup.rst:688
 msgid "Rename existing phpMyAdmin folder (for example to ``phpmyadmin-old``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:675
+#: ../phpmyadmin/doc/setup.rst:689
 msgid ""
 "Unpack freshly donwloaded phpMyAdmin to desired location (for example "
 "``phpmyadmin``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:676
+#: ../phpmyadmin/doc/setup.rst:690
 msgid ""
 "Copy :file:`config.inc.php`` from old location (``phpmyadmin-old``) to new "
 "one (``phpmyadmin``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:677
+#: ../phpmyadmin/doc/setup.rst:691
 msgid "Test that everything works properly."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:678
+#: ../phpmyadmin/doc/setup.rst:692
 msgid "Remove backup of previous version (``phpmyadmin-old``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:680
+#: ../phpmyadmin/doc/setup.rst:694
 msgid ""
 "If you have upgraded your MySQL server from a version previous to 4.1.2 to "
 "version 5.x or newer and if you use the phpMyAdmin configuration storage, "
@@ -1564,7 +1592,7 @@ msgstr ""
 "configurazione di phpMyAmdin, dovresti eseguire lo script :term:`SQL` che si "
 "trova in :file:`sql/upgrade_tables_mysql_4_1_2+.sql`."
 
-#: ../phpmyadmin/doc/setup.rst:685
+#: ../phpmyadmin/doc/setup.rst:699
 msgid ""
 "If you have upgraded your phpMyAdmin to 4.3.0 or newer from 2.5.0 or newer "
 "(<= 4.2.x) and if you use the phpMyAdmin configuration storage, you should "
@@ -1576,18 +1604,18 @@ msgstr ""
 "configurazione di phpMyAdmin, dovresti eseguire lo script :term:`SQL` che si "
 "trova in :file:`sql/upgrade_column_info_4_3_0+.sql`."
 
-#: ../phpmyadmin/doc/setup.rst:690
+#: ../phpmyadmin/doc/setup.rst:704
 msgid ""
 "Do not forget to clear the browser cache and to empty the old session by "
 "logging out and logging in again."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:698
+#: ../phpmyadmin/doc/setup.rst:712
 msgid "Using authentication modes"
 msgstr "Le modalità di autenticazione"
 
 # 07928341023648d3af6e13958292e57f
-#: ../phpmyadmin/doc/setup.rst:700
+#: ../phpmyadmin/doc/setup.rst:714
 msgid ""
 ":term:`HTTP` and cookie authentication modes are recommended in a **multi-"
 "user environment** where you want to give users access to their own database "
@@ -1598,7 +1626,7 @@ msgid ""
 "in the configuration file."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:708
+#: ../phpmyadmin/doc/setup.rst:722
 msgid ""
 ":term:`HTTP` and cookie authentication modes are more secure: the MySQL "
 "login information does not need to be set in the phpMyAdmin configuration "
@@ -1615,7 +1643,7 @@ msgstr ""
 "modalità cookie la password è memorizzata, cifrata con l'algoritmo AES, in "
 "un cookie temporaneo."
 
-#: ../phpmyadmin/doc/setup.rst:716
+#: ../phpmyadmin/doc/setup.rst:730
 msgid ""
 "Then each of the *true* users should be granted a set of privileges on a set "
 "of particular databases. Normally you shouldn't give global privileges to an "
@@ -1630,7 +1658,7 @@ msgstr ""
 "esempio, nel caso tu stia creando un superuser). Ad esempio, assegnare "
 "all'utente *utente_reale* tutti i prvilegi sul databse *basedati_utente*:"
 
-#: ../phpmyadmin/doc/setup.rst:728
+#: ../phpmyadmin/doc/setup.rst:742
 msgid ""
 "What the user may now do is controlled entirely by the MySQL user management "
 "system. With HTTP or cookie authentication mode, you don't need to fill the "
@@ -1641,16 +1669,16 @@ msgstr ""
 "o tramite cookie, non è necessario riempire i campi utente/password in :"
 "config:option:`$cfg['Servers']`."
 
-#: ../phpmyadmin/doc/setup.rst:734
+#: ../phpmyadmin/doc/setup.rst:748
 msgid ""
 ":ref:`faq1_32`, :ref:`faq1_35`, :ref:`faq4_1`, :ref:`faq4_2`, :ref:`faq4_3`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:745
+#: ../phpmyadmin/doc/setup.rst:759
 msgid "HTTP authentication mode"
 msgstr "Modalità di autenticazione HTTP"
 
-#: ../phpmyadmin/doc/setup.rst:747
+#: ../phpmyadmin/doc/setup.rst:761
 msgid ""
 "Uses :term:`HTTP` Basic authentication method and allows you to log in as "
 "any valid MySQL user."
@@ -1658,7 +1686,7 @@ msgstr ""
 "Utilizza il metodo di autenticazione Basic :term:`HTTP` e consente l'accesso "
 "a qualsiasi utente MySQL valido."
 
-#: ../phpmyadmin/doc/setup.rst:749
+#: ../phpmyadmin/doc/setup.rst:763
 msgid ""
 "Is supported with most PHP configurations. For :term:`IIS` (:term:`ISAPI`) "
 "support using :term:`CGI` PHP see :ref:`faq1_32`, for using with Apache :"
@@ -1668,7 +1696,7 @@ msgstr ""
 "supporto di :term:`IIS` (:term:`ISAPI`) utilizzando :term:`CGI` PHP vedi :"
 "ref:`faq1_32`; per l'utilizzo con Apache :term:`CGI` vedi :ref:`faq1_35`."
 
-#: ../phpmyadmin/doc/setup.rst:752
+#: ../phpmyadmin/doc/setup.rst:766
 msgid ""
 "When PHP is running under Apache's :term:`mod_proxy_fcgi` (e.g. with PHP-"
 "FPM), ``Authorization`` headers are not passed to the underlying FCGI "
@@ -1676,7 +1704,7 @@ msgid ""
 "this case, you can add the following configuration directive:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:761
+#: ../phpmyadmin/doc/setup.rst:775
 msgid ""
 "See also :ref:`faq4_4` about not using the :term:`.htaccess` mechanism along "
 "with ':term:`HTTP`' authentication mode."
@@ -1684,7 +1712,7 @@ msgstr ""
 "Vedi anche :ref:`faq4_4` riguardo il non utilizzare il  meccanismo :term:`."
 "htaccess` con la modalità di autenticazione ':term:`HTTP`'."
 
-#: ../phpmyadmin/doc/setup.rst:766
+#: ../phpmyadmin/doc/setup.rst:780
 msgid ""
 "There is no way to do proper logout in HTTP authentication, most browsers "
 "will remember credentials until there is no different successful "
@@ -1692,18 +1720,18 @@ msgid ""
 "login with same user after logout."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:776
+#: ../phpmyadmin/doc/setup.rst:790
 msgid "Cookie authentication mode"
 msgstr "Modalità di autenticazione cookie"
 
 # da19af09203342c6ba0cf96b217b6223
-#: ../phpmyadmin/doc/setup.rst:778
+#: ../phpmyadmin/doc/setup.rst:792
 msgid ""
 "Username and password are stored in cookies during the session and password "
 "is deleted when it ends."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:780
+#: ../phpmyadmin/doc/setup.rst:794
 #, fuzzy
 #| msgid ""
 #| "With this mode, the user can truly log out of phpMyAdmin and log back in "
@@ -1715,7 +1743,7 @@ msgstr ""
 "Con questa modalità, l'utente può uscire da phpMyAdmin (logout) e rientrare "
 "(login) con lo stesso nome utente."
 
-#: ../phpmyadmin/doc/setup.rst:782
+#: ../phpmyadmin/doc/setup.rst:796
 msgid ""
 "If you want to allow users to enter any hostname to connect (rather than "
 "only servers that are configured in :file:`config.inc.php`), see the :config:"
@@ -1725,7 +1753,7 @@ msgstr ""
 "cui collegarsi (piuttosto che solo i server configurati in :file:`config.inc."
 "php`), vedi la direttiva :config:option:`$cfg['AllowArbitraryServer']`."
 
-#: ../phpmyadmin/doc/setup.rst:785
+#: ../phpmyadmin/doc/setup.rst:799
 #, fuzzy
 #| msgid ""
 #| "As mentioned in the :ref:`require` section, having the ``mcrypt`` "
@@ -1737,11 +1765,11 @@ msgstr ""
 "Come menzionato nella sezione :ref:`require`, l'attivazione dell'estensione "
 "``mcrypt`` renderà molto più rapido l'accesso, ma non è comunque richiesta."
 
-#: ../phpmyadmin/doc/setup.rst:793
+#: ../phpmyadmin/doc/setup.rst:807
 msgid "Signon authentication mode"
 msgstr "Modalità di autenticazione Signon"
 
-#: ../phpmyadmin/doc/setup.rst:795
+#: ../phpmyadmin/doc/setup.rst:809
 msgid ""
 "This mode is a convenient way of using credentials from another application "
 "to authenticate to phpMyAdmin to implement single signon solution."
@@ -1751,7 +1779,7 @@ msgstr ""
 "soluzione di login unico (single signon)."
 
 # 82e95387fe434510a8cabebfce92aaf7
-#: ../phpmyadmin/doc/setup.rst:798
+#: ../phpmyadmin/doc/setup.rst:812
 msgid ""
 "The other application has to store login information into session data (see :"
 "config:option:`$cfg['Servers'][$i]['SignonSession']`) or you need to "
@@ -1760,7 +1788,7 @@ msgid ""
 msgstr ""
 
 # dbd12854ee2b43f9a46a8c13de7ac369
-#: ../phpmyadmin/doc/setup.rst:802
+#: ../phpmyadmin/doc/setup.rst:816
 msgid ""
 "When no credentials are available, the user is being redirected to :config:"
 "option:`$cfg['Servers'][$i]['SignonURL']`, where you should handle the login "
@@ -1768,21 +1796,21 @@ msgid ""
 msgstr ""
 
 # e80c63b8073b4facab8a7c44c44240c7
-#: ../phpmyadmin/doc/setup.rst:806
+#: ../phpmyadmin/doc/setup.rst:820
 msgid ""
 "The very basic example of saving credentials in a session is available as :"
 "file:`examples/signon.php`:"
 msgstr ""
 
 # d64dc59ee10549769961c1eb7bd7ea35
-#: ../phpmyadmin/doc/setup.rst:812
+#: ../phpmyadmin/doc/setup.rst:826
 msgid ""
 "Alternatively you can also use this way to integrate with OpenID as shown "
 "in :file:`examples/openid.php`:"
 msgstr ""
 
 # a89ba5c5c9f847d38d85e6a9d037fd5c
-#: ../phpmyadmin/doc/setup.rst:818
+#: ../phpmyadmin/doc/setup.rst:832
 msgid ""
 "If you intend to pass the credentials using some other means than, you have "
 "to implement wrapper in PHP to get that data and set it to :config:option:`"
@@ -1790,7 +1818,7 @@ msgid ""
 "`examples/signon-script.php`:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:827
+#: ../phpmyadmin/doc/setup.rst:841
 msgid ""
 ":config:option:`$cfg['Servers'][$i]['auth_type']`, :config:option:`"
 "$cfg['Servers'][$i]['SignonSession']`, :config:option:`$cfg['Servers'][$i]"
@@ -1798,11 +1826,11 @@ msgid ""
 "`example-signon`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:839
+#: ../phpmyadmin/doc/setup.rst:853
 msgid "Config authentication mode"
 msgstr "Modalità di autenticazione Config"
 
-#: ../phpmyadmin/doc/setup.rst:841
+#: ../phpmyadmin/doc/setup.rst:855
 msgid ""
 "This mode is sometimes the less secure one because it requires you to fill "
 "the :config:option:`$cfg['Servers'][$i]['user']` and :config:option:`"
@@ -1815,7 +1843,7 @@ msgstr ""
 "['password']` (e in questo modo, chiunque abbia accesso al tuo :file:`config."
 "inc.php` può scoprire i tuoi username e password)."
 
-#: ../phpmyadmin/doc/setup.rst:846
+#: ../phpmyadmin/doc/setup.rst:860
 msgid ""
 "In the :ref:`faqmultiuser` section, there is an entry explaining how to "
 "protect your configuration file."
@@ -1823,7 +1851,7 @@ msgstr ""
 "Nella sezione:ref:`faqmultiuser`, c'è una voce che spiega come proteggere i "
 "tuoi file di configurazione."
 
-#: ../phpmyadmin/doc/setup.rst:848
+#: ../phpmyadmin/doc/setup.rst:862
 msgid ""
 "For additional security in this mode, you may wish to consider the Host "
 "authentication :config:option:`$cfg['Servers'][$i]['AllowDeny']['order']` "
@@ -1836,7 +1864,7 @@ msgstr ""
 "['AllowDeny']['rules']`."
 
 # 332e26e3344348dcb4a5e172d199b98f
-#: ../phpmyadmin/doc/setup.rst:851
+#: ../phpmyadmin/doc/setup.rst:865
 msgid ""
 "Unlike cookie and http, does not require a user to log in when first loading "
 "the phpMyAdmin site. This is by design but could allow any user to access "
@@ -1846,57 +1874,57 @@ msgid ""
 "beyond the scope of this manual but easily searchable with Google)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:860
+#: ../phpmyadmin/doc/setup.rst:874
 msgid "Securing your phpMyAdmin installation"
 msgstr "Messa in sicurezza della tua installazione di phpMyAdmin"
 
 # bb6fb4f95b9b46529a83929873a9668a
-#: ../phpmyadmin/doc/setup.rst:862
+#: ../phpmyadmin/doc/setup.rst:876
 msgid ""
 "The phpMyAdmin team tries hard to make the application secure, however there "
 "are always ways to make your installation more secure:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:865
+#: ../phpmyadmin/doc/setup.rst:879
 msgid ""
 "Follow our `Security announcements <https://www.phpmyadmin.net/security/>`_ "
 "and upgrade phpMyAdmin whenever new vulnerability is published."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:867
+#: ../phpmyadmin/doc/setup.rst:881
 msgid ""
 "Serve phpMyAdmin on HTTPS only. Preferably, you should use HSTS as well, so "
 "that you're protected from protocol downgrade attacks."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:869
+#: ../phpmyadmin/doc/setup.rst:883
 msgid ""
 "Ensure your PHP setup follows recommendations for production sites, for "
 "example `display_errors <https://secure.php.net/manual/en/errorfunc."
 "configuration.php#ini.display-errors>`_ should be disabled."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:872
+#: ../phpmyadmin/doc/setup.rst:886
 msgid ""
 "Remove the ``test`` directory from phpMyAdmin, unless you are developing and "
 "need test suite."
 msgstr ""
 
 # be6f0d95f59d4035b2bf222edebfc480
-#: ../phpmyadmin/doc/setup.rst:873
+#: ../phpmyadmin/doc/setup.rst:887
 msgid ""
 "Remove the ``setup`` directory from phpMyAdmin, you will probably not use it "
 "after the initial setup."
 msgstr ""
 
 # 3578464b01a94c72981a23251b96a41b
-#: ../phpmyadmin/doc/setup.rst:875
+#: ../phpmyadmin/doc/setup.rst:889
 msgid ""
 "Properly choose an authentication method - :ref:`cookie` is probably the "
 "best choice for shared hosting."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:877
+#: ../phpmyadmin/doc/setup.rst:891
 #, fuzzy
 #| msgid ""
 #| "You should deny access to the ``./libraries`` and ``./setup/lib`` "
@@ -1918,7 +1946,7 @@ msgstr ""
 "Apache questo livello di sicurezza si ottiene spesso inserendo un file :term:"
 "`.htaccess` nelle sottocartelle da proteggere."
 
-#: ../phpmyadmin/doc/setup.rst:883
+#: ../phpmyadmin/doc/setup.rst:897
 msgid ""
 "It is generally a good idea to protect a public phpMyAdmin installation "
 "against access by robots as they usually can not do anything good there. You "
@@ -1931,7 +1959,7 @@ msgstr ""
 "del vostro server web o limitarne l'accesso mediante configurazione del "
 "server web, vedi :ref:`faq1_42`."
 
-#: ../phpmyadmin/doc/setup.rst:887
+#: ../phpmyadmin/doc/setup.rst:901
 #, fuzzy
 #| msgid ""
 #| "For additional security in this mode, you may wish to consider the Host "
@@ -1949,7 +1977,7 @@ msgstr ""
 "['AllowDeny']['order']` e direttive :config:option:`$cfg['Servers'][$i]"
 "['AllowDeny']['rules']`."
 
-#: ../phpmyadmin/doc/setup.rst:890
+#: ../phpmyadmin/doc/setup.rst:904
 msgid ""
 "Consider hiding phpMyAdmin behind an authentication proxy, so that users "
 "need to authenticate prior to providing MySQL credentials to phpMyAdmin. You "
@@ -1957,7 +1985,7 @@ msgid ""
 "authentication. For example in Apache this can be done with:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:902
+#: ../phpmyadmin/doc/setup.rst:916
 msgid ""
 "Once you have changed the configuration, you need to create a list of users "
 "which can authenticate. This can be done using the :program:`htpasswd` "
@@ -1965,45 +1993,45 @@ msgid ""
 msgstr ""
 
 # 6afba4ed6ba04699a68c0c55131bc141
-#: ../phpmyadmin/doc/setup.rst:909
+#: ../phpmyadmin/doc/setup.rst:923
 msgid ""
 "If you are afraid of automated attacks, enabling Captcha by :config:option:`"
 "$cfg['CaptchaLoginPublicKey']` and :config:option:`"
 "$cfg['CaptchaLoginPrivateKey']` might be an option."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:912
+#: ../phpmyadmin/doc/setup.rst:926
 msgid ""
 "Alternative approach might be using fail2ban as phpMyAdmin logs failed "
 "authentication attempts to syslog (if available)"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:916
+#: ../phpmyadmin/doc/setup.rst:930
 msgid "Known issues"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:919
+#: ../phpmyadmin/doc/setup.rst:933
 msgid "Users with column-specific privileges are unable to \"Browse\""
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:921
+#: ../phpmyadmin/doc/setup.rst:935
 msgid ""
 "If a user has only column-specific privileges on some (but not all) columns "
 "in a table, \"Browse\" will fail with an error message."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:924
+#: ../phpmyadmin/doc/setup.rst:938
 msgid ""
 "As a workaround, a bookmarked query with the same name as the table can be "
 "created, this will run when using the \"Browse\" link instead. `Issue 11922 "
 "<https://github.com/phpmyadmin/phpmyadmin/issues/11922>`_."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:928
+#: ../phpmyadmin/doc/setup.rst:942
 msgid "Trouble logging back in after logging out using 'http' authentication"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:930
+#: ../phpmyadmin/doc/setup.rst:944
 msgid ""
 "When using the 'http' ``auth_type``, it can be impossible to log back in "
 "(when the logout comes manually or after a period of inactivity). `Issue "
@@ -13842,10 +13870,9 @@ msgstr ""
 msgid "<https://en.wikipedia.org/wiki/OS_X>"
 msgstr ""
 
-# 4543281d5e2348f3b7c15608c01fa636
 #: ../phpmyadmin/doc/glossary.rst:267 ../phpmyadmin/doc/import_export.rst:295
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 # cf0d2680979646e88a1d99825df4400e
 #: ../phpmyadmin/doc/glossary.rst:269
