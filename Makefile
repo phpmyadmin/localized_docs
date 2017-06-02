@@ -21,7 +21,7 @@ POFILES=$(addsuffix .po, $(addprefix po/,$(LANGUAGES)))
 MOFILES=$(addsuffix .mo, $(addprefix po/,$(LANGUAGES)))
 INDEXFILES=$(addsuffix /index.html, $(addprefix output/,$(LANGUAGES)))
 
-CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(languages)))
+CONFIGS=$(addsuffix /conf.py, $(addprefix docs/,$(LANGUAGES)))
 
 all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 
