@@ -28,7 +28,7 @@ all: $(FAKE_MOFILES) $(MOFILES) $(CONFIGS)
 SECONDARY: $(POFILES) $(INDEXFILES)
 .phony: all html $(addprefix html-,$(LANGUAGES))
 
-docs/%/conf.py: $(SOURCE_DIR)conf.py Makefile
+docs/%/conf.py: $(SOURCE_DIR)conf.py Makefile $(SOURCES)
 	@mkdir -p docs/$*
 	@cd docs/$* && ln -sf ../../$(SOURCE_DIR)* .
 	@rm -f $@
