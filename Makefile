@@ -59,7 +59,7 @@ translated/%.mo:
 html: $(addprefix html-,$(LANGUAGES))
 
 html-%: output/%/index.html
-	@echo 
+	@echo -n
 
 output/%/index.html: po/%.mo
 	@echo "HTML $*"
