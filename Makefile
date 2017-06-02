@@ -7,6 +7,8 @@ LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN z
 # Documentation source dir
 SOURCE_DIR=phpmyadmin/doc/
 
+SPHINXOPTS=
+
 # Names of pages, this is hardcoded to allow ordering
 SOURCES=$(wildcard $(SOURCE_DIR)*.rst)
 PAGES=$(basename $(notdir $(SOURCES)))
@@ -62,4 +64,4 @@ html-%: output/%/index.html
 output/%/index.html: po/%.mo
 	@echo "HTML $*"
 	@mkdir -p "output/$*"
-	@sphinx-build docs/$*/ output/$*
+	@sphinx-build $(SPHINXOPTS) docs/$*/ output/$*
