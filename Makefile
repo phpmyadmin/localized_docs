@@ -5,7 +5,8 @@
 LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hu nb es de lt ro mn pt_BR zh_CN zh_TW hy en_GB sk sl el da ar bs az et fy sq eo id ko uk
 
 # Names of pages, this is hardcoded to allow ordering
-PAGES=index intro require setup config transformations faq developers vendors copyright credits glossary privileges charts relations other user import_export bookmarks
+SOURCES=$(wildcard phpmyadmin/doc/*.rst)
+PAGES=$(basename $(notdir $(SOURCES)))
 
 # Documentation source dir
 SOURCE_DIR=phpmyadmin/doc/
@@ -33,7 +34,7 @@ docs/%/conf.py: $(SOURCE_DIR)conf.py Makefile
 	@rm -f $@
 	@sed 's/#language = None/language = "$*"\nlocale_dirs = ["..\/..\/translated\/"]/' $< > $@
 
-locale/%.pot: $(addprefix $(SOURCE_DIR), $(addsuffix .rst, $(PAGES)))
+locale/%.pot: $(SOURCES)
 	@make -C $(SOURCE_DIR) gettext BUILDDIR=`pwd`
 
 po/documentation.pot: $(TEMPLATES)
