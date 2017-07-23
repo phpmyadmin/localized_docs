@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 4.8.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 00:01+0200\n"
+"POT-Creation-Date: 2017-07-24 00:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,62 +65,62 @@ msgid "The field 'Browser transformation' is a drop-down field. You can choose f
 msgstr ""
 
 #: ../phpmyadmin/doc/transformations.rst:67
-msgid "The field 'Transformation options' is a free-type textfield. You have to enter transform-function specific options here. Usually the transforms can operate with default options, but it is generally a good idea to look up the overview to see which options are necessary. Much like the ENUM/SET-Fields, you have to split up several options using the format 'a','b','c',...(NOTE THE MISSING BLANKS). This is because internally the options will be parsed as an array, leaving the first value the first element in the array, and so forth. If you want to specify a MIME character set you can define it in the transformation\\_options. You have to put that outside of the pre- defined options of the specific mime-transform, as the last value of the set. Use the format \"'; charset=XXX'\". If you use a transform, for which you can specify 2 options and you want to append a character set, enter \"'first parameter','second parameter','charset=us-ascii'\". You can, however use the defaults for the parameters: \"'','','charset =us-ascii'\"."
+msgid "The field 'Transformation options' is a free-type textfield. You have to enter transform-function specific options here. Usually the transforms can operate with default options, but it is generally a good idea to look up the overview to see which options are necessary. Much like the ENUM/SET-Fields, you have to split up several options using the format 'a','b','c',...(NOTE THE MISSING BLANKS). This is because internally the options will be parsed as an array, leaving the first value the first element in the array, and so forth. If you want to specify a MIME character set you can define it in the transformation\\_options. You have to put that outside of the pre- defined options of the specific mime-transform, as the last value of the set. Use the format \"'; charset=XXX'\". If you use a transform, for which you can specify 2 options and you want to append a character set, enter \"'first parameter','second parameter','charset=us-ascii'\". You can, however use the defaults for the parameters: \"'','','charset =us-ascii'\". The default options can be configured using :config:option:`$cfg['DefaultTransformations']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:87
+#: ../phpmyadmin/doc/transformations.rst:88
 msgid "File structure"
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:89
+#: ../phpmyadmin/doc/transformations.rst:90
 msgid "All specific transformations for mimetypes are defined through class files in the directory 'libraries/classes/Plugins/Transformations/'. Each of them extends a certain transformation abstract class declared in libraries/classes/Plugins/Transformations/Abs."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:94
+#: ../phpmyadmin/doc/transformations.rst:95
 msgid "They are stored in files to ease up customization and easy adding of new transformations."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:97
+#: ../phpmyadmin/doc/transformations.rst:98
 msgid "Because the user cannot enter own mimetypes, it is kept sure that transformations always work. It makes no sense to apply a transformation to a mimetype the transform-function doesn't know to handle."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:102
+#: ../phpmyadmin/doc/transformations.rst:103
 msgid "There is a file called '*transformations.lib.php*' that provides some basic functions which can be included by any other transform function."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:105
+#: ../phpmyadmin/doc/transformations.rst:106
 msgid "The file name convention is ``[Mimetype]_[Subtype]_[Transformation Name].class.php``, while the abtract class that it extends has the name ``[Transformation Name]TransformationsPlugin``. All of the methods that have to be implemented by a transformations plug-in are:"
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:110
+#: ../phpmyadmin/doc/transformations.rst:111
 msgid "getMIMEType() and getMIMESubtype() in the main class;"
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:111
+#: ../phpmyadmin/doc/transformations.rst:112
 msgid "getName(), getInfo() and applyTransformation() in the abstract class it extends."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:114
+#: ../phpmyadmin/doc/transformations.rst:115
 msgid "The getMIMEType(), getMIMESubtype() and getName() methods return the name of the MIME type, MIME Subtype and transformation accordingly. getInfo() returns the transformation's description and possible options it may receive and applyTransformation() is the method that does the actual work of the transformation plug-in."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:120
+#: ../phpmyadmin/doc/transformations.rst:121
 msgid "Please see the libraries/classes/Plugins/Transformations/TEMPLATE and libraries/classes/Plugins/Transformations/TEMPLATE\\_ABSTRACT files for adding your own transformation plug-in. You can also generate a new transformation plug-in (with or without the abstract transformation class), by using :file:`scripts/transformations_generator_plugin.sh` or :file:`scripts/transformations_generator_main_class.sh`."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:128
+#: ../phpmyadmin/doc/transformations.rst:129
 msgid "The applyTransformation() method always gets passed three variables:"
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:130
+#: ../phpmyadmin/doc/transformations.rst:131
 msgid "**$buffer** - Contains the text inside of the column. This is the text, you want to transform."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:132
+#: ../phpmyadmin/doc/transformations.rst:133
 msgid "**$options** - Contains any user-passed options to a transform function as an array."
 msgstr ""
 
-#: ../phpmyadmin/doc/transformations.rst:134
+#: ../phpmyadmin/doc/transformations.rst:135
 msgid "**$meta** - Contains an object with information about your column. The data is drawn from the output of the `mysql\\_fetch\\_field() <https://secure.php.net/mysql_fetch_field>`_ function. This means, all object properties described on the `manual page <https://secure.php.net/mysql_fetch_field>`_ are available in this variable and can be used to transform a column accordingly to unsigned/zerofill/not\\_null/... properties. The $meta->mimetype variable contains the original MIME-type of the column (i.e. 'text/plain', 'image/jpeg' etc.)"
 msgstr ""
 
