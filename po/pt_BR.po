@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
 "POT-Creation-Date: 2017-08-07 00:01+0200\n"
-"PO-Revision-Date: 2017-08-09 12:35+0000\n"
-"Last-Translator: Maurício Meneghini Fauth <mauriciofauth@gmail.com>\n"
+"PO-Revision-Date: 2017-08-09 18:57+0000\n"
+"Last-Translator: George Bezerra <georgelione@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/phpmyadmin/documentation/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -10845,7 +10845,7 @@ msgid ""
 msgstr ""
 "Isso acontece porque a diretiva do MySQL ``lower_case_table_names`` vem por "
 "padrão como 1 (``ON``) na versão Win32 do MySQL. Você pode mudar esse "
-"comportamento simplesmente mudando a diretiva para 0 (``OFF``): apenas edite "
+"comportamento simplesmente mudando a diretiva para 0 (``OFF``): basta editar "
 "seu arquivo ``my.ini`` que deve estar localizado no seu diretório do Windows "
 "e adicionar a seguinte linha ao grupo [mysqld]:"
 
@@ -10855,13 +10855,17 @@ msgid ""
 "insensitive filesystem and access MyISAM tablenames using different "
 "lettercases, index corruption may result."
 msgstr ""
+"Ao forçar esta variável a 0 com --lower-case-table-names=0 em um sistema de "
+"arquivos que não faz distinção entre maiúsculas e minúsculas, o acesso a "
+"tabelas MyISAM usando maiúsculas e minúsculas de forma diferente do nome da "
+"tabela pode resultar em índices corrompidos."
 
 #: ../phpmyadmin/doc/faq.rst:321
 msgid ""
 "Next, save the file and restart the MySQL service. You can always check the "
 "value of this directive using the query"
 msgstr ""
-"A seguir, salve o arquivo e reinicie o serviço do MySQL. Você sempre pode "
+"Em seguida, salve o arquivo e reinicie o serviço MySQL. Você sempre pode "
 "verificar o valor dessa diretiva usando a query"
 
 # 97fd4d27ee054891a510fc6dd56a7145
@@ -11056,7 +11060,7 @@ msgstr ""
 # d3b970f63542480bb25e6f514963719c
 #: ../phpmyadmin/doc/faq.rst:438
 msgid "phpMyAdmin also works fine with HHVM."
-msgstr ""
+msgstr "O phpMyAdmin também funciona bem com HHVM."
 
 # cdc3b7df941c468696a5417fe1523e53
 #: ../phpmyadmin/doc/faq.rst:443
@@ -11364,6 +11368,7 @@ msgstr ""
 #: ../phpmyadmin/doc/faq.rst:574
 msgid "To further improve security, we also recommend these modifications:"
 msgstr ""
+"Para melhorar ainda mais a segurança, também recomendamos estas modificações:"
 
 #: ../phpmyadmin/doc/faq.rst:576
 msgid ""
@@ -11372,6 +11377,11 @@ msgid ""
 "enabled as a mitigation against local file inclusion attacks. We suggest "
 "setting this to 2 as ``../`` is used with the ReCaptcha library."
 msgstr ""
+"`suhosin.executor.include.max\\_traversal "
+"<https://suhosin.org/stories/configuration.html#suhosin-executor-include-max-"
+"traversal>`_ deve estar habilitado como forma de mitigar ataques de inclusão "
+"de arquivos locais. Sugerimos defini-lo como 2, pois ``../`` é usado com a "
+"biblioteca ReCaptcha."
 
 # c7ab8d69aea44ea9b0b1bd8b7d058b3e
 #: ../phpmyadmin/doc/faq.rst:580
@@ -11416,6 +11426,9 @@ msgid ""
 "is using https. Depending on used webserver, you should configure it to let "
 "PHP know about URL and scheme used to access it."
 msgstr ""
+"Isso é causado pelo fato de que os scripts PHP não sabem que o site está "
+"usando o https. Dependendo do servidor web usado, você deve configurá-lo "
+"para permitir que o PHP saiba sobre a URL e o esquema usado para acessá-lo."
 
 # cc9378d1ab214173a3384486f384b426
 #: ../phpmyadmin/doc/faq.rst:596
@@ -11533,22 +11546,28 @@ msgid ""
 "missing features, but can be done. A list of files and corresponding "
 "functionality which degrade gracefully when removed include:"
 msgstr ""
+"Alguns usuários solicitaram poder reduzir o tamanho da instalação do "
+"phpMyAdmin. Isso não é recomendado e pode levar a confusão sobre "
+"características faltantes, mas pode ser feito. Uma lista de arquivos e "
+"correspondentes funcionalidades que degradam suavemente quando removidos "
+"incluem:"
 
 #: ../phpmyadmin/doc/faq.rst:685
 msgid ":file:`./vendor/tecnickcom/tcpdf` folder (exporting to PDF)"
-msgstr ""
+msgstr "Pasta :file:`./vendor/tecnickcom/tcpdf` (exportar para PDF)"
 
 #: ../phpmyadmin/doc/faq.rst:686
 msgid ":file:`./locale/` folder, or unused subfolders (interface translations)"
 msgstr ""
+"Pasta :file:`./locale/`, ou subpastas não utilizadas (traduções de interface)"
 
 #: ../phpmyadmin/doc/faq.rst:687
 msgid "Any unused themes in :file:`./themes/`"
-msgstr ""
+msgstr "Quaisquer temas não usados em :file:`./themes/`"
 
 #: ../phpmyadmin/doc/faq.rst:688
 msgid ":file:`./js/vendor/jquery/src/` (included for licensing reasons)"
-msgstr ""
+msgstr ":file:`./js/vendor/jquery/src/` (incluído por motivos de licenciamento)"
 
 #: ../phpmyadmin/doc/faq.rst:689
 msgid ":file:`./js/line_counts.php`"
@@ -11568,7 +11587,7 @@ msgstr ":file:`./examples/`"
 
 #: ../phpmyadmin/doc/faq.rst:693
 msgid ":file:`./sql/` (SQL scripts to configure advanced functionality)"
-msgstr ""
+msgstr ":file:`./sql/` (scripts SQL para configurar funcionalidades avançadas)"
 
 #: ../phpmyadmin/doc/faq.rst:694
 msgid ":file:`./js/vendor/openlayers/` (GIS visualization)"
@@ -11628,6 +11647,9 @@ msgid ""
 "The error message can also be: :guilabel:`Error #2002 - The server is not "
 "responding (or the local MySQL server's socket is not correctly configured)`."
 msgstr ""
+"A mensagem de erro também pode ser: :guilabel:`Erro #2002 - O servidor não "
+"está respondendo (ou o soquete do servidor MySQL local não está configurado "
+"corretamente)`."
 
 # 748ae02d0fb64f599951da5b1da6f3dd
 #: ../phpmyadmin/doc/faq.rst:728
@@ -11733,6 +11755,8 @@ msgid ""
 "Check your webserver setup if it correctly fills in either PHP_SELF or "
 "REQUEST_URI variables."
 msgstr ""
+"Verifique na configuração do seu servidor web se ele preenche corretamente "
+"as variáveis PHP_SELF ou REQUEST_URI."
 
 # 2a22c7667dbd4809ac5a487326a3e221
 #: ../phpmyadmin/doc/faq.rst:778
@@ -12296,6 +12320,8 @@ msgid ""
 "3.21 I am unable to log in with a username containing unicode characters "
 "such as á."
 msgstr ""
+"3.21 Não consigo fazer login com um nome de usuário contendo caracteres "
+"unicode, como á."
 
 #: ../phpmyadmin/doc/faq.rst:1057
 msgid ""
@@ -12303,6 +12329,10 @@ msgid ""
 "charset. This is a limitation of how PHP and the MySQL server interact; "
 "there is no way for PHP to set the charset before authenticating."
 msgstr ""
+"Isso pode acontecer se o servidor MySQL não estiver configurado para usar "
+"utf-8 como codificação de caracteres padrão. Esta é uma limitação na forma "
+"em que o PHP e o servidor MySQL interagem; não há como o PHP configurar a "
+"codificação de caracteres antes da autenticação."
 
 #: ../phpmyadmin/doc/faq.rst:1063
 msgid ""
@@ -12310,6 +12340,10 @@ msgid ""
 "issues/12232>`_, `MySQL documentation note <https://secure.php.net/manual/en/"
 "mysqli.real-connect.php#refsect1-mysqli.real-connect-notes>`_"
 msgstr ""
+"`Problema 12232 do phpMyAdmin "
+"<https://github.com/phpmyadmin/phpmyadmin/issues/12232>`_, `Nota de "
+"documentação do MySQL <https://secure.php.net/manual/pt_BR/mysqli.real-"
+"connect.php#refsect1-mysqli.real-connect-notes>`_"
 
 # bc00024405fb4a0e8cc97bd910cb7489
 #: ../phpmyadmin/doc/faq.rst:1069
@@ -12544,6 +12578,8 @@ msgid ""
 "For example direct login URL can be constructed as ``https://example.com/"
 "phpmyadmin/?pma_username=user&pma_password=password``."
 msgstr ""
+"Por exemplo, a URL de login direto pode ser construído como "
+"``https://example.com/phpmyadmin/?pma_username=usuario&pma_password=senha``."
 
 # 97217b6452d948f8aac9f480afd3c2d9
 #: ../phpmyadmin/doc/faq.rst:1193
@@ -12826,11 +12862,11 @@ msgstr ""
 
 #: ../phpmyadmin/doc/faq.rst:1348
 msgid "5.20 I get errors about violating Content Security Policy."
-msgstr ""
+msgstr "5.20 Eu recebo erros de violação da Política de Segurança de Conteúdo."
 
 #: ../phpmyadmin/doc/faq.rst:1350 ../phpmyadmin/doc/faq.rst:1377
 msgid "If you see errors like:"
-msgstr ""
+msgstr "Se você vê erros como:"
 
 #: ../phpmyadmin/doc/faq.rst:1356
 msgid ""
@@ -12838,6 +12874,10 @@ msgid ""
 "`Content Security Policy` headers. Usually this is caused by antivirus proxy "
 "or browser addons which are causing such errors."
 msgstr ""
+"Isso geralmente é causado por algum software, que erroneamente reescreve "
+"cabeçalhos da :mailheader:`Content Security Policy`. Geralmente, isso é "
+"causado por um proxy antivírus ou complementos de navegador que causam tais "
+"erros."
 
 #: ../phpmyadmin/doc/faq.rst:1360
 msgid ""
@@ -12845,6 +12885,9 @@ msgid ""
 "disable the :mailheader:`Content Security Policy` rewriting in it. If that "
 "doesn't help, try disabling browser extensions."
 msgstr ""
+"Se você ver esses erros, tente desabilitar o proxy HTTP no antivírus ou "
+"desative a reescrita da :mailheader:`Content Security Policy` nele. Se isso "
+"não ajudar, tente desabilitar as extensões do navegador."
 
 #: ../phpmyadmin/doc/faq.rst:1364
 msgid ""
@@ -12852,10 +12895,14 @@ msgid ""
 "configured to emit :mailheader:`Content Security Policy` headers, they can "
 "override the ones from phpMyAdmin)."
 msgstr ""
+"Alternativamente, isso também pode ser um problema de configuração do "
+"servidor (se o servidor web estiver configurado para emitir cabeçalhos da "
+":mailheader:`Content Security Policy`, eles podem substituir os do "
+"phpMyAdmin)."
 
 #: ../phpmyadmin/doc/faq.rst:1368 ../phpmyadmin/doc/faq.rst:1390
 msgid "Programs known to cause these kind of errors:"
-msgstr ""
+msgstr "Programas conhecidos por causar esse tipo de erro:"
 
 #: ../phpmyadmin/doc/faq.rst:1370
 msgid "Kaspersky Internet Security"
@@ -12866,6 +12913,8 @@ msgid ""
 "5.21 I get errors about potentially unsafe operation when browsing table or "
 "executing SQL query."
 msgstr ""
+"5.21 Eu recebo erros de operação potencialmente insegura ao navegar na "
+"tabela ou executar uma consulta SQL."
 
 #: ../phpmyadmin/doc/faq.rst:1383
 msgid ""
@@ -12873,16 +12922,22 @@ msgid ""
 "It tries to prevent SQL injection, however phpMyAdmin is tool designed to "
 "execute SQL queries, thus it makes it unusable."
 msgstr ""
+"Isso geralmente é causado por um firewall de aplicações web fazendo um "
+"filtro de solicitações. Ele tenta evitar a injeção de SQL, no entanto o "
+"phpMyAdmin é uma ferramenta projetada para executar consultas SQL, portanto "
+"ele torna-o inutilizável."
 
 #: ../phpmyadmin/doc/faq.rst:1387
 msgid ""
 "Please whitelist phpMyAdmin scripts from the web application firewall "
 "settings or disable it completely for phpMyAdmin path."
 msgstr ""
+"Por favor, permita scripts do phpMyAdmin nas configurações do firewall de "
+"aplicações web ou desative-o completamente para o caminho do phpMyAdmin."
 
 #: ../phpmyadmin/doc/faq.rst:1392
 msgid "Wordfence Web Application Firewall"
-msgstr ""
+msgstr "Firewall de Aplicações Web Wordfence"
 
 #: ../phpmyadmin/doc/faq.rst:1397
 msgid "Using phpMyAdmin"
@@ -13027,6 +13082,8 @@ msgid ""
 "Note: For errors while importing of dumps exported from older MySQL versions "
 "to newer MySQL versions, please check :ref:`faq6_41`."
 msgstr ""
+"Nota: Para erros ao importar dumps exportados de versões mais antigas do "
+"MySQL para versões mais recentes, verifique :ref:`faq6_41`."
 
 # 51e30f2dca5346078de17f5ea18ded0d
 #: ../phpmyadmin/doc/faq.rst:1470
@@ -13527,6 +13584,9 @@ msgid ""
 "feature. Once you have done that, you can use bookmarks in the :guilabel:"
 "`SQL` tab."
 msgstr ""
+"Você precisa ter configurado o :ref:`linked-tables` para usar o recurso de "
+"favoritos. Depois de ter feito isso, você poderá usar os favoritos na aba "
+":guilabel:`SQL`."
 
 #: ../phpmyadmin/doc/faq.rst:1702 ../phpmyadmin/doc/faq.rst:1759
 msgid ":ref:`bookmarks`"
@@ -13865,7 +13925,7 @@ msgstr ""
 # 3089fd77b1f94810ad8e139466f0ea01
 #: ../phpmyadmin/doc/faq.rst:1862
 msgid "6.30 Import: How can I import ESRI Shapefiles?"
-msgstr "6.30 Importar: Como eu posso importar arquivos de formatos ESRI?"
+msgstr "6.30 Importação: Como posso importar Shapefiles ESRI?"
 
 # 6816a5dd51c241099d0dcf2e20929b25
 #: ../phpmyadmin/doc/faq.rst:1864
@@ -13876,8 +13936,8 @@ msgid ""
 "dBase extension (--enable-dbase). Otherwise only geometry data will be "
 "imported."
 msgstr ""
-"Um arquivo de formas ESRI é atualmente um conjunto de vários arquivos, onde "
-"o arquivo .shp contém dados geométricos e o arquivo .dbf contém dados "
+"Um Shapefile ESRI é na verdade um conjunto de vários arquivos, onde o "
+"arquivo .shp contém dados geométricos e o arquivo .dbf contém dados "
 "relacionados a estes dados geométricos. Para ler dados do arquivo .dbf você "
 "tem que compilar o PHP com a extensão dBase (--enable-dbase). Caso "
 "contrário, somente os dados geométricos serão importados."
@@ -14341,6 +14401,8 @@ msgid ""
 "6.39 What is the \"Adjust privileges\" option when renaming, copying, or "
 "moving a database, table, column, or procedure?"
 msgstr ""
+"6.39 O que é a opção \"Ajustar privilégios\" ao renomear, copiar ou mover um "
+"banco de dados, tabela, coluna ou procedimento?"
 
 #: ../phpmyadmin/doc/faq.rst:2093
 msgid ""
@@ -14349,6 +14411,11 @@ msgid ""
 "selecting this option, phpMyAdmin will adjust the privilege table so that "
 "users have the same privileges on the new items."
 msgstr ""
+"Ao renomear/copiar/mover um banco de dados/tabela/coluna/procedimento, o "
+"MySQL não ajusta os privilégios originais relacionados a esses objetos por "
+"conta própria. Ao selecionar esta opção, o phpMyAdmin ajustará a tabela de "
+"privilégios para que os usuários tenham os mesmos privilégios nos novos "
+"itens."
 
 #: ../phpmyadmin/doc/faq.rst:2098
 msgid ""
@@ -14357,6 +14424,11 @@ msgid ""
 "would **not** adjust the column privileges to the new column name. "
 "phpMyAdmin can make this adjustment for you automatically."
 msgstr ""
+"Por exemplo: o usuário 'bob'@'localhost' tem o privilégio 'SELECT' em uma "
+"coluna chamada 'id'. Agora se esta coluna for renomeada para 'id_new', o "
+"MySQL, por conta própria, **não** ajustará os privilégios da coluna ao novo "
+"nome da coluna. O phpMyAdmin pode fazer este ajuste para você "
+"automaticamente."
 
 #: ../phpmyadmin/doc/faq.rst:2103
 msgid "Notes:"
@@ -14368,28 +14440,38 @@ msgid ""
 "related elements (tables, columns and procedures) are also adjusted to the "
 "database's new name."
 msgstr ""
+"Ao ajustar os privilégios para um banco de dados, os privilégios de todos os "
+"elementos relacionados ao banco de dados (tabelas, colunas e procedimentos) "
+"também são ajustados ao novo nome do banco de dados."
 
 #: ../phpmyadmin/doc/faq.rst:2109
 msgid ""
 "Similarly, while adjusting privileges for a table, the privileges of all the "
 "columns inside the new table are also adjusted."
 msgstr ""
+"Da mesma forma, ao ajustar privilégios para uma tabela, os privilégios de "
+"todas as colunas dentro da nova tabela também são ajustados."
 
 #: ../phpmyadmin/doc/faq.rst:2112
 msgid ""
 "While adjusting privileges, the user performing the operation **must** have "
 "the following privileges:"
 msgstr ""
+"Ao ajustar privilégios, o usuário que executa a operação **deve** ter os "
+"seguintes privilégios:"
 
 #: ../phpmyadmin/doc/faq.rst:2115
 msgid ""
 "SELECT, INSERT, UPDATE, DELETE privileges on following tables: `mysql`.`db`, "
 "`mysql`.`columns_priv`, `mysql`.`tables_priv`, `mysql`.`procs_priv`"
 msgstr ""
+"Privilégios de SELECT, INSERT, UPDATE e DELETE nas seguintes tabelas: "
+"`mysql`.`db`, `mysql`.`columns_priv`, `mysql`.`tables_priv`, "
+"`mysql`.`procs_priv`"
 
 #: ../phpmyadmin/doc/faq.rst:2117
 msgid "FLUSH privilege (GLOBAL)"
-msgstr ""
+msgstr "Privilégio de FLUSH (GLOBAL)"
 
 #: ../phpmyadmin/doc/faq.rst:2119
 msgid ""
@@ -14397,12 +14479,17 @@ msgid ""
 "while renaming/copying/moving these objects, make sure you have checked this "
 "option."
 msgstr ""
+"Assim, se você deseja replicar o banco de dados/tabela/coluna/procedimento "
+"tal como ele é ao renomear/copiar/mover esses objetos, certifique-se de que "
+"essa opção esteja marcada."
 
 #: ../phpmyadmin/doc/faq.rst:2125
 msgid ""
 "6.40 I see \"Bind parameters\" checkbox in the \"SQL\" page. How do I write "
 "parameterized SQL queries?"
 msgstr ""
+"6.40 Vejo a caixa de seleção \"Ligar parâmetros\" na página \"SQL\". Como "
+"faço para escrever consultas SQL parametrizadas?"
 
 #: ../phpmyadmin/doc/faq.rst:2127
 msgid ""
@@ -14413,6 +14500,12 @@ msgid ""
 "entered in these field will be substituted in the query before being "
 "executed."
 msgstr ""
+"A partir da versão 4.5, o phpMyAdmin permite aos usuários executar consultas "
+"parametrizadas na página \"SQL\". Os parâmetros devem ser prefixados com "
+"dois pontos (:) e quando a caixa de seleção \"Ligar parâmetros\" estiver "
+"marcada, esses parâmetros serão identificados e os campos de entrada para "
+"esses parâmetros serão apresentados. Os valores inseridos nesses campos "
+"serão substituídos na consulta antes de serem executados."
 
 #: ../phpmyadmin/doc/faq.rst:2135
 msgid ""
@@ -14420,6 +14513,9 @@ msgid ""
 "versions (pre-5.7.6) into newer MySQL versions (5.7.7+), but they work fine "
 "when imported back on same older versions ?"
 msgstr ""
+"6.41 Recebo erros de importação ao importar dumps exportados de versões "
+"anteriores do MySQL (pré-5.7.6) para versões mais novas (5.7.7+), mas eles "
+"funcionam bem quando importados de volta nas mesmas versões antigas?"
 
 #: ../phpmyadmin/doc/faq.rst:2137
 msgid ""
@@ -14431,6 +14527,13 @@ msgid ""
 "parameters.html#sysvar_innodb_strict_mode>`_ would define if this would be "
 "reported as a warning or as an error."
 msgstr ""
+"Se você receber erros como *#1031 - O mecanismo de armazenamento de tabelas "
+"para 'nome_da_tabela' não possui esta opção* ao importar os dumps exportados "
+"de servidores MySQL pré-5.7.7 para versões do MySQL 5.7.7+, pode ser porque "
+"ROW_FORMAT = FIXED não é suportado em tabelas InnoDB. Além disso, o valor de "
+"`innodb_strict_mode <https://dev.mysql.com/doc/refman/5.7/en/innodb-"
+"parameters.html#sysvar_innodb_strict_mode>`_ definirá se isso será relatado "
+"como um aviso ou como um erro."
 
 #: ../phpmyadmin/doc/faq.rst:2142
 msgid ""
@@ -14438,34 +14541,42 @@ msgid ""
 "`ON` and thus would generate an error when such a CREATE TABLE or ALTER "
 "TABLE statement is encountered."
 msgstr ""
+"Desde a versão 5.7.9 do MySQL, o valor padrão para `innodb_strict_mode` é "
+"`ON` e, portanto, gerará um erro quando uma instrução CREATE TABLE ou ALTER "
+"TABLE desse tipo for encontrada."
 
 #: ../phpmyadmin/doc/faq.rst:2145
 msgid "There are two ways of preventing such errors while importing:"
-msgstr ""
+msgstr "Existem duas maneiras de prevenir tais erros ao importar:"
 
 #: ../phpmyadmin/doc/faq.rst:2147
 msgid ""
 "Change the value of `innodb_strict_mode` to `OFF` before starting the import "
 "and turn it `ON` after the import is successfully completed."
 msgstr ""
+"Mudar o valor de `innodb_strict_mode` para `OFF` antes de iniciar a "
+"importação e mudar para `ON` depois que a importação for concluída com "
+"sucesso."
 
 #: ../phpmyadmin/doc/faq.rst:2149
 msgid "This can be achieved in two ways:"
-msgstr ""
+msgstr "Isso pode ser obtido de duas maneiras:"
 
 #: ../phpmyadmin/doc/faq.rst:2151
 msgid "Go to 'Variables' page and edit the value of `innodb_strict_mode`"
-msgstr ""
+msgstr "Vá para a página 'Variáveis' e edite o valor de `innodb_strict_mode`"
 
 #: ../phpmyadmin/doc/faq.rst:2152
 msgid "Run the query : `SET GLOBAL `innodb_strict_mode` = '[value]'`"
-msgstr ""
+msgstr "Execute a consulta: `SET GLOBAL `innodb_strict_mode` = '[value]'`"
 
 #: ../phpmyadmin/doc/faq.rst:2154
 msgid ""
 "After the import is done, it is suggested that the value of "
 "`innodb_strict_mode` should be reset to the original value."
 msgstr ""
+"Depois que a importação for concluída, sugere-se que o valor de "
+"`innodb_strict_mode` seja resetado para o valor original."
 
 #: ../phpmyadmin/doc/faq.rst:2160
 msgid "phpMyAdmin project"
@@ -14482,6 +14593,10 @@ msgid ""
 "issues>. For security issues, please refer to the instructions at <https://"
 "www.phpmyadmin.net/security> to email the developers directly."
 msgstr ""
+"Nosso rastreador de problemas está localizado em "
+"<https://github.com/phpmyadmin/phpmyadmin/issues>. Para questões de "
+"segurança, consulte as instruções em <https://www.phpmyadmin.net/security> "
+"para enviar um e-mail diretamente aos desenvolvedores."
 
 # 98c5559ce3144bac9ea2a8c765bc06a8
 #: ../phpmyadmin/doc/faq.rst:2174
@@ -14607,18 +14722,24 @@ msgstr ""
 #: ../phpmyadmin/doc/faq.rst:2236
 msgid "8.3 Why are there path disclosures when directly loading certain files?"
 msgstr ""
+"8.3 Por que existem caminhos sendo exibidos ao carregar diretamente "
+"determinados arquivos?"
 
 #: ../phpmyadmin/doc/faq.rst:2238
 msgid ""
 "This is a server configuration problem. Never enable ``display_errors`` on a "
 "production site."
 msgstr ""
+"Esse é um problema de configuração do servidor. Nunca habilite "
+"``display_errors`` em um site de produção."
 
 #: ../phpmyadmin/doc/faq.rst:2243
 msgid ""
 "8.4 CSV files exported from phpMyAdmin could allow a formula injection "
 "attack."
 msgstr ""
+"8.4 Os arquivos CSV exportados do phpMyAdmin podem permitir um ataque de "
+"injeção de fórmula."
 
 #: ../phpmyadmin/doc/faq.rst:2245
 msgid ""
@@ -14626,6 +14747,9 @@ msgid ""
 "spreadsheet program such as Microsoft Excel, could potentially allow the "
 "execution of arbitrary commands."
 msgstr ""
+"É possível gerar um arquivo :term:`CSV` que, ao ser importado para um "
+"programa de planilhas como o Microsoft Excel, poderia potencialmente "
+"permitir a execução de comandos arbitrários."
 
 #: ../phpmyadmin/doc/faq.rst:2248
 msgid ""
@@ -14638,12 +14762,24 @@ msgid ""
 "length and feel it is the responsibility of the spreadsheet program to "
 "properly parse and sanitize such data on input instead."
 msgstr ""
+"Os arquivos CSV gerados pelo phpMyAdmin podem potencialmente conter texto "
+"que seria interpretado por um programa de planilhas como uma fórmula, mas "
+"não acreditamos que escapar esses campos seja o comportamento apropriado. "
+"Não há como escapar e diferenciar apropriadamente entre uma saída de texto "
+"desejada e uma fórmula que deveria ser escapada, e o CSV é um formato de "
+"texto onde definições de função não deveriam ser interpretadas, de qualquer "
+"forma. Nós discutimos isso extensivamente e acreditamos que, ao invés disso, "
+"é responsabilidade do programa de planilhas analisar e tratar adequadamente "
+"tais dados na entrada."
 
 #: ../phpmyadmin/doc/faq.rst:2254
 msgid ""
 "Google also has a `similar view <https://sites.google.com/site/"
 "bughunteruniversity/nonvuln/csv-excel-formula-injection>`_."
 msgstr ""
+"O Google também tem uma `visão similar "
+"<https://sites.google.com/site/bughunteruniversity/nonvuln/csv-excel-formula-"
+"injection>`_."
 
 #: ../phpmyadmin/doc/faq.rst:2259
 msgid "Synchronization"
@@ -14673,6 +14809,10 @@ msgid ""
 "for Effective MySQL Management by Marc Delisle. You can get information on "
 "that book and other officially endorsed `books at the phpMyAdmin site`_."
 msgstr ""
+"O guia definitivo de uso do phpMyAdmin é o livro Mastering phpMyAdmin for "
+"Effective MySQL Management, do Marc Delisle. Você pode obter informações "
+"sobre esse livro e outros livros oficialmente aprovados `no site do "
+"phpMyAdmin`_."
 
 #: ../phpmyadmin/doc/other.rst:14
 msgid "Tutorials"
@@ -14680,7 +14820,7 @@ msgstr "Tutoriais"
 
 #: ../phpmyadmin/doc/other.rst:16
 msgid "Third party tutorials and articles which you might find interesting:"
-msgstr ""
+msgstr "Tutoriais e artigos de terceiros que você pode achar interessantes:"
 
 #: ../phpmyadmin/doc/other.rst:19
 msgid "Česky (Czech)"
@@ -15505,12 +15645,16 @@ msgid ""
 "The PHP `mbstring` functions provide support for languages represented by "
 "multi-byte character sets, most notably UTF-8."
 msgstr ""
+"As funções `mbstring` do PHP fornecem suporte para idiomas representados por "
+"conjuntos de caracteres de vários bytes, em especial o UTF-8."
 
 #: ../phpmyadmin/doc/glossary.rst:209
 msgid ""
 "If you have troubles installing this extension, please follow :ref:"
 "`faqmysql`, it provides useful hints."
 msgstr ""
+"Se você tiver problemas ao instalar esta extensão, verifique o "
+":ref:`faqmysql`, ele fornece dicas úteis."
 
 #: ../phpmyadmin/doc/glossary.rst:211
 msgid "<https://secure.php.net/manual/en/book.mbstring.php>"
@@ -15588,6 +15732,8 @@ msgid ""
 "an Apache module implmenting a Fast CGI interface; PHP can be run as a CGI "
 "module, FastCGI, or directly as an Apache module."
 msgstr ""
+"um módulo Apache que implementa uma interface FastCGI; o PHP pode ser "
+"executado como um módulo CGI, FastCGI ou diretamente como um módulo Apache."
 
 # cfb0ec268a0648e8af4d8dfa7bd3ed02
 #: ../phpmyadmin/doc/glossary.rst:237
@@ -15772,6 +15918,13 @@ msgid ""
 "primary key is defined MySQL will use first *unique key* as primary key if "
 "there is one."
 msgstr ""
+"Uma chave primária é um índice para um ou mais campos de uma tabela com "
+"valores únicos para cada linha nessa tabela. Toda tabela deve ter uma chave "
+"primária para facilitar o acesso/identificação de dados nessa tabela. Só "
+"pode haver uma chave primária por tabela e ela é sempre chamada **PRIMARY**. "
+"Na verdade, uma chave primária é apenas uma :term:`unique key` com o nome "
+"**PRIMARY**. Se nenhum chave primária for definida, o MySQL usará a primeira "
+"*chave única* como chave primária, se existir uma."
 
 #: ../phpmyadmin/doc/glossary.rst:303
 msgid ""
@@ -15779,6 +15932,9 @@ msgid ""
 "check the primary key radio buttons for each field you wish to be part of "
 "the primary key)."
 msgstr ""
+"Você pode criar a chave primária ao criar a tabela (no phpMyAdmin basta "
+"selecionar as opções de chave primária para cada campo que você deseja que "
+"faça parte da chave primária)."
 
 #: ../phpmyadmin/doc/glossary.rst:307
 msgid ""
@@ -15786,6 +15942,10 @@ msgid ""
 "`CREATE` `INDEX` (in phpMyAdmin you can just click on 'add index' on the "
 "table structure page below the listed fields)."
 msgstr ""
+"Você também pode adicionar uma chave primária a uma tabela existente com "
+"`ALTER` `TABLE` ou `CREATE` `INDEX` (no phpMyAdmin basta clicar em "
+"'adicionar índice' na página de estrutura da tabela, abaixo dos campos "
+"listados)."
 
 # 56fa17f1e1f14625b2959aae8f4a0c7a
 #: ../phpmyadmin/doc/glossary.rst:310
@@ -15864,12 +16024,18 @@ msgid ""
 "called storage engines or table types. phpMyAdmin allows a user to change "
 "their storage engine for a particular table through the operations tab."
 msgstr ""
+"O MySQL pode usar vários formatos diferentes para armazenar dados no disco, "
+"estes são chamados de mecanismos de armazenamento ou tipos de tabela. O "
+"phpMyAdmin permite que um usuário altere seu mecanismo de armazenamento para "
+"uma tabela específica através da aba de operações."
 
 #: ../phpmyadmin/doc/glossary.rst:339
 msgid ""
 "Common table types are InnoDB and MyISAM, though many others exist and may "
 "be desirable in some situations."
 msgstr ""
+"Tipos de tabela comuns são o InnoDB e o MyISAM, embora existam muitos outros "
+"que podem ser desejáveis em algumas situações."
 
 # 85a0a196f6354c29860ebf4d5086928a
 #: ../phpmyadmin/doc/glossary.rst:342
@@ -16007,7 +16173,7 @@ msgstr "TCPDF"
 
 #: ../phpmyadmin/doc/glossary.rst:385
 msgid "PHP library to generate PDF files."
-msgstr ""
+msgstr "biblioteca PHP para gerar arquivos PDF."
 
 #: ../phpmyadmin/doc/glossary.rst:387
 msgid "<https://tcpdf.org/>"
@@ -16034,7 +16200,7 @@ msgstr "<https://pt.wikipedia.org/wiki/Gatilho_(banco_de_dados)>"
 
 #: ../phpmyadmin/doc/glossary.rst:393
 msgid "unique key"
-msgstr ""
+msgstr "chave única"
 
 #: ../phpmyadmin/doc/glossary.rst:395
 msgid ""
@@ -16042,6 +16208,9 @@ msgid ""
 "unique value for each row.  The first unique key will be treated as :term:"
 "`primary key` if there is no *primary key* defined."
 msgstr ""
+"Uma chave única é um índice para um ou mais campos de uma tabela que tenham "
+"um valor único para cada linha. A primeira chave única será tratada como "
+":term:`primary key` se não houver uma *chave primária* definida."
 
 # 87cf2b5d7adf46a4a132934551befdd5
 #: ../phpmyadmin/doc/glossary.rst:398
@@ -16156,6 +16325,9 @@ msgid ""
 "a specific database or table, open the database or table before going to the "
 "\"Import\" tab."
 msgstr ""
+"Para importar dados, vá para a aba \"Importar\" no phpMyAdmin. Para importar "
+"dados em um banco de dados ou tabela específica, abra o banco de dados ou "
+"tabela antes de ir para a aba \"Importar\"."
 
 #: ../phpmyadmin/doc/import_export.rst:11
 msgid ""
@@ -16163,38 +16335,45 @@ msgid ""
 "SQL file directly by dragging and dropping it from your local file manager "
 "to the phpMyAdmin interface in your web browser."
 msgstr ""
+"Além das abas padrão de Importar e Exportar, você também pode importar um "
+"arquivo SQL diretamente arrastando e soltando-o do seu gerenciador de "
+"arquivos para a interface do phpMyAdmin no seu navegador."
 
 #: ../phpmyadmin/doc/import_export.rst:15
 msgid ""
 "If you are having troubles importing big files, please consult :ref:"
 "`faq1_16`."
 msgstr ""
+"Se você tiver problemas para importar arquivos grandes, consulte "
+":ref:`faq1_16`."
 
 #: ../phpmyadmin/doc/import_export.rst:17
 msgid "You can import using following methods:"
-msgstr ""
+msgstr "Você pode importar usando os seguintes métodos:"
 
 #: ../phpmyadmin/doc/import_export.rst:19
 msgid "Form based upload"
-msgstr ""
+msgstr "Upload via formulário"
 
 #: ../phpmyadmin/doc/import_export.rst:21
 msgid ""
 "Can be used with any supported format, also (b|g)zipped files, e.g., mydump."
 "sql.gz ."
 msgstr ""
+"Pode ser usado com qualquer formato suportado e também com arquivos (b|g)"
+"zipados, por exemplo, mydump.sql.gz ."
 
 #: ../phpmyadmin/doc/import_export.rst:23
 msgid "Form based SQL Query"
-msgstr ""
+msgstr "Consulta SQL via formulário"
 
 #: ../phpmyadmin/doc/import_export.rst:25
 msgid "Can be used with valid SQL dumps."
-msgstr ""
+msgstr "Pode ser usada com dumps SQL válidos."
 
 #: ../phpmyadmin/doc/import_export.rst:27
 msgid "Using upload directory"
-msgstr ""
+msgstr "Usando um diretório de upload"
 
 #: ../phpmyadmin/doc/import_export.rst:29
 msgid ""
@@ -16203,10 +16382,15 @@ msgid ""
 "file in the import dialog of phpMyAdmin, see :config:option:`"
 "$cfg['UploadDir']`."
 msgstr ""
+"Você pode especificar um diretório de upload no seu servidor web onde o "
+"phpMyAdmin está instalado, após fazer o upload do arquivo para esse "
+"diretório você pode selecioná-lo na caixa de diálogo de importação do "
+"phpMyAdmin, veja :config:option:`$cfg['UploadDir']`."
 
 #: ../phpmyadmin/doc/import_export.rst:32
 msgid "phpMyAdmin can import from several various commonly used formats."
 msgstr ""
+"O phpMyAdmin pode importar a partir de vários formatos comumente usados."
 
 #: ../phpmyadmin/doc/import_export.rst:37
 #: ../phpmyadmin/doc/import_export.rst:132
@@ -16214,6 +16398,8 @@ msgid ""
 "Comma separated values format which is often used by spreadsheets or various "
 "other programs for export/import."
 msgstr ""
+"Formato de valores separados por vírgula (CSV) que é frequentemente usado "
+"por planilhas ou vários outros programas para exportação/importação."
 
 #: ../phpmyadmin/doc/import_export.rst:41
 msgid ""
@@ -16222,6 +16408,10 @@ msgid ""
 "the CSV field to be '0' (zero). This allows the 'auto_increment' field to "
 "populate correctly."
 msgstr ""
+"Ao importar dados de um arquivo CSV para uma tabela com um campo "
+"'auto_increment', deixe o valor do campo 'auto_increment' em cada registro "
+"do CSV igual a '0' (zero). Isso permite que o campo com 'auto_increment' "
+"seja preenchido corretamente."
 
 #: ../phpmyadmin/doc/import_export.rst:46
 msgid ""
@@ -16230,6 +16420,11 @@ msgid ""
 "structure will be determined for you and the data imported into it, instead. "
 "All other features, requirements, and limitations are as before."
 msgstr ""
+"Agora é possível importar um arquivo CSV no nível do servidor ou do banco de "
+"dados. Ao invés de ter que criar uma tabela para importar o arquivo CSV, uma "
+"estrutura que melhor se ajuste aos dados será determinada para você e os "
+"dados serão importados nela. Todos os outros recursos, requisitos e "
+"limitações permanecem como antes."
 
 #: ../phpmyadmin/doc/import_export.rst:52
 msgid "CSV using LOAD DATA"
@@ -16240,10 +16435,12 @@ msgid ""
 "Similar to CSV, only using the internal MySQL parser and not the phpMyAdmin "
 "one."
 msgstr ""
+"Similar ao CSV, só que usando o analisador interno do MySQL e não o do "
+"phpMyAdmin."
 
 #: ../phpmyadmin/doc/import_export.rst:57
 msgid "ESRI Shape File"
-msgstr "Arquivo de formas ESRI"
+msgstr "Shapefile ESRI"
 
 #: ../phpmyadmin/doc/import_export.rst:59
 msgid ""
@@ -16252,6 +16449,11 @@ msgid ""
 "regulated by Esri as a (mostly) open specification for data interoperability "
 "among Esri and other software products."
 msgstr ""
+"O shapefile ESRI, ou simplesmente shapefile, é um formato popular de dados "
+"vetoriais geoespaciais para softwares de sistemas de informação geogŕafica. "
+"Ele é desenvolvido e regulado pela Esri como uma especificação (em grande "
+"parte) aberta para interoperabilidade de dados entre a Esri e outros "
+"produtos de software."
 
 #: ../phpmyadmin/doc/import_export.rst:65
 #: ../phpmyadmin/doc/import_export.rst:273
@@ -16264,6 +16466,9 @@ msgid ""
 "can now also be imported. This is the format used by Wikipedia to display "
 "tables."
 msgstr ""
+"Arquivos MediaWiki, que podem ser exportados pelo phpMyAdmin (versão 4.0 ou "
+"posterior), agora também podem ser importados. Este é o formato usado pela "
+"Wikipédia para exibir tabelas."
 
 #: ../phpmyadmin/doc/import_export.rst:72
 msgid "Open Document Spreadsheet (ODS)"
@@ -16274,12 +16479,16 @@ msgid ""
 "OpenDocument workbooks containing one or more spreadsheets can now be "
 "directly imported."
 msgstr ""
+"Os arquivos OpenDocument contendo uma ou mais planilhas agora podem ser "
+"importados diretamente."
 
 #: ../phpmyadmin/doc/import_export.rst:76
 msgid ""
 "When importing an ODS speadsheet, the spreadsheet must be named in a "
 "specific way in order to make the import as simple as possible."
 msgstr ""
+"Ao importar uma planilha ODS, ela deve ser nomeada de forma específica para "
+"tornar a importação tão simples quanto possível."
 
 #: ../phpmyadmin/doc/import_export.rst:80
 msgid "Table name"
@@ -16293,6 +16502,10 @@ msgid ""
 "concern since you could quickly rename the new table from the Operations "
 "tab)."
 msgstr ""
+"Durante a importação, o phpMyAdmin usa o nome da folha como o nome da tabela;"
+" você deve renomear a folha em sua planilha para combinar com o nome da "
+"tabela existente (ou da tabela que deseja criar, apesar que nesse caso você "
+"pode renomear rapidamente a nova tabela na aba Operações)."
 
 #: ../phpmyadmin/doc/import_export.rst:87
 msgid "Column names"
@@ -16306,6 +16519,11 @@ msgid ""
 "\"The first line of the file contains the table column names;\" this way "
 "your newly imported data will go to the proper columns."
 msgstr ""
+"Você também deve fazer, na primeira linha de sua planilha, um cabeçalho com "
+"os nomes das colunas (isso pode ser obtido inserindo uma nova linha na parte "
+"superior da planilha). Na tela Importar, marque a caixa de seleção para \"A "
+"primeira linha do arquivo contém os nomes das colunas da tabela\"; desta "
+"forma, os dados recém-importados irão para as colunas apropriadas."
 
 #: ../phpmyadmin/doc/import_export.rst:96
 msgid ""
@@ -16313,12 +16531,17 @@ msgid ""
 "the most recent save will be loaded. Please ensure that all values in the "
 "spreadsheet are as needed before importing it."
 msgstr ""
+"As fórmulas e os cálculos NÃO serão avaliados, ao invés disso, o valor da "
+"última versão salva será carregado. Certifique-se de que todos os valores na "
+"planilha estão no formato necessário antes de importá-la."
 
 #: ../phpmyadmin/doc/import_export.rst:103
 msgid ""
 "SQL can be used to make any manipulation on data, it is also useful for "
 "restoring backed up data."
 msgstr ""
+"O SQL pode ser usado para fazer qualquer manipulação em dados e também é "
+"útil para restaurar dados de backup."
 
 #: ../phpmyadmin/doc/import_export.rst:108
 msgid ""
@@ -16326,10 +16549,13 @@ msgid ""
 "imported. Structures (databases, tables, views, triggers, etc.) and/or data "
 "will be created depending on the contents of the file."
 msgstr ""
+"Os arquivos XML exportados pelo phpMyAdmin (versão 3.3.0 ou posterior) agora "
+"podem ser importados. Estruturas (bancos de dados, tabelas, visualizações, "
+"gatilhos, etc.) e/ou dados serão criados dependendo do conteúdo do arquivo."
 
 #: ../phpmyadmin/doc/import_export.rst:112
 msgid "The supported xml schemas are not yet documented in this wiki."
-msgstr ""
+msgstr "Os esquemas xml suportados ainda não estão documentados neste wiki."
 
 # e40fccb663d84ce58a31a81aa88070ff
 #: ../phpmyadmin/doc/import_export.rst:116
@@ -16342,6 +16568,9 @@ msgid ""
 "(or a special the webserver :config:option:`$cfg['SaveDir']` folder) in "
 "various commonly used formats:"
 msgstr ""
+"O phpMyAdmin pode exportar para arquivos de texto (até mesmo compactados) no "
+"seu disco local (ou em uma pasta especial :config:option:`$cfg['SaveDir']` "
+"no servidor web) em vários formatos comumente usados:"
 
 #: ../phpmyadmin/doc/import_export.rst:123
 msgid "CodeGen"
@@ -16353,6 +16582,9 @@ msgid ""
 "Planned versions: Java, Hibernate, PHP PDO, JSON, etc. So the preliminary "
 "name is codegen."
 msgstr ""
+"Formato de arquivo `NHibernate <https://pt.wikipedia.org/wiki/NHibernate>`_. "
+"Versões planejadas: Java, Hibernate, PHP PDO, JSON, etc. O nome preliminar é "
+"codegen."
 
 #: ../phpmyadmin/doc/import_export.rst:136
 msgid "CSV for Microsoft Excel"
@@ -16364,6 +16596,10 @@ msgid ""
 "most English versions of Microsoft Excel. Some localised versions (like "
 "\"Danish\") are expecting \";\" instead of \",\" as field separator."
 msgstr ""
+"Esta é só uma versão pré-configurada da exportação CSV que pode ser "
+"importada na maioria das versões em inglês do Microsoft Excel. Algumas "
+"versões localizadas (como o português) esperam \";\" em vez de \",\" como "
+"separador de campo."
 
 #: ../phpmyadmin/doc/import_export.rst:143
 msgid "Microsoft Word 2000"
@@ -16374,6 +16610,8 @@ msgid ""
 "If you're using Microsoft Word 2000 or newer (or compatible such as "
 "OpenOffice.org), you can use this export."
 msgstr ""
+"Se você estiver usando o Microsoft Word 2000 ou mais recente (ou compatível, "
+"como o OpenOffice.org), você pode usar essa exportação."
 
 #: ../phpmyadmin/doc/import_export.rst:149
 msgid "JSON"
@@ -16385,20 +16623,25 @@ msgid ""
 "It is easy for humans to read and write and it is easy for machines to parse "
 "and generate."
 msgstr ""
+"JSON (JavaScript Object Notation) é um formato leve de intercâmbio de dados. "
+"É fácil para humanos lerem e escreverem e é fácil para máquinas analisarem e "
+"gerarem."
 
 #: ../phpmyadmin/doc/import_export.rst:157
 msgid ""
 "The generated JSON structure has been changed in phpMyAdmin 4.7.0 to produce "
 "valid JSON data."
 msgstr ""
+"A estrutura JSON gerada foi alterada no phpMyAdmin 4.7.0 para produzir dados "
+"JSON válidos."
 
 #: ../phpmyadmin/doc/import_export.rst:160
 msgid "The generated JSON is list of objects with following attributes:"
-msgstr ""
+msgstr "O JSON gerado é uma lista de objetos com os seguintes atributos:"
 
 #: ../phpmyadmin/doc/import_export.rst:164
 msgid "Type of given object, can be one of:"
-msgstr ""
+msgstr "Tipo do objeto em questão, pode ser um dos seguintes:"
 
 #: ../phpmyadmin/doc/import_export.rst:166
 msgid "``header``"
@@ -16406,7 +16649,7 @@ msgstr "``header``"
 
 #: ../phpmyadmin/doc/import_export.rst:167
 msgid "Export header containing comment and phpMyAdmin version."
-msgstr ""
+msgstr "Cabeçalho de exportação contendo comentários e versão do phpMyAdmin."
 
 #: ../phpmyadmin/doc/import_export.rst:168
 msgid "``database``"
@@ -16415,6 +16658,7 @@ msgstr "``database``"
 #: ../phpmyadmin/doc/import_export.rst:169
 msgid "Start of a database marker, containing name of database."
 msgstr ""
+"Início de um marcador de banco de dados, contendo o nome do banco de dados."
 
 # 34b6f5360bb741f599fb042d15ef208f
 #: ../phpmyadmin/doc/import_export.rst:170
@@ -16423,31 +16667,31 @@ msgstr "``table``"
 
 #: ../phpmyadmin/doc/import_export.rst:171
 msgid "Table data export."
-msgstr ""
+msgstr "Exportação de dados da tabela."
 
 #: ../phpmyadmin/doc/import_export.rst:175
 msgid "Used in ``header`` :js:data:`type` and indicates phpMyAdmin version."
-msgstr ""
+msgstr "Usado no :js:data:`type` ``header`` e indica a versão do phpMyAdmin."
 
 #: ../phpmyadmin/doc/import_export.rst:179
 msgid "Optional textual comment."
-msgstr ""
+msgstr "Comentário de texto opcional."
 
 #: ../phpmyadmin/doc/import_export.rst:183
 msgid "Object name - either table or database based on :js:data:`type`."
-msgstr ""
+msgstr "Nome do objeto - tabela ou banco de dados, com base no :js:data:`type`."
 
 #: ../phpmyadmin/doc/import_export.rst:187
 msgid "Database name for ``table`` :js:data:`type`."
-msgstr ""
+msgstr "Nome do banco de dados para o :js:data:`type` ``table``."
 
 #: ../phpmyadmin/doc/import_export.rst:191
 msgid "Table content for ``table`` :js:data:`type`."
-msgstr ""
+msgstr "Conteúdo da tabela para o :js:data:`type` ``table``."
 
 #: ../phpmyadmin/doc/import_export.rst:193
 msgid "Sample output:"
-msgstr ""
+msgstr "Exemplo de saída:"
 
 #: ../phpmyadmin/doc/import_export.rst:238
 msgid "LaTeX"
@@ -16458,6 +16702,8 @@ msgid ""
 "If you want to embed table data or structure in LaTeX, this is right choice "
 "for you."
 msgstr ""
+"Se você deseja incorporar dados ou estrutura de tabela no LaTeX, esta é a "
+"escolha certa para você."
 
 #: ../phpmyadmin/doc/import_export.rst:242
 msgid ""
@@ -16468,12 +16714,21 @@ msgid ""
 "TeX and LaTeX on `the Comprehensive TeX Archive Network <https://www.ctan."
 "org/>`_ also see the `short description od TeX <https://www.ctan.org/tex/>`_."
 msgstr ""
+"LaTeX é um sistema de composição muito adequado para a produção de "
+"documentos científicos e matemáticos de alta qualidade tipográfica. Também é "
+"adequado para produzir todo tipo de documentos, desde cartas simples até "
+"livros completos. O LaTeX usa o TeX como seu mecanismo de formatação. Saiba "
+"mais sobre o TeX e o LaTeX no `Comprehensive TeX Archive Network "
+"<https://www.ctan.org/>`_, também veja esta `curta descrição do TeX "
+"<https://www.ctan.org/tex/>`_."
 
 #: ../phpmyadmin/doc/import_export.rst:249
 msgid ""
 "The output needs to be embedded into a LaTeX document before it can be "
 "rendered, for example in following document:"
 msgstr ""
+"A saída precisa ser incorporada a um documento LaTeX antes antes de poder "
+"ser processada, por exemplo no documento a seguir:"
 
 #: ../phpmyadmin/doc/import_export.rst:275
 msgid ""
@@ -16481,6 +16736,9 @@ msgid ""
 "used by Wikipedia to display tables. It can export structure, data or both, "
 "including table names or headers."
 msgstr ""
+"Tanto tabelas quanto bancos de dados podem ser exportados no formato "
+"MediaWiki, que é usado pela Wikipédia para exibir tabelas. É possível "
+"exportar estrutura, dados ou ambos, incluindo nomes de tabelas ou cabeçalhos."
 
 #: ../phpmyadmin/doc/import_export.rst:280
 msgid "OpenDocument Spreadsheet"
@@ -16494,6 +16752,12 @@ msgid ""
 "be adapted to use the OpenDocument Formats through helpers like <http://odf-"
 "converter.sourceforge.net/>."
 msgstr ""
+"Padrão aberto para dados de planilhas, que está sendo amplamente adotado. "
+"Muitos programas de planilhas recentes, como LibreOffice, OpenOffice e "
+"Google Docs conseguem trabalhar com esse formato. Além disso, algumas "
+"versões do Microsoft Excel podem ser adaptadas para usar os Formatos do "
+"OpenDocument através de suplementos como o <http://odf-"
+"converter.sourceforge.net/>."
 
 #: ../phpmyadmin/doc/import_export.rst:289
 msgid "OpenDocument Text"
@@ -16504,11 +16768,16 @@ msgid ""
 "New standard for text data which is being widely addopted. Most recent word "
 "processors (such as OpenOffice.org, AbiWord or KWord) can handle this."
 msgstr ""
+"Novo padrão para dados de texto que está sendo amplamente adotado. Os "
+"processadores de texto mais recentes (tais como OpenOffice.org, AbiWord e "
+"KWord) conseguem trabalhar com ele."
 
 #: ../phpmyadmin/doc/import_export.rst:297
 msgid ""
 "For presentation purposes, non editable PDF might be best choice for you."
 msgstr ""
+"Para fins de apresentação, um PDF não editável pode ser a melhor escolha "
+"para você."
 
 #: ../phpmyadmin/doc/import_export.rst:300
 msgid "PHP Array"
@@ -16519,12 +16788,16 @@ msgid ""
 "You can generate a php file which will declare a multidimensional array with "
 "the contents of the selected table or database."
 msgstr ""
+"Você pode gerar um arquivo php que irá declarar uma matriz multidimensional "
+"com o conteúdo da tabela ou banco de dados selecionado."
 
 #: ../phpmyadmin/doc/import_export.rst:308
 msgid ""
 "Export in SQL can be used to restore your database, thus it is useful for "
 "backing up."
 msgstr ""
+"A exportação em SQL pode ser usada para restaurar o seu banco de dados, "
+"portanto, é útil para fazer backup."
 
 #: ../phpmyadmin/doc/import_export.rst:311
 msgid ""
@@ -16534,6 +16807,12 @@ msgid ""
 "importing the file, for large tables you avoid the error \"Got a packet "
 "bigger than 'max_allowed_packet' bytes\"."
 msgstr ""
+"A opção 'Comprimento máximo da consulta criada' parece não estar "
+"documentada. Mas experimentos mostraram que ela divide grandes INSERTs "
+"estendidos para que cada um não seja maior do que um número específico de "
+"bytes (ou caracteres?). Assim, ao importar o arquivo, para tabelas grandes "
+"você evita o erro \"Obteve um pacote maior do que 'max_allowed_packet' "
+"bytes\"."
 
 # 85a0a196f6354c29860ebf4d5086928a
 #: ../phpmyadmin/doc/import_export.rst:319
@@ -16552,6 +16831,10 @@ msgid ""
 "names increases the size of the dump, but when combined with Extended "
 "inserts it's negligible."
 msgstr ""
+"**Inserts completos** adiciona os nomes das colunas ao dump SQL. Este "
+"parâmetro melhora a legibilidade e a confiabilidade do dump. Adicionar os "
+"nomes das colunas aumenta o tamanho do dump, mas quando combinado com "
+"inserções estendidas torna-se insignificante."
 
 #: ../phpmyadmin/doc/import_export.rst:329
 msgid ""
@@ -16559,6 +16842,10 @@ msgid ""
 "query. This will significantly decrease filesize for large SQL dumps, "
 "increases the INSERT speed when imported, and is generally recommended."
 msgstr ""
+"**Inserts estendidos** combina várias linhas de dados em uma única consulta "
+"INSERT. Isso irá reduzir significativamente o tamanho do arquivo para "
+"grandes dumps SQL, aumenta a velocidade do INSERT quando importado e é "
+"geralmente recomendado."
 
 #: ../phpmyadmin/doc/import_export.rst:335
 msgid ""
@@ -16577,14 +16864,16 @@ msgid ""
 "`Texy! <https://texy.info/>`_ markup format. You can see example on `Texy! "
 "demo <https://texy.info/en/try/4q5we>`_."
 msgstr ""
+"Formato de marcação `Texy! <https://texy.info/>`_. Você pode ver um exemplo "
+"no `Texy! demo <https://texy.info/en/try/4q5we>`_."
 
 #: ../phpmyadmin/doc/import_export.rst:346
 msgid "Easily parsable export for use with custom scripts."
-msgstr ""
+msgstr "Exportação facilmente analisável para uso com scripts personalizados."
 
 #: ../phpmyadmin/doc/import_export.rst:350
 msgid "The XML schema used has changed as of version 3.3.0"
-msgstr ""
+msgstr "O esquema XML usado mudou a partir da versão 3.3.0"
 
 #: ../phpmyadmin/doc/import_export.rst:353
 msgid "YAML"
@@ -16595,6 +16884,8 @@ msgid ""
 "YAML is a data serialization format which is both human readable and "
 "computationally powerful ( <http://www.yaml.org> )."
 msgstr ""
+"O YAML é um formato de serialização de dados que é tanto legível por humanos "
+"e computacionalmente poderoso (<http://www.yaml.org>)."
 
 #: ../phpmyadmin/doc/require.rst:4
 msgid "Requirements"
