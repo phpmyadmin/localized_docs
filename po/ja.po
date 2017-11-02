@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
-"POT-Creation-Date: 2017-11-02 00:01+0100\n"
+"POT-Creation-Date: 2017-11-03 00:01+0100\n"
 "PO-Revision-Date: 2017-07-23 07:14+0000\n"
 "Last-Translator: worldwideskier <worldwideskier@yahoo.co.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/phpmyadmin/"
@@ -2331,113 +2331,6 @@ msgid ""
 msgstr ""
 "また、提案、バグレポート、単なる感想など、私にメールをくださったすべての方々"
 "に感謝いたします。"
-
-#: ../phpmyadmin/doc/privileges.rst:2
-msgid "User management"
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:4
-msgid ""
-"User management is the process of controlling which users are allowed to "
-"connect to the MySQL server and what permissions they have on each database. "
-"phpMyAdmin does not handle user management, rather it passes the username "
-"and password on to MySQL, which then determines whether a user is permitted "
-"to perform a particular action. Within phpMyAdmin, administrators have full "
-"control over creating users, viewing and editing privileges for existing "
-"users, and removing users."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:12
-msgid ""
-"Within phpMyAdmin, user management is controlled via the :guilabel:`Users` "
-"link from the main page. Users can be created, edited, and removed."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:16
-msgid "Creating a new user"
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:18
-msgid ""
-"To create a new user, click the :guilabel:`Add a new user` link near the "
-"bottom of the :guilabel:`Users` page (you must be a \"superuser\", e.g., "
-"user \"root\"). Use the textboxes and drop-downs to configure the user to "
-"your particular needs. You can then select whether to create a database for "
-"that user and grant specific global privileges. Once you've created the user "
-"(by clicking Go), you can define that user's permissions on a specific "
-"database (don't grant global privileges in that case). In general, users do "
-"not need any global privileges (other than USAGE), only permissions for "
-"their specific database."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:28
-msgid "Editing an existing user"
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:30
-msgid ""
-"To edit an existing user, simply click the pencil icon to the right of that "
-"user in the :guilabel:`Users` page. You can then edit their global- and "
-"database-specific privileges, change their password, or even copy those "
-"privileges to a new user."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:36
-msgid "Deleting a user"
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:38
-msgid ""
-"From the :guilabel:`Users` page, check the checkbox for the user you wish to "
-"remove, select whether or not to also remove any databases of the same name "
-"(if they exist), and click Go."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:43
-msgid "Assigning privileges to user for a specific database"
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:45
-msgid ""
-"Users are assigned to databases by editing the user record (from the :"
-"guilabel:`Users` link on the home page) not from within the :guilabel:"
-"`Users` link under the table. If you are creating a user specifically for a "
-"given table you will have to create the user first (with no global "
-"privileges) and then go back and edit that user to add the table and "
-"privileges for the individual table."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:55
-msgid "Configurable menus and user groups"
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:57
-#, fuzzy
-msgid ""
-"By enabling :config:option:`$cfg['Servers'][$i]['usergroups']` and :config:"
-"option:`$cfg['Servers'][$i]['usergroups']` you can customize what users will "
-"see in the phpMyAdmin navigation."
-msgstr ""
-"<a href=\"#cfg_Servers_controluser\" class=\"configrule\">$cfg['Servers'][$i]"
-"['controluser']</a> や <a href=\"#cfg_Servers_controlpass\" class="
-"\"configrule\">$cfg['Servers'][$i]['controlpass']</a> が間違っている。"
-
-#: ../phpmyadmin/doc/privileges.rst:63
-msgid ""
-"This feature only limits what a user sees, he is still able to use all the "
-"functions. So this can not be considered as a security limitation. Should "
-"you want to limit what users can do, use MySQL privileges to achieve that."
-msgstr ""
-
-#: ../phpmyadmin/doc/privileges.rst:67
-msgid ""
-"With this feature enabled, the :guilabel:`User accounts` management "
-"interface gains a second tab for managing :guilabel:`User groups`, where you "
-"can define what each group will view (see image below) and you can then "
-"assign each user to one of these groups. Users will be presented with a "
-"simplified user interface, which might be useful for inexperienced users who "
-"could be overwhelmed by all the features phpMyAdmin provides."
-msgstr ""
 
 #: ../phpmyadmin/doc/config.rst:6 ../phpmyadmin/doc/themes.rst:10
 #: ../phpmyadmin/doc/faq.rst:699
@@ -7704,7 +7597,8 @@ msgstr "MySQL サーバへの接続を試みて失敗した回数。"
 #: ../phpmyadmin/doc/config.rst:3353
 #, fuzzy
 #| msgid "Can not find signon authentication script:"
-msgid "Can be used for testing second authentication factor."
+msgid ""
+"Can be used for testing two-factor authentication using :ref:`simple2fa`."
 msgstr "サインオン認証スクリプトが見つかりません："
 
 #: ../phpmyadmin/doc/config.rst:3358 ../phpmyadmin/doc/charts.rst:30
@@ -14266,6 +14160,599 @@ msgstr ""
 msgid "`Russian server about phpMyAdmin <https://php-myadmin.ru/>`_"
 msgstr ""
 
+#: ../phpmyadmin/doc/two_factor.rst:4
+#, fuzzy
+#| msgid "Config authentication"
+msgid "Two-factor authentication"
+msgstr "Config 認証"
+
+#: ../phpmyadmin/doc/two_factor.rst:8
+msgid ""
+"Since phpMyAdmin 4.8.0 you can configure two-factor authentication to be "
+"used when logging into it. To use this, you first need to configure :ref:"
+"`linked-tables`. Once this is done, every user can opt-in for second "
+"authentication factor in the :guilabel:`Settings`."
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:14
+#, fuzzy
+#| msgid "Authentication"
+msgid "Authentication Application (2FA)"
+msgstr "認証"
+
+#: ../phpmyadmin/doc/two_factor.rst:16
+msgid ""
+"Using application for authentication is quite common approach based on HOTP "
+"and `TOTP <https://en.wikipedia.org/wiki/Time-based_One-"
+"time_Password_Algorithm>`_. It is based on transmitting private key from "
+"phpMyAdmin to the authentication application and the application is then "
+"able to generate one time codes based on this key."
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:22
+msgid ""
+"There are dozens of applications available for mobile phones to implement "
+"these standards, the most widely used include:"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:25
+msgid "`FreeOTP for iOS, Android and Pebble <https://freeotp.github.io/>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:26
+msgid "`Authy for iOS, Android, Chrome, OS X <https://www.authy.com/>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:27
+msgid ""
+"`Google Authenticator for iOS <https://itunes.apple.com/us/app/google-"
+"authenticator/id388497605>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:28
+msgid ""
+"`Google Authenticator for Android <https://play.google.com/store/apps/"
+"details?id=com.google.android.apps.authenticator2>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:29
+msgid ""
+"`LastPass Authenticator for iOS, Android, OS X, Windows <https://lastpass."
+"com/auth/>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:32
+msgid "Hardware Security Key (FIDO U2F)"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:34
+msgid ""
+"Using hardware tokens is considered to be more secure than software based "
+"solution. phpMyAdmin supports `FIDO U2F <https://en.wikipedia.org/wiki/"
+"Universal_2nd_Factor>`_ tokens."
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:38
+msgid "There are several manufacturers of these tokens, for example:"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:40
+msgid ""
+"`youbico FIDO U2F Security Key <https://www.yubico.com/products/yubikey-"
+"hardware/fido-u2f-security-key/>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:41
+msgid "`HyperFIDO <https://www.hypersecu.com/products/hyperfido>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:42
+msgid "`ePass FIDO USB <https://www.ftsafe.com/onlinestore/product?id=21>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:43
+msgid ""
+"`TREZOR Bitcoin wallet <https://shop.trezor.io?a=572b241135e1>`_ can `act as "
+"an U2F token <http://doc.satoshilabs.com/trezor-user/u2f.html>`_"
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:48
+#, fuzzy
+#| msgid "Signon authentication"
+msgid "Simple two-factor authentication"
+msgstr "サインオン認証"
+
+#: ../phpmyadmin/doc/two_factor.rst:50
+msgid ""
+"This authentication is included for testing and demostration purposes only "
+"as it really does not provide two-factor authentication, it just asks user "
+"to confirm login by clicking on the button."
+msgstr ""
+
+#: ../phpmyadmin/doc/two_factor.rst:54
+msgid ""
+"It should not be used in the production and is disabled unless :config:"
+"option:`$cfg['DBG']['simple2fa']` is set."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:2
+msgid "Import and export"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:5
+msgid "Import"
+msgstr "インポート"
+
+#: ../phpmyadmin/doc/import_export.rst:7
+msgid ""
+"To import data, go to the \"Import\" tab in phpMyAdmin. To import data into "
+"a specific database or table, open the database or table before going to the "
+"\"Import\" tab."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:11
+msgid ""
+"In addition to the standard Import and Export tab, you can also import an "
+"SQL file directly by dragging and dropping it from your local file manager "
+"to the phpMyAdmin interface in your web browser."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:15
+msgid ""
+"If you are having troubles importing big files, please consult :ref:"
+"`faq1_16`."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:17
+msgid "You can import using following methods:"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:19
+msgid "Form based upload"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:21
+msgid ""
+"Can be used with any supported format, also (b|g)zipped files, e.g., mydump."
+"sql.gz ."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:23
+msgid "Form based SQL Query"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:25
+msgid "Can be used with valid SQL dumps."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:27
+msgid "Using upload directory"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:29
+msgid ""
+"You can specify an upload directory on your web server where phpMyAdmin is "
+"installed, after uploading your file into this directory you can select this "
+"file in the import dialog of phpMyAdmin, see :config:option:`"
+"$cfg['UploadDir']`."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:32
+msgid "phpMyAdmin can import from several various commonly used formats."
+msgstr ""
+
+# 1a93ef3976ad443e98952e8d1360e8af
+#: ../phpmyadmin/doc/import_export.rst:35
+#: ../phpmyadmin/doc/import_export.rst:130 ../phpmyadmin/doc/glossary.rst:59
+msgid "CSV"
+msgstr "CSV"
+
+#: ../phpmyadmin/doc/import_export.rst:37
+#: ../phpmyadmin/doc/import_export.rst:132
+msgid ""
+"Comma separated values format which is often used by spreadsheets or various "
+"other programs for export/import."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:41
+msgid ""
+"When importing data into a table from a CSV file where the table has an "
+"'auto_increment' field, make the 'auto_increment' value for each record in "
+"the CSV field to be '0' (zero). This allows the 'auto_increment' field to "
+"populate correctly."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:46
+msgid ""
+"It is now possible to import a CSV file at the server or database level. "
+"Instead of having to create a table to import the CSV file into, a best-fit "
+"structure will be determined for you and the data imported into it, instead. "
+"All other features, requirements, and limitations are as before."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:52
+msgid "CSV using LOAD DATA"
+msgstr "LOAD DATA 文を使用した CSV の読み込み"
+
+#: ../phpmyadmin/doc/import_export.rst:54
+msgid ""
+"Similar to CSV, only using the internal MySQL parser and not the phpMyAdmin "
+"one."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:57
+msgid "ESRI Shape File"
+msgstr "ESRI シェープファイル"
+
+#: ../phpmyadmin/doc/import_export.rst:59
+msgid ""
+"The ESRI shapefile or simply a shapefile is a popular geospatial vector data "
+"format for geographic information systems software. It is developed and "
+"regulated by Esri as a (mostly) open specification for data interoperability "
+"among Esri and other software products."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:65
+#: ../phpmyadmin/doc/import_export.rst:273
+msgid "MediaWiki"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:67
+msgid ""
+"MediaWiki files, which can be exported by phpMyAdmin (version 4.0 or later), "
+"can now also be imported. This is the format used by Wikipedia to display "
+"tables."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:72
+msgid "Open Document Spreadsheet (ODS)"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:74
+msgid ""
+"OpenDocument workbooks containing one or more spreadsheets can now be "
+"directly imported."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:76
+msgid ""
+"When importing an ODS speadsheet, the spreadsheet must be named in a "
+"specific way in order to make the import as simple as possible."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:80
+msgid "Table name"
+msgstr "テーブル名"
+
+#: ../phpmyadmin/doc/import_export.rst:82
+msgid ""
+"During import, phpMyAdmin uses the sheet name as the table name; you should "
+"rename the sheet in your spreadsheet program in order to match your existing "
+"table name (or the table you wish to create, though this is less of a "
+"concern since you could quickly rename the new table from the Operations "
+"tab)."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:87
+msgid "Column names"
+msgstr "カラム名"
+
+#: ../phpmyadmin/doc/import_export.rst:89
+msgid ""
+"You should also make the first row of your spreadsheet a header with the "
+"names of the columns (this can be accomplished by inserting a new row at the "
+"top of your spreadsheet). When on the Import screen, select the checkbox for "
+"\"The first line of the file contains the table column names;\" this way "
+"your newly imported data will go to the proper columns."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:96
+msgid ""
+"Formulas and calculations will NOT be evaluated, rather, their value from "
+"the most recent save will be loaded. Please ensure that all values in the "
+"spreadsheet are as needed before importing it."
+msgstr ""
+
+# 57706b31ea9640639d9f4a5b227b8836
+#: ../phpmyadmin/doc/import_export.rst:101
+#: ../phpmyadmin/doc/import_export.rst:306 ../phpmyadmin/doc/glossary.rst:359
+msgid "SQL"
+msgstr "SQL"
+
+#: ../phpmyadmin/doc/import_export.rst:103
+msgid ""
+"SQL can be used to make any manipulation on data, it is also useful for "
+"restoring backed up data."
+msgstr ""
+
+# 6b571887905946c2beba75cbb82653fe
+#: ../phpmyadmin/doc/import_export.rst:106
+#: ../phpmyadmin/doc/import_export.rst:344 ../phpmyadmin/doc/glossary.rst:410
+msgid "XML"
+msgstr "XML"
+
+#: ../phpmyadmin/doc/import_export.rst:108
+msgid ""
+"XML files exported by phpMyAdmin (version 3.3.0 or later) can now be "
+"imported. Structures (databases, tables, views, triggers, etc.) and/or data "
+"will be created depending on the contents of the file."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:112
+msgid "The supported xml schemas are not yet documented in this wiki."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:116
+msgid "Export"
+msgstr "エクスポート"
+
+#: ../phpmyadmin/doc/import_export.rst:118
+msgid ""
+"phpMyAdmin can export into text files (even compressed) on your local disk "
+"(or a special the webserver :config:option:`$cfg['SaveDir']` folder) in "
+"various commonly used formats:"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:123
+msgid "CodeGen"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:125
+msgid ""
+"`NHibernate <https://en.wikipedia.org/wiki/NHibernate>`_ file format. "
+"Planned versions: Java, Hibernate, PHP PDO, JSON, etc. So the preliminary "
+"name is codegen."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:136
+msgid "CSV for Microsoft Excel"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:138
+msgid ""
+"This is just preconfigured version of CSV export which can be imported into "
+"most English versions of Microsoft Excel. Some localised versions (like "
+"\"Danish\") are expecting \";\" instead of \",\" as field separator."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:143
+msgid "Microsoft Word 2000"
+msgstr "Microsoft Word 2000"
+
+#: ../phpmyadmin/doc/import_export.rst:145
+msgid ""
+"If you're using Microsoft Word 2000 or newer (or compatible such as "
+"OpenOffice.org), you can use this export."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:149
+msgid "JSON"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:151
+msgid ""
+"JSON (JavaScript Object Notation) is a lightweight data-interchange format. "
+"It is easy for humans to read and write and it is easy for machines to parse "
+"and generate."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:157
+msgid ""
+"The generated JSON structure has been changed in phpMyAdmin 4.7.0 to produce "
+"valid JSON data."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:160
+msgid "The generated JSON is list of objects with following attributes:"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:164
+msgid "Type of given object, can be one of:"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:166
+msgid "``header``"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:167
+msgid "Export header containing comment and phpMyAdmin version."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:168
+#, fuzzy
+#| msgid "Database"
+msgid "``database``"
+msgstr "データベース"
+
+#: ../phpmyadmin/doc/import_export.rst:169
+msgid "Start of a database marker, containing name of database."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:170
+msgid "``table``"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:171
+msgid "Table data export."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:175
+msgid "Used in ``header`` :js:data:`type` and indicates phpMyAdmin version."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:179
+msgid "Optional textual comment."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:183
+msgid "Object name - either table or database based on :js:data:`type`."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:187
+msgid "Database name for ``table`` :js:data:`type`."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:191
+msgid "Table content for ``table`` :js:data:`type`."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:193
+msgid "Sample output:"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:238
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: ../phpmyadmin/doc/import_export.rst:240
+msgid ""
+"If you want to embed table data or structure in LaTeX, this is right choice "
+"for you."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:242
+msgid ""
+"LaTeX is a typesetting system that is very suitable for producing scientific "
+"and mathematical documents of high typographical quality. It is also "
+"suitable for producing all sorts of other documents, from simple letters to "
+"complete books. LaTeX uses TeX as its formatting engine. Learn more about "
+"TeX and LaTeX on `the Comprehensive TeX Archive Network <https://www.ctan."
+"org/>`_ also see the `short description od TeX <https://www.ctan.org/tex/>`_."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:249
+msgid ""
+"The output needs to be embedded into a LaTeX document before it can be "
+"rendered, for example in following document:"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:275
+msgid ""
+"Both tables and databases can be exported in the MediaWiki format, which is "
+"used by Wikipedia to display tables. It can export structure, data or both, "
+"including table names or headers."
+msgstr ""
+
+# 5031914990b8490a851b7eab0a1f2a17
+#: ../phpmyadmin/doc/import_export.rst:280
+#, fuzzy
+#| msgid "Documentation"
+msgid "OpenDocument Spreadsheet"
+msgstr "ドキュメント"
+
+#: ../phpmyadmin/doc/import_export.rst:282
+msgid ""
+"Open standard for spreadsheet data, which is being widely adopted. Many "
+"recent spreadsheet programs, such as LibreOffice, OpenOffice or Google Docs "
+"can handle this format. Additionally, some versions of Microsoft Excel can "
+"be adapted to use the OpenDocument Formats through helpers like <http://odf-"
+"converter.sourceforge.net/>."
+msgstr ""
+
+# 5031914990b8490a851b7eab0a1f2a17
+#: ../phpmyadmin/doc/import_export.rst:289
+#, fuzzy
+#| msgid "Documentation"
+msgid "OpenDocument Text"
+msgstr "ドキュメント"
+
+#: ../phpmyadmin/doc/import_export.rst:291
+msgid ""
+"New standard for text data which is being widely addopted. Most recent word "
+"processors (such as OpenOffice.org, AbiWord or KWord) can handle this."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:295 ../phpmyadmin/doc/glossary.rst:262
+msgid "PDF"
+msgstr "PDF"
+
+#: ../phpmyadmin/doc/import_export.rst:297
+msgid ""
+"For presentation purposes, non editable PDF might be best choice for you."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:300
+msgid "PHP Array"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:302
+msgid ""
+"You can generate a php file which will declare a multidimensional array with "
+"the contents of the selected table or database."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:308
+msgid ""
+"Export in SQL can be used to restore your database, thus it is useful for "
+"backing up."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:311
+msgid ""
+"The option 'Maximal length of created query' seems to be undocumented. But "
+"experiments has shown that it splits large extended INSERTS so each one is "
+"no bigger than the given number of bytes (or characters?). Thus when "
+"importing the file, for large tables you avoid the error \"Got a packet "
+"bigger than 'max_allowed_packet' bytes\"."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:319
+msgid "https://dev.mysql.com/doc/refman/5.7/en/packet-too-large.html"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:322
+msgid "Data Options"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:324
+msgid ""
+"**Complete inserts** adds the column names to the SQL dump. This parameter "
+"improves the readability and reliability of the dump. Adding the column "
+"names increases the size of the dump, but when combined with Extended "
+"inserts it's negligible."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:329
+msgid ""
+"**Extended inserts** combines multiple rows of data into a single INSERT "
+"query. This will significantly decrease filesize for large SQL dumps, "
+"increases the INSERT speed when imported, and is generally recommended."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:335
+msgid ""
+"http://www.scriptalicious.com/blog/2009/04/complete-inserts-or-extended-"
+"inserts-in-phpmyadmin/"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:338
+msgid "Texy!"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:340
+msgid ""
+"`Texy! <https://texy.info/>`_ markup format. You can see example on `Texy! "
+"demo <https://texy.info/en/try/4q5we>`_."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:346
+msgid "Easily parsable export for use with custom scripts."
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:350
+msgid "The XML schema used has changed as of version 3.3.0"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:353
+msgid "YAML"
+msgstr ""
+
+#: ../phpmyadmin/doc/import_export.rst:355
+msgid ""
+"YAML is a data serialization format which is both human readable and "
+"computationally powerful ( <http://www.yaml.org> )."
+msgstr ""
+
 #: ../phpmyadmin/doc/glossary.rst:4
 msgid "Glossary"
 msgstr "用語集"
@@ -14512,12 +14999,6 @@ msgid "<https://en.wikipedia.org/wiki/HTTP_cookie>"
 msgstr ""
 "<a href=\"http://ja.wikipedia.org/wiki/SQL\">SQL</a> - リレーショナルデータ"
 "ベース用の問い合わせ言語 (Structured Query Language)"
-
-# 1a93ef3976ad443e98952e8d1360e8af
-#: ../phpmyadmin/doc/glossary.rst:59 ../phpmyadmin/doc/import_export.rst:35
-#: ../phpmyadmin/doc/import_export.rst:130
-msgid "CSV"
-msgstr "CSV"
 
 # 69579e7dafa04067a00bbb4aa808dd35
 #: ../phpmyadmin/doc/glossary.rst:61
@@ -15348,10 +15829,6 @@ msgstr ""
 "<a href=\"http://ja.wikipedia.org/wiki/SQL\">SQL</a> - リレーショナルデータ"
 "ベース用の問い合わせ言語 (Structured Query Language)"
 
-#: ../phpmyadmin/doc/glossary.rst:262 ../phpmyadmin/doc/import_export.rst:295
-msgid "PDF"
-msgstr "PDF"
-
 #: ../phpmyadmin/doc/glossary.rst:264
 #, fuzzy
 msgid ""
@@ -15667,12 +16144,6 @@ msgstr ""
 "<a href=\"http://ja.wikipedia.org/wiki/SQL\">SQL</a> - リレーショナルデータ"
 "ベース用の問い合わせ言語 (Structured Query Language)"
 
-# 57706b31ea9640639d9f4a5b227b8836
-#: ../phpmyadmin/doc/glossary.rst:359 ../phpmyadmin/doc/import_export.rst:101
-#: ../phpmyadmin/doc/import_export.rst:306
-msgid "SQL"
-msgstr "SQL"
-
 # 4f30ef3d1a6e46558902aff2e0b818d3
 #: ../phpmyadmin/doc/glossary.rst:361
 msgid "Structured Query Language"
@@ -15867,12 +16338,6 @@ msgstr ""
 "<a href=\"http://ja.wikipedia.org/wiki/SQL\">SQL</a> - リレーショナルデータ"
 "ベース用の問い合わせ言語 (Structured Query Language)"
 
-# 6b571887905946c2beba75cbb82653fe
-#: ../phpmyadmin/doc/glossary.rst:410 ../phpmyadmin/doc/import_export.rst:106
-#: ../phpmyadmin/doc/import_export.rst:344
-msgid "XML"
-msgstr "XML"
-
 #: ../phpmyadmin/doc/glossary.rst:412
 #, fuzzy
 msgid ""
@@ -15938,711 +16403,6 @@ msgid "<https://en.wikipedia.org/wiki/Zlib>"
 msgstr ""
 "<a href=\"http://ja.wikipedia.org/wiki/SQL\">SQL</a> - リレーショナルデータ"
 "ベース用の問い合わせ言語 (Structured Query Language)"
-
-#: ../phpmyadmin/doc/import_export.rst:2
-msgid "Import and export"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:5
-msgid "Import"
-msgstr "インポート"
-
-#: ../phpmyadmin/doc/import_export.rst:7
-msgid ""
-"To import data, go to the \"Import\" tab in phpMyAdmin. To import data into "
-"a specific database or table, open the database or table before going to the "
-"\"Import\" tab."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:11
-msgid ""
-"In addition to the standard Import and Export tab, you can also import an "
-"SQL file directly by dragging and dropping it from your local file manager "
-"to the phpMyAdmin interface in your web browser."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:15
-msgid ""
-"If you are having troubles importing big files, please consult :ref:"
-"`faq1_16`."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:17
-msgid "You can import using following methods:"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:19
-msgid "Form based upload"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:21
-msgid ""
-"Can be used with any supported format, also (b|g)zipped files, e.g., mydump."
-"sql.gz ."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:23
-msgid "Form based SQL Query"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:25
-msgid "Can be used with valid SQL dumps."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:27
-msgid "Using upload directory"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:29
-msgid ""
-"You can specify an upload directory on your web server where phpMyAdmin is "
-"installed, after uploading your file into this directory you can select this "
-"file in the import dialog of phpMyAdmin, see :config:option:`"
-"$cfg['UploadDir']`."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:32
-msgid "phpMyAdmin can import from several various commonly used formats."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:37
-#: ../phpmyadmin/doc/import_export.rst:132
-msgid ""
-"Comma separated values format which is often used by spreadsheets or various "
-"other programs for export/import."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:41
-msgid ""
-"When importing data into a table from a CSV file where the table has an "
-"'auto_increment' field, make the 'auto_increment' value for each record in "
-"the CSV field to be '0' (zero). This allows the 'auto_increment' field to "
-"populate correctly."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:46
-msgid ""
-"It is now possible to import a CSV file at the server or database level. "
-"Instead of having to create a table to import the CSV file into, a best-fit "
-"structure will be determined for you and the data imported into it, instead. "
-"All other features, requirements, and limitations are as before."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:52
-msgid "CSV using LOAD DATA"
-msgstr "LOAD DATA 文を使用した CSV の読み込み"
-
-#: ../phpmyadmin/doc/import_export.rst:54
-msgid ""
-"Similar to CSV, only using the internal MySQL parser and not the phpMyAdmin "
-"one."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:57
-msgid "ESRI Shape File"
-msgstr "ESRI シェープファイル"
-
-#: ../phpmyadmin/doc/import_export.rst:59
-msgid ""
-"The ESRI shapefile or simply a shapefile is a popular geospatial vector data "
-"format for geographic information systems software. It is developed and "
-"regulated by Esri as a (mostly) open specification for data interoperability "
-"among Esri and other software products."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:65
-#: ../phpmyadmin/doc/import_export.rst:273
-msgid "MediaWiki"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:67
-msgid ""
-"MediaWiki files, which can be exported by phpMyAdmin (version 4.0 or later), "
-"can now also be imported. This is the format used by Wikipedia to display "
-"tables."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:72
-msgid "Open Document Spreadsheet (ODS)"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:74
-msgid ""
-"OpenDocument workbooks containing one or more spreadsheets can now be "
-"directly imported."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:76
-msgid ""
-"When importing an ODS speadsheet, the spreadsheet must be named in a "
-"specific way in order to make the import as simple as possible."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:80
-msgid "Table name"
-msgstr "テーブル名"
-
-#: ../phpmyadmin/doc/import_export.rst:82
-msgid ""
-"During import, phpMyAdmin uses the sheet name as the table name; you should "
-"rename the sheet in your spreadsheet program in order to match your existing "
-"table name (or the table you wish to create, though this is less of a "
-"concern since you could quickly rename the new table from the Operations "
-"tab)."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:87
-msgid "Column names"
-msgstr "カラム名"
-
-#: ../phpmyadmin/doc/import_export.rst:89
-msgid ""
-"You should also make the first row of your spreadsheet a header with the "
-"names of the columns (this can be accomplished by inserting a new row at the "
-"top of your spreadsheet). When on the Import screen, select the checkbox for "
-"\"The first line of the file contains the table column names;\" this way "
-"your newly imported data will go to the proper columns."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:96
-msgid ""
-"Formulas and calculations will NOT be evaluated, rather, their value from "
-"the most recent save will be loaded. Please ensure that all values in the "
-"spreadsheet are as needed before importing it."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:103
-msgid ""
-"SQL can be used to make any manipulation on data, it is also useful for "
-"restoring backed up data."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:108
-msgid ""
-"XML files exported by phpMyAdmin (version 3.3.0 or later) can now be "
-"imported. Structures (databases, tables, views, triggers, etc.) and/or data "
-"will be created depending on the contents of the file."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:112
-msgid "The supported xml schemas are not yet documented in this wiki."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:116
-msgid "Export"
-msgstr "エクスポート"
-
-#: ../phpmyadmin/doc/import_export.rst:118
-msgid ""
-"phpMyAdmin can export into text files (even compressed) on your local disk "
-"(or a special the webserver :config:option:`$cfg['SaveDir']` folder) in "
-"various commonly used formats:"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:123
-msgid "CodeGen"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:125
-msgid ""
-"`NHibernate <https://en.wikipedia.org/wiki/NHibernate>`_ file format. "
-"Planned versions: Java, Hibernate, PHP PDO, JSON, etc. So the preliminary "
-"name is codegen."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:136
-msgid "CSV for Microsoft Excel"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:138
-msgid ""
-"This is just preconfigured version of CSV export which can be imported into "
-"most English versions of Microsoft Excel. Some localised versions (like "
-"\"Danish\") are expecting \";\" instead of \",\" as field separator."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:143
-msgid "Microsoft Word 2000"
-msgstr "Microsoft Word 2000"
-
-#: ../phpmyadmin/doc/import_export.rst:145
-msgid ""
-"If you're using Microsoft Word 2000 or newer (or compatible such as "
-"OpenOffice.org), you can use this export."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:149
-msgid "JSON"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:151
-msgid ""
-"JSON (JavaScript Object Notation) is a lightweight data-interchange format. "
-"It is easy for humans to read and write and it is easy for machines to parse "
-"and generate."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:157
-msgid ""
-"The generated JSON structure has been changed in phpMyAdmin 4.7.0 to produce "
-"valid JSON data."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:160
-msgid "The generated JSON is list of objects with following attributes:"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:164
-msgid "Type of given object, can be one of:"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:166
-msgid "``header``"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:167
-msgid "Export header containing comment and phpMyAdmin version."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:168
-#, fuzzy
-#| msgid "Database"
-msgid "``database``"
-msgstr "データベース"
-
-#: ../phpmyadmin/doc/import_export.rst:169
-msgid "Start of a database marker, containing name of database."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:170
-msgid "``table``"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:171
-msgid "Table data export."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:175
-msgid "Used in ``header`` :js:data:`type` and indicates phpMyAdmin version."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:179
-msgid "Optional textual comment."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:183
-msgid "Object name - either table or database based on :js:data:`type`."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:187
-msgid "Database name for ``table`` :js:data:`type`."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:191
-msgid "Table content for ``table`` :js:data:`type`."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:193
-msgid "Sample output:"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:238
-msgid "LaTeX"
-msgstr "LaTeX"
-
-#: ../phpmyadmin/doc/import_export.rst:240
-msgid ""
-"If you want to embed table data or structure in LaTeX, this is right choice "
-"for you."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:242
-msgid ""
-"LaTeX is a typesetting system that is very suitable for producing scientific "
-"and mathematical documents of high typographical quality. It is also "
-"suitable for producing all sorts of other documents, from simple letters to "
-"complete books. LaTeX uses TeX as its formatting engine. Learn more about "
-"TeX and LaTeX on `the Comprehensive TeX Archive Network <https://www.ctan."
-"org/>`_ also see the `short description od TeX <https://www.ctan.org/tex/>`_."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:249
-msgid ""
-"The output needs to be embedded into a LaTeX document before it can be "
-"rendered, for example in following document:"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:275
-msgid ""
-"Both tables and databases can be exported in the MediaWiki format, which is "
-"used by Wikipedia to display tables. It can export structure, data or both, "
-"including table names or headers."
-msgstr ""
-
-# 5031914990b8490a851b7eab0a1f2a17
-#: ../phpmyadmin/doc/import_export.rst:280
-#, fuzzy
-#| msgid "Documentation"
-msgid "OpenDocument Spreadsheet"
-msgstr "ドキュメント"
-
-#: ../phpmyadmin/doc/import_export.rst:282
-msgid ""
-"Open standard for spreadsheet data, which is being widely adopted. Many "
-"recent spreadsheet programs, such as LibreOffice, OpenOffice or Google Docs "
-"can handle this format. Additionally, some versions of Microsoft Excel can "
-"be adapted to use the OpenDocument Formats through helpers like <http://odf-"
-"converter.sourceforge.net/>."
-msgstr ""
-
-# 5031914990b8490a851b7eab0a1f2a17
-#: ../phpmyadmin/doc/import_export.rst:289
-#, fuzzy
-#| msgid "Documentation"
-msgid "OpenDocument Text"
-msgstr "ドキュメント"
-
-#: ../phpmyadmin/doc/import_export.rst:291
-msgid ""
-"New standard for text data which is being widely addopted. Most recent word "
-"processors (such as OpenOffice.org, AbiWord or KWord) can handle this."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:297
-msgid ""
-"For presentation purposes, non editable PDF might be best choice for you."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:300
-msgid "PHP Array"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:302
-msgid ""
-"You can generate a php file which will declare a multidimensional array with "
-"the contents of the selected table or database."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:308
-msgid ""
-"Export in SQL can be used to restore your database, thus it is useful for "
-"backing up."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:311
-msgid ""
-"The option 'Maximal length of created query' seems to be undocumented. But "
-"experiments has shown that it splits large extended INSERTS so each one is "
-"no bigger than the given number of bytes (or characters?). Thus when "
-"importing the file, for large tables you avoid the error \"Got a packet "
-"bigger than 'max_allowed_packet' bytes\"."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:319
-msgid "https://dev.mysql.com/doc/refman/5.7/en/packet-too-large.html"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:322
-msgid "Data Options"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:324
-msgid ""
-"**Complete inserts** adds the column names to the SQL dump. This parameter "
-"improves the readability and reliability of the dump. Adding the column "
-"names increases the size of the dump, but when combined with Extended "
-"inserts it's negligible."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:329
-msgid ""
-"**Extended inserts** combines multiple rows of data into a single INSERT "
-"query. This will significantly decrease filesize for large SQL dumps, "
-"increases the INSERT speed when imported, and is generally recommended."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:335
-msgid ""
-"http://www.scriptalicious.com/blog/2009/04/complete-inserts-or-extended-"
-"inserts-in-phpmyadmin/"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:338
-msgid "Texy!"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:340
-msgid ""
-"`Texy! <https://texy.info/>`_ markup format. You can see example on `Texy! "
-"demo <https://texy.info/en/try/4q5we>`_."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:346
-msgid "Easily parsable export for use with custom scripts."
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:350
-msgid "The XML schema used has changed as of version 3.3.0"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:353
-msgid "YAML"
-msgstr ""
-
-#: ../phpmyadmin/doc/import_export.rst:355
-msgid ""
-"YAML is a data serialization format which is both human readable and "
-"computationally powerful ( <http://www.yaml.org> )."
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:4
-#, fuzzy
-msgid "Second authentication factor"
-msgstr "「サインオン」認証モード"
-
-#: ../phpmyadmin/doc/second_factor.rst:8
-msgid ""
-"Since phpMyAdmin 4.8.0 you can configure second authentication factor to be "
-"used when logging into it. To use this, you first need to configure :ref:"
-"`linked-tables`. Once this is done, every user can opt-in for second "
-"authentication factor in the :guilabel:`Settings`."
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:14
-#, fuzzy
-#| msgid "Authentication"
-msgid "Authentication Application"
-msgstr "認証"
-
-#: ../phpmyadmin/doc/second_factor.rst:16
-msgid ""
-"Using application for authentication is quite common approach based on HOTP "
-"and TOTP. It is based on transmitting private key from phpMyAdmin to the "
-"authentication application and the application is then able to generate one "
-"time codes based on this key."
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:21
-msgid ""
-"There are dozens of applications available for mobile phones to implement "
-"these standards, the most widely used include:"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:24
-msgid "`FreeOTP for iOS, Android and Pebble <https://freeotp.github.io/>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:25
-msgid "`Authy for iOS, Android, Chrome, OS X <https://www.authy.com/>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:26
-msgid ""
-"`Google Authenticator for iOS <https://itunes.apple.com/us/app/google-"
-"authenticator/id388497605>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:27
-msgid ""
-"`Google Authenticator for Android <https://play.google.com/store/apps/"
-"details?id=com.google.android.apps.authenticator2>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:28
-msgid ""
-"`LastPass Authenticator for iOS, Android, OS X, Windows <https://lastpass."
-"com/auth/>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:31
-msgid "Hardware Security Key"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:33
-msgid ""
-"Using hardware tokens is considered to be more secure than software based "
-"solution. phpMyAdmin supports `FIDO U2F <https://en.wikipedia.org/wiki/"
-"Universal_2nd_Factor>`_ tokens."
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:37
-msgid "There are several manufacturers of these tokens, for example:"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:39
-msgid ""
-"`youbico FIDO U2F Security Key <https://www.yubico.com/products/yubikey-"
-"hardware/fido-u2f-security-key/>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:40
-msgid "`HyperFIDO <https://www.hypersecu.com/products/hyperfido>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:41
-msgid "`ePass FIDO USB <https://www.ftsafe.com/onlinestore/product?id=21>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:42
-msgid ""
-"`TREZOR Bitcoin wallet <https://shop.trezor.io?a=572b241135e1>`_ can `act as "
-"an U2F token <http://doc.satoshilabs.com/trezor-user/u2f.html>`_"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:45
-msgid "Simple Second Factor"
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:47
-msgid ""
-"This authentication is included for testing and demostration purposes only "
-"as it really does not provide second factor, it just asks user to confirm "
-"login by clicking on the button."
-msgstr ""
-
-#: ../phpmyadmin/doc/second_factor.rst:51
-msgid ""
-"It should not be used in the production and is disabled unless :config:"
-"option:`$cfg['DBG']['simple2fa']` is set."
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:4
-msgid "Requirements"
-msgstr "必要なもの"
-
-#: ../phpmyadmin/doc/require.rst:7
-msgid "Web server"
-msgstr "ウェブサーバ"
-
-#: ../phpmyadmin/doc/require.rst:9
-msgid ""
-"Since phpMyAdmin's interface is based entirely in your browser, you'll need "
-"a web server (such as Apache, nginx, :term:`IIS`) to install phpMyAdmin's "
-"files into."
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:15
-#, fuzzy
-msgid ""
-"You need PHP 5.5.0 or newer, with ``session`` support, the Standard PHP "
-"Library (SPL) extension, hash, ctype, and JSON support."
-msgstr ""
-"<code>セッション</code> (<a href=\"#faq1_31\"><abbr title=\"よくある質問"
-"\">FAQ</abbr> 1.31 参照</a>)、Standard PHP Library (SPL)、JSON をサポートして"
-"いる PHP 5.2.0 以降が必要です。"
-
-#: ../phpmyadmin/doc/require.rst:18
-msgid ""
-"The ``mbstring`` extension (see :term:`mbstring`) is strongly recommended "
-"for performance reasons."
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:21
-#, fuzzy
-msgid "To support uploading of ZIP files, you need the PHP ``zip`` extension."
-msgstr ""
-"ZIP ファイルのアップロードをサポートするには、PHP の <code>zip</code> 拡張が"
-"必要です。"
-
-#: ../phpmyadmin/doc/require.rst:23
-#, fuzzy
-msgid ""
-"You need GD2 support in PHP to display inline thumbnails of JPEGs (\"image/"
-"jpeg: inline\") with their original aspect ratio."
-msgstr ""
-"JPEG 画像のインラインサムネイル (&quot;image/jpeg: inline&quot;) を正しいアス"
-"ペクト比で表示したい場合は PHP が GD2 をサポートしている必要があります。"
-
-#: ../phpmyadmin/doc/require.rst:26
-#, fuzzy
-msgid ""
-"When using the cookie authentication (the default), the `openssl <https://"
-"secure.php.net/openssl>`_ extension is strongly suggested."
-msgstr ""
-"「クッキー」<a href=\"#authentication_modes\">認証方法</a>を使用する場合、<a "
-"href=\"http://www.php.net/mcrypt\"><code>mcrypt</code></a> 拡張は、ほぼすべて"
-"ユーザに対して強く推奨され、また 64 ビットマシンの場合は<strong>必須</strong>"
-"となります。mcrypt を使用していないと、phpMyAdmin のページを読み込みが大幅に"
-"遅くなる原因となりえます。"
-
-# fee61d81567941c69fa0aa7c8fb218c0
-#: ../phpmyadmin/doc/require.rst:29
-msgid "To support upload progress bars, see :ref:`faq2_9`."
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:31
-#, fuzzy
-msgid ""
-"To support XML and Open Document Spreadsheet importing, you need the `libxml "
-"<https://secure.php.net/libxml>`_ extension."
-msgstr ""
-"XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP "
-"5.2.17 以降および <a href=\"http://www.php.net/libxml\"><code>libxml</code></"
-"a> 拡張が必要です。"
-
-#: ../phpmyadmin/doc/require.rst:34
-#, fuzzy
-msgid ""
-"To support reCAPTCHA on the login page, you need the `openssl <https://"
-"secure.php.net/openssl>`_ extension."
-msgstr ""
-"XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP "
-"5.2.17 以降および <a href=\"http://www.php.net/libxml\"><code>libxml</code></"
-"a> 拡張が必要です。"
-
-#: ../phpmyadmin/doc/require.rst:37
-msgid ""
-"To support displaying phpMyAdmin's latest version, you need to enable "
-"``allow_url_open`` in your :file:`php.ini` or to have the `curl <https://"
-"secure.php.net/curl>`_ extension."
-msgstr ""
-
-# bfa3bcb2716e4a8b93d9958591609dd9
-#: ../phpmyadmin/doc/require.rst:41
-msgid ":ref:`faq1_31`, :ref:`authentication_modes`"
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:44
-msgid "Database"
-msgstr "データベース"
-
-# 3085a787b3db46009a809b1e12d62617
-#: ../phpmyadmin/doc/require.rst:46
-msgid "phpMyAdmin supports MySQL-compatible databases."
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:48
-#, fuzzy
-msgid "MySQL 5.5 or newer"
-msgstr "MySQL 5.0 以降"
-
-#: ../phpmyadmin/doc/require.rst:49
-msgid "MariaDB 5.5 or newer"
-msgstr "MariaDB 5.0 以降"
-
-# dcfcfdd1a8354c749ec3acfd317c8313
-#: ../phpmyadmin/doc/require.rst:51
-msgid ":ref:`faq1_17`"
-msgstr ""
-
-# adbc1ae0004f4b4fb2442a940c747207
-#: ../phpmyadmin/doc/require.rst:54
-msgid "Web browser"
-msgstr "ウェブブラウザ"
-
-#: ../phpmyadmin/doc/require.rst:56
-msgid ""
-"To access phpMyAdmin you need a web browser with cookies and JavaScript "
-"enabled."
-msgstr ""
-
-#: ../phpmyadmin/doc/require.rst:59
-msgid ""
-"You need browser which is supported by jQuery 2.0, see <https://jquery.com/"
-"browser-support/>."
-msgstr ""
-"jQuery 2.0をサポートするウェブブラウザが必要です。 <https://jquery.com/"
-"browser-support/> を参照してください。"
 
 #: ../phpmyadmin/doc/transformations.rst:4
 msgid "Transformations"
@@ -16915,6 +16675,251 @@ msgstr ""
 "mysql_fetch_field\">マニュアルページ</a> で説明されているオブジェクトのプロパ"
 "ティすべてが利用できますし、unsigned/zerofill/not_null/... といったプロパティ"
 "によってカラムを変換できます。"
+
+#: ../phpmyadmin/doc/privileges.rst:2
+msgid "User management"
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:4
+msgid ""
+"User management is the process of controlling which users are allowed to "
+"connect to the MySQL server and what permissions they have on each database. "
+"phpMyAdmin does not handle user management, rather it passes the username "
+"and password on to MySQL, which then determines whether a user is permitted "
+"to perform a particular action. Within phpMyAdmin, administrators have full "
+"control over creating users, viewing and editing privileges for existing "
+"users, and removing users."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:12
+msgid ""
+"Within phpMyAdmin, user management is controlled via the :guilabel:`Users` "
+"link from the main page. Users can be created, edited, and removed."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:16
+msgid "Creating a new user"
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:18
+msgid ""
+"To create a new user, click the :guilabel:`Add a new user` link near the "
+"bottom of the :guilabel:`Users` page (you must be a \"superuser\", e.g., "
+"user \"root\"). Use the textboxes and drop-downs to configure the user to "
+"your particular needs. You can then select whether to create a database for "
+"that user and grant specific global privileges. Once you've created the user "
+"(by clicking Go), you can define that user's permissions on a specific "
+"database (don't grant global privileges in that case). In general, users do "
+"not need any global privileges (other than USAGE), only permissions for "
+"their specific database."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:28
+msgid "Editing an existing user"
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:30
+msgid ""
+"To edit an existing user, simply click the pencil icon to the right of that "
+"user in the :guilabel:`Users` page. You can then edit their global- and "
+"database-specific privileges, change their password, or even copy those "
+"privileges to a new user."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:36
+msgid "Deleting a user"
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:38
+msgid ""
+"From the :guilabel:`Users` page, check the checkbox for the user you wish to "
+"remove, select whether or not to also remove any databases of the same name "
+"(if they exist), and click Go."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:43
+msgid "Assigning privileges to user for a specific database"
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:45
+msgid ""
+"Users are assigned to databases by editing the user record (from the :"
+"guilabel:`Users` link on the home page) not from within the :guilabel:"
+"`Users` link under the table. If you are creating a user specifically for a "
+"given table you will have to create the user first (with no global "
+"privileges) and then go back and edit that user to add the table and "
+"privileges for the individual table."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:55
+msgid "Configurable menus and user groups"
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:57
+#, fuzzy
+msgid ""
+"By enabling :config:option:`$cfg['Servers'][$i]['usergroups']` and :config:"
+"option:`$cfg['Servers'][$i]['usergroups']` you can customize what users will "
+"see in the phpMyAdmin navigation."
+msgstr ""
+"<a href=\"#cfg_Servers_controluser\" class=\"configrule\">$cfg['Servers'][$i]"
+"['controluser']</a> や <a href=\"#cfg_Servers_controlpass\" class="
+"\"configrule\">$cfg['Servers'][$i]['controlpass']</a> が間違っている。"
+
+#: ../phpmyadmin/doc/privileges.rst:63
+msgid ""
+"This feature only limits what a user sees, he is still able to use all the "
+"functions. So this can not be considered as a security limitation. Should "
+"you want to limit what users can do, use MySQL privileges to achieve that."
+msgstr ""
+
+#: ../phpmyadmin/doc/privileges.rst:67
+msgid ""
+"With this feature enabled, the :guilabel:`User accounts` management "
+"interface gains a second tab for managing :guilabel:`User groups`, where you "
+"can define what each group will view (see image below) and you can then "
+"assign each user to one of these groups. Users will be presented with a "
+"simplified user interface, which might be useful for inexperienced users who "
+"could be overwhelmed by all the features phpMyAdmin provides."
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:4
+msgid "Requirements"
+msgstr "必要なもの"
+
+#: ../phpmyadmin/doc/require.rst:7
+msgid "Web server"
+msgstr "ウェブサーバ"
+
+#: ../phpmyadmin/doc/require.rst:9
+msgid ""
+"Since phpMyAdmin's interface is based entirely in your browser, you'll need "
+"a web server (such as Apache, nginx, :term:`IIS`) to install phpMyAdmin's "
+"files into."
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:15
+#, fuzzy
+msgid ""
+"You need PHP 5.5.0 or newer, with ``session`` support, the Standard PHP "
+"Library (SPL) extension, hash, ctype, and JSON support."
+msgstr ""
+"<code>セッション</code> (<a href=\"#faq1_31\"><abbr title=\"よくある質問"
+"\">FAQ</abbr> 1.31 参照</a>)、Standard PHP Library (SPL)、JSON をサポートして"
+"いる PHP 5.2.0 以降が必要です。"
+
+#: ../phpmyadmin/doc/require.rst:18
+msgid ""
+"The ``mbstring`` extension (see :term:`mbstring`) is strongly recommended "
+"for performance reasons."
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:21
+#, fuzzy
+msgid "To support uploading of ZIP files, you need the PHP ``zip`` extension."
+msgstr ""
+"ZIP ファイルのアップロードをサポートするには、PHP の <code>zip</code> 拡張が"
+"必要です。"
+
+#: ../phpmyadmin/doc/require.rst:23
+#, fuzzy
+msgid ""
+"You need GD2 support in PHP to display inline thumbnails of JPEGs (\"image/"
+"jpeg: inline\") with their original aspect ratio."
+msgstr ""
+"JPEG 画像のインラインサムネイル (&quot;image/jpeg: inline&quot;) を正しいアス"
+"ペクト比で表示したい場合は PHP が GD2 をサポートしている必要があります。"
+
+#: ../phpmyadmin/doc/require.rst:26
+#, fuzzy
+msgid ""
+"When using the cookie authentication (the default), the `openssl <https://"
+"secure.php.net/openssl>`_ extension is strongly suggested."
+msgstr ""
+"「クッキー」<a href=\"#authentication_modes\">認証方法</a>を使用する場合、<a "
+"href=\"http://www.php.net/mcrypt\"><code>mcrypt</code></a> 拡張は、ほぼすべて"
+"ユーザに対して強く推奨され、また 64 ビットマシンの場合は<strong>必須</strong>"
+"となります。mcrypt を使用していないと、phpMyAdmin のページを読み込みが大幅に"
+"遅くなる原因となりえます。"
+
+# fee61d81567941c69fa0aa7c8fb218c0
+#: ../phpmyadmin/doc/require.rst:29
+msgid "To support upload progress bars, see :ref:`faq2_9`."
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:31
+#, fuzzy
+msgid ""
+"To support XML and Open Document Spreadsheet importing, you need the `libxml "
+"<https://secure.php.net/libxml>`_ extension."
+msgstr ""
+"XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP "
+"5.2.17 以降および <a href=\"http://www.php.net/libxml\"><code>libxml</code></"
+"a> 拡張が必要です。"
+
+#: ../phpmyadmin/doc/require.rst:34
+#, fuzzy
+msgid ""
+"To support reCAPTCHA on the login page, you need the `openssl <https://"
+"secure.php.net/openssl>`_ extension."
+msgstr ""
+"XML と OpenDocument スプレッドシートのインポートをサポートするには、PHP "
+"5.2.17 以降および <a href=\"http://www.php.net/libxml\"><code>libxml</code></"
+"a> 拡張が必要です。"
+
+#: ../phpmyadmin/doc/require.rst:37
+msgid ""
+"To support displaying phpMyAdmin's latest version, you need to enable "
+"``allow_url_open`` in your :file:`php.ini` or to have the `curl <https://"
+"secure.php.net/curl>`_ extension."
+msgstr ""
+
+# bfa3bcb2716e4a8b93d9958591609dd9
+#: ../phpmyadmin/doc/require.rst:41
+msgid ":ref:`faq1_31`, :ref:`authentication_modes`"
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:44
+msgid "Database"
+msgstr "データベース"
+
+# 3085a787b3db46009a809b1e12d62617
+#: ../phpmyadmin/doc/require.rst:46
+msgid "phpMyAdmin supports MySQL-compatible databases."
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:48
+#, fuzzy
+msgid "MySQL 5.5 or newer"
+msgstr "MySQL 5.0 以降"
+
+#: ../phpmyadmin/doc/require.rst:49
+msgid "MariaDB 5.5 or newer"
+msgstr "MariaDB 5.0 以降"
+
+# dcfcfdd1a8354c749ec3acfd317c8313
+#: ../phpmyadmin/doc/require.rst:51
+msgid ":ref:`faq1_17`"
+msgstr ""
+
+# adbc1ae0004f4b4fb2442a940c747207
+#: ../phpmyadmin/doc/require.rst:54
+msgid "Web browser"
+msgstr "ウェブブラウザ"
+
+#: ../phpmyadmin/doc/require.rst:56
+msgid ""
+"To access phpMyAdmin you need a web browser with cookies and JavaScript "
+"enabled."
+msgstr ""
+
+#: ../phpmyadmin/doc/require.rst:59
+msgid ""
+"You need browser which is supported by jQuery 2.0, see <https://jquery.com/"
+"browser-support/>."
+msgstr ""
+"jQuery 2.0をサポートするウェブブラウザが必要です。 <https://jquery.com/"
+"browser-support/> を参照してください。"
 
 #: ../phpmyadmin/doc/intro.rst:6
 msgid ""
@@ -17902,6 +17907,15 @@ msgstr ""
 #: ../phpmyadmin/doc/charts.rst:138
 msgid "1565"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Second authentication factor"
+#~ msgstr "「サインオン」認証モード"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Authentication Application"
+#~ msgstr "認証"
 
 #~ msgid "Type"
 #~ msgstr "データ型"
