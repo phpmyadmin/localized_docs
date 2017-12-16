@@ -46,7 +46,8 @@ po/documentation.pot: $(TEMPLATES)
 
 po/%.po: po/documentation.pot phpmyadmin/po/%.po
 	@echo "UPDATE $@"
-	@if [ ! -f $@ ] ; then msginit --no-translator -i $< -o $@ ; else msgmerge --previous -U $@ -C phpmyadmin/$@ $< ; fi
+	@if [ ! -f $@ ] ; then msginit --no-translator -i $< -o $@ ; fi
+	@msgmerge --previous -U $@ -C phpmyadmin/$@ $<
 
 po/%.mo: po/%.po
 	@echo "GEN $@"
