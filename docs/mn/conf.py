@@ -311,4 +311,5 @@ linkcheck_anchors = False
 linkcheck_ignore = [
     # Site is often down
     r'https://software.opensuse.org/package/.*',
+    r'https://pecl.php.net/.*',
 ]
