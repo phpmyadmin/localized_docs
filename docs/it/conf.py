@@ -312,4 +312,6 @@ linkcheck_ignore = [
     # Site is often down
     r'https://software.opensuse.org/package/.*',
     r'https://pecl.php.net/.*',
+    # Expired SSL certificate
+    r'https://texy.info/.*',
 ]
