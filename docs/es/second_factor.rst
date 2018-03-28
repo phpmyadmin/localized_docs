@@ -1,1 +1,0 @@
-../../phpmyadmin/doc/second_factor.rst
