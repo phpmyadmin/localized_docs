@@ -29,7 +29,19 @@ For manipulating with translations, you need gettext and sphinx installed.
 Usage
 -----
 
-To start new translation just add it to the Makefile.
+To start new translation,
+
+* Add it to the `LANGUAGES` section of the Makefile.
+* Copy one of the language folders in `./docs/` to a new folder (named with the
+  proper language code). This will maintain many symlinked files in that
+  folder and one regular file `config.py`.
+* Edit `config.py` to change the `language =` section with the correct
+  language name.
+* In the `./po/` folder, copy `documentation.pot` to create a new `.po`
+  file. You may have to also create a .mo file, but I think that happens
+  automatically on the build server.
+* Copy one of the folders in `./translated/` to a new folder. This again
+  creates many symlinks.
 
 To regenerate mofiles run:
 
