@@ -46,7 +46,7 @@ To start new translation,
 To regenerate mofiles run:
 
 .. code-block:: sh
-   
+
     make
 
 To obtain statistics about current translations run:
