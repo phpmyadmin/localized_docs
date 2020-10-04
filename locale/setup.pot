@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 5.1.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-21 00:00+0200\n"
+"POT-Creation-Date: 2020-10-05 00:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,7 +177,7 @@ msgid "Installing using Docker"
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:161
-msgid "phpMyAdmin comes with a `Docker image`_, which you can easily deploy. You can download it using:"
+msgid "phpMyAdmin comes with a `Docker official image`_, which you can easily deploy. You can download it using:"
 msgstr ""
 
 #: ../phpmyadmin/doc/setup.rst:168
@@ -260,703 +260,723 @@ msgstr ""
 msgid ":config:option:`$cfg['PmaAbsoluteUri']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:237
+#: ../phpmyadmin/doc/setup.rst:239
+msgid "If defined, this option will hide the PHP version (`expose_php = Off`). Set to any value (such as `HIDE_PHP_VERSION=true`)."
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:244
+msgid "If set, this option will override the default value for apache and php-fpm (this will change ``upload_max_filesize`` and ``post_max_size`` values)."
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:246
+msgid "Format as `[0-9+](K,M,G)` default value is `2048K`"
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:250
+msgid "If set, this option will override the default `config.inc.php` with the base64 decoded contents of the variable."
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:254
+msgid "If set, this option will override the default `config.user.inc.php` with the base64 decoded contents of the variable."
+msgstr ""
+
+#: ../phpmyadmin/doc/setup.rst:257
 msgid "By default, :ref:`cookie` is used, but if :envvar:`PMA_USER` and :envvar:`PMA_PASSWORD` are set, it is switched to :ref:`auth_config`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:242
+#: ../phpmyadmin/doc/setup.rst:262
 msgid "The credentials you need to log in are stored in the MySQL server, in case of Docker image, there are various ways to set it (for example :samp:`MYSQL_ROOT_PASSWORD` when starting the MySQL container). Please check documentation for `MariaDB container <https://hub.docker.com/_/mariadb>`_ or `MySQL container <https://hub.docker.com/_/mysql>`_."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:251
+#: ../phpmyadmin/doc/setup.rst:271
 msgid "Customizing configuration"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:253
+#: ../phpmyadmin/doc/setup.rst:273
 msgid "Additionally configuration can be tweaked by :file:`/etc/phpmyadmin/config.user.inc.php`. If this file exists, it will be loaded after configuration is generated from above environment variables, so you can override any configuration variable. This configuration can be added as a volume when invoking docker using `-v /some/local/directory/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php` parameters."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:259
+#: ../phpmyadmin/doc/setup.rst:279
 msgid "Note that the supplied configuration file is applied after :ref:`docker-vars`, but you can override any of the values."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:262
+#: ../phpmyadmin/doc/setup.rst:282
 msgid "For example to change the default behavior of CSV export you can use the following configuration file:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:270
+#: ../phpmyadmin/doc/setup.rst:290
 msgid "You can also use it to define server configuration instead of using the environment variables listed in :ref:`docker-vars`:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:294
+#: ../phpmyadmin/doc/setup.rst:314
 msgid "See :ref:`config` for detailed description of configuration options."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:297
+#: ../phpmyadmin/doc/setup.rst:317
 msgid "Docker Volumes"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:299
+#: ../phpmyadmin/doc/setup.rst:319
 msgid "You can use the following volumes to customize image behavior:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:301
+#: ../phpmyadmin/doc/setup.rst:321
 msgid ":file:`/etc/phpmyadmin/config.user.inc.php`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:303
+#: ../phpmyadmin/doc/setup.rst:323
 msgid "Can be used for additional settings, see the previous chapter for more details."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:305
+#: ../phpmyadmin/doc/setup.rst:325
 msgid ":file:`/sessions/`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:307
+#: ../phpmyadmin/doc/setup.rst:327
 msgid "Directory where PHP sessions are stored. You might want to share this for example when using :ref:`auth_signon`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:310
+#: ../phpmyadmin/doc/setup.rst:330
 msgid ":file:`/www/themes/`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:312
+#: ../phpmyadmin/doc/setup.rst:332
 msgid "Directory where phpMyAdmin looks for themes. By default only those shipped with phpMyAdmin are included, but you can include additional phpMyAdmin themes (see :ref:`themes`) by using Docker volumes."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:317
+#: ../phpmyadmin/doc/setup.rst:337
 msgid "Docker Examples"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:319
+#: ../phpmyadmin/doc/setup.rst:339
 msgid "To connect phpMyAdmin to a given server use:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:325
+#: ../phpmyadmin/doc/setup.rst:345
 msgid "To connect phpMyAdmin to more servers use:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:331
+#: ../phpmyadmin/doc/setup.rst:351
 msgid "To use arbitrary server option:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:337
+#: ../phpmyadmin/doc/setup.rst:357
 msgid "You can also link the database container using Docker:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:343
+#: ../phpmyadmin/doc/setup.rst:363
 msgid "Running with additional configuration:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:349
+#: ../phpmyadmin/doc/setup.rst:369
 msgid "Running with additional themes:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:356
+#: ../phpmyadmin/doc/setup.rst:376
 msgid "Using docker-compose"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:358
+#: ../phpmyadmin/doc/setup.rst:378
 msgid "Alternatively, you can also use docker-compose with the docker-compose.yml from <https://github.com/phpmyadmin/docker>.  This will run phpMyAdmin with an arbitrary server - allowing you to specify MySQL/MariaDB server on the login page."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:367
+#: ../phpmyadmin/doc/setup.rst:387
 msgid "Customizing configuration file using docker-compose"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:369
+#: ../phpmyadmin/doc/setup.rst:389
 msgid "You can use an external file to customize phpMyAdmin configuration and pass it using the volumes directive:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:387
+#: ../phpmyadmin/doc/setup.rst:407
 msgid ":ref:`docker-custom`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:390
+#: ../phpmyadmin/doc/setup.rst:410
 msgid "Running behind haproxy in a subdirectory"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:392
+#: ../phpmyadmin/doc/setup.rst:412
 msgid "When you want to expose phpMyAdmin running in a Docker container in a subdirectory, you need to rewrite the request path in the server proxying the requests."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:396
+#: ../phpmyadmin/doc/setup.rst:416
 msgid "For example, using haproxy it can be done as:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:420
+#: ../phpmyadmin/doc/setup.rst:440
 msgid "When using traefik, something like following should work:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:444
+#: ../phpmyadmin/doc/setup.rst:464
 msgid "You then should specify :envvar:`PMA_ABSOLUTE_URI` in the docker-compose configuration:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:470
+#: ../phpmyadmin/doc/setup.rst:490
 msgid "Quick Install"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:472
+#: ../phpmyadmin/doc/setup.rst:492
 msgid "Choose an appropriate distribution kit from the phpmyadmin.net Downloads page. Some kits contain only the English messages, others contain all languages. We'll assume you chose a kit whose name looks like ``phpMyAdmin-x.x.x -all-languages.tar.gz``."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:476
+#: ../phpmyadmin/doc/setup.rst:496
 msgid "Ensure you have downloaded a genuine archive, see :ref:`verify`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:477
+#: ../phpmyadmin/doc/setup.rst:497
 msgid "Untar or unzip the distribution (be sure to unzip the subdirectories): ``tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz`` in your webserver's document root. If you don't have direct access to your document root, put the files in a directory on your local machine, and, after step 4, transfer the directory on your web server using, for example, FTP."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:483
+#: ../phpmyadmin/doc/setup.rst:503
 msgid "Ensure that all the scripts have the appropriate owner (if PHP is running in safe mode, having some scripts with an owner different from the owner of other scripts will be a problem). See :ref:`faq4_2` and :ref:`faq1_26` for suggestions."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:487
+#: ../phpmyadmin/doc/setup.rst:507
 msgid "Now you must configure your installation. There are two methods that can be used. Traditionally, users have hand-edited a copy of :file:`config.inc.php`, but now a wizard-style setup script is provided for those who prefer a graphical installation. Creating a :file:`config.inc.php` is still a quick way to get started and needed for some advanced features."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:495
+#: ../phpmyadmin/doc/setup.rst:515
 msgid "Manually creating the file"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:497
+#: ../phpmyadmin/doc/setup.rst:517
 msgid "To manually create the file, simply use your text editor to create the file :file:`config.inc.php` (you can copy :file:`config.sample.inc.php` to get a minimal configuration file) in the main (top-level) phpMyAdmin directory (the one that contains :file:`index.php`). phpMyAdmin first loads :file:`libraries/config.default.php` and then overrides those values with anything found in :file:`config.inc.php`. If the default value is okay for a particular setting, there is no need to include it in :file:`config.inc.php`. You'll probably need only a few directives to get going; a simple configuration may look like this:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:519
+#: ../phpmyadmin/doc/setup.rst:539
 msgid "Or, if you prefer to not be prompted every time you log in:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:533
+#: ../phpmyadmin/doc/setup.rst:553
 msgid "Storing passwords in the configuration is insecure as anybody can then manipulate your database."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:536
+#: ../phpmyadmin/doc/setup.rst:556
 msgid "For a full explanation of possible configuration values, see the :ref:`config` of this document."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:544
+#: ../phpmyadmin/doc/setup.rst:564
 msgid "Using the Setup script"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:546
+#: ../phpmyadmin/doc/setup.rst:566
 msgid "Instead of manually editing :file:`config.inc.php`, you can use phpMyAdmin's setup feature. The file can be generated using the setup and you can download it for upload to the server."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:550
+#: ../phpmyadmin/doc/setup.rst:570
 msgid "Next, open your browser and visit the location where you installed phpMyAdmin, with the ``/setup`` suffix. The changes are not saved to the server, you need to use the :guilabel:`Download` button to save them to your computer and then upload to the server."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:555
+#: ../phpmyadmin/doc/setup.rst:575
 msgid "Now the file is ready to be used. You can choose to review or edit the file with your favorite editor, if you prefer to set some advanced options that the setup script does not provide."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:559
+#: ../phpmyadmin/doc/setup.rst:579
 msgid "If you are using the ``auth_type`` \"config\", it is suggested that you protect the phpMyAdmin installation directory because using config does not require a user to enter a password to access the phpMyAdmin installation. Use of an alternate authentication method is recommended, for example with HTTP–AUTH in a :term:`.htaccess` file or switch to using ``auth_type`` cookie or http. See the :ref:`faqmultiuser` for additional information, especially :ref:`faq4_4`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:566
+#: ../phpmyadmin/doc/setup.rst:586
 msgid "Open the main phpMyAdmin directory in your browser. phpMyAdmin should now display a welcome screen and your databases, or a login dialog if using :term:`HTTP` or cookie authentication mode."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:574
+#: ../phpmyadmin/doc/setup.rst:594
 msgid "Setup script on Debian, Ubuntu and derivatives"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:576
+#: ../phpmyadmin/doc/setup.rst:596
 msgid "Debian and Ubuntu have changed the way in which the setup script is enabled and disabled, in a way that single command has to be executed for either of these."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:579
+#: ../phpmyadmin/doc/setup.rst:599
 msgid "To allow editing configuration invoke:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:585
+#: ../phpmyadmin/doc/setup.rst:605
 msgid "To block editing configuration invoke:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:592
+#: ../phpmyadmin/doc/setup.rst:612
 msgid "Setup script on openSUSE"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:594
+#: ../phpmyadmin/doc/setup.rst:614
 msgid "Some openSUSE releases do not include setup script in the package. In case you want to generate configuration on these you can either download original package from <https://www.phpmyadmin.net/> or use setup script on our demo server: <https://demo.phpmyadmin.net/master/setup/>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:602
+#: ../phpmyadmin/doc/setup.rst:622
 msgid "Verifying phpMyAdmin releases"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:604
+#: ../phpmyadmin/doc/setup.rst:624
 msgid "Since July 2015 all phpMyAdmin releases are cryptographically signed by the releasing developer, who through January 2016 was Marc Delisle. His key id is 0xFEFC65D181AF644A, his PGP fingerprint is:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:612
+#: ../phpmyadmin/doc/setup.rst:632
 msgid "and you can get more identification information from <https://keybase.io/lem9>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:614
+#: ../phpmyadmin/doc/setup.rst:634
 msgid "Beginning in January 2016, the release manager is Isaac Bennetch. His key id is 0xCE752F178259BD92, and his PGP fingerprint is:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:621
+#: ../phpmyadmin/doc/setup.rst:641
 msgid "and you can get more identification information from <https://keybase.io/ibennetch>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:623
+#: ../phpmyadmin/doc/setup.rst:643
 msgid "Some additional downloads (for example themes) might be signed by Michal Čihař. His key id is 0x9C27B31342B7511D, and his PGP fingerprint is:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:630
+#: ../phpmyadmin/doc/setup.rst:650
 msgid "and you can get more identification information from <https://keybase.io/nijel>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:632
+#: ../phpmyadmin/doc/setup.rst:652
 msgid "You should verify that the signature matches the archive you have downloaded. This way you can be sure that you are using the same code that was released. You should also verify the date of the signature to make sure that you downloaded the latest version."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:637
+#: ../phpmyadmin/doc/setup.rst:657
 msgid "Each archive is accompanied by ``.asc`` files which contain the PGP signature for it. Once you have both of them in the same folder, you can verify the signature:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:646
+#: ../phpmyadmin/doc/setup.rst:666
 msgid "As you can see gpg complains that it does not know the public key. At this point, you should do one of the following steps:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:649
+#: ../phpmyadmin/doc/setup.rst:669
 msgid "Download the keyring from `our download server <https://files.phpmyadmin.net/phpmyadmin.keyring>`_, then import it with:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:655
+#: ../phpmyadmin/doc/setup.rst:675
 msgid "Download and import the key from one of the key servers:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:666
+#: ../phpmyadmin/doc/setup.rst:686
 msgid "This will improve the situation a bit - at this point, you can verify that the signature from the given key is correct but you still can not trust the name used in the key:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:680
+#: ../phpmyadmin/doc/setup.rst:700
 msgid "The problem here is that anybody could issue the key with this name.  You need to ensure that the key is actually owned by the mentioned person.  The GNU Privacy Handbook covers this topic in the chapter `Validating other keys on your public keyring`_. The most reliable method is to meet the developer in person and exchange key fingerprints, however, you can also rely on the web of trust. This way you can trust the key transitively though signatures of others, who have met the developer in person."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:688
+#: ../phpmyadmin/doc/setup.rst:708
 msgid "Once the key is trusted, the warning will not occur:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:696
+#: ../phpmyadmin/doc/setup.rst:716
 msgid "Should the signature be invalid (the archive has been changed), you would get a clear error regardless of the fact that the key is trusted or not:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:715
+#: ../phpmyadmin/doc/setup.rst:735
 msgid "phpMyAdmin configuration storage"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:719
+#: ../phpmyadmin/doc/setup.rst:739
 msgid "Prior to phpMyAdmin 3.4.0 this was called Linked Tables Infrastructure, but the name was changed due to the extended scope of the storage."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:722
+#: ../phpmyadmin/doc/setup.rst:742
 msgid "For a whole set of additional features (:ref:`bookmarks`, comments, :term:`SQL`-history, tracking mechanism, :term:`PDF`-generation, :ref:`transformations`, :ref:`relations` etc.) you need to create a set of special tables.  Those tables can be located in your own database, or in a central database for a multi-user installation (this database would then be accessed by the controluser, so no other user should have rights to it)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:732
+#: ../phpmyadmin/doc/setup.rst:752
 msgid "Zero configuration"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:734
+#: ../phpmyadmin/doc/setup.rst:754
 msgid "In many cases, this database structure can be automatically created and configured. This is called “Zero Configuration” mode and can be particularly useful in shared hosting situations. “Zeroconf” mode is on by default, to disable set :config:option:`$cfg['ZeroConf']` to false."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:739
+#: ../phpmyadmin/doc/setup.rst:759
 msgid "The following three scenarios are covered by the Zero Configuration mode:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:741
+#: ../phpmyadmin/doc/setup.rst:761
 msgid "When entering a database where the configuration storage tables are not present, phpMyAdmin offers to create them from the Operations tab."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:743
+#: ../phpmyadmin/doc/setup.rst:763
 msgid "When entering a database where the tables do already exist, the software automatically detects this and begins using them. This is the most common situation; after the tables are initially created automatically they are continually used without disturbing the user; this is also most useful on shared hosting where the user is not able to edit :file:`config.inc.php` and usually the user only has access to one database."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:749
+#: ../phpmyadmin/doc/setup.rst:769
 msgid "When having access to multiple databases, if the user first enters the database containing the configuration storage tables then switches to another database, phpMyAdmin continues to use the tables from the first database; the user is not prompted to create more tables in the new database."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:756
+#: ../phpmyadmin/doc/setup.rst:776
 msgid "Manual configuration"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:758
+#: ../phpmyadmin/doc/setup.rst:778
 msgid "Please look at your ``./sql/`` directory, where you should find a file called *create\\_tables.sql*. (If you are using a Windows server, pay special attention to :ref:`faq1_23`)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:762
+#: ../phpmyadmin/doc/setup.rst:782
 msgid "If you already had this infrastructure and:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:764
+#: ../phpmyadmin/doc/setup.rst:784
 msgid "upgraded to MySQL 4.1.2 or newer, please use :file:`sql/upgrade_tables_mysql_4_1_2+.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:766
+#: ../phpmyadmin/doc/setup.rst:786
 msgid "upgraded to phpMyAdmin 4.3.0 or newer from 2.5.0 or newer (<= 4.2.x), please use :file:`sql/upgrade_column_info_4_3_0+.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:768
+#: ../phpmyadmin/doc/setup.rst:788
 msgid "upgraded to phpMyAdmin 4.7.0 or newer from 4.3.0 or newer, please use :file:`sql/upgrade_tables_4_7_0+.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:771
+#: ../phpmyadmin/doc/setup.rst:791
 msgid "and then create new tables by importing :file:`sql/create_tables.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:773
+#: ../phpmyadmin/doc/setup.rst:793
 msgid "You can use your phpMyAdmin to create the tables for you. Please be aware that you may need special (administrator) privileges to create the database and tables, and that the script may need some tuning, depending on the database name."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:778
+#: ../phpmyadmin/doc/setup.rst:798
 msgid "After having imported the :file:`sql/create_tables.sql` file, you should specify the table names in your :file:`config.inc.php` file. The directives used for that can be found in the :ref:`config`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:782
+#: ../phpmyadmin/doc/setup.rst:802
 msgid "You will also need to have a controluser (:config:option:`$cfg['Servers'][$i]['controluser']` and :config:option:`$cfg['Servers'][$i]['controlpass']` settings) with the proper rights to those tables. For example you can create it using following statement:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:788
+#: ../phpmyadmin/doc/setup.rst:808
 msgid "And for any MariaDB version:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:795
+#: ../phpmyadmin/doc/setup.rst:815
 msgid "For MySQL 8.0 and newer:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:802
+#: ../phpmyadmin/doc/setup.rst:822
 msgid "For MySQL older than 8.0:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:809
+#: ../phpmyadmin/doc/setup.rst:829
 msgid "Note that MySQL installations with PHP older than 7.4 and MySQL newer than 8.0 may require using the mysql_native_password authentication as a workaround, see :ref:`faq1_45` for details."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:816
+#: ../phpmyadmin/doc/setup.rst:836
 msgid "Upgrading from an older version"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:820
+#: ../phpmyadmin/doc/setup.rst:840
 msgid "**Never** extract the new version over an existing installation of phpMyAdmin, always first remove the old files keeping just the configuration."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:824
+#: ../phpmyadmin/doc/setup.rst:844
 msgid "This way, you will not leave any old or outdated files in the directory, which can have severe security implications or can cause various breakages."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:827
+#: ../phpmyadmin/doc/setup.rst:847
 msgid "Simply copy :file:`config.inc.php` from your previous installation into the newly unpacked one. Configuration files from old versions may require some tweaking as some options have been changed or removed. For compatibility with PHP 5.3 and later, remove a ``set_magic_quotes_runtime(0);`` statement that you might find near the end of your configuration file."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:834
+#: ../phpmyadmin/doc/setup.rst:854
 msgid "You should **not** copy :file:`libraries/config.default.php` over :file:`config.inc.php` because the default configuration file is version- specific."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:838
+#: ../phpmyadmin/doc/setup.rst:858
 msgid "The complete upgrade can be performed in a few simple steps:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:840
+#: ../phpmyadmin/doc/setup.rst:860
 msgid "Download the latest phpMyAdmin version from <https://www.phpmyadmin.net/downloads/>."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:841
+#: ../phpmyadmin/doc/setup.rst:861
 msgid "Rename existing phpMyAdmin folder (for example to ``phpmyadmin-old``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:842
+#: ../phpmyadmin/doc/setup.rst:862
 msgid "Unpack freshly downloaded phpMyAdmin to the desired location (for example ``phpmyadmin``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:843
+#: ../phpmyadmin/doc/setup.rst:863
 msgid "Copy :file:`config.inc.php`` from old location (``phpmyadmin-old``) to the new one (``phpmyadmin``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:844
+#: ../phpmyadmin/doc/setup.rst:864
 msgid "Test that everything works properly."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:845
+#: ../phpmyadmin/doc/setup.rst:865
 msgid "Remove backup of a previous version (``phpmyadmin-old``)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:847
+#: ../phpmyadmin/doc/setup.rst:867
 msgid "If you have upgraded your MySQL server from a version previous to 4.1.2 to version 5.x or newer and if you use the phpMyAdmin configuration storage, you should run the :term:`SQL` script found in :file:`sql/upgrade_tables_mysql_4_1_2+.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:852
+#: ../phpmyadmin/doc/setup.rst:872
 msgid "If you have upgraded your phpMyAdmin to 4.3.0 or newer from 2.5.0 or newer (<= 4.2.x) and if you use the phpMyAdmin configuration storage, you should run the :term:`SQL` script found in :file:`sql/upgrade_column_info_4_3_0+.sql`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:857
+#: ../phpmyadmin/doc/setup.rst:877
 msgid "Do not forget to clear the browser cache and to empty the old session by logging out and logging in again."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:865
+#: ../phpmyadmin/doc/setup.rst:885
 msgid "Using authentication modes"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:867
+#: ../phpmyadmin/doc/setup.rst:887
 msgid ":term:`HTTP` and cookie authentication modes are recommended in a **multi-user environment** where you want to give users access to their own database and don't want them to play around with others. Nevertheless, be aware that MS Internet Explorer seems to be really buggy about cookies, at least till version 6. Even in a **single-user environment**, you might prefer to use :term:`HTTP` or cookie mode so that your user/password pair are not in clear in the configuration file."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:875
+#: ../phpmyadmin/doc/setup.rst:895
 msgid ":term:`HTTP` and cookie authentication modes are more secure: the MySQL login information does not need to be set in the phpMyAdmin configuration file (except possibly for the :config:option:`$cfg['Servers'][$i]['controluser']`). However, keep in mind that the password travels in plain text unless you are using the HTTPS protocol. In cookie mode, the password is stored, encrypted with the AES algorithm, in a temporary cookie."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:883
+#: ../phpmyadmin/doc/setup.rst:903
 msgid "Then each of the *true* users should be granted a set of privileges on a set of particular databases. Normally you shouldn't give global privileges to an ordinary user unless you understand the impact of those privileges (for example, you are creating a superuser). For example, to grant the user *real_user* with all privileges on the database *user_base*:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:894
+#: ../phpmyadmin/doc/setup.rst:914
 msgid "What the user may now do is controlled entirely by the MySQL user management system. With HTTP or cookie authentication mode, you don't need to fill the user/password fields inside the :config:option:`$cfg['Servers']`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:900
+#: ../phpmyadmin/doc/setup.rst:920
 msgid ":ref:`faq1_32`, :ref:`faq1_35`, :ref:`faq4_1`, :ref:`faq4_2`, :ref:`faq4_3`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:911
+#: ../phpmyadmin/doc/setup.rst:931
 msgid "HTTP authentication mode"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:913
+#: ../phpmyadmin/doc/setup.rst:933
 msgid "Uses :term:`HTTP` Basic authentication method and allows you to log in as any valid MySQL user."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:915
+#: ../phpmyadmin/doc/setup.rst:935
 msgid "Is supported with most PHP configurations. For :term:`IIS` (:term:`ISAPI`) support using :term:`CGI` PHP see :ref:`faq1_32`, for using with Apache :term:`CGI` see :ref:`faq1_35`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:918
+#: ../phpmyadmin/doc/setup.rst:938
 msgid "When PHP is running under Apache's :term:`mod_proxy_fcgi` (e.g. with PHP-FPM), ``Authorization`` headers are not passed to the underlying FCGI application, such that your credentials will not reach the application. In this case, you can add the following configuration directive:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:927
+#: ../phpmyadmin/doc/setup.rst:947
 msgid "See also :ref:`faq4_4` about not using the :term:`.htaccess` mechanism along with ':term:`HTTP`' authentication mode."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:932
+#: ../phpmyadmin/doc/setup.rst:952
 msgid "There is no way to do proper logout in HTTP authentication, most browsers will remember credentials until there is no different successful authentication. Because of this, this method has a limitation that you can not login with the same user after logout."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:942
+#: ../phpmyadmin/doc/setup.rst:962
 msgid "Cookie authentication mode"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:944
+#: ../phpmyadmin/doc/setup.rst:964
 msgid "Username and password are stored in cookies during the session and password is deleted when it ends."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:946
+#: ../phpmyadmin/doc/setup.rst:966
 msgid "With this mode, the user can truly log out of phpMyAdmin and log back in with the same username (this is not possible with :ref:`auth_http`)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:948
+#: ../phpmyadmin/doc/setup.rst:968
 msgid "If you want to allow users to enter any hostname to connect (rather than only servers that are configured in :file:`config.inc.php`), see the :config:option:`$cfg['AllowArbitraryServer']` directive."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:951
+#: ../phpmyadmin/doc/setup.rst:971
 msgid "As mentioned in the :ref:`require` section, having the ``openssl`` extension will speed up access considerably, but is not required."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:959
+#: ../phpmyadmin/doc/setup.rst:979
 msgid "Signon authentication mode"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:961
+#: ../phpmyadmin/doc/setup.rst:981
 msgid "This mode is a convenient way of using credentials from another application to authenticate to phpMyAdmin to implement a single signon solution."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:964
+#: ../phpmyadmin/doc/setup.rst:984
 msgid "The other application has to store login information into session data (see :config:option:`$cfg['Servers'][$i]['SignonSession']` and :config:option:`$cfg['Servers'][$i]['SignonCookieParams']`) or you need to implement script to return the credentials (see :config:option:`$cfg['Servers'][$i]['SignonScript']`)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:969
+#: ../phpmyadmin/doc/setup.rst:989
 msgid "When no credentials are available, the user is being redirected to :config:option:`$cfg['Servers'][$i]['SignonURL']`, where you should handle the login process."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:973
+#: ../phpmyadmin/doc/setup.rst:993
 msgid "The very basic example of saving credentials in a session is available as :file:`examples/signon.php`:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:979
+#: ../phpmyadmin/doc/setup.rst:999
 msgid "Alternatively, you can also use this way to integrate with OpenID as shown in :file:`examples/openid.php`:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:985
+#: ../phpmyadmin/doc/setup.rst:1005
 msgid "If you intend to pass the credentials using some other means than, you have to implement wrapper in PHP to get that data and set it to :config:option:`$cfg['Servers'][$i]['SignonScript']`. There is a very minimal example in :file:`examples/signon-script.php`:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:994
+#: ../phpmyadmin/doc/setup.rst:1014
 msgid ":config:option:`$cfg['Servers'][$i]['auth_type']`, :config:option:`$cfg['Servers'][$i]['SignonSession']`, :config:option:`$cfg['Servers'][$i]['SignonCookieParams']`, :config:option:`$cfg['Servers'][$i]['SignonScript']`, :config:option:`$cfg['Servers'][$i]['SignonURL']`, :ref:`example-signon`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1006
+#: ../phpmyadmin/doc/setup.rst:1026
 msgid "Config authentication mode"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1008
+#: ../phpmyadmin/doc/setup.rst:1028
 msgid "This mode is sometimes the less secure one because it requires you to fill the :config:option:`$cfg['Servers'][$i]['user']` and :config:option:`$cfg['Servers'][$i]['password']` fields (and as a result, anyone who can read your :file:`config.inc.php` can discover your username and password)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1013
+#: ../phpmyadmin/doc/setup.rst:1033
 msgid "In the :ref:`faqmultiuser` section, there is an entry explaining how to protect your configuration file."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1015
+#: ../phpmyadmin/doc/setup.rst:1035
 msgid "For additional security in this mode, you may wish to consider the Host authentication :config:option:`$cfg['Servers'][$i]['AllowDeny']['order']` and :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` configuration directives."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1018
+#: ../phpmyadmin/doc/setup.rst:1038
 msgid "Unlike cookie and http, does not require a user to log in when first loading the phpMyAdmin site. This is by design but could allow any user to access your installation. Use of some restriction method is suggested, perhaps a :term:`.htaccess` file with the HTTP-AUTH directive or disallowing incoming HTTP requests at one’s router or firewall will suffice (both of which are beyond the scope of this manual but easily searchable with Google)."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1029
+#: ../phpmyadmin/doc/setup.rst:1049
 msgid "Securing your phpMyAdmin installation"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1031
+#: ../phpmyadmin/doc/setup.rst:1051
 msgid "The phpMyAdmin team tries hard to make the application secure, however there are always ways to make your installation more secure:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1034
+#: ../phpmyadmin/doc/setup.rst:1054
 msgid "Follow our `Security announcements <https://www.phpmyadmin.net/security/>`_ and upgrade phpMyAdmin whenever new vulnerability is published."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1036
+#: ../phpmyadmin/doc/setup.rst:1056
 msgid "Serve phpMyAdmin on HTTPS only. Preferably, you should use HSTS as well, so that you're protected from protocol downgrade attacks."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1038
+#: ../phpmyadmin/doc/setup.rst:1058
 msgid "Ensure your PHP setup follows recommendations for production sites, for example `display_errors <https://www.php.net/manual/en/errorfunc.configuration.php#ini.display-errors>`_ should be disabled."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1041
+#: ../phpmyadmin/doc/setup.rst:1061
 msgid "Remove the ``test`` directory from phpMyAdmin, unless you are developing and need a test suite."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1042
+#: ../phpmyadmin/doc/setup.rst:1062
 msgid "Remove the ``setup`` directory from phpMyAdmin, you will probably not use it after the initial setup."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1044
+#: ../phpmyadmin/doc/setup.rst:1064
 msgid "Properly choose an authentication method - :ref:`cookie` is probably the best choice for shared hosting."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1046
+#: ../phpmyadmin/doc/setup.rst:1066
 msgid "Deny access to auxiliary files in :file:`./libraries/` or :file:`./templates/` subfolders in your webserver configuration. Such configuration prevents from possible path exposure and cross side scripting vulnerabilities that might happen to be found in that code. For the Apache webserver, this is often accomplished with a :term:`.htaccess` file in those directories."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1052
+#: ../phpmyadmin/doc/setup.rst:1072
 msgid "Deny access to temporary files, see :config:option:`$cfg['TempDir']` (if that is placed inside your web root, see also :ref:`web-dirs`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1054
+#: ../phpmyadmin/doc/setup.rst:1074
 msgid "It is generally a good idea to protect a public phpMyAdmin installation against access by robots as they usually can not do anything good there. You can do this using ``robots.txt`` file in the root of your webserver or limit access by web server configuration, see :ref:`faq1_42`."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1058
+#: ../phpmyadmin/doc/setup.rst:1078
 msgid "In case you don't want all MySQL users to be able to access phpMyAdmin, you can use :config:option:`$cfg['Servers'][$i]['AllowDeny']['rules']` to limit them or :config:option:`$cfg['Servers'][$i]['AllowRoot']` to deny root user access."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1061
+#: ../phpmyadmin/doc/setup.rst:1081
 msgid "Enable :ref:`2fa` for your account."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1062
+#: ../phpmyadmin/doc/setup.rst:1082
 msgid "Consider hiding phpMyAdmin behind an authentication proxy, so that users need to authenticate prior to providing MySQL credentials to phpMyAdmin. You can achieve this by configuring your web server to request HTTP authentication. For example in Apache this can be done with:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1074
+#: ../phpmyadmin/doc/setup.rst:1094
 msgid "Once you have changed the configuration, you need to create a list of users which can authenticate. This can be done using the :program:`htpasswd` utility:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1081
+#: ../phpmyadmin/doc/setup.rst:1101
 msgid "If you are afraid of automated attacks, enabling Captcha by :config:option:`$cfg['CaptchaLoginPublicKey']` and :config:option:`$cfg['CaptchaLoginPrivateKey']` might be an option."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1084
+#: ../phpmyadmin/doc/setup.rst:1104
 msgid "Failed login attemps are logged to syslog (if available, see :config:option:`$cfg['AuthLog']`). This can allow using a tool such as fail2ban to block brute-force attempts. Note that the log file used by syslog is not the same as the Apache error or access log files."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1088
+#: ../phpmyadmin/doc/setup.rst:1108
 msgid "In case you're running phpMyAdmin together with other PHP applications, it is generally advised to use separate session storage for phpMyAdmin to avoid possible session-based attacks against it. You can use :config:option:`$cfg['SessionSavePath']` to achieve this."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1096
+#: ../phpmyadmin/doc/setup.rst:1116
 msgid "Using SSL for connection to database server"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1098
+#: ../phpmyadmin/doc/setup.rst:1118
 msgid "It is recommended to use SSL when connecting to remote database server. There are several configuration options involved in the SSL setup:"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1103
+#: ../phpmyadmin/doc/setup.rst:1123
 msgid ":config:option:`$cfg['Servers'][$i]['ssl']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1102
+#: ../phpmyadmin/doc/setup.rst:1122
 msgid "Defines whether to use SSL at all. If you enable only this, the connection will be encrypted, but there is not authentication of the connection - you can not verify that you are talking to the right server."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1105
+#: ../phpmyadmin/doc/setup.rst:1125
 msgid ":config:option:`$cfg['Servers'][$i]['ssl_key']` and :config:option:`$cfg['Servers'][$i]['ssl_cert']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1106
+#: ../phpmyadmin/doc/setup.rst:1126
 msgid "This is used for authentication of client to the server."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1108
+#: ../phpmyadmin/doc/setup.rst:1128
 msgid ":config:option:`$cfg['Servers'][$i]['ssl_ca']` and :config:option:`$cfg['Servers'][$i]['ssl_ca_path']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1108
+#: ../phpmyadmin/doc/setup.rst:1128
 msgid "The certificate authorities you trust for server certificates. This is used to ensure that you are talking to a trusted server."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1112
+#: ../phpmyadmin/doc/setup.rst:1132
 msgid ":config:option:`$cfg['Servers'][$i]['ssl_verify']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1111
+#: ../phpmyadmin/doc/setup.rst:1131
 msgid "This configuration disables server certificate verification. Use with caution."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1116
+#: ../phpmyadmin/doc/setup.rst:1136
 msgid ":ref:`example-google-ssl`, :config:option:`$cfg['Servers'][$i]['ssl']`, :config:option:`$cfg['Servers'][$i]['ssl_key']`, :config:option:`$cfg['Servers'][$i]['ssl_cert']`, :config:option:`$cfg['Servers'][$i]['ssl_ca']`, :config:option:`$cfg['Servers'][$i]['ssl_ca_path']`, :config:option:`$cfg['Servers'][$i]['ssl_ciphers']`, :config:option:`$cfg['Servers'][$i]['ssl_verify']`"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1126
+#: ../phpmyadmin/doc/setup.rst:1146
 msgid "Known issues"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1129
+#: ../phpmyadmin/doc/setup.rst:1149
 msgid "Users with column-specific privileges are unable to \"Browse\""
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1131
+#: ../phpmyadmin/doc/setup.rst:1151
 msgid "If a user has only column-specific privileges on some (but not all) columns in a table, \"Browse\" will fail with an error message."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1134
+#: ../phpmyadmin/doc/setup.rst:1154
 msgid "As a workaround, a bookmarked query with the same name as the table can be created, this will run when using the \"Browse\" link instead. `Issue 11922 <https://github.com/phpmyadmin/phpmyadmin/issues/11922>`_."
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1138
+#: ../phpmyadmin/doc/setup.rst:1158
 msgid "Trouble logging back in after logging out using 'http' authentication"
 msgstr ""
 
-#: ../phpmyadmin/doc/setup.rst:1140
+#: ../phpmyadmin/doc/setup.rst:1160
 msgid "When using the 'http' ``auth_type``, it can be impossible to log back in (when the logout comes manually or after a period of inactivity). `Issue 11898 <https://github.com/phpmyadmin/phpmyadmin/issues/11898>`_."
 msgstr ""
 
