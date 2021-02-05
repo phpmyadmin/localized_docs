@@ -13,9 +13,9 @@ will be merged to Git.
     :alt: Translation status
     :target: https://hosted.weblate.org/engage/phpmyadmin/?utm_source=widget
 
-.. image:: https://travis-ci.org/phpmyadmin/localized_docs.svg?branch=master
-    :alt: Build status
-    :target: https://travis-ci.org/phpmyadmin/localized_docs
+.. image:: https://github.com/phpmyadmin/localized_docs/workflows/Build%20documentation/badge.svg?branch=master
+    :alt: Build documentation
+    :target: https://github.com/phpmyadmin/localized_docs/actions
 
 .. image:: https://readthedocs.org/projects/phpmyadmin/badge/?version=latest
     :target: http://docs.phpmyadmin.net/en/latest/?badge=latest
