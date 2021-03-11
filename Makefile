@@ -2,7 +2,7 @@
 # Makefile to build translations
 
 # Languages which we translate
-LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hr hu nb es de lt ro mn pt_BR pt_PT zh_CN zh_TW hy en_GB sk sl el da ar bs az et fy sq eo id ko uk ru
+LANGUAGES=it pl ja fr cs gl sv nl ka tr fi ca hr hu nb es de lt ro mn pt_BR pt_PT zh_CN zh_TW hy en_GB si sk sl el da ar bs az et fy sq eo id ko uk ru
 
 # Documentation source dir
 SOURCE_DIR=phpmyadmin/doc/
