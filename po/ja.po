@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
 "POT-Creation-Date: 2022-11-26 00:00+0100\n"
-"PO-Revision-Date: 2022-09-04 01:23+0000\n"
-"Last-Translator: Xyx S <sec.xyx@gmail.com>\n"
+"PO-Revision-Date: 2022-11-27 12:48+0000\n"
+"Last-Translator: Masahiro Fujimoto <mfujimot@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/phpmyadmin/"
 "documentation/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: ../phpmyadmin/doc/developers.rst:4
 msgid "Developers Information"
@@ -5478,22 +5478,14 @@ msgstr ""
 
 # 16ad97d7a7f34ba49df46a13e9627530
 #: ../phpmyadmin/doc/config.rst:1891 ../phpmyadmin/doc/config.rst:1948
-#, fuzzy
-#| msgid ":ref:`faq1_1`"
 msgid ":ref:`faq2_10`"
-msgstr ":ref:`faq1_1`"
+msgstr ":ref:`faq2_10`"
 
 #: ../phpmyadmin/doc/config.rst:1894
 msgid "Cookie authentication options"
 msgstr "クッキー認証オプション"
 
 #: ../phpmyadmin/doc/config.rst:1901
-#, fuzzy
-#| msgid ""
-#| "The \"cookie\" auth\\_type uses AES algorithm to encrypt the password. If "
-#| "you are using the \"cookie\" auth\\_type, enter here a random passphrase "
-#| "of your choice. It will be used internally by the AES algorithm: you "
-#| "won’t be prompted for this passphrase."
 msgid ""
 "The \"cookie\" auth\\_type uses the :term:`Sodium` extension to encrypt the "
 "cookies (see :term:`Cookie`). If you are using the \"cookie\" auth\\_type, "
@@ -5501,10 +5493,11 @@ msgid ""
 "key. It will be used internally by the :term:`Sodium` extension: you won't "
 "be prompted for this encryption key."
 msgstr ""
-"\"cookie\" 認証方式は、パスワードを暗号化するのに AES アルゴリズムを使用しま"
-"す。 \"cookie\" 認証方式を使用する場合は、ここにランダムなパスフレーズを入力"
-"してください。これは AES アルゴリズムで内部的に使用されます。このパスフレーズ"
-"を入力するよう促されることはありません。"
+"\"cookie\" 認証方式は、クッキーを暗号化するのに :term:`Sodium` "
+"拡張機能を使用します (:term:`Cookie` を参照)。 \"cookie\" 認証方式を使用する"
+"場合は、暗号化キーとして使用するためにここにランダムなバイト列の文字列を入力"
+"してください。これは :term:`Sodium` 拡張機能で内部的に使用され、この暗号化キ"
+"ーを入力するよう促されることはありません。"
 
 #: ../phpmyadmin/doc/config.rst:1905
 msgid ""
@@ -5513,6 +5506,9 @@ msgid ""
 "www.php.net/sodium_bin2hex>`_) and then used in the configuration file. For "
 "example:"
 msgstr ""
+"バイナリ文字列は通常は表示できないので、(`sodium_bin2hex<https://www.php.net/"
+"sodium_bin2hex>`_ のような関数を使用して) "
+"16進数表現に変換し、設定ファイルで使用することができます。たとえば、"
 
 #: ../phpmyadmin/doc/config.rst:1914
 msgid ""
@@ -5520,6 +5516,9 @@ msgid ""
 "are visible characters, then a function like `sodium_bin2hex <https://www."
 "php.net/sodium_bin2hex>`_ is not required. For example:"
 msgstr ""
+"バイナリ文字列を使用することが推奨されます。ただし、文字列の 32 "
+"バイトすべてが可視文字である場合は、`sodium_bin2hex<https://www.php.net/"
+"sodium_bin2hex>`_ のような関数は必要ありません。例:"
 
 #: ../phpmyadmin/doc/config.rst:1925
 msgid ""
@@ -5528,6 +5527,9 @@ msgid ""
 "temporary key will be automatically generated for you. However, this "
 "temporary key will only last for the duration of the session."
 msgstr ""
+"暗号化キーは 32 バイト長である必要があります。バイト長より長い場合は、最初の "
+"32 バイトだけが使用され、短い場合は、新しい一時的な鍵が自動的に生成されます。"
+"ただし、この一時的な鍵は、セッションの間だけ有効です。"
 
 # 151321c7c2a74651b455b46f8204f04d
 #: ../phpmyadmin/doc/config.rst:1931
@@ -5556,6 +5558,11 @@ msgid ""
 "\\_secretbox\\_open <https://www.php.net/sodium_crypto_secretbox_open>`_ PHP "
 "functions to encrypt and decrypt cookies, respectively."
 msgstr ""
+"バージョン 5.2.0 以降、phpMyAdmin は PHP 関数の "
+"`sodium_crypto_secretbox<https://www.php.net/sodium_crypto_secretbox>`_ "
+"および`sodium_crypto_secretbox_open<https://www.php.net/"
+"sodium_crypto_secretbox_open>`_ を使用して Cookie "
+"をそれぞれ暗号化および復号しています。"
 
 #: ../phpmyadmin/doc/config.rst:1953
 msgid "``'Strict'``"
@@ -9111,12 +9118,18 @@ msgid ""
 "If set, this option will set the path where files can be saved to be "
 "available to import (:config:option:`$cfg['UploadDir']`)"
 msgstr ""
+"設定された場合、このオプションは、"
+"インポートするためにファイルを保存できるパスを設定します "
+"(:config:option:`$cfg['UploadDir']`)"
 
 #: ../phpmyadmin/doc/setup.rst:316
 msgid ""
 "If set, this option will set the path where exported files can be saved (:"
 "config:option:`$cfg['SaveDir']`)"
 msgstr ""
+"設定された場合、"
+"このオプションはエクスポートされたファイルを保存するためのパスを設定します "
+"(:config:option:`$cfg['SaveDir']`)"
 
 #: ../phpmyadmin/doc/setup.rst:320
 msgid ""
@@ -9124,6 +9137,10 @@ msgid ""
 "you want it to run on a different port like an unprivileged port. Set to any "
 "port value (such as `APACHE_PORT=8090`)."
 msgstr ""
+"このオプションを設定すると、権限のないポートのような別のポートで Apache "
+"を実行したい場合に、デフォルトの Apache のポートを `80` "
+"から変更することができます。任意のポート値 (例: `APACHE_PORT=8090`) "
+"を設定することができます。"
 
 #: ../phpmyadmin/doc/setup.rst:322
 msgid ""
@@ -11817,15 +11834,14 @@ msgstr ""
 "フェースの翻訳)"
 
 #: ../phpmyadmin/doc/faq.rst:690
-#, fuzzy
-#| msgid "Any unused themes in :file:`./themes/`"
 msgid ""
 "Any unused themes in :file:`./themes/` except the default theme `pmahomme`."
-msgstr ":file:`./themes/` にある使用されていないテーマ"
+msgstr ":file:`./themes/` にある、デフォルトの `pmahomme` "
+"以外の使用されていないテーマ"
 
 #: ../phpmyadmin/doc/faq.rst:691
 msgid ":file:`./libraries/language_stats.inc.php` (translation statistics)"
-msgstr ""
+msgstr ":file:`./libraries/language_stats.inc.php` (翻訳統計)"
 
 #: ../phpmyadmin/doc/faq.rst:692
 msgid ":file:`./doc/` (documentation)"
@@ -11836,30 +11852,28 @@ msgid ":file:`./setup/` (setup script)"
 msgstr ":file:`./setup/` (セットアップスクリプト)"
 
 #: ../phpmyadmin/doc/faq.rst:694
-#, fuzzy
-#| msgid "Example configuration"
 msgid ":file:`./examples/` (configuration examples)"
-msgstr "設定例"
+msgstr ":file:`./examples/` (構成例)"
 
 #: ../phpmyadmin/doc/faq.rst:695
-#, fuzzy
-#| msgid ":file:`./sql/` (SQL scripts to configure advanced functionality)"
 msgid ":file:`./sql/` (SQL scripts to configure advanced functionalities)"
 msgstr ":file:`./sql/` (拡張機能を設定するための SQL スクリプト)"
 
 #: ../phpmyadmin/doc/faq.rst:696
 msgid ":file:`./js/src/` (Source files to re-build `./js/dist/`)"
-msgstr ""
+msgstr ":file:`./js/src/` (`./js/dist/` を再ビルドするためのソースファイル)"
 
 #: ../phpmyadmin/doc/faq.rst:697
 msgid ":file:`./js/global.d.ts` JS type declaration file"
-msgstr ""
+msgstr "‐:file:`./js/global.d.ts` JS 型宣言ファイル"
 
 #: ../phpmyadmin/doc/faq.rst:698
 msgid ""
 "Run `rm -rv vendor/tecnickcom/tcpdf && composer dump-autoload --no-"
 "interaction --optimize --dev` (exporting to PDF)"
 msgstr ""
+"`rm -rv vendor/tecnickcom/tcpdf && composer dump-autoload --no-interaction --"
+"optimize --dev` を実行してください (PDF へのエクスポート)"
 
 #: ../phpmyadmin/doc/faq.rst:699
 msgid ""
