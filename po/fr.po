@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin-docs VERSION\n"
 "Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
 "POT-Creation-Date: 2022-11-26 00:00+0100\n"
-"PO-Revision-Date: 2022-11-09 20:03+0000\n"
-"Last-Translator: Mickael Perraud <mikaelkael.fr@gmail.com>\n"
+"PO-Revision-Date: 2022-12-10 23:00+0000\n"
+"Last-Translator: Marc Delisle <marc@infomarc.info>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/phpmyadmin/"
 "documentation/fr/>\n"
 "Language: fr\n"
@@ -5745,6 +5745,10 @@ msgid ""
 "www.php.net/sodium_bin2hex>`_) and then used in the configuration file. For "
 "example:"
 msgstr ""
+"Comme une chaîne binaire n'est généralement pas imprimable, elle peut être "
+"convertie en une représentation hexadécimale (à l'aide d'une fonction comme `"
+"sodium_bin2hex <https://www.php.net/sodium_bin2hex>`_) et ensuite utilisée "
+"dans le fichier de configuration. Par exemple :"
 
 #: ../phpmyadmin/doc/config.rst:1914
 msgid ""
@@ -5752,6 +5756,10 @@ msgid ""
 "are visible characters, then a function like `sodium_bin2hex <https://www."
 "php.net/sodium_bin2hex>`_ is not required. For example:"
 msgstr ""
+"Il est recommandé d'utiliser une chaîne binaire. Toutefois, si les 32 octets "
+"de la chaîne sont des caractères visibles, une fonction comme `"
+"sodium_bin2hex <https://www.php.net/sodium_bin2hex>`_ n'est pas nécessaire. "
+"Par exemple :"
 
 #: ../phpmyadmin/doc/config.rst:1925
 msgid ""
@@ -5760,6 +5768,11 @@ msgid ""
 "temporary key will be automatically generated for you. However, this "
 "temporary key will only last for the duration of the session."
 msgstr ""
+"La clé de cryptage doit avoir une longueur de 32 octets. Si elle est plus "
+"longue que la longueur des octets, seuls les 32 premiers octets seront "
+"utilisés, et si elle est plus courte, une nouvelle clé temporaire sera "
+"automatiquement générée pour vous. Toutefois, cette clé temporaire ne durera "
+"que le temps de la session."
 
 # 151321c7c2a74651b455b46f8204f04d
 #: ../phpmyadmin/doc/config.rst:1931
@@ -5788,6 +5801,11 @@ msgid ""
 "\\_secretbox\\_open <https://www.php.net/sodium_crypto_secretbox_open>`_ PHP "
 "functions to encrypt and decrypt cookies, respectively."
 msgstr ""
+"Depuis la version 5.2.0, phpMyAdmin utilise les fonctions PHP `"
+"sodium\\_crypto\\_secretbox <https://www.php.net/sodium_crypto_secretbox>`_ "
+"et `sodium\\_crypto\\_secretbox\\_open <https://www.php.net/"
+"sodium_crypto_secretbox_open>`_ pour crypter et décrypter les cookies, "
+"respectivement."
 
 # 3ff31e89777846dea02b11970df3077c
 #: ../phpmyadmin/doc/config.rst:1953
@@ -9544,12 +9562,17 @@ msgid ""
 "If set, this option will set the path where files can be saved to be "
 "available to import (:config:option:`$cfg['UploadDir']`)"
 msgstr ""
+"Si elle est définie, cette option définira le chemin où les fichiers peuvent "
+"être enregistrés pour être disponibles à l'importation "
+"(:config:option:`$cfg['UploadDir']`)"
 
 #: ../phpmyadmin/doc/setup.rst:316
 msgid ""
 "If set, this option will set the path where exported files can be saved (:"
 "config:option:`$cfg['SaveDir']`)"
 msgstr ""
+"Si elle est définie, cette option définira le chemin où les fichiers "
+"exportés peuvent être sauvegardés (:config:option:`$cfg['SaveDir']`)"
 
 #: ../phpmyadmin/doc/setup.rst:320
 msgid ""
@@ -9557,6 +9580,10 @@ msgid ""
 "you want it to run on a different port like an unprivileged port. Set to any "
 "port value (such as `APACHE_PORT=8090`)."
 msgstr ""
+"Si elle est définie, cette option changera le port par défaut d'Apache de "
+"`80` au cas où vous voudriez qu'il fonctionne sur un port différent comme un "
+"port non privilégié. Définissez-la à n'importe quelle valeur de port (comme "
+"`APACHE_PORT=8090`)."
 
 #: ../phpmyadmin/doc/setup.rst:322
 msgid ""
@@ -12403,7 +12430,7 @@ msgstr ""
 
 #: ../phpmyadmin/doc/faq.rst:691
 msgid ":file:`./libraries/language_stats.inc.php` (translation statistics)"
-msgstr ""
+msgstr ":file:`./libraries/language_stats.inc.php` (statistiques de traduction)"
 
 #: ../phpmyadmin/doc/faq.rst:692
 msgid ":file:`./doc/` (documentation)"
@@ -12418,8 +12445,6 @@ msgid ":file:`./examples/` (configuration examples)"
 msgstr ":file:`./examples/` (exemples de configuration)"
 
 #: ../phpmyadmin/doc/faq.rst:695
-#, fuzzy
-#| msgid ":file:`./sql/` (SQL scripts to configure advanced functionality)"
 msgid ":file:`./sql/` (SQL scripts to configure advanced functionalities)"
 msgstr ""
 ":file:`./sql/` (scripts SQL pour configurer des fonctionnalités avancées)"
@@ -12446,6 +12471,9 @@ msgid ""
 "no-interaction --optimize --dev` (external links to MariaDB and MySQL "
 "documentations)"
 msgstr ""
+"Exécuter `rm -rv vendor/williamdes/mariadb-mysql-kbs && composer dump-"
+"autoload --no-interaction --optimize --dev` (liens externes vers les "
+"documentations de MariaDB et MySQL)"
 
 #: ../phpmyadmin/doc/faq.rst:700
 msgid ""
@@ -12835,7 +12863,7 @@ msgstr ""
 
 #: ../phpmyadmin/doc/faq.rst:877
 msgid "2.10 How to generate a string of random bytes"
-msgstr ""
+msgstr "2.10 Comment générer une chaîne d'octets aléatoires"
 
 #: ../phpmyadmin/doc/faq.rst:879
 msgid ""
@@ -12844,6 +12872,11 @@ msgid ""
 "function. Since this function returns a binary string, the returned value "
 "should be converted to printable format before being able to copy it."
 msgstr ""
+"Une façon de générer une chaîne d'octets aléatoires adaptée à une "
+"utilisation cryptographique consiste à utiliser la fonction `random_bytes "
+"<https://www.php.net/random_bytes>`_:term:`PHP`. Comme cette fonction "
+"renvoie une chaîne binaire, la valeur renvoyée doit être convertie au format "
+"imprimable avant de pouvoir la copier."
 
 #: ../phpmyadmin/doc/faq.rst:883
 msgid ""
@@ -12851,19 +12884,20 @@ msgid ""
 "directive requires a 32-bytes long string. The following command can be used "
 "to generate a hexadecimal representation of this string."
 msgstr ""
+"Par exemple, la directive de configuration "
+":config:option:`$cfg['blowfish_secret']` requiert une chaîne de 32 octets. "
+"La commande suivante peut être utilisée pour générer une représentation "
+"hexadécimale de cette chaîne."
 
 #: ../phpmyadmin/doc/faq.rst:890
 msgid "The above example will output something similar to:"
-msgstr ""
+msgstr "L'exemple ci-dessus produira quelque chose de semblable :"
 
 #: ../phpmyadmin/doc/faq.rst:896
-#, fuzzy
-#| msgid ""
-#| "This feature can be disabled by setting the configuration to ``false``."
 msgid "And then this hexadecimal value can be used in the configuration file."
 msgstr ""
-"Cette fonctionnalité peut être désactivée en définissant la configuration à "
-"``false``."
+"Et ensuite cette valeur hexadécimale peut être utilisée dans le fichier de "
+"configuration."
 
 #: ../phpmyadmin/doc/faq.rst:902
 msgid ""
@@ -17530,15 +17564,12 @@ msgid "The Sodium PHP extension."
 msgstr "L'extension PHP Sodium."
 
 #: ../phpmyadmin/doc/glossary.rst:341
-#, fuzzy
-#| msgid ""
-#| "`PHP manual for MySQL Improved Extension <https://www.php.net/manual/en/"
-#| "book.mysqli.php>`_"
 msgid ""
 "`PHP manual for Sodium extension <https://www.php.net/manual/en/book.sodium."
 "php>`_"
 msgstr ""
-"'Manuel PHP pour MySQLi <https://www.php.net/manual/fr/book.mysqli.php>'_"
+"`Manuel PHP pour l'extension Sodium <https://www.php.net/manual/fr/book."
+"sodium.php>`_"
 
 # f7083624c9ec4021b900f328686d16f8
 #: ../phpmyadmin/doc/glossary.rst:342
@@ -19084,17 +19115,13 @@ msgstr ""
 "ex. pour accéder aux :ref:`linked-tables`."
 
 #: ../phpmyadmin/doc/security.rst:66
-#, fuzzy
-#| msgid ""
-#| "User data that is included in (administrative) queries should always be "
-#| "run through DatabaseInterface::escapeString()."
 msgid ""
 "User data that is included in (administrative) queries should always be run "
 "through DatabaseInterface::quoteString()."
 msgstr ""
-"Les données utilisateur qui sont incluses dans les requêtes "
-"(administratives) devraient toujours être exécutées à travers "
-"DatabaseInterface::escapeSring()."
+"Les données utilisateur qui sont incluses dans les requêtes (administratives)"
+" devraient toujours être exécutées à travers "
+"DatabaseInterface::escapeString()."
 
 # ae65f1c4c0944926ad7420ac97342de2
 #: ../phpmyadmin/doc/security.rst:71
