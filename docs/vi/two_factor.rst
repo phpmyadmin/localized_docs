@@ -1,0 +1,1 @@
+../../phpmyadmin/doc/two_factor.rst

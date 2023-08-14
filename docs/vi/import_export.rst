@@ -1,0 +1,1 @@
+../../phpmyadmin/doc/import_export.rst
