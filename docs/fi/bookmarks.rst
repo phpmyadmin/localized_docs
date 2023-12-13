@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/bookmarks.rst
+../../phpmyadmin/docs/bookmarks.rst

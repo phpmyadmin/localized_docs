@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/copyright.rst
+../../phpmyadmin/docs/copyright.rst

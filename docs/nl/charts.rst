@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/charts.rst
+../../phpmyadmin/docs/charts.rst

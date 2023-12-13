@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/glossary.rst
+../../phpmyadmin/docs/glossary.rst

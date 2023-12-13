@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/import_export.rst
+../../phpmyadmin/docs/import_export.rst

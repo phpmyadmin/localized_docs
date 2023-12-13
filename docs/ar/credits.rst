@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/credits.rst
+../../phpmyadmin/docs/credits.rst

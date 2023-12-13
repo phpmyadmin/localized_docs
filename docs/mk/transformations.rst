@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/transformations.rst
+../../phpmyadmin/docs/transformations.rst

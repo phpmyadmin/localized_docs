@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/developers.rst
+../../phpmyadmin/docs/developers.rst

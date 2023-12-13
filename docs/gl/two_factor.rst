@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/two_factor.rst
+../../phpmyadmin/docs/two_factor.rst

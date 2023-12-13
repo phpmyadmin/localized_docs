@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/Makefile
+../../phpmyadmin/docs/Makefile

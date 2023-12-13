@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/intro.rst
+../../phpmyadmin/docs/intro.rst

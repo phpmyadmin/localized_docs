@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/relations.rst
+../../phpmyadmin/docs/relations.rst

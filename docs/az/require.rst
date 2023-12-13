@@ -1,1 +1,1 @@
-../../phpmyadmin/doc/require.rst
+../../phpmyadmin/docs/require.rst
