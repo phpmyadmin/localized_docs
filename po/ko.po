@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: phpMyAdmin 4.7.0-dev\n"
 "Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
 "POT-Creation-Date: 2023-08-27 00:00+0200\n"
-"PO-Revision-Date: 2023-12-18 19:08+0000\n"
+"PO-Revision-Date: 2023-12-30 21:39+0000\n"
 "Last-Translator: Yong Kim <kim@nhn.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/phpmyadmin/"
 "documentation/ko/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: ../phpmyadmin/doc/bookmarks.rst:4
 msgid "Bookmarks"
@@ -42,10 +42,15 @@ msgid ""
 "bookmark dropdown on each page where the query box appears on for that "
 "database."
 msgstr ""
+"실행된 모든 쿼리는 결과가 표시되는 페이지에 북마크로 표시할 수 있습니다. "
+"페이지 맨 끝에 '이 쿼리를 북마크'라고 표시된 버튼이 있습니다. 북마크를 "
+"저장하는 즉시 해당 쿼리가 데이터베이스에 연결됩니다. 이제 해당 "
+"데이터베이스에 대한 쿼리 상자가 표시되는 각 페이지에서 북마크 드롭다운에 "
+"액세스할 수 있습니다."
 
 #: ../phpmyadmin/doc/bookmarks.rst:21
 msgid "Variables inside bookmarks"
-msgstr ""
+msgstr "북마크 내부 변수"
 
 #: ../phpmyadmin/doc/bookmarks.rst:23
 msgid ""
@@ -56,6 +61,11 @@ msgid ""
 "otherwise you won't be able to store it as a bookmark. Also, note that the "
 "text 'VARIABLE' is case-sensitive."
 msgstr ""
+"쿼리 내에서 변수에 대한 자리 표시자를 추가할 수도 있습니다. 이는 ``/*``와 "
+"``*/`` 사이에 쿼리 SQL 주석에 삽입하여 수행됩니다. 주석 안에는 특수 문자열 "
+"``[VARIABLE{변수-번호}]``가 사용됩니다. SQL 주석을 뺀 전체 쿼리는 그 자체로 "
+"유효해야 하며, 그렇지 않으면 북마크로 저장할 수 없다는 점에 유의하세요. 또한 "
+"'VARIABLE' 텍스트는 대소문자를 구분한다는 점에 유의하세요."
 
 #: ../phpmyadmin/doc/bookmarks.rst:30
 msgid ""
@@ -63,6 +73,8 @@ msgid ""
 "boxes on the query box page will replace the strings ``/*[VARIABLE{variable-"
 "number}]*/`` in your stored query."
 msgstr ""
+"북마크를 실행하면 쿼리 상자 페이지의 *변수* 입력 상자에 입력한 모든 내용이 "
+"저장된 쿼리의 문자열 ``/*[VARIABLE{변수-번호}]*/``로 바뀝니다."
 
 #: ../phpmyadmin/doc/bookmarks.rst:34
 msgid ""
@@ -70,26 +82,29 @@ msgid ""
 "number}]*/`` string for your query will remain the way it is, but will be "
 "stripped of the ``/**/`` chars. So you can use:"
 msgstr ""
+"또한 쿼리의 ``/*[VARIABLE{변수-번호}]*/`` 문자열 안에 있는 다른 모든 내용은 "
+"그대로 유지되지만 ``/**/`` 문자는 제거된다는 점을 기억하세요. 따라서 사용할 "
+"수 있습니다:"
 
 #: ../phpmyadmin/doc/bookmarks.rst:42
 msgid "which will be expanded to"
-msgstr ""
+msgstr "이는 다음과 같이 확장됩니다"
 
 #: ../phpmyadmin/doc/bookmarks.rst:48
 msgid ""
 "in your query, where VARIABLE1 is the string you entered in the Variable 1 "
 "input box."
-msgstr ""
+msgstr "쿼리 내에서, 변수1은 변수 1 입력 상자에 입력한 문자열입니다."
 
 #: ../phpmyadmin/doc/bookmarks.rst:50
 msgid "A more complex example, say you have stored this query:"
-msgstr ""
+msgstr "좀 더 복잡한 예로 이 쿼리를 저장했다고 가정해 보겠습니다:"
 
 #: ../phpmyadmin/doc/bookmarks.rst:56
 msgid ""
 "If you wish to enter \"phpMyAdmin\" as the variable for the stored query, "
 "the full query will be:"
-msgstr ""
+msgstr "저장된 쿼리의 변수로 \"phpMyAdmin\"을 입력하려는 경우 전체 쿼리가 됩니다:"
 
 #: ../phpmyadmin/doc/bookmarks.rst:63
 msgid ""
@@ -98,6 +113,9 @@ msgid ""
 "lead to unexpected results especially when using the variable expansion "
 "inside of a \"LIKE ''\" expression."
 msgstr ""
+"``/**/`` 구문 안에 **공백이 없는지 확인**하세요. 여기에 삽입된 공백은 나중에 "
+"쿼리에도 공백으로 삽입되며, 특히 \"LIKE ''\" 표현식 내에서 변수 확장을 "
+"사용할 때 예기치 않은 결과가 발생할 수 있습니다."
 
 #: ../phpmyadmin/doc/bookmarks.rst:69
 msgid "Browsing a table using a bookmark"
