@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2012 - 2021, The phpMyAdmin devel team
+# Copyright (C) 2012 - 2025, The phpMyAdmin devel team
 # This file is distributed under the same license as the phpMyAdmin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phpMyAdmin 6.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 00:00+0200\n"
+"POT-Creation-Date: 2025-01-25 16:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,110 +16,110 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../phpmyadmin/doc/security.rst:2
+#: ../phpmyadmin/docs/security.rst:2
 msgid "Security policy"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:4
+#: ../phpmyadmin/docs/security.rst:4
 msgid "The phpMyAdmin developer team is putting lot of effort to make phpMyAdmin as secure as possible. But still web application like phpMyAdmin can be vulnerable to a number of attacks and new ways to exploit are still being explored."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:8
+#: ../phpmyadmin/docs/security.rst:8
 msgid "For every reported vulnerability we issue a phpMyAdmin Security Announcement (PMASA) and it get's assigned a CVE ID as well. We might group similar vulnerabilities to one PMASA (eg. multiple XSS vulnerabilities can be announced under one PMASA)."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:13
+#: ../phpmyadmin/docs/security.rst:13
 msgid "If you think you've found a vulnerability, please see :ref:`reporting-security`."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:16
+#: ../phpmyadmin/docs/security.rst:16
 msgid "Typical vulnerabilities"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:18
+#: ../phpmyadmin/docs/security.rst:18
 msgid "In this section, we will describe typical vulnerabilities, which can appear in our code base. This list is by no means complete, it is intended to show typical attack surface."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:23
+#: ../phpmyadmin/docs/security.rst:23
 msgid "Cross-site scripting (XSS)"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:25
+#: ../phpmyadmin/docs/security.rst:25
 msgid "When phpMyAdmin shows a piece of user data, e.g. something inside a user's database, all html special chars have to be escaped. When this escaping is missing somewhere a malicious user might fill a database with specially crafted content to trick an other user of that database into executing something. This could for example be a piece of JavaScript code that would do any number of nasty things."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:32
+#: ../phpmyadmin/docs/security.rst:32
 msgid "phpMyAdmin tries to escape all userdata before it is rendered into html for the browser."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:37
+#: ../phpmyadmin/docs/security.rst:37
 msgid "`Cross-site scripting on Wikipedia <https://en.wikipedia.org/wiki/Cross-site_scripting>`_"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:40
+#: ../phpmyadmin/docs/security.rst:40
 msgid "Cross-site request forgery (CSRF)"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:42
+#: ../phpmyadmin/docs/security.rst:42
 msgid "An attacker would trick a phpMyAdmin user into clicking on a link to provoke some action in phpMyAdmin. This link could either be sent via email or some random website. If successful this the attacker would be able to perform some action with the users privileges."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:47
+#: ../phpmyadmin/docs/security.rst:47
 msgid "To mitigate this phpMyAdmin requires a token to be sent on sensitive requests. The idea is that an attacker does not poses the currently valid token to include in the presented link."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:51
+#: ../phpmyadmin/docs/security.rst:51
 msgid "The token is regenerated for every login, so it's generally valid only for limited time, what makes it harder for attacker to obtain valid one."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:56
+#: ../phpmyadmin/docs/security.rst:56
 msgid "`Cross-site request forgery on Wikipedia <https://en.wikipedia.org/wiki/Cross-site_request_forgery>`_"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:59
+#: ../phpmyadmin/docs/security.rst:59
 msgid "SQL injection"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:61
+#: ../phpmyadmin/docs/security.rst:61
 msgid "As the whole purpose of phpMyAdmin is to preform sql queries, this is not our first concern. SQL injection is sensitive to us though when it concerns the mysql control connection. This controlconnection can have additional privileges which the logged in user does not poses. E.g. access the :ref:`linked-tables`."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:66
+#: ../phpmyadmin/docs/security.rst:66
 msgid "User data that is included in (administrative) queries should always be run through DatabaseInterface::quoteString()."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:71
+#: ../phpmyadmin/docs/security.rst:71
 msgid "`SQL injection on Wikipedia <https://en.wikipedia.org/wiki/SQL_injection>`_"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:74
+#: ../phpmyadmin/docs/security.rst:74
 msgid "Brute force attack"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:76
+#: ../phpmyadmin/docs/security.rst:76
 msgid "phpMyAdmin on its own does not rate limit authentication attempts in any way. This is caused by need to work in stateless environment, where there is no way to protect against such kind of things."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:80
+#: ../phpmyadmin/docs/security.rst:80
 msgid "To mitigate this, you can use Captcha or utilize external tools such as fail2ban, this is more details described in :ref:`securing`."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:85
+#: ../phpmyadmin/docs/security.rst:85
 msgid "`Brute force attack on Wikipedia <https://en.wikipedia.org/wiki/Brute-force_attack>`_"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:90
+#: ../phpmyadmin/docs/security.rst:90
 msgid "Reporting security issues"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:92
+#: ../phpmyadmin/docs/security.rst:92
 msgid "Should you find a security issue in the phpMyAdmin programming code, please contact the `phpMyAdmin security team <mailto:security@phpmyadmin.net>`_ in advance before publishing it. This way we can prepare a fix and release the fix together with your announcement. You will be also given credit in our security announcement. You can optionally encrypt your report with PGP key ID ``DA68AB39218AB947`` with following fingerprint:"
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:106
+#: ../phpmyadmin/docs/security.rst:106
 msgid "The key can be either obtained from the keyserver or is available in `phpMyAdmin keyring <https://files.phpmyadmin.net/phpmyadmin.keyring>`_ available on our download server or using `Keybase <https://keybase.io/phpmyadmin_sec>`_."
 msgstr ""
 
-#: ../phpmyadmin/doc/security.rst:110
+#: ../phpmyadmin/docs/security.rst:110
 msgid "Should you have suggestion on improving phpMyAdmin to make it more secure, please report that to our `issue tracker <https://github.com/phpmyadmin/phpmyadmin/issues>`_. Existing improvement suggestions can be found by `hardening label <https://github.com/phpmyadmin/phpmyadmin/labels/hardening>`_."
 msgstr ""
