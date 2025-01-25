@@ -44,10 +44,10 @@ po/documentation.pot: $(TEMPLATES)
 	@msgcat -o $@ $(TEMPLATES)
 	@sed -i 's/Report-Msgid-Bugs-To: [^"]*/Report-Msgid-Bugs-To: translators@phpmyadmin.net\\n/' $@
 
-po/%.po: po/documentation.pot phpmyadmin/po/%.po
+po/%.po: po/documentation.pot phpmyadmin/resources/po/%.po
 	@echo "UPDATE $@"
 	@if [ ! -f $@ ] ; then msginit --no-translator -i $< -o $@ ; fi
-	@msgmerge --previous -U $@ -C phpmyadmin/$@ $<
+	@msgmerge --previous -U $@ -C phpmyadmin/resources/$@ $<
 
 po/%.mo: po/%.po
 	@echo "GEN $@"
