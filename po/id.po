@@ -475,7 +475,7 @@ msgstr "3457"
 msgid "1565"
 msgstr "1565"
 
-#: ../phpmyadmin/docs/config.rst:6 ../phpmyadmin/docs/faq.rst:731
+#: ../phpmyadmin/docs/config.rst:6 ../phpmyadmin/docs/faq.rst:752
 #: ../phpmyadmin/docs/themes.rst:10
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -1629,7 +1629,7 @@ msgstr ""
 "untuk masuk dari data sesi PHP yang telah disiapkan atau menggunakan skrip "
 "PHP yang disediakan."
 
-#: ../phpmyadmin/docs/config.rst:619 ../phpmyadmin/docs/faq.rst:1137
+#: ../phpmyadmin/docs/config.rst:619 ../phpmyadmin/docs/faq.rst:1158
 msgid ":ref:`authentication_modes`"
 msgstr ":ref:`authentication_modes`"
 
@@ -9805,7 +9805,57 @@ msgstr ""
 "stackoverflow.com/questions/49948350/phpmyadmin-on-mysql-8-0>, <https://bugs."
 "php.net/bug.php?id=76243>"
 
+#: ../phpmyadmin/docs/faq.rst:731
+msgid "1.46 Missing ``HTTP_HOST`` variable when using nginx with HTTP/3"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:733
+msgid ""
+"When using phpMyAdmin with nginx and HTTP/3 enabled, the ``HTTP_HOST`` "
+"variable may be missing due to a known issue with nginx's HTTP/3 "
+"implementation, which can cause several issues:"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:735
+#, fuzzy
+#| msgid "Two-factor authentication"
+msgid "Two-factor authentication won't work"
+msgstr "Autentikasi dua faktor"
+
 #: ../phpmyadmin/docs/faq.rst:736
+msgid ""
+"Exported settings have no hostname in the filename (e.g., ``phpMyAdmin-"
+"config-.json``)"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:737
+msgid "The hostname is missing from the page title (empty ``@HTTP_HOST@``)"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:739
+#, fuzzy
+#| msgid ""
+#| "This setting is disabled, it will not be applied to your configuration."
+msgid "To fix this issue, add the following line to your nginx configuration:"
+msgstr ""
+"Pengaturan ini tidak diaktifkan, pengaturan tidak akan diterapkan pada "
+"konfigurasi anda."
+
+#: ../phpmyadmin/docs/faq.rst:745
+msgid ""
+"This line should be placed in the server block of your nginx configuration "
+"where the PHP-FPM settings are defined."
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:747
+msgid ""
+"<https://github.com/php/php-src/issues/13021>, <https://github.com/nginx/"
+"nginx/issues/455>, <https://trac.nginx.org/nginx/ticket/2281>, <https://"
+"mailman.nginx.org/pipermail/nginx-devel/2024-"
+"January/3CQEHII5QU2BTQ7L7DAVCBWK3OQS3GU6.html>"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:757
 msgid ""
 "2.1 The error message \"Warning: Cannot add header information - headers "
 "already sent by ...\" is displayed, what's the problem?"
@@ -9813,7 +9863,7 @@ msgstr ""
 "2.1 Pesan kesalahan \"Peringatan: Tidak dapat menambahkan informasi header - "
 "header sudah dikirim oleh ...\" ditampilkan, apa masalahnya?"
 
-#: ../phpmyadmin/docs/faq.rst:738
+#: ../phpmyadmin/docs/faq.rst:759
 msgid ""
 "Edit your :file:`config.inc.php` file and ensure there is nothing (I.E. no "
 "blank lines, no spaces, no characters...) neither before the ``<?php`` tag "
@@ -9823,11 +9873,11 @@ msgstr ""
 "(misalnya tidak ada baris kosong, tidak ada spasi, tidak ada karakter...) "
 "baik sebelum tag ``<?php`` di awal, maupun setelah tag ``?>`` di akhir."
 
-#: ../phpmyadmin/docs/faq.rst:745
+#: ../phpmyadmin/docs/faq.rst:766
 msgid "2.2 phpMyAdmin can't connect to MySQL. What's wrong?"
 msgstr "2.2 phpMyAdmin tidak dapat terhubung ke MySQL. Apa yang salah?"
 
-#: ../phpmyadmin/docs/faq.rst:747
+#: ../phpmyadmin/docs/faq.rst:768
 msgid ""
 "Either there is an error with your PHP setup or your username/password is "
 "wrong. Try to make a small script which uses mysql\\_connect and see if it "
@@ -9839,7 +9889,7 @@ msgstr ""
 "lihat apakah skrip tersebut berfungsi. Jika tidak, mungkin Anda belum "
 "mengkompilasi dukungan MySQL ke dalam PHP."
 
-#: ../phpmyadmin/docs/faq.rst:755
+#: ../phpmyadmin/docs/faq.rst:776
 msgid ""
 "2.3 The error message \"Warning: MySQL Connection Failed: Can't connect to "
 "local MySQL server through socket '/tmp/mysql.sock' (111) ...\" is "
@@ -9849,7 +9899,7 @@ msgstr ""
 "ke server MySQL lokal melalui soket '/tmp/mysql.sock' (111) ...\" "
 "ditampilkan. Apa yang dapat saya lakukan?"
 
-#: ../phpmyadmin/docs/faq.rst:757
+#: ../phpmyadmin/docs/faq.rst:778
 msgid ""
 "The error message can also be: :guilabel:`Error #2002 - The server is not "
 "responding (or the local MySQL server's socket is not correctly configured)`."
@@ -9858,7 +9908,7 @@ msgstr ""
 "not responding (or the local MySQL server's socket is not correctly "
 "configured)`."
 
-#: ../phpmyadmin/docs/faq.rst:760
+#: ../phpmyadmin/docs/faq.rst:781
 msgid ""
 "First, you need to determine what socket is being used by MySQL. To do this, "
 "connect to your server and go to the MySQL bin directory. In this directory "
@@ -9878,7 +9928,7 @@ msgstr ""
 "sambungkan dari klien baris perintah 'mysql' dan ketik 'status' untuk "
 "mendapatkan jenis koneksi dan nomor soket atau port."
 
-#: ../phpmyadmin/docs/faq.rst:769
+#: ../phpmyadmin/docs/faq.rst:790
 msgid ""
 "Then, you need to tell PHP to use this socket. You can do this for all PHP "
 "in the :file:`php.ini` or for phpMyAdmin only in the :file:`config.inc.php`. "
@@ -9892,7 +9942,7 @@ msgstr ""
 "[$i]['socket']`  Pastikan juga bahwa izin berkas ini memungkinkan untuk "
 "dapat dibaca oleh server web Anda."
 
-#: ../phpmyadmin/docs/faq.rst:774
+#: ../phpmyadmin/docs/faq.rst:795
 msgid ""
 "On my RedHat-Box the socket of MySQL is */var/lib/mysql/mysql.sock*. In "
 "your :file:`php.ini` you will find a line"
@@ -9900,15 +9950,15 @@ msgstr ""
 "Pada RedHat-Box saya, soket MySQL adalah */var/lib/mysql/mysql.sock*. Di :"
 "file:`php.ini` Anda akan menemukan baris"
 
-#: ../phpmyadmin/docs/faq.rst:781
+#: ../phpmyadmin/docs/faq.rst:802
 msgid "change it to"
 msgstr "ubahlah menjadi"
 
-#: ../phpmyadmin/docs/faq.rst:787
+#: ../phpmyadmin/docs/faq.rst:808
 msgid "Then restart apache and it will work."
 msgstr "Lalu mulai ulang apache dan itu akan berfungsi."
 
-#: ../phpmyadmin/docs/faq.rst:789
+#: ../phpmyadmin/docs/faq.rst:810
 msgid ""
 "Have also a look at the `corresponding section of the MySQL documentation "
 "<https://dev.mysql.com/doc/refman/5.7/en/can-not-connect-to-server.html>`_."
@@ -9916,7 +9966,7 @@ msgstr ""
 "Lihat juga `bagian terkait dari dokumentasi MySQL <https://dev.mysql.com/doc/"
 "refman/5.7/en/can-not-connect-to-server.html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:795
+#: ../phpmyadmin/docs/faq.rst:816
 msgid ""
 "2.4 Nothing is displayed by my browser when I try to run phpMyAdmin, what "
 "can I do?"
@@ -9924,7 +9974,7 @@ msgstr ""
 "2.4 Tidak ada yang ditampilkan oleh peramban saya ketika saya mencoba "
 "menjalankan phpMyAdmin, apa yang dapat saya lakukan?"
 
-#: ../phpmyadmin/docs/faq.rst:797
+#: ../phpmyadmin/docs/faq.rst:818
 msgid ""
 "Try to set the :config:option:`$cfg['OBGzip']` directive to ``false`` in the "
 "phpMyAdmin configuration file. It helps sometime. Also have a look at your "
@@ -9938,7 +9988,7 @@ msgstr ""
 "menjalankan versi PHP yang sedang diuji. Itu bukan ide yang bagus, harap "
 "tingkatkan ke revisi biasa."
 
-#: ../phpmyadmin/docs/faq.rst:806
+#: ../phpmyadmin/docs/faq.rst:827
 msgid ""
 "2.5 Each time I want to insert or change a row or drop a database or a "
 "table, an error 404 (page not found) is displayed or, with HTTP or cookie "
@@ -9949,7 +9999,7 @@ msgstr ""
 "atau, dengan autentikasi HTTP atau cookie, saya diminta untuk login lagi. "
 "Apa yang salah?"
 
-#: ../phpmyadmin/docs/faq.rst:808
+#: ../phpmyadmin/docs/faq.rst:829
 msgid ""
 "Check your webserver setup if it correctly fills in either PHP_SELF or "
 "REQUEST_URI variables."
@@ -9957,7 +10007,7 @@ msgstr ""
 "Periksa pengaturan server web Anda apakah variabel PHP_SELF atau REQUEST_URI "
 "sudah terisi dengan benar."
 
-#: ../phpmyadmin/docs/faq.rst:810
+#: ../phpmyadmin/docs/faq.rst:831
 msgid ""
 "If you are running phpMyAdmin behind reverse proxy, please set the :config:"
 "option:`$cfg['PmaAbsoluteUri']` directive in the phpMyAdmin configuration "
@@ -9967,7 +10017,7 @@ msgstr ""
 "direktif :config:option:`$cfg['PmaAbsoluteUri']` dalam berkas konfigurasi "
 "phpMyAdmin agar sesuai dengan pengaturan Anda."
 
-#: ../phpmyadmin/docs/faq.rst:817
+#: ../phpmyadmin/docs/faq.rst:838
 msgid ""
 "2.6 I get an \"Access denied for user: 'root@localhost' (Using password: "
 "YES)\"-error when trying to access a MySQL-Server on a host which is port-"
@@ -9977,7 +10027,7 @@ msgstr ""
 "'root@localhost' (Menggunakan kata sandi: YA)\" saat mencoba mengakses "
 "Server MySQL pada host yang diteruskan portanya untuk localhost saya."
 
-#: ../phpmyadmin/docs/faq.rst:819
+#: ../phpmyadmin/docs/faq.rst:840
 msgid ""
 "When you are using a port on your localhost, which you redirect via port-"
 "forwarding to another host, MySQL is not resolving the localhost as "
@@ -9996,25 +10046,25 @@ msgstr ""
 "memasukkan \"127.0.0.1\" sebagai nama host, semuanya benar dan MySQL "
 "menggunakan koneksi :term:`TCP`."
 
-#: ../phpmyadmin/docs/faq.rst:831
+#: ../phpmyadmin/docs/faq.rst:852
 msgid "2.7 Using and creating themes"
 msgstr "2.7 Menggunakan dan membuat tema"
 
-#: ../phpmyadmin/docs/faq.rst:833
+#: ../phpmyadmin/docs/faq.rst:854
 msgid "See :ref:`themes`."
 msgstr "Lihat :ref:`themes`."
 
-#: ../phpmyadmin/docs/faq.rst:838
+#: ../phpmyadmin/docs/faq.rst:859
 msgid "2.8 I get \"Missing parameters\" errors, what can I do?"
 msgstr ""
 "2.8 Saya mendapatkan kesalahan \"Parameter hilang\", apa yang dapat saya "
 "lakukan?"
 
-#: ../phpmyadmin/docs/faq.rst:840
+#: ../phpmyadmin/docs/faq.rst:861
 msgid "Here are a few points to check:"
 msgstr "Berikut adalah beberapa hal yang perlu diperiksa:"
 
-#: ../phpmyadmin/docs/faq.rst:842
+#: ../phpmyadmin/docs/faq.rst:863
 msgid ""
 "In :file:`config.inc.php`, try to leave the :config:option:"
 "`$cfg['PmaAbsoluteUri']` directive empty. See also :ref:`faq4_7`."
@@ -10022,7 +10072,7 @@ msgstr ""
 "Dalam :file:`config.inc.php`, cobalah untuk membiarkan perintah :config:"
 "option:`$cfg['PmaAbsoluteUri']` kosong. Lihat juga :ref:`faq4_7`."
 
-#: ../phpmyadmin/docs/faq.rst:844
+#: ../phpmyadmin/docs/faq.rst:865
 msgid ""
 "Maybe you have a broken PHP installation or you need to upgrade your Zend "
 "Optimizer. See <https://bugs.php.net/bug.php?id=31134>."
@@ -10030,7 +10080,7 @@ msgstr ""
 "Mungkin Anda memiliki instalasi PHP yang rusak atau Anda perlu memperbarui "
 "Zend Optimizer Anda. Lihat <https://bugs.php.net/bug.php?id=31134>."
 
-#: ../phpmyadmin/docs/faq.rst:846
+#: ../phpmyadmin/docs/faq.rst:867
 msgid ""
 "If you are using Hardened PHP with the ini directive ``varfilter."
 "max_request_variables`` set to the default (200) or another low value, you "
@@ -10043,7 +10093,7 @@ msgstr ""
 "jumlah kolom yang tinggi. Sesuaikan pengaturan ini sebagaimana mestinya. "
 "(Terima kasih kepada Klaus Dorninger atas petunjuknya)."
 
-#: ../phpmyadmin/docs/faq.rst:851
+#: ../phpmyadmin/docs/faq.rst:872
 msgid ""
 "In the :file:`php.ini` directive ``arg_separator.input``, a value of \";\" "
 "will cause this error. Replace it with \"&;\"."
@@ -10051,7 +10101,7 @@ msgstr ""
 "Dalam direktif :file:`php.ini` ``arg_separator.input``, nilai \";\" akan "
 "menyebabkan kesalahan ini. Ganti dengan \"&;\"."
 
-#: ../phpmyadmin/docs/faq.rst:853
+#: ../phpmyadmin/docs/faq.rst:874
 msgid ""
 "If you are using `Suhosin <https://suhosin5.suhosin.org/stories/index."
 "html>`_, you might want to increase `request limits <https://suhosin5."
@@ -10061,7 +10111,7 @@ msgstr ""
 "html>`_, Anda mungkin ingin meningkatkan `batas permintaan <https://suhosin5."
 "suhosin.org/stories/faq.html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:855
+#: ../phpmyadmin/docs/faq.rst:876
 msgid ""
 "The directory specified in the :file:`php.ini` directive ``session."
 "save_path`` does not exist or is read-only (this can be caused by `bug in "
@@ -10071,11 +10121,11 @@ msgstr ""
 "save_path`` tidak ada atau hanya-baca (ini dapat disebabkan oleh `bug dalam "
 "penginstal PHP <https://bugs.php.net/bug.php?id=39842>`_)."
 
-#: ../phpmyadmin/docs/faq.rst:862
+#: ../phpmyadmin/docs/faq.rst:883
 msgid "2.9 Seeing an upload progress bar"
 msgstr "2.9 Melihat bilah progres unggahan"
 
-#: ../phpmyadmin/docs/faq.rst:864
+#: ../phpmyadmin/docs/faq.rst:885
 msgid ""
 "To be able to see a progress bar during your uploads, your server must have "
 "the `uploadprogress <https://pecl.php.net/package/uploadprogress>`_ "
@@ -10087,7 +10137,7 @@ msgstr ""
 "uploadprogress>`_, dan Anda harus menjalankan PHP 5.4.0 atau yang lebih "
 "tinggi. Selain itu, ekstensi JSON harus diaktifkan di PHP Anda."
 
-#: ../phpmyadmin/docs/faq.rst:869
+#: ../phpmyadmin/docs/faq.rst:890
 msgid ""
 "If using PHP 5.4.0 or higher, you must set ``session.upload_progress."
 "enabled`` to ``1`` in your :file:`php.ini`. However, starting from "
@@ -10099,11 +10149,11 @@ msgstr ""
 "mulai dari phpMyAdmin versi 4.0.4, progres unggahan berbasis sesi telah "
 "dinonaktifkan sementara karena perilakunya yang bermasalah."
 
-#: ../phpmyadmin/docs/faq.rst:877
+#: ../phpmyadmin/docs/faq.rst:898
 msgid "2.10 How to generate a string of random bytes"
 msgstr "2.10 Cara menghasilkan string byte acak"
 
-#: ../phpmyadmin/docs/faq.rst:879
+#: ../phpmyadmin/docs/faq.rst:900
 msgid ""
 "One way to generate a string of random bytes suitable for cryptographic use "
 "is using the `random_bytes <https://www.php.net/random_bytes>`_ :term:`PHP` "
@@ -10116,7 +10166,7 @@ msgstr ""
 "mengembalikan string biner, nilai yang dikembalikan harus dikonversi ke "
 "format yang dapat dicetak sebelum dapat disalin."
 
-#: ../phpmyadmin/docs/faq.rst:883
+#: ../phpmyadmin/docs/faq.rst:904
 msgid ""
 "For example, the :config:option:`$cfg['blowfish_secret']` configuration "
 "directive requires a 32-bytes long string. The following command can be used "
@@ -10126,16 +10176,16 @@ msgstr ""
 "memerlukan string sepanjang 32-byte. Perintah berikut dapat digunakan untuk "
 "menghasilkan representasi heksadesimal dari string ini."
 
-#: ../phpmyadmin/docs/faq.rst:890
+#: ../phpmyadmin/docs/faq.rst:911
 msgid "The above example will output something similar to:"
 msgstr "Contoh di atas akan menghasilkan sesuatu yang mirip dengan:"
 
-#: ../phpmyadmin/docs/faq.rst:896
+#: ../phpmyadmin/docs/faq.rst:917
 msgid "And then this hexadecimal value can be used in the configuration file."
 msgstr ""
 "Dan kemudian nilai heksadesimal ini dapat digunakan dalam berkas konfigurasi."
 
-#: ../phpmyadmin/docs/faq.rst:902
+#: ../phpmyadmin/docs/faq.rst:923
 msgid ""
 "The `sodium_hex2bin <https://www.php.net/sodium_hex2bin>`_ function is used "
 "here to convert the hexadecimal value back to the binary format."
@@ -10143,11 +10193,11 @@ msgstr ""
 "Fungsi `sodium_hex2bin <https://www.php.net/sodium_hex2bin>`_ digunakan di "
 "sini untuk mengubah nilai heksadesimal kembali ke format biner."
 
-#: ../phpmyadmin/docs/faq.rst:908
+#: ../phpmyadmin/docs/faq.rst:929
 msgid "Known limitations"
 msgstr "Batasan yang diketahui"
 
-#: ../phpmyadmin/docs/faq.rst:913
+#: ../phpmyadmin/docs/faq.rst:934
 msgid ""
 "3.1 When using HTTP authentication, a user who logged out can not log in "
 "again in with the same nick."
@@ -10155,7 +10205,7 @@ msgstr ""
 "3.1 Saat menggunakan autentikasi HTTP, pengguna yang telah keluar tidak "
 "dapat masuk lagi dengan nama panggilan yang sama."
 
-#: ../phpmyadmin/docs/faq.rst:915
+#: ../phpmyadmin/docs/faq.rst:936
 msgid ""
 "This is related to the authentication mechanism (protocol) used by "
 "phpMyAdmin. To bypass this problem: just close all the opened browser "
@@ -10165,7 +10215,7 @@ msgstr ""
 "phpMyAdmin. Untuk mengatasi masalah ini: cukup tutup semua jendela browser "
 "yang terbuka lalu kembali ke phpMyAdmin. Anda seharusnya dapat masuk lagi."
 
-#: ../phpmyadmin/docs/faq.rst:923
+#: ../phpmyadmin/docs/faq.rst:944
 msgid ""
 "3.2 When dumping a large table in compressed mode, I get a memory limit "
 "error or a time limit error."
@@ -10173,7 +10223,7 @@ msgstr ""
 "3.2 Saat membuang tabel besar dalam mode terkompresi, saya mendapatkan "
 "kesalahan batas memori atau kesalahan batas waktu."
 
-#: ../phpmyadmin/docs/faq.rst:925
+#: ../phpmyadmin/docs/faq.rst:946
 msgid ""
 "Compressed dumps are built in memory and because of this are limited to "
 "php's memory limit. For gzip/bzip2 exports this can be overcome since 2.5.4 "
@@ -10188,7 +10238,7 @@ msgstr ""
 "memerlukan file zip untuk dump yang lebih besar, Anda harus menggunakan cara "
 "lain."
 
-#: ../phpmyadmin/docs/faq.rst:934
+#: ../phpmyadmin/docs/faq.rst:955
 msgid ""
 "3.3 With InnoDB tables, I lose foreign key relationships when I rename a "
 "table or a column."
@@ -10196,12 +10246,12 @@ msgstr ""
 "3.3 Dengan tabel InnoDB, saya kehilangan hubungan kunci asing ketika saya "
 "mengganti nama tabel atau kolom."
 
-#: ../phpmyadmin/docs/faq.rst:936
+#: ../phpmyadmin/docs/faq.rst:957
 msgid "This is an InnoDB bug, see <https://bugs.mysql.com/bug.php?id=21704>."
 msgstr ""
 "Ini adalah bug InnoDB, lihat <https://bugs.mysql.com/bug.php?id=21704>."
 
-#: ../phpmyadmin/docs/faq.rst:941
+#: ../phpmyadmin/docs/faq.rst:962
 msgid ""
 "3.4 I am unable to import dumps I created with the mysqldump tool bundled "
 "with the MySQL server distribution."
@@ -10209,7 +10259,7 @@ msgstr ""
 "3.4 Saya tidak dapat mengimpor dump yang saya buat dengan alat mysqldump "
 "yang dibundel dengan distribusi server MySQL."
 
-#: ../phpmyadmin/docs/faq.rst:943
+#: ../phpmyadmin/docs/faq.rst:964
 msgid ""
 "The problem is that older versions of ``mysqldump`` created invalid comments "
 "like this:"
@@ -10217,7 +10267,7 @@ msgstr ""
 "Masalahnya adalah versi lama ``mysqldump`` membuat komentar tidak valid "
 "seperti ini:"
 
-#: ../phpmyadmin/docs/faq.rst:954
+#: ../phpmyadmin/docs/faq.rst:975
 msgid ""
 "The invalid part of the code is the horizontal line made of dashes that "
 "appears once in every dump created with mysqldump. If you want to run your "
@@ -10234,7 +10284,7 @@ msgstr ""
 "-------------------------------------------------------`` atau "
 "``#---------------------------------------------------------``"
 
-#: ../phpmyadmin/docs/faq.rst:964
+#: ../phpmyadmin/docs/faq.rst:985
 msgid ""
 "3.5 When using nested folders, multiple hierarchies are displayed in a wrong "
 "manner."
@@ -10242,7 +10292,7 @@ msgstr ""
 "3.5 Saat menggunakan folder bersarang, beberapa hierarki ditampilkan dengan "
 "cara yang salah."
 
-#: ../phpmyadmin/docs/faq.rst:966
+#: ../phpmyadmin/docs/faq.rst:987
 msgid ""
 "Please note that you should not use the separating string multiple times "
 "without any characters between them, or at the beginning/end of your table "
@@ -10254,15 +10304,15 @@ msgstr ""
 "Anda. Jika perlu, pertimbangkan untuk menggunakan TableSeparator lain atau "
 "menonaktifkan fitur tersebut."
 
-#: ../phpmyadmin/docs/faq.rst:971
+#: ../phpmyadmin/docs/faq.rst:992
 msgid ":config:option:`$cfg['NavigationTreeTableSeparator']`"
 msgstr ":config:option:`$cfg['NavigationTreeTableSeparator']`"
 
-#: ../phpmyadmin/docs/faq.rst:976
+#: ../phpmyadmin/docs/faq.rst:997
 msgid "3.6 (withdrawn)."
 msgstr "3.6 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:981
+#: ../phpmyadmin/docs/faq.rst:1002
 msgid ""
 "3.7 I have table with many (100+) columns and when I try to browse table I "
 "get series of errors like \"Warning: unable to parse url\". How can this be "
@@ -10272,7 +10322,7 @@ msgstr ""
 "menelusuri tabel, saya mendapatkan serangkaian kesalahan seperti "
 "\"Peringatan: tidak dapat mengurai url\". Bagaimana cara memperbaikinya?"
 
-#: ../phpmyadmin/docs/faq.rst:983
+#: ../phpmyadmin/docs/faq.rst:1004
 msgid ""
 "Your table neither have a :term:`primary key` nor an :term:`unique key`, so "
 "we must use a long expression to identify this row. This causes problems to "
@@ -10284,7 +10334,7 @@ msgstr ""
 "ini. Hal ini menyebabkan masalah pada fungsi parse\\_url. Solusinya adalah "
 "membuat :term:`primary key` atau :term:`unique key`."
 
-#: ../phpmyadmin/docs/faq.rst:991
+#: ../phpmyadmin/docs/faq.rst:1012
 msgid ""
 "3.8 I cannot use (clickable) HTML-forms in columns where I put a MIME-"
 "Transformation onto!"
@@ -10292,7 +10342,7 @@ msgstr ""
 "3.8 Saya tidak dapat menggunakan formulir HTML (yang dapat diklik) di kolom "
 "tempat saya meletakkan Transformasi MIME!"
 
-#: ../phpmyadmin/docs/faq.rst:993
+#: ../phpmyadmin/docs/faq.rst:1014
 msgid ""
 "Due to a surrounding form-container (for multi-row delete checkboxes), no "
 "nested forms can be put inside the table where phpMyAdmin displays the "
@@ -10315,7 +10365,7 @@ msgstr ""
 "cara menggunakan transformasi secara efektif, lihat `Bagian tautan <https://"
 "www.phpmyadmin.net/docs/>`_ kami di beranda phpMyAdmin resmi."
 
-#: ../phpmyadmin/docs/faq.rst:1007
+#: ../phpmyadmin/docs/faq.rst:1028
 msgid ""
 "3.9 I get error messages when using \"--sql\\_mode=ANSI\" for the MySQL "
 "server."
@@ -10323,7 +10373,7 @@ msgstr ""
 "3.9 Saya mendapatkan pesan kesalahan saat menggunakan \"--sql\\_mode=ANSI\" "
 "untuk server MySQL."
 
-#: ../phpmyadmin/docs/faq.rst:1009
+#: ../phpmyadmin/docs/faq.rst:1030
 msgid ""
 "When MySQL is running in ANSI-compatibility mode, there are some major "
 "differences in how :term:`SQL` is structured (see <https://dev.mysql.com/doc/"
@@ -10343,7 +10393,7 @@ msgstr ""
 "untuk perilaku ini.  Berita tentang item ini akan diposting di `masalah "
 "#7383 <https://github.com/phpmyadmin/phpmyadmin/issues/7383>`_."
 
-#: ../phpmyadmin/docs/faq.rst:1021
+#: ../phpmyadmin/docs/faq.rst:1042
 msgid ""
 "3.10 Homonyms and no primary key: When the results of a SELECT display more "
 "that one column with the same value (for example ``SELECT lastname from "
@@ -10357,7 +10407,7 @@ msgstr ""
 "ditampilkan), jika saya mengklik Sunting saya tidak dapat yakin bahwa saya "
 "mengedit baris yang dimaksud."
 
-#: ../phpmyadmin/docs/faq.rst:1023
+#: ../phpmyadmin/docs/faq.rst:1044
 msgid ""
 "Please make sure that your table has a :term:`primary key`, so that "
 "phpMyAdmin can use it for the Edit and Delete links."
@@ -10365,11 +10415,11 @@ msgstr ""
 "Pastikan tabel Anda memiliki :term:`primary key`, sehingga phpMyAdmin dapat "
 "menggunakannya untuk tautan Sunting dan Hapus."
 
-#: ../phpmyadmin/docs/faq.rst:1029
+#: ../phpmyadmin/docs/faq.rst:1050
 msgid "3.11 The number of rows for InnoDB tables is not correct."
 msgstr "3.11 Jumlah baris untuk tabel InnoDB tidak benar."
 
-#: ../phpmyadmin/docs/faq.rst:1031
+#: ../phpmyadmin/docs/faq.rst:1052
 msgid ""
 "phpMyAdmin uses a quick method to get the row count, and this method only "
 "returns an approximate count in the case of InnoDB tables. See :config:"
@@ -10388,15 +10438,15 @@ msgstr ""
 "semua tabel sekaligus dengan mengeklik jumlah baris yang ditampilkan di "
 "bagian bawah."
 
-#: ../phpmyadmin/docs/faq.rst:1039
+#: ../phpmyadmin/docs/faq.rst:1060
 msgid ":config:option:`$cfg['MaxExactCount']`"
 msgstr ":config:option:`$cfg['MaxExactCount']`"
 
-#: ../phpmyadmin/docs/faq.rst:1044
+#: ../phpmyadmin/docs/faq.rst:1065
 msgid "3.12 (withdrawn)."
 msgstr "3.12 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1049
+#: ../phpmyadmin/docs/faq.rst:1070
 msgid ""
 "3.13 I get an error when entering ``USE`` followed by a db name containing "
 "an hyphen."
@@ -10404,7 +10454,7 @@ msgstr ""
 "3.13 Saya mendapatkan kesalahan saat memasukkan ``USE`` diikuti oleh nama db "
 "yang berisi tanda hubung."
 
-#: ../phpmyadmin/docs/faq.rst:1051
+#: ../phpmyadmin/docs/faq.rst:1072
 msgid ""
 "The tests I have made with MySQL 5.1.49 shows that the API does not accept "
 "this syntax for the USE command."
@@ -10412,7 +10462,7 @@ msgstr ""
 "Pengujian yang saya lakukan dengan MySQL 5.1.49 menunjukkan bahwa API tidak "
 "menerima sintaks ini untuk perintah USE."
 
-#: ../phpmyadmin/docs/faq.rst:1057
+#: ../phpmyadmin/docs/faq.rst:1078
 msgid ""
 "3.14 I am not able to browse a table when I don't have the right to SELECT "
 "one of the columns."
@@ -10420,7 +10470,7 @@ msgstr ""
 "3.14 Saya tidak dapat menelusuri tabel jika saya tidak memiliki hak untuk "
 "SELECT salah satu kolom."
 
-#: ../phpmyadmin/docs/faq.rst:1059
+#: ../phpmyadmin/docs/faq.rst:1080
 msgid ""
 "This has been a known limitation of phpMyAdmin since the beginning and it's "
 "not likely to be solved in the future."
@@ -10428,19 +10478,19 @@ msgstr ""
 "Ini telah menjadi keterbatasan phpMyAdmin yang diketahui sejak awal dan "
 "sepertinya tidak akan bisa diatasi di masa mendatang."
 
-#: ../phpmyadmin/docs/faq.rst:1065
+#: ../phpmyadmin/docs/faq.rst:1086
 msgid "3.15 (withdrawn)."
 msgstr "3.15 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1070
+#: ../phpmyadmin/docs/faq.rst:1091
 msgid "3.16 (withdrawn)."
 msgstr "3.16 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1075
+#: ../phpmyadmin/docs/faq.rst:1096
 msgid "3.17 (withdrawn)."
 msgstr "3.17 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1080
+#: ../phpmyadmin/docs/faq.rst:1101
 msgid ""
 "3.18 When I import a CSV file that contains multiple tables, they are lumped "
 "together into a single table."
@@ -10448,7 +10498,7 @@ msgstr ""
 "3.18 Bila saya mengimpor berkas CSV yang memuat beberapa tabel, tabel-tabel "
 "tersebut digabungkan menjadi satu tabel."
 
-#: ../phpmyadmin/docs/faq.rst:1082
+#: ../phpmyadmin/docs/faq.rst:1103
 msgid ""
 "There is no reliable way to differentiate tables in :term:`CSV` format. For "
 "the time being, you will have to break apart :term:`CSV` files containing "
@@ -10458,7 +10508,7 @@ msgstr ""
 "term:`CSV`. Untuk saat ini, Anda harus memisahkan file :term:`CSV` yang "
 "berisi beberapa tabel."
 
-#: ../phpmyadmin/docs/faq.rst:1089
+#: ../phpmyadmin/docs/faq.rst:1110
 msgid ""
 "3.19 When I import a file and have phpMyAdmin determine the appropriate data "
 "structure it only uses int, decimal, and varchar types."
@@ -10467,7 +10517,7 @@ msgstr ""
 "struktur data yang sesuai, ia hanya menggunakan tipe int, desimal, dan "
 "varchar."
 
-#: ../phpmyadmin/docs/faq.rst:1091
+#: ../phpmyadmin/docs/faq.rst:1112
 msgid ""
 "Currently, the import type-detection system can only assign these MySQL "
 "types to columns. In future, more will likely be added but for the time "
@@ -10486,7 +10536,7 @@ msgstr ""
 "yang lebih besar ke kolom tersebut, Anda harus menyesuaikan ukuran kolom "
 "secara manual. Hal ini dilakukan demi efisiensi."
 
-#: ../phpmyadmin/docs/faq.rst:1103
+#: ../phpmyadmin/docs/faq.rst:1124
 msgid ""
 "3.20 After upgrading, some bookmarks are gone or their content cannot be "
 "shown."
@@ -10494,7 +10544,7 @@ msgstr ""
 "3.20 Setelah pemutakhiran, beberapa penanda hilang atau kontennya tidak "
 "dapat ditampilkan."
 
-#: ../phpmyadmin/docs/faq.rst:1105
+#: ../phpmyadmin/docs/faq.rst:1126
 msgid ""
 "At some point, the character set used to store bookmark content has changed. "
 "It's better to recreate your bookmark from the newer phpMyAdmin version."
@@ -10503,7 +10553,7 @@ msgstr ""
 "telah berubah. Sebaiknya buat ulang bookmark Anda dari versi phpMyAdmin yang "
 "lebih baru."
 
-#: ../phpmyadmin/docs/faq.rst:1111
+#: ../phpmyadmin/docs/faq.rst:1132
 msgid ""
 "3.21 I am unable to log in with a username containing unicode characters "
 "such as á."
@@ -10511,7 +10561,7 @@ msgstr ""
 "3.21 Saya tidak dapat masuk dengan nama pengguna yang berisi karakter "
 "unicode seperti á."
 
-#: ../phpmyadmin/docs/faq.rst:1113
+#: ../phpmyadmin/docs/faq.rst:1134
 msgid ""
 "This can happen if MySQL server is not configured to use utf-8 as default "
 "charset. This is a limitation of how PHP and the MySQL server interact; "
@@ -10522,7 +10572,7 @@ msgstr ""
 "PHP dan server MySQL; tidak ada cara bagi PHP untuk menyetel charset sebelum "
 "melakukan autentikasi."
 
-#: ../phpmyadmin/docs/faq.rst:1119
+#: ../phpmyadmin/docs/faq.rst:1140
 msgid ""
 "`phpMyAdmin issue 12232 <https://github.com/phpmyadmin/phpmyadmin/"
 "issues/12232>`_, `MySQL documentation note <https://www.php.net/manual/en/"
@@ -10532,11 +10582,11 @@ msgstr ""
 "issues/12232>`_, `Catatan dokumentasi MySQL <https://www.php.net/manual/en/"
 "mysqli.real-connect.php#refsect1-mysqli.real-connect-notes>`_"
 
-#: ../phpmyadmin/docs/faq.rst:1125
+#: ../phpmyadmin/docs/faq.rst:1146
 msgid "ISPs, multi-user installations"
 msgstr "ISP, instalasi multi-pengguna"
 
-#: ../phpmyadmin/docs/faq.rst:1130
+#: ../phpmyadmin/docs/faq.rst:1151
 msgid ""
 "4.1 I'm an ISP. Can I setup one central copy of phpMyAdmin or do I need to "
 "install it for each customer?"
@@ -10544,7 +10594,7 @@ msgstr ""
 "4.1 Saya adalah ISP. Dapatkah saya menyiapkan satu salinan terpusat "
 "phpMyAdmin atau apakah saya perlu menginstalnya untuk setiap pelanggan?"
 
-#: ../phpmyadmin/docs/faq.rst:1132
+#: ../phpmyadmin/docs/faq.rst:1153
 msgid ""
 "Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your "
 "users. The development of this feature was kindly sponsored by NetCologne "
@@ -10556,13 +10606,13 @@ msgstr ""
 "Ini memerlukan pengaturan manajemen pengguna MySQL dan autentikasi :term:"
 "`HTTP` atau kuki phpMyAdmin yang tepat."
 
-#: ../phpmyadmin/docs/faq.rst:1142
+#: ../phpmyadmin/docs/faq.rst:1163
 msgid ""
 "4.2 What's the preferred way of making phpMyAdmin secure against evil access?"
 msgstr ""
 "4.2 Apa cara yang disarankan untuk mengamankan phpMyAdmin dari akses jahat?"
 
-#: ../phpmyadmin/docs/faq.rst:1144
+#: ../phpmyadmin/docs/faq.rst:1165
 msgid ""
 "This depends on your system. If you're running a server which cannot be "
 "accessed by other people, it's sufficient to use the directory protection "
@@ -10577,15 +10627,15 @@ msgstr ""
 "Anda, Anda harus menggunakan fitur autentikasi :term:`HTTP` atau cookie pada "
 "phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1150
+#: ../phpmyadmin/docs/faq.rst:1171
 msgid "Suggestions:"
 msgstr "Saran:"
 
-#: ../phpmyadmin/docs/faq.rst:1152
+#: ../phpmyadmin/docs/faq.rst:1173
 msgid "Your :file:`config.inc.php` file should be ``chmod 660``."
 msgstr "File :file:`config.inc.php` Anda seharusnya ``chmod 660``."
 
-#: ../phpmyadmin/docs/faq.rst:1153
+#: ../phpmyadmin/docs/faq.rst:1174
 msgid ""
 "All your phpMyAdmin files should be chown -R phpmy.apache, where phpmy is a "
 "user whose password is only known to you, and apache is the group under "
@@ -10595,11 +10645,11 @@ msgstr ""
 "pengguna yang kata sandinya hanya Anda yang tahu, dan apache adalah grup "
 "tempat Apache berjalan."
 
-#: ../phpmyadmin/docs/faq.rst:1156
+#: ../phpmyadmin/docs/faq.rst:1177
 msgid "Follow security recommendations for PHP and your webserver."
 msgstr "Ikuti rekomendasi keamanan untuk PHP dan server web Anda."
 
-#: ../phpmyadmin/docs/faq.rst:1161
+#: ../phpmyadmin/docs/faq.rst:1182
 msgid ""
 "4.3 I get errors about not being able to include a file in */lang* or in */"
 "libraries*."
@@ -10607,7 +10657,7 @@ msgstr ""
 "4.3 Saya mendapat kesalahan tentang tidak dapat menyertakan berkas dalam */"
 "lang* atau dalam */libraries*."
 
-#: ../phpmyadmin/docs/faq.rst:1163
+#: ../phpmyadmin/docs/faq.rst:1184
 msgid ""
 "Check :file:`php.ini`, or ask your sysadmin to check it. The "
 "``include_path`` must contain \".\" somewhere in it, and ``open_basedir``, "
@@ -10619,18 +10669,18 @@ msgstr ""
 "``open_basedir``, jika digunakan, harus berisi \".\" dan \"./lang\" untuk "
 "memungkinkan operasi normal phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1171
+#: ../phpmyadmin/docs/faq.rst:1192
 msgid ""
 "4.4 phpMyAdmin always gives \"Access denied\" when using HTTP authentication."
 msgstr ""
 "4.4 phpMyAdmin selalu memberikan \"Akses ditolak\" saat menggunakan "
 "autentikasi HTTP."
 
-#: ../phpmyadmin/docs/faq.rst:1173
+#: ../phpmyadmin/docs/faq.rst:1194
 msgid "This could happen for several reasons:"
 msgstr "Hal ini bisa terjadi karena beberapa alasan:"
 
-#: ../phpmyadmin/docs/faq.rst:1175
+#: ../phpmyadmin/docs/faq.rst:1196
 msgid ""
 ":config:option:`$cfg['Servers'][$i]['controluser']` and/or :config:option:"
 "`$cfg['Servers'][$i]['controlpass']`  are wrong."
@@ -10638,12 +10688,12 @@ msgstr ""
 ":config:option:`$cfg['Servers'][$i]['controluser']` dan/atau :config:option:"
 "`$cfg['Servers'][$i]['controlpass']` salah."
 
-#: ../phpmyadmin/docs/faq.rst:1176
+#: ../phpmyadmin/docs/faq.rst:1197
 msgid "The username/password you specify in the login dialog are invalid."
 msgstr ""
 "Nama pengguna/kata sandi yang Anda tentukan dalam dialog masuk tidak valid."
 
-#: ../phpmyadmin/docs/faq.rst:1177
+#: ../phpmyadmin/docs/faq.rst:1198
 msgid ""
 "You have already setup a security mechanism for the phpMyAdmin- directory, "
 "eg. a :term:`.htaccess` file. This would interfere with phpMyAdmin's "
@@ -10653,13 +10703,13 @@ msgstr ""
 "misalnya berkas :term:`.htaccess`. Ini akan mengganggu autentikasi "
 "phpMyAdmin, jadi hapus saja."
 
-#: ../phpmyadmin/docs/faq.rst:1184
+#: ../phpmyadmin/docs/faq.rst:1205
 msgid "4.5 Is it possible to let users create their own databases?"
 msgstr ""
 "4.5 Apakah memungkinkan bagi pengguna untuk membuat basis data mereka "
 "sendiri?"
 
-#: ../phpmyadmin/docs/faq.rst:1186
+#: ../phpmyadmin/docs/faq.rst:1207
 msgid ""
 "Starting with 2.2.5, in the user management page, you can enter a wildcard "
 "database name for a user (for example \"joe%\"), and put the privileges you "
@@ -10672,12 +10722,12 @@ msgstr ""
 "INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER`` akan memungkinkan "
 "pengguna membuat/mengelola basis data mereka."
 
-#: ../phpmyadmin/docs/faq.rst:1195
+#: ../phpmyadmin/docs/faq.rst:1216
 msgid "4.6 How can I use the Host-based authentication additions?"
 msgstr ""
 "4.6 Bagaimana saya dapat menggunakan tambahan autentikasi berbasis Host?"
 
-#: ../phpmyadmin/docs/faq.rst:1197
+#: ../phpmyadmin/docs/faq.rst:1218
 msgid ""
 "If you have existing rules from an old :term:`.htaccess` file, you can take "
 "them and add a username between the ``'deny'``/``'allow'`` and ``'from'`` "
@@ -10694,7 +10744,7 @@ msgstr ""
 "tersebut ke dalam array :config:option:`$cfg['Servers'][$i]['AllowDeny']"
 "['rules']`."
 
-#: ../phpmyadmin/docs/faq.rst:1204
+#: ../phpmyadmin/docs/faq.rst:1225
 msgid ""
 "If you want a pre-made sample, you can try this fragment. It stops the "
 "'root' user from logging in from any networks other than the private "
@@ -10704,11 +10754,11 @@ msgstr ""
 "ini. Fragmen ini menghentikan pengguna 'root' untuk masuk dari jaringan apa "
 "pun selain jaringan privat :term:`IP`."
 
-#: ../phpmyadmin/docs/faq.rst:1223
+#: ../phpmyadmin/docs/faq.rst:1244
 msgid "4.7 Authentication window is displayed more than once, why?"
 msgstr "4.7 Jendela autentikasi ditampilkan lebih dari satu kali, mengapa?"
 
-#: ../phpmyadmin/docs/faq.rst:1225
+#: ../phpmyadmin/docs/faq.rst:1246
 msgid ""
 "This happens if you are using a :term:`URL` to start phpMyAdmin which is "
 "different than the one set in your :config:option:`$cfg['PmaAbsoluteUri']`. "
@@ -10721,12 +10771,12 @@ msgstr ""
 "memasukkan alamat :term:`IP` saat nama domain ditetapkan dalam berkas "
 "konfigurasi."
 
-#: ../phpmyadmin/docs/faq.rst:1233
+#: ../phpmyadmin/docs/faq.rst:1254
 msgid "4.8 Which parameters can I use in the URL that starts phpMyAdmin?"
 msgstr ""
 "4.8 Parameter apa yang dapat saya gunakan di URL yang memulai phpMyAdmin?"
 
-#: ../phpmyadmin/docs/faq.rst:1235
+#: ../phpmyadmin/docs/faq.rst:1256
 msgid ""
 "When starting phpMyAdmin, you can use the ``db`` and ``server`` parameters. "
 "This last one can contain either the numeric host index (from ``$i`` of the "
@@ -10738,7 +10788,7 @@ msgstr ""
 "``$i`` pada berkas konfigurasi) atau salah satu nama host yang ada dalam "
 "berkas konfigurasi."
 
-#: ../phpmyadmin/docs/faq.rst:1240
+#: ../phpmyadmin/docs/faq.rst:1261
 msgid ""
 "For example, to jump directly to a particular database, a URL can be "
 "constructed as ``https://example.com/phpmyadmin/?db=sakila``."
@@ -10746,11 +10796,11 @@ msgstr ""
 "Misalnya, untuk melompat langsung ke basis data tertentu, URL dapat dibuat "
 "sebagai ``https://example.com/phpmyadmin/?db=sakila``."
 
-#: ../phpmyadmin/docs/faq.rst:1243
+#: ../phpmyadmin/docs/faq.rst:1264
 msgid ":ref:`faq1_34`"
 msgstr ":ref:`faq1_34`"
 
-#: ../phpmyadmin/docs/faq.rst:1247
+#: ../phpmyadmin/docs/faq.rst:1268
 msgid ""
 "Support for using the ``pma_username`` and ``pma_password`` parameters was "
 "removed in phpMyAdmin 4.9.0 (see `PMASA-2019-4 <https://www.phpmyadmin.net/"
@@ -10760,11 +10810,11 @@ msgstr ""
 "telah dihapus di phpMyAdmin 4.9.0 (lihat `PMASA-2019-4 <https://www."
 "phpmyadmin.net/security/PMASA-2019-4/>`_)."
 
-#: ../phpmyadmin/docs/faq.rst:1253
+#: ../phpmyadmin/docs/faq.rst:1274
 msgid "Browsers or client OS"
 msgstr "Peramban atau OS klien"
 
-#: ../phpmyadmin/docs/faq.rst:1258
+#: ../phpmyadmin/docs/faq.rst:1279
 msgid ""
 "5.1 I get an out of memory error, and my controls are non-functional, when "
 "trying to create a table with more than 14 columns."
@@ -10772,7 +10822,7 @@ msgstr ""
 "5.1 Saya mendapatkan kesalahan kehabisan memori, dan kontrol saya tidak "
 "berfungsi, saat mencoba membuat tabel dengan lebih dari 14 kolom."
 
-#: ../phpmyadmin/docs/faq.rst:1260
+#: ../phpmyadmin/docs/faq.rst:1281
 msgid ""
 "We could reproduce this problem only under Win98/98SE. Testing under WinNT4 "
 "or Win2K, we could easily create more than 60 columns.  A workaround is to "
@@ -10784,12 +10834,12 @@ msgstr ""
 "Solusinya adalah membuat jumlah kolom yang lebih sedikit, lalu kembali ke "
 "properti tabel dan tambahkan kolom lainnya."
 
-#: ../phpmyadmin/docs/faq.rst:1268
+#: ../phpmyadmin/docs/faq.rst:1289
 msgid "5.2 With Xitami 2.5b4, phpMyAdmin won't process form fields."
 msgstr ""
 "5.2 Dengan Xitami 2.5b4, phpMyAdmin tidak akan memproses kolom formulir."
 
-#: ../phpmyadmin/docs/faq.rst:1270
+#: ../phpmyadmin/docs/faq.rst:1291
 msgid ""
 "This is not a phpMyAdmin problem but a Xitami known bug: you'll face it with "
 "each script/website that use forms. Upgrade or downgrade your Xitami server."
@@ -10798,13 +10848,13 @@ msgstr ""
 "mengalaminya dengan setiap skrip/situs web yang menggunakan formulir. "
 "Tingkatkan atau turunkan versi server Xitami Anda."
 
-#: ../phpmyadmin/docs/faq.rst:1277
+#: ../phpmyadmin/docs/faq.rst:1298
 msgid "5.3 I have problems dumping tables with Konqueror (phpMyAdmin 2.2.2)."
 msgstr ""
 "5.3 Saya mengalami masalah saat membuang tabel dengan Konqueror (phpMyAdmin "
 "2.2.2)."
 
-#: ../phpmyadmin/docs/faq.rst:1279
+#: ../phpmyadmin/docs/faq.rst:1300
 msgid ""
 "With Konqueror 2.1.1: plain dumps, zip and gzip dumps work ok, except that "
 "the proposed file name for the dump is always 'tbl\\_dump.php'. The bzip2 "
@@ -10821,7 +10871,7 @@ msgstr ""
 "Konqueror, atau dump tersebut akan hilang. Dump gzip memberikan pesan "
 "kesalahan. Pengujian perlu dilakukan untuk Konqueror 2.2.2."
 
-#: ../phpmyadmin/docs/faq.rst:1290
+#: ../phpmyadmin/docs/faq.rst:1311
 msgid ""
 "5.4 I can't use the cookie authentication mode because Internet Explorer "
 "never stores the cookies."
@@ -10829,7 +10879,7 @@ msgstr ""
 "5.4 Saya tidak dapat menggunakan mode otentikasi cookie karena Internet "
 "Explorer tidak pernah menyimpan cookienya."
 
-#: ../phpmyadmin/docs/faq.rst:1292
+#: ../phpmyadmin/docs/faq.rst:1313
 msgid ""
 "MS Internet Explorer seems to be really buggy about cookies, at least till "
 "version 6."
@@ -10837,21 +10887,21 @@ msgstr ""
 "MS Internet Explorer tampaknya banyak bermasalah dengan kuki, setidaknya "
 "hingga versi 6."
 
-#: ../phpmyadmin/docs/faq.rst:1298
+#: ../phpmyadmin/docs/faq.rst:1319
 msgid "5.5 (withdrawn)."
 msgstr "5.5 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1303
+#: ../phpmyadmin/docs/faq.rst:1324
 msgid "5.6 (withdrawn)."
 msgstr "5.6 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1308
+#: ../phpmyadmin/docs/faq.rst:1329
 msgid "5.7 I refresh (reload) my browser, and come back to the welcome page."
 msgstr ""
 "5.7 Saya menyegarkan (memuat ulang) peramban saya, dan kembali ke halaman "
 "selamat datang."
 
-#: ../phpmyadmin/docs/faq.rst:1310
+#: ../phpmyadmin/docs/faq.rst:1331
 msgid ""
 "Some browsers support right-clicking into the frame you want to refresh, "
 "just do this in the right frame."
@@ -10859,7 +10909,7 @@ msgstr ""
 "Beberapa peramban mendukung klik kanan pada bingkai yang ingin disegarkan, "
 "lakukan saja di bingkai yang tepat."
 
-#: ../phpmyadmin/docs/faq.rst:1316
+#: ../phpmyadmin/docs/faq.rst:1337
 msgid ""
 "5.8 With Mozilla 0.9.7 I have problems sending a query modified in the query "
 "box."
@@ -10867,7 +10917,7 @@ msgstr ""
 "5.8 Dengan Mozilla 0.9.7 saya mengalami masalah saat mengirim pertanyaan "
 "yang dimodifikasi dalam kotak pertanyaan."
 
-#: ../phpmyadmin/docs/faq.rst:1318
+#: ../phpmyadmin/docs/faq.rst:1339
 msgid ""
 "Looks like a Mozilla bug: 0.9.6 was OK. We will keep an eye on future "
 "Mozilla versions."
@@ -10875,7 +10925,7 @@ msgstr ""
 "Sepertinya ada bug Mozilla: 0.9.6 baik-baik saja. Kami akan terus memantau "
 "versi Mozilla mendatang."
 
-#: ../phpmyadmin/docs/faq.rst:1324
+#: ../phpmyadmin/docs/faq.rst:1345
 msgid ""
 "5.9 With Mozilla 0.9.? to 1.0 and Netscape 7.0-PR1 I can't type a whitespace "
 "in the SQL-Query edit area: the page scrolls down."
@@ -10883,7 +10933,7 @@ msgstr ""
 "5.9 Dengan Mozilla 0.9.? hingga 1.0 dan Netscape 7.0-PR1 saya tidak dapat "
 "mengetik spasi di area sunting SQL-Query: halaman bergulir ke bawah."
 
-#: ../phpmyadmin/docs/faq.rst:1326
+#: ../phpmyadmin/docs/faq.rst:1347
 msgid ""
 "This is a Mozilla bug (see bug #26882 at `BugZilla <https://bugzilla.mozilla."
 "org/>`_)."
@@ -10891,17 +10941,17 @@ msgstr ""
 "Ini adalah bug Mozilla (lihat bug #26882 di `BugZilla <https://bugzilla."
 "mozilla.org/>`_)."
 
-#: ../phpmyadmin/docs/faq.rst:1332
+#: ../phpmyadmin/docs/faq.rst:1353
 msgid "5.10 (withdrawn)."
 msgstr "5.10 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1337
+#: ../phpmyadmin/docs/faq.rst:1358
 msgid "5.11 Extended-ASCII characters like German umlauts are displayed wrong."
 msgstr ""
 "5.11 Karakter ASCII yang diperluas seperti umlaut Jerman ditampilkan secara "
 "salah."
 
-#: ../phpmyadmin/docs/faq.rst:1339
+#: ../phpmyadmin/docs/faq.rst:1360
 msgid ""
 "Please ensure that you have set your browser's character set to the one of "
 "the language file you have selected on phpMyAdmin's start page. "
@@ -10913,11 +10963,11 @@ msgstr ""
 "mencoba mode deteksi otomatis yang didukung oleh versi terbaru sebagian "
 "besar peramban."
 
-#: ../phpmyadmin/docs/faq.rst:1347
+#: ../phpmyadmin/docs/faq.rst:1368
 msgid "5.12 Mac OS X Safari browser changes special characters to \"?\"."
 msgstr "5.12 Peramban Mac OS X Safari mengubah karakter khusus menjadi \"?\"."
 
-#: ../phpmyadmin/docs/faq.rst:1349
+#: ../phpmyadmin/docs/faq.rst:1370
 msgid ""
 "This issue has been reported by a :term:`macOS` user, who adds that Chimera, "
 "Netscape and Mozilla do not have this problem."
@@ -10925,19 +10975,19 @@ msgstr ""
 "Masalah ini telah dilaporkan oleh pengguna :term:`macOS`, yang menambahkan "
 "bahwa Chimera, Netscape dan Mozilla tidak memiliki masalah ini."
 
-#: ../phpmyadmin/docs/faq.rst:1355
+#: ../phpmyadmin/docs/faq.rst:1376
 msgid "5.13 (withdrawn)"
 msgstr "5.13 (ditarik)"
 
-#: ../phpmyadmin/docs/faq.rst:1360
+#: ../phpmyadmin/docs/faq.rst:1381
 msgid "5.14 (withdrawn)"
 msgstr "5.14 (ditarik)"
 
-#: ../phpmyadmin/docs/faq.rst:1365
+#: ../phpmyadmin/docs/faq.rst:1386
 msgid "5.15 (withdrawn)"
 msgstr "5.15 (ditarik)"
 
-#: ../phpmyadmin/docs/faq.rst:1370
+#: ../phpmyadmin/docs/faq.rst:1391
 msgid ""
 "5.16 With Internet Explorer, I get \"Access is denied\" Javascript errors. "
 "Or I cannot make phpMyAdmin work under Windows."
@@ -10945,11 +10995,11 @@ msgstr ""
 "5.16 Dengan Internet Explorer, saya mendapatkan kesalahan Javascript \"Akses "
 "ditolak\". Atau saya tidak dapat membuat phpMyAdmin berfungsi di Windows."
 
-#: ../phpmyadmin/docs/faq.rst:1372
+#: ../phpmyadmin/docs/faq.rst:1393
 msgid "Please check the following points:"
 msgstr "Harap periksa poin-poin berikut:"
 
-#: ../phpmyadmin/docs/faq.rst:1374
+#: ../phpmyadmin/docs/faq.rst:1395
 msgid ""
 "Maybe you have defined your :config:option:`$cfg['PmaAbsoluteUri']` setting "
 "in :file:`config.inc.php` to an :term:`IP` address and you are starting "
@@ -10961,7 +11011,7 @@ msgstr ""
 "Anda memulai phpMyAdmin dengan :term:`URL` yang memuat nama domain, atau "
 "situasi sebaliknya."
 
-#: ../phpmyadmin/docs/faq.rst:1377
+#: ../phpmyadmin/docs/faq.rst:1398
 msgid ""
 "Security settings in IE and/or Microsoft Security Center are too high, thus "
 "blocking scripts execution."
@@ -10969,7 +11019,7 @@ msgstr ""
 "Pengaturan keamanan di IE dan/atau Pusat Keamanan Microsoft terlalu tinggi, "
 "sehingga memblokir eksekusi skrip."
 
-#: ../phpmyadmin/docs/faq.rst:1379
+#: ../phpmyadmin/docs/faq.rst:1400
 msgid ""
 "The Windows Firewall is blocking Apache and MySQL. You must allow :term:"
 "`HTTP` ports (80 or 443) and MySQL port (usually 3306) in the \"in\" and "
@@ -10979,13 +11029,13 @@ msgstr ""
 "term:`HTTP` (80 atau 443) dan port MySQL (biasanya 3306) di arah \"masuk\" "
 "dan \"keluar\"."
 
-#: ../phpmyadmin/docs/faq.rst:1386
+#: ../phpmyadmin/docs/faq.rst:1407
 msgid "5.17 With Firefox, I cannot delete rows of data or drop a database."
 msgstr ""
 "5.17 Dengan Firefox, saya tidak dapat menghapus baris data atau menghapus "
 "basis data."
 
-#: ../phpmyadmin/docs/faq.rst:1388
+#: ../phpmyadmin/docs/faq.rst:1409
 msgid ""
 "Many users have confirmed that the Tabbrowser Extensions plugin they "
 "installed in their Firefox is causing the problem."
@@ -10993,15 +11043,15 @@ msgstr ""
 "Banyak pengguna telah mengonfirmasi bahwa plugin Tabbrowser Extensions yang "
 "mereka pasang di Firefox mereka menyebabkan masalah tersebut."
 
-#: ../phpmyadmin/docs/faq.rst:1394
+#: ../phpmyadmin/docs/faq.rst:1415
 msgid "5.18 (withdrawn)"
 msgstr "5.18 (ditarik)"
 
-#: ../phpmyadmin/docs/faq.rst:1399
+#: ../phpmyadmin/docs/faq.rst:1420
 msgid "5.19 I get JavaScript errors in my browser."
 msgstr "5.19 Saya mendapatkan galat JavaScript di peramban saya."
 
-#: ../phpmyadmin/docs/faq.rst:1401
+#: ../phpmyadmin/docs/faq.rst:1422
 msgid ""
 "Issues have been reported with some combinations of browser extensions. To "
 "troubleshoot, disable all extensions then clear your browser cache to see if "
@@ -11011,17 +11061,17 @@ msgstr ""
 "mengatasi masalah tersebut, nonaktifkan semua ekstensi lalu kosongkan "
 "tembolok peramban untuk melihat apakah masalahnya teratasi."
 
-#: ../phpmyadmin/docs/faq.rst:1408
+#: ../phpmyadmin/docs/faq.rst:1429
 msgid "5.20 I get errors about violating Content Security Policy."
 msgstr ""
 "5.20 Saya mendapatkan kesalahan tentang pelanggaran Kebijakan Keamanan "
 "Konten."
 
-#: ../phpmyadmin/docs/faq.rst:1410 ../phpmyadmin/docs/faq.rst:1437
+#: ../phpmyadmin/docs/faq.rst:1431 ../phpmyadmin/docs/faq.rst:1458
 msgid "If you see errors like:"
 msgstr "Jika Anda melihat galat seperti:"
 
-#: ../phpmyadmin/docs/faq.rst:1416
+#: ../phpmyadmin/docs/faq.rst:1437
 msgid ""
 "This is usually caused by some software, which wrongly rewrites :mailheader:"
 "`Content Security Policy` headers. Usually this is caused by antivirus proxy "
@@ -11032,7 +11082,7 @@ msgstr ""
 "disebabkan oleh proxy antivirus atau add-on browser yang menyebabkan "
 "kesalahan tersebut."
 
-#: ../phpmyadmin/docs/faq.rst:1420
+#: ../phpmyadmin/docs/faq.rst:1441
 msgid ""
 "If you see these errors, try disabling the HTTP proxy in antivirus or "
 "disable the :mailheader:`Content Security Policy` rewriting in it. If that "
@@ -11042,7 +11092,7 @@ msgstr ""
 "atau nonaktifkan penulisan ulang :mailheader:`Content Security Policy` di "
 "dalamnya. Jika tidak membantu, coba nonaktifkan ekstensi browser."
 
-#: ../phpmyadmin/docs/faq.rst:1424
+#: ../phpmyadmin/docs/faq.rst:1445
 msgid ""
 "Alternatively it can be also server configuration issue (if the webserver is "
 "configured to emit :mailheader:`Content Security Policy` headers, they can "
@@ -11052,15 +11102,15 @@ msgstr ""
 "dikonfigurasi untuk memancarkan header :mailheader:`Content Security "
 "Policy`, header tersebut dapat menimpa header dari phpMyAdmin)."
 
-#: ../phpmyadmin/docs/faq.rst:1428 ../phpmyadmin/docs/faq.rst:1450
+#: ../phpmyadmin/docs/faq.rst:1449 ../phpmyadmin/docs/faq.rst:1471
 msgid "Programs known to cause these kind of errors:"
 msgstr "Program yang diketahui menyebabkan galat semacam ini:"
 
-#: ../phpmyadmin/docs/faq.rst:1430
+#: ../phpmyadmin/docs/faq.rst:1451
 msgid "Kaspersky Internet Security"
 msgstr "Keamanan Internet Kaspersky"
 
-#: ../phpmyadmin/docs/faq.rst:1435
+#: ../phpmyadmin/docs/faq.rst:1456
 msgid ""
 "5.21 I get errors about potentially unsafe operation when browsing table or "
 "executing SQL query."
@@ -11068,7 +11118,7 @@ msgstr ""
 "5.21 Saya mendapatkan kesalahan tentang operasi yang berpotensi tidak aman "
 "saat menelusuri tabel atau menjalankan kueri SQL."
 
-#: ../phpmyadmin/docs/faq.rst:1443
+#: ../phpmyadmin/docs/faq.rst:1464
 msgid ""
 "This is usually caused by web application firewall doing requests filtering. "
 "It tries to prevent SQL injection, however phpMyAdmin is tool designed to "
@@ -11079,7 +11129,7 @@ msgstr ""
 "phpMyAdmin adalah alat yang dirancang untuk menjalankan kueri SQL, sehingga "
 "tidak dapat digunakan."
 
-#: ../phpmyadmin/docs/faq.rst:1447
+#: ../phpmyadmin/docs/faq.rst:1468
 msgid ""
 "Please allow phpMyAdmin scripts from the web application firewall settings "
 "or disable it completely for phpMyAdmin path."
@@ -11087,15 +11137,15 @@ msgstr ""
 "Harap izinkan skrip phpMyAdmin dari pengaturan firewall aplikasi web atau "
 "nonaktifkan sepenuhnya untuk jalur phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1452
+#: ../phpmyadmin/docs/faq.rst:1473
 msgid "Wordfence Web Application Firewall"
 msgstr "Firewall Aplikasi Web Wordfence"
 
-#: ../phpmyadmin/docs/faq.rst:1457
+#: ../phpmyadmin/docs/faq.rst:1478
 msgid "Using phpMyAdmin"
 msgstr "Menggunakan phpMyAdmin"
 
-#: ../phpmyadmin/docs/faq.rst:1462
+#: ../phpmyadmin/docs/faq.rst:1483
 msgid ""
 "6.1 I can't insert new rows into a table / I can't create a table - MySQL "
 "brings up a SQL error."
@@ -11103,7 +11153,7 @@ msgstr ""
 "6.1 Saya tidak dapat menyisipkan baris baru ke dalam tabel / Saya tidak "
 "dapat membuat tabel - MySQL memunculkan galat SQL."
 
-#: ../phpmyadmin/docs/faq.rst:1464
+#: ../phpmyadmin/docs/faq.rst:1485
 msgid ""
 "Examine the :term:`SQL` error with care. Often the problem is caused by "
 "specifying a wrong column-type. Common errors include:"
@@ -11111,15 +11161,15 @@ msgstr ""
 "Periksa kesalahan :term:`SQL` dengan hati-hati. Sering kali masalah ini "
 "disebabkan oleh penentuan tipe kolom yang salah. Galat umum meliputi:"
 
-#: ../phpmyadmin/docs/faq.rst:1468
+#: ../phpmyadmin/docs/faq.rst:1489
 msgid "Using ``VARCHAR`` without a size argument"
 msgstr "Menggunakan ``VARCHAR`` tanpa argumen ukuran"
 
-#: ../phpmyadmin/docs/faq.rst:1469
+#: ../phpmyadmin/docs/faq.rst:1490
 msgid "Using ``TEXT`` or ``BLOB`` with a size argument"
 msgstr "Menggunakan ``TEXT`` atau ``BLOB`` dengan argumen ukuran"
 
-#: ../phpmyadmin/docs/faq.rst:1471
+#: ../phpmyadmin/docs/faq.rst:1492
 msgid ""
 "Also, look at the syntax chapter in the MySQL manual to confirm that your "
 "syntax is correct."
@@ -11127,7 +11177,7 @@ msgstr ""
 "Lihat juga bab sintaksis pada manual MySQL untuk memastikan sintaksis Anda "
 "sudah benar."
 
-#: ../phpmyadmin/docs/faq.rst:1477
+#: ../phpmyadmin/docs/faq.rst:1498
 msgid ""
 "6.2 When I create a table, I set an index for two columns and phpMyAdmin "
 "generates only one index with those two columns."
@@ -11135,7 +11185,7 @@ msgstr ""
 "6.2 Saat saya membuat tabel, saya menetapkan indeks untuk dua kolom dan "
 "phpMyAdmin hanya menghasilkan satu indeks dengan dua kolom tersebut."
 
-#: ../phpmyadmin/docs/faq.rst:1479
+#: ../phpmyadmin/docs/faq.rst:1500
 msgid ""
 "This is the way to create a multi-columns index. If you want two indexes, "
 "create the first one when creating the table, save, then display the table "
@@ -11145,11 +11195,11 @@ msgstr ""
 "indeks, buat indeks pertama saat membuat tabel, simpan, lalu tampilkan "
 "properti tabel dan klik tautan Indeks untuk membuat indeks lainnya."
 
-#: ../phpmyadmin/docs/faq.rst:1487
+#: ../phpmyadmin/docs/faq.rst:1508
 msgid "6.3 How can I insert a null value into my table?"
 msgstr "6.3 Bagaimana saya dapat memasukkan nilai null ke dalam tabel saya?"
 
-#: ../phpmyadmin/docs/faq.rst:1489
+#: ../phpmyadmin/docs/faq.rst:1510
 msgid ""
 "Since version 2.2.3, you have a checkbox for each column that can be null. "
 "Before 2.2.3, you had to enter \"null\", without the quotes, as the column's "
@@ -11164,11 +11214,11 @@ msgstr ""
 "memasukkan \"NULL\", ini berarti Anda menginginkan NULL literal di kolom, "
 "dan bukan nilai NULL (ini berfungsi di PHP4)."
 
-#: ../phpmyadmin/docs/faq.rst:1498
+#: ../phpmyadmin/docs/faq.rst:1519
 msgid "6.4 How can I backup my database or table?"
 msgstr "6.4 Bagaimana cara mencadangkan basis data atau tabel saya?"
 
-#: ../phpmyadmin/docs/faq.rst:1500
+#: ../phpmyadmin/docs/faq.rst:1521
 msgid ""
 "Click on a database or table name in the navigation panel, the properties "
 "will be displayed. Then on the menu, click \"Export\", you can dump the "
@@ -11190,7 +11240,7 @@ msgstr ""
 "config:option:`$cfg['ExecTimeLimit']`. Untuk bantuan tambahan tentang subjek "
 "ini, cari kata \"dump\" dalam dokumen ini."
 
-#: ../phpmyadmin/docs/faq.rst:1512
+#: ../phpmyadmin/docs/faq.rst:1533
 msgid ""
 "6.5 How can I restore (upload) my database or table using a dump? How can I "
 "run a \".sql\" file?"
@@ -11198,7 +11248,7 @@ msgstr ""
 "6.5 Bagaimana cara memulihkan (mengunggah) database atau tabel saya "
 "menggunakan dump? Bagaimana cara menjalankan file \".sql\"?"
 
-#: ../phpmyadmin/docs/faq.rst:1514
+#: ../phpmyadmin/docs/faq.rst:1535
 msgid ""
 "Click on a database name in the navigation panel, the properties will be "
 "displayed. Select \"Import\" from the list of tabs in the right–hand frame "
@@ -11218,7 +11268,7 @@ msgstr ""
 "fitur-fitur baru.  Untuk bantuan tambahan tentang subjek ini, cari kata "
 "\"unggah\" dalam dokumen ini."
 
-#: ../phpmyadmin/docs/faq.rst:1524
+#: ../phpmyadmin/docs/faq.rst:1545
 msgid ""
 "Note: For errors while importing of dumps exported from older MySQL versions "
 "to newer MySQL versions, please check :ref:`faq6_41`."
@@ -11226,12 +11276,12 @@ msgstr ""
 "Catatan: Untuk kesalahan saat mengimpor dump yang diekspor dari versi MySQL "
 "lama ke versi MySQL baru, silakan periksa :ref:`faq6_41`."
 
-#: ../phpmyadmin/docs/faq.rst:1530
+#: ../phpmyadmin/docs/faq.rst:1551
 msgid "6.6 How can I use the relation table in Query-by-example?"
 msgstr ""
 "6.6 Bagaimana cara menggunakan tabel relasi dalam Kueri berdasarkan contoh?"
 
-#: ../phpmyadmin/docs/faq.rst:1532
+#: ../phpmyadmin/docs/faq.rst:1553
 msgid ""
 "Here is an example with the tables persons, towns and countries, all located "
 "in the database \"mydb\". If you don't have a ``pma__relation`` table, "
@@ -11243,15 +11293,15 @@ msgstr ""
 "``pma__relation``, buatlah seperti yang dijelaskan di bagian konfigurasi. "
 "Kemudian buat tabel contoh:"
 
-#: ../phpmyadmin/docs/faq.rst:1567
+#: ../phpmyadmin/docs/faq.rst:1588
 msgid "To setup appropriate links and display information:"
 msgstr "Untuk mengatur tautan yang sesuai dan menampilkan informasi:"
 
-#: ../phpmyadmin/docs/faq.rst:1569
+#: ../phpmyadmin/docs/faq.rst:1590
 msgid "on table \"REL\\_persons\" click Structure, then Relation view"
 msgstr "pada tabel \"REL\\_persons\" klik Struktur, lalu tampilan Relasi"
 
-#: ../phpmyadmin/docs/faq.rst:1570
+#: ../phpmyadmin/docs/faq.rst:1591
 msgid ""
 "for \"town\\_code\", choose from dropdowns, \"mydb\", \"REL\\_towns\", "
 "\"town\\_code\" for foreign database, table and column respectively"
@@ -11259,7 +11309,7 @@ msgstr ""
 "untuk \"town\\_code\", pilih dari dropdown, \"mydb\", \"REL\\towns\", "
 "\"town\\_code\" untuk basis data asing, tabel dan kolom masing-masing"
 
-#: ../phpmyadmin/docs/faq.rst:1572
+#: ../phpmyadmin/docs/faq.rst:1593
 msgid ""
 "for \"country\\_code\", choose  from dropdowns, \"mydb\", "
 "\"REL\\_countries\", \"country\\_code\" for foreign database, table and "
@@ -11269,39 +11319,39 @@ msgstr ""
 "\"REL\\_countries\", \"country\\_code\" untuk basis data asing, tabel dan "
 "kolom masing-masing"
 
-#: ../phpmyadmin/docs/faq.rst:1574
+#: ../phpmyadmin/docs/faq.rst:1595
 msgid "on table \"REL\\_towns\" click Structure, then Relation view"
 msgstr "pada tabel \"REL\\_towns\" klik Struktur, lalu tampilan Relasi"
 
-#: ../phpmyadmin/docs/faq.rst:1575
+#: ../phpmyadmin/docs/faq.rst:1596
 msgid "in \"Choose column to display\", choose \"description\""
 msgstr "di \"Pilih kolom untuk ditampilkan\", pilih \"deskripsi\""
 
-#: ../phpmyadmin/docs/faq.rst:1576
+#: ../phpmyadmin/docs/faq.rst:1597
 msgid "repeat the two previous steps for table \"REL\\_countries\""
 msgstr "ulangi dua langkah sebelumnya untuk tabel \"REL\\_countries\""
 
-#: ../phpmyadmin/docs/faq.rst:1578
+#: ../phpmyadmin/docs/faq.rst:1599
 msgid "Then test like this:"
 msgstr "Lalu uji seperti ini:"
 
-#: ../phpmyadmin/docs/faq.rst:1580
+#: ../phpmyadmin/docs/faq.rst:1601
 msgid "Click on your db name in the navigation panel"
 msgstr "Klik nama db Anda di panel navigasi"
 
-#: ../phpmyadmin/docs/faq.rst:1581
+#: ../phpmyadmin/docs/faq.rst:1602
 msgid "Choose \"Query\""
 msgstr "Pilih \"Kueri\""
 
-#: ../phpmyadmin/docs/faq.rst:1582
+#: ../phpmyadmin/docs/faq.rst:1603
 msgid "Use tables: persons, towns, countries"
 msgstr "Gunakan tabel: orang, kota, negara"
 
-#: ../phpmyadmin/docs/faq.rst:1583
+#: ../phpmyadmin/docs/faq.rst:1604
 msgid "Click \"Update query\""
 msgstr "Klik \"Perbarui kueri\""
 
-#: ../phpmyadmin/docs/faq.rst:1584
+#: ../phpmyadmin/docs/faq.rst:1605
 msgid ""
 "In the columns row, choose persons.person\\_name and click the \"Show\" "
 "tickbox"
@@ -11309,7 +11359,7 @@ msgstr ""
 "Di baris kolom, pilih nama persons.person\\_name dan klik kotak centang "
 "\"Tampilkan\""
 
-#: ../phpmyadmin/docs/faq.rst:1586
+#: ../phpmyadmin/docs/faq.rst:1607
 msgid ""
 "Do the same for towns.description and countries.descriptions in the other 2 "
 "columns"
@@ -11317,7 +11367,7 @@ msgstr ""
 "Lakukan hal yang sama untuk towns.descriptions dan countries.descriptions di "
 "2 kolom lainnya"
 
-#: ../phpmyadmin/docs/faq.rst:1588
+#: ../phpmyadmin/docs/faq.rst:1609
 msgid ""
 "Click \"Update query\" and you will see in the query box that the correct "
 "joins have been generated"
@@ -11325,15 +11375,15 @@ msgstr ""
 "Klik \"Perbarui kueri\" dan Anda akan melihat di kotak kueri bahwa gabungan "
 "yang benar telah dibuat"
 
-#: ../phpmyadmin/docs/faq.rst:1590
+#: ../phpmyadmin/docs/faq.rst:1611
 msgid "Click \"Submit query\""
 msgstr "Klik \"Kirim kueri\""
 
-#: ../phpmyadmin/docs/faq.rst:1595
+#: ../phpmyadmin/docs/faq.rst:1616
 msgid "6.7 How can I use the \"display column\" feature?"
 msgstr "6.7 Bagaimana cara menggunakan fitur \"tampilkan kolom\"?"
 
-#: ../phpmyadmin/docs/faq.rst:1597
+#: ../phpmyadmin/docs/faq.rst:1618
 msgid ""
 "Starting from the previous example, create the ``pma__table_info`` as "
 "explained in the configuration section, then browse your persons table, and "
@@ -11347,11 +11397,11 @@ msgstr ""
 "untuk fitur tambahan yang memungkinkan \"tampilkan kolom\": daftar drop-down "
 "berisi nilai yang mungkin."
 
-#: ../phpmyadmin/docs/faq.rst:1606
+#: ../phpmyadmin/docs/faq.rst:1627
 msgid "6.8 How can I produce a PDF schema of my database?"
 msgstr "6.8 Bagaimana saya dapat membuat skema PDF dari basis data saya?"
 
-#: ../phpmyadmin/docs/faq.rst:1608
+#: ../phpmyadmin/docs/faq.rst:1629
 msgid ""
 "First the configuration variables \"relation\", \"table\\_coords\" and "
 "\"pdf\\_pages\" have to be filled in."
@@ -11359,46 +11409,46 @@ msgstr ""
 "Pertama variabel konfigurasi \"relation\", \"table\\_coords\" dan "
 "\"pdf\\_pages\" harus diisi."
 
-#: ../phpmyadmin/docs/faq.rst:1611
+#: ../phpmyadmin/docs/faq.rst:1632
 msgid "Select your database in the navigation panel."
 msgstr "Pilih basis data Anda di panel navigasi."
 
-#: ../phpmyadmin/docs/faq.rst:1612
+#: ../phpmyadmin/docs/faq.rst:1633
 msgid "Choose \":guilabel:`Designer`\" in the navigation bar at the top."
 msgstr "Pilih \":guilabel:`Designer`\" di bilah navigasi di bagian atas."
 
-#: ../phpmyadmin/docs/faq.rst:1613
+#: ../phpmyadmin/docs/faq.rst:1634
 msgid "Move the tables the way you want them."
 msgstr "Pindahkan tabel sesuai keinginan Anda."
 
-#: ../phpmyadmin/docs/faq.rst:1614
+#: ../phpmyadmin/docs/faq.rst:1635
 msgid "Choose \":guilabel:`Export schema`\" in the left menu."
 msgstr "Pilih \":guilabel:`Export schema`\" di menu sebelah kiri."
 
-#: ../phpmyadmin/docs/faq.rst:1615
+#: ../phpmyadmin/docs/faq.rst:1636
 msgid "The export modal will open."
 msgstr "Modal ekspor akan terbuka."
 
-#: ../phpmyadmin/docs/faq.rst:1616
+#: ../phpmyadmin/docs/faq.rst:1637
 msgid ""
 "Select the type of export to :term:`PDF`, you may adjust the other settings."
 msgstr ""
 "Pilih jenis ekspor ke :term:`PDF`, Anda dapat menyesuaikan pengaturan "
 "lainnya."
 
-#: ../phpmyadmin/docs/faq.rst:1617
+#: ../phpmyadmin/docs/faq.rst:1638
 msgid "Submit the form and the file will start downloading."
 msgstr "Kirim formulir dan berkas akan mulai diunduh."
 
-#: ../phpmyadmin/docs/faq.rst:1621
+#: ../phpmyadmin/docs/faq.rst:1642
 msgid ":ref:`relations`"
 msgstr ":ref:`relations`"
 
-#: ../phpmyadmin/docs/faq.rst:1626
+#: ../phpmyadmin/docs/faq.rst:1647
 msgid "6.9 phpMyAdmin is changing the type of one of my columns!"
 msgstr "6.9 phpMyAdmin mengubah jenis salah satu kolom saya!"
 
-#: ../phpmyadmin/docs/faq.rst:1628
+#: ../phpmyadmin/docs/faq.rst:1649
 msgid ""
 "No, it's MySQL that is doing `silent column type changing <https://dev.mysql."
 "com/doc/refman/5.7/en/silent-column-changes.html>`_."
@@ -11406,7 +11456,7 @@ msgstr ""
 "Tidak, MySQL-lah yang melakukan `pengubahan tipe kolom senyap <https://dev."
 "mysql.com/doc/refman/5.7/en/silent-column-changes.html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:1634
+#: ../phpmyadmin/docs/faq.rst:1655
 msgid ""
 "6.10 When creating a privilege, what happens with underscores in the "
 "database name?"
@@ -11414,7 +11464,7 @@ msgstr ""
 "6.10 Saat membuat hak istimewa, apa yang terjadi dengan garis bawah pada "
 "nama basis data?"
 
-#: ../phpmyadmin/docs/faq.rst:1636
+#: ../phpmyadmin/docs/faq.rst:1657
 msgid ""
 "If you do not put a backslash before the underscore, this is a wildcard "
 "grant, and the underscore means \"any character\". So, if the database name "
@@ -11429,23 +11479,23 @@ msgstr ""
 "terbalik sebelum garis bawah, itu berarti bahwa nama basis data akan "
 "memiliki garis bawah yang sebenarnya."
 
-#: ../phpmyadmin/docs/faq.rst:1645
+#: ../phpmyadmin/docs/faq.rst:1666
 msgid "6.11 What is the curious symbol ø in the statistics pages?"
 msgstr "6.11 Apa simbol aneh ø di halaman statistik?"
 
-#: ../phpmyadmin/docs/faq.rst:1647
+#: ../phpmyadmin/docs/faq.rst:1668
 msgid "It means \"average\"."
 msgstr "Artinya \"rata-rata\"."
 
-#: ../phpmyadmin/docs/faq.rst:1652
+#: ../phpmyadmin/docs/faq.rst:1673
 msgid "6.12 I want to understand some Export options."
 msgstr "6.12 Saya ingin memahami beberapa opsi Ekspor."
 
-#: ../phpmyadmin/docs/faq.rst:1654
+#: ../phpmyadmin/docs/faq.rst:1675
 msgid "**Structure:**"
 msgstr "**Struktur:**"
 
-#: ../phpmyadmin/docs/faq.rst:1656
+#: ../phpmyadmin/docs/faq.rst:1677
 msgid ""
 "\"Add DROP TABLE\" will add a line telling MySQL to `drop the table <https://"
 "dev.mysql.com/doc/refman/5.7/en/drop-table.html>`_, if it already exists "
@@ -11457,7 +11507,7 @@ msgstr ""
 "html>`_, jika sudah ada selama proses impor. Tabel tersebut TIDAK akan "
 "dihapus setelah proses ekspor, tetapi hanya memengaruhi berkas impor."
 
-#: ../phpmyadmin/docs/faq.rst:1660
+#: ../phpmyadmin/docs/faq.rst:1681
 msgid ""
 "\"If Not Exists\" will only create the table if it doesn't exist. Otherwise, "
 "you may get an error if the table name exists but has a different structure."
@@ -11466,7 +11516,7 @@ msgstr ""
 "mungkin mendapatkan kesalahan jika nama tabel ada tetapi memiliki struktur "
 "yang berbeda."
 
-#: ../phpmyadmin/docs/faq.rst:1663
+#: ../phpmyadmin/docs/faq.rst:1684
 msgid ""
 "\"Add AUTO\\_INCREMENT value\" ensures that AUTO\\_INCREMENT value (if any) "
 "will be included in backup."
@@ -11474,7 +11524,7 @@ msgstr ""
 "\"Tambahkan nilai AUTO\\_INCREMENT\" memastikan bahwa nilai AUTO\\_INCREMENT "
 "(jika ada) akan disertakan dalam cadangan."
 
-#: ../phpmyadmin/docs/faq.rst:1665
+#: ../phpmyadmin/docs/faq.rst:1686
 msgid ""
 "\"Enclose table and column names with backquotes\" ensures that column and "
 "table names formed with special characters are protected."
@@ -11482,7 +11532,7 @@ msgstr ""
 "\"Lampirkan nama tabel dan kolom dengan tanda kutip terbalik\" memastikan "
 "bahwa nama kolom dan tabel yang dibentuk dengan karakter khusus dilindungi."
 
-#: ../phpmyadmin/docs/faq.rst:1667
+#: ../phpmyadmin/docs/faq.rst:1688
 msgid ""
 "\"Add into comments\" includes column comments, relations, and media types "
 "set in the pmadb in the dump as :term:`SQL` comments (*/\\* xxx \\*/*)."
@@ -11491,11 +11541,11 @@ msgstr ""
 "yang ditetapkan dalam pmadb dalam dump sebagai komentar :term:`SQL` (*/\\* "
 "xxx \\*/*)."
 
-#: ../phpmyadmin/docs/faq.rst:1671
+#: ../phpmyadmin/docs/faq.rst:1692
 msgid "**Data:**"
 msgstr "**Data:**"
 
-#: ../phpmyadmin/docs/faq.rst:1673
+#: ../phpmyadmin/docs/faq.rst:1694
 msgid ""
 "\"Complete inserts\" adds the column names on every INSERT command, for "
 "better documentation (but resulting file is bigger)."
@@ -11504,7 +11554,7 @@ msgstr ""
 "untuk dokumentasi yang lebih baik (tetapi berkas yang dihasilkan lebih "
 "besar)."
 
-#: ../phpmyadmin/docs/faq.rst:1675
+#: ../phpmyadmin/docs/faq.rst:1696
 msgid ""
 "\"Extended inserts\" provides a shorter dump file by using only once the "
 "INSERT verb and the table name."
@@ -11512,7 +11562,7 @@ msgstr ""
 "\"Sisipan yang diperluas\" menyediakan berkas dump yang lebih pendek dengan "
 "hanya menggunakan kata kerja INSERT dan nama tabel satu kali."
 
-#: ../phpmyadmin/docs/faq.rst:1677
+#: ../phpmyadmin/docs/faq.rst:1698
 msgid ""
 "\"Delayed inserts\" are best explained in the `MySQL manual - INSERT DELAYED "
 "Syntax <https://dev.mysql.com/doc/refman/5.7/en/insert-delayed.html>`_."
@@ -11521,7 +11571,7 @@ msgstr ""
 "INSERT DELAYED <https://dev.mysql.com/doc/refman/5.7/en/insert-delayed."
 "html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:1679
+#: ../phpmyadmin/docs/faq.rst:1700
 msgid ""
 "\"Ignore inserts\" treats errors as a warning instead. Again, more info is "
 "provided in the `MySQL manual - INSERT Syntax <https://dev.mysql.com/doc/"
@@ -11535,11 +11585,11 @@ msgstr ""
 "dasarnya dengan ini dipilih, nilai yang tidak valid disesuaikan dan "
 "dimasukkan daripada menyebabkan seluruh pernyataan gagal."
 
-#: ../phpmyadmin/docs/faq.rst:1688
+#: ../phpmyadmin/docs/faq.rst:1709
 msgid "6.13 I would like to create a database with a dot in its name."
 msgstr "6.13 Saya ingin membuat basis data dengan titik dalam namanya."
 
-#: ../phpmyadmin/docs/faq.rst:1690
+#: ../phpmyadmin/docs/faq.rst:1711
 msgid ""
 "This is a bad idea, because in MySQL the syntax \"database.table\" is the "
 "normal way to reference a database and table name. Worse, MySQL will usually "
@@ -11551,11 +11601,11 @@ msgstr ""
 "lagi, MySQL biasanya akan mengizinkan Anda membuat database dengan titik, "
 "tetapi kemudian Anda tidak dapat bekerja dengannya, atau menghapusnya."
 
-#: ../phpmyadmin/docs/faq.rst:1698
+#: ../phpmyadmin/docs/faq.rst:1719
 msgid "6.14 (withdrawn)."
 msgstr "6.14 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1703
+#: ../phpmyadmin/docs/faq.rst:1724
 msgid ""
 "6.15 I want to add a BLOB column and put an index on it, but MySQL says "
 "\"BLOB column '...' used in key specification without a key length\"."
@@ -11564,7 +11614,7 @@ msgstr ""
 "tetapi MySQL mengatakan \"kolom BLOB '...' digunakan dalam spesifikasi kunci "
 "tanpa panjang kunci\"."
 
-#: ../phpmyadmin/docs/faq.rst:1705
+#: ../phpmyadmin/docs/faq.rst:1726
 msgid ""
 "The right way to do this, is to create the column without any indexes, then "
 "display the table structure and use the \"Create an index\" dialog. On this "
@@ -11576,13 +11626,13 @@ msgstr ""
 "indeks\". Di halaman ini, Anda akan dapat memilih kolom BLOB, dan mengatur "
 "ukuran indeks, yang merupakan kondisi untuk membuat indeks pada kolom BLOB."
 
-#: ../phpmyadmin/docs/faq.rst:1714
+#: ../phpmyadmin/docs/faq.rst:1735
 msgid "6.16 How can I simply move in page with plenty editing fields?"
 msgstr ""
 "6.16 Bagaimana caranya saya dapat dengan mudah berpindah di halaman yang "
 "memiliki banyak kolom penyuntingan?"
 
-#: ../phpmyadmin/docs/faq.rst:1716
+#: ../phpmyadmin/docs/faq.rst:1737
 msgid ""
 "You can use :kbd:`Ctrl+arrows` (:kbd:`Option+Arrows` in Safari) for moving "
 "on most pages with many editing fields (table structure changes, row "
@@ -11592,7 +11642,7 @@ msgstr ""
 "untuk berpindah di sebagian besar halaman dengan banyak bidang pengeditan "
 "(perubahan struktur tabel, pengeditan baris, dll.)."
 
-#: ../phpmyadmin/docs/faq.rst:1723
+#: ../phpmyadmin/docs/faq.rst:1744
 msgid ""
 "6.17 Transformations: I can't enter my own mimetype! What is this feature "
 "then useful for?"
@@ -11600,7 +11650,7 @@ msgstr ""
 "6.17 Transformasi: Saya tidak dapat memasukkan mimetype saya sendiri! Lalu, "
 "untuk apa fitur ini berguna?"
 
-#: ../phpmyadmin/docs/faq.rst:1725
+#: ../phpmyadmin/docs/faq.rst:1746
 msgid ""
 "Defining mimetypes is of no use if you can't put transformations on them. "
 "Otherwise you could just put a comment on the column. Because entering your "
@@ -11616,7 +11666,7 @@ msgstr ""
 "Sebagai gantinya, Anda harus menginisialisasi mimetype menggunakan fungsi "
 "atau definisi mimetype yang kosong."
 
-#: ../phpmyadmin/docs/faq.rst:1732
+#: ../phpmyadmin/docs/faq.rst:1753
 msgid ""
 "Plus, you have a whole overview of available mimetypes. Who knows all those "
 "mimetypes by heart so they can enter it at will?"
@@ -11625,7 +11675,7 @@ msgstr ""
 "tersedia. Siapa yang hafal semua mimetype tersebut sehingga mereka dapat "
 "memasukkannya sesuka hati?"
 
-#: ../phpmyadmin/docs/faq.rst:1738
+#: ../phpmyadmin/docs/faq.rst:1759
 msgid ""
 "6.18 Bookmarks: Where can I store bookmarks? Why can't I see any bookmarks "
 "below the query box? What are these variables for?"
@@ -11633,7 +11683,7 @@ msgstr ""
 "6.18 Penanda: Di mana saya dapat menyimpan penanda? Mengapa saya tidak dapat "
 "melihat penanda di bawah kotak kueri? Untuk apa variabel ini?"
 
-#: ../phpmyadmin/docs/faq.rst:1740
+#: ../phpmyadmin/docs/faq.rst:1761
 msgid ""
 "You need to have configured the :ref:`linked-tables` for using bookmarks "
 "feature. Once you have done that, you can use bookmarks in the :guilabel:"
@@ -11643,17 +11693,17 @@ msgstr ""
 "penanda. Setelah Anda melakukannya, Anda dapat menggunakan penanda di tab :"
 "guilabel:`SQL`."
 
-#: ../phpmyadmin/docs/faq.rst:1743 ../phpmyadmin/docs/faq.rst:1798
+#: ../phpmyadmin/docs/faq.rst:1764 ../phpmyadmin/docs/faq.rst:1819
 msgid ":ref:`bookmarks`"
 msgstr ":ref:`bookmarks`"
 
-#: ../phpmyadmin/docs/faq.rst:1748
+#: ../phpmyadmin/docs/faq.rst:1769
 msgid "6.19 How can I create simple LATEX document to include exported table?"
 msgstr ""
 "6.19 Bagaimana cara membuat dokumen LATEX sederhana untuk menyertakan tabel "
 "yang diekspor?"
 
-#: ../phpmyadmin/docs/faq.rst:1750
+#: ../phpmyadmin/docs/faq.rst:1771
 msgid ""
 "You can simply include table in your LATEX documents, minimal sample "
 "document should look like following one (assuming you have table exported in "
@@ -11663,14 +11713,14 @@ msgstr ""
 "minimal akan terlihat seperti berikut (dengan asumsi Anda telah mengekspor "
 "tabel dalam file :file:`table.tex`):"
 
-#: ../phpmyadmin/docs/faq.rst:1765
+#: ../phpmyadmin/docs/faq.rst:1786
 msgid ""
 "6.20 I see a lot of databases which are not mine, and cannot access them."
 msgstr ""
 "6.20 Saya melihat banyak basis data yang bukan milik saya, dan tidak dapat "
 "mengaksesnya."
 
-#: ../phpmyadmin/docs/faq.rst:1767
+#: ../phpmyadmin/docs/faq.rst:1788
 msgid ""
 "You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW "
 "DATABASES, LOCK TABLES. Those privileges also enable users to see all the "
@@ -11683,11 +11733,11 @@ msgstr ""
 "memerlukan hak istimewa tersebut, Anda dapat menghapusnya dan daftar basis "
 "data mereka akan dipersingkat."
 
-#: ../phpmyadmin/docs/faq.rst:1772
+#: ../phpmyadmin/docs/faq.rst:1793
 msgid "<https://bugs.mysql.com/bug.php?id=179>"
 msgstr "<https://bugs.mysql.com/bug.php?id=179>"
 
-#: ../phpmyadmin/docs/faq.rst:1777
+#: ../phpmyadmin/docs/faq.rst:1798
 msgid ""
 "6.21 In edit/insert mode, how can I see a list of possible values for a "
 "column, based on some foreign table?"
@@ -11695,7 +11745,7 @@ msgstr ""
 "6.21 Dalam mode sunting/sisip, bagaimana saya dapat melihat daftar nilai "
 "yang mungkin untuk suatu kolom, berdasarkan beberapa tabel asing?"
 
-#: ../phpmyadmin/docs/faq.rst:1779
+#: ../phpmyadmin/docs/faq.rst:1800
 msgid ""
 "You have to setup appropriate links between the tables, and also setup the "
 "\"display column\" in the foreign table. See :ref:`faq6_6` for an example. "
@@ -11718,7 +11768,7 @@ msgstr ""
 "untuk menelusuri nilai kunci asing dan memilih satu. Untuk mengubah batas "
 "default 100, lihat :config:option:`$cfg['ForeignKeyMaxLimit']`."
 
-#: ../phpmyadmin/docs/faq.rst:1793
+#: ../phpmyadmin/docs/faq.rst:1814
 msgid ""
 "6.22 Bookmarks: Can I execute a default bookmark automatically when entering "
 "Browse mode for a table?"
@@ -11726,7 +11776,7 @@ msgstr ""
 "6.22 Penanda: Dapatkah saya menjalankan penanda bawaan secara otomatis saat "
 "memasuki mode Telusuri untuk suatu tabel?"
 
-#: ../phpmyadmin/docs/faq.rst:1795
+#: ../phpmyadmin/docs/faq.rst:1816
 msgid ""
 "Yes. If a bookmark has the same label as a table name and it's not a public "
 "bookmark, it will be executed."
@@ -11734,19 +11784,19 @@ msgstr ""
 "Ya. Jika penanda memiliki label yang sama dengan nama tabel dan bukan "
 "penanda publik, penanda tersebut akan dieksekusi."
 
-#: ../phpmyadmin/docs/faq.rst:1803
+#: ../phpmyadmin/docs/faq.rst:1824
 msgid "6.23 Export: I heard phpMyAdmin can export Microsoft Excel files?"
 msgstr ""
 "6.23 Ekspor: Saya dengar phpMyAdmin dapat mengekspor file Microsoft Excel?"
 
-#: ../phpmyadmin/docs/faq.rst:1805
+#: ../phpmyadmin/docs/faq.rst:1826
 msgid ""
 "You can use :term:`CSV` for Microsoft Excel, which works out of the box."
 msgstr ""
 "Anda dapat menggunakan :term:`CSV` untuk Microsoft Excel, yang langsung "
 "berfungsi."
 
-#: ../phpmyadmin/docs/faq.rst:1808
+#: ../phpmyadmin/docs/faq.rst:1829
 msgid ""
 "Since phpMyAdmin 3.4.5 support for direct export to Microsoft Excel version "
 "97 and newer was dropped."
@@ -11754,7 +11804,7 @@ msgstr ""
 "Sejak phpMyAdmin 3.4.5 dukungan untuk ekspor langsung ke Microsoft Excel "
 "versi 97 dan yang lebih baru dihentikan."
 
-#: ../phpmyadmin/docs/faq.rst:1815
+#: ../phpmyadmin/docs/faq.rst:1836
 msgid ""
 "6.24 Now that phpMyAdmin supports native MySQL 4.1.x column comments, what "
 "happens to my column comments stored in pmadb?"
@@ -11762,7 +11812,7 @@ msgstr ""
 "6.24 Sekarang phpMyAdmin mendukung komentar kolom MySQL 4.1.x asli, apa yang "
 "terjadi dengan komentar kolom saya yang disimpan di pmadb?"
 
-#: ../phpmyadmin/docs/faq.rst:1817
+#: ../phpmyadmin/docs/faq.rst:1838
 msgid ""
 "Automatic migration of a table's pmadb-style column comments to the native "
 "ones is done whenever you enter Structure page for this table."
@@ -11770,15 +11820,15 @@ msgstr ""
 "Migrasi otomatis komentar kolom bergaya pmadb tabel ke komentar asli "
 "dilakukan setiap kali Anda masuk ke halaman Struktur untuk tabel ini."
 
-#: ../phpmyadmin/docs/faq.rst:1823
+#: ../phpmyadmin/docs/faq.rst:1844
 msgid "6.25 (withdrawn)."
 msgstr "6.25 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1828
+#: ../phpmyadmin/docs/faq.rst:1849
 msgid "6.26 How can I select a range of rows?"
 msgstr "6.26 Bagaimana cara memilih serangkaian baris?"
 
-#: ../phpmyadmin/docs/faq.rst:1830
+#: ../phpmyadmin/docs/faq.rst:1851
 msgid ""
 "Click the first row of the range, hold the shift key and click the last row "
 "of the range. This works everywhere you see rows, for example in Browse mode "
@@ -11788,11 +11838,11 @@ msgstr ""
 "rentang. Ini berfungsi di mana pun Anda melihat baris, misalnya dalam mode "
 "Browse atau pada halaman Structure."
 
-#: ../phpmyadmin/docs/faq.rst:1837
+#: ../phpmyadmin/docs/faq.rst:1858
 msgid "6.27 What format strings can I use?"
 msgstr "6.27 Format string apa yang dapat saya gunakan?"
 
-#: ../phpmyadmin/docs/faq.rst:1839
+#: ../phpmyadmin/docs/faq.rst:1860
 msgid ""
 "In all places where phpMyAdmin accepts format strings, you can use "
 "``@VARIABLE@`` expansion and `strftime <https://www.php.net/strftime>`_ "
@@ -11806,27 +11856,27 @@ msgstr ""
 "(misalnya, jika Anda belum memilih tabel, Anda tidak bisa mendapatkan nama "
 "tabel), tetapi variabel berikut dapat digunakan:"
 
-#: ../phpmyadmin/docs/faq.rst:1845
+#: ../phpmyadmin/docs/faq.rst:1866
 msgid "``@HTTP_HOST@``"
 msgstr "``@HTTP_HOST@``"
 
-#: ../phpmyadmin/docs/faq.rst:1846
+#: ../phpmyadmin/docs/faq.rst:1867
 msgid "HTTP host that runs phpMyAdmin"
 msgstr "Host HTTP yang menjalankan phpMyAdmin"
 
-#: ../phpmyadmin/docs/faq.rst:1847
+#: ../phpmyadmin/docs/faq.rst:1868
 msgid "``@SERVER@``"
 msgstr "``@SERVER@``"
 
-#: ../phpmyadmin/docs/faq.rst:1848
+#: ../phpmyadmin/docs/faq.rst:1869
 msgid "MySQL server name"
 msgstr "Nama server MySQL"
 
-#: ../phpmyadmin/docs/faq.rst:1849
+#: ../phpmyadmin/docs/faq.rst:1870
 msgid "``@VERBOSE@``"
 msgstr "``@VERBOSE@``"
 
-#: ../phpmyadmin/docs/faq.rst:1850
+#: ../phpmyadmin/docs/faq.rst:1871
 msgid ""
 "Verbose MySQL server name as defined in :config:option:`$cfg['Servers'][$i]"
 "['verbose']`"
@@ -11834,56 +11884,56 @@ msgstr ""
 "Nama server MySQL verbose seperti yang didefinisikan dalam :config:option:"
 "`$cfg['Servers'][$i]['verbose']`"
 
-#: ../phpmyadmin/docs/faq.rst:1851
+#: ../phpmyadmin/docs/faq.rst:1872
 msgid "``@VSERVER@``"
 msgstr "``@VSERVER@``"
 
-#: ../phpmyadmin/docs/faq.rst:1852
+#: ../phpmyadmin/docs/faq.rst:1873
 msgid "Verbose MySQL server name if set, otherwise normal"
 msgstr "Nama server MySQL verbose jika diatur, jika tidak, normal"
 
-#: ../phpmyadmin/docs/faq.rst:1853
+#: ../phpmyadmin/docs/faq.rst:1874
 msgid "``@DATABASE@``"
 msgstr "``@DATABASE@``"
 
-#: ../phpmyadmin/docs/faq.rst:1854
+#: ../phpmyadmin/docs/faq.rst:1875
 msgid "Currently opened database"
 msgstr "Saat ini membuka database"
 
-#: ../phpmyadmin/docs/faq.rst:1855
+#: ../phpmyadmin/docs/faq.rst:1876
 msgid "``@TABLE@``"
 msgstr "``@TABLE@``"
 
-#: ../phpmyadmin/docs/faq.rst:1856
+#: ../phpmyadmin/docs/faq.rst:1877
 msgid "Currently opened table"
 msgstr "Tabel yang dibuka sekarang"
 
-#: ../phpmyadmin/docs/faq.rst:1857
+#: ../phpmyadmin/docs/faq.rst:1878
 msgid "``@COLUMNS@``"
 msgstr "``@COLUMNS@``"
 
-#: ../phpmyadmin/docs/faq.rst:1858
+#: ../phpmyadmin/docs/faq.rst:1879
 msgid "Columns of the currently opened table"
 msgstr "Kolom dari tabel yang dibuka sekarang"
 
-#: ../phpmyadmin/docs/faq.rst:1860
+#: ../phpmyadmin/docs/faq.rst:1881
 msgid "``@PHPMYADMIN@``"
 msgstr "``@PHPMYADMIN@``"
 
-#: ../phpmyadmin/docs/faq.rst:1860
+#: ../phpmyadmin/docs/faq.rst:1881
 msgid "phpMyAdmin with version"
 msgstr "phpMyAdmin dengan versi"
 
-#: ../phpmyadmin/docs/faq.rst:1865
+#: ../phpmyadmin/docs/faq.rst:1886
 msgid "6.28 (withdrawn)."
 msgstr "6.28 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:1870
+#: ../phpmyadmin/docs/faq.rst:1891
 msgid "6.29 Why can't I get a chart from my query result table?"
 msgstr ""
 "6.29 Mengapa saya tidak bisa mendapatkan bagan dari tabel hasil kueri saya?"
 
-#: ../phpmyadmin/docs/faq.rst:1872
+#: ../phpmyadmin/docs/faq.rst:1893
 msgid ""
 "Not every table can be put to the chart. Only tables with one, two or three "
 "columns can be visualised as a chart. Moreover the table must be in a "
@@ -11895,11 +11945,11 @@ msgstr ""
 "tabel harus dalam format khusus agar skrip bagan dapat memahaminya. Format "
 "yang didukung saat ini dapat ditemukan di :ref:`charts`."
 
-#: ../phpmyadmin/docs/faq.rst:1880
+#: ../phpmyadmin/docs/faq.rst:1901
 msgid "6.30 Import: How can I import ESRI Shapefiles?"
 msgstr "6.30 Impor: Bagaimana cara mengimpor ESRI Shapefile?"
 
-#: ../phpmyadmin/docs/faq.rst:1882
+#: ../phpmyadmin/docs/faq.rst:1903
 msgid ""
 "An ESRI Shapefile is actually a set of several files, where .shp file "
 "contains geometry data and .dbf file contains data related to those geometry "
@@ -11913,14 +11963,14 @@ msgstr ""
 "mengkompilasi PHP dengan ekstensi dBase (--enable-dbase). Jika tidak, hanya "
 "data geometri yang akan diimpor."
 
-#: ../phpmyadmin/docs/faq.rst:1888
+#: ../phpmyadmin/docs/faq.rst:1909
 msgid ""
 "To upload these set of files you can use either of the following methods:"
 msgstr ""
 "Untuk mengunggah kumpulan berkas ini Anda dapat menggunakan salah satu "
 "metode berikut:"
 
-#: ../phpmyadmin/docs/faq.rst:1891
+#: ../phpmyadmin/docs/faq.rst:1912
 msgid ""
 "Configure upload directory with :config:option:`$cfg['UploadDir']`, upload "
 "both .shp and .dbf files with the same filename and chose the .shp file from "
@@ -11930,7 +11980,7 @@ msgstr ""
 "unggah file .shp dan .dbf dengan nama berkas yang sama dan pilih berkas .shp "
 "dari halaman impor."
 
-#: ../phpmyadmin/docs/faq.rst:1894
+#: ../phpmyadmin/docs/faq.rst:1915
 msgid ""
 "Create a zip archive with .shp and .dbf files and import it. For this to "
 "work, you need to set :config:option:`$cfg['TempDir']` to a place where the "
@@ -11940,17 +11990,17 @@ msgstr ""
 "Anda perlu menyetel :config:option:`$cfg['TempDir']` ke tempat di mana "
 "pengguna server web dapat menulis (misalnya ``'./tmp'``)."
 
-#: ../phpmyadmin/docs/faq.rst:1898
+#: ../phpmyadmin/docs/faq.rst:1919
 msgid "To create the temporary directory on a UNIX-based system, you can do:"
 msgstr ""
 "Untuk membuat direktori sementara pada sistem berbasis UNIX, Anda dapat "
 "melakukan:"
 
-#: ../phpmyadmin/docs/faq.rst:1909
+#: ../phpmyadmin/docs/faq.rst:1930
 msgid "6.31 How do I create a relation in designer?"
 msgstr "6.31 Bagaimana cara membuat relasi di desainer?"
 
-#: ../phpmyadmin/docs/faq.rst:1911
+#: ../phpmyadmin/docs/faq.rst:1932
 msgid ""
 "To select relation, click:  The display column is shown in pink. To set/"
 "unset a column as the display column, click the \"Choose column to display\" "
@@ -11961,11 +12011,11 @@ msgstr ""
 "klik ikon \"Pilih kolom untuk ditampilkan\", lalu klik nama kolom yang "
 "sesuai."
 
-#: ../phpmyadmin/docs/faq.rst:1918
+#: ../phpmyadmin/docs/faq.rst:1939
 msgid "6.32 How can I use the zoom search feature?"
 msgstr "6.32 Bagaimana cara menggunakan fitur pencarian zoom?"
 
-#: ../phpmyadmin/docs/faq.rst:1920
+#: ../phpmyadmin/docs/faq.rst:1941
 msgid ""
 "The Zoom search feature is an alternative to table search feature. It allows "
 "you to explore a table by representing its data in a scatter plot. You can "
@@ -11979,7 +12029,7 @@ msgstr ""
 "mengeklik tab :guilabel:`Search`. Salah satu sub-tab di halaman :guilabel:"
 "`Table Search` adalah :guilabel:`Zoom Search`."
 
-#: ../phpmyadmin/docs/faq.rst:1926
+#: ../phpmyadmin/docs/faq.rst:1947
 msgid ""
 "Consider the table REL\\_persons in :ref:`faq6_6` for an example. To use "
 "zoom search, two columns need to be selected, for example, id and "
@@ -11995,7 +12045,7 @@ msgstr ""
 "diagram sebar berdasarkan id dan town\\_code-nya. Anda dapat menyertakan dua "
 "kriteria pencarian tambahan selain dari dua kolom yang akan ditampilkan."
 
-#: ../phpmyadmin/docs/faq.rst:1934
+#: ../phpmyadmin/docs/faq.rst:1955
 msgid ""
 "You can choose which field should be displayed as label for each point. If a "
 "display column has been set for the table (see :ref:`faqdisplay`), it is "
@@ -12012,7 +12062,7 @@ msgstr ""
 "yang akan diplot'. Setelah Anda memutuskan kriteria, klik 'Mulai' untuk "
 "menampilkan plot."
 
-#: ../phpmyadmin/docs/faq.rst:1942
+#: ../phpmyadmin/docs/faq.rst:1963
 msgid ""
 "After the plot is generated, you can use the mouse wheel to zoom in and out "
 "of the plot. In addition, panning feature is enabled to navigate through the "
@@ -12033,11 +12083,11 @@ msgstr ""
 "dasar tentang cara menggunakan dapat dilihat dengan mengklik tautan "
 "'Bagaimana cara menggunakan?' yang terletak tepat di atas plot."
 
-#: ../phpmyadmin/docs/faq.rst:1955
+#: ../phpmyadmin/docs/faq.rst:1976
 msgid "6.33 When browsing a table, how can I copy a column name?"
 msgstr "6.33 Saat menelusuri tabel, bagaimana cara menyalin nama kolom?"
 
-#: ../phpmyadmin/docs/faq.rst:1957
+#: ../phpmyadmin/docs/faq.rst:1978
 msgid ""
 "Selecting the name of the column within the browse table header cell for "
 "copying is difficult, as the columns support reordering by dragging the "
@@ -12055,11 +12105,11 @@ msgstr ""
 "input dengan nama kolom. Anda dapat mengeklik kanan nama kolom dalam kotak "
 "input ini untuk menyalinnya ke clipboard Anda."
 
-#: ../phpmyadmin/docs/faq.rst:1968
+#: ../phpmyadmin/docs/faq.rst:1989
 msgid "6.34 How can I use the Favorite Tables feature?"
 msgstr "6.34 Bagaimana cara menggunakan fitur Tabel Favorit?"
 
-#: ../phpmyadmin/docs/faq.rst:1970
+#: ../phpmyadmin/docs/faq.rst:1991
 msgid ""
 "Favorite Tables feature is very much similar to Recent Tables feature. It "
 "allows you to add a shortcut for the frequently used tables of any database "
@@ -12077,7 +12127,7 @@ msgstr ""
 "mengonfigurasi `phpMyAdmin Configuration Storage`. Jika tidak, entri ini "
 "disimpan di `phpMyAdmin Configuration Storage`."
 
-#: ../phpmyadmin/docs/faq.rst:1978
+#: ../phpmyadmin/docs/faq.rst:1999
 msgid ""
 "IMPORTANT: In absence of `phpMyAdmin Configuration Storage`, your Favorite "
 "tables may be different in different browsers based on your different "
@@ -12087,7 +12137,7 @@ msgstr ""
 "Anda mungkin berbeda di browser yang berbeda berdasarkan pilihan Anda yang "
 "berbeda di dalamnya."
 
-#: ../phpmyadmin/docs/faq.rst:1982
+#: ../phpmyadmin/docs/faq.rst:2003
 msgid ""
 "To add a table to Favorite list simply click on the `Gray` star in front of "
 "a table name in the list of tables of a Database and wait until it turns to "
@@ -12099,7 +12149,7 @@ msgstr ""
 "menjadi `Kuning`. Untuk menghapus tabel dari daftar, cukup klik bintang "
 "`Kuning` dan tunggu hingga berubah menjadi `Abu-abu` lagi."
 
-#: ../phpmyadmin/docs/faq.rst:1988
+#: ../phpmyadmin/docs/faq.rst:2009
 msgid ""
 "Using :config:option:`$cfg['NumFavoriteTables']` in your :file:`config.inc."
 "php` file, you can define the  maximum number of favorite tables shown in "
@@ -12109,11 +12159,11 @@ msgstr ""
 "`config.inc.php`, Anda dapat menentukan jumlah  maksimum tabel favorit yang "
 "ditampilkan di panel navigasi. Nilai default-nya adalah `10`."
 
-#: ../phpmyadmin/docs/faq.rst:1995
+#: ../phpmyadmin/docs/faq.rst:2016
 msgid "6.35 How can I use the Range search feature?"
 msgstr "6.35 Bagaimana cara menggunakan fitur pencarian Rentang?"
 
-#: ../phpmyadmin/docs/faq.rst:1997
+#: ../phpmyadmin/docs/faq.rst:2018
 msgid ""
 "With the help of range search feature, one can specify a range of values for "
 "particular column(s) while performing search operation on a table from the "
@@ -12123,7 +12173,7 @@ msgstr ""
 "nilai untuk kolom tertentu saat melakukan operasi pencarian pada tabel dari "
 "tab `Search`."
 
-#: ../phpmyadmin/docs/faq.rst:2001
+#: ../phpmyadmin/docs/faq.rst:2022
 msgid ""
 "To use this feature simply click on the `BETWEEN` or `NOT BETWEEN` operators "
 "from the operator select list in front of the column name. On choosing one "
@@ -12139,7 +12189,7 @@ msgstr ""
 "ditentukan yang akan disertakan dalam kasus `BETWEEN` dan dikecualikan dalam "
 "kasus `NOT BETWEEN` dari hasil akhir."
 
-#: ../phpmyadmin/docs/faq.rst:2007
+#: ../phpmyadmin/docs/faq.rst:2028
 msgid ""
 "Note: The Range search feature will work only `Numeric` and `Date` data type "
 "columns."
@@ -12147,11 +12197,11 @@ msgstr ""
 "Catatan: Fitur pencarian Rentang hanya akan berfungsi pada kolom tipe data "
 "`Numeric` dan `Date`."
 
-#: ../phpmyadmin/docs/faq.rst:2012
+#: ../phpmyadmin/docs/faq.rst:2033
 msgid "6.36 What is Central columns and how can I use this feature?"
 msgstr "6.36 Apa itu Kolom tengah dan bagaimana cara menggunakan fitur ini?"
 
-#: ../phpmyadmin/docs/faq.rst:2014
+#: ../phpmyadmin/docs/faq.rst:2035
 msgid ""
 "As the name suggests, the Central columns feature enables to maintain a "
 "central list of columns per database to avoid similar name for the same data "
@@ -12167,7 +12217,7 @@ msgstr ""
 "menambahkan elemen ke struktur tabel apa pun dalam basis data tersebut yang "
 "akan menghemat penulisan nama kolom dan definisi kolom yang mirip."
 
-#: ../phpmyadmin/docs/faq.rst:2020
+#: ../phpmyadmin/docs/faq.rst:2041
 msgid ""
 "To add a column to central list, go to table structure page, check the "
 "columns you want to include and then simply click on \"Add to central "
@@ -12181,7 +12231,7 @@ msgstr ""
 "database, buka halaman struktur database, centang tabel yang ingin "
 "disertakan, lalu pilih \"Tambahkan kolom ke daftar pusat\"."
 
-#: ../phpmyadmin/docs/faq.rst:2025
+#: ../phpmyadmin/docs/faq.rst:2046
 msgid ""
 "To remove a column from central list, go to Table structure page, check the "
 "columns you want to remove and then simply click on \"Remove from central "
@@ -12195,7 +12245,7 @@ msgstr ""
 "halaman Struktur basis data, centang tabel yang ingin disertakan, lalu pilih "
 "\"Hapus kolom dari daftar pusat\"."
 
-#: ../phpmyadmin/docs/faq.rst:2030
+#: ../phpmyadmin/docs/faq.rst:2051
 msgid ""
 "To view and manage the central list, select the database you want to manage "
 "central columns for then from the top menu click on \"Central columns\". You "
@@ -12207,11 +12257,11 @@ msgstr ""
 "dibawa ke halaman tempat Anda akan memiliki opsi untuk menyunting, "
 "menghapus, atau menambahkan kolom baru ke daftar pusat."
 
-#: ../phpmyadmin/docs/faq.rst:2037
+#: ../phpmyadmin/docs/faq.rst:2058
 msgid "6.37 How can I use Improve Table structure feature?"
 msgstr "6.37 Bagaimana cara menggunakan fitur Perbaiki Struktur Tabel?"
 
-#: ../phpmyadmin/docs/faq.rst:2039
+#: ../phpmyadmin/docs/faq.rst:2060
 msgid ""
 "Improve table structure feature helps to bring the table structure upto "
 "Third Normal Form. A wizard is presented to user which asks questions about "
@@ -12227,7 +12277,7 @@ msgstr ""
 "Pertama/Kedua/Ketiga. Saat memulai panduan, pengguna dapat memilih hingga "
 "bentuk normal apa yang mereka inginkan untuk menormalkan struktur tabel."
 
-#: ../phpmyadmin/docs/faq.rst:2046
+#: ../phpmyadmin/docs/faq.rst:2067
 msgid ""
 "Here is an example table which you can use to test all of the three First, "
 "Second and Third Normal Form."
@@ -12235,7 +12285,7 @@ msgstr ""
 "Berikut adalah contoh tabel yang dapat Anda gunakan untuk menguji ketiga "
 "Bentuk Normal Pertama, Kedua, dan Ketiga."
 
-#: ../phpmyadmin/docs/faq.rst:2063
+#: ../phpmyadmin/docs/faq.rst:2084
 msgid ""
 "The above table is not in First normal Form as no :term:`primary key` "
 "exists. Primary key is supposed to be (`petName`,`ownerLastName`,"
@@ -12249,7 +12299,7 @@ msgstr ""
 "tabel yang dihasilkan tidak akan berada dalam bentuk Normal Kedua maupun "
 "Ketiga karena ada dependensi berikut."
 
-#: ../phpmyadmin/docs/faq.rst:2074
+#: ../phpmyadmin/docs/faq.rst:2095
 msgid ""
 "Which says, OwnerEmail depends on OwnerLastName and OwnerFirstName. "
 "OwnerPhone depends on OwnerLastName and OwnerFirstName. PetType depends on "
@@ -12259,12 +12309,12 @@ msgstr ""
 "OwnerPhone bergantung pada OwnerLastName dan OwnerFirstName. PetType "
 "bergantung pada PetBreed."
 
-#: ../phpmyadmin/docs/faq.rst:2081
+#: ../phpmyadmin/docs/faq.rst:2102
 msgid "6.38 How can I reassign auto-incremented values?"
 msgstr ""
 "6.38 Bagaimana saya bisa menetapkan kembali nilai yang bertambah otomatis?"
 
-#: ../phpmyadmin/docs/faq.rst:2083
+#: ../phpmyadmin/docs/faq.rst:2104
 msgid ""
 "Some users prefer their AUTO_INCREMENT values to be consecutive; this is not "
 "always the case after row deletion."
@@ -12272,7 +12322,7 @@ msgstr ""
 "Beberapa pengguna lebih menyukai nilai AUTO_INCREMENT mereka berurutan; hal "
 "ini tidak selalu terjadi setelah penghapusan baris."
 
-#: ../phpmyadmin/docs/faq.rst:2086
+#: ../phpmyadmin/docs/faq.rst:2107
 msgid ""
 "Here are the steps to accomplish this. These are manual steps because they "
 "involve a manual verification at one point."
@@ -12280,11 +12330,11 @@ msgstr ""
 "Berikut langkah-langkah untuk menyelesaikannya. Ini adalah langkah manual "
 "karena melibatkan verifikasi manual pada satu titik."
 
-#: ../phpmyadmin/docs/faq.rst:2089
+#: ../phpmyadmin/docs/faq.rst:2110
 msgid "Ensure that you have exclusive access to the table to rearrange"
 msgstr "Pastikan Anda memiliki akses eksklusif ke meja untuk mengatur ulang"
 
-#: ../phpmyadmin/docs/faq.rst:2091
+#: ../phpmyadmin/docs/faq.rst:2112
 msgid ""
 "On your :term:`primary key` column (i.e. id), remove the AUTO_INCREMENT "
 "setting"
@@ -12292,15 +12342,15 @@ msgstr ""
 "Pada kolom :term:`primary key` Anda (yaitu id), hapus pengaturan "
 "AUTO_INCREMENT"
 
-#: ../phpmyadmin/docs/faq.rst:2093
+#: ../phpmyadmin/docs/faq.rst:2114
 msgid "Delete your primary key in Structure > indexes"
 msgstr "Hapus kunci utama Anda di Struktur > indeks"
 
-#: ../phpmyadmin/docs/faq.rst:2095
+#: ../phpmyadmin/docs/faq.rst:2116
 msgid "Create a new column future_id as primary key, AUTO_INCREMENT"
 msgstr "Buat kolom baru future_id sebagai kunci utama, AUTO_INCREMENT"
 
-#: ../phpmyadmin/docs/faq.rst:2097
+#: ../phpmyadmin/docs/faq.rst:2118
 msgid ""
 "Browse your table and verify that the new increments correspond to what "
 "you're expecting"
@@ -12308,19 +12358,19 @@ msgstr ""
 "Telusuri tabel Anda dan verifikasi bahwa kenaikan baru sesuai dengan apa "
 "yang Anda harapkan"
 
-#: ../phpmyadmin/docs/faq.rst:2100
+#: ../phpmyadmin/docs/faq.rst:2121
 msgid "Drop your old id column"
 msgstr "Hapus kolom id lama Anda"
 
-#: ../phpmyadmin/docs/faq.rst:2102
+#: ../phpmyadmin/docs/faq.rst:2123
 msgid "Rename the future_id column to id"
 msgstr "Ubah nama kolom future_id menjadi id"
 
-#: ../phpmyadmin/docs/faq.rst:2104
+#: ../phpmyadmin/docs/faq.rst:2125
 msgid "Move the new id column via Structure > Move columns"
 msgstr "Pindahkan kolom id baru melalui Struktur > Pindahkan kolom"
 
-#: ../phpmyadmin/docs/faq.rst:2109
+#: ../phpmyadmin/docs/faq.rst:2130
 msgid ""
 "6.39 What is the \"Adjust privileges\" option when renaming, copying, or "
 "moving a database, table, column, or procedure?"
@@ -12328,7 +12378,7 @@ msgstr ""
 "6.39 Apa itu opsi \"Sesuaikan hak istimewa\" saat mengganti nama, menyalin, "
 "atau memindahkan database, tabel, kolom, atau prosedur?"
 
-#: ../phpmyadmin/docs/faq.rst:2111
+#: ../phpmyadmin/docs/faq.rst:2132
 msgid ""
 "When renaming/copying/moving a database/table/column/procedure, MySQL does "
 "not adjust the original privileges relating to these objects on its own. By "
@@ -12341,7 +12391,7 @@ msgstr ""
 "istimewa sehingga pengguna memiliki hak istimewa yang sama pada item-item "
 "baru."
 
-#: ../phpmyadmin/docs/faq.rst:2116
+#: ../phpmyadmin/docs/faq.rst:2137
 msgid ""
 "For example: A user 'bob'@'localhost' has a 'SELECT' privilege on a column "
 "named 'id'. Now, if this column is renamed to 'id_new', MySQL, on its own, "
@@ -12354,11 +12404,11 @@ msgstr ""
 "tersebut dengan nama kolom yang baru. phpMyAdmin dapat melakukan penyesuaian "
 "ini untuk Anda secara otomatis."
 
-#: ../phpmyadmin/docs/faq.rst:2121
+#: ../phpmyadmin/docs/faq.rst:2142
 msgid "Notes:"
 msgstr "Catatan:"
 
-#: ../phpmyadmin/docs/faq.rst:2123
+#: ../phpmyadmin/docs/faq.rst:2144
 msgid ""
 "While adjusting privileges for a database, the privileges of all database-"
 "related elements (tables, columns and procedures) are also adjusted to the "
@@ -12368,7 +12418,7 @@ msgstr ""
 "elemen terkait basis data (tabel, kolom, dan prosedur) juga disesuaikan "
 "dengan nama baru basis data."
 
-#: ../phpmyadmin/docs/faq.rst:2127
+#: ../phpmyadmin/docs/faq.rst:2148
 msgid ""
 "Similarly, while adjusting privileges for a table, the privileges of all the "
 "columns inside the new table are also adjusted."
@@ -12376,7 +12426,7 @@ msgstr ""
 "Demikian pula, saat menyesuaikan hak istimewa untuk suatu tabel, hak "
 "istimewa semua kolom di dalam tabel baru juga disesuaikan."
 
-#: ../phpmyadmin/docs/faq.rst:2130
+#: ../phpmyadmin/docs/faq.rst:2151
 msgid ""
 "While adjusting privileges, the user performing the operation **must** have "
 "the following privileges:"
@@ -12384,7 +12434,7 @@ msgstr ""
 "Saat menyesuaikan hak istimewa, pengguna yang melakukan operasi **harus** "
 "memiliki hak istimewa berikut:"
 
-#: ../phpmyadmin/docs/faq.rst:2133
+#: ../phpmyadmin/docs/faq.rst:2154
 msgid ""
 "SELECT, INSERT, UPDATE, DELETE privileges on following tables: `mysql`.`db`, "
 "`mysql`.`columns_priv`, `mysql`.`tables_priv`, `mysql`.`procs_priv`"
@@ -12392,11 +12442,11 @@ msgstr ""
 "Hak akses SELECT, INSERT, UPDATE, DELETE pada tabel berikut: `mysql`.`db`, "
 "`mysql`.`columns_priv`, `mysql`.`tables_priv`, `mysql`.`procs_priv`"
 
-#: ../phpmyadmin/docs/faq.rst:2135
+#: ../phpmyadmin/docs/faq.rst:2156
 msgid "FLUSH privilege (GLOBAL)"
 msgstr "Hak istimewa FLUSH (GLOBAL)"
 
-#: ../phpmyadmin/docs/faq.rst:2137
+#: ../phpmyadmin/docs/faq.rst:2158
 msgid ""
 "Thus, if you want to replicate the database/table/column/procedure as it is "
 "while renaming/copying/moving these objects, make sure you have checked this "
@@ -12406,7 +12456,7 @@ msgstr ""
 "sebagaimana adanya saat mengganti nama/menyalin/memindahkan objek-objek ini, "
 "pastikan Anda telah mencentang opsi ini."
 
-#: ../phpmyadmin/docs/faq.rst:2143
+#: ../phpmyadmin/docs/faq.rst:2164
 msgid ""
 "6.40 I see \"Bind parameters\" checkbox in the \"SQL\" page. How do I write "
 "parameterized SQL queries?"
@@ -12414,7 +12464,7 @@ msgstr ""
 "6.40 Saya melihat kotak centang \"Bind parameter\" di halaman \"SQL\". "
 "Bagaimana cara menulis kueri SQL berparameter?"
 
-#: ../phpmyadmin/docs/faq.rst:2145
+#: ../phpmyadmin/docs/faq.rst:2166
 msgid ""
 "From version 4.5, phpMyAdmin allows users to execute parameterized queries "
 "in the \"SQL\" page. Parameters should be prefixed with a colon(:) and when "
@@ -12429,7 +12479,7 @@ msgstr ""
 "diidentifikasi dan kolom input untuk parameter ini akan ditampilkan. Nilai "
 "yang dimasukkan di kolom ini akan diganti dalam kueri sebelum dijalankan."
 
-#: ../phpmyadmin/docs/faq.rst:2153
+#: ../phpmyadmin/docs/faq.rst:2174
 msgid ""
 "6.41 I get import errors while importing the dumps exported from older MySQL "
 "versions (pre-5.7.6) into newer MySQL versions (5.7.7+), but they work fine "
@@ -12439,7 +12489,7 @@ msgstr ""
 "versi MySQL lama (pra-5.7.6) ke versi MySQL baru (5.7.7+), tetapi berfungsi "
 "dengan baik saat diimpor kembali pada versi lama yang sama ?"
 
-#: ../phpmyadmin/docs/faq.rst:2155
+#: ../phpmyadmin/docs/faq.rst:2176
 msgid ""
 "If you get errors like *#1031 - Table storage engine for 'table_name' "
 "doesn't have this option* while importing the dumps exported from pre-5.7.7 "
@@ -12457,7 +12507,7 @@ msgstr ""
 "parameters.html#sysvar_innodb_strict_mode>`_ akan menentukan apakah ini akan "
 "dilaporkan sebagai peringatan atau sebagai galat."
 
-#: ../phpmyadmin/docs/faq.rst:2160
+#: ../phpmyadmin/docs/faq.rst:2181
 msgid ""
 "Since MySQL version 5.7.9, the default value for `innodb_strict_mode` is "
 "`ON` and thus would generate an error when such a CREATE TABLE or ALTER "
@@ -12467,11 +12517,11 @@ msgstr ""
 "`ON` dan dengan demikian akan menghasilkan kesalahan saat pernyataan CREATE "
 "TABLE atau ALTER TABLE ditemukan."
 
-#: ../phpmyadmin/docs/faq.rst:2163
+#: ../phpmyadmin/docs/faq.rst:2184
 msgid "There are two ways of preventing such errors while importing:"
 msgstr "Ada dua cara untuk mencegah kesalahan seperti itu saat mengimpor:"
 
-#: ../phpmyadmin/docs/faq.rst:2165
+#: ../phpmyadmin/docs/faq.rst:2186
 msgid ""
 "Change the value of `innodb_strict_mode` to `OFF` before starting the import "
 "and turn it `ON` after the import is successfully completed."
@@ -12479,19 +12529,19 @@ msgstr ""
 "Ubah nilai `innodb_strict_mode` menjadi `OFF` sebelum memulai impor dan ubah "
 "ke `ON` setelah impor berhasil diselesaikan."
 
-#: ../phpmyadmin/docs/faq.rst:2167
+#: ../phpmyadmin/docs/faq.rst:2188
 msgid "This can be achieved in two ways:"
 msgstr "Hal ini dapat dicapai dengan dua cara:"
 
-#: ../phpmyadmin/docs/faq.rst:2169
+#: ../phpmyadmin/docs/faq.rst:2190
 msgid "Go to 'Variables' page and edit the value of `innodb_strict_mode`"
 msgstr "Buka halaman 'Variabel' dan sunting nilai `innodb_strict_mode`"
 
-#: ../phpmyadmin/docs/faq.rst:2170
+#: ../phpmyadmin/docs/faq.rst:2191
 msgid "Run the query : `SET GLOBAL `innodb_strict_mode` = '[value]'`"
 msgstr "Jalankan kueri: `SET GLOBAL `innodb_strict_mode` = '[value]'`"
 
-#: ../phpmyadmin/docs/faq.rst:2172
+#: ../phpmyadmin/docs/faq.rst:2193
 msgid ""
 "After the import is done, it is suggested that the value of "
 "`innodb_strict_mode` should be reset to the original value."
@@ -12499,15 +12549,15 @@ msgstr ""
 "Setelah impor selesai, disarankan agar nilai `innodb_strict_mode` diatur "
 "ulang ke nilai aslinya."
 
-#: ../phpmyadmin/docs/faq.rst:2178
+#: ../phpmyadmin/docs/faq.rst:2199
 msgid "phpMyAdmin project"
 msgstr "proyek phpMyAdmin"
 
-#: ../phpmyadmin/docs/faq.rst:2183
+#: ../phpmyadmin/docs/faq.rst:2204
 msgid "7.1 I have found a bug. How do I inform developers?"
 msgstr "7.1 Saya menemukan bug. Bagaimana cara memberi tahu pengembang?"
 
-#: ../phpmyadmin/docs/faq.rst:2185
+#: ../phpmyadmin/docs/faq.rst:2206
 msgid ""
 "Our issues tracker is located at <https://github.com/phpmyadmin/phpmyadmin/"
 "issues>. For security issues, please refer to the instructions at <https://"
@@ -12518,7 +12568,7 @@ msgstr ""
 "<https://www.phpmyadmin.net/security> untuk mengirim surel langsung ke "
 "pengembang."
 
-#: ../phpmyadmin/docs/faq.rst:2192
+#: ../phpmyadmin/docs/faq.rst:2213
 msgid ""
 "7.2 I want to translate the messages to a new language or upgrade an "
 "existing language, where do I start?"
@@ -12526,7 +12576,7 @@ msgstr ""
 "7.2 Saya ingin menerjemahkan pesan ke bahasa baru atau memperbarui bahasa "
 "yang sudah ada, dari mana saya harus memulai?"
 
-#: ../phpmyadmin/docs/faq.rst:2194
+#: ../phpmyadmin/docs/faq.rst:2215
 msgid ""
 "Translations are very welcome and all you need to have are the language "
 "skills. The easiest way is to use our `online translation service <https://"
@@ -12540,14 +12590,14 @@ msgstr ""
 "melihat semua kemungkinan untuk menerjemahkan di `bagian terjemahan di situs "
 "web kami <https://www.phpmyadmin.net/translate/>`_."
 
-#: ../phpmyadmin/docs/faq.rst:2203
+#: ../phpmyadmin/docs/faq.rst:2224
 msgid ""
 "7.3 I would like to help out with the development of phpMyAdmin. How should "
 "I proceed?"
 msgstr ""
 "7.3 Saya ingin membantu pengembangan phpMyAdmin. Apa yang harus saya lakukan?"
 
-#: ../phpmyadmin/docs/faq.rst:2205
+#: ../phpmyadmin/docs/faq.rst:2226
 msgid ""
 "We welcome every contribution to the development of phpMyAdmin. You can "
 "check out all the possibilities to contribute in the `contribute section on "
@@ -12557,15 +12607,15 @@ msgstr ""
 "melihat semua kemungkinan untuk berkontribusi di bagian `kontribusi di situs "
 "web kami <https://www.phpmyadmin.net/contribute/>`_."
 
-#: ../phpmyadmin/docs/faq.rst:2210
+#: ../phpmyadmin/docs/faq.rst:2231
 msgid ":ref:`developers`"
 msgstr ":ref:`developers`"
 
-#: ../phpmyadmin/docs/faq.rst:2215
+#: ../phpmyadmin/docs/faq.rst:2236
 msgid "Security"
 msgstr "Keamanan"
 
-#: ../phpmyadmin/docs/faq.rst:2220
+#: ../phpmyadmin/docs/faq.rst:2241
 msgid ""
 "8.1 Where can I get information about the security alerts issued for "
 "phpMyAdmin?"
@@ -12573,16 +12623,16 @@ msgstr ""
 "8.1 Dimanakah saya bisa mendapatkan informasi tentang peringatan keamanan "
 "yang dikeluarkan untuk phpMyAdmin?"
 
-#: ../phpmyadmin/docs/faq.rst:2222
+#: ../phpmyadmin/docs/faq.rst:2243
 msgid "Please refer to <https://www.phpmyadmin.net/security/>."
 msgstr "Silakan merujuk ke <https://www.phpmyadmin.net/security/>."
 
-#: ../phpmyadmin/docs/faq.rst:2227
+#: ../phpmyadmin/docs/faq.rst:2248
 msgid "8.2 How can I protect phpMyAdmin against brute force attacks?"
 msgstr ""
 "8.2 Bagaimana saya bisa melindungi phpMyAdmin melawan serangan brute force?"
 
-#: ../phpmyadmin/docs/faq.rst:2229
+#: ../phpmyadmin/docs/faq.rst:2250
 msgid ""
 "If you use Apache web server, phpMyAdmin exports information about "
 "authentication to the Apache environment and it can be used in Apache logs. "
@@ -12592,20 +12642,20 @@ msgstr ""
 "tentang autentikasi ke lingkungan Apache dan dapat digunakan dalam log "
 "Apache. Saat ini ada dua variabel yang tersedia:"
 
-#: ../phpmyadmin/docs/faq.rst:2233
+#: ../phpmyadmin/docs/faq.rst:2254
 msgid "``userID``"
 msgstr "``userID``"
 
-#: ../phpmyadmin/docs/faq.rst:2234
+#: ../phpmyadmin/docs/faq.rst:2255
 msgid "User name of currently active user (they do not have to be logged in)."
 msgstr ""
 "Nama pengguna dari pengguna yang saat ini aktif (mereka tidak harus login)."
 
-#: ../phpmyadmin/docs/faq.rst:2240
+#: ../phpmyadmin/docs/faq.rst:2261
 msgid "``userStatus``"
 msgstr "``userStatus``"
 
-#: ../phpmyadmin/docs/faq.rst:2236
+#: ../phpmyadmin/docs/faq.rst:2257
 msgid ""
 "Status of currently active user, one of ``ok`` (user is logged in), ``server-"
 "denied`` (database server denied user login), ``allow-denied`` (user denied "
@@ -12619,11 +12669,11 @@ msgstr ""
 "(root ditolak dalam konfigurasi), ``empty-denied`` (kata sandi kosong "
 "ditolak), ``no-activity`` (secara otomatis keluar karena tidak aktif)."
 
-#: ../phpmyadmin/docs/faq.rst:2242
+#: ../phpmyadmin/docs/faq.rst:2263
 msgid "``LogFormat`` directive for Apache can look like following:"
 msgstr "Direktif ``LogFormat`` untuk Apache dapat terlihat seperti berikut:"
 
-#: ../phpmyadmin/docs/faq.rst:2248
+#: ../phpmyadmin/docs/faq.rst:2269
 msgid ""
 "You can then use any log analyzing tools to detect possible break-in "
 "attempts."
@@ -12631,12 +12681,12 @@ msgstr ""
 "Anda kemudian dapat menggunakan alat analisis log apa pun untuk mendeteksi "
 "kemungkinan upaya pembobolan."
 
-#: ../phpmyadmin/docs/faq.rst:2254
+#: ../phpmyadmin/docs/faq.rst:2275
 msgid "8.3 Why are there path disclosures when directly loading certain files?"
 msgstr ""
 "8.3 Mengapa ada pengungkapan jalur saat memuat file tertentu secara langsung?"
 
-#: ../phpmyadmin/docs/faq.rst:2256
+#: ../phpmyadmin/docs/faq.rst:2277
 msgid ""
 "This is a server configuration problem. Never enable ``display_errors`` on a "
 "production site."
@@ -12644,7 +12694,7 @@ msgstr ""
 "Ini adalah masalah konfigurasi server. Jangan pernah mengaktifkan "
 "``display_errors`` di situs produksi."
 
-#: ../phpmyadmin/docs/faq.rst:2261
+#: ../phpmyadmin/docs/faq.rst:2282
 msgid ""
 "8.4 CSV files exported from phpMyAdmin could allow a formula injection "
 "attack."
@@ -12652,7 +12702,7 @@ msgstr ""
 "8.4 File CSV yang diekspor dari phpMyAdmin dapat memungkinkan serangan "
 "injeksi formula."
 
-#: ../phpmyadmin/docs/faq.rst:2263
+#: ../phpmyadmin/docs/faq.rst:2284
 msgid ""
 "It is possible to generate a :term:`CSV` file that, when imported to a "
 "spreadsheet program such as Microsoft Excel, could potentially allow the "
@@ -12662,7 +12712,7 @@ msgstr ""
 "program lembar kerja seperti Microsoft Excel, berpotensi memungkinkan "
 "eksekusi perintah sembarangan."
 
-#: ../phpmyadmin/docs/faq.rst:2266
+#: ../phpmyadmin/docs/faq.rst:2287
 msgid ""
 "The CSV files generated by phpMyAdmin could potentially contain text that "
 "would be interpreted by a spreadsheet program as a formula, but we do not "
@@ -12683,7 +12733,7 @@ msgstr ""
 "spreadsheet untuk mengurai dan membersihkan data tersebut dengan benar pada "
 "input."
 
-#: ../phpmyadmin/docs/faq.rst:2272
+#: ../phpmyadmin/docs/faq.rst:2293
 msgid ""
 "Google also has a `similar view <https://sites.google.com/site/"
 "bughunteruniversity/nonvuln/csv-excel-formula-injection>`_."
@@ -12691,15 +12741,15 @@ msgstr ""
 "Google juga memiliki `pandangan yang serupa <https://sites.google.com/site/"
 "bughunteruniversity/nonvuln/csv-excel-formula-injection>`_."
 
-#: ../phpmyadmin/docs/faq.rst:2277
+#: ../phpmyadmin/docs/faq.rst:2298
 msgid "Synchronization"
 msgstr "Sinkronisasi"
 
-#: ../phpmyadmin/docs/faq.rst:2282
+#: ../phpmyadmin/docs/faq.rst:2303
 msgid "9.1 (withdrawn)."
 msgstr "9.1 (ditarik)."
 
-#: ../phpmyadmin/docs/faq.rst:2287
+#: ../phpmyadmin/docs/faq.rst:2308
 msgid "9.2 (withdrawn)."
 msgstr "9.2 (ditarik)."
 

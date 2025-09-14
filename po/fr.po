@@ -487,7 +487,7 @@ msgstr "3457"
 msgid "1565"
 msgstr "1565"
 
-#: ../phpmyadmin/docs/config.rst:6 ../phpmyadmin/docs/faq.rst:731
+#: ../phpmyadmin/docs/config.rst:6 ../phpmyadmin/docs/faq.rst:752
 #: ../phpmyadmin/docs/themes.rst:10
 msgid "Configuration"
 msgstr "Configuration"
@@ -1992,7 +1992,7 @@ msgstr ""
 "connecter en utilisant des données de session PHP préparée ou en utilisant "
 "le script PHP fourni."
 
-#: ../phpmyadmin/docs/config.rst:619 ../phpmyadmin/docs/faq.rst:1137
+#: ../phpmyadmin/docs/config.rst:619 ../phpmyadmin/docs/faq.rst:1158
 msgid ":ref:`authentication_modes`"
 msgstr ":ref:`authentication_modes`"
 
@@ -10705,7 +10705,56 @@ msgstr ""
 "stackoverflow.com/questions/49948350/phpmyadmin-on-mysql-8-0>, <https://bugs."
 "php.net/bug.php?id=76243>"
 
+#: ../phpmyadmin/docs/faq.rst:731
+msgid "1.46 Missing ``HTTP_HOST`` variable when using nginx with HTTP/3"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:733
+msgid ""
+"When using phpMyAdmin with nginx and HTTP/3 enabled, the ``HTTP_HOST`` "
+"variable may be missing due to a known issue with nginx's HTTP/3 "
+"implementation, which can cause several issues:"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:735
+#, fuzzy
+#| msgid "Two-factor authentication"
+msgid "Two-factor authentication won't work"
+msgstr "Authentification à deux facteurs"
+
 #: ../phpmyadmin/docs/faq.rst:736
+msgid ""
+"Exported settings have no hostname in the filename (e.g., ``phpMyAdmin-"
+"config-.json``)"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:737
+msgid "The hostname is missing from the page title (empty ``@HTTP_HOST@``)"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:739
+#, fuzzy
+#| msgid ""
+#| "This setting is disabled, it will not be applied to your configuration."
+msgid "To fix this issue, add the following line to your nginx configuration:"
+msgstr ""
+"Ce réglage est désactivé, il ne sera pas appliqué à cette configuration."
+
+#: ../phpmyadmin/docs/faq.rst:745
+msgid ""
+"This line should be placed in the server block of your nginx configuration "
+"where the PHP-FPM settings are defined."
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:747
+msgid ""
+"<https://github.com/php/php-src/issues/13021>, <https://github.com/nginx/"
+"nginx/issues/455>, <https://trac.nginx.org/nginx/ticket/2281>, <https://"
+"mailman.nginx.org/pipermail/nginx-devel/2024-"
+"January/3CQEHII5QU2BTQ7L7DAVCBWK3OQS3GU6.html>"
+msgstr ""
+
+#: ../phpmyadmin/docs/faq.rst:757
 msgid ""
 "2.1 The error message \"Warning: Cannot add header information - headers "
 "already sent by ...\" is displayed, what's the problem?"
@@ -10713,7 +10762,7 @@ msgstr ""
 "2.1 Le message d'erreur « Warning: Cannot add header information - headers "
 "already sent by … » est affiché, quel est le problème ?"
 
-#: ../phpmyadmin/docs/faq.rst:738
+#: ../phpmyadmin/docs/faq.rst:759
 msgid ""
 "Edit your :file:`config.inc.php` file and ensure there is nothing (I.E. no "
 "blank lines, no spaces, no characters...) neither before the ``<?php`` tag "
@@ -10724,12 +10773,12 @@ msgstr ""
 "devant la balise ``<?php`` au début du fichier, ni après la balise ``?>`` à "
 "la fin du fichier."
 
-#: ../phpmyadmin/docs/faq.rst:745
+#: ../phpmyadmin/docs/faq.rst:766
 msgid "2.2 phpMyAdmin can't connect to MySQL. What's wrong?"
 msgstr ""
 "2.2 phpMyAdmin ne peut pas se connecter à MySQL. Qu'est-ce qui ne va pas ?"
 
-#: ../phpmyadmin/docs/faq.rst:747
+#: ../phpmyadmin/docs/faq.rst:768
 msgid ""
 "Either there is an error with your PHP setup or your username/password is "
 "wrong. Try to make a small script which uses mysql\\_connect and see if it "
@@ -10741,7 +10790,7 @@ msgstr ""
 "et voyez s'il fonctionne. Si ce n'est pas le cas, il se peut que vous n'ayez "
 "pas compilé la gestion de MySQL dans PHP."
 
-#: ../phpmyadmin/docs/faq.rst:755
+#: ../phpmyadmin/docs/faq.rst:776
 msgid ""
 "2.3 The error message \"Warning: MySQL Connection Failed: Can't connect to "
 "local MySQL server through socket '/tmp/mysql.sock' (111) ...\" is "
@@ -10751,7 +10800,7 @@ msgstr ""
 "local MySQL server through socket '/tmp/mysql.sock' (111)… » est affiché. "
 "Que puis-je faire ?"
 
-#: ../phpmyadmin/docs/faq.rst:757
+#: ../phpmyadmin/docs/faq.rst:778
 msgid ""
 "The error message can also be: :guilabel:`Error #2002 - The server is not "
 "responding (or the local MySQL server's socket is not correctly configured)`."
@@ -10760,7 +10809,7 @@ msgstr ""
 "not responding (or the local MySQL server's socket is not correctly "
 "configured)`."
 
-#: ../phpmyadmin/docs/faq.rst:760
+#: ../phpmyadmin/docs/faq.rst:781
 msgid ""
 "First, you need to determine what socket is being used by MySQL. To do this, "
 "connect to your server and go to the MySQL bin directory. In this directory "
@@ -10781,7 +10830,7 @@ msgstr ""
 "le type de connexion, le socket et le port."
 
 # d4d6a3346e8f4369910b3afa7e5f4fd6
-#: ../phpmyadmin/docs/faq.rst:769
+#: ../phpmyadmin/docs/faq.rst:790
 msgid ""
 "Then, you need to tell PHP to use this socket. You can do this for all PHP "
 "in the :file:`php.ini` or for phpMyAdmin only in the :file:`config.inc.php`. "
@@ -10796,7 +10845,7 @@ msgstr ""
 "que les permissions de ce fichier permettent la lecture par votre serveur "
 "Web."
 
-#: ../phpmyadmin/docs/faq.rst:774
+#: ../phpmyadmin/docs/faq.rst:795
 msgid ""
 "On my RedHat-Box the socket of MySQL is */var/lib/mysql/mysql.sock*. In "
 "your :file:`php.ini` you will find a line"
@@ -10804,15 +10853,15 @@ msgstr ""
 "Sur mon système RedHat le socket de MySQL est */var/lib/mysql/mysql.sock*. "
 "Dans votre fichier :file:`php.ini` vous trouverez une ligne"
 
-#: ../phpmyadmin/docs/faq.rst:781
+#: ../phpmyadmin/docs/faq.rst:802
 msgid "change it to"
 msgstr "changez-la pour"
 
-#: ../phpmyadmin/docs/faq.rst:787
+#: ../phpmyadmin/docs/faq.rst:808
 msgid "Then restart apache and it will work."
 msgstr "Redémarrez alors Apache et cela fonctionnera."
 
-#: ../phpmyadmin/docs/faq.rst:789
+#: ../phpmyadmin/docs/faq.rst:810
 msgid ""
 "Have also a look at the `corresponding section of the MySQL documentation "
 "<https://dev.mysql.com/doc/refman/5.7/en/can-not-connect-to-server.html>`_."
@@ -10820,7 +10869,7 @@ msgstr ""
 "Consultez également la `section correspondante dans la documentation MySQL "
 "<https://dev.mysql.com/doc/refman/5.7/en/can-not-connect-to-server.html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:795
+#: ../phpmyadmin/docs/faq.rst:816
 msgid ""
 "2.4 Nothing is displayed by my browser when I try to run phpMyAdmin, what "
 "can I do?"
@@ -10828,7 +10877,7 @@ msgstr ""
 "2.4 Rien ne s'affiche dans mon navigateur quand j'essaie d'exécuter "
 "phpMyAdmin, que puis-je faire ?"
 
-#: ../phpmyadmin/docs/faq.rst:797
+#: ../phpmyadmin/docs/faq.rst:818
 msgid ""
 "Try to set the :config:option:`$cfg['OBGzip']` directive to ``false`` in the "
 "phpMyAdmin configuration file. It helps sometime. Also have a look at your "
@@ -10843,7 +10892,7 @@ msgstr ""
 "Ce n'est pas une très bonne idée, veuillez mettre à jour dans une version "
 "stable."
 
-#: ../phpmyadmin/docs/faq.rst:806
+#: ../phpmyadmin/docs/faq.rst:827
 msgid ""
 "2.5 Each time I want to insert or change a row or drop a database or a "
 "table, an error 404 (page not found) is displayed or, with HTTP or cookie "
@@ -10854,7 +10903,7 @@ msgstr ""
 "introuvable) est affichée ; ou, avec l'authentification :term:`HTTP` ou par "
 "cookie, on me demande de me reconnecter. Qu'est-ce qui ne va pas ?"
 
-#: ../phpmyadmin/docs/faq.rst:808
+#: ../phpmyadmin/docs/faq.rst:829
 msgid ""
 "Check your webserver setup if it correctly fills in either PHP_SELF or "
 "REQUEST_URI variables."
@@ -10862,7 +10911,7 @@ msgstr ""
 "Vérifier que les variables PHP_SELF ou REQUEST_URI soient correctement "
 "renseignées dans la configuration de votre serveur Web."
 
-#: ../phpmyadmin/docs/faq.rst:810
+#: ../phpmyadmin/docs/faq.rst:831
 msgid ""
 "If you are running phpMyAdmin behind reverse proxy, please set the :config:"
 "option:`$cfg['PmaAbsoluteUri']` directive in the phpMyAdmin configuration "
@@ -10872,7 +10921,7 @@ msgstr ""
 "directive :config:option:`$cfg['PmaAbsoluteUri']` dans votre fichier de "
 "configuration phpMyAdmin pour qu'elle soit conforme à votre installation."
 
-#: ../phpmyadmin/docs/faq.rst:817
+#: ../phpmyadmin/docs/faq.rst:838
 msgid ""
 "2.6 I get an \"Access denied for user: 'root@localhost' (Using password: "
 "YES)\"-error when trying to access a MySQL-Server on a host which is port-"
@@ -10882,7 +10931,7 @@ msgstr ""
 "password: YES) » en essayant d'accéder un serveur MySQL sur un hôte dont le "
 "port est redirigé sur mon ordinateur hôte local."
 
-#: ../phpmyadmin/docs/faq.rst:819
+#: ../phpmyadmin/docs/faq.rst:840
 msgid ""
 "When you are using a port on your localhost, which you redirect via port-"
 "forwarding to another host, MySQL is not resolving the localhost as "
@@ -10901,24 +10950,24 @@ msgstr ""
 "vous saisissez « 127.0.0.1 » comme nom d'hôte, tout se passe bien et MySQL "
 "utilise la connexion :term:`TCP`."
 
-#: ../phpmyadmin/docs/faq.rst:831
+#: ../phpmyadmin/docs/faq.rst:852
 msgid "2.7 Using and creating themes"
 msgstr "2.7 Utiliser et créer des thèmes"
 
-#: ../phpmyadmin/docs/faq.rst:833
+#: ../phpmyadmin/docs/faq.rst:854
 msgid "See :ref:`themes`."
 msgstr "Voir :ref:`themes`."
 
-#: ../phpmyadmin/docs/faq.rst:838
+#: ../phpmyadmin/docs/faq.rst:859
 msgid "2.8 I get \"Missing parameters\" errors, what can I do?"
 msgstr "2.8 J'obtiens des erreurs « Missing parameters », que puis-je faire ?"
 
-#: ../phpmyadmin/docs/faq.rst:840
+#: ../phpmyadmin/docs/faq.rst:861
 msgid "Here are a few points to check:"
 msgstr "Vérifiez les points suivants :"
 
 # 32dbf2ebbcad463ea6a14a945d8d9c36
-#: ../phpmyadmin/docs/faq.rst:842
+#: ../phpmyadmin/docs/faq.rst:863
 msgid ""
 "In :file:`config.inc.php`, try to leave the :config:option:"
 "`$cfg['PmaAbsoluteUri']` directive empty. See also :ref:`faq4_7`."
@@ -10926,7 +10975,7 @@ msgstr ""
 "Dans :file:`config.inc.php`, essayez de laisser la directive :config:option:"
 "`$cfg['PmaAbsoluteUri']` vide. Voir également :ref:`faq4_7`."
 
-#: ../phpmyadmin/docs/faq.rst:844
+#: ../phpmyadmin/docs/faq.rst:865
 msgid ""
 "Maybe you have a broken PHP installation or you need to upgrade your Zend "
 "Optimizer. See <https://bugs.php.net/bug.php?id=31134>."
@@ -10935,7 +10984,7 @@ msgstr ""
 "mettre à jour votre Zend Optimizer. Voir <https://bugs.php.net/bug.php?"
 "id=31134>."
 
-#: ../phpmyadmin/docs/faq.rst:846
+#: ../phpmyadmin/docs/faq.rst:867
 msgid ""
 "If you are using Hardened PHP with the ini directive ``varfilter."
 "max_request_variables`` set to the default (200) or another low value, you "
@@ -10948,7 +10997,7 @@ msgstr ""
 "un grand nombre de colonnes. Ajustez ce paramètre en conséquence. (Merci à "
 "Klaus Dorninger pour l'astuce)."
 
-#: ../phpmyadmin/docs/faq.rst:851
+#: ../phpmyadmin/docs/faq.rst:872
 msgid ""
 "In the :file:`php.ini` directive ``arg_separator.input``, a value of \";\" "
 "will cause this error. Replace it with \"&;\"."
@@ -10956,7 +11005,7 @@ msgstr ""
 "Dans le fichier :file:`php.ini` la directive ``arg_separator.input``, avec "
 "une valeur « ; » provoquera cette erreur. Remplacez-la par « &; »."
 
-#: ../phpmyadmin/docs/faq.rst:853
+#: ../phpmyadmin/docs/faq.rst:874
 msgid ""
 "If you are using `Suhosin <https://suhosin5.suhosin.org/stories/index."
 "html>`_, you might want to increase `request limits <https://suhosin5."
@@ -10966,7 +11015,7 @@ msgstr ""
 "html>`_, vous devriez augmenter les `limites de requête <https://suhosin5."
 "suhosin.org/stories/faq.html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:855
+#: ../phpmyadmin/docs/faq.rst:876
 msgid ""
 "The directory specified in the :file:`php.ini` directive ``session."
 "save_path`` does not exist or is read-only (this can be caused by `bug in "
@@ -10977,11 +11026,11 @@ msgstr ""
 "par le `bogue de l'installeur de PHP <https://bugs.php.net/bug.php?"
 "id=39842>`_).."
 
-#: ../phpmyadmin/docs/faq.rst:862
+#: ../phpmyadmin/docs/faq.rst:883
 msgid "2.9 Seeing an upload progress bar"
 msgstr "2.9 Afficher les barres de progression d'upload"
 
-#: ../phpmyadmin/docs/faq.rst:864
+#: ../phpmyadmin/docs/faq.rst:885
 msgid ""
 "To be able to see a progress bar during your uploads, your server must have "
 "the `uploadprogress <https://pecl.php.net/package/uploadprogress>`_ "
@@ -10993,7 +11042,7 @@ msgstr ""
 "uploadprogress>`_ et vous devez utiliser PHP 5.4.0 ou supérieure. De plus, "
 "l'extension JSON doit être activée dans votre installation PHP."
 
-#: ../phpmyadmin/docs/faq.rst:869
+#: ../phpmyadmin/docs/faq.rst:890
 msgid ""
 "If using PHP 5.4.0 or higher, you must set ``session.upload_progress."
 "enabled`` to ``1`` in your :file:`php.ini`. However, starting from "
@@ -11005,11 +11054,11 @@ msgstr ""
 "ini`. Cependant, à partir de phpMyAdmin 4.0.4, cette barre de progression "
 "basée sur les sessions a été désactivée en raison de problèmes."
 
-#: ../phpmyadmin/docs/faq.rst:877
+#: ../phpmyadmin/docs/faq.rst:898
 msgid "2.10 How to generate a string of random bytes"
 msgstr "2.10 Comment générer une chaîne d'octets aléatoires"
 
-#: ../phpmyadmin/docs/faq.rst:879
+#: ../phpmyadmin/docs/faq.rst:900
 msgid ""
 "One way to generate a string of random bytes suitable for cryptographic use "
 "is using the `random_bytes <https://www.php.net/random_bytes>`_ :term:`PHP` "
@@ -11022,7 +11071,7 @@ msgstr ""
 "renvoie une chaîne binaire, la valeur renvoyée doit être convertie au format "
 "imprimable avant de pouvoir la copier."
 
-#: ../phpmyadmin/docs/faq.rst:883
+#: ../phpmyadmin/docs/faq.rst:904
 msgid ""
 "For example, the :config:option:`$cfg['blowfish_secret']` configuration "
 "directive requires a 32-bytes long string. The following command can be used "
@@ -11033,17 +11082,17 @@ msgstr ""
 "suivante peut être utilisée pour générer une représentation hexadécimale de "
 "cette chaîne."
 
-#: ../phpmyadmin/docs/faq.rst:890
+#: ../phpmyadmin/docs/faq.rst:911
 msgid "The above example will output something similar to:"
 msgstr "L'exemple ci-dessus produira quelque chose de semblable :"
 
-#: ../phpmyadmin/docs/faq.rst:896
+#: ../phpmyadmin/docs/faq.rst:917
 msgid "And then this hexadecimal value can be used in the configuration file."
 msgstr ""
 "Et ensuite cette valeur hexadécimale peut être utilisée dans le fichier de "
 "configuration."
 
-#: ../phpmyadmin/docs/faq.rst:902
+#: ../phpmyadmin/docs/faq.rst:923
 msgid ""
 "The `sodium_hex2bin <https://www.php.net/sodium_hex2bin>`_ function is used "
 "here to convert the hexadecimal value back to the binary format."
@@ -11051,11 +11100,11 @@ msgstr ""
 "La fonction 'sodium_hex2bin <https://www.php.net/sodium_hex2bin>'_ est "
 "utilisée ici pour reconvertir la valeur hexadécimale au format binaire."
 
-#: ../phpmyadmin/docs/faq.rst:908
+#: ../phpmyadmin/docs/faq.rst:929
 msgid "Known limitations"
 msgstr "Limitations connues"
 
-#: ../phpmyadmin/docs/faq.rst:913
+#: ../phpmyadmin/docs/faq.rst:934
 msgid ""
 "3.1 When using HTTP authentication, a user who logged out can not log in "
 "again in with the same nick."
@@ -11063,7 +11112,7 @@ msgstr ""
 "3.1 En utilisant l'authentification :term:`HTTP`, un utilisateur qui se "
 "déconnecte ne peut pas se reconnecter avec le même compte."
 
-#: ../phpmyadmin/docs/faq.rst:915
+#: ../phpmyadmin/docs/faq.rst:936
 msgid ""
 "This is related to the authentication mechanism (protocol) used by "
 "phpMyAdmin. To bypass this problem: just close all the opened browser "
@@ -11074,7 +11123,7 @@ msgstr ""
 "navigateur ouvertes et retournez dans phpMyAdmin. Vous devriez être en "
 "mesure de vous reconnecter."
 
-#: ../phpmyadmin/docs/faq.rst:923
+#: ../phpmyadmin/docs/faq.rst:944
 msgid ""
 "3.2 When dumping a large table in compressed mode, I get a memory limit "
 "error or a time limit error."
@@ -11082,7 +11131,7 @@ msgstr ""
 "3.2 En exportant une grosse table en mode compressé, j'obtiens une erreur de "
 "limitation mémoire ou une erreur de dépassement de limite de temps."
 
-#: ../phpmyadmin/docs/faq.rst:925
+#: ../phpmyadmin/docs/faq.rst:946
 msgid ""
 "Compressed dumps are built in memory and because of this are limited to "
 "php's memory limit. For gzip/bzip2 exports this can be overcome since 2.5.4 "
@@ -11098,7 +11147,7 @@ msgstr ""
 "fichiers zip pour des exports plus importants, vous devrez utiliser un autre "
 "moyen."
 
-#: ../phpmyadmin/docs/faq.rst:934
+#: ../phpmyadmin/docs/faq.rst:955
 msgid ""
 "3.3 With InnoDB tables, I lose foreign key relationships when I rename a "
 "table or a column."
@@ -11106,13 +11155,13 @@ msgstr ""
 "3.3 Avec les tables InnoDB, je perds les relations de clés étrangères quand "
 "je renomme une table ou une colonne."
 
-#: ../phpmyadmin/docs/faq.rst:936
+#: ../phpmyadmin/docs/faq.rst:957
 msgid "This is an InnoDB bug, see <https://bugs.mysql.com/bug.php?id=21704>."
 msgstr ""
 "C'est un bogue de InnoDB, consulter <https://bugs.mysql.com/bug.php?"
 "id=21704>."
 
-#: ../phpmyadmin/docs/faq.rst:941
+#: ../phpmyadmin/docs/faq.rst:962
 msgid ""
 "3.4 I am unable to import dumps I created with the mysqldump tool bundled "
 "with the MySQL server distribution."
@@ -11120,7 +11169,7 @@ msgstr ""
 "3.4 Je n'arrive pas à importer des fichiers d'exportation que j'ai créés "
 "avec l'outil mysqldump fourni dans la distribution de MySQL serveur."
 
-#: ../phpmyadmin/docs/faq.rst:943
+#: ../phpmyadmin/docs/faq.rst:964
 msgid ""
 "The problem is that older versions of ``mysqldump`` created invalid comments "
 "like this:"
@@ -11128,7 +11177,7 @@ msgstr ""
 "Le problème vient du fait que les anciennes versions de ``mysqldump`` "
 "créaient des commentaires invalides comme ceci :"
 
-#: ../phpmyadmin/docs/faq.rst:954
+#: ../phpmyadmin/docs/faq.rst:975
 msgid ""
 "The invalid part of the code is the horizontal line made of dashes that "
 "appears once in every dump created with mysqldump. If you want to run your "
@@ -11146,7 +11195,7 @@ msgstr ""
 "``#---------------------------------------------------------``"
 
 # 12490d9434744777a8c830ad6ccb354d
-#: ../phpmyadmin/docs/faq.rst:964
+#: ../phpmyadmin/docs/faq.rst:985
 msgid ""
 "3.5 When using nested folders, multiple hierarchies are displayed in a wrong "
 "manner."
@@ -11154,7 +11203,7 @@ msgstr ""
 "3.5 En utilisant des dossiers imbriqués, les hiérarchies multiples sont "
 "incorrectement affichées."
 
-#: ../phpmyadmin/docs/faq.rst:966
+#: ../phpmyadmin/docs/faq.rst:987
 msgid ""
 "Please note that you should not use the separating string multiple times "
 "without any characters between them, or at the beginning/end of your table "
@@ -11166,16 +11215,16 @@ msgstr ""
 "de votre nom de table. Si vous devez le faire, cherchez un autre séparateur "
 "de table ou désactivez la fonctionnalité."
 
-#: ../phpmyadmin/docs/faq.rst:971
+#: ../phpmyadmin/docs/faq.rst:992
 msgid ":config:option:`$cfg['NavigationTreeTableSeparator']`"
 msgstr ":config:option:`$cfg['NavigationTreeTableSeparator']`"
 
 # 461511cb1ead4fd9b18af0d4a937aa3f
-#: ../phpmyadmin/docs/faq.rst:976
+#: ../phpmyadmin/docs/faq.rst:997
 msgid "3.6 (withdrawn)."
 msgstr "3.6 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:981
+#: ../phpmyadmin/docs/faq.rst:1002
 msgid ""
 "3.7 I have table with many (100+) columns and when I try to browse table I "
 "get series of errors like \"Warning: unable to parse url\". How can this be "
@@ -11185,7 +11234,7 @@ msgstr ""
 "d'afficher la table, j'obtiens une série d'erreurs du genre « Warning: "
 "unable to parse url ». Comment corriger cela ?"
 
-#: ../phpmyadmin/docs/faq.rst:983
+#: ../phpmyadmin/docs/faq.rst:1004
 msgid ""
 "Your table neither have a :term:`primary key` nor an :term:`unique key`, so "
 "we must use a long expression to identify this row. This causes problems to "
@@ -11197,7 +11246,7 @@ msgstr ""
 "pose des problèmes à la fonction parse\\_url. La solution de rechange est de "
 "créer une :term:`primary key` ou une :term:`unique key`."
 
-#: ../phpmyadmin/docs/faq.rst:991
+#: ../phpmyadmin/docs/faq.rst:1012
 msgid ""
 "3.8 I cannot use (clickable) HTML-forms in columns where I put a MIME-"
 "Transformation onto!"
@@ -11205,7 +11254,7 @@ msgstr ""
 "3.8 Je ne peux pas utiliser de formulaires HTML (cliquables) dans des "
 "colonnes où j'ai mis une transformation MIME !"
 
-#: ../phpmyadmin/docs/faq.rst:993
+#: ../phpmyadmin/docs/faq.rst:1014
 msgid ""
 "Due to a surrounding form-container (for multi-row delete checkboxes), no "
 "nested forms can be put inside the table where phpMyAdmin displays the "
@@ -11230,7 +11279,7 @@ msgstr ""
 "<https://www.phpmyadmin.net/docs/>`_ sur la page d'accueil officielle de "
 "phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1007
+#: ../phpmyadmin/docs/faq.rst:1028
 msgid ""
 "3.9 I get error messages when using \"--sql\\_mode=ANSI\" for the MySQL "
 "server."
@@ -11238,7 +11287,7 @@ msgstr ""
 "3.9 J'obtiens des messages d'erreur en utilisant « --sql\\_mode=ANSI » pour "
 "le serveur MySQL."
 
-#: ../phpmyadmin/docs/faq.rst:1009
+#: ../phpmyadmin/docs/faq.rst:1030
 msgid ""
 "When MySQL is running in ANSI-compatibility mode, there are some major "
 "differences in how :term:`SQL` is structured (see <https://dev.mysql.com/doc/"
@@ -11259,7 +11308,7 @@ msgstr ""
 "comportement. Des nouvelles sur ce sujet seront postées dans `le rapport de "
 "bogue #1013 <https://github.com/phpmyadmin/phpmyadmin/issues/7383>`_."
 
-#: ../phpmyadmin/docs/faq.rst:1021
+#: ../phpmyadmin/docs/faq.rst:1042
 msgid ""
 "3.10 Homonyms and no primary key: When the results of a SELECT display more "
 "that one column with the same value (for example ``SELECT lastname from "
@@ -11275,7 +11324,7 @@ msgstr ""
 
 # Important. Assurez-vous que votre table a une clef primaire. phpMyAdmin en a
 # besoin quand vous Editer et Supprimer des liens.
-#: ../phpmyadmin/docs/faq.rst:1023
+#: ../phpmyadmin/docs/faq.rst:1044
 msgid ""
 "Please make sure that your table has a :term:`primary key`, so that "
 "phpMyAdmin can use it for the Edit and Delete links."
@@ -11283,11 +11332,11 @@ msgstr ""
 "Veuillez vous assurer que votre table a une :term:`primary key`, ainsi "
 "phpMyAdmin peut l'utiliser pour les liens  Modifier et Effacer."
 
-#: ../phpmyadmin/docs/faq.rst:1029
+#: ../phpmyadmin/docs/faq.rst:1050
 msgid "3.11 The number of rows for InnoDB tables is not correct."
 msgstr "3.11 Le nombre d'enregistrements pour les tables InnoDB est incorrect."
 
-#: ../phpmyadmin/docs/faq.rst:1031
+#: ../phpmyadmin/docs/faq.rst:1052
 msgid ""
 "phpMyAdmin uses a quick method to get the row count, and this method only "
 "returns an approximate count in the case of InnoDB tables. See :config:"
@@ -11306,16 +11355,16 @@ msgstr ""
 "pour toutes les tables à la fois en cliquant sur la somme des lignes "
 "affichée en bas."
 
-#: ../phpmyadmin/docs/faq.rst:1039
+#: ../phpmyadmin/docs/faq.rst:1060
 msgid ":config:option:`$cfg['MaxExactCount']`"
 msgstr ":config:option:`$cfg['MaxExactCount']`"
 
 # b976431bccf94601b00f80e2186de34f
-#: ../phpmyadmin/docs/faq.rst:1044
+#: ../phpmyadmin/docs/faq.rst:1065
 msgid "3.12 (withdrawn)."
 msgstr "3.12 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1049
+#: ../phpmyadmin/docs/faq.rst:1070
 msgid ""
 "3.13 I get an error when entering ``USE`` followed by a db name containing "
 "an hyphen."
@@ -11323,7 +11372,7 @@ msgstr ""
 "3.13 J'obtiens une erreur en saisissant ``USE`` suivi du nom d'une base de "
 "données contenant un trait d'union."
 
-#: ../phpmyadmin/docs/faq.rst:1051
+#: ../phpmyadmin/docs/faq.rst:1072
 msgid ""
 "The tests I have made with MySQL 5.1.49 shows that the API does not accept "
 "this syntax for the USE command."
@@ -11331,7 +11380,7 @@ msgstr ""
 "Les tests que j'ai effectués avec l'API actuelle de MySQL 5.1.49, montre que "
 "cette API n'accepte pas cette syntaxe pour la commande USE."
 
-#: ../phpmyadmin/docs/faq.rst:1057
+#: ../phpmyadmin/docs/faq.rst:1078
 msgid ""
 "3.14 I am not able to browse a table when I don't have the right to SELECT "
 "one of the columns."
@@ -11339,7 +11388,7 @@ msgstr ""
 "3.14 Je n'arrive pas à naviguer dans une table quand je n'ai pas le droit de "
 "faire un SELECT sur une des colonnes."
 
-#: ../phpmyadmin/docs/faq.rst:1059
+#: ../phpmyadmin/docs/faq.rst:1080
 msgid ""
 "This has been a known limitation of phpMyAdmin since the beginning and it's "
 "not likely to be solved in the future."
@@ -11348,21 +11397,21 @@ msgstr ""
 "probablement pas résolu à l'avenir."
 
 # bda95c2fc6654806a407b6b6a4ce54bd
-#: ../phpmyadmin/docs/faq.rst:1065
+#: ../phpmyadmin/docs/faq.rst:1086
 msgid "3.15 (withdrawn)."
 msgstr "3.15 (retiré)."
 
 # 461511cb1ead4fd9b18af0d4a937aa3f
-#: ../phpmyadmin/docs/faq.rst:1070
+#: ../phpmyadmin/docs/faq.rst:1091
 msgid "3.16 (withdrawn)."
 msgstr "3.16 (retiré)."
 
 # c1613c8d992846eabe233fe2c5594277
-#: ../phpmyadmin/docs/faq.rst:1075
+#: ../phpmyadmin/docs/faq.rst:1096
 msgid "3.17 (withdrawn)."
 msgstr "3.17 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1080
+#: ../phpmyadmin/docs/faq.rst:1101
 msgid ""
 "3.18 When I import a CSV file that contains multiple tables, they are lumped "
 "together into a single table."
@@ -11370,7 +11419,7 @@ msgstr ""
 "3.18 Lors de l'import d'un fichier :term:`CSV` qui contient plusieurs "
 "tables, elles sont fusionnées en une seule."
 
-#: ../phpmyadmin/docs/faq.rst:1082
+#: ../phpmyadmin/docs/faq.rst:1103
 msgid ""
 "There is no reliable way to differentiate tables in :term:`CSV` format. For "
 "the time being, you will have to break apart :term:`CSV` files containing "
@@ -11380,7 +11429,7 @@ msgstr ""
 "`CSV`. Pour le moment, vous devrez fractionner les fichiers :term:`CSV` "
 "contenant plusieurs tables."
 
-#: ../phpmyadmin/docs/faq.rst:1089
+#: ../phpmyadmin/docs/faq.rst:1110
 msgid ""
 "3.19 When I import a file and have phpMyAdmin determine the appropriate data "
 "structure it only uses int, decimal, and varchar types."
@@ -11389,7 +11438,7 @@ msgstr ""
 "structure de données appropriée, il n'utilise que les types int, decimal et "
 "varchar types."
 
-#: ../phpmyadmin/docs/faq.rst:1091
+#: ../phpmyadmin/docs/faq.rst:1112
 msgid ""
 "Currently, the import type-detection system can only assign these MySQL "
 "types to columns. In future, more will likely be added but for the time "
@@ -11409,7 +11458,7 @@ msgstr ""
 "d'efficacité."
 
 # 246c769490874b629ac100a280a7c7aa
-#: ../phpmyadmin/docs/faq.rst:1103
+#: ../phpmyadmin/docs/faq.rst:1124
 msgid ""
 "3.20 After upgrading, some bookmarks are gone or their content cannot be "
 "shown."
@@ -11418,7 +11467,7 @@ msgstr ""
 "peut être affiché."
 
 # dceabb66077c4828b0b38c39a2b0dd61
-#: ../phpmyadmin/docs/faq.rst:1105
+#: ../phpmyadmin/docs/faq.rst:1126
 msgid ""
 "At some point, the character set used to store bookmark content has changed. "
 "It's better to recreate your bookmark from the newer phpMyAdmin version."
@@ -11427,7 +11476,7 @@ msgstr ""
 "changé. Il est préférable de recréer vos signets à partir de la nouvelle "
 "version de phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1111
+#: ../phpmyadmin/docs/faq.rst:1132
 msgid ""
 "3.21 I am unable to log in with a username containing unicode characters "
 "such as á."
@@ -11435,7 +11484,7 @@ msgstr ""
 "3.21 Je ne peux pas me connecter avec un nom d'utilisateur contenant des "
 "caractères unicode comme « à »."
 
-#: ../phpmyadmin/docs/faq.rst:1113
+#: ../phpmyadmin/docs/faq.rst:1134
 msgid ""
 "This can happen if MySQL server is not configured to use utf-8 as default "
 "charset. This is a limitation of how PHP and the MySQL server interact; "
@@ -11446,7 +11495,7 @@ msgstr ""
 "de PHP et MySQL. Il n'existe pas de moyen pour PHP pour définir le jeu de "
 "caractères avant l'authentification."
 
-#: ../phpmyadmin/docs/faq.rst:1119
+#: ../phpmyadmin/docs/faq.rst:1140
 msgid ""
 "`phpMyAdmin issue 12232 <https://github.com/phpmyadmin/phpmyadmin/"
 "issues/12232>`_, `MySQL documentation note <https://www.php.net/manual/en/"
@@ -11456,11 +11505,11 @@ msgstr ""
 "issues/12232>`_, `Note de documentation MySQL <https://www.php.net/manual/en/"
 "mysqli.real-connect.php#refsect1-mysqli.real-connect-notes>`_"
 
-#: ../phpmyadmin/docs/faq.rst:1125
+#: ../phpmyadmin/docs/faq.rst:1146
 msgid "ISPs, multi-user installations"
 msgstr "FAI et installation multi-utilisateurs"
 
-#: ../phpmyadmin/docs/faq.rst:1130
+#: ../phpmyadmin/docs/faq.rst:1151
 msgid ""
 "4.1 I'm an ISP. Can I setup one central copy of phpMyAdmin or do I need to "
 "install it for each customer?"
@@ -11468,7 +11517,7 @@ msgstr ""
 "4.1 Je suis un :term:`FAI`. Puis-je configurer une seule copie centralisée "
 "de phpMyAdmin ou dois-je faire l'installation pour chaque client ?"
 
-#: ../phpmyadmin/docs/faq.rst:1132
+#: ../phpmyadmin/docs/faq.rst:1153
 msgid ""
 "Since version 2.0.3, you can setup a central copy of phpMyAdmin for all your "
 "users. The development of this feature was kindly sponsored by NetCologne "
@@ -11482,14 +11531,14 @@ msgstr ""
 "l'utilisation de l'authentification :term:`HTTP` ou par cookie pour "
 "phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1142
+#: ../phpmyadmin/docs/faq.rst:1163
 msgid ""
 "4.2 What's the preferred way of making phpMyAdmin secure against evil access?"
 msgstr ""
 "4.2 Quel est le meilleur moyen de sécuriser phpMyAdmin contre les attaques "
 "malicieuses ?"
 
-#: ../phpmyadmin/docs/faq.rst:1144
+#: ../phpmyadmin/docs/faq.rst:1165
 msgid ""
 "This depends on your system. If you're running a server which cannot be "
 "accessed by other people, it's sufficient to use the directory protection "
@@ -11504,15 +11553,15 @@ msgstr ""
 "serveur, vous devriez utiliser les fonctionnalités d'authentification par :"
 "term:`HTTP` ou par cookie de phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1150
+#: ../phpmyadmin/docs/faq.rst:1171
 msgid "Suggestions:"
 msgstr "Suggestions :"
 
-#: ../phpmyadmin/docs/faq.rst:1152
+#: ../phpmyadmin/docs/faq.rst:1173
 msgid "Your :file:`config.inc.php` file should be ``chmod 660``."
 msgstr "Votre fichier :file:`config.inc.php` devrait être ``chmod 660``."
 
-#: ../phpmyadmin/docs/faq.rst:1153
+#: ../phpmyadmin/docs/faq.rst:1174
 msgid ""
 "All your phpMyAdmin files should be chown -R phpmy.apache, where phpmy is a "
 "user whose password is only known to you, and apache is the group under "
@@ -11522,11 +11571,11 @@ msgstr ""
 "``phpmy`` est un utilisateur dont le mot de passe est connu de vous seul, et "
 "``apache`` est le groupe avec lequel Apache est exécuté."
 
-#: ../phpmyadmin/docs/faq.rst:1156
+#: ../phpmyadmin/docs/faq.rst:1177
 msgid "Follow security recommendations for PHP and your webserver."
 msgstr "Suit les recommandations de sécurité pour PHP et votre serveur Web."
 
-#: ../phpmyadmin/docs/faq.rst:1161
+#: ../phpmyadmin/docs/faq.rst:1182
 msgid ""
 "4.3 I get errors about not being able to include a file in */lang* or in */"
 "libraries*."
@@ -11534,7 +11583,7 @@ msgstr ""
 "4.3 J'obtiens des erreurs sur l'impossibilité d'inclure un fichier dans */"
 "lang* ou dans */libraries*."
 
-#: ../phpmyadmin/docs/faq.rst:1163
+#: ../phpmyadmin/docs/faq.rst:1184
 msgid ""
 "Check :file:`php.ini`, or ask your sysadmin to check it. The "
 "``include_path`` must contain \".\" somewhere in it, and ``open_basedir``, "
@@ -11546,18 +11595,18 @@ msgstr ""
 "et ``open_basedir``, s'il est utilisé, doit contenir « . » et « ./lang » "
 "pour permettre un fonctionnement normal de phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1171
+#: ../phpmyadmin/docs/faq.rst:1192
 msgid ""
 "4.4 phpMyAdmin always gives \"Access denied\" when using HTTP authentication."
 msgstr ""
 "4.4 phpMyAdmin donne toujours « Accès refusé » en utilisant "
 "l'authentification HTTP."
 
-#: ../phpmyadmin/docs/faq.rst:1173
+#: ../phpmyadmin/docs/faq.rst:1194
 msgid "This could happen for several reasons:"
 msgstr "Cela peut arriver pour différentes raisons :"
 
-#: ../phpmyadmin/docs/faq.rst:1175
+#: ../phpmyadmin/docs/faq.rst:1196
 msgid ""
 ":config:option:`$cfg['Servers'][$i]['controluser']` and/or :config:option:"
 "`$cfg['Servers'][$i]['controlpass']`  are wrong."
@@ -11565,13 +11614,13 @@ msgstr ""
 ":config:option:`$cfg['Servers'][$i]['controluser']` et/ou :config:option:"
 "`$cfg['Servers'][$i]['controlpass']` sont erronés."
 
-#: ../phpmyadmin/docs/faq.rst:1176
+#: ../phpmyadmin/docs/faq.rst:1197
 msgid "The username/password you specify in the login dialog are invalid."
 msgstr ""
 "L'utilisateur/mot de passe que vous spécifiez dans le dialogue de connexion "
 "sont invalides."
 
-#: ../phpmyadmin/docs/faq.rst:1177
+#: ../phpmyadmin/docs/faq.rst:1198
 msgid ""
 "You have already setup a security mechanism for the phpMyAdmin- directory, "
 "eg. a :term:`.htaccess` file. This would interfere with phpMyAdmin's "
@@ -11581,13 +11630,13 @@ msgstr ""
 "phpMyAdmin, par exemple un fichier :term:`.htaccess`. Cela doit interférer "
 "avec l'authentification phpMyAdmin, aussi, supprimez-le."
 
-#: ../phpmyadmin/docs/faq.rst:1184
+#: ../phpmyadmin/docs/faq.rst:1205
 msgid "4.5 Is it possible to let users create their own databases?"
 msgstr ""
 "4.5 Est-il possible de laisser les utilisateurs créer leurs propres bases de "
 "données ?"
 
-#: ../phpmyadmin/docs/faq.rst:1186
+#: ../phpmyadmin/docs/faq.rst:1207
 msgid ""
 "Starting with 2.2.5, in the user management page, you can enter a wildcard "
 "database name for a user (for example \"joe%\"), and put the privileges you "
@@ -11601,12 +11650,12 @@ msgstr ""
 "DROP, INDEX, ALTER`` permettra à un utilisateur de créer/administrer ses "
 "bases de données."
 
-#: ../phpmyadmin/docs/faq.rst:1195
+#: ../phpmyadmin/docs/faq.rst:1216
 msgid "4.6 How can I use the Host-based authentication additions?"
 msgstr ""
 "4.6 Comment puis-je utiliser en plus l'authentification basée sur l'hôte ?"
 
-#: ../phpmyadmin/docs/faq.rst:1197
+#: ../phpmyadmin/docs/faq.rst:1218
 msgid ""
 "If you have existing rules from an old :term:`.htaccess` file, you can take "
 "them and add a username between the ``'deny'``/``'allow'`` and ``'from'`` "
@@ -11623,7 +11672,7 @@ msgstr ""
 "jour dans le tableau :config:option:`$cfg['Servers'][$i]['AllowDeny']"
 "['rules']`."
 
-#: ../phpmyadmin/docs/faq.rst:1204
+#: ../phpmyadmin/docs/faq.rst:1225
 msgid ""
 "If you want a pre-made sample, you can try this fragment. It stops the "
 "'root' user from logging in from any networks other than the private "
@@ -11633,12 +11682,12 @@ msgstr ""
 "empêche l'utilisateur 'root' de se connecter à partir de n'importe quels "
 "réseaux autres que les réseaux :term:`IP` privés."
 
-#: ../phpmyadmin/docs/faq.rst:1223
+#: ../phpmyadmin/docs/faq.rst:1244
 msgid "4.7 Authentication window is displayed more than once, why?"
 msgstr ""
 "4.7 La fenêtre d'authentification est affichée plus d'une fois, pourquoi ?"
 
-#: ../phpmyadmin/docs/faq.rst:1225
+#: ../phpmyadmin/docs/faq.rst:1246
 msgid ""
 "This happens if you are using a :term:`URL` to start phpMyAdmin which is "
 "different than the one set in your :config:option:`$cfg['PmaAbsoluteUri']`. "
@@ -11651,12 +11700,12 @@ msgstr ""
 "saisissez une adresse :term:`IP` alors qu'un nom de domaine est défini dans "
 "le fichier de configuration."
 
-#: ../phpmyadmin/docs/faq.rst:1233
+#: ../phpmyadmin/docs/faq.rst:1254
 msgid "4.8 Which parameters can I use in the URL that starts phpMyAdmin?"
 msgstr ""
 "4.8 Quels paramètres puis-je utiliser dans l'URL de démarrage de phpMyAdmin ?"
 
-#: ../phpmyadmin/docs/faq.rst:1235
+#: ../phpmyadmin/docs/faq.rst:1256
 msgid ""
 "When starting phpMyAdmin, you can use the ``db`` and ``server`` parameters. "
 "This last one can contain either the numeric host index (from ``$i`` of the "
@@ -11668,7 +11717,7 @@ msgstr ""
 "partir de ``$i`` du fichier de configuration) soit un des noms d'hôte "
 "présents dans le fichier de configuration."
 
-#: ../phpmyadmin/docs/faq.rst:1240
+#: ../phpmyadmin/docs/faq.rst:1261
 msgid ""
 "For example, to jump directly to a particular database, a URL can be "
 "constructed as ``https://example.com/phpmyadmin/?db=sakila``."
@@ -11678,11 +11727,11 @@ msgstr ""
 "db=sakila``."
 
 # 445726a38c2945ceaf6174464db79a1d
-#: ../phpmyadmin/docs/faq.rst:1243
+#: ../phpmyadmin/docs/faq.rst:1264
 msgid ":ref:`faq1_34`"
 msgstr ":ref:`faq1_34`"
 
-#: ../phpmyadmin/docs/faq.rst:1247
+#: ../phpmyadmin/docs/faq.rst:1268
 msgid ""
 "Support for using the ``pma_username`` and ``pma_password`` parameters was "
 "removed in phpMyAdmin 4.9.0 (see `PMASA-2019-4 <https://www.phpmyadmin.net/"
@@ -11693,11 +11742,11 @@ msgstr ""
 "net/security/PMASA-2019-4/>`_)."
 
 # 97217b6452d948f8aac9f480afd3c2d9
-#: ../phpmyadmin/docs/faq.rst:1253
+#: ../phpmyadmin/docs/faq.rst:1274
 msgid "Browsers or client OS"
 msgstr "Navigateurs ou systèmes d'exploitation client"
 
-#: ../phpmyadmin/docs/faq.rst:1258
+#: ../phpmyadmin/docs/faq.rst:1279
 msgid ""
 "5.1 I get an out of memory error, and my controls are non-functional, when "
 "trying to create a table with more than 14 columns."
@@ -11705,7 +11754,7 @@ msgstr ""
 "5.1 J'obtiens une erreur « out of memory », ou mes contrôles ne sont plus "
 "fonctionnels, en essayant de créer une table avec plus de 14 colonnes."
 
-#: ../phpmyadmin/docs/faq.rst:1260
+#: ../phpmyadmin/docs/faq.rst:1281
 msgid ""
 "We could reproduce this problem only under Win98/98SE. Testing under WinNT4 "
 "or Win2K, we could easily create more than 60 columns.  A workaround is to "
@@ -11717,12 +11766,12 @@ msgstr ""
 "moyen de contournement est de créer un plus petit nombre de colonnes, puis "
 "de revenir dans les propriétés de la table et d'ajouter les autres colonnes."
 
-#: ../phpmyadmin/docs/faq.rst:1268
+#: ../phpmyadmin/docs/faq.rst:1289
 msgid "5.2 With Xitami 2.5b4, phpMyAdmin won't process form fields."
 msgstr ""
 "5.2 Avec Xitami 2.5b4, phpMyAdmin ne traite pas les champs formulaires."
 
-#: ../phpmyadmin/docs/faq.rst:1270
+#: ../phpmyadmin/docs/faq.rst:1291
 msgid ""
 "This is not a phpMyAdmin problem but a Xitami known bug: you'll face it with "
 "each script/website that use forms. Upgrade or downgrade your Xitami server."
@@ -11732,13 +11781,13 @@ msgstr ""
 "formulaires. Mettez à jour votre serveur Xitami ou utilisez une précédente "
 "version."
 
-#: ../phpmyadmin/docs/faq.rst:1277
+#: ../phpmyadmin/docs/faq.rst:1298
 msgid "5.3 I have problems dumping tables with Konqueror (phpMyAdmin 2.2.2)."
 msgstr ""
 "5.3 J'ai des problèmes d'exportation de table avec Konqueror (phpMyAdmin "
 "2.2.2)."
 
-#: ../phpmyadmin/docs/faq.rst:1279
+#: ../phpmyadmin/docs/faq.rst:1300
 msgid ""
 "With Konqueror 2.1.1: plain dumps, zip and gzip dumps work ok, except that "
 "the proposed file name for the dump is always 'tbl\\_dump.php'. The bzip2 "
@@ -11756,7 +11805,7 @@ msgstr ""
 "sinon ils disparaissent. Les fichiers d'exportation gzip donnent un message "
 "d'erreur. Des tests doivent être effectués pour Konqueror 2.2.2."
 
-#: ../phpmyadmin/docs/faq.rst:1290
+#: ../phpmyadmin/docs/faq.rst:1311
 msgid ""
 "5.4 I can't use the cookie authentication mode because Internet Explorer "
 "never stores the cookies."
@@ -11764,7 +11813,7 @@ msgstr ""
 "5.4 Je ne peux pas utiliser le mode d'authentification par cookie car "
 "Internet Explorer ne stocke jamais les cookies."
 
-#: ../phpmyadmin/docs/faq.rst:1292
+#: ../phpmyadmin/docs/faq.rst:1313
 msgid ""
 "MS Internet Explorer seems to be really buggy about cookies, at least till "
 "version 6."
@@ -11773,22 +11822,22 @@ msgstr ""
 "qui concerne les cookies, au moins jusqu'à la version 6."
 
 # bda95c2fc6654806a407b6b6a4ce54bd
-#: ../phpmyadmin/docs/faq.rst:1298
+#: ../phpmyadmin/docs/faq.rst:1319
 msgid "5.5 (withdrawn)."
 msgstr "5.5 (retiré)."
 
 # 461511cb1ead4fd9b18af0d4a937aa3f
-#: ../phpmyadmin/docs/faq.rst:1303
+#: ../phpmyadmin/docs/faq.rst:1324
 msgid "5.6 (withdrawn)."
 msgstr "5.6 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1308
+#: ../phpmyadmin/docs/faq.rst:1329
 msgid "5.7 I refresh (reload) my browser, and come back to the welcome page."
 msgstr ""
 "5.7 Je rafraîchis (actualise) mon navigateur, et je reviens à la page de "
 "bienvenue."
 
-#: ../phpmyadmin/docs/faq.rst:1310
+#: ../phpmyadmin/docs/faq.rst:1331
 msgid ""
 "Some browsers support right-clicking into the frame you want to refresh, "
 "just do this in the right frame."
@@ -11796,7 +11845,7 @@ msgstr ""
 "Certains navigateurs gèrent le clic-droit dans le cadre que vous voulez "
 "rafraîchir, faites cela dans le cadre approprié."
 
-#: ../phpmyadmin/docs/faq.rst:1316
+#: ../phpmyadmin/docs/faq.rst:1337
 msgid ""
 "5.8 With Mozilla 0.9.7 I have problems sending a query modified in the query "
 "box."
@@ -11804,7 +11853,7 @@ msgstr ""
 "5.8 Avec Mozilla 0.9.7 j'ai des problèmes en envoyant une requête modifiée "
 "dans la boîte de requêtes."
 
-#: ../phpmyadmin/docs/faq.rst:1318
+#: ../phpmyadmin/docs/faq.rst:1339
 msgid ""
 "Looks like a Mozilla bug: 0.9.6 was OK. We will keep an eye on future "
 "Mozilla versions."
@@ -11812,7 +11861,7 @@ msgstr ""
 "Cela ressemble à un bogue de Mozilla : la version 0.9.6 était OK. Nous "
 "garderons ce bogue à l'esprit pour les futures versions de Mozilla."
 
-#: ../phpmyadmin/docs/faq.rst:1324
+#: ../phpmyadmin/docs/faq.rst:1345
 msgid ""
 "5.9 With Mozilla 0.9.? to 1.0 and Netscape 7.0-PR1 I can't type a whitespace "
 "in the SQL-Query edit area: the page scrolls down."
@@ -11820,7 +11869,7 @@ msgstr ""
 "5.9 Avec Mozilla 0.9.? à 1.0 et Netscape 7.0-PR1, je ne peux pas taper "
 "d'espace dans le zone d'édition de requête SQL : la page défile vers le bas."
 
-#: ../phpmyadmin/docs/faq.rst:1326
+#: ../phpmyadmin/docs/faq.rst:1347
 msgid ""
 "This is a Mozilla bug (see bug #26882 at `BugZilla <https://bugzilla.mozilla."
 "org/>`_)."
@@ -11829,17 +11878,17 @@ msgstr ""
 "mozilla.org/>`_)."
 
 # 30092401ac9c499681ecbdce44a90c2d
-#: ../phpmyadmin/docs/faq.rst:1332
+#: ../phpmyadmin/docs/faq.rst:1353
 msgid "5.10 (withdrawn)."
 msgstr "5.10 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1337
+#: ../phpmyadmin/docs/faq.rst:1358
 msgid "5.11 Extended-ASCII characters like German umlauts are displayed wrong."
 msgstr ""
 "5.11 Les caractères ASCII-étendu comme le tréma (umlaut allemand) sont mal "
 "affichés."
 
-#: ../phpmyadmin/docs/faq.rst:1339
+#: ../phpmyadmin/docs/faq.rst:1360
 msgid ""
 "Please ensure that you have set your browser's character set to the one of "
 "the language file you have selected on phpMyAdmin's start page. "
@@ -11852,12 +11901,12 @@ msgstr ""
 "détection, mode qui est géré par les versions récentes de la plupart des "
 "navigateurs."
 
-#: ../phpmyadmin/docs/faq.rst:1347
+#: ../phpmyadmin/docs/faq.rst:1368
 msgid "5.12 Mac OS X Safari browser changes special characters to \"?\"."
 msgstr ""
 "5.12 Mac OS X : le navigateur Safari change les caractères spéciaux en « ? »."
 
-#: ../phpmyadmin/docs/faq.rst:1349
+#: ../phpmyadmin/docs/faq.rst:1370
 msgid ""
 "This issue has been reported by a :term:`macOS` user, who adds that Chimera, "
 "Netscape and Mozilla do not have this problem."
@@ -11866,21 +11915,21 @@ msgstr ""
 "que Chimera, Netscape et Mozilla n'ont pas ce problème."
 
 # 2c7b67fad458440a96344bd12470e4a5
-#: ../phpmyadmin/docs/faq.rst:1355
+#: ../phpmyadmin/docs/faq.rst:1376
 msgid "5.13 (withdrawn)"
 msgstr "5.13 (retiré)"
 
 # b408e21d1f3c42d69682d7f7e2cef2d2
-#: ../phpmyadmin/docs/faq.rst:1360
+#: ../phpmyadmin/docs/faq.rst:1381
 msgid "5.14 (withdrawn)"
 msgstr "5.14 (retiré)"
 
 # bda95c2fc6654806a407b6b6a4ce54bd
-#: ../phpmyadmin/docs/faq.rst:1365
+#: ../phpmyadmin/docs/faq.rst:1386
 msgid "5.15 (withdrawn)"
 msgstr "5.15 (retiré)"
 
-#: ../phpmyadmin/docs/faq.rst:1370
+#: ../phpmyadmin/docs/faq.rst:1391
 msgid ""
 "5.16 With Internet Explorer, I get \"Access is denied\" Javascript errors. "
 "Or I cannot make phpMyAdmin work under Windows."
@@ -11888,11 +11937,11 @@ msgstr ""
 "5.16 Avec Internet Explorer, j'obtiens des erreurs JavaScript « Accès "
 "refusé ». Ou je n'arrive pas à faire fonctionner phpMyAdmin sous Windows."
 
-#: ../phpmyadmin/docs/faq.rst:1372
+#: ../phpmyadmin/docs/faq.rst:1393
 msgid "Please check the following points:"
 msgstr "Vérifiez les points suivants :"
 
-#: ../phpmyadmin/docs/faq.rst:1374
+#: ../phpmyadmin/docs/faq.rst:1395
 msgid ""
 "Maybe you have defined your :config:option:`$cfg['PmaAbsoluteUri']` setting "
 "in :file:`config.inc.php` to an :term:`IP` address and you are starting "
@@ -11904,7 +11953,7 @@ msgstr ""
 "term:`IP` et vous démarrez phpMyAdmin avec une :term:`URL` contenant un nom "
 "de domaine, ou inversement."
 
-#: ../phpmyadmin/docs/faq.rst:1377
+#: ../phpmyadmin/docs/faq.rst:1398
 msgid ""
 "Security settings in IE and/or Microsoft Security Center are too high, thus "
 "blocking scripts execution."
@@ -11913,7 +11962,7 @@ msgstr ""
 "Microsoft sont trop élevés et empêchent par conséquent l'exécution des "
 "scripts."
 
-#: ../phpmyadmin/docs/faq.rst:1379
+#: ../phpmyadmin/docs/faq.rst:1400
 msgid ""
 "The Windows Firewall is blocking Apache and MySQL. You must allow :term:"
 "`HTTP` ports (80 or 443) and MySQL port (usually 3306) in the \"in\" and "
@@ -11923,13 +11972,13 @@ msgstr ""
 "ports :term:`HTTP` (80 ou 443) et le port MySQL (normalement 3306) en entrée "
 "et en sortie."
 
-#: ../phpmyadmin/docs/faq.rst:1386
+#: ../phpmyadmin/docs/faq.rst:1407
 msgid "5.17 With Firefox, I cannot delete rows of data or drop a database."
 msgstr ""
 "5.17 Avec Firefox, je ne peux pas supprimer des lignes de données ou une "
 "base de données."
 
-#: ../phpmyadmin/docs/faq.rst:1388
+#: ../phpmyadmin/docs/faq.rst:1409
 msgid ""
 "Many users have confirmed that the Tabbrowser Extensions plugin they "
 "installed in their Firefox is causing the problem."
@@ -11938,15 +11987,15 @@ msgstr ""
 "avaient installé sur leur Firefox est la cause de ce problème."
 
 # 03ff6368091640a980151e951a41404c
-#: ../phpmyadmin/docs/faq.rst:1394
+#: ../phpmyadmin/docs/faq.rst:1415
 msgid "5.18 (withdrawn)"
 msgstr "5.18 (retiré)"
 
-#: ../phpmyadmin/docs/faq.rst:1399
+#: ../phpmyadmin/docs/faq.rst:1420
 msgid "5.19 I get JavaScript errors in my browser."
 msgstr "5.19 J'obtiens des erreurs JavaScript dans mon navigateur."
 
-#: ../phpmyadmin/docs/faq.rst:1401
+#: ../phpmyadmin/docs/faq.rst:1422
 msgid ""
 "Issues have been reported with some combinations of browser extensions. To "
 "troubleshoot, disable all extensions then clear your browser cache to see if "
@@ -11956,17 +12005,17 @@ msgstr ""
 "de navigateur. Désactivez toutes les extensions et vider le cache de votre "
 "navigateur pour voir si le problème disparaît."
 
-#: ../phpmyadmin/docs/faq.rst:1408
+#: ../phpmyadmin/docs/faq.rst:1429
 msgid "5.20 I get errors about violating Content Security Policy."
 msgstr ""
 "5.20 J'obtiens des erreurs sur la violation de politique de sécurité de "
 "contenu."
 
-#: ../phpmyadmin/docs/faq.rst:1410 ../phpmyadmin/docs/faq.rst:1437
+#: ../phpmyadmin/docs/faq.rst:1431 ../phpmyadmin/docs/faq.rst:1458
 msgid "If you see errors like:"
 msgstr "Si vous obtenez des erreurs du type :"
 
-#: ../phpmyadmin/docs/faq.rst:1416
+#: ../phpmyadmin/docs/faq.rst:1437
 msgid ""
 "This is usually caused by some software, which wrongly rewrites :mailheader:"
 "`Content Security Policy` headers. Usually this is caused by antivirus proxy "
@@ -11976,7 +12025,7 @@ msgstr ""
 "incorrecte les en-têtes :mailheader:`Content Security Policy`. Il s'agit "
 "généralement de l'antivirus du proxy ou d'extensions de votre navigateur."
 
-#: ../phpmyadmin/docs/faq.rst:1420
+#: ../phpmyadmin/docs/faq.rst:1441
 msgid ""
 "If you see these errors, try disabling the HTTP proxy in antivirus or "
 "disable the :mailheader:`Content Security Policy` rewriting in it. If that "
@@ -11987,7 +12036,7 @@ msgstr ""
 "Security Policy` dans celui-ci. Si cela ne fonctionne toujours pas, essayez "
 "de désactiver les extensions de votre navigateur."
 
-#: ../phpmyadmin/docs/faq.rst:1424
+#: ../phpmyadmin/docs/faq.rst:1445
 msgid ""
 "Alternatively it can be also server configuration issue (if the webserver is "
 "configured to emit :mailheader:`Content Security Policy` headers, they can "
@@ -11997,15 +12046,15 @@ msgstr ""
 "Web est configuré pour émettre des en-têtes :mailheader:`Content Security "
 "Policy`, ils peuvent écraser ceux de phpMyAdmin)."
 
-#: ../phpmyadmin/docs/faq.rst:1428 ../phpmyadmin/docs/faq.rst:1450
+#: ../phpmyadmin/docs/faq.rst:1449 ../phpmyadmin/docs/faq.rst:1471
 msgid "Programs known to cause these kind of errors:"
 msgstr "Les programmes connus pour provoquer de telles erreurs sont :"
 
-#: ../phpmyadmin/docs/faq.rst:1430
+#: ../phpmyadmin/docs/faq.rst:1451
 msgid "Kaspersky Internet Security"
 msgstr "Kaspersky Internet Security"
 
-#: ../phpmyadmin/docs/faq.rst:1435
+#: ../phpmyadmin/docs/faq.rst:1456
 msgid ""
 "5.21 I get errors about potentially unsafe operation when browsing table or "
 "executing SQL query."
@@ -12013,7 +12062,7 @@ msgstr ""
 "5.21 Je reçois des erreurs au sujet d'une opération potentiellement "
 "dangereuse lors de la recherche de table ou de l'exécution d'une requête SQL."
 
-#: ../phpmyadmin/docs/faq.rst:1443
+#: ../phpmyadmin/docs/faq.rst:1464
 msgid ""
 "This is usually caused by web application firewall doing requests filtering. "
 "It tries to prevent SQL injection, however phpMyAdmin is tool designed to "
@@ -12024,7 +12073,7 @@ msgstr ""
 "phpMyAdmin est un outil conçu pour exécuter des requêtes SQL, donc il rend "
 "inutilisable."
 
-#: ../phpmyadmin/docs/faq.rst:1447
+#: ../phpmyadmin/docs/faq.rst:1468
 msgid ""
 "Please allow phpMyAdmin scripts from the web application firewall settings "
 "or disable it completely for phpMyAdmin path."
@@ -12032,15 +12081,15 @@ msgstr ""
 "Veuillez autoriser les scripts phpMyAdmin dans les paramètres du pare-feu de "
 "l'application web ou les désactiver complètement pour le chemin phpMyAdmin."
 
-#: ../phpmyadmin/docs/faq.rst:1452
+#: ../phpmyadmin/docs/faq.rst:1473
 msgid "Wordfence Web Application Firewall"
 msgstr "Pare-feu d'application Web Wordfence"
 
-#: ../phpmyadmin/docs/faq.rst:1457
+#: ../phpmyadmin/docs/faq.rst:1478
 msgid "Using phpMyAdmin"
 msgstr "Utiliser phpMyAdmin"
 
-#: ../phpmyadmin/docs/faq.rst:1462
+#: ../phpmyadmin/docs/faq.rst:1483
 msgid ""
 "6.1 I can't insert new rows into a table / I can't create a table - MySQL "
 "brings up a SQL error."
@@ -12048,7 +12097,7 @@ msgstr ""
 "6.1 Je ne peux pas insérer de lignes dans une table / je ne peux pas créer "
 "une table - MySQL renvoie une erreur SQL."
 
-#: ../phpmyadmin/docs/faq.rst:1464
+#: ../phpmyadmin/docs/faq.rst:1485
 msgid ""
 "Examine the :term:`SQL` error with care. Often the problem is caused by "
 "specifying a wrong column-type. Common errors include:"
@@ -12057,15 +12106,15 @@ msgstr ""
 "provoqué par la spécification d'un mauvais type de colonne. Les erreurs "
 "courantes sont :"
 
-#: ../phpmyadmin/docs/faq.rst:1468
+#: ../phpmyadmin/docs/faq.rst:1489
 msgid "Using ``VARCHAR`` without a size argument"
 msgstr "l'utilisation de ``VARCHAR`` sans l'argument de taille"
 
-#: ../phpmyadmin/docs/faq.rst:1469
+#: ../phpmyadmin/docs/faq.rst:1490
 msgid "Using ``TEXT`` or ``BLOB`` with a size argument"
 msgstr "l'utilisation de ``TEXT`` ou ``BLOB`` avec une taille en argument"
 
-#: ../phpmyadmin/docs/faq.rst:1471
+#: ../phpmyadmin/docs/faq.rst:1492
 msgid ""
 "Also, look at the syntax chapter in the MySQL manual to confirm that your "
 "syntax is correct."
@@ -12073,7 +12122,7 @@ msgstr ""
 "Regardez également le chapitre syntaxe dans le manuel MySQL pour confirmer "
 "que votre syntaxe est correcte."
 
-#: ../phpmyadmin/docs/faq.rst:1477
+#: ../phpmyadmin/docs/faq.rst:1498
 msgid ""
 "6.2 When I create a table, I set an index for two columns and phpMyAdmin "
 "generates only one index with those two columns."
@@ -12081,7 +12130,7 @@ msgstr ""
 "6.2 Quand je crée une table, je définis un index pour deux colonnes et "
 "phpMyAdmin ne génère qu'un seul index avec ces deux colonnes."
 
-#: ../phpmyadmin/docs/faq.rst:1479
+#: ../phpmyadmin/docs/faq.rst:1500
 msgid ""
 "This is the way to create a multi-columns index. If you want two indexes, "
 "create the first one when creating the table, save, then display the table "
@@ -12091,11 +12140,11 @@ msgstr ""
 "créer le premier en créant la table, sauvegardez, puis affichez les "
 "propriétés de la table et cliquez sur le lien Index pour créer l'autre index."
 
-#: ../phpmyadmin/docs/faq.rst:1487
+#: ../phpmyadmin/docs/faq.rst:1508
 msgid "6.3 How can I insert a null value into my table?"
 msgstr "6.3 Comment puis-je insérer une valeur nulle dans ma table ?"
 
-#: ../phpmyadmin/docs/faq.rst:1489
+#: ../phpmyadmin/docs/faq.rst:1510
 msgid ""
 "Since version 2.2.3, you have a checkbox for each column that can be null. "
 "Before 2.2.3, you had to enter \"null\", without the quotes, as the column's "
@@ -12110,12 +12159,12 @@ msgstr ""
 "vous saisissez « NULL » cela signifie que vous voulez un NULL littéral dans "
 "la colonne et non une valeur NULL (cela fonctionne dans PHP4)."
 
-#: ../phpmyadmin/docs/faq.rst:1498
+#: ../phpmyadmin/docs/faq.rst:1519
 msgid "6.4 How can I backup my database or table?"
 msgstr "6.4 Comment puis-je sauvegarder ma base de données ou ma table ?"
 
 # aac0b62de5734b72b985812d1ea972ff
-#: ../phpmyadmin/docs/faq.rst:1500
+#: ../phpmyadmin/docs/faq.rst:1521
 msgid ""
 "Click on a database or table name in the navigation panel, the properties "
 "will be displayed. Then on the menu, click \"Export\", you can dump the "
@@ -12138,7 +12187,7 @@ msgstr ""
 "configuration :config:option:`$cfg['ExecTimeLimit']`. Pour de l'aide "
 "supplémentaire sur ce sujet, recherchez le mot « export » dans ce document."
 
-#: ../phpmyadmin/docs/faq.rst:1512
+#: ../phpmyadmin/docs/faq.rst:1533
 msgid ""
 "6.5 How can I restore (upload) my database or table using a dump? How can I "
 "run a \".sql\" file?"
@@ -12147,7 +12196,7 @@ msgstr ""
 "en utilisant un fichier d'exportation ? Comment puis-je exécuter un fichier "
 "« .sql » ?"
 
-#: ../phpmyadmin/docs/faq.rst:1514
+#: ../phpmyadmin/docs/faq.rst:1535
 msgid ""
 "Click on a database name in the navigation panel, the properties will be "
 "displayed. Select \"Import\" from the list of tabs in the right–hand frame "
@@ -12169,7 +12218,7 @@ msgstr ""
 "l'aide supplémentaire sur ce sujet, recherchez le mot « upload » dans ce "
 "document."
 
-#: ../phpmyadmin/docs/faq.rst:1524
+#: ../phpmyadmin/docs/faq.rst:1545
 msgid ""
 "Note: For errors while importing of dumps exported from older MySQL versions "
 "to newer MySQL versions, please check :ref:`faq6_41`."
@@ -12178,11 +12227,11 @@ msgstr ""
 "anciennes versions de MySQL vers les nouvelles versions de MySQL, veuillez "
 "vérifier :ref:`faq6_41`."
 
-#: ../phpmyadmin/docs/faq.rst:1530
+#: ../phpmyadmin/docs/faq.rst:1551
 msgid "6.6 How can I use the relation table in Query-by-example?"
 msgstr "6.6 Comment puis-je utiliser la table relation dans Query-by-example ?"
 
-#: ../phpmyadmin/docs/faq.rst:1532
+#: ../phpmyadmin/docs/faq.rst:1553
 msgid ""
 "Here is an example with the tables persons, towns and countries, all located "
 "in the database \"mydb\". If you don't have a ``pma__relation`` table, "
@@ -12194,18 +12243,18 @@ msgstr ""
 "``pma_relation``, créez-la comme cela est décrit dans la section "
 "Configuration. Ensuite, créez les tables d'exemple :"
 
-#: ../phpmyadmin/docs/faq.rst:1567
+#: ../phpmyadmin/docs/faq.rst:1588
 msgid "To setup appropriate links and display information:"
 msgstr "Pour configurer les liens appropriés et afficher l'information :"
 
-#: ../phpmyadmin/docs/faq.rst:1569
+#: ../phpmyadmin/docs/faq.rst:1590
 msgid "on table \"REL\\_persons\" click Structure, then Relation view"
 msgstr ""
 "sur la table « REL\\_persons » cliquer sur Structure, puis sur Gestion des "
 "relations"
 
 # 41076d7a6b3c442e8b1aa3f53f480dec
-#: ../phpmyadmin/docs/faq.rst:1570
+#: ../phpmyadmin/docs/faq.rst:1591
 msgid ""
 "for \"town\\_code\", choose from dropdowns, \"mydb\", \"REL\\_towns\", "
 "\"town\\_code\" for foreign database, table and column respectively"
@@ -12215,7 +12264,7 @@ msgstr ""
 "table et la colonne étrangères"
 
 # 86d3ac30bdc448ef8821e525ff77ef1a
-#: ../phpmyadmin/docs/faq.rst:1572
+#: ../phpmyadmin/docs/faq.rst:1593
 msgid ""
 "for \"country\\_code\", choose  from dropdowns, \"mydb\", "
 "\"REL\\_countries\", \"country\\_code\" for foreign database, table and "
@@ -12225,41 +12274,41 @@ msgstr ""
 "REL\\_countries », « country\\_code » respectivement pour la base de "
 "données, la table et la colonne étrangères"
 
-#: ../phpmyadmin/docs/faq.rst:1574
+#: ../phpmyadmin/docs/faq.rst:1595
 msgid "on table \"REL\\_towns\" click Structure, then Relation view"
 msgstr ""
 "sur la table « REL\\_towns » cliquer sur Structure, puis Gestion des "
 "relations"
 
-#: ../phpmyadmin/docs/faq.rst:1575
+#: ../phpmyadmin/docs/faq.rst:1596
 msgid "in \"Choose column to display\", choose \"description\""
 msgstr "dans « Colonne à afficher », choisir « Description »"
 
-#: ../phpmyadmin/docs/faq.rst:1576
+#: ../phpmyadmin/docs/faq.rst:1597
 msgid "repeat the two previous steps for table \"REL\\_countries\""
 msgstr "répétez les deux précédentes étapes pour la table « REL\\_countries »"
 
-#: ../phpmyadmin/docs/faq.rst:1578
+#: ../phpmyadmin/docs/faq.rst:1599
 msgid "Then test like this:"
 msgstr "Puis tester comme suit :"
 
-#: ../phpmyadmin/docs/faq.rst:1580
+#: ../phpmyadmin/docs/faq.rst:1601
 msgid "Click on your db name in the navigation panel"
 msgstr "Cliquer le nom de base de données dans le cadre de navigation"
 
-#: ../phpmyadmin/docs/faq.rst:1581
+#: ../phpmyadmin/docs/faq.rst:1602
 msgid "Choose \"Query\""
 msgstr "choisir « Requête »"
 
-#: ../phpmyadmin/docs/faq.rst:1582
+#: ../phpmyadmin/docs/faq.rst:1603
 msgid "Use tables: persons, towns, countries"
 msgstr "utilisez les tables : persons, towns, countries"
 
-#: ../phpmyadmin/docs/faq.rst:1583
+#: ../phpmyadmin/docs/faq.rst:1604
 msgid "Click \"Update query\""
 msgstr "cliquer sur « Mise-à-jour de la requête »"
 
-#: ../phpmyadmin/docs/faq.rst:1584
+#: ../phpmyadmin/docs/faq.rst:1605
 msgid ""
 "In the columns row, choose persons.person\\_name and click the \"Show\" "
 "tickbox"
@@ -12267,7 +12316,7 @@ msgstr ""
 "dans la ligne des colonnes, choisissez persons.person\\_name et cliquez sur "
 "la case à cocher « Afficher »"
 
-#: ../phpmyadmin/docs/faq.rst:1586
+#: ../phpmyadmin/docs/faq.rst:1607
 msgid ""
 "Do the same for towns.description and countries.descriptions in the other 2 "
 "columns"
@@ -12275,7 +12324,7 @@ msgstr ""
 "faites la même chose pour towns.description et countries.descriptions dans "
 "les deux autres colonnes"
 
-#: ../phpmyadmin/docs/faq.rst:1588
+#: ../phpmyadmin/docs/faq.rst:1609
 msgid ""
 "Click \"Update query\" and you will see in the query box that the correct "
 "joins have been generated"
@@ -12283,16 +12332,16 @@ msgstr ""
 "cliquer sur « Mise-à-jour de la requête » et vous verrez dans la boîte de "
 "requête que la jointure correcte a été générée"
 
-#: ../phpmyadmin/docs/faq.rst:1590
+#: ../phpmyadmin/docs/faq.rst:1611
 msgid "Click \"Submit query\""
 msgstr "cliquer sur « Exécuter la requête »"
 
-#: ../phpmyadmin/docs/faq.rst:1595
+#: ../phpmyadmin/docs/faq.rst:1616
 msgid "6.7 How can I use the \"display column\" feature?"
 msgstr ""
 "6.7 Comment puis-je utiliser la fonctionnalité « Colonnes à afficher » ?"
 
-#: ../phpmyadmin/docs/faq.rst:1597
+#: ../phpmyadmin/docs/faq.rst:1618
 msgid ""
 "Starting from the previous example, create the ``pma__table_info`` as "
 "explained in the configuration section, then browse your persons table, and "
@@ -12306,11 +12355,11 @@ msgstr ""
 "Voir aussi :ref:`faq6_21` pour une fonctionnalité que « afficher colonne » "
 "active : une liste déroulante des valeurs possibles."
 
-#: ../phpmyadmin/docs/faq.rst:1606
+#: ../phpmyadmin/docs/faq.rst:1627
 msgid "6.8 How can I produce a PDF schema of my database?"
 msgstr "6.8 Comment puis-je produire un schéma PDF de ma base de données ?"
 
-#: ../phpmyadmin/docs/faq.rst:1608
+#: ../phpmyadmin/docs/faq.rst:1629
 msgid ""
 "First the configuration variables \"relation\", \"table\\_coords\" and "
 "\"pdf\\_pages\" have to be filled in."
@@ -12318,48 +12367,48 @@ msgstr ""
 "Tout d'abord, les variables « relation », « table\\_coords » et « "
 "pdf\\_pages » doivent être renseignées."
 
-#: ../phpmyadmin/docs/faq.rst:1611
+#: ../phpmyadmin/docs/faq.rst:1632
 msgid "Select your database in the navigation panel."
 msgstr "Sélectionnez votre base de données dans le cadre de navigation."
 
-#: ../phpmyadmin/docs/faq.rst:1612
+#: ../phpmyadmin/docs/faq.rst:1633
 #, fuzzy
 msgid "Choose \":guilabel:`Designer`\" in the navigation bar at the top."
 msgstr ""
 "Choisissez « :guilabel:`Concepteur` » dans la barre de navigation en haut."
 
-#: ../phpmyadmin/docs/faq.rst:1613
+#: ../phpmyadmin/docs/faq.rst:1634
 msgid "Move the tables the way you want them."
 msgstr "Déplacez les tables comme vous le souhaitez."
 
-#: ../phpmyadmin/docs/faq.rst:1614
+#: ../phpmyadmin/docs/faq.rst:1635
 msgid "Choose \":guilabel:`Export schema`\" in the left menu."
 msgstr "Choisissez « :guilabel:`Exporter le schéma` » dans le menu de gauche."
 
-#: ../phpmyadmin/docs/faq.rst:1615
+#: ../phpmyadmin/docs/faq.rst:1636
 msgid "The export modal will open."
 msgstr "La fenêtre d'exportation s'ouvrira alors."
 
-#: ../phpmyadmin/docs/faq.rst:1616
+#: ../phpmyadmin/docs/faq.rst:1637
 msgid ""
 "Select the type of export to :term:`PDF`, you may adjust the other settings."
 msgstr ""
 "Sélectionnez le type d'exportation :term:`PDF`, et ajustez les autres "
 "paramètres."
 
-#: ../phpmyadmin/docs/faq.rst:1617
+#: ../phpmyadmin/docs/faq.rst:1638
 msgid "Submit the form and the file will start downloading."
 msgstr "Cliquez sur `Exécuter` et le téléchargement du fichier commencera."
 
-#: ../phpmyadmin/docs/faq.rst:1621
+#: ../phpmyadmin/docs/faq.rst:1642
 msgid ":ref:`relations`"
 msgstr ":ref:`relations`"
 
-#: ../phpmyadmin/docs/faq.rst:1626
+#: ../phpmyadmin/docs/faq.rst:1647
 msgid "6.9 phpMyAdmin is changing the type of one of my columns!"
 msgstr "6.9 phpMyAdmin change le type de l'une de mes colonnes !"
 
-#: ../phpmyadmin/docs/faq.rst:1628
+#: ../phpmyadmin/docs/faq.rst:1649
 msgid ""
 "No, it's MySQL that is doing `silent column type changing <https://dev.mysql."
 "com/doc/refman/5.7/en/silent-column-changes.html>`_."
@@ -12367,7 +12416,7 @@ msgstr ""
 "Non, c'est MySQL qui fait des `changements silencieux de type de colonne "
 "<https://dev.mysql.com/doc/refman/5.7/en/silent-column-changes.html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:1634
+#: ../phpmyadmin/docs/faq.rst:1655
 msgid ""
 "6.10 When creating a privilege, what happens with underscores in the "
 "database name?"
@@ -12375,7 +12424,7 @@ msgstr ""
 "6.10 En créant un privilège, qu'arrive-t-il aux traits de soulignement "
 "(underscore) dans le nom de la base de données ?"
 
-#: ../phpmyadmin/docs/faq.rst:1636
+#: ../phpmyadmin/docs/faq.rst:1657
 msgid ""
 "If you do not put a backslash before the underscore, this is a wildcard "
 "grant, and the underscore means \"any character\". So, if the database name "
@@ -12391,24 +12440,24 @@ msgstr ""
 "(« _ »), cela signifie que le nom de la base de données contiendra un trait "
 "de soulignement."
 
-#: ../phpmyadmin/docs/faq.rst:1645
+#: ../phpmyadmin/docs/faq.rst:1666
 msgid "6.11 What is the curious symbol ø in the statistics pages?"
 msgstr "6.11 Quel est ce curieux symbole ø dans les pages de statistiques ?"
 
-#: ../phpmyadmin/docs/faq.rst:1647
+#: ../phpmyadmin/docs/faq.rst:1668
 msgid "It means \"average\"."
 msgstr "Il signifie « moyenne »."
 
-#: ../phpmyadmin/docs/faq.rst:1652
+#: ../phpmyadmin/docs/faq.rst:1673
 msgid "6.12 I want to understand some Export options."
 msgstr "6.12 Je veux comprendre certaines options de Exporter."
 
 # 30560ed931c6468599704fa78806093b
-#: ../phpmyadmin/docs/faq.rst:1654
+#: ../phpmyadmin/docs/faq.rst:1675
 msgid "**Structure:**"
 msgstr "**Structure :**"
 
-#: ../phpmyadmin/docs/faq.rst:1656
+#: ../phpmyadmin/docs/faq.rst:1677
 msgid ""
 "\"Add DROP TABLE\" will add a line telling MySQL to `drop the table <https://"
 "dev.mysql.com/doc/refman/5.7/en/drop-table.html>`_, if it already exists "
@@ -12420,7 +12469,7 @@ msgstr ""
 "déjà pendant l'importation. Cela ne supprime PAS la table après votre "
 "export, cela n'affecte que le fichier d'importation."
 
-#: ../phpmyadmin/docs/faq.rst:1660
+#: ../phpmyadmin/docs/faq.rst:1681
 msgid ""
 "\"If Not Exists\" will only create the table if it doesn't exist. Otherwise, "
 "you may get an error if the table name exists but has a different structure."
@@ -12429,7 +12478,7 @@ msgstr ""
 "Sinon, vous pouvez obtenir une erreur si le nom de table existe mais qu'elle "
 "a une structure différente."
 
-#: ../phpmyadmin/docs/faq.rst:1663
+#: ../phpmyadmin/docs/faq.rst:1684
 msgid ""
 "\"Add AUTO\\_INCREMENT value\" ensures that AUTO\\_INCREMENT value (if any) "
 "will be included in backup."
@@ -12437,7 +12486,7 @@ msgstr ""
 "« Inclure la valeur courante de l'AUTO\\_INCREMENT » assure que la valeur "
 "AUTO\\_INCREMENT (s'il y en a une) sera incluse dans la sauvegarde."
 
-#: ../phpmyadmin/docs/faq.rst:1665
+#: ../phpmyadmin/docs/faq.rst:1686
 msgid ""
 "\"Enclose table and column names with backquotes\" ensures that column and "
 "table names formed with special characters are protected."
@@ -12446,7 +12495,7 @@ msgstr ""
 "les noms de colonnes et de tables contenant des caractères spéciaux sont "
 "protégés."
 
-#: ../phpmyadmin/docs/faq.rst:1667
+#: ../phpmyadmin/docs/faq.rst:1688
 msgid ""
 "\"Add into comments\" includes column comments, relations, and media types "
 "set in the pmadb in the dump as :term:`SQL` comments (*/\\* xxx \\*/*)."
@@ -12457,11 +12506,11 @@ msgstr ""
 "xxx \\*/*)."
 
 # cd9edd06af9148d48697163318c04f8b
-#: ../phpmyadmin/docs/faq.rst:1671
+#: ../phpmyadmin/docs/faq.rst:1692
 msgid "**Data:**"
 msgstr "**Données :**"
 
-#: ../phpmyadmin/docs/faq.rst:1673
+#: ../phpmyadmin/docs/faq.rst:1694
 msgid ""
 "\"Complete inserts\" adds the column names on every INSERT command, for "
 "better documentation (but resulting file is bigger)."
@@ -12470,7 +12519,7 @@ msgstr ""
 "INSERT, pour une meilleure documentation (mais le fichier résultant est plus "
 "gros)."
 
-#: ../phpmyadmin/docs/faq.rst:1675
+#: ../phpmyadmin/docs/faq.rst:1696
 msgid ""
 "\"Extended inserts\" provides a shorter dump file by using only once the "
 "INSERT verb and the table name."
@@ -12478,7 +12527,7 @@ msgstr ""
 "« Insertions étendues » fournit une fichier d'exportation plus petit en "
 "utilisant seulement une fois INSERT et le nom de la table."
 
-#: ../phpmyadmin/docs/faq.rst:1677
+#: ../phpmyadmin/docs/faq.rst:1698
 msgid ""
 "\"Delayed inserts\" are best explained in the `MySQL manual - INSERT DELAYED "
 "Syntax <https://dev.mysql.com/doc/refman/5.7/en/insert-delayed.html>`_."
@@ -12487,7 +12536,7 @@ msgstr ""
 "`Manuel MySQL <https://dev.mysql.com/doc/refman/5.7/en/insert-delayed."
 "html>`_."
 
-#: ../phpmyadmin/docs/faq.rst:1679
+#: ../phpmyadmin/docs/faq.rst:1700
 msgid ""
 "\"Ignore inserts\" treats errors as a warning instead. Again, more info is "
 "provided in the `MySQL manual - INSERT Syntax <https://dev.mysql.com/doc/"
@@ -12501,11 +12550,11 @@ msgstr ""
 "en gros, avec cette option, les valeurs invalides sont ajustées et insérées "
 "plutôt que de provoquer l'échec de la déclaration tout entière."
 
-#: ../phpmyadmin/docs/faq.rst:1688
+#: ../phpmyadmin/docs/faq.rst:1709
 msgid "6.13 I would like to create a database with a dot in its name."
 msgstr "6.13 J'aimerais créer une base de données avec un point dans son nom."
 
-#: ../phpmyadmin/docs/faq.rst:1690
+#: ../phpmyadmin/docs/faq.rst:1711
 msgid ""
 "This is a bad idea, because in MySQL the syntax \"database.table\" is the "
 "normal way to reference a database and table name. Worse, MySQL will usually "
@@ -12518,11 +12567,11 @@ msgstr ""
 "mais alors vous ne pourrez pas travailler avec, ni la supprimer."
 
 # b408e21d1f3c42d69682d7f7e2cef2d2
-#: ../phpmyadmin/docs/faq.rst:1698
+#: ../phpmyadmin/docs/faq.rst:1719
 msgid "6.14 (withdrawn)."
 msgstr "6.14 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1703
+#: ../phpmyadmin/docs/faq.rst:1724
 msgid ""
 "6.15 I want to add a BLOB column and put an index on it, but MySQL says "
 "\"BLOB column '...' used in key specification without a key length\"."
@@ -12530,7 +12579,7 @@ msgstr ""
 "6.15 Je veux ajouter une colonne BLOB et ajouter un index dessus, mais MySQL "
 "dit « BLOB column '…' used in key specification without a key length »."
 
-#: ../phpmyadmin/docs/faq.rst:1705
+#: ../phpmyadmin/docs/faq.rst:1726
 msgid ""
 "The right way to do this, is to create the column without any indexes, then "
 "display the table structure and use the \"Create an index\" dialog. On this "
@@ -12542,13 +12591,13 @@ msgstr ""
 "clef ». Sur cette page, vous pourrez alors choisir votre colonne BLOB, et "
 "définir une taille pour l'index sur une colonne BLOB."
 
-#: ../phpmyadmin/docs/faq.rst:1714
+#: ../phpmyadmin/docs/faq.rst:1735
 msgid "6.16 How can I simply move in page with plenty editing fields?"
 msgstr ""
 "6.16 Comment puis-je me déplacer simplement dans une page remplie de champs "
 "modifiables ?"
 
-#: ../phpmyadmin/docs/faq.rst:1716
+#: ../phpmyadmin/docs/faq.rst:1737
 msgid ""
 "You can use :kbd:`Ctrl+arrows` (:kbd:`Option+Arrows` in Safari) for moving "
 "on most pages with many editing fields (table structure changes, row "
@@ -12558,7 +12607,7 @@ msgstr ""
 "pour vous déplacer dans la plupart des pages ayant beaucoup de champs "
 "d'édition (changements de structure de tables, édition de lignes, etc.)."
 
-#: ../phpmyadmin/docs/faq.rst:1723
+#: ../phpmyadmin/docs/faq.rst:1744
 msgid ""
 "6.17 Transformations: I can't enter my own mimetype! What is this feature "
 "then useful for?"
@@ -12566,7 +12615,7 @@ msgstr ""
 "6.17 Transformations : je ne peux pas saisir mon propre type mime ! À quoi "
 "peut bien servir cette fonctionnalité alors ?"
 
-#: ../phpmyadmin/docs/faq.rst:1725
+#: ../phpmyadmin/docs/faq.rst:1746
 msgid ""
 "Defining mimetypes is of no use if you can't put transformations on them. "
 "Otherwise you could just put a comment on the column. Because entering your "
@@ -12582,7 +12631,7 @@ msgstr ""
 "saisie de l'utilisateur. Au lieu de cela, vous pouvez initialiser des types "
 "mime en utilisant des fonctions ou des définitions de types mime vides."
 
-#: ../phpmyadmin/docs/faq.rst:1732
+#: ../phpmyadmin/docs/faq.rst:1753
 msgid ""
 "Plus, you have a whole overview of available mimetypes. Who knows all those "
 "mimetypes by heart so they can enter it at will?"
@@ -12591,7 +12640,7 @@ msgstr ""
 "Qui connaît tous ces types MIME par cœur de sorte qu'ils puissent les saisir "
 "à volonté ?"
 
-#: ../phpmyadmin/docs/faq.rst:1738
+#: ../phpmyadmin/docs/faq.rst:1759
 msgid ""
 "6.18 Bookmarks: Where can I store bookmarks? Why can't I see any bookmarks "
 "below the query box? What are these variables for?"
@@ -12600,7 +12649,7 @@ msgstr ""
 "visible en-dessous de la boîte de requête ? Quel est le but de ces "
 "variables ?"
 
-#: ../phpmyadmin/docs/faq.rst:1740
+#: ../phpmyadmin/docs/faq.rst:1761
 msgid ""
 "You need to have configured the :ref:`linked-tables` for using bookmarks "
 "feature. Once you have done that, you can use bookmarks in the :guilabel:"
@@ -12610,17 +12659,17 @@ msgstr ""
 "fonctionnalité de signets. Une fois réalisé, il est possible d'utiliser les "
 "signets dans l'onglet :guilabel:`SQL`."
 
-#: ../phpmyadmin/docs/faq.rst:1743 ../phpmyadmin/docs/faq.rst:1798
+#: ../phpmyadmin/docs/faq.rst:1764 ../phpmyadmin/docs/faq.rst:1819
 msgid ":ref:`bookmarks`"
 msgstr ":ref:`bookmarks`"
 
-#: ../phpmyadmin/docs/faq.rst:1748
+#: ../phpmyadmin/docs/faq.rst:1769
 msgid "6.19 How can I create simple LATEX document to include exported table?"
 msgstr ""
 "6.19 Comment puis-je créer simplement un document LATEX pour y inclure une "
 "table exportée ?"
 
-#: ../phpmyadmin/docs/faq.rst:1750
+#: ../phpmyadmin/docs/faq.rst:1771
 msgid ""
 "You can simply include table in your LATEX documents, minimal sample "
 "document should look like following one (assuming you have table exported in "
@@ -12631,14 +12680,14 @@ msgstr ""
 "supposant que vous avez une table exportée dans le fichier :file:`table."
 "tex`) :"
 
-#: ../phpmyadmin/docs/faq.rst:1765
+#: ../phpmyadmin/docs/faq.rst:1786
 msgid ""
 "6.20 I see a lot of databases which are not mine, and cannot access them."
 msgstr ""
 "6.20 Je vois beaucoup de bases de données qui ne sont pas à moi et que je ne "
 "peux accéder."
 
-#: ../phpmyadmin/docs/faq.rst:1767
+#: ../phpmyadmin/docs/faq.rst:1788
 msgid ""
 "You have one of these global privileges: CREATE TEMPORARY TABLES, SHOW "
 "DATABASES, LOCK TABLES. Those privileges also enable users to see all the "
@@ -12652,11 +12701,11 @@ msgstr ""
 "bases de données sera raccourcie."
 
 # 35a0be791c5a471a9efab097679e83b4
-#: ../phpmyadmin/docs/faq.rst:1772
+#: ../phpmyadmin/docs/faq.rst:1793
 msgid "<https://bugs.mysql.com/bug.php?id=179>"
 msgstr "<https://bugs.mysql.com/bug.php?id=179>"
 
-#: ../phpmyadmin/docs/faq.rst:1777
+#: ../phpmyadmin/docs/faq.rst:1798
 msgid ""
 "6.21 In edit/insert mode, how can I see a list of possible values for a "
 "column, based on some foreign table?"
@@ -12664,7 +12713,7 @@ msgstr ""
 "6.21 En mode modifier/insérer, comment puis-je voir une liste des valeurs "
 "possibles pour une colonne, basée sur une table étrangère ?"
 
-#: ../phpmyadmin/docs/faq.rst:1779
+#: ../phpmyadmin/docs/faq.rst:1800
 msgid ""
 "You have to setup appropriate links between the tables, and also setup the "
 "\"display column\" in the foreign table. See :ref:`faq6_6` for an example. "
@@ -12689,7 +12738,7 @@ msgstr ""
 "étrangères et en choisir une. Pour changer cette limite par défaut de 100, "
 "voir :config:option:`$cfg['ForeignKeyMaxLimit']`."
 
-#: ../phpmyadmin/docs/faq.rst:1793
+#: ../phpmyadmin/docs/faq.rst:1814
 msgid ""
 "6.22 Bookmarks: Can I execute a default bookmark automatically when entering "
 "Browse mode for a table?"
@@ -12697,7 +12746,7 @@ msgstr ""
 "6.22 Signets : Puis-je exécuter automatiquement en entrant en mode Afficher "
 "pour une table ?"
 
-#: ../phpmyadmin/docs/faq.rst:1795
+#: ../phpmyadmin/docs/faq.rst:1816
 msgid ""
 "Yes. If a bookmark has the same label as a table name and it's not a public "
 "bookmark, it will be executed."
@@ -12705,20 +12754,20 @@ msgstr ""
 "Oui. Si un signet a le même libellé qu'un nom de table et qu'il n'est pas "
 "public, il sera exécuté."
 
-#: ../phpmyadmin/docs/faq.rst:1803
+#: ../phpmyadmin/docs/faq.rst:1824
 msgid "6.23 Export: I heard phpMyAdmin can export Microsoft Excel files?"
 msgstr ""
 "6.23 Export : J'ai entendu dire que phpMyAdmin peut exporter des fichiers au "
 "format Microsoft Excel ?"
 
-#: ../phpmyadmin/docs/faq.rst:1805
+#: ../phpmyadmin/docs/faq.rst:1826
 msgid ""
 "You can use :term:`CSV` for Microsoft Excel, which works out of the box."
 msgstr ""
 "Vous pouvez utiliser le format :term:`CSV` pour Microsoft Excel, qui "
 "fonctionne tel quel."
 
-#: ../phpmyadmin/docs/faq.rst:1808
+#: ../phpmyadmin/docs/faq.rst:1829
 msgid ""
 "Since phpMyAdmin 3.4.5 support for direct export to Microsoft Excel version "
 "97 and newer was dropped."
@@ -12726,7 +12775,7 @@ msgstr ""
 "Depuis phpMyAdmin 3.4.5, le support pour l'export direct vers Microsoft "
 "Excel version 97 et supérieur a été retiré."
 
-#: ../phpmyadmin/docs/faq.rst:1815
+#: ../phpmyadmin/docs/faq.rst:1836
 msgid ""
 "6.24 Now that phpMyAdmin supports native MySQL 4.1.x column comments, what "
 "happens to my column comments stored in pmadb?"
@@ -12735,7 +12784,7 @@ msgstr ""
 "MySQL 4.1.x, qu'arrive-t-il à mes commentaires de colonnes stockés dans "
 "pmadb ?"
 
-#: ../phpmyadmin/docs/faq.rst:1817
+#: ../phpmyadmin/docs/faq.rst:1838
 msgid ""
 "Automatic migration of a table's pmadb-style column comments to the native "
 "ones is done whenever you enter Structure page for this table."
@@ -12745,15 +12794,15 @@ msgstr ""
 "page Structure pour cette table."
 
 # 08aac63787154907b47170d57723ccd8
-#: ../phpmyadmin/docs/faq.rst:1823
+#: ../phpmyadmin/docs/faq.rst:1844
 msgid "6.25 (withdrawn)."
 msgstr "6.25 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1828
+#: ../phpmyadmin/docs/faq.rst:1849
 msgid "6.26 How can I select a range of rows?"
 msgstr "6.26 Comment puis-je sélectionner un ensemble de lignes ?"
 
-#: ../phpmyadmin/docs/faq.rst:1830
+#: ../phpmyadmin/docs/faq.rst:1851
 msgid ""
 "Click the first row of the range, hold the shift key and click the last row "
 "of the range. This works everywhere you see rows, for example in Browse mode "
@@ -12763,11 +12812,11 @@ msgstr ""
 "cliquez sur la dernière ligne. Ceci fonctionne partout où vous pouvez voir "
 "des lignes, par exemple dans le mode Navigation ou sur la page Structure."
 
-#: ../phpmyadmin/docs/faq.rst:1837
+#: ../phpmyadmin/docs/faq.rst:1858
 msgid "6.27 What format strings can I use?"
 msgstr "6.27 Quels formats de chaînes puis-je utiliser ?"
 
-#: ../phpmyadmin/docs/faq.rst:1839
+#: ../phpmyadmin/docs/faq.rst:1860
 msgid ""
 "In all places where phpMyAdmin accepts format strings, you can use "
 "``@VARIABLE@`` expansion and `strftime <https://www.php.net/strftime>`_ "
@@ -12783,29 +12832,29 @@ msgstr ""
 "utilisées :"
 
 # 8129fd65c18349d3bf7765b57406f240
-#: ../phpmyadmin/docs/faq.rst:1845
+#: ../phpmyadmin/docs/faq.rst:1866
 msgid "``@HTTP_HOST@``"
 msgstr "``@HTTP_HOST@``"
 
-#: ../phpmyadmin/docs/faq.rst:1846
+#: ../phpmyadmin/docs/faq.rst:1867
 msgid "HTTP host that runs phpMyAdmin"
 msgstr "Hôte HTTP exécutant phpMyAdmin"
 
 # d00d43a4dc7949aeaf63b0fa3405ecda
-#: ../phpmyadmin/docs/faq.rst:1847
+#: ../phpmyadmin/docs/faq.rst:1868
 msgid "``@SERVER@``"
 msgstr "``@SERVER@``"
 
-#: ../phpmyadmin/docs/faq.rst:1848
+#: ../phpmyadmin/docs/faq.rst:1869
 msgid "MySQL server name"
 msgstr "Nom du serveur MySQL"
 
 # 57d5ddf4abff4953835ab60f3e5cbb11
-#: ../phpmyadmin/docs/faq.rst:1849
+#: ../phpmyadmin/docs/faq.rst:1870
 msgid "``@VERBOSE@``"
 msgstr "``@VERBOSE@``"
 
-#: ../phpmyadmin/docs/faq.rst:1850
+#: ../phpmyadmin/docs/faq.rst:1871
 msgid ""
 "Verbose MySQL server name as defined in :config:option:`$cfg['Servers'][$i]"
 "['verbose']`"
@@ -12814,62 +12863,62 @@ msgstr ""
 "`$cfg['Servers'][$i]['verbose']`"
 
 # a9dc2236fabc494383342f87254cc7ce
-#: ../phpmyadmin/docs/faq.rst:1851
+#: ../phpmyadmin/docs/faq.rst:1872
 msgid "``@VSERVER@``"
 msgstr "``@VSERVER@``"
 
-#: ../phpmyadmin/docs/faq.rst:1852
+#: ../phpmyadmin/docs/faq.rst:1873
 msgid "Verbose MySQL server name if set, otherwise normal"
 msgstr "Nom complet du serveur MySQL si défini, sinon normal"
 
 # 80b82c8452864a698cf9d30a189c1fc2
-#: ../phpmyadmin/docs/faq.rst:1853
+#: ../phpmyadmin/docs/faq.rst:1874
 msgid "``@DATABASE@``"
 msgstr "``@DATABASE@``"
 
-#: ../phpmyadmin/docs/faq.rst:1854
+#: ../phpmyadmin/docs/faq.rst:1875
 msgid "Currently opened database"
 msgstr "Base de données actuellement ouverte"
 
 # 7ff75a9c920f4b41ab582c10d7bdbb03
-#: ../phpmyadmin/docs/faq.rst:1855
+#: ../phpmyadmin/docs/faq.rst:1876
 msgid "``@TABLE@``"
 msgstr "``@TABLE@``"
 
-#: ../phpmyadmin/docs/faq.rst:1856
+#: ../phpmyadmin/docs/faq.rst:1877
 msgid "Currently opened table"
 msgstr "Table actuellement ouverte"
 
 # 22514cddf91a4dd59ad0b28b5dedf51a
-#: ../phpmyadmin/docs/faq.rst:1857
+#: ../phpmyadmin/docs/faq.rst:1878
 msgid "``@COLUMNS@``"
 msgstr "``@COLUMNS@``"
 
-#: ../phpmyadmin/docs/faq.rst:1858
+#: ../phpmyadmin/docs/faq.rst:1879
 msgid "Columns of the currently opened table"
 msgstr "Colonnes de la table actuellement ouverte"
 
 # f065b252f1bb4c7e93588536d8149598
-#: ../phpmyadmin/docs/faq.rst:1860
+#: ../phpmyadmin/docs/faq.rst:1881
 msgid "``@PHPMYADMIN@``"
 msgstr "``@PHPMYADMIN@``"
 
-#: ../phpmyadmin/docs/faq.rst:1860
+#: ../phpmyadmin/docs/faq.rst:1881
 msgid "phpMyAdmin with version"
 msgstr "Version de phpMyAdmin"
 
 # 08aac63787154907b47170d57723ccd8
-#: ../phpmyadmin/docs/faq.rst:1865
+#: ../phpmyadmin/docs/faq.rst:1886
 msgid "6.28 (withdrawn)."
 msgstr "6.28 (retiré)."
 
-#: ../phpmyadmin/docs/faq.rst:1870
+#: ../phpmyadmin/docs/faq.rst:1891
 msgid "6.29 Why can't I get a chart from my query result table?"
 msgstr ""
 "6.29 Pourquoi ne puis-je obtenir un graphique à partir de ma table des "
 "résultats de requêtes ?"
 
-#: ../phpmyadmin/docs/faq.rst:1872
+#: ../phpmyadmin/docs/faq.rst:1893
 msgid ""
 "Not every table can be put to the chart. Only tables with one, two or three "
 "columns can be visualised as a chart. Moreover the table must be in a "
@@ -12882,11 +12931,11 @@ msgstr ""
 "pour que le script de création de graphique la comprenne. Les formats "
 "actuellement supportés sont disponibles sur :ref:`charts`."
 
-#: ../phpmyadmin/docs/faq.rst:1880
+#: ../phpmyadmin/docs/faq.rst:1901
 msgid "6.30 Import: How can I import ESRI Shapefiles?"
 msgstr "6.30 Import : Comment puis-je importer des fichiers ESRI Shapefiles ?"
 
-#: ../phpmyadmin/docs/faq.rst:1882
+#: ../phpmyadmin/docs/faq.rst:1903
 msgid ""
 "An ESRI Shapefile is actually a set of several files, where .shp file "
 "contains geometry data and .dbf file contains data related to those geometry "
@@ -12900,14 +12949,14 @@ msgstr ""
 "compilé avec l'extension dBase (--enable-dbase). Sans quoi, seules données "
 "de géométrie seront importées."
 
-#: ../phpmyadmin/docs/faq.rst:1888
+#: ../phpmyadmin/docs/faq.rst:1909
 msgid ""
 "To upload these set of files you can use either of the following methods:"
 msgstr ""
 "Pour uploader ces ensembles de fichiers, vous pouvez utiliser une des "
 "méthodes suivantes :"
 
-#: ../phpmyadmin/docs/faq.rst:1891
+#: ../phpmyadmin/docs/faq.rst:1912
 msgid ""
 "Configure upload directory with :config:option:`$cfg['UploadDir']`, upload "
 "both .shp and .dbf files with the same filename and chose the .shp file from "
@@ -12917,7 +12966,7 @@ msgstr ""
 "uploader les deux fichiers .shp et .dbf avec le même nom et choisir le "
 "fichier .shp dans la page d'import."
 
-#: ../phpmyadmin/docs/faq.rst:1894
+#: ../phpmyadmin/docs/faq.rst:1915
 msgid ""
 "Create a zip archive with .shp and .dbf files and import it. For this to "
 "work, you need to set :config:option:`$cfg['TempDir']` to a place where the "
@@ -12928,17 +12977,17 @@ msgstr ""
 "répertoire où l'utilisateur du serveur Web à des droits d'écriture (par "
 "exemple ``'./tmp'``)."
 
-#: ../phpmyadmin/docs/faq.rst:1898
+#: ../phpmyadmin/docs/faq.rst:1919
 msgid "To create the temporary directory on a UNIX-based system, you can do:"
 msgstr ""
 "Pour créer un répertoire temporaire sur un système basé sur UNIX, vous "
 "pouvez faire ceci :"
 
-#: ../phpmyadmin/docs/faq.rst:1909
+#: ../phpmyadmin/docs/faq.rst:1930
 msgid "6.31 How do I create a relation in designer?"
 msgstr "6.31 Comment créer une relation dans le Concepteur ?"
 
-#: ../phpmyadmin/docs/faq.rst:1911
+#: ../phpmyadmin/docs/faq.rst:1932
 msgid ""
 "To select relation, click:  The display column is shown in pink. To set/"
 "unset a column as the display column, click the \"Choose column to display\" "
@@ -12948,11 +12997,11 @@ msgstr ""
 "ou n'est plus la colonne descriptive, cliquer l'icône « Colonne descriptive "
 "», puis cliquer sur le nom de colonne approprié."
 
-#: ../phpmyadmin/docs/faq.rst:1918
+#: ../phpmyadmin/docs/faq.rst:1939
 msgid "6.32 How can I use the zoom search feature?"
 msgstr "6.32 Comment puis-je utiliser la fonctionnalité zoom de recherche ?"
 
-#: ../phpmyadmin/docs/faq.rst:1920
+#: ../phpmyadmin/docs/faq.rst:1941
 msgid ""
 "The Zoom search feature is an alternative to table search feature. It allows "
 "you to explore a table by representing its data in a scatter plot. You can "
@@ -12967,7 +13016,7 @@ msgstr ""
 "l'onglet :guilabel:`Recherche`. Un des sous-onglets de cette page est "
 "l'option :guilabel:`Recherche zoom`."
 
-#: ../phpmyadmin/docs/faq.rst:1926
+#: ../phpmyadmin/docs/faq.rst:1947
 msgid ""
 "Consider the table REL\\_persons in :ref:`faq6_6` for an example. To use "
 "zoom search, two columns need to be selected, for example, id and "
@@ -12984,7 +13033,7 @@ msgstr ""
 "pouvez ajouter deux critères de recherche additionnels en plus des deux "
 "champs à afficher."
 
-#: ../phpmyadmin/docs/faq.rst:1934
+#: ../phpmyadmin/docs/faq.rst:1955
 msgid ""
 "You can choose which field should be displayed as label for each point. If a "
 "display column has been set for the table (see :ref:`faqdisplay`), it is "
@@ -13001,7 +13050,7 @@ msgstr ""
 "maximum de lignes à représenter'. Quand vos choix sont terminés, cliquez sur "
 "'Exécuter' pour afficher le diagramme."
 
-#: ../phpmyadmin/docs/faq.rst:1942
+#: ../phpmyadmin/docs/faq.rst:1963
 msgid ""
 "After the plot is generated, you can use the mouse wheel to zoom in and out "
 "of the plot. In addition, panning feature is enabled to navigate through the "
@@ -13023,13 +13072,13 @@ msgstr ""
 "d'utiliser cette fonctionnalité peuvent être affichées en cliquant sur le "
 "lien « Comment utiliser ? » situé au-dessus du diagramme."
 
-#: ../phpmyadmin/docs/faq.rst:1955
+#: ../phpmyadmin/docs/faq.rst:1976
 msgid "6.33 When browsing a table, how can I copy a column name?"
 msgstr ""
 "6.33 Lors de la navigation dans une table, comment puis-je copier un nom de "
 "colonne ?"
 
-#: ../phpmyadmin/docs/faq.rst:1957
+#: ../phpmyadmin/docs/faq.rst:1978
 msgid ""
 "Selecting the name of the column within the browse table header cell for "
 "copying is difficult, as the columns support reordering by dragging the "
@@ -13047,12 +13096,12 @@ msgstr ""
 "affichera une boîte de saisie avec le nom de la colonne. Vous pourrez alors "
 "copier dans le presse-papiers le nom de la colonne à partir de cette boîte."
 
-#: ../phpmyadmin/docs/faq.rst:1968
+#: ../phpmyadmin/docs/faq.rst:1989
 msgid "6.34 How can I use the Favorite Tables feature?"
 msgstr "6.34 Comment utiliser la fonctionnalité de Tables préférées ?"
 
 # 5a895266335042bdbe66c7e9f0a6485b
-#: ../phpmyadmin/docs/faq.rst:1970
+#: ../phpmyadmin/docs/faq.rst:1991
 msgid ""
 "Favorite Tables feature is very much similar to Recent Tables feature. It "
 "allows you to add a shortcut for the frequently used tables of any database "
@@ -13072,7 +13121,7 @@ msgstr ""
 "dans `Stockage de configuration de phpMyAdmin`."
 
 # 3180692e17f1421cb2fefac5a59585b0
-#: ../phpmyadmin/docs/faq.rst:1978
+#: ../phpmyadmin/docs/faq.rst:1999
 msgid ""
 "IMPORTANT: In absence of `phpMyAdmin Configuration Storage`, your Favorite "
 "tables may be different in different browsers based on your different "
@@ -13083,7 +13132,7 @@ msgstr ""
 "l'ordinateur que vous utilisez."
 
 # a92e54e484f6484688afca8bdbaaae50
-#: ../phpmyadmin/docs/faq.rst:1982
+#: ../phpmyadmin/docs/faq.rst:2003
 msgid ""
 "To add a table to Favorite list simply click on the `Gray` star in front of "
 "a table name in the list of tables of a Database and wait until it turns to "
@@ -13096,7 +13145,7 @@ msgstr ""
 "cliquer sur l'étoile `jaune` qui deviendra alors `grise`."
 
 # 23159d2c68cf4e1b9e6d81731424af5f
-#: ../phpmyadmin/docs/faq.rst:1988
+#: ../phpmyadmin/docs/faq.rst:2009
 msgid ""
 "Using :config:option:`$cfg['NumFavoriteTables']` in your :file:`config.inc."
 "php` file, you can define the  maximum number of favorite tables shown in "
@@ -13106,13 +13155,13 @@ msgstr ""
 "file:`config.inc.php`, vous pourrez définir le nombre maximum de tables "
 "affichées dans le panneau de navigation. La valeur par défaut est `10`."
 
-#: ../phpmyadmin/docs/faq.rst:1995
+#: ../phpmyadmin/docs/faq.rst:2016
 msgid "6.35 How can I use the Range search feature?"
 msgstr ""
 "6.35 Comment puis-je utiliser la fonctionnalité de recherche en intervalles ?"
 
 # a684eee3736341b6bcd393d7d6720235
-#: ../phpmyadmin/docs/faq.rst:1997
+#: ../phpmyadmin/docs/faq.rst:2018
 msgid ""
 "With the help of range search feature, one can specify a range of values for "
 "particular column(s) while performing search operation on a table from the "
@@ -13123,7 +13172,7 @@ msgstr ""
 "lors d'une recherche sur une table à partir de l'onglet « Recherche »."
 
 # cdd642d02c024e0cb4b93ab84d8a71cc
-#: ../phpmyadmin/docs/faq.rst:2001
+#: ../phpmyadmin/docs/faq.rst:2022
 msgid ""
 "To use this feature simply click on the `BETWEEN` or `NOT BETWEEN` operators "
 "from the operator select list in front of the column name. On choosing one "
@@ -13140,7 +13189,7 @@ msgstr ""
 "l'opérateur `BETWEEN` ou exclues dans le cas de l'opérateur `NOT BETWEEN`."
 
 # 90f092659a7d473e8f59375ae4498bb7
-#: ../phpmyadmin/docs/faq.rst:2007
+#: ../phpmyadmin/docs/faq.rst:2028
 msgid ""
 "Note: The Range search feature will work only `Numeric` and `Date` data type "
 "columns."
@@ -13149,14 +13198,14 @@ msgstr ""
 "des colonnes de type `Numeric` ou `Date`."
 
 # 7651fe5acc6e4c279e1f2580870b0864
-#: ../phpmyadmin/docs/faq.rst:2012
+#: ../phpmyadmin/docs/faq.rst:2033
 msgid "6.36 What is Central columns and how can I use this feature?"
 msgstr ""
 "6.36 Que sont les colonnes centrales et comment utiliser cette "
 "fonctionnalité ?"
 
 # 12691ac7903f43c6849c6c38f6d91ac0
-#: ../phpmyadmin/docs/faq.rst:2014
+#: ../phpmyadmin/docs/faq.rst:2035
 msgid ""
 "As the name suggests, the Central columns feature enables to maintain a "
 "central list of columns per database to avoid similar name for the same data "
@@ -13174,7 +13223,7 @@ msgstr ""
 "saisir des noms de colonnes ou des définitions de colonnes similaires."
 
 # 208575b6c61444d8a02836b39be5e109
-#: ../phpmyadmin/docs/faq.rst:2020
+#: ../phpmyadmin/docs/faq.rst:2041
 msgid ""
 "To add a column to central list, go to table structure page, check the "
 "columns you want to include and then simply click on \"Add to central "
@@ -13190,7 +13239,7 @@ msgstr ""
 "puis sélectionnez « Ajouter les colonnes à la liste centrale »."
 
 # 093af039372e4b1e8e5f69911f2abe0e
-#: ../phpmyadmin/docs/faq.rst:2025
+#: ../phpmyadmin/docs/faq.rst:2046
 msgid ""
 "To remove a column from central list, go to Table structure page, check the "
 "columns you want to remove and then simply click on \"Remove from central "
@@ -13206,7 +13255,7 @@ msgstr ""
 "sélectionner « Supprimer les colonnes de la liste centralisée »."
 
 # 853ee14c29474f1fb7632b480c9b6b58
-#: ../phpmyadmin/docs/faq.rst:2030
+#: ../phpmyadmin/docs/faq.rst:2051
 msgid ""
 "To view and manage the central list, select the database you want to manage "
 "central columns for then from the top menu click on \"Central columns\". You "
@@ -13219,14 +13268,14 @@ msgstr ""
 "vers une page où vous pourrez modifier, supprimer ou ajouter de nouvelles "
 "colonnes."
 
-#: ../phpmyadmin/docs/faq.rst:2037
+#: ../phpmyadmin/docs/faq.rst:2058
 msgid "6.37 How can I use Improve Table structure feature?"
 msgstr ""
 "6.37 Comment puis-je utiliser la fonctionnalité Améliorer la structure de "
 "table ?"
 
 # cd9b118fb4ff4925bac68f7c7fba1cf1
-#: ../phpmyadmin/docs/faq.rst:2039
+#: ../phpmyadmin/docs/faq.rst:2060
 msgid ""
 "Improve table structure feature helps to bring the table structure upto "
 "Third Normal Form. A wizard is presented to user which asks questions about "
@@ -13244,7 +13293,7 @@ msgstr ""
 "normale il veut normaliser sa table."
 
 # e1b709d15c694ad093cb4e8b1b627d2f
-#: ../phpmyadmin/docs/faq.rst:2046
+#: ../phpmyadmin/docs/faq.rst:2067
 msgid ""
 "Here is an example table which you can use to test all of the three First, "
 "Second and Third Normal Form."
@@ -13253,7 +13302,7 @@ msgstr ""
 "formes normales."
 
 # ae6e0f0a5a0443859914bc694e5c794d
-#: ../phpmyadmin/docs/faq.rst:2063
+#: ../phpmyadmin/docs/faq.rst:2084
 msgid ""
 "The above table is not in First normal Form as no :term:`primary key` "
 "exists. Primary key is supposed to be (`petName`,`ownerLastName`,"
@@ -13268,7 +13317,7 @@ msgstr ""
 "forme normale car les dépendances suivantes existent."
 
 # e18e52946d5848e6841fac0c9c58c527
-#: ../phpmyadmin/docs/faq.rst:2074
+#: ../phpmyadmin/docs/faq.rst:2095
 msgid ""
 "Which says, OwnerEmail depends on OwnerLastName and OwnerFirstName. "
 "OwnerPhone depends on OwnerLastName and OwnerFirstName. PetType depends on "
@@ -13279,12 +13328,12 @@ msgstr ""
 "PetBreed."
 
 # 78b4c1ca961a49a4b270a1e2ca92a02c
-#: ../phpmyadmin/docs/faq.rst:2081
+#: ../phpmyadmin/docs/faq.rst:2102
 msgid "6.38 How can I reassign auto-incremented values?"
 msgstr "6.38 Comment puis-je réaffecter les valeurs auto-incrémentées ?"
 
 # d05b3d89481745c59ce903819a22442b
-#: ../phpmyadmin/docs/faq.rst:2083
+#: ../phpmyadmin/docs/faq.rst:2104
 msgid ""
 "Some users prefer their AUTO_INCREMENT values to be consecutive; this is not "
 "always the case after row deletion."
@@ -13293,7 +13342,7 @@ msgstr ""
 "consécutives ; ce n'est pas toujours le cas après la suppression de lignes."
 
 # eeb9a37bd155491da36db66c58816292
-#: ../phpmyadmin/docs/faq.rst:2086
+#: ../phpmyadmin/docs/faq.rst:2107
 msgid ""
 "Here are the steps to accomplish this. These are manual steps because they "
 "involve a manual verification at one point."
@@ -13302,14 +13351,14 @@ msgstr ""
 "qu'elles comportent une vérification manuelle à un moment donné."
 
 # aa8f7089fc5c44d18c08f3721eed6660
-#: ../phpmyadmin/docs/faq.rst:2089
+#: ../phpmyadmin/docs/faq.rst:2110
 msgid "Ensure that you have exclusive access to the table to rearrange"
 msgstr ""
 "Vérifiez que vous disposez d'un accès exclusif à la table devant être "
 "réorganisée"
 
 # 5559bf0bb9c04411951fdf902375c992
-#: ../phpmyadmin/docs/faq.rst:2091
+#: ../phpmyadmin/docs/faq.rst:2112
 msgid ""
 "On your :term:`primary key` column (i.e. id), remove the AUTO_INCREMENT "
 "setting"
@@ -13318,18 +13367,18 @@ msgstr ""
 "paramètre AUTO_INCREMENT"
 
 # 6728d8ae054c4176b96ec316c8cfaac7
-#: ../phpmyadmin/docs/faq.rst:2093
+#: ../phpmyadmin/docs/faq.rst:2114
 msgid "Delete your primary key in Structure > indexes"
 msgstr "Supprimer votre clé primaire dans Structure > index"
 
 # ff1ff664942e40f691b06aaa167340cb
-#: ../phpmyadmin/docs/faq.rst:2095
+#: ../phpmyadmin/docs/faq.rst:2116
 msgid "Create a new column future_id as primary key, AUTO_INCREMENT"
 msgstr ""
 "Créer une nouvelle colonne future_id comme clé primaire, AUTO_INCREMENT"
 
 # 3369027dc92a475cac6f2265589771ff
-#: ../phpmyadmin/docs/faq.rst:2097
+#: ../phpmyadmin/docs/faq.rst:2118
 msgid ""
 "Browse your table and verify that the new increments correspond to what "
 "you're expecting"
@@ -13338,21 +13387,21 @@ msgstr ""
 "à votre attente"
 
 # 0fb29e1005404e95ba1a583ba3228175
-#: ../phpmyadmin/docs/faq.rst:2100
+#: ../phpmyadmin/docs/faq.rst:2121
 msgid "Drop your old id column"
 msgstr "Supprimez votre ancienne colonne id"
 
 # b13f8d4ae5e24b99add84bcb360d9ed3
-#: ../phpmyadmin/docs/faq.rst:2102
+#: ../phpmyadmin/docs/faq.rst:2123
 msgid "Rename the future_id column to id"
 msgstr "Renommez la colonne future_id en id"
 
 # 01e753444e97489c8c48d666b3a70fca
-#: ../phpmyadmin/docs/faq.rst:2104
+#: ../phpmyadmin/docs/faq.rst:2125
 msgid "Move the new id column via Structure > Move columns"
 msgstr "Déplacer la nouvelle colonne id via Structure > Déplacer des colonnes"
 
-#: ../phpmyadmin/docs/faq.rst:2109
+#: ../phpmyadmin/docs/faq.rst:2130
 msgid ""
 "6.39 What is the \"Adjust privileges\" option when renaming, copying, or "
 "moving a database, table, column, or procedure?"
@@ -13361,7 +13410,7 @@ msgstr ""
 "dialogues de renommage, de copie ou de déplacement de base de données, de "
 "table, de colonne ou de procédure ?"
 
-#: ../phpmyadmin/docs/faq.rst:2111
+#: ../phpmyadmin/docs/faq.rst:2132
 msgid ""
 "When renaming/copying/moving a database/table/column/procedure, MySQL does "
 "not adjust the original privileges relating to these objects on its own. By "
@@ -13374,7 +13423,7 @@ msgstr ""
 "option, phpMyAdmin effectuera un ajustement des privilèges afin que les "
 "utilisateurs obtiennent les mêmes privilèges sur les nouveaux éléments."
 
-#: ../phpmyadmin/docs/faq.rst:2116
+#: ../phpmyadmin/docs/faq.rst:2137
 msgid ""
 "For example: A user 'bob'@'localhost' has a 'SELECT' privilege on a column "
 "named 'id'. Now, if this column is renamed to 'id_new', MySQL, on its own, "
@@ -13387,11 +13436,11 @@ msgstr ""
 "colonne vers le nouveau nom de colonne. phpMyAdmin peut faire cet ajustement "
 "pour vous automatiquement."
 
-#: ../phpmyadmin/docs/faq.rst:2121
+#: ../phpmyadmin/docs/faq.rst:2142
 msgid "Notes:"
 msgstr "Notes :"
 
-#: ../phpmyadmin/docs/faq.rst:2123
+#: ../phpmyadmin/docs/faq.rst:2144
 msgid ""
 "While adjusting privileges for a database, the privileges of all database-"
 "related elements (tables, columns and procedures) are also adjusted to the "
@@ -13401,7 +13450,7 @@ msgstr ""
 "de tous les éléments liés à la base de données (tables, colonnes et "
 "procédures) sont également ajustés au nouveau nom de la base de données."
 
-#: ../phpmyadmin/docs/faq.rst:2127
+#: ../phpmyadmin/docs/faq.rst:2148
 msgid ""
 "Similarly, while adjusting privileges for a table, the privileges of all the "
 "columns inside the new table are also adjusted."
@@ -13410,7 +13459,7 @@ msgstr ""
 "toutes les colonnes à l'intérieur de la nouvelle table sont également "
 "ajustés."
 
-#: ../phpmyadmin/docs/faq.rst:2130
+#: ../phpmyadmin/docs/faq.rst:2151
 msgid ""
 "While adjusting privileges, the user performing the operation **must** have "
 "the following privileges:"
@@ -13418,7 +13467,7 @@ msgstr ""
 "Lors de l'ajustement des privilèges, l'utilisateur qui effectue l'opération "
 "** doit ** posséder les privilèges suivants :"
 
-#: ../phpmyadmin/docs/faq.rst:2133
+#: ../phpmyadmin/docs/faq.rst:2154
 msgid ""
 "SELECT, INSERT, UPDATE, DELETE privileges on following tables: `mysql`.`db`, "
 "`mysql`.`columns_priv`, `mysql`.`tables_priv`, `mysql`.`procs_priv`"
@@ -13427,11 +13476,11 @@ msgstr ""
 "`mysql`.`db`, `mysql`.`columns_priv`, `mysql`.`tables_priv`, `mysql`."
 "`procs_priv`"
 
-#: ../phpmyadmin/docs/faq.rst:2135
+#: ../phpmyadmin/docs/faq.rst:2156
 msgid "FLUSH privilege (GLOBAL)"
 msgstr "Privilège FLUSH (GLOBAL)"
 
-#: ../phpmyadmin/docs/faq.rst:2137
+#: ../phpmyadmin/docs/faq.rst:2158
 msgid ""
 "Thus, if you want to replicate the database/table/column/procedure as it is "
 "while renaming/copying/moving these objects, make sure you have checked this "
@@ -13441,7 +13490,7 @@ msgstr ""
 "telle quelle pendant le renommage/la copie/le déplacement de ces objets, "
 "assurez-vous que vous avez activé cette option."
 
-#: ../phpmyadmin/docs/faq.rst:2143
+#: ../phpmyadmin/docs/faq.rst:2164
 msgid ""
 "6.40 I see \"Bind parameters\" checkbox in the \"SQL\" page. How do I write "
 "parameterized SQL queries?"
@@ -13449,7 +13498,7 @@ msgstr ""
 "6.40 Je vois la case à cocher « Lier les paramètres » dans la page « SQL ». "
 "Comment puis-je écrire des requêtes SQL paramétrées ?"
 
-#: ../phpmyadmin/docs/faq.rst:2145
+#: ../phpmyadmin/docs/faq.rst:2166
 msgid ""
 "From version 4.5, phpMyAdmin allows users to execute parameterized queries "
 "in the \"SQL\" page. Parameters should be prefixed with a colon(:) and when "
@@ -13465,7 +13514,7 @@ msgstr ""
 "ces paramètres seront présentés. Les valeurs entrées dans ces champs seront "
 "substituées dans la requête avant son exécution."
 
-#: ../phpmyadmin/docs/faq.rst:2153
+#: ../phpmyadmin/docs/faq.rst:2174
 msgid ""
 "6.41 I get import errors while importing the dumps exported from older MySQL "
 "versions (pre-5.7.6) into newer MySQL versions (5.7.7+), but they work fine "
@@ -13476,7 +13525,7 @@ msgstr ""
 "les nouvelles versions de MySQL (5.7.7+), mais elles fonctionnent "
 "correctement lorsqu'elles sont importées sur les mêmes anciennes versions ?"
 
-#: ../phpmyadmin/docs/faq.rst:2155
+#: ../phpmyadmin/docs/faq.rst:2176
 msgid ""
 "If you get errors like *#1031 - Table storage engine for 'table_name' "
 "doesn't have this option* while importing the dumps exported from pre-5.7.7 "
@@ -13495,7 +13544,7 @@ msgstr ""
 "html#sysvar_innodb_strict_mode>`_ définirait si cela serait signalé comme un "
 "avertissement ou comme une erreur."
 
-#: ../phpmyadmin/docs/faq.rst:2160
+#: ../phpmyadmin/docs/faq.rst:2181
 msgid ""
 "Since MySQL version 5.7.9, the default value for `innodb_strict_mode` is "
 "`ON` and thus would generate an error when such a CREATE TABLE or ALTER "
@@ -13505,11 +13554,11 @@ msgstr ""
 "est` ON` et génère donc une erreur lorsqu'une instruction CREATE TABLE ou "
 "ALTER TABLE est rencontrée."
 
-#: ../phpmyadmin/docs/faq.rst:2163
+#: ../phpmyadmin/docs/faq.rst:2184
 msgid "There are two ways of preventing such errors while importing:"
 msgstr "Il existe deux façons de prévenir ces erreurs lors de l'importation :"
 
-#: ../phpmyadmin/docs/faq.rst:2165
+#: ../phpmyadmin/docs/faq.rst:2186
 msgid ""
 "Change the value of `innodb_strict_mode` to `OFF` before starting the import "
 "and turn it `ON` after the import is successfully completed."
@@ -13517,20 +13566,20 @@ msgstr ""
 "Changez la valeur de `innodb_strict_mode` sur` OFF` avant de lancer "
 "l'importation et activez-la `ON` une fois l'importation terminée avec succès."
 
-#: ../phpmyadmin/docs/faq.rst:2167
+#: ../phpmyadmin/docs/faq.rst:2188
 msgid "This can be achieved in two ways:"
 msgstr "Cela peut être réalisé de deux façons :"
 
-#: ../phpmyadmin/docs/faq.rst:2169
+#: ../phpmyadmin/docs/faq.rst:2190
 msgid "Go to 'Variables' page and edit the value of `innodb_strict_mode`"
 msgstr ""
 "Allez à la page 'Variables' et modifiez la valeur de `innodb_strict_mode`"
 
-#: ../phpmyadmin/docs/faq.rst:2170
+#: ../phpmyadmin/docs/faq.rst:2191
 msgid "Run the query : `SET GLOBAL `innodb_strict_mode` = '[value]'`"
 msgstr "Exécuter la requête : `SET GLOBAL `innodb_strict_mode` = '[value]'`"
 
-#: ../phpmyadmin/docs/faq.rst:2172
+#: ../phpmyadmin/docs/faq.rst:2193
 msgid ""
 "After the import is done, it is suggested that the value of "
 "`innodb_strict_mode` should be reset to the original value."
@@ -13538,16 +13587,16 @@ msgstr ""
 "Une fois l'importation terminée, il est suggéré que la valeur de "
 "`innodb_strict_mode` soit réinitialisée à la valeur d'origine."
 
-#: ../phpmyadmin/docs/faq.rst:2178
+#: ../phpmyadmin/docs/faq.rst:2199
 msgid "phpMyAdmin project"
 msgstr "Projet phpMyAdmin"
 
-#: ../phpmyadmin/docs/faq.rst:2183
+#: ../phpmyadmin/docs/faq.rst:2204
 msgid "7.1 I have found a bug. How do I inform developers?"
 msgstr ""
 "7.1 J'ai trouvé un bogue. Comment dois-je en informer les développeurs ?"
 
-#: ../phpmyadmin/docs/faq.rst:2185
+#: ../phpmyadmin/docs/faq.rst:2206
 msgid ""
 "Our issues tracker is located at <https://github.com/phpmyadmin/phpmyadmin/"
 "issues>. For security issues, please refer to the instructions at <https://"
@@ -13558,7 +13607,7 @@ msgstr ""
 "suivre les instructions sur <https://www.phpmyadmin.net/security> pour "
 "envoyer un courriel directement aux développeurs."
 
-#: ../phpmyadmin/docs/faq.rst:2192
+#: ../phpmyadmin/docs/faq.rst:2213
 msgid ""
 "7.2 I want to translate the messages to a new language or upgrade an "
 "existing language, where do I start?"
@@ -13566,7 +13615,7 @@ msgstr ""
 "7.2 Je veux traduire les messages dans une nouvelle langue ou mettre à jour "
 "une langue existante, où dois-je commencer ?"
 
-#: ../phpmyadmin/docs/faq.rst:2194
+#: ../phpmyadmin/docs/faq.rst:2215
 msgid ""
 "Translations are very welcome and all you need to have are the language "
 "skills. The easiest way is to use our `online translation service <https://"
@@ -13580,7 +13629,7 @@ msgstr ""
 "possibilités de traduction dans la `section traduction de notre site Web "
 "<https://www.phpmyadmin.net/translate/>`_."
 
-#: ../phpmyadmin/docs/faq.rst:2203
+#: ../phpmyadmin/docs/faq.rst:2224
 msgid ""
 "7.3 I would like to help out with the development of phpMyAdmin. How should "
 "I proceed?"
@@ -13588,7 +13637,7 @@ msgstr ""
 "7.3 Je voudrais aider au développement de phpMyAdmin. Comment dois-je "
 "procéder ?"
 
-#: ../phpmyadmin/docs/faq.rst:2205
+#: ../phpmyadmin/docs/faq.rst:2226
 msgid ""
 "We welcome every contribution to the development of phpMyAdmin. You can "
 "check out all the possibilities to contribute in the `contribute section on "
@@ -13599,15 +13648,15 @@ msgstr ""
 "dans la `section contribuer de notre site Web <https://www.phpmyadmin.net/"
 "contribute/>`_."
 
-#: ../phpmyadmin/docs/faq.rst:2210
+#: ../phpmyadmin/docs/faq.rst:2231
 msgid ":ref:`developers`"
 msgstr ":ref:`developers`"
 
-#: ../phpmyadmin/docs/faq.rst:2215
+#: ../phpmyadmin/docs/faq.rst:2236
 msgid "Security"
 msgstr "Sécurité"
 
-#: ../phpmyadmin/docs/faq.rst:2220
+#: ../phpmyadmin/docs/faq.rst:2241
 msgid ""
 "8.1 Where can I get information about the security alerts issued for "
 "phpMyAdmin?"
@@ -13615,15 +13664,15 @@ msgstr ""
 "8.1 Où puis-je obtenir des informations sur les alertes de sécurité pour "
 "phpMyAdmin ?"
 
-#: ../phpmyadmin/docs/faq.rst:2222
+#: ../phpmyadmin/docs/faq.rst:2243
 msgid "Please refer to <https://www.phpmyadmin.net/security/>."
 msgstr "Veuillez consulter <https://www.phpmyadmin.net/security/>."
 
-#: ../phpmyadmin/docs/faq.rst:2227
+#: ../phpmyadmin/docs/faq.rst:2248
 msgid "8.2 How can I protect phpMyAdmin against brute force attacks?"
 msgstr "8.2 Comment protéger phpMyAdmin contre les attaques par force brute ?"
 
-#: ../phpmyadmin/docs/faq.rst:2229
+#: ../phpmyadmin/docs/faq.rst:2250
 msgid ""
 "If you use Apache web server, phpMyAdmin exports information about "
 "authentication to the Apache environment and it can be used in Apache logs. "
@@ -13634,22 +13683,22 @@ msgstr ""
 "les logs d'Apache. Il y a actuellement deux variables disponibles :"
 
 # 412eb84aedcc4b89ab6364a53a2c8f13
-#: ../phpmyadmin/docs/faq.rst:2233
+#: ../phpmyadmin/docs/faq.rst:2254
 msgid "``userID``"
 msgstr "``userID``"
 
-#: ../phpmyadmin/docs/faq.rst:2234
+#: ../phpmyadmin/docs/faq.rst:2255
 msgid "User name of currently active user (they do not have to be logged in)."
 msgstr ""
 "Le nom de l’utilisateur actif en cours (ils n'ont pas besoin d'être "
 "connectés)."
 
 # ed676a1bc224484099ac3ea0f7256107
-#: ../phpmyadmin/docs/faq.rst:2240
+#: ../phpmyadmin/docs/faq.rst:2261
 msgid "``userStatus``"
 msgstr "``userStatus``"
 
-#: ../phpmyadmin/docs/faq.rst:2236
+#: ../phpmyadmin/docs/faq.rst:2257
 #, fuzzy
 #| msgid ""
 #| "Status of currently active user, one of ``ok`` (user is logged in), "
@@ -13670,11 +13719,11 @@ msgstr ""
 "configuration), soit ``empty-denied`` (les mots de passe vides sont "
 "interdits)."
 
-#: ../phpmyadmin/docs/faq.rst:2242
+#: ../phpmyadmin/docs/faq.rst:2263
 msgid "``LogFormat`` directive for Apache can look like following:"
 msgstr "La directive ``LogFormat`` pour Apache peut ressembler à ce qui suit :"
 
-#: ../phpmyadmin/docs/faq.rst:2248
+#: ../phpmyadmin/docs/faq.rst:2269
 msgid ""
 "You can then use any log analyzing tools to detect possible break-in "
 "attempts."
@@ -13682,13 +13731,13 @@ msgstr ""
 "Vous pouvez alors utiliser n'importe quel outil d'analyse de logs pour "
 "détecter des tentatives d'intrusion."
 
-#: ../phpmyadmin/docs/faq.rst:2254
+#: ../phpmyadmin/docs/faq.rst:2275
 msgid "8.3 Why are there path disclosures when directly loading certain files?"
 msgstr ""
 "8.3 Pourquoi le chemin d'accès au fichier est-il affiché lors du "
 "téléchargement de certains fichiers ?"
 
-#: ../phpmyadmin/docs/faq.rst:2256
+#: ../phpmyadmin/docs/faq.rst:2277
 msgid ""
 "This is a server configuration problem. Never enable ``display_errors`` on a "
 "production site."
@@ -13696,7 +13745,7 @@ msgstr ""
 "Ceci est dû à un problème de configuration du serveur. Ne jamais activer "
 "``display_errors`` sur un site de production."
 
-#: ../phpmyadmin/docs/faq.rst:2261
+#: ../phpmyadmin/docs/faq.rst:2282
 msgid ""
 "8.4 CSV files exported from phpMyAdmin could allow a formula injection "
 "attack."
@@ -13704,7 +13753,7 @@ msgstr ""
 "8.4 Les fichiers CSV exportés à partir de phpMyAdmin pourraient permettre "
 "une attaque par injection de formule."
 
-#: ../phpmyadmin/docs/faq.rst:2263
+#: ../phpmyadmin/docs/faq.rst:2284
 msgid ""
 "It is possible to generate a :term:`CSV` file that, when imported to a "
 "spreadsheet program such as Microsoft Excel, could potentially allow the "
@@ -13714,7 +13763,7 @@ msgstr ""
 "dans un programme de tableur comme Microsoft Excel, pourrait potentiellement "
 "permettre l'exécution de commandes arbitraires."
 
-#: ../phpmyadmin/docs/faq.rst:2266
+#: ../phpmyadmin/docs/faq.rst:2287
 msgid ""
 "The CSV files generated by phpMyAdmin could potentially contain text that "
 "would be interpreted by a spreadsheet program as a formula, but we do not "
@@ -13735,7 +13784,7 @@ msgstr ""
 "discuté et il nous semble qu'il est de la responsabilité du programme de "
 "tableur d'analyser et d'assainir correctement ce type de données."
 
-#: ../phpmyadmin/docs/faq.rst:2272
+#: ../phpmyadmin/docs/faq.rst:2293
 msgid ""
 "Google also has a `similar view <https://sites.google.com/site/"
 "bughunteruniversity/nonvuln/csv-excel-formula-injection>`_."
@@ -13743,17 +13792,17 @@ msgstr ""
 "Google a un `point de vue similaire <https://sites.google.com/site/"
 "bughunteruniversity/nonvuln/csv-excel-formula-injection>`_."
 
-#: ../phpmyadmin/docs/faq.rst:2277
+#: ../phpmyadmin/docs/faq.rst:2298
 msgid "Synchronization"
 msgstr "Synchronisation"
 
 # 30092401ac9c499681ecbdce44a90c2d
-#: ../phpmyadmin/docs/faq.rst:2282
+#: ../phpmyadmin/docs/faq.rst:2303
 msgid "9.1 (withdrawn)."
 msgstr "9.1 (retiré)."
 
 # ba292e3a6d8345b99ab7f2b0a95a3612
-#: ../phpmyadmin/docs/faq.rst:2287
+#: ../phpmyadmin/docs/faq.rst:2308
 msgid "9.2 (withdrawn)."
 msgstr "9.2 (retiré)."
 
