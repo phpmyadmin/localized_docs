@@ -9,9 +9,9 @@ propagated to generated documents. You can also translate online at
 <https://hosted.weblate.org/projects/phpmyadmin/documentation/> and your changes
 will be merged to Git.
 
-.. image:: https://hosted.weblate.org/widgets/phpmyadmin/-/svg-badge.svg
+.. image:: https://hosted.weblate.org/widget/phpmyadmin/documentation/svg-badge.svg
     :alt: Translation status
-    :target: https://hosted.weblate.org/engage/phpmyadmin/?utm_source=widget
+    :target: https://hosted.weblate.org/engage/phpmyadmin/
 
 .. image:: https://github.com/phpmyadmin/localized_docs/actions/workflows/build.yml/badge.svg?branch=master
     :alt: Build documentation
