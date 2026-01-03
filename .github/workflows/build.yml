@@ -11,9 +11,28 @@ on:
             - master
 
 jobs:
+    generate-language-list:
+      name: Generate languages list
+      runs-on: ubuntu-latest
+      outputs:
+        langs: ${{ steps.language-list.outputs.langs }}
+      steps:
+        - uses: actions/checkout@v6
+          with:
+              submodules: true
+        - id: language-list
+          name: Send languages to outputs
+          run: |
+            echo "langs=[$(make list-languages-as-json)]" >> $GITHUB_OUTPUT
+
     build-docs:
         name: Build the documentation
         runs-on: ubuntu-latest
+        needs: generate-language-list
+        strategy:
+          fail-fast: false
+          matrix:
+            include: ${{ fromJSON(needs.generate-language-list.outputs.langs) }}
         steps:
             - uses: actions/checkout@v6
               with:
@@ -22,9 +41,9 @@ jobs:
               run: sudo apt install sphinx-doc python3-sphinx
             - name: Install gettext
               run: sudo apt-get install -y gettext
-            - name: Build the documentation
-              run: make html SPHINXOPTS='-n -W -a'
+            - name: Build the documentation (${{ matrix.languageCode }})
+              run: make html-${{ matrix.languageCode }} SPHINXOPTS='-n -W -a'
             - name: Build the documentation and show all errors
               if: ${{ failure() }}
               # This mode will not exit on the first error and will display all of them
-              run: make html SPHINXOPTS='-n -a'
+              run: make html-${{ matrix.languageCode }} SPHINXOPTS='-n -a'
