@@ -41,6 +41,17 @@ jobs:
               run: sudo apt install sphinx-doc python3-sphinx
             - name: Install gettext
               run: sudo apt-get install -y gettext
+            - name: Install git-restore-mtime
+              run: |
+                  sudo apt-get install -y git-restore-mtime
+                  # https://github.com/MestreLion/git-tools/pull/83#issuecomment-3707215048
+                  sudo sed -i 's,whatchanged,log --raw,' /usr/lib/git-core/git-restore-mtime
+                  sudo sed -i "s,if merge:         cmd += ' -m',cmd += ' -m' if merge else ' --no-merges'," /usr/lib/git-core/git-restore-mtime
+            - name: Restore modification times
+              run: git restore-mtime
+            - name: Restore modification times for phpMyAdmin
+              working-directory: phpmyadmin
+              run: git restore-mtime
             - name: Cache output for "${{ matrix.languageCode }}"
               uses: actions/cache@v5
               with:
