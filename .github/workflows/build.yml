@@ -58,8 +58,19 @@ jobs:
                 path: output/${{ matrix.languageCode }}
                 key: docs-output-${{ matrix.languageCode }}
             - name: Build the documentation (${{ matrix.languageCode }})
-              run: make html-${{ matrix.languageCode }} SPHINXOPTS='-n -W -a'
-            - name: Build the documentation and show all errors
+              # -n (Run in nitpicky mode. This generates warnings for all missing references)
+              # -a (Always write all output files, even if there is no changes)
+              # -W (Turn warnings into errors)
+              # NOTE: Changed in version 8.1: sphinx-build no longer exits on the first warning,
+              # NOTE: but instead runs the entire build and exits with exit status 1 if any warnings were generated.
+              # NOTE: This behaviour was previously enabled with --keep-going.
+              # -w (Warnings file)
+              run: make html-${{ matrix.languageCode }} SPHINXOPTS='-n -W -a -w /tmp/sphinx-warnings.txt --keep-going'
+            - name: Report all errors
               if: ${{ failure() }}
-              # This mode will not exit on the first error and will display all of them
-              run: make html-${{ matrix.languageCode }} SPHINXOPTS='-n -a'
+              # TODO: format errors like '::error file={name},line={line},endLine={endLine},title={title}::{message}'
+              run: |
+                  echo '### Errors for ${{ matrix.languageCode }}' >> $GITHUB_STEP_SUMMARY
+                  echo '```' >> $GITHUB_STEP_SUMMARY
+                  sed "s,$PWD/,," /tmp/sphinx-warnings.txt >> $GITHUB_STEP_SUMMARY
+                  echo '```' >> $GITHUB_STEP_SUMMARY
