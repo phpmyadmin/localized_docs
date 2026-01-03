@@ -41,6 +41,11 @@ jobs:
               run: sudo apt install sphinx-doc python3-sphinx
             - name: Install gettext
               run: sudo apt-get install -y gettext
+            - name: Cache output for "${{ matrix.languageCode }}"
+              uses: actions/cache@v5
+              with:
+                path: output/${{ matrix.languageCode }}
+                key: docs-output-${{ matrix.languageCode }}
             - name: Build the documentation (${{ matrix.languageCode }})
               run: make html-${{ matrix.languageCode }} SPHINXOPTS='-n -W -a'
             - name: Build the documentation and show all errors
