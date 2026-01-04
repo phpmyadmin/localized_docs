@@ -10,6 +10,10 @@ on:
         branches:
             - master
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
     generate-language-list:
       name: Generate languages list
