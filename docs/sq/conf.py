@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'phpMyAdmin'
-copyright = u'2012 - 2025, The phpMyAdmin devel team'
+copyright = u'2012 - 2026, The phpMyAdmin devel team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -101,15 +101,11 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 html_theme = 'default'
 
-# See: https://docs.readthedocs.io/en/stable/reference/environment-variables.html#envvar-READTHEDOCS
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-
-if on_rtd:  # only import and set the theme if we're building docs on readthedocs
-    try:
-        import sphinx_rtd_theme
-        html_theme = 'sphinx_rtd_theme'
-    except:
-        html_theme = 'default'
+try:
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+except:
+    print('WARNING: The python module sphinx_rtd_theme was not found, using the default theme. Debian package: python3-sphinx-rtd-theme')
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
