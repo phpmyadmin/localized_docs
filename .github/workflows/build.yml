@@ -21,7 +21,7 @@ jobs:
       outputs:
         langs: ${{ steps.language-list.outputs.langs }}
       steps:
-        - uses: actions/checkout@v6
+        - uses: actions/checkout@v7
           with:
               submodules: true
         - id: language-list
@@ -38,7 +38,7 @@ jobs:
           matrix:
             include: ${{ fromJSON(needs.generate-language-list.outputs.langs) }}
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
               with:
                   submodules: true
             - name: Install Sphinx-doc
